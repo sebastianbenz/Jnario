@@ -18,6 +18,12 @@ import static org.jnario.jnario.test.util.Features.*
 import static org.jnario.jnario.test.util.Specs.*
 import org.jnario.suite.suite.Suite
 import static org.jnario.jnario.test.util.Suites.*
+import com.google.inject.Inject
+import org.eclipse.xtext.resource.XtextResource
+import org.jnario.suite.suite.SpecReference
+import org.jnario.jnario.test.util.Suites
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SuiteTestCreator
 
 describe Executable{
 	
@@ -55,9 +61,16 @@ describe Executable{
 			fact exampleGroupWith(pendingExample, implementedExample).isPending should be true
 		}
 		
+		@CreateWith(typeof(SuiteTestCreator))
 		describe Suite{
-			fact "Suites do not support isPending"{
-				suite("A suite").isPending throws UnsupportedOperationException
+			@Inject XtextResource resource
+			fact suiteWith("A suite", specReference(pendingExampleGroup)).isPending should be true
+			fact suiteWith("A suite", specReference(exampleGroupWith(example("passing")))).isPending should be false
+			
+			def suiteWith(String name, SpecReference... references){
+				val result = Suites::suiteWith(name, references)
+				resource.contents += result
+				result
 			}
 		}
 	}

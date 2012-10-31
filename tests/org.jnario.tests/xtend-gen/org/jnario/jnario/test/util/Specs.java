@@ -4,6 +4,8 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XBooleanLiteral;
+import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.jnario.jnario.test.util.Features;
 import org.jnario.spec.spec.Example;
@@ -15,8 +17,13 @@ public class Specs {
   private final static SpecFactory factory = SpecFactory.eINSTANCE;
   
   public static Example pendingExample() {
-    Example _example = Specs.example("pending");
-    return _example;
+    Example _xblockexpression = null;
+    {
+      final Example example = Specs.example("pending");
+      example.setPending(true);
+      _xblockexpression = (example);
+    }
+    return _xblockexpression;
   }
   
   public static Example implementedExample() {
@@ -35,9 +42,18 @@ public class Specs {
     {
       final Example example = Specs.factory.createExample();
       example.setName(name);
+      example.setPending(false);
+      XBooleanLiteral _createXBooleanLiteral = XbaseFactory.eINSTANCE.createXBooleanLiteral();
+      example.setExpr(_createXBooleanLiteral);
       _xblockexpression = (example);
     }
     return _xblockexpression;
+  }
+  
+  public static ExampleGroup pendingExampleGroup() {
+    Example _pendingExample = Specs.pendingExample();
+    ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_pendingExample);
+    return _exampleGroupWith;
   }
   
   public static ExampleGroup exampleGroupWith(final Example... examples) {

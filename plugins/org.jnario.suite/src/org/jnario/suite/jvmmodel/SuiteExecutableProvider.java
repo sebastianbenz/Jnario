@@ -2,6 +2,7 @@ package org.jnario.suite.jvmmodel;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static java.util.Collections.emptyList;
+import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
 import java.util.List;
 
@@ -41,10 +42,13 @@ public class SuiteExecutableProvider implements ExecutableProvider {
 	}
 
 	protected List<Executable> getSubSuites(Suite suite) {
-		SuiteFile file = EcoreUtil2.getContainerOfType(suite, SuiteFile.class);
+		SuiteFile file = getContainerOfType(suite, SuiteFile.class);
+		List<Executable> children = newArrayList();
+		if(file == null){
+			return children;
+		}
 		List<XtendClass> suites = file.getXtendClasses();
 		int index = suites.indexOf(suite) + 1;
-		List<Executable> children = newArrayList();
 		int level = suiteNodeBuilder.level(suite);
 		while(index < suites.size()){
 			Suite current = (Suite) suites.get(index);

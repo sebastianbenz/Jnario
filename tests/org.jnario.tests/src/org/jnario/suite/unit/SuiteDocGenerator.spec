@@ -53,14 +53,14 @@ describe SuiteDocGenerator {
 		val expected = '''
 		<p>Heading description.</p>
 		<ul>
-			<li><a class="specref notrun" href="../test/RedSpec.html">Red</a></li>
-			<li><a class="specref notrun" href="../test/BlueSpec.html">Blue</a>: with a description</li>
+			<li><a class="specref pending" href="../test/RedSpec.html">Red</a> <strong class="icon pending">~</strong></li>
+			<li><a class="specref pending" href="../test/BlueSpec.html">Blue</a> <strong class="icon pending">~</strong>: with a description</li>
 		</ul>
-		<span id="Subheading" class="suite notrun"><h2>Subheading</h2></span>
+		<span id="Subheading" class="suite pending"><h2>Subheading</h2></span>
 		<p>Subheading description with <strong>markdown</strong>.</p>
 		<ul>
-			<li><a class="specref notrun" href="../test/GreenSpec.html">Green</a></li>
-			<li><a class="specref notrun" href="../test/GreySpec.html">Grey</a></li>
+			<li><a class="specref pending" href="../test/GreenSpec.html">Green</a> <strong class="icon pending">~</strong></li>
+			<li><a class="specref pending" href="../test/GreySpec.html">Grey</a> <strong class="icon pending">~</strong></li>
 		</ul>
 		'''.toString
 		

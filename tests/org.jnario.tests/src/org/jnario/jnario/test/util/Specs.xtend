@@ -9,13 +9,16 @@ package org.jnario.jnario.test.util
 
 import org.jnario.spec.spec.SpecFactory
 import org.jnario.spec.spec.Example
+import org.eclipse.xtext.xbase.XbaseFactory
 
 class Specs {
 	
 	static val factory = SpecFactory::eINSTANCE
 	
 	def static pendingExample(){
-		example("pending")
+		val example = example("pending")
+		example.pending = true
+		example
 	}
 	
 	def static implementedExample(){
@@ -27,7 +30,13 @@ class Specs {
 	def static example(String name){
 		val example = factory.createExample
 		example.name = name
+		example.pending = false
+		example.expr = XbaseFactory::eINSTANCE.createXBooleanLiteral
 		example
+	}
+	
+	def static pendingExampleGroup(){
+		exampleGroupWith(pendingExample)
 	}
 	
 	def static exampleGroupWith(Example... examples){

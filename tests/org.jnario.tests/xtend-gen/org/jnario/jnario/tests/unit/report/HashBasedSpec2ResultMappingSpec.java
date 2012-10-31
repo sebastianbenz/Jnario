@@ -137,8 +137,7 @@ public class HashBasedSpec2ResultMappingSpec {
   }
   
   public void passedStep(final String className, final String name) {
-    String _plus = (name + " [PENDING]");
-    Passed _passingSpec = Passed.passingSpec(className, _plus, 0.0);
+    Passed _passingSpec = Passed.passingSpec(className, name, 0.0);
     this.subject.accept(_passingSpec);
   }
   
@@ -147,8 +146,7 @@ public class HashBasedSpec2ResultMappingSpec {
   }
   
   public void failedStep(final String className, final String name) {
-    String _plus = (name + " [PENDING]");
-    Failed _failingSpec = Failed.failingSpec(className, _plus, 0.0, this.anyFailure);
+    Failed _failingSpec = Failed.failingSpec(className, name, 0.0, this.anyFailure);
     this.subject.accept(_failingSpec);
   }
 }

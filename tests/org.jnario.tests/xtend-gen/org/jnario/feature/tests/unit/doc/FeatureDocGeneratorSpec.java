@@ -61,7 +61,7 @@ public class FeatureDocGeneratorSpec {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<p>This is a description.</p>");
     _builder.newLine();
-    _builder.append("<div><h3 class=\"scenario notrun\"  id=\"Scenario_Example_Scenario\">Scenario: Example Scenario");
+    _builder.append("<div><h3 class=\"scenario pending\"  id=\"Scenario_Example_Scenario\">Scenario: Example Scenario");
     _builder.newLine();
     _builder.append("</h3>");
     _builder.newLine();
@@ -88,7 +88,7 @@ public class FeatureDocGeneratorSpec {
     _builder.newLine();
     _builder.append("</li>");
     _builder.newLine();
-    _builder.append("<li><span class=\"step notrun\"><p>When I do something that is pending. [PENDING]</p></span>");
+    _builder.append("<li><span class=\"step pending\"><p>When I do something that is pending. [PENDING]</p></span>");
     _builder.newLine();
     _builder.append("</li>");
     _builder.newLine();

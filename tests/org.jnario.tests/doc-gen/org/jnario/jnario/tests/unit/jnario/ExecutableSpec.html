@@ -76,9 +76,8 @@
 </div>
 <div class="level">
 <h4 class="exampleGroup "  id="Suite">Suite</h4>
-<ul><li><p id="Suites_do_not_support_isPending" class="example "><strong>Suites do not support isPending</strong></p>
-<pre class="prettyprint lang-spec linenums">
-suite(&quot;A suite&quot;).isPending throws UnsupportedOperationException</pre>
+<ul><li><p id="suiteWith_A_suite_specReference_pendingExampleGroup_isPending_should_be_true" class="example "><strong>suiteWith["A suite", specReference[pendingExampleGroup]].isPending should be true</strong></p>
+</li><li><p id="suiteWith_A_suite_specReference_exampleGroupWith_example_passing_isPending_should_be_false" class="example "><strong>suiteWith["A suite", specReference[exampleGroupWith[example["passing"]]]].isPending should be false</strong></p>
 </li></ul>
 </div>
 							</div>
@@ -106,6 +105,12 @@ import static org.jnario.jnario.test.util.Features.*
 import static org.jnario.jnario.test.util.Specs.*
 import org.jnario.suite.suite.Suite
 import static org.jnario.jnario.test.util.Suites.*
+import com.google.inject.Inject
+import org.eclipse.xtext.resource.XtextResource
+import org.jnario.suite.suite.SpecReference
+import org.jnario.jnario.test.util.Suites
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SuiteTestCreator
 
 describe Executable{
   
@@ -143,9 +148,16 @@ describe Executable{
       fact exampleGroupWith(pendingExample, implementedExample).isPending should be true
     }
     
+    @CreateWith(typeof(SuiteTestCreator))
     describe Suite{
-      fact &quot;Suites do not support isPending&quot;{
-        suite(&quot;A suite&quot;).isPending throws UnsupportedOperationException
+      @Inject XtextResource resource
+      fact suiteWith(&quot;A suite&quot;, specReference(pendingExampleGroup)).isPending should be true
+      fact suiteWith(&quot;A suite&quot;, specReference(exampleGroupWith(example(&quot;passing&quot;)))).isPending should be false
+      
+      def suiteWith(String name, SpecReference... references){
+        val result = Suites::suiteWith(name, references)
+        resource.contents += result
+        result
       }
     }
   }

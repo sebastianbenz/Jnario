@@ -35,16 +35,23 @@ public class HashBasedSpec2ResultMappingBackgroundSpec extends HashBasedSpec2Res
     _builder.append("\t");
     _builder.append("Given a step");
     _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("\"with implementation\"");
+    _builder.newLine();
     _builder.append("Scenario: My Scenario");
     _builder.newLine();
+    _builder.append("\t");
     _builder.append("Given another step");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("\"with implementation\"");
     _builder.newLine();
     this.m.parseScenario(_builder);
   }
   
   @Test
   @Named("returns **Passed** if all scenarios passed")
-  @Order(19)
+  @Order(20)
   public void _returnsPassedIfAllScenariosPassed() throws Exception {
     this.passedStep("Given a step");
     this.passedStep("Given another step");
@@ -59,7 +66,7 @@ public class HashBasedSpec2ResultMappingBackgroundSpec extends HashBasedSpec2Res
   
   @Test
   @Named("returns **Failed** if one scenario failed")
-  @Order(20)
+  @Order(21)
   public void _returnsFailedIfOneScenarioFailed() throws Exception {
     this.failedStep("Given a step");
     Background _background = this.background();

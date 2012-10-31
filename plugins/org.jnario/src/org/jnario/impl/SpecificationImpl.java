@@ -6,8 +6,11 @@
  */
 package org.jnario.impl;
 
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.xtend.core.xtend.impl.XtendClassImplCustom;
+import org.jnario.Executable;
 import org.jnario.JnarioPackage;
 import org.jnario.Specification;
 
@@ -21,6 +24,8 @@ import org.jnario.Specification;
  * @generated NOT
  */
 public abstract class SpecificationImpl extends XtendClassImplCustom implements Specification {
+	private EList<Executable> children;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -41,7 +46,23 @@ public abstract class SpecificationImpl extends XtendClassImplCustom implements 
 	}
 	
 	public boolean isPending(){
-		throw new UnsupportedOperationException();
+		for (Executable child : getChildren()) {
+			if(child.isPending()){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public EList<Executable> getChildren(){
+		if(children == null){
+			children = calculateChildren();
+		}
+		return children;
+	}
+
+	protected EList<Executable> calculateChildren() {
+		return ECollections.emptyEList();
 	}
 	
 } //SpecificationImpl

@@ -71,7 +71,7 @@ subject.accept(pendingResult)
 example should match pendingResult</pre>
 </li></ul>
 <h3 class="exampleGroup "  id="ExampleGroup">ExampleGroup</h3>
-<ul><li><p id="returns_NotRun_if_children_are_not_executed" class="example "><strong>returns NotRun if children are not executed</strong></p>
+<ul><li><p id="returns_Pending_if_children_are_not_executed_and_have_no_implementation" class="example "><strong>returns Pending if children are not executed and have no implementation</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
 describe &quot;Root&quot;{
@@ -79,13 +79,22 @@ describe &quot;Root&quot;{
   fact &quot;fact 2&quot;
 }
 ''')                     
+m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Pending)</pre>
+</li><li><p id="returns_NotRun_if_children_are_not_executed_but_have_an_implementation" class="example "><strong>returns NotRun if children are not executed but have an implementation</strong></p>
+<pre class="prettyprint lang-spec linenums">
+m.parseSpec('''
+describe &quot;Root&quot;{
+  fact &quot;fact 1&quot;{ &quot;with implementation&quot; }
+  fact &quot;fact 2&quot;{ &quot;with implementation&quot; }
+}
+''')                     
 m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(NotRun)</pre>
 </li><li><p id="passes_if_all_children_pass" class="example "><strong>passes if all children pass</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
 describe &quot;Root&quot;{
-  fact &quot;Example 1&quot;
-  fact &quot;Example 2&quot;
+  fact &quot;Example 1&quot;{ &quot;with implementation&quot; }
+  fact &quot;Example 2&quot;{ &quot;with implementation&quot; }
 }
 ''')               
 passes(&quot;Example 1&quot;, &quot;Example 2&quot;)
@@ -94,8 +103,8 @@ m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Passed)</pre>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
 describe &quot;Root&quot;{
-  fact &quot;Example 1&quot;
-  fact &quot;Example 2&quot;
+  fact &quot;Example 1&quot;{ &quot;with implementation&quot; }
+  fact &quot;Example 2&quot;{ &quot;with implementation&quot; }
 }
 ''')               
 passes(&quot;Example 1&quot;)
@@ -105,8 +114,8 @@ m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Failed)</pre>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
 describe &quot;Root&quot;{
-  fact &quot;Example 1&quot;
-  fact &quot;Example 2&quot;
+  fact &quot;Example 1&quot;{ &quot;with implementation&quot; }
+  fact &quot;Example 2&quot;{ &quot;with implementation&quot; }
 }
 ''')  
 exampleExecutedIn(&quot;Example 1&quot;, 1.0)
@@ -116,8 +125,8 @@ m.exampleGroup(&quot;Root&quot;).result.executionTimeInSeconds =&gt; 3.0</pre>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
 describe &quot;Root&quot;{
-  fact &quot;Example 1&quot;
-  fact &quot;Example 2&quot;
+  fact &quot;Example 1&quot;{ &quot;with implementation&quot; }
+  fact &quot;Example 2&quot;{ &quot;with implementation&quot; }
 }
 ''')  
 passes(&quot;Example 1&quot;)
@@ -276,6 +285,7 @@ import org.jnario.feature.feature.Scenario
 import org.jnario.jnario.test.util.Specs
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.Background
+import org.jnario.report.Pending
 
 @CreateWith(typeof(SpecTestCreator))
 describe HashBasedSpec2ResultMapping {
@@ -338,11 +348,21 @@ describe HashBasedSpec2ResultMapping {
     
     static val CLASSNAME = &quot;RootSpec&quot;
     
-    fact &quot;returns NotRun if children are not executed&quot;{
+    fact &quot;returns Pending if children are not executed and have no implementation&quot;{
       m.parseSpec('''
       describe &quot;Root&quot;{
         fact &quot;fact 1&quot;
         fact &quot;fact 2&quot;
+      }
+      ''')                     
+      m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Pending)
+    }
+    
+    fact &quot;returns NotRun if children are not executed but have an implementation&quot;{
+      m.parseSpec('''
+      describe &quot;Root&quot;{
+        fact &quot;fact 1&quot;{ &quot;with implementation&quot; }
+        fact &quot;fact 2&quot;{ &quot;with implementation&quot; }
       }
       ''')                     
       m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(NotRun)
@@ -351,8 +371,8 @@ describe HashBasedSpec2ResultMapping {
     fact &quot;passes if all children pass&quot;{
       m.parseSpec('''
       describe &quot;Root&quot;{
-        fact &quot;Example 1&quot;
-        fact &quot;Example 2&quot;
+        fact &quot;Example 1&quot;{ &quot;with implementation&quot; }
+        fact &quot;Example 2&quot;{ &quot;with implementation&quot; }
       }
       ''')               
       passes(&quot;Example 1&quot;, &quot;Example 2&quot;)
@@ -362,8 +382,8 @@ describe HashBasedSpec2ResultMapping {
     fact &quot;fails if one child has failed&quot;{
       m.parseSpec('''
       describe &quot;Root&quot;{
-        fact &quot;Example 1&quot;
-        fact &quot;Example 2&quot;
+        fact &quot;Example 1&quot;{ &quot;with implementation&quot; }
+        fact &quot;Example 2&quot;{ &quot;with implementation&quot; }
       }
       ''')               
       passes(&quot;Example 1&quot;)
@@ -374,8 +394,8 @@ describe HashBasedSpec2ResultMapping {
     fact &quot;execution time is sum of all child examples&quot;{
       m.parseSpec('''
       describe &quot;Root&quot;{
-        fact &quot;Example 1&quot;
-        fact &quot;Example 2&quot;
+        fact &quot;Example 1&quot;{ &quot;with implementation&quot; }
+        fact &quot;Example 2&quot;{ &quot;with implementation&quot; }
       }
       ''')  
       exampleExecutedIn(&quot;Example 1&quot;, 1.0)
@@ -386,8 +406,8 @@ describe HashBasedSpec2ResultMapping {
     fact &quot;class name is from spec&quot;{
       m.parseSpec('''
       describe &quot;Root&quot;{
-        fact &quot;Example 1&quot;
-        fact &quot;Example 2&quot;
+        fact &quot;Example 1&quot;{ &quot;with implementation&quot; }
+        fact &quot;Example 2&quot;{ &quot;with implementation&quot; }
       }
       ''')  
       passes(&quot;Example 1&quot;)
@@ -420,16 +440,16 @@ describe HashBasedSpec2ResultMapping {
     }
     
     def exampleExecutedIn(String name, double time){
-      subject.accept(passingSpec(CLASSNAME, name + &quot; [PENDING]&quot;, time))
+      subject.accept(passingSpec(CLASSNAME, name, time))
     }
     
     def fails(String name){
-      subject.accept(failingSpec(CLASSNAME, name + &quot; [PENDING]&quot;, anyExecutionTime, anyFailure))
+      subject.accept(failingSpec(CLASSNAME, name, anyExecutionTime, anyFailure))
     }
     
     def passes(String... names){
       names.forEach[
-        subject.accept(passingSpec(CLASSNAME, it + &quot; [PENDING]&quot;, anyExecutionTime))
+        subject.accept(passingSpec(CLASSNAME, it, anyExecutionTime))
       ]
     }
   }
@@ -509,7 +529,9 @@ describe HashBasedSpec2ResultMapping {
         Feature: My Feature
         Scenario: My Scenario
         Given my Step
+          &quot;with implementation&quot;
         And other Step
+          &quot;with implementation&quot;
       ''')
     }
     
@@ -535,8 +557,10 @@ describe HashBasedSpec2ResultMapping {
         Feature: My Feature
         Scenario: My Scenario
         Given a step
+          &quot;with implementation&quot;
         Scenario: My other Scenario
         Given another step
+          &quot;with implementation&quot;
       ''')
     }
 
@@ -562,8 +586,10 @@ describe HashBasedSpec2ResultMapping {
         Feature: My Feature
         Background:
           Given a step
+            &quot;with implementation&quot;
         Scenario: My Scenario
-        Given another step
+          Given another step
+            &quot;with implementation&quot;
       ''')
     }
 
@@ -620,7 +646,7 @@ describe HashBasedSpec2ResultMapping {
   }
   
   def passedStep(String className, String name){
-    subject.accept(passingSpec(className, name + &quot; [PENDING]&quot;, 0.0))
+    subject.accept(passingSpec(className, name, 0.0))
   }
     
   def failedStep(String name){
@@ -628,7 +654,7 @@ describe HashBasedSpec2ResultMapping {
   }
   
   def failedStep(String className, String name){
-    subject.accept(failingSpec(className, name + &quot; [PENDING]&quot;, 0.0, anyFailure))
+    subject.accept(failingSpec(className, name, 0.0, anyFailure))
   }
 }
 </pre>

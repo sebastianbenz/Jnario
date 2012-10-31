@@ -39,15 +39,31 @@ class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2R
 	def private SpecExecution createResult(Executable specification, Iterable<SpecExecution> children){
 		val specId = specification.asKey
 		if(children.areNotExecuted){
-			return new NotRun(specId.key, specId.value)
+			return notRunOrPending(specification, specId)
 		}
 		
 		val executionTime = children.executionTime
 		val failures = children.map[failures].flatten
 		if(failures.empty){
-			new Passed(specId.key, specId.value, executionTime)
+			passedOrPending(specification, specId, executionTime)
 		}else{
 			new Failed(specId.key, specId.value, executionTime, failures)
+		}
+	}
+	
+	def private notRunOrPending(Executable executable, Pair<String, String> specId){
+		if(executable.pending){
+			new Pending(specId.key, specId.value, 0.0)
+		}else{
+			new NotRun(specId.key, specId.value)
+		}
+	}
+	
+	def private passedOrPending(Executable executable, Pair<String, String> specId, double executionTime){
+		if(executable.pending){
+			new Pending(specId.key, specId.value, executionTime)
+		}else{
+			new Passed(specId.key, specId.value, executionTime)
 		}
 	}
 	

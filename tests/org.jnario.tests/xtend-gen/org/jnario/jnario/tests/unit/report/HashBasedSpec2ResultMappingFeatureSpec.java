@@ -34,16 +34,22 @@ public class HashBasedSpec2ResultMappingFeatureSpec extends HashBasedSpec2Result
     _builder.newLine();
     _builder.append("Given a step");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\"with implementation\"");
+    _builder.newLine();
     _builder.append("Scenario: My other Scenario");
     _builder.newLine();
     _builder.append("Given another step");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\"with implementation\"");
     _builder.newLine();
     this.m.parseScenario(_builder);
   }
   
   @Test
   @Named("returns **Passed** if all scenarios passed")
-  @Order(17)
+  @Order(18)
   public void _returnsPassedIfAllScenariosPassed() throws Exception {
     this.passedStep("Given a step");
     this.passedStep(HashBasedSpec2ResultMappingSpec.OTHER_SCENARIO_CLASSNAME, "Given another step");
@@ -58,7 +64,7 @@ public class HashBasedSpec2ResultMappingFeatureSpec extends HashBasedSpec2Result
   
   @Test
   @Named("returns **Failed** if one scenario failed")
-  @Order(18)
+  @Order(19)
   public void _returnsFailedIfOneScenarioFailed() throws Exception {
     this.passedStep("Given a step");
     this.failedStep(HashBasedSpec2ResultMappingSpec.OTHER_SCENARIO_CLASSNAME, "Given another step");

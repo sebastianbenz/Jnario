@@ -34,14 +34,20 @@ public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2Resul
     _builder.newLine();
     _builder.append("Given my Step");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\"with implementation\"");
+    _builder.newLine();
     _builder.append("And other Step");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\"with implementation\"");
     _builder.newLine();
     this.m.parseScenario(_builder);
   }
   
   @Test
   @Named("returns **Passed** if all children passed")
-  @Order(15)
+  @Order(16)
   public void _returnsPassedIfAllChildrenPassed() throws Exception {
     this.passedStep("Given my Step");
     this.passedStep("And other Step");
@@ -56,7 +62,7 @@ public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2Resul
   
   @Test
   @Named("returns **Failed** if one child failed")
-  @Order(16)
+  @Order(17)
   public void _returnsFailedIfOneChildFailed() throws Exception {
     this.passedStep("Given my Step");
     this.failedStep("And other Step");

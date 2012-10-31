@@ -22,6 +22,7 @@ import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.Failed;
 import org.jnario.report.NotRun;
 import org.jnario.report.Passed;
+import org.jnario.report.Pending;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecExecutionAcceptor;
 import org.jnario.report.SpecFailure;
@@ -88,10 +89,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
       final Pair<String,String> specId = this.asKey(specification);
       boolean _areNotExecuted = this.areNotExecuted(children);
       if (_areNotExecuted) {
-        String _key = specId.getKey();
-        String _value = specId.getValue();
-        NotRun _notRun = new NotRun(_key, _value);
-        return _notRun;
+        return this.notRunOrPending(specification, specId);
       }
       final Double executionTime = this.executionTime(children);
       final Function1<SpecExecution,List<SpecFailure>> _function = new Function1<SpecExecution,List<SpecFailure>>() {
@@ -105,19 +103,51 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
       SpecExecution _xifexpression = null;
       boolean _isEmpty = IterableExtensions.isEmpty(failures);
       if (_isEmpty) {
-        String _key_1 = specId.getKey();
-        String _value_1 = specId.getValue();
-        Passed _passed = new Passed(_key_1, _value_1, (executionTime).doubleValue());
-        _xifexpression = _passed;
+        SpecExecution _passedOrPending = this.passedOrPending(specification, specId, (executionTime).doubleValue());
+        _xifexpression = _passedOrPending;
       } else {
-        String _key_2 = specId.getKey();
-        String _value_2 = specId.getValue();
-        Failed _failed = new Failed(_key_2, _value_2, (executionTime).doubleValue(), failures);
+        String _key = specId.getKey();
+        String _value = specId.getValue();
+        Failed _failed = new Failed(_key, _value, (executionTime).doubleValue(), failures);
         _xifexpression = _failed;
       }
       _xblockexpression = (_xifexpression);
     }
     return _xblockexpression;
+  }
+  
+  private SpecExecution notRunOrPending(final Executable executable, final Pair<String,String> specId) {
+    SpecExecution _xifexpression = null;
+    boolean _isPending = executable.isPending();
+    if (_isPending) {
+      String _key = specId.getKey();
+      String _value = specId.getValue();
+      Pending _pending = new Pending(_key, _value, 0.0);
+      _xifexpression = _pending;
+    } else {
+      String _key_1 = specId.getKey();
+      String _value_1 = specId.getValue();
+      NotRun _notRun = new NotRun(_key_1, _value_1);
+      _xifexpression = _notRun;
+    }
+    return _xifexpression;
+  }
+  
+  private SpecExecution passedOrPending(final Executable executable, final Pair<String,String> specId, final double executionTime) {
+    SpecExecution _xifexpression = null;
+    boolean _isPending = executable.isPending();
+    if (_isPending) {
+      String _key = specId.getKey();
+      String _value = specId.getValue();
+      Pending _pending = new Pending(_key, _value, executionTime);
+      _xifexpression = _pending;
+    } else {
+      String _key_1 = specId.getKey();
+      String _value_1 = specId.getValue();
+      Passed _passed = new Passed(_key_1, _value_1, executionTime);
+      _xifexpression = _passed;
+    }
+    return _xifexpression;
   }
   
   private Double executionTime(final Iterable<SpecExecution> results) {

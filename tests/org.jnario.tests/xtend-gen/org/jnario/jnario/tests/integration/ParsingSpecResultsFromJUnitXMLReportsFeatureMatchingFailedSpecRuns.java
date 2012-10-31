@@ -73,13 +73,13 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingFailedSpecRuns 
     boolean _equals = Objects.equal(_first, "passed");
     if (_equals) {
       boolean _doubleArrow = Should.operator_doubleArrow(result, Passed.class);
-      Assert.assertTrue("\nExpected  but"
-       + "\n      is " + new StringDescription().appendValue(Boolean.valueOf(_doubleArrow)).toString() + "\n", _doubleArrow);
+      Assert.assertTrue("\nExpected result => typeof(Passed) but"
+       + "\n     result => typeof(Passed) is " + new StringDescription().appendValue(Boolean.valueOf(_doubleArrow)).toString() + "\n", _doubleArrow);
       
     } else {
       boolean _doubleArrow_1 = Should.operator_doubleArrow(result, Failed.class);
-      Assert.assertTrue("\nExpected  but"
-       + "\n      is " + new StringDescription().appendValue(Boolean.valueOf(_doubleArrow_1)).toString() + "\n", _doubleArrow_1);
+      Assert.assertTrue("\nExpected result => typeof(Failed) but"
+       + "\n     result => typeof(Failed) is " + new StringDescription().appendValue(Boolean.valueOf(_doubleArrow_1)).toString() + "\n", _doubleArrow_1);
       
     }
   }

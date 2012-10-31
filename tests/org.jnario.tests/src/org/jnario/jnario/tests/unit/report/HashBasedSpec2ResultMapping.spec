@@ -31,6 +31,7 @@ import org.jnario.feature.feature.Scenario
 import org.jnario.jnario.test.util.Specs
 import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.Background
+import org.jnario.report.Pending
 
 @CreateWith(typeof(SpecTestCreator))
 describe HashBasedSpec2ResultMapping {
@@ -93,11 +94,21 @@ describe HashBasedSpec2ResultMapping {
 		
 		static val CLASSNAME = "RootSpec"
 		
-		fact "returns NotRun if children are not executed"{
+		fact "returns Pending if children are not executed and have no implementation"{
 			m.parseSpec('''
 			describe "Root"{
 				fact "fact 1"
 				fact "fact 2"
+			}
+			''')										 
+			m.exampleGroup("Root").result => typeof(Pending)
+		}
+		
+		fact "returns NotRun if children are not executed but have an implementation"{
+			m.parseSpec('''
+			describe "Root"{
+				fact "fact 1"{ "with implementation" }
+				fact "fact 2"{ "with implementation" }
 			}
 			''')										 
 			m.exampleGroup("Root").result => typeof(NotRun)
@@ -106,8 +117,8 @@ describe HashBasedSpec2ResultMapping {
 		fact "passes if all children pass"{
 			m.parseSpec('''
 			describe "Root"{
-				fact "Example 1"
-				fact "Example 2"
+				fact "Example 1"{ "with implementation" }
+				fact "Example 2"{ "with implementation" }
 			}
 			''')							 
 			passes("Example 1", "Example 2")
@@ -117,8 +128,8 @@ describe HashBasedSpec2ResultMapping {
 		fact "fails if one child has failed"{
 			m.parseSpec('''
 			describe "Root"{
-				fact "Example 1"
-				fact "Example 2"
+				fact "Example 1"{ "with implementation" }
+				fact "Example 2"{ "with implementation" }
 			}
 			''')							 
 			passes("Example 1")
@@ -129,8 +140,8 @@ describe HashBasedSpec2ResultMapping {
 		fact "execution time is sum of all child examples"{
 			m.parseSpec('''
 			describe "Root"{
-				fact "Example 1"
-				fact "Example 2"
+				fact "Example 1"{ "with implementation" }
+				fact "Example 2"{ "with implementation" }
 			}
 			''')	
 			exampleExecutedIn("Example 1", 1.0)
@@ -141,8 +152,8 @@ describe HashBasedSpec2ResultMapping {
 		fact "class name is from spec"{
 			m.parseSpec('''
 			describe "Root"{
-				fact "Example 1"
-				fact "Example 2"
+				fact "Example 1"{ "with implementation" }
+				fact "Example 2"{ "with implementation" }
 			}
 			''')	
 			passes("Example 1")
@@ -175,16 +186,16 @@ describe HashBasedSpec2ResultMapping {
 		}
 		
 		def exampleExecutedIn(String name, double time){
-			subject.accept(passingSpec(CLASSNAME, name + " [PENDING]", time))
+			subject.accept(passingSpec(CLASSNAME, name, time))
 		}
 		
 		def fails(String name){
-			subject.accept(failingSpec(CLASSNAME, name + " [PENDING]", anyExecutionTime, anyFailure))
+			subject.accept(failingSpec(CLASSNAME, name, anyExecutionTime, anyFailure))
 		}
 		
 		def passes(String... names){
 			names.forEach[
-				subject.accept(passingSpec(CLASSNAME, it + " [PENDING]", anyExecutionTime))
+				subject.accept(passingSpec(CLASSNAME, it, anyExecutionTime))
 			]
 		}
 	}
@@ -264,7 +275,9 @@ describe HashBasedSpec2ResultMapping {
 				Feature: My Feature
 				Scenario: My Scenario
 				Given my Step
+					"with implementation"
 				And other Step
+					"with implementation"
 			''')
 		}
 		
@@ -290,8 +303,10 @@ describe HashBasedSpec2ResultMapping {
 				Feature: My Feature
 				Scenario: My Scenario
 				Given a step
+					"with implementation"
 				Scenario: My other Scenario
 				Given another step
+					"with implementation"
 			''')
 		}
 
@@ -317,8 +332,10 @@ describe HashBasedSpec2ResultMapping {
 				Feature: My Feature
 				Background:
 					Given a step
+						"with implementation"
 				Scenario: My Scenario
-				Given another step
+					Given another step
+						"with implementation"
 			''')
 		}
 
@@ -375,7 +392,7 @@ describe HashBasedSpec2ResultMapping {
 	}
 	
 	def passedStep(String className, String name){
-		subject.accept(passingSpec(className, name + " [PENDING]", 0.0))
+		subject.accept(passingSpec(className, name, 0.0))
 	}
 		
 	def failedStep(String name){
@@ -383,6 +400,6 @@ describe HashBasedSpec2ResultMapping {
 	}
 	
 	def failedStep(String className, String name){
-		subject.accept(failingSpec(className, name + " [PENDING]", 0.0, anyFailure))
+		subject.accept(failingSpec(className, name, 0.0, anyFailure))
 	}
 }
