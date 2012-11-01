@@ -236,21 +236,14 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   
   protected void _init(final Scenario scenario, final JvmGenericType inferredJvmType, final List<JvmGenericType> scenarios) {
     this._stepReferenceFieldCreator.copyXtendMemberForReferences(scenario);
-    EList<Step> _steps = scenario.getSteps();
-    final Procedure1<Step> _function = new Procedure1<Step>() {
-        public void apply(final Step it) {
-          FeatureJvmModelInferrer.this.generateStepValues(it);
-        }
-      };
-    IterableExtensions.<Step>forEach(_steps, _function);
     EList<XtendMember> _members = scenario.getMembers();
     Iterable<XtendField> _filter = Iterables.<XtendField>filter(_members, XtendField.class);
-    final Procedure1<XtendField> _function_1 = new Procedure1<XtendField>() {
+    final Procedure1<XtendField> _function = new Procedure1<XtendField>() {
         public void apply(final XtendField it) {
           FeatureJvmModelInferrer.this.initializeName(it);
         }
       };
-    IterableExtensions.<XtendField>forEach(_filter, _function_1);
+    IterableExtensions.<XtendField>forEach(_filter, _function);
     final EList<JvmAnnotationReference> annotations = inferredJvmType.getAnnotations();
     JvmAnnotationReference _featureRunner = this.annotationProvider.getFeatureRunner(scenario);
     this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _featureRunner);
@@ -271,16 +264,16 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       _and = (_not && _notEquals);
     }
     if (_and) {
-      EList<Step> _steps_1 = background.getSteps();
-      int _generateBackgroundStepCalls = this.generateBackgroundStepCalls(_steps_1, inferredJvmType);
+      ArrayList<Step> _allSteps = Scenarios.allSteps(background);
+      int _generateBackgroundStepCalls = this.generateBackgroundStepCalls(_allSteps, inferredJvmType);
       start = _generateBackgroundStepCalls;
     }
-    EList<Step> _steps_2 = scenario.getSteps();
-    this.generateSteps(_steps_2, inferredJvmType, start, scenario);
+    ArrayList<Step> _allSteps_1 = Scenarios.allSteps(scenario);
+    this.generateSteps(_allSteps_1, inferredJvmType, start, scenario);
     super.initialize(scenario, inferredJvmType);
-    ArrayList<Step> _allSteps = Scenarios.allSteps(scenario);
-    Iterable<StepReference> _filter_1 = Iterables.<StepReference>filter(_allSteps, StepReference.class);
-    final Procedure1<StepReference> _function_2 = new Procedure1<StepReference>() {
+    ArrayList<Step> _allSteps_2 = Scenarios.allSteps(scenario);
+    Iterable<StepReference> _filter_1 = Iterables.<StepReference>filter(_allSteps_2, StepReference.class);
+    final Procedure1<StepReference> _function_1 = new Procedure1<StepReference>() {
         public void apply(final StepReference it) {
           StepImplementation _reference = it.getReference();
           boolean _equals = Objects.equal(_reference, null);
@@ -307,7 +300,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           FeatureJvmModelInferrer.this._jvmFieldReferenceUpdater.updateReferences(_expressionOf, originalType, inferredJvmType);
         }
       };
-    IterableExtensions.<StepReference>forEach(_filter_1, _function_2);
+    IterableExtensions.<StepReference>forEach(_filter_1, _function_1);
   }
   
   public void initializeName(final XtendField field) {
@@ -393,15 +386,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     {
       int order = 0;
       for (final Step step : steps) {
-        {
-          int _transformCalls = this.transformCalls(step, inferredJvmType, order);
-          order = _transformCalls;
-          EList<Step> _and = step.getAnd();
-          for (final Step and : _and) {
-            int _transformCalls_1 = this.transformCalls(and, inferredJvmType, order);
-            order = _transformCalls_1;
-          }
-        }
+        int _transformCalls = this.transformCalls(step, inferredJvmType, order);
+        order = _transformCalls;
       }
       _xblockexpression = (order);
     }
@@ -419,7 +405,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
                 public void apply(final ITreeAppendable a) {
                   String _plus = ("super." + methodName);
-                  String _plus_1 = (_plus + "();");
+                  String _plus_1 = (_plus + "()");
                   a.append(_plus_1);
                 }
               };
@@ -449,15 +435,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   public void generateSteps(final Iterable<Step> steps, final JvmGenericType inferredJvmType, final int start, final Scenario scenario) {
     int order = start;
     for (final Step step : steps) {
-      {
-        int _transform = this.transform(step, inferredJvmType, order, scenario);
-        order = _transform;
-        EList<Step> _and = step.getAnd();
-        for (final Step and : _and) {
-          int _transform_1 = this.transform(and, inferredJvmType, order, scenario);
-          order = _transform_1;
-        }
-      }
+      int _transform = this.transform(step, inferredJvmType, order, scenario);
+      order = _transform;
     }
   }
   

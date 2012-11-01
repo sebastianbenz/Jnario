@@ -42,7 +42,7 @@ import org.jnario.feature.feature.StepReference
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 
 import static com.google.common.collect.Iterators.*
-import static org.eclipse.xtext.EcoreUtil2.*
+import static extension org.eclipse.xtext.EcoreUtil2.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 
 import static extension com.google.common.base.Strings.*
@@ -122,7 +122,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	}
    	
    	def register(IJvmDeclaredTypeAcceptor acceptor, XtendClass source, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios){
-   		associatePrimary(source, inferredJvmType);
+   		associatePrimary(source, inferredJvmType)
 		acceptor.accept(inferredJvmType).initializeLater[initialize(source, inferredJvmType, scenarios)] 
    	} 
    	
@@ -154,7 +154,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def dispatch void init(Scenario scenario, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios){
    		scenario.copyXtendMemberForReferences
-   		scenario.steps.forEach[it.generateStepValues]
 		scenario.members.filter(typeof(XtendField)).forEach[initializeName]   		
    		val annotations = inferredJvmType.annotations
    		annotations += scenario.featureRunner
@@ -166,15 +165,15 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		
    		val background = feature.background
 		if(!(scenario instanceof Background) && background != null){
-			start = background.steps.generateBackgroundStepCalls(inferredJvmType)
+			start = background.allSteps.generateBackgroundStepCalls(inferredJvmType)
 		}
-		scenario.steps.generateSteps(inferredJvmType, start, scenario)
+		scenario.allSteps.generateSteps(inferredJvmType, start, scenario)
    		super.initialize(scenario, inferredJvmType)
    		scenario.allSteps.filter(typeof(StepReference)).forEach[
    			if(it.reference == null){
    				return
    			}
-   			val original = getContainerOfType(it.reference,typeof(Scenario))
+   			val original = it.reference.getContainerOfType(typeof(Scenario))
    			if(original == null){
    				return
    			}
@@ -195,10 +194,10 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	def generateStepValues(Step step){
 		val arguments = stepArgumentsProvider.findStepArguments(step)
 		val stepExpression = step.stepExpression
-		if(arguments.empty || step.stepExpression == null) return;
+		if(arguments.empty || step.stepExpression == null) return
 
 		var decs = stepExpression.eAllContents.filter(typeof(XVariableDeclaration)).filter[name == STEP_VALUES]
-		if(decs.empty) return;
+		if(decs.empty) return
 		val dec = decs.head
 		dec.setStepValueType(step as Step)
 		if(step instanceof StepImplementation){
@@ -230,9 +229,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		var order = 0
 		for (step : steps) {
 			order = transformCalls(step, inferredJvmType, order)
-			for(and: step.and){
-				order = transformCalls(and, inferredJvmType, order)
-			}			
 		}
 		order 
    	}
@@ -241,7 +237,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		val methodName = step.methodName
    		inferredJvmType.members += step.toMethod(methodName, getTypeForName(Void::TYPE, step))[
 			body = [ITreeAppendable a |
-						a.append("super." + methodName + "();")
+						a.append("super." + methodName + "()")
 			]
 			markAsPending(step)
 			annotations += step.getTestAnnotations(false)
@@ -255,9 +251,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		var order = start
 		for (step : steps) {
 			order = transform(step, inferredJvmType, order, scenario)
-			for(and: (step).and){
-				order = transform(and, inferredJvmType, order, scenario)
-			}
 		}
    	}
 
