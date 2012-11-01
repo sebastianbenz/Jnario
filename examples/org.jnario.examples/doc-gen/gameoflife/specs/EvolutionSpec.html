@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header pending">
 					<h1>Evolution</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -36,14 +36,14 @@
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
 <p>Responsible for evolving cells in the world. The evolution is parameterized by two rules, the first rule deciding whether a live cell stays alive and the second rule deciding whether a dead cell becomes alive.</p>
-<h3 id="dead_cells">Dead cells</h3>
-<ul><li><p id="become_alive_if_rule_says_so"><strong>become alive if rule says so</strong></p>
+<h3 class="exampleGroup notrun"  id="dead_cells">Dead cells</h3>
+<ul><li><p id="become_alive_if_rule_says_so" class="example notrun"><strong>become alive if rule says so</strong></p>
 <pre class="prettyprint lang-spec linenums">
 val evolution = new Evolution(dontCare, allDeadLive)
 evolution.evolve(worldWithLiveCell).livingCells =&gt; livingCell.neighbours</pre>
 </li></ul>
-<h3 id="live_cells">Live cells</h3>
-<ul><li><p id="stay_alive_if_rule_says_so"><strong>stay alive if rule says so</strong></p>
+<h3 class="exampleGroup notrun"  id="live_cells">Live cells</h3>
+<ul><li><p id="stay_alive_if_rule_says_so" class="example notrun"><strong>stay alive if rule says so</strong></p>
 <pre class="prettyprint lang-spec linenums">
 val evolution = new Evolution(allLiveStayAlive, dontCare)
 evolution.evolve(worldWithLiveCell).livingCells =&gt; set(livingCell)</pre>

@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header ">
+				<div class="page-header notrun">
 					<h1>ExampleTable</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="is_valid_if_all_rows_have_the_same_number_of_columns" class="example "><strong>is valid if all rows have the same number of columns</strong></p>
+<ul><li><p id="is_valid_if_all_rows_have_the_same_number_of_columns" class="example notrun"><strong>is valid if all rows have the same number of columns</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('''
   package bootstrap
@@ -49,7 +49,7 @@ parseSpec('''
 ''')
 
 assert query.first(typeof(ExampleTable)).isValid()</pre>
-</li><li><p id="is_invalid_if_one_row_has_a_different_number_of_columns" class="example "><strong>is invalid if one row has a different number of columns</strong></p>
+</li><li><p id="is_invalid_if_one_row_has_a_different_number_of_columns" class="example notrun"><strong>is invalid if one row has a different number of columns</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('''
   package bootstrap

@@ -39,8 +39,11 @@ public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword {
     String _first = JnarioIterableExtensions.<String>first(args);
     int _int = StringConversions.toInt(_first);
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(_int));
-    Assert.assertTrue("\nExpected  but"
-     + "\n      is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected jnarioFile.run.failureCount => args.first.toInt but"
+     + "\n     jnarioFile.run.failureCount is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
+     + "\n     jnarioFile.run is " + new StringDescription().appendValue(_run).toString()
+     + "\n     args.first.toInt is " + new StringDescription().appendValue(Integer.valueOf(_int)).toString()
+     + "\n     args.first is " + new StringDescription().appendValue(_first).toString() + "\n", _doubleArrow);
     
   }
   

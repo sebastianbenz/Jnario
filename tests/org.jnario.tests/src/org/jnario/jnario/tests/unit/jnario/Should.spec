@@ -50,4 +50,30 @@ describe Should{
 		'''.executesSuccessfully
 	}
 	
+	fact "throw checks expected exception"{
+		'''
+			import java.util.*
+			describe "Test"{
+				fact new Stack().pop throws EmptyStackException
+			}
+		'''.executesSuccessfully
+	}
+	
+	fact "throw checks fails if no exception is thrown"{
+		'''
+			describe "Test"{
+				fact "" throws Exception
+			}
+		'''.executionFails
+	}
+	
+	fact "throw checks fails if exception with different type is thrown"{
+		'''
+			import java.util.*
+			describe "Test"{
+				fact new Stack().pop throws NoSuchElementException
+			}
+		'''.executionFails
+	}
+	
 }

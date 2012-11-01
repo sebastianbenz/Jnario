@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header ">
+				<div class="page-header notrun">
 					<h1>Throws</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="passes_if_exception_is_thrown" class="example "><strong>passes if exception is thrown</strong></p>
+<ul><li><p id="passes_if_exception_is_thrown" class="example notrun"><strong>passes if exception is thrown</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
   package bootstrap
@@ -47,7 +47,7 @@
     fact new Stack&lt;String&gt;().pop throws EmptyStackException 
   }
 '''.executesSuccessfully</pre>
-</li><li><p id="passes_if_exception_of_expected_sub_type_is_thrown" class="example "><strong>passes if exception of expected sub type is thrown</strong></p>
+</li><li><p id="passes_if_exception_of_expected_sub_type_is_thrown" class="example notrun"><strong>passes if exception of expected sub type is thrown</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
   package bootstrap
@@ -58,7 +58,7 @@
     fact new Stack&lt;String&gt;().pop throws Throwable 
   }
 '''.executesSuccessfully</pre>
-</li><li><p id="fails_if_no_exception_is_thrown" class="example "><strong>fails if no exception is thrown</strong></p>
+</li><li><p id="fails_if_no_exception_is_thrown" class="example notrun"><strong>fails if no exception is thrown</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
   package bootstrap

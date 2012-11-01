@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header ">
+				<div class="page-header notrun">
 					<h1>Field Inference</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,10 +35,10 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<div><h3 class="scenario "  id="Scenario_Inferring_Fields_from_other_Scenario">Scenario: Inferring Fields from other Scenario
+<div><h3 class="scenario notrun"  id="Scenario_Inferring_Fields_from_other_Scenario">Scenario: Inferring Fields from other Scenario
 </h3>
 <ul>
-<li><span class="step "><p>When I have a feature with two scenarios</p><pre>Feature: Feature 1
+<li><span class="step notrun"><p>When I have a feature with two scenarios</p><pre>Feature: Feature 1
   Scenario: My Scenario
     String myString
     Given a string &quot;value&quot;
@@ -48,33 +48,33 @@
     Then my string is &quot;test&quot;
       myString =&gt; args.first</pre></span>
 </li>
-<li><span class="step "><p>Then it should execute successfully</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario "  id="Scenario_Inferring_Fields_from_Scenario_in_different_Features">Scenario: Inferring Fields from Scenario in different Features
+<div><h3 class="scenario notrun"  id="Scenario_Inferring_Fields_from_Scenario_in_different_Features">Scenario: Inferring Fields from Scenario in different Features
 </h3>
 <ul>
-<li><span class="step "><p>When I have a feature</p><pre>Feature: Feature 1
+<li><span class="step notrun"><p>When I have a feature</p><pre>Feature: Feature 1
   Scenario: My Scenario
     String myString
     Given a string &quot;value&quot;
       myString = args.first</pre></span>
 </li>
-<li><span class="step "><p>When I have a feature</p><pre>Feature: Feature 1
-  Scenario: My Scenario
-    String myString
-    Given a string &quot;value&quot;
-      myString = args.first</pre></span>
+<li><span class="step notrun"><p>And another feature</p><pre>Feature: Feature 2
+  Scenario: My Scenario 2
+    Given a string &quot;test&quot;
+    Then my string is &quot;test&quot;
+      myString =&gt; args.first</pre></span>
 </li>
-<li><span class="step "><p>Then both should execute successfully</p></span>
+<li><span class="step notrun"><p>Then both should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario "  id="Scenario_Inferring_Fields_from_Background">Scenario: Inferring Fields from Background
+<div><h3 class="scenario notrun"  id="Scenario_Inferring_Fields_from_Background">Scenario: Inferring Fields from Background
 </h3>
 <ul>
-<li><span class="step "><p>When I have a feature with a background and two scenarios</p><pre>Feature: My Feature
+<li><span class="step notrun"><p>When I have a feature with a background and two scenarios</p><pre>Feature: My Feature
   Background: with field
     String myString
     
@@ -86,14 +86,14 @@
     Then my string is &quot;test&quot;
       myString =&gt; args.first</pre></span>
 </li>
-<li><span class="step "><p>Then it should execute successfully</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario "  id="Scenario_Inferring_Fields_from_Background_in_different_Feature">Scenario: Inferring Fields from Background in different Feature
+<div><h3 class="scenario notrun"  id="Scenario_Inferring_Fields_from_Background_in_different_Feature">Scenario: Inferring Fields from Background in different Feature
 </h3>
 <ul>
-<li><span class="step "><p>When I have a feature</p><pre>Feature: Feature 1
+<li><span class="step notrun"><p>When I have a feature</p><pre>Feature: Feature 1
   Background:
     String myString
   
@@ -101,15 +101,13 @@
     Given a string &quot;value&quot;
       myString = args.first</pre></span>
 </li>
-<li><span class="step "><p>When I have a feature</p><pre>Feature: Feature 1
-  Background:
-    String myString
-  
-  Scenario: My Scenario
-    Given a string &quot;value&quot;
-      myString = args.first</pre></span>
+<li><span class="step notrun"><p>And another feature</p><pre>Feature: Feature 2
+  Scenario: My Scenario 2
+    Given a string &quot;test&quot;
+    Then my string is &quot;test&quot;
+      myString =&gt; args.first</pre></span>
 </li>
-<li><span class="step "><p>Then both should execute successfully</p></span>
+<li><span class="step notrun"><p>Then both should execute successfully</p></span>
 </li>
 </ul>
 </div>

@@ -44,8 +44,9 @@ public class FeatureExtensionsFeatureReferencingStepsWithImportedExtensions {
     String _first = JnarioIterableExtensions.<String>first(args);
     double _double = StringConversions.toDouble(_first);
     boolean _doubleArrow = Should.operator_doubleArrow(Double.valueOf(this.flooredValue), Double.valueOf(_double));
-    Assert.assertTrue("\nExpected  but"
-     + "\n      is " + new StringDescription().appendValue(Double.valueOf(_double)).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected flooredValue => args.first.toDouble but"
+     + "\n     args.first.toDouble is " + new StringDescription().appendValue(Double.valueOf(_double)).toString()
+     + "\n     args.first is " + new StringDescription().appendValue(_first).toString() + "\n", _doubleArrow);
     
   }
   

@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header ">
+				<div class="page-header notrun">
 					<h1>SpecDocGenerator</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="generates_scenario_title_and_heading" class="example "><strong>generates scenario title and heading</strong></p>
+<ul><li><p id="generates_scenario_title_and_heading" class="example notrun"><strong>generates scenario title and heading</strong></p>
 <pre class="prettyprint lang-spec linenums">
 generateEmptyExampleDoc()
 
@@ -43,7 +43,7 @@ val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc != null &amp;&amp; 
     scenarioDoc.contains(&quot;&lt;title&gt;Example&lt;/title&gt;&quot;)
     scenarioDoc.contains(&quot;&lt;h1&gt;Example&lt;/h1&gt;&quot;)</pre>
-</li><li><p id="generates_scenario_documentation" class="example "><strong>generates scenario documentation</strong></p>
+</li><li><p id="generates_scenario_documentation" class="example notrun"><strong>generates scenario documentation</strong></p>
 <pre class="prettyprint lang-spec linenums">
 generateDoc('''
   /*
@@ -61,7 +61,7 @@ generateDoc('''
 val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc.contains(&quot;&lt;p&gt;This is an example.&lt;/p&gt;&quot;)
 assert !scenarioDoc.contains(&quot;&lt;p&gt;Irrelevant documentation.&lt;/p&gt;&quot;)</pre>
-</li><li><p id="generates_example_documentation" class="example "><strong>generates example documentation</strong></p>
+</li><li><p id="generates_example_documentation" class="example notrun"><strong>generates example documentation</strong></p>
 <pre class="prettyprint lang-spec linenums">
 generateDoc('''
   describe 'Example'{
@@ -80,7 +80,7 @@ assert scenarioDoc.contains('''
 &lt;pre class=&quot;prettyprint lang-spec linenums&quot;&gt;
 var x = 0
 x = x + 1&lt;/pre&gt;'''.toString())</pre>
-</li><li><p id="should_support_markdown_for_documentation" class="example "><strong>should support markdown for documentation</strong></p>
+</li><li><p id="should_support_markdown_for_documentation" class="example notrun"><strong>should support markdown for documentation</strong></p>
 <pre class="prettyprint lang-spec linenums">
 generateDoc('''
   /*
@@ -92,7 +92,7 @@ generateDoc('''
 ''')
 val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc.contains(&quot;&lt;h1&gt;Example Heading&lt;/h1&gt;&quot;)</pre>
-</li><li><p id="generates_table_for_example_tables" class="example "><strong>generates table for example tables</strong></p>
+</li><li><p id="generates_table_for_example_tables" class="example notrun"><strong>generates table for example tables</strong></p>
 <pre class="prettyprint lang-spec linenums">
 generateDoc('''
   describe 'Example'{
@@ -108,7 +108,7 @@ assert scenarioDoc.contains(&quot;&lt;th&gt;a&lt;/th&gt;&quot;)
 assert scenarioDoc.contains(&quot;&lt;th&gt;b&lt;/th&gt;&quot;)
 assert scenarioDoc.contains(&quot;&lt;td&gt;1&lt;/td&gt;&quot;)
 assert scenarioDoc.contains(&quot;&lt;td&gt;2&lt;/td&gt;&quot;)</pre>
-</li><li><p id="filters_code_based_on_regex_in_filter_annotation" class="example "><strong>filters code based on regex in filter annotation</strong></p>
+</li><li><p id="filters_code_based_on_regex_in_filter_annotation" class="example notrun"><strong>filters code based on regex in filter annotation</strong></p>
 <pre class="prettyprint lang-spec linenums">
 generateDoc('''
   describe 'Example'{
@@ -122,7 +122,7 @@ generateDoc('''
 ''')
 val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
 assert scenarioDoc.contains('aaaaaa')</pre>
-</li><li><p id="includes_failing_state_for_examples" class="example "><strong>includes failing state for examples</strong></p>
+</li><li><p id="includes_failing_state_for_examples" class="example notrun"><strong>includes failing state for examples</strong></p>
 <pre class="prettyprint lang-spec linenums">
 generateDoc('''
   describe 'Example'{

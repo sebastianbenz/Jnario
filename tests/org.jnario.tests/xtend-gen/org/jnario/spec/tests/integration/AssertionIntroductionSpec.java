@@ -44,7 +44,6 @@ public class AssertionIntroductionSpec extends AssertionSpec {
       
       Assert.fail("Expected " + AssertionError.class.getName() + " in \n     {assert false}\n with:");
     }catch(AssertionError e){
-      // expected
     }
   }
 }

@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header ">
+				<div class="page-header notrun">
 					<h1>Implicit Subject</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -36,7 +36,7 @@
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
 <p>If your spec describes a specific type, Jnario will automatically create an instance variable <code>subject</code> of this type. By default it will use the no arg constructor to instantiate the subject field, but it is possible to use Guice or other tools to instantiate the subject by providing a custom <strong>SpecCreator</strong>.</p>
-<ul><li><p id="spec_creates_instance_of_target_type" class="example "><strong>spec creates instance of target type</strong></p>
+<ul><li><p id="spec_creates_instance_of_target_type" class="example notrun"><strong>spec creates instance of target type</strong></p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
 
@@ -46,7 +46,7 @@ describe String {
   fact subject should be typeof(String)
 
 }</pre>
-</li><li><p id="subject_can_be_overridden_within_example_group" class="example "><strong>subject can be overridden within example group</strong></p>
+</li><li><p id="subject_can_be_overridden_within_example_group" class="example notrun"><strong>subject can be overridden within example group</strong></p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
 
@@ -59,7 +59,7 @@ describe String {
   } 
       
 }</pre>
-</li><li><p id="subjects_can_be_instantiated_manually" class="example "><strong>subjects can be instantiated manually</strong></p>
+</li><li><p id="subjects_can_be_instantiated_manually" class="example notrun"><strong>subjects can be instantiated manually</strong></p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
 
@@ -72,7 +72,7 @@ describe Integer {
   } 
       
 }</pre>
-</li><li><p id="subjects_will_be_only_created_if_used" class="example "><strong>subjects will be only created if used</strong></p>
+</li><li><p id="subjects_will_be_only_created_if_used" class="example notrun"><strong>subjects will be only created if used</strong></p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
 
@@ -83,7 +83,7 @@ describe String {
   } 
       
 }</pre>
-</li><li><p id="subjects_can_be_accessed_from_nested_ExampleGroups" class="example "><strong>subjects can be accessed from nested ExampleGroups</strong></p>
+</li><li><p id="subjects_can_be_accessed_from_nested_ExampleGroups" class="example notrun"><strong>subjects can be accessed from nested ExampleGroups</strong></p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
 
@@ -96,7 +96,7 @@ describe String {
 }
     
 }</pre>
-</li><li><p id="subjects_can_be_overridden_from_nested_ExampleGroups" class="example "><strong>subjects can be overridden from nested ExampleGroups</strong></p>
+</li><li><p id="subjects_can_be_overridden_from_nested_ExampleGroups" class="example notrun"><strong>subjects can be overridden from nested ExampleGroups</strong></p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
 
@@ -108,7 +108,7 @@ describe String {
     }
   }
 }</pre>
-</li><li><p id="subject_will_be_only_created_in_the_subexample_if_is_not_used_in_the_parent_example_group" class="example "><strong>subject will be only created in the subexample if is not used in the parent example group</strong></p>
+</li><li><p id="subject_will_be_only_created_in_the_subexample_if_is_not_used_in_the_parent_example_group" class="example notrun"><strong>subject will be only created in the subexample if is not used in the parent example group</strong></p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
 
@@ -124,7 +124,7 @@ describe Integer{
   }
   
 }</pre>
-</li><li><p id="subject_will_not_be_created_in_a_sub_example_if_is_used_in_the_parent_example_group" class="example "><strong>subject will not be created in a sub example if is used in the parent example group</strong></p>
+</li><li><p id="subject_will_not_be_created_in_a_sub_example_if_is_used_in_the_parent_example_group" class="example notrun"><strong>subject will not be created in a sub example if is used in the parent example group</strong></p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
 

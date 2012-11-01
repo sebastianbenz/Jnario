@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header ">
+				<div class="page-header pending">
 					<h1>Introducing Jnario Suites</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -40,9 +40,9 @@
   <li><strong>Grouping:</strong> A suite groups multiple specifications and executes them together.  For example, you could create a single  Jnario suite thats runs all your specifications in a project. Another possibility would  be to create two different suites, one containing  all specs and one containing all features.</li>
   <li><strong>Documentation:</strong> Jnario generates HTML reports for suites making them a great way to provide additional  documentation. For example, you can create a suite as an overview page describing the overall architecture  of an application, which then links to other specifications describing the different parts  in more detail.  The overview page of the <a href="http://jnario.org/org/jnario/JnarioDocumentationSuite.html">Jnario documentation</a>  is a good example for this.</li>
 </ol>
-<h3 class="exampleGroup "  id="Getting_Started">Getting Started</h3>
+<h3 class="exampleGroup notrun"  id="Getting_Started">Getting Started</h3>
 <p>First of all you need a running installation of Jnario. If you haven't installed Jnario yet, follow the <a href="../../jnario/documentation/InstallingJnarioSpec.html">install guide</a>. To get started first create a new Java project and a new Jnario suite using the suite wizard (<strong>File</strong> -&gt; <strong>New</strong> -&gt; <strong>Other</strong> -&gt; <strong>Jnario</strong> -&gt; <strong>Suite</strong>).</p><p><img width="500px" src="/img/tutorial/suite_wizard.png" alt="New Suite Wizard"/></p><p>Name the suite file "MySuite" and as description use "My Jnario Suite". The created suite will look like:</p><p><span class="label label-info">Tip</span> If the editor shows a validation error, because of the missing jnario libraries, add them to the classpath using the quickfix (CMD/Ctrl + 1).</p><p><img width="600px" src="/img/tutorial/suite_buildpath.png" alt="New Suite Error"/></p>
-<ul><li><p id="A_simple_Suite" class="example "><strong>A simple Suite</strong></p>
+<ul><li><p id="A_simple_Suite" class="example notrun"><strong>A simple Suite</strong></p>
 <p>A suite consists of a title and a list of references to other specifications, where a specification is either a feature definition, a spec or another suite. The suite title is defined by '<strong>#</strong>' followed by the title. In our example suite it is: <code>#My Suite</code>. Referenced specifications are listed after '<strong>-</strong>' by their name in quotes.</p><p><span class="label label-info">Info</span> In order to reference specifications defined in different packages it is necessary to add corresponding import statements. The best thing is to use the code-completion as it will automatically add the required imports.</p>
 <pre class="prettyprint lang-spec linenums">
 package demo
@@ -51,7 +51,7 @@ package demo
 
 - &quot;My Feature&quot;
 - &quot;My Spec&quot;</pre>
-</li><li><p id="Fixing_the_Errors" class="example "><strong>Fixing the Errors</strong></p>
+</li><li><p id="Fixing_the_Errors" class="example notrun"><strong>Fixing the Errors</strong></p>
 <p>The editor will show two validation errors as the referenced specifications cannot be resolved. Fix this by adding a new feature file "MyFeature.feature" in the same package:</p>
 <pre class="prettyprint lang-feature">
 package demo
@@ -67,7 +67,7 @@ describe "My Spec"{
   fact "hello".length => 5
 }
 </pre><p>When the validation errors are fixed we can execute the suite as a normal JUnit test via right-click and <strong>run-as-&gt;JUnit Test</strong>.</p><p><span class="label label-info">Tip</span> There is a quick fix (CMD/Ctrl + 1)  available for unresolved specifications to create a new one.</p>
-</li><li><p id="Structuring_a_Suite" class="example "><strong>Structuring a Suite</strong></p>
+</li><li><p id="Structuring_a_Suite" class="example notrun"><strong>Structuring a Suite</strong></p>
 <p>Suites can be structured hierarchically by the number of '#' in front of the name:</p>
 <pre class="prettyprint">#Headline
 ##Section 1
@@ -98,7 +98,7 @@ Here we list all our features...
 
 - &quot;My Spec&quot;: this is an example spec.
    with a multiline description.</pre>
-</li><li><p id="Selecting_multiple_Specifications" class="example "><strong>Selecting multiple Specifications</strong></p>
+</li><li><p id="Selecting_multiple_Specifications" class="example notrun"><strong>Selecting multiple Specifications</strong></p>
 <p>When you want to run all specifications in your project you probably don't want to list every single spec by hand. In Jnario suites you can define regular expressions to select specific sets of specifications by matching the fully qualified name of a specification. The generated HTML documentation will still list all matched specifications. A pattern is defined by after a dash between two "&quot;:</p>
 <pre class="prettyprint">- \.*\
 </code></pre><p><span class="label label-info">Tip</span> When hovering the cursor of a regex pattern, the Eclipse editor will show all resolved specs.</p>

@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header ">
+				<div class="page-header notrun">
 					<h1>Should</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="isNot_is_false_if_for_1_should_be_1" class="example "><strong>'isNot' is false if for '1 should be 1</strong></p>
+<ul><li><p id="isNot_is_false_if_for_1_should_be_1" class="example notrun"><strong>'isNot' is false if for '1 should be 1</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('''
   package bootstrap
@@ -45,7 +45,7 @@ parseSpec('''
 ''')
 
 assert !query.first(typeof(Should)).isNot</pre>
-</li><li><p id="isNot_is_true_if_for_1_should_not_be_1" class="example "><strong>'isNot' is true if for '1 should not be 1</strong></p>
+</li><li><p id="isNot_is_true_if_for_1_should_not_be_1" class="example notrun"><strong>'isNot' is true if for '1 should not be 1</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('''
   package bootstrap
@@ -55,13 +55,36 @@ parseSpec('''
 ''')
 
 assert query.first(typeof(Should)).isNot</pre>
-</li><li><p id="short_circuit_invocation_works_in_closures_within_assertions" class="example "><strong>short circuit invocation works in closures within assertions</strong></p>
+</li><li><p id="short_circuit_invocation_works_in_closures_within_assertions" class="example notrun"><strong>short circuit invocation works in closures within assertions</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
   describe &quot;Test&quot;{
     fact assert list(null, &quot;&quot;).filter [ it != null &amp;&amp; it.length &gt; 2 ].empty
   }
 '''.executesSuccessfully</pre>
+</li><li><p id="throw_checks_expected_exception" class="example notrun"><strong>throw checks expected exception</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  import java.util.*
+  describe &quot;Test&quot;{
+    fact new Stack().pop throws EmptyStackException
+  }
+'''.executesSuccessfully</pre>
+</li><li><p id="throw_checks_fails_if_no_exception_is_thrown" class="example notrun"><strong>throw checks fails if no exception is thrown</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  describe &quot;Test&quot;{
+    fact &quot;&quot; throws Exception
+  }
+'''.executionFails</pre>
+</li><li><p id="throw_checks_fails_if_exception_with_different_type_is_thrown" class="example notrun"><strong>throw checks fails if exception with different type is thrown</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  import java.util.*
+  describe &quot;Test&quot;{
+    fact new Stack().pop throws NoSuchElementException
+  }
+'''.executionFails</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -118,6 +141,32 @@ describe Should{
         fact assert list(null, &quot;&quot;).filter [ it != null &amp;&amp; it.length &gt; 2 ].empty
       }
     '''.executesSuccessfully
+  }
+  
+  fact &quot;throw checks expected exception&quot;{
+    '''
+      import java.util.*
+      describe &quot;Test&quot;{
+        fact new Stack().pop throws EmptyStackException
+      }
+    '''.executesSuccessfully
+  }
+  
+  fact &quot;throw checks fails if no exception is thrown&quot;{
+    '''
+      describe &quot;Test&quot;{
+        fact &quot;&quot; throws Exception
+      }
+    '''.executionFails
+  }
+  
+  fact &quot;throw checks fails if exception with different type is thrown&quot;{
+    '''
+      import java.util.*
+      describe &quot;Test&quot;{
+        fact new Stack().pop throws NoSuchElementException
+      }
+    '''.executionFails
   }
   
 }

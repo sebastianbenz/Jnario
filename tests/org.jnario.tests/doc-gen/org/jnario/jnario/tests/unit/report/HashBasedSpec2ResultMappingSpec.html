@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header ">
+				<div class="page-header notrun">
 					<h1>HashBasedSpec2ResultMapping</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,14 +35,14 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="returns_empty_execution_if_no_matching_spec_exists" class="example "><strong>returns empty execution if no matching spec exists</strong></p>
+<ul><li><p id="returns_empty_execution_if_no_matching_spec_exists" class="example notrun"><strong>returns empty execution if no matching spec exists</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.getResult(anyExecutable) =&gt; typeof(NotRun)</pre>
-</li><li><p id="returns_empty_execution_if_executable_is_null" class="example "><strong>returns empty execution if executable is null</strong></p>
+</li><li><p id="returns_empty_execution_if_executable_is_null" class="example notrun"><strong>returns empty execution if executable is null</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.getResult(null) =&gt; typeof(NotRun)</pre>
-</li></ul><h3 class="exampleGroup "  id="Example">Example</h3>
-<ul><li><p id="matches_if_classname_and_name_are_equal" class="example "><strong>matches if classname and name are equal</strong></p>
+</li></ul><h3 class="exampleGroup notrun"  id="Example">Example</h3>
+<ul><li><p id="matches_if_classname_and_name_are_equal" class="example notrun"><strong>matches if classname and name are equal</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec(
 ''' 
@@ -57,7 +57,7 @@ subject.accept(aResult)
 example should match aResult
 example should not match aResultWithDifferentClassName
 example should not match aResultWithDifferentName</pre>
-</li><li><p id="includes_pending_state_when_matching" class="example "><strong>includes pending state when matching</strong></p>
+</li><li><p id="includes_pending_state_when_matching" class="example notrun"><strong>includes pending state when matching</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec(
 '''
@@ -70,8 +70,8 @@ val pendingResult = passingSpec(&quot;example.SomethingSpec&quot;, &quot;a fact 
 subject.accept(pendingResult)
 example should match pendingResult</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="ExampleGroup">ExampleGroup</h3>
-<ul><li><p id="returns_Pending_if_children_are_not_executed_and_have_no_implementation" class="example "><strong>returns Pending if children are not executed and have no implementation</strong></p>
+<h3 class="exampleGroup notrun"  id="ExampleGroup">ExampleGroup</h3>
+<ul><li><p id="returns_Pending_if_children_are_not_executed_and_have_no_implementation" class="example notrun"><strong>returns Pending if children are not executed and have no implementation</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
 describe &quot;Root&quot;{
@@ -80,7 +80,7 @@ describe &quot;Root&quot;{
 }
 ''')                     
 m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Pending)</pre>
-</li><li><p id="returns_NotRun_if_children_are_not_executed_but_have_an_implementation" class="example "><strong>returns NotRun if children are not executed but have an implementation</strong></p>
+</li><li><p id="returns_NotRun_if_children_are_not_executed_but_have_an_implementation" class="example notrun"><strong>returns NotRun if children are not executed but have an implementation</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
 describe &quot;Root&quot;{
@@ -89,7 +89,7 @@ describe &quot;Root&quot;{
 }
 ''')                     
 m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(NotRun)</pre>
-</li><li><p id="passes_if_all_children_pass" class="example "><strong>passes if all children pass</strong></p>
+</li><li><p id="passes_if_all_children_pass" class="example notrun"><strong>passes if all children pass</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
 describe &quot;Root&quot;{
@@ -99,7 +99,7 @@ describe &quot;Root&quot;{
 ''')               
 passes(&quot;Example 1&quot;, &quot;Example 2&quot;)
 m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Passed)</pre>
-</li><li><p id="fails_if_one_child_has_failed" class="example "><strong>fails if one child has failed</strong></p>
+</li><li><p id="fails_if_one_child_has_failed" class="example notrun"><strong>fails if one child has failed</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
 describe &quot;Root&quot;{
@@ -110,7 +110,7 @@ describe &quot;Root&quot;{
 passes(&quot;Example 1&quot;)
 fails(&quot;Example 2&quot;)
 m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Failed)</pre>
-</li><li><p id="execution_time_is_sum_of_all_child_examples" class="example "><strong>execution time is sum of all child examples</strong></p>
+</li><li><p id="execution_time_is_sum_of_all_child_examples" class="example notrun"><strong>execution time is sum of all child examples</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
 describe &quot;Root&quot;{
@@ -121,7 +121,7 @@ describe &quot;Root&quot;{
 exampleExecutedIn(&quot;Example 1&quot;, 1.0)
 exampleExecutedIn(&quot;Example 2&quot;, 2.0)
 m.exampleGroup(&quot;Root&quot;).result.executionTimeInSeconds =&gt; 3.0</pre>
-</li><li><p id="class_name_is_from_spec" class="example "><strong>class name is from spec</strong></p>
+</li><li><p id="class_name_is_from_spec" class="example notrun"><strong>class name is from spec</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
 describe &quot;Root&quot;{
@@ -131,7 +131,7 @@ describe &quot;Root&quot;{
 ''')  
 passes(&quot;Example 1&quot;)
 m.exampleGroup(&quot;Root&quot;).result.className =&gt; &quot;RootSpec&quot;</pre>
-</li><li><p id="name_is_from_spec" class="example "><strong>name is from spec</strong></p>
+</li><li><p id="name_is_from_spec" class="example notrun"><strong>name is from spec</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
 describe &quot;Root&quot;{
@@ -141,7 +141,7 @@ describe &quot;Root&quot;{
 ''')  
 passes(&quot;Example 1&quot;)
 m.exampleGroup(&quot;Root&quot;).result.name =&gt; &quot;Root&quot;</pre>
-</li><li><p id="caches_calculated_results" class="example "><strong>caches calculated results</strong></p>
+</li><li><p id="caches_calculated_results" class="example notrun"><strong>caches calculated results</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseSpec('''
 describe &quot;Root&quot;{
@@ -155,8 +155,8 @@ val first = exampleGroup.result
 val second = exampleGroup.result
 first =&gt; sameInstance(second)</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="Step">Step</h3>
-<ul><li><p id="matches_if_classname_and_name_are_equal" class="example "><strong>matches if classname and name are equal</strong></p>
+<h3 class="exampleGroup notrun"  id="Step">Step</h3>
+<ul><li><p id="matches_if_classname_and_name_are_equal" class="example notrun"><strong>matches if classname and name are equal</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseScenario(
 '''
@@ -172,7 +172,7 @@ subject.accept(aResult)
 step should match aResult
 step should not match aResultWithDifferentClassName
 step should not match aResultWithDifferentName</pre>
-</li><li><p id="includes_pending_state_when_matching" class="example "><strong>includes pending state when matching</strong></p>
+</li><li><p id="includes_pending_state_when_matching" class="example notrun"><strong>includes pending state when matching</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseScenario(
 '''
@@ -184,7 +184,7 @@ m.parseScenario(
 
 subject.accept(pendingResult)
 step should match pendingResult</pre>
-</li><li><p id="handles_escaped_characters" class="example "><strong>handles escaped characters</strong></p>
+</li><li><p id="handles_escaped_characters" class="example notrun"><strong>handles escaped characters</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseScenario(
 '''
@@ -196,7 +196,7 @@ m.parseScenario(
 ''')
 subject.accept(resultWithUnicodeChars)
 step should match resultWithUnicodeChars</pre>
-</li><li><p id="handles_step_arguments" class="example "><strong>handles step arguments</strong></p>
+</li><li><p id="handles_step_arguments" class="example notrun"><strong>handles step arguments</strong></p>
 <pre class="prettyprint lang-spec linenums">
 m.parseScenario(
 '''
@@ -209,43 +209,43 @@ m.parseScenario(
 subject.accept(resultWithArgs)
 step should match resultWithArgs</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="Scenario">Scenario</h3>
-<ul><li><p id="returns_Passed_if_all_children_passed" class="example "><strong>returns **Passed** if all children passed</strong></p>
+<h3 class="exampleGroup notrun"  id="Scenario">Scenario</h3>
+<ul><li><p id="returns_Passed_if_all_children_passed" class="example notrun"><strong>returns **Passed** if all children passed</strong></p>
 <pre class="prettyprint lang-spec linenums">
 passedStep(&quot;Given my Step&quot;)
 passedStep(&quot;And other Step&quot;)
 scenario.result =&gt; typeof(Passed)</pre>
-</li><li><p id="returns_Failed_if_one_child_failed" class="example "><strong>returns **Failed** if one child failed</strong></p>
+</li><li><p id="returns_Failed_if_one_child_failed" class="example notrun"><strong>returns **Failed** if one child failed</strong></p>
 <pre class="prettyprint lang-spec linenums">
 passedStep(&quot;Given my Step&quot;)
 failedStep(&quot;And other Step&quot;)
 scenario.result =&gt; typeof(Failed)</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="Feature">Feature</h3>
-<ul><li><p id="returns_Passed_if_all_scenarios_passed" class="example "><strong>returns **Passed** if all scenarios passed</strong></p>
+<h3 class="exampleGroup notrun"  id="Feature">Feature</h3>
+<ul><li><p id="returns_Passed_if_all_scenarios_passed" class="example notrun"><strong>returns **Passed** if all scenarios passed</strong></p>
 <pre class="prettyprint lang-spec linenums">
 passedStep(&quot;Given a step&quot;)
 passedStep(OTHER_SCENARIO_CLASSNAME, &quot;Given another step&quot;)
 feature.result =&gt; typeof(Passed)</pre>
-</li><li><p id="returns_Failed_if_one_scenario_failed" class="example "><strong>returns **Failed** if one scenario failed</strong></p>
+</li><li><p id="returns_Failed_if_one_scenario_failed" class="example notrun"><strong>returns **Failed** if one scenario failed</strong></p>
 <pre class="prettyprint lang-spec linenums">
 passedStep(&quot;Given a step&quot;)
 failedStep(OTHER_SCENARIO_CLASSNAME, &quot;Given another step&quot;)
 feature.result =&gt; typeof(Failed)</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="Background">Background</h3>
-<ul><li><p id="returns_Passed_if_all_scenarios_passed" class="example "><strong>returns **Passed** if all scenarios passed</strong></p>
+<h3 class="exampleGroup notrun"  id="Background">Background</h3>
+<ul><li><p id="returns_Passed_if_all_scenarios_passed" class="example notrun"><strong>returns **Passed** if all scenarios passed</strong></p>
 <pre class="prettyprint lang-spec linenums">
 passedStep(&quot;Given a step&quot;)
 passedStep(&quot;Given another step&quot;)
 background.result =&gt; typeof(Passed)</pre>
-</li><li><p id="returns_Failed_if_one_scenario_failed" class="example "><strong>returns **Failed** if one scenario failed</strong></p>
+</li><li><p id="returns_Failed_if_one_scenario_failed" class="example notrun"><strong>returns **Failed** if one scenario failed</strong></p>
 <pre class="prettyprint lang-spec linenums">
 failedStep(&quot;Given a step&quot;)
 background.result =&gt; typeof(Failed)</pre>
 </li></ul>
-<h3 class="exampleGroup "  id="Suite">Suite</h3>
-<ul><li><p id="matches_referenced_suites" class="example "><strong>matches referenced suites [PENDING]</strong></p>
+<h3 class="exampleGroup pending"  id="Suite">Suite</h3>
+<ul><li><p id="matches_referenced_suites" class="example pending"><strong>matches referenced suites [PENDING]</strong></p>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">

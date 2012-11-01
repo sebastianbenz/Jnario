@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header">
+				<div class="page-header pending">
 					<h1>World</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,19 +35,19 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<h3 id="dead_cells">Dead cells</h3>
-<ul><li><p id="with_no_live_cells_there_are_no_dead_cells"><strong>with no live cells there are no dead cells</strong></p>
+<h3 class="exampleGroup notrun"  id="dead_cells">Dead cells</h3>
+<ul><li><p id="with_no_live_cells_there_are_no_dead_cells" class="example notrun"><strong>with no live cells there are no dead cells</strong></p>
 <pre class="prettyprint lang-spec linenums">
 worldWith(emptyList).deadCells =&gt; emptySet</pre>
-</li><li><p id="with_a_live_cell_all_neighbours_are_dead_cells"><strong>with a live cell all neighbours are dead cells</strong></p>
+</li><li><p id="with_a_live_cell_all_neighbours_are_dead_cells" class="example notrun"><strong>with a live cell all neighbours are dead cells</strong></p>
 <pre class="prettyprint lang-spec linenums">
 worldWithLiveCell.deadCells =&gt; liveCell.neighbours</pre>
-</li><li><p id="with_a_live_cell_all_non_living_neighbours_are_dead_cells"><strong>with a live cell all non-living neighbours are dead cells</strong></p>
+</li><li><p id="with_a_live_cell_all_non_living_neighbours_are_dead_cells" class="example notrun"><strong>with a live cell all non-living neighbours are dead cells</strong></p>
 <pre class="prettyprint lang-spec linenums">
 worldWithTwoLiveNeighbours.deadCells =&gt; allNonLivingNeighbours</pre>
 </li></ul>
-<h3 id="living_Neighbours">Living Neighbours</h3>
-<ul><li><p id="returns_number_of_live_neighbours"><strong>returns number of live neighbours</strong></p>
+<h3 class="exampleGroup notrun"  id="living_Neighbours">Living Neighbours</h3>
+<ul><li><p id="returns_number_of_live_neighbours" class="example notrun"><strong>returns number of live neighbours</strong></p>
 <pre class="prettyprint lang-spec linenums">
 worldWithTwoLiveNeighbours.livingNeighbours(liveCell) =&gt; 1</pre>
 </li></ul>

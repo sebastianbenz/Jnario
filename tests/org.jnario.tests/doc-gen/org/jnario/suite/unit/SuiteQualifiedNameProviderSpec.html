@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header ">
+				<div class="page-header notrun">
 					<h1>SuiteQualifiedNameProvider</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,29 +35,29 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="removes_suite_prefix" class="example "><strong>removes suite prefix</strong></p>
+<ul><li><p id="removes_suite_prefix" class="example notrun"><strong>removes suite prefix</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSuite('''
   #My Suite''')
 qualifiedName =&gt; &quot;My Suite&quot;</pre>
-</li><li><p id="removes_suite_trailing_text" class="example "><strong>removes suite trailing text</strong></p>
+</li><li><p id="removes_suite_trailing_text" class="example notrun"><strong>removes suite trailing text</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSuite('''
   #My Suite
   with description''')
 qualifiedName =&gt; &quot;My Suite&quot;</pre>
-</li><li><p id="add_suite_package" class="example "><strong>add suite package</strong></p>
+</li><li><p id="add_suite_package" class="example notrun"><strong>add suite package</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSuite('''
   package test
   #My Suite''')
 qualifiedName =&gt; &quot;test.My Suite&quot;</pre>
-</li><li><p id="handles_empty_packages" class="example "><strong>handles empty packages</strong></p>
+</li><li><p id="handles_empty_packages" class="example notrun"><strong>handles empty packages</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSuite('''
   #My Suite''')
 qualifiedName =&gt; &quot;My Suite&quot;</pre>
-</li><li><p id="handles_empty_suites" class="example "><strong>handles empty suites</strong></p>
+</li><li><p id="handles_empty_suites" class="example notrun"><strong>handles empty suites</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSuite('''
   #
