@@ -10,14 +10,12 @@ package org.jnario.suite.suite.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.jnario.suite.suite.PatternReference;
-import org.jnario.suite.suite.SpecReference;
-import org.jnario.suite.suite.Suite;
-import org.jnario.suite.suite.SuiteFactory;
-import org.jnario.suite.suite.SuiteFile;
-import org.jnario.suite.suite.SuitePackage;
+
+import org.jnario.suite.suite.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -109,7 +107,7 @@ public class SuiteFactoryImpl extends EFactoryImpl implements SuiteFactory
 	 */
 	public Suite createSuite()
 	{
-		SuiteImpl suite = new SuiteImpl();
+		SuiteImplCustom suite = new SuiteImplCustom();
 		return suite;
 	}
 

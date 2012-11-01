@@ -11,17 +11,15 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
+
 import org.jnario.Executable;
 import org.jnario.Specification;
-import org.jnario.suite.suite.PatternReference;
-import org.jnario.suite.suite.Reference;
-import org.jnario.suite.suite.SpecReference;
-import org.jnario.suite.suite.Suite;
-import org.jnario.suite.suite.SuiteFile;
-import org.jnario.suite.suite.SuitePackage;
+
+import org.jnario.suite.suite.*;
 
 /**
  * <!-- begin-user-doc -->

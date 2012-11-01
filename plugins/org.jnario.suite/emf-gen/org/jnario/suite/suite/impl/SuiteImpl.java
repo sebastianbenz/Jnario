@@ -10,19 +10,17 @@ package org.jnario.suite.suite.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.xtext.resource.IResourceServiceProvider;
-import org.eclipse.xtext.resource.XtextResource;
-import org.jnario.Executable;
+
 import org.jnario.impl.SpecificationImpl;
-import org.jnario.suite.jvmmodel.SpecResolver;
-import org.jnario.suite.jvmmodel.SuiteExecutableProvider;
-import org.jnario.suite.jvmmodel.SuiteNodeBuilder;
+
 import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuitePackage;
@@ -169,19 +167,6 @@ public class SuiteImpl extends SpecificationImpl implements Suite
 				return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-	
-	@Override
-	protected EList<Executable> calculateChildren() {
-		if(eResource() == null){
-			return super.calculateChildren();
-		}
-		SuiteExecutableProvider executableProvider = new SuiteExecutableProvider(get(SpecResolver.class), get(SuiteNodeBuilder.class));
-		return new BasicEList<Executable>(executableProvider.getExecutables(this));
-	}
-
-	protected <T> T get(Class<T> type) {
-		return ((XtextResource)eResource()).getResourceServiceProvider().get(type);
 	}
 
 } //SuiteImpl

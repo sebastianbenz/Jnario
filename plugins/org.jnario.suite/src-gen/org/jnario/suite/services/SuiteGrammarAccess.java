@@ -4,29 +4,19 @@
 
 package org.jnario.suite.services;
 
+import com.google.inject.Singleton;
+import com.google.inject.Inject;
+
 import java.util.List;
 
-import org.eclipse.xtend.core.services.XtendGrammarAccess;
-import org.eclipse.xtext.Action;
-import org.eclipse.xtext.Alternatives;
-import org.eclipse.xtext.Assignment;
-import org.eclipse.xtext.CrossReference;
-import org.eclipse.xtext.EnumRule;
-import org.eclipse.xtext.Grammar;
-import org.eclipse.xtext.GrammarUtil;
-import org.eclipse.xtext.Group;
-import org.eclipse.xtext.Keyword;
-import org.eclipse.xtext.ParserRule;
-import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.TerminalRule;
-import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
+import org.eclipse.xtext.*;
 import org.eclipse.xtext.service.GrammarProvider;
+import org.eclipse.xtext.service.AbstractElementFinder.*;
+
+import org.eclipse.xtend.core.services.XtendGrammarAccess;
 import org.eclipse.xtext.xbase.annotations.services.XbaseWithAnnotationsGrammarAccess;
 import org.eclipse.xtext.xbase.services.XbaseGrammarAccess;
 import org.eclipse.xtext.xbase.services.XtypeGrammarAccess;
-
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
 
 @Singleton
 public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
@@ -671,37 +661,37 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal RICH_TEXT_START:
-	//	"\'\'\'" IN_RICH_STRING* ("\'" "\'"?)? "«";
+	//	"\'\'\'" IN_RICH_STRING* ("\'" "\'"?)? "�";
 	public TerminalRule getRICH_TEXT_STARTRule() {
 		return gaXtend.getRICH_TEXT_STARTRule();
 	} 
 
 	//terminal RICH_TEXT_END:
-	//	"»" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
+	//	"�" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
 	public TerminalRule getRICH_TEXT_ENDRule() {
 		return gaXtend.getRICH_TEXT_ENDRule();
 	} 
 
 	//terminal RICH_TEXT_INBETWEEN:
-	//	"»" IN_RICH_STRING* ("\'" "\'"?)? "«";
+	//	"�" IN_RICH_STRING* ("\'" "\'"?)? "�";
 	public TerminalRule getRICH_TEXT_INBETWEENRule() {
 		return gaXtend.getRICH_TEXT_INBETWEENRule();
 	} 
 
 	//terminal COMMENT_RICH_TEXT_INBETWEEN:
-	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'" "\'"?)? "«")?;
+	//	"��" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'" "\'"?)? "�")?;
 	public TerminalRule getCOMMENT_RICH_TEXT_INBETWEENRule() {
 		return gaXtend.getCOMMENT_RICH_TEXT_INBETWEENRule();
 	} 
 
 	//terminal COMMENT_RICH_TEXT_END:
-	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF) | EOF);
+	//	"��" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF) | EOF);
 	public TerminalRule getCOMMENT_RICH_TEXT_ENDRule() {
 		return gaXtend.getCOMMENT_RICH_TEXT_ENDRule();
 	} 
 
 	//terminal fragment IN_RICH_STRING:
-	//	"\'\'" !("«" | "\'") | "\'" !("«" | "\'") | !("«" | "\'");
+	//	"\'\'" !("�" | "\'") | "\'" !("�" | "\'") | !("�" | "\'");
 	public TerminalRule getIN_RICH_STRINGRule() {
 		return gaXtend.getIN_RICH_STRINGRule();
 	} 

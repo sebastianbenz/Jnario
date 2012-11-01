@@ -8,7 +8,9 @@
 package org.jnario.suite.suite.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.xtend.core.xtend.impl.XtendFileImpl;
+
 import org.jnario.suite.suite.SuiteFile;
 import org.jnario.suite.suite.SuitePackage;
 

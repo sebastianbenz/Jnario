@@ -7,7 +7,6 @@ import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import java.util.List;
 
 import org.eclipse.xtend.core.xtend.XtendClass;
-import org.eclipse.xtext.EcoreUtil2;
 import org.jnario.Executable;
 import org.jnario.jvmmodel.ExecutableProvider;
 import org.jnario.suite.suite.Suite;
