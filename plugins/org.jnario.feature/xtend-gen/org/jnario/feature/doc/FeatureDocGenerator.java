@@ -131,7 +131,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
           EList<Step> _and = step.getAnd();
           for(final Step and : _and) {
             _builder.append("<li>");
-            CharSequence _generate_1 = this.generate(step);
+            CharSequence _generate_1 = this.generate(and);
             _builder.append(_generate_1, "");
             _builder.append("</li>");
             _builder.newLineIfNotEmpty();

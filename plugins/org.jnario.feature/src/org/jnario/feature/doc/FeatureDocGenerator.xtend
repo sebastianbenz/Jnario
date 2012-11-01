@@ -65,7 +65,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		«FOR step : steps»
 		<li>«generate(step)»</li>
 		«FOR and : step.and»
-		<li>«generate(step)»</li>
+		<li>«generate(and)»</li>
 		«ENDFOR»
 		«ENDFOR»
 		</ul>

@@ -719,7 +719,10 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="And "/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Keyword" value="And "/>
+          <elements xsi:type="xtext:Keyword" value="But "/>
+        </elements>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
       </alternatives>
     </rules>
@@ -1517,7 +1520,7 @@
           <elements xsi:type="xtext:Keyword" value="'"/>
           <elements xsi:type="xtext:Keyword" cardinality="?" value="'"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="&#xab;"/>
+        <elements xsi:type="xtext:Keyword" value="&#xfffd;"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:TerminalRule" name="RICH_TEXT_END">
@@ -1525,7 +1528,7 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="&#xbb;"/>
+        <elements xsi:type="xtext:Keyword" value="&#xfffd;"/>
         <elements xsi:type="xtext:RuleCall" cardinality="*" rule="/1/@rules.27"/>
         <elements xsi:type="xtext:Alternatives">
           <elements xsi:type="xtext:Keyword" value="'''"/>
@@ -1544,13 +1547,13 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="&#xbb;"/>
+        <elements xsi:type="xtext:Keyword" value="&#xfffd;"/>
         <elements xsi:type="xtext:RuleCall" cardinality="*" rule="/1/@rules.27"/>
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="'"/>
           <elements xsi:type="xtext:Keyword" cardinality="?" value="'"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="&#xab;"/>
+        <elements xsi:type="xtext:Keyword" value="&#xfffd;"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:TerminalRule" name="COMMENT_RICH_TEXT_INBETWEEN">
@@ -1558,7 +1561,7 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="&#xab;&#xab;"/>
+        <elements xsi:type="xtext:Keyword" value="&#xfffd;&#xfffd;"/>
         <elements xsi:type="xtext:NegatedToken" cardinality="*">
           <terminal xsi:type="xtext:Alternatives">
             <elements xsi:type="xtext:Keyword" value="&#xA;"/>
@@ -1573,7 +1576,7 @@
             <elements xsi:type="xtext:Keyword" value="'"/>
             <elements xsi:type="xtext:Keyword" cardinality="?" value="'"/>
           </elements>
-          <elements xsi:type="xtext:Keyword" value="&#xab;"/>
+          <elements xsi:type="xtext:Keyword" value="&#xfffd;"/>
         </elements>
       </alternatives>
     </rules>
@@ -1582,7 +1585,7 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="&#xab;&#xab;"/>
+        <elements xsi:type="xtext:Keyword" value="&#xfffd;&#xfffd;"/>
         <elements xsi:type="xtext:NegatedToken" cardinality="*">
           <terminal xsi:type="xtext:Alternatives">
             <elements xsi:type="xtext:Keyword" value="&#xA;"/>
@@ -1618,7 +1621,7 @@
           <elements xsi:type="xtext:Keyword" value="''"/>
           <elements xsi:type="xtext:NegatedToken">
             <terminal xsi:type="xtext:Alternatives">
-              <elements xsi:type="xtext:Keyword" value="&#xab;"/>
+              <elements xsi:type="xtext:Keyword" value="&#xfffd;"/>
               <elements xsi:type="xtext:Keyword" value="'"/>
             </terminal>
           </elements>
@@ -1627,14 +1630,14 @@
           <elements xsi:type="xtext:Keyword" value="'"/>
           <elements xsi:type="xtext:NegatedToken">
             <terminal xsi:type="xtext:Alternatives">
-              <elements xsi:type="xtext:Keyword" value="&#xab;"/>
+              <elements xsi:type="xtext:Keyword" value="&#xfffd;"/>
               <elements xsi:type="xtext:Keyword" value="'"/>
             </terminal>
           </elements>
         </elements>
         <elements xsi:type="xtext:NegatedToken">
           <terminal xsi:type="xtext:Alternatives">
-            <elements xsi:type="xtext:Keyword" value="&#xab;"/>
+            <elements xsi:type="xtext:Keyword" value="&#xfffd;"/>
             <elements xsi:type="xtext:Keyword" value="'"/>
           </terminal>
         </elements>

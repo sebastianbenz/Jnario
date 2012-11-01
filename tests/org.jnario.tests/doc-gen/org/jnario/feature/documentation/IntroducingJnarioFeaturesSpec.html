@@ -35,7 +35,6 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<p>Jnario Features are based on <a href="http://www.xtend-lang.org">Xtend</a>. It is a good idea to read the Xtend <a href="http://www.eclipse.org/xtend/documentation/index.html">documentation</a> before you get started with Jnario, because expressions, fields, methods and extensions in Jnario work exactly as in Xtend.</p>
 <h3 class="exampleGroup "  id="How_to_write_a_Feature">How to write a Feature?</h3>
 <p>First of all you need a running installation of Jnario. If you haven't installed Jnario yet, follow the <a href="../../jnario/documentation/InstallingJnarioSpec.html">install guide</a>. To get started create a new specification using the spec wizard (<strong>File</strong> -&gt; <strong>New</strong> -&gt; <strong>Other</strong> -&gt; <strong>Jnario</strong> -&gt; <strong>Feature</strong>).</p><p><p align="center"><img src="/img/tutorial/feature_wizard.png" alt="New Feature Wizard"/></p></p><p><span class="label label-info">Tip</span> If the editor shows a validation error, because of the missing jnario libraries, add them to the classpath using the quickfix (CMD/Ctrl + 1).</p><p>A feature file consists of a feature and the scenarios that are the acceptance criteria for the feature. For the calculator the the feature description in form of a story and one scenario for adding numbers looks as follows:</p>
 <pre class="prettyprint lang-feature">
@@ -164,7 +163,7 @@ Scenario: Dividing two numbers
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
-						    	<h3>FeatureTutorial.spec</h3>
+						    	<h3>FeatureSyntaxReference.spec</h3>
 						    	<p>
 <pre class="prettyprint lang-spec linenums">
 /*******************************************************************************
@@ -182,11 +181,6 @@ import static extension org.jnario.lib.Should.*
 import static extension org.jnario.jnario.test.util.FeatureExecutor.*
 
 /*
- * Jnario Features are based on [Xtend](http://www.xtend-lang.org). It is a good idea
- * to read the Xtend [documentation](http://www.eclipse.org/xtend/documentation/index.html)
- * before you get started with Jnario, because expressions, fields, methods and extensions in Jnario work exactly as in Xtend.
- *  
- *   
  */
 describe &quot;Introducing Jnario Features&quot;{
   

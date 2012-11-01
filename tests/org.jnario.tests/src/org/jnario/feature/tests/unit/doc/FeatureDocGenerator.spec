@@ -57,6 +57,9 @@ describe FeatureDocGenerator {
 						input = args.first
 						println(args.last)
 					When I do something that is pending.
+						And something else that is pending
+						But this is implemented
+							1 + 1 => 2
 					Then it results in \"something else\"
 						input + ' else' => args.first                                    
 		".generateDoc
@@ -76,6 +79,10 @@ public class Greeter{
 }</pre></span>
 </li>
 <li><span class="step pending"><p>When I do something that is pending. [PENDING]</p></span>
+</li>
+<li><span class="step pending"><p>And something else that is pending [PENDING]</p></span>
+</li>
+<li><span class="step notrun"><p>But this is implemented</p></span>
 </li>
 <li><span class="step notrun"><p>Then it results in <code>"something else"</code></p></span>
 </li>

@@ -86,6 +86,7 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		acceptor = createStepShortener(model, context, acceptor, "And");
+		acceptor = createStepShortener(model, context, acceptor, "But");
 		super.completeAndReference_Reference(model, assignment, context, acceptor);
 	}
 	
