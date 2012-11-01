@@ -322,12 +322,21 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   
   public void generateStepValues(final Step step) {
     final List<String> arguments = this.stepArgumentsProvider.findStepArguments(step);
+    final StepExpression stepExpression = step.getStepExpression();
+    boolean _or = false;
     boolean _isEmpty = arguments.isEmpty();
     if (_isEmpty) {
+      _or = true;
+    } else {
+      StepExpression _stepExpression = step.getStepExpression();
+      boolean _equals = Objects.equal(_stepExpression, null);
+      _or = (_isEmpty || _equals);
+    }
+    if (_or) {
       return;
     }
-    TreeIterator<EObject> _eAllContents = step.eAllContents();
-    UnmodifiableIterator<XVariableDeclaration> _filter = Iterators.<XVariableDeclaration>filter(_eAllContents, XVariableDeclaration.class);
+    TreeIterator<EObject> _eAllContents = stepExpression.eAllContents();
+    Iterator<XVariableDeclaration> _filter = Iterators.<XVariableDeclaration>filter(_eAllContents, XVariableDeclaration.class);
     final Function1<XVariableDeclaration,Boolean> _function = new Function1<XVariableDeclaration,Boolean>() {
         public Boolean apply(final XVariableDeclaration it) {
           String _name = it.getName();
@@ -345,8 +354,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     if ((step instanceof StepImplementation)) {
       return;
     }
-    TreeIterator<EObject> _eAllContents_1 = step.eAllContents();
-    UnmodifiableIterator<XConstructorCall> calls = Iterators.<XConstructorCall>filter(_eAllContents_1, XConstructorCall.class);
+    TreeIterator<EObject> _eAllContents_1 = stepExpression.eAllContents();
+    Iterator<XConstructorCall> calls = Iterators.<XConstructorCall>filter(_eAllContents_1, XConstructorCall.class);
     final XConstructorCall argsConstructor = IteratorExtensions.<XConstructorCall>head(calls);
     EList<XExpression> _arguments = argsConstructor.getArguments();
     _arguments.clear();

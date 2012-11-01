@@ -114,3 +114,17 @@ Feature: Step Parameters
 			"
 		Then it should execute successfully
 		
+	Scenario: Using args in And Steps
+		
+		When I have a scenario with 'and' step arguments
+		'''
+		Feature: And Arguments
+		
+		Scenario: Using And Arguments
+		
+		When we have some args "2"
+		And other args "10"
+			args.first => "10"
+		'''
+			jnarioFile=args.first
+		Then it should execute successfully

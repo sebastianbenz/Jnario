@@ -137,6 +137,21 @@ Feature: Test feature
 </li>
 </ul>
 </div>
+<div><h3 class="scenario "  id="Scenario_Using_args_in_And_Steps">Scenario: Using args in And Steps
+</h3>
+<ul>
+<li><span class="step "><p>When I have a scenario with 'and' step arguments</p><pre>Feature: And Arguments
+
+Scenario: Using And Arguments
+
+When we have some args &quot;2&quot;
+And other args &quot;10&quot;
+  args.first =&gt; &quot;10&quot;</pre></span>
+</li>
+<li><span class="step "><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>StepParameters.feature</h3>
@@ -256,6 +271,21 @@ Feature: Step Parameters
             Then it should be \&quot;hello\&quot;
               x should be args.first
       &quot;
+    Then it should execute successfully
+    
+  Scenario: Using args in And Steps
+    
+    When I have a scenario with 'and' step arguments
+    '''
+    Feature: And Arguments
+    
+    Scenario: Using And Arguments
+    
+    When we have some args &quot;2&quot;
+    And other args &quot;10&quot;
+      args.first =&gt; &quot;10&quot;
+    '''
+      jnarioFile=args.first
     Then it should execute successfully
 </pre>
 						    </p></div>

@@ -115,7 +115,7 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 
 	@Override
 	protected List<FrameworkMethod> getChildren() {
-		return newArrayList(transform(super.getChildren(),	new MethodNameConverter()));
+		return newArrayList(transform(super.getChildren(), new MethodNameConverter()));
 	}
 
 	@Override

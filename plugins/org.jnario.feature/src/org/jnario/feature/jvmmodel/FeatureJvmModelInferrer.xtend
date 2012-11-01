@@ -194,16 +194,17 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
    	def generateStepValues(Step step){
 		val arguments = stepArgumentsProvider.findStepArguments(step)
-		if(arguments.empty) return;
+		val stepExpression = step.stepExpression
+		if(arguments.empty || step.stepExpression == null) return;
 
-		var decs = filter(step.eAllContents, typeof(XVariableDeclaration)).filter[name == STEP_VALUES]
+		var decs = stepExpression.eAllContents.filter(typeof(XVariableDeclaration)).filter[name == STEP_VALUES]
 		if(decs.empty) return;
 		val dec = decs.head
 		dec.setStepValueType(step as Step)
 		if(step instanceof StepImplementation){
 			return				
 		}
-		var calls = filter(step.eAllContents, typeof(XConstructorCall))
+		var calls = stepExpression.eAllContents.filter(typeof(XConstructorCall))
 		val argsConstructor = calls.head
 		argsConstructor.arguments.clear
 		arguments.forEach[
