@@ -92,14 +92,10 @@ public class JnarioCompiler extends XtendCompiler {
 			super.doInternalToJavaStatement(obj, appendable, isReferenced);
 	}
 
-	public void _toJavaStatement(ShouldThrow should, ITreeAppendable b,
-			boolean isReferenced) {
+	public void _toJavaStatement(ShouldThrow should, ITreeAppendable b,	boolean isReferenced) {
 		if (should.getType() == null || should.getType().getType() == null) {
 			return;
 		}
-		b.newLine().append(should.getType().getType());
-		String variableName = b.declareSyntheticVariable(should, "expectedException");
-		b.append(" ").append(variableName).append(" = null;");
 		b.newLine().append("try{").increaseIndentation();
 		toJavaStatement(should.getExpression(), b, false);
 		b.newLine()
@@ -115,10 +111,11 @@ public class JnarioCompiler extends XtendCompiler {
 		appendValues(should.getExpression(), b, new HashSet<String>());
 		b.append(");").decreaseIndentation().newLine().append("}catch(")
 				.append(should.getType().getType()).append(" e){")
-				.increaseIndentation().newLine().append("expectedException = e;")
-				.decreaseIndentation().newLine().append("}");
+				.newLine().append("}");
 	}
-
+	
+	
+	
 	public void _toJavaStatement(Should should, ITreeAppendable b,
 			boolean isReferenced) {
 		_toShouldExpression(should, b, should.isNot());

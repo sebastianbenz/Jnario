@@ -117,7 +117,6 @@ public class UsingShouldSpec {
       Assert.fail("Expected " + EmptyStackException.class.getName() + " in \n     // expecting exceptions\n\t\tnew Stack<String>().pop\n with:"
        + "\n     // expecting exceptions\n\t\tnew Stack<String>() is " + new StringDescription().appendValue(_stack).toString());
     }catch(EmptyStackException e){
-      // expected
     }
     try{
       Stack<String> _stack_1 = new Stack<String>();
@@ -125,7 +124,6 @@ public class UsingShouldSpec {
       Assert.fail("Expected " + EmptyStackException.class.getName() + " in \n     new Stack<String>().pop\n with:"
        + "\n     new Stack<String>() is " + new StringDescription().appendValue(_stack_1).toString());
     }catch(EmptyStackException e){
-      // expected
     }
   }
   
@@ -155,7 +153,6 @@ public class UsingShouldSpec {
       Assert.fail("Expected " + AssertionError.class.getName() + " in \n     1 + 1 should be 1\n with:"
        + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString());
     }catch(AssertionError e){
-      // expected
     }
     try{
       int _plus_1 = (1 + 1);
@@ -166,7 +163,6 @@ public class UsingShouldSpec {
       Assert.fail("Expected " + AssertionError.class.getName() + " in \n     1 + 1 should not be 1\n with:"
        + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_1)).toString());
     }catch(AssertionError e){
-      // expected
     }
     try{
       int _plus_2 = (1 + 1);
@@ -177,7 +173,6 @@ public class UsingShouldSpec {
       Assert.fail("Expected " + AssertionError.class.getName() + " in \n     1 + 1 => 1\n with:"
        + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_2)).toString());
     }catch(AssertionError e){
-      // expected
     }
     try{
       Object _object = new Object();
@@ -189,7 +184,6 @@ public class UsingShouldSpec {
       Assert.fail("Expected " + AssertionError.class.getName() + " in \n     new Object => null\n with:"
        + "\n     new Object is " + new StringDescription().appendValue(_object).toString());
     }catch(AssertionError e){
-      // expected
     }
     try{
       Object _object_1 = new Object();
@@ -201,13 +195,11 @@ public class UsingShouldSpec {
       Assert.fail("Expected " + AssertionError.class.getName() + " in \n     new Object should be null\n with:"
        + "\n     new Object is " + new StringDescription().appendValue(_object_1).toString());
     }catch(AssertionError e){
-      // expected
     }
     try{
       this.method();
       Assert.fail("Expected " + IllegalArgumentException.class.getName() + " in \n     method()\n with:");
     }catch(IllegalArgumentException e){
-      // expected
     }
   }
   
@@ -305,7 +297,6 @@ public class UsingShouldSpec {
        + "\n     aString.length == 0 is " + new StringDescription().appendValue(_equals).toString()
        + "\n     aString.length is " + new StringDescription().appendValue(_length).toString());
     }catch(NullPointerException e){
-      // expected
     }
   }
   

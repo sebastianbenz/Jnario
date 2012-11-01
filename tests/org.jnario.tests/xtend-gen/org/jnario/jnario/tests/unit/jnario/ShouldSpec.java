@@ -96,4 +96,53 @@ public class ShouldSpec {
     _builder.newLine();
     this._behaviorExecutor.executesSuccessfully(_builder);
   }
+  
+  @Test
+  @Named("throw checks expected exception")
+  @Order(3)
+  public void _throwChecksExpectedException() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.*");
+    _builder.newLine();
+    _builder.append("describe \"Test\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact new Stack().pop throws EmptyStackException");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
+  }
+  
+  @Test
+  @Named("throw checks fails if no exception is thrown")
+  @Order(4)
+  public void _throwChecksFailsIfNoExceptionIsThrown() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Test\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact \"\" throws Exception");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executionFails(_builder);
+  }
+  
+  @Test
+  @Named("throw checks fails if exception with different type is thrown")
+  @Order(5)
+  public void _throwChecksFailsIfExceptionWithDifferentTypeIsThrown() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.*");
+    _builder.newLine();
+    _builder.append("describe \"Test\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact new Stack().pop throws NoSuchElementException");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executionFails(_builder);
+  }
 }
