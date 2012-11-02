@@ -27,7 +27,7 @@ describe SpecResultParser{
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
 	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
 					'''.platformIndependent
-							
+
 	static val XML_STACKTRACE = FAILURE_MESSAGE + "\n" + STACKTRACE
 	
 	val SpecExecutionAcceptor acceptor = mock(typeof(SpecExecutionAcceptor))

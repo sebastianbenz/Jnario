@@ -184,8 +184,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		]
    	}
    	
-   
-   	
    	def void initializeName(XtendField field){
    		if(field.name != null) return;
    		field.name = field.computeFieldName(null)
@@ -237,7 +235,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		val methodName = step.methodName
    		inferredJvmType.members += step.toMethod(methodName, getTypeForName(Void::TYPE, step))[
 			body = [ITreeAppendable a |
-						a.append("super." + methodName + "()")
+						a.append("super." + methodName + "();")
 			]
 			markAsPending(step)
 			annotations += step.getTestAnnotations(false)

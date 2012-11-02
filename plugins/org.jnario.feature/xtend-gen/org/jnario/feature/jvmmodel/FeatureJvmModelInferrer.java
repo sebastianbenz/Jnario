@@ -405,7 +405,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
                 public void apply(final ITreeAppendable a) {
                   String _plus = ("super." + methodName);
-                  String _plus_1 = (_plus + "()");
+                  String _plus_1 = (_plus + "();");
                   a.append(_plus_1);
                 }
               };
