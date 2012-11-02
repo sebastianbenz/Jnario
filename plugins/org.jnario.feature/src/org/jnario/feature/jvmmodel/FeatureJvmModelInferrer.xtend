@@ -40,13 +40,13 @@ import org.junit.Ignore
 import org.eclipse.xtend.core.xtend.XtendField
 import org.jnario.feature.feature.StepReference
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
-import org.eclipse.xtext.EcoreUtil2
 
 import static com.google.common.collect.Iterators.*
 import static org.eclipse.xtext.EcoreUtil2.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 
 import static extension com.google.common.base.Strings.*
+import org.eclipse.xtext.common.types.JvmOperation
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -243,6 +243,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			body = [ITreeAppendable a |
 						a.append("super." + methodName + "();")
 			]
+			markAsPending(step)
 			annotations += step.getTestAnnotations(false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			annotations += step.toAnnotation(typeof(Named), step.describe)
@@ -268,9 +269,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			annotations += step.getTestAnnotations(false)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.describe
-			if(step.pending){
-				annotations += step.toAnnotation(typeof(Ignore))
-			}
+			markAsPending(step)
 			annotations += step.toAnnotation(typeof(Named), name)
 		]	
 		order + 1
@@ -278,5 +277,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
 	def feature(EObject context){
    		getContainerOfType(context, typeof(Feature))
+   	}
+   	
+   	def markAsPending(JvmOperation operation, Step step){
+   		if(step.pending){
+			operation.annotations += step.toAnnotation(typeof(Ignore))
+		}
    	}
 }
