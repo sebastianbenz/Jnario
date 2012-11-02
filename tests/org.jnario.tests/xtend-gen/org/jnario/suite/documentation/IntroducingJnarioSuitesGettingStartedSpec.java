@@ -74,11 +74,11 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
     Resource _parseSuite = this._modelStore.parseSuite(_builder);
     int _nrOfParseAndLinkingErrors = Resources.nrOfParseAndLinkingErrors(_parseSuite);
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_nrOfParseAndLinkingErrors), Integer.valueOf(2));
-    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tpackage demo\n\t\t\t\n\t\t\t#My Suite\n\t\t\t\n\t\t\t- \"My Feature\"\n\t\t\t- \"My Spec\"\n\t\t\t\'\'\'.parseSuite.nrOfParseAndLinkingErrors => 2 but"
-     + "\n     \'\'\'\n\t\t\tpackage demo\n\t\t\t\n\t\t\t#My Suite\n\t\t\t\n\t\t\t- \"My Feature\"\n\t\t\t- \"My Spec\"\n\t\t\t\'\'\'.parseSuite.nrOfParseAndLinkingErrors is " + new StringDescription().appendValue(Integer.valueOf(_nrOfParseAndLinkingErrors)).toString()
-     + "\n     \'\'\'\n\t\t\tpackage demo\n\t\t\t\n\t\t\t#My Suite\n\t\t\t\n\t\t\t- \"My Feature\"\n\t\t\t- \"My Spec\"\n\t\t\t\'\'\'.parseSuite is " + new StringDescription().appendValue(_parseSuite).toString()
+    Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tpackage demo\r\n\t\t\t\r\n\t\t\t#My Suite\r\n\t\t\t\r\n\t\t\t- \"My Feature\"\r\n\t\t\t- \"My Spec\"\r\n\t\t\t\'\'\'.parseSuite.nrOfParseAndLinkingErrors => 2 but"
+     + "\n     \'\'\'\r\n\t\t\tpackage demo\r\n\t\t\t\r\n\t\t\t#My Suite\r\n\t\t\t\r\n\t\t\t- \"My Feature\"\r\n\t\t\t- \"My Spec\"\r\n\t\t\t\'\'\'.parseSuite.nrOfParseAndLinkingErrors is " + new StringDescription().appendValue(Integer.valueOf(_nrOfParseAndLinkingErrors)).toString()
+     + "\n     \'\'\'\r\n\t\t\tpackage demo\r\n\t\t\t\r\n\t\t\t#My Suite\r\n\t\t\t\r\n\t\t\t- \"My Feature\"\r\n\t\t\t- \"My Spec\"\r\n\t\t\t\'\'\'.parseSuite is " + new StringDescription().appendValue(_parseSuite).toString()
      + "\n      is " + new StringDescription().appendValue(this._modelStore).toString()
-     + "\n     \'\'\'\n\t\t\tpackage demo\n\t\t\t\n\t\t\t#My Suite\n\t\t\t\n\t\t\t- \"My Feature\"\n\t\t\t- \"My Spec\"\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+     + "\n     \'\'\'\r\n\t\t\tpackage demo\r\n\t\t\t\r\n\t\t\t#My Suite\r\n\t\t\t\r\n\t\t\t- \"My Feature\"\r\n\t\t\t- \"My Spec\"\r\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   

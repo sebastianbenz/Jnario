@@ -13,7 +13,6 @@ import java.util.List
 import static extension java.util.Collections.*
 
 
-
 /*
  * This document teaches you everything 
  * you need to know about Xtend to effectively use

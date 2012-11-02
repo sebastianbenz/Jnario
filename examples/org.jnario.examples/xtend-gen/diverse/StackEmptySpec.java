@@ -36,13 +36,11 @@ public class StackEmptySpec extends StackSpec {
   @Named("subject.pop[] throws EmptyStackException")
   @Order(1)
   public void _subjectPopThrowsEmptyStackException() throws Exception {
-    EmptyStackException expectedException = null;
     try{
       this.subject.pop();
       Assert.fail("Expected " + EmptyStackException.class.getName() + " in \n     subject.pop()\n with:"
        + "\n     subject is " + new StringDescription().appendValue(this.subject).toString());
     }catch(EmptyStackException e){
-      expectedException = e;
     }
   }
 }
