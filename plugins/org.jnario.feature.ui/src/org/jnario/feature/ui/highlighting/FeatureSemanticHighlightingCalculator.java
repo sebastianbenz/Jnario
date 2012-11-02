@@ -59,6 +59,7 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 			this.acceptor = acceptor;
 		}
 		
+		
 		@Override
 		public Boolean caseStepExpression(StepExpression object) {
 			XBlockExpression expression = object.getBlockExpression();
@@ -204,16 +205,15 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 		TreeIterator<EObject> iterator = resource.getAllContents();
 		while (iterator.hasNext()) {
 			EObject object = iterator.next();
-			
-			highlighter.doSwitch(object);
-			if (object instanceof XAbstractFeatureCall) {
-				computeFeatureCallHighlighting((XAbstractFeatureCall) object, acceptor);
-			}
-			if (object instanceof ExampleTable) {
-				highlightExampleHeader((ExampleTable) object, acceptor);
-			}
 			ICompositeNode node = NodeModelUtils.getNode(object);
 			if(node != null){
+				highlighter.doSwitch(object);
+				if (object instanceof XAbstractFeatureCall) {
+					computeFeatureCallHighlighting((XAbstractFeatureCall) object, acceptor);
+				}
+				if (object instanceof ExampleTable) {
+					highlightExampleHeader((ExampleTable) object, acceptor);
+				}
 				// Handle XAnnotation in a special way because we want the @ highlighted too
 				if (object instanceof XNumberLiteral) {
 					highlightNumberLiterals((XNumberLiteral) object, acceptor);
