@@ -249,6 +249,25 @@ Scenario: Stack adding more elements
 </li>
 </ul>
 </div>
+<div><h3 class="scenario notrun"  id="Scenario_Accessing_extension_field_methods">Scenario: Accessing extension field methods
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I access extension field methods from referenced steps</p><pre>Feature: Sharing extension field
+
+      Scenario: Accessing extension field methods
+        extension String = &quot;hello&quot;
+       
+        Given an extension field access
+          concat(&quot; world&quot;) should be &quot;hello world&quot;
+    
+      Scenario: Accessing extension field methods in referenced steps
+        
+        Given an extension field access</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>References.feature</h3>
@@ -477,7 +496,26 @@ Feature: References for steps
           Then both should execute successfully 
           '''
         jnarioFile = args.first
-      Then it should execute successfully
+      Then it should execute successfully  
+      
+      
+   Scenario: Accessing extension field methods
+     When I access extension field methods from referenced steps
+     '''
+     Feature: Sharing extension field
+
+      Scenario: Accessing extension field methods
+        extension String = &quot;hello&quot;
+       
+        Given an extension field access
+          concat(&quot; world&quot;) should be &quot;hello world&quot;
+    
+      Scenario: Accessing extension field methods in referenced steps
+        
+        Given an extension field access
+     '''
+     jnarioFile = args.first
+     Then it should execute successfully
 </pre>
 						    </p></div>
 						  </div>

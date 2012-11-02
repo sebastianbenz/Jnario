@@ -101,11 +101,12 @@ import org.jnario.report.Passed
 import org.jnario.report.SpecExecutionAcceptor
 import org.jnario.report.SpecFailure
 import org.jnario.report.SpecResultParser
+import org.jnario.report.Pending
 
 import static org.jnario.jnario.tests.unit.report.SpecResultParserSpec.*
 import static org.mockito.Mockito.*
-import org.jnario.report.Pending
 
+import static extension org.jnario.jnario.test.util.Strings.*
 describe SpecResultParser{
   
   static val CLASSNAME = &quot;demo.CalculatorSpec&quot;
@@ -113,14 +114,14 @@ describe SpecResultParser{
   static val EXECUTION_TIME = 0.01
   static val FAILURE_MESSAGE = '''
                   a message
-                  withnewline'''.toString
+                  withnewline'''.platformIndependent
   static val FAILURE_TYPE = &quot;java.lang.AssertionError&quot;
   static val STACKTRACE = 
           '''  at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
   at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
   at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
   at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
-          '''.toString
+          '''.platformIndependent
               
   static val XML_STACKTRACE = FAILURE_MESSAGE + &quot;\n&quot; + STACKTRACE
   

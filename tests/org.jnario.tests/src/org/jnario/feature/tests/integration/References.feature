@@ -222,4 +222,22 @@ Feature: References for steps
 					'''
 				jnarioFile = args.first
 			Then it should execute successfully	
-	 
+			
+			
+	 Scenario: Accessing extension field methods
+	 	When I access extension field methods from referenced steps
+	 	'''
+	 	Feature: Sharing extension field
+
+		  Scenario: Accessing extension field methods
+		    extension String = "hello"
+		   
+		    Given an extension field access
+		      concat(" world") should be "hello world"
+		
+		  Scenario: Accessing extension field methods in referenced steps
+		  	
+		  	Given an extension field access
+	 	'''
+	 	jnarioFile = args.first
+	 	Then it should execute successfully

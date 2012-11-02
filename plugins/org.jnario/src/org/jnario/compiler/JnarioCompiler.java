@@ -276,19 +276,31 @@ public class JnarioCompiler extends XtendCompiler {
 	}
 
 	protected String serialize(XExpression expression) {
-		INode node = getNode(expression);
-		String result;
-		if (node == null) {
-			 EObject source = SourceAdapter.find(expression);
-			 if(source == null || !(source instanceof XExpression)){
-				 return "";
-			 }
-			node = getNode(source);
+		INode node = findNode(expression);
+		if(node == null){
+			return "";
 		}
-		result = node.getText();
+		String result = node.getText();
 		result = result.trim();
 		result = removeSurroundingParentheses(result);
 		return convertToJavaString(result);
+	}
+
+	private INode findNode(XExpression expression) {
+		INode node = getNode(expression);
+		if(node != null) {
+			return node;
+		}
+		EObject source = SourceAdapter.find(expression);
+		while(node == null && isExpressions(source)){
+			node = getNode(source);
+			source = source.eContainer();
+		}
+		return node;
+	}
+
+	private boolean isExpressions(EObject source) {
+		return source != null && source instanceof XExpression;
 	}
 
 	protected String removeSurroundingParentheses(String result) {

@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.ReferencesForStepsFeatureAccessingExtensionFieldMethods;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeatureExtensionFields;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeatureExtensionFieldsInAndStep;
@@ -19,7 +20,7 @@ import org.junit.runner.RunWith;
  * @author Birgit Engelmann - Initial contribution and API
  */
 @RunWith(FeatureRunner.class)
-@Contains({ ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario.class, ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword.class, ReferencesForStepsFeatureUsingFieldsFromOtherSteps.class, ReferencesForStepsFeatureStepsWithShortNames.class, ReferencesForStepsFeatureFieldInitialization.class, ReferencesForStepsFeatureSteps.class, ReferencesForStepsFeatureExtensionFields.class, ReferencesForStepsFeatureExtensionFieldsInAndStep.class, ReferencesForStepsFeatureUsingClosuresInSteps.class, ReferencesForStepsFeatureMultipleStepReferencesCausesProblemWhenCopierDoesNotClearItsCache.class })
+@Contains({ ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario.class, ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword.class, ReferencesForStepsFeatureUsingFieldsFromOtherSteps.class, ReferencesForStepsFeatureStepsWithShortNames.class, ReferencesForStepsFeatureFieldInitialization.class, ReferencesForStepsFeatureSteps.class, ReferencesForStepsFeatureExtensionFields.class, ReferencesForStepsFeatureExtensionFieldsInAndStep.class, ReferencesForStepsFeatureUsingClosuresInSteps.class, ReferencesForStepsFeatureMultipleStepReferencesCausesProblemWhenCopierDoesNotClearItsCache.class, ReferencesForStepsFeatureAccessingExtensionFieldMethods.class })
 @Named("References for steps")
 @SuppressWarnings("all")
 public class ReferencesForStepsFeature {
