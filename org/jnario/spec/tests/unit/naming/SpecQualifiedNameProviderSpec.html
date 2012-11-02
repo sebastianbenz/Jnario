@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SpecQualifiedNameProvider</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header notrun">
+					<h1>SpecQualifiedNameProvider</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<ul><li><p id="null_if_spec_description_is_empty" class="example notrun"><strong>null if spec description is empty</strong></p>
+<pre class="prettyprint lang-spec linenums">
+parseSpec('''
+  package test
+  describe &quot;&quot;{}''')
+qualifiedName should be null
+
+parseSpec('''
+  describe &quot;&quot;{}''')
+qualifiedName should be null</pre>
+</li><li><p id="uses_spec_description" class="example notrun"><strong>uses spec description</strong></p>
+<pre class="prettyprint lang-spec linenums">
+parseSpec('''
+  describe &quot;My Spec&quot;{}''')
+qualifiedName =&gt; &quot;My Spec&quot;</pre>
+</li><li><p id="trims_spec_description_whitespace" class="example notrun"><strong>trims spec description whitespace</strong></p>
+<pre class="prettyprint lang-spec linenums">
+parseSpec('''
+  describe &quot;My Spec  &quot;{}''')
+qualifiedName =&gt; &quot;My Spec&quot;</pre>
+</li><li><p id="uses_referenced_type" class="example notrun"><strong>uses referenced type</strong></p>
+<pre class="prettyprint lang-spec linenums">
+parseSpec('''
+  describe org.junit.Assert{}''')
+qualifiedName =&gt; &quot;Assert&quot;</pre>
+</li><li><p id="uses_referenced_type_and_description" class="example notrun"><strong>uses referenced type and description</strong></p>
+<pre class="prettyprint lang-spec linenums">
+parseSpec('''
+  describe org.junit.Assert &quot;My Spec&quot;{}''')
+qualifiedName =&gt; &quot;Assert My Spec&quot;</pre>
+</li><li><p id="adds_spec_package" class="example notrun"><strong>adds spec package</strong></p>
+<pre class="prettyprint lang-spec linenums">
+parseSpec('''
+  package test
+  describe &quot;My Spec&quot;{}''')
+qualifiedName =&gt; &quot;test.My Spec&quot;</pre>
+</li></ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>SpecQualifiedNameProvider.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.spec.tests.unit.naming
+
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.spec.naming.SpecQualifiedNameProvider
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+
+@CreateWith(typeof(SpecTestCreator))
+describe SpecQualifiedNameProvider {
+
+  @Inject extension ModelStore
+
+  fact &quot;null if spec description is empty&quot;{
+    parseSpec('''
+      package test
+      describe &quot;&quot;{}''')
+    qualifiedName should be null
+    
+    parseSpec('''
+      describe &quot;&quot;{}''')
+    qualifiedName should be null
+  }
+
+  fact &quot;uses spec description&quot;{
+    parseSpec('''
+      describe &quot;My Spec&quot;{}''')
+    qualifiedName =&gt; &quot;My Spec&quot;
+  }
+  
+  fact &quot;trims spec description whitespace&quot;{
+    parseSpec('''
+      describe &quot;My Spec  &quot;{}''')
+    qualifiedName =&gt; &quot;My Spec&quot;
+  }
+  
+  fact &quot;uses referenced type&quot;{
+    parseSpec('''
+      describe org.junit.Assert{}''')
+    qualifiedName =&gt; &quot;Assert&quot;
+  }
+  
+  fact &quot;uses referenced type and description&quot;{
+    parseSpec('''
+      describe org.junit.Assert &quot;My Spec&quot;{}''')
+    qualifiedName =&gt; &quot;Assert My Spec&quot;
+  }
+  
+  fact &quot;adds spec package&quot;{
+    parseSpec('''
+      package test
+      describe &quot;My Spec&quot;{}''')
+    qualifiedName =&gt; &quot;test.My Spec&quot;
+  }
+  
+  def qualifiedName(){
+    subject.getFullyQualifiedName(firstSpec)?.toString    
+  }
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- Start Google Analytics Installation --><script type="text/javascript">var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-30225034-1"]);_gaq.push(["_setDomainName","jnario.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script><!-- End Google Analytics Installation -->
+
+</body>
+</html>

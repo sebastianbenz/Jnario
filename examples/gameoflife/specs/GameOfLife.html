@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Game of Life with Jnario & Xtend</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../css/custom.css">
+<link rel="stylesheet" href="../../css/prettify.css">
+<script type="text/javascript" src="../../js/prettify.js"></script>
+<script type="text/javascript" src="../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+			<div class="content">
+				<div class="row">
+					<div class="span12">
+						    	<h3>GameOfLife.xtend</h3>
+						    	<p>
+<pre class="prettyprint lang-xtend linenums">
+package gameoflife
+
+import java.util.Set
+import org.eclipse.xtend.lib.Data
+
+import static gameoflife.CellLocation.*
+import static gameoflife.World.*
+
+@Data
+class Evolution{
+  def static gameOfLife() {
+    new Evolution(new EvolveLiveCells, new EvolveDeadCells)
+  }
+  
+  Rule staysAlive
+  Rule becomesAlive
+  
+  def evolve(World world) {
+    worldWith(
+      world.livingCells.filter[getStaysAlive.apply(world, it)] +
+      world.deadCells.filter[getBecomesAlive.apply(world, it)]
+    )
+  } 
+  
+  def private apply(Rule rule, World world, CellLocation cell){
+    rule.becomesAlive(world.livingNeighbours(cell))
+  }  
+}
+
+class EvolveLiveCells implements Rule{
+  override becomesAlive(int neighbourCount) {
+    !neighbourCount.underPopulated && !neighbourCount.overPopulated
+  }
+  def underPopulated(int neighbourCount){
+    neighbourCount < 2
+  }
+  def overPopulated(int neighbourCount){
+    neighbourCount > 3
+  }
+}
+
+class EvolveDeadCells implements Rule{
+  override becomesAlive(int neighbourCount) {
+    neighbourCount == 3
+  }
+}
+
+@Data
+class World{
+  Set<CellLocation> livingCells
+  
+  def static parseWorld(CharSequence grid){
+    val cells = <CellLocation>newArrayList
+    grid.toString.split("\r?\n").forEach[line, x | 
+      line.toCharArray.forEach[c, y|
+        if(c.toString == "X"){
+          cells.add(cell(x, y))
+        }
+      ]
+    ]
+    worldWith(cells)
+  }
+  
+  def static worldWith(Iterable<CellLocation> cells) {
+    new World(cells.toSet)
+  } 
+  
+  def deadCells() {
+    livingCells.map[neighbours].flatten.filter[!livingCells.contains(it)].toSet
+  }
+  
+  def livingNeighbours(CellLocation cell){
+    cell.neighbours.filter[livingCells.contains(it)].size
+  }
+}
+ 
+@Data
+class CellLocation {
+  static val NEIGHBOUR_OFFSETS = newHashSet(
+    cell(1, 0), cell(1, 1), cell(0, 1), cell(-1, -1), cell(-1, 0), cell(-1, 1), cell(0, -1), cell(1, -1)
+  )
+  
+  def static cell(int x, int y){
+    new CellLocation(x, y)
+  }
+  
+  int x
+  int y
+  
+  def Set<CellLocation> neighbours(){
+    NEIGHBOUR_OFFSETS.map[this.plus(it)].toSet
+  }
+  
+  def plus(CellLocation other){
+    cell(x + other.x, y + other.y)
+  }
+}
+</pre>
+						    </p></div>
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+	</div> <!-- Start Google Analytics Installation --><script type="text/javascript">var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-30225034-1"]);_gaq.push(["_setDomainName","jnario.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script><!-- End Google Analytics Installation -->
+
+</body>
+</html>

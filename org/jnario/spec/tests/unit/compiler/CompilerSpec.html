@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Compiler</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header notrun">
+					<h1>Compiler</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<ul><li><p id="long_boolean_expressions_compile_correctly" class="example notrun"><strong>long boolean expressions compile correctly</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+describe &quot;Something with an expression&quot;{
+  fact &quot;a fact with an if&quot;{
+    val x = 4
+    if(x &gt; 4 &amp;&amp; x &gt; 5){
+      
+    }
+  }
+}
+'''.executesSuccessfully</pre>
+</li><li><p id="assert_with_multiple_bool_expressions" class="example notrun"><strong>assert with multiple bool expressions</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+describe &quot;Something with an expression&quot;{
+  fact &quot;a fact with an if&quot;{
+    val x = 6
+    assert x &gt; 4 &amp;&amp; x &gt; 5
+  }
+}
+'''.executesSuccessfully</pre>
+</li><li><p id="with_multiple_bool_expressions" class="example notrun"><strong>=> with multiple bool expressions</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+describe &quot;Something with an expression&quot;{
+  fact &quot;a fact with =&gt;&quot;{
+    val x = 6
+    (x &gt; 4 &amp;&amp; x &gt; 5) =&gt; true
+  }
+}
+'''.executesSuccessfully</pre>
+</li><li><p id="should_with_multiple_bool_expressions" class="example notrun"><strong>should with multiple bool expressions</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+describe &quot;Something with an expression&quot;{
+  fact &quot;a fact with should&quot;{
+    val x = 6
+    x &gt; 4 &amp;&amp; x &gt; 5 should be true
+  }
+}
+'''.executesSuccessfully</pre>
+</li><li><p id="automatically_converts_lists_to_arrays" class="example notrun"><strong>automatically converts lists to arrays</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+describe &quot;Something with an expression&quot;{
+  fact &quot;any fact&quot;{
+  }
+  
+  def String[] x(){
+  list(&quot;some string&quot;)
+  }
+}
+'''.executesSuccessfully</pre>
+</li><li><p id="resolve_fact_method_name_clashes" class="example notrun"><strong>resolve fact method name clashes</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  describe &quot;Using Should&quot;{
+    
+       fact &quot;a***&quot;  
+        fact &quot;a???&quot; 
+         
+  }
+'''.executesSuccessfully</pre>
+</li></ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>Compiler.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+package org.jnario.spec.tests.unit.compiler
+
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.runner.CreateWith
+
+import static org.junit.Assert.*
+import static extension org.jnario.jnario.test.util.SpecExecutor.*
+import static org.jnario.jnario.test.util.ResultMatchers.*
+import static org.hamcrest.CoreMatchers.*
+import org.jnario.jnario.test.util.BehaviorExecutor
+import com.google.inject.Inject
+
+@CreateWith(typeof(SpecTestCreator))
+describe &quot;Compiler&quot;{
+  @Inject extension BehaviorExecutor
+  fact &quot;long boolean expressions compile correctly&quot;{
+    '''
+    describe &quot;Something with an expression&quot;{
+      fact &quot;a fact with an if&quot;{
+        val x = 4
+        if(x &gt; 4 &amp;&amp; x &gt; 5){
+          
+        }
+      }
+    }
+    '''.executesSuccessfully
+  }
+  
+  fact &quot;assert with multiple bool expressions&quot;{
+    '''
+    describe &quot;Something with an expression&quot;{
+      fact &quot;a fact with an if&quot;{
+        val x = 6
+        assert x &gt; 4 &amp;&amp; x &gt; 5
+      }
+    }
+    '''.executesSuccessfully
+  }
+  
+  fact &quot;=&gt; with multiple bool expressions&quot;{
+    '''
+    describe &quot;Something with an expression&quot;{
+      fact &quot;a fact with =&gt;&quot;{
+        val x = 6
+        (x &gt; 4 &amp;&amp; x &gt; 5) =&gt; true
+      }
+    }
+    '''.executesSuccessfully
+  }
+  
+  fact &quot;should with multiple bool expressions&quot;{
+    '''
+    describe &quot;Something with an expression&quot;{
+      fact &quot;a fact with should&quot;{
+        val x = 6
+        x &gt; 4 &amp;&amp; x &gt; 5 should be true
+      }
+    }
+    '''.executesSuccessfully
+  }
+  
+  fact &quot;automatically converts lists to arrays&quot;{
+    '''
+    describe &quot;Something with an expression&quot;{
+      fact &quot;any fact&quot;{
+      }
+      
+      def String[] x(){
+      list(&quot;some string&quot;)
+      }
+    }
+    '''.executesSuccessfully
+  }
+  
+  fact &quot;resolve fact method name clashes&quot;{
+    '''
+      describe &quot;Using Should&quot;{
+        
+           fact &quot;a***&quot;  
+            fact &quot;a???&quot; 
+             
+      }
+    '''.executesSuccessfully
+  }
+  
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- Start Google Analytics Installation --><script type="text/javascript">var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-30225034-1"]);_gaq.push(["_setDomainName","jnario.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script><!-- End Google Analytics Installation -->
+
+</body>
+</html>

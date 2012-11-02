@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FeatureQualifiedNameProvider</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header pending">
+					<h1>FeatureQualifiedNameProvider</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<h3 class="exampleGroup notrun"  id="Package_name">Package name</h3>
+<ul><li><p id="package_name_is_prepended" class="example notrun"><strong>package name is prepended</strong></p>
+<pre class="prettyprint lang-spec linenums">
+stepName(&quot;Given a step&quot;, &quot;myPackage&quot;) should startWith(&quot;myPackage.&quot;)</pre>
+</li><li><p id="package_name_is_separated_by" class="example notrun"><strong>package name is separated by '.'</strong></p>
+<pre class="prettyprint lang-spec linenums">
+stepName(&quot;Given a step&quot;, &quot;myPackage.subpackage&quot;) should startWith(&quot;myPackage.subpackage.&quot;)</pre>
+</li><li><p id="default_package_name_is_features" class="example notrun"><strong>default package name is 'features'</strong></p>
+<pre class="prettyprint lang-spec linenums">
+stepName(&quot;Given a step&quot;, null) should startWith(&quot;features.&quot;)</pre>
+</li></ul>
+<h3 class="exampleGroup notrun"  id="StepImplementation">StepImplementation</h3>
+<ul><li><p id="strips_keyword" class="example notrun"><strong>strips keyword</strong></p>
+<pre class="prettyprint lang-spec linenums">
+&quot;Given a step with implementation&quot;.implementedStepName =&gt; &quot;myPackage.a step with implementation&quot;</pre>
+</li><li><p id="strips_dot_at_end" class="example notrun"><strong>strips dot at end</strong></p>
+<pre class="prettyprint lang-spec linenums">
+&quot;Given a step with implementation.&quot;.implementedStepName =&gt; &quot;myPackage.a step with implementation&quot;</pre>
+</li><li><p id="strips_argument_values" class="example notrun"><strong>strips argument values</strong></p>
+<pre class="prettyprint lang-spec linenums">
+&quot;Given a step with \&quot;arg\&quot;.&quot;.implementedStepName =&gt; 'myPackage.a step with &quot;&quot;'</pre>
+</li></ul>
+<h3 class="exampleGroup notrun"  id="StepReference">StepReference</h3>
+<ul><li><p id="strips_keyword" class="example notrun"><strong>strips keyword</strong></p>
+<pre class="prettyprint lang-spec linenums">
+&quot;Given a step with implementation&quot;.implementedStepName =&gt; &quot;myPackage.a step with implementation&quot;</pre>
+</li><li><p id="strips_dot_at_end" class="example notrun"><strong>strips dot at end</strong></p>
+<pre class="prettyprint lang-spec linenums">
+&quot;Given a step with implementation.&quot;.stepName =&gt; &quot;myPackage.a step with implementation&quot;</pre>
+</li><li><p id="strips_argument_values" class="example notrun"><strong>strips argument values</strong></p>
+<pre class="prettyprint lang-spec linenums">
+&quot;Given a step with \&quot;arg\&quot;.&quot;.stepName =&gt; 'myPackage.a step with &quot;&quot;'</pre>
+</li></ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>FeatureQualifiedNameProvider.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+package org.jnario.feature.tests.unit.naming
+
+import org.jnario.feature.naming.FeatureQualifiedNameProvider
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.FeatureTestCreator
+import com.google.inject.Inject
+import org.eclipse.xtext.naming.IQualifiedNameConverter
+import org.jnario.feature.feature.Step
+
+@CreateWith(typeof(FeatureTestCreator))
+describe FeatureQualifiedNameProvider {
+
+  @Inject extension ModelStore 
+  @Inject IQualifiedNameConverter converter
+
+
+  context &quot;Package name&quot;{
+    fact &quot;package name is prepended&quot;{
+      stepName(&quot;Given a step&quot;, &quot;myPackage&quot;) should startWith(&quot;myPackage.&quot;)
+    }
+    
+    fact &quot;package name is separated by '.'&quot;{
+      stepName(&quot;Given a step&quot;, &quot;myPackage.subpackage&quot;) should startWith(&quot;myPackage.subpackage.&quot;)
+    }
+    
+    fact &quot;default package name is 'features'&quot;{
+      stepName(&quot;Given a step&quot;, null) should startWith(&quot;features.&quot;)
+    }
+  }
+
+  context &quot;StepImplementation&quot;{
+    fact &quot;strips keyword&quot;{
+      &quot;Given a step with implementation&quot;.implementedStepName =&gt; &quot;myPackage.a step with implementation&quot;
+    }
+    fact &quot;strips dot at end&quot;{
+      &quot;Given a step with implementation.&quot;.implementedStepName =&gt; &quot;myPackage.a step with implementation&quot;
+    }
+    fact &quot;strips argument values&quot;{
+      &quot;Given a step with \&quot;arg\&quot;.&quot;.implementedStepName =&gt; 'myPackage.a step with &quot;&quot;'
+    }
+  }
+  
+  context &quot;StepReference&quot;{
+    fact &quot;strips keyword&quot;{
+      &quot;Given a step with implementation&quot;.implementedStepName =&gt; &quot;myPackage.a step with implementation&quot;
+    }
+    fact &quot;strips dot at end&quot;{
+      &quot;Given a step with implementation.&quot;.stepName =&gt; &quot;myPackage.a step with implementation&quot;
+    }
+    fact &quot;strips argument values&quot;{
+      &quot;Given a step with \&quot;arg\&quot;.&quot;.stepName =&gt; 'myPackage.a step with &quot;&quot;'
+    }
+  }
+
+  def implementedStepName(CharSequence s){
+    '''
+    &laquo;s&raquo;
+    val x = &quot;&quot;
+    '''.stepName
+  }
+  
+  def stepName(CharSequence s){
+    s.stepName(&quot;myPackage&quot;)
+  }
+  
+  def stepName(CharSequence s, String packageName){
+    val input = '''
+      &laquo;IF packageName != null&raquo;
+      package &laquo;packageName&raquo;
+      &laquo;ENDIF&raquo;
+      Feature: MyFeature
+      Scenario: The Scenario
+      &laquo;s&raquo;
+    '''
+    parseScenario(input)
+    converter.toString(subject.getFullyQualifiedName(first(typeof(Step))))
+  }
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- Start Google Analytics Installation --><script type="text/javascript">var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-30225034-1"]);_gaq.push(["_setDomainName","jnario.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script><!-- End Google Analytics Installation -->
+
+</body>
+</html>
