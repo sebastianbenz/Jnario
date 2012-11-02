@@ -5,6 +5,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.jnario.jnario.test.util.Strings;
 import org.jnario.report.Failed;
 import org.jnario.report.Passed;
 import org.jnario.report.Pending;
@@ -38,8 +39,8 @@ public class SpecResultParserSpec {
       _builder.append("a message");
       _builder.newLine();
       _builder.append("withnewline");
-      String _string = _builder.toString();
-      return _string;
+      String _platformIndependent = Strings.platformIndependent(_builder);
+      return _platformIndependent;
     }
   }.apply();
   
@@ -60,8 +61,8 @@ public class SpecResultParserSpec {
       _builder.append("\t");
       _builder.append("at java.lang.reflect.Constructor.newInstance(Constructor.java:513)");
       _builder.newLine();
-      String _string = _builder.toString();
-      return _string;
+      String _platformIndependent = Strings.platformIndependent(_builder);
+      return _platformIndependent;
     }
   }.apply();
   
