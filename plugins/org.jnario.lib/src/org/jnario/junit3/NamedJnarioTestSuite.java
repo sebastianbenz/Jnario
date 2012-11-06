@@ -2,7 +2,7 @@ package org.jnario.junit3;
 
 import junit.framework.TestSuite;
 
-import org.jnario.runner.Named;
+import org.jnario.runner.NameProvider;
 
 @SuppressWarnings("rawtypes")
 public class NamedJnarioTestSuite extends TestSuite{
@@ -21,12 +21,7 @@ public class NamedJnarioTestSuite extends TestSuite{
 
 	@Override
 	public String getName() {
-		@SuppressWarnings("unchecked")
-		Named named = (Named) testClass.getAnnotation(Named.class);
-		if(named == null){
-			return super.getName();
-		}
-		return named.value();
+		return NameProvider.create().nameOf(testClass);
 	}
 	
 }

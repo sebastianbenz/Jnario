@@ -7,6 +7,9 @@
  *******************************************************************************/
 package org.jnario.runner;
 
+import java.lang.reflect.Method;
+
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.TestClass;
 
@@ -22,7 +25,12 @@ public class NameProvider {
 	}
 
 	public String nameOf(FrameworkMethod method) {
-		return nameOf(method.getAnnotation(Named.class), method.getName());
+		Method javaMethod = method.getMethod();
+		return nameOf(javaMethod);
+	}
+	
+	public String nameOf(Method javaMethod) {
+		return nameOf(javaMethod.getAnnotation(Named.class), javaMethod.getName());
 	}
 
 	private String nameOf(Named named, String defaultName) {
@@ -30,7 +38,12 @@ public class NameProvider {
 	}
 
 	public String nameOf(TestClass klass) {
-		return nameOf(klass.getJavaClass().getAnnotation(Named.class), klass.getName());
+		Class<?> javaClass = klass.getJavaClass();
+		return nameOf(javaClass);
+	}
+
+	public String nameOf(Class<?> javaClass) {
+		return nameOf(javaClass.getAnnotation(Named.class), javaClass.getName());
 	}
 	
 
@@ -119,4 +132,17 @@ public class NameProvider {
 		}
 		return new String(out, 0, outLen);
 	}
+
+	public String nameOf(Class<?> javaClass, String methodName) {
+		try {
+			Method method = javaClass.getMethod(methodName);
+			return nameOf(method);
+		} catch (SecurityException e) {
+			Exceptions.sneakyThrow(e);
+		} catch (NoSuchMethodException e) {
+			Exceptions.sneakyThrow(e);
+		}
+		return methodName;
+	}
+
 }

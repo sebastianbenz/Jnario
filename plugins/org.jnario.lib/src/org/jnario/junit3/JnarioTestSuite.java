@@ -13,6 +13,4 @@ public class JnarioTestSuite extends TestSuite{
 	public void addTestSuite(Class testClass) {
 		addTest(new NamedJnarioTestSuite(testClass));
 	}
-	
-	
 }
