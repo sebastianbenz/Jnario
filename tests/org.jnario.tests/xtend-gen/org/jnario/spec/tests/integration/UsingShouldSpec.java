@@ -40,8 +40,8 @@ public class UsingShouldSpec {
   public void _toPass() throws Exception {
     boolean _should_be = Should.<Boolean>should_be(
       Boolean.valueOf(true), true);
-    Assert.assertTrue("\nExpected // equality\r\n\t\ttrue should be true but"
-     + "\n     // equality\r\n\t\ttrue should be true is " + new StringDescription().appendValue(null).toString() + "\n", _should_be);
+    Assert.assertTrue("\nExpected // equality\n\t\ttrue should be true but"
+     + "\n     // equality\n\t\ttrue should be true is " + new StringDescription().appendValue(null).toString() + "\n", _should_be);
     
     int _plus = (1 + 1);
     boolean _should_be_1 = Should.should_be(Integer.valueOf(_plus), Integer.valueOf(1));
@@ -61,8 +61,8 @@ public class UsingShouldSpec {
     
     boolean _doubleArrow_1 = Should.operator_doubleArrow(
       "a string", String.class);
-    Assert.assertTrue("\nExpected // types\r\n\t\t\"a string\" => typeof(String) but"
-     + "\n     // types\r\n\t\t\"a string\" => typeof(String) is " + new StringDescription().appendValue(_doubleArrow_1).toString() + "\n", _doubleArrow_1);
+    Assert.assertTrue("\nExpected // types\n\t\t\"a string\" => typeof(String) but"
+     + "\n     // types\n\t\t\"a string\" => typeof(String) is " + new StringDescription().appendValue(_doubleArrow_1).toString() + "\n", _doubleArrow_1);
     
     Class<? extends Object> _class = "a string".getClass();
     boolean _doubleArrow_2 = Should.operator_doubleArrow(_class, String.class);
@@ -71,8 +71,8 @@ public class UsingShouldSpec {
     
     boolean _should_contain = Should.should_contain(
       "something", "thing");
-    Assert.assertTrue("\nExpected // strings\r\n\t\t\"something\" should contain \"thing\" but"
-     + "\n     // strings\r\n\t\t\"something\" should contain \"thing\" is " + new StringDescription().appendValue(null).toString() + "\n", _should_contain);
+    Assert.assertTrue("\nExpected // strings\n\t\t\"something\" should contain \"thing\" but"
+     + "\n     // strings\n\t\t\"something\" should contain \"thing\" is " + new StringDescription().appendValue(null).toString() + "\n", _should_contain);
     
     boolean _should_contain_1 = Should.should_contain(
       "something", "any");
@@ -81,8 +81,8 @@ public class UsingShouldSpec {
     
     List<String> _list = JnarioCollectionLiterals.<String>list("something");
     boolean _should_contain_2 = Should.<String>should_contain(_list, "something");
-    Assert.assertTrue("\nExpected // iterables\r\n\t\tlist(\"something\") should contain \"something\" but"
-     + "\n     // iterables\r\n\t\tlist(\"something\") is " + new StringDescription().appendValue(_list).toString() + "\n", _should_contain_2);
+    Assert.assertTrue("\nExpected // iterables\n\t\tlist(\"something\") should contain \"something\" but"
+     + "\n     // iterables\n\t\tlist(\"something\") is " + new StringDescription().appendValue(_list).toString() + "\n", _should_contain_2);
     
     List<String> _list_1 = JnarioCollectionLiterals.<String>list("something");
     boolean _should_contain_3 = Should.<String>should_contain(_list_1, "something else");
@@ -114,8 +114,8 @@ public class UsingShouldSpec {
     try{
       Stack<String> _stack = new Stack<String>();
       _stack.pop();
-      Assert.fail("Expected " + EmptyStackException.class.getName() + " in \n     // expecting exceptions\r\n\t\tnew Stack<String>().pop\n with:"
-       + "\n     // expecting exceptions\r\n\t\tnew Stack<String>() is " + new StringDescription().appendValue(_stack).toString());
+      Assert.fail("Expected " + EmptyStackException.class.getName() + " in \n     // expecting exceptions\n\t\tnew Stack<String>().pop\n with:"
+       + "\n     // expecting exceptions\n\t\tnew Stack<String>() is " + new StringDescription().appendValue(_stack).toString());
     }catch(EmptyStackException e){
     }
     try{

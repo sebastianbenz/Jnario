@@ -38,9 +38,9 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
     _builder.newLine();
     boolean _hasMissingMethod = this.hasMissingMethod(_builder);
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_hasMissingMethod), Boolean.valueOf(false));
-    Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.toString\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod => false but"
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.toString\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.toString\r\n\t\t\t}\r\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.toString\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod => false but"
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.toString\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.toString\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   
@@ -58,9 +58,9 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
     _builder.newLine();
     boolean _hasMissingMethod = this.hasMissingMethod(_builder);
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_hasMissingMethod), Boolean.valueOf(false));
-    Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tfact x.toString\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod => false but"
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tfact x.toString\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tfact x.toString\r\n\t\t\t}\r\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tfact x.toString\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod => false but"
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tfact x.toString\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tfact x.toString\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   
@@ -81,9 +81,9 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
     _builder.newLine();
     boolean _hasMissingMethod = this.hasMissingMethod(_builder);
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_hasMissingMethod), Boolean.valueOf(false));
-    Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tUnknown x\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod => false but"
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tUnknown x\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tUnknown x\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tUnknown x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod => false but"
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tUnknown x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tUnknown x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   
@@ -101,9 +101,9 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
     _builder.newLine();
     boolean _hasMissingMethod = this.hasMissingMethod(_builder);
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_hasMissingMethod), Boolean.valueOf(false));
-    Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tfact 9.toString\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod => false but"
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tfact 9.toString\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tfact 9.toString\r\n\t\t\t}\r\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tfact 9.toString\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod => false but"
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tfact 9.toString\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tfact 9.toString\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   
@@ -124,9 +124,9 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
     _builder.newLine();
     boolean _hasMissingMethod = this.hasMissingMethod(_builder);
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_hasMissingMethod), Boolean.valueOf(true));
-    Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod => true but"
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod => true but"
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   
@@ -147,9 +147,9 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
     _builder.newLine();
     boolean _hasMissingMethod = this.hasMissingMethod(_builder);
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_hasMissingMethod), Boolean.valueOf(true));
-    Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.toString(\"hello\")\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod => true but"
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.toString(\"hello\")\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.toString(\"hello\")\r\n\t\t\t}\r\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.toString(\"hello\")\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod => true but"
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.toString(\"hello\")\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.toString(\"hello\")\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   
@@ -170,9 +170,9 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
     _builder.newLine();
     boolean _hasMissingMethod = this.hasMissingMethod(_builder);
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_hasMissingMethod), Boolean.valueOf(true));
-    Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.concat(4)\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod => true but"
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.concat(4)\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.concat(4)\r\n\t\t\t}\r\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.concat(4)\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod => true but"
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.concat(4)\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.concat(4)\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   
@@ -190,9 +190,9 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
     _builder.newLine();
     boolean _hasMissingMethod = this.hasMissingMethod(_builder);
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_hasMissingMethod), Boolean.valueOf(true));
-    Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tfact new String().missing\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod => true but"
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tfact new String().missing\r\n\t\t\t}\r\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
-     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tfact new String().missing\r\n\t\t\t}\r\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tfact new String().missing\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod => true but"
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tfact new String().missing\n\t\t\t}\n\t\t\t\'\'\'.hasMissingMethod is " + new StringDescription().appendValue(Boolean.valueOf(_hasMissingMethod)).toString()
+     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tfact new String().missing\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   

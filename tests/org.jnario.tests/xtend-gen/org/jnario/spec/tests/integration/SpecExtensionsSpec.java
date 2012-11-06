@@ -120,9 +120,9 @@ public class SpecExtensionsSpec {
       "ExtensionExample#after", 
       "ExtensionExample#afterClass");
     boolean _doubleArrow = Should.operator_doubleArrow(_executedMethods, _list);
-    Assert.assertTrue("\nExpected executedMethods =>\r\n\t\t\t   list(\"ExtensionExample#beforeClass\", \r\n\t\t\t\t\t\"ExtensionExample#before\",  \r\n\t\t\t\t\t\"ExtensionSpec#test1\",  \r\n\t\t\t\t\t\"ExtensionExample#after\",  \r\n\t\t\t\t\t\"ExtensionExample#before\",\r\n\t\t\t\t\t\"ExtensionSpec#test2\",  \r\n\t\t\t\t\t\"ExtensionExample#after\",\r\n\t\t\t\t\t\"ExtensionExample#afterClass\") but"
+    Assert.assertTrue("\nExpected executedMethods =>\n\t\t\t   list(\"ExtensionExample#beforeClass\", \n\t\t\t\t\t\"ExtensionExample#before\",  \n\t\t\t\t\t\"ExtensionSpec#test1\",  \n\t\t\t\t\t\"ExtensionExample#after\",  \n\t\t\t\t\t\"ExtensionExample#before\",\n\t\t\t\t\t\"ExtensionSpec#test2\",  \n\t\t\t\t\t\"ExtensionExample#after\",\n\t\t\t\t\t\"ExtensionExample#afterClass\") but"
      + "\n     executedMethods is " + new StringDescription().appendValue(_executedMethods).toString()
-     + "\n     list(\"ExtensionExample#beforeClass\", \r\n\t\t\t\t\t\"ExtensionExample#before\",  \r\n\t\t\t\t\t\"ExtensionSpec#test1\",  \r\n\t\t\t\t\t\"ExtensionExample#after\",  \r\n\t\t\t\t\t\"ExtensionExample#before\",\r\n\t\t\t\t\t\"ExtensionSpec#test2\",  \r\n\t\t\t\t\t\"ExtensionExample#after\",\r\n\t\t\t\t\t\"ExtensionExample#afterClass\") is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
+     + "\n     list(\"ExtensionExample#beforeClass\", \n\t\t\t\t\t\"ExtensionExample#before\",  \n\t\t\t\t\t\"ExtensionSpec#test1\",  \n\t\t\t\t\t\"ExtensionExample#after\",  \n\t\t\t\t\t\"ExtensionExample#before\",\n\t\t\t\t\t\"ExtensionSpec#test2\",  \n\t\t\t\t\t\"ExtensionExample#after\",\n\t\t\t\t\t\"ExtensionExample#afterClass\") is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
     
   }
 }

@@ -19,6 +19,7 @@ import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.JnarioIteratorExtensions;
 import org.jnario.lib.Should;
 import org.jnario.lib.StringConversions;
+import org.jnario.lib.Wait;
 import org.junit.Assert;
 
 import com.google.common.collect.Multimap;
@@ -36,6 +37,7 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 		result.put(ExampleTable.class, ExampleTableIterators.class);
 //		result.replaceValues(Object.class, ImmutableList.of(Should.class, Each.class, ObjectExtensions.class));
 		result.put(Object.class, Should.class);
+		result.put(Object.class, Wait.class);
 		result.put(Object.class, Each.class);
 		result.put(String.class, StringConversions.class);
 		result.put(Iterable.class, JnarioIterableExtensions.class);
