@@ -59,6 +59,7 @@ describe Executable{
 			fact exampleGroupWith(pendingExample).isPending should be true
 			fact exampleGroupWith(implementedExample).isPending should be false
 			fact exampleGroupWith(pendingExample, implementedExample).isPending should be true
+			fact exampleGroupWith(pendingExampleGroup).isPending should be true
 		}
 		
 		@CreateWith(typeof(SuiteTestCreator))

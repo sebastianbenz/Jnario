@@ -56,12 +56,12 @@ public class Specs {
     return _exampleGroupWith;
   }
   
-  public static ExampleGroup exampleGroupWith(final Example... examples) {
+  public static ExampleGroup exampleGroupWith(final XtendMember... examples) {
     ExampleGroup _exampleGroup = Specs.exampleGroup("with examples", examples);
     return _exampleGroup;
   }
   
-  public static ExampleGroup exampleGroup(final String name, final Example... examples) {
+  public static ExampleGroup exampleGroup(final String name, final XtendMember... examples) {
     ExampleGroup _xblockexpression = null;
     {
       final ExampleGroup group = Specs.exampleGroup(name);

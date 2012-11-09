@@ -14,7 +14,6 @@ import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.jnario.Executable;
-import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 
 /**
@@ -56,7 +55,7 @@ public class ExampleGroupImplCustom extends org.jnario.spec.spec.impl.ExampleGro
 	}
 	
 	public boolean isPending(){
-		Iterable<Example> examples = filter(getMembers(), Example.class);
+		Iterable<Executable> examples = filter(getMembers(), Executable.class);
 		if(isEmpty(examples)){
 			return true;
 		}

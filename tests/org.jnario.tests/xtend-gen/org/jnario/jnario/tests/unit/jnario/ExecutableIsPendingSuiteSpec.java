@@ -32,7 +32,7 @@ public class ExecutableIsPendingSuiteSpec extends ExecutableIsPendingSpec {
   
   @Test
   @Named("suiteWith[\\\"A suite\\\", specReference[pendingExampleGroup]].isPending should be true")
-  @Order(18)
+  @Order(19)
   public void _suiteWithASuiteSpecReferencePendingExampleGroupIsPendingShouldBeTrue() throws Exception {
     ExampleGroup _pendingExampleGroup = Specs.pendingExampleGroup();
     SpecReference _specReference = Suites.specReference(_pendingExampleGroup);
@@ -49,7 +49,7 @@ public class ExecutableIsPendingSuiteSpec extends ExecutableIsPendingSpec {
   
   @Test
   @Named("suiteWith[\\\"A suite\\\", specReference[exampleGroupWith[example[\\\"passing\\\"]]]].isPending should be false")
-  @Order(19)
+  @Order(20)
   public void _suiteWithASuiteSpecReferenceExampleGroupWithExamplePassingIsPendingShouldBeFalse() throws Exception {
     Example _example = Specs.example("passing");
     ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_example);

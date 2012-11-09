@@ -63,4 +63,19 @@ public class ExecutableIsPendingExampleGroupSpec extends ExecutableIsPendingSpec
      + "\n     implementedExample is " + new StringDescription().appendValue(_implementedExample).toString() + "\n", _should_be);
     
   }
+  
+  @Test
+  @Named("exampleGroupWith[pendingExampleGroup].isPending should be true")
+  @Order(18)
+  public void _exampleGroupWithPendingExampleGroupIsPendingShouldBeTrue() throws Exception {
+    ExampleGroup _pendingExampleGroup = Specs.pendingExampleGroup();
+    ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_pendingExampleGroup);
+    boolean _isPending = _exampleGroupWith.isPending();
+    boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_isPending), true);
+    Assert.assertTrue("\nExpected exampleGroupWith(pendingExampleGroup).isPending should be true but"
+     + "\n     exampleGroupWith(pendingExampleGroup).isPending is " + new StringDescription().appendValue(Boolean.valueOf(_isPending)).toString()
+     + "\n     exampleGroupWith(pendingExampleGroup) is " + new StringDescription().appendValue(_exampleGroupWith).toString()
+     + "\n     pendingExampleGroup is " + new StringDescription().appendValue(_pendingExampleGroup).toString() + "\n", _should_be);
+    
+  }
 }
