@@ -20,7 +20,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.internal.ui.wizards.NewClassCreationWizard;
 import org.eclipse.jdt.internal.ui.wizards.NewElementWizard;
+import org.eclipse.jdt.internal.ui.wizards.NewInterfaceCreationWizard;
 import org.eclipse.jdt.ui.wizards.NewClassWizardPage;
+import org.eclipse.jdt.ui.wizards.NewInterfaceWizardPage;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
@@ -138,14 +140,37 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 						issueResolutionAcceptor.accept(issue, 
 								"Create Java class", 
 								"Opens the new Java class wizard to create the type '" + issueString + "'", 
-								"java_file.png", 
+								"java_file.gif", 
 								openNewJavaClassWizardFor(context, issueString));
+						issueResolutionAcceptor.accept(issue, 
+								"Create Java Interface", 
+								"Opens the new Java interface wizard to create the type '" + issueString + "'", 
+								"java_interface.gif", 
+								openNewJavaInterfaceWizardFor(context, issueString));
 					}
 				}
+
 
 			});
 			super.createLinkingIssueResolutions(issue, issueResolutionAcceptor);
 		}
+	}
+	
+	private IModification openNewJavaInterfaceWizardFor(final URI contextUri, final String typeName) {
+		return new IModification() {
+			public void apply(IModificationContext context) throws Exception {
+				runAsyncInDisplayThread(new Runnable(){
+
+					public void run() {
+						NewInterfaceWizardPage classWizardPage = new NewInterfaceWizardPage();
+						NewInterfaceCreationWizard wizard = new NewInterfaceCreationWizard(classWizardPage, false);
+						WizardDialog dialog = createWizardDialog(wizard); 
+						newTypePageConfigurer.configure(classWizardPage, contextUri, typeName);
+						dialog.open(); 
+					}
+				});
+			}
+		};
 	}
 	
 	private IModification openNewJavaClassWizardFor(final URI contextUri, final String typeName) {
