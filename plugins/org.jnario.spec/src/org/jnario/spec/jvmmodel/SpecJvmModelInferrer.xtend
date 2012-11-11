@@ -41,6 +41,8 @@ import org.jnario.spec.spec.Example
 import org.jnario.spec.spec.ExampleGroup
 import org.jnario.spec.spec.SpecFile
 import org.jnario.spec.spec.TestFunction
+import org.jnario.jvmmodel.RuntimeProvider
+import org.jnario.jvmmodel.TestRuntimeSupport
 
 import static extension org.eclipse.xtext.util.Strings.*
 import org.jnario.jvmmodel.RuntimeProvider

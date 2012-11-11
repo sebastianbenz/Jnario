@@ -7,7 +7,6 @@
  *******************************************************************************/
 package org.jnario.feature.jvmmodel
 
-import static extension org.jnario.feature.jvmmodel.Scenarios.*
 import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.ecore.EObject
@@ -37,13 +36,14 @@ import org.jnario.runner.Order
 import org.eclipse.xtend.core.xtend.XtendField
 import org.jnario.feature.feature.StepReference
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
+import org.eclipse.xtext.common.types.JvmOperation
 
 import static com.google.common.collect.Iterators.*
-import static extension org.eclipse.xtext.EcoreUtil2.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 
+import static extension org.jnario.feature.jvmmodel.Scenarios.*
+import static extension org.eclipse.xtext.EcoreUtil2.*
 import static extension com.google.common.base.Strings.*
-import org.eclipse.xtext.common.types.JvmOperation
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
