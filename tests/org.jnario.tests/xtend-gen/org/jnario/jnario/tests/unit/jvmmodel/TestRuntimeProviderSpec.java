@@ -9,10 +9,10 @@ import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.SpecTestCreator;
-import org.jnario.jvmmodel.JUnit3ModelEnhancer;
-import org.jnario.jvmmodel.JUnit4ModelEnhancer;
-import org.jnario.jvmmodel.RuntimeProvider;
-import org.jnario.jvmmodel.SpecJvmModelProcessor;
+import org.jnario.jvmmodel.JUnit3RuntimeSupport;
+import org.jnario.jvmmodel.JUnit4RuntimeSupport;
+import org.jnario.jvmmodel.TestRuntimeProvider;
+import org.jnario.jvmmodel.TestRuntimeSupport;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
@@ -27,16 +27,16 @@ import org.mockito.stubbing.OngoingStubbing;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("RuntimeProvider")
+@Named("TestRuntimeProvider")
 @CreateWith(value = SpecTestCreator.class)
-public class RuntimeProviderSpec {
-  public RuntimeProvider subject;
+public class TestRuntimeProviderSpec {
+  public TestRuntimeProvider subject;
   
   @Inject
-  Provider<JUnit3ModelEnhancer> junit3Support;
+  Provider<JUnit3RuntimeSupport> junit3Support;
   
   @Inject
-  Provider<JUnit4ModelEnhancer> junit4Support;
+  Provider<JUnit4RuntimeSupport> junit4Support;
   
   final JvmTypeReference resultingType = new Function0<JvmTypeReference>() {
     public JvmTypeReference apply() {
@@ -61,8 +61,8 @@ public class RuntimeProviderSpec {
   
   @Before
   public void before() throws Exception {
-    RuntimeProvider _runtimeProvider = new RuntimeProvider(this.typeReferences, this.junit3Support, this.junit4Support);
-    this.subject = _runtimeProvider;
+    TestRuntimeProvider _testRuntimeProvider = new TestRuntimeProvider(this.typeReferences, this.junit3Support, this.junit4Support);
+    this.subject = _testRuntimeProvider;
   }
   
   @Test
@@ -72,9 +72,9 @@ public class RuntimeProviderSpec {
     JvmTypeReference _typeForName = this.typeReferences.getTypeForName("junit.framework.TestCase", this.anyNotifier);
     OngoingStubbing<JvmTypeReference> _when = Mockito.<JvmTypeReference>when(_typeForName);
     _when.thenReturn(this.resultingType);
-    SpecJvmModelProcessor _get = this.subject.get(this.anyNotifier);
-    boolean _doubleArrow = Should.operator_doubleArrow(_get, JUnit3ModelEnhancer.class);
-    Assert.assertTrue("\nExpected subject.get(anyNotifier) => typeof(JUnit3ModelEnhancer) but"
+    TestRuntimeSupport _get = this.subject.get(this.anyNotifier);
+    boolean _doubleArrow = Should.operator_doubleArrow(_get, JUnit3RuntimeSupport.class);
+    Assert.assertTrue("\nExpected subject.get(anyNotifier) => typeof(JUnit3RuntimeSupport) but"
      + "\n     subject.get(anyNotifier) is " + new StringDescription().appendValue(_get).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
      + "\n     anyNotifier is " + new StringDescription().appendValue(this.anyNotifier).toString() + "\n", _doubleArrow);
@@ -88,9 +88,9 @@ public class RuntimeProviderSpec {
     JvmTypeReference _typeForName = this.typeReferences.getTypeForName("org.junit.Test", this.anyNotifier);
     OngoingStubbing<JvmTypeReference> _when = Mockito.<JvmTypeReference>when(_typeForName);
     _when.thenReturn(this.resultingType);
-    SpecJvmModelProcessor _get = this.subject.get(this.anyNotifier);
-    boolean _doubleArrow = Should.operator_doubleArrow(_get, JUnit4ModelEnhancer.class);
-    Assert.assertTrue("\nExpected subject.get(anyNotifier) => typeof(JUnit4ModelEnhancer) but"
+    TestRuntimeSupport _get = this.subject.get(this.anyNotifier);
+    boolean _doubleArrow = Should.operator_doubleArrow(_get, JUnit4RuntimeSupport.class);
+    Assert.assertTrue("\nExpected subject.get(anyNotifier) => typeof(JUnit4RuntimeSupport) but"
      + "\n     subject.get(anyNotifier) is " + new StringDescription().appendValue(_get).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
      + "\n     anyNotifier is " + new StringDescription().appendValue(this.anyNotifier).toString() + "\n", _doubleArrow);

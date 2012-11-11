@@ -14,7 +14,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtend.core.xtend.XtendClass;
-import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
@@ -27,10 +26,10 @@ import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
 import org.jnario.MockLiteral;
-import org.jnario.jvmmodel.RuntimeProvider;
+import org.jnario.jvmmodel.TestRuntimeProvider;
+import org.jnario.jvmmodel.TestRuntimeSupport;
 import org.jnario.runner.Named;
 import org.jnario.util.MockingSupport;
-import org.junit.Test;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -49,7 +48,7 @@ public class JnarioJavaValidator extends AbstractDeclarativeValidator {
 	private TypeReferences typeReferences;
 	
 	@Inject
-	private RuntimeProvider runtimeProvider;
+	private TestRuntimeProvider runtimeProvider;
 	
 	@Check
 	public void checkClassPath(MockLiteral clazz) {

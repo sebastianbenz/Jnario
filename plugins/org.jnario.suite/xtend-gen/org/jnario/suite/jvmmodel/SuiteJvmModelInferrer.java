@@ -21,7 +21,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.Specification;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioJvmModelInferrer;
-import org.jnario.jvmmodel.SpecJvmModelProcessor;
+import org.jnario.jvmmodel.TestRuntimeSupport;
 import org.jnario.runner.Named;
 import org.jnario.suite.jvmmodel.SpecResolver;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
@@ -89,13 +89,13 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
             boolean _isEmpty = IterableExtensions.isEmpty(children);
             boolean _not = (!_isEmpty);
             if (_not) {
-              SpecJvmModelProcessor _testRuntime = SuiteJvmModelInferrer.this.getTestRuntime();
+              TestRuntimeSupport _testRuntime = SuiteJvmModelInferrer.this.getTestRuntime();
               Iterable<JvmGenericType> _filter = Iterables.<JvmGenericType>filter(children, JvmGenericType.class);
               Set<JvmGenericType> _set = IterableExtensions.<JvmGenericType>toSet(_filter);
               _testRuntime.addChildren(suite, it, _set);
             }
             SuiteJvmModelInferrer.this.initialize(suite, it);
-            SpecJvmModelProcessor _testRuntime_1 = SuiteJvmModelInferrer.this.getTestRuntime();
+            TestRuntimeSupport _testRuntime_1 = SuiteJvmModelInferrer.this.getTestRuntime();
             _testRuntime_1.updateSuite(suite, it);
           }
         };

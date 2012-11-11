@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>RuntimeProvider</title>
+<title>TestRuntimeProvider</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -24,8 +24,8 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header pending">
-					<h1>RuntimeProvider</h1>
+				<div class="page-header notrun">
+					<h1>TestRuntimeProvider</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 						<li><a href="#source" data-toggle="tab">Source</a></li>
@@ -38,11 +38,11 @@
 <ul><li><p id="returns_JUnit3_runtime_provider_if_JUnit4_is_not_on_classpath" class="example notrun"><strong>returns JUnit3 runtime provider if JUnit4 is not on classpath</strong></p>
 <pre class="prettyprint lang-spec linenums">
 when(typeReferences.getTypeForName(&quot;junit.framework.TestCase&quot;, anyNotifier)).thenReturn(resultingType)
-subject.get(anyNotifier) =&gt; typeof(JUnit3ModelEnhancer)</pre>
+subject.get(anyNotifier) =&gt; typeof(JUnit3RuntimeSupport)</pre>
 </li><li><p id="returns_JUnit4_runtime_provider_if_JUnit4_is_on_classpath" class="example notrun"><strong>returns JUnit4 runtime provider if JUnit4 is on classpath</strong></p>
 <pre class="prettyprint lang-spec linenums">
 when(typeReferences.getTypeForName(&quot;org.junit.Test&quot;, anyNotifier)).thenReturn(resultingType)
-subject.get(anyNotifier) =&gt; typeof(JUnit4ModelEnhancer)</pre>
+subject.get(anyNotifier) =&gt; typeof(JUnit4RuntimeSupport)</pre>
 </li><li><p id="throws_NoSuchElementException_if_JUnit_is_not_on_classpath" class="example notrun"><strong>throws NoSuchElementException if JUnit is not on classpath</strong></p>
 <pre class="prettyprint lang-spec linenums">
 subject.get(anyNotifier) throws NoSuchElementException</pre>
@@ -54,39 +54,42 @@ subject.get(anyNotifier) throws NoSuchElementException</pre>
 <pre class="prettyprint lang-spec linenums">
 package org.jnario.jnario.tests.unit.jvmmodel
 
-import org.jnario.jvmmodel.RuntimeProvider
-import static org.mockito.Mockito.*
-import org.eclipse.xtext.common.types.util.TypeReferences
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.common.types.JvmTypeReference
-import org.jnario.jvmmodel.JUnit3ModelEnhancer
-import org.jnario.jvmmodel.JUnit4ModelEnhancer
-import java.util.NoSuchElementException
-import org.jnario.runner.CreateWith
-import org.jnario.jnario.test.util.SpecTestCreator
 import com.google.inject.Inject
 import com.google.inject.Provider
+import java.util.NoSuchElementException
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.common.types.util.TypeReferences
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.jvmmodel.JUnit3RuntimeSupport
+import org.jnario.jvmmodel.JUnit4RuntimeSupport
+import org.jnario.jvmmodel.TestRuntimeProvider
+import org.jnario.runner.CreateWith
+
+import static org.mockito.Mockito.*
+
+import static extension org.jnario.lib.Should.*
 
 @CreateWith(typeof(SpecTestCreator))
-describe RuntimeProvider{
+describe TestRuntimeProvider{
   
-  @Inject Provider&lt;JUnit3ModelEnhancer&gt; junit3Support
-  @Inject Provider&lt;JUnit4ModelEnhancer&gt; junit4Support
+  @Inject Provider&lt;JUnit3RuntimeSupport&gt; junit3Support
+  @Inject Provider&lt;JUnit4RuntimeSupport&gt; junit4Support
   
   val resultingType = mock(typeof(JvmTypeReference)) 
   val typeReferences = mock(typeof(TypeReferences))
   val anyNotifier = mock(typeof(EObject)) 
   
-  before subject = new RuntimeProvider(typeReferences, junit3Support, junit4Support)  
+  before subject = new TestRuntimeProvider(typeReferences, junit3Support, junit4Support)  
   
   fact &quot;returns JUnit3 runtime provider if JUnit4 is not on classpath&quot;{
     when(typeReferences.getTypeForName(&quot;junit.framework.TestCase&quot;, anyNotifier)).thenReturn(resultingType)
-    subject.get(anyNotifier) =&gt; typeof(JUnit3ModelEnhancer)
+    subject.get(anyNotifier) =&gt; typeof(JUnit3RuntimeSupport)
   }
   
   fact &quot;returns JUnit4 runtime provider if JUnit4 is on classpath&quot;{
     when(typeReferences.getTypeForName(&quot;org.junit.Test&quot;, anyNotifier)).thenReturn(resultingType)
-    subject.get(anyNotifier) =&gt; typeof(JUnit4ModelEnhancer)
+    subject.get(anyNotifier) =&gt; typeof(JUnit4RuntimeSupport)
   }
 
   fact &quot;throws NoSuchElementException if JUnit is not on classpath&quot;{

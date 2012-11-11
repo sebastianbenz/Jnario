@@ -18,7 +18,6 @@ import org.eclipse.xtend.core.xtend.XtendField
 import org.eclipse.xtend.core.xtend.XtendFunction
 import org.eclipse.xtend.core.xtend.XtendMember
 import org.eclipse.xtext.EcoreUtil2
-import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmAnnotationType
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
@@ -30,7 +29,6 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.jnario.ExampleTable
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
-import org.jnario.jvmmodel.JunitAnnotationProvider
 import org.jnario.lib.ExampleTableRow
 import org.jnario.runner.Named
 import org.jnario.runner.Order
@@ -41,12 +39,8 @@ import org.jnario.spec.spec.Example
 import org.jnario.spec.spec.ExampleGroup
 import org.jnario.spec.spec.SpecFile
 import org.jnario.spec.spec.TestFunction
-import org.jnario.jvmmodel.RuntimeProvider
-import org.jnario.jvmmodel.TestRuntimeSupport
 
 import static extension org.eclipse.xtext.util.Strings.*
-import org.jnario.jvmmodel.RuntimeProvider
-import org.jnario.jvmmodel.SpecJvmModelProcessor
  
 /**
  * @author Sebastian Benz - Initial contribution and API

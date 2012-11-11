@@ -61,7 +61,7 @@ import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.jnario.feature.naming.StepNameProvider;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioJvmModelInferrer;
-import org.jnario.jvmmodel.SpecJvmModelProcessor;
+import org.jnario.jvmmodel.TestRuntimeSupport;
 import org.jnario.lib.StepArguments;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -218,12 +218,12 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   
   protected void _init(final Feature feature, final JvmGenericType inferredJvmType, final List<JvmGenericType> scenarios) {
     final EList<JvmAnnotationReference> annotations = inferredJvmType.getAnnotations();
-    SpecJvmModelProcessor _testRuntime = this.getTestRuntime();
+    TestRuntimeSupport _testRuntime = this.getTestRuntime();
     _testRuntime.updateFeature(feature, inferredJvmType);
     boolean _isEmpty = scenarios.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      SpecJvmModelProcessor _testRuntime_1 = this.getTestRuntime();
+      TestRuntimeSupport _testRuntime_1 = this.getTestRuntime();
       _testRuntime_1.addChildren(feature, inferredJvmType, scenarios);
     }
     String _describe = this._stepNameProvider.describe(feature);
@@ -243,7 +243,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       };
     IterableExtensions.<XtendField>forEach(_filter, _function);
     final EList<JvmAnnotationReference> annotations = inferredJvmType.getAnnotations();
-    SpecJvmModelProcessor _testRuntime = this.getTestRuntime();
+    TestRuntimeSupport _testRuntime = this.getTestRuntime();
     _testRuntime.updateFeature(scenario, inferredJvmType);
     String _describe = this._stepNameProvider.describe(scenario);
     JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(scenario, Named.class, _describe);
@@ -409,7 +409,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
               };
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
             FeatureJvmModelInferrer.this.markAsPending(it, step);
-            SpecJvmModelProcessor _testRuntime = FeatureJvmModelInferrer.this.getTestRuntime();
+            TestRuntimeSupport _testRuntime = FeatureJvmModelInferrer.this.getTestRuntime();
             _testRuntime.markAsTestMethod(step, it);
             EList<JvmAnnotationReference> _annotations = it.getAnnotations();
             int _intValue = Integer.valueOf(order).intValue();
@@ -449,7 +449,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             XBlockExpression _blockExpression = stepExpression==null?(XBlockExpression)null:stepExpression.getBlockExpression();
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _blockExpression);
             FeatureJvmModelInferrer.this.generateStepValues(step);
-            SpecJvmModelProcessor _testRuntime = FeatureJvmModelInferrer.this.getTestRuntime();
+            TestRuntimeSupport _testRuntime = FeatureJvmModelInferrer.this.getTestRuntime();
             _testRuntime.markAsTestMethod(step, it);
             EList<JvmAnnotationReference> _annotations = it.getAnnotations();
             int _intValue = Integer.valueOf(order).intValue();
@@ -478,7 +478,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   public void markAsPending(final JvmOperation operation, final Step step) {
     boolean _isPending = step.isPending();
     if (_isPending) {
-      SpecJvmModelProcessor _testRuntime = this.getTestRuntime();
+      TestRuntimeSupport _testRuntime = this.getTestRuntime();
       _testRuntime.markAsPending(step, operation);
     }
   }

@@ -49,7 +49,7 @@ import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioJvmModelInferrer;
-import org.jnario.jvmmodel.SpecJvmModelProcessor;
+import org.jnario.jvmmodel.TestRuntimeSupport;
 import org.jnario.lib.ExampleTableRow;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -134,7 +134,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     boolean _isEmpty = children.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      SpecJvmModelProcessor _testRuntime = this.getTestRuntime();
+      TestRuntimeSupport _testRuntime = this.getTestRuntime();
       _testRuntime.addChildren(exampleGroup, inferredJvmType, children);
     }
     return inferredJvmType;
@@ -156,7 +156,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       EList<JvmAnnotationReference> _annotations = inferredJvmType.getAnnotations();
       _annotations.add(suppressWarnings);
     }
-    SpecJvmModelProcessor _testRuntime = this.getTestRuntime();
+    TestRuntimeSupport _testRuntime = this.getTestRuntime();
     _testRuntime.updateExampleGroup(source, inferredJvmType);
     EList<JvmAnnotationReference> _annotations_1 = inferredJvmType.getAnnotations();
     String _describe = this._exampleNameProvider.describe(((ExampleGroup) source));
@@ -315,11 +315,11 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       int _plus = (this.exampleIndex + 1);
       this.exampleIndex = _plus;
       final JvmOperation method = this.toMethod(element);
-      SpecJvmModelProcessor _testRuntime = this.getTestRuntime();
+      TestRuntimeSupport _testRuntime = this.getTestRuntime();
       _testRuntime.markAsTestMethod(element, method);
       boolean _isPending = element.isPending();
       if (_isPending) {
-        SpecJvmModelProcessor _testRuntime_1 = this.getTestRuntime();
+        TestRuntimeSupport _testRuntime_1 = this.getTestRuntime();
         _testRuntime_1.markAsPending(element, method);
       }
       EList<JvmAnnotationReference> _annotations = method.getAnnotations();
@@ -343,10 +343,10 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       final JvmOperation beforeMethod = this.toMethod(element, _isBeforeAll);
       boolean _isBeforeAll_1 = element.isBeforeAll();
       if (_isBeforeAll_1) {
-        SpecJvmModelProcessor _testRuntime = this.getTestRuntime();
+        TestRuntimeSupport _testRuntime = this.getTestRuntime();
         _testRuntime.beforeAllMethod(element, beforeMethod);
       } else {
-        SpecJvmModelProcessor _testRuntime_1 = this.getTestRuntime();
+        TestRuntimeSupport _testRuntime_1 = this.getTestRuntime();
         _testRuntime_1.beforeMethod(element, beforeMethod);
       }
       EList<JvmMember> _members = container.getMembers();
@@ -363,10 +363,10 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       final JvmOperation afterMethod = this.toMethod(element, _isAfterAll);
       boolean _isAfterAll_1 = element.isAfterAll();
       if (_isAfterAll_1) {
-        SpecJvmModelProcessor _testRuntime = this.getTestRuntime();
+        TestRuntimeSupport _testRuntime = this.getTestRuntime();
         _testRuntime.afterAllMethod(element, afterMethod);
       } else {
-        SpecJvmModelProcessor _testRuntime_1 = this.getTestRuntime();
+        TestRuntimeSupport _testRuntime_1 = this.getTestRuntime();
         _testRuntime_1.afterMethod(element, afterMethod);
       }
       EList<JvmMember> _members = container.getMembers();

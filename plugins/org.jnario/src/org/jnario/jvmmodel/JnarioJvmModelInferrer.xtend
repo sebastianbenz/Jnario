@@ -48,9 +48,9 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 	@Inject extension TypeReferences
 	@Inject extension JvmTypesBuilder
 	@Inject extension IJvmModelAssociations
-	@Inject RuntimeProvider runtime
-	SpecJvmModelProcessor testRuntime
-	
+	@Inject TestRuntimeProvider runtime
+	TestRuntimeSupport testRuntime
+
 	def toField(ExampleColumn column){
 		val field = column.toField(column.name, column.getOrCreateType)
 		if(field != null){

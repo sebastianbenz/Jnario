@@ -39,8 +39,8 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.jnario.ExampleColumn;
-import org.jnario.jvmmodel.RuntimeProvider;
-import org.jnario.jvmmodel.SpecJvmModelProcessor;
+import org.jnario.jvmmodel.TestRuntimeProvider;
+import org.jnario.jvmmodel.TestRuntimeSupport;
 import org.jnario.runner.Extends;
 import org.jnario.runner.Extension;
 
@@ -69,9 +69,9 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   private IJvmModelAssociations _iJvmModelAssociations;
   
   @Inject
-  private RuntimeProvider runtime;
+  private TestRuntimeProvider runtime;
   
-  private SpecJvmModelProcessor testRuntime;
+  private TestRuntimeSupport testRuntime;
   
   public JvmField toField(final ExampleColumn column) {
     String _name = column.getName();
@@ -134,7 +134,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   }
   
   public void infer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
-    SpecJvmModelProcessor _get = this.runtime.get(e);
+    TestRuntimeSupport _get = this.runtime.get(e);
     this.testRuntime = _get;
     this.doInfer(e, acceptor, preIndexingPhase);
   }
@@ -179,7 +179,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
     return _package;
   }
   
-  protected SpecJvmModelProcessor getTestRuntime() {
+  protected TestRuntimeSupport getTestRuntime() {
     return this.testRuntime;
   }
   

@@ -8,7 +8,7 @@ import org.jnario.jvmmodel.JUnit3RuntimeSupport
 import org.jnario.jvmmodel.JUnit4RuntimeSupport
 import java.util.NoSuchElementException
 
-class RuntimeProvider {
+class TestRuntimeProvider {
 	
 	Provider<JUnit4RuntimeSupport> junit4Support
 	Provider<JUnit3RuntimeSupport> junit3Support
