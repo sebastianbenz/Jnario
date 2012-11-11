@@ -31,12 +31,9 @@ import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
-import org.jnario.jvmmodel.JunitAnnotationProvider
 import org.jnario.lib.StepArguments
-import org.jnario.runner.Contains
 import org.jnario.runner.Named
 import org.jnario.runner.Order
-import org.junit.Ignore
 import org.eclipse.xtend.core.xtend.XtendField
 import org.jnario.feature.feature.StepReference
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
@@ -66,7 +63,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	@Inject extension StepExpressionProvider
 	
-	@Inject extension JunitAnnotationProvider annotationProvider
 	
 	@Inject extension StepReferenceFieldCreator
 	
@@ -78,7 +74,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	@Inject extension JvmFieldReferenceUpdater
 	
-   override infer(EObject object, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
+   override doInfer(EObject object, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		val feature = object.resolveFeature
 		if(feature == null || feature.name.isNullOrEmpty){
 			return
@@ -100,6 +96,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def toClass(Background background, IJvmDeclaredTypeAcceptor acceptor){
    		if(background == null) return null
+   		background.addSuperClass
    		val backgroundClass = background.toClass
 		backgroundClass.^abstract = true
 		register(acceptor, background, backgroundClass, emptyList)
@@ -133,7 +130,9 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	def toClass(XtendClass xtendClass, JvmGenericType superClass){
    		if(superClass != null){
 	   		xtendClass.^extends = superClass.createTypeRef()
-   		} 
+   		}else{
+   			xtendClass.addSuperClass
+   		}
    		xtendClass.toClass(xtendClass.toJavaClassName)[
 			packageName = xtendClass.packageName
    		]	
@@ -145,9 +144,9 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def dispatch void init(Feature feature, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios){
    		val annotations = inferredJvmType.annotations
-   		annotations += feature.featureRunner
+   		testRuntime.updateFeature(feature, inferredJvmType)
    		if(!scenarios.empty)
-   			annotations += feature.toAnnotation(typeof(Contains), scenarios)
+   			testRuntime.addChildren(feature, inferredJvmType, scenarios)
    		annotations += feature.toAnnotation(typeof(Named), feature.describe)
    		super.initialize(feature, inferredJvmType)
    	}
@@ -156,7 +155,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		scenario.copyXtendMemberForReferences
 		scenario.members.filter(typeof(XtendField)).forEach[initializeName]   		
    		val annotations = inferredJvmType.annotations
-   		annotations += scenario.featureRunner
+   		testRuntime.updateFeature(scenario, inferredJvmType)
    		annotations += scenario.toAnnotation(typeof(Named), scenario.describe)
    		val feature = scenario.feature
 		var start = 0
@@ -238,7 +237,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 						a.append("super." + methodName + "();")
 			]
 			markAsPending(step)
-			annotations += step.getTestAnnotations(false)
+			testRuntime.markAsTestMethod(step, it)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			annotations += step.toAnnotation(typeof(Named), step.describe)
 		]	
@@ -257,7 +256,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			val stepExpression = expressionOf(step)
 			body = stepExpression?.blockExpression
 			step.generateStepValues
-			annotations += step.getTestAnnotations(false)
+			testRuntime.markAsTestMethod(step, it)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.describe
 			markAsPending(step)
@@ -272,7 +271,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def markAsPending(JvmOperation operation, Step step){
    		if(step.pending){
-			operation.annotations += step.toAnnotation(typeof(Ignore))
+			testRuntime.markAsPending(step, operation)
 		}
    	}
 }

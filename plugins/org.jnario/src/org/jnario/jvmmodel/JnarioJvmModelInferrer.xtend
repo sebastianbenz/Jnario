@@ -32,6 +32,9 @@ import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmField
 import org.jnario.runner.Extension
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
+import org.eclipse.xtend.core.xtend.XtendClass
+import org.jnario.runner.Extends
+import org.eclipse.xtext.xbase.XTypeLiteral
 
 /**
  * @author Birgit Engelmann
@@ -44,7 +47,9 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 	@Inject extension TypeConformanceComputer
 	@Inject extension TypeReferences
 	@Inject extension JvmTypesBuilder
-	@Inject extension IJvmModelAssociations 
+	@Inject extension IJvmModelAssociations
+	@Inject RuntimeProvider runtime
+	SpecJvmModelProcessor testRuntime
 	
 	def toField(ExampleColumn column){
 		val field = column.toField(column.name, column.getOrCreateType)
@@ -73,7 +78,12 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 	}
 
 	override infer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
-		throw new UnsupportedOperationException("Auto-generated function stub")
+		testRuntime = runtime.get(e)
+		doInfer(e, acceptor, preIndexingPhase)
+	}
+	
+	def doInfer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
+		throw new UnsupportedOperationException
 	}
 	
 	override protected transform(XtendField source, JvmGenericType container) {
@@ -99,5 +109,25 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 	def packageName(EObject obj){
 		obj.xtendFile?.^package
 	}
-
+	
+	def protected getTestRuntime(){
+		testRuntime
+	}
+	
+	def protected addSuperClass(XtendClass xtendClass){
+		var EObject xtendType = xtendClass
+		while(xtendType != null && xtendType instanceof XtendClass){
+			val current = xtendType as XtendClass
+			for(annotation : current.annotations){
+				if(annotation.annotationType?.qualifiedName == typeof(Extends).name && annotation.value instanceof XTypeLiteral){
+					val typeLiteral = annotation.value as XTypeLiteral
+					if(current.superTypes.empty && typeLiteral.type != null){
+						xtendClass.^extends = typeLiteral.type.createTypeRef()
+					}
+				}
+			}	
+			xtendType = xtendType.eContainer
+		}
+		xtendClass.annotations
+	}
 }

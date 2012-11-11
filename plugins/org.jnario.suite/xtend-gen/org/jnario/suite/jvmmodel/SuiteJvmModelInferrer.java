@@ -21,8 +21,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.Specification;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioJvmModelInferrer;
-import org.jnario.jvmmodel.JunitAnnotationProvider;
-import org.jnario.runner.Contains;
+import org.jnario.jvmmodel.SpecJvmModelProcessor;
 import org.jnario.runner.Named;
 import org.jnario.suite.jvmmodel.SpecResolver;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
@@ -40,9 +39,6 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
   private SuiteClassNameProvider _suiteClassNameProvider;
   
   @Inject
-  private JunitAnnotationProvider annotationProvider;
-  
-  @Inject
   private SpecResolver _specResolver;
   
   @Inject
@@ -51,7 +47,7 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
   @Inject
   private SuiteNodeBuilder _suiteNodeBuilder;
   
-  public void infer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
+  public void doInfer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
     boolean _not = (!(e instanceof SuiteFile));
     if (_not) {
       return;
@@ -85,23 +81,22 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
       final Procedure1<JvmGenericType> _function_1 = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
             EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-            JvmAnnotationReference _exampleGroupRunnerAnnotation = SuiteJvmModelInferrer.this.annotationProvider.getExampleGroupRunnerAnnotation(suite);
-            SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _exampleGroupRunnerAnnotation);
-            EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
             String _describe = SuiteJvmModelInferrer.this._suiteClassNameProvider.describe(suite);
             JvmAnnotationReference _annotation = SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(suite, Named.class, _describe);
-            SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
+            SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
             Iterable<JvmType> _children = SuiteJvmModelInferrer.this.children(suite);
             final Iterable<JvmType> children = Iterables.<JvmType>concat(_children, subSuites);
             boolean _isEmpty = IterableExtensions.isEmpty(children);
             boolean _not = (!_isEmpty);
             if (_not) {
-              EList<JvmAnnotationReference> _annotations_2 = it.getAnnotations();
-              Set<JvmType> _set = IterableExtensions.<JvmType>toSet(children);
-              JvmAnnotationReference _annotation_1 = SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(suite, Contains.class, _set);
-              SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_2, _annotation_1);
+              SpecJvmModelProcessor _testRuntime = SuiteJvmModelInferrer.this.getTestRuntime();
+              Iterable<JvmGenericType> _filter = Iterables.<JvmGenericType>filter(children, JvmGenericType.class);
+              Set<JvmGenericType> _set = IterableExtensions.<JvmGenericType>toSet(_filter);
+              _testRuntime.addChildren(suite, it, _set);
             }
             SuiteJvmModelInferrer.this.initialize(suite, it);
+            SpecJvmModelProcessor _testRuntime_1 = SuiteJvmModelInferrer.this.getTestRuntime();
+            _testRuntime_1.updateSuite(suite, it);
           }
         };
       _accept.initializeLater(_function_1);

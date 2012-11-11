@@ -7,11 +7,11 @@
  *******************************************************************************/
 package org.jnario.jnario.test.util
 
-import org.jnario.spec.spec.SpecFactory
-import org.jnario.spec.spec.Example
-import org.eclipse.xtext.xbase.XbaseFactory
-import org.jnario.spec.spec.ExampleGroup
 import org.eclipse.xtend.core.xtend.XtendMember
+import org.eclipse.xtext.xbase.XbaseFactory
+import org.jnario.spec.spec.SpecFactory
+
+import static org.jnario.jnario.test.util.Specs.*
 
 class Specs {
 	

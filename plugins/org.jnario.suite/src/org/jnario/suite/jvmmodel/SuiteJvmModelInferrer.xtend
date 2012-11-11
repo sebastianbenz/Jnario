@@ -14,22 +14,20 @@ import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
-import org.jnario.jvmmodel.JunitAnnotationProvider
-import org.jnario.runner.Contains
 import org.jnario.runner.Named
 import org.jnario.suite.suite.Suite
 import org.jnario.suite.suite.SuiteFile
+import org.eclipse.xtext.common.types.JvmGenericType
 
 class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 
 	@Inject extension ExtendedJvmTypesBuilder
 	@Inject extension SuiteClassNameProvider
-	@Inject extension JunitAnnotationProvider annotationProvider
 	@Inject extension SpecResolver
 	@Inject extension TypeReferences types
 	@Inject extension SuiteNodeBuilder
 	
-	override infer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
+	override doInfer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		if (!(e instanceof SuiteFile)){
 			return
 		}
@@ -45,13 +43,13 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
    		val suiteClass = suite.toClass(suite.toQualifiedJavaClassName)
 		val subSuites = node.children.map[infer(acceptor)].toSet
    		acceptor.accept(suiteClass).initializeLater([
-   				it.annotations += suite.exampleGroupRunnerAnnotation
 				it.annotations += suite.toAnnotation(typeof(Named), suite.describe)
 				val children = suite.children + subSuites
 				if(!children.empty){
-					it.annotations += suite.toAnnotation(typeof(Contains), children.toSet);
+					testRuntime.addChildren(suite, it, children.filter(typeof(JvmGenericType)).toSet)
 				}
    				suite.initialize(it)
+   				testRuntime.updateSuite(suite, it)
    			])
    		suiteClass
    	}
