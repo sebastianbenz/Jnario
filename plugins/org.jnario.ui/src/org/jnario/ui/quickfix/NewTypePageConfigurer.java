@@ -34,6 +34,5 @@ public class NewTypePageConfigurer {
 			LOG.error("Could not find package for " + path, e);
 		}
 	}
-
 	
 }

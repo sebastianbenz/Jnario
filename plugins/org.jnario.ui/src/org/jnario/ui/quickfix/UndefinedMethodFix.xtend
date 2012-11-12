@@ -25,6 +25,7 @@ import org.eclipse.xtext.xbase.compiler.StringBuilderBasedAppendable
 
 import static org.eclipse.xtext.xbase.XbasePackage$Literals.*
 import static org.jnario.util.Nodes.*
+import org.eclipse.xtext.common.types.JvmGenericType
 
 class UndefinedMethodFix {
 	
@@ -66,12 +67,16 @@ class NewMethodModificationProvider{
 			return new CreateXtendMethod(methodBuilder, targetType.xtendClass, editorOpener, apendableFactory)
 		}else{
 			val methodBuilder = newJavaMethodBuilder(methodName, call)
+			methodBuilder.isInterface = (targetType instanceof JvmGenericType) && (targetType as JvmGenericType).interface
 			val javaElement = findElementFor(targetType)
 			return new CreateJavaMethod(methodBuilder, javaElement as IType)
 		}
 	}
 	
 	def private xtendClass(JvmType type){
+		if(type == null){
+			return null
+		}
 		type.eResource.allContents.filter(typeof(XtendClass)).findFirst[it.name == type.simpleName]
 	}
 	

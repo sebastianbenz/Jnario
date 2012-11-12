@@ -11,6 +11,7 @@ import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.ide.contentassist.ReplacingAppendable.Factory;
+import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.util.jdt.IJavaElementFinder;
 import org.eclipse.xtext.ui.editor.IURIEditorOpener;
@@ -52,6 +53,14 @@ public class NewMethodModificationProvider {
       return _createXtendMethod;
     } else {
       final XtendMethodBuilder methodBuilder_1 = this.methodBuilderProvider.newJavaMethodBuilder(methodName, call);
+      boolean _and = false;
+      if (!(targetType instanceof JvmGenericType)) {
+        _and = false;
+      } else {
+        boolean _isInterface = ((JvmGenericType) targetType).isInterface();
+        _and = ((targetType instanceof JvmGenericType) && _isInterface);
+      }
+      methodBuilder_1.setIsInterface(_and);
       final IJavaElement javaElement = this.elementProvider.findElementFor(targetType);
       CreateJavaMethod _createJavaMethod = new CreateJavaMethod(methodBuilder_1, ((IType) javaElement));
       return _createJavaMethod;
@@ -59,18 +68,26 @@ public class NewMethodModificationProvider {
   }
   
   private XtendClass xtendClass(final JvmType type) {
-    Resource _eResource = type.eResource();
-    TreeIterator<EObject> _allContents = _eResource.getAllContents();
-    Iterator<XtendClass> _filter = Iterators.<XtendClass>filter(_allContents, XtendClass.class);
-    final Function1<XtendClass,Boolean> _function = new Function1<XtendClass,Boolean>() {
-        public Boolean apply(final XtendClass it) {
-          String _name = it.getName();
-          String _simpleName = type.getSimpleName();
-          boolean _equals = Objects.equal(_name, _simpleName);
-          return Boolean.valueOf(_equals);
-        }
-      };
-    XtendClass _findFirst = IteratorExtensions.<XtendClass>findFirst(_filter, _function);
-    return _findFirst;
+    XtendClass _xblockexpression = null;
+    {
+      boolean _equals = Objects.equal(type, null);
+      if (_equals) {
+        return null;
+      }
+      Resource _eResource = type.eResource();
+      TreeIterator<EObject> _allContents = _eResource.getAllContents();
+      Iterator<XtendClass> _filter = Iterators.<XtendClass>filter(_allContents, XtendClass.class);
+      final Function1<XtendClass,Boolean> _function = new Function1<XtendClass,Boolean>() {
+          public Boolean apply(final XtendClass it) {
+            String _name = it.getName();
+            String _simpleName = type.getSimpleName();
+            boolean _equals = Objects.equal(_name, _simpleName);
+            return Boolean.valueOf(_equals);
+          }
+        };
+      XtendClass _findFirst = IteratorExtensions.<XtendClass>findFirst(_filter, _function);
+      _xblockexpression = (_findFirst);
+    }
+    return _xblockexpression;
   }
 }

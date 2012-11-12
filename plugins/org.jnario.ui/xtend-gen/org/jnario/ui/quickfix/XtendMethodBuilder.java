@@ -53,6 +53,16 @@ public class XtendMethodBuilder {
     this._methodName = methodName;
   }
   
+  private boolean _isInterface;
+  
+  public boolean isIsInterface() {
+    return this._isInterface;
+  }
+  
+  public void setIsInterface(final boolean isInterface) {
+    this._isInterface = isInterface;
+  }
+  
   private XAbstractFeatureCall _featureCall;
   
   public XAbstractFeatureCall getFeatureCall() {
@@ -88,17 +98,25 @@ public class XtendMethodBuilder {
   }
   
   protected IAppendable addBody(final IAppendable appendable) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("{");
-    _builder.newLine();
-    _builder.append("\t");
-    Object _returnStatement = this.returnStatement();
-    _builder.append(_returnStatement, "	");
-    _builder.newLineIfNotEmpty();
-    _builder.append("}");
-    _builder.newLine();
-    IAppendable _append = appendable.append(_builder);
-    return _append;
+    IAppendable _xblockexpression = null;
+    {
+      boolean _isIsInterface = this.isIsInterface();
+      if (_isIsInterface) {
+        return appendable.append(";");
+      }
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("{");
+      _builder.newLine();
+      _builder.append("\t");
+      Object _returnStatement = this.returnStatement();
+      _builder.append(_returnStatement, "	");
+      _builder.newLineIfNotEmpty();
+      _builder.append("}");
+      _builder.newLine();
+      IAppendable _append = appendable.append(_builder);
+      _xblockexpression = (_append);
+    }
+    return _xblockexpression;
   }
   
   protected Object returnStatement() {

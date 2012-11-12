@@ -55,8 +55,8 @@ public class VariableNameAcceptor implements CompletionDataAcceptor {
         }
       };
     Collections.<String>sort(candidates, new Comparator<String>() {
-        public int compare(String arg0,String arg1) {
-          return _function.apply(arg0,arg1);
+        public int compare(String o1,String o2) {
+          return _function.apply(o1,o2);
         }
     });
     int _size = candidates.size();

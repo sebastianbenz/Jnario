@@ -52,6 +52,7 @@ class XtendMethodBuilder {
 	@Inject extension TypeSubstitutionHelper 
 	 
 	@Property String methodName 
+	@Property boolean isInterface 
 	@Property XAbstractFeatureCall featureCall
 	
 	def build(IAppendable appendable){
@@ -72,6 +73,7 @@ class XtendMethodBuilder {
 	}
 	
 	def protected addBody(IAppendable appendable){
+		if(isInterface) return appendable.append(";");
 		appendable.append('''
 			{
 				«returnStatement»

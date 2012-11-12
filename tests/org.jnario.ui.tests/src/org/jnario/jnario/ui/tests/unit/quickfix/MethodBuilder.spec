@@ -207,6 +207,17 @@ describe "MethodBuilder" {
 			''')
 		}
 		
+		fact "generated no method body if interface"{
+			setContext('''
+				describe "Something"{
+					fact myMethod()
+				}
+			''')
+			builder.isInterface = true
+			generatedMethod.is('''
+				public void myMethod();''')
+		}
+		
 		def setContext(CharSequence s){
 			m.parseSpec(s)
 			builder = builderProvider.newJavaMethodBuilder("myMethod", m.first(typeof(XAbstractFeatureCall)))

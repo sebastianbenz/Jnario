@@ -23,9 +23,11 @@ describe NewMethodModificationProvider{
 	
 	fact "creates CreateJavaMethod modification for Java class"{
 		'''
-		describe "Something"{
+		class Something{
 			String x
-			fact x.unresolved
+			def method(){
+				fact x.unresolved
+			}
 		}
 		'''.createModification => typeof(CreateJavaMethod)
 	}
@@ -38,15 +40,17 @@ describe NewMethodModificationProvider{
 		''')
 		
 		'''
-		describe "Something"{
+		class Something{
 			Example example
-			fact example.unresolved
+			def method(){
+				 example.unresolved
+			}
 		}
 		'''.createModification => typeof(CreateXtendMethod)
 	} 
 
 	def createModification(CharSequence s){
-		parseSpec(s)
+		parseXtend(s)
 		subject.createModification(firstFeatureCall, "unresolved")
 	} 
 
