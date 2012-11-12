@@ -1,9 +1,9 @@
 package org.jnario.feature.jvmmodel;
 
 import static com.google.common.collect.Iterables.concat;
+import static com.google.common.collect.Iterables.filter;
 import static org.eclipse.emf.ecore.util.EcoreUtil.replace;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.common.types.JvmField;
@@ -15,7 +15,6 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.util.XbaseUsageCrossReferencer;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 public class JvmFieldReferenceUpdater {
@@ -54,14 +53,8 @@ public class JvmFieldReferenceUpdater {
 		}
 		
 		private JvmField findMatchingField(JvmField sourceField) {
-			Iterable<JvmMember> members = newType.getMembers();
-			for (JvmTypeReference superTypeReference : newType.getSuperTypes()) {
-				JvmType superType = superTypeReference.getType();
-				if(superType != null && superType instanceof JvmGenericType){
-					members = concat(members, ((JvmGenericType)superType).getMembers());
-				}
-			}
-			for (JvmField candidate : Iterables.filter(members, JvmField.class)) {
+			Iterable<JvmMember> members = allMembersOf(newType);
+			for (JvmField candidate : filter(members, JvmField.class)) {
 				if(candidate.getSimpleName().equals(sourceField.getSimpleName())){
 					return candidate;
 				}
@@ -70,6 +63,17 @@ public class JvmFieldReferenceUpdater {
 			JvmField newField = typesBuilder.toField(source, sourceField.getSimpleName(), sourceField.getType());
 			newType.getMembers().add(newField);
 			return newField;
+		}
+
+		public Iterable<JvmMember> allMembersOf(JvmGenericType type) {
+			Iterable<JvmMember> members = type.getMembers();
+			for (JvmTypeReference superTypeReference : type.getSuperTypes()) {
+				JvmType superType = superTypeReference.getType();
+				if(superType != null && superType instanceof JvmGenericType){
+					members = concat(members, ((JvmGenericType)superType).getMembers());
+				}
+			}
+			return members;
 		}
 
 		public void updateFields(JvmGenericType originalType, JvmGenericType newType){

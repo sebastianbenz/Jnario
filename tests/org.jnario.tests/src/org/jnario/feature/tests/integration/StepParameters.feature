@@ -7,12 +7,6 @@
  *******************************************************************************/
 package org.jnario.feature.tests.integration
 
-import org.jnario.runner.CreateWith
-import org.jnario.jnario.test.util.FeatureTestCreator
-import com.google.inject.Inject
-import org.jnario.jnario.test.util.BehaviorExecutor
-
-
 Feature: Step Parameters
 	
 	Scenario: Parameters are defined in quotes
