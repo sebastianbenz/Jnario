@@ -8,6 +8,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -35,6 +36,7 @@ import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
@@ -133,10 +135,19 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
     return column.getType();
   }
   
-  public void infer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
-    TestRuntimeSupport _get = this.runtime.get(e);
-    this.testRuntime = _get;
-    this.doInfer(e, acceptor, preIndexingPhase);
+  public void infer(final EObject obj, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
+    try {
+      TestRuntimeSupport _get = this.runtime.get(obj);
+      this.testRuntime = _get;
+    } catch (final Throwable _t) {
+      if (_t instanceof NoSuchElementException) {
+        final NoSuchElementException ex = (NoSuchElementException)_t;
+        return;
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    this.doInfer(obj, acceptor, preIndexingPhase);
   }
   
   public void doInfer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {

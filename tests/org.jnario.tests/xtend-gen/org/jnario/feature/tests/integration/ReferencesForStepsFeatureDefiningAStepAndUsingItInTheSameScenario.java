@@ -2,10 +2,12 @@ package org.jnario.feature.tests.integration;
 
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.FeatureExecutor;
+import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
 import org.jnario.lib.StepArguments;
 import org.jnario.lib.StringConversions;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -16,6 +18,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Defining a step and using it in the same scenario")
+@CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario {
   @Test

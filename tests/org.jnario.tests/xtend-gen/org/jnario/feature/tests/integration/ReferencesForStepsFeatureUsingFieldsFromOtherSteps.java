@@ -1,8 +1,10 @@
 package org.jnario.feature.tests.integration;
 
 import org.jnario.jnario.test.util.FeatureExecutor;
+import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
+import org.jnario.runner.CreateWith;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -11,6 +13,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Using fields from other steps")
+@CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class ReferencesForStepsFeatureUsingFieldsFromOtherSteps {
   @Test

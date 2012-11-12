@@ -9,10 +9,15 @@ package org.jnario.feature.tests.integration
 
 import static extension org.jnario.jnario.test.util.FeatureExecutor.*
 import static org.jnario.jnario.test.util.ResultMatchers.*
+import org.jnario.jnario.test.util.FeatureTestCreator
+import org.jnario.runner.CreateWith
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.BehaviorExecutor
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
+ @CreateWith(typeof(FeatureTestCreator))
 Feature: References for steps
 
 	Scenario: Defining a step and using it in the same scenario
@@ -241,3 +246,32 @@ Feature: References for steps
 	 	'''
 	 	jnarioFile = args.first
 	 	Then it should execute successfully
+
+	Scenario: Background steps referencing other steps
+	 	@Inject extension BehaviorExecutor behaviorExecutor
+	 	CharSequence jnarioFile1
+	 	CharSequence jnarioFile2
+	 	Given a feature
+	 	'''
+			Feature: Feature 1
+			Background:
+			String testString
+			Given something
+			testString = "test"
+			And it is upper case
+			testString.toUpperCase
+			Scenario: Scenario 1
+	 	'''
+	 		jnarioFile1 = args.first
+	 	When referencing the backround steps from another background
+	 	'''
+			Feature: Feature 2
+			Background:
+			Given something
+			Scenario: Scenario 2
+			Given it is upper case
+	 	'''
+	 		jnarioFile2 = args.first
+	 	Then they should execute successfully
+	 		jnarioFile1.executesSuccessfully
+	 		jnarioFile2.executesSuccessfully

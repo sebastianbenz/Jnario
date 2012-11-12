@@ -7,6 +7,12 @@
  *******************************************************************************/
 package org.jnario.feature.tests.integration
 
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.FeatureTestCreator
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.BehaviorExecutor
+
+
 Feature: Step Parameters
 	
 	Scenario: Parameters are defined in quotes
@@ -113,9 +119,8 @@ Feature: Step Parameters
 							x should be args.first
 			"
 		Then it should execute successfully
-		
+	
 	Scenario: Using args in And Steps
-		
 		When I have a scenario with 'and' step arguments
 		'''
 		Feature: And Arguments

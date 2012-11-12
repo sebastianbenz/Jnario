@@ -1,11 +1,16 @@
 package org.jnario.feature.jvmmodel;
 
+import static com.google.common.collect.Iterables.concat;
 import static org.eclipse.emf.ecore.util.EcoreUtil.replace;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.JvmMember;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.util.XbaseUsageCrossReferencer;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
@@ -49,7 +54,14 @@ public class JvmFieldReferenceUpdater {
 		}
 		
 		private JvmField findMatchingField(JvmField sourceField) {
-			for (JvmField candidate : Iterables.filter(newType.getMembers(), JvmField.class)) {
+			Iterable<JvmMember> members = newType.getMembers();
+			for (JvmTypeReference superTypeReference : newType.getSuperTypes()) {
+				JvmType superType = superTypeReference.getType();
+				if(superType != null && superType instanceof JvmGenericType){
+					members = concat(members, ((JvmGenericType)superType).getMembers());
+				}
+			}
+			for (JvmField candidate : Iterables.filter(members, JvmField.class)) {
 				if(candidate.getSimpleName().equals(sourceField.getSimpleName())){
 					return candidate;
 				}

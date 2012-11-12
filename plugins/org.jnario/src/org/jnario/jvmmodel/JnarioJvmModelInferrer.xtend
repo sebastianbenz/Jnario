@@ -20,11 +20,6 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.jnario.ExampleColumn
-
-import static com.google.common.base.Predicates.*
-import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
-
-import static extension com.google.common.collect.Iterables.*
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtend.core.xtend.XtendFile
 import org.eclipse.xtend.core.xtend.XtendField
@@ -35,6 +30,12 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.jnario.runner.Extends
 import org.eclipse.xtext.xbase.XTypeLiteral
+import java.util.NoSuchElementException
+
+import static com.google.common.base.Predicates.*
+
+import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
+import static extension com.google.common.collect.Iterables.*
 
 /**
  * @author Birgit Engelmann
@@ -77,9 +78,13 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 		return column.type
 	}
 
-	override infer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
-		testRuntime = runtime.get(e)
-		doInfer(e, acceptor, preIndexingPhase)
+	override infer(EObject obj, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
+		try{
+			testRuntime = runtime.get(obj)
+		}catch(NoSuchElementException ex){
+			return
+		}
+		doInfer(obj, acceptor, preIndexingPhase)
 	}
 	
 	def doInfer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
