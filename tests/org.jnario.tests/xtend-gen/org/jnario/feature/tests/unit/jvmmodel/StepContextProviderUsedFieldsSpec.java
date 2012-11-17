@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
 public class StepContextProviderUsedFieldsSpec extends StepContextProviderSpec {
   @Test
   @Named("returns all called fields of scenario")
-  @Order(0)
+  @Order(1)
   public void _returnsAllCalledFieldsOfScenario() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: My Feature");
@@ -51,7 +51,7 @@ public class StepContextProviderUsedFieldsSpec extends StepContextProviderSpec {
   
   @Test
   @Named("returns all called fields of scenario and background")
-  @Order(1)
+  @Order(2)
   public void _returnsAllCalledFieldsOfScenarioAndBackground() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: My Feature");

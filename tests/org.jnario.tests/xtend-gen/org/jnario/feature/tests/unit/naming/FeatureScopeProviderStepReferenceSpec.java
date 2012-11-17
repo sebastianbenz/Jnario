@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 public class FeatureScopeProviderStepReferenceSpec extends FeatureScopeProviderSpec {
   @Test
   @Named("contains all implemented steps")
-  @Order(0)
+  @Order(1)
   public void _containsAllImplementedSteps() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package myPackage");

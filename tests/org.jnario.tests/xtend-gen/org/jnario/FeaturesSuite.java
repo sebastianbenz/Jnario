@@ -8,9 +8,9 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
-@RunWith(ExampleGroupRunner.class)
 @Named("Features")
 @Contains({ ReferencingOtherStepsSpec.class, SetupTeardownWithFeatureExtensionsFeature.class, UsingJUnitRulesInFeaturesFeature.class })
 @SuppressWarnings("all")
+@RunWith(ExampleGroupRunner.class)
 public class FeaturesSuite {
 }

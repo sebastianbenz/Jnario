@@ -13,7 +13,7 @@ import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
-@Contains({ StepParametersFeatureParametersAreDefinedInQuotes.class, StepParametersFeatureAccessOfParametersWithFirstSecond.class, StepParametersFeatureParameterDefinitionInStepsAndBackground.class, StepParametersFeatureParameterDefinitionInAndSteps.class, StepParametersFeatureReferencingVariablesThatContainAValueFromArgs.class, StepParametersFeatureUsingMultilineStrings.class, StepParametersFeatureUsingArgsInAndSteps.class })
+@Contains({ StepParametersFeatureParametersAreDefinedInQuotes.class, StepParametersFeatureAccessOfParametersWithFirstSecond.class, StepParametersFeatureParameterDefinitionInStepsAndBackground.class, StepParametersFeatureParameterDefinitionInAndSteps.class, StepParametersFeatureReferencingVariablesThatContainAValueFromArgs.class, StepParametersFeatureUsingMultilineStrings.class, StepParametersFeatureUsingArgsInAndSteps.class, StepParametersFeatureUsingArgsInAndSteps.class })
 @Named("Step Parameters")
 @SuppressWarnings("all")
 public class StepParametersFeature {

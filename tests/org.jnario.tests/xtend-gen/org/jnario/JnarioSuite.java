@@ -9,9 +9,9 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
-@RunWith(ExampleGroupRunner.class)
 @Named("Jnario")
 @Contains({ CommonSuite.class, SuiteSuite.class, FeatureSuite.class, SpecSuite.class })
 @SuppressWarnings("all")
+@RunWith(ExampleGroupRunner.class)
 public class JnarioSuite {
 }

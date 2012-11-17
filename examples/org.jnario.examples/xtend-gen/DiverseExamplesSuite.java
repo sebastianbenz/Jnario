@@ -10,9 +10,9 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
-@RunWith(ExampleGroupRunner.class)
 @Named("Diverse Examples")
 @Contains({ AdditionFeature.class, HelloWorldSpec.class, ListExistingSpecsSuite.class, SelectMultipleSpecsSuite.class, StackSpec.class, TablesSpec.class, TestSuitesOnSteroidsSuite.class })
 @SuppressWarnings("all")
+@RunWith(ExampleGroupRunner.class)
 public class DiverseExamplesSuite {
 }

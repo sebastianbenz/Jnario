@@ -7,9 +7,9 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
-@RunWith(ExampleGroupRunner.class)
 @Named("Test Suites on Steroids")
 @Contains({ ListExistingSpecsSuite.class, SelectMultipleSpecsSuite.class })
 @SuppressWarnings("all")
+@RunWith(ExampleGroupRunner.class)
 public class TestSuitesOnSteroidsSuite {
 }

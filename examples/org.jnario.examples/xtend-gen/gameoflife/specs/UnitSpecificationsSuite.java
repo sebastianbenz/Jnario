@@ -10,9 +10,9 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
-@RunWith(ExampleGroupRunner.class)
 @Named("Unit Specifications")
 @Contains({ CellLocationSpec.class, EvolutionSpec.class, RulesSpec.class, SelectMultipleSpecsSuite.class, WorldSpec.class })
 @SuppressWarnings("all")
+@RunWith(ExampleGroupRunner.class)
 public class UnitSpecificationsSuite {
 }

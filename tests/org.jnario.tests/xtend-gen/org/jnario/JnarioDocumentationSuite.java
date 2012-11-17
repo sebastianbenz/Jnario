@@ -11,9 +11,9 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
-@RunWith(ExampleGroupRunner.class)
 @Named("Jnario Documentation")
 @Contains({ InstallationSuite.class, GettingStartedSuite.class, CommonConceptsSuite.class, FeaturesSuite.class, SpecsSuite.class, SupportSuite.class })
 @SuppressWarnings("all")
+@RunWith(ExampleGroupRunner.class)
 public class JnarioDocumentationSuite {
 }

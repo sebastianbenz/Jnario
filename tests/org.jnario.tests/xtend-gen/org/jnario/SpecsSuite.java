@@ -9,9 +9,9 @@ import org.jnario.spec.tests.integration.UsingJUnitRulesInSpecsSpec;
 import org.jnario.spec.tests.integration.UsingTablesSpec;
 import org.junit.runner.RunWith;
 
-@RunWith(ExampleGroupRunner.class)
 @Named("Specs")
 @Contains({ ImplicitSubjectSpec.class, SpecExtensionsSpec.class, UsingJUnitRulesInSpecsSpec.class, UsingTablesSpec.class })
 @SuppressWarnings("all")
+@RunWith(ExampleGroupRunner.class)
 public class SpecsSuite {
 }

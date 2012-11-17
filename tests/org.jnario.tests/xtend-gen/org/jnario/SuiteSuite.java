@@ -18,9 +18,9 @@ import org.jnario.suite.unit.SuiteValueConverterSpec;
 import org.jnario.suite.unit.TextValueConverterSpec;
 import org.junit.runner.RunWith;
 
-@RunWith(ExampleGroupRunner.class)
 @Named("Suite")
 @Contains({ IntroducingJnarioSuitesSpec.class, PatternValueConverterSpec.class, SpecResolverSpec.class, SuiteClassNameProviderSpec.class, SuiteDocGeneratorSpec.class, SuiteExecutableProviderSpec.class, SuiteJavaValidatorSpec.class, SuiteNodeBuilderSpec.class, SuiteQualifiedNameProviderSpec.class, SuiteScopeProviderSpec.class, SuiteSpecFilterSpec.class, SuiteValueConverterSpec.class, TextValueConverterSpec.class })
 @SuppressWarnings("all")
+@RunWith(ExampleGroupRunner.class)
 public class SuiteSuite {
 }

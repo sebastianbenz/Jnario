@@ -127,3 +127,18 @@ Feature: Step Parameters
 		'''
 			jnarioFile=args.first
 		Then it should execute successfully
+		
+	Scenario: Using args in And Steps
+		When I have a scenario with 'and' step arguments
+		'''
+		Feature: Field initializers in Backgrounds
+		Background:
+		  String greeting = "Hello "
+		  Given a name "Sebastian"
+		    greeting = greeting + args.first
+		Scenario: Greeting someone
+		  Then the greeting should be "Hello Sebastian" 
+			greeting => args.first
+		'''
+			jnarioFile=args.first
+		Then it should execute successfully

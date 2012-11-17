@@ -103,7 +103,7 @@ public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends Introducing
    */
   @Test
   @Named("Implementing Steps")
-  @Order(0)
+  @Order(1)
   public void _implementingSteps() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -155,7 +155,7 @@ public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends Introducing
    */
   @Test
   @Named("Background")
-  @Order(1)
+  @Order(2)
   public void _background() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -227,7 +227,7 @@ public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends Introducing
    */
   @Test
   @Named("Step references")
-  @Order(2)
+  @Order(3)
   public void _stepReferences() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");

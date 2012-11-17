@@ -9,9 +9,9 @@ import org.jnario.spec.tests.integration.UsingShouldSpec;
 import org.jnario.spec.tests.integration.UsingXtendSWithOperatorSpec;
 import org.junit.runner.RunWith;
 
-@RunWith(ExampleGroupRunner.class)
 @Named("Common Concepts")
 @Contains({ CustomizingTheSpecCreationSpec.class, ExtensionLibrarySpec.class, UsingShouldSpec.class, UsingXtendSWithOperatorSpec.class })
 @SuppressWarnings("all")
+@RunWith(ExampleGroupRunner.class)
 public class CommonConceptsSuite {
 }
