@@ -17,7 +17,6 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.integration.UsingTablesSpecExample;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,7 +43,7 @@ public class UsingTablesSpec {
    */
   @Test
   @Named("accessing values")
-  @Order(0)
+  @Order(1)
   public void _accessingValues() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -97,7 +96,7 @@ public class UsingTablesSpec {
    */
   @Test
   @Named("Naming examples")
-  @Order(1)
+  @Order(2)
   public void _namingExamples() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -140,7 +139,7 @@ public class UsingTablesSpec {
    */
   @Test
   @Named("expressions in tables")
-  @Order(2)
+  @Order(3)
   public void _expressionsInTables() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -192,7 +191,7 @@ public class UsingTablesSpec {
    */
   @Test
   @Named("referencing members")
-  @Order(3)
+  @Order(4)
   public void _referencingMembers() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -260,7 +259,7 @@ public class UsingTablesSpec {
    */
   @Test
   @Named("Specifying column types")
-  @Order(4)
+  @Order(5)
   public void _specifyingColumnTypes() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -307,9 +306,8 @@ public class UsingTablesSpec {
     this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
-  @Before
-  public void _initUsingTablesSpecExample() {
-    example = ExampleTable.create("example", 
+  public ExampleTable<UsingTablesSpecExample> _initUsingTablesSpecExample() {
+    return ExampleTable.create("example", 
       java.util.Arrays.asList("value1", "value2", "sum"), 
       new UsingTablesSpecExample(  java.util.Arrays.asList("1", "2", "3"), 1, 2, 3),
       new UsingTablesSpecExample(  java.util.Arrays.asList("4", "5", "7"), 4, 5, 7),
@@ -317,7 +315,7 @@ public class UsingTablesSpec {
     );
   }
   
-  protected ExampleTable<UsingTablesSpecExample> example;
+  protected ExampleTable<UsingTablesSpecExample> example = _initUsingTablesSpecExample();
   
   /**
    * `ExampleTable#forEach` executes the passed in procedure for all table rows.
@@ -326,7 +324,7 @@ public class UsingTablesSpec {
   @Ignore
   @Test
   @Named("Error message")
-  @Order(5)
+  @Order(6)
   public void _errorMessage() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {

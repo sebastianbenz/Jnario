@@ -12,7 +12,6 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,9 +19,8 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("RegexFilter")
 public class RegexFilterSpec {
-  @Before
-  public void _initRegexFilterSpecFilteringExamples() {
-    filteringExamples = ExampleTable.create("filteringExamples", 
+  public ExampleTable<RegexFilterSpecFilteringExamples> _initRegexFilterSpecFilteringExamples() {
+    return ExampleTable.create("filteringExamples", 
       java.util.Arrays.asList("string", "regex", "result"), 
       new RegexFilterSpecFilteringExamples(  java.util.Arrays.asList("\"hello\"", "\"e\"", "\"hllo\""), "hello", "e", "hllo"),
       new RegexFilterSpecFilteringExamples(  java.util.Arrays.asList("\"aabbaa\"", "\"b*\"", "\"aaaa\""), "aabbaa", "b*", "aaaa"),
@@ -32,11 +30,11 @@ public class RegexFilterSpec {
     );
   }
   
-  protected ExampleTable<RegexFilterSpecFilteringExamples> filteringExamples;
+  protected ExampleTable<RegexFilterSpecFilteringExamples> filteringExamples = _initRegexFilterSpecFilteringExamples();
   
   @Test
   @Named("removes all matched elements")
-  @Order(0)
+  @Order(1)
   public void _removesAllMatchedElements() throws Exception {
     final Procedure1<RegexFilterSpecFilteringExamples> _function = new Procedure1<RegexFilterSpecFilteringExamples>() {
         public void apply(final RegexFilterSpecFilteringExamples it) {

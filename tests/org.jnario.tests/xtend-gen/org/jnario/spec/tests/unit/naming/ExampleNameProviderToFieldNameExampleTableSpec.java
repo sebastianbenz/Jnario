@@ -24,7 +24,7 @@ public class ExampleNameProviderToFieldNameExampleTableSpec extends ExampleNameP
   
   @Test
   @Named("should use the example name")
-  @Order(21)
+  @Order(22)
   public void _shouldUseTheExampleName() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'My Context\'{");
@@ -50,7 +50,7 @@ public class ExampleNameProviderToFieldNameExampleTableSpec extends ExampleNameP
   
   @Test
   @Named("should use \\\'examples\\\' if no name is given")
-  @Order(22)
+  @Order(23)
   public void _shouldUseExamplesIfNoNameIsGiven() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'My Context\'{");

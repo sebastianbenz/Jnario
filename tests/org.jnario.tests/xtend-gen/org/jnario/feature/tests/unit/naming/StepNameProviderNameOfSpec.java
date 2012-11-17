@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
 public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
   @Test
   @Named("returns null if the step has no name")
-  @Order(0)
+  @Order(1)
   public void _returnsNullIfTheStepHasNoName() throws Exception {
     Given _emptyStep = this.emptyStep();
     String _nameOf = this.subject.nameOf(_emptyStep);
@@ -33,7 +33,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
   
   @Test
   @Named("returns the name for a step with definition")
-  @Order(1)
+  @Order(2)
   public void _returnsTheNameForAStepWithDefinition() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Scenario: MyScenario");
@@ -54,7 +54,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
   
   @Test
   @Named("returns the name for a step with resolved reference")
-  @Order(2)
+  @Order(3)
   public void _returnsTheNameForAStepWithResolvedReference() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Scenario: MyScenario 2");
@@ -80,7 +80,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
   
   @Test
   @Named("returns the name for a step with unresolved reference")
-  @Order(3)
+  @Order(4)
   public void _returnsTheNameForAStepWithUnresolvedReference() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Scenario: MyScenario 2");
@@ -98,7 +98,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
   
   @Test
   @Named("keeps parameter values")
-  @Order(4)
+  @Order(5)
   public void _keepsParameterValues() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Scenario: MyScenario 2");

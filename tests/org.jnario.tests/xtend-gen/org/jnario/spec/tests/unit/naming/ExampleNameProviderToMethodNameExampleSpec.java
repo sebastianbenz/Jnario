@@ -28,7 +28,7 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
   
   @Test
   @Named("converts method description to camel case starting in lowercase")
-  @Order(12)
+  @Order(13)
   public void _convertsMethodDescriptionToCamelCaseStartingInLowercase() throws Exception {
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
       "\'my example\'", 
@@ -50,7 +50,7 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
   
   @Test
   @Named("shortens method name to 250 chars")
-  @Order(13)
+  @Order(14)
   public void _shortensMethodNameTo250Chars() throws Exception {
     String _nameOfLength = this.nameOfLength(251);
     String _firstMethodName = this.firstMethodName(_nameOfLength);

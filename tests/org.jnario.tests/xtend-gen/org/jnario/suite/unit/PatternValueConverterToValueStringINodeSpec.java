@@ -13,7 +13,6 @@ import org.jnario.suite.conversion.PatternValueConverter;
 import org.jnario.suite.unit.PatternValueConverterSpec;
 import org.jnario.suite.unit.PatternValueConverterToValueStringINodeSpecExamples;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -24,9 +23,8 @@ public class PatternValueConverterToValueStringINodeSpec extends PatternValueCon
   @Subject
   public PatternValueConverter subject;
   
-  @Before
-  public void _initPatternValueConverterToValueStringINodeSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<PatternValueConverterToValueStringINodeSpecExamples> _initPatternValueConverterToValueStringINodeSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("input", "result"), 
       new PatternValueConverterToValueStringINodeSpecExamples(  java.util.Arrays.asList("null", "null"), null, null),
       new PatternValueConverterToValueStringINodeSpecExamples(  java.util.Arrays.asList("\"\"", "null"), "", null),
@@ -34,11 +32,11 @@ public class PatternValueConverterToValueStringINodeSpec extends PatternValueCon
     );
   }
   
-  protected ExampleTable<PatternValueConverterToValueStringINodeSpecExamples> examples;
+  protected ExampleTable<PatternValueConverterToValueStringINodeSpecExamples> examples = _initPatternValueConverterToValueStringINodeSpecExamples();
   
   @Test
   @Named("examples.forEach[subject.toValue[input, null] => result]")
-  @Order(1)
+  @Order(2)
   public void _examplesForEachSubjectToValueInputNullResult() throws Exception {
     final Procedure1<PatternValueConverterToValueStringINodeSpecExamples> _function = new Procedure1<PatternValueConverterToValueStringINodeSpecExamples>() {
         public void apply(final PatternValueConverterToValueStringINodeSpecExamples it) {

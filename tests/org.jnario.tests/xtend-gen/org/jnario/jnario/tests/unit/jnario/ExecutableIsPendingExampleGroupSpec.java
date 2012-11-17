@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
 public class ExecutableIsPendingExampleGroupSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("exampleGroupWith[pendingExample].isPending should be true")
-  @Order(15)
+  @Order(16)
   public void _exampleGroupWithPendingExampleIsPendingShouldBeTrue() throws Exception {
     Example _pendingExample = Specs.pendingExample();
     ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_pendingExample);
@@ -34,7 +34,7 @@ public class ExecutableIsPendingExampleGroupSpec extends ExecutableIsPendingSpec
   
   @Test
   @Named("exampleGroupWith[implementedExample].isPending should be false")
-  @Order(16)
+  @Order(17)
   public void _exampleGroupWithImplementedExampleIsPendingShouldBeFalse() throws Exception {
     Example _implementedExample = Specs.implementedExample();
     ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_implementedExample);
@@ -49,7 +49,7 @@ public class ExecutableIsPendingExampleGroupSpec extends ExecutableIsPendingSpec
   
   @Test
   @Named("exampleGroupWith[pendingExample, implementedExample].isPending should be true")
-  @Order(17)
+  @Order(18)
   public void _exampleGroupWithPendingExampleImplementedExampleIsPendingShouldBeTrue() throws Exception {
     Example _pendingExample = Specs.pendingExample();
     Example _implementedExample = Specs.implementedExample();
@@ -66,7 +66,7 @@ public class ExecutableIsPendingExampleGroupSpec extends ExecutableIsPendingSpec
   
   @Test
   @Named("exampleGroupWith[pendingExampleGroup].isPending should be true")
-  @Order(18)
+  @Order(19)
   public void _exampleGroupWithPendingExampleGroupIsPendingShouldBeTrue() throws Exception {
     ExampleGroup _pendingExampleGroup = Specs.pendingExampleGroup();
     ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_pendingExampleGroup);

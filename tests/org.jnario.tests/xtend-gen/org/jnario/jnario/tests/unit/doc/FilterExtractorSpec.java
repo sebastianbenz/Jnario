@@ -20,7 +20,6 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -31,9 +30,8 @@ public class FilterExtractorSpec {
   @Subject
   public FilterExtractor subject;
   
-  @Before
-  public void _initFilterExtractorSpecFilterExtractions() {
-    filterExtractions = ExampleTable.create("filterExtractions", 
+  public ExampleTable<FilterExtractorSpecFilterExtractions> _initFilterExtractorSpecFilterExtractions() {
+    return ExampleTable.create("filterExtractions", 
       java.util.Arrays.asList("input", "resultString"), 
       new FilterExtractorSpecFilterExtractions(  java.util.Arrays.asList("null", "\"\""), null, ""),
       new FilterExtractorSpecFilterExtractions(  java.util.Arrays.asList("\"string\"", "\"string\""), "string", "string"),
@@ -44,15 +42,14 @@ public class FilterExtractorSpec {
     );
   }
   
-  protected ExampleTable<FilterExtractorSpecFilterExtractions> filterExtractions;
+  protected ExampleTable<FilterExtractorSpecFilterExtractions> filterExtractions = _initFilterExtractorSpecFilterExtractions();
   
-  @Before
-  public void _initFilterExtractorSpecFilterCreation() {
+  public ExampleTable<FilterExtractorSpecFilterCreation> _initFilterExtractorSpecFilterCreation() {
     
     List<String> _emptyList = CollectionLiterals.<String>emptyList();
     List<String> _emptyList_1 = CollectionLiterals.<String>emptyList();
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("bbb");
-    ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("bbb", ".*");filterCreation = ExampleTable.create("filterCreation", 
+    ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("bbb", ".*");return ExampleTable.create("filterCreation", 
       java.util.Arrays.asList("input", "resultingFilters"), 
       new FilterExtractorSpecFilterCreation(  java.util.Arrays.asList("null", "<String>emptyList"), null, _emptyList),
       new FilterExtractorSpecFilterCreation(  java.util.Arrays.asList("\"string\"", "<String>emptyList"), "string", _emptyList_1),
@@ -61,11 +58,11 @@ public class FilterExtractorSpec {
     );
   }
   
-  protected ExampleTable<FilterExtractorSpecFilterCreation> filterCreation;
+  protected ExampleTable<FilterExtractorSpecFilterCreation> filterCreation = _initFilterExtractorSpecFilterCreation();
   
   @Test
   @Named("should remove all filter annotations from a string")
-  @Order(0)
+  @Order(1)
   public void _shouldRemoveAllFilterAnnotationsFromAString() throws Exception {
     final Procedure1<FilterExtractorSpecFilterExtractions> _function = new Procedure1<FilterExtractorSpecFilterExtractions>() {
         public void apply(final FilterExtractorSpecFilterExtractions it) {
@@ -83,7 +80,7 @@ public class FilterExtractorSpec {
   
   @Test
   @Named("should extract and create filters")
-  @Order(1)
+  @Order(2)
   public void _shouldExtractAndCreateFilters() throws Exception {
     final Procedure1<FilterExtractorSpecFilterCreation> _function = new Procedure1<FilterExtractorSpecFilterCreation>() {
         public void apply(final FilterExtractorSpecFilterCreation it) {

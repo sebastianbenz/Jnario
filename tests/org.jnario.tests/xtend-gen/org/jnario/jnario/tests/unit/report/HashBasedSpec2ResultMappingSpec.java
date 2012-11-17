@@ -73,7 +73,7 @@ public class HashBasedSpec2ResultMappingSpec {
   
   @Test
   @Named("returns empty execution if no matching spec exists")
-  @Order(0)
+  @Order(1)
   public void _returnsEmptyExecutionIfNoMatchingSpecExists() throws Exception {
     SpecExecution _result = this.subject.getResult(this.anyExecutable);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, NotRun.class);
@@ -86,7 +86,7 @@ public class HashBasedSpec2ResultMappingSpec {
   
   @Test
   @Named("returns empty execution if executable is null")
-  @Order(1)
+  @Order(2)
   public void _returnsEmptyExecutionIfExecutableIsNull() throws Exception {
     SpecExecution _result = this.subject.getResult(null);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, NotRun.class);

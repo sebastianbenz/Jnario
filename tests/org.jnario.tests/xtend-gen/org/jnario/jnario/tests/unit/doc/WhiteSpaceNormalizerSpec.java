@@ -12,7 +12,6 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -23,9 +22,8 @@ public class WhiteSpaceNormalizerSpec {
   @Subject
   public WhiteSpaceNormalizer subject;
   
-  @Before
-  public void _initWhiteSpaceNormalizerSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<WhiteSpaceNormalizerSpecExamples> _initWhiteSpaceNormalizerSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("input", "result"), 
       new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("null", "\"\""), null, ""),
       new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\"", "\"\""), "", ""),
@@ -41,11 +39,11 @@ public class WhiteSpaceNormalizerSpec {
     );
   }
   
-  protected ExampleTable<WhiteSpaceNormalizerSpecExamples> examples;
+  protected ExampleTable<WhiteSpaceNormalizerSpecExamples> examples = _initWhiteSpaceNormalizerSpecExamples();
   
   @Test
   @Named("should remove trailing whitespace")
-  @Order(0)
+  @Order(1)
   public void _shouldRemoveTrailingWhitespace() throws Exception {
     final Procedure1<WhiteSpaceNormalizerSpecExamples> _function = new Procedure1<WhiteSpaceNormalizerSpecExamples>() {
         public void apply(final WhiteSpaceNormalizerSpecExamples it) {

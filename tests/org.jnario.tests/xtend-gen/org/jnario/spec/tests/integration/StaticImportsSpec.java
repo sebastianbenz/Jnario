@@ -23,7 +23,7 @@ public class StaticImportsSpec {
   
   @Test
   @Named("should resolve static imports")
-  @Order(0)
+  @Order(1)
   public void _shouldResolveStaticImports() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");

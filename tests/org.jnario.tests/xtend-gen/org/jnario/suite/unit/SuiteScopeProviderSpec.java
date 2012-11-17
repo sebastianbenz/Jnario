@@ -81,7 +81,7 @@ public class SuiteScopeProviderSpec {
   
   @Test
   @Named("spec references are only root specs")
-  @Order(0)
+  @Order(1)
   public void _specReferencesAreOnlyRootSpecs() throws Exception {
     Set<String> _specScope = this.specScope();
     boolean _should_contain = Should.<String>should_contain(_specScope, "RootSpec");

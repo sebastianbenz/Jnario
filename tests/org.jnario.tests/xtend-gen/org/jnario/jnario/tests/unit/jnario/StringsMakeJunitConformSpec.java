@@ -12,7 +12,6 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.util.Strings;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,9 +19,8 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("makeJunitConform")
 public class StringsMakeJunitConformSpec extends StringsSpec {
-  @Before
-  public void _initStringsMakeJunitConformSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<StringsMakeJunitConformSpecExamples> _initStringsMakeJunitConformSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("string", "result"), 
       new StringsMakeJunitConformSpecExamples(  java.util.Arrays.asList("null", "null"), null, null),
       new StringsMakeJunitConformSpecExamples(  java.util.Arrays.asList("\"hello\"", "\"hello\""), "hello", "hello"),
@@ -33,11 +31,11 @@ public class StringsMakeJunitConformSpec extends StringsSpec {
     );
   }
   
-  protected ExampleTable<StringsMakeJunitConformSpecExamples> examples;
+  protected ExampleTable<StringsMakeJunitConformSpecExamples> examples = _initStringsMakeJunitConformSpecExamples();
   
   @Test
   @Named("examples.forEach[string.makeJunitConform => result]")
-  @Order(1)
+  @Order(2)
   public void _examplesForEachStringMakeJunitConformResult() throws Exception {
     final Procedure1<StringsMakeJunitConformSpecExamples> _function = new Procedure1<StringsMakeJunitConformSpecExamples>() {
         public void apply(final StringsMakeJunitConformSpecExamples it) {

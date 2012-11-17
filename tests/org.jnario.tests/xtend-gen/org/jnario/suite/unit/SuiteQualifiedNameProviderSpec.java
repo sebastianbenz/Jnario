@@ -35,7 +35,7 @@ public class SuiteQualifiedNameProviderSpec {
   
   @Test
   @Named("removes suite prefix")
-  @Order(0)
+  @Order(1)
   public void _removesSuitePrefix() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("#My Suite");
@@ -49,7 +49,7 @@ public class SuiteQualifiedNameProviderSpec {
   
   @Test
   @Named("removes suite trailing text")
-  @Order(1)
+  @Order(2)
   public void _removesSuiteTrailingText() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("#My Suite");
@@ -65,7 +65,7 @@ public class SuiteQualifiedNameProviderSpec {
   
   @Test
   @Named("add suite package")
-  @Order(2)
+  @Order(3)
   public void _addSuitePackage() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package test");
@@ -81,7 +81,7 @@ public class SuiteQualifiedNameProviderSpec {
   
   @Test
   @Named("handles empty packages")
-  @Order(3)
+  @Order(4)
   public void _handlesEmptyPackages() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("#My Suite");
@@ -95,7 +95,7 @@ public class SuiteQualifiedNameProviderSpec {
   
   @Test
   @Named("handles empty suites")
-  @Order(4)
+  @Order(5)
   public void _handlesEmptySuites() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("#");

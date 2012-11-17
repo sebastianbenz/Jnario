@@ -47,7 +47,7 @@ public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2Resul
   
   @Test
   @Named("returns **Passed** if all children passed")
-  @Order(16)
+  @Order(17)
   public void _returnsPassedIfAllChildrenPassed() throws Exception {
     this.passedStep("Given my Step");
     this.passedStep("And other Step");
@@ -62,7 +62,7 @@ public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2Resul
   
   @Test
   @Named("returns **Failed** if one child failed")
-  @Order(17)
+  @Order(18)
   public void _returnsFailedIfOneChildFailed() throws Exception {
     this.passedStep("Given my Step");
     this.failedStep("And other Step");

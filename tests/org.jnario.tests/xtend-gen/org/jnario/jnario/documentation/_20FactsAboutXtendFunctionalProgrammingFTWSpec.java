@@ -33,7 +33,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
    */
   @Test
   @Named("Simple access to list elements")
-  @Order(13)
+  @Order(14)
   public void _simpleAccessToListElements() throws Exception {
     final List<String> colors = JnarioCollectionLiterals.<String>list("red", "blue", "green");
     String _head = IterableExtensions.<String>head(colors);
@@ -70,7 +70,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
    */
   @Test
   @Named("\\\'+\\\' concatenates collections")
-  @Order(14)
+  @Order(15)
   public void _concatenatesCollections() throws Exception {
     List<Integer> _list = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2));
     List<Integer> _list_1 = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(3), Integer.valueOf(4));
@@ -112,7 +112,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
    */
   @Test
   @Named("Concise Lambda Expressions")
-  @Order(15)
+  @Order(16)
   public void _conciseLambdaExpressions() throws Exception {
     final Function1<String,Integer> _function = new Function1<String,Integer>() {
         public Integer apply(final String it) {
@@ -137,7 +137,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
    */
   @Test
   @Named("Better loops")
-  @Order(16)
+  @Order(17)
   public void _betterLoops() throws Exception {
     List<Integer> _list = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(11), Integer.valueOf(17), Integer.valueOf(19));
     final Procedure1<Integer> _function = new Procedure1<Integer>() {
@@ -157,7 +157,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
    */
   @Test
   @Named("Filter iterables by type")
-  @Order(17)
+  @Order(18)
   public void _filterIterablesByType() throws Exception {
     List<Object> _list = JnarioCollectionLiterals.<Object>list("a string", Integer.valueOf(42), Boolean.valueOf(true));
     Iterable<String> _filter = Iterables.<String>filter(_list, String.class);
@@ -176,7 +176,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
    */
   @Test
   @Named("... or via a custom predicate")
-  @Order(18)
+  @Order(19)
   public void _orViaACustomPredicate() throws Exception {
     List<String> _list = JnarioCollectionLiterals.<String>list("red", "blue", "green");
     final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
@@ -202,7 +202,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
    */
   @Test
   @Named("Map/Reduce made easy")
-  @Order(19)
+  @Order(20)
   public void _mapReduceMadeEasy() throws Exception {
     final List<String> strings = JnarioCollectionLiterals.<String>list("red", "blue", "green");
     final Function1<String,Integer> _function = new Function1<String,Integer>() {

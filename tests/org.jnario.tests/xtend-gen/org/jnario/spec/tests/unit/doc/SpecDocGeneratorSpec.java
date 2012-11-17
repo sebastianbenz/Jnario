@@ -37,7 +37,7 @@ public class SpecDocGeneratorSpec {
   
   @Test
   @Named("generates scenario title and heading")
-  @Order(0)
+  @Order(1)
   public void _generatesScenarioTitleAndHeading() throws Exception {
     this.generateEmptyExampleDoc();
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
@@ -54,7 +54,7 @@ public class SpecDocGeneratorSpec {
   
   @Test
   @Named("generates scenario documentation")
-  @Order(1)
+  @Order(2)
   public void _generatesScenarioDocumentation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*");
@@ -97,7 +97,7 @@ public class SpecDocGeneratorSpec {
   
   @Test
   @Named("generates example documentation")
-  @Order(2)
+  @Order(3)
   public void _generatesExampleDocumentation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
@@ -147,7 +147,7 @@ public class SpecDocGeneratorSpec {
   
   @Test
   @Named("should support markdown for documentation")
-  @Order(3)
+  @Order(4)
   public void _shouldSupportMarkdownForDocumentation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*");
@@ -174,7 +174,7 @@ public class SpecDocGeneratorSpec {
   
   @Test
   @Named("generates table for example tables")
-  @Order(4)
+  @Order(5)
   public void _generatesTableForExampleTables() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
@@ -219,7 +219,7 @@ public class SpecDocGeneratorSpec {
   
   @Test
   @Named("filters code based on regex in filter annotation")
-  @Order(5)
+  @Order(6)
   public void _filtersCodeBasedOnRegexInFilterAnnotation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
@@ -254,7 +254,7 @@ public class SpecDocGeneratorSpec {
   
   @Test
   @Named("includes failing state for examples")
-  @Order(6)
+  @Order(7)
   public void _includesFailingStateForExamples() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");

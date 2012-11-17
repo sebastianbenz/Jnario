@@ -13,7 +13,6 @@ import org.jnario.spec.spec.Example;
 import org.jnario.spec.tests.unit.naming.ExampleNameSpecExamples;
 import org.jnario.spec.tests.unit.naming.ExampleSpec;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -21,9 +20,8 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("name")
 public class ExampleNameSpec extends ExampleSpec {
-  @Before
-  public void _initExampleNameSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<ExampleNameSpecExamples> _initExampleNameSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("example", "name"), 
       new ExampleNameSpecExamples(  java.util.Arrays.asList("\"fact \'with description\'\"", "\"with description\""), "fact \'with description\'", "with description"),
       new ExampleNameSpecExamples(  java.util.Arrays.asList("\"fact \'with code\' => \'with code\'\"", "\"\'with code\' => \'with code\'\""), "fact \'with code\' => \'with code\'", "\'with code\' => \'with code\'"),
@@ -31,11 +29,11 @@ public class ExampleNameSpec extends ExampleSpec {
     );
   }
   
-  protected ExampleTable<ExampleNameSpecExamples> examples;
+  protected ExampleTable<ExampleNameSpecExamples> examples = _initExampleNameSpecExamples();
   
   @Test
   @Named("examples.forEach[println[example.parse.name] should be name]")
-  @Order(0)
+  @Order(1)
   public void _examplesForEachPrintlnExampleParseNameShouldBeName() throws Exception {
     final Procedure1<ExampleNameSpecExamples> _function = new Procedure1<ExampleNameSpecExamples>() {
         public void apply(final ExampleNameSpecExamples it) {

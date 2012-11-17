@@ -26,7 +26,7 @@ public class PendingSpec {
   
   @Test
   @Named("ignores empty examples during example runs")
-  @Order(0)
+  @Order(1)
   public void _ignoresEmptyExamplesDuringExampleRuns() throws Exception {
     final String spec = "\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\timport org.junit.*\r\n\r\n\t\t\tdescribe \"Pending\" {\r\n\r\n\t\t\t\tfact \"has no implementation in block expression\"{\r\n\t\t\t\t} \r\n\t\t\t\t\r\n\t\t\t\tfact \"has no body\"\r\n\t\t\t\t\t\t\r\n\t\t\t}\r\n\t\t";
     Result _execute = this._behaviorExecutor.execute(spec);

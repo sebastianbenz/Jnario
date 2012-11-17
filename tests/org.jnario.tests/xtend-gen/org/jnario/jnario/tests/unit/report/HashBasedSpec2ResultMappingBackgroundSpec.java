@@ -51,7 +51,7 @@ public class HashBasedSpec2ResultMappingBackgroundSpec extends HashBasedSpec2Res
   
   @Test
   @Named("returns **Passed** if all scenarios passed")
-  @Order(20)
+  @Order(21)
   public void _returnsPassedIfAllScenariosPassed() throws Exception {
     this.passedStep("Given a step");
     this.passedStep("Given another step");
@@ -66,7 +66,7 @@ public class HashBasedSpec2ResultMappingBackgroundSpec extends HashBasedSpec2Res
   
   @Test
   @Named("returns **Failed** if one scenario failed")
-  @Order(21)
+  @Order(22)
   public void _returnsFailedIfOneScenarioFailed() throws Exception {
     this.failedStep("Given a step");
     Background _background = this.background();

@@ -36,7 +36,7 @@ public class UsingShouldSpec {
    */
   @Test
   @Named("To pass..")
-  @Order(0)
+  @Order(1)
   public void _toPass() throws Exception {
     boolean _should_be = Should.<Boolean>should_be(
       Boolean.valueOf(true), true);
@@ -142,7 +142,7 @@ public class UsingShouldSpec {
    */
   @Test
   @Named("...or not to pass")
-  @Order(1)
+  @Order(2)
   public void _orNotToPass() throws Exception {
     try{
       int _plus = (1 + 1);
@@ -209,7 +209,7 @@ public class UsingShouldSpec {
    */
   @Test
   @Named("Why did it fail?")
-  @Order(2)
+  @Order(3)
   public void _whyDidItFail() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
@@ -276,7 +276,7 @@ public class UsingShouldSpec {
    */
   @Test
   @Named("Short Circuit Invocation")
-  @Order(3)
+  @Order(4)
   public void _shortCircuitInvocation() throws Exception {
     final String aString = null;
     try{
@@ -313,7 +313,7 @@ public class UsingShouldSpec {
    */
   @Test
   @Named("Combining hamcrest and should")
-  @Order(4)
+  @Order(5)
   public void _combiningHamcrestAndShould() throws Exception {
     Matcher<String> _startsWith = Matchers.startsWith("h");
     boolean _doubleArrow = Should.operator_doubleArrow(

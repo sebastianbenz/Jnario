@@ -16,7 +16,6 @@ import org.jnario.spec.spec.Example;
 import org.jnario.spec.tests.unit.naming.ExampleImplementationSpecExamples;
 import org.jnario.spec.tests.unit.naming.ExampleSpec;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -24,20 +23,19 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("implementation")
 public class ExampleImplementationSpec extends ExampleSpec {
-  @Before
-  public void _initExampleImplementationSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<ExampleImplementationSpecExamples> _initExampleImplementationSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("example", "type"), 
       new ExampleImplementationSpecExamples(  java.util.Arrays.asList("\"fact \'with body\' {1}\"", "typeof(XBlockExpression)"), "fact \'with body\' {1}", XBlockExpression.class),
       new ExampleImplementationSpecExamples(  java.util.Arrays.asList("\"fact \'with code\' should be \'with code\'\"", "typeof(Should)"), "fact \'with code\' should be \'with code\'", Should.class)
     );
   }
   
-  protected ExampleTable<ExampleImplementationSpecExamples> examples;
+  protected ExampleTable<ExampleImplementationSpecExamples> examples = _initExampleImplementationSpecExamples();
   
   @Test
   @Named("examples.forEach[example.parse.implementation should be instanceOf[type]]")
-  @Order(1)
+  @Order(2)
   public void _examplesForEachExampleParseImplementationShouldBeInstanceOfType() throws Exception {
     final Procedure1<ExampleImplementationSpecExamples> _function = new Procedure1<ExampleImplementationSpecExamples>() {
         public void apply(final ExampleImplementationSpecExamples it) {

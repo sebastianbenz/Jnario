@@ -35,7 +35,7 @@ public class SpecQualifiedNameProviderSpec {
   
   @Test
   @Named("null if spec description is empty")
-  @Order(0)
+  @Order(1)
   public void _nullIfSpecDescriptionIsEmpty() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package test");
@@ -61,7 +61,7 @@ public class SpecQualifiedNameProviderSpec {
   
   @Test
   @Named("uses spec description")
-  @Order(1)
+  @Order(2)
   public void _usesSpecDescription() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"My Spec\"{}");
@@ -75,7 +75,7 @@ public class SpecQualifiedNameProviderSpec {
   
   @Test
   @Named("trims spec description whitespace")
-  @Order(2)
+  @Order(3)
   public void _trimsSpecDescriptionWhitespace() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"My Spec  \"{}");
@@ -89,7 +89,7 @@ public class SpecQualifiedNameProviderSpec {
   
   @Test
   @Named("uses referenced type")
-  @Order(3)
+  @Order(4)
   public void _usesReferencedType() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe org.junit.Assert{}");
@@ -103,7 +103,7 @@ public class SpecQualifiedNameProviderSpec {
   
   @Test
   @Named("uses referenced type and description")
-  @Order(4)
+  @Order(5)
   public void _usesReferencedTypeAndDescription() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe org.junit.Assert \"My Spec\"{}");
@@ -117,7 +117,7 @@ public class SpecQualifiedNameProviderSpec {
   
   @Test
   @Named("adds spec package")
-  @Order(5)
+  @Order(6)
   public void _addsSpecPackage() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package test");

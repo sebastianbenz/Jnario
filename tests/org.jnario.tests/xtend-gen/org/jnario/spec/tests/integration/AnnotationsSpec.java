@@ -25,7 +25,7 @@ public class AnnotationsSpec {
   
   @Test
   @Named("should support class annotations for \\\'describe\\\'")
-  @Order(0)
+  @Order(1)
   public void _shouldSupportClassAnnotationsForDescribe() throws Exception {
     final String spec = "\r\n\t\t\tpackage bootstrap\r\n\t\t\timport static org.hamcrest.CoreMatchers.*\t\t\t\r\n\t\t\timport com.google.inject.Singleton\r\n\r\n\t\t\t@Singleton\t\t\t\r\n\t\t\tdescribe \"Annotations\" {\r\n\t\t\t\r\n\t\t\tfact \"should support class annotations for describe\"{\r\n\t\t\t\t\tval annotation = typeof(AnnotationsSpec).getAnnotation(typeof(Singleton))\r\n\t\t\t\t\tannotation should not be null\r\n\t\t\t\t} \r\n\t\t\t\t\t\t\r\n\t\t\t}\r\n\t\t";
     this._behaviorExecutor.executesSuccessfully(spec);
@@ -33,7 +33,7 @@ public class AnnotationsSpec {
   
   @Test
   @Named("should support method annotations for \\\'examples\\\'")
-  @Order(1)
+  @Order(2)
   public void _shouldSupportMethodAnnotationsForExamples() throws Exception {
     final String spec = "\r\n\t\t\tpackage bootstrap\r\n\t\t\t\r\n\t\t\timport com.google.inject.Inject\r\n\t\t\timport static org.hamcrest.CoreMatchers.*\r\n\r\n\t\t\tdescribe \"Annotations\" {\r\n\t\t\t\r\n\t\t\t\t@Inject\t\t\t\r\n\t\t\t\tfact \"example\"{\r\n\t\t\t\t\tval annotation = typeof(AnnotationsSpec).getMethod(\"_example\").getAnnotation(typeof(Inject))\r\n\t\t\t\t\tannotation should not be null\r\n\t\t\t\t} \r\n\t\t\t\t\t\t\r\n\t\t\t}\r\n\t\t";
     this._behaviorExecutor.executesSuccessfully(spec);
@@ -41,7 +41,7 @@ public class AnnotationsSpec {
   
   @Test
   @Named("should support method annotations for \\\'contexts\\\'")
-  @Order(2)
+  @Order(3)
   public void _shouldSupportMethodAnnotationsForContexts() throws Exception {
     final String spec = "\r\n\t\t\tpackage bootstrap\r\n\t\t\t\r\n\t\t\timport com.google.inject.Singleton\r\n\t\t\t\r\n\t\t\tdescribe \"Annotations\" {\r\n\t\t\t\r\n\t\t\t\t@Singleton\r\n\t\t\t\tcontext \"Context\"{\r\n\t\t\t\t\tfact \"example\"{\r\n\t\t\t\t\t\tassert typeof(AnnotationsContextSpec).isAnnotationPresent(typeof(Singleton))\r\n\t\t\t\t\t} \r\n\t\t\t\t}\t\t\t\r\n\t\t\t}\r\n\t\t";
     this._behaviorExecutor.executesSuccessfully(spec);
@@ -49,7 +49,7 @@ public class AnnotationsSpec {
   
   @Test
   @Named("should support annotations for \\\'fields\\\'")
-  @Order(3)
+  @Order(4)
   public void _shouldSupportAnnotationsForFields() throws Exception {
     final String spec = "\r\n\t\t\tpackage bootstrap\r\n\t\t\t\r\n\t\t\timport com.google.inject.Inject\r\n\t\t\timport static org.hamcrest.CoreMatchers.*\r\n\t\t\t\r\n\t\t\tdescribe \"Annotations\" {\r\n\t\t\t\r\n\t\t\t\t@Inject\t\t\r\n\t\t\t\tString myField\r\n\t\t\t\t\t\r\n\t\t\t\tfact \"example\"{\r\n\t\t\t\t\tval annotation = typeof(AnnotationsSpec).getDeclaredField(\"myField\").getAnnotation(typeof(Inject))\r\n\t\t\t\t\tannotation should not be null\r\n\t\t\t\t} \r\n\t\t\t\t\t\t\r\n\t\t\t}\r\n\t\t";
     this._behaviorExecutor.executesSuccessfully(spec);

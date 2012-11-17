@@ -83,7 +83,7 @@ public class SpecResultParserSpec {
   
   @Test
   @Named("parses successfull specs from xml")
-  @Order(0)
+  @Order(1)
   public void _parsesSuccessfullSpecsFromXml() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<testcase time=\"");
@@ -103,7 +103,7 @@ public class SpecResultParserSpec {
   
   @Test
   @Named("parses specs with failure from xml")
-  @Order(1)
+  @Order(2)
   public void _parsesSpecsWithFailureFromXml() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<testcase time=\"");
@@ -133,7 +133,7 @@ public class SpecResultParserSpec {
   
   @Test
   @Named("parses specs with error from xml")
-  @Order(2)
+  @Order(3)
   public void _parsesSpecsWithErrorFromXml() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<testcase time=\"");
@@ -163,7 +163,7 @@ public class SpecResultParserSpec {
   
   @Test
   @Named("parses multiple spec results")
-  @Order(3)
+  @Order(4)
   public void _parsesMultipleSpecResults() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<testcase time=\"");
@@ -204,7 +204,7 @@ public class SpecResultParserSpec {
   
   @Test
   @Named("created pending results")
-  @Order(4)
+  @Order(5)
   public void _createdPendingResults() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<testcase time=\"");
@@ -229,7 +229,7 @@ public class SpecResultParserSpec {
   
   @Test
   @Named("decodes escaped strings")
-  @Order(5)
+  @Order(6)
   public void _decodesEscapedStrings() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<testcase time=\"");

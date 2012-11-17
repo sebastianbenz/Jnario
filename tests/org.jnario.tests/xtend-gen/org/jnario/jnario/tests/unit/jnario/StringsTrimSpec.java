@@ -12,7 +12,6 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.util.Strings;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,9 +19,8 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("trim")
 public class StringsTrimSpec extends StringsSpec {
-  @Before
-  public void _initStringsTrimSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<StringsTrimSpecExamples> _initStringsTrimSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("string", "result"), 
       new StringsTrimSpecExamples(  java.util.Arrays.asList("null", "null"), null, null),
       new StringsTrimSpecExamples(  java.util.Arrays.asList("\"\"", "\"\""), "", ""),
@@ -34,11 +32,11 @@ public class StringsTrimSpec extends StringsSpec {
     );
   }
   
-  protected ExampleTable<StringsTrimSpecExamples> examples;
+  protected ExampleTable<StringsTrimSpecExamples> examples = _initStringsTrimSpecExamples();
   
   @Test
   @Named("removes the specified leading and trailing character")
-  @Order(2)
+  @Order(3)
   public void _removesTheSpecifiedLeadingAndTrailingCharacter() throws Exception {
     final Procedure1<StringsTrimSpecExamples> _function = new Procedure1<StringsTrimSpecExamples>() {
         public void apply(final StringsTrimSpecExamples it) {

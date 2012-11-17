@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 public class ExecutableIsPendingStepSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("stepWithoutImplementation.isPending[] should be true")
-  @Order(11)
+  @Order(12)
   public void _stepWithoutImplementationIsPendingShouldBeTrue() throws Exception {
     Given _stepWithoutImplementation = Features.stepWithoutImplementation();
     boolean _isPending = _stepWithoutImplementation.isPending();
@@ -31,7 +31,7 @@ public class ExecutableIsPendingStepSpec extends ExecutableIsPendingSpec {
   
   @Test
   @Named("implementedStep.isPending[] should be false")
-  @Order(12)
+  @Order(13)
   public void _implementedStepIsPendingShouldBeFalse() throws Exception {
     Given _implementedStep = Features.implementedStep();
     boolean _isPending = _implementedStep.isPending();

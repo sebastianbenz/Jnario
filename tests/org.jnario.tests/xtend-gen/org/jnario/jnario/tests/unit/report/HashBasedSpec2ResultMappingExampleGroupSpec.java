@@ -30,7 +30,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
   
   @Test
   @Named("returns Pending if children are not executed and have no implementation")
-  @Order(4)
+  @Order(5)
   public void _returnsPendingIfChildrenAreNotExecutedAndHaveNoImplementation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Root\"{");
@@ -56,7 +56,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
   
   @Test
   @Named("returns NotRun if children are not executed but have an implementation")
-  @Order(5)
+  @Order(6)
   public void _returnsNotRunIfChildrenAreNotExecutedButHaveAnImplementation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Root\"{");
@@ -82,7 +82,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
   
   @Test
   @Named("passes if all children pass")
-  @Order(6)
+  @Order(7)
   public void _passesIfAllChildrenPass() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Root\"{");
@@ -109,7 +109,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
   
   @Test
   @Named("fails if one child has failed")
-  @Order(7)
+  @Order(8)
   public void _failsIfOneChildHasFailed() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Root\"{");
@@ -137,7 +137,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
   
   @Test
   @Named("execution time is sum of all child examples")
-  @Order(8)
+  @Order(9)
   public void _executionTimeIsSumOfAllChildExamples() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Root\"{");
@@ -167,7 +167,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
   
   @Test
   @Named("class name is from spec")
-  @Order(9)
+  @Order(10)
   public void _classNameIsFromSpec() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Root\"{");
@@ -196,7 +196,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
   
   @Test
   @Named("name is from spec")
-  @Order(10)
+  @Order(11)
   public void _nameIsFromSpec() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Root\"{");
@@ -225,7 +225,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
   
   @Test
   @Named("caches calculated results")
-  @Order(11)
+  @Order(12)
   public void _cachesCalculatedResults() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Root\"{");

@@ -27,7 +27,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   
   @Test
   @Named("should convert before description to camel case starting in lowercase")
-  @Order(14)
+  @Order(15)
   public void _shouldConvertBeforeDescriptionToCamelCaseStartingInLowercase() throws Exception {
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
       "before \'my example\'", 
@@ -48,7 +48,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   
   @Test
   @Named("should use before as default name")
-  @Order(15)
+  @Order(16)
   public void _shouldUseBeforeAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("before{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "before");
@@ -59,7 +59,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   
   @Test
   @Named("should enumerate befores without description")
-  @Order(16)
+  @Order(17)
   public void _shouldEnumerateBeforesWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName("before{}\r\n                 before{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "before2");
@@ -70,7 +70,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   
   @Test
   @Named("should escape invalid names")
-  @Order(17)
+  @Order(18)
   public void _shouldEscapeInvalidNames() throws Exception {
     String _firstMethodName = this.firstMethodName("before \'null\'{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "_null");

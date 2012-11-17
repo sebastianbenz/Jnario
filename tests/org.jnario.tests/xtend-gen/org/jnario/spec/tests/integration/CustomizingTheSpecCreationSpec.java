@@ -50,7 +50,7 @@ public class CustomizingTheSpecCreationSpec {
    */
   @Test
   @Named("Example")
-  @Order(0)
+  @Order(1)
   public void _example() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");

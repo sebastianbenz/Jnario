@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec extends OperationNameProviderSpec {
   @Test
   @Named("nameOf[\\\"simpleOperation\\\"] => \\\"simpleOperation\\\"")
-  @Order(0)
+  @Order(1)
   public void _nameOfSimpleOperationSimpleOperation() throws Exception {
     String _nameOf = this.nameOf("simpleOperation");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "simpleOperation");
@@ -27,7 +27,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
   
   @Test
   @Named("nameOf[\\\"operationWithSingleArgument\\\"] => \\\"operationWithSingleArgument[String]\\\"")
-  @Order(1)
+  @Order(2)
   public void _nameOfOperationWithSingleArgumentOperationWithSingleArgumentString() throws Exception {
     String _nameOf = this.nameOf("operationWithSingleArgument");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithSingleArgument(String)");
@@ -38,7 +38,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
   
   @Test
   @Named("nameOf[\\\"operationWithMultipleArguments\\\"] => \\\"operationWithMultipleArguments[String, Object, int]\\\"")
-  @Order(2)
+  @Order(3)
   public void _nameOfOperationWithMultipleArgumentsOperationWithMultipleArgumentsStringObjectInt() throws Exception {
     String _nameOf = this.nameOf("operationWithMultipleArguments");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithMultipleArguments(String, Object, int)");
@@ -49,7 +49,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
   
   @Test
   @Named("nameOf[\\\"operationWithTypedArguments\\\"] => \\\"operationWithTypedArguments[List<String>, List<? extends String>]\\\"")
-  @Order(3)
+  @Order(4)
   public void _nameOfOperationWithTypedArgumentsOperationWithTypedArgumentsListStringListExtendsString() throws Exception {
     String _nameOf = this.nameOf("operationWithTypedArguments");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithTypedArguments(List<String>, List<? extends String>)");
@@ -60,7 +60,7 @@ public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec ext
   
   @Test
   @Named("nameOf[\\\"operationWithVarArg\\\"] => \\\"operationWithVarArg[String[]]\\\"")
-  @Order(4)
+  @Order(5)
   public void _nameOfOperationWithVarArgOperationWithVarArgString() throws Exception {
     String _nameOf = this.nameOf("operationWithVarArg");
     boolean _doubleArrow = Should.operator_doubleArrow(_nameOf, "operationWithVarArg(String[])");

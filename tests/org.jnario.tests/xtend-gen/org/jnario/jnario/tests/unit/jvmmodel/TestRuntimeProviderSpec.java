@@ -67,7 +67,7 @@ public class TestRuntimeProviderSpec {
   
   @Test
   @Named("returns JUnit3 runtime provider if JUnit4 is not on classpath")
-  @Order(0)
+  @Order(1)
   public void _returnsJUnit3RuntimeProviderIfJUnit4IsNotOnClasspath() throws Exception {
     JvmTypeReference _typeForName = this.typeReferences.getTypeForName("junit.framework.TestCase", this.anyNotifier);
     OngoingStubbing<JvmTypeReference> _when = Mockito.<JvmTypeReference>when(_typeForName);
@@ -83,7 +83,7 @@ public class TestRuntimeProviderSpec {
   
   @Test
   @Named("returns JUnit4 runtime provider if JUnit4 is on classpath")
-  @Order(1)
+  @Order(2)
   public void _returnsJUnit4RuntimeProviderIfJUnit4IsOnClasspath() throws Exception {
     JvmTypeReference _typeForName = this.typeReferences.getTypeForName("org.junit.Test", this.anyNotifier);
     OngoingStubbing<JvmTypeReference> _when = Mockito.<JvmTypeReference>when(_typeForName);
@@ -99,7 +99,7 @@ public class TestRuntimeProviderSpec {
   
   @Test
   @Named("throws NoSuchElementException if JUnit is not on classpath")
-  @Order(2)
+  @Order(3)
   public void _throwsNoSuchElementExceptionIfJUnitIsNotOnClasspath() throws Exception {
     try{
       this.subject.get(this.anyNotifier);

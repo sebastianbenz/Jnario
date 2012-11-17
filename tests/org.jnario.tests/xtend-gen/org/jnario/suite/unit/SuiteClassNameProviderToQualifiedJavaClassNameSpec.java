@@ -15,7 +15,6 @@ import org.jnario.suite.suite.Suite;
 import org.jnario.suite.unit.SuiteClassNameProviderSpec;
 import org.jnario.suite.unit.SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -26,9 +25,8 @@ public class SuiteClassNameProviderToQualifiedJavaClassNameSpec extends SuiteCla
   @Subject
   public SuiteClassNameProvider subject;
   
-  @Before
-  public void _initSuiteClassNameProviderToQualifiedJavaClassNameSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples> _initSuiteClassNameProviderToQualifiedJavaClassNameSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("name", "packageName", "qualifiedName"), 
       new SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples(  java.util.Arrays.asList("null", "null", "null"), null, null, null),
       new SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples(  java.util.Arrays.asList("\"#\"", "\"test\"", "null"), "#", "test", null),
@@ -37,11 +35,11 @@ public class SuiteClassNameProviderToQualifiedJavaClassNameSpec extends SuiteCla
     );
   }
   
-  protected ExampleTable<SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples> examples;
+  protected ExampleTable<SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples> examples = _initSuiteClassNameProviderToQualifiedJavaClassNameSpecExamples();
   
   @Test
   @Named("examples.forEach[ val actualName = subject.toQualifiedJavaClassName[suite[name, packageName]] actualName => qualifiedName ]")
-  @Order(2)
+  @Order(3)
   public void _examplesForEachValActualNameSubjectToQualifiedJavaClassNameSuiteNamePackageNameActualNameQualifiedName() throws Exception {
     final Procedure1<SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples> _function = new Procedure1<SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples>() {
         public void apply(final SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples it) {

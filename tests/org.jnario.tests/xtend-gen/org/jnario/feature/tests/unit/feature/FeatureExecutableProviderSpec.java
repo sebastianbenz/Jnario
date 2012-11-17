@@ -37,7 +37,7 @@ public class FeatureExecutableProviderSpec {
   
   @Test
   @Named("returns background and scenarios")
-  @Order(0)
+  @Order(1)
   public void _returnsBackgroundAndScenarios() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: My feature");
@@ -69,7 +69,7 @@ public class FeatureExecutableProviderSpec {
   
   @Test
   @Named("returns steps")
-  @Order(1)
+  @Order(2)
   public void _returnsSteps() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: My feature");
@@ -96,7 +96,7 @@ public class FeatureExecutableProviderSpec {
   
   @Test
   @Named("returns sub steps")
-  @Order(2)
+  @Order(3)
   public void _returnsSubSteps() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: My feature");

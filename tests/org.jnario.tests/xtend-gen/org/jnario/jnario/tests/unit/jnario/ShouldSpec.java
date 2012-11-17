@@ -32,7 +32,7 @@ public class ShouldSpec {
   
   @Test
   @Named("\\\'isNot\\\' is false if for \\\'1 should be 1")
-  @Order(0)
+  @Order(1)
   public void _isNotIsFalseIfFor1ShouldBe1() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -59,7 +59,7 @@ public class ShouldSpec {
   
   @Test
   @Named("\\\'isNot\\\' is true if for \\\'1 should not be 1")
-  @Order(1)
+  @Order(2)
   public void _isNotIsTrueIfFor1ShouldNotBe1() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -84,7 +84,7 @@ public class ShouldSpec {
   
   @Test
   @Named("short circuit invocation works in closures within assertions")
-  @Order(2)
+  @Order(3)
   public void _shortCircuitInvocationWorksInClosuresWithinAssertions() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Test\"{");
@@ -99,7 +99,7 @@ public class ShouldSpec {
   
   @Test
   @Named("throw checks expected exception")
-  @Order(3)
+  @Order(4)
   public void _throwChecksExpectedException() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import java.util.*");
@@ -116,7 +116,7 @@ public class ShouldSpec {
   
   @Test
   @Named("throw checks fails if no exception is thrown")
-  @Order(4)
+  @Order(5)
   public void _throwChecksFailsIfNoExceptionIsThrown() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Test\"{");
@@ -131,7 +131,7 @@ public class ShouldSpec {
   
   @Test
   @Named("throw checks fails if exception with different type is thrown")
-  @Order(5)
+  @Order(6)
   public void _throwChecksFailsIfExceptionWithDifferentTypeIsThrown() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import java.util.*");

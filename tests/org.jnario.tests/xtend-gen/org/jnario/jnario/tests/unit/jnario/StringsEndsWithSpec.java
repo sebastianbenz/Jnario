@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 public class StringsEndsWithSpec extends StringsSpec {
   @Test
   @Named("assert \\\'\\\'\\\'hello\\\'\\\'\\\'.endsWith[\\\'\\\'\\\'lo\\\'\\\'\\\']")
-  @Order(4)
+  @Order(5)
   public void _assertHelloEndsWithLo() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("hello");
@@ -32,7 +32,7 @@ public class StringsEndsWithSpec extends StringsSpec {
   
   @Test
   @Named("assert !\\\'\\\'\\\'hello\\\'\\\'\\\'.endsWith[\\\'\\\'\\\'he\\\'\\\'\\\']")
-  @Order(5)
+  @Order(6)
   public void _assertHelloEndsWithHe() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("hello");
@@ -49,7 +49,7 @@ public class StringsEndsWithSpec extends StringsSpec {
   
   @Test
   @Named("assert !\\\'\\\'\\\'short\\\'\\\'\\\'.endsWith[\\\'\\\'\\\'longer\\\'\\\'\\\']")
-  @Order(6)
+  @Order(7)
   public void _assertShortEndsWithLonger() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("short");

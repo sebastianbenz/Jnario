@@ -12,7 +12,6 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,20 +19,19 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("removeArguments")
 public class StepNameProviderRemoveArgumentsSpec extends StepNameProviderSpec {
-  @Before
-  public void _initStepNameProviderRemoveArgumentsSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<StepNameProviderRemoveArgumentsSpecExamples> _initStepNameProviderRemoveArgumentsSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("step", "result"), 
       new StepNameProviderRemoveArgumentsSpecExamples(  java.util.Arrays.asList("\'Given a \"value\"\'", "\'Given a \"\"\'"), "Given a \"value\"", "Given a \"\""),
       new StepNameProviderRemoveArgumentsSpecExamples(  java.util.Arrays.asList("\'Given a \"value\" and \"anothervalue\"\'", "\'Given a \"\" and \"\"\'"), "Given a \"value\" and \"anothervalue\"", "Given a \"\" and \"\"")
     );
   }
   
-  protected ExampleTable<StepNameProviderRemoveArgumentsSpecExamples> examples;
+  protected ExampleTable<StepNameProviderRemoveArgumentsSpecExamples> examples = _initStepNameProviderRemoveArgumentsSpecExamples();
   
   @Test
   @Named("examples do pass")
-  @Order(8)
+  @Order(9)
   public void _examplesDoPass() throws Exception {
     final Procedure1<StepNameProviderRemoveArgumentsSpecExamples> _function = new Procedure1<StepNameProviderRemoveArgumentsSpecExamples>() {
         public void apply(final StepNameProviderRemoveArgumentsSpecExamples it) {

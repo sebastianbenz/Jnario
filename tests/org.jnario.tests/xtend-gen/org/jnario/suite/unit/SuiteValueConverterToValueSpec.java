@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 public class SuiteValueConverterToValueSpec extends SuiteValueConverterSpec {
   @Test
   @Named("removes escape character for dashes")
-  @Order(2)
+  @Order(3)
   public void _removesEscapeCharacterForDashes() throws Exception {
     String _value = this.subject.toValue("##suite \\- with dash", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "##suite - with dash");
@@ -28,7 +28,7 @@ public class SuiteValueConverterToValueSpec extends SuiteValueConverterSpec {
   
   @Test
   @Named("removes escape character for  hashs")
-  @Order(3)
+  @Order(4)
   public void _removesEscapeCharacterForHashs() throws Exception {
     String _value = this.subject.toValue("##suite \\# with hash", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "##suite # with hash");

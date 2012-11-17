@@ -31,7 +31,6 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -46,8 +45,7 @@ public class StepArgumentsProviderSpec {
   @Inject
   LazyLinkingResource resource;
   
-  @Before
-  public void _initStepArgumentsProviderSpecExamples() {
+  public ExampleTable<StepArgumentsProviderSpecExamples> _initStepArgumentsProviderSpecExamples() {
     
     List<Object> _list = JnarioCollectionLiterals.<Object>list();
     List<String> _list_1 = JnarioCollectionLiterals.<String>list("hello");
@@ -59,7 +57,7 @@ public class StepArgumentsProviderSpec {
     List<String> _list_7 = JnarioCollectionLiterals.<String>list("hello");
     List<Object> _list_8 = JnarioCollectionLiterals.<Object>list();
     List<Object> _list_9 = JnarioCollectionLiterals.<Object>list();
-    List<Object> _list_10 = JnarioCollectionLiterals.<Object>list();examples = ExampleTable.create("examples", 
+    List<Object> _list_10 = JnarioCollectionLiterals.<Object>list();return ExampleTable.create("examples", 
       java.util.Arrays.asList("step", "expectedArgs"), 
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given no values\'", "list()"), "Given no values", _list),
       new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\"\'", "list(\"hello\")"), "Given \"hello\"", _list_1),
@@ -75,11 +73,11 @@ public class StepArgumentsProviderSpec {
     );
   }
   
-  protected ExampleTable<StepArgumentsProviderSpecExamples> examples;
+  protected ExampleTable<StepArgumentsProviderSpecExamples> examples = _initStepArgumentsProviderSpecExamples();
   
   @Test
   @Named("extracts arguments from step descriptions")
-  @Order(0)
+  @Order(1)
   public void _extractsArgumentsFromStepDescriptions() throws Exception {
     final Procedure1<StepArgumentsProviderSpecExamples> _function = new Procedure1<StepArgumentsProviderSpecExamples>() {
         public void apply(final StepArgumentsProviderSpecExamples it) {
@@ -97,7 +95,7 @@ public class StepArgumentsProviderSpec {
   
   @Test
   @Named("returns empty list if step has no name")
-  @Order(1)
+  @Order(2)
   public void _returnsEmptyListIfStepHasNoName() throws Exception {
     Given _step = Features.step(null);
     List<String> _findStepArguments = this.subject.findStepArguments(_step);

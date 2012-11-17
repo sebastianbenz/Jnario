@@ -35,7 +35,7 @@ public class ReferencingOtherStepsSpec {
   
   @Test
   @Named("Steps can reference steps in the same feature")
-  @Order(0)
+  @Order(1)
   public void _stepsCanReferenceStepsInTheSameFeature() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package test");
@@ -76,7 +76,7 @@ public class ReferencingOtherStepsSpec {
   
   @Test
   @Named("Steps ignore trailing whitespace when referencing steps")
-  @Order(1)
+  @Order(2)
   public void _stepsIgnoreTrailingWhitespaceWhenReferencingSteps() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package test");
@@ -121,7 +121,7 @@ public class ReferencingOtherStepsSpec {
   
   @Test
   @Named("Steps can reference steps in features in the same package")
-  @Order(2)
+  @Order(3)
   public void _stepsCanReferenceStepsInFeaturesInTheSamePackage() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package test");
@@ -169,7 +169,7 @@ public class ReferencingOtherStepsSpec {
   
   @Test
   @Named("Referencing steps in a different package requires an import statement")
-  @Order(3)
+  @Order(4)
   public void _referencingStepsInADifferentPackageRequiresAnImportStatement() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package test1");

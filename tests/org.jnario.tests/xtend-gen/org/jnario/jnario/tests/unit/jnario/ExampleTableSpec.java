@@ -27,7 +27,7 @@ public class ExampleTableSpec {
   
   @Test
   @Named("is valid if all rows have the same number of columns")
-  @Order(0)
+  @Order(1)
   public void _isValidIfAllRowsHaveTheSameNumberOfColumns() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -64,7 +64,7 @@ public class ExampleTableSpec {
   
   @Test
   @Named("is invalid if one row has a different number of columns")
-  @Order(1)
+  @Order(2)
   public void _isInvalidIfOneRowHasADifferentNumberOfColumns() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");

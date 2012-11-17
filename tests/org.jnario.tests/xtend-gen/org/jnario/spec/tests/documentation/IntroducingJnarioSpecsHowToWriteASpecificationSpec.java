@@ -74,7 +74,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
    */
   @Test
   @Named("Checking your facts")
-  @Order(0)
+  @Order(1)
   public void _checkingYourFacts() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -147,7 +147,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
    */
   @Test
   @Named("Less boilerplate")
-  @Order(1)
+  @Order(2)
   public void _lessBoilerplate() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -191,7 +191,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
    */
   @Test
   @Named("Using Fields")
-  @Order(2)
+  @Order(3)
   public void _usingFields() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -261,7 +261,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
    */
   @Test
   @Named("Implicit Subjects")
-  @Order(3)
+  @Order(4)
   public void _implicitSubjects() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -317,7 +317,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
    */
   @Test
   @Named("Defining Contexts")
-  @Order(4)
+  @Order(5)
   public void _definingContexts() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -422,7 +422,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
    */
   @Test
   @Named("Example Tables")
-  @Order(5)
+  @Order(6)
   public void _exampleTables() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo ");
@@ -471,7 +471,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
    */
   @Test
   @Named("Generating Documentation")
-  @Order(6)
+  @Order(7)
   public void _generatingDocumentation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -583,7 +583,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
    */
   @Test
   @Named("Setup & Teardown")
-  @Order(7)
+  @Order(8)
   public void _setupTeardown() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Setup & Teardown\" {");
@@ -693,7 +693,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
    */
   @Test
   @Named("Spec extensions")
-  @Order(8)
+  @Order(9)
   public void _specExtensions() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Spec Extensions\"{");
@@ -717,7 +717,7 @@ public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends Introduc
    */
   @Test
   @Named("Helper methods")
-  @Order(9)
+  @Order(10)
   public void _helperMethods() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Helper Methods & Fields\"{");

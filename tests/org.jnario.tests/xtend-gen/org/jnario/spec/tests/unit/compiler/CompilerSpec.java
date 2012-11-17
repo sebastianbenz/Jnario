@@ -23,7 +23,7 @@ public class CompilerSpec {
   
   @Test
   @Named("long boolean expressions compile correctly")
-  @Order(0)
+  @Order(1)
   public void _longBooleanExpressionsCompileCorrectly() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something with an expression\"{");
@@ -52,7 +52,7 @@ public class CompilerSpec {
   
   @Test
   @Named("assert with multiple bool expressions")
-  @Order(1)
+  @Order(2)
   public void _assertWithMultipleBoolExpressions() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something with an expression\"{");
@@ -76,7 +76,7 @@ public class CompilerSpec {
   
   @Test
   @Named("=> with multiple bool expressions")
-  @Order(2)
+  @Order(3)
   public void _withMultipleBoolExpressions() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something with an expression\"{");
@@ -100,7 +100,7 @@ public class CompilerSpec {
   
   @Test
   @Named("should with multiple bool expressions")
-  @Order(3)
+  @Order(4)
   public void _shouldWithMultipleBoolExpressions() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something with an expression\"{");
@@ -124,7 +124,7 @@ public class CompilerSpec {
   
   @Test
   @Named("automatically converts lists to arrays")
-  @Order(4)
+  @Order(5)
   public void _automaticallyConvertsListsToArrays() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something with an expression\"{");
@@ -153,7 +153,7 @@ public class CompilerSpec {
   
   @Test
   @Named("resolve fact method name clashes")
-  @Order(5)
+  @Order(6)
   public void _resolveFactMethodNameClashes() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Using Should\"{");

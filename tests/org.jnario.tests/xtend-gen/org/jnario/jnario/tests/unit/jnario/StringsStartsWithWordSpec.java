@@ -12,7 +12,6 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.util.Strings;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,11 +19,10 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("startsWithWord")
 public class StringsStartsWithWordSpec extends StringsSpec {
-  @Before
-  public void _initStringsStartsWithWordSpecExamples() {
+  public ExampleTable<StringsStartsWithWordSpecExamples> _initStringsStartsWithWordSpecExamples() {
     
     int _minus = (-1);
-    int _minus_1 = (-1);examples = ExampleTable.create("examples", 
+    int _minus_1 = (-1);return ExampleTable.create("examples", 
       java.util.Arrays.asList("string", "word", "index"), 
       new StringsStartsWithWordSpecExamples(  java.util.Arrays.asList("\"\"", "\"hello\"", "-1"), "", "hello", _minus),
       new StringsStartsWithWordSpecExamples(  java.util.Arrays.asList("\"hello hi\"", "\"hello\"", "0"), "hello hi", "hello", 0),
@@ -35,11 +33,11 @@ public class StringsStartsWithWordSpec extends StringsSpec {
     );
   }
   
-  protected ExampleTable<StringsStartsWithWordSpecExamples> examples;
+  protected ExampleTable<StringsStartsWithWordSpecExamples> examples = _initStringsStartsWithWordSpecExamples();
   
   @Test
   @Named("examples.forEach[string.startsWithWord[word] => index]")
-  @Order(0)
+  @Order(1)
   public void _examplesForEachStringStartsWithWordWordIndex() throws Exception {
     final Procedure1<StringsStartsWithWordSpecExamples> _function = new Procedure1<StringsStartsWithWordSpecExamples>() {
         public void apply(final StringsStartsWithWordSpecExamples it) {

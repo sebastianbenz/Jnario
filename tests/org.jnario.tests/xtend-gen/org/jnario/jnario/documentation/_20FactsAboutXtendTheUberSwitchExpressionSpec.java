@@ -29,7 +29,7 @@ public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAbout
    */
   @Test
   @Named("Supports case expressions")
-  @Order(8)
+  @Order(9)
   public void _supportsCaseExpressions() throws Exception {
     final String myString = "Hello";
     String _switchResult = null;
@@ -64,7 +64,7 @@ public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAbout
    */
   @Test
   @Named("...and type guards [with type inference]")
-  @Order(9)
+  @Order(10)
   public void _andTypeGuardsWithTypeInference() throws Exception {
     List<Integer> _list = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3));
     final Object x = ((Object) _list);

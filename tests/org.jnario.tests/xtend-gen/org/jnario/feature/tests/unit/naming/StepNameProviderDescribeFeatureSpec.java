@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
 public class StepNameProviderDescribeFeatureSpec extends StepNameProviderSpec {
   @Test
   @Named("removes multilines parameters")
-  @Order(5)
+  @Order(6)
   public void _removesMultilinesParameters() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Scenario: MyScenario 2");
@@ -43,7 +43,7 @@ public class StepNameProviderDescribeFeatureSpec extends StepNameProviderSpec {
   
   @Test
   @Named("feature[\\\" With whitespace \\\"].desc =>  \\\"With whitespace\\\"")
-  @Order(6)
+  @Order(7)
   public void _featureWithWhitespaceDescWithWhitespace() throws Exception {
     Feature _feature = Features.feature(" With whitespace ");
     String _desc = this.desc(_feature);
@@ -56,7 +56,7 @@ public class StepNameProviderDescribeFeatureSpec extends StepNameProviderSpec {
   
   @Test
   @Named("feature[\\\"With [parentheses]\\\"].desc =>  \\\"With [parentheses]\\\"")
-  @Order(7)
+  @Order(8)
   public void _featureWithParenthesesDescWithParentheses() throws Exception {
     Feature _feature = Features.feature("With (parentheses)");
     String _desc = this.desc(_feature);

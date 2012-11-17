@@ -22,7 +22,7 @@ public class AssertionIntroductionSpec extends AssertionSpec {
    */
   @Test
   @Named("To pass..")
-  @Order(0)
+  @Order(1)
   public void _toPass() throws Exception {
     Assert.assertTrue("\nExpected true but" + " did not." + "\n", true);
     
@@ -37,7 +37,7 @@ public class AssertionIntroductionSpec extends AssertionSpec {
    */
   @Test
   @Named("...or not to pass")
-  @Order(1)
+  @Order(2)
   public void _orNotToPass() throws Exception {
     try{
       Assert.assertTrue("\nExpected false but" + " did not." + "\n", false);

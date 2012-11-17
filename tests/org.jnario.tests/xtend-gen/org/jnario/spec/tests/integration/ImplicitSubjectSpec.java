@@ -35,7 +35,7 @@ public class ImplicitSubjectSpec {
    */
   @Test
   @Named("spec creates instance of target type")
-  @Order(0)
+  @Order(1)
   public void _specCreatesInstanceOfTargetType() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -61,7 +61,7 @@ public class ImplicitSubjectSpec {
    */
   @Test
   @Named("subject can be overridden within example group")
-  @Order(1)
+  @Order(2)
   public void _subjectCanBeOverriddenWithinExampleGroup() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -96,7 +96,7 @@ public class ImplicitSubjectSpec {
    */
   @Test
   @Named("subjects can be instantiated manually")
-  @Order(2)
+  @Order(3)
   public void _subjectsCanBeInstantiatedManually() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -131,7 +131,7 @@ public class ImplicitSubjectSpec {
    */
   @Test
   @Named("subjects will be only created if used")
-  @Order(3)
+  @Order(4)
   public void _subjectsWillBeOnlyCreatedIfUsed() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -162,7 +162,7 @@ public class ImplicitSubjectSpec {
    */
   @Test
   @Named("subjects can be accessed from nested ExampleGroups")
-  @Order(4)
+  @Order(5)
   public void _subjectsCanBeAccessedFromNestedExampleGroups() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -197,7 +197,7 @@ public class ImplicitSubjectSpec {
    */
   @Test
   @Named("subjects can be overridden from nested ExampleGroups")
-  @Order(5)
+  @Order(6)
   public void _subjectsCanBeOverriddenFromNestedExampleGroups() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -232,7 +232,7 @@ public class ImplicitSubjectSpec {
    */
   @Test
   @Named("subject will be only created in the subexample if is not used in the parent example group")
-  @Order(6)
+  @Order(7)
   public void _subjectWillBeOnlyCreatedInTheSubexampleIfIsNotUsedInTheParentExampleGroup() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
@@ -276,7 +276,7 @@ public class ImplicitSubjectSpec {
    */
   @Test
   @Named("subject will not be created in a sub example if is used in the parent example group")
-  @Order(7)
+  @Order(8)
   public void _subjectWillNotBeCreatedInASubExampleIfIsUsedInTheParentExampleGroup() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");

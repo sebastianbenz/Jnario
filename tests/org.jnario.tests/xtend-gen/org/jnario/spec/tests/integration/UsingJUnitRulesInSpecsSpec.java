@@ -29,7 +29,7 @@ public class UsingJUnitRulesInSpecsSpec {
    */
   @Test
   @Named("Example Specification:")
-  @Order(0)
+  @Order(1)
   public void _exampleSpecification() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package test");

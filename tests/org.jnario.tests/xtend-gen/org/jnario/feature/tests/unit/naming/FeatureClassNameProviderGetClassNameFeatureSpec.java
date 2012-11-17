@@ -13,7 +13,6 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -21,9 +20,8 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("getClassName[Feature]")
 public class FeatureClassNameProviderGetClassNameFeatureSpec extends FeatureClassNameProviderSpec {
-  @Before
-  public void _initFeatureClassNameProviderGetClassNameFeatureSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<FeatureClassNameProviderGetClassNameFeatureSpecExamples> _initFeatureClassNameProviderGetClassNameFeatureSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("name", "expectedClassName"), 
       new FeatureClassNameProviderGetClassNameFeatureSpecExamples(  java.util.Arrays.asList("null", "null"), null, null),
       new FeatureClassNameProviderGetClassNameFeatureSpecExamples(  java.util.Arrays.asList("\"Sample\"", "\"SampleFeature\""), "Sample", "SampleFeature"),
@@ -34,11 +32,11 @@ public class FeatureClassNameProviderGetClassNameFeatureSpec extends FeatureClas
     );
   }
   
-  protected ExampleTable<FeatureClassNameProviderGetClassNameFeatureSpecExamples> examples;
+  protected ExampleTable<FeatureClassNameProviderGetClassNameFeatureSpecExamples> examples = _initFeatureClassNameProviderGetClassNameFeatureSpecExamples();
   
   @Test
   @Named("examples work")
-  @Order(0)
+  @Order(1)
   public void _examplesWork() throws Exception {
     final Procedure1<FeatureClassNameProviderGetClassNameFeatureSpecExamples> _function = new Procedure1<FeatureClassNameProviderGetClassNameFeatureSpecExamples>() {
         public void apply(final FeatureClassNameProviderGetClassNameFeatureSpecExamples it) {

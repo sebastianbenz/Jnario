@@ -24,7 +24,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should use the description")
-  @Order(23)
+  @Order(24)
   public void _shouldUseTheDescription() throws Exception {
     String _describeFirst = this.describeFirst("describe \'My Description\'");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "My Description");
@@ -35,7 +35,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should use the target type")
-  @Order(24)
+  @Order(25)
   public void _shouldUseTheTargetType() throws Exception {
     String _describeFirst = this.describeFirst("describe org.junit.Assert");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "Assert");
@@ -46,7 +46,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should use the unresolved target type")
-  @Order(25)
+  @Order(26)
   public void _shouldUseTheUnresolvedTargetType() throws Exception {
     String _describeFirst = this.describeFirst("describe Unresolved");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "Unresolved");
@@ -62,7 +62,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should combine target type and description")
-  @Order(26)
+  @Order(27)
   public void _shouldCombineTargetTypeAndDescription() throws Exception {
     String _describeFirst = this.describeFirst("describe org.junit.Assert \'and more\'");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "Assert and more");
@@ -73,7 +73,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should use the target operation")
-  @Order(27)
+  @Order(28)
   public void _shouldUseTheTargetOperation() throws Exception {
     String _describeSecond = this.describeSecond("describe org.junit.Assert{\r\n                    context assertTrue(boolean) {}\r\n                 }");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeSecond, "assertTrue[boolean]");
@@ -84,7 +84,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should combine target operation and description")
-  @Order(28)
+  @Order(29)
   public void _shouldCombineTargetOperationAndDescription() throws Exception {
     String _describeSecond = this.describeSecond("describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'{}\r\n                 }");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeSecond, "assertTrue[boolean] and more");
@@ -95,7 +95,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should escape quotes")
-  @Order(29)
+  @Order(30)
   public void _shouldEscapeQuotes() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
@@ -116,7 +116,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should replace line breaks and leading whitespace with a single space")
-  @Order(30)
+  @Order(31)
   public void _shouldReplaceLineBreaksAndLeadingWhitespaceWithASingleSpace() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Example\\n\\t 2\"");

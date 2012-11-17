@@ -12,7 +12,6 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,9 +19,8 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("getClassName[Background]")
 public class FeatureClassNameProviderGetClassNameBackgroundSpec extends FeatureClassNameProviderSpec {
-  @Before
-  public void _initFeatureClassNameProviderGetClassNameBackgroundSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<FeatureClassNameProviderGetClassNameBackgroundSpecExamples> _initFeatureClassNameProviderGetClassNameBackgroundSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("name", "feature", "expectedClassName"), 
       new FeatureClassNameProviderGetClassNameBackgroundSpecExamples(  java.util.Arrays.asList("\"\"", "\"Sample\"", "\"SampleFeatureBackground\""), "", "Sample", "SampleFeatureBackground"),
       new FeatureClassNameProviderGetClassNameBackgroundSpecExamples(  java.util.Arrays.asList("\"Stuff\"", "\"Ha ha\"", "\"HaHaFeatureStuff\""), "Stuff", "Ha ha", "HaHaFeatureStuff"),
@@ -31,11 +29,11 @@ public class FeatureClassNameProviderGetClassNameBackgroundSpec extends FeatureC
     );
   }
   
-  protected ExampleTable<FeatureClassNameProviderGetClassNameBackgroundSpecExamples> examples;
+  protected ExampleTable<FeatureClassNameProviderGetClassNameBackgroundSpecExamples> examples = _initFeatureClassNameProviderGetClassNameBackgroundSpecExamples();
   
   @Test
   @Named("examples work")
-  @Order(1)
+  @Order(2)
   public void _examplesWork() throws Exception {
     final Procedure1<FeatureClassNameProviderGetClassNameBackgroundSpecExamples> _function = new Procedure1<FeatureClassNameProviderGetClassNameBackgroundSpecExamples>() {
         public void apply(final FeatureClassNameProviderGetClassNameBackgroundSpecExamples it) {

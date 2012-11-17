@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 public class TextValueConverterToStringSpec extends TextValueConverterSpec {
   @Test
   @Named("adds colon")
-  @Order(0)
+  @Order(1)
   public void _addsColon() throws Exception {
     String _string = this.subject.toString("suite - with dash");
     boolean _doubleArrow = Should.operator_doubleArrow(_string, ":suite \\- with dash");
@@ -28,7 +28,7 @@ public class TextValueConverterToStringSpec extends TextValueConverterSpec {
   
   @Test
   @Named("escapes dashes")
-  @Order(1)
+  @Order(2)
   public void _escapesDashes() throws Exception {
     String _string = this.subject.toString("suite - with dash");
     boolean _doubleArrow = Should.operator_doubleArrow(_string, ":suite \\- with dash");
@@ -40,7 +40,7 @@ public class TextValueConverterToStringSpec extends TextValueConverterSpec {
   
   @Test
   @Named("escapes hashs")
-  @Order(2)
+  @Order(3)
   public void _escapesHashs() throws Exception {
     String _string = this.subject.toString("suite # with hash");
     boolean _doubleArrow = Should.operator_doubleArrow(_string, ":suite \\# with hash");

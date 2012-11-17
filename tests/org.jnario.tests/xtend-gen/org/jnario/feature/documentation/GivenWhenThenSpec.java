@@ -20,7 +20,7 @@ public class GivenWhenThenSpec {
    */
   @Test
   @Named("And, But")
-  @Order(0)
+  @Order(1)
   public void _andBut() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: And & But");

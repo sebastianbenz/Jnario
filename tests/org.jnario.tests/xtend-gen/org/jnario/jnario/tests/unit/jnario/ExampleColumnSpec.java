@@ -21,7 +21,6 @@ import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -38,9 +37,8 @@ public class ExampleColumnSpec {
   @Extension
   public ISerializer _iSerializer;
   
-  @Before
-  public void _initExampleColumnSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<ExampleColumnSpecExamples> _initExampleColumnSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("columnIndex", "cellIndex", "value"), 
       new ExampleColumnSpecExamples(  java.util.Arrays.asList("0", "0", "\"1\""), 0, 0, "1"),
       new ExampleColumnSpecExamples(  java.util.Arrays.asList("0", "1", "\"3\""), 0, 1, "3"),
@@ -49,11 +47,11 @@ public class ExampleColumnSpec {
     );
   }
   
-  protected ExampleTable<ExampleColumnSpecExamples> examples;
+  protected ExampleTable<ExampleColumnSpecExamples> examples = _initExampleColumnSpecExamples();
   
   @Test
   @Named("calculates cells based on table")
-  @Order(0)
+  @Order(1)
   public void _calculatesCellsBasedOnTable() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");

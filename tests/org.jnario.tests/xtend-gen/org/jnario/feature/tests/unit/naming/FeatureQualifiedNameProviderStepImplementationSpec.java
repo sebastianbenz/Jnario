@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 public class FeatureQualifiedNameProviderStepImplementationSpec extends FeatureQualifiedNameProviderSpec {
   @Test
   @Named("strips keyword")
-  @Order(3)
+  @Order(4)
   public void _stripsKeyword() throws Exception {
     String _implementedStepName = this.implementedStepName("Given a step with implementation");
     boolean _doubleArrow = Should.operator_doubleArrow(_implementedStepName, "myPackage.a step with implementation");
@@ -27,7 +27,7 @@ public class FeatureQualifiedNameProviderStepImplementationSpec extends FeatureQ
   
   @Test
   @Named("strips dot at end")
-  @Order(4)
+  @Order(5)
   public void _stripsDotAtEnd() throws Exception {
     String _implementedStepName = this.implementedStepName("Given a step with implementation.");
     boolean _doubleArrow = Should.operator_doubleArrow(_implementedStepName, "myPackage.a step with implementation");
@@ -38,7 +38,7 @@ public class FeatureQualifiedNameProviderStepImplementationSpec extends FeatureQ
   
   @Test
   @Named("strips argument values")
-  @Order(5)
+  @Order(6)
   public void _stripsArgumentValues() throws Exception {
     String _implementedStepName = this.implementedStepName("Given a step with \"arg\".");
     boolean _doubleArrow = Should.operator_doubleArrow(_implementedStepName, "myPackage.a step with \"\"");

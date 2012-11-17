@@ -12,7 +12,6 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.util.Strings;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,9 +19,8 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("trailingWhitespace")
 public class StringsTrailingWhitespaceSpec extends StringsSpec {
-  @Before
-  public void _initStringsTrailingWhitespaceSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<StringsTrailingWhitespaceSpecExamples> _initStringsTrailingWhitespaceSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("string", "result"), 
       new StringsTrailingWhitespaceSpecExamples(  java.util.Arrays.asList("null", "\"\""), null, ""),
       new StringsTrailingWhitespaceSpecExamples(  java.util.Arrays.asList("\"\"", "\"\""), "", ""),
@@ -36,11 +34,11 @@ public class StringsTrailingWhitespaceSpec extends StringsSpec {
     );
   }
   
-  protected ExampleTable<StringsTrailingWhitespaceSpecExamples> examples;
+  protected ExampleTable<StringsTrailingWhitespaceSpecExamples> examples = _initStringsTrailingWhitespaceSpecExamples();
   
   @Test
   @Named("returns whitespaces at the end")
-  @Order(3)
+  @Order(4)
   public void _returnsWhitespacesAtTheEnd() throws Exception {
     final Procedure1<StringsTrailingWhitespaceSpecExamples> _function = new Procedure1<StringsTrailingWhitespaceSpecExamples>() {
         public void apply(final StringsTrailingWhitespaceSpecExamples it) {

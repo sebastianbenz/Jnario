@@ -11,7 +11,6 @@ import org.jnario.runner.Order;
 import org.jnario.spec.tests.unit.naming.ExamplePendingSpecExamples;
 import org.jnario.spec.tests.unit.naming.ExampleSpec;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -19,9 +18,8 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("Pending")
 public class ExamplePendingSpec extends ExampleSpec {
-  @Before
-  public void _initExamplePendingSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<ExamplePendingSpecExamples> _initExamplePendingSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("example", "expected"), 
       new ExamplePendingSpecExamples(  java.util.Arrays.asList("\"fact \'with description\'\"", "true"), "fact \'with description\'", true),
       new ExamplePendingSpecExamples(  java.util.Arrays.asList("\"fact \'with description and empty block\' {}\"", "true"), "fact \'with description and empty block\' {}", true),
@@ -31,11 +29,11 @@ public class ExamplePendingSpec extends ExampleSpec {
     );
   }
   
-  protected ExampleTable<ExamplePendingSpecExamples> examples;
+  protected ExampleTable<ExamplePendingSpecExamples> examples = _initExamplePendingSpecExamples();
   
   @Test
   @Named("examples.forEach[pendingStateOf[example] should be expected]")
-  @Order(2)
+  @Order(3)
   public void _examplesForEachPendingStateOfExampleShouldBeExpected() throws Exception {
     final Procedure1<ExamplePendingSpecExamples> _function = new Procedure1<ExamplePendingSpecExamples>() {
         public void apply(final ExamplePendingSpecExamples it) {

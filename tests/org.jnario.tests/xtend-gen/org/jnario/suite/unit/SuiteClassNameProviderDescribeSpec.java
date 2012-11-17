@@ -15,7 +15,6 @@ import org.jnario.suite.suite.Suite;
 import org.jnario.suite.unit.SuiteClassNameProviderDescribeSpecExamples;
 import org.jnario.suite.unit.SuiteClassNameProviderSpec;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -26,9 +25,8 @@ public class SuiteClassNameProviderDescribeSpec extends SuiteClassNameProviderSp
   @Subject
   public SuiteClassNameProvider subject;
   
-  @Before
-  public void _initSuiteClassNameProviderDescribeSpecExamples() {
-    examples = ExampleTable.create("examples", 
+  public ExampleTable<SuiteClassNameProviderDescribeSpecExamples> _initSuiteClassNameProviderDescribeSpecExamples() {
+    return ExampleTable.create("examples", 
       java.util.Arrays.asList("name", "expectedClassName"), 
       new SuiteClassNameProviderDescribeSpecExamples(  java.util.Arrays.asList("null", "null"), null, null),
       new SuiteClassNameProviderDescribeSpecExamples(  java.util.Arrays.asList("\"#\"", "null"), "#", null),
@@ -37,11 +35,11 @@ public class SuiteClassNameProviderDescribeSpec extends SuiteClassNameProviderSp
     );
   }
   
-  protected ExampleTable<SuiteClassNameProviderDescribeSpecExamples> examples;
+  protected ExampleTable<SuiteClassNameProviderDescribeSpecExamples> examples = _initSuiteClassNameProviderDescribeSpecExamples();
   
   @Test
   @Named("examples.forEach[subject.^describe[suite[name]] => expectedClassName]")
-  @Order(1)
+  @Order(2)
   public void _examplesForEachSubjectDescribeSuiteNameExpectedClassName() throws Exception {
     final Procedure1<SuiteClassNameProviderDescribeSpecExamples> _function = new Procedure1<SuiteClassNameProviderDescribeSpecExamples>() {
         public void apply(final SuiteClassNameProviderDescribeSpecExamples it) {

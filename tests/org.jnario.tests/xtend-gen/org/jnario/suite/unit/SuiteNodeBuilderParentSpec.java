@@ -16,7 +16,6 @@ import org.jnario.suite.suite.Suite;
 import org.jnario.suite.unit.SuiteNodeBuilderParentSpecExamples;
 import org.jnario.suite.unit.SuiteNodeBuilderSpec;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -28,13 +27,12 @@ public class SuiteNodeBuilderParentSpec extends SuiteNodeBuilderSpec {
   @Extension
   public SuiteNodeBuilder _suiteNodeBuilder;
   
-  @Before
-  public void _initSuiteNodeBuilderParentSpecExamples() {
+  public ExampleTable<SuiteNodeBuilderParentSpecExamples> _initSuiteNodeBuilderParentSpecExamples() {
     
     List<Suite> _suites = this.suites("#0", "#1");
     List<Suite> _suites_1 = this.suites("#0", "##1");
     List<Suite> _suites_2 = this.suites("#0", "###1");
-    List<Suite> _suites_3 = this.suites("#0", "#1", "###2");examples = ExampleTable.create("examples", 
+    List<Suite> _suites_3 = this.suites("#0", "#1", "###2");return ExampleTable.create("examples", 
       java.util.Arrays.asList("suites", "position", "parent"), 
       new SuiteNodeBuilderParentSpecExamples(  java.util.Arrays.asList("suites(\"#0\", \"#1\")", "0", "null"), _suites, 0, null),
       new SuiteNodeBuilderParentSpecExamples(  java.util.Arrays.asList("suites(\"#0\", \"##1\")", "1", "\"#0\""), _suites_1, 1, "#0"),
@@ -43,11 +41,11 @@ public class SuiteNodeBuilderParentSpec extends SuiteNodeBuilderSpec {
     );
   }
   
-  protected ExampleTable<SuiteNodeBuilderParentSpecExamples> examples;
+  protected ExampleTable<SuiteNodeBuilderParentSpecExamples> examples = _initSuiteNodeBuilderParentSpecExamples();
   
   @Test
   @Named("parent is suite with less hashes")
-  @Order(0)
+  @Order(1)
   public void _parentIsSuiteWithLessHashes() throws Exception {
     final Procedure1<SuiteNodeBuilderParentSpecExamples> _function = new Procedure1<SuiteNodeBuilderParentSpecExamples>() {
         public void apply(final SuiteNodeBuilderParentSpecExamples it) {
