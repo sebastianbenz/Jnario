@@ -31,6 +31,7 @@ import org.eclipse.xtend.core.xtend.XtendClass
 import org.jnario.runner.Extends
 import org.eclipse.xtext.xbase.XTypeLiteral
 import java.util.NoSuchElementException
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 
 import static com.google.common.base.Predicates.*
 
@@ -119,20 +120,21 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 		testRuntime
 	}
 	
-	def protected addSuperClass(XtendClass xtendClass){
+	def protected void addSuperClass(XtendClass xtendClass){
 		var EObject xtendType = xtendClass
 		while(xtendType != null && xtendType instanceof XtendClass){
 			val current = xtendType as XtendClass
-			for(annotation : current.annotations){
-				if(annotation.annotationType?.qualifiedName == typeof(Extends).name && annotation.value instanceof XTypeLiteral){
-					val typeLiteral = annotation.value as XTypeLiteral
-					if(current.superTypes.empty && typeLiteral.type != null){
-						xtendClass.^extends = typeLiteral.type.createTypeRef()
-					}
+			for(extendedType : current.annotations.filter[it.hasExtendsAnnotation].map[value as XTypeLiteral]){
+				if(current.superTypes.empty && extendedType.type != null){
+					xtendClass.^extends = extendedType.type.createTypeRef()
+					return
 				}
 			}	
 			xtendType = xtendType.eContainer
 		}
-		xtendClass.annotations
+	}
+	
+	def protected hasExtendsAnnotation(XAnnotation annotation){
+		annotation.annotationType?.qualifiedName == typeof(Extends).name && annotation.value instanceof XTypeLiteral
 	}
 }

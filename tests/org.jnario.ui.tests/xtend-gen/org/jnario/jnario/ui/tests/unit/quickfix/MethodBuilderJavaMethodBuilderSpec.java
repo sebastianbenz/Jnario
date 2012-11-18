@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   @Test
   @Named("creates public void method with specified name")
-  @Order(23)
+  @Order(9)
   public void _createsPublicVoidMethodWithSpecifiedName() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -38,7 +38,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("adds method parameters")
-  @Order(24)
+  @Order(10)
   public void _addsMethodParameters() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -60,7 +60,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("returns false for boolean")
-  @Order(25)
+  @Order(11)
   public void _returnsFalseForBoolean() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -85,7 +85,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("returns default value for numbers")
-  @Order(26)
+  @Order(12)
   public void _returnsDefaultValueForNumbers() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -110,7 +110,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("returns null for objects")
-  @Order(27)
+  @Order(13)
   public void _returnsNullForObjects() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -135,7 +135,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("returns nothing if void")
-  @Order(28)
+  @Order(14)
   public void _returnsNothingIfVoid() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -157,7 +157,7 @@ public class MethodBuilderJavaMethodBuilderSpec extends MethodBuilderSpec {
   
   @Test
   @Named("generated no method body if interface")
-  @Order(29)
+  @Order(15)
   public void _generatedNoMethodBodyIfInterface() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");

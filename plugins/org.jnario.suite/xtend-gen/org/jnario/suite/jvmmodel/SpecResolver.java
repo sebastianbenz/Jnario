@@ -153,8 +153,8 @@ public class SpecResolver {
         }
       };
     List<Specification> _sort = IterableExtensions.<Specification>sort(_filter, new Comparator<Specification>() {
-        public int compare(Specification arg0,Specification arg1) {
-          return _function_1.apply(arg0,arg1);
+        public int compare(Specification o1,Specification o2) {
+          return _function_1.apply(o1,o2);
         }
     });
     return _sort;

@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
 public class JnarioDocCompilerSpecDocCompilerSpec extends JnarioDocCompilerSpec {
   @Test
   @Named("\\\"test/SpecExampleSpec.html\\\" should be generated")
-  @Order(1)
+  @Order(2)
   public void _testSpecExampleSpecHtmlShouldBeGenerated() throws Exception {
     Matcher<String> _generated = this.generated();
     boolean _should_be = Should.<String>should_be("test/SpecExampleSpec.html", _generated);

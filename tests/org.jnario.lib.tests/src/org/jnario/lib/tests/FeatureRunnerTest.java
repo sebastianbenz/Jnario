@@ -125,7 +125,6 @@ public class FeatureRunnerTest {
 		}
 	}
 	
-	
 	private static List<String> LOG = newArrayList();
 	
 	@Test

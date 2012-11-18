@@ -31,11 +31,9 @@ Feature: Setup & Teardown with Feature Extensions
     Given a class **ExampleExtension** with JUnit before and after methods:
       ''' 
         package org.jnario.feature.tests.integration
-  
+
         import org.junit.Before
-        import org.junit.BeforeClass
         import org.junit.After
-        import org.junit.AfterClass
         
         class ExampleExtension {
           @Before def before(){
@@ -54,7 +52,7 @@ Feature: Setup & Teardown with Feature Extensions
         Feature: Feature with extensions
           
           Background: A common extension to all scenarios
-              extension ExampleExtension = new ExampleExtension 
+              extension static ExampleExtension = new ExampleExtension 
             Given a static extension field
             
           Scenario: Scenario 1

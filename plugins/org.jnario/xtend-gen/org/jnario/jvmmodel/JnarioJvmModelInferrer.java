@@ -194,69 +194,82 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
     return this.testRuntime;
   }
   
-  protected EList<XAnnotation> addSuperClass(final XtendClass xtendClass) {
-    EList<XAnnotation> _xblockexpression = null;
-    {
-      EObject xtendType = xtendClass;
-      boolean _and = false;
-      boolean _notEquals = (!Objects.equal(xtendType, null));
-      if (!_notEquals) {
-        _and = false;
-      } else {
-        _and = (_notEquals && (xtendType instanceof XtendClass));
-      }
-      boolean _while = _and;
-      while (_while) {
-        {
-          final XtendClass current = ((XtendClass) xtendType);
-          EList<XAnnotation> _annotations = current.getAnnotations();
-          for (final XAnnotation annotation : _annotations) {
-            boolean _and_1 = false;
-            JvmAnnotationType _annotationType = annotation.getAnnotationType();
-            String _qualifiedName = _annotationType==null?(String)null:_annotationType.getQualifiedName();
-            String _name = Extends.class.getName();
-            boolean _equals = Objects.equal(_qualifiedName, _name);
-            if (!_equals) {
-              _and_1 = false;
-            } else {
-              XExpression _value = annotation.getValue();
-              _and_1 = (_equals && (_value instanceof XTypeLiteral));
-            }
-            if (_and_1) {
-              XExpression _value_1 = annotation.getValue();
-              final XTypeLiteral typeLiteral = ((XTypeLiteral) _value_1);
-              boolean _and_2 = false;
-              EList<JvmTypeReference> _superTypes = current.getSuperTypes();
-              boolean _isEmpty = _superTypes.isEmpty();
-              if (!_isEmpty) {
-                _and_2 = false;
-              } else {
-                JvmType _type = typeLiteral.getType();
-                boolean _notEquals_1 = (!Objects.equal(_type, null));
-                _and_2 = (_isEmpty && _notEquals_1);
-              }
-              if (_and_2) {
-                JvmType _type_1 = typeLiteral.getType();
-                JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(_type_1);
-                xtendClass.setExtends(_createTypeRef);
-              }
-            }
-          }
-          EObject _eContainer = xtendType.eContainer();
-          xtendType = _eContainer;
-        }
-        boolean _and_1 = false;
-        boolean _notEquals_1 = (!Objects.equal(xtendType, null));
-        if (!_notEquals_1) {
-          _and_1 = false;
-        } else {
-          _and_1 = (_notEquals_1 && (xtendType instanceof XtendClass));
-        }
-        _while = _and_1;
-      }
-      EList<XAnnotation> _annotations = xtendClass.getAnnotations();
-      _xblockexpression = (_annotations);
+  protected void addSuperClass(final XtendClass xtendClass) {
+    EObject xtendType = xtendClass;
+    boolean _and = false;
+    boolean _notEquals = (!Objects.equal(xtendType, null));
+    if (!_notEquals) {
+      _and = false;
+    } else {
+      _and = (_notEquals && (xtendType instanceof XtendClass));
     }
-    return _xblockexpression;
+    boolean _while = _and;
+    while (_while) {
+      {
+        final XtendClass current = ((XtendClass) xtendType);
+        EList<XAnnotation> _annotations = current.getAnnotations();
+        final Function1<XAnnotation,Boolean> _function = new Function1<XAnnotation,Boolean>() {
+            public Boolean apply(final XAnnotation it) {
+              boolean _hasExtendsAnnotation = JnarioJvmModelInferrer.this.hasExtendsAnnotation(it);
+              return _hasExtendsAnnotation;
+            }
+          };
+        Iterable<XAnnotation> _filter = Iterables.<XAnnotation>filter(_annotations, new Predicate<XAnnotation>() {
+            public boolean apply(XAnnotation input) {
+              return _function.apply(input);
+            }
+        });
+        final Function1<XAnnotation,XTypeLiteral> _function_1 = new Function1<XAnnotation,XTypeLiteral>() {
+            public XTypeLiteral apply(final XAnnotation it) {
+              XExpression _value = it.getValue();
+              return ((XTypeLiteral) _value);
+            }
+          };
+        Iterable<XTypeLiteral> _map = IterableExtensions.<XAnnotation, XTypeLiteral>map(_filter, _function_1);
+        for (final XTypeLiteral extendedType : _map) {
+          boolean _and_1 = false;
+          EList<JvmTypeReference> _superTypes = current.getSuperTypes();
+          boolean _isEmpty = _superTypes.isEmpty();
+          if (!_isEmpty) {
+            _and_1 = false;
+          } else {
+            JvmType _type = extendedType.getType();
+            boolean _notEquals_1 = (!Objects.equal(_type, null));
+            _and_1 = (_isEmpty && _notEquals_1);
+          }
+          if (_and_1) {
+            JvmType _type_1 = extendedType.getType();
+            JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(_type_1);
+            xtendClass.setExtends(_createTypeRef);
+            return;
+          }
+        }
+        EObject _eContainer = xtendType.eContainer();
+        xtendType = _eContainer;
+      }
+      boolean _and_1 = false;
+      boolean _notEquals_1 = (!Objects.equal(xtendType, null));
+      if (!_notEquals_1) {
+        _and_1 = false;
+      } else {
+        _and_1 = (_notEquals_1 && (xtendType instanceof XtendClass));
+      }
+      _while = _and_1;
+    }
+  }
+  
+  protected boolean hasExtendsAnnotation(final XAnnotation annotation) {
+    boolean _and = false;
+    JvmAnnotationType _annotationType = annotation.getAnnotationType();
+    String _qualifiedName = _annotationType==null?(String)null:_annotationType.getQualifiedName();
+    String _name = Extends.class.getName();
+    boolean _equals = Objects.equal(_qualifiedName, _name);
+    if (!_equals) {
+      _and = false;
+    } else {
+      XExpression _value = annotation.getValue();
+      _and = (_equals && (_value instanceof XTypeLiteral));
+    }
+    return _and;
   }
 }

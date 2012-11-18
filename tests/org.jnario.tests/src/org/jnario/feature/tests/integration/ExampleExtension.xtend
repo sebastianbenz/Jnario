@@ -9,6 +9,8 @@ package org.jnario.feature.tests.integration
 
 import org.junit.After
 import org.junit.Before
+import org.junit.BeforeClass
+import org.junit.AfterClass
 
 class ExampleExtension {
 	
@@ -19,5 +21,13 @@ class ExampleExtension {
 	@After def after(){
 		println("after")
 	}
+	
+// 	@BeforeClass def beforeAll(){
+//		println("before all")
+//	}
+//  
+//	@AfterClass def afterAll(){
+//		println("after all")
+//	}
 	
 }

@@ -23,7 +23,7 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
   
   @Test
   @Named("false if method can be resolved")
-  @Order(0)
+  @Order(1)
   public void _falseIfMethodCanBeResolved() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -46,7 +46,7 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
   
   @Test
   @Named("false if method receiver cannot be resolved")
-  @Order(1)
+  @Order(2)
   public void _falseIfMethodReceiverCannotBeResolved() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -66,7 +66,7 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
   
   @Test
   @Named("false if method receiver has unknown type")
-  @Order(2)
+  @Order(3)
   public void _falseIfMethodReceiverHasUnknownType() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -89,7 +89,7 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
   
   @Test
   @Named("false if method receiver is literal")
-  @Order(3)
+  @Order(4)
   public void _falseIfMethodReceiverIsLiteral() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -109,7 +109,7 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
   
   @Test
   @Named("true if method cannot be resolved")
-  @Order(4)
+  @Order(5)
   public void _trueIfMethodCannotBeResolved() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -132,7 +132,7 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
   
   @Test
   @Named("true if method exists with different parameter count")
-  @Order(5)
+  @Order(6)
   public void _trueIfMethodExistsWithDifferentParameterCount() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -155,7 +155,7 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
   
   @Test
   @Named("true if method exists with different parameter types")
-  @Order(6)
+  @Order(7)
   public void _trueIfMethodExistsWithDifferentParameterTypes() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");
@@ -178,7 +178,7 @@ public class UndefinedMethodFixIsUndefinedMethodSpec extends UndefinedMethodFixS
   
   @Test
   @Named("true if context is constructor call")
-  @Order(7)
+  @Order(8)
   public void _trueIfContextIsConstructorCall() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Something\"{");

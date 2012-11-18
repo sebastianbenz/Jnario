@@ -23,7 +23,7 @@ public class DefiningSpecBaseClassesSpec {
   
   @Test
   @Named("Extend annotation defines the super class")
-  @Order(2)
+  @Order(1)
   public void _extendAnnotationDefinesTheSuperClass() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import org.jnario.runner.Extends");

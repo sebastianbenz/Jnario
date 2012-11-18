@@ -4,8 +4,12 @@ import junit.framework.TestSuite;
 
 public class JnarioTestSuite extends TestSuite{
 	
-	public JnarioTestSuite(String name) {
+	@SuppressWarnings("rawtypes")
+	public JnarioTestSuite(String name, Class... testClasses) {
 		super(name);
+		for (Class testClass : testClasses) {
+			addTestSuite(testClass);
+		}
 	}
 
 	@Override
