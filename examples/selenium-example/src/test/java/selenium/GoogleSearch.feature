@@ -5,7 +5,7 @@ import org.openqa.selenium.By
 Feature: Searching via Google
 
   Scenario: Searching for Jnario
-    extension static WebDriverExtension = new WebDriverExtension
+    extension WebDriverExtension = new WebDriverExtension
    
 	Given I opened "http://www.google.com"
           get(args.first)
@@ -18,7 +18,7 @@ Feature: Searching via Google
 
   Scenario: Searching for Xtend
   	
-  	Given I opened "www.google.com"
+  	Given I opened "http://www.google.com"
   	When I search for "Xtend Lang"
   	Then the result should contain "Xtend - Modernized Java"
 

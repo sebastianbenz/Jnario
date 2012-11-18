@@ -1,12 +1,12 @@
 package selenium
 
 import com.google.common.base.Function
-import org.junit.AfterClass
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
-import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.support.ui.Wait
 import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.firefox.FirefoxDriver
+import org.junit.After
 
 class WebDriverExtension  {
 	
@@ -16,7 +16,7 @@ class WebDriverExtension  {
     new(){
     	this(new FirefoxDriver)
     }
-    
+	
     new(WebDriver driver){
     	this.driver = driver
     	wait = new WebDriverWait(driver, 30)
@@ -25,7 +25,7 @@ class WebDriverExtension  {
     def get(String url){
       driver.get(url)
     }
-    
+
     def findElement(By arg){
       driver.findElement(arg)
     }
@@ -34,7 +34,7 @@ class WebDriverExtension  {
       wait.until(predicate)
     }
 
-    @AfterClass
+    @After
     def void tearDown(){
        driver.close()
     }
