@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.AdditionFeature;
 import calculator.Calculator;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
@@ -17,7 +18,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Add two numbers")
 @SuppressWarnings("all")
-public class AdditionFeatureAddTwoNumbers {
+public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
   @Test
   @Order(0)
   @Named("When I entered \\\"50\\\" and \\\"70\\\"")

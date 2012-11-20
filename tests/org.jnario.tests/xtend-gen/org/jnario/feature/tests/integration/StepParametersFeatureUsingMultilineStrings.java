@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.StepParametersFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -10,7 +11,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Using multiline Strings")
 @SuppressWarnings("all")
-public class StepParametersFeatureUsingMultilineStrings {
+public class StepParametersFeatureUsingMultilineStrings extends StepParametersFeature {
   @Test
   @Order(0)
   @Named("When I have a scenario with multiline strings")

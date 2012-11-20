@@ -38,7 +38,7 @@ public class EvolutionDeadCellsSpec extends EvolutionSpec {
   
   @Test
   @Named("become alive if rule says so")
-  @Order(0)
+  @Order(1)
   public void _becomeAliveIfRuleSaysSo() throws Exception {
     Evolution _evolution = new Evolution(this.dontCare, this.allDeadLive);
     final Evolution evolution = _evolution;

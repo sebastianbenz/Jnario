@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.BackgroundsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
@@ -12,7 +13,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: It is possible to add a background to a feature")
 @SuppressWarnings("all")
-public class BackgroundsFeatureItIsPossibleToAddABackgroundToAFeature {
+public class BackgroundsFeatureItIsPossibleToAddABackgroundToAFeature extends BackgroundsFeature {
   @Test
   @Order(0)
   @Named("When I have a feature with a background")

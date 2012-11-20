@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.StepParametersFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
@@ -12,7 +13,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Access of parameters with first, second, ...")
 @SuppressWarnings("all")
-public class StepParametersFeatureAccessOfParametersWithFirstSecond {
+public class StepParametersFeatureAccessOfParametersWithFirstSecond extends StepParametersFeature {
   @Test
   @Order(0)
   @Named("When I access those parameters")

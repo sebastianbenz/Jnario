@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.TestRunnerFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
@@ -13,7 +14,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Create only one test instance for one jnario scenario")
 @SuppressWarnings("all")
-public class TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario {
+public class TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario extends TestRunnerFeature {
   @Test
   @Order(0)
   @Named("When I have a scenario that uses one variable in different steps")

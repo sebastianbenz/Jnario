@@ -7,7 +7,13 @@
  *******************************************************************************/
 package org.jnario.runner;
 
+import static com.google.common.collect.Iterables.filter;
+
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.jnario.runner.internal.ExtensionClass;
 import org.junit.After;
@@ -18,6 +24,9 @@ import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.Statement;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Lists;
 
 public class ExtensionRule implements TestRule {
 	
@@ -53,28 +62,30 @@ public class ExtensionRule implements TestRule {
 	private final Object target;
 	private final Class<? extends Annotation> beforeAnnotation;
 	private final Class<? extends Annotation> afterAnnotation;
+	private Set<Method> alreadyScheduled;
 
-	public static ExtensionRule createClassExtensionRule(Iterable<ExtensionClass> extensions, Object target){
-		return new ExtensionRule(extensions, target, BeforeClass.class, AfterClass.class);
+	public static ExtensionRule createClassExtensionRule(Iterable<ExtensionClass> extensions, Object target, Set<Method> alreadyScheduled){
+		return new ExtensionRule(extensions, target, BeforeClass.class, AfterClass.class, alreadyScheduled);
 	}
 
 	public static ExtensionRule createExtensionRule(Iterable<ExtensionClass> extensions, Object target){
-		return new ExtensionRule(extensions, target, Before.class, After.class);
+		return new ExtensionRule(extensions, target, Before.class, After.class, new HashSet<Method>());
 	}
 
 	public ExtensionRule(Iterable<ExtensionClass> extensions, Object target,
 			Class<? extends Annotation> beforeAnnotation,
-			Class<? extends Annotation> afterAnnotation) {
+			Class<? extends Annotation> afterAnnotation, Set<Method> alreadyScheduled) {
 		this.extensions = extensions;
 		this.target = target;
 		this.beforeAnnotation = beforeAnnotation;
 		this.afterAnnotation = afterAnnotation;
+		this.alreadyScheduled = alreadyScheduled;
 	}
 
 	public Statement apply(Statement next, Description description) {
 		for (ExtensionClass extension : extensions) {
-			final Iterable<FrameworkMethod> toExecuteBefore = extension.allMethodsWithAnnotation(beforeAnnotation);
-			final Iterable<FrameworkMethod> toExecuteAfter = extension.allMethodsWithAnnotation(afterAnnotation);
+			final Iterable<FrameworkMethod> toExecuteBefore = filterAlreadyScheduled(extension.allMethodsWithAnnotation(beforeAnnotation));
+			final Iterable<FrameworkMethod> toExecuteAfter = filterAlreadyScheduled(extension.allMethodsWithAnnotation(afterAnnotation));
 			try {
 				final Object extensionValue = extension.get(target);
 				if (extensionValue == null) {
@@ -87,6 +98,19 @@ public class ExtensionRule implements TestRule {
 			}
 		}
 		return next;
+	}
+
+	private Iterable<FrameworkMethod> filterAlreadyScheduled(
+			List<FrameworkMethod> candidates) {
+		return Lists.newArrayList(filter(candidates, new Predicate<FrameworkMethod>() {
+			public boolean apply(FrameworkMethod candidate){
+				boolean result = !alreadyScheduled.contains(candidate.getMethod());
+				if(result){
+					alreadyScheduled.add(candidate.getMethod());
+				}
+				return result;
+			}
+		}));
 	}
 
 }

@@ -1,6 +1,7 @@
 package org.jnario.feature.tests.integration;
 
 import org.hamcrest.StringDescription;
+import org.jnario.feature.tests.integration.BackgroundsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
@@ -16,7 +17,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Given methods from backgrounds are generated in every scenario class")
 @SuppressWarnings("all")
-public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEveryScenarioClass {
+public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEveryScenarioClass extends BackgroundsFeature {
   @Test
   @Order(0)
   @Named("When I have a feature with a background")

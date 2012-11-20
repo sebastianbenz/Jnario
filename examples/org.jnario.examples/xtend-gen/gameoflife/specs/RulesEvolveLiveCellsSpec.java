@@ -13,7 +13,6 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -24,9 +23,8 @@ public class RulesEvolveLiveCellsSpec extends RulesSpec {
   @Subject
   public EvolveLiveCells subject;
   
-  @Before
-  public void _initRulesEvolveLiveCellsSpecLiveCells() {
-    liveCells = ExampleTable.create("liveCells", 
+  public ExampleTable<RulesEvolveLiveCellsSpecLiveCells> _initRulesEvolveLiveCellsSpecLiveCells() {
+    return ExampleTable.create("liveCells", 
       java.util.Arrays.asList("liveNeighbourCount", "result"), 
       new RulesEvolveLiveCellsSpecLiveCells(  java.util.Arrays.asList("1", "false"), 1, false),
       new RulesEvolveLiveCellsSpecLiveCells(  java.util.Arrays.asList("2", "true"), 2, true),
@@ -35,11 +33,11 @@ public class RulesEvolveLiveCellsSpec extends RulesSpec {
     );
   }
   
-  protected ExampleTable<RulesEvolveLiveCellsSpecLiveCells> liveCells;
+  protected ExampleTable<RulesEvolveLiveCellsSpecLiveCells> liveCells = _initRulesEvolveLiveCellsSpecLiveCells();
   
   @Test
   @Named("liveCells.forEach[ subject.becomesAlive[liveNeighbourCount] => result ]")
-  @Order(0)
+  @Order(1)
   public void _liveCellsForEachSubjectBecomesAliveLiveNeighbourCountResult() throws Exception {
     final Procedure1<RulesEvolveLiveCellsSpecLiveCells> _function = new Procedure1<RulesEvolveLiveCellsSpecLiveCells>() {
         public void apply(final RulesEvolveLiveCellsSpecLiveCells it) {

@@ -1,6 +1,7 @@
 package org.jnario.feature.tests.integration;
 
 import org.hamcrest.StringDescription;
+import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.lib.JnarioIterableExtensions;
@@ -20,7 +21,7 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Defining a step and using it in the same scenario")
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
-public class ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario {
+public class ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario extends ReferencesForStepsFeature {
   @Test
   @Order(0)
   @Named("When I have a scenario with reused steps that throw an exception")

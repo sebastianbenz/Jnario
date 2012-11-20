@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<h3 class="exampleGroup notrun"  id="toJavaClassName">ToJavaClassName</h3>
+<h3 class="exampleGroup notrun"  id="toJavaClassName_ExampleGroup">ToJavaClassName[ExampleGroup]</h3>
 <ul><li><p id="should_remove_all_white_spaces_from_ExampleGroup_s_description" class="example notrun"><strong>should remove all white spaces from ExampleGroup's description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 firstJavaClassName(&quot;describe 'My Example'&quot;) should not contain &quot; &quot;</pre>
@@ -148,10 +148,34 @@ newArrayList(
 </li><li><p id="should_use_before_as_default_name" class="example notrun"><strong>should use before as default name</strong></p>
 <pre class="prettyprint lang-spec linenums">
 firstMethodName(&quot;before{}&quot;) =&gt; &quot;before&quot;</pre>
-</li><li><p id="should_enumerate_befores_without_description" class="example notrun"><strong>should enumerate befores without description</strong></p>
+</li><li><p id="should_use_beforeAll_as_default_name" class="example notrun"><strong>should use beforeAll as default name</strong></p>
+<pre class="prettyprint lang-spec linenums">
+firstMethodName(&quot;before all{}&quot;) =&gt; &quot;beforeAll&quot;</pre>
+</li><li><p id="should_enumerate_before_without_description" class="example notrun"><strong>should enumerate before without description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 secondMethodName(&quot;before{}
          before{}&quot;) =&gt; &quot;before2&quot;</pre>
+</li><li><p id="should_enumerate_nested_before_without_description" class="example notrun"><strong>should enumerate nested before without description</strong></p>
+<pre class="prettyprint lang-spec linenums">
+secondMethodName(
+        &quot;before{}
+         context{
+           before{}
+         }&quot;) =&gt; &quot;before2&quot;</pre>
+</li><li><p id="should_enumerate_nested_before_all_without_description" class="example notrun"><strong>should enumerate nested before all without description</strong></p>
+<pre class="prettyprint lang-spec linenums">
+secondMethodName(
+        &quot;before all{}
+         context{
+           before all{}
+         }&quot;) =&gt; &quot;beforeAll2&quot;</pre>
+</li><li><p id="should_keep_default_name_of_nested_before_and_before_all" class="example notrun"><strong>should keep default name of nested before and before all</strong></p>
+<pre class="prettyprint lang-spec linenums">
+secondMethodName(
+        &quot;before{}
+         context{
+           before all{}
+         }&quot;) =&gt; &quot;beforeAll&quot;</pre>
 </li><li><p id="should_escape_invalid_names" class="example notrun"><strong>should escape invalid names</strong></p>
 <pre class="prettyprint lang-spec linenums">
 firstMethodName(&quot;before 'null'{}&quot;) =&gt; &quot;_null&quot;</pre>
@@ -170,10 +194,34 @@ newArrayList(
 </li><li><p id="should_use_after_as_default_name" class="example notrun"><strong>should use after as default name</strong></p>
 <pre class="prettyprint lang-spec linenums">
 firstMethodName(&quot;after{}&quot;) =&gt; &quot;after&quot;</pre>
-</li><li><p id="should_enumerate_afters_without_description" class="example notrun"><strong>should enumerate afters without description</strong></p>
+</li><li><p id="should_use_afterAll_as_default_name" class="example notrun"><strong>should use afterAll as default name</strong></p>
+<pre class="prettyprint lang-spec linenums">
+firstMethodName(&quot;after all{}&quot;) =&gt; &quot;afterAll&quot;</pre>
+</li><li><p id="should_enumerate_after_without_description" class="example notrun"><strong>should enumerate after without description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 secondMethodName(&quot;after{}
          after{}&quot;) =&gt; &quot;after2&quot;</pre>
+</li><li><p id="should_enumerate_nested_after_without_description" class="example notrun"><strong>should enumerate nested after without description</strong></p>
+<pre class="prettyprint lang-spec linenums">
+secondMethodName(
+        &quot;after{}
+         context{
+           after{}
+         }&quot;) =&gt; &quot;after2&quot;</pre>
+</li><li><p id="should_enumerate_nested_after_all_without_description" class="example notrun"><strong>should enumerate nested after all without description</strong></p>
+<pre class="prettyprint lang-spec linenums">
+secondMethodName(
+        &quot;after all{}
+         context{
+           after all{}
+         }&quot;) =&gt; &quot;afterAll2&quot;</pre>
+</li><li><p id="nested_after_and_after_all_keep_their_default_name" class="example notrun"><strong>nested after and after all keep their default name</strong></p>
+<pre class="prettyprint lang-spec linenums">
+secondMethodName(
+        &quot;after{}
+         context{
+           after all{}
+         }&quot;) =&gt; &quot;afterAll&quot;</pre>
 </li></ul>
 <h3 class="exampleGroup notrun"  id="toFieldName_ExampleTable">ToFieldName[ExampleTable]</h3>
 <ul><li><p id="should_use_the_example_name" class="example notrun"><strong>should use the example name</strong></p>
@@ -195,7 +243,7 @@ val exampleTable = '''
 '''.parse.first(typeof(ExampleTable))
 subject.toFieldName(exampleTable) =&gt; &quot;examples&quot;</pre>
 </li></ul>
-<h3 class="exampleGroup notrun"  id="describe_ExampleGroup">^describe[ExampleGroup]</h3>
+<h3 class="exampleGroup notrun"  id="describe_ExampleGroup">Describe[ExampleGroup]</h3>
 <ul><li><p id="should_use_the_description" class="example notrun"><strong>should use the description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 describeFirst(&quot;describe 'My Description'&quot;) =&gt; &quot;My Description&quot;</pre>
@@ -230,7 +278,7 @@ describeSecond(text) =&gt; 'and \\&quot;more\\&quot;'</pre>
 val text = '''describe &quot;Example\n\t 2&quot;'''.toString
 describeFirst(text) =&gt; 'Example 2'</pre>
 </li></ul>
-<h3 class="exampleGroup notrun"  id="describe_Example">^describe[Example]</h3>
+<h3 class="exampleGroup notrun"  id="describe_Example">Describe[Example]</h3>
 <ul><li><p id="should_use_the_description" class="example notrun"><strong>should use the description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 describeFirst(&quot;'should do stuff' {true}&quot;) =&gt; &quot;should do stuff&quot;</pre>
@@ -420,14 +468,46 @@ describe ExampleNameProvider {
         ).forEach[
           firstMethodName =&gt; '_myExample'
         ] 
-      } 
+      }
+       
       fact &quot;should use before as default name&quot;{
         firstMethodName(&quot;before{}&quot;) =&gt; &quot;before&quot;
       }
-      fact &quot;should enumerate befores without description&quot;{
+
+      fact &quot;should use beforeAll as default name&quot;{
+        firstMethodName(&quot;before all{}&quot;) =&gt; &quot;beforeAll&quot;
+      }
+      
+      
+      fact &quot;should enumerate before without description&quot;{
         secondMethodName(&quot;before{}
                  before{}&quot;) =&gt; &quot;before2&quot;
       }
+      
+      fact &quot;should enumerate nested before without description&quot;{
+        secondMethodName(
+                &quot;before{}
+                 context{
+                   before{}
+                 }&quot;) =&gt; &quot;before2&quot;
+      }
+      
+      fact &quot;should enumerate nested before all without description&quot;{
+        secondMethodName(
+                &quot;before all{}
+                 context{
+                   before all{}
+                 }&quot;) =&gt; &quot;beforeAll2&quot;
+      }
+      
+      fact &quot;should keep default name of nested before and before all&quot;{
+        secondMethodName(
+                &quot;before{}
+                 context{
+                   before all{}
+                 }&quot;) =&gt; &quot;beforeAll&quot;
+      }
+      
       
       fact &quot;should escape invalid names&quot;{
         firstMethodName(&quot;before 'null'{}&quot;) =&gt; &quot;_null&quot;
@@ -461,9 +541,37 @@ describe ExampleNameProvider {
         firstMethodName(&quot;after{}&quot;) =&gt; &quot;after&quot;
       }
       
-      fact &quot;should enumerate afters without description&quot;{
+      fact &quot;should use afterAll as default name&quot;{
+        firstMethodName(&quot;after all{}&quot;) =&gt; &quot;afterAll&quot;
+      }
+      
+      fact &quot;should enumerate after without description&quot;{
         secondMethodName(&quot;after{}
                  after{}&quot;) =&gt; &quot;after2&quot;
+      }
+      
+      fact &quot;should enumerate nested after without description&quot;{
+        secondMethodName(
+                &quot;after{}
+                 context{
+                   after{}
+                 }&quot;) =&gt; &quot;after2&quot;
+      }
+      
+      fact &quot;should enumerate nested after all without description&quot;{
+        secondMethodName(
+                &quot;after all{}
+                 context{
+                   after all{}
+                 }&quot;) =&gt; &quot;afterAll2&quot;
+      }
+      
+      fact &quot;nested after and after all keep their default name&quot;{
+        secondMethodName(
+                &quot;after{}
+                 context{
+                   after all{}
+                 }&quot;) =&gt; &quot;afterAll&quot;
       }
       
       def firstMethodName(String content){

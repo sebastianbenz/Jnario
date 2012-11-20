@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 public class CellLocationCalculatingRelativeCellLocationsSpec extends CellLocationSpec {
   @Test
   @Named("cell[-1, 1].plus[cell[3,4]] => cell[2,5]")
-  @Order(0)
+  @Order(1)
   public void _cell11PlusCell34Cell25() throws Exception {
     int _minus = (-1);
     CellLocation _cell = CellLocation.cell(_minus, 1);

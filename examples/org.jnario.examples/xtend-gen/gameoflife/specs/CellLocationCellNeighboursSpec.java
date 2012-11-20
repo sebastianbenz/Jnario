@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
 public class CellLocationCellNeighboursSpec extends CellLocationSpec {
   @Test
   @Named("are adjacent cells")
-  @Order(1)
+  @Order(2)
   public void _areAdjacentCells() throws Exception {
     final CellLocation cell = CellLocation.cell(5, 5);
     CellLocation _cell = CellLocation.cell(4, 6);

@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.lib.JnarioIterableExtensions;
@@ -15,7 +16,7 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Multiple Step References [causes problem when copier does not clear its cache]")
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
-public class ReferencesForStepsFeatureMultipleStepReferencesCausesProblemWhenCopierDoesNotClearItsCache {
+public class ReferencesForStepsFeatureMultipleStepReferencesCausesProblemWhenCopierDoesNotClearItsCache extends ReferencesForStepsFeature {
   @Test
   @Order(0)
   @Named("When I have a feature with multiple scenarios")

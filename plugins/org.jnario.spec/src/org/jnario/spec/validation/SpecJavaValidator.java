@@ -63,7 +63,11 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 	@Check
 	public void checkClasses(ExampleGroup exampleGroup) {
 		checkClasses(filter(exampleGroup.getMembers(), XtendClass.class));
+		if(exampleGroup.getTargetOperation() == null && exampleGroup.getName() == null && exampleGroup.getTargetType() == null){
+			error("Example groups must have a name", XtendPackage.Literals.XTEND_CLASS__NAME);
+		}
 	}
+	
 
 	protected void checkClasses(Iterable<XtendClass> xtendClasses) {
 		Set<String> names = newLinkedHashSet();

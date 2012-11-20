@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 public class WorldLivingNeighboursSpec extends WorldSpec {
   @Test
   @Named("returns number of live neighbours")
-  @Order(3)
+  @Order(4)
   public void _returnsNumberOfLiveNeighbours() throws Exception {
     int _livingNeighbours = this.worldWithTwoLiveNeighbours.livingNeighbours(this.liveCell);
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_livingNeighbours), Integer.valueOf(1));

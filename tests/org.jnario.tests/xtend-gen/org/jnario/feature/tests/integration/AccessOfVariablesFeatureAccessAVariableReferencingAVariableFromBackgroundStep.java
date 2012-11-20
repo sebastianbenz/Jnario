@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.AccessOfVariablesFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
@@ -12,7 +13,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Access a variable referencing a variable from background step")
 @SuppressWarnings("all")
-public class AccessOfVariablesFeatureAccessAVariableReferencingAVariableFromBackgroundStep {
+public class AccessOfVariablesFeatureAccessAVariableReferencingAVariableFromBackgroundStep extends AccessOfVariablesFeature {
   @Test
   @Order(0)
   @Named("When I reference a variable from the background")

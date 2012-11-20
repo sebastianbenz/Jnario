@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Setup & Teardown</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header notrun">
+					<h1>Setup & Teardown</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<h3 class="exampleGroup notrun"  id="BeforeAll">BeforeAll</h3>
+<ul><li><p id="Executes_before_all_tests" class="example notrun"><strong>Executes before all tests</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  describe &quot;BeforeAll&quot;{
+    before all{
+      println(&quot;before all&quot;)
+    }
+    fact println(&quot;fact 1&quot;)
+    fact println(&quot;fact 2&quot;)
+  }
+'''.prints(
+'''
+  before all
+  fact 1
+  fact 2
+''')</pre>
+</li></ul>
+<h3 class="exampleGroup notrun"  id="Before">Before</h3>
+<ul><li><p id="Executes_before_each_test" class="example notrun"><strong>Executes before each test</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  describe &quot;Before&quot;{
+    before{
+      println(&quot;before&quot;)
+    }
+    fact println(&quot;fact 1&quot;)
+    fact println(&quot;fact 2&quot;)
+  }
+'''.prints(
+'''
+  before
+  fact 1
+  before
+  fact 2
+''')</pre>
+</li></ul>
+<h3 class="exampleGroup notrun"  id="AfterAll">AfterAll</h3>
+<ul><li><p id="Execute_once_after_all_tests" class="example notrun"><strong>Execute once after all tests</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  describe &quot;After All&quot;{
+    after all{
+      println(&quot;after all&quot;)
+    }
+    fact println(&quot;fact 1&quot;)
+    fact println(&quot;fact 2&quot;)
+  }
+'''.prints(
+'''
+  fact 1
+  fact 2
+  after all
+''')</pre>
+</li></ul>
+<h3 class="exampleGroup notrun"  id="After">After</h3>
+<ul><li><p id="Executes_after_each_test" class="example notrun"><strong>Executes after each test</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+describe &quot;After&quot;{
+  after{
+    println(&quot;after&quot;)
+  }
+  fact println(&quot;fact 1&quot;)
+  fact println(&quot;fact 2&quot;)
+}
+      '''.prints(
+      '''
+fact 1
+after
+fact 2
+after
+      ''')</pre>
+</li></ul>
+<h3 class="exampleGroup notrun"  id="Nesting_before_after">Nesting before & after</h3>
+<ul><li><p id="Before_and_after_in_parent_are_executed_for_childs" class="example notrun"><strong>Before and after in parent are executed for childs</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+        describe &quot;Setup &amp; Teardown&quot;{ 
+          before all println(&quot;Spec: before all&quot;)
+          before println(&quot;Spec: before&quot;)
+          fact println(&quot;Spec: fact 1&quot;)
+          fact println(&quot;Spec: fact 2&quot;)
+          context &quot;Context1&quot;{
+            before all println(&quot;Context1: before all&quot;)
+            before println(&quot;Context1: before&quot;)
+            fact println(&quot;Context1: fact 1.1&quot;)
+            fact println(&quot;Context1: fact 1.2&quot;)
+            after println(&quot;Context1: after&quot;)
+            after all println(&quot;Context1: after all&quot;)
+          }
+          context &quot;Nested Spec 2&quot;{
+            before all println(&quot;Context2: before all&quot;)
+            before println(&quot;Context2: before&quot;)
+            fact println(&quot;Context2: fact 2.1&quot;)
+            fact println(&quot;Context2: fact 2.2&quot;)
+            after println(&quot;Context2: after&quot;)
+            after all println(&quot;Context2: after all&quot;)
+          }
+          after println(&quot;Spec: after&quot;)
+          after all println(&quot;Spec: after all&quot;)
+        }  
+'''.prints('''
+          Spec: before all
+          Context1: before all
+          Spec: before
+          Context1: before
+          Context1: fact 1.1
+          Context1: after
+          Spec: after
+          Spec: before
+          Context1: before
+          Context1: fact 1.2
+          Context1: after
+          Spec: after
+          Context1: after all
+          Context2: before all
+          Spec: before
+          Context2: before
+          Context2: fact 2.1
+          Context2: after
+          Spec: after
+          Spec: before
+          Context2: before
+          Context2: fact 2.2
+          Context2: after
+          Spec: after
+          Context2: after all
+          Spec: before
+          Spec: fact 1
+          Spec: after
+          Spec: before
+          Spec: fact 2
+          Spec: after
+          Spec: after all
+''')</pre>
+</li></ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>BeforeAfter.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.spec.tests.integration
+
+import static org.jnario.jnario.test.util.ResultMatchers.*
+
+import static extension org.jnario.jnario.test.util.SpecExecutor.*
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SpecTestCreator
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.BehaviorExecutor
+import org.jnario.jnario.test.util.ConsoleRecorder
+
+
+@CreateWith(typeof(SpecTestCreator))
+describe &quot;Setup &amp; Teardown&quot; {
+  
+   @Inject extension BehaviorExecutor
+  describe &quot;BeforeAll&quot; {
+    fact &quot;Executes before all tests&quot;{
+      '''
+        describe &quot;BeforeAll&quot;{
+          before all{
+            println(&quot;before all&quot;)
+          }
+          fact println(&quot;fact 1&quot;)
+          fact println(&quot;fact 2&quot;)
+        }
+      '''.prints(
+      '''
+        before all
+        fact 1
+        fact 2
+      ''')
+    }
+  
+  }
+  
+  describe &quot;Before&quot; {
+    fact &quot;Executes before each test&quot;{
+      '''
+        describe &quot;Before&quot;{
+          before{
+            println(&quot;before&quot;)
+          }
+          fact println(&quot;fact 1&quot;)
+          fact println(&quot;fact 2&quot;)
+        }
+      '''.prints(
+      '''
+        before
+        fact 1
+        before
+        fact 2
+      ''')
+    }
+  }
+  
+  describe &quot;AfterAll&quot; {
+    fact &quot;Execute once after all tests&quot;{
+      '''
+        describe &quot;After All&quot;{
+          after all{
+            println(&quot;after all&quot;)
+          }
+          fact println(&quot;fact 1&quot;)
+          fact println(&quot;fact 2&quot;)
+        }
+      '''.prints(
+      '''
+        fact 1
+        fact 2
+        after all
+      ''')
+    }
+  }
+   
+   describe &quot;After&quot;{
+    fact &quot;Executes after each test&quot;{
+        '''
+        describe &quot;After&quot;{
+          after{
+            println(&quot;after&quot;)
+          }
+          fact println(&quot;fact 1&quot;)
+          fact println(&quot;fact 2&quot;)
+        }
+      '''.prints(
+      '''
+        fact 1
+        after
+        fact 2
+        after
+      ''')
+    }
+   }
+   
+   describe &quot;Nesting before &amp; after&quot;{
+     fact &quot;Before and after in parent are executed for childs&quot;{
+       '''
+        describe &quot;Setup &amp; Teardown&quot;{ 
+          before all println(&quot;Spec: before all&quot;)
+          before println(&quot;Spec: before&quot;)
+          fact println(&quot;Spec: fact 1&quot;)
+          fact println(&quot;Spec: fact 2&quot;)
+          context &quot;Context1&quot;{
+            before all println(&quot;Context1: before all&quot;)
+            before println(&quot;Context1: before&quot;)
+            fact println(&quot;Context1: fact 1.1&quot;)
+            fact println(&quot;Context1: fact 1.2&quot;)
+            after println(&quot;Context1: after&quot;)
+            after all println(&quot;Context1: after all&quot;)
+          }
+          context &quot;Nested Spec 2&quot;{
+            before all println(&quot;Context2: before all&quot;)
+            before println(&quot;Context2: before&quot;)
+            fact println(&quot;Context2: fact 2.1&quot;)
+            fact println(&quot;Context2: fact 2.2&quot;)
+            after println(&quot;Context2: after&quot;)
+            after all println(&quot;Context2: after all&quot;)
+          }
+          after println(&quot;Spec: after&quot;)
+          after all println(&quot;Spec: after all&quot;)
+        }  
+       '''.prints('''
+          Spec: before all
+          Context1: before all
+          Spec: before
+          Context1: before
+          Context1: fact 1.1
+          Context1: after
+          Spec: after
+          Spec: before
+          Context1: before
+          Context1: fact 1.2
+          Context1: after
+          Spec: after
+          Context1: after all
+          Context2: before all
+          Spec: before
+          Context2: before
+          Context2: fact 2.1
+          Context2: after
+          Spec: after
+          Spec: before
+          Context2: before
+          Context2: fact 2.2
+          Context2: after
+          Spec: after
+          Context2: after all
+          Spec: before
+          Spec: fact 1
+          Spec: after
+          Spec: before
+          Spec: fact 2
+          Spec: after
+          Spec: after all
+       ''')
+     }
+   }
+   
+   
+   def void prints(CharSequence spec, String expected) {
+    val recording = ConsoleRecorder::start
+    spec.executesSuccessfully
+    val actual = recording.stop
+    assertEquals(expected, actual) 
+  }
+
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- /container -->
+
+</body>
+</html>

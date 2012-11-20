@@ -7,6 +7,9 @@
  *******************************************************************************/
 package org.jnario.runner.internal;
 
+import java.lang.reflect.Method;
+import java.util.Set;
+
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.NameProvider;
@@ -18,24 +21,26 @@ public class ExampleGroupRunnerBuilder {
 
 	private final Class<?> declaredClass;
 	private final NameProvider nameProvider;
+	private Set<Method> setups;
 
 	public ExampleGroupRunnerBuilder(Class<?> declaredClass,
-			NameProvider nameProvider) {
+			NameProvider nameProvider, Set<Method> setups) {
 		this.declaredClass = declaredClass;
 		this.nameProvider = nameProvider;
+		this.setups = setups;
 	}
 
 	public Runner build() throws InitializationError {
 		RunWith runWith = declaredClass.getAnnotation(RunWith.class);
 		if (runWith == null) {
-			return new ExampleGroupRunner(declaredClass, nameProvider);
+			return new ExampleGroupRunner(declaredClass, nameProvider, setups);
 		} else {
 			try {
 				Class<?> runnerType = runWith.value();
 				try {
 					return (Runner) runnerType.getConstructor(Class.class,
-							NameProvider.class).newInstance(
-							new Object[] { declaredClass, nameProvider });
+							NameProvider.class, Set.class).newInstance(
+							new Object[] { declaredClass, nameProvider, setups});
 				} catch (NoSuchMethodException e) {
 					try {
 						return (Runner) runnerType.getConstructor(Class.class)

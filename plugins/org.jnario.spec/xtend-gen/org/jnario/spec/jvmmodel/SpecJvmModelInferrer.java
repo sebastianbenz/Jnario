@@ -343,14 +343,32 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       final JvmOperation beforeMethod = this.toMethod(element, _isBeforeAll);
       boolean _isBeforeAll_1 = element.isBeforeAll();
       if (_isBeforeAll_1) {
+        String _methodName = this._exampleNameProvider.toMethodName(element);
+        String _plus = ("_" + _methodName);
+        String _plus_1 = (_plus + "IsExecuted");
+        JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Boolean.class, element);
+        final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
+            public void apply(final JvmField it) {
+              final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
+                  public void apply(final ITreeAppendable it) {
+                    it.append(" false");
+                  }
+                };
+              SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setInitializer(it, _function);
+              it.setStatic(true);
+            }
+          };
+        final JvmField field = this._extendedJvmTypesBuilder.toField(element, _plus_1, _typeForName, _function);
+        EList<JvmMember> _members = container.getMembers();
+        this._extendedJvmTypesBuilder.<JvmField>operator_add(_members, field);
         TestRuntimeSupport _testRuntime = this.getTestRuntime();
         _testRuntime.beforeAllMethod(element, beforeMethod);
       } else {
         TestRuntimeSupport _testRuntime_1 = this.getTestRuntime();
         _testRuntime_1.beforeMethod(element, beforeMethod);
       }
-      EList<JvmMember> _members = container.getMembers();
-      boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, beforeMethod);
+      EList<JvmMember> _members_1 = container.getMembers();
+      boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members_1, beforeMethod);
       _xblockexpression = (_add);
     }
     return _xblockexpression;
@@ -363,14 +381,32 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       final JvmOperation afterMethod = this.toMethod(element, _isAfterAll);
       boolean _isAfterAll_1 = element.isAfterAll();
       if (_isAfterAll_1) {
+        String _methodName = this._exampleNameProvider.toMethodName(element);
+        String _plus = ("_" + _methodName);
+        String _plus_1 = (_plus + "IsExecuted");
+        JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Boolean.class, element);
+        final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
+            public void apply(final JvmField it) {
+              final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
+                  public void apply(final ITreeAppendable it) {
+                    it.append(" false");
+                  }
+                };
+              SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setInitializer(it, _function);
+              it.setStatic(true);
+            }
+          };
+        final JvmField field = this._extendedJvmTypesBuilder.toField(element, _plus_1, _typeForName, _function);
+        EList<JvmMember> _members = container.getMembers();
+        this._extendedJvmTypesBuilder.<JvmField>operator_add(_members, field);
         TestRuntimeSupport _testRuntime = this.getTestRuntime();
         _testRuntime.afterAllMethod(element, afterMethod);
       } else {
         TestRuntimeSupport _testRuntime_1 = this.getTestRuntime();
         _testRuntime_1.afterMethod(element, afterMethod);
       }
-      EList<JvmMember> _members = container.getMembers();
-      boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, afterMethod);
+      EList<JvmMember> _members_1 = container.getMembers();
+      boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members_1, afterMethod);
       _xblockexpression = (_add);
     }
     return _xblockexpression;

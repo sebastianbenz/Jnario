@@ -3,6 +3,7 @@ package org.jnario.feature.tests.integration;
 import com.google.inject.Inject;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
+import org.jnario.feature.tests.integration.FieldInferenceFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.test.util.ResultMatchers;
@@ -22,7 +23,7 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Inferring Fields from Scenario in different Features")
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
-public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures {
+public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures extends FieldInferenceFeature {
   @Test
   @Order(0)
   @Named("When I have a feature")

@@ -6,6 +6,7 @@ import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.jnario.feature.tests.integration.SetupTeardownWithFeatureExtensionsFeature;
 import org.jnario.jnario.test.util.ConsoleRecorder;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.JnarioIterableExtensions;
@@ -21,7 +22,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Using an Extension")
 @SuppressWarnings("all")
-public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension {
+public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension extends SetupTeardownWithFeatureExtensionsFeature {
   @Test
   @Order(0)
   @Ignore

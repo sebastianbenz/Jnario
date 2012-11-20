@@ -1,6 +1,7 @@
 package diverse;
 
 import calculator.SimpleCalculator;
+import diverse.AdditionFeature;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
 import org.jnario.lib.JnarioIterableExtensions;
@@ -16,7 +17,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Add two numbers")
 @SuppressWarnings("all")
-public class AdditionFeatureAddTwoNumbers {
+public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
   @Test
   @Order(0)
   @Named("Given I have entered \\\"50\\\" into the calculator")

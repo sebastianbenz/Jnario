@@ -98,7 +98,7 @@ public class ExtensionClass {
 		return field.getType().getName() + "#" + field.getName();
 	}
 
-	public boolean isStatis() {
+	public boolean isStatic() {
 		return extensionField.isStatic();
 	}
 

@@ -1,6 +1,7 @@
 package org.jnario.feature.tests.integration;
 
 import org.hamcrest.StringDescription;
+import org.jnario.feature.tests.integration.ParsingSimpleJnarioFilesFeature;
 import org.jnario.lib.Should;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -12,7 +13,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: And stuff.")
 @SuppressWarnings("all")
-public class ParsingSimpleJnarioFilesFeatureAndStuff {
+public class ParsingSimpleJnarioFilesFeatureAndStuff extends ParsingSimpleJnarioFilesFeature {
   @Test
   @Order(0)
   @Named("Given two numbers.")

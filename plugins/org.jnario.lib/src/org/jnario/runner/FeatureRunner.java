@@ -9,7 +9,9 @@ package org.jnario.runner;
 
 import static org.jnario.runner.ExtensionRule.createExtensionRule;
 
+import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.Rule;
@@ -57,9 +59,9 @@ public class FeatureRunner extends ExampleGroupRunner {
 	private Object scenario;
 	private SpecCreator testInstantiator;
 
-	public FeatureRunner(Class<?> klass, NameProvider nameProvider)
+	public FeatureRunner(Class<?> klass, NameProvider nameProvider, Set<Method> setups)
 			throws InitializationError {
-		super(klass, nameProvider);
+		super(klass, nameProvider, setups);
 	}
 
 	public FeatureRunner(Class<?> klass) throws InitializationError {

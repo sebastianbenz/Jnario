@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.StepParametersFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
@@ -12,7 +13,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Referencing variables that contain a value from args")
 @SuppressWarnings("all")
-public class StepParametersFeatureReferencingVariablesThatContainAValueFromArgs {
+public class StepParametersFeatureReferencingVariablesThatContainAValueFromArgs extends StepParametersFeature {
   @Test
   @Order(0)
   @Named("When I have a scenario that references a step with arguments")

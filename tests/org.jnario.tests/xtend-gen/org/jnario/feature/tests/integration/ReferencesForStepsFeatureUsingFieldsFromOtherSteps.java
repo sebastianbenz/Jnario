@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.lib.JnarioIterableExtensions;
@@ -15,7 +16,7 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Using fields from other steps")
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
-public class ReferencesForStepsFeatureUsingFieldsFromOtherSteps {
+public class ReferencesForStepsFeatureUsingFieldsFromOtherSteps extends ReferencesForStepsFeature {
   @Test
   @Order(0)
   @Named("When I have a scenario with a field")

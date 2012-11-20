@@ -44,8 +44,10 @@ import junit.framework.TestCase
 @Extends(typeof(TestCase)) 
 Feature: Extend Annotation
   Scenario: My Scenario
-    Then my scenario class extends test case
-      typeof(ExtendAnnotationFeatureMyScenario).superclass =&gt; typeof(TestCase)</pre></span>
+    Then my feature class extends test case
+      typeof(ExtendAnnotationFeature).superclass =&gt; typeof(TestCase)
+    And my scenario class extends my feature class
+      typeof(ExtendAnnotationFeatureMyScenario).superclass =&gt; typeof(ExtendAnnotationFeature)</pre></span>
 </li>
 <li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
@@ -62,8 +64,12 @@ Feature: Extend Annotation
   Background:
     Given some background
   Scenario: My Scenario
-    Then my scenario class extends test case
-      typeof(ExtendAnnotationFeatureBackground).superclass =&gt; typeof(TestCase)</pre></span>
+    Then my feature class extends test case
+      typeof(ExtendAnnotationFeature).superclass =&gt; typeof(TestCase)
+    And my scenario class extends my background class
+      typeof(ExtendAnnotationFeatureMyScenario).superclass =&gt; typeof(ExtendAnnotationFeatureBackground)
+    And my background class extends my feature class
+      typeof(ExtendAnnotationFeatureBackground).superclass =&gt; typeof(ExtendAnnotationFeature)</pre></span>
 </li>
 <li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
@@ -88,8 +94,10 @@ Feature: Defining Feature Bases Classes
     @Extends(typeof(TestCase)) 
     Feature: Extend Annotation
       Scenario: My Scenario
-        Then my scenario class extends test case
-          typeof(ExtendAnnotationFeatureMyScenario).superclass =&gt; typeof(TestCase)
+        Then my feature class extends test case
+          typeof(ExtendAnnotationFeature).superclass =&gt; typeof(TestCase)
+        And my scenario class extends my feature class
+          typeof(ExtendAnnotationFeatureMyScenario).superclass =&gt; typeof(ExtendAnnotationFeature)
     '''
     jnarioFile = args.first
     Then it should execute successfully    
@@ -106,8 +114,12 @@ Feature: Defining Feature Bases Classes
       Background:
         Given some background
       Scenario: My Scenario
-        Then my scenario class extends test case
-          typeof(ExtendAnnotationFeatureBackground).superclass =&gt; typeof(TestCase)
+        Then my feature class extends test case
+          typeof(ExtendAnnotationFeature).superclass =&gt; typeof(TestCase)
+        And my scenario class extends my background class
+          typeof(ExtendAnnotationFeatureMyScenario).superclass =&gt; typeof(ExtendAnnotationFeatureBackground)
+        And my background class extends my feature class
+          typeof(ExtendAnnotationFeatureBackground).superclass =&gt; typeof(ExtendAnnotationFeature)
     '''
     Then it should execute successfully
 </pre>

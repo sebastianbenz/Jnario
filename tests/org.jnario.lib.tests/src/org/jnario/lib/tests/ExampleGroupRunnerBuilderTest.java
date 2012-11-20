@@ -10,6 +10,9 @@ package org.jnario.lib.tests;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+import java.lang.reflect.Method;
+import java.util.HashSet;
+
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.NameProvider;
 import org.jnario.runner.internal.ExampleGroupRunnerBuilder;
@@ -46,7 +49,7 @@ public class ExampleGroupRunnerBuilderTest {
 	}
 
 	private Object build(Class<?> type) throws InitializationError {
-		return new ExampleGroupRunnerBuilder(type, nameProvider).build();
+		return new ExampleGroupRunnerBuilder(type, nameProvider, new HashSet<Method>()).build();
 	}
 	
 }

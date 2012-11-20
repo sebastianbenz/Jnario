@@ -10,7 +10,6 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -18,9 +17,8 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @Named("Tables")
 public class TablesSpec {
-  @Before
-  public void _initTablesSpecAdditions() {
-    additions = ExampleTable.create("additions", 
+  public ExampleTable<TablesSpecAdditions> _initTablesSpecAdditions() {
+    return ExampleTable.create("additions", 
       java.util.Arrays.asList("a", "b", "sum"), 
       new TablesSpecAdditions(  java.util.Arrays.asList("1", "2", "3"), 1, 2, 3),
       new TablesSpecAdditions(  java.util.Arrays.asList("4", "5", "9"), 4, 5, 9),
@@ -29,11 +27,11 @@ public class TablesSpec {
     );
   }
   
-  protected ExampleTable<TablesSpecAdditions> additions;
+  protected ExampleTable<TablesSpecAdditions> additions = _initTablesSpecAdditions();
   
   @Test
   @Named("additions.forEach[ a + b => sum ]")
-  @Order(0)
+  @Order(1)
   public void _additionsForEachABSum() throws Exception {
     final Procedure1<TablesSpecAdditions> _function = new Procedure1<TablesSpecAdditions>() {
         public void apply(final TablesSpecAdditions it) {

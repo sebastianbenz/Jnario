@@ -58,9 +58,20 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   }
   
   @Test
-  @Named("should enumerate befores without description")
+  @Named("should use beforeAll as default name")
   @Order(17)
-  public void _shouldEnumerateBeforesWithoutDescription() throws Exception {
+  public void _shouldUseBeforeAllAsDefaultName() throws Exception {
+    String _firstMethodName = this.firstMethodName("before all{}");
+    boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "beforeAll");
+    Assert.assertTrue("\nExpected firstMethodName(\"before all{}\") => \"beforeAll\" but"
+     + "\n     firstMethodName(\"before all{}\") is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("should enumerate before without description")
+  @Order(18)
+  public void _shouldEnumerateBeforeWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName("before{}\r\n                 before{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "before2");
     Assert.assertTrue("\nExpected secondMethodName(\"before{}\r\n                 before{}\") => \"before2\" but"
@@ -69,8 +80,44 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   }
   
   @Test
+  @Named("should enumerate nested before without description")
+  @Order(19)
+  public void _shouldEnumerateNestedBeforeWithoutDescription() throws Exception {
+    String _secondMethodName = this.secondMethodName(
+      "before{}\r\n                 context{\r\n                   before{}\r\n                 }");
+    boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "before2");
+    Assert.assertTrue("\nExpected secondMethodName(\r\n                \"before{}\r\n                 context{\r\n                   before{}\r\n                 }\") => \"before2\" but"
+     + "\n     secondMethodName(\r\n                \"before{}\r\n                 context{\r\n                   before{}\r\n                 }\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("should enumerate nested before all without description")
+  @Order(20)
+  public void _shouldEnumerateNestedBeforeAllWithoutDescription() throws Exception {
+    String _secondMethodName = this.secondMethodName(
+      "before all{}\r\n                 context{\r\n                   before all{}\r\n                 }");
+    boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "beforeAll2");
+    Assert.assertTrue("\nExpected secondMethodName(\r\n                \"before all{}\r\n                 context{\r\n                   before all{}\r\n                 }\") => \"beforeAll2\" but"
+     + "\n     secondMethodName(\r\n                \"before all{}\r\n                 context{\r\n                   before all{}\r\n                 }\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("should keep default name of nested before and before all")
+  @Order(21)
+  public void _shouldKeepDefaultNameOfNestedBeforeAndBeforeAll() throws Exception {
+    String _secondMethodName = this.secondMethodName(
+      "before{}\r\n                 context{\r\n                   before all{}\r\n                 }");
+    boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "beforeAll");
+    Assert.assertTrue("\nExpected secondMethodName(\r\n                \"before{}\r\n                 context{\r\n                   before all{}\r\n                 }\") => \"beforeAll\" but"
+     + "\n     secondMethodName(\r\n                \"before{}\r\n                 context{\r\n                   before all{}\r\n                 }\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
   @Named("should escape invalid names")
-  @Order(18)
+  @Order(22)
   public void _shouldEscapeInvalidNames() throws Exception {
     String _firstMethodName = this.firstMethodName("before \'null\'{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "_null");

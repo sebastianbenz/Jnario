@@ -82,7 +82,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     	
 		val JvmGenericType background = feature.background.toClass(acceptor)
 		val scenarios = feature.scenarios.toClass(acceptor, background)
-		feature.toClass(acceptor, scenarios)
+		feature.toClass(acceptor, scenarios, background)
    	}
    	
    	def resolveFeature(EObject root){
@@ -96,7 +96,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def toClass(Background background, IJvmDeclaredTypeAcceptor acceptor){
    		if(background == null) return null
-   		background.addSuperClass
    		val backgroundClass = background.toClass
 		backgroundClass.^abstract = true
 		register(acceptor, background, backgroundClass, emptyList)
@@ -113,8 +112,16 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		return result
    	}
    	
-   	def toClass(Feature feature, IJvmDeclaredTypeAcceptor acceptor, List<JvmGenericType> scenarios){
+   	def toClass(Feature feature, IJvmDeclaredTypeAcceptor acceptor, List<JvmGenericType> scenarios, JvmGenericType background){
+   		feature.addSuperClass
    		val inferredJvmType = feature.toClass
+   		if(background == null){
+   			scenarios.forEach[superTypes+=inferredJvmType.createTypeRef()]
+   		}else{
+   			background.superTypes +=inferredJvmType.createTypeRef()
+   			scenarios.forEach[superTypes+=background.createTypeRef()]
+   		}
+   		
 		register(acceptor, feature, inferredJvmType, scenarios)
    	}
    	
@@ -128,11 +135,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	}
    	
    	def toClass(XtendClass xtendClass, JvmGenericType superClass){
-   		if(superClass != null){
-	   		xtendClass.^extends = superClass.createTypeRef()
-   		}else{
-   			xtendClass.addSuperClass
-   		}
    		xtendClass.toClass(xtendClass.toJavaClassName)[
 			packageName = xtendClass.packageName
    		]	

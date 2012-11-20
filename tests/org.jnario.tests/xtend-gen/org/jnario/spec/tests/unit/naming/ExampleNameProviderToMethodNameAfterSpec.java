@@ -27,7 +27,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   
   @Test
   @Named("should convert after description to camel case starting in lowercase")
-  @Order(19)
+  @Order(23)
   public void _shouldConvertAfterDescriptionToCamelCaseStartingInLowercase() throws Exception {
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
       "after \'my example\'", 
@@ -48,7 +48,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   
   @Test
   @Named("should use after as default name")
-  @Order(20)
+  @Order(24)
   public void _shouldUseAfterAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("after{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "after");
@@ -58,13 +58,60 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   }
   
   @Test
-  @Named("should enumerate afters without description")
-  @Order(21)
-  public void _shouldEnumerateAftersWithoutDescription() throws Exception {
+  @Named("should use afterAll as default name")
+  @Order(25)
+  public void _shouldUseAfterAllAsDefaultName() throws Exception {
+    String _firstMethodName = this.firstMethodName("after all{}");
+    boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "afterAll");
+    Assert.assertTrue("\nExpected firstMethodName(\"after all{}\") => \"afterAll\" but"
+     + "\n     firstMethodName(\"after all{}\") is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("should enumerate after without description")
+  @Order(26)
+  public void _shouldEnumerateAfterWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName("after{}\r\n                 after{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "after2");
     Assert.assertTrue("\nExpected secondMethodName(\"after{}\r\n                 after{}\") => \"after2\" but"
      + "\n     secondMethodName(\"after{}\r\n                 after{}\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("should enumerate nested after without description")
+  @Order(27)
+  public void _shouldEnumerateNestedAfterWithoutDescription() throws Exception {
+    String _secondMethodName = this.secondMethodName(
+      "after{}\r\n                 context{\r\n                   after{}\r\n                 }");
+    boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "after2");
+    Assert.assertTrue("\nExpected secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after{}\r\n                 }\") => \"after2\" but"
+     + "\n     secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after{}\r\n                 }\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("should enumerate nested after all without description")
+  @Order(28)
+  public void _shouldEnumerateNestedAfterAllWithoutDescription() throws Exception {
+    String _secondMethodName = this.secondMethodName(
+      "after all{}\r\n                 context{\r\n                   after all{}\r\n                 }");
+    boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "afterAll2");
+    Assert.assertTrue("\nExpected secondMethodName(\r\n                \"after all{}\r\n                 context{\r\n                   after all{}\r\n                 }\") => \"afterAll2\" but"
+     + "\n     secondMethodName(\r\n                \"after all{}\r\n                 context{\r\n                   after all{}\r\n                 }\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("nested after and after all keep their default name")
+  @Order(29)
+  public void _nestedAfterAndAfterAllKeepTheirDefaultName() throws Exception {
+    String _secondMethodName = this.secondMethodName(
+      "after{}\r\n                 context{\r\n                   after all{}\r\n                 }");
+    boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "afterAll");
+    Assert.assertTrue("\nExpected secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after all{}\r\n                 }\") => \"afterAll\" but"
+     + "\n     secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after all{}\r\n                 }\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
     
   }
   

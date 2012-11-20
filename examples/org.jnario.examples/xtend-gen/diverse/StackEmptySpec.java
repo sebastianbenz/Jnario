@@ -22,7 +22,7 @@ public class StackEmptySpec extends StackSpec {
   
   @Test
   @Named("subject.empty should be true")
-  @Order(0)
+  @Order(1)
   public void _subjectEmptyShouldBeTrue() throws Exception {
     boolean _empty = this.subject.empty();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_empty), true);
@@ -34,7 +34,7 @@ public class StackEmptySpec extends StackSpec {
   
   @Test
   @Named("subject.pop[] throws EmptyStackException")
-  @Order(1)
+  @Order(2)
   public void _subjectPopThrowsEmptyStackException() throws Exception {
     try{
       this.subject.pop();

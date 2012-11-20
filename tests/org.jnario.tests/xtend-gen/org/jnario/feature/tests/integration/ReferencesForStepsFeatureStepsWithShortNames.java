@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.lib.JnarioIterableExtensions;
@@ -15,7 +16,7 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Steps with short names")
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
-public class ReferencesForStepsFeatureStepsWithShortNames {
+public class ReferencesForStepsFeatureStepsWithShortNames extends ReferencesForStepsFeature {
   @Test
   @Order(0)
   @Named("When I have a scenario with references and short step names [1 word]")

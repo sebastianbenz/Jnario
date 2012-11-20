@@ -13,7 +13,6 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -24,9 +23,8 @@ public class RulesEvolveDeadCellsSpec extends RulesSpec {
   @Subject
   public EvolveDeadCells subject;
   
-  @Before
-  public void _initRulesEvolveDeadCellsSpecDeadcells() {
-    deadcells = ExampleTable.create("deadcells", 
+  public ExampleTable<RulesEvolveDeadCellsSpecDeadcells> _initRulesEvolveDeadCellsSpecDeadcells() {
+    return ExampleTable.create("deadcells", 
       java.util.Arrays.asList("liveNeighbourCount", "result"), 
       new RulesEvolveDeadCellsSpecDeadcells(  java.util.Arrays.asList("2", "false"), 2, false),
       new RulesEvolveDeadCellsSpecDeadcells(  java.util.Arrays.asList("3", "true"), 3, true),
@@ -34,11 +32,11 @@ public class RulesEvolveDeadCellsSpec extends RulesSpec {
     );
   }
   
-  protected ExampleTable<RulesEvolveDeadCellsSpecDeadcells> deadcells;
+  protected ExampleTable<RulesEvolveDeadCellsSpecDeadcells> deadcells = _initRulesEvolveDeadCellsSpecDeadcells();
   
   @Test
   @Named("deadcells.forEach[ subject.becomesAlive[liveNeighbourCount] => result ]")
-  @Order(1)
+  @Order(2)
   public void _deadcellsForEachSubjectBecomesAliveLiveNeighbourCountResult() throws Exception {
     final Procedure1<RulesEvolveDeadCellsSpecDeadcells> _function = new Procedure1<RulesEvolveDeadCellsSpecDeadcells>() {
         public void apply(final RulesEvolveDeadCellsSpecDeadcells it) {

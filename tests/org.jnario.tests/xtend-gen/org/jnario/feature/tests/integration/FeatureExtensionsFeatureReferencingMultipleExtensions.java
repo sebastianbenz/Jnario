@@ -6,6 +6,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.hamcrest.StringDescription;
+import org.jnario.feature.tests.integration.FeatureExtensionsFeature;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
@@ -20,7 +21,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Referencing multiple extensions")
 @SuppressWarnings("all")
-public class FeatureExtensionsFeatureReferencingMultipleExtensions {
+public class FeatureExtensionsFeatureReferencingMultipleExtensions extends FeatureExtensionsFeature {
   @Test
   @Order(0)
   @Named("When sorting the colors \\\"yellow, red\\\"")

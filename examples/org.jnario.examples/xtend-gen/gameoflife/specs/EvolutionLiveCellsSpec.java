@@ -39,7 +39,7 @@ public class EvolutionLiveCellsSpec extends EvolutionSpec {
   
   @Test
   @Named("stay alive if rule says so")
-  @Order(1)
+  @Order(2)
   public void _stayAliveIfRuleSaysSo() throws Exception {
     Evolution _evolution = new Evolution(this.allLiveStayAlive, this.dontCare);
     final Evolution evolution = _evolution;

@@ -12,6 +12,7 @@ import org.hamcrest.StringDescription;
 import org.jnario.Executable;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
+import org.jnario.jnario.tests.integration.ParsingSpecResultsFromJUnitXMLReportsFeature;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.JnarioIteratorExtensions;
 import org.jnario.lib.Should;
@@ -35,7 +36,7 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Matching successfull Spec Runs")
 @CreateWith(value = SpecTestCreator.class)
 @SuppressWarnings("all")
-public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpecRuns {
+public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpecRuns extends ParsingSpecResultsFromJUnitXMLReportsFeature {
   @Test
   @Order(0)
   @Named("Given a specification")

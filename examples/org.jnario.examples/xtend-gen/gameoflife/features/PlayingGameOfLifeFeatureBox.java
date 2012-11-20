@@ -2,6 +2,7 @@ package gameoflife.features;
 
 import gameoflife.Evolution;
 import gameoflife.World;
+import gameoflife.features.PlayingGameOfLifeFeature;
 import org.hamcrest.StringDescription;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
@@ -16,7 +17,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Box")
 @SuppressWarnings("all")
-public class PlayingGameOfLifeFeatureBox {
+public class PlayingGameOfLifeFeatureBox extends PlayingGameOfLifeFeature {
   @Test
   @Order(0)
   @Named("Given a world")

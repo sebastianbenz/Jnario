@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.UsingMatchersInFeaturesFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
@@ -12,7 +13,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Using Matchers in Jnario")
 @SuppressWarnings("all")
-public class UsingMatchersInFeaturesFeatureUsingMatchersInJnario {
+public class UsingMatchersInFeaturesFeatureUsingMatchersInJnario extends UsingMatchersInFeaturesFeature {
   @Test
   @Order(0)
   @Named("When I have a scenario which uses the Jnario matchers")

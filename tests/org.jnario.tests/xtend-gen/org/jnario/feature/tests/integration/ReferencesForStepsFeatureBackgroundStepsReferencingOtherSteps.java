@@ -1,6 +1,7 @@
 package org.jnario.feature.tests.integration;
 
 import com.google.inject.Inject;
+import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
 import org.jnario.jnario.test.util.BehaviorExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.lib.JnarioIterableExtensions;
@@ -17,7 +18,7 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Background steps referencing other steps")
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
-public class ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps {
+public class ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps extends ReferencesForStepsFeature {
   @Test
   @Order(0)
   @Named("Given a feature")

@@ -184,6 +184,13 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	def transform(Before element, JvmGenericType container) {
 		val beforeMethod = element.toMethod(element.beforeAll)
 		if(element.beforeAll){
+			val field = element.toField("_" + element.toMethodName + "IsExecuted", getTypeForName(typeof(Boolean), element))[
+				setInitializer[
+					append(" false")
+				]
+				^static = true
+			]
+			container.members += field
 			testRuntime.beforeAllMethod(element, beforeMethod)
 		}else{
 			testRuntime.beforeMethod(element, beforeMethod)
@@ -194,6 +201,13 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	def transform(After element, JvmGenericType container) {
 		val afterMethod = element.toMethod(element.afterAll)
 		if(element.afterAll){
+			val field = element.toField("_" + element.toMethodName + "IsExecuted", getTypeForName(typeof(Boolean), element))[
+				setInitializer[
+					append(" false")
+				]
+				^static = true
+			]
+			container.members += field
 			testRuntime.afterAllMethod(element, afterMethod)
 		}else{
 			testRuntime.afterMethod(element, afterMethod)

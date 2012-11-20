@@ -7,6 +7,9 @@
  *******************************************************************************/
 package org.jnario.spec.naming;
 
+import static com.google.common.collect.Iterables.addAll;
+import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Lists.newArrayList;
 import static java.lang.Math.max;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.util.Strings.toFirstLower;
@@ -17,10 +20,11 @@ import static org.jnario.util.Strings.makeJunitConform;
 import static org.jnario.util.Strings.markAsPending;
 
 import java.util.List;
+import java.util.Stack;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesPackage;
@@ -128,11 +132,19 @@ public class ExampleNameProvider extends JnarioNameProvider{
 	}
 	
 	public String toMethodName(Before before){
-		return toMethodName(before, "before");
+		String name = "before";
+		if(before.isBeforeAll()){
+			name += "All";
+		}
+		return toMethodName(before, name);
 	}
 	
-	public String toMethodName(After before){
-		return toMethodName(before, "after");
+	public String toMethodName(After after){
+		String name = "after";
+		if(after.isAfterAll()){
+			name += "All";
+		}
+		return toMethodName(after, name);
 	}
 	
 	public String toMethodName(TestFunction target, String defaultName){
@@ -157,18 +169,42 @@ public class ExampleNameProvider extends JnarioNameProvider{
 	}
 
 	protected int countPreviousWithDefaultName(TestFunction target) {
-		List<XtendMember> members = ((ExampleGroup)target.eContainer()).getMembers();
+		List<? extends TestFunction> members = allMembers(target, target.getClass());
 		int index = members.indexOf(target);
 		int count = 1;
 		for (int i = 0; i < index; i++) {
-			XtendMember current = members.get(i);
-			if (target.getClass().isInstance(current)) {
-				if(((TestFunction)current).getName() == null){
+			TestFunction current = members.get(i);
+			if (current instanceof Before) {
+				Before before = (Before) current;
+				if(current.getName() == null && (before.isBeforeAll() == ((Before)target).isBeforeAll())){
+					count++;
+				}
+			}else if (current instanceof After) {
+				After after = (After) current;
+				if(current.getName() == null && (after.isAfterAll() == ((After)target).isAfterAll())){
+					count++;
+				}
+			}else if (target.getClass().isInstance(current)) {
+				if(current.getName() == null){
 					count++;
 				}
 			}
 		}
 		return count;
+	}
+
+	private <T extends TestFunction> List<T> allMembers(EObject context, Class<T> type) {
+		XtendClass container = getContainerOfType(context, XtendClass.class);
+		Stack<XtendClass> parents = new Stack<XtendClass>();
+		while(container != null){
+			parents.push(container);
+			container = getContainerOfType(container.eContainer(), XtendClass.class);
+		}
+		List<T> functions = newArrayList();
+		while(!parents.isEmpty()){
+			addAll(functions, filter(parents.pop().getMembers(), type));
+		}
+		return functions;
 	}
 	
 	protected StringBuilder internalGetName(ExampleGroup exampleGroup) {
@@ -260,7 +296,7 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		if (eObject instanceof ExampleTable) {
 			return toJavaClassName((ExampleTable) eObject);
 		}
-		ExampleGroup exampleGroup = EcoreUtil2.getContainerOfType(eObject, ExampleGroup.class);
+		ExampleGroup exampleGroup = getContainerOfType(eObject, ExampleGroup.class);
 		if(exampleGroup == null){
 			return null;
 		}

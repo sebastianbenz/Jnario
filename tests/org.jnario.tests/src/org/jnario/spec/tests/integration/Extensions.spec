@@ -15,6 +15,7 @@ import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SpecTestCreator
 import org.jnario.jnario.test.util.BehaviorExecutor
 import com.google.inject.Inject
+import org.jnario.jnario.test.util.ConsoleRecorder
 
 /*
  * Extensions can be used to share common setup and tear down behavior across different specifications.
@@ -22,34 +23,24 @@ import com.google.inject.Inject
  * 
  * <pre class="prettify">
  * public class ExtensionExample {
- *   private static List<String> EXECUTED_METHODS = new ArrayList<String>();
- *   
  *   @BeforeClass
  *   public static void beforeClass(){
- *     run("ExtensionExample#beforeClass");
+ *     System.out.println("before Class");
  *   }
  *   
  *   @Before
  *   public void before(){
- *     run("ExtensionExample#before");
+ *     System.out.println("before");
  *   }
  *   
  *   @AfterClass
  *   public static void afterClass(){
- *     run("ExtensionExample#afterClass");
+ *     System.out.println("after Class");
  *   }
  *   
  *   @After
  *   public void after(){
- *     run("ExtensionExample#after");
- *   }
- * 
- *   private static void run(String name) {
- *     EXECUTED_METHODS.add(name);
- *   }
- *   
- *   public static List<String> getExecutedMethods() {
- *     return EXECUTED_METHODS;
+ *     System.out.println("after");
  *   }
  * }
  * </pre>
@@ -64,33 +55,38 @@ import com.google.inject.Inject
 describe "Spec Extensions"{
 	@Inject extension BehaviorExecutor
 	fact "Example:"{
-		execute('''
-			package bootstrap
-
+		'''
 			import org.jnario.spec.tests.integration.ExtensionExample
 
 			describe "Extension"{
 				extension static ExtensionExample = new ExtensionExample()
 
-				fact "test 1"{
-					ExtensionExample::executedMethods += "ExtensionSpec#test1"
+				context "Nested Spec"{
+					fact println("test 3")
 				}
+				fact println("test 1")
+				fact println("test 2")
 				
-				fact "test 2"{
-					ExtensionExample::executedMethods += "ExtensionSpec#test2"
-				}
 			}
+		'''.prints('''
+				before Class
+				before
+				test 3
+				after
+				before
+				test 1
+				after
+				before
+				test 2
+				after
+				after Class
 		''')
-		 
-		executedMethods =>
-			   list("ExtensionExample#beforeClass", 
-					"ExtensionExample#before",  
-					"ExtensionSpec#test1",  
-					"ExtensionExample#after",  
-					"ExtensionExample#before",
-					"ExtensionSpec#test2",  
-					"ExtensionExample#after",
-					"ExtensionExample#afterClass")
 	}
-
+	
+	def void prints(CharSequence spec, String expected) {
+		val recording = ConsoleRecorder::start
+		spec.executesSuccessfully
+		val actual = recording.stop
+		assertEquals(expected, actual) 
+	}
 }

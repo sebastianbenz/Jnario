@@ -21,7 +21,7 @@ public class StackNotEmptySpec extends StackSpec {
   
   @Test
   @Named("increases size when pushing")
-  @Order(2)
+  @Order(3)
   public void _increasesSizeWhenPushing() throws Exception {
     this.subject.push("something");
     int _size = this.subject.size();
@@ -34,7 +34,7 @@ public class StackNotEmptySpec extends StackSpec {
   
   @Test
   @Named("decreases size when popping")
-  @Order(3)
+  @Order(4)
   public void _decreasesSizeWhenPopping() throws Exception {
     this.subject.push("something");
     this.subject.pop();

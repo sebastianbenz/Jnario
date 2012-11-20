@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.FieldInferenceFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.lib.JnarioIterableExtensions;
@@ -15,7 +16,7 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Inferring Fields from Background")
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
-public class FieldInferenceFeatureInferringFieldsFromBackground {
+public class FieldInferenceFeatureInferringFieldsFromBackground extends FieldInferenceFeature {
   @Test
   @Order(0)
   @Named("When I have a feature with a background and two scenarios")

@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.BackgroundsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
@@ -12,7 +13,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Instantiating Objects in Backgrounds")
 @SuppressWarnings("all")
-public class BackgroundsFeatureInstantiatingObjectsInBackgrounds {
+public class BackgroundsFeatureInstantiatingObjectsInBackgrounds extends BackgroundsFeature {
   @Test
   @Order(0)
   @Named("When I have a feature with a background")

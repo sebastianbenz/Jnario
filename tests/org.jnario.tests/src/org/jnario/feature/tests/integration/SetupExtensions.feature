@@ -43,6 +43,13 @@ Feature: Setup & Teardown with Feature Extensions
           @After def after(){
             println("after")
           }
+//          @BeforeClass def beforeAll(){
+//            println("before all")
+//          }
+//  
+//          @AfterClass def afterAll(){
+//            println("after all")
+//          }
         }
       ''' 
     When I declare an extension field of type **ExampleExtension** in the background

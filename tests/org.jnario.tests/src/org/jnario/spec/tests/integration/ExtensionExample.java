@@ -7,9 +7,6 @@
  *******************************************************************************/
 package org.jnario.spec.tests.integration;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,34 +14,23 @@ import org.junit.BeforeClass;
 
 public class ExtensionExample {
 	
-	private static List<String> EXECUTED_METHODS = new ArrayList<String>();
-	
 	@BeforeClass
 	public static void beforeClass(){
-		run("ExtensionExample#beforeClass");
+		System.out.println("before Class");
 	}
 	
 	@Before
 	public void before(){
-		run("ExtensionExample#before");
-	}
-	
-	@AfterClass
-	public static void afterClass(){
-		run("ExtensionExample#afterClass");
+		System.out.println("before");
 	}
 	
 	@After
 	public void after(){
-		run("ExtensionExample#after");
+		System.out.println("after");
 	}
 
-	private static void run(String name) {
-		EXECUTED_METHODS.add(name);
+	@AfterClass
+	public static void afterClass(){
+		System.out.println("after Class");
 	}
-	
-	public static List<String> getExecutedMethods() {
-		return EXECUTED_METHODS;
-	}
-	
 }

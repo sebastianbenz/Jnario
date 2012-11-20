@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.StepParametersFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
@@ -12,7 +13,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Parameter definition in steps and Background")
 @SuppressWarnings("all")
-public class StepParametersFeatureParameterDefinitionInStepsAndBackground {
+public class StepParametersFeatureParameterDefinitionInStepsAndBackground extends StepParametersFeature {
   @Test
   @Order(0)
   @Named("When I define parameters in a background")

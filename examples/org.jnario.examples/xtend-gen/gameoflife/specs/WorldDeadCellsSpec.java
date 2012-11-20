@@ -23,7 +23,7 @@ import org.junit.runner.RunWith;
 public class WorldDeadCellsSpec extends WorldSpec {
   @Test
   @Named("with no live cells there are no dead cells")
-  @Order(0)
+  @Order(1)
   public void _withNoLiveCellsThereAreNoDeadCells() throws Exception {
     List<CellLocation> _emptyList = CollectionLiterals.<CellLocation>emptyList();
     World _worldWith = World.worldWith(_emptyList);
@@ -40,7 +40,7 @@ public class WorldDeadCellsSpec extends WorldSpec {
   
   @Test
   @Named("with a live cell all neighbours are dead cells")
-  @Order(1)
+  @Order(2)
   public void _withALiveCellAllNeighboursAreDeadCells() throws Exception {
     Set<CellLocation> _deadCells = this.worldWithLiveCell.deadCells();
     Set<CellLocation> _neighbours = this.liveCell.neighbours();
@@ -55,7 +55,7 @@ public class WorldDeadCellsSpec extends WorldSpec {
   
   @Test
   @Named("with a live cell all non-living neighbours are dead cells")
-  @Order(2)
+  @Order(3)
   public void _withALiveCellAllNonLivingNeighboursAreDeadCells() throws Exception {
     Set<CellLocation> _deadCells = this.worldWithTwoLiveNeighbours.deadCells();
     Set<CellLocation> _allNonLivingNeighbours = this.allNonLivingNeighbours();

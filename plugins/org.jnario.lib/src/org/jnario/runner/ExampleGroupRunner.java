@@ -17,14 +17,22 @@ import static java.util.Collections.emptyList;
 import static org.eclipse.xtext.xbase.lib.Exceptions.sneakyThrow;
 import static org.jnario.runner.ExtensionRule.createClassExtensionRule;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.jnario.runner.internal.ExampleGroupRunnerBuilder;
 import org.jnario.runner.internal.ExtensionClass;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.internal.runners.statements.RunAfters;
+import org.junit.internal.runners.statements.RunBefores;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runner.Runner;
@@ -36,6 +44,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.model.FrameworkField;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.Statement;
 import org.junit.runners.model.TestClass;
 
 import com.google.common.base.Function;
@@ -50,6 +59,7 @@ import com.google.common.collect.Iterables;
  * 
  * @author Sebastian Benz - Initial contribution and API
  */
+@SuppressWarnings("restriction")
 public class ExampleGroupRunner extends ParentRunner<Runner> {
 
 	private final class IsTestMethod implements Predicate<FrameworkMethod> {
@@ -62,15 +72,17 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	private final NameProvider nameProvider;
 	private List<Runner> children;
 	private List<ExtensionClass> extensions;
+	private Set<Method> setups;
 
 	public ExampleGroupRunner(Class<?> testClass) throws InitializationError {
-		this(testClass, NameProvider.create());
+		this(testClass, NameProvider.create(), new HashSet<Method>());
 	}
 
-	public ExampleGroupRunner(Class<?> testClass, NameProvider nameProvider)
+	public ExampleGroupRunner(Class<?> testClass, NameProvider nameProvider, Set<Method> setups)
 			throws InitializationError {
 		super(testClass);
 		this.nameProvider = nameProvider;
+		this.setups = setups;
 		setExtensions();
 		setChildren();
 	}
@@ -202,7 +214,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 
 	protected Runner createExampleGroupRunner(Class<?> declaredClass)
 			throws InitializationError {
-		return new ExampleGroupRunnerBuilder(declaredClass, nameProvider)
+		return new ExampleGroupRunnerBuilder(declaredClass, nameProvider, setups)
 				.build();
 	}
 
@@ -239,14 +251,42 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 	@Override
 	protected List<TestRule> classRules() {
 		List<TestRule> rules = super.classRules();
-		rules.add(createClassExtensionRule(staticExtensions(), null));
+		rules.add(createClassExtensionRule(staticExtensions(), null, setups));
 		return rules;
+	}
+	
+	@Override
+	protected Statement withBeforeClasses(Statement statement) {
+		List<FrameworkMethod> befores= getTestClass().getAnnotatedMethods(BeforeClass.class);
+		List<FrameworkMethod> filteredBefores = filterAlreadyScheduled(befores);
+		return filteredBefores.isEmpty() ? statement :
+			new RunBefores(statement, filteredBefores, null);
+	}
+	
+	@Override
+	protected Statement withAfterClasses(Statement statement) {
+		List<FrameworkMethod> befores= getTestClass().getAnnotatedMethods(AfterClass.class);
+		List<FrameworkMethod> filteredAfters = filterAlreadyScheduled(befores);
+		return filteredAfters.isEmpty() ? statement :
+			new RunAfters(statement, filteredAfters, null);
+	}
+
+	public List<FrameworkMethod> filterAlreadyScheduled(
+			List<FrameworkMethod> befores) {
+		List<FrameworkMethod> filteredAfters = new ArrayList<FrameworkMethod>(befores.size());
+		for (FrameworkMethod frameworkMethod : befores) {
+			if(!setups.contains(frameworkMethod.getMethod())){
+				filteredAfters.add(frameworkMethod);
+				setups.add(frameworkMethod.getMethod());
+			}
+		}
+		return filteredAfters;
 	}
 
 	private Iterable<ExtensionClass> staticExtensions() {
 		Iterable<ExtensionClass> staticExtensions =  Iterables.filter(extensions, new Predicate<ExtensionClass>() {
 			public boolean apply(ExtensionClass extension){
-				return extension.isStatis();
+				return extension.isStatic();
 			}
 		});
 		return staticExtensions;

@@ -122,7 +122,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     final JvmGenericType background = this.toClass(_background, acceptor);
     EList<Scenario> _scenarios = feature.getScenarios();
     final ArrayList<JvmGenericType> scenarios = this.toClass(_scenarios, acceptor, background);
-    this.toClass(feature, acceptor, scenarios);
+    this.toClass(feature, acceptor, scenarios, background);
   }
   
   public Feature resolveFeature(final EObject root) {
@@ -144,7 +144,6 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       if (_equals) {
         return null;
       }
-      this.addSuperClass(background);
       final JvmGenericType backgroundClass = this.toClass(background);
       backgroundClass.setAbstract(true);
       List<JvmGenericType> _emptyList = CollectionLiterals.<JvmGenericType>emptyList();
@@ -168,8 +167,32 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     return result;
   }
   
-  public void toClass(final Feature feature, final IJvmDeclaredTypeAcceptor acceptor, final List<JvmGenericType> scenarios) {
+  public void toClass(final Feature feature, final IJvmDeclaredTypeAcceptor acceptor, final List<JvmGenericType> scenarios, final JvmGenericType background) {
+    this.addSuperClass(feature);
     final JvmGenericType inferredJvmType = this.toClass(feature);
+    boolean _equals = Objects.equal(background, null);
+    if (_equals) {
+      final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
+          public void apply(final JvmGenericType it) {
+            EList<JvmTypeReference> _superTypes = it.getSuperTypes();
+            JvmParameterizedTypeReference _createTypeRef = FeatureJvmModelInferrer.this._typeReferences.createTypeRef(inferredJvmType);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
+          }
+        };
+      IterableExtensions.<JvmGenericType>forEach(scenarios, _function);
+    } else {
+      EList<JvmTypeReference> _superTypes = background.getSuperTypes();
+      JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(inferredJvmType);
+      this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
+      final Procedure1<JvmGenericType> _function_1 = new Procedure1<JvmGenericType>() {
+          public void apply(final JvmGenericType it) {
+            EList<JvmTypeReference> _superTypes = it.getSuperTypes();
+            JvmParameterizedTypeReference _createTypeRef = FeatureJvmModelInferrer.this._typeReferences.createTypeRef(background);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
+          }
+        };
+      IterableExtensions.<JvmGenericType>forEach(scenarios, _function_1);
+    }
     this.register(acceptor, feature, inferredJvmType, scenarios);
   }
   
@@ -190,26 +213,15 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   public JvmGenericType toClass(final XtendClass xtendClass, final JvmGenericType superClass) {
-    JvmGenericType _xblockexpression = null;
-    {
-      boolean _notEquals = (!Objects.equal(superClass, null));
-      if (_notEquals) {
-        JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(superClass);
-        xtendClass.setExtends(_createTypeRef);
-      } else {
-        this.addSuperClass(xtendClass);
-      }
-      String _javaClassName = this._featureClassNameProvider.toJavaClassName(xtendClass);
-      final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
-          public void apply(final JvmGenericType it) {
-            String _packageName = xtendClass.getPackageName();
-            it.setPackageName(_packageName);
-          }
-        };
-      JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(xtendClass, _javaClassName, _function);
-      _xblockexpression = (_class);
-    }
-    return _xblockexpression;
+    String _javaClassName = this._featureClassNameProvider.toJavaClassName(xtendClass);
+    final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
+        public void apply(final JvmGenericType it) {
+          String _packageName = xtendClass.getPackageName();
+          it.setPackageName(_packageName);
+        }
+      };
+    JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(xtendClass, _javaClassName, _function);
+    return _class;
   }
   
   public void initialize(final XtendClass source, final JvmGenericType inferredJvmType, final List<JvmGenericType> scenarios) {

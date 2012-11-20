@@ -52,6 +52,13 @@ class ExampleExtension {
   @After def after(){
     println(&quot;after&quot;)
   }
+//          @BeforeClass def beforeAll(){
+//            println(&quot;before all&quot;)
+//          }
+//  
+//          @AfterClass def afterAll(){
+//            println(&quot;after all&quot;)
+//          }
 }</pre></span>
 </li>
 <li><span class="step notrun"><p>When I declare an extension field of type <strong>ExampleExtension</strong> in the background</p><pre>import org.jnario.feature.tests.integration.ExampleExtension
@@ -136,6 +143,13 @@ Feature: Setup &amp; Teardown with Feature Extensions
           @After def after(){
             println(&quot;after&quot;)
           }
+//          @BeforeClass def beforeAll(){
+//            println(&quot;before all&quot;)
+//          }
+//  
+//          @AfterClass def afterAll(){
+//            println(&quot;after all&quot;)
+//          }
         }
       ''' 
     When I declare an extension field of type **ExampleExtension** in the background

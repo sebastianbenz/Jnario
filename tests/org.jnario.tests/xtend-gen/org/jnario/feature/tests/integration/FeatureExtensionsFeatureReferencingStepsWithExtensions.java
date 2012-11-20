@@ -1,6 +1,7 @@
 package org.jnario.feature.tests.integration;
 
 import org.hamcrest.StringDescription;
+import org.jnario.feature.tests.integration.FeatureExtensionsFeature;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
 import org.jnario.lib.StepArguments;
@@ -15,7 +16,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Referencing steps with extensions")
 @SuppressWarnings("all")
-public class FeatureExtensionsFeatureReferencingStepsWithExtensions {
+public class FeatureExtensionsFeatureReferencingStepsWithExtensions extends FeatureExtensionsFeature {
   @Test
   @Order(0)
   @Named("Given the number \\\"12\\\" as string")

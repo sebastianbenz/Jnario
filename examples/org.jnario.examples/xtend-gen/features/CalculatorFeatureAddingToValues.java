@@ -1,5 +1,6 @@
 package features;
 
+import features.CalculatorFeature;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -10,7 +11,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario:  Adding to values")
 @SuppressWarnings("all")
-public class CalculatorFeatureAddingToValues {
+public class CalculatorFeatureAddingToValues extends CalculatorFeature {
   @Test
   @Order(0)
   @Ignore

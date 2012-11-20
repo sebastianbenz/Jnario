@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.integration;
 
+import org.jnario.feature.tests.integration.CalculatorFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
@@ -12,7 +13,7 @@ import org.junit.runner.RunWith;
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Simple calculator test with background and references")
 @SuppressWarnings("all")
-public class CalculatorFeatureSimpleCalculatorTestWithBackgroundAndReferences {
+public class CalculatorFeatureSimpleCalculatorTestWithBackgroundAndReferences extends CalculatorFeature {
   @Test
   @Order(0)
   @Named("When I have a feature with a background and references")

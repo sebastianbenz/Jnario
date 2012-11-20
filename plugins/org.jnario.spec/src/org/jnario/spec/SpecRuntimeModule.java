@@ -55,7 +55,6 @@ import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.generator.JnarioJavaIoFileSystemAccess;
 import org.jnario.jvmmodel.ExecutableProvider;
-import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioDispatchUtil;
 import org.jnario.jvmmodel.JnarioNameProvider;
@@ -70,6 +69,7 @@ import org.jnario.spec.compiler.SpecBatchCompiler;
 import org.jnario.spec.conversion.SpecValueConverterService;
 import org.jnario.spec.doc.SpecDocGenerator;
 import org.jnario.spec.jvmmodel.SpecExecutableProvider;
+import org.jnario.spec.jvmmodel.SpecJvmModelGenerator;
 import org.jnario.spec.jvmmodel.SpecJvmModelInferrer;
 import org.jnario.spec.jvmmodel.SpecSyntheticNameClashResolver;
 import org.jnario.spec.naming.ExampleNameProvider;
@@ -112,7 +112,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	}
 	
 	public Class<? extends JvmModelGenerator> bindJvmModelGenerator(){
-		return ExtendedJvmModelGenerator.class;
+		return SpecJvmModelGenerator.class;
 	}
 	
 	@Override

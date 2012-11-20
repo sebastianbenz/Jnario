@@ -18,7 +18,10 @@ import static org.junit.experimental.results.PrintableResult.testResult;
 import static org.junit.experimental.results.ResultMatchers.hasFailureContaining;
 import static org.junit.experimental.results.ResultMatchers.isSuccessful;
 
+import java.lang.reflect.Method;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hamcrest.Matcher;
 import org.jnario.runner.Contains;
@@ -181,9 +184,9 @@ public class ExampleGroupRunnerTest {
 			
 			public static boolean HAS_RUN = false;
 			
-			public CustomRunner(Class<?> testClass, NameProvider nameProvider)
+			public CustomRunner(Class<?> testClass, NameProvider nameProvider, Set<Method> setups)
 					throws InitializationError {
-				super(testClass, nameProvider);
+				super(testClass, nameProvider, setups);
 			}
 			
 			@Override

@@ -12,8 +12,10 @@ Feature: Defining Feature Bases Classes
 		@Extends(typeof(TestCase)) 
 		Feature: Extend Annotation
 			Scenario: My Scenario
-				Then my scenario class extends test case
-					typeof(ExtendAnnotationFeatureMyScenario).superclass => typeof(TestCase)
+				Then my feature class extends test case
+					typeof(ExtendAnnotationFeature).superclass => typeof(TestCase)
+				And my scenario class extends my feature class
+					typeof(ExtendAnnotationFeatureMyScenario).superclass => typeof(ExtendAnnotationFeature)
 		'''
 		jnarioFile = args.first
 		Then it should execute successfully		
@@ -30,7 +32,11 @@ Feature: Defining Feature Bases Classes
 			Background:
 				Given some background
 			Scenario: My Scenario
-				Then my scenario class extends test case
-					typeof(ExtendAnnotationFeatureBackground).superclass => typeof(TestCase)
+				Then my feature class extends test case
+					typeof(ExtendAnnotationFeature).superclass => typeof(TestCase)
+				And my scenario class extends my background class
+					typeof(ExtendAnnotationFeatureMyScenario).superclass => typeof(ExtendAnnotationFeatureBackground)
+				And my background class extends my feature class
+					typeof(ExtendAnnotationFeatureBackground).superclass => typeof(ExtendAnnotationFeature)
 		'''
 		Then it should execute successfully		
