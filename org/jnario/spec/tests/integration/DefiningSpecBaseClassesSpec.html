@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>BeforeAll</title>
+<title>Defining Spec base classes</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -25,7 +25,7 @@
 		<div class="tabbable">
 			<div class="content">
 				<div class="page-header notrun">
-					<h1>BeforeAll</h1>
+					<h1>Defining Spec base classes</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 						<li><a href="#source" data-toggle="tab">Source</a></li>
@@ -35,85 +35,44 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<p>@author Sebastian Benz - Initial contribution and API</p>
-<ul><li><p id="should_be_executed_before_all_tests" class="example notrun"><strong>should be executed before all tests</strong></p>
+<ul><li><p id="Extend_annotation_defines_the_super_class" class="example notrun"><strong>Extend annotation defines the super class</strong></p>
 <pre class="prettyprint lang-spec linenums">
-val spec = '
-  package bootstrap 
-  
-  describe &quot;BeforeAll&quot;{
-    
-    static int beforeExecutionCount = 0
-    
-    before all{
-      beforeExecutionCount = beforeExecutionCount + 1
-    }
-    
-    fact &quot;should be executed before all tests (1)&quot;{
-      beforeExecutionCount should be 1
-    }  
-    
-    fact &quot;should be executed before all tests (2)&quot;{
-      beforeExecutionCount should be 1
-    }  
-  }
-'
-spec.executesSuccessfully</pre>
+'''
+import org.jnario.runner.Extends
+import junit.framework.TestCase
+
+@Extends(typeof(TestCase)) 
+describe &quot;A spec&quot;{
+  fact typeof(ASpecSpec).superclass =&gt; typeof(TestCase)
+}
+'''.executesSuccessfully</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
-						    	<h3>BeforeAll.spec</h3>
+						    	<h3>ExtendsAnnotation.spec</h3>
 						    	<p>
 <pre class="prettyprint lang-spec linenums">
-/*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
- package org.jnario.spec.tests.integration
+package org.jnario.spec.tests.integration
 
-import static org.jnario.jnario.test.util.ResultMatchers.*
-
-
-import static extension org.jnario.jnario.test.util.SpecExecutor.*
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.BehaviorExecutor
 import org.jnario.jnario.test.util.SpecTestCreator
 import org.jnario.runner.CreateWith
-import org.jnario.jnario.test.util.BehaviorExecutor
-import com.google.inject.Inject
 
-
-/**
- * @author Sebastian Benz - Initial contribution and API
- */ 
 @CreateWith(typeof(SpecTestCreator))
-describe &quot;BeforeAll&quot; {
-   @Inject extension BehaviorExecutor
-  fact &quot;should be executed before all tests&quot;{
-    val spec = '
-      package bootstrap 
-      
-      describe &quot;BeforeAll&quot;{
-        
-        static int beforeExecutionCount = 0
-        
-        before all{
-          beforeExecutionCount = beforeExecutionCount + 1
-        }
-        
-        fact &quot;should be executed before all tests (1)&quot;{
-          beforeExecutionCount should be 1
-        }  
-        
-        fact &quot;should be executed before all tests (2)&quot;{
-          beforeExecutionCount should be 1
-        }  
-      }
-    '
-    spec.executesSuccessfully
-  }
+describe &quot;Defining Spec base classes&quot;{
+  @Inject extension BehaviorExecutor
+  fact &quot;Extend annotation defines the super class&quot;{
+    '''
+    import org.jnario.runner.Extends
+    import junit.framework.TestCase
 
+    @Extends(typeof(TestCase)) 
+    describe &quot;A spec&quot;{
+      fact typeof(ASpecSpec).superclass =&gt; typeof(TestCase)
+    }
+    '''.executesSuccessfully
+  }
 }
 </pre>
 						    </p></div>

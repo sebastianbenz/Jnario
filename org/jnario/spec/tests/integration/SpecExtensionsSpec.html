@@ -38,66 +38,55 @@
 <p>Extensions can be used to share common setup and tear down behavior across different specifications. For example, given a normal java class with some JUnit setup and tear down methods:</p>
 <pre class="prettify">
 public class ExtensionExample {
-  private static List<String> EXECUTED_METHODS = new ArrayList<String>();
-
   @BeforeClass
   public static void beforeClass(){
-    run("ExtensionExample#beforeClass");
+    System.out.println("before Class");
   }
 
   @Before
   public void before(){
-    run("ExtensionExample#before");
+    System.out.println("before");
   }
 
   @AfterClass
   public static void afterClass(){
-    run("ExtensionExample#afterClass");
+    System.out.println("after Class");
   }
 
   @After
   public void after(){
-    run("ExtensionExample#after");
-  }
-
-  private static void run(String name) {
-    EXECUTED_METHODS.add(name);
-  }
-
-  public static List<String> getExecutedMethods() {
-    return EXECUTED_METHODS;
+    System.out.println("after");
   }
 }
 </pre><p>When you declare an instance of this class as an extension field in your spec, all the setup and tear down methods will be executed before/after each fact/spec, respectively:</p>
 <ul><li><p id="Example" class="example notrun"><strong>Example:</strong></p>
 <pre class="prettyprint lang-spec linenums">
-execute('''
-  package bootstrap
-
+'''
   import org.jnario.spec.tests.integration.ExtensionExample
 
   describe &quot;Extension&quot;{
     extension static ExtensionExample = new ExtensionExample()
 
-    fact &quot;test 1&quot;{
-      ExtensionExample::executedMethods += &quot;ExtensionSpec#test1&quot;
+    context &quot;Nested Spec&quot;{
+      fact println(&quot;test 3&quot;)
     }
+    fact println(&quot;test 1&quot;)
+    fact println(&quot;test 2&quot;)
     
-    fact &quot;test 2&quot;{
-      ExtensionExample::executedMethods += &quot;ExtensionSpec#test2&quot;
-    }
   }
-''')
- 
-executedMethods =&gt;
-     list(&quot;ExtensionExample#beforeClass&quot;, 
-      &quot;ExtensionExample#before&quot;,  
-      &quot;ExtensionSpec#test1&quot;,  
-      &quot;ExtensionExample#after&quot;,  
-      &quot;ExtensionExample#before&quot;,
-      &quot;ExtensionSpec#test2&quot;,  
-      &quot;ExtensionExample#after&quot;,
-      &quot;ExtensionExample#afterClass&quot;)</pre>
+'''.prints('''
+    before Class
+    before
+    test 3
+    after
+    before
+    test 1
+    after
+    before
+    test 2
+    after
+    after Class
+''')</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -121,6 +110,7 @@ import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SpecTestCreator
 import org.jnario.jnario.test.util.BehaviorExecutor
 import com.google.inject.Inject
+import org.jnario.jnario.test.util.ConsoleRecorder
 
 /*
  * Extensions can be used to share common setup and tear down behavior across different specifications.
@@ -128,34 +118,24 @@ import com.google.inject.Inject
  * 
  * &lt;pre class=&quot;prettify&quot;&gt;
  * public class ExtensionExample {
- *   private static List&lt;String&gt; EXECUTED_METHODS = new ArrayList&lt;String&gt;();
- *   
  *   @BeforeClass
  *   public static void beforeClass(){
- *     run(&quot;ExtensionExample#beforeClass&quot;);
+ *     System.out.println(&quot;before Class&quot;);
  *   }
  *   
  *   @Before
  *   public void before(){
- *     run(&quot;ExtensionExample#before&quot;);
+ *     System.out.println(&quot;before&quot;);
  *   }
  *   
  *   @AfterClass
  *   public static void afterClass(){
- *     run(&quot;ExtensionExample#afterClass&quot;);
+ *     System.out.println(&quot;after Class&quot;);
  *   }
  *   
  *   @After
  *   public void after(){
- *     run(&quot;ExtensionExample#after&quot;);
- *   }
- * 
- *   private static void run(String name) {
- *     EXECUTED_METHODS.add(name);
- *   }
- *   
- *   public static List&lt;String&gt; getExecutedMethods() {
- *     return EXECUTED_METHODS;
+ *     System.out.println(&quot;after&quot;);
  *   }
  * }
  * &lt;/pre&gt;
@@ -170,35 +150,40 @@ import com.google.inject.Inject
 describe &quot;Spec Extensions&quot;{
   @Inject extension BehaviorExecutor
   fact &quot;Example:&quot;{
-    execute('''
-      package bootstrap
-
+    '''
       import org.jnario.spec.tests.integration.ExtensionExample
 
       describe &quot;Extension&quot;{
         extension static ExtensionExample = new ExtensionExample()
 
-        fact &quot;test 1&quot;{
-          ExtensionExample::executedMethods += &quot;ExtensionSpec#test1&quot;
+        context &quot;Nested Spec&quot;{
+          fact println(&quot;test 3&quot;)
         }
+        fact println(&quot;test 1&quot;)
+        fact println(&quot;test 2&quot;)
         
-        fact &quot;test 2&quot;{
-          ExtensionExample::executedMethods += &quot;ExtensionSpec#test2&quot;
-        }
       }
+    '''.prints('''
+        before Class
+        before
+        test 3
+        after
+        before
+        test 1
+        after
+        before
+        test 2
+        after
+        after Class
     ''')
-     
-    executedMethods =&gt;
-         list(&quot;ExtensionExample#beforeClass&quot;, 
-          &quot;ExtensionExample#before&quot;,  
-          &quot;ExtensionSpec#test1&quot;,  
-          &quot;ExtensionExample#after&quot;,  
-          &quot;ExtensionExample#before&quot;,
-          &quot;ExtensionSpec#test2&quot;,  
-          &quot;ExtensionExample#after&quot;,
-          &quot;ExtensionExample#afterClass&quot;)
   }
-
+  
+  def void prints(CharSequence spec, String expected) {
+    val recording = ConsoleRecorder::start
+    spec.executesSuccessfully
+    val actual = recording.stop
+    assertEquals(expected, actual) 
+  }
 }
 </pre>
 						    </p></div>
