@@ -44,6 +44,9 @@ import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 import static extension org.jnario.feature.jvmmodel.Scenarios.*
 import static extension org.eclipse.xtext.EcoreUtil2.*
 import static extension com.google.common.base.Strings.*
+import org.eclipse.xtext.common.types.JvmVisibility
+import org.eclipse.xtext.common.types.JvmField
+import org.jnario.runner.Extension
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -62,7 +65,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject extension StepNameProvider
 	
 	@Inject extension StepExpressionProvider
-	
 	
 	@Inject extension StepReferenceFieldCreator
 	
@@ -155,7 +157,10 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def dispatch void init(Scenario scenario, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios){
    		scenario.copyXtendMemberForReferences
-		scenario.members.filter(typeof(XtendField)).forEach[initializeName]   		
+		scenario.members.filter(typeof(XtendField)).forEach[
+			initializeName
+			it.transform2(inferredJvmType)
+		]   		
    		val annotations = inferredJvmType.annotations
    		testRuntime.updateFeature(scenario, inferredJvmType)
    		annotations += scenario.toAnnotation(typeof(Named), scenario.describe)
@@ -184,6 +189,28 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    			expressionOf(it).updateReferences(originalType, inferredJvmType)
    		]
    	}
+   	
+   	override protected transform(XtendField source, JvmGenericType container) {
+   		
+   	}
+   	
+   	/*
+   	 * We need to transform the fields earlier in order to correctly copy references to
+   	 * extension fields when resolving step references.
+   	 */
+   	def protected transform2(XtendField source, JvmGenericType container) {
+		if(source.visibility == JvmVisibility::PRIVATE){
+			source.visibility = JvmVisibility::DEFAULT
+		}
+		super.transform(source, container)
+		if (source.isExtension()){
+			val field = source.jvmElements.head as JvmField
+			field.setVisibility(JvmVisibility::PUBLIC)
+			if(field.annotations.filter[typeof(Extension).simpleName == it.annotation.simpleName].empty){
+				field.annotations += source.toAnnotation(typeof(Extension))
+			}
+		}
+	}
    	
    	def void initializeName(XtendField field){
    		if(field.name != null) return;

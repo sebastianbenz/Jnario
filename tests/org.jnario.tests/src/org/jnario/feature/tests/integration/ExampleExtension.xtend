@@ -9,8 +9,6 @@ package org.jnario.feature.tests.integration
 
 import org.junit.After
 import org.junit.Before
-import org.junit.BeforeClass
-import org.junit.AfterClass
 
 class ExampleExtension {
 	
@@ -29,5 +27,9 @@ class ExampleExtension {
 //	@AfterClass def afterAll(){
 //		println("after all")
 //	}
+
+	def String greet(String s){
+		return "Hello " + s
+	}
 	
 }

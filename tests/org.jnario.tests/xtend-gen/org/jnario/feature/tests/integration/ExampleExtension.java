@@ -17,4 +17,8 @@ public class ExampleExtension {
     String _println = InputOutput.<String>println("after");
     return _println;
   }
+  
+  public String greet(final String s) {
+    return ("Hello " + s);
+  }
 }

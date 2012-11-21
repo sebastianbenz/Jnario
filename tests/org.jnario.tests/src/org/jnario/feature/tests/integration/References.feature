@@ -275,3 +275,17 @@ Feature: References for steps
 	 	Then they should execute successfully
 	 		jnarioFile1.executesSuccessfully
 	 		jnarioFile2.executesSuccessfully
+	 		
+	 Scenario: Step references with extensions in same scenario
+	 	Given a feature
+	 	'''
+	 	import org.jnario.feature.tests.integration.ExampleExtension
+	 	Feature: Step references with extensions in same step
+			Scenario: Greetings
+				extension static ExampleExtension = new ExampleExtension
+			When greeting "Sebastian" is "Hello Sebastian"
+				args.first.greet => args.second
+			But greeting "World" is "Hello World"
+	 	'''
+	 		jnarioFile = args.first
+	 	Then it should execute successfully

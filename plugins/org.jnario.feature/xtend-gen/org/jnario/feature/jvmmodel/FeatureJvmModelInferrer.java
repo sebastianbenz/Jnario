@@ -19,13 +19,16 @@ import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
+import org.eclipse.xtext.common.types.JvmAnnotationType;
 import org.eclipse.xtext.common.types.JvmConstructor;
+import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XConstructorCall;
@@ -63,6 +66,7 @@ import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioJvmModelInferrer;
 import org.jnario.jvmmodel.TestRuntimeSupport;
 import org.jnario.lib.StepArguments;
+import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 
@@ -251,6 +255,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     final Procedure1<XtendField> _function = new Procedure1<XtendField>() {
         public void apply(final XtendField it) {
           FeatureJvmModelInferrer.this.initializeName(it);
+          FeatureJvmModelInferrer.this.transform2(it, inferredJvmType);
         }
       };
     IterableExtensions.<XtendField>forEach(_filter, _function);
@@ -311,6 +316,59 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         }
       };
     IterableExtensions.<StepReference>forEach(_filter_1, _function_1);
+  }
+  
+  protected void transform(final XtendField source, final JvmGenericType container) {
+  }
+  
+  /**
+   * We need to transform the fields earlier in order to correctly copy references to
+   * extension fields when resolving step references.
+   */
+  protected boolean transform2(final XtendField source, final JvmGenericType container) {
+    boolean _xblockexpression = false;
+    {
+      JvmVisibility _visibility = source.getVisibility();
+      boolean _equals = Objects.equal(_visibility, JvmVisibility.PRIVATE);
+      if (_equals) {
+        source.setVisibility(JvmVisibility.DEFAULT);
+      }
+      super.transform(source, container);
+      boolean _xifexpression = false;
+      boolean _isExtension = source.isExtension();
+      if (_isExtension) {
+        boolean _xblockexpression_1 = false;
+        {
+          Set<EObject> _jvmElements = this._iJvmModelAssociations.getJvmElements(source);
+          EObject _head = IterableExtensions.<EObject>head(_jvmElements);
+          final JvmField field = ((JvmField) _head);
+          field.setVisibility(JvmVisibility.PUBLIC);
+          boolean _xifexpression_1 = false;
+          EList<JvmAnnotationReference> _annotations = field.getAnnotations();
+          final Function1<JvmAnnotationReference,Boolean> _function = new Function1<JvmAnnotationReference,Boolean>() {
+              public Boolean apply(final JvmAnnotationReference it) {
+                String _simpleName = Extension.class.getSimpleName();
+                JvmAnnotationType _annotation = it.getAnnotation();
+                String _simpleName_1 = _annotation.getSimpleName();
+                boolean _equals = Objects.equal(_simpleName, _simpleName_1);
+                return Boolean.valueOf(_equals);
+              }
+            };
+          Iterable<JvmAnnotationReference> _filter = IterableExtensions.<JvmAnnotationReference>filter(_annotations, _function);
+          boolean _isEmpty = IterableExtensions.isEmpty(_filter);
+          if (_isEmpty) {
+            EList<JvmAnnotationReference> _annotations_1 = field.getAnnotations();
+            JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(source, Extension.class);
+            boolean _add = this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
+            _xifexpression_1 = _add;
+          }
+          _xblockexpression_1 = (_xifexpression_1);
+        }
+        _xifexpression = _xblockexpression_1;
+      }
+      _xblockexpression = (_xifexpression);
+    }
+    return _xblockexpression;
   }
   
   public void initializeName(final XtendField field) {

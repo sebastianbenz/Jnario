@@ -290,6 +290,21 @@ Given it is upper case</pre></span>
 </li>
 </ul>
 </div>
+<div><h3 class="scenario notrun"  id="Scenario_Step_references_with_extensions_in_same_scenario">Scenario: Step references with extensions in same scenario
+</h3>
+<ul>
+<li><span class="step notrun"><p>Given a feature</p><pre>import org.jnario.feature.tests.integration.ExampleExtension
+Feature: Step references with extensions in same step
+      Scenario: Greetings
+        extension static ExampleExtension = new ExampleExtension
+      When greeting &quot;Sebastian&quot; is &quot;Hello Sebastian&quot;
+        args.first.greet =&gt; args.second
+      But greeting &quot;World&quot; is &quot;Hello World&quot;</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>References.feature</h3>
@@ -572,6 +587,20 @@ Feature: References for steps
      Then they should execute successfully
        jnarioFile1.executesSuccessfully
        jnarioFile2.executesSuccessfully
+       
+   Scenario: Step references with extensions in same scenario
+     Given a feature
+     '''
+     import org.jnario.feature.tests.integration.ExampleExtension
+     Feature: Step references with extensions in same step
+      Scenario: Greetings
+        extension static ExampleExtension = new ExampleExtension
+      When greeting &quot;Sebastian&quot; is &quot;Hello Sebastian&quot;
+        args.first.greet =&gt; args.second
+      But greeting &quot;World&quot; is &quot;Hello World&quot;
+     '''
+       jnarioFile = args.first
+     Then it should execute successfully
 </pre>
 						    </p></div>
 						  </div>
