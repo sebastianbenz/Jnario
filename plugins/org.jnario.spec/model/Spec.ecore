@@ -13,18 +13,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pending" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Before" eSuperTypes="#//TestFunction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beforeAll" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="After" eSuperTypes="#//TestFunction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="afterAll" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TestFunction" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember">
-    <eOperations name="getImplementation" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
-        containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Before" eSuperTypes="#//TestFunction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="After" eSuperTypes="#//TestFunction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TestFunction" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendFunction"/>
 </ecore:EPackage>

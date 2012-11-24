@@ -46,14 +46,13 @@ public class ExampleImplCustom extends org.jnario.spec.spec.impl.ExampleImpl {
 	}
 	
 	@Override
-	public XExpression getImplementation() {
+	public XExpression getExpression() {
 		if(expr instanceof XStringLiteral){
-			return getBody();
+			return expression;
 		}else{
 			return expr;
 		}
 	}
-	
 	
 	@Override
 	public boolean isPending() {
@@ -66,13 +65,13 @@ public class ExampleImplCustom extends org.jnario.spec.spec.impl.ExampleImpl {
 		if(!(expr instanceof XStringLiteral)){
 			return false;
 		}
-		if(body == null){
+		if(expression == null){
 			return true;
 		}
-		if(!(body instanceof XBlockExpression)){
+		if(!(expression instanceof XBlockExpression)){
 			return false;
 		}
-		XBlockExpression block = (XBlockExpression) body;
+		XBlockExpression block = (XBlockExpression) expression;
 		return block.getExpressions().isEmpty();
 	}
 	

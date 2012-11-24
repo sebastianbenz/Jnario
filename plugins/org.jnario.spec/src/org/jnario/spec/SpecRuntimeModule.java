@@ -76,6 +76,7 @@ import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.naming.SpecQualifiedNameProvider;
 import org.jnario.spec.scoping.SpecResourceDescriptionStrategy;
 import org.jnario.spec.scoping.SpecScopeProvider;
+import org.jnario.spec.typing.SpecTypeProvider;
 import org.jnario.spec.validation.SpecClassPathBasedChecks;
 import org.jnario.typing.JnarioTypeProvider;
 
@@ -126,7 +127,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	
 	@Override
 	public Class<? extends ITypeProvider> bindITypeProvider() {
-		return JnarioTypeProvider.class;
+		return SpecTypeProvider.class;
 	}
 	
 	@Override

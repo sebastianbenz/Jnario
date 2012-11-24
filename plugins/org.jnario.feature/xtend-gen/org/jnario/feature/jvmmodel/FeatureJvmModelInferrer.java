@@ -516,6 +516,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
           public void apply(final JvmOperation it) {
             final StepExpression stepExpression = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step);
+            FeatureJvmModelInferrer.this._iJvmModelAssociator.associatePrimary(step, it);
             XBlockExpression _blockExpression = stepExpression==null?(XBlockExpression)null:stepExpression.getBlockExpression();
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _blockExpression);
             FeatureJvmModelInferrer.this.generateStepValues(step);

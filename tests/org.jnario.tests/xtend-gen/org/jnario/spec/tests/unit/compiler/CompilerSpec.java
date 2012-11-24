@@ -172,4 +172,28 @@ public class CompilerSpec {
     _builder.newLine();
     this._behaviorExecutor.executesSuccessfully(_builder);
   }
+  
+  @Test
+  @Named("supports should in closures")
+  @Order(7)
+  public void _supportsShouldInClosures() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Should in closures\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact \"should-be in closure\" {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("[|1 should be 1].apply;  ");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("[|var int i; 1 should be 1].apply;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
+  }
 }

@@ -23,6 +23,7 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_File_SemicolonKeyword_0_2_q;
 	protected AbstractElementAlias match_Import_SemicolonKeyword_2_q;
 	protected AbstractElementAlias match_Member_EachKeyword_2_2_1_1_1_q;
+	protected AbstractElementAlias match_Member_EachKeyword_2_3_1_1_1_q;
 	protected AbstractElementAlias match_Member_FactKeyword_2_0_1_1_0_or_FactsKeyword_2_0_1_1_1;
 	protected AbstractElementAlias match_Member_SemicolonKeyword_2_6_4_q;
 	protected AbstractElementAlias match_Member_VarKeyword_2_6_2_0_2_1_q;
@@ -45,6 +46,7 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_File_SemicolonKeyword_0_2_q = new TokenAlias(false, true, grammarAccess.getFileAccess().getSemicolonKeyword_0_2());
 		match_Import_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getImportAccess().getSemicolonKeyword_2());
 		match_Member_EachKeyword_2_2_1_1_1_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getEachKeyword_2_2_1_1_1());
+		match_Member_EachKeyword_2_3_1_1_1_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getEachKeyword_2_3_1_1_1());
 		match_Member_FactKeyword_2_0_1_1_0_or_FactsKeyword_2_0_1_1_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMemberAccess().getFactKeyword_2_0_1_1_0()), new TokenAlias(false, false, grammarAccess.getMemberAccess().getFactsKeyword_2_0_1_1_1()));
 		match_Member_SemicolonKeyword_2_6_4_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getSemicolonKeyword_2_6_4());
 		match_Member_VarKeyword_2_6_2_0_2_1_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getVarKeyword_2_6_2_0_2_1());
@@ -93,6 +95,8 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_Import_SemicolonKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Member_EachKeyword_2_2_1_1_1_q.equals(syntax))
 				emit_Member_EachKeyword_2_2_1_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Member_EachKeyword_2_3_1_1_1_q.equals(syntax))
+				emit_Member_EachKeyword_2_3_1_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Member_FactKeyword_2_0_1_1_0_or_FactsKeyword_2_0_1_1_1.equals(syntax))
 				emit_Member_FactKeyword_2_0_1_1_0_or_FactsKeyword_2_0_1_1_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Member_SemicolonKeyword_2_6_4_q.equals(syntax))
@@ -154,6 +158,14 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'each'?
 	 */
 	protected void emit_Member_EachKeyword_2_2_1_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     'each'?
+	 */
+	protected void emit_Member_EachKeyword_2_3_1_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -263,7 +275,7 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('should' 'throw') | 'throws'
+	 *     'throws' | ('should' 'throw')
 	 */
 	protected void emit_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or___ShouldKeyword_1_1_0_0_1_0_0_ThrowKeyword_1_1_0_0_1_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

@@ -129,8 +129,8 @@ public class ImplicitSubject {
     final EList<XtendMember> members = exampleGroup.getMembers();
     Iterable<XtendFunction> _filter = Iterables.<XtendFunction>filter(members, XtendFunction.class);
     Iterable<TestFunction> _filter_1 = Iterables.<TestFunction>filter(members, TestFunction.class);
-    Iterable<XtendMember> _plus = Iterables.<XtendMember>concat(_filter, _filter_1);
-    for (final XtendMember example : _plus) {
+    Iterable<XtendFunction> _plus = Iterables.<XtendFunction>concat(_filter, _filter_1);
+    for (final XtendFunction example : _plus) {
       TreeIterator<EObject> _eAllContents = example.eAllContents();
       UnmodifiableIterator<XAbstractFeatureCall> _filter_2 = Iterators.<XAbstractFeatureCall>filter(_eAllContents, XAbstractFeatureCall.class);
       Iterator<XAbstractFeatureCall> _concat = Iterators.<XAbstractFeatureCall>concat(allFeatureCalls, _filter_2);
@@ -152,8 +152,8 @@ public class ImplicitSubject {
     final EList<XtendMember> members = exampleGroup.getMembers();
     Iterable<XtendFunction> _filter = Iterables.<XtendFunction>filter(members, XtendFunction.class);
     Iterable<TestFunction> _filter_1 = Iterables.<TestFunction>filter(members, TestFunction.class);
-    Iterable<XtendMember> _plus = Iterables.<XtendMember>concat(_filter, _filter_1);
-    for (final XtendMember example : _plus) {
+    Iterable<XtendFunction> _plus = Iterables.<XtendFunction>concat(_filter, _filter_1);
+    for (final XtendFunction example : _plus) {
       TreeIterator<EObject> _eAllContents = example.eAllContents();
       UnmodifiableIterator<XAssignment> _filter_2 = Iterators.<XAssignment>filter(_eAllContents, XAssignment.class);
       Iterator<XAssignment> _concat = Iterators.<XAssignment>concat(allAssignments, _filter_2);

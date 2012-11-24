@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendMember;
 
 import org.jnario.Executable;
@@ -131,6 +132,7 @@ public class SpecSwitch<T>
 				T result = caseExample(example);
 				if (result == null) result = caseTestFunction(example);
 				if (result == null) result = caseExecutable(example);
+				if (result == null) result = caseXtendFunction(example);
 				if (result == null) result = caseXtendMember(example);
 				if (result == null) result = caseXtendAnnotationTarget(example);
 				if (result == null) result = defaultCase(theEObject);
@@ -141,6 +143,7 @@ public class SpecSwitch<T>
 				Before before = (Before)theEObject;
 				T result = caseBefore(before);
 				if (result == null) result = caseTestFunction(before);
+				if (result == null) result = caseXtendFunction(before);
 				if (result == null) result = caseXtendMember(before);
 				if (result == null) result = caseXtendAnnotationTarget(before);
 				if (result == null) result = defaultCase(theEObject);
@@ -151,6 +154,7 @@ public class SpecSwitch<T>
 				After after = (After)theEObject;
 				T result = caseAfter(after);
 				if (result == null) result = caseTestFunction(after);
+				if (result == null) result = caseXtendFunction(after);
 				if (result == null) result = caseXtendMember(after);
 				if (result == null) result = caseXtendAnnotationTarget(after);
 				if (result == null) result = defaultCase(theEObject);
@@ -160,6 +164,7 @@ public class SpecSwitch<T>
 			{
 				TestFunction testFunction = (TestFunction)theEObject;
 				T result = caseTestFunction(testFunction);
+				if (result == null) result = caseXtendFunction(testFunction);
 				if (result == null) result = caseXtendMember(testFunction);
 				if (result == null) result = caseXtendAnnotationTarget(testFunction);
 				if (result == null) result = defaultCase(theEObject);
@@ -357,6 +362,22 @@ public class SpecSwitch<T>
 	 * @generated
 	 */
 	public T caseXtendMember(XtendMember object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Function</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXtendFunction(XtendFunction object)
 	{
 		return null;
 	}

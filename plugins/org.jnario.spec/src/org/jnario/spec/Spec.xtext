@@ -39,15 +39,15 @@ Member returns xtend::XtendMember:
 	{xtend::XtendMember} annotations+=XAnnotation* 
 	(
 		{Example.annotationInfo = current}
-			( pending?='pending'? ('fact' | 'facts') expr=XExpression body=XBlockExpression?)
+			( pending?='pending'? ('fact' | 'facts') expr=XExpression expression=XBlockExpression?)
 	|	{ExampleGroup.annotationInfo = current}
 			(preamble='describe' targetType=JvmTypeReference? name=STRING? '{'
       		members+=Member*
       	'}')
     |	{Before.annotationInfo = current}
-		('before' (beforeAll?='all'|'each')? =>name=STRING? body=XExpression)
+		('before' (static?='all'|'each')? =>name=STRING? expression=XExpression)
 	|	{After.annotationInfo = current}
-		('after' (afterAll?='all')? =>name=STRING? body=XExpression)
+		('after' (static?='all'|'each')? =>name=STRING? expression=XExpression)
     |	{ExampleGroup.annotationInfo = current}
 			(preamble=('context') targetOperation=[types::JvmOperation|Method]? name=STRING? '{'
       		members+=Member*

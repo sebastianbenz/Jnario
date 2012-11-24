@@ -1421,7 +1421,7 @@ public class SpecSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Member_After_2_3_0 (afterAll?='all'? name=STRING? body=XExpression))
+	 *     (annotationInfo=Member_After_2_3_0 (static?='all'? name=STRING? expression=XExpression))
 	 */
 	protected void sequence_Member(EObject context, After semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1439,7 +1439,7 @@ public class SpecSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Member_Before_2_2_0 (beforeAll?='all'? name=STRING? body=XExpression))
+	 *     (annotationInfo=Member_Before_2_2_0 (static?='all'? name=STRING? expression=XExpression))
 	 */
 	protected void sequence_Member(EObject context, Before semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1448,7 +1448,7 @@ public class SpecSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotationInfo=Member_Example_2_0_0 (pending?='pending'? expr=XExpression body=XBlockExpression?))
+	 *     (annotationInfo=Member_Example_2_0_0 (pending?='pending'? expr=XExpression expression=XBlockExpression?))
 	 */
 	protected void sequence_Member(EObject context, Example semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

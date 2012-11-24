@@ -188,11 +188,11 @@ public class JnarioCompiler extends XtendCompiler {
 	}
 	
 	public void _toJavaExpression(Should should, ITreeAppendable b) {
-		b.append("null");
+		b.append("true");
 	}
 
 	public void _toJavaExpression(ShouldThrow should, ITreeAppendable b) {
-		b.append("null");
+		b.append("true");
 	}
 
 	public void _toJavaStatement(Assertion assertion, ITreeAppendable b,
@@ -204,7 +204,7 @@ public class JnarioCompiler extends XtendCompiler {
 	}
 
 	public void _toJavaExpression(Assertion assertion, ITreeAppendable b) {
-		b.append("null");
+		b.append("true");
 	}
 
 	private void generateSingleAssertion(XExpression expr, ITreeAppendable b) {

@@ -34,17 +34,17 @@ public class ExampleImplementationSpec extends ExampleSpec {
   protected ExampleTable<ExampleImplementationSpecExamples> examples = _initExampleImplementationSpecExamples();
   
   @Test
-  @Named("examples.forEach[example.parse.implementation should be instanceOf[type]]")
+  @Named("examples.forEach[example.parse.expression should be instanceOf[type]]")
   @Order(2)
-  public void _examplesForEachExampleParseImplementationShouldBeInstanceOfType() throws Exception {
+  public void _examplesForEachExampleParseExpressionShouldBeInstanceOfType() throws Exception {
     final Procedure1<ExampleImplementationSpecExamples> _function = new Procedure1<ExampleImplementationSpecExamples>() {
         public void apply(final ExampleImplementationSpecExamples it) {
           Example _parse = ExampleImplementationSpec.this.parse(it.example);
-          XExpression _implementation = _parse.getImplementation();
+          XExpression _expression = _parse.getExpression();
           Matcher<Object> _instanceOf = CoreMatchers.instanceOf(it.type);
-          boolean _should_be = org.jnario.lib.Should.<Object>should_be(_implementation, _instanceOf);
-          Assert.assertTrue("\nExpected example.parse.implementation should be instanceOf(type) but"
-           + "\n     example.parse.implementation is " + new StringDescription().appendValue(_implementation).toString()
+          boolean _should_be = org.jnario.lib.Should.<Object>should_be(_expression, _instanceOf);
+          Assert.assertTrue("\nExpected example.parse.expression should be instanceOf(type) but"
+           + "\n     example.parse.expression is " + new StringDescription().appendValue(_expression).toString()
            + "\n     example.parse is " + new StringDescription().appendValue(_parse).toString()
            + "\n     example is " + new StringDescription().appendValue(it.example).toString()
            + "\n     instanceOf(type) is " + new StringDescription().appendValue(_instanceOf).toString()

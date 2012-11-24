@@ -41,12 +41,13 @@ import org.jnario.spec.spec.SpecFile
 import org.jnario.spec.spec.TestFunction
 
 import static extension org.eclipse.xtext.util.Strings.*
+import org.eclipse.xtext.xbase.lib.Procedures$Procedure2
+import org.eclipse.xtext.common.types.JvmOperation
  
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
-	
 	var exampleIndex = 0
 	
 	@Inject extension ExtendedJvmTypesBuilder
@@ -143,7 +144,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		computeInferredReturnTypes(inferredJvmType);
 		translateAnnotationsTo(source.getAnnotations(), inferredJvmType);
 		setDocumentation(inferredJvmType, getDocumentation(source));
-
 		resolveNameClashes(inferredJvmType);
 	}
 	 
@@ -182,48 +182,48 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	}
 	
 	def transform(Before element, JvmGenericType container) {
-		val beforeMethod = element.toMethod(element.beforeAll)
-		if(element.beforeAll){
-			val field = element.toField("_" + element.toMethodName + "IsExecuted", getTypeForName(typeof(Boolean), element))[
-				setInitializer[
-					append(" false")
-				]
-				^static = true
-			]
-			container.members += field
-			testRuntime.beforeAllMethod(element, beforeMethod)
-		}else{
-			testRuntime.beforeMethod(element, beforeMethod)
-		}
-	    container.members += beforeMethod
+		transformAround(element, container, 
+			[e, m | testRuntime.beforeMethod(e, m)], 
+			[e, m | testRuntime.beforeAllMethod(e, m)]
+		)
 	}
 	
 	def transform(After element, JvmGenericType container) {
-		val afterMethod = element.toMethod(element.afterAll)
-		if(element.afterAll){
-			val field = element.toField("_" + element.toMethodName + "IsExecuted", getTypeForName(typeof(Boolean), element))[
-				setInitializer[
-					append(" false")
-				]
-				^static = true
-			]
-			container.members += field
-			testRuntime.afterAllMethod(element, afterMethod)
+		transformAround(element, container, 
+			[e, m | testRuntime.afterMethod(e, m)], 
+			[e, m | testRuntime.afterAllMethod(e, m)]
+		)
+	}
+	
+	def transformAround(TestFunction element, JvmGenericType container, 
+		Procedure2<XtendMember, JvmOperation> around, Procedure2<XtendMember, JvmOperation> aroundAll){
+		val afterMethod = element.toMethod
+		if(element.isStatic){
+			container.members += element.addIsExecutedField
+			aroundAll.apply(element as XtendMember, afterMethod)
 		}else{
-			testRuntime.afterMethod(element, afterMethod)
+			around.apply(element, afterMethod)
 		}
 	    container.members += afterMethod
 	}
-	def toMethod(TestFunction element){
-		toMethod(element, false)
+	
+	def addIsExecutedField(TestFunction element){
+		element.toField("_" + element.toMethodName + "IsExecuted", getTypeForName(typeof(Boolean), element))[
+			setInitializer[
+				append(" false")
+			]
+			^static = true
+		]
 	}
-	def toMethod(TestFunction element, boolean isStaticMethod){
+	
+	def toMethod(TestFunction element){
 		element.toMethod(element.toMethodName, getTypeForName(Void::TYPE, element)) [
 			documentation = element.documentation
-			body = element.implementation
+			body = element.expression
 			element.annotations.translateAnnotationsTo(it)
 			exceptions += typeof(Exception).getTypeForName(element)
-			setStatic(isStaticMethod)
+			associatePrimary(element, it);
+			^static = element.^static
 		]
 	}
 	

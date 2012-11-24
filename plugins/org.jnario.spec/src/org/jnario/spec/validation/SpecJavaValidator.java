@@ -24,6 +24,7 @@ import org.eclipse.xtend.core.validation.IssueCodes;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendImport;
 import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.CrossReference;
@@ -100,7 +101,7 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 	public void checkExamplesHaveNames(TestFunction example){
 		String methodName = exampleNameProvider.toMethodName(example);
 		if(isNullOrEmpty(methodName)){
-			error("Name must not be empty", SpecPackage.Literals.TEST_FUNCTION__NAME);
+			error("Name must not be empty", XtendPackage.Literals.XTEND_FUNCTION__NAME);
 		}
 	}
 	
@@ -198,5 +199,13 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 			warning("The import '" + imp.getImportedTypeName() + "' is never used.", imp, null,
 					IssueCodes.IMPORT_UNUSED);
 		}
+	}
+	
+	@Check
+	public void checkAbstract(XtendFunction function) {
+		if (function instanceof TestFunction) {
+			return;
+		}
+		super.checkAbstract(function);
 	}
 }

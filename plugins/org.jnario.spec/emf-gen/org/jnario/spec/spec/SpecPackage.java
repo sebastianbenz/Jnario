@@ -255,7 +255,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_FUNCTION__ANNOTATIONS = XtendPackage.XTEND_MEMBER__ANNOTATIONS;
+	int TEST_FUNCTION__ANNOTATIONS = XtendPackage.XTEND_FUNCTION__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
@@ -264,7 +264,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_FUNCTION__ANNOTATION_INFO = XtendPackage.XTEND_MEMBER__ANNOTATION_INFO;
+	int TEST_FUNCTION__ANNOTATION_INFO = XtendPackage.XTEND_FUNCTION__ANNOTATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -273,16 +273,97 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_FUNCTION__NAME = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 0;
+	int TEST_FUNCTION__NAME = XtendPackage.XTEND_FUNCTION__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_FUNCTION__BODY = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 1;
+	int TEST_FUNCTION__EXPRESSION = XtendPackage.XTEND_FUNCTION__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__RETURN_TYPE = XtendPackage.XTEND_FUNCTION__RETURN_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__PARAMETERS = XtendPackage.XTEND_FUNCTION__PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Override</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__OVERRIDE = XtendPackage.XTEND_FUNCTION__OVERRIDE;
+
+	/**
+	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__DISPATCH = XtendPackage.XTEND_FUNCTION__DISPATCH;
+
+	/**
+	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__CREATE_EXTENSION_INFO = XtendPackage.XTEND_FUNCTION__CREATE_EXTENSION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__TYPE_PARAMETERS = XtendPackage.XTEND_FUNCTION__TYPE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__VISIBILITY = XtendPackage.XTEND_FUNCTION__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Static</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__STATIC = XtendPackage.XTEND_FUNCTION__STATIC;
+
+	/**
+	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__EXCEPTIONS = XtendPackage.XTEND_FUNCTION__EXCEPTIONS;
 
 	/**
 	 * The number of structural features of the '<em>Test Function</em>' class.
@@ -291,7 +372,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_FUNCTION_FEATURE_COUNT = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 2;
+	int TEST_FUNCTION_FEATURE_COUNT = XtendPackage.XTEND_FUNCTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.spec.spec.impl.ExampleImpl <em>Example</em>}' class.
@@ -331,13 +412,94 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE__NAME = TEST_FUNCTION__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE__BODY = TEST_FUNCTION__BODY;
+	int EXAMPLE__EXPRESSION = TEST_FUNCTION__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__RETURN_TYPE = TEST_FUNCTION__RETURN_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__PARAMETERS = TEST_FUNCTION__PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Override</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__OVERRIDE = TEST_FUNCTION__OVERRIDE;
+
+	/**
+	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__DISPATCH = TEST_FUNCTION__DISPATCH;
+
+	/**
+	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__CREATE_EXTENSION_INFO = TEST_FUNCTION__CREATE_EXTENSION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__TYPE_PARAMETERS = TEST_FUNCTION__TYPE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__VISIBILITY = TEST_FUNCTION__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Static</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__STATIC = TEST_FUNCTION__STATIC;
+
+	/**
+	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__EXCEPTIONS = TEST_FUNCTION__EXCEPTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -404,22 +566,94 @@ public interface SpecPackage extends EPackage
 	int BEFORE__NAME = TEST_FUNCTION__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BEFORE__BODY = TEST_FUNCTION__BODY;
+	int BEFORE__EXPRESSION = TEST_FUNCTION__EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>Before All</b></em>' attribute.
+	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BEFORE__BEFORE_ALL = TEST_FUNCTION_FEATURE_COUNT + 0;
+	int BEFORE__RETURN_TYPE = TEST_FUNCTION__RETURN_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__PARAMETERS = TEST_FUNCTION__PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Override</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__OVERRIDE = TEST_FUNCTION__OVERRIDE;
+
+	/**
+	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__DISPATCH = TEST_FUNCTION__DISPATCH;
+
+	/**
+	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__CREATE_EXTENSION_INFO = TEST_FUNCTION__CREATE_EXTENSION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__TYPE_PARAMETERS = TEST_FUNCTION__TYPE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__VISIBILITY = TEST_FUNCTION__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Static</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__STATIC = TEST_FUNCTION__STATIC;
+
+	/**
+	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__EXCEPTIONS = TEST_FUNCTION__EXCEPTIONS;
 
 	/**
 	 * The number of structural features of the '<em>Before</em>' class.
@@ -428,7 +662,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int BEFORE_FEATURE_COUNT = TEST_FUNCTION_FEATURE_COUNT + 1;
+	int BEFORE_FEATURE_COUNT = TEST_FUNCTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.spec.spec.impl.AfterImpl <em>After</em>}' class.
@@ -468,22 +702,94 @@ public interface SpecPackage extends EPackage
 	int AFTER__NAME = TEST_FUNCTION__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AFTER__BODY = TEST_FUNCTION__BODY;
+	int AFTER__EXPRESSION = TEST_FUNCTION__EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>After All</b></em>' attribute.
+	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AFTER__AFTER_ALL = TEST_FUNCTION_FEATURE_COUNT + 0;
+	int AFTER__RETURN_TYPE = TEST_FUNCTION__RETURN_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__PARAMETERS = TEST_FUNCTION__PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Override</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__OVERRIDE = TEST_FUNCTION__OVERRIDE;
+
+	/**
+	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__DISPATCH = TEST_FUNCTION__DISPATCH;
+
+	/**
+	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__CREATE_EXTENSION_INFO = TEST_FUNCTION__CREATE_EXTENSION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__TYPE_PARAMETERS = TEST_FUNCTION__TYPE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__VISIBILITY = TEST_FUNCTION__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Static</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__STATIC = TEST_FUNCTION__STATIC;
+
+	/**
+	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__EXCEPTIONS = TEST_FUNCTION__EXCEPTIONS;
 
 	/**
 	 * The number of structural features of the '<em>After</em>' class.
@@ -492,7 +798,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int AFTER_FEATURE_COUNT = TEST_FUNCTION_FEATURE_COUNT + 1;
+	int AFTER_FEATURE_COUNT = TEST_FUNCTION_FEATURE_COUNT + 0;
 
 
 	/**
@@ -591,17 +897,6 @@ public interface SpecPackage extends EPackage
 	EClass getBefore();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.jnario.spec.spec.Before#isBeforeAll <em>Before All</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Before All</em>'.
-	 * @see org.jnario.spec.spec.Before#isBeforeAll()
-	 * @see #getBefore()
-	 * @generated
-	 */
-	EAttribute getBefore_BeforeAll();
-
-	/**
 	 * Returns the meta object for class '{@link org.jnario.spec.spec.After <em>After</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -612,17 +907,6 @@ public interface SpecPackage extends EPackage
 	EClass getAfter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.jnario.spec.spec.After#isAfterAll <em>After All</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>After All</em>'.
-	 * @see org.jnario.spec.spec.After#isAfterAll()
-	 * @see #getAfter()
-	 * @generated
-	 */
-	EAttribute getAfter_AfterAll();
-
-	/**
 	 * Returns the meta object for class '{@link org.jnario.spec.spec.TestFunction <em>Test Function</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -631,28 +915,6 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 */
 	EClass getTestFunction();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.jnario.spec.spec.TestFunction#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.jnario.spec.spec.TestFunction#getName()
-	 * @see #getTestFunction()
-	 * @generated
-	 */
-	EAttribute getTestFunction_Name();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.jnario.spec.spec.TestFunction#getBody <em>Body</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Body</em>'.
-	 * @see org.jnario.spec.spec.TestFunction#getBody()
-	 * @see #getTestFunction()
-	 * @generated
-	 */
-	EReference getTestFunction_Body();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -758,14 +1020,6 @@ public interface SpecPackage extends EPackage
 		EClass BEFORE = eINSTANCE.getBefore();
 
 		/**
-		 * The meta object literal for the '<em><b>Before All</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BEFORE__BEFORE_ALL = eINSTANCE.getBefore_BeforeAll();
-
-		/**
 		 * The meta object literal for the '{@link org.jnario.spec.spec.impl.AfterImpl <em>After</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -776,14 +1030,6 @@ public interface SpecPackage extends EPackage
 		EClass AFTER = eINSTANCE.getAfter();
 
 		/**
-		 * The meta object literal for the '<em><b>After All</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute AFTER__AFTER_ALL = eINSTANCE.getAfter_AfterAll();
-
-		/**
 		 * The meta object literal for the '{@link org.jnario.spec.spec.impl.TestFunctionImpl <em>Test Function</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -792,22 +1038,6 @@ public interface SpecPackage extends EPackage
 		 * @generated
 		 */
 		EClass TEST_FUNCTION = eINSTANCE.getTestFunction();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TEST_FUNCTION__NAME = eINSTANCE.getTestFunction_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TEST_FUNCTION__BODY = eINSTANCE.getTestFunction_Body();
 
 	}
 

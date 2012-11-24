@@ -44,6 +44,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
@@ -337,73 +338,51 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   public boolean transform(final Before element, final JvmGenericType container) {
-    boolean _xblockexpression = false;
-    {
-      boolean _isBeforeAll = element.isBeforeAll();
-      final JvmOperation beforeMethod = this.toMethod(element, _isBeforeAll);
-      boolean _isBeforeAll_1 = element.isBeforeAll();
-      if (_isBeforeAll_1) {
-        String _methodName = this._exampleNameProvider.toMethodName(element);
-        String _plus = ("_" + _methodName);
-        String _plus_1 = (_plus + "IsExecuted");
-        JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Boolean.class, element);
-        final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
-            public void apply(final JvmField it) {
-              final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
-                  public void apply(final ITreeAppendable it) {
-                    it.append(" false");
-                  }
-                };
-              SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setInitializer(it, _function);
-              it.setStatic(true);
-            }
-          };
-        final JvmField field = this._extendedJvmTypesBuilder.toField(element, _plus_1, _typeForName, _function);
-        EList<JvmMember> _members = container.getMembers();
-        this._extendedJvmTypesBuilder.<JvmField>operator_add(_members, field);
-        TestRuntimeSupport _testRuntime = this.getTestRuntime();
-        _testRuntime.beforeAllMethod(element, beforeMethod);
-      } else {
-        TestRuntimeSupport _testRuntime_1 = this.getTestRuntime();
-        _testRuntime_1.beforeMethod(element, beforeMethod);
-      }
-      EList<JvmMember> _members_1 = container.getMembers();
-      boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members_1, beforeMethod);
-      _xblockexpression = (_add);
-    }
-    return _xblockexpression;
+    final Procedure2<XtendMember,JvmOperation> _function = new Procedure2<XtendMember,JvmOperation>() {
+        public void apply(final XtendMember e, final JvmOperation m) {
+          TestRuntimeSupport _testRuntime = SpecJvmModelInferrer.this.getTestRuntime();
+          _testRuntime.beforeMethod(e, m);
+        }
+      };
+    final Procedure2<XtendMember,JvmOperation> _function_1 = new Procedure2<XtendMember,JvmOperation>() {
+        public void apply(final XtendMember e, final JvmOperation m) {
+          TestRuntimeSupport _testRuntime = SpecJvmModelInferrer.this.getTestRuntime();
+          _testRuntime.beforeAllMethod(e, m);
+        }
+      };
+    boolean _transformAround = this.transformAround(element, container, _function, _function_1);
+    return _transformAround;
   }
   
   public boolean transform(final After element, final JvmGenericType container) {
+    final Procedure2<XtendMember,JvmOperation> _function = new Procedure2<XtendMember,JvmOperation>() {
+        public void apply(final XtendMember e, final JvmOperation m) {
+          TestRuntimeSupport _testRuntime = SpecJvmModelInferrer.this.getTestRuntime();
+          _testRuntime.afterMethod(e, m);
+        }
+      };
+    final Procedure2<XtendMember,JvmOperation> _function_1 = new Procedure2<XtendMember,JvmOperation>() {
+        public void apply(final XtendMember e, final JvmOperation m) {
+          TestRuntimeSupport _testRuntime = SpecJvmModelInferrer.this.getTestRuntime();
+          _testRuntime.afterAllMethod(e, m);
+        }
+      };
+    boolean _transformAround = this.transformAround(element, container, _function, _function_1);
+    return _transformAround;
+  }
+  
+  public boolean transformAround(final TestFunction element, final JvmGenericType container, final Procedure2<XtendMember,JvmOperation> around, final Procedure2<XtendMember,JvmOperation> aroundAll) {
     boolean _xblockexpression = false;
     {
-      boolean _isAfterAll = element.isAfterAll();
-      final JvmOperation afterMethod = this.toMethod(element, _isAfterAll);
-      boolean _isAfterAll_1 = element.isAfterAll();
-      if (_isAfterAll_1) {
-        String _methodName = this._exampleNameProvider.toMethodName(element);
-        String _plus = ("_" + _methodName);
-        String _plus_1 = (_plus + "IsExecuted");
-        JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Boolean.class, element);
-        final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
-            public void apply(final JvmField it) {
-              final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
-                  public void apply(final ITreeAppendable it) {
-                    it.append(" false");
-                  }
-                };
-              SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setInitializer(it, _function);
-              it.setStatic(true);
-            }
-          };
-        final JvmField field = this._extendedJvmTypesBuilder.toField(element, _plus_1, _typeForName, _function);
+      final JvmOperation afterMethod = this.toMethod(element);
+      boolean _isStatic = element.isStatic();
+      if (_isStatic) {
         EList<JvmMember> _members = container.getMembers();
-        this._extendedJvmTypesBuilder.<JvmField>operator_add(_members, field);
-        TestRuntimeSupport _testRuntime = this.getTestRuntime();
-        _testRuntime.afterAllMethod(element, afterMethod);
+        JvmField _addIsExecutedField = this.addIsExecutedField(element);
+        this._extendedJvmTypesBuilder.<JvmField>operator_add(_members, _addIsExecutedField);
+        aroundAll.apply(((XtendMember) element), afterMethod);
       } else {
-        TestRuntimeSupport _testRuntime_1 = this.getTestRuntime();
-        _testRuntime_1.afterMethod(element, afterMethod);
+        around.apply(element, afterMethod);
       }
       EList<JvmMember> _members_1 = container.getMembers();
       boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members_1, afterMethod);
@@ -412,26 +391,43 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     return _xblockexpression;
   }
   
-  public JvmOperation toMethod(final TestFunction element) {
-    JvmOperation _method = this.toMethod(element, false);
-    return _method;
+  public JvmField addIsExecutedField(final TestFunction element) {
+    String _methodName = this._exampleNameProvider.toMethodName(element);
+    String _plus = ("_" + _methodName);
+    String _plus_1 = (_plus + "IsExecuted");
+    JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Boolean.class, element);
+    final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
+        public void apply(final JvmField it) {
+          final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
+              public void apply(final ITreeAppendable it) {
+                it.append(" false");
+              }
+            };
+          SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setInitializer(it, _function);
+          it.setStatic(true);
+        }
+      };
+    JvmField _field = this._extendedJvmTypesBuilder.toField(element, _plus_1, _typeForName, _function);
+    return _field;
   }
   
-  public JvmOperation toMethod(final TestFunction element, final boolean isStaticMethod) {
+  public JvmOperation toMethod(final TestFunction element) {
     String _methodName = this._exampleNameProvider.toMethodName(element);
     JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Void.TYPE, element);
     final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
         public void apply(final JvmOperation it) {
           String _documentation = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.getDocumentation(element);
           SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setDocumentation(it, _documentation);
-          XExpression _implementation = element.getImplementation();
-          SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _implementation);
+          XExpression _expression = element.getExpression();
+          SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _expression);
           EList<XAnnotation> _annotations = element.getAnnotations();
           SpecJvmModelInferrer.this._extendedJvmTypesBuilder.translateAnnotationsTo(_annotations, it);
           EList<JvmTypeReference> _exceptions = it.getExceptions();
           JvmTypeReference _typeForName = SpecJvmModelInferrer.this._typeReferences.getTypeForName(Exception.class, element);
           SpecJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmTypeReference>operator_add(_exceptions, _typeForName);
-          it.setStatic(isStaticMethod);
+          SpecJvmModelInferrer.this._iJvmModelAssociator.associatePrimary(element, it);
+          boolean _isStatic = element.isStatic();
+          it.setStatic(_isStatic);
         }
       };
     JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(element, _methodName, _typeForName, _function);

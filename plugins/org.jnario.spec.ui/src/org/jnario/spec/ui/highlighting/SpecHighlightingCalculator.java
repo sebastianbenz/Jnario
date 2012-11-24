@@ -67,7 +67,7 @@ public class SpecHighlightingCalculator extends JnarioHighlightingCalculator {
 					highlightRichStrings(initializer, acceptor);
 				}else if(member.eClass() == SpecPackage.Literals.EXAMPLE){
 					Example example = (Example) member;
-					highlightRichStrings(example.getBody() ,acceptor);
+					highlightRichStrings(example.getExpression() ,acceptor);
 				}else if(member.eClass() == SpecPackage.Literals.EXAMPLE_GROUP){
 					ExampleGroup subExampleGroup = (ExampleGroup) member;
 					provideHighlightingFor(subExampleGroup,acceptor);
@@ -75,8 +75,7 @@ public class SpecHighlightingCalculator extends JnarioHighlightingCalculator {
 					provideHighlightingFor((ExampleTable)member,acceptor);
 				}else if(member.eClass() == SpecPackage.Literals.TEST_FUNCTION){
 					TestFunction function = (TestFunction) member;
-					highlightRichStrings(function.getImplementation() ,acceptor);
-					highlightRichStrings(function.getBody() ,acceptor);
+					highlightRichStrings(function.getExpression() ,acceptor);
 				}
 				highlightDeprectedXtendAnnotationTarget(acceptor, member);
 			}

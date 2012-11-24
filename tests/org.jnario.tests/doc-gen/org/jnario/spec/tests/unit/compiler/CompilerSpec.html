@@ -99,6 +99,16 @@ describe &quot;Something with an expression&quot;{
          
   }
 '''.executesSuccessfully</pre>
+</li><li><p id="supports_should_in_closures" class="example notrun"><strong>supports should in closures</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+describe &quot;Should in closures&quot;{
+  fact &quot;should-be in closure&quot; {
+        [|1 should be 1].apply;  
+        [|var int i; 1 should be 1].apply;
+    }
+}
+'''.executesSuccessfully</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -187,6 +197,17 @@ describe &quot;Compiler&quot;{
             fact &quot;a???&quot; 
              
       }
+    '''.executesSuccessfully
+  }
+  
+  fact &quot;supports should in closures&quot;{
+    '''
+    describe &quot;Should in closures&quot;{
+      fact &quot;should-be in closure&quot; {
+            [|1 should be 1].apply;  
+            [|var int i; 1 should be 1].apply;
+        }
+    }
     '''.executesSuccessfully
   }
   

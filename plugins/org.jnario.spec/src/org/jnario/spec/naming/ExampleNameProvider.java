@@ -133,23 +133,20 @@ public class ExampleNameProvider extends JnarioNameProvider{
 	
 	public String toMethodName(Before before){
 		String name = "before";
-		if(before.isBeforeAll()){
-			name += "All";
-		}
 		return toMethodName(before, name);
 	}
 	
 	public String toMethodName(After after){
 		String name = "after";
-		if(after.isAfterAll()){
-			name += "All";
-		}
 		return toMethodName(after, name);
 	}
 	
 	public String toMethodName(TestFunction target, String defaultName){
 		if(target.getName() != null){
 			return toMethodName(target.getName());
+		}
+		if(target.isStatic()){
+			defaultName += "All";
 		}
 		int count = countPreviousWithDefaultName(target);
 		if(count > 1){
@@ -174,18 +171,8 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		int count = 1;
 		for (int i = 0; i < index; i++) {
 			TestFunction current = members.get(i);
-			if (current instanceof Before) {
-				Before before = (Before) current;
-				if(current.getName() == null && (before.isBeforeAll() == ((Before)target).isBeforeAll())){
-					count++;
-				}
-			}else if (current instanceof After) {
-				After after = (After) current;
-				if(current.getName() == null && (after.isAfterAll() == ((After)target).isAfterAll())){
-					count++;
-				}
-			}else if (target.getClass().isInstance(current)) {
-				if(current.getName() == null){
+			if (current.getClass() == target.getClass()) {
+				if(current.getName() == null && current.isStatic() == target.isStatic()){
 					count++;
 				}
 			}

@@ -41,7 +41,7 @@ describe Example {
 			| "fact 'with code' should be 'with code'"			| typeof(Should)			|
 		}
 	
-		fact examples.forEach[example.parse.implementation should be instanceOf(type)]
+		fact examples.forEach[example.parse.expression should be instanceOf(type)]
 	}
 	
 	

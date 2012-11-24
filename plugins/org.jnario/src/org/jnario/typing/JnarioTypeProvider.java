@@ -9,10 +9,14 @@ package org.jnario.typing;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend.core.typing.XtendTypeProvider;
+import org.eclipse.xtend.core.xtend.XtendFunction;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XClosure;
 import org.eclipse.xtext.xbase.XExpression;
 import org.jnario.Assertion;
 import org.jnario.MockLiteral;
@@ -70,7 +74,7 @@ public class JnarioTypeProvider extends XtendTypeProvider {
 	}
 	
 	protected JvmTypeReference _type(Assertion assertion, JvmTypeReference rawExpectation, boolean rawType) {
-		return getPrimitiveVoid(assertion);
+		return booleanType(assertion);
 	}
 	
 	protected JvmTypeReference _type(Should should, JvmTypeReference rawExpectation, boolean rawType) {
@@ -78,7 +82,7 @@ public class JnarioTypeProvider extends XtendTypeProvider {
 	}
 	
 	protected JvmTypeReference _type(ShouldThrow should, JvmTypeReference rawExpectation, boolean rawType) {
-		return getPrimitiveVoid(should);
+		return booleanType(should);
 	}
 	
 }

@@ -83,4 +83,15 @@ describe "Compiler"{
 		'''.executesSuccessfully
 	}
 	
+	fact "supports should in closures"{
+		'''
+		describe "Should in closures"{
+			fact "should-be in closure" {
+		        [|1 should be 1].apply;  
+		        [|var int i; 1 should be 1].apply;
+		    }
+		}
+		'''.executesSuccessfully
+	}
+	
 }

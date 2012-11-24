@@ -105,19 +105,17 @@ class SpecDocGenerator extends AbstractDocGenerator {
 			«ELSE»
 			«ENDIF»
 			«docString»
-			«IF !example.pending && example.body != null»
+			«IF !example.pending && example.expression != null»
 			«example.toCodeBlock(filters)»
 			«example.errorMessage»
 			«ENDIF»
 		'''
 	}
 	
-
-	
 	def toCodeBlock(Example example, List<Filter> filters){
 		var prefix = '<pre class="prettyprint lang-spec linenums">'
 		prefix = filters.apply(prefix)
-		val code = example.implementation.serialize(filters)
+		val code = example.expression.serialize(filters)
 		if(code.length == 0) return ""
 		'''
 		«prefix»

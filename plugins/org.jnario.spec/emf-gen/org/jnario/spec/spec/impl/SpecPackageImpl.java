@@ -242,16 +242,6 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getBefore_BeforeAll()
-	{
-		return (EAttribute)beforeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getAfter()
 	{
 		return afterEClass;
@@ -262,39 +252,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAfter_AfterAll()
-	{
-		return (EAttribute)afterEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTestFunction()
 	{
 		return testFunctionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTestFunction_Name()
-	{
-		return (EAttribute)testFunctionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTestFunction_Body()
-	{
-		return (EReference)testFunctionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -339,14 +299,10 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		createEAttribute(exampleEClass, EXAMPLE__PENDING);
 
 		beforeEClass = createEClass(BEFORE);
-		createEAttribute(beforeEClass, BEFORE__BEFORE_ALL);
 
 		afterEClass = createEClass(AFTER);
-		createEAttribute(afterEClass, AFTER__AFTER_ALL);
 
 		testFunctionEClass = createEClass(TEST_FUNCTION);
-		createEAttribute(testFunctionEClass, TEST_FUNCTION__NAME);
-		createEReference(testFunctionEClass, TEST_FUNCTION__BODY);
 	}
 
 	/**
@@ -391,7 +347,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		exampleEClass.getESuperTypes().add(theJnarioPackage.getExecutable());
 		beforeEClass.getESuperTypes().add(this.getTestFunction());
 		afterEClass.getESuperTypes().add(this.getTestFunction());
-		testFunctionEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
+		testFunctionEClass.getESuperTypes().add(theXtendPackage.getXtendFunction());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(specFileEClass, SpecFile.class, "SpecFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -406,16 +362,10 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		initEAttribute(getExample_Pending(), ecorePackage.getEBoolean(), "pending", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(beforeEClass, Before.class, "Before", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBefore_BeforeAll(), ecorePackage.getEBoolean(), "beforeAll", "false", 0, 1, Before.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(afterEClass, After.class, "After", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAfter_AfterAll(), ecorePackage.getEBoolean(), "afterAll", "false", 0, 1, After.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(testFunctionEClass, TestFunction.class, "TestFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTestFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, TestFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestFunction_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, TestFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(testFunctionEClass, theXbasePackage.getXExpression(), "getImplementation", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

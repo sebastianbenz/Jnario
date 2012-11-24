@@ -27,3 +27,4 @@ public class SpecGenerator implements IGenerator {
 	}
 
 }
+ 

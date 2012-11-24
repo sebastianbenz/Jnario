@@ -230,8 +230,8 @@ public class SpecDocGenerator extends AbstractDocGenerator {
         if (!_not) {
           _and = false;
         } else {
-          XExpression _body = example.getBody();
-          boolean _notEquals_2 = (!Objects.equal(_body, null));
+          XExpression _expression = example.getExpression();
+          boolean _notEquals_2 = (!Objects.equal(_expression, null));
           _and = (_not && _notEquals_2);
         }
         if (_and) {
@@ -254,8 +254,8 @@ public class SpecDocGenerator extends AbstractDocGenerator {
       String prefix = "<pre class=\"prettyprint lang-spec linenums\">";
       String _apply = this.apply(filters, prefix);
       prefix = _apply;
-      XExpression _implementation = example.getImplementation();
-      final String code = this.serialize(_implementation, filters);
+      XExpression _expression = example.getExpression();
+      final String code = this.serialize(_expression, filters);
       int _length = code.length();
       boolean _equals = (_length == 0);
       if (_equals) {

@@ -289,8 +289,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFactsKeyword_2_0_1_1_1 = (Keyword)cAlternatives_2_0_1_1.eContents().get(1);
 		private final Assignment cExprAssignment_2_0_1_2 = (Assignment)cGroup_2_0_1.eContents().get(2);
 		private final RuleCall cExprXExpressionParserRuleCall_2_0_1_2_0 = (RuleCall)cExprAssignment_2_0_1_2.eContents().get(0);
-		private final Assignment cBodyAssignment_2_0_1_3 = (Assignment)cGroup_2_0_1.eContents().get(3);
-		private final RuleCall cBodyXBlockExpressionParserRuleCall_2_0_1_3_0 = (RuleCall)cBodyAssignment_2_0_1_3.eContents().get(0);
+		private final Assignment cExpressionAssignment_2_0_1_3 = (Assignment)cGroup_2_0_1.eContents().get(3);
+		private final RuleCall cExpressionXBlockExpressionParserRuleCall_2_0_1_3_0 = (RuleCall)cExpressionAssignment_2_0_1_3.eContents().get(0);
 		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
 		private final Action cExampleGroupAnnotationInfoAction_2_1_0 = (Action)cGroup_2_1.eContents().get(0);
 		private final Group cGroup_2_1_1 = (Group)cGroup_2_1.eContents().get(1);
@@ -309,23 +309,25 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2_2_1 = (Group)cGroup_2_2.eContents().get(1);
 		private final Keyword cBeforeKeyword_2_2_1_0 = (Keyword)cGroup_2_2_1.eContents().get(0);
 		private final Alternatives cAlternatives_2_2_1_1 = (Alternatives)cGroup_2_2_1.eContents().get(1);
-		private final Assignment cBeforeAllAssignment_2_2_1_1_0 = (Assignment)cAlternatives_2_2_1_1.eContents().get(0);
-		private final Keyword cBeforeAllAllKeyword_2_2_1_1_0_0 = (Keyword)cBeforeAllAssignment_2_2_1_1_0.eContents().get(0);
+		private final Assignment cStaticAssignment_2_2_1_1_0 = (Assignment)cAlternatives_2_2_1_1.eContents().get(0);
+		private final Keyword cStaticAllKeyword_2_2_1_1_0_0 = (Keyword)cStaticAssignment_2_2_1_1_0.eContents().get(0);
 		private final Keyword cEachKeyword_2_2_1_1_1 = (Keyword)cAlternatives_2_2_1_1.eContents().get(1);
 		private final Assignment cNameAssignment_2_2_1_2 = (Assignment)cGroup_2_2_1.eContents().get(2);
 		private final RuleCall cNameSTRINGTerminalRuleCall_2_2_1_2_0 = (RuleCall)cNameAssignment_2_2_1_2.eContents().get(0);
-		private final Assignment cBodyAssignment_2_2_1_3 = (Assignment)cGroup_2_2_1.eContents().get(3);
-		private final RuleCall cBodyXExpressionParserRuleCall_2_2_1_3_0 = (RuleCall)cBodyAssignment_2_2_1_3.eContents().get(0);
+		private final Assignment cExpressionAssignment_2_2_1_3 = (Assignment)cGroup_2_2_1.eContents().get(3);
+		private final RuleCall cExpressionXExpressionParserRuleCall_2_2_1_3_0 = (RuleCall)cExpressionAssignment_2_2_1_3.eContents().get(0);
 		private final Group cGroup_2_3 = (Group)cAlternatives_2.eContents().get(3);
 		private final Action cAfterAnnotationInfoAction_2_3_0 = (Action)cGroup_2_3.eContents().get(0);
 		private final Group cGroup_2_3_1 = (Group)cGroup_2_3.eContents().get(1);
 		private final Keyword cAfterKeyword_2_3_1_0 = (Keyword)cGroup_2_3_1.eContents().get(0);
-		private final Assignment cAfterAllAssignment_2_3_1_1 = (Assignment)cGroup_2_3_1.eContents().get(1);
-		private final Keyword cAfterAllAllKeyword_2_3_1_1_0 = (Keyword)cAfterAllAssignment_2_3_1_1.eContents().get(0);
+		private final Alternatives cAlternatives_2_3_1_1 = (Alternatives)cGroup_2_3_1.eContents().get(1);
+		private final Assignment cStaticAssignment_2_3_1_1_0 = (Assignment)cAlternatives_2_3_1_1.eContents().get(0);
+		private final Keyword cStaticAllKeyword_2_3_1_1_0_0 = (Keyword)cStaticAssignment_2_3_1_1_0.eContents().get(0);
+		private final Keyword cEachKeyword_2_3_1_1_1 = (Keyword)cAlternatives_2_3_1_1.eContents().get(1);
 		private final Assignment cNameAssignment_2_3_1_2 = (Assignment)cGroup_2_3_1.eContents().get(2);
 		private final RuleCall cNameSTRINGTerminalRuleCall_2_3_1_2_0 = (RuleCall)cNameAssignment_2_3_1_2.eContents().get(0);
-		private final Assignment cBodyAssignment_2_3_1_3 = (Assignment)cGroup_2_3_1.eContents().get(3);
-		private final RuleCall cBodyXExpressionParserRuleCall_2_3_1_3_0 = (RuleCall)cBodyAssignment_2_3_1_3.eContents().get(0);
+		private final Assignment cExpressionAssignment_2_3_1_3 = (Assignment)cGroup_2_3_1.eContents().get(3);
+		private final RuleCall cExpressionXExpressionParserRuleCall_2_3_1_3_0 = (RuleCall)cExpressionAssignment_2_3_1_3.eContents().get(0);
 		private final Group cGroup_2_4 = (Group)cAlternatives_2.eContents().get(4);
 		private final Action cExampleGroupAnnotationInfoAction_2_4_0 = (Action)cGroup_2_4.eContents().get(0);
 		private final Group cGroup_2_4_1 = (Group)cGroup_2_4.eContents().get(1);
@@ -465,11 +467,11 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Member returns xtend::XtendMember:
 		//	{xtend::XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} (pending?="pending"? ("fact" |
-		//	"facts") expr=XExpression body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble="describe"
+		//	"facts") expr=XExpression expression=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble="describe"
 		//	targetType=JvmTypeReference? name=STRING? "{" members+=Member* "}") | {Before.annotationInfo=current} ("before"
-		//	(beforeAll?="all" | "each")? => name=STRING? body=XExpression) | {After.annotationInfo=current} ("after"
-		//	afterAll?="all"? => name=STRING? body=XExpression) | {ExampleGroup.annotationInfo=current} (preamble="context"
-		//	targetOperation=[types::JvmOperation|Method]? name=STRING? "{" members+=Member* "}") |
+		//	(static?="all" | "each")? => name=STRING? expression=XExpression) | {After.annotationInfo=current} ("after"
+		//	(static?="all" | "each")? => name=STRING? expression=XExpression) | {ExampleGroup.annotationInfo=current}
+		//	(preamble="context" targetOperation=[types::JvmOperation|Method]? name=STRING? "{" members+=Member* "}") |
 		//	{ExampleTable.annotationInfo=current} ("def" name=ID? "{" ("|" columns+=ExampleColumn* rows+=ExampleRow*)? "}") |
 		//	{xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension" static?="static"?
 		//	(final?="val" | "var")? type=JvmTypeReference name=ValidID? | static?="static"? (type=JvmTypeReference | (final?="val"
@@ -483,11 +485,11 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		public ParserRule getRule() { return rule; }
 
 		//{xtend::XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} (pending?="pending"? ("fact" | "facts")
-		//expr=XExpression body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble="describe"
+		//expr=XExpression expression=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble="describe"
 		//targetType=JvmTypeReference? name=STRING? "{" members+=Member* "}") | {Before.annotationInfo=current} ("before"
-		//(beforeAll?="all" | "each")? => name=STRING? body=XExpression) | {After.annotationInfo=current} ("after"
-		//afterAll?="all"? => name=STRING? body=XExpression) | {ExampleGroup.annotationInfo=current} (preamble="context"
-		//targetOperation=[types::JvmOperation|Method]? name=STRING? "{" members+=Member* "}") |
+		//(static?="all" | "each")? => name=STRING? expression=XExpression) | {After.annotationInfo=current} ("after"
+		//(static?="all" | "each")? => name=STRING? expression=XExpression) | {ExampleGroup.annotationInfo=current}
+		//(preamble="context" targetOperation=[types::JvmOperation|Method]? name=STRING? "{" members+=Member* "}") |
 		//{ExampleTable.annotationInfo=current} ("def" name=ID? "{" ("|" columns+=ExampleColumn* rows+=ExampleRow*)? "}") |
 		//{xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension" static?="static"?
 		//(final?="val" | "var")? type=JvmTypeReference name=ValidID? | static?="static"? (type=JvmTypeReference | (final?="val"
@@ -509,30 +511,31 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//XAnnotation
 		public RuleCall getAnnotationsXAnnotationParserRuleCall_1_0() { return cAnnotationsXAnnotationParserRuleCall_1_0; }
 
-		//{Example.annotationInfo=current} (pending?="pending"? ("fact" | "facts") expr=XExpression body=XBlockExpression?) |
-		//{ExampleGroup.annotationInfo=current} (preamble="describe" targetType=JvmTypeReference? name=STRING? "{"
-		//members+=Member* "}") | {Before.annotationInfo=current} ("before" (beforeAll?="all" | "each")? => name=STRING?
-		//body=XExpression) | {After.annotationInfo=current} ("after" afterAll?="all"? => name=STRING? body=XExpression) |
-		//{ExampleGroup.annotationInfo=current} (preamble="context" targetOperation=[types::JvmOperation|Method]? name=STRING?
-		//"{" members+=Member* "}") | {ExampleTable.annotationInfo=current} ("def" name=ID? "{" ("|" columns+=ExampleColumn*
-		//rows+=ExampleRow*)? "}") | {xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension"
-		//static?="static"? (final?="val" | "var")? type=JvmTypeReference name=ValidID? | static?="static"?
-		//(type=JvmTypeReference | (final?="val" | "var") type=JvmTypeReference?) name=ValidID) ("=" initialValue=XExpression)?
-		//";"? | {xtend::XtendFunction.annotationInfo=current} ("def" | override?="override") visibility=Visibility?
-		//static?="static"? dispatch?="dispatch"? ("<" typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)*
-		//">")? (=> (returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID "(") | =>
+		//{Example.annotationInfo=current} (pending?="pending"? ("fact" | "facts") expr=XExpression expression=XBlockExpression?)
+		//| {ExampleGroup.annotationInfo=current} (preamble="describe" targetType=JvmTypeReference? name=STRING? "{"
+		//members+=Member* "}") | {Before.annotationInfo=current} ("before" (static?="all" | "each")? => name=STRING?
+		//expression=XExpression) | {After.annotationInfo=current} ("after" (static?="all" | "each")? => name=STRING?
+		//expression=XExpression) | {ExampleGroup.annotationInfo=current} (preamble="context"
+		//targetOperation=[types::JvmOperation|Method]? name=STRING? "{" members+=Member* "}") |
+		//{ExampleTable.annotationInfo=current} ("def" name=ID? "{" ("|" columns+=ExampleColumn* rows+=ExampleRow*)? "}") |
+		//{xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension" static?="static"?
+		//(final?="val" | "var")? type=JvmTypeReference name=ValidID? | static?="static"? (type=JvmTypeReference | (final?="val"
+		//| "var") type=JvmTypeReference?) name=ValidID) ("=" initialValue=XExpression)? ";"? |
+		//{xtend::XtendFunction.annotationInfo=current} ("def" | override?="override") visibility=Visibility? static?="static"?
+		//dispatch?="dispatch"? ("<" typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=>
+		//(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID "(") | =>
 		//(returnType=JvmTypeReference name=ValidID "(") | => (createExtensionInfo=CreateExtensionInfo name=ValidID "(") |
 		//name=ValidID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws" exceptions+=JvmTypeReference (","
 		//exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | expression=RichString)?
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//{Example.annotationInfo=current} (pending?="pending"? ("fact" | "facts") expr=XExpression body=XBlockExpression?)
+		//{Example.annotationInfo=current} (pending?="pending"? ("fact" | "facts") expr=XExpression expression=XBlockExpression?)
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
 		//{Example.annotationInfo=current}
 		public Action getExampleAnnotationInfoAction_2_0_0() { return cExampleAnnotationInfoAction_2_0_0; }
 
-		//pending?="pending"? ("fact" | "facts") expr=XExpression body=XBlockExpression?
+		//pending?="pending"? ("fact" | "facts") expr=XExpression expression=XBlockExpression?
 		public Group getGroup_2_0_1() { return cGroup_2_0_1; }
 
 		//pending?="pending"?
@@ -556,11 +559,11 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//XExpression
 		public RuleCall getExprXExpressionParserRuleCall_2_0_1_2_0() { return cExprXExpressionParserRuleCall_2_0_1_2_0; }
 
-		//body=XBlockExpression?
-		public Assignment getBodyAssignment_2_0_1_3() { return cBodyAssignment_2_0_1_3; }
+		//expression=XBlockExpression?
+		public Assignment getExpressionAssignment_2_0_1_3() { return cExpressionAssignment_2_0_1_3; }
 
 		//XBlockExpression
-		public RuleCall getBodyXBlockExpressionParserRuleCall_2_0_1_3_0() { return cBodyXBlockExpressionParserRuleCall_2_0_1_3_0; }
+		public RuleCall getExpressionXBlockExpressionParserRuleCall_2_0_1_3_0() { return cExpressionXBlockExpressionParserRuleCall_2_0_1_3_0; }
 
 		//{ExampleGroup.annotationInfo=current} (preamble="describe" targetType=JvmTypeReference? name=STRING? "{"
 		//members+=Member* "}")
@@ -602,26 +605,26 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_2_1_1_5() { return cRightCurlyBracketKeyword_2_1_1_5; }
 
-		//{Before.annotationInfo=current} ("before" (beforeAll?="all" | "each")? => name=STRING? body=XExpression)
+		//{Before.annotationInfo=current} ("before" (static?="all" | "each")? => name=STRING? expression=XExpression)
 		public Group getGroup_2_2() { return cGroup_2_2; }
 
 		//{Before.annotationInfo=current}
 		public Action getBeforeAnnotationInfoAction_2_2_0() { return cBeforeAnnotationInfoAction_2_2_0; }
 
-		//"before" (beforeAll?="all" | "each")? => name=STRING? body=XExpression
+		//"before" (static?="all" | "each")? => name=STRING? expression=XExpression
 		public Group getGroup_2_2_1() { return cGroup_2_2_1; }
 
 		//"before"
 		public Keyword getBeforeKeyword_2_2_1_0() { return cBeforeKeyword_2_2_1_0; }
 
-		//(beforeAll?="all" | "each")?
+		//(static?="all" | "each")?
 		public Alternatives getAlternatives_2_2_1_1() { return cAlternatives_2_2_1_1; }
 
-		//beforeAll?="all"
-		public Assignment getBeforeAllAssignment_2_2_1_1_0() { return cBeforeAllAssignment_2_2_1_1_0; }
+		//static?="all"
+		public Assignment getStaticAssignment_2_2_1_1_0() { return cStaticAssignment_2_2_1_1_0; }
 
 		//"all"
-		public Keyword getBeforeAllAllKeyword_2_2_1_1_0_0() { return cBeforeAllAllKeyword_2_2_1_1_0_0; }
+		public Keyword getStaticAllKeyword_2_2_1_1_0_0() { return cStaticAllKeyword_2_2_1_1_0_0; }
 
 		//"each"
 		public Keyword getEachKeyword_2_2_1_1_1() { return cEachKeyword_2_2_1_1_1; }
@@ -632,29 +635,35 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getNameSTRINGTerminalRuleCall_2_2_1_2_0() { return cNameSTRINGTerminalRuleCall_2_2_1_2_0; }
 
-		//body=XExpression
-		public Assignment getBodyAssignment_2_2_1_3() { return cBodyAssignment_2_2_1_3; }
+		//expression=XExpression
+		public Assignment getExpressionAssignment_2_2_1_3() { return cExpressionAssignment_2_2_1_3; }
 
 		//XExpression
-		public RuleCall getBodyXExpressionParserRuleCall_2_2_1_3_0() { return cBodyXExpressionParserRuleCall_2_2_1_3_0; }
+		public RuleCall getExpressionXExpressionParserRuleCall_2_2_1_3_0() { return cExpressionXExpressionParserRuleCall_2_2_1_3_0; }
 
-		//{After.annotationInfo=current} ("after" afterAll?="all"? => name=STRING? body=XExpression)
+		//{After.annotationInfo=current} ("after" (static?="all" | "each")? => name=STRING? expression=XExpression)
 		public Group getGroup_2_3() { return cGroup_2_3; }
 
 		//{After.annotationInfo=current}
 		public Action getAfterAnnotationInfoAction_2_3_0() { return cAfterAnnotationInfoAction_2_3_0; }
 
-		//"after" afterAll?="all"? => name=STRING? body=XExpression
+		//"after" (static?="all" | "each")? => name=STRING? expression=XExpression
 		public Group getGroup_2_3_1() { return cGroup_2_3_1; }
 
 		//"after"
 		public Keyword getAfterKeyword_2_3_1_0() { return cAfterKeyword_2_3_1_0; }
 
-		//afterAll?="all"?
-		public Assignment getAfterAllAssignment_2_3_1_1() { return cAfterAllAssignment_2_3_1_1; }
+		//(static?="all" | "each")?
+		public Alternatives getAlternatives_2_3_1_1() { return cAlternatives_2_3_1_1; }
+
+		//static?="all"
+		public Assignment getStaticAssignment_2_3_1_1_0() { return cStaticAssignment_2_3_1_1_0; }
 
 		//"all"
-		public Keyword getAfterAllAllKeyword_2_3_1_1_0() { return cAfterAllAllKeyword_2_3_1_1_0; }
+		public Keyword getStaticAllKeyword_2_3_1_1_0_0() { return cStaticAllKeyword_2_3_1_1_0_0; }
+
+		//"each"
+		public Keyword getEachKeyword_2_3_1_1_1() { return cEachKeyword_2_3_1_1_1; }
 
 		//=> name=STRING?
 		public Assignment getNameAssignment_2_3_1_2() { return cNameAssignment_2_3_1_2; }
@@ -662,11 +671,11 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getNameSTRINGTerminalRuleCall_2_3_1_2_0() { return cNameSTRINGTerminalRuleCall_2_3_1_2_0; }
 
-		//body=XExpression
-		public Assignment getBodyAssignment_2_3_1_3() { return cBodyAssignment_2_3_1_3; }
+		//expression=XExpression
+		public Assignment getExpressionAssignment_2_3_1_3() { return cExpressionAssignment_2_3_1_3; }
 
 		//XExpression
-		public RuleCall getBodyXExpressionParserRuleCall_2_3_1_3_0() { return cBodyXExpressionParserRuleCall_2_3_1_3_0; }
+		public RuleCall getExpressionXExpressionParserRuleCall_2_3_1_3_0() { return cExpressionXExpressionParserRuleCall_2_3_1_3_0; }
 
 		//{ExampleGroup.annotationInfo=current} (preamble="context" targetOperation=[types::JvmOperation|Method]? name=STRING? "{"
 		//members+=Member* "}")
@@ -1171,7 +1180,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cXTypeLiteralParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		////	| MockLiteral 
-		//
 		//XLiteral returns xbase::XExpression:
 		//	XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
 		public ParserRule getRule() { return rule; }
@@ -1241,11 +1249,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightOperandXOtherOperatorExpressionParserRuleCall_1_3_1_0 = (RuleCall)cRightOperandAssignment_1_3_1.eContents().get(0);
 		
 		////MockLiteral:
-		//
 		////	{MockLiteral} ('mock'|'stub') '(' type=[types::JvmType|QualifiedName] ')'
-		//
 		////;
-		//
 		//XRelationalExpression returns xbase::XExpression:
 		//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) =>
 		//	rightOperand=XOtherOperatorExpression? | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
@@ -1609,11 +1614,11 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Member returns xtend::XtendMember:
 	//	{xtend::XtendMember} annotations+=XAnnotation* ({Example.annotationInfo=current} (pending?="pending"? ("fact" |
-	//	"facts") expr=XExpression body=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble="describe"
+	//	"facts") expr=XExpression expression=XBlockExpression?) | {ExampleGroup.annotationInfo=current} (preamble="describe"
 	//	targetType=JvmTypeReference? name=STRING? "{" members+=Member* "}") | {Before.annotationInfo=current} ("before"
-	//	(beforeAll?="all" | "each")? => name=STRING? body=XExpression) | {After.annotationInfo=current} ("after"
-	//	afterAll?="all"? => name=STRING? body=XExpression) | {ExampleGroup.annotationInfo=current} (preamble="context"
-	//	targetOperation=[types::JvmOperation|Method]? name=STRING? "{" members+=Member* "}") |
+	//	(static?="all" | "each")? => name=STRING? expression=XExpression) | {After.annotationInfo=current} ("after"
+	//	(static?="all" | "each")? => name=STRING? expression=XExpression) | {ExampleGroup.annotationInfo=current}
+	//	(preamble="context" targetOperation=[types::JvmOperation|Method]? name=STRING? "{" members+=Member* "}") |
 	//	{ExampleTable.annotationInfo=current} ("def" name=ID? "{" ("|" columns+=ExampleColumn* rows+=ExampleRow*)? "}") |
 	//	{xtend::XtendField.annotationInfo=current} visibility=Visibility? (extension?="extension" static?="static"?
 	//	(final?="val" | "var")? type=JvmTypeReference name=ValidID? | static?="static"? (type=JvmTypeReference | (final?="val"
@@ -1645,7 +1650,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////	| MockLiteral 
-	//
 	//XLiteral returns xbase::XExpression:
 	//	XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
 	public XLiteralElements getXLiteralAccess() {
@@ -1657,11 +1661,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////MockLiteral:
-	//
 	////	{MockLiteral} ('mock'|'stub') '(' type=[types::JvmType|QualifiedName] ')'
-	//
 	////;
-	//
 	//XRelationalExpression returns xbase::XExpression:
 	//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) =>
 	//	rightOperand=XOtherOperatorExpression? | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
@@ -1937,37 +1938,37 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal RICH_TEXT_START:
-	//	"\'\'\'" IN_RICH_STRING* ("\'" "\'"?)? "«";
+	//	"\'\'\'" IN_RICH_STRING* ("\'" "\'"?)? "�";
 	public TerminalRule getRICH_TEXT_STARTRule() {
 		return gaXtend.getRICH_TEXT_STARTRule();
 	} 
 
 	//terminal RICH_TEXT_END:
-	//	"»" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
+	//	"�" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
 	public TerminalRule getRICH_TEXT_ENDRule() {
 		return gaXtend.getRICH_TEXT_ENDRule();
 	} 
 
 	//terminal RICH_TEXT_INBETWEEN:
-	//	"»" IN_RICH_STRING* ("\'" "\'"?)? "«";
+	//	"�" IN_RICH_STRING* ("\'" "\'"?)? "�";
 	public TerminalRule getRICH_TEXT_INBETWEENRule() {
 		return gaXtend.getRICH_TEXT_INBETWEENRule();
 	} 
 
 	//terminal COMMENT_RICH_TEXT_INBETWEEN:
-	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'" "\'"?)? "«")?;
+	//	"��" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'" "\'"?)? "�")?;
 	public TerminalRule getCOMMENT_RICH_TEXT_INBETWEENRule() {
 		return gaXtend.getCOMMENT_RICH_TEXT_INBETWEENRule();
 	} 
 
 	//terminal COMMENT_RICH_TEXT_END:
-	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF) | EOF);
+	//	"��" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF) | EOF);
 	public TerminalRule getCOMMENT_RICH_TEXT_ENDRule() {
 		return gaXtend.getCOMMENT_RICH_TEXT_ENDRule();
 	} 
 
 	//terminal fragment IN_RICH_STRING:
-	//	"\'\'" !("«" | "\'") | "\'" !("«" | "\'") | !("«" | "\'");
+	//	"\'\'" !("�" | "\'") | "\'" !("�" | "\'") | !("�" | "\'");
 	public TerminalRule getIN_RICH_STRINGRule() {
 		return gaXtend.getIN_RICH_STRINGRule();
 	} 
