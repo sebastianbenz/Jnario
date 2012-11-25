@@ -37,12 +37,22 @@
 							  	<div class="tab-pane active" id="spec">
 <h3 class="exampleGroup notrun"  id="toValue_String_INode">ToValue[String, INode]</h3>
 <ul><li><p id="subject_toValue_Prefix_text_n_null_should_be_text" class="example notrun"><strong>subject.toValue["Prefix: text\n", null] should be "text"</strong></p>
+<pre class="prettyprint lang-spec linenums">
+subject.toValue(&quot;Prefix: text\n&quot;, null) should be &quot;text&quot;</pre>
 </li><li><p id="subject_toValue_null_null_should_be_null" class="example notrun"><strong>subject.toValue[null, null] should be null</strong></p>
+<pre class="prettyprint lang-spec linenums">
+subject.toValue(null, null) should be null</pre>
 </li><li><p id="subject_toValue_xxx_null_should_be_xxx" class="example notrun"><strong>subject.toValue["xxx", null] should be "xxx"</strong></p>
+<pre class="prettyprint lang-spec linenums">
+subject.toValue(&quot;xxx&quot;, null) should be &quot;xxx&quot;</pre>
 </li></ul>
 <h3 class="exampleGroup notrun"  id="toString_String">ToString[String]</h3>
 <ul><li><p id="subject_toString_text_should_be_Prefix_text_Strings_newLine" class="example notrun"><strong>subject.toString["text"] should be "Prefix:text" + Strings::newLine</strong></p>
+<pre class="prettyprint lang-spec linenums">
+subject.toString(&quot;text&quot;) should be &quot;Prefix:text&quot; + Strings::newLine</pre>
 </li><li><p id="subject_toString_null_should_be_null" class="example notrun"><strong>subject.toString[null] should be null</strong></p>
+<pre class="prettyprint lang-spec linenums">
+subject.toString(null) should be null</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">

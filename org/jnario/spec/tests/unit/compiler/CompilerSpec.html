@@ -99,10 +99,31 @@ describe &quot;Something with an expression&quot;{
          
   }
 '''.executesSuccessfully</pre>
+</li><li><p id="supports_should_in_closures" class="example notrun"><strong>supports should in closures</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+describe &quot;Should in closures&quot;{
+  fact &quot;should-be in closure&quot; {
+        [|1 should be 1].apply;  
+        [|var int i; 1 should be 1].apply;
+        [|].apply ;
+    }
+}
+'''.executesSuccessfully</pre>
+</li><li><p id="compiles_rich_strings" class="example notrun"><strong>compiles rich strings</strong></p>
+<pre class="prettyprint lang-spec linenums">
+&quot;
+describe 'Richstrings'{
+  fact {
+    val x = 'world'
+        '''hello &laquo;x&raquo;'''.toString =&gt; 'hello world'
+    }
+}
+&quot;.executesSuccessfully</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
-						    	<h3>Compiler.spec</h3>
+						    	<h3>SpecCompiler.spec</h3>
 						    	<p>
 <pre class="prettyprint lang-spec linenums">
 package org.jnario.spec.tests.unit.compiler
@@ -188,6 +209,29 @@ describe &quot;Compiler&quot;{
              
       }
     '''.executesSuccessfully
+  }
+  
+  fact &quot;supports should in closures&quot;{
+    '''
+    describe &quot;Should in closures&quot;{
+      fact &quot;should-be in closure&quot; {
+            [|1 should be 1].apply;  
+            [|var int i; 1 should be 1].apply;
+            [|].apply ;
+        }
+    }
+    '''.executesSuccessfully
+  }
+  
+  fact &quot;compiles rich strings&quot;{
+    &quot;
+    describe 'Richstrings'{
+      fact {
+        val x = 'world'
+            '''hello &laquo;x&raquo;'''.toString =&gt; 'hello world'
+        }
+    }
+    &quot;.executesSuccessfully
   }
   
 }
