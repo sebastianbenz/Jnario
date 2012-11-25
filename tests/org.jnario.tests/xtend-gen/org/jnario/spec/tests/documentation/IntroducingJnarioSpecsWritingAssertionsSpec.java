@@ -56,7 +56,7 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
     boolean _should_be = Should.<Boolean>should_be(
       Boolean.valueOf(true), true);
     Assert.assertTrue("\nExpected true should be true but"
-     + "\n     true should be true is " + new StringDescription().appendValue(null).toString() + "\n", _should_be);
+     + "\n     true should be true is " + new StringDescription().appendValue(true).toString() + "\n", _should_be);
     
     boolean _doubleArrow = Should.operator_doubleArrow(
       Boolean.valueOf(false), Boolean.valueOf(false));

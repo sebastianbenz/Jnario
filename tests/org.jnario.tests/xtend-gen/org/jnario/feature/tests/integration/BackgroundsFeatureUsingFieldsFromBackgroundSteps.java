@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Using fields from background steps")
 @SuppressWarnings("all")
 public class BackgroundsFeatureUsingFieldsFromBackgroundSteps extends BackgroundsFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a scenario with a field")
@@ -30,6 +32,4 @@ public class BackgroundsFeatureUsingFieldsFromBackgroundSteps extends Background
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

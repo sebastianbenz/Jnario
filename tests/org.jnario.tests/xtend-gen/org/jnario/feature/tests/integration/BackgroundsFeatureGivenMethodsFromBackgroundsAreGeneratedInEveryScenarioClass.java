@@ -18,6 +18,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Given methods from backgrounds are generated in every scenario class")
 @SuppressWarnings("all")
 public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEveryScenarioClass extends BackgroundsFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a feature with a background")
@@ -41,6 +43,4 @@ public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEverySce
      + "\n     jnarioFile is " + new StringDescription().appendValue(this.jnarioFile).toString() + "\n", _doubleArrow);
     
   }
-  
-  CharSequence jnarioFile;
 }

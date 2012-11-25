@@ -9,7 +9,7 @@ package org.jnario.feature.feature;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendFunction;
 
 import org.jnario.Executable;
 
@@ -21,7 +21,6 @@ import org.jnario.Executable;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.jnario.feature.feature.Step#getName <em>Name</em>}</li>
  *   <li>{@link org.jnario.feature.feature.Step#getStepExpression <em>Step Expression</em>}</li>
  *   <li>{@link org.jnario.feature.feature.Step#getAnd <em>And</em>}</li>
  * </ul>
@@ -31,34 +30,8 @@ import org.jnario.Executable;
  * @model
  * @generated
  */
-public interface Step extends XtendMember, Executable
+public interface Step extends XtendFunction, Executable
 {
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.jnario.feature.feature.FeaturePackage#getStep_Name()
-	 * @model
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link org.jnario.feature.feature.Step#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Step Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

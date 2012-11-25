@@ -22,6 +22,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Using Multiple extensions")
 @SuppressWarnings("all")
 public class FeatureExtensionsFeatureUsingMultipleExtensions extends FeatureExtensionsFeature {
+  List list;
+  
   @Test
   @Order(0)
   @Named("When sorting the colors \\\"red, green, blue\\\"")
@@ -52,6 +54,4 @@ public class FeatureExtensionsFeatureUsingMultipleExtensions extends FeatureExte
      + "\n     list(\"blue\",\"green\",\"red\") is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
     
   }
-  
-  List list;
 }

@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Access a variable referencing a variable from background step")
 @SuppressWarnings("all")
 public class AccessOfVariablesFeatureAccessAVariableReferencingAVariableFromBackgroundStep extends AccessOfVariablesFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I reference a variable from the background")
@@ -30,6 +32,4 @@ public class AccessOfVariablesFeatureAccessAVariableReferencingAVariableFromBack
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

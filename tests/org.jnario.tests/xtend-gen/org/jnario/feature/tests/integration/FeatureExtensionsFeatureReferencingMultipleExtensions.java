@@ -22,6 +22,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Referencing multiple extensions")
 @SuppressWarnings("all")
 public class FeatureExtensionsFeatureReferencingMultipleExtensions extends FeatureExtensionsFeature {
+  List list;
+  
   @Test
   @Order(0)
   @Named("When sorting the colors \\\"yellow, red\\\"")
@@ -52,6 +54,4 @@ public class FeatureExtensionsFeatureReferencingMultipleExtensions extends Featu
      + "\n     list(\"red\",\"yellow\") is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
     
   }
-  
-  List list;
 }

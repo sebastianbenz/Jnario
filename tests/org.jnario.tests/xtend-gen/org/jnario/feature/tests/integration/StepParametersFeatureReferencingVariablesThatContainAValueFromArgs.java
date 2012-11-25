@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Referencing variables that contain a value from args")
 @SuppressWarnings("all")
 public class StepParametersFeatureReferencingVariablesThatContainAValueFromArgs extends StepParametersFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a scenario that references a step with arguments")
@@ -30,6 +32,4 @@ public class StepParametersFeatureReferencingVariablesThatContainAValueFromArgs 
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

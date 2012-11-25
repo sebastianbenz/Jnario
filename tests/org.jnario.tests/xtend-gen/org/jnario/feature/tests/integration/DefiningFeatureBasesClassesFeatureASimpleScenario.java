@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: A simple scenario")
 @SuppressWarnings("all")
 public class DefiningFeatureBasesClassesFeatureASimpleScenario extends DefiningFeatureBasesClassesFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("Given a scenario")
@@ -30,6 +32,4 @@ public class DefiningFeatureBasesClassesFeatureASimpleScenario extends DefiningF
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

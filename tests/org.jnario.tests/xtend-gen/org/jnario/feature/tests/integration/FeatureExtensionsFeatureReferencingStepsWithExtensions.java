@@ -17,6 +17,10 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Referencing steps with extensions")
 @SuppressWarnings("all")
 public class FeatureExtensionsFeatureReferencingStepsWithExtensions extends FeatureExtensionsFeature {
+  String numberString;
+  
+  int number;
+  
   @Test
   @Order(0)
   @Named("Given the number \\\"12\\\" as string")
@@ -49,8 +53,4 @@ public class FeatureExtensionsFeatureReferencingStepsWithExtensions extends Feat
      + "\n     args.first is " + new StringDescription().appendValue(_first).toString() + "\n", _doubleArrow);
     
   }
-  
-  String numberString;
-  
-  int number;
 }

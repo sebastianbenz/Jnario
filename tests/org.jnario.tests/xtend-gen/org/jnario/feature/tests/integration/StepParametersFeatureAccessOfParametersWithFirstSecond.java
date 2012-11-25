@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Access of parameters with first, second, ...")
 @SuppressWarnings("all")
 public class StepParametersFeatureAccessOfParametersWithFirstSecond extends StepParametersFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I access those parameters")
@@ -30,6 +32,4 @@ public class StepParametersFeatureAccessOfParametersWithFirstSecond extends Step
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

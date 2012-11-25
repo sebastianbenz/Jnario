@@ -17,6 +17,10 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Using jnario predefined extensions")
 @SuppressWarnings("all")
 public class FeatureExtensionsFeatureUsingJnarioPredefinedExtensions extends FeatureExtensionsFeature {
+  String numberString;
+  
+  int number;
+  
   @Test
   @Order(0)
   @Named("Given the number \\\"5\\\" as string")
@@ -51,8 +55,4 @@ public class FeatureExtensionsFeatureUsingJnarioPredefinedExtensions extends Fea
      + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
-  
-  String numberString;
-  
-  int number;
 }

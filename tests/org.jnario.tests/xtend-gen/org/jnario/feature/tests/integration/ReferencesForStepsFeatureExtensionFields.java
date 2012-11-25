@@ -17,6 +17,8 @@ import org.junit.runner.RunWith;
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class ReferencesForStepsFeatureExtensionFields extends ReferencesForStepsFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a scenario with a variable that is initialized")
@@ -33,6 +35,4 @@ public class ReferencesForStepsFeatureExtensionFields extends ReferencesForSteps
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

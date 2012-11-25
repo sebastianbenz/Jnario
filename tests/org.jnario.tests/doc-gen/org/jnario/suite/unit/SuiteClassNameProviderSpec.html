@@ -64,6 +64,8 @@
 	</tbody>
 </table>
 </li><li><p id="examples_forEach_subject_getClassName_suite_name_expectedClassName" class="example notrun"><strong>examples.forEach[subject.getClassName[suite[name]] => expectedClassName]</strong></p>
+<pre class="prettyprint lang-spec linenums">
+examples.forEach[subject.getClassName(suite(name)) =&gt; expectedClassName]</pre>
 </li></ul>
 <h3 class="exampleGroup notrun"  id="describe_EObject">Describe[EObject]</h3>
 <ul><li><p id="examples"><strong>Examples</strong></p>
@@ -94,6 +96,8 @@
 	</tbody>
 </table>
 </li><li><p id="examples_forEach_subject_describe_suite_name_expectedClassName" class="example notrun"><strong>examples.forEach[subject.^describe[suite[name]] => expectedClassName]</strong></p>
+<pre class="prettyprint lang-spec linenums">
+examples.forEach[subject.^describe(suite(name)) =&gt; expectedClassName]</pre>
 </li></ul>
 <h3 class="exampleGroup notrun"  id="toQualifiedJavaClassName">ToQualifiedJavaClassName</h3>
 <ul><li><p id="examples"><strong>Examples</strong></p>
@@ -129,6 +133,11 @@
 	</tbody>
 </table>
 </li><li><p id="examples_forEach_val_actualName_subject_toQualifiedJavaClassName_suite_name_packageName_actualName_qualifiedName" class="example notrun"><strong>examples.forEach[ val actualName = subject.toQualifiedJavaClassName[suite[name, packageName]] actualName => qualifiedName ]</strong></p>
+<pre class="prettyprint lang-spec linenums">
+examples.forEach[
+        val actualName = subject.toQualifiedJavaClassName(suite(name, packageName))
+        actualName =&gt; qualifiedName
+      ]</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">

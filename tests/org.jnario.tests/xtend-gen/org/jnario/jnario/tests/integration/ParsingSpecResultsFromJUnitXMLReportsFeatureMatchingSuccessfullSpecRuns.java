@@ -37,6 +37,18 @@ import org.junit.runner.RunWith;
 @CreateWith(value = SpecTestCreator.class)
 @SuppressWarnings("all")
 public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpecRuns extends ParsingSpecResultsFromJUnitXMLReportsFeature {
+  @Inject
+  @Extension
+  public ModelStore _modelStore;
+  
+  @Inject
+  HashBasedSpec2ResultMapping spec2ResultMapping;
+  
+  @Inject
+  SpecResultParser resultParser;
+  
+  Executable specification;
+  
   @Test
   @Order(0)
   @Named("Given a specification")
@@ -84,16 +96,4 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpec
       
     }
   }
-  
-  @Inject
-  @Extension
-  public ModelStore _modelStore;
-  
-  @Inject
-  HashBasedSpec2ResultMapping spec2ResultMapping;
-  
-  @Inject
-  SpecResultParser resultParser;
-  
-  Executable specification;
 }

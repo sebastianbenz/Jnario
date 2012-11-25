@@ -312,19 +312,9 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStep_Name()
-	{
-		return (EAttribute)stepEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getStep_StepExpression()
 	{
-		return (EReference)stepEClass.getEStructuralFeatures().get(1);
+		return (EReference)stepEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -334,7 +324,7 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 */
 	public EReference getStep_And()
 	{
-		return (EReference)stepEClass.getEStructuralFeatures().get(2);
+		return (EReference)stepEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -528,7 +518,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		createEReference(scenarioEClass, SCENARIO__STEPS);
 
 		stepEClass = createEClass(STEP);
-		createEAttribute(stepEClass, STEP__NAME);
 		createEReference(stepEClass, STEP__STEP_EXPRESSION);
 		createEReference(stepEClass, STEP__AND);
 
@@ -599,7 +588,7 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		backgroundEClass.getESuperTypes().add(this.getScenario());
 		scenarioEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
 		scenarioEClass.getESuperTypes().add(theJnarioPackage.getExecutable());
-		stepEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
+		stepEClass.getESuperTypes().add(theXtendPackage.getXtendFunction());
 		stepEClass.getESuperTypes().add(theJnarioPackage.getExecutable());
 		givenEClass.getESuperTypes().add(this.getStepImplementation());
 		whenEClass.getESuperTypes().add(this.getStepImplementation());
@@ -625,7 +614,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		initEReference(getScenario_Steps(), this.getStep(), null, "steps", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStep_Name(), ecorePackage.getEString(), "name", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStep_StepExpression(), this.getStepExpression(), null, "stepExpression", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStep_And(), this.getStep(), null, "and", null, 0, -1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

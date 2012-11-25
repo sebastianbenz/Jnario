@@ -12,6 +12,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Using multiline Strings")
 @SuppressWarnings("all")
 public class StepParametersFeatureUsingMultilineStrings extends StepParametersFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a scenario with multiline strings")
@@ -25,6 +27,4 @@ public class StepParametersFeatureUsingMultilineStrings extends StepParametersFe
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

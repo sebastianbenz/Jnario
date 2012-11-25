@@ -17,6 +17,8 @@ import org.junit.runner.RunWith;
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class ReferencesForStepsFeatureAccessingExtensionFieldMethods extends ReferencesForStepsFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I access extension field methods from referenced steps")
@@ -33,6 +35,4 @@ public class ReferencesForStepsFeatureAccessingExtensionFieldMethods extends Ref
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

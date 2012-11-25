@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Access a variable in the same step it was declared in")
 @SuppressWarnings("all")
 public class AccessOfVariablesFeatureAccessAVariableInTheSameStepItWasDeclaredIn extends AccessOfVariablesFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have scenario with a reference to a variable")
@@ -30,6 +32,4 @@ public class AccessOfVariablesFeatureAccessAVariableInTheSameStepItWasDeclaredIn
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

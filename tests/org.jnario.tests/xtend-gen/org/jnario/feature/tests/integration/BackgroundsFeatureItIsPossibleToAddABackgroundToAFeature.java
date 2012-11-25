@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: It is possible to add a background to a feature")
 @SuppressWarnings("all")
 public class BackgroundsFeatureItIsPossibleToAddABackgroundToAFeature extends BackgroundsFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a feature with a background")
@@ -30,6 +32,4 @@ public class BackgroundsFeatureItIsPossibleToAddABackgroundToAFeature extends Ba
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

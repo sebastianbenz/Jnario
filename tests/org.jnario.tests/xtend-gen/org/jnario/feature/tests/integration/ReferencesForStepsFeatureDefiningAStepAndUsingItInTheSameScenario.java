@@ -22,6 +22,8 @@ import org.junit.runner.RunWith;
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario extends ReferencesForStepsFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a scenario with reused steps that throw an exception")
@@ -52,6 +54,4 @@ public class ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario e
      + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
-  
-  CharSequence jnarioFile;
 }

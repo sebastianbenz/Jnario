@@ -14,6 +14,12 @@ import org.junit.runner.RunWith;
 @Named("Scenario: And stuff.")
 @SuppressWarnings("all")
 public class ParsingSimpleJnarioFilesFeatureAndStuff extends ParsingSimpleJnarioFilesFeature {
+  int x;
+  
+  int y;
+  
+  int z;
+  
   @Test
   @Order(0)
   @Named("Given two numbers.")
@@ -42,10 +48,4 @@ public class ParsingSimpleJnarioFilesFeatureAndStuff extends ParsingSimpleJnario
      + "\n     z is " + new StringDescription().appendValue(Integer.valueOf(this.z)).toString() + "\n", _doubleArrow);
     
   }
-  
-  int x;
-  
-  int y;
-  
-  int z;
 }

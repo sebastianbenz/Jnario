@@ -17,6 +17,8 @@ import org.junit.runner.RunWith;
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class ReferencesForStepsFeatureStepReferencesWithExtensionsInSameScenario extends ReferencesForStepsFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("Given a feature")
@@ -33,6 +35,4 @@ public class ReferencesForStepsFeatureStepReferencesWithExtensionsInSameScenario
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

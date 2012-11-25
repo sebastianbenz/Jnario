@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Scenario with Background")
 @SuppressWarnings("all")
 public class DefiningFeatureBasesClassesFeatureScenarioWithBackground extends DefiningFeatureBasesClassesFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("Given a scenario")
@@ -30,6 +32,4 @@ public class DefiningFeatureBasesClassesFeatureScenarioWithBackground extends De
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

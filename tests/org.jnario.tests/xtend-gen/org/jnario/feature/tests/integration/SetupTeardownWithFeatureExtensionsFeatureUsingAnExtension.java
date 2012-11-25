@@ -23,6 +23,10 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Using an Extension")
 @SuppressWarnings("all")
 public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension extends SetupTeardownWithFeatureExtensionsFeature {
+  CharSequence feature;
+  
+  ConsoleRecorder recorder;
+  
   @Test
   @Order(0)
   @Ignore
@@ -72,8 +76,4 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension extends S
     final String expected = IterableExtensions.join(_map, _newLine);
     Assert.assertEquals(expected, actual);
   }
-  
-  CharSequence feature;
-  
-  ConsoleRecorder recorder;
 }

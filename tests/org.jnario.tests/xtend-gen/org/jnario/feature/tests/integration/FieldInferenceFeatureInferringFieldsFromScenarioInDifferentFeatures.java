@@ -24,6 +24,13 @@ import org.junit.runner.RunWith;
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures extends FieldInferenceFeature {
+  @Inject
+  FeatureExecutor runner;
+  
+  CharSequence feature1;
+  
+  CharSequence feature2;
+  
   @Test
   @Order(0)
   @Named("When I have a feature")
@@ -67,11 +74,4 @@ public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures
      + "\n     isSuccessful is " + new StringDescription().appendValue(_isSuccessful_1).toString() + "\n", _doubleArrow_1);
     
   }
-  
-  @Inject
-  FeatureExecutor runner;
-  
-  CharSequence feature1;
-  
-  CharSequence feature2;
 }

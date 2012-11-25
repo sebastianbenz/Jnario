@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Parameters are defined in quotes")
 @SuppressWarnings("all")
 public class StepParametersFeatureParametersAreDefinedInQuotes extends StepParametersFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a feature with parameters")
@@ -30,6 +32,4 @@ public class StepParametersFeatureParametersAreDefinedInQuotes extends StepParam
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

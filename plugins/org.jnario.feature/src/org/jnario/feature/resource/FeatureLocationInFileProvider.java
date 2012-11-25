@@ -15,9 +15,9 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.util.ITextRegion;
-import org.eclipse.xtext.util.TextRegion;
 import org.eclipse.xtext.util.TextRegionWithLineInformation;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Step;
@@ -37,7 +37,7 @@ public class FeatureLocationInFileProvider extends XtendLocationInFileProvider {
 		if (element instanceof StepReference) {
 			nodes = findNodesForFeature(element, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE);
 		}else{
-			nodes = findNodesForFeature(element, FeaturePackage.Literals.STEP__NAME);
+			nodes = findNodesForFeature(element, XtendPackage.Literals.XTEND_FUNCTION__NAME);
 		}
 		if (!nodes.isEmpty()) {
 			int length = 0;

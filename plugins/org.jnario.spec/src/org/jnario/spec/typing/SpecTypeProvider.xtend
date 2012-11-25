@@ -26,7 +26,7 @@ class SpecTypeProvider extends JnarioTypeProvider {
 		val function = EcoreUtil2::getContainerOfType(expr, typeof(Example))
 		if (function==null)
 			return null;
-		return getPrimitiveVoid(function.expr)
+		return getPrimitiveVoid(function.expression)
 	}
 	
 }

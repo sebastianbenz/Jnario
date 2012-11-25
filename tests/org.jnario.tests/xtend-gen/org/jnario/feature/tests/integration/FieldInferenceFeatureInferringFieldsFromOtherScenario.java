@@ -17,6 +17,8 @@ import org.junit.runner.RunWith;
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class FieldInferenceFeatureInferringFieldsFromOtherScenario extends FieldInferenceFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a feature with two scenarios")
@@ -33,6 +35,4 @@ public class FieldInferenceFeatureInferringFieldsFromOtherScenario extends Field
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

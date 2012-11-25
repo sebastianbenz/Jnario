@@ -89,9 +89,21 @@ describe "Compiler"{
 			fact "should-be in closure" {
 		        [|1 should be 1].apply;  
 		        [|var int i; 1 should be 1].apply;
+		        [|].apply ;
 		    }
 		}
 		'''.executesSuccessfully
+	}
+	
+	fact "compiles rich strings"{
+		"
+		describe 'Richstrings'{
+			fact {
+				val x = 'world'
+		        '''hello «x»'''.toString => 'hello world'
+		    }
+		}
+		".executesSuccessfully
 	}
 	
 }

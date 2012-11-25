@@ -38,12 +38,31 @@
 <p>@author Sebastian Benz - Initial contribution and API</p>
 <h3 class="exampleGroup notrun"  id="Features_must_have_descriptions">Features must have descriptions</h3>
 <ul><li><p id="Feature_select_typeof_Feature_assertErrorContains_description" class="example notrun"><strong>''' Feature: '''.select[typeof[Feature]].assertErrorContains["description"]</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+      Feature: 
+    '''.select(typeof(Feature)).assertErrorContains(&quot;description&quot;)</pre>
 </li></ul>
 <h3 class="exampleGroup notrun"  id="Scenarios_must_have_descriptions">Scenarios must have descriptions</h3>
 <ul><li><p id="Feature_A_Feature_Scenario_select_typeof_Scenario_assertErrorContains_description" class="example notrun"><strong>''' Feature: A Feature Scenario: '''.select[typeof[Scenario]].assertErrorContains["description"]</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+      Feature: A Feature
+        Scenario:
+        
+    '''.select(typeof(Scenario)).assertErrorContains(&quot;description&quot;)</pre>
 </li></ul>
 <h3 class="exampleGroup notrun"  id="Steps_must_have_descriptions">Steps must have descriptions</h3>
 <ul><li><p id="Feature_A_feature_Scenario_A_scenario_Given_When_Then_allOf_typeof_Step_assertErrorContains_description" class="example notrun"><strong>''' Feature: A feature Scenario: A scenario Given When Then '''.allOf[typeof[Step]][assertErrorContains["description"]]</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+      Feature: A feature
+        Scenario: A scenario
+           Given 
+           When 
+           Then 
+           
+    '''.allOf(typeof(Step))[assertErrorContains(&quot;description&quot;)]</pre>
 </li></ul>
 <ul><li><p id="no_name_clash_between_features_and_imported_types" class="example notrun"><strong>no name clash between features and imported types</strong></p>
 <pre class="prettyprint lang-spec linenums">

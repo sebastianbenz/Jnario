@@ -109,8 +109,8 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 		public Boolean caseStep(Step step) {
 			String description;
 			if(step != null && step.getName() != null){
-				description = getFirstWord(stepReferenceName(step, FeaturePackage.Literals.STEP__NAME));
-				highlightStep(description, step, FeaturePackage.Literals.STEP__NAME);
+				description = getFirstWord(stepReferenceName(step, XtendPackage.Literals.XTEND_FUNCTION__NAME));
+				highlightStep(description, step, XtendPackage.Literals.XTEND_FUNCTION__NAME);
 			}else if(step instanceof StepReference){
 				StepReference ref = (StepReference) step;
 				highlightFirstWordOfReference(ref, ref.getReference());
@@ -172,7 +172,7 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 			}
 			else{
 				name = step.getName();
-				offset = offset(step, FeaturePackage.Literals.STEP__NAME);
+				offset = offset(step, XtendPackage.Literals.XTEND_FUNCTION__NAME);
 			}
 			if(name != null){
 				argumentsProvider.findStepArguments(step, new StepArgumentsProvider.ArgumentAcceptor() {

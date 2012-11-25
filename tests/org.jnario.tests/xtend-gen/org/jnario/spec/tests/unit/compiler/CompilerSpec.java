@@ -189,11 +189,21 @@ public class CompilerSpec {
     _builder.append("        ");
     _builder.append("[|var int i; 1 should be 1].apply;");
     _builder.newLine();
+    _builder.append("        ");
+    _builder.append("[|].apply ;");
+    _builder.newLine();
     _builder.append("    ");
     _builder.append("}");
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     this._behaviorExecutor.executesSuccessfully(_builder);
+  }
+  
+  @Test
+  @Named("compiles rich strings")
+  @Order(8)
+  public void _compilesRichStrings() throws Exception {
+    this._behaviorExecutor.executesSuccessfully("\n\t\tdescribe \'Richstrings\'{\n\t\t\tfact {\n\t\t\t\tval x = \'world\'\n\t\t        \'\'\'hello \u00ABx\u00BB\'\'\'.toString => \'hello world\'\n\t\t    }\n\t\t}\n\t\t");
   }
 }

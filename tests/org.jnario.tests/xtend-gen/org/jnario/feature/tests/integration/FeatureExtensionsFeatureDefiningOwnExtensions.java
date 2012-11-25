@@ -17,6 +17,10 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Defining own extensions")
 @SuppressWarnings("all")
 public class FeatureExtensionsFeatureDefiningOwnExtensions extends FeatureExtensionsFeature {
+  double value;
+  
+  double flooredValue;
+  
   @Test
   @Order(0)
   @Named("Given the value \\\"12.5\\\"")
@@ -52,8 +56,4 @@ public class FeatureExtensionsFeatureDefiningOwnExtensions extends FeatureExtens
      + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
-  
-  double value;
-  
-  double flooredValue;
 }

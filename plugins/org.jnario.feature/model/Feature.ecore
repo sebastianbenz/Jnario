@@ -13,8 +13,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
         eType="#//Step" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendMember ../../org.jnario/model/Jnario.ecore#//Executable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendFunction ../../org.jnario/model/Jnario.ecore#//Executable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="stepExpression" eType="#//StepExpression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="and" upperBound="-1" eType="#//Step"

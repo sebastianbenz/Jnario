@@ -8,9 +8,18 @@
  package org.jnario.feature.feature.impl;
 
 import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XExpression;
 
 public class StepImplCustom extends StepImpl {
 
+	@Override
+	public XExpression getExpression() {
+		if(getStepExpression() == null){
+			return super.getExpression();
+		}
+		return getStepExpression().getBlockExpression();
+	}
+	
 	@Override
 	public boolean isPending() {
 		if(getStepExpression() == null){

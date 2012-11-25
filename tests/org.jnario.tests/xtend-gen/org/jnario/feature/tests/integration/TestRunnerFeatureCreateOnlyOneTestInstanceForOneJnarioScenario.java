@@ -15,6 +15,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Create only one test instance for one jnario scenario")
 @SuppressWarnings("all")
 public class TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario extends TestRunnerFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a scenario that uses one variable in different steps")
@@ -39,6 +41,4 @@ public class TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario exte
   public void andItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

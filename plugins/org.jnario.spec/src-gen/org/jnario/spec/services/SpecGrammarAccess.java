@@ -1938,37 +1938,37 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal RICH_TEXT_START:
-	//	"\'\'\'" IN_RICH_STRING* ("\'" "\'"?)? "�";
+	//	"\'\'\'" IN_RICH_STRING* ("\'" "\'"?)? "«";
 	public TerminalRule getRICH_TEXT_STARTRule() {
 		return gaXtend.getRICH_TEXT_STARTRule();
 	} 
 
 	//terminal RICH_TEXT_END:
-	//	"�" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
+	//	"»" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
 	public TerminalRule getRICH_TEXT_ENDRule() {
 		return gaXtend.getRICH_TEXT_ENDRule();
 	} 
 
 	//terminal RICH_TEXT_INBETWEEN:
-	//	"�" IN_RICH_STRING* ("\'" "\'"?)? "�";
+	//	"»" IN_RICH_STRING* ("\'" "\'"?)? "«";
 	public TerminalRule getRICH_TEXT_INBETWEENRule() {
 		return gaXtend.getRICH_TEXT_INBETWEENRule();
 	} 
 
 	//terminal COMMENT_RICH_TEXT_INBETWEEN:
-	//	"��" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'" "\'"?)? "�")?;
+	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'" "\'"?)? "«")?;
 	public TerminalRule getCOMMENT_RICH_TEXT_INBETWEENRule() {
 		return gaXtend.getCOMMENT_RICH_TEXT_INBETWEENRule();
 	} 
 
 	//terminal COMMENT_RICH_TEXT_END:
-	//	"��" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF) | EOF);
+	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF) | EOF);
 	public TerminalRule getCOMMENT_RICH_TEXT_ENDRule() {
 		return gaXtend.getCOMMENT_RICH_TEXT_ENDRule();
 	} 
 
 	//terminal fragment IN_RICH_STRING:
-	//	"\'\'" !("�" | "\'") | "\'" !("�" | "\'") | !("�" | "\'");
+	//	"\'\'" !("«" | "\'") | "\'" !("«" | "\'") | !("«" | "\'");
 	public TerminalRule getIN_RICH_STRINGRule() {
 		return gaXtend.getIN_RICH_STRINGRule();
 	} 

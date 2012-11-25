@@ -22,6 +22,8 @@ import org.junit.runner.RunWith;
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword extends ReferencesForStepsFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a scenario with reused steps with different keywords that throw an exception")
@@ -50,6 +52,4 @@ public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword exten
      + "\n     args.first is " + new StringDescription().appendValue(_first).toString() + "\n", _doubleArrow);
     
   }
-  
-  CharSequence jnarioFile;
 }

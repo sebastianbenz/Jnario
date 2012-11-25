@@ -41,7 +41,7 @@ public class UsingShouldSpec {
     boolean _should_be = Should.<Boolean>should_be(
       Boolean.valueOf(true), true);
     Assert.assertTrue("\nExpected // equality\n\t\ttrue should be true but"
-     + "\n     // equality\n\t\ttrue should be true is " + new StringDescription().appendValue(null).toString() + "\n", _should_be);
+     + "\n     // equality\n\t\ttrue should be true is " + new StringDescription().appendValue(true).toString() + "\n", _should_be);
     
     int _plus = (1 + 1);
     boolean _should_be_1 = Should.should_be(Integer.valueOf(_plus), Integer.valueOf(1));
@@ -52,7 +52,7 @@ public class UsingShouldSpec {
     boolean _should_be_2 = Should.<String>should_be(
       "something", _nullValue);
     Assert.assertFalse("\nExpected \"something\" should not be null but"
-     + "\n     \"something\" should not be null is " + new StringDescription().appendValue(null).toString() + "\n", _should_be_2);
+     + "\n     \"something\" should not be null is " + new StringDescription().appendValue(true).toString() + "\n", _should_be_2);
     
     int _plus_1 = (1 + 1);
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
@@ -72,12 +72,12 @@ public class UsingShouldSpec {
     boolean _should_contain = Should.should_contain(
       "something", "thing");
     Assert.assertTrue("\nExpected // strings\n\t\t\"something\" should contain \"thing\" but"
-     + "\n     // strings\n\t\t\"something\" should contain \"thing\" is " + new StringDescription().appendValue(null).toString() + "\n", _should_contain);
+     + "\n     // strings\n\t\t\"something\" should contain \"thing\" is " + new StringDescription().appendValue(true).toString() + "\n", _should_contain);
     
     boolean _should_contain_1 = Should.should_contain(
       "something", "any");
     Assert.assertFalse("\nExpected \"something\" should not contain \"any\" but"
-     + "\n     \"something\" should not contain \"any\" is " + new StringDescription().appendValue(null).toString() + "\n", _should_contain_1);
+     + "\n     \"something\" should not contain \"any\" is " + new StringDescription().appendValue(true).toString() + "\n", _should_contain_1);
     
     List<String> _list = JnarioCollectionLiterals.<String>list("something");
     boolean _should_contain_2 = Should.<String>should_contain(_list, "something");

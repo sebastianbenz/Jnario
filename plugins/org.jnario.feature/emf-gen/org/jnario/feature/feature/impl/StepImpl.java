@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.xtend.core.xtend.impl.XtendMemberImplCustom;
+import org.eclipse.xtend.core.xtend.impl.XtendFunctionImpl;
 
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Step;
@@ -35,7 +35,6 @@ import org.jnario.feature.feature.StepExpression;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.jnario.feature.feature.impl.StepImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.jnario.feature.feature.impl.StepImpl#getStepExpression <em>Step Expression</em>}</li>
  *   <li>{@link org.jnario.feature.feature.impl.StepImpl#getAnd <em>And</em>}</li>
  * </ul>
@@ -43,28 +42,8 @@ import org.jnario.feature.feature.StepExpression;
  *
  * @generated
  */
-public class StepImpl extends XtendMemberImplCustom implements Step
+public class StepImpl extends XtendFunctionImpl implements Step
 {
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getStepExpression() <em>Step Expression</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -104,29 +83,6 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	protected EClass eStaticClass()
 	{
 		return FeaturePackage.Literals.STEP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName()
-	{
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName)
-	{
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FeaturePackage.STEP__NAME, oldName, name));
 	}
 
 	/**
@@ -231,8 +187,6 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	{
 		switch (featureID)
 		{
-			case FeaturePackage.STEP__NAME:
-				return getName();
 			case FeaturePackage.STEP__STEP_EXPRESSION:
 				return getStepExpression();
 			case FeaturePackage.STEP__AND:
@@ -252,9 +206,6 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	{
 		switch (featureID)
 		{
-			case FeaturePackage.STEP__NAME:
-				setName((String)newValue);
-				return;
 			case FeaturePackage.STEP__STEP_EXPRESSION:
 				setStepExpression((StepExpression)newValue);
 				return;
@@ -276,9 +227,6 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	{
 		switch (featureID)
 		{
-			case FeaturePackage.STEP__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 			case FeaturePackage.STEP__STEP_EXPRESSION:
 				setStepExpression((StepExpression)null);
 				return;
@@ -299,31 +247,12 @@ public class StepImpl extends XtendMemberImplCustom implements Step
 	{
 		switch (featureID)
 		{
-			case FeaturePackage.STEP__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case FeaturePackage.STEP__STEP_EXPRESSION:
 				return stepExpression != null;
 			case FeaturePackage.STEP__AND:
 				return and != null && !and.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString()
-	{
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //StepImpl

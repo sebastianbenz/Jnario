@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Using JUnit Rules")
 @SuppressWarnings("all")
 public class UsingJUnitRulesInFeaturesFeatureUsingJUnitRules extends UsingJUnitRulesInFeaturesFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a feature with JUnit rules")
@@ -30,6 +32,4 @@ public class UsingJUnitRulesInFeaturesFeatureUsingJUnitRules extends UsingJUnitR
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

@@ -17,6 +17,8 @@ import org.junit.runner.RunWith;
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class FieldInferenceFeatureInferringFieldsFromBackground extends FieldInferenceFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a feature with a background and two scenarios")
@@ -33,6 +35,4 @@ public class FieldInferenceFeatureInferringFieldsFromBackground extends FieldInf
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

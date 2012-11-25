@@ -42,7 +42,8 @@ public class AssertionIntroductionSpec extends AssertionSpec {
     try{
       Assert.assertTrue("\nExpected false but" + " did not." + "\n", false);
       
-      Assert.fail("Expected " + AssertionError.class.getName() + " in \n     {assert false}\n with:");
+      Assert.fail("Expected " + AssertionError.class.getName() + " in \n     {assert false}\n with:"
+       + "\n     assert false is " + new StringDescription().appendValue(true).toString());
     }catch(AssertionError e){
     }
   }

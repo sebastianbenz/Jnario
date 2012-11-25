@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Simple calculator test with background and references")
 @SuppressWarnings("all")
 public class CalculatorFeatureSimpleCalculatorTestWithBackgroundAndReferences extends CalculatorFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a feature with a background and references")
@@ -30,6 +32,4 @@ public class CalculatorFeatureSimpleCalculatorTestWithBackgroundAndReferences ex
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

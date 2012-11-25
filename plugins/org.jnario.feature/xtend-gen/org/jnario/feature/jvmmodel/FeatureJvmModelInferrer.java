@@ -479,6 +479,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
               };
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
             FeatureJvmModelInferrer.this.markAsPending(it, step);
+            FeatureJvmModelInferrer.this._iJvmModelAssociator.associatePrimary(step, it);
             TestRuntimeSupport _testRuntime = FeatureJvmModelInferrer.this.getTestRuntime();
             _testRuntime.markAsTestMethod(step, it);
             EList<JvmAnnotationReference> _annotations = it.getAnnotations();
@@ -527,6 +528,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             JvmAnnotationReference _annotation = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Order.class, Integer.valueOf(_intValue));
             FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
             String name = FeatureJvmModelInferrer.this._stepNameProvider.describe(step);
+            FeatureJvmModelInferrer.this._iJvmModelAssociator.associatePrimary(step, it);
             FeatureJvmModelInferrer.this.markAsPending(it, step);
             EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
             JvmAnnotationReference _annotation_1 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Named.class, name);

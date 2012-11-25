@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtend.core.validation.IssueCodes;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendImport;
 import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.CrossReference;
@@ -46,7 +47,6 @@ import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
 import org.jnario.ExampleTable;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
-import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
@@ -102,7 +102,7 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 		String name = nameProvider.nameOf(step);
 		name = nameProvider.removeKeywords(name);
 		if(isNullOrEmpty(name)){
-			error("Steps should have a description", FeaturePackage.Literals.STEP__NAME);
+			error("Steps should have a description", XtendPackage.Literals.XTEND_FUNCTION__NAME);
 		}
 	}
 	
@@ -239,4 +239,11 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 		getMessageAcceptor().acceptWarning(message, source, feature, ValidationMessageAcceptor.INSIGNIFICANT_INDEX, code, issueData);
 	}
 
+	@Check
+	public void checkAbstract(XtendFunction function) {
+		if (function instanceof Step) {
+			return;
+		}
+		super.checkAbstract(function);
+	}
 }

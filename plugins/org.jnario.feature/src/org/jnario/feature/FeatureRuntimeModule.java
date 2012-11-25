@@ -66,6 +66,7 @@ import org.jnario.feature.naming.FeatureQualifiedNameProvider;
 import org.jnario.feature.parser.CustomFeatureParser;
 import org.jnario.feature.resource.FeatureLocationInFileProvider;
 import org.jnario.feature.scoping.FeatureScopeProvider;
+import org.jnario.feature.typing.FeatureTypeProvider;
 import org.jnario.feature.validation.FeatureClasspathBasedChecks;
 import org.jnario.feature.validation.FeatureResourceValidator;
 import org.jnario.jvmmodel.ExecutableProvider;
@@ -76,7 +77,6 @@ import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.HashBasedSpec2ResultMapping;
 import org.jnario.scoping.JnarioExtensionClassNameProvider;
-import org.jnario.typing.JnarioTypeProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -119,7 +119,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	
 	@Override
 	public Class<? extends ITypeProvider> bindITypeProvider(){
-		return JnarioTypeProvider.class;
+		return FeatureTypeProvider.class;
 	}
 	
 	@Override

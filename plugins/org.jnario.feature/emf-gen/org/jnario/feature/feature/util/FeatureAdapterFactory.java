@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendMember;
 
 import org.jnario.Executable;
@@ -191,6 +192,11 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 			public Adapter caseXtendMember(XtendMember object)
 			{
 				return createXtendMemberAdapter();
+			}
+			@Override
+			public Adapter caseXtendFunction(XtendFunction object)
+			{
+				return createXtendFunctionAdapter();
 			}
 			@Override
 			public Adapter caseXtendFile(XtendFile object)
@@ -530,6 +536,21 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createXtendMemberAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendFunction <em>Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtend.core.xtend.XtendFunction
+	 * @generated
+	 */
+	public Adapter createXtendFunctionAdapter()
 	{
 		return null;
 	}

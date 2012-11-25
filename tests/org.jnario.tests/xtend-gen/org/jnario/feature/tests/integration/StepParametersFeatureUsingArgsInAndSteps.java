@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Using args in And Steps")
 @SuppressWarnings("all")
 public class StepParametersFeatureUsingArgsInAndSteps extends StepParametersFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a scenario with \\\'and\\\' step arguments")
@@ -30,6 +32,4 @@ public class StepParametersFeatureUsingArgsInAndSteps extends StepParametersFeat
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

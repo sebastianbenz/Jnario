@@ -17,6 +17,10 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Referencing steps with imported extensions")
 @SuppressWarnings("all")
 public class FeatureExtensionsFeatureReferencingStepsWithImportedExtensions extends FeatureExtensionsFeature {
+  double value;
+  
+  double flooredValue;
+  
   @Test
   @Order(0)
   @Named("Given the value \\\"13.9\\\"")
@@ -50,8 +54,4 @@ public class FeatureExtensionsFeatureReferencingStepsWithImportedExtensions exte
      + "\n     args.first is " + new StringDescription().appendValue(_first).toString() + "\n", _doubleArrow);
     
   }
-  
-  double value;
-  
-  double flooredValue;
 }

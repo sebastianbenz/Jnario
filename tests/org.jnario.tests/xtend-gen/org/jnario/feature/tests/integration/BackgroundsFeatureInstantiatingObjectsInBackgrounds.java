@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Instantiating Objects in Backgrounds")
 @SuppressWarnings("all")
 public class BackgroundsFeatureInstantiatingObjectsInBackgrounds extends BackgroundsFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a feature with a background")
@@ -30,6 +32,4 @@ public class BackgroundsFeatureInstantiatingObjectsInBackgrounds extends Backgro
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

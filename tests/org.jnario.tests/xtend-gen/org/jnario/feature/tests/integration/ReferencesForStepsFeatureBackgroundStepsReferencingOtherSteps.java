@@ -19,6 +19,14 @@ import org.junit.runner.RunWith;
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps extends ReferencesForStepsFeature {
+  @Inject
+  @Extension
+  public BehaviorExecutor behaviorExecutor;
+  
+  CharSequence jnarioFile1;
+  
+  CharSequence jnarioFile2;
+  
   @Test
   @Order(0)
   @Named("Given a feature")
@@ -46,12 +54,4 @@ public class ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps exten
     this.behaviorExecutor.executesSuccessfully(this.jnarioFile1);
     this.behaviorExecutor.executesSuccessfully(this.jnarioFile2);
   }
-  
-  @Inject
-  @Extension
-  public BehaviorExecutor behaviorExecutor;
-  
-  CharSequence jnarioFile1;
-  
-  CharSequence jnarioFile2;
 }

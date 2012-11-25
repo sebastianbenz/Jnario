@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Parameter definition in steps and Background")
 @SuppressWarnings("all")
 public class StepParametersFeatureParameterDefinitionInStepsAndBackground extends StepParametersFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I define parameters in a background")
@@ -30,6 +32,4 @@ public class StepParametersFeatureParameterDefinitionInStepsAndBackground extend
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

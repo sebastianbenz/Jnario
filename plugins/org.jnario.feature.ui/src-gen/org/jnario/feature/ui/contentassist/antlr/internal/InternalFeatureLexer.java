@@ -2562,19 +2562,19 @@ public class InternalFeatureLexer extends Lexer {
                     if ( (LA13_1=='\'') ) {
                         int LA13_4 = input.LA(3);
 
-                        if ( ((LA13_4>='\u0000' && LA13_4<='&')||(LA13_4>='(' && LA13_4<='\uFFFC')||(LA13_4>='\uFFFE' && LA13_4<='\uFFFF')) ) {
+                        if ( ((LA13_4>='\u0000' && LA13_4<='&')||(LA13_4>='(' && LA13_4<='\u00AA')||(LA13_4>='\u00AC' && LA13_4<='\uFFFF')) ) {
                             alt13=1;
                         }
 
 
                     }
-                    else if ( ((LA13_1>='\u0000' && LA13_1<='&')||(LA13_1>='(' && LA13_1<='\uFFFC')||(LA13_1>='\uFFFE' && LA13_1<='\uFFFF')) ) {
+                    else if ( ((LA13_1>='\u0000' && LA13_1<='&')||(LA13_1>='(' && LA13_1<='\u00AA')||(LA13_1>='\u00AC' && LA13_1<='\uFFFF')) ) {
                         alt13=1;
                     }
 
 
                 }
-                else if ( ((LA13_0>='\u0000' && LA13_0<='&')||(LA13_0>='(' && LA13_0<='\uFFFC')||(LA13_0>='\uFFFE' && LA13_0<='\uFFFF')) ) {
+                else if ( ((LA13_0>='\u0000' && LA13_0<='&')||(LA13_0>='(' && LA13_0<='\u00AA')||(LA13_0>='\u00AC' && LA13_0<='\uFFFF')) ) {
                     alt13=1;
                 }
 
@@ -2685,8 +2685,8 @@ public class InternalFeatureLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_START;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25357:22: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25357:24: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD'
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25357:22: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25357:24: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB'
             {
             match("'''"); 
 
@@ -2702,19 +2702,19 @@ public class InternalFeatureLexer extends Lexer {
                     if ( (LA17_1=='\'') ) {
                         int LA17_4 = input.LA(3);
 
-                        if ( ((LA17_4>='\u0000' && LA17_4<='&')||(LA17_4>='(' && LA17_4<='\uFFFC')||(LA17_4>='\uFFFE' && LA17_4<='\uFFFF')) ) {
+                        if ( ((LA17_4>='\u0000' && LA17_4<='&')||(LA17_4>='(' && LA17_4<='\u00AA')||(LA17_4>='\u00AC' && LA17_4<='\uFFFF')) ) {
                             alt17=1;
                         }
 
 
                     }
-                    else if ( ((LA17_1>='\u0000' && LA17_1<='&')||(LA17_1>='(' && LA17_1<='\uFFFC')||(LA17_1>='\uFFFE' && LA17_1<='\uFFFF')) ) {
+                    else if ( ((LA17_1>='\u0000' && LA17_1<='&')||(LA17_1>='(' && LA17_1<='\u00AA')||(LA17_1>='\u00AC' && LA17_1<='\uFFFF')) ) {
                         alt17=1;
                     }
 
 
                 }
-                else if ( ((LA17_0>='\u0000' && LA17_0<='&')||(LA17_0>='(' && LA17_0<='\uFFFC')||(LA17_0>='\uFFFE' && LA17_0<='\uFFFF')) ) {
+                else if ( ((LA17_0>='\u0000' && LA17_0<='&')||(LA17_0>='(' && LA17_0<='\u00AA')||(LA17_0>='\u00AC' && LA17_0<='\uFFFF')) ) {
                     alt17=1;
                 }
 
@@ -2769,7 +2769,7 @@ public class InternalFeatureLexer extends Lexer {
 
             }
 
-            match('\uFFFD'); 
+            match('\u00AB'); 
 
             }
 
@@ -2786,10 +2786,10 @@ public class InternalFeatureLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_END;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25359:20: ( '\\uFFFD' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25359:22: '\\uFFFD' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25359:20: ( '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25359:22: '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
             {
-            match('\uFFFD'); 
+            match('\u00BB'); 
             // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25359:31: ( RULE_IN_RICH_STRING )*
             loop20:
             do {
@@ -2802,19 +2802,19 @@ public class InternalFeatureLexer extends Lexer {
                     if ( (LA20_1=='\'') ) {
                         int LA20_4 = input.LA(3);
 
-                        if ( ((LA20_4>='\u0000' && LA20_4<='&')||(LA20_4>='(' && LA20_4<='\uFFFC')||(LA20_4>='\uFFFE' && LA20_4<='\uFFFF')) ) {
+                        if ( ((LA20_4>='\u0000' && LA20_4<='&')||(LA20_4>='(' && LA20_4<='\u00AA')||(LA20_4>='\u00AC' && LA20_4<='\uFFFF')) ) {
                             alt20=1;
                         }
 
 
                     }
-                    else if ( ((LA20_1>='\u0000' && LA20_1<='&')||(LA20_1>='(' && LA20_1<='\uFFFC')||(LA20_1>='\uFFFE' && LA20_1<='\uFFFF')) ) {
+                    else if ( ((LA20_1>='\u0000' && LA20_1<='&')||(LA20_1>='(' && LA20_1<='\u00AA')||(LA20_1>='\u00AC' && LA20_1<='\uFFFF')) ) {
                         alt20=1;
                     }
 
 
                 }
-                else if ( ((LA20_0>='\u0000' && LA20_0<='&')||(LA20_0>='(' && LA20_0<='\uFFFC')||(LA20_0>='\uFFFE' && LA20_0<='\uFFFF')) ) {
+                else if ( ((LA20_0>='\u0000' && LA20_0<='&')||(LA20_0>='(' && LA20_0<='\u00AA')||(LA20_0>='\u00AC' && LA20_0<='\uFFFF')) ) {
                     alt20=1;
                 }
 
@@ -2925,10 +2925,10 @@ public class InternalFeatureLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_INBETWEEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25361:26: ( '\\uFFFD' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25361:28: '\\uFFFD' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD'
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25361:26: ( '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25361:28: '\\u00BB' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB'
             {
-            match('\uFFFD'); 
+            match('\u00BB'); 
             // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25361:37: ( RULE_IN_RICH_STRING )*
             loop24:
             do {
@@ -2941,19 +2941,19 @@ public class InternalFeatureLexer extends Lexer {
                     if ( (LA24_1=='\'') ) {
                         int LA24_4 = input.LA(3);
 
-                        if ( ((LA24_4>='\u0000' && LA24_4<='&')||(LA24_4>='(' && LA24_4<='\uFFFC')||(LA24_4>='\uFFFE' && LA24_4<='\uFFFF')) ) {
+                        if ( ((LA24_4>='\u0000' && LA24_4<='&')||(LA24_4>='(' && LA24_4<='\u00AA')||(LA24_4>='\u00AC' && LA24_4<='\uFFFF')) ) {
                             alt24=1;
                         }
 
 
                     }
-                    else if ( ((LA24_1>='\u0000' && LA24_1<='&')||(LA24_1>='(' && LA24_1<='\uFFFC')||(LA24_1>='\uFFFE' && LA24_1<='\uFFFF')) ) {
+                    else if ( ((LA24_1>='\u0000' && LA24_1<='&')||(LA24_1>='(' && LA24_1<='\u00AA')||(LA24_1>='\u00AC' && LA24_1<='\uFFFF')) ) {
                         alt24=1;
                     }
 
 
                 }
-                else if ( ((LA24_0>='\u0000' && LA24_0<='&')||(LA24_0>='(' && LA24_0<='\uFFFC')||(LA24_0>='\uFFFE' && LA24_0<='\uFFFF')) ) {
+                else if ( ((LA24_0>='\u0000' && LA24_0<='&')||(LA24_0>='(' && LA24_0<='\u00AA')||(LA24_0>='\u00AC' && LA24_0<='\uFFFF')) ) {
                     alt24=1;
                 }
 
@@ -3008,7 +3008,7 @@ public class InternalFeatureLexer extends Lexer {
 
             }
 
-            match('\uFFFD'); 
+            match('\u00AB'); 
 
             }
 
@@ -3025,10 +3025,10 @@ public class InternalFeatureLexer extends Lexer {
         try {
             int _type = RULE_COMMENT_RICH_TEXT_INBETWEEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25363:34: ( '\\uFFFD\\uFFFD' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )? )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25363:36: '\\uFFFD\\uFFFD' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )?
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25363:34: ( '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )? )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25363:36: '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )?
             {
-            match("\uFFFD\uFFFD"); 
+            match("\u00AB\u00AB"); 
 
             // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25363:51: (~ ( ( '\\n' | '\\r' ) ) )*
             loop27:
@@ -3063,7 +3063,7 @@ public class InternalFeatureLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25363:67: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )?
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25363:67: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB' )?
             int alt32=2;
             int LA32_0 = input.LA(1);
 
@@ -3072,7 +3072,7 @@ public class InternalFeatureLexer extends Lexer {
             }
             switch (alt32) {
                 case 1 :
-                    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25363:68: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD'
+                    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25363:68: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\u00AB'
                     {
                     // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25363:68: ( '\\r' )?
                     int alt28=2;
@@ -3105,19 +3105,19 @@ public class InternalFeatureLexer extends Lexer {
                             if ( (LA29_1=='\'') ) {
                                 int LA29_4 = input.LA(3);
 
-                                if ( ((LA29_4>='\u0000' && LA29_4<='&')||(LA29_4>='(' && LA29_4<='\uFFFC')||(LA29_4>='\uFFFE' && LA29_4<='\uFFFF')) ) {
+                                if ( ((LA29_4>='\u0000' && LA29_4<='&')||(LA29_4>='(' && LA29_4<='\u00AA')||(LA29_4>='\u00AC' && LA29_4<='\uFFFF')) ) {
                                     alt29=1;
                                 }
 
 
                             }
-                            else if ( ((LA29_1>='\u0000' && LA29_1<='&')||(LA29_1>='(' && LA29_1<='\uFFFC')||(LA29_1>='\uFFFE' && LA29_1<='\uFFFF')) ) {
+                            else if ( ((LA29_1>='\u0000' && LA29_1<='&')||(LA29_1>='(' && LA29_1<='\u00AA')||(LA29_1>='\u00AC' && LA29_1<='\uFFFF')) ) {
                                 alt29=1;
                             }
 
 
                         }
-                        else if ( ((LA29_0>='\u0000' && LA29_0<='&')||(LA29_0>='(' && LA29_0<='\uFFFC')||(LA29_0>='\uFFFE' && LA29_0<='\uFFFF')) ) {
+                        else if ( ((LA29_0>='\u0000' && LA29_0<='&')||(LA29_0>='(' && LA29_0<='\u00AA')||(LA29_0>='\u00AC' && LA29_0<='\uFFFF')) ) {
                             alt29=1;
                         }
 
@@ -3172,7 +3172,7 @@ public class InternalFeatureLexer extends Lexer {
 
                     }
 
-                    match('\uFFFD'); 
+                    match('\u00AB'); 
 
                     }
                     break;
@@ -3195,10 +3195,10 @@ public class InternalFeatureLexer extends Lexer {
         try {
             int _type = RULE_COMMENT_RICH_TEXT_END;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25365:28: ( '\\uFFFD\\uFFFD' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF ) )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25365:30: '\\uFFFD\\uFFFD' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25365:28: ( '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF ) )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25365:30: '\\u00AB\\u00AB' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
             {
-            match("\uFFFD\uFFFD"); 
+            match("\u00AB\u00AB"); 
 
             // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25365:45: (~ ( ( '\\n' | '\\r' ) ) )*
             loop33:
@@ -3277,19 +3277,19 @@ public class InternalFeatureLexer extends Lexer {
                             if ( (LA35_1=='\'') ) {
                                 int LA35_4 = input.LA(3);
 
-                                if ( ((LA35_4>='\u0000' && LA35_4<='&')||(LA35_4>='(' && LA35_4<='\uFFFC')||(LA35_4>='\uFFFE' && LA35_4<='\uFFFF')) ) {
+                                if ( ((LA35_4>='\u0000' && LA35_4<='&')||(LA35_4>='(' && LA35_4<='\u00AA')||(LA35_4>='\u00AC' && LA35_4<='\uFFFF')) ) {
                                     alt35=1;
                                 }
 
 
                             }
-                            else if ( ((LA35_1>='\u0000' && LA35_1<='&')||(LA35_1>='(' && LA35_1<='\uFFFC')||(LA35_1>='\uFFFE' && LA35_1<='\uFFFF')) ) {
+                            else if ( ((LA35_1>='\u0000' && LA35_1<='&')||(LA35_1>='(' && LA35_1<='\u00AA')||(LA35_1>='\u00AC' && LA35_1<='\uFFFF')) ) {
                                 alt35=1;
                             }
 
 
                         }
-                        else if ( ((LA35_0>='\u0000' && LA35_0<='&')||(LA35_0>='(' && LA35_0<='\uFFFC')||(LA35_0>='\uFFFE' && LA35_0<='\uFFFF')) ) {
+                        else if ( ((LA35_0>='\u0000' && LA35_0<='&')||(LA35_0>='(' && LA35_0<='\u00AA')||(LA35_0>='\u00AC' && LA35_0<='\uFFFF')) ) {
                             alt35=1;
                         }
 
@@ -3411,10 +3411,10 @@ public class InternalFeatureLexer extends Lexer {
     // $ANTLR start "RULE_IN_RICH_STRING"
     public final void mRULE_IN_RICH_STRING() throws RecognitionException {
         try {
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25367:30: ( ( '\\'\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | '\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | ~ ( ( '\\uFFFD' | '\\'' ) ) ) )
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25367:32: ( '\\'\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | '\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | ~ ( ( '\\uFFFD' | '\\'' ) ) )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25367:30: ( ( '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | '\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | ~ ( ( '\\u00AB' | '\\'' ) ) ) )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25367:32: ( '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | '\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | ~ ( ( '\\u00AB' | '\\'' ) ) )
             {
-            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25367:32: ( '\\'\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | '\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | ~ ( ( '\\uFFFD' | '\\'' ) ) )
+            // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25367:32: ( '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | '\\'' ~ ( ( '\\u00AB' | '\\'' ) ) | ~ ( ( '\\u00AB' | '\\'' ) ) )
             int alt40=3;
             int LA40_0 = input.LA(1);
 
@@ -3424,7 +3424,7 @@ public class InternalFeatureLexer extends Lexer {
                 if ( (LA40_1=='\'') ) {
                     alt40=1;
                 }
-                else if ( ((LA40_1>='\u0000' && LA40_1<='&')||(LA40_1>='(' && LA40_1<='\uFFFC')||(LA40_1>='\uFFFE' && LA40_1<='\uFFFF')) ) {
+                else if ( ((LA40_1>='\u0000' && LA40_1<='&')||(LA40_1>='(' && LA40_1<='\u00AA')||(LA40_1>='\u00AC' && LA40_1<='\uFFFF')) ) {
                     alt40=2;
                 }
                 else {
@@ -3434,7 +3434,7 @@ public class InternalFeatureLexer extends Lexer {
                     throw nvae;
                 }
             }
-            else if ( ((LA40_0>='\u0000' && LA40_0<='&')||(LA40_0>='(' && LA40_0<='\uFFFC')||(LA40_0>='\uFFFE' && LA40_0<='\uFFFF')) ) {
+            else if ( ((LA40_0>='\u0000' && LA40_0<='&')||(LA40_0>='(' && LA40_0<='\u00AA')||(LA40_0>='\u00AC' && LA40_0<='\uFFFF')) ) {
                 alt40=3;
             }
             else {
@@ -3445,11 +3445,11 @@ public class InternalFeatureLexer extends Lexer {
             }
             switch (alt40) {
                 case 1 :
-                    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25367:33: '\\'\\'' ~ ( ( '\\uFFFD' | '\\'' ) )
+                    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25367:33: '\\'\\'' ~ ( ( '\\u00AB' | '\\'' ) )
                     {
                     match("''"); 
 
-                    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\uFFFC')||(input.LA(1)>='\uFFFE' && input.LA(1)<='\uFFFF') ) {
+                    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\u00AA')||(input.LA(1)>='\u00AC' && input.LA(1)<='\uFFFF') ) {
                         input.consume();
 
                     }
@@ -3462,10 +3462,10 @@ public class InternalFeatureLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25367:59: '\\'' ~ ( ( '\\uFFFD' | '\\'' ) )
+                    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25367:59: '\\'' ~ ( ( '\\u00AB' | '\\'' ) )
                     {
                     match('\''); 
-                    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\uFFFC')||(input.LA(1)>='\uFFFE' && input.LA(1)<='\uFFFF') ) {
+                    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\u00AA')||(input.LA(1)>='\u00AC' && input.LA(1)<='\uFFFF') ) {
                         input.consume();
 
                     }
@@ -3478,9 +3478,9 @@ public class InternalFeatureLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25367:83: ~ ( ( '\\uFFFD' | '\\'' ) )
+                    // ../org.jnario.feature.ui/src-gen/org/jnario/feature/ui/contentassist/antlr/internal/InternalFeature.g:25367:83: ~ ( ( '\\u00AB' | '\\'' ) )
                     {
-                    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\uFFFC')||(input.LA(1)>='\uFFFE' && input.LA(1)<='\uFFFF') ) {
+                    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\u00AA')||(input.LA(1)>='\u00AC' && input.LA(1)<='\uFFFF') ) {
                         input.consume();
 
                     }
@@ -5392,212 +5392,190 @@ public class InternalFeatureLexer extends Lexer {
         }
     }
     static final String DFA59_eotS =
-        "\1\uffff\1\72\1\74\1\76\1\100\3\102\1\112\1\114\1\117\1\121\1\123"+
-        "\1\126\1\131\1\134\1\uffff\4\102\5\uffff\2\102\2\uffff\2\102\1\174"+
-        "\5\102\2\uffff\7\102\1\67\1\u0096\2\u0099\1\67\1\uffff\1\67\13\uffff"+
-        "\1\102\1\uffff\6\102\4\uffff\1\u00a7\20\uffff\14\102\1\u00b5\5\uffff"+
-        "\3\102\1\u00ba\1\102\2\uffff\4\102\2\uffff\11\102\1\u00c9\2\uffff"+
-        "\1\102\1\u00cb\6\102\1\u0092\1\uffff\1\u00d6\2\u0096\2\uffff\1\u0099"+
-        "\3\uffff\1\u00d9\1\u00da\2\102\1\u00dd\5\102\2\uffff\5\102\1\u00e8"+
-        "\7\102\1\uffff\1\u00f1\1\u00f2\2\102\1\uffff\3\102\1\u00f8\12\102"+
-        "\1\uffff\1\102\1\uffff\6\102\1\u010c\1\u010e\1\uffff\1\u0111\1\uffff"+
-        "\2\u0096\2\uffff\2\102\1\uffff\1\u0115\2\102\1\u0118\6\102\1\uffff"+
-        "\10\102\2\uffff\1\u0127\3\102\1\u012b\1\uffff\3\102\1\u0130\2\102"+
-        "\1\uffff\12\102\2\u010c\3\uffff\2\u0111\1\uffff\1\u0096\1\u0142"+
-        "\1\102\1\uffff\1\102\1\u0145\1\uffff\1\u0146\1\u0147\3\102\1\u014b"+
-        "\10\102\1\uffff\3\102\1\uffff\2\102\1\u015a\1\102\1\uffff\4\102"+
-        "\1\u0160\1\102\1\u0162\2\102\2\uffff\1\102\2\u010c\2\u0111\1\u0168"+
-        "\1\uffff\1\u0169\1\u016a\3\uffff\1\u016b\1\u016c\1\u016d\1\uffff"+
-        "\1\102\1\u016f\3\102\1\u0173\2\102\1\u0176\4\102\1\u017b\1\uffff"+
-        "\1\u017c\1\u017d\3\102\1\uffff\1\102\1\uffff\1\u0182\1\uffff\1\102"+
-        "\1\u010c\1\u0111\6\uffff\1\u0184\1\uffff\1\102\1\u0186\1\u0187\1"+
-        "\uffff\2\102\1\uffff\1\102\1\u018b\2\102\3\uffff\3\102\1\u0191\1"+
-        "\uffff\1\102\1\uffff\1\102\2\uffff\2\102\1\u0196\1\uffff\1\102\1"+
-        "\uffff\3\102\1\uffff\1\102\1\u019c\2\102\1\uffff\1\u019f\1\102\1"+
-        "\u01a1\1\uffff\1\102\1\uffff\1\u01a3\1\u01a4\1\uffff\1\102\1\uffff"+
-        "\1\102\3\uffff\2\102\1\u01a9\1\uffff\1\102";
+        "\1\uffff\1\73\1\75\1\77\1\101\3\103\1\113\1\115\1\120\1\122\1\124"+
+        "\1\127\1\132\1\135\1\uffff\4\103\5\uffff\2\103\2\uffff\2\103\1\175"+
+        "\5\103\2\uffff\7\103\1\70\1\u0097\1\70\2\u009b\1\70\1\uffff\1\70"+
+        "\13\uffff\1\103\1\uffff\6\103\4\uffff\1\u00a9\20\uffff\14\103\1"+
+        "\u00b7\5\uffff\3\103\1\u00bc\1\103\2\uffff\4\103\2\uffff\11\103"+
+        "\1\u00cb\2\uffff\1\103\1\u00cd\6\103\1\u0093\1\uffff\2\u0097\2\uffff"+
+        "\1\u00da\1\uffff\1\u009b\3\uffff\1\u00db\1\u00dc\2\103\1\u00df\5"+
+        "\103\2\uffff\5\103\1\u00ea\7\103\1\uffff\1\u00f3\1\u00f4\2\103\1"+
+        "\uffff\3\103\1\u00fa\12\103\1\uffff\1\103\1\uffff\6\103\1\u010e"+
+        "\2\u0097\1\u00da\1\uffff\1\u0113\3\uffff\2\103\1\uffff\1\u0116\2"+
+        "\103\1\u0119\6\103\1\uffff\10\103\2\uffff\1\u0128\3\103\1\u012c"+
+        "\1\uffff\3\103\1\u0131\2\103\1\uffff\12\103\2\u010e\2\uffff\1\u0097"+
+        "\2\u0113\1\uffff\1\u0143\1\103\1\uffff\1\103\1\u0146\1\uffff\1\u0147"+
+        "\1\u0148\3\103\1\u014c\10\103\1\uffff\3\103\1\uffff\2\103\1\u015b"+
+        "\1\103\1\uffff\4\103\1\u0161\1\103\1\u0163\2\103\2\uffff\1\103\2"+
+        "\u010e\2\u0113\1\u0169\1\uffff\1\u016a\1\u016b\3\uffff\1\u016c\1"+
+        "\u016d\1\u016e\1\uffff\1\103\1\u0170\3\103\1\u0174\2\103\1\u0177"+
+        "\4\103\1\u017c\1\uffff\1\u017d\1\u017e\3\103\1\uffff\1\103\1\uffff"+
+        "\1\u0183\1\uffff\1\103\1\u010e\1\u0113\6\uffff\1\u0185\1\uffff\1"+
+        "\103\1\u0187\1\u0188\1\uffff\2\103\1\uffff\1\103\1\u018c\2\103\3"+
+        "\uffff\3\103\1\u0192\1\uffff\1\103\1\uffff\1\103\2\uffff\2\103\1"+
+        "\u0197\1\uffff\1\103\1\uffff\3\103\1\uffff\1\103\1\u019d\2\103\1"+
+        "\uffff\1\u01a0\1\103\1\u01a2\1\uffff\1\103\1\uffff\1\u01a4\1\u01a5"+
+        "\1\uffff\1\103\1\uffff\1\103\3\uffff\2\103\1\u01aa\1\uffff\1\103";
     static final String DFA59_eofS =
-        "\u01ab\uffff";
+        "\u01ac\uffff";
     static final String DFA59_minS =
         "\1\0\2\75\1\174\1\46\1\141\1\150\1\141\3\75\1\76\2\56\2\52\1\uffff"+
         "\1\150\2\141\1\146\5\uffff\1\145\1\142\2\uffff\1\154\1\117\1\72"+
         "\1\114\2\105\2\106\2\uffff\1\145\1\150\1\145\1\151\2\150\1\137\2"+
-        "\0\2\60\1\44\1\uffff\1\0\13\uffff\1\154\1\uffff\1\162\1\160\1\165"+
-        "\1\145\1\141\1\163\4\uffff\1\76\20\uffff\1\160\1\157\1\151\1\141"+
-        "\1\154\1\162\1\156\1\142\1\151\1\143\1\160\1\163\1\44\5\uffff\1"+
-        "\164\1\167\1\154\1\44\1\163\2\uffff\1\164\1\163\1\122\1\141\2\uffff"+
-        "\1\104\1\123\1\106\1\143\1\164\1\120\1\145\1\124\1\144\1\44\2\uffff"+
-        "\1\146\1\44\1\151\1\164\1\166\2\145\1\137\1\47\1\uffff\3\0\2\uffff"+
-        "\1\60\3\uffff\2\44\1\157\1\145\1\44\1\145\1\141\1\163\1\145\1\143"+
-        "\2\uffff\1\145\1\165\2\164\1\163\1\44\1\141\1\154\1\164\1\166\1"+
-        "\153\1\154\1\164\1\uffff\2\44\1\154\1\145\1\uffff\1\164\2\145\1"+
-        "\44\1\164\1\106\1\105\1\117\1\153\1\40\1\101\1\156\1\105\1\40\1"+
-        "\uffff\1\141\1\uffff\1\154\1\165\1\145\2\156\1\137\2\0\1\12\1\0"+
-        "\1\uffff\2\0\2\uffff\1\167\1\157\1\uffff\1\44\1\164\1\163\1\44\1"+
-        "\150\1\162\1\154\1\143\1\151\1\145\1\uffff\1\154\1\151\1\145\2\141"+
-        "\1\162\1\145\1\141\2\uffff\1\44\2\162\1\156\1\44\1\uffff\1\165\1"+
-        "\117\1\106\1\44\1\122\1\147\1\uffff\1\122\1\141\1\122\1\165\1\145"+
-        "\1\162\1\156\2\40\1\144\2\0\3\uffff\2\0\1\uffff\1\0\1\44\1\146\1"+
-        "\uffff\1\145\1\44\1\uffff\2\44\1\144\1\150\1\143\1\44\1\154\2\143"+
-        "\1\164\1\147\1\164\1\155\1\156\1\uffff\1\164\1\141\1\144\1\uffff"+
-        "\1\162\1\122\1\44\1\106\1\uffff\1\105\1\162\1\101\1\162\1\44\1\154"+
-        "\1\44\1\156\1\40\2\uffff\1\165\4\0\1\44\1\uffff\2\44\3\uffff\3\44"+
-        "\1\uffff\1\171\1\44\1\164\2\145\1\44\1\145\1\143\1\44\1\143\1\163"+
-        "\1\151\1\145\1\44\1\uffff\2\44\1\157\1\124\1\151\1\uffff\1\164\1"+
-        "\uffff\1\44\1\uffff\1\155\2\0\6\uffff\1\44\1\uffff\1\145\2\44\1"+
-        "\uffff\1\156\1\145\1\uffff\1\164\1\44\1\157\1\11\3\uffff\1\165\1"+
-        "\117\1\157\1\44\1\uffff\1\155\1\uffff\1\144\2\uffff\1\164\1\157"+
-        "\1\44\1\uffff\1\156\1\uffff\1\156\1\122\1\72\1\uffff\1\171\1\44"+
-        "\1\163\1\146\1\uffff\1\44\1\144\1\44\1\uffff\1\137\1\uffff\2\44"+
-        "\1\uffff\1\72\1\uffff\1\137\3\uffff\2\137\1\44\1\uffff\1\137";
+        "\0\1\u00ab\2\60\1\44\1\uffff\1\0\13\uffff\1\154\1\uffff\1\162\1"+
+        "\160\1\165\1\145\1\141\1\163\4\uffff\1\76\20\uffff\1\160\1\157\1"+
+        "\151\1\141\1\154\1\162\1\156\1\142\1\151\1\143\1\160\1\163\1\44"+
+        "\5\uffff\1\164\1\167\1\154\1\44\1\163\2\uffff\1\164\1\163\1\122"+
+        "\1\141\2\uffff\1\104\1\123\1\106\1\143\1\164\1\120\1\145\1\124\1"+
+        "\144\1\44\2\uffff\1\146\1\44\1\151\1\164\1\166\2\145\1\137\1\47"+
+        "\1\uffff\2\0\2\uffff\1\0\1\uffff\1\60\3\uffff\2\44\1\157\1\145\1"+
+        "\44\1\145\1\141\1\163\1\145\1\143\2\uffff\1\145\1\165\2\164\1\163"+
+        "\1\44\1\141\1\154\1\164\1\166\1\153\1\154\1\164\1\uffff\2\44\1\154"+
+        "\1\145\1\uffff\1\164\2\145\1\44\1\164\1\106\1\105\1\117\1\153\1"+
+        "\40\1\101\1\156\1\105\1\40\1\uffff\1\141\1\uffff\1\154\1\165\1\145"+
+        "\2\156\1\137\4\0\1\12\1\0\3\uffff\1\167\1\157\1\uffff\1\44\1\164"+
+        "\1\163\1\44\1\150\1\162\1\154\1\143\1\151\1\145\1\uffff\1\154\1"+
+        "\151\1\145\2\141\1\162\1\145\1\141\2\uffff\1\44\2\162\1\156\1\44"+
+        "\1\uffff\1\165\1\117\1\106\1\44\1\122\1\147\1\uffff\1\122\1\141"+
+        "\1\122\1\165\1\145\1\162\1\156\2\40\1\144\2\0\2\uffff\3\0\1\uffff"+
+        "\1\44\1\146\1\uffff\1\145\1\44\1\uffff\2\44\1\144\1\150\1\143\1"+
+        "\44\1\154\2\143\1\164\1\147\1\164\1\155\1\156\1\uffff\1\164\1\141"+
+        "\1\144\1\uffff\1\162\1\122\1\44\1\106\1\uffff\1\105\1\162\1\101"+
+        "\1\162\1\44\1\154\1\44\1\156\1\40\2\uffff\1\165\4\0\1\44\1\uffff"+
+        "\2\44\3\uffff\3\44\1\uffff\1\171\1\44\1\164\2\145\1\44\1\145\1\143"+
+        "\1\44\1\143\1\163\1\151\1\145\1\44\1\uffff\2\44\1\157\1\124\1\151"+
+        "\1\uffff\1\164\1\uffff\1\44\1\uffff\1\155\2\0\6\uffff\1\44\1\uffff"+
+        "\1\145\2\44\1\uffff\1\156\1\145\1\uffff\1\164\1\44\1\157\1\11\3"+
+        "\uffff\1\165\1\117\1\157\1\44\1\uffff\1\155\1\uffff\1\144\2\uffff"+
+        "\1\164\1\157\1\44\1\uffff\1\156\1\uffff\1\156\1\122\1\72\1\uffff"+
+        "\1\171\1\44\1\163\1\146\1\uffff\1\44\1\144\1\44\1\uffff\1\137\1"+
+        "\uffff\2\44\1\uffff\1\72\1\uffff\1\137\3\uffff\2\137\1\44\1\uffff"+
+        "\1\137";
     static final String DFA59_maxS =
         "\1\uffff\1\76\1\75\1\174\1\46\1\141\1\171\1\162\2\75\2\76\1\56\1"+
         "\72\1\56\1\57\1\uffff\1\167\1\157\1\165\1\156\5\uffff\1\165\1\163"+
         "\2\uffff\1\170\1\145\1\72\1\116\1\165\1\143\1\156\1\106\2\uffff"+
-        "\1\157\1\150\1\145\1\151\2\150\1\137\2\uffff\1\170\1\154\1\172\1"+
-        "\uffff\1\uffff\13\uffff\1\162\1\uffff\1\162\1\160\1\171\1\145\1"+
-        "\141\1\164\4\uffff\1\76\20\uffff\1\160\1\157\1\151\1\141\1\154\1"+
-        "\162\1\156\1\142\1\157\1\143\1\160\1\163\1\172\5\uffff\1\164\1\167"+
-        "\1\154\1\172\1\163\2\uffff\1\164\1\163\1\122\1\141\2\uffff\1\104"+
-        "\1\123\1\106\1\143\1\164\1\120\1\145\1\124\1\144\1\172\2\uffff\1"+
-        "\146\1\172\1\151\1\164\1\166\2\145\1\137\1\47\1\uffff\3\uffff\2"+
-        "\uffff\1\154\3\uffff\2\172\1\157\1\145\1\172\1\145\1\141\1\163\1"+
-        "\145\1\143\2\uffff\1\145\1\165\2\164\1\163\1\172\1\141\1\154\1\164"+
-        "\1\166\1\153\1\157\1\164\1\uffff\2\172\1\154\1\145\1\uffff\1\164"+
-        "\2\145\1\172\1\164\1\111\1\105\1\117\1\153\1\40\1\101\1\156\1\105"+
-        "\1\40\1\uffff\1\141\1\uffff\1\154\1\165\1\145\2\156\1\137\2\uffff"+
-        "\1\12\1\uffff\1\uffff\2\uffff\2\uffff\1\167\1\157\1\uffff\1\172"+
-        "\1\164\1\163\1\172\1\150\1\162\1\154\1\143\1\151\1\145\1\uffff\1"+
-        "\154\1\151\1\145\2\141\1\162\1\145\1\141\2\uffff\1\172\2\162\1\156"+
-        "\1\172\1\uffff\1\165\1\117\1\106\1\172\1\122\1\147\1\uffff\1\122"+
-        "\1\141\1\122\1\165\1\145\1\162\1\156\2\40\1\144\2\uffff\3\uffff"+
-        "\2\uffff\1\uffff\1\uffff\1\172\1\146\1\uffff\1\145\1\172\1\uffff"+
-        "\2\172\1\144\1\150\1\143\1\172\1\154\2\143\1\164\1\147\1\164\1\155"+
-        "\1\156\1\uffff\1\164\1\141\1\163\1\uffff\1\162\1\122\1\172\1\106"+
-        "\1\uffff\1\105\1\162\1\101\1\162\1\172\1\154\1\172\1\156\1\40\2"+
-        "\uffff\1\165\4\uffff\1\172\1\uffff\2\172\3\uffff\3\172\1\uffff\1"+
-        "\171\1\172\1\164\2\145\1\172\1\145\1\143\1\172\1\143\1\163\1\151"+
-        "\1\145\1\172\1\uffff\2\172\1\157\1\124\1\151\1\uffff\1\164\1\uffff"+
-        "\1\172\1\uffff\1\155\2\uffff\6\uffff\1\172\1\uffff\1\145\2\172\1"+
-        "\uffff\1\156\1\145\1\uffff\1\164\1\172\1\157\1\72\3\uffff\1\165"+
-        "\1\117\1\157\1\172\1\uffff\1\155\1\uffff\1\144\2\uffff\1\164\1\157"+
-        "\1\172\1\uffff\1\156\1\uffff\1\156\1\122\1\72\1\uffff\1\171\1\172"+
-        "\1\163\1\146\1\uffff\1\172\1\144\1\172\1\uffff\1\137\1\uffff\2\172"+
-        "\1\uffff\1\72\1\uffff\1\137\3\uffff\2\137\1\172\1\uffff\1\137";
+        "\1\157\1\150\1\145\1\151\2\150\1\137\2\uffff\1\u00ab\1\170\1\154"+
+        "\1\172\1\uffff\1\uffff\13\uffff\1\162\1\uffff\1\162\1\160\1\171"+
+        "\1\145\1\141\1\164\4\uffff\1\76\20\uffff\1\160\1\157\1\151\1\141"+
+        "\1\154\1\162\1\156\1\142\1\157\1\143\1\160\1\163\1\172\5\uffff\1"+
+        "\164\1\167\1\154\1\172\1\163\2\uffff\1\164\1\163\1\122\1\141\2\uffff"+
+        "\1\104\1\123\1\106\1\143\1\164\1\120\1\145\1\124\1\144\1\172\2\uffff"+
+        "\1\146\1\172\1\151\1\164\1\166\2\145\1\137\1\47\1\uffff\2\uffff"+
+        "\2\uffff\1\uffff\1\uffff\1\154\3\uffff\2\172\1\157\1\145\1\172\1"+
+        "\145\1\141\1\163\1\145\1\143\2\uffff\1\145\1\165\2\164\1\163\1\172"+
+        "\1\141\1\154\1\164\1\166\1\153\1\157\1\164\1\uffff\2\172\1\154\1"+
+        "\145\1\uffff\1\164\2\145\1\172\1\164\1\111\1\105\1\117\1\153\1\40"+
+        "\1\101\1\156\1\105\1\40\1\uffff\1\141\1\uffff\1\154\1\165\1\145"+
+        "\2\156\1\137\4\uffff\1\12\1\uffff\3\uffff\1\167\1\157\1\uffff\1"+
+        "\172\1\164\1\163\1\172\1\150\1\162\1\154\1\143\1\151\1\145\1\uffff"+
+        "\1\154\1\151\1\145\2\141\1\162\1\145\1\141\2\uffff\1\172\2\162\1"+
+        "\156\1\172\1\uffff\1\165\1\117\1\106\1\172\1\122\1\147\1\uffff\1"+
+        "\122\1\141\1\122\1\165\1\145\1\162\1\156\2\40\1\144\2\uffff\2\uffff"+
+        "\3\uffff\1\uffff\1\172\1\146\1\uffff\1\145\1\172\1\uffff\2\172\1"+
+        "\144\1\150\1\143\1\172\1\154\2\143\1\164\1\147\1\164\1\155\1\156"+
+        "\1\uffff\1\164\1\141\1\163\1\uffff\1\162\1\122\1\172\1\106\1\uffff"+
+        "\1\105\1\162\1\101\1\162\1\172\1\154\1\172\1\156\1\40\2\uffff\1"+
+        "\165\4\uffff\1\172\1\uffff\2\172\3\uffff\3\172\1\uffff\1\171\1\172"+
+        "\1\164\2\145\1\172\1\145\1\143\1\172\1\143\1\163\1\151\1\145\1\172"+
+        "\1\uffff\2\172\1\157\1\124\1\151\1\uffff\1\164\1\uffff\1\172\1\uffff"+
+        "\1\155\2\uffff\6\uffff\1\172\1\uffff\1\145\2\172\1\uffff\1\156\1"+
+        "\145\1\uffff\1\164\1\172\1\157\1\72\3\uffff\1\165\1\117\1\157\1"+
+        "\172\1\uffff\1\155\1\uffff\1\144\2\uffff\1\164\1\157\1\172\1\uffff"+
+        "\1\156\1\uffff\1\156\1\122\1\72\1\uffff\1\171\1\172\1\163\1\146"+
+        "\1\uffff\1\172\1\144\1\172\1\uffff\1\137\1\uffff\2\172\1\uffff\1"+
+        "\72\1\uffff\1\137\3\uffff\2\137\1\172\1\uffff\1\137";
     static final String DFA59_acceptS =
         "\20\uffff\1\31\4\uffff\1\44\1\45\1\46\1\47\1\50\2\uffff\1\57\1\60"+
-        "\10\uffff\1\76\1\77\14\uffff\1\152\1\uffff\1\156\1\157\1\10\1\20"+
+        "\10\uffff\1\76\1\77\15\uffff\1\152\1\uffff\1\156\1\157\1\10\1\20"+
         "\1\1\1\2\1\24\1\3\1\127\1\4\1\121\1\uffff\1\152\6\uffff\1\11\1\32"+
         "\1\12\1\14\1\uffff\1\21\1\15\1\16\1\25\1\17\1\33\1\22\1\125\1\120"+
         "\1\27\1\126\1\26\1\154\1\155\1\30\1\31\15\uffff\1\44\1\45\1\46\1"+
         "\47\1\50\5\uffff\1\57\1\60\4\uffff\1\110\1\64\12\uffff\1\76\1\77"+
-        "\11\uffff\1\153\3\uffff\1\143\1\147\1\uffff\1\150\1\151\1\156\12"+
-        "\uffff\1\23\1\13\15\uffff\1\100\4\uffff\1\75\16\uffff\1\71\1\uffff"+
-        "\1\107\12\uffff\1\144\2\uffff\1\5\1\34\2\uffff\1\115\12\uffff\1"+
-        "\105\10\uffff\1\54\1\111\5\uffff\1\63\6\uffff\1\137\14\uffff\1\141"+
-        "\1\142\1\145\2\uffff\1\146\3\uffff\1\130\2\uffff\1\104\16\uffff"+
-        "\1\112\3\uffff\1\101\4\uffff\1\73\11\uffff\1\135\1\136\6\uffff\1"+
-        "\52\2\uffff\1\56\1\117\1\35\3\uffff\1\36\16\uffff\1\72\5\uffff\1"+
-        "\70\1\uffff\1\106\1\uffff\1\134\3\uffff\1\6\1\113\1\7\1\51\1\102"+
-        "\1\122\1\uffff\1\37\3\uffff\1\43\2\uffff\1\55\4\uffff\1\65\1\74"+
-        "\1\66\4\uffff\1\114\1\uffff\1\116\1\uffff\1\41\1\42\3\uffff\1\61"+
-        "\1\uffff\1\133\3\uffff\1\103\4\uffff\1\124\3\uffff\1\132\1\uffff"+
-        "\1\40\2\uffff\1\123\1\uffff\1\67\1\uffff\1\62\1\53\1\131\3\uffff"+
-        "\1\140\1\uffff";
+        "\11\uffff\1\153\2\uffff\1\144\1\143\1\uffff\1\147\1\uffff\1\150"+
+        "\1\151\1\156\12\uffff\1\23\1\13\15\uffff\1\100\4\uffff\1\75\16\uffff"+
+        "\1\71\1\uffff\1\107\14\uffff\1\145\1\5\1\34\2\uffff\1\115\12\uffff"+
+        "\1\105\10\uffff\1\54\1\111\5\uffff\1\63\6\uffff\1\137\14\uffff\1"+
+        "\141\1\142\3\uffff\1\146\2\uffff\1\130\2\uffff\1\104\16\uffff\1"+
+        "\112\3\uffff\1\101\4\uffff\1\73\11\uffff\1\135\1\136\6\uffff\1\52"+
+        "\2\uffff\1\56\1\117\1\35\3\uffff\1\36\16\uffff\1\72\5\uffff\1\70"+
+        "\1\uffff\1\106\1\uffff\1\134\3\uffff\1\6\1\113\1\7\1\51\1\102\1"+
+        "\122\1\uffff\1\37\3\uffff\1\43\2\uffff\1\55\4\uffff\1\65\1\74\1"+
+        "\66\4\uffff\1\114\1\uffff\1\116\1\uffff\1\41\1\42\3\uffff\1\61\1"+
+        "\uffff\1\133\3\uffff\1\103\4\uffff\1\124\3\uffff\1\132\1\uffff\1"+
+        "\40\2\uffff\1\123\1\uffff\1\67\1\uffff\1\62\1\53\1\131\3\uffff\1"+
+        "\140\1\uffff";
     static final String DFA59_specialS =
-        "\1\26\56\uffff\1\13\1\14\4\uffff\1\6\135\uffff\1\3\1\1\1\16\74\uffff"+
-        "\1\12\1\25\1\uffff\1\4\1\uffff\1\7\1\15\61\uffff\1\17\1\21\3\uffff"+
-        "\1\2\1\0\1\uffff\1\20\52\uffff\1\22\1\24\1\5\1\10\45\uffff\1\23"+
-        "\1\11\103\uffff}>";
+        "\1\26\56\uffff\1\13\1\3\5\uffff\1\6\135\uffff\1\1\1\15\2\uffff\1"+
+        "\20\73\uffff\1\12\1\7\1\14\1\25\1\uffff\1\4\62\uffff\1\16\1\21\2"+
+        "\uffff\1\17\1\2\1\0\53\uffff\1\22\1\24\1\5\1\10\45\uffff\1\23\1"+
+        "\11\103\uffff}>";
     static final String[] DFA59_transitionS = {
-            "\11\67\2\66\2\67\1\66\22\67\1\66\1\10\1\65\1\67\1\64\1\20\1"+
-            "\4\1\57\1\27\1\30\1\16\1\2\1\31\1\13\1\14\1\17\1\61\11\62\1"+
-            "\40\1\25\1\12\1\1\1\11\1\15\1\26\1\44\1\42\2\64\1\41\1\37\1"+
-            "\53\1\64\1\45\11\64\1\43\1\55\2\64\1\54\3\64\1\47\1\67\1\46"+
-            "\1\63\1\56\1\67\1\33\1\64\1\7\1\50\1\36\1\22\2\64\1\24\4\64"+
-            "\1\32\1\64\1\23\1\64\1\52\1\21\1\6\1\64\1\5\1\51\3\64\1\34\1"+
-            "\3\1\35\uff7f\67\1\60\2\67",
-            "\1\70\1\71",
-            "\1\73",
-            "\1\75",
-            "\1\77",
-            "\1\101",
-            "\1\103\11\uffff\1\105\6\uffff\1\104",
-            "\1\110\12\uffff\1\107\5\uffff\1\106",
-            "\1\111",
-            "\1\113",
-            "\1\115\1\116",
-            "\1\120",
-            "\1\122",
-            "\1\125\13\uffff\1\124",
-            "\1\127\3\uffff\1\130",
-            "\1\132\4\uffff\1\133",
+            "\11\70\2\67\2\70\1\67\22\70\1\67\1\10\1\66\1\70\1\65\1\20\1"+
+            "\4\1\57\1\27\1\30\1\16\1\2\1\31\1\13\1\14\1\17\1\62\11\63\1"+
+            "\40\1\25\1\12\1\1\1\11\1\15\1\26\1\44\1\42\2\65\1\41\1\37\1"+
+            "\53\1\65\1\45\11\65\1\43\1\55\2\65\1\54\3\65\1\47\1\70\1\46"+
+            "\1\64\1\56\1\70\1\33\1\65\1\7\1\50\1\36\1\22\2\65\1\24\4\65"+
+            "\1\32\1\65\1\23\1\65\1\52\1\21\1\6\1\65\1\5\1\51\3\65\1\34\1"+
+            "\3\1\35\55\70\1\61\17\70\1\60\uff44\70",
+            "\1\71\1\72",
+            "\1\74",
+            "\1\76",
+            "\1\100",
+            "\1\102",
+            "\1\104\11\uffff\1\106\6\uffff\1\105",
+            "\1\111\12\uffff\1\110\5\uffff\1\107",
+            "\1\112",
+            "\1\114",
+            "\1\116\1\117",
+            "\1\121",
+            "\1\123",
+            "\1\126\13\uffff\1\125",
+            "\1\130\3\uffff\1\131",
+            "\1\133\4\uffff\1\134",
             "",
-            "\1\137\13\uffff\1\141\1\136\1\uffff\1\140",
-            "\1\142\7\uffff\1\144\5\uffff\1\143",
-            "\1\147\20\uffff\1\146\2\uffff\1\145",
-            "\1\152\6\uffff\1\150\1\151",
-            "",
-            "",
+            "\1\140\13\uffff\1\142\1\137\1\uffff\1\141",
+            "\1\143\7\uffff\1\145\5\uffff\1\144",
+            "\1\150\20\uffff\1\147\2\uffff\1\146",
+            "\1\153\6\uffff\1\151\1\152",
             "",
             "",
             "",
-            "\1\161\11\uffff\1\160\5\uffff\1\162",
-            "\1\164\20\uffff\1\163",
             "",
             "",
-            "\1\170\13\uffff\1\167",
-            "\1\171\25\uffff\1\172",
-            "\1\173",
-            "\1\176\1\uffff\1\175",
-            "\1\177\33\uffff\1\u0080\23\uffff\1\u0081",
-            "\1\u0082\35\uffff\1\u0083",
-            "\1\u0084\47\uffff\1\u0085",
-            "\1\u0086",
+            "\1\162\11\uffff\1\161\5\uffff\1\163",
+            "\1\165\20\uffff\1\164",
             "",
             "",
-            "\1\u0089\11\uffff\1\u008a",
-            "\1\u008b",
+            "\1\171\13\uffff\1\170",
+            "\1\172\25\uffff\1\173",
+            "\1\174",
+            "\1\177\1\uffff\1\176",
+            "\1\u0080\33\uffff\1\u0081\23\uffff\1\u0082",
+            "\1\u0083\35\uffff\1\u0084",
+            "\1\u0085\47\uffff\1\u0086",
+            "\1\u0087",
+            "",
+            "",
+            "\1\u008a\11\uffff\1\u008b",
             "\1\u008c",
             "\1\u008d",
             "\1\u008e",
             "\1\u008f",
             "\1\u0090",
-            "\47\u0092\1\u0091\uffd8\u0092",
-            "\47\u0095\1\u0094\uffd5\u0095\1\u0093\2\u0095",
-            "\12\u0098\10\uffff\1\u009a\1\uffff\3\u009a\5\uffff\1\u009a"+
-            "\13\uffff\1\u0097\6\uffff\1\u0098\2\uffff\1\u009a\1\uffff\3"+
-            "\u009a\5\uffff\1\u009a\13\uffff\1\u0097",
-            "\12\u0098\10\uffff\1\u009a\1\uffff\3\u009a\5\uffff\1\u009a"+
-            "\22\uffff\1\u0098\2\uffff\1\u009a\1\uffff\3\u009a\5\uffff\1"+
-            "\u009a",
-            "\1\102\34\uffff\32\102\4\uffff\1\102\1\uffff\32\102",
+            "\1\u0091",
+            "\47\u0093\1\u0092\uffd8\u0093",
+            "\47\u0095\1\u0094\u0083\u0095\1\u0096\uff54\u0095",
+            "\1\u0098",
+            "\12\u009a\10\uffff\1\u009c\1\uffff\3\u009c\5\uffff\1\u009c"+
+            "\13\uffff\1\u0099\6\uffff\1\u009a\2\uffff\1\u009c\1\uffff\3"+
+            "\u009c\5\uffff\1\u009c\13\uffff\1\u0099",
+            "\12\u009a\10\uffff\1\u009c\1\uffff\3\u009c\5\uffff\1\u009c"+
+            "\22\uffff\1\u009a\2\uffff\1\u009c\1\uffff\3\u009c\5\uffff\1"+
+            "\u009c",
+            "\1\103\34\uffff\32\103\4\uffff\1\103\1\uffff\32\103",
             "",
-            "\0\u0092",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\u009d\5\uffff\1\u009c",
-            "",
-            "\1\u009e",
-            "\1\u009f",
-            "\1\u00a1\3\uffff\1\u00a0",
-            "\1\u00a2",
-            "\1\u00a3",
-            "\1\u00a4\1\u00a5",
-            "",
-            "",
-            "",
-            "",
-            "\1\u00a6",
+            "\0\u0093",
             "",
             "",
             "",
@@ -5609,46 +5587,68 @@ public class InternalFeatureLexer extends Lexer {
             "",
             "",
             "",
+            "\1\u009f\5\uffff\1\u009e",
             "",
+            "\1\u00a0",
+            "\1\u00a1",
+            "\1\u00a3\3\uffff\1\u00a2",
+            "\1\u00a4",
+            "\1\u00a5",
+            "\1\u00a6\1\u00a7",
             "",
             "",
             "",
             "",
             "\1\u00a8",
-            "\1\u00a9",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\u00aa",
             "\1\u00ab",
             "\1\u00ac",
             "\1\u00ad",
             "\1\u00ae",
             "\1\u00af",
-            "\1\u00b1\5\uffff\1\u00b0",
-            "\1\u00b2",
-            "\1\u00b3",
+            "\1\u00b0",
+            "\1\u00b1",
+            "\1\u00b3\5\uffff\1\u00b2",
             "\1\u00b4",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "",
-            "",
-            "",
-            "",
-            "",
+            "\1\u00b5",
             "\1\u00b6",
-            "\1\u00b7",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\u00b8",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\22\102\1\u00b9\7\102",
-            "\1\u00bb",
-            "",
-            "",
-            "\1\u00bc",
+            "\1\u00b9",
+            "\1\u00ba",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\22\103\1\u00bb\7\103",
             "\1\u00bd",
+            "",
+            "",
             "\1\u00be",
             "\1\u00bf",
-            "",
-            "",
             "\1\u00c0",
             "\1\u00c1",
+            "",
+            "",
             "\1\u00c2",
             "\1\u00c3",
             "\1\u00c4",
@@ -5656,119 +5656,121 @@ public class InternalFeatureLexer extends Lexer {
             "\1\u00c6",
             "\1\u00c7",
             "\1\u00c8",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "",
-            "",
+            "\1\u00c9",
             "\1\u00ca",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "",
+            "",
             "\1\u00cc",
-            "\1\u00cd",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u00ce",
             "\1\u00cf",
             "\1\u00d0",
             "\1\u00d1",
             "\1\u00d2",
+            "\1\u00d3",
+            "\1\u00d4",
             "",
-            "\12\u00d3\1\u00d5\2\u00d3\1\u00d4\ufff2\u00d3",
-            "\47\u00d8\1\u00d7\uffd5\u00d8\1\u00d6\2\u00d8",
-            "\47\u0095\1\u0094\uffd5\u0095\1\u00d6\2\u0095",
-            "",
-            "",
-            "\12\u0098\10\uffff\1\u009a\1\uffff\3\u009a\5\uffff\1\u009a"+
-            "\22\uffff\1\u0098\2\uffff\1\u009a\1\uffff\3\u009a\5\uffff\1"+
-            "\u009a",
+            "\47\u00d6\1\u00d5\u0083\u00d6\1\u0096\uff54\u00d6",
+            "\47\u0095\1\u0094\u0083\u0095\1\u0096\uff54\u0095",
             "",
             "",
+            "\12\u00d7\1\u00d9\2\u00d7\1\u00d8\ufff2\u00d7",
             "",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u00db",
-            "\1\u00dc",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
+            "\12\u009a\10\uffff\1\u009c\1\uffff\3\u009c\5\uffff\1\u009c"+
+            "\22\uffff\1\u009a\2\uffff\1\u009c\1\uffff\3\u009c\5\uffff\1"+
+            "\u009c",
+            "",
+            "",
+            "",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\u00dd",
             "\1\u00de",
-            "\1\u00df",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u00e0",
             "\1\u00e1",
             "\1\u00e2",
-            "",
-            "",
             "\1\u00e3",
             "\1\u00e4",
+            "",
+            "",
             "\1\u00e5",
             "\1\u00e6",
             "\1\u00e7",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
+            "\1\u00e8",
             "\1\u00e9",
-            "\1\u00ea",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u00eb",
             "\1\u00ec",
             "\1\u00ed",
-            "\1\u00ef\2\uffff\1\u00ee",
-            "\1\u00f0",
+            "\1\u00ee",
+            "\1\u00ef",
+            "\1\u00f1\2\uffff\1\u00f0",
+            "\1\u00f2",
             "",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u00f3",
-            "\1\u00f4",
-            "",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u00f5",
             "\1\u00f6",
+            "",
             "\1\u00f7",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
+            "\1\u00f8",
             "\1\u00f9",
-            "\1\u00fa\2\uffff\1\u00fb",
-            "\1\u00fc",
-            "\1\u00fd",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\u00fb",
+            "\1\u00fc\2\uffff\1\u00fd",
             "\1\u00fe",
             "\1\u00ff",
             "\1\u0100",
             "\1\u0101",
             "\1\u0102",
-            "\1\u00ff",
-            "",
             "\1\u0103",
-            "",
             "\1\u0104",
+            "\1\u0101",
+            "",
             "\1\u0105",
+            "",
             "\1\u0106",
             "\1\u0107",
             "\1\u0108",
             "\1\u0109",
-            "\47\u010b\1\u010a\uffd5\u010b\1\u010d\2\u010b",
-            "\12\u00d3\1\u00d5\2\u00d3\1\u00d4\ufff2\u00d3",
-            "\1\u00d5",
-            "\47\u0110\1\u010f\uffd5\u0110\1\u010e\2\u0110",
+            "\1\u010a",
+            "\1\u010b",
+            "\47\u010d\1\u010c\u0083\u010d\1\u010f\uff54\u010d",
+            "\47\u0110\1\uffff\u0083\u0110\1\u0096\uff54\u0110",
+            "\47\u0095\1\u0094\u0083\u0095\1\u0096\uff54\u0095",
+            "\12\u00d7\1\u00d9\2\u00d7\1\u00d8\ufff2\u00d7",
+            "\1\u00d9",
+            "\47\u0112\1\u0111\u0083\u0112\1\u00da\uff54\u0112",
             "",
-            "\47\u0112\1\uffff\uffd5\u0112\1\u00d6\2\u0112",
-            "\47\u0095\1\u0094\uffd5\u0095\1\u00d6\2\u0095",
             "",
             "",
-            "\1\u0113",
             "\1\u0114",
+            "\1\u0115",
             "",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u0116",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u0117",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u0119",
+            "\1\u0118",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u011a",
             "\1\u011b",
             "\1\u011c",
             "\1\u011d",
             "\1\u011e",
-            "",
             "\1\u011f",
+            "",
             "\1\u0120",
             "\1\u0121",
             "\1\u0122",
@@ -5776,25 +5778,25 @@ public class InternalFeatureLexer extends Lexer {
             "\1\u0124",
             "\1\u0125",
             "\1\u0126",
+            "\1\u0127",
             "",
             "",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u0128",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u0129",
             "\1\u012a",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
+            "\1\u012b",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "",
-            "\1\u012c",
             "\1\u012d",
             "\1\u012e",
-            "\1\102\13\uffff\12\102\7\uffff\10\102\1\u012f\21\102\4\uffff"+
-            "\1\102\1\uffff\32\102",
-            "\1\u0131",
+            "\1\u012f",
+            "\1\103\13\uffff\12\103\7\uffff\10\103\1\u0130\21\103\4\uffff"+
+            "\1\103\1\uffff\32\103",
             "\1\u0132",
-            "",
             "\1\u0133",
+            "",
             "\1\u0134",
             "\1\u0135",
             "\1\u0136",
@@ -5804,33 +5806,32 @@ public class InternalFeatureLexer extends Lexer {
             "\1\u013a",
             "\1\u013b",
             "\1\u013c",
-            "\47\u013e\1\u013d\uffd5\u013e\1\u010d\2\u013e",
-            "\47\u010b\1\u010a\uffd5\u010b\1\u010d\2\u010b",
+            "\1\u013d",
+            "\47\u013f\1\u013e\u0083\u013f\1\u010f\uff54\u013f",
+            "\47\u010d\1\u010c\u0083\u010d\1\u010f\uff54\u010d",
             "",
             "",
+            "\47\u0095\1\u0094\u0083\u0095\1\u0096\uff54\u0095",
+            "\47\u0141\1\u0140\u0083\u0141\1\u00da\uff54\u0141",
+            "\47\u0112\1\u0111\u0083\u0112\1\u00da\uff54\u0112",
             "",
-            "\47\u0140\1\u013f\uffd5\u0140\1\u010e\2\u0140",
-            "\47\u0110\1\u010f\uffd5\u0110\1\u010e\2\u0110",
-            "",
-            "\47\u0095\1\u0094\uffd5\u0095\1\u00d6\2\u0095",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\22\102\1\u0141\7\102",
-            "\1\u0143",
-            "",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\22\103\1\u0142\7\103",
             "\1\u0144",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
             "",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u0148",
+            "\1\u0145",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u0149",
             "\1\u014a",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u014c",
+            "\1\u014b",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u014d",
             "\1\u014e",
             "\1\u014f",
@@ -5838,166 +5839,167 @@ public class InternalFeatureLexer extends Lexer {
             "\1\u0151",
             "\1\u0152",
             "\1\u0153",
-            "",
             "\1\u0154",
+            "",
             "\1\u0155",
-            "\1\u0156\16\uffff\1\u0157",
+            "\1\u0156",
+            "\1\u0157\16\uffff\1\u0158",
             "",
-            "\1\u0158",
             "\1\u0159",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u015b",
-            "",
+            "\1\u015a",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u015c",
+            "",
             "\1\u015d",
             "\1\u015e",
             "\1\u015f",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u0161",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u0163",
+            "\1\u0160",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\u0162",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u0164",
-            "",
-            "",
             "\1\u0165",
-            "\47\u0166\1\uffff\uffd5\u0166\1\u010d\2\u0166",
-            "\47\u010b\1\u010a\uffd5\u010b\1\u010d\2\u010b",
-            "\47\u0167\1\uffff\uffd5\u0167\1\u010e\2\u0167",
-            "\47\u0110\1\u010f\uffd5\u0110\1\u010e\2\u0110",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
             "",
             "",
+            "\1\u0166",
+            "\47\u0167\1\uffff\u0083\u0167\1\u010f\uff54\u0167",
+            "\47\u010d\1\u010c\u0083\u010d\1\u010f\uff54\u010d",
+            "\47\u0168\1\uffff\u0083\u0168\1\u00da\uff54\u0168",
+            "\47\u0112\1\u0111\u0083\u0112\1\u00da\uff54\u0112",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "",
-            "\1\u016e",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u0170",
+            "",
+            "",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "",
+            "\1\u016f",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u0171",
             "\1\u0172",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u0174",
+            "\1\u0173",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u0175",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u0177",
+            "\1\u0176",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u0178",
             "\1\u0179",
             "\1\u017a",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
+            "\1\u017b",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u017e",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u017f",
             "\1\u0180",
-            "",
             "\1\u0181",
             "",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
+            "\1\u0182",
             "",
-            "\1\u0183",
-            "\47\u010b\1\u010a\uffd5\u010b\1\u010d\2\u010b",
-            "\47\u0110\1\u010f\uffd5\u0110\1\u010e\2\u0110",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "",
-            "",
-            "",
-            "",
+            "\1\u0184",
+            "\47\u010d\1\u010c\u0083\u010d\1\u010f\uff54\u010d",
+            "\47\u0112\1\u0111\u0083\u0112\1\u00da\uff54\u0112",
             "",
             "",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
             "",
-            "\1\u0185",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
             "",
-            "\1\u0188",
+            "",
+            "",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "",
+            "\1\u0186",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "",
             "\1\u0189",
-            "",
             "\1\u018a",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u018c",
-            "\1\u018d\26\uffff\1\u018d\31\uffff\1\u018d",
+            "",
+            "\1\u018b",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\u018d",
+            "\1\u018e\26\uffff\1\u018e\31\uffff\1\u018e",
             "",
             "",
             "",
-            "\1\u018e",
             "\1\u018f",
             "\1\u0190",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "",
-            "\1\u0192",
+            "\1\u0191",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "",
             "\1\u0193",
             "",
-            "",
             "\1\u0194",
-            "\1\u0195",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
             "",
-            "\1\u0197",
+            "",
+            "\1\u0195",
+            "\1\u0196",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "",
             "\1\u0198",
+            "",
             "\1\u0199",
             "\1\u019a",
-            "",
             "\1\u019b",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u019d",
+            "",
+            "\1\u019c",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "\1\u019e",
+            "\1\u019f",
             "",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\u01a0",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\u01a1",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "",
-            "\1\u01a2",
+            "\1\u01a3",
             "",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
-            "\32\102",
-            "",
-            "\1\u01a5",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\103\1\uffff"+
+            "\32\103",
             "",
             "\1\u01a6",
             "",
-            "",
-            "",
             "\1\u01a7",
-            "\1\u01a8",
-            "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\u01aa\1\uffff"+
-            "\32\102",
             "",
-            "\1\u0090"
+            "",
+            "",
+            "\1\u01a8",
+            "\1\u01a9",
+            "\1\103\13\uffff\12\103\7\uffff\32\103\4\uffff\1\u01ab\1\uffff"+
+            "\32\103",
+            "",
+            "\1\u0091"
     };
 
     static final short[] DFA59_eot = DFA.unpackEncodedString(DFA59_eotS);
@@ -6037,16 +6039,16 @@ public class InternalFeatureLexer extends Lexer {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA59_272 = input.LA(1);
+                        int LA59_274 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_272=='\'') ) {s = 271;}
+                        if ( (LA59_274=='\'') ) {s = 273;}
 
-                        else if ( (LA59_272=='\uFFFD') ) {s = 270;}
+                        else if ( (LA59_274=='\u00AB') ) {s = 218;}
 
-                        else if ( ((LA59_272>='\u0000' && LA59_272<='&')||(LA59_272>='(' && LA59_272<='\uFFFC')||(LA59_272>='\uFFFE' && LA59_272<='\uFFFF')) ) {s = 272;}
+                        else if ( ((LA59_274>='\u0000' && LA59_274<='&')||(LA59_274>='(' && LA59_274<='\u00AA')||(LA59_274>='\u00AC' && LA59_274<='\uFFFF')) ) {s = 274;}
 
-                        else s = 273;
+                        else s = 275;
 
                         if ( s>=0 ) return s;
                         break;
@@ -6054,131 +6056,131 @@ public class InternalFeatureLexer extends Lexer {
                         int LA59_148 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_148=='\'') ) {s = 215;}
+                        if ( (LA59_148=='\'') ) {s = 213;}
 
-                        else if ( ((LA59_148>='\u0000' && LA59_148<='&')||(LA59_148>='(' && LA59_148<='\uFFFC')||(LA59_148>='\uFFFE' && LA59_148<='\uFFFF')) ) {s = 216;}
+                        else if ( ((LA59_148>='\u0000' && LA59_148<='&')||(LA59_148>='(' && LA59_148<='\u00AA')||(LA59_148>='\u00AC' && LA59_148<='\uFFFF')) ) {s = 214;}
 
-                        else if ( (LA59_148=='\uFFFD') ) {s = 214;}
+                        else if ( (LA59_148=='\u00AB') ) {s = 150;}
 
-                        else s = 150;
+                        else s = 151;
 
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA59_271 = input.LA(1);
+                        int LA59_273 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_271=='\'') ) {s = 319;}
+                        if ( (LA59_273=='\'') ) {s = 320;}
 
-                        else if ( ((LA59_271>='\u0000' && LA59_271<='&')||(LA59_271>='(' && LA59_271<='\uFFFC')||(LA59_271>='\uFFFE' && LA59_271<='\uFFFF')) ) {s = 320;}
+                        else if ( ((LA59_273>='\u0000' && LA59_273<='&')||(LA59_273>='(' && LA59_273<='\u00AA')||(LA59_273>='\u00AC' && LA59_273<='\uFFFF')) ) {s = 321;}
 
-                        else if ( (LA59_271=='\uFFFD') ) {s = 270;}
+                        else if ( (LA59_273=='\u00AB') ) {s = 218;}
 
-                        else s = 273;
+                        else s = 275;
 
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
-                        int LA59_147 = input.LA(1);
+                        int LA59_48 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA59_147>='\u0000' && LA59_147<='\t')||(LA59_147>='\u000B' && LA59_147<='\f')||(LA59_147>='\u000E' && LA59_147<='\uFFFF')) ) {s = 211;}
+                        if ( (LA59_48=='\'') ) {s = 148;}
 
-                        else if ( (LA59_147=='\r') ) {s = 212;}
+                        else if ( ((LA59_48>='\u0000' && LA59_48<='&')||(LA59_48>='(' && LA59_48<='\u00AA')||(LA59_48>='\u00AC' && LA59_48<='\uFFFF')) ) {s = 149;}
 
-                        else if ( (LA59_147=='\n') ) {s = 213;}
+                        else if ( (LA59_48=='\u00AB') ) {s = 150;}
 
-                        else s = 214;
+                        else s = 151;
 
                         if ( s>=0 ) return s;
                         break;
                     case 4 : 
-                        int LA59_213 = input.LA(1);
+                        int LA59_217 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_213=='\'') ) {s = 271;}
+                        if ( (LA59_217=='\'') ) {s = 273;}
 
-                        else if ( ((LA59_213>='\u0000' && LA59_213<='&')||(LA59_213>='(' && LA59_213<='\uFFFC')||(LA59_213>='\uFFFE' && LA59_213<='\uFFFF')) ) {s = 272;}
+                        else if ( ((LA59_217>='\u0000' && LA59_217<='&')||(LA59_217>='(' && LA59_217<='\u00AA')||(LA59_217>='\u00AC' && LA59_217<='\uFFFF')) ) {s = 274;}
 
-                        else if ( (LA59_213=='\uFFFD') ) {s = 270;}
+                        else if ( (LA59_217=='\u00AB') ) {s = 218;}
 
-                        else s = 273;
+                        else s = 275;
 
                         if ( s>=0 ) return s;
                         break;
                     case 5 : 
-                        int LA59_319 = input.LA(1);
+                        int LA59_320 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA59_319>='\u0000' && LA59_319<='&')||(LA59_319>='(' && LA59_319<='\uFFFC')||(LA59_319>='\uFFFE' && LA59_319<='\uFFFF')) ) {s = 359;}
+                        if ( ((LA59_320>='\u0000' && LA59_320<='&')||(LA59_320>='(' && LA59_320<='\u00AA')||(LA59_320>='\u00AC' && LA59_320<='\uFFFF')) ) {s = 360;}
 
-                        else if ( (LA59_319=='\uFFFD') ) {s = 270;}
+                        else if ( (LA59_320=='\u00AB') ) {s = 218;}
 
-                        else s = 273;
+                        else s = 275;
 
                         if ( s>=0 ) return s;
                         break;
                     case 6 : 
-                        int LA59_53 = input.LA(1);
+                        int LA59_54 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA59_53>='\u0000' && LA59_53<='\uFFFF')) ) {s = 146;}
+                        if ( ((LA59_54>='\u0000' && LA59_54<='\uFFFF')) ) {s = 147;}
 
-                        else s = 55;
+                        else s = 56;
 
                         if ( s>=0 ) return s;
                         break;
                     case 7 : 
-                        int LA59_215 = input.LA(1);
+                        int LA59_213 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA59_215>='\u0000' && LA59_215<='&')||(LA59_215>='(' && LA59_215<='\uFFFC')||(LA59_215>='\uFFFE' && LA59_215<='\uFFFF')) ) {s = 274;}
+                        if ( ((LA59_213>='\u0000' && LA59_213<='&')||(LA59_213>='(' && LA59_213<='\u00AA')||(LA59_213>='\u00AC' && LA59_213<='\uFFFF')) ) {s = 272;}
 
-                        else if ( (LA59_215=='\uFFFD') ) {s = 214;}
+                        else if ( (LA59_213=='\u00AB') ) {s = 150;}
 
-                        else s = 150;
+                        else s = 151;
 
                         if ( s>=0 ) return s;
                         break;
                     case 8 : 
-                        int LA59_320 = input.LA(1);
+                        int LA59_321 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_320=='\'') ) {s = 271;}
+                        if ( (LA59_321=='\'') ) {s = 273;}
 
-                        else if ( (LA59_320=='\uFFFD') ) {s = 270;}
+                        else if ( (LA59_321=='\u00AB') ) {s = 218;}
 
-                        else if ( ((LA59_320>='\u0000' && LA59_320<='&')||(LA59_320>='(' && LA59_320<='\uFFFC')||(LA59_320>='\uFFFE' && LA59_320<='\uFFFF')) ) {s = 272;}
+                        else if ( ((LA59_321>='\u0000' && LA59_321<='&')||(LA59_321>='(' && LA59_321<='\u00AA')||(LA59_321>='\u00AC' && LA59_321<='\uFFFF')) ) {s = 274;}
 
-                        else s = 273;
+                        else s = 275;
 
                         if ( s>=0 ) return s;
                         break;
                     case 9 : 
-                        int LA59_359 = input.LA(1);
+                        int LA59_360 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_359=='\'') ) {s = 271;}
+                        if ( (LA59_360=='\'') ) {s = 273;}
 
-                        else if ( ((LA59_359>='\u0000' && LA59_359<='&')||(LA59_359>='(' && LA59_359<='\uFFFC')||(LA59_359>='\uFFFE' && LA59_359<='\uFFFF')) ) {s = 272;}
+                        else if ( ((LA59_360>='\u0000' && LA59_360<='&')||(LA59_360>='(' && LA59_360<='\u00AA')||(LA59_360>='\u00AC' && LA59_360<='\uFFFF')) ) {s = 274;}
 
-                        else if ( (LA59_359=='\uFFFD') ) {s = 270;}
+                        else if ( (LA59_360=='\u00AB') ) {s = 218;}
 
-                        else s = 273;
+                        else s = 275;
 
                         if ( s>=0 ) return s;
                         break;
                     case 10 : 
-                        int LA59_210 = input.LA(1);
+                        int LA59_212 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_210=='\'') ) {s = 266;}
+                        if ( (LA59_212=='\'') ) {s = 268;}
 
-                        else if ( ((LA59_210>='\u0000' && LA59_210<='&')||(LA59_210>='(' && LA59_210<='\uFFFC')||(LA59_210>='\uFFFE' && LA59_210<='\uFFFF')) ) {s = 267;}
+                        else if ( ((LA59_212>='\u0000' && LA59_212<='&')||(LA59_212>='(' && LA59_212<='\u00AA')||(LA59_212>='\u00AC' && LA59_212<='\uFFFF')) ) {s = 269;}
 
-                        else if ( (LA59_210=='\uFFFD') ) {s = 269;}
+                        else if ( (LA59_212=='\u00AB') ) {s = 271;}
 
-                        else s = 268;
+                        else s = 270;
 
                         if ( s>=0 ) return s;
                         break;
@@ -6186,149 +6188,149 @@ public class InternalFeatureLexer extends Lexer {
                         int LA59_47 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_47=='\'') ) {s = 145;}
+                        if ( (LA59_47=='\'') ) {s = 146;}
 
-                        else if ( ((LA59_47>='\u0000' && LA59_47<='&')||(LA59_47>='(' && LA59_47<='\uFFFF')) ) {s = 146;}
+                        else if ( ((LA59_47>='\u0000' && LA59_47<='&')||(LA59_47>='(' && LA59_47<='\uFFFF')) ) {s = 147;}
 
-                        else s = 55;
+                        else s = 56;
 
                         if ( s>=0 ) return s;
                         break;
                     case 12 : 
-                        int LA59_48 = input.LA(1);
+                        int LA59_214 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_48=='\uFFFD') ) {s = 147;}
+                        if ( (LA59_214=='\'') ) {s = 148;}
 
-                        else if ( (LA59_48=='\'') ) {s = 148;}
+                        else if ( ((LA59_214>='\u0000' && LA59_214<='&')||(LA59_214>='(' && LA59_214<='\u00AA')||(LA59_214>='\u00AC' && LA59_214<='\uFFFF')) ) {s = 149;}
 
-                        else if ( ((LA59_48>='\u0000' && LA59_48<='&')||(LA59_48>='(' && LA59_48<='\uFFFC')||(LA59_48>='\uFFFE' && LA59_48<='\uFFFF')) ) {s = 149;}
+                        else if ( (LA59_214=='\u00AB') ) {s = 150;}
 
-                        else s = 150;
+                        else s = 151;
 
                         if ( s>=0 ) return s;
                         break;
                     case 13 : 
-                        int LA59_216 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA59_216=='\'') ) {s = 148;}
-
-                        else if ( ((LA59_216>='\u0000' && LA59_216<='&')||(LA59_216>='(' && LA59_216<='\uFFFC')||(LA59_216>='\uFFFE' && LA59_216<='\uFFFF')) ) {s = 149;}
-
-                        else if ( (LA59_216=='\uFFFD') ) {s = 214;}
-
-                        else s = 150;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 14 : 
                         int LA59_149 = input.LA(1);
 
                         s = -1;
                         if ( (LA59_149=='\'') ) {s = 148;}
 
-                        else if ( (LA59_149=='\uFFFD') ) {s = 214;}
+                        else if ( (LA59_149=='\u00AB') ) {s = 150;}
 
-                        else if ( ((LA59_149>='\u0000' && LA59_149<='&')||(LA59_149>='(' && LA59_149<='\uFFFC')||(LA59_149>='\uFFFE' && LA59_149<='\uFFFF')) ) {s = 149;}
+                        else if ( ((LA59_149>='\u0000' && LA59_149<='&')||(LA59_149>='(' && LA59_149<='\u00AA')||(LA59_149>='\u00AC' && LA59_149<='\uFFFF')) ) {s = 149;}
 
-                        else s = 150;
+                        else s = 151;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 14 : 
+                        int LA59_268 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA59_268=='\'') ) {s = 318;}
+
+                        else if ( ((LA59_268>='\u0000' && LA59_268<='&')||(LA59_268>='(' && LA59_268<='\u00AA')||(LA59_268>='\u00AC' && LA59_268<='\uFFFF')) ) {s = 319;}
+
+                        else if ( (LA59_268=='\u00AB') ) {s = 271;}
+
+                        else s = 270;
 
                         if ( s>=0 ) return s;
                         break;
                     case 15 : 
-                        int LA59_266 = input.LA(1);
+                        int LA59_272 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_266=='\'') ) {s = 317;}
+                        if ( (LA59_272=='\'') ) {s = 148;}
 
-                        else if ( ((LA59_266>='\u0000' && LA59_266<='&')||(LA59_266>='(' && LA59_266<='\uFFFC')||(LA59_266>='\uFFFE' && LA59_266<='\uFFFF')) ) {s = 318;}
+                        else if ( (LA59_272=='\u00AB') ) {s = 150;}
 
-                        else if ( (LA59_266=='\uFFFD') ) {s = 269;}
+                        else if ( ((LA59_272>='\u0000' && LA59_272<='&')||(LA59_272>='(' && LA59_272<='\u00AA')||(LA59_272>='\u00AC' && LA59_272<='\uFFFF')) ) {s = 149;}
 
-                        else s = 268;
+                        else s = 151;
 
                         if ( s>=0 ) return s;
                         break;
                     case 16 : 
-                        int LA59_274 = input.LA(1);
+                        int LA59_152 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_274=='\'') ) {s = 148;}
+                        if ( ((LA59_152>='\u0000' && LA59_152<='\t')||(LA59_152>='\u000B' && LA59_152<='\f')||(LA59_152>='\u000E' && LA59_152<='\uFFFF')) ) {s = 215;}
 
-                        else if ( (LA59_274=='\uFFFD') ) {s = 214;}
+                        else if ( (LA59_152=='\r') ) {s = 216;}
 
-                        else if ( ((LA59_274>='\u0000' && LA59_274<='&')||(LA59_274>='(' && LA59_274<='\uFFFC')||(LA59_274>='\uFFFE' && LA59_274<='\uFFFF')) ) {s = 149;}
+                        else if ( (LA59_152=='\n') ) {s = 217;}
 
-                        else s = 150;
+                        else s = 218;
 
                         if ( s>=0 ) return s;
                         break;
                     case 17 : 
-                        int LA59_267 = input.LA(1);
+                        int LA59_269 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_267=='\'') ) {s = 266;}
+                        if ( (LA59_269=='\'') ) {s = 268;}
 
-                        else if ( ((LA59_267>='\u0000' && LA59_267<='&')||(LA59_267>='(' && LA59_267<='\uFFFC')||(LA59_267>='\uFFFE' && LA59_267<='\uFFFF')) ) {s = 267;}
+                        else if ( ((LA59_269>='\u0000' && LA59_269<='&')||(LA59_269>='(' && LA59_269<='\u00AA')||(LA59_269>='\u00AC' && LA59_269<='\uFFFF')) ) {s = 269;}
 
-                        else if ( (LA59_267=='\uFFFD') ) {s = 269;}
+                        else if ( (LA59_269=='\u00AB') ) {s = 271;}
 
-                        else s = 268;
+                        else s = 270;
 
                         if ( s>=0 ) return s;
                         break;
                     case 18 : 
-                        int LA59_317 = input.LA(1);
+                        int LA59_318 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA59_317>='\u0000' && LA59_317<='&')||(LA59_317>='(' && LA59_317<='\uFFFC')||(LA59_317>='\uFFFE' && LA59_317<='\uFFFF')) ) {s = 358;}
+                        if ( ((LA59_318>='\u0000' && LA59_318<='&')||(LA59_318>='(' && LA59_318<='\u00AA')||(LA59_318>='\u00AC' && LA59_318<='\uFFFF')) ) {s = 359;}
 
-                        else if ( (LA59_317=='\uFFFD') ) {s = 269;}
+                        else if ( (LA59_318=='\u00AB') ) {s = 271;}
 
-                        else s = 268;
+                        else s = 270;
 
                         if ( s>=0 ) return s;
                         break;
                     case 19 : 
-                        int LA59_358 = input.LA(1);
+                        int LA59_359 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_358=='\'') ) {s = 266;}
+                        if ( (LA59_359=='\'') ) {s = 268;}
 
-                        else if ( (LA59_358=='\uFFFD') ) {s = 269;}
+                        else if ( (LA59_359=='\u00AB') ) {s = 271;}
 
-                        else if ( ((LA59_358>='\u0000' && LA59_358<='&')||(LA59_358>='(' && LA59_358<='\uFFFC')||(LA59_358>='\uFFFE' && LA59_358<='\uFFFF')) ) {s = 267;}
+                        else if ( ((LA59_359>='\u0000' && LA59_359<='&')||(LA59_359>='(' && LA59_359<='\u00AA')||(LA59_359>='\u00AC' && LA59_359<='\uFFFF')) ) {s = 269;}
 
-                        else s = 268;
+                        else s = 270;
 
                         if ( s>=0 ) return s;
                         break;
                     case 20 : 
-                        int LA59_318 = input.LA(1);
+                        int LA59_319 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_318=='\'') ) {s = 266;}
+                        if ( (LA59_319=='\'') ) {s = 268;}
 
-                        else if ( (LA59_318=='\uFFFD') ) {s = 269;}
+                        else if ( (LA59_319=='\u00AB') ) {s = 271;}
 
-                        else if ( ((LA59_318>='\u0000' && LA59_318<='&')||(LA59_318>='(' && LA59_318<='\uFFFC')||(LA59_318>='\uFFFE' && LA59_318<='\uFFFF')) ) {s = 267;}
+                        else if ( ((LA59_319>='\u0000' && LA59_319<='&')||(LA59_319>='(' && LA59_319<='\u00AA')||(LA59_319>='\u00AC' && LA59_319<='\uFFFF')) ) {s = 269;}
 
-                        else s = 268;
+                        else s = 270;
 
                         if ( s>=0 ) return s;
                         break;
                     case 21 : 
-                        int LA59_211 = input.LA(1);
+                        int LA59_215 = input.LA(1);
 
                         s = -1;
-                        if ( (LA59_211=='\r') ) {s = 212;}
+                        if ( (LA59_215=='\r') ) {s = 216;}
 
-                        else if ( (LA59_211=='\n') ) {s = 213;}
+                        else if ( (LA59_215=='\n') ) {s = 217;}
 
-                        else if ( ((LA59_211>='\u0000' && LA59_211<='\t')||(LA59_211>='\u000B' && LA59_211<='\f')||(LA59_211>='\u000E' && LA59_211<='\uFFFF')) ) {s = 211;}
+                        else if ( ((LA59_215>='\u0000' && LA59_215<='\t')||(LA59_215>='\u000B' && LA59_215<='\f')||(LA59_215>='\u000E' && LA59_215<='\uFFFF')) ) {s = 215;}
 
-                        else s = 270;
+                        else s = 218;
 
                         if ( s>=0 ) return s;
                         break;
@@ -6430,21 +6432,23 @@ public class InternalFeatureLexer extends Lexer {
 
                         else if ( (LA59_0=='\'') ) {s = 47;}
 
-                        else if ( (LA59_0=='\uFFFD') ) {s = 48;}
+                        else if ( (LA59_0=='\u00BB') ) {s = 48;}
 
-                        else if ( (LA59_0=='0') ) {s = 49;}
+                        else if ( (LA59_0=='\u00AB') ) {s = 49;}
 
-                        else if ( ((LA59_0>='1' && LA59_0<='9')) ) {s = 50;}
+                        else if ( (LA59_0=='0') ) {s = 50;}
 
-                        else if ( (LA59_0=='^') ) {s = 51;}
+                        else if ( ((LA59_0>='1' && LA59_0<='9')) ) {s = 51;}
 
-                        else if ( (LA59_0=='$'||(LA59_0>='C' && LA59_0<='D')||LA59_0=='H'||(LA59_0>='J' && LA59_0<='R')||(LA59_0>='U' && LA59_0<='V')||(LA59_0>='X' && LA59_0<='Z')||LA59_0=='b'||(LA59_0>='g' && LA59_0<='h')||(LA59_0>='j' && LA59_0<='m')||LA59_0=='o'||LA59_0=='q'||LA59_0=='u'||(LA59_0>='x' && LA59_0<='z')) ) {s = 52;}
+                        else if ( (LA59_0=='^') ) {s = 52;}
 
-                        else if ( (LA59_0=='\"') ) {s = 53;}
+                        else if ( (LA59_0=='$'||(LA59_0>='C' && LA59_0<='D')||LA59_0=='H'||(LA59_0>='J' && LA59_0<='R')||(LA59_0>='U' && LA59_0<='V')||(LA59_0>='X' && LA59_0<='Z')||LA59_0=='b'||(LA59_0>='g' && LA59_0<='h')||(LA59_0>='j' && LA59_0<='m')||LA59_0=='o'||LA59_0=='q'||LA59_0=='u'||(LA59_0>='x' && LA59_0<='z')) ) {s = 53;}
 
-                        else if ( ((LA59_0>='\t' && LA59_0<='\n')||LA59_0=='\r'||LA59_0==' ') ) {s = 54;}
+                        else if ( (LA59_0=='\"') ) {s = 54;}
 
-                        else if ( ((LA59_0>='\u0000' && LA59_0<='\b')||(LA59_0>='\u000B' && LA59_0<='\f')||(LA59_0>='\u000E' && LA59_0<='\u001F')||LA59_0=='#'||LA59_0=='\\'||LA59_0=='`'||(LA59_0>='~' && LA59_0<='\uFFFC')||(LA59_0>='\uFFFE' && LA59_0<='\uFFFF')) ) {s = 55;}
+                        else if ( ((LA59_0>='\t' && LA59_0<='\n')||LA59_0=='\r'||LA59_0==' ') ) {s = 55;}
+
+                        else if ( ((LA59_0>='\u0000' && LA59_0<='\b')||(LA59_0>='\u000B' && LA59_0<='\f')||(LA59_0>='\u000E' && LA59_0<='\u001F')||LA59_0=='#'||LA59_0=='\\'||LA59_0=='`'||(LA59_0>='~' && LA59_0<='\u00AA')||(LA59_0>='\u00AC' && LA59_0<='\u00BA')||(LA59_0>='\u00BC' && LA59_0<='\uFFFF')) ) {s = 56;}
 
                         if ( s>=0 ) return s;
                         break;

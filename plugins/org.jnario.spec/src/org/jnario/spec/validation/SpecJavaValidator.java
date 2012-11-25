@@ -40,7 +40,6 @@ import org.jnario.ExampleColumn;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
-import org.jnario.spec.spec.SpecPackage;
 import org.jnario.spec.spec.TestFunction;
 import org.jnario.validation.JnarioJavaValidator;
 

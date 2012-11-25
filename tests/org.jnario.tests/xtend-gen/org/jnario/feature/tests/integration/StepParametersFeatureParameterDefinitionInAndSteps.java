@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Parameter definition in and steps")
 @SuppressWarnings("all")
 public class StepParametersFeatureParameterDefinitionInAndSteps extends StepParametersFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I define parameters in a an and step")
@@ -30,6 +32,4 @@ public class StepParametersFeatureParameterDefinitionInAndSteps extends StepPara
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

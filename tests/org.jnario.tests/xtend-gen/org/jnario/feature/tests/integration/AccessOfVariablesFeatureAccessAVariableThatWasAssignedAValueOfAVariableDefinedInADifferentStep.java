@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Access a variable that was assigned a value of a variable defined in a different step")
 @SuppressWarnings("all")
 public class AccessOfVariablesFeatureAccessAVariableThatWasAssignedAValueOfAVariableDefinedInADifferentStep extends AccessOfVariablesFeature {
+  CharSequence jnarioFile;
+  
   @Test
   @Order(0)
   @Named("When I have a complex usage of variables")
@@ -30,6 +32,4 @@ public class AccessOfVariablesFeatureAccessAVariableThatWasAssignedAValueOfAVari
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
-  
-  CharSequence jnarioFile;
 }

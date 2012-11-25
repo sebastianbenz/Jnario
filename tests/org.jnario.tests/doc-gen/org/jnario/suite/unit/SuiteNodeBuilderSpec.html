@@ -76,9 +76,17 @@ examples.forEach[
 </li></ul>
 <h3 class="exampleGroup notrun"  id="level_Suite">Level[Suite]</h3>
 <ul><li><p id="level_1" class="example notrun"><strong>level["-"]        => 1</strong></p>
+<pre class="prettyprint lang-spec linenums">
+level(&quot;#&quot;)        =&gt; 1</pre>
 </li><li><p id="level_Suite_1" class="example notrun"><strong>level["-Suite"]   => 1</strong></p>
+<pre class="prettyprint lang-spec linenums">
+level(&quot;#Suite&quot;)   =&gt; 1</pre>
 </li><li><p id="level_Suite_2" class="example notrun"><strong>level["--Suite"]  => 2</strong></p>
+<pre class="prettyprint lang-spec linenums">
+level(&quot;##Suite&quot;)  =&gt; 2</pre>
 </li><li><p id="level_Suite_3" class="example notrun"><strong>level["---Suite"] => 3</strong></p>
+<pre class="prettyprint lang-spec linenums">
+level(&quot;###Suite&quot;) =&gt; 3</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">

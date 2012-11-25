@@ -37,6 +37,18 @@ import org.junit.runner.RunWith;
 @CreateWith(value = SpecTestCreator.class)
 @SuppressWarnings("all")
 public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingFailedSpecRuns extends ParsingSpecResultsFromJUnitXMLReportsFeature {
+  @Inject
+  @Extension
+  public ModelStore _modelStore;
+  
+  @Inject
+  HashBasedSpec2ResultMapping spec2ResultMapping;
+  
+  @Inject
+  SpecResultParser resultParser;
+  
+  Executable specification;
+  
   @Test
   @Order(0)
   @Named("Given a specification")
@@ -75,25 +87,13 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingFailedSpecRuns 
     if (_equals) {
       boolean _doubleArrow = Should.operator_doubleArrow(result, Passed.class);
       Assert.assertTrue("\nExpected result => typeof(Passed) but"
-       + "\n     result => typeof(Passed) is " + new StringDescription().appendValue(Boolean.valueOf(_doubleArrow)).toString() + "\n", _doubleArrow);
+       + "\n     result => typeof(Passed) is " + new StringDescription().appendValue(_doubleArrow).toString() + "\n", _doubleArrow);
       
     } else {
       boolean _doubleArrow_1 = Should.operator_doubleArrow(result, Failed.class);
       Assert.assertTrue("\nExpected result => typeof(Failed) but"
-       + "\n     result => typeof(Failed) is " + new StringDescription().appendValue(Boolean.valueOf(_doubleArrow_1)).toString() + "\n", _doubleArrow_1);
+       + "\n     result => typeof(Failed) is " + new StringDescription().appendValue(_doubleArrow_1).toString() + "\n", _doubleArrow_1);
       
     }
   }
-  
-  @Inject
-  @Extension
-  public ModelStore _modelStore;
-  
-  @Inject
-  HashBasedSpec2ResultMapping spec2ResultMapping;
-  
-  @Inject
-  SpecResultParser resultParser;
-  
-  Executable specification;
 }

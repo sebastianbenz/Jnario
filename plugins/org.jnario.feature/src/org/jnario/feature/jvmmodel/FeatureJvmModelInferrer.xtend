@@ -266,6 +266,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 						a.append("super." + methodName + "();")
 			]
 			markAsPending(step)
+			associatePrimary(step, it)
 			testRuntime.markAsTestMethod(step, it)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			annotations += step.toAnnotation(typeof(Named), step.describe)
@@ -289,6 +290,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			testRuntime.markAsTestMethod(step, it)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.describe
+			associatePrimary(step, it)
 			markAsPending(step)
 			annotations += step.toAnnotation(typeof(Named), name)
 		]	
