@@ -19,6 +19,7 @@ import org.eclipse.xtext.mwe.PathTraverser;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.compiler.SeverityFilter;
 import org.jnario.doc.AbstractDocGenerator;
@@ -92,17 +93,22 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
       PathTraverser _pathTraverser = new PathTraverser();
       final PathTraverser pathTraverser = _pathTraverser;
       List<String> _sourcePathDirectories = this.getSourcePathDirectories();
+      String _plus = ("source directories: " + _sourcePathDirectories);
+      InputOutput.<String>println(_plus);
+      List<String> _sourcePathDirectories_1 = this.getSourcePathDirectories();
       final Function1<URI,Boolean> _function = new Function1<URI,Boolean>() {
           public Boolean apply(final URI input) {
             final boolean matches = nameBasedFilter.matches(input);
             if (matches) {
+              String _plus = ("loading resource: " + input);
+              InputOutput.<String>println(_plus);
               ResourceSet _resourceSet = JnarioDocCompiler.this.getResourceSet();
               _resourceSet.getResource(input, true);
             }
             return matches;
           }
         };
-      pathTraverser.resolvePathes(_sourcePathDirectories, new Predicate<URI>() {
+      pathTraverser.resolvePathes(_sourcePathDirectories_1, new Predicate<URI>() {
           public boolean apply(URI input) {
             return _function.apply(input);
           }

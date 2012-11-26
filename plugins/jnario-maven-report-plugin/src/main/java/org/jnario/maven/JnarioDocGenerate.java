@@ -34,9 +34,8 @@ import com.google.inject.Provider;
  * 
  * @author Sebastian Benz - Initial contribution and API
  * @extendsPlugin xtend-maven-plugin
- * @goal package
- * @phase prepare-package
  * @requiresDependencyResolution test
+ * @goal generate
  */
 public class JnarioDocGenerate extends XtendTestCompile {
 
@@ -76,24 +75,27 @@ public class JnarioDocGenerate extends XtendTestCompile {
 		}
 		configureLog4j();
 		
+		getLog().info("Generating Jnario reports to " + docOutputDirectory);
+		
 		// the order is important, the suite compiler must be executed last
 		List<Injector> injectors = createInjectors(new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
 		generateCssAndJsFiles(injectors);
 
 		HashBasedSpec2ResultMapping resultMapping = createSpec2ResultMapping(injectors);
 		ResourceSet resourceSet = createResourceSet(injectors);
+		
 		for (Injector injector : injectors) {
 			generateDoc(resourceSet, injector, resultMapping);
 		}
 	}
 
-	protected HashBasedSpec2ResultMapping createSpec2ResultMapping(List<Injector> injectors) {
+	protected HashBasedSpec2ResultMapping createSpec2ResultMapping(List<Injector> injectors) throws MojoExecutionException {
 		HashBasedSpec2ResultMapping resultMapping = injectors.get(2).getInstance(HashBasedSpec2ResultMapping.class);
 		File reportFolder = new File(reportsDirectory);
 		if(reportFolder.exists()){
 			addExecutionResults(resultMapping, reportFolder);
 		}else{
-			getLog().warn("Surefire Report folder does not exist");
+			throw new MojoExecutionException("Surefire Report folder does not exist");
 		}
 		return resultMapping;
 	}
@@ -101,19 +103,20 @@ public class JnarioDocGenerate extends XtendTestCompile {
 	protected void generateCssAndJsFiles(List<Injector> injectors) {
 		HtmlAssetsCompiler assetsCompiler = injectors.get(0).getInstance(HtmlAssetsCompiler.class);
 		assetsCompiler.setOutputPath(docOutputDirectory);
+		getLog().info("Generating HTML assets to " + docOutputDirectory);
 		assetsCompiler.compile();
 	}
 
-	protected void addExecutionResults(
-			HashBasedSpec2ResultMapping resultMapping, File reportFolder) {
+	protected void addExecutionResults(HashBasedSpec2ResultMapping resultMapping, File reportFolder) throws MojoExecutionException {
 		SpecResultParser specResultParser = new SpecResultParser();
 		for (File file : reportFolder.listFiles(new XmlFiles())) {
 			FileInputStream is = null;
 			try {
+				getLog().info("Parsing Results: " + file);
 				is = new FileInputStream(file);
 				specResultParser.parse(is, resultMapping);
 			} catch (Exception e) {
-				getLog().warn("Exception while parsing spec for: " + file, e);
+				throw new MojoExecutionException("Exception while parsing spec for: " + file, e);
 			}finally{
 				try {
 					is.close();
@@ -140,8 +143,7 @@ public class JnarioDocGenerate extends XtendTestCompile {
 	}
 
 	private ResourceSet createResourceSet(List<Injector> injectors) {
-		Provider<ResourceSet> resourceSetProvider = injectors.get(0)
-				.getProvider(ResourceSet.class);
+		Provider<ResourceSet> resourceSetProvider = injectors.get(0).getProvider(ResourceSet.class);
 		ResourceSet resourceSet = resourceSetProvider.get();
 		return resourceSet;
 	}
