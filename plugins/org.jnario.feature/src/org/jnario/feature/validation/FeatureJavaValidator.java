@@ -25,6 +25,7 @@ import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendImport;
 import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmFeature;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.TypesPackage;
@@ -245,5 +246,13 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 			return;
 		}
 		super.checkAbstract(function);
+	}
+	
+	protected void error(String message, EObject source, EStructuralFeature feature, int index, String code, String... issueData) {
+		if(NodeModelUtils.getNode(source) == null){
+			source = EcoreUtil2.getContainerOfType(source, Step.class);
+			feature = XtendPackage.Literals.XTEND_FUNCTION__NAME;
+		}
+		getMessageAcceptor().acceptError(message, source, feature, index, code, issueData);
 	}
 }
