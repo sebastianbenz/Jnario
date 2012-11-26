@@ -21,7 +21,8 @@ import org.jnario.doc.HtmlFile
 import org.jnario.spec.naming.ExampleNameProvider
 import org.jnario.spec.spec.Example
 import org.jnario.spec.spec.ExampleGroup
-
+import org.eclipse.xtend.core.xtend.XtendPackage
+import static org.eclipse.xtend.core.xtend.XtendPackage$Literals.*
 class SpecDocGenerator extends AbstractDocGenerator {
 
 	@Inject extension ExampleNameProvider 
@@ -105,7 +106,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 			«ELSE»
 			«ENDIF»
 			«docString»
-			«IF !example.pending && example.expression != null»
+			«IF !example.pending && example.eIsSet(XTEND_FUNCTION__EXPRESSION)»
 			«example.toCodeBlock(filters)»
 			«example.errorMessage»
 			«ENDIF»

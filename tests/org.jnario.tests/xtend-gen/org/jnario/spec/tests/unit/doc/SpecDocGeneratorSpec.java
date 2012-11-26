@@ -9,6 +9,7 @@ import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
+import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
@@ -146,9 +147,9 @@ public class SpecDocGeneratorSpec {
   }
   
   @Test
-  @Named("should support markdown for documentation")
+  @Named("supports markdown for documentation")
   @Order(4)
-  public void _shouldSupportMarkdownForDocumentation() throws Exception {
+  public void _supportsMarkdownForDocumentation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*");
     _builder.newLine();
@@ -218,8 +219,33 @@ public class SpecDocGeneratorSpec {
   }
   
   @Test
-  @Named("filters code based on regex in filter annotation")
+  @Named("No code block for examples without description")
   @Order(6)
+  public void _noCodeBlockForExamplesWithoutDescription() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \'Example\'{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact 1 + 1 => 2");
+    _builder.newLine();
+    _builder.append("} ");
+    _builder.newLine();
+    this.generateDoc(_builder);
+    final String scenarioDoc = this.generatedFile("ExampleSpec.html");
+    StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append("<pre class=\"prettyprint lang-spec linenums\">");
+    _builder_1.newLine();
+    _builder_1.append("1 + 1 =&gt; 2</pre>");
+    boolean _should_contain = Should.should_contain(scenarioDoc, _builder_1);
+    Assert.assertFalse("\nExpected scenarioDoc should not contain \'\'\'<pre class=\"prettyprint lang-spec linenums\">\n1 + 1 =&gt; 2</pre>\'\'\' but"
+     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString()
+     + "\n     \'\'\'<pre class=\"prettyprint lang-spec linenums\">\n1 + 1 =&gt; 2</pre>\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _should_contain);
+    
+  }
+  
+  @Test
+  @Named("filters code based on regex in filter annotation")
+  @Order(7)
   public void _filtersCodeBasedOnRegexInFilterAnnotation() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
@@ -254,7 +280,7 @@ public class SpecDocGeneratorSpec {
   
   @Test
   @Named("includes failing state for examples")
-  @Order(7)
+  @Order(8)
   public void _includesFailingStateForExamples() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");

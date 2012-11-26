@@ -8,6 +8,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendPackage.Literals;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -230,9 +231,8 @@ public class SpecDocGenerator extends AbstractDocGenerator {
         if (!_not) {
           _and = false;
         } else {
-          XExpression _expression = example.getExpression();
-          boolean _notEquals_2 = (!Objects.equal(_expression, null));
-          _and = (_not && _notEquals_2);
+          boolean _eIsSet = example.eIsSet(Literals.XTEND_FUNCTION__EXPRESSION);
+          _and = (_not && _eIsSet);
         }
         if (_and) {
           String _codeBlock = this.toCodeBlock(example, filters);

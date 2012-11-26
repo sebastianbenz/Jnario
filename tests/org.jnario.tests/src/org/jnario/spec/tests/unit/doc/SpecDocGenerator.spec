@@ -68,7 +68,7 @@ describe SpecDocGenerator {
 		x = x + 1</pre>'''.toString())
 	}
 	
-	fact "should support markdown for documentation"{
+	fact "supports markdown for documentation"{
 		generateDoc('''
 			/*
 			 * #Example Heading
@@ -97,6 +97,17 @@ describe SpecDocGenerator {
 		assert scenarioDoc.contains("<th>b</th>")
 		assert scenarioDoc.contains("<td>1</td>")
 		assert scenarioDoc.contains("<td>2</td>")
+	}
+	
+	fact "No code block for examples without description"{
+		generateDoc('''
+			describe 'Example'{
+				fact 1 + 1 => 2
+			} 
+		''')
+		val scenarioDoc = generatedFile("ExampleSpec.html")
+		scenarioDoc should not contain '''<pre class="prettyprint lang-spec linenums">
+1 + 1 =&gt; 2</pre>'''
 	}
 	
 	fact "filters code based on regex in filter annotation"{
