@@ -7,8 +7,8 @@
  *******************************************************************************/
 package org.jnario.feature.compiler;
 
-import static com.google.common.collect.Iterables.*;
-import static com.google.common.collect.Lists.*;
+import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.List;
 

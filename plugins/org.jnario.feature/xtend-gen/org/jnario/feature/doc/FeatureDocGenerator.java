@@ -1,7 +1,6 @@
 package org.jnario.feature.doc;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -108,8 +107,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     _builder.append("</h3>");
     _builder.newLineIfNotEmpty();
     EList<Step> _steps = scenario.getSteps();
-    Iterable<Step> _filter = Iterables.<Step>filter(_steps, Step.class);
-    CharSequence _generate = this.generate(_filter);
+    CharSequence _generate = this.generate(_steps);
     _builder.append(_generate, "");
     _builder.append("</div>");
     _builder.newLineIfNotEmpty();

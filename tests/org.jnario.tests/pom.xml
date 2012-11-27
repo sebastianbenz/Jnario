@@ -5,7 +5,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>jnario</artifactId>
-		<groupId>org.jnario</groupId><relativePath>../../pom.xml</relativePath>
+		<groupId>org.jnario</groupId>
+		<relativePath>../../pom.xml</relativePath>
 		<version>0.3.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.jnario.tests</artifactId>
@@ -13,6 +14,8 @@
 	<packaging>eclipse-test-plugin</packaging>
 
 	<build>
+		<sourceDirectory>src2</sourceDirectory>
+		<testSourceDirectory>src</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -22,16 +25,35 @@
 					<useUIHarness>false</useUIHarness>
 					<argLine>${tycho.test.jvmArgs}</argLine>
 					<includes>
-            			<include>**/Test*.java</include>
-            			<include>**/*Test.java</include>
-            			<include>**/*TestCase.java</include>
-            			<include>**/JnarioSuite.java</include>
-			         </includes>
-			         <explodedBundles> 
+						<include>**/Test*.java</include>
+						<include>**/*Test.java</include>
+						<include>**/*TestCase.java</include>
+						<include>**/JnarioSuite.java</include>
+					</includes>
+					<explodedBundles>
 						<!-- Make sure that nested junit.jar can be accessed by PDE/JDT. -->
 						<bundle>org.junit</bundle>
 					</explodedBundles>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-test-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -57,7 +79,8 @@
 				</property>
 			</activation>
 			<properties>
-				<tycho.test.jvmArgs>-Xms256m -Xmx1024m -XX:MaxPermSize=256m -XstartOnFirstThread</tycho.test.jvmArgs>
+				<tycho.test.jvmArgs>-Xms256m -Xmx1024m -XX:MaxPermSize=256m
+					-XstartOnFirstThread</tycho.test.jvmArgs>
 				<osgi.ws>cocoa</osgi.ws>
 			</properties>
 		</profile>

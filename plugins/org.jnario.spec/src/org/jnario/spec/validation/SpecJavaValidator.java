@@ -207,4 +207,5 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 		}
 		super.checkAbstract(function);
 	}
+
 }

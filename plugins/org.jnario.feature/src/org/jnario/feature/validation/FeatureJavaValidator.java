@@ -255,4 +255,10 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 		}
 		getMessageAcceptor().acceptError(message, source, feature, index, code, issueData);
 	}
+	
+	
+	@Check
+	public void checkDuplicateExtensionFields(Scenario scenario){
+		
+	}
 }

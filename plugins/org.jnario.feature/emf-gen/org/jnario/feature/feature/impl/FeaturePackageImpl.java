@@ -11,17 +11,11 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.xtend.core.xtend.XtendPackage;
-
 import org.eclipse.xtext.xbase.XbasePackage;
-
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
-
 import org.jnario.JnarioPackage;
-
 import org.jnario.feature.feature.And;
 import org.jnario.feature.feature.AndReference;
 import org.jnario.feature.feature.Background;
@@ -292,16 +286,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getScenario_Steps()
-	{
-		return (EReference)scenarioEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getStep()
 	{
 		return stepEClass;
@@ -515,7 +499,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		backgroundEClass = createEClass(BACKGROUND);
 
 		scenarioEClass = createEClass(SCENARIO);
-		createEReference(scenarioEClass, SCENARIO__STEPS);
 
 		stepEClass = createEClass(STEP);
 		createEReference(stepEClass, STEP__STEP_EXPRESSION);
@@ -611,7 +594,8 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		initEClass(backgroundEClass, Background.class, "Background", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getScenario_Steps(), this.getStep(), null, "steps", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(scenarioEClass, this.getStep(), "getSteps", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStep_StepExpression(), this.getStepExpression(), null, "stepExpression", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

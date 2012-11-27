@@ -87,7 +87,7 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
   
   protected String _doDescribe(final EObject element) {
     JnarioNameProvider _classNameProvider = this.classNameProvider(element);
-    String _describe = _classNameProvider.describe(element);
+    String _describe = _classNameProvider==null?(String)null:_classNameProvider.describe(element);
     return _describe;
   }
   
@@ -96,6 +96,10 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
     {
       Resource _eResource = element.eResource();
       final XtextResource resource = ((XtextResource) _eResource);
+      boolean _equals = Objects.equal(resource, null);
+      if (_equals) {
+        return null;
+      }
       final IResourceServiceProvider resourceServiceProvider = resource.getResourceServiceProvider();
       JnarioNameProvider _get = resourceServiceProvider.<JnarioNameProvider>get(JnarioNameProvider.class);
       _xblockexpression = (_get);

@@ -115,9 +115,6 @@ describe "Using Should"{
 		(assert aString != null && aString.length == 0) throws NullPointerException 
 	}
 	
-	
-		
-    
 	/*
 	 * You can also the `should` and `=>` together with [hamcrest](http://code.google.com/p/hamcrest/) 
 	 * matchers. The following static import statements are needed to run the examples:

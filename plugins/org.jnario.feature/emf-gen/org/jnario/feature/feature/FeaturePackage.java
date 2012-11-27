@@ -11,9 +11,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.xtend.core.xtend.XtendPackage;
-
 import org.jnario.JnarioPackage;
 
 /**
@@ -266,22 +264,13 @@ public interface FeaturePackage extends EPackage
 	int SCENARIO__TYPE_PARAMETERS = XtendPackage.XTEND_CLASS__TYPE_PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCENARIO__STEPS = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO_FEATURE_COUNT = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 1;
+	int SCENARIO_FEATURE_COUNT = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.BackgroundImpl <em>Background</em>}' class.
@@ -364,15 +353,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int BACKGROUND__TYPE_PARAMETERS = SCENARIO__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND__STEPS = SCENARIO__STEPS;
 
 	/**
 	 * The number of structural features of the '<em>Background</em>' class.
@@ -2270,17 +2250,6 @@ public interface FeaturePackage extends EPackage
 	EClass getScenario();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.jnario.feature.feature.Scenario#getSteps <em>Steps</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Steps</em>'.
-	 * @see org.jnario.feature.feature.Scenario#getSteps()
-	 * @see #getScenario()
-	 * @generated
-	 */
-	EReference getScenario_Steps();
-
-	/**
 	 * Returns the meta object for class '{@link org.jnario.feature.feature.Step <em>Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2541,14 +2510,6 @@ public interface FeaturePackage extends EPackage
 		 * @generated
 		 */
 		EClass SCENARIO = eINSTANCE.getScenario();
-
-		/**
-		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SCENARIO__STEPS = eINSTANCE.getScenario_Steps();
 
 		/**
 		 * The meta object literal for the '{@link org.jnario.feature.feature.impl.StepImpl <em>Step</em>}' class.

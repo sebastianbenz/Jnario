@@ -7,11 +7,6 @@
  *******************************************************************************/
 package org.jnario.feature.generator;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtext.xbase.XBlockExpression;
-import org.eclipse.xtext.xbase.XConstructorCall;
-import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.jnario.compiler.JnarioCompiler;
 
 /**

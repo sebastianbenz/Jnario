@@ -8,7 +8,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <tycho-version>0.15.0</tycho-version>
+    <tycho-version>0.16.0</tycho-version>
     <tycho-groupid>org.eclipse.tycho</tycho-groupid>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>

@@ -60,11 +60,12 @@ class SuiteClassNameProvider extends JnarioNameProvider{
 	}
 	
 	def dispatch String doDescribe(EObject element){
-		element.classNameProvider.describe(element)
+		element.classNameProvider?.describe(element)
 	}
 	
 	def private classNameProvider(EObject element){
 		val resource = element.eResource as XtextResource
+		if(resource == null) return null
 		val resourceServiceProvider = resource.resourceServiceProvider
 		resourceServiceProvider.get(typeof(JnarioNameProvider)) 
 	}

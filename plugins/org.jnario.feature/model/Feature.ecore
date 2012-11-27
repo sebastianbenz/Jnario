@@ -10,8 +10,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Background" eSuperTypes="#//Scenario"/>
   <eClassifiers xsi:type="ecore:EClass" name="Scenario" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendClass ../../org.jnario/model/Jnario.ecore#//Executable">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
-        eType="#//Step" containment="true"/>
+    <eOperations name="getSteps" upperBound="-1" eType="#//Step"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendFunction ../../org.jnario/model/Jnario.ecore#//Executable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="stepExpression" eType="#//StepExpression"

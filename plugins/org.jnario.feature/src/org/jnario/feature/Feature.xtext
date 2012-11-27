@@ -57,15 +57,15 @@ Background:
 	{Background}
 	name=BACKGROUND_TEXT
 	members+=Member*
-	steps+=(Given|GivenReference)*;
+	members+=(Given|GivenReference)*;
 
 Scenario :
 	{Scenario}
 	name=SCENARIO_TEXT
 	members+=Member*
-	steps+=(Given|GivenReference)?
-	steps+=(When|WhenReference)?
-	steps+=(Then|ThenReference)?;
+	members+=(Given|GivenReference)?
+	members+=(When|WhenReference)?
+	members+=(Then|ThenReference)?;
 
 Member returns xtend::XtendMember:
 	{xtend::XtendMember} annotations+=XAnnotation* 
@@ -89,7 +89,7 @@ Given:
 	name=GIVEN_TEXT stepExpression=StepExpression
 	and+=(And|AndReference)*
 ;
-	
+
 WhenReference:
 	{WhenReference}
 	reference=[When|WHEN_TEXT] 
@@ -160,6 +160,8 @@ XPrimaryExpression returns xbase::XExpression:
 	XTryCatchFinallyExpression |
 	XParenthesizedExpression |
 	Assertion;
+
+
 
 XRelationalExpression returns xbase::XExpression:
 	XOtherOperatorExpression

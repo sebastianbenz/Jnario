@@ -129,6 +129,7 @@ public class JnarioDocGenerate extends XtendTestCompile {
 
 	@SuppressWarnings("unchecked")
 	protected void compileTestSources(XtendBatchCompiler xtend2BatchCompiler) throws MojoExecutionException {
+		getLog().info("Using source folders: " + project.getTestCompileSourceRoots());
 		List<String> testCompileSourceRoots = Lists.newArrayList(project.getTestCompileSourceRoots());
 		String testClassPath = concat(File.pathSeparator, getTestClassPath());
 		project.addTestCompileSourceRoot(docOutputDirectory);
@@ -154,6 +155,15 @@ public class JnarioDocGenerate extends XtendTestCompile {
 				return input.createInjectorAndDoEMFRegistration();
 			}
 		});
+	}
+	
+	@Override
+	protected List<String> getTestClassPath() {
+		List<String> classpath = super.getTestClassPath();
+		if(classpath.isEmpty()){
+			classpath.add(project.getBasedir() + "/src");
+		}
+		return classpath;
 	}
 
 }

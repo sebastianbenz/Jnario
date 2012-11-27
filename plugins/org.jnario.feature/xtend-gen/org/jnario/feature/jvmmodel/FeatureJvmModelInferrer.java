@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
+import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
@@ -69,6 +70,7 @@ import org.jnario.lib.StepArguments;
 import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.jnario.util.SourceAdapter;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -254,7 +256,6 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     Iterable<XtendField> _filter = Iterables.<XtendField>filter(_members, XtendField.class);
     final Procedure1<XtendField> _function = new Procedure1<XtendField>() {
         public void apply(final XtendField it) {
-          FeatureJvmModelInferrer.this.initializeName(it);
           FeatureJvmModelInferrer.this.transform2(it, inferredJvmType);
         }
       };
@@ -318,6 +319,9 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     IterableExtensions.<StepReference>forEach(_filter_1, _function_1);
   }
   
+  protected void transform(final XtendFunction source, final JvmGenericType container) {
+  }
+  
   protected void transform(final XtendField source, final JvmGenericType container) {
   }
   
@@ -371,14 +375,22 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     return _xblockexpression;
   }
   
-  public void initializeName(final XtendField field) {
-    String _name = field.getName();
-    boolean _notEquals = (!Objects.equal(_name, null));
-    if (_notEquals) {
-      return;
+  protected String computeFieldName(final XtendField field, final JvmGenericType declaringType) {
+    String _xblockexpression = null;
+    {
+      final EObject source = SourceAdapter.find(field);
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(source, null);
+      if (_equals) {
+        String _computeFieldName = super.computeFieldName(field, declaringType);
+        _xifexpression = _computeFieldName;
+      } else {
+        String _computeFieldName_1 = super.computeFieldName(((XtendField) source), declaringType);
+        _xifexpression = _computeFieldName_1;
+      }
+      _xblockexpression = (_xifexpression);
     }
-    String _computeFieldName = this.computeFieldName(field, null);
-    field.setName(_computeFieldName);
+    return _xblockexpression;
   }
   
   public void generateStepValues(final Step step) {

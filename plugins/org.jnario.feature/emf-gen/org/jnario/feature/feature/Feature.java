@@ -8,7 +8,6 @@
 package org.jnario.feature.feature;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.jnario.Specification;
 
 /**

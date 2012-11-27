@@ -45,7 +45,7 @@ class SpecResolver {
 			pattern.matcher(toString(it.qualifiedName)).matches
 		]
 		val specs = allElements.map[resolve(EObjectOrProxy, specRef)].filter(typeof(Specification)).filter[
-			it.eResource.URI != specRef.eResource.URI
+			it.eResource?.URI != specRef.eResource?.URI
 		]
 		specs.toMap[toQualifiedJavaClassName].values.sort
 	}

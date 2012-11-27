@@ -12,7 +12,6 @@ import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.jnario.util.Strings.toClassName;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.EcoreUtil2;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.feature.feature.Background;

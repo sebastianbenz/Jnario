@@ -17,6 +17,7 @@ import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.jvmmodel.VisibleMembersCalculator;
+import org.jnario.util.SourceAdapter;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -72,7 +73,8 @@ public class StepReferenceFieldCreator {
       boolean _contains = fieldNames.contains(_name);
       boolean _not_1 = (!_contains);
       if (_not_1) {
-        final XtendField copiedMember = EcoreUtil2.<XtendField>cloneWithProxies(field);
+        final XtendField copiedMember = EcoreUtil2.<XtendField>clone(field);
+        SourceAdapter.adapt(copiedMember, field);
         EList<XtendMember> _members = type.getMembers();
         _members.add(((XtendField) copiedMember));
         String _name_1 = field.getName();

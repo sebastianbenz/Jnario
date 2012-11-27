@@ -23,7 +23,7 @@ public class ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps exten
   @Extension
   public BehaviorExecutor behaviorExecutor;
   
-  CharSequence jnarioFile1;
+  CharSequence jnarioFile;
   
   CharSequence jnarioFile2;
   
@@ -34,7 +34,7 @@ public class ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps exten
     StepArguments _stepArguments = new StepArguments("Feature: Feature 1\nBackground:\nString testString\nGiven something\ntestString = \"test\"\nAnd it is upper case\ntestString.toUpperCase\nScenario: Scenario 1\n\t \t");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
-    this.jnarioFile1 = _first;
+    this.jnarioFile = _first;
   }
   
   @Test
@@ -51,7 +51,7 @@ public class ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps exten
   @Order(2)
   @Named("Then they should execute successfully")
   public void thenTheyShouldExecuteSuccessfully() {
-    this.behaviorExecutor.executesSuccessfully(this.jnarioFile1);
+    this.behaviorExecutor.executesSuccessfully(this.jnarioFile);
     this.behaviorExecutor.executesSuccessfully(this.jnarioFile2);
   }
 }

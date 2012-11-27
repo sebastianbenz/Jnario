@@ -249,7 +249,7 @@ Feature: References for steps
 
 	Scenario: Background steps referencing other steps
 	 	@Inject extension BehaviorExecutor behaviorExecutor
-	 	CharSequence jnarioFile1
+	 	CharSequence jnarioFile
 	 	CharSequence jnarioFile2
 	 	Given a feature
 	 	'''
@@ -262,7 +262,7 @@ Feature: References for steps
 			testString.toUpperCase
 			Scenario: Scenario 1
 	 	'''
-	 		jnarioFile1 = args.first
+	 		jnarioFile = args.first
 	 	When referencing the backround steps from another background
 	 	'''
 			Feature: Feature 2
@@ -273,7 +273,7 @@ Feature: References for steps
 	 	'''
 	 		jnarioFile2 = args.first
 	 	Then they should execute successfully
-	 		jnarioFile1.executesSuccessfully
+	 		jnarioFile.executesSuccessfully
 	 		jnarioFile2.executesSuccessfully
 	 		
 	 Scenario: Step references with extensions in same scenario
@@ -289,3 +289,48 @@ Feature: References for steps
 	 	'''
 	 		jnarioFile = args.first
 	 	Then it should execute successfully
+	 	
+	 Scenario: Scenario references two steps from different scenarios which define the same field
+	 	Given a feature
+	 	'''
+	 	Feature: Field inference
+			Scenario: Scenario with field colors
+				val colors = <String>list  
+				Given a color red
+					colors += "red"
+			Scenario: Other scenario with field colors
+				val colors = <String>list 
+				Given a color green
+					colors += "green"
+			Scenario: Two steps reuse same field
+				
+				Given a color green
+				And a color red
+				Then colors are red & green
+				colors => list("green", "red")
+	 	'''
+	 	Then it should execute successfully
+	 	
+	 Scenario: Duplicate extension via step rerferences
+	 	
+	 	When I have a feature
+	 	'''
+	 	import java.util.List
+	 	Feature: Feature 1
+		Scenario: Scenario with field colors
+			extension List<String> colors = <String>list
+			Given a color red
+				colors += "red"
+			And a color green
+	 	'''
+	 	And another feature 
+	 	'''
+	 	import java.util.List
+	 	Feature: Feature 2
+		Scenario: Scenario with other colors
+				extension List<String> colors = <String>list
+			Given a color red
+			And a color green
+				colors += "green"
+	 	'''
+	 	Then both should execute successfully

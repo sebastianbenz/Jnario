@@ -7,14 +7,7 @@
  *******************************************************************************/
 package org.jnario.feature.scoping;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.impl.FilteringScope;
-import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.scoping.JnarioScopeProvider;
-import org.jnario.util.IEObjectDescriptionFilter;
 
 public class FeatureScopeProvider extends JnarioScopeProvider {
 

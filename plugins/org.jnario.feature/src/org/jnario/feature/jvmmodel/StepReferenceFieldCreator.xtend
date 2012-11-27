@@ -16,6 +16,7 @@ import org.eclipse.xtend.core.xtend.XtendMember
 import org.jnario.feature.feature.StepReference
 
 import static org.eclipse.xtext.EcoreUtil2.*
+import org.jnario.util.SourceAdapter
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -50,7 +51,8 @@ class StepReferenceFieldCreator {
    		val type = objectWithReference as XtendClass
    		for(field: members.filter(typeof(XtendField))){
 			if(!fieldNames.contains(field.name)){
-				val copiedMember = cloneWithProxies(field)
+				val copiedMember = clone(field)
+				SourceAdapter::adapt(copiedMember, field);
 				type.members.add(copiedMember as XtendField)
 				fieldNames += field.name
 			}

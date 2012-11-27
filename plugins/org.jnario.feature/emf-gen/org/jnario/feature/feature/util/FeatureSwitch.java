@@ -11,17 +11,30 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendMember;
-
 import org.jnario.Executable;
 import org.jnario.Specification;
-
-import org.jnario.feature.feature.*;
+import org.jnario.feature.feature.And;
+import org.jnario.feature.feature.AndReference;
+import org.jnario.feature.feature.Background;
+import org.jnario.feature.feature.Feature;
+import org.jnario.feature.feature.FeatureFile;
+import org.jnario.feature.feature.FeaturePackage;
+import org.jnario.feature.feature.Given;
+import org.jnario.feature.feature.GivenReference;
+import org.jnario.feature.feature.Scenario;
+import org.jnario.feature.feature.Step;
+import org.jnario.feature.feature.StepExpression;
+import org.jnario.feature.feature.StepImplementation;
+import org.jnario.feature.feature.StepReference;
+import org.jnario.feature.feature.Then;
+import org.jnario.feature.feature.ThenReference;
+import org.jnario.feature.feature.When;
+import org.jnario.feature.feature.WhenReference;
 
 /**
  * <!-- begin-user-doc -->

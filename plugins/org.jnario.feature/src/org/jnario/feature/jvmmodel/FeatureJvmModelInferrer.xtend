@@ -47,6 +47,13 @@ import static extension com.google.common.base.Strings.*
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.JvmField
 import org.jnario.runner.Extension
+import org.eclipse.xtend.core.xtend.XtendFunction
+import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
+import org.eclipse.xtext.common.types.TypesPackage
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import org.eclipse.xtext.util.Strings
+import org.jnario.util.SourceAdapter
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -158,7 +165,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	def dispatch void init(Scenario scenario, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios){
    		scenario.copyXtendMemberForReferences
 		scenario.members.filter(typeof(XtendField)).forEach[
-			initializeName
+//			initializeName
 			it.transform2(inferredJvmType)
 		]   		
    		val annotations = inferredJvmType.annotations
@@ -190,8 +197,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		]
    	}
    	
+   	
+	override protected transform(XtendFunction source, JvmGenericType container) {
+	}
+	
    	override protected transform(XtendField source, JvmGenericType container) {
-   		
    	}
    	
    	/*
@@ -212,10 +222,14 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		}
 	}
    	
-   	def void initializeName(XtendField field){
-   		if(field.name != null) return;
-   		field.name = field.computeFieldName(null)
-   	}
+	override protected computeFieldName(XtendField field, JvmGenericType declaringType) {
+		val source = SourceAdapter::find(field)
+		if(source == null){
+			super.computeFieldName(field, declaringType)
+		}else{
+			super.computeFieldName(source as XtendField, declaringType)
+		}
+	}
 
    	def generateStepValues(Step step){
 		val arguments = stepArgumentsProvider.findStepArguments(step)

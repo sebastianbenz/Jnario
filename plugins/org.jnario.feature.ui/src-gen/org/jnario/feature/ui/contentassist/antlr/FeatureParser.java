@@ -38,10 +38,10 @@ public class FeatureParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getImportAccess().getAlternatives_1(), "rule__Import__Alternatives_1");
 					put(grammarAccess.getXAnnotationAccess().getAlternatives_3_1(), "rule__XAnnotation__Alternatives_3_1");
-					put(grammarAccess.getBackgroundAccess().getStepsAlternatives_3_0(), "rule__Background__StepsAlternatives_3_0");
-					put(grammarAccess.getScenarioAccess().getStepsAlternatives_3_0(), "rule__Scenario__StepsAlternatives_3_0");
-					put(grammarAccess.getScenarioAccess().getStepsAlternatives_4_0(), "rule__Scenario__StepsAlternatives_4_0");
-					put(grammarAccess.getScenarioAccess().getStepsAlternatives_5_0(), "rule__Scenario__StepsAlternatives_5_0");
+					put(grammarAccess.getBackgroundAccess().getMembersAlternatives_3_0(), "rule__Background__MembersAlternatives_3_0");
+					put(grammarAccess.getScenarioAccess().getMembersAlternatives_3_0(), "rule__Scenario__MembersAlternatives_3_0");
+					put(grammarAccess.getScenarioAccess().getMembersAlternatives_4_0(), "rule__Scenario__MembersAlternatives_4_0");
+					put(grammarAccess.getScenarioAccess().getMembersAlternatives_5_0(), "rule__Scenario__MembersAlternatives_5_0");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_2(), "rule__Member__Alternatives_2_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_2_0_2(), "rule__Member__Alternatives_2_2_0_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_2_1_1(), "rule__Member__Alternatives_2_2_1_1");
@@ -326,12 +326,12 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXAnnotationAccess().getValueAssignment_3_1_1(), "rule__XAnnotation__ValueAssignment_3_1_1");
 					put(grammarAccess.getBackgroundAccess().getNameAssignment_1(), "rule__Background__NameAssignment_1");
 					put(grammarAccess.getBackgroundAccess().getMembersAssignment_2(), "rule__Background__MembersAssignment_2");
-					put(grammarAccess.getBackgroundAccess().getStepsAssignment_3(), "rule__Background__StepsAssignment_3");
+					put(grammarAccess.getBackgroundAccess().getMembersAssignment_3(), "rule__Background__MembersAssignment_3");
 					put(grammarAccess.getScenarioAccess().getNameAssignment_1(), "rule__Scenario__NameAssignment_1");
 					put(grammarAccess.getScenarioAccess().getMembersAssignment_2(), "rule__Scenario__MembersAssignment_2");
-					put(grammarAccess.getScenarioAccess().getStepsAssignment_3(), "rule__Scenario__StepsAssignment_3");
-					put(grammarAccess.getScenarioAccess().getStepsAssignment_4(), "rule__Scenario__StepsAssignment_4");
-					put(grammarAccess.getScenarioAccess().getStepsAssignment_5(), "rule__Scenario__StepsAssignment_5");
+					put(grammarAccess.getScenarioAccess().getMembersAssignment_3(), "rule__Scenario__MembersAssignment_3");
+					put(grammarAccess.getScenarioAccess().getMembersAssignment_4(), "rule__Scenario__MembersAssignment_4");
+					put(grammarAccess.getScenarioAccess().getMembersAssignment_5(), "rule__Scenario__MembersAssignment_5");
 					put(grammarAccess.getMemberAccess().getAnnotationsAssignment_1(), "rule__Member__AnnotationsAssignment_1");
 					put(grammarAccess.getMemberAccess().getVisibilityAssignment_2_1(), "rule__Member__VisibilityAssignment_2_1");
 					put(grammarAccess.getMemberAccess().getExtensionAssignment_2_2_0_0(), "rule__Member__ExtensionAssignment_2_2_0_0");

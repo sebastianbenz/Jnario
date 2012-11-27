@@ -57,9 +57,9 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 
 	def dispatch generate(Scenario scenario)'''
 		<div><h3 class="scenario «scenario.executionStateClass»" «id(scenario.name)»>«scenario.name»</h3>
-		«generate(scenario.steps.filter(typeof(Step)))»</div>
+		«generate(scenario.steps)»</div>
 	'''
-	
+
 	def dispatch generate(Iterable<Step> steps)'''
 		<ul>
 		«FOR step : steps»

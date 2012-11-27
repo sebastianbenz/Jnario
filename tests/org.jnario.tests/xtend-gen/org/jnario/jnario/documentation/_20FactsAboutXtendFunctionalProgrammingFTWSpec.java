@@ -211,14 +211,14 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
           return Integer.valueOf(_length);
         }
       };
-    List<Integer> _map = ListExtensions.<String, Integer>map(strings, (Function1<? super String,? extends String>)_function);
-    final Function2<Integer,Integer,String> _function_1 = new Function2<Integer,Integer,String>() {
-        public String apply(final Integer sum, final Integer size) {
-          String _plus = (sum + size);
-          return _plus;
+    List<Integer> _map = ListExtensions.<String, Integer>map(strings, _function);
+    final Function2<Integer,Integer,Integer> _function_1 = new Function2<Integer,Integer,Integer>() {
+        public Integer apply(final Integer sum, final Integer size) {
+          int _plus = ((sum).intValue() + (size).intValue());
+          return Integer.valueOf(_plus);
         }
       };
-    final Integer charCount = IterableExtensions.<Integer>reduce(_map, (Function2<? super Integer,? super Integer,? extends Integer>)_function_1);
+    final Integer charCount = IterableExtensions.<Integer>reduce(_map, _function_1);
     boolean _doubleArrow = Should.operator_doubleArrow(charCount, Integer.valueOf(12));
     Assert.assertTrue("\nExpected charCount => 12 but"
      + "\n     charCount is " + new StringDescription().appendValue(charCount).toString() + "\n", _doubleArrow);
