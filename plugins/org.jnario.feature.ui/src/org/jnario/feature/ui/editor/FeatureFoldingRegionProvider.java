@@ -7,12 +7,17 @@
  *******************************************************************************/
 package org.jnario.feature.ui.editor;
 
+import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode;
+
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendImport;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.parser.IParseResult;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionAcceptor;
 import org.eclipse.xtext.util.ITextRegion;
@@ -28,6 +33,26 @@ import org.jnario.feature.feature.StepImplementation;
  */
 public class FeatureFoldingRegionProvider extends DefaultFoldingRegionProvider {
 
+	protected void computeObjectFolding(XtextResource xtextResource, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
+		IParseResult parseResult = xtextResource.getParseResult();
+		if(parseResult != null){
+			EObject rootASTElement = parseResult.getRootASTElement();
+			if(rootASTElement != null){
+				computeObjectFolding(rootASTElement, foldingRegionAcceptor);
+				TreeIterator<EObject> allContents = rootASTElement.eAllContents();
+				while (allContents.hasNext()) {
+					EObject eObject = allContents.next();
+					if (isHandled(eObject)) {
+						computeObjectFolding(eObject, foldingRegionAcceptor);
+					}
+					if (!shouldProcessContent(eObject)) {
+						allContents.prune();
+					}
+				}
+			}
+		}
+	}
+	
 	@Override
 	protected void computeObjectFolding(EObject eObject, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
 		if(eObject instanceof FeatureFile){
@@ -42,28 +67,28 @@ public class FeatureFoldingRegionProvider extends DefaultFoldingRegionProvider {
 	}
 
 	private void calculateFolding(FeatureFile featureFile, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
-		int startFeature = getBegin(featureFile);
-		if(startFeature >= 0 && !featureFile.getImports().isEmpty()){
-			EList<XtendImport> imports = featureFile.getImports();
-			XtendImport xtendImport = imports.get(imports.size()-1);
-			setFoldingRegion(xtendImport, startFeature, foldingRegionAcceptor);
+		EList<XtendImport> imports = featureFile.getImports();
+		if(imports.isEmpty()){
+			return;
 		}
-	}
-	
-
-	private void calculateFolding(Background background, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor){
-		int begin = getBegin(background);
-		EList<XtendMember> members = background.getMembers();
-		if(begin >= 0 && members != null && !members.isEmpty()){
-			setFoldingRegion(members.get(members.size() - 1), begin, foldingRegionAcceptor);
-		}
+		int begin = 0;
+		XtendImport xtendImport = imports.get(imports.size()-1);
+		setFoldingRegion(xtendImport, begin, foldingRegionAcceptor);
 	}
 	
 	private void calculateFolding(Scenario scenario, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor){
 		int begin = getBegin(scenario);
 		EList<XtendMember> members = scenario.getMembers();
-		if(begin >= 0 && members != null && !members.isEmpty()){
-			setFoldingRegion(members.get(members.size() - 1), begin, foldingRegionAcceptor);
+		XtendMember previous = null;
+		for (XtendMember xtendMember : members) {
+			if (xtendMember instanceof Step) {
+				if (previous != null && getNode(previous) != null) {
+					setFoldingRegion(previous, begin, foldingRegionAcceptor);
+					break;
+				}
+			}else{
+				previous = xtendMember;
+			}
 		}
 	}
 

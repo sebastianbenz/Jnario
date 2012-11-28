@@ -211,6 +211,10 @@ public class ModelStore implements Iterable<EObject> {
 		return query().first(ExampleGroup.class);
 	}
 	
+	public Scenario firstScenario(){
+		return query().first(Scenario.class);
+	}
+	
 	public XtextResourceSet getResourceSet() {
 		return resourceSet;
 	}
