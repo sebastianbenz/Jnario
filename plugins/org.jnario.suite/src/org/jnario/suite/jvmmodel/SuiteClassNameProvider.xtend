@@ -48,7 +48,7 @@ class SuiteClassNameProvider extends JnarioNameProvider{
 	}
 	
 	def dispatch String getClassName(EObject element){
-		element.classNameProvider.toJavaClassName(element)
+		element.classNameProvider?.toJavaClassName(element)
 	}	
 
 	override describe(EObject eObject) {

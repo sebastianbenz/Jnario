@@ -70,7 +70,7 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
   
   protected String _getClassName(final EObject element) {
     JnarioNameProvider _classNameProvider = this.classNameProvider(element);
-    String _javaClassName = _classNameProvider.toJavaClassName(element);
+    String _javaClassName = _classNameProvider==null?(String)null:_classNameProvider.toJavaClassName(element);
     return _javaClassName;
   }
   
