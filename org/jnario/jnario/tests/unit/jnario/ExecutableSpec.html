@@ -39,88 +39,46 @@
 <div class="level">
 <h4 class="exampleGroup notrun"  id="Feature">Feature</h4>
 <ul><li><p id="feature_Without_scenarios_and_without_background_isPending_should_be_true" class="example notrun"><strong>feature["Without scenarios and without background"].isPending[] should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-feature(&quot;Without scenarios and without background&quot;).isPending() should be true</pre>
 </li><li><p id="featureWith_implementedScenario_isPending_should_be_false" class="example notrun"><strong>featureWith[implementedScenario].isPending[] should be false</strong></p>
-<pre class="prettyprint lang-spec linenums">
-featureWith(implementedScenario).isPending() should be false</pre>
 </li><li><p id="featureWith_scenarioWithoutSteps_implementedScenario_isPending_should_be_true" class="example notrun"><strong>featureWith[scenarioWithoutSteps, implementedScenario].isPending[] should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-featureWith(scenarioWithoutSteps, implementedScenario).isPending() should be true</pre>
 </li><li><p id="featureWithBackground_implementedBackground_isPending_should_be_true" class="example notrun"><strong>featureWithBackground[implementedBackground].isPending[] should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-featureWithBackground(implementedBackground).isPending() should be true</pre>
 </li><li><p id="featureWithBackground_backgroundWithoutSteps_isPending_should_be_true" class="example notrun"><strong>featureWithBackground[backgroundWithoutSteps].isPending[] should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-featureWithBackground(backgroundWithoutSteps).isPending() should be true</pre>
 </li><li><p id="featureWithBackgroundAndScenario_backgroundWithoutSteps_implementedScenario_isPending_should_be_true" class="example notrun"><strong>featureWithBackgroundAndScenario[backgroundWithoutSteps, implementedScenario].isPending[] should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-featureWithBackgroundAndScenario(backgroundWithoutSteps, implementedScenario).isPending() should be true</pre>
 </li><li><p id="featureWithBackgroundAndScenario_implementedBackground_implementedScenario_isPending_should_be_false" class="example notrun"><strong>featureWithBackgroundAndScenario[implementedBackground, implementedScenario].isPending[] should be false</strong></p>
-<pre class="prettyprint lang-spec linenums">
-featureWithBackgroundAndScenario(implementedBackground, implementedScenario).isPending() should be false</pre>
 </li></ul>
 </div>
 <div class="level">
 <h4 class="exampleGroup notrun"  id="Scenario">Scenario</h4>
 <ul><li><p id="scenario_Without_steps_isPending_should_be_true" class="example notrun"><strong>scenario["Without steps"].isPending[] should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-scenario(&quot;Without steps&quot;).isPending() should be true</pre>
 </li><li><p id="scenarioWith_stepWithoutImplementation_isPending_should_be_true" class="example notrun"><strong>scenarioWith[stepWithoutImplementation].isPending[] should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-scenarioWith(stepWithoutImplementation).isPending() should be true</pre>
 </li><li><p id="scenarioWith_implementedStep_isPending_should_be_false" class="example notrun"><strong>scenarioWith[implementedStep].isPending[] should be false</strong></p>
-<pre class="prettyprint lang-spec linenums">
-scenarioWith(implementedStep).isPending() should be false</pre>
 </li><li><p id="scenarioWith_stepWithoutImplementation_implementedStep_isPending_should_be_true" class="example notrun"><strong>scenarioWith[stepWithoutImplementation, implementedStep].isPending[] should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-scenarioWith(stepWithoutImplementation, implementedStep).isPending() should be true</pre>
 </li></ul>
 </div>
 <div class="level">
 <h4 class="exampleGroup notrun"  id="Step">Step</h4>
 <ul><li><p id="stepWithoutImplementation_isPending_should_be_true" class="example notrun"><strong>stepWithoutImplementation.isPending[] should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-stepWithoutImplementation.isPending() should be true</pre>
 </li><li><p id="implementedStep_isPending_should_be_false" class="example notrun"><strong>implementedStep.isPending[] should be false</strong></p>
-<pre class="prettyprint lang-spec linenums">
-implementedStep.isPending() should be false</pre>
 </li></ul>
 </div>
 <div class="level">
 <h4 class="exampleGroup notrun"  id="Example">Example</h4>
 <ul><li><p id="pendingExample_isPending_should_be_true" class="example notrun"><strong>pendingExample.isPending[] should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-pendingExample.isPending() should be true</pre>
 </li><li><p id="implementedExample_isPending_should_be_false" class="example notrun"><strong>implementedExample.isPending[] should be false</strong></p>
-<pre class="prettyprint lang-spec linenums">
-implementedExample.isPending() should be false</pre>
 </li></ul>
 </div>
 <div class="level">
 <h4 class="exampleGroup notrun"  id="ExampleGroup">ExampleGroup</h4>
 <ul><li><p id="exampleGroupWith_pendingExample_isPending_should_be_true" class="example notrun"><strong>exampleGroupWith[pendingExample].isPending should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-exampleGroupWith(pendingExample).isPending should be true</pre>
 </li><li><p id="exampleGroupWith_implementedExample_isPending_should_be_false" class="example notrun"><strong>exampleGroupWith[implementedExample].isPending should be false</strong></p>
-<pre class="prettyprint lang-spec linenums">
-exampleGroupWith(implementedExample).isPending should be false</pre>
 </li><li><p id="exampleGroupWith_pendingExample_implementedExample_isPending_should_be_true" class="example notrun"><strong>exampleGroupWith[pendingExample, implementedExample].isPending should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-exampleGroupWith(pendingExample, implementedExample).isPending should be true</pre>
 </li><li><p id="exampleGroupWith_pendingExampleGroup_isPending_should_be_true" class="example notrun"><strong>exampleGroupWith[pendingExampleGroup].isPending should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-exampleGroupWith(pendingExampleGroup).isPending should be true</pre>
 </li></ul>
 </div>
 <div class="level">
 <h4 class="exampleGroup notrun"  id="Suite">Suite</h4>
 <ul><li><p id="suiteWith_A_suite_specReference_pendingExampleGroup_isPending_should_be_true" class="example notrun"><strong>suiteWith["A suite", specReference[pendingExampleGroup]].isPending should be true</strong></p>
-<pre class="prettyprint lang-spec linenums">
-suiteWith(&quot;A suite&quot;, specReference(pendingExampleGroup)).isPending should be true</pre>
 </li><li><p id="suiteWith_A_suite_specReference_exampleGroupWith_example_passing_isPending_should_be_false" class="example notrun"><strong>suiteWith["A suite", specReference[exampleGroupWith[example["passing"]]]].isPending should be false</strong></p>
-<pre class="prettyprint lang-spec linenums">
-suiteWith(&quot;A suite&quot;, specReference(exampleGroupWith(example(&quot;passing&quot;)))).isPending should be false</pre>
 </li></ul>
 </div>
 							</div>

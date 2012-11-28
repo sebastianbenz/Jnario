@@ -80,7 +80,7 @@ assert scenarioDoc.contains('''
 &lt;pre class=&quot;prettyprint lang-spec linenums&quot;&gt;
 var x = 0
 x = x + 1&lt;/pre&gt;'''.toString())</pre>
-</li><li><p id="should_support_markdown_for_documentation" class="example notrun"><strong>should support markdown for documentation</strong></p>
+</li><li><p id="supports_markdown_for_documentation" class="example notrun"><strong>supports markdown for documentation</strong></p>
 <pre class="prettyprint lang-spec linenums">
 generateDoc('''
   /*
@@ -108,6 +108,16 @@ assert scenarioDoc.contains(&quot;&lt;th&gt;a&lt;/th&gt;&quot;)
 assert scenarioDoc.contains(&quot;&lt;th&gt;b&lt;/th&gt;&quot;)
 assert scenarioDoc.contains(&quot;&lt;td&gt;1&lt;/td&gt;&quot;)
 assert scenarioDoc.contains(&quot;&lt;td&gt;2&lt;/td&gt;&quot;)</pre>
+</li><li><p id="No_code_block_for_examples_without_description" class="example notrun"><strong>No code block for examples without description</strong></p>
+<pre class="prettyprint lang-spec linenums">
+generateDoc('''
+  describe 'Example'{
+    fact 1 + 1 =&gt; 2
+  } 
+''')
+val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
+scenarioDoc should not contain '''&lt;pre class=&quot;prettyprint lang-spec linenums&quot;&gt;
+1 + 1 =&amp;gt; 2&lt;/pre&gt;'''</pre>
 </li><li><p id="filters_code_based_on_regex_in_filter_annotation" class="example notrun"><strong>filters code based on regex in filter annotation</strong></p>
 <pre class="prettyprint lang-spec linenums">
 generateDoc('''
@@ -207,7 +217,7 @@ describe SpecDocGenerator {
     x = x + 1&lt;/pre&gt;'''.toString())
   }
   
-  fact &quot;should support markdown for documentation&quot;{
+  fact &quot;supports markdown for documentation&quot;{
     generateDoc('''
       /*
        * #Example Heading
@@ -236,6 +246,17 @@ describe SpecDocGenerator {
     assert scenarioDoc.contains(&quot;&lt;th&gt;b&lt;/th&gt;&quot;)
     assert scenarioDoc.contains(&quot;&lt;td&gt;1&lt;/td&gt;&quot;)
     assert scenarioDoc.contains(&quot;&lt;td&gt;2&lt;/td&gt;&quot;)
+  }
+  
+  fact &quot;No code block for examples without description&quot;{
+    generateDoc('''
+      describe 'Example'{
+        fact 1 + 1 =&gt; 2
+      } 
+    ''')
+    val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
+    scenarioDoc should not contain '''&lt;pre class=&quot;prettyprint lang-spec linenums&quot;&gt;
+1 + 1 =&amp;gt; 2&lt;/pre&gt;'''
   }
   
   fact &quot;filters code based on regex in filter annotation&quot;{
