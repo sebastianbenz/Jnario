@@ -8,7 +8,6 @@
 package org.jnario.feature.resource;
 
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.findNodesForFeature;
-import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode;
 import static org.jnario.util.Strings.countWhitespaceAtEnd;
 
 import java.util.Collections;
@@ -16,7 +15,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
-import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.util.ITextRegion;
