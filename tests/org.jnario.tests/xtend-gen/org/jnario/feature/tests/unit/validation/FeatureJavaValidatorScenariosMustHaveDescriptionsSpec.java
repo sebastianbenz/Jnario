@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 public class FeatureJavaValidatorScenariosMustHaveDescriptionsSpec extends FeatureJavaValidatorSpec {
   @Test
   @Named("\\\'\\\'\\\' Feature: A Feature Scenario: \\\'\\\'\\\'.select[typeof[Scenario]].assertErrorContains[\\\"description\\\"]")
-  @Order(3)
+  @Order(4)
   public void _featureAFeatureScenarioSelectTypeofScenarioAssertErrorContainsDescription() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: A Feature");

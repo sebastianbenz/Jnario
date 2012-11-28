@@ -8,10 +8,14 @@
 package org.jnario.feature.validation;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
+import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Maps.newHashMap;
+import static com.google.common.collect.Sets.newHashSet;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -20,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtend.core.validation.IssueCodes;
 import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendImport;
@@ -79,6 +84,16 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	public void checkFeaturesHaveAName(Feature feature){
 		if(isNullOrEmpty(feature.getName())){
 			error("Features should have a description", XtendPackage.Literals.XTEND_CLASS__NAME);
+		}
+	}
+	
+	@Check(CheckType.FAST)
+	public void checkDuplicateScenarioNames(Feature feature){
+		Set<String> names = newHashSet();
+		for (Scenario scenario : feature.getScenarios()) {
+			if(!names.add(classNameProvider.getClassName(scenario))){
+				error("Duplicate scenario: '" + scenario.getName() + "'", XtendPackage.Literals.XTEND_CLASS__NAME);
+			}
 		}
 	}
 	
@@ -258,7 +273,16 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	
 	
 	@Check
-	public void checkDuplicateExtensionFields(Scenario scenario){
+	public void checkConflictingFields(Scenario scenario){
 		
+		Iterable<XtendField> fields = filter(scenario.getMembers(), XtendField.class);
+		Set<String> names = new HashSet<String>();
+		for (XtendField xtendField : fields) {
+			if(names.contains(xtendField.getName())){
+				
+			}else{
+				names.add(xtendField.getName());
+			}
+		}
 	}
 }
