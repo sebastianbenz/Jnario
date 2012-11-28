@@ -29,7 +29,6 @@ import org.eclipse.xtend.ide.editor.SingleLineCommentHelper;
 import org.eclipse.xtend.ide.editor.XtendNatureAddingEditorCallback;
 import org.eclipse.xtend.ide.highlighting.RichStringAwareTokenScanner;
 import org.eclipse.xtend.ide.hover.XtendHoverDocumentationProvider;
-import org.eclipse.xtend.ide.hover.XtendHoverSignatureProvider;
 import org.eclipse.xtend.ide.hyperlinking.XtendHyperlinkHelper;
 import org.eclipse.xtend.ide.outline.XtendOutlineNodeComparator;
 import org.eclipse.xtend.ide.outline.XtendOutlinePage;
@@ -89,11 +88,12 @@ import org.jnario.feature.ui.generator.FeatureGenerator;
 import org.jnario.feature.ui.highlighting.FeatureHighlightingConfiguration;
 import org.jnario.feature.ui.highlighting.FeatureSemanticHighlightingCalculator;
 import org.jnario.feature.ui.highlighting.FeatureTokenHighlighting;
+import org.jnario.feature.ui.hover.FeatureHoverProvider;
+import org.jnario.feature.ui.hover.FeatureHoverSignatureProvider;
 import org.jnario.feature.ui.launching.FeatureJavaElementDelegate;
 import org.jnario.feature.ui.parser.CustomFeatureLexer;
 import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
-import org.jnario.ui.doc.JnarioHoverProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -123,7 +123,7 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	}
 
 	public Class<? extends XbaseDeclarativeHoverSignatureProvider> bindXbaseDeclarativeHoverSignatureProvider(){
-		return XtendHoverSignatureProvider.class;
+		return FeatureHoverSignatureProvider.class;
 	}
 	
 	@Override
@@ -320,6 +320,6 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	
 	@Override
 	public Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
-		return JnarioHoverProvider.class;
+		return FeatureHoverProvider.class;
 	}
 }
