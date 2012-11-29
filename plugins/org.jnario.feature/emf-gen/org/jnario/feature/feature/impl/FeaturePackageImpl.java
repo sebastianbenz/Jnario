@@ -11,11 +11,17 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.eclipse.xtend.core.xtend.XtendPackage;
+
 import org.eclipse.xtext.xbase.XbasePackage;
+
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
+
 import org.jnario.JnarioPackage;
+
 import org.jnario.feature.feature.And;
 import org.jnario.feature.feature.AndReference;
 import org.jnario.feature.feature.Background;
@@ -306,16 +312,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStep_And()
-	{
-		return (EReference)stepEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getGiven()
 	{
 		return givenEClass;
@@ -502,7 +498,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 
 		stepEClass = createEClass(STEP);
 		createEReference(stepEClass, STEP__STEP_EXPRESSION);
-		createEReference(stepEClass, STEP__AND);
 
 		givenEClass = createEClass(GIVEN);
 
@@ -599,7 +594,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStep_StepExpression(), this.getStepExpression(), null, "stepExpression", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStep_And(), this.getStep(), null, "and", null, 0, -1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(givenEClass, Given.class, "Given", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

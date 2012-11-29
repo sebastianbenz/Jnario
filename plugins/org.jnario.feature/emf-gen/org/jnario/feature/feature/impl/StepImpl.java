@@ -7,17 +7,16 @@
  */
 package org.jnario.feature.feature.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.xtend.core.xtend.impl.XtendFunctionImpl;
+
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepExpression;
@@ -30,7 +29,6 @@ import org.jnario.feature.feature.StepExpression;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.jnario.feature.feature.impl.StepImpl#getStepExpression <em>Step Expression</em>}</li>
- *   <li>{@link org.jnario.feature.feature.impl.StepImpl#getAnd <em>And</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,16 +45,6 @@ public class StepImpl extends XtendFunctionImpl implements Step
 	 * @ordered
 	 */
 	protected StepExpression stepExpression;
-
-	/**
-	 * The cached value of the '{@link #getAnd() <em>And</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAnd()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Step> and;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,20 +120,6 @@ public class StepImpl extends XtendFunctionImpl implements Step
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Step> getAnd()
-	{
-		if (and == null)
-		{
-			and = new EObjectContainmentEList<Step>(Step.class, this, FeaturePackage.STEP__AND);
-		}
-		return and;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isPending()
 	{
 		// TODO: implement this method
@@ -165,8 +139,6 @@ public class StepImpl extends XtendFunctionImpl implements Step
 		{
 			case FeaturePackage.STEP__STEP_EXPRESSION:
 				return basicSetStepExpression(null, msgs);
-			case FeaturePackage.STEP__AND:
-				return ((InternalEList<?>)getAnd()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -183,8 +155,6 @@ public class StepImpl extends XtendFunctionImpl implements Step
 		{
 			case FeaturePackage.STEP__STEP_EXPRESSION:
 				return getStepExpression();
-			case FeaturePackage.STEP__AND:
-				return getAnd();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -194,7 +164,6 @@ public class StepImpl extends XtendFunctionImpl implements Step
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue)
 	{
@@ -202,10 +171,6 @@ public class StepImpl extends XtendFunctionImpl implements Step
 		{
 			case FeaturePackage.STEP__STEP_EXPRESSION:
 				setStepExpression((StepExpression)newValue);
-				return;
-			case FeaturePackage.STEP__AND:
-				getAnd().clear();
-				getAnd().addAll((Collection<? extends Step>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -224,9 +189,6 @@ public class StepImpl extends XtendFunctionImpl implements Step
 			case FeaturePackage.STEP__STEP_EXPRESSION:
 				setStepExpression((StepExpression)null);
 				return;
-			case FeaturePackage.STEP__AND:
-				getAnd().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -243,8 +205,6 @@ public class StepImpl extends XtendFunctionImpl implements Step
 		{
 			case FeaturePackage.STEP__STEP_EXPRESSION:
 				return stepExpression != null;
-			case FeaturePackage.STEP__AND:
-				return and != null && !and.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -57,15 +57,15 @@ Background:
 	{Background}
 	name=BACKGROUND_TEXT
 	members+=Member*
-	members+=(Given|GivenReference)*;
+	(members+=(Given|GivenReference) members+=(And|AndReference)*)?;
 
 Scenario :
 	{Scenario}
 	name=SCENARIO_TEXT
 	members+=Member*
-	members+=(Given|GivenReference)?
-	members+=(When|WhenReference)?
-	members+=(Then|ThenReference)?;
+	(members+=(Given|GivenReference) members+=(And|AndReference)*)?
+	(members+=(When|WhenReference) members+=(And|AndReference)*)?
+	(members+=(Then|ThenReference) members+=(And|AndReference)*)?;
 
 Member returns xtend::XtendMember:
 	{xtend::XtendMember} annotations+=XAnnotation* 
@@ -81,37 +81,31 @@ Member returns xtend::XtendMember:
 GivenReference:
 	{GivenReference}
 	reference=[Given|GIVEN_TEXT] 
-	and+=(And|AndReference)*
 ;
 
 Given:
 	{Given}
 	name=GIVEN_TEXT stepExpression=StepExpression
-	and+=(And|AndReference)*
 ;
 
 WhenReference:
 	{WhenReference}
 	reference=[When|WHEN_TEXT] 
-	and+=(And|AndReference)*
 ;
 
 When:
 	{When}
 	name=WHEN_TEXT stepExpression=StepExpression
-	and+=(And|AndReference)*
 ;
 
 ThenReference:
 	{ThenReference}
 	reference=[Then|THEN_TEXT] 
-	and+=(And|AndReference)*
 ;
 
 Then:
 	{Then}
-	name=THEN_TEXT stepExpression=StepExpression
-	and+=(And|AndReference)*;
+	name=THEN_TEXT stepExpression=StepExpression;
 	
 AndReference:
 	{AndReference}

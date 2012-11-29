@@ -24,5 +24,5 @@ public class FeatureGenerator implements IGenerator {
 		jvmModelGenerator.doGenerate(input, fsa);
 		docGenerator.doGenerate(input, fsa);
 	}
-
+	
 }

@@ -11,7 +11,9 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.xtend.core.xtend.XtendPackage;
+
 import org.jnario.JnarioPackage;
 
 /**
@@ -500,22 +502,13 @@ public interface FeaturePackage extends EPackage
 	int STEP__STEP_EXPRESSION = XtendPackage.XTEND_FUNCTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>And</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__AND = XtendPackage.XTEND_FUNCTION_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Step</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STEP_FEATURE_COUNT = XtendPackage.XTEND_FUNCTION_FEATURE_COUNT + 2;
+	int STEP_FEATURE_COUNT = XtendPackage.XTEND_FUNCTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.StepImplementationImpl <em>Step Implementation</em>}' class.
@@ -652,15 +645,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int STEP_IMPLEMENTATION__STEP_EXPRESSION = STEP__STEP_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>And</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_IMPLEMENTATION__AND = STEP__AND;
 
 	/**
 	 * The number of structural features of the '<em>Step Implementation</em>' class.
@@ -808,15 +792,6 @@ public interface FeaturePackage extends EPackage
 	int GIVEN__STEP_EXPRESSION = STEP_IMPLEMENTATION__STEP_EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>And</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GIVEN__AND = STEP_IMPLEMENTATION__AND;
-
-	/**
 	 * The number of structural features of the '<em>Given</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -960,15 +935,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int WHEN__STEP_EXPRESSION = STEP_IMPLEMENTATION__STEP_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>And</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN__AND = STEP_IMPLEMENTATION__AND;
 
 	/**
 	 * The number of structural features of the '<em>When</em>' class.
@@ -1116,15 +1082,6 @@ public interface FeaturePackage extends EPackage
 	int THEN__STEP_EXPRESSION = STEP_IMPLEMENTATION__STEP_EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>And</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEN__AND = STEP_IMPLEMENTATION__AND;
-
-	/**
 	 * The number of structural features of the '<em>Then</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1268,15 +1225,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int AND__STEP_EXPRESSION = STEP_IMPLEMENTATION__STEP_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>And</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AND__AND = STEP_IMPLEMENTATION__AND;
 
 	/**
 	 * The number of structural features of the '<em>And</em>' class.
@@ -1507,15 +1455,6 @@ public interface FeaturePackage extends EPackage
 	int STEP_REFERENCE__STEP_EXPRESSION = STEP__STEP_EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>And</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_REFERENCE__AND = STEP__AND;
-
-	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1668,15 +1607,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int GIVEN_REFERENCE__STEP_EXPRESSION = STEP_REFERENCE__STEP_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>And</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GIVEN_REFERENCE__AND = STEP_REFERENCE__AND;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -1833,15 +1763,6 @@ public interface FeaturePackage extends EPackage
 	int WHEN_REFERENCE__STEP_EXPRESSION = STEP_REFERENCE__STEP_EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>And</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN_REFERENCE__AND = STEP_REFERENCE__AND;
-
-	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1994,15 +1915,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int THEN_REFERENCE__STEP_EXPRESSION = STEP_REFERENCE__STEP_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>And</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEN_REFERENCE__AND = STEP_REFERENCE__AND;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -2159,15 +2071,6 @@ public interface FeaturePackage extends EPackage
 	int AND_REFERENCE__STEP_EXPRESSION = STEP_REFERENCE__STEP_EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>And</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AND_REFERENCE__AND = STEP_REFERENCE__AND;
-
-	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2269,17 +2172,6 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 */
 	EReference getStep_StepExpression();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.jnario.feature.feature.Step#getAnd <em>And</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>And</em>'.
-	 * @see org.jnario.feature.feature.Step#getAnd()
-	 * @see #getStep()
-	 * @generated
-	 */
-	EReference getStep_And();
 
 	/**
 	 * Returns the meta object for class '{@link org.jnario.feature.feature.Given <em>Given</em>}'.
@@ -2528,14 +2420,6 @@ public interface FeaturePackage extends EPackage
 		 * @generated
 		 */
 		EReference STEP__STEP_EXPRESSION = eINSTANCE.getStep_StepExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>And</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference STEP__AND = eINSTANCE.getStep_And();
 
 		/**
 		 * The meta object literal for the '{@link org.jnario.feature.feature.impl.GivenImpl <em>Given</em>}' class.

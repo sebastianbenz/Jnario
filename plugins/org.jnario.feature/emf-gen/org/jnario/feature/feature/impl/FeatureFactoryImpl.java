@@ -10,26 +10,12 @@ package org.jnario.feature.feature.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.jnario.feature.feature.And;
-import org.jnario.feature.feature.AndReference;
-import org.jnario.feature.feature.Background;
-import org.jnario.feature.feature.Feature;
-import org.jnario.feature.feature.FeatureFactory;
-import org.jnario.feature.feature.FeatureFile;
-import org.jnario.feature.feature.FeaturePackage;
-import org.jnario.feature.feature.Given;
-import org.jnario.feature.feature.GivenReference;
-import org.jnario.feature.feature.Scenario;
-import org.jnario.feature.feature.Step;
-import org.jnario.feature.feature.StepExpression;
-import org.jnario.feature.feature.StepImplementation;
-import org.jnario.feature.feature.StepReference;
-import org.jnario.feature.feature.Then;
-import org.jnario.feature.feature.ThenReference;
-import org.jnario.feature.feature.When;
-import org.jnario.feature.feature.WhenReference;
+
+import org.jnario.feature.feature.*;
 
 /**
  * <!-- begin-user-doc -->

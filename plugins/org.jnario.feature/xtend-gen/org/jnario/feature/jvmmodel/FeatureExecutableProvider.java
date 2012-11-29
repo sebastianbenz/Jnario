@@ -12,7 +12,6 @@ import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
-import org.jnario.feature.jvmmodel.Scenarios;
 import org.jnario.jvmmodel.ExecutableProvider;
 
 @SuppressWarnings("all")
@@ -23,8 +22,8 @@ public class FeatureExecutableProvider implements ExecutableProvider {
   }
   
   protected List<? extends Executable> _doGetExecutables(final Scenario scenario) {
-    ArrayList<Step> _allSteps = Scenarios.allSteps(scenario);
-    return _allSteps;
+    EList<Step> _steps = scenario.getSteps();
+    return _steps;
   }
   
   protected List<? extends Executable> _doGetExecutables(final Executable e) {

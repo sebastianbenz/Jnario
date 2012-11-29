@@ -57,7 +57,6 @@ import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.jvmmodel.JvmFieldReferenceUpdater;
-import org.jnario.feature.jvmmodel.Scenarios;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.feature.jvmmodel.StepExpressionProvider;
 import org.jnario.feature.jvmmodel.StepReferenceFieldCreator;
@@ -280,15 +279,15 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       _and = (_not && _notEquals);
     }
     if (_and) {
-      ArrayList<Step> _allSteps = Scenarios.allSteps(background);
-      int _generateBackgroundStepCalls = this.generateBackgroundStepCalls(_allSteps, inferredJvmType);
+      EList<Step> _steps = background.getSteps();
+      int _generateBackgroundStepCalls = this.generateBackgroundStepCalls(_steps, inferredJvmType);
       start = _generateBackgroundStepCalls;
     }
-    ArrayList<Step> _allSteps_1 = Scenarios.allSteps(scenario);
-    this.generateSteps(_allSteps_1, inferredJvmType, start, scenario);
+    EList<Step> _steps_1 = scenario.getSteps();
+    this.generateSteps(_steps_1, inferredJvmType, start, scenario);
     super.initialize(scenario, inferredJvmType);
-    ArrayList<Step> _allSteps_2 = Scenarios.allSteps(scenario);
-    Iterable<StepReference> _filter_1 = Iterables.<StepReference>filter(_allSteps_2, StepReference.class);
+    EList<Step> _steps_2 = scenario.getSteps();
+    Iterable<StepReference> _filter_1 = Iterables.<StepReference>filter(_steps_2, StepReference.class);
     final Procedure1<StepReference> _function_1 = new Procedure1<StepReference>() {
         public void apply(final StepReference it) {
           StepImplementation _reference = it.getReference();

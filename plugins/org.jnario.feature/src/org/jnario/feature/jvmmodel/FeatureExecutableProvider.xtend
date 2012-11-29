@@ -14,7 +14,7 @@ class FeatureExecutableProvider implements ExecutableProvider {
 	}
 	 
 	def dispatch List<? extends Executable> doGetExecutables(Scenario scenario){
-		scenario.allSteps
+		scenario.steps
 	}
 	
 	def dispatch List<? extends Executable> doGetExecutables(Executable e){

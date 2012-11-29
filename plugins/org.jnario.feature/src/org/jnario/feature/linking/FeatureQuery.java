@@ -33,9 +33,6 @@ public class FeatureQuery {
 			
 			for(Scenario scenario : scenarios){
 				result = concat(result, scenario.getSteps());
-				for (Step step : scenario.getSteps()) {
-					result = concat(result, step.getAnd());
-				}
 			}
 		}
 		return result;

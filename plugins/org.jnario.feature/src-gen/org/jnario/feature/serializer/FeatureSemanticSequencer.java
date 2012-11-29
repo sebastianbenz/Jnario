@@ -1,5 +1,7 @@
 package org.jnario.feature.serializer;
 
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.serializer.XtendSemanticSequencer;
 import org.eclipse.xtend.core.xtend.CreateExtensionInfo;
@@ -23,8 +25,14 @@ import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.common.types.JvmUpperBound;
 import org.eclipse.xtext.common.types.JvmWildcardTypeReference;
 import org.eclipse.xtext.common.types.TypesPackage;
+import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
+import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
+import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
+import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
+import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBinaryOperation;
@@ -79,8 +87,6 @@ import org.jnario.feature.feature.ThenReference;
 import org.jnario.feature.feature.When;
 import org.jnario.feature.feature.WhenReference;
 import org.jnario.feature.services.FeatureGrammarAccess;
-
-import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 public class FeatureSemanticSequencer extends XtendSemanticSequencer {
@@ -1427,7 +1433,7 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=BACKGROUND_TEXT members+=Member* (members+=Given | members+=GivenReference)*)
+	 *     (name=BACKGROUND_TEXT members+=Member* ((members+=Given | members+=GivenReference) (members+=And | members+=AndReference)*)?)
 	 */
 	protected void sequence_Background(EObject context, Background semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1463,7 +1469,7 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (reference=[Given|GIVEN_TEXT] (and+=And | and+=AndReference)*)
+	 *     reference=[Given|GIVEN_TEXT]
 	 */
 	protected void sequence_GivenReference(EObject context, GivenReference semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1472,7 +1478,7 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=GIVEN_TEXT stepExpression=StepExpression (and+=And | and+=AndReference)*)
+	 *     (name=GIVEN_TEXT stepExpression=StepExpression)
 	 */
 	protected void sequence_Given(EObject context, Given semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1534,9 +1540,9 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	 *     (
 	 *         name=SCENARIO_TEXT 
 	 *         members+=Member* 
-	 *         (members+=Given | members+=GivenReference)? 
-	 *         (members+=When | members+=WhenReference)? 
-	 *         (members+=Then | members+=ThenReference)?
+	 *         ((members+=Given | members+=GivenReference) (members+=And | members+=AndReference)*)? 
+	 *         ((members+=When | members+=WhenReference) (members+=And | members+=AndReference)*)? 
+	 *         ((members+=Then | members+=ThenReference) (members+=And | members+=AndReference)*)?
 	 *     )
 	 */
 	protected void sequence_Scenario(EObject context, Scenario semanticObject) {
@@ -1555,7 +1561,7 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (reference=[Then|THEN_TEXT] (and+=And | and+=AndReference)*)
+	 *     reference=[Then|THEN_TEXT]
 	 */
 	protected void sequence_ThenReference(EObject context, ThenReference semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1564,7 +1570,7 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=THEN_TEXT stepExpression=StepExpression (and+=And | and+=AndReference)*)
+	 *     (name=THEN_TEXT stepExpression=StepExpression)
 	 */
 	protected void sequence_Then(EObject context, Then semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1573,7 +1579,7 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (reference=[When|WHEN_TEXT] (and+=And | and+=AndReference)*)
+	 *     reference=[When|WHEN_TEXT]
 	 */
 	protected void sequence_WhenReference(EObject context, WhenReference semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1582,7 +1588,7 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=WHEN_TEXT stepExpression=StepExpression (and+=And | and+=AndReference)*)
+	 *     (name=WHEN_TEXT stepExpression=StepExpression)
 	 */
 	protected void sequence_When(EObject context, When semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

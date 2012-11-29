@@ -10,15 +10,16 @@ class FeatureHoverSignatureProvider extends XtendHoverSignatureProvider {
 	
 	@Inject extension StepNameProvider  
 	
-	override getSignature(EObject object) {
-		switch object{
-			Step: getSignature(object)
-			default: super.getSignature(object)
-		}
-	}
+//	override getSignature(EObject object) {
+//		switch object{
+//			Step: getSignature(object)
+//			default: super.getSignature(object)
+//		}
+//	} 
+//	
+//	
 	
 	def getSignature(Step step){
 		nameOf(step)
-	}
-	
+	}	
 }

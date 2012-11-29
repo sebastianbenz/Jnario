@@ -11,14 +11,20 @@ import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtend.core.xtend.XtendClass
+import org.eclipse.xtend.core.xtend.XtendField
+import org.eclipse.xtend.core.xtend.XtendFunction
 import org.eclipse.xtext.common.types.JvmConstructor
+import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.XConstructorCall
 import org.eclipse.xtext.xbase.XVariableDeclaration
 import org.eclipse.xtext.xbase.XbaseFactory
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
 import org.jnario.feature.feature.Background
 import org.jnario.feature.feature.Feature
@@ -26,34 +32,22 @@ import org.jnario.feature.feature.FeatureFile
 import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.StepImplementation
+import org.jnario.feature.feature.StepReference
 import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
 import org.jnario.lib.StepArguments
+import org.jnario.runner.Extension
 import org.jnario.runner.Named
 import org.jnario.runner.Order
-import org.eclipse.xtend.core.xtend.XtendField
-import org.jnario.feature.feature.StepReference
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
-import org.eclipse.xtext.common.types.JvmOperation
+import org.jnario.util.SourceAdapter
 
 import static com.google.common.collect.Iterators.*
 import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 
-import static extension org.jnario.feature.jvmmodel.Scenarios.*
-import static extension org.eclipse.xtext.EcoreUtil2.*
 import static extension com.google.common.base.Strings.*
-import org.eclipse.xtext.common.types.JvmVisibility
-import org.eclipse.xtext.common.types.JvmField
-import org.jnario.runner.Extension
-import org.eclipse.xtend.core.xtend.XtendFunction
-import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference
-import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
-import org.eclipse.xtext.common.types.TypesPackage
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils
-import org.eclipse.xtext.util.Strings
-import org.jnario.util.SourceAdapter
+import static extension org.eclipse.xtext.EcoreUtil2.*
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -178,11 +172,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		
    		val background = feature.background
 		if(!(scenario instanceof Background) && background != null){
-			start = background.allSteps.generateBackgroundStepCalls(inferredJvmType)
+			start = background.steps.generateBackgroundStepCalls(inferredJvmType)
 		}
-		scenario.allSteps.generateSteps(inferredJvmType, start, scenario)
+		scenario.steps.generateSteps(inferredJvmType, start, scenario)
    		super.initialize(scenario, inferredJvmType)
-   		scenario.allSteps.filter(typeof(StepReference)).forEach[
+   		scenario.steps.filter(typeof(StepReference)).forEach[
    			if(it.reference == null){
    				return
    			}
