@@ -7,14 +7,20 @@
  *******************************************************************************/
 package org.jnario.feature.ui.editor;
 
+import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.findNodesForFeature;
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode;
+import static org.jnario.util.Strings.countWhitespaceAtEnd;
+
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendImport;
 import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
@@ -92,11 +98,13 @@ public class FeatureFoldingRegionProvider extends DefaultFoldingRegionProvider {
 	}
 
 	private void calculateFolding(Step step, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor){
-		ICompositeNode node = getNode(step);
-		if(node == null){
+		List<INode> nodes = findNodesForFeature(step, XtendPackage.Literals.XTEND_FUNCTION__NAME);
+		if(nodes.isEmpty()){
 			return;
 		}
-		setFoldingRegion(step.getExpression(), node.getOffset(), foldingRegionAcceptor);
+		INode last = nodes.get(nodes.size() - 1);
+		int length = last.getLength() - countWhitespaceAtEnd(last.getText());
+		setFoldingRegion(step.getExpression(), last.getOffset() + length, foldingRegionAcceptor);
 	}
 
 	private int getBegin(EObject object){
