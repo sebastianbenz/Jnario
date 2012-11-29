@@ -891,4 +891,13 @@
          	</description>
       </wizard>
    </extension>
+ <extension
+       point="org.eclipse.ui.bindings">
+    <key
+          commandId="org.jnario.feature.ui.showCodeCommand"
+          contextId="org.jnario.feature.ui.FeatureEditorScope"
+          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+          sequence="M1+M2+F">
+    </key>
+ </extension>
 </plugin>
