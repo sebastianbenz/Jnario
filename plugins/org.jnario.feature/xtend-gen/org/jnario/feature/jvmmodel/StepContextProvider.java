@@ -11,14 +11,13 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.common.types.JvmField;
-import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.util.XbaseUsageCrossReferencer;
 import org.jnario.feature.feature.Step;
-import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.jvmmodel.StepExpressionProvider;
 import org.jnario.feature.jvmmodel.VisibleMembersCalculator;
 
@@ -36,8 +35,7 @@ public class StepContextProvider {
   public Set<XtendField> usedFields(final Step step) {
     Set<XtendField> _xblockexpression = null;
     {
-      StepExpression _expressionOf = this._stepExpressionProvider.expressionOf(step);
-      final XBlockExpression expr = _expressionOf.getBlockExpression();
+      final XExpression expr = this._stepExpressionProvider.expressionOf(step);
       Iterable<XtendMember> _allVisibleMembers = this._visibleMembersCalculator.allVisibleMembers(step);
       Iterable<XtendField> _filter = Iterables.<XtendField>filter(_allVisibleMembers, XtendField.class);
       final Function1<XtendField,Boolean> _function = new Function1<XtendField,Boolean>() {
@@ -48,7 +46,7 @@ public class StepContextProvider {
               Iterable<JvmField> _filter = Iterables.<JvmField>filter(_jvmElements, JvmField.class);
               Iterator<JvmField> _iterator = _filter.iterator();
               final JvmField field = _iterator.next();
-              ArrayList<XBlockExpression> _newArrayList = CollectionLiterals.<XBlockExpression>newArrayList(expr);
+              ArrayList<XExpression> _newArrayList = CollectionLiterals.<XExpression>newArrayList(expr);
               final Collection<Setting> usages = XbaseUsageCrossReferencer.find(field, _newArrayList);
               boolean _isEmpty = usages.isEmpty();
               boolean _not = (!_isEmpty);

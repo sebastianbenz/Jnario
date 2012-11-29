@@ -28,7 +28,7 @@ class StepReferenceFieldCreator {
 	def copyXtendMemberForReferences(EObject objectWithReference){
 		val refs = getAllContentsOfType(objectWithReference, typeof(StepReference))
 		for(ref: refs){
-			if(ref.reference?.stepExpression != null){
+			if(ref.reference?.expression != null){
 				val fieldNames = ref.existingFieldNamesForContainerOfStepReference
 				val members = ref.reference.allVisibleMembers
 				objectWithReference.copyFields(members, fieldNames)					

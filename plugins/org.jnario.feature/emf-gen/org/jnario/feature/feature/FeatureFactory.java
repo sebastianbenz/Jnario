@@ -100,15 +100,6 @@ public interface FeatureFactory extends EFactory
 	And createAnd();
 
 	/**
-	 * Returns a new object of class '<em>Step Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Step Expression</em>'.
-	 * @generated
-	 */
-	StepExpression createStepExpression();
-
-	/**
 	 * Returns a new object of class '<em>File</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

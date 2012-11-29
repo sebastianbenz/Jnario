@@ -129,11 +129,6 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 				return createAndAdapter();
 			}
 			@Override
-			public Adapter caseStepExpression(StepExpression object)
-			{
-				return createStepExpressionAdapter();
-			}
-			@Override
 			public Adapter caseFeatureFile(FeatureFile object)
 			{
 				return createFeatureFileAdapter();
@@ -341,21 +336,6 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createAndAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.jnario.feature.feature.StepExpression <em>Step Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.jnario.feature.feature.StepExpression
-	 * @generated
-	 */
-	public Adapter createStepExpressionAdapter()
 	{
 		return null;
 	}

@@ -25,7 +25,6 @@ import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
-import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.feature.StepImplementation;
 
 /**
@@ -93,11 +92,11 @@ public class FeatureFoldingRegionProvider extends DefaultFoldingRegionProvider {
 	}
 
 	private void calculateFolding(Step step, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor){
-		int begin = getBegin(step);
-		if(begin >= 0 && step.getStepExpression() != null){
-			StepExpression expr = step.getStepExpression();
-			setFoldingRegion(expr, begin, foldingRegionAcceptor);
+		ICompositeNode node = getNode(step);
+		if(node == null){
+			return;
 		}
+		setFoldingRegion(step.getExpression(), node.getOffset(), foldingRegionAcceptor);
 	}
 
 	private int getBegin(EObject object){

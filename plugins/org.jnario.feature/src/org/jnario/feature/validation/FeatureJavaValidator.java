@@ -55,7 +55,6 @@ import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
-import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.jnario.feature.naming.StepNameProvider;
 import org.jnario.validation.JnarioJavaValidator;
@@ -74,9 +73,6 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 
 	@Override
 	public void checkInnerExpressions(XExpression block) {
-		if(block.eContainer() instanceof StepExpression){
-			return;
-		}
 		super.checkInnerExpressions(block);
 	}
 	

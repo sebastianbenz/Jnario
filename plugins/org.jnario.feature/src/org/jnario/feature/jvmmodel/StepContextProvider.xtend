@@ -14,7 +14,7 @@ class StepContextProvider {
 	@Inject extension VisibleMembersCalculator
 
 	def usedFields(Step step){
-		val expr = expressionOf(step).blockExpression
+		val expr = expressionOf(step)
 		step.allVisibleMembers.filter(typeof(XtendField)).filter[
 			val field = it.jvmElements.filter(typeof(JvmField)).iterator.next
 			val usages = XbaseUsageCrossReferencer::find(field, newArrayList(expr))

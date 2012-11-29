@@ -227,8 +227,8 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
    	def generateStepValues(Step step){
 		val arguments = stepArgumentsProvider.findStepArguments(step)
-		val stepExpression = step.stepExpression
-		if(arguments.empty || step.stepExpression == null) return
+		val stepExpression = step.expression
+		if(arguments.empty || stepExpression == null) return
 
 		var decs = stepExpression.eAllContents.filter(typeof(XVariableDeclaration)).filter[name == STEP_VALUES]
 		if(decs.empty) return
@@ -293,7 +293,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		inferredJvmType.members += step.toMethod(step.methodName, getTypeForName(Void::TYPE, step))[
 			val stepExpression = expressionOf(step)
 			associatePrimary(step, it);
-			body = stepExpression?.blockExpression
+			body = stepExpression
 			step.generateStepValues
 			testRuntime.markAsTestMethod(step, it)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)

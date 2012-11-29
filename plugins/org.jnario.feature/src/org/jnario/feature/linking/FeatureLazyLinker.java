@@ -14,6 +14,7 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.diagnostics.IDiagnosticConsumer;
+import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XConstructorCall;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XStringLiteral;
@@ -64,7 +65,7 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 			return;
 		}
 		XVariableDeclaration stepValuesDec = createVariableForStepArguments(arguments);
-		EList<XExpression> expressions = step.getStepExpression().getBlockExpression().getExpressions();
+		EList<XExpression> expressions = ((XBlockExpression)step.getExpression()).getExpressions();
 		expressions.add(0, stepValuesDec);
 	}
 	

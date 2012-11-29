@@ -1,5 +1,6 @@
 package org.jnario.feature.jvmmodel;
 
+import static com.google.common.base.Objects.equal;
 import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Iterables.filter;
 import static org.eclipse.emf.ecore.util.EcoreUtil.replace;
@@ -15,6 +16,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.util.XbaseUsageCrossReferencer;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 
+import com.google.common.base.Objects;
 import com.google.inject.Inject;
 
 public class JvmFieldReferenceUpdater {
@@ -55,7 +57,7 @@ public class JvmFieldReferenceUpdater {
 		private JvmField findMatchingField(JvmField sourceField) {
 			Iterable<JvmMember> members = allMembersOf(newType);
 			for (JvmField candidate : filter(members, JvmField.class)) {
-				if(candidate.getSimpleName().equals(sourceField.getSimpleName())){
+				if(equal(candidate.getSimpleName(), sourceField.getSimpleName())){
 					return candidate;
 				}
 			}

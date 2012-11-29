@@ -13,7 +13,6 @@ import org.jnario.feature.feature.FeatureFactory;
 import org.jnario.feature.feature.Given;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
-import org.jnario.feature.feature.StepExpression;
 
 @SuppressWarnings("all")
 public class Features {
@@ -38,11 +37,8 @@ public class Features {
     Given _xblockexpression = null;
     {
       final Given step = Features.step("Given a step with implementation");
-      StepExpression _createStepExpression = Features.factory.createStepExpression();
-      step.setStepExpression(_createStepExpression);
-      StepExpression _stepExpression = step.getStepExpression();
       XBlockExpression _implementation = Features.implementation();
-      _stepExpression.setBlockExpression(_implementation);
+      step.setExpression(_implementation);
       _xblockexpression = (step);
     }
     return _xblockexpression;

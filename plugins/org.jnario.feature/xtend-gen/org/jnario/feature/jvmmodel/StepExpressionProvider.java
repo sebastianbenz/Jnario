@@ -7,7 +7,6 @@ import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.jnario.feature.feature.Step;
-import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.jvmmodel.ExpressionCopier;
@@ -25,31 +24,27 @@ public class StepExpressionProvider {
     if (_equals) {
       return CollectionLiterals.<XExpression>emptyList();
     }
-    final StepExpression stepExpression = step.getStepExpression();
-    boolean _equals_1 = Objects.equal(stepExpression, null);
+    final XExpression stepExpression = step.getExpression();
+    final XBlockExpression blockExpression = ((XBlockExpression) stepExpression);
+    boolean _equals_1 = Objects.equal(blockExpression, null);
     if (_equals_1) {
-      return CollectionLiterals.<XExpression>emptyList();
-    }
-    final XBlockExpression blockExpression = stepExpression.getBlockExpression();
-    boolean _equals_2 = Objects.equal(blockExpression, null);
-    if (_equals_2) {
       return CollectionLiterals.<XExpression>emptyList();
     }
     return blockExpression.getExpressions();
   }
   
-  public StepExpression expressionOf(final Step step) {
+  public XExpression expressionOf(final Step step) {
     if ((step instanceof StepReference)) {
       this.getOrCreateExpression(((StepReference) step));
     }
-    return step.getStepExpression();
+    return step.getExpression();
   }
   
-  private StepExpression getOrCreateExpression(final StepReference ref) {
-    StepExpression _stepExpression = ref.getStepExpression();
-    boolean _notEquals = (!Objects.equal(_stepExpression, null));
+  private XExpression getOrCreateExpression(final StepReference ref) {
+    XExpression _expression = ref.getExpression();
+    boolean _notEquals = (!Objects.equal(_expression, null));
     if (_notEquals) {
-      return ref.getStepExpression();
+      return ref.getExpression();
     }
     final StepImplementation step = ref==null?(StepImplementation)null:ref.getReference();
     boolean _or = false;
@@ -63,10 +58,10 @@ public class StepExpressionProvider {
     if (_or) {
       return null;
     }
-    StepExpression _stepExpression_1 = step.getStepExpression();
-    StepExpression _cloneWithProxies = this._expressionCopier.<StepExpression>cloneWithProxies(_stepExpression_1);
-    final StepExpression expr = ((StepExpression) _cloneWithProxies);
-    ref.setStepExpression(expr);
+    XExpression _expression_1 = step.getExpression();
+    XExpression _cloneWithProxies = this._expressionCopier.<XExpression>cloneWithProxies(_expression_1);
+    final XExpression expr = ((XExpression) _cloneWithProxies);
+    ref.setExpression(expr);
     return expr;
   }
 }

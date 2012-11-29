@@ -77,7 +77,6 @@ public class FeatureFactoryImpl extends EFactoryImpl implements FeatureFactory
 			case FeaturePackage.WHEN: return createWhen();
 			case FeaturePackage.THEN: return createThen();
 			case FeaturePackage.AND: return createAnd();
-			case FeaturePackage.STEP_EXPRESSION: return createStepExpression();
 			case FeaturePackage.FEATURE_FILE: return createFeatureFile();
 			case FeaturePackage.GIVEN_REFERENCE: return createGivenReference();
 			case FeaturePackage.WHEN_REFERENCE: return createWhenReference();
@@ -176,17 +175,6 @@ public class FeatureFactoryImpl extends EFactoryImpl implements FeatureFactory
 	{
 		AndImpl and = new AndImpl();
 		return and;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public StepExpression createStepExpression()
-	{
-		StepExpressionImpl stepExpression = new StepExpressionImpl();
-		return stepExpression;
 	}
 
 	/**

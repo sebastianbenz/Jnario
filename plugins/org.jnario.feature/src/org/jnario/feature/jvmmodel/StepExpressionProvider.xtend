@@ -9,9 +9,9 @@ package org.jnario.feature.jvmmodel
 
 import com.google.inject.Inject
 import java.util.List
+import org.eclipse.xtext.xbase.XBlockExpression
 import org.eclipse.xtext.xbase.XExpression
 import org.jnario.feature.feature.Step
-import org.jnario.feature.feature.StepExpression
 import org.jnario.feature.feature.StepReference
 
 /**
@@ -25,11 +25,8 @@ class StepExpressionProvider {
  		if(step == null){
  			return emptyList;
  		}
- 		val stepExpression = step.getStepExpression();
-		if(stepExpression == null){
-			return emptyList;
-		}
-		val blockExpression = stepExpression.getBlockExpression();
+ 		val stepExpression = step.expression;
+		val blockExpression = stepExpression as XBlockExpression;
 		if(blockExpression == null){
 			return emptyList;
 		}
@@ -40,18 +37,18 @@ class StepExpressionProvider {
 		if(step instanceof StepReference){
 			getOrCreateExpression(step as StepReference)
 		}
-		return step.stepExpression
+		return step.expression
 	}
 	
 	def private getOrCreateExpression(StepReference ref){
-		if(ref.stepExpression != null)
-			return ref.stepExpression
+		if(ref.expression != null)
+			return ref.expression
 		val step = ref?.reference
 		if(step == null || step.eIsProxy){
 			return null
 		}
-		val expr = cloneWithProxies(step.stepExpression) as StepExpression
-		ref.stepExpression = expr
+		val expr = cloneWithProxies(step.expression) as XExpression
+		ref.expression = expr
 		return expr
 	}
 }

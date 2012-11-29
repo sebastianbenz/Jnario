@@ -16,10 +16,6 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.xtend.core.xtend.XtendPackage;
 
-import org.eclipse.xtext.xbase.XbasePackage;
-
-import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
-
 import org.jnario.JnarioPackage;
 
 import org.jnario.feature.feature.And;
@@ -33,7 +29,6 @@ import org.jnario.feature.feature.Given;
 import org.jnario.feature.feature.GivenReference;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
-import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.feature.Then;
@@ -104,13 +99,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * @generated
 	 */
 	private EClass andEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass stepExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -302,16 +290,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStep_StepExpression()
-	{
-		return (EReference)stepEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getGiven()
 	{
 		return givenEClass;
@@ -345,36 +323,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	public EClass getAnd()
 	{
 		return andEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getStepExpression()
-	{
-		return stepExpressionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getStepExpression_Annotations()
-	{
-		return (EReference)stepExpressionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getStepExpression_BlockExpression()
-	{
-		return (EReference)stepExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -497,7 +445,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		scenarioEClass = createEClass(SCENARIO);
 
 		stepEClass = createEClass(STEP);
-		createEReference(stepEClass, STEP__STEP_EXPRESSION);
 
 		givenEClass = createEClass(GIVEN);
 
@@ -506,10 +453,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		thenEClass = createEClass(THEN);
 
 		andEClass = createEClass(AND);
-
-		stepExpressionEClass = createEClass(STEP_EXPRESSION);
-		createEReference(stepExpressionEClass, STEP_EXPRESSION__ANNOTATIONS);
-		createEReference(stepExpressionEClass, STEP_EXPRESSION__BLOCK_EXPRESSION);
 
 		featureFileEClass = createEClass(FEATURE_FILE);
 
@@ -554,8 +497,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		// Obtain other dependent packages
 		JnarioPackage theJnarioPackage = (JnarioPackage)EPackage.Registry.INSTANCE.getEPackage(JnarioPackage.eNS_URI);
 		XtendPackage theXtendPackage = (XtendPackage)EPackage.Registry.INSTANCE.getEPackage(XtendPackage.eNS_URI);
-		XAnnotationsPackage theXAnnotationsPackage = (XAnnotationsPackage)EPackage.Registry.INSTANCE.getEPackage(XAnnotationsPackage.eNS_URI);
-		XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -593,7 +534,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		addEOperation(scenarioEClass, this.getStep(), "getSteps", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStep_StepExpression(), this.getStepExpression(), null, "stepExpression", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(givenEClass, Given.class, "Given", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -602,10 +542,6 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		initEClass(thenEClass, Then.class, "Then", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(stepExpressionEClass, StepExpression.class, "StepExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStepExpression_Annotations(), theXAnnotationsPackage.getXAnnotation(), null, "annotations", null, 0, -1, StepExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStepExpression_BlockExpression(), theXbasePackage.getXBlockExpression(), null, "blockExpression", null, 0, 1, StepExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureFileEClass, FeatureFile.class, "FeatureFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

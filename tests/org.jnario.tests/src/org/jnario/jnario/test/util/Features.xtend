@@ -29,8 +29,7 @@ class Features {
 	
 	def static implementedStep(){
 		val step = step("Given a step with implementation")
-		step.stepExpression = factory.createStepExpression
-		step.stepExpression.blockExpression = implementation
+		step.expression = implementation
 		step
 	}
 	

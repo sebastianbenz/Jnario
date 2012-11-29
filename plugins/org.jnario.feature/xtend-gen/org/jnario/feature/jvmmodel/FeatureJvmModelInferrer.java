@@ -31,7 +31,6 @@ import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
-import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XConstructorCall;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XStringLiteral;
@@ -53,7 +52,6 @@ import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
-import org.jnario.feature.feature.StepExpression;
 import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.jvmmodel.JvmFieldReferenceUpdater;
@@ -311,7 +309,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
               }
             };
           final JvmGenericType originalType = IterableExtensions.<JvmGenericType>findFirst(_filter, _function);
-          StepExpression _expressionOf = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(it);
+          XExpression _expressionOf = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(it);
           FeatureJvmModelInferrer.this._jvmFieldReferenceUpdater.updateReferences(_expressionOf, originalType, inferredJvmType);
         }
       };
@@ -394,14 +392,13 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   
   public void generateStepValues(final Step step) {
     final List<String> arguments = this.stepArgumentsProvider.findStepArguments(step);
-    final StepExpression stepExpression = step.getStepExpression();
+    final XExpression stepExpression = step.getExpression();
     boolean _or = false;
     boolean _isEmpty = arguments.isEmpty();
     if (_isEmpty) {
       _or = true;
     } else {
-      StepExpression _stepExpression = step.getStepExpression();
-      boolean _equals = Objects.equal(_stepExpression, null);
+      boolean _equals = Objects.equal(stepExpression, null);
       _or = (_isEmpty || _equals);
     }
     if (_or) {
@@ -527,10 +524,9 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Void.TYPE, step);
       final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
           public void apply(final JvmOperation it) {
-            final StepExpression stepExpression = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step);
+            final XExpression stepExpression = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(step);
             FeatureJvmModelInferrer.this._iJvmModelAssociator.associatePrimary(step, it);
-            XBlockExpression _blockExpression = stepExpression==null?(XBlockExpression)null:stepExpression.getBlockExpression();
-            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _blockExpression);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, stepExpression);
             FeatureJvmModelInferrer.this.generateStepValues(step);
             TestRuntimeSupport _testRuntime = FeatureJvmModelInferrer.this.getTestRuntime();
             _testRuntime.markAsTestMethod(step, it);

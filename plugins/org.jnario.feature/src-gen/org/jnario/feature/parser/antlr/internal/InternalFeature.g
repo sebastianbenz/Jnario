@@ -1264,17 +1264,17 @@ ruleGiven returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGivenAccess().getStepExpressionStepExpressionParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getGivenAccess().getExpressionBlockExpressionParserRuleCall_2_0()); 
 	    }
-		lv_stepExpression_2_0=ruleStepExpression		{
+		lv_expression_2_0=ruleBlockExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGivenRule());
 	        }
        		set(
        			$current, 
-       			"stepExpression",
-        		lv_stepExpression_2_0, 
-        		"StepExpression");
+       			"expression",
+        		lv_expression_2_0, 
+        		"BlockExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1367,17 +1367,17 @@ ruleWhen returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getWhenAccess().getStepExpressionStepExpressionParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getWhenAccess().getExpressionBlockExpressionParserRuleCall_2_0()); 
 	    }
-		lv_stepExpression_2_0=ruleStepExpression		{
+		lv_expression_2_0=ruleBlockExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getWhenRule());
 	        }
        		set(
        			$current, 
-       			"stepExpression",
-        		lv_stepExpression_2_0, 
-        		"StepExpression");
+       			"expression",
+        		lv_expression_2_0, 
+        		"BlockExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1470,17 +1470,17 @@ ruleThen returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getThenAccess().getStepExpressionStepExpressionParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getThenAccess().getExpressionBlockExpressionParserRuleCall_2_0()); 
 	    }
-		lv_stepExpression_2_0=ruleStepExpression		{
+		lv_expression_2_0=ruleBlockExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getThenRule());
 	        }
        		set(
        			$current, 
-       			"stepExpression",
-        		lv_stepExpression_2_0, 
-        		"StepExpression");
+       			"expression",
+        		lv_expression_2_0, 
+        		"BlockExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1573,73 +1573,16 @@ ruleAnd returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getAndAccess().getStepExpressionStepExpressionParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getAndAccess().getExpressionBlockExpressionParserRuleCall_2_0()); 
 	    }
-		lv_stepExpression_2_0=ruleStepExpression		{
+		lv_expression_2_0=ruleBlockExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getAndRule());
 	        }
        		set(
        			$current, 
-       			"stepExpression",
-        		lv_stepExpression_2_0, 
-        		"StepExpression");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))
-;
-
-
-
-
-
-// Entry rule entryRuleStepExpression
-entryRuleStepExpression returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getStepExpressionRule()); }
-	 iv_ruleStepExpression=ruleStepExpression 
-	 { $current=$iv_ruleStepExpression.current; } 
-	 EOF 
-;
-
-// Rule StepExpression
-ruleStepExpression returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((
-(
-		{ 
-	        newCompositeNode(grammarAccess.getStepExpressionAccess().getAnnotationsXAnnotationParserRuleCall_0_0()); 
-	    }
-		lv_annotations_0_0=ruleXAnnotation		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getStepExpressionRule());
-	        }
-       		add(
-       			$current, 
-       			"annotations",
-        		lv_annotations_0_0, 
-        		"XAnnotation");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)*(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getStepExpressionAccess().getBlockExpressionBlockExpressionParserRuleCall_1_0()); 
-	    }
-		lv_blockExpression_1_0=ruleBlockExpression		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getStepExpressionRule());
-	        }
-       		set(
-       			$current, 
-       			"blockExpression",
-        		lv_blockExpression_1_0, 
+       			"expression",
+        		lv_expression_2_0, 
         		"BlockExpression");
 	        afterParserOrEnumRuleCall();
 	    }

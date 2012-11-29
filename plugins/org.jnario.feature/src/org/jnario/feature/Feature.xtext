@@ -85,7 +85,7 @@ GivenReference:
 
 Given:
 	{Given}
-	name=GIVEN_TEXT stepExpression=StepExpression
+	name=GIVEN_TEXT expression=BlockExpression
 ;
 
 WhenReference:
@@ -95,7 +95,7 @@ WhenReference:
 
 When:
 	{When}
-	name=WHEN_TEXT stepExpression=StepExpression
+	name=WHEN_TEXT expression=BlockExpression
 ;
 
 ThenReference:
@@ -105,7 +105,7 @@ ThenReference:
 
 Then:
 	{Then}
-	name=THEN_TEXT stepExpression=StepExpression;
+	name=THEN_TEXT expression=BlockExpression;
 	
 AndReference:
 	{AndReference}
@@ -114,15 +114,12 @@ AndReference:
 	
 And:
 	{And}
-	name=AND_TEXT stepExpression=StepExpression
+	name=AND_TEXT expression=BlockExpression
 ;
 
 /*
  * artificial node to simplify folding
  */
-StepExpression:
-	annotations+=XAnnotation* 
-	blockExpression=BlockExpression;
 
 BlockExpression returns xbase::XBlockExpression:
 	(expressions+=XExpressionInsideBlock ';'?)+;

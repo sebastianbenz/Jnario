@@ -735,14 +735,14 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cGivenAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameGIVEN_TEXTTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cStepExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cStepExpressionStepExpressionParserRuleCall_2_0 = (RuleCall)cStepExpressionAssignment_2.eContents().get(0);
+		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cExpressionBlockExpressionParserRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
 		
 		//Given:
-		//	{Given} name=GIVEN_TEXT stepExpression=StepExpression;
+		//	{Given} name=GIVEN_TEXT expression=BlockExpression;
 		public ParserRule getRule() { return rule; }
 
-		//{Given} name=GIVEN_TEXT stepExpression=StepExpression
+		//{Given} name=GIVEN_TEXT expression=BlockExpression
 		public Group getGroup() { return cGroup; }
 
 		//{Given}
@@ -754,11 +754,11 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//GIVEN_TEXT
 		public RuleCall getNameGIVEN_TEXTTerminalRuleCall_1_0() { return cNameGIVEN_TEXTTerminalRuleCall_1_0; }
 
-		//stepExpression=StepExpression
-		public Assignment getStepExpressionAssignment_2() { return cStepExpressionAssignment_2; }
+		//expression=BlockExpression
+		public Assignment getExpressionAssignment_2() { return cExpressionAssignment_2; }
 
-		//StepExpression
-		public RuleCall getStepExpressionStepExpressionParserRuleCall_2_0() { return cStepExpressionStepExpressionParserRuleCall_2_0; }
+		//BlockExpression
+		public RuleCall getExpressionBlockExpressionParserRuleCall_2_0() { return cExpressionBlockExpressionParserRuleCall_2_0; }
 	}
 
 	public class WhenReferenceElements extends AbstractParserRuleElementFinder {
@@ -795,14 +795,14 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cWhenAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameWHEN_TEXTTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cStepExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cStepExpressionStepExpressionParserRuleCall_2_0 = (RuleCall)cStepExpressionAssignment_2.eContents().get(0);
+		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cExpressionBlockExpressionParserRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
 		
 		//When:
-		//	{When} name=WHEN_TEXT stepExpression=StepExpression;
+		//	{When} name=WHEN_TEXT expression=BlockExpression;
 		public ParserRule getRule() { return rule; }
 
-		//{When} name=WHEN_TEXT stepExpression=StepExpression
+		//{When} name=WHEN_TEXT expression=BlockExpression
 		public Group getGroup() { return cGroup; }
 
 		//{When}
@@ -814,11 +814,11 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//WHEN_TEXT
 		public RuleCall getNameWHEN_TEXTTerminalRuleCall_1_0() { return cNameWHEN_TEXTTerminalRuleCall_1_0; }
 
-		//stepExpression=StepExpression
-		public Assignment getStepExpressionAssignment_2() { return cStepExpressionAssignment_2; }
+		//expression=BlockExpression
+		public Assignment getExpressionAssignment_2() { return cExpressionAssignment_2; }
 
-		//StepExpression
-		public RuleCall getStepExpressionStepExpressionParserRuleCall_2_0() { return cStepExpressionStepExpressionParserRuleCall_2_0; }
+		//BlockExpression
+		public RuleCall getExpressionBlockExpressionParserRuleCall_2_0() { return cExpressionBlockExpressionParserRuleCall_2_0; }
 	}
 
 	public class ThenReferenceElements extends AbstractParserRuleElementFinder {
@@ -855,14 +855,14 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cThenAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameTHEN_TEXTTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cStepExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cStepExpressionStepExpressionParserRuleCall_2_0 = (RuleCall)cStepExpressionAssignment_2.eContents().get(0);
+		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cExpressionBlockExpressionParserRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
 		
 		//Then:
-		//	{Then} name=THEN_TEXT stepExpression=StepExpression;
+		//	{Then} name=THEN_TEXT expression=BlockExpression;
 		public ParserRule getRule() { return rule; }
 
-		//{Then} name=THEN_TEXT stepExpression=StepExpression
+		//{Then} name=THEN_TEXT expression=BlockExpression
 		public Group getGroup() { return cGroup; }
 
 		//{Then}
@@ -874,11 +874,11 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//THEN_TEXT
 		public RuleCall getNameTHEN_TEXTTerminalRuleCall_1_0() { return cNameTHEN_TEXTTerminalRuleCall_1_0; }
 
-		//stepExpression=StepExpression
-		public Assignment getStepExpressionAssignment_2() { return cStepExpressionAssignment_2; }
+		//expression=BlockExpression
+		public Assignment getExpressionAssignment_2() { return cExpressionAssignment_2; }
 
-		//StepExpression
-		public RuleCall getStepExpressionStepExpressionParserRuleCall_2_0() { return cStepExpressionStepExpressionParserRuleCall_2_0; }
+		//BlockExpression
+		public RuleCall getExpressionBlockExpressionParserRuleCall_2_0() { return cExpressionBlockExpressionParserRuleCall_2_0; }
 	}
 
 	public class AndReferenceElements extends AbstractParserRuleElementFinder {
@@ -915,14 +915,14 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cAndAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameAND_TEXTTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cStepExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cStepExpressionStepExpressionParserRuleCall_2_0 = (RuleCall)cStepExpressionAssignment_2.eContents().get(0);
+		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cExpressionBlockExpressionParserRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
 		
 		//And:
-		//	{And} name=AND_TEXT stepExpression=StepExpression;
+		//	{And} name=AND_TEXT expression=BlockExpression;
 		public ParserRule getRule() { return rule; }
 
-		//{And} name=AND_TEXT stepExpression=StepExpression
+		//{And} name=AND_TEXT expression=BlockExpression
 		public Group getGroup() { return cGroup; }
 
 		//{And}
@@ -934,41 +934,11 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//AND_TEXT
 		public RuleCall getNameAND_TEXTTerminalRuleCall_1_0() { return cNameAND_TEXTTerminalRuleCall_1_0; }
 
-		//stepExpression=StepExpression
-		public Assignment getStepExpressionAssignment_2() { return cStepExpressionAssignment_2; }
-
-		//StepExpression
-		public RuleCall getStepExpressionStepExpressionParserRuleCall_2_0() { return cStepExpressionStepExpressionParserRuleCall_2_0; }
-	}
-
-	public class StepExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StepExpression");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cAnnotationsXAnnotationParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
-		private final Assignment cBlockExpressionAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cBlockExpressionBlockExpressionParserRuleCall_1_0 = (RuleCall)cBlockExpressionAssignment_1.eContents().get(0);
-		
-		/// *
-		// * artificial node to simplify folding
-		// * / StepExpression:
-		//	annotations+=XAnnotation* blockExpression=BlockExpression;
-		public ParserRule getRule() { return rule; }
-
-		//annotations+=XAnnotation* blockExpression=BlockExpression
-		public Group getGroup() { return cGroup; }
-
-		//annotations+=XAnnotation*
-		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
-
-		//XAnnotation
-		public RuleCall getAnnotationsXAnnotationParserRuleCall_0_0() { return cAnnotationsXAnnotationParserRuleCall_0_0; }
-
-		//blockExpression=BlockExpression
-		public Assignment getBlockExpressionAssignment_1() { return cBlockExpressionAssignment_1; }
+		//expression=BlockExpression
+		public Assignment getExpressionAssignment_2() { return cExpressionAssignment_2; }
 
 		//BlockExpression
-		public RuleCall getBlockExpressionBlockExpressionParserRuleCall_1_0() { return cBlockExpressionBlockExpressionParserRuleCall_1_0; }
+		public RuleCall getExpressionBlockExpressionParserRuleCall_2_0() { return cExpressionBlockExpressionParserRuleCall_2_0; }
 	}
 
 	public class BlockExpressionElements extends AbstractParserRuleElementFinder {
@@ -978,7 +948,9 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExpressionsXExpressionInsideBlockParserRuleCall_0_0 = (RuleCall)cExpressionsAssignment_0.eContents().get(0);
 		private final Keyword cSemicolonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
-		//BlockExpression returns xbase::XBlockExpression:
+		/// *
+		// * artificial node to simplify folding
+		// * / BlockExpression returns xbase::XBlockExpression:
 		//	(expressions+=XExpressionInsideBlock ";"?)+;
 		public ParserRule getRule() { return rule; }
 
@@ -1363,7 +1335,6 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	private ThenElements pThen;
 	private AndReferenceElements pAndReference;
 	private AndElements pAnd;
-	private StepExpressionElements pStepExpression;
 	private BlockExpressionElements pBlockExpression;
 	private XPrimaryExpressionElements pXPrimaryExpression;
 	private XRelationalExpressionElements pXRelationalExpression;
@@ -1512,7 +1483,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Given:
-	//	{Given} name=GIVEN_TEXT stepExpression=StepExpression;
+	//	{Given} name=GIVEN_TEXT expression=BlockExpression;
 	public GivenElements getGivenAccess() {
 		return (pGiven != null) ? pGiven : (pGiven = new GivenElements());
 	}
@@ -1532,7 +1503,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//When:
-	//	{When} name=WHEN_TEXT stepExpression=StepExpression;
+	//	{When} name=WHEN_TEXT expression=BlockExpression;
 	public WhenElements getWhenAccess() {
 		return (pWhen != null) ? pWhen : (pWhen = new WhenElements());
 	}
@@ -1552,7 +1523,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Then:
-	//	{Then} name=THEN_TEXT stepExpression=StepExpression;
+	//	{Then} name=THEN_TEXT expression=BlockExpression;
 	public ThenElements getThenAccess() {
 		return (pThen != null) ? pThen : (pThen = new ThenElements());
 	}
@@ -1572,7 +1543,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//And:
-	//	{And} name=AND_TEXT stepExpression=StepExpression;
+	//	{And} name=AND_TEXT expression=BlockExpression;
 	public AndElements getAndAccess() {
 		return (pAnd != null) ? pAnd : (pAnd = new AndElements());
 	}
@@ -1583,17 +1554,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 
 	/// *
 	// * artificial node to simplify folding
-	// * / StepExpression:
-	//	annotations+=XAnnotation* blockExpression=BlockExpression;
-	public StepExpressionElements getStepExpressionAccess() {
-		return (pStepExpression != null) ? pStepExpression : (pStepExpression = new StepExpressionElements());
-	}
-	
-	public ParserRule getStepExpressionRule() {
-		return getStepExpressionAccess().getRule();
-	}
-
-	//BlockExpression returns xbase::XBlockExpression:
+	// * / BlockExpression returns xbase::XBlockExpression:
 	//	(expressions+=XExpressionInsideBlock ";"?)+;
 	public BlockExpressionElements getBlockExpressionAccess() {
 		return (pBlockExpression != null) ? pBlockExpression : (pBlockExpression = new BlockExpressionElements());
