@@ -31,6 +31,8 @@ import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.xbase.XConstructorCall;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XStringLiteral;
@@ -375,17 +377,33 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   protected String computeFieldName(final XtendField field, final JvmGenericType declaringType) {
     String _xblockexpression = null;
     {
-      final EObject source = SourceAdapter.find(field);
-      String _xifexpression = null;
-      boolean _equals = Objects.equal(source, null);
-      if (_equals) {
-        String _computeFieldName = super.computeFieldName(field, declaringType);
-        _xifexpression = _computeFieldName;
+      XtendField source = field;
+      boolean _and = false;
+      ICompositeNode _node = NodeModelUtils.getNode(source);
+      boolean _equals = Objects.equal(_node, null);
+      if (!_equals) {
+        _and = false;
       } else {
-        String _computeFieldName_1 = super.computeFieldName(((XtendField) source), declaringType);
-        _xifexpression = _computeFieldName_1;
+        boolean _notEquals = (!Objects.equal(source, null));
+        _and = (_equals && _notEquals);
       }
-      _xblockexpression = (_xifexpression);
+      boolean _while = _and;
+      while (_while) {
+        EObject _find = SourceAdapter.find(source);
+        source = ((XtendField) _find);
+        boolean _and_1 = false;
+        ICompositeNode _node_1 = NodeModelUtils.getNode(source);
+        boolean _equals_1 = Objects.equal(_node_1, null);
+        if (!_equals_1) {
+          _and_1 = false;
+        } else {
+          boolean _notEquals_1 = (!Objects.equal(source, null));
+          _and_1 = (_equals_1 && _notEquals_1);
+        }
+        _while = _and_1;
+      }
+      String _computeFieldName = super.computeFieldName(((XtendField) source), declaringType);
+      _xblockexpression = (_computeFieldName);
     }
     return _xblockexpression;
   }

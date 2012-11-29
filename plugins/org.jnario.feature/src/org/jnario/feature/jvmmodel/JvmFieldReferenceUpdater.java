@@ -16,7 +16,6 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.util.XbaseUsageCrossReferencer;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 
-import com.google.common.base.Objects;
 import com.google.inject.Inject;
 
 public class JvmFieldReferenceUpdater {
@@ -57,6 +56,10 @@ public class JvmFieldReferenceUpdater {
 		private JvmField findMatchingField(JvmField sourceField) {
 			Iterable<JvmMember> members = allMembersOf(newType);
 			for (JvmField candidate : filter(members, JvmField.class)) {
+				if(candidate.getSimpleName() == null && equal(candidate.getType().getQualifiedName(), sourceField.getType().getQualifiedName())){
+					candidate.setSimpleName(sourceField.getSimpleName());
+					return candidate;
+				}
 				if(equal(candidate.getSimpleName(), sourceField.getSimpleName())){
 					return candidate;
 				}

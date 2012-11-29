@@ -41,7 +41,7 @@ class StepReferenceFieldCreator {
    	}
    	
    	def private getExistingFieldNames(Iterable<XtendMember> members){
-   		members.filter(typeof(XtendField)).map[name].toSet
+   		members.filter(typeof(XtendField)).filter[it != null].map[name].toSet
    	}
    	
    	def private copyFields(EObject objectWithReference, Iterable<XtendMember> members, Set<String> fieldNames){

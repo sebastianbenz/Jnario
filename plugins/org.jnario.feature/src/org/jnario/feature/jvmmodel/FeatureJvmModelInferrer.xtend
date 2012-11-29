@@ -48,6 +48,7 @@ import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 
 import static extension com.google.common.base.Strings.*
 import static extension org.eclipse.xtext.EcoreUtil2.*
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -217,12 +218,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	}
    	
 	override protected computeFieldName(XtendField field, JvmGenericType declaringType) {
-		val source = SourceAdapter::find(field)
-		if(source == null){
-			super.computeFieldName(field, declaringType)
-		}else{
-			super.computeFieldName(source as XtendField, declaringType)
+		var source = field
+		while(NodeModelUtils::getNode(source) == null && source != null){
+			source = SourceAdapter::find(source) as XtendField
 		}
+		super.computeFieldName(source as XtendField, declaringType)
 	}
 
    	def generateStepValues(Step step){

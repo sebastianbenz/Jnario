@@ -50,13 +50,20 @@ public class StepReferenceFieldCreator {
   
   private Set<String> getExistingFieldNames(final Iterable<XtendMember> members) {
     Iterable<XtendField> _filter = Iterables.<XtendField>filter(members, XtendField.class);
-    final Function1<XtendField,String> _function = new Function1<XtendField,String>() {
+    final Function1<XtendField,Boolean> _function = new Function1<XtendField,Boolean>() {
+        public Boolean apply(final XtendField it) {
+          boolean _notEquals = (!Objects.equal(it, null));
+          return Boolean.valueOf(_notEquals);
+        }
+      };
+    Iterable<XtendField> _filter_1 = IterableExtensions.<XtendField>filter(_filter, _function);
+    final Function1<XtendField,String> _function_1 = new Function1<XtendField,String>() {
         public String apply(final XtendField it) {
           String _name = it.getName();
           return _name;
         }
       };
-    Iterable<String> _map = IterableExtensions.<XtendField, String>map(_filter, _function);
+    Iterable<String> _map = IterableExtensions.<XtendField, String>map(_filter_1, _function_1);
     Set<String> _set = IterableExtensions.<String>toSet(_map);
     return _set;
   }
