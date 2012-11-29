@@ -128,8 +128,8 @@ Feature: Step Parameters
 			jnarioFile=args.first
 		Then it should execute successfully
 		
-	Scenario: Using args in And Steps
-		When I have a scenario with 'and' step arguments
+	Scenario: Field initializers in Backgrounds
+		When I have a scenario with a background and a field initializer
 		'''
 		Feature: Field initializers in Backgrounds
 		Background:

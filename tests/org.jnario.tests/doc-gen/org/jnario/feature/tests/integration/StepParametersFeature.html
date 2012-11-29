@@ -152,10 +152,10 @@ And other args &quot;10&quot;
 </li>
 </ul>
 </div>
-<div><h3 class="scenario notrun"  id="Scenario_Using_args_in_And_Steps">Scenario: Using args in And Steps
+<div><h3 class="scenario notrun"  id="Scenario_Field_initializers_in_Backgrounds">Scenario: Field initializers in Backgrounds
 </h3>
 <ul>
-<li><span class="step notrun"><p>When I have a scenario with 'and' step arguments</p><pre>Feature: Field initializers in Backgrounds
+<li><span class="step notrun"><p>When I have a scenario with a background and a field initializer</p><pre>Feature: Field initializers in Backgrounds
 Background:
   String greeting = &quot;Hello &quot;
   Given a name &quot;Sebastian&quot;
@@ -303,8 +303,8 @@ Feature: Step Parameters
       jnarioFile=args.first
     Then it should execute successfully
     
-  Scenario: Using args in And Steps
-    When I have a scenario with 'and' step arguments
+  Scenario: Field initializers in Backgrounds
+    When I have a scenario with a background and a field initializer
     '''
     Feature: Field initializers in Backgrounds
     Background:
