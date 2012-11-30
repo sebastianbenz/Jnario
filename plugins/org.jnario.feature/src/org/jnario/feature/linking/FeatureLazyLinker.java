@@ -13,7 +13,10 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.diagnostics.IDiagnosticConsumer;
+import org.eclipse.xtext.util.OnChangeEvictingCache;
+import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XConstructorCall;
 import org.eclipse.xtext.xbase.XExpression;
@@ -37,12 +40,18 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 	
 	@Inject StepArgumentsProvider stepArgumentsProvider;
 	@Inject FeatureQuery featureQuery;
-
+	@Inject OnChangeEvictingCache cache;
+	
 	@Override
-	protected void beforeModelLinked(EObject model,
+	protected void beforeModelLinked(final EObject model,
 			IDiagnosticConsumer diagnosticsConsumer) {
 		super.beforeModelLinked(model, diagnosticsConsumer);
-		generateStepValues(model);
+		cache.execWithoutCacheClear(model.eResource(), new IUnitOfWork.Void<Resource>() {
+			@Override
+			public void process(Resource state) throws Exception {
+				generateStepValues(model);
+			}
+		});
 	}
 
 	private void generateStepValues(EObject model) {
