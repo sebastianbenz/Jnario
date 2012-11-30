@@ -19,6 +19,15 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Add two numbers")
 @SuppressWarnings("all")
 public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
+  final Calculator calculator = new Function0<Calculator>() {
+    public Calculator apply() {
+      Calculator _calculator = new Calculator();
+      return _calculator;
+    }
+  }.apply();
+  
+  int result;
+  
   @Test
   @Order(0)
   @Named("When I entered \\\"50\\\" and \\\"70\\\"")
@@ -47,13 +56,4 @@ public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
      + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
-  
-  final Calculator calculator = new Function0<Calculator>() {
-    public Calculator apply() {
-      Calculator _calculator = new Calculator();
-      return _calculator;
-    }
-  }.apply();
-  
-  int result;
 }

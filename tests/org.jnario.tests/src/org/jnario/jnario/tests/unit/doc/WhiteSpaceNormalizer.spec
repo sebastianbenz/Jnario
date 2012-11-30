@@ -35,4 +35,23 @@ describe WhiteSpaceNormalizer{
 		]
 	}
 	
+	fact "Linebreak at the end"{
+		subject.normalize(
+		'''
+		hello
+		world
+		''') => "hello\nworld\n"
+	}
+	
+	fact "Linebreak at the end with trailing tabs"{
+		subject.normalize("\n\t\t\t\t\t hello\n\t\t\t\t\t world\n\t\t\t\t\t") => "hello\nworld\n"
+	}
+	
+	fact "No linebreak at the end"{
+		subject.normalize(
+		'''
+		hello
+		world''') => "hello\nworld"
+	}
+	
 }

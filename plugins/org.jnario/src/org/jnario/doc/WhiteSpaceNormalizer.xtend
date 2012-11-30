@@ -53,7 +53,11 @@ class WhiteSpaceNormalizer {
 	
 	def String remove(String input, String toReplace){
 		if(input.length < toReplace.length){
-			return input
+			if(toReplace.startsWith(input)){
+				return ""
+			}else{
+				return input
+			}
 		}
 		var i = 0
 		while(i < toReplace.length){

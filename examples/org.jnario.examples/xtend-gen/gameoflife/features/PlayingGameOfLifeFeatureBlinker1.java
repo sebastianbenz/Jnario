@@ -18,6 +18,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Blinker 1")
 @SuppressWarnings("all")
 public class PlayingGameOfLifeFeatureBlinker1 extends PlayingGameOfLifeFeature {
+  World world;
+  
   @Test
   @Order(0)
   @Named("Given a world")
@@ -46,6 +48,4 @@ public class PlayingGameOfLifeFeatureBlinker1 extends PlayingGameOfLifeFeature {
      + "\n     args.first is " + new StringDescription().appendValue(_first).toString() + "\n", _doubleArrow);
     
   }
-  
-  World world;
 }

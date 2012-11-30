@@ -168,6 +168,15 @@ Scenario: Greeting someone
 </li>
 </ul>
 </div>
+<div><h3 class="scenario notrun"  id="Scenario_White_space_normalizing">Scenario: White space normalizing
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I have a scenario with a multiline string</p></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>StepParameters.feature</h3>
@@ -316,6 +325,23 @@ Feature: Step Parameters
       greeting =&gt; args.first
     '''
       jnarioFile=args.first
+    Then it should execute successfully
+  
+  Scenario: White space normalizing
+    When I have a scenario with a multiline string
+    jnarioFile=&quot;
+    Feature: Multiline String
+      Scenario: Example
+        String arg 
+        Given a step with a multiline argument:
+          '''
+           hello
+           world
+          '''
+          arg = args.first
+        Then the whitespace should be normalized
+          assertEquals('hello\nworld\n', arg)
+    &quot;
     Then it should execute successfully
 </pre>
 						    </p></div>

@@ -91,7 +91,12 @@ public class WhiteSpaceNormalizer {
     int _length_1 = toReplace.length();
     boolean _lessThan = (_length < _length_1);
     if (_lessThan) {
-      return input;
+      boolean _startsWith = toReplace.startsWith(input);
+      if (_startsWith) {
+        return "";
+      } else {
+        return input;
+      }
     }
     int i = 0;
     int _length_2 = toReplace.length();

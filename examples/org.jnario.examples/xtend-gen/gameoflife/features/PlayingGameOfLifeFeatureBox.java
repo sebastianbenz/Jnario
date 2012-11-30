@@ -18,6 +18,8 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Box")
 @SuppressWarnings("all")
 public class PlayingGameOfLifeFeatureBox extends PlayingGameOfLifeFeature {
+  World world;
+  
   @Test
   @Order(0)
   @Named("Given a world")
@@ -49,6 +51,4 @@ public class PlayingGameOfLifeFeatureBox extends PlayingGameOfLifeFeature {
      + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
-  
-  World world;
 }

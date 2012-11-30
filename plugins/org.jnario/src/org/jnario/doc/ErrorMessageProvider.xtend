@@ -7,7 +7,6 @@ import org.jnario.report.Passed
 import org.jnario.report.Pending
 
 class ErrorMessageProvider extends ExecutableStateSwitch<String> {
-	
 
 	override protected handleFailed(Failed execution) ''''''
 	

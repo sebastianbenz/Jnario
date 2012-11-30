@@ -18,6 +18,13 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Add two numbers")
 @SuppressWarnings("all")
 public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
+  final SimpleCalculator calculator = new Function0<SimpleCalculator>() {
+    public SimpleCalculator apply() {
+      SimpleCalculator _simpleCalculator = new SimpleCalculator();
+      return _simpleCalculator;
+    }
+  }.apply();
+  
   @Test
   @Order(0)
   @Named("Given I have entered \\\"50\\\" into the calculator")
@@ -35,7 +42,7 @@ public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
     StepArguments _stepArguments = new StepArguments("70");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
-    calculator.enter(_first);
+    this.calculator.enter(_first);
   }
   
   @Test
@@ -63,11 +70,4 @@ public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
      + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
-  
-  final SimpleCalculator calculator = new Function0<SimpleCalculator>() {
-    public SimpleCalculator apply() {
-      SimpleCalculator _simpleCalculator = new SimpleCalculator();
-      return _simpleCalculator;
-    }
-  }.apply();
 }
