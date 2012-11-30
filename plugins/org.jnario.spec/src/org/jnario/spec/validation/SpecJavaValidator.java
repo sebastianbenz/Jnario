@@ -201,6 +201,25 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 	}
 	
 	@Check
+	public void checkDuplicateFacts(ExampleGroup exampleGroup){
+		Map<String, Example> names = newHashMap();
+		for (Example example : filter(exampleGroup.getMembers(), Example.class)) {
+			String exampleName = exampleNameProvider.describe(example);
+			Example duplicate = names.get(exampleName);
+			if(duplicate != null){
+				markAsDuplicate(duplicate);
+				markAsDuplicate(example);
+			}else{
+				names.put(exampleName, example);
+			}
+		}
+	}
+
+	public void markAsDuplicate(Example duplicate) {
+		error("Duplicate fact", duplicate, XtendPackage.Literals.XTEND_FUNCTION__NAME, -1);
+	}
+	
+	@Check
 	public void checkAbstract(XtendFunction function) {
 		if (function instanceof TestFunction) {
 			return;

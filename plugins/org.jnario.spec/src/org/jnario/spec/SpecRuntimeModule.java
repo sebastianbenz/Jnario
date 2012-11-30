@@ -78,7 +78,6 @@ import org.jnario.spec.scoping.SpecResourceDescriptionStrategy;
 import org.jnario.spec.scoping.SpecScopeProvider;
 import org.jnario.spec.typing.SpecTypeProvider;
 import org.jnario.spec.validation.SpecClassPathBasedChecks;
-import org.jnario.typing.JnarioTypeProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
