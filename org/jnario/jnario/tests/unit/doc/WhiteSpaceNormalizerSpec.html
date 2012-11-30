@@ -95,6 +95,22 @@
 examples.forEach[
   subject.normalize(input) =&gt; result
 ]</pre>
+</li><li><p id="Linebreak_at_the_end" class="example notrun"><strong>Linebreak at the end</strong></p>
+<pre class="prettyprint lang-spec linenums">
+subject.normalize(
+'''
+hello
+world
+''') =&gt; &quot;hello\nworld\n&quot;</pre>
+</li><li><p id="Linebreak_at_the_end_with_trailing_tabs" class="example notrun"><strong>Linebreak at the end with trailing tabs</strong></p>
+<pre class="prettyprint lang-spec linenums">
+subject.normalize(&quot;\n\t\t\t\t\t hello\n\t\t\t\t\t world\n\t\t\t\t\t&quot;) =&gt; &quot;hello\nworld\n&quot;</pre>
+</li><li><p id="No_linebreak_at_the_end" class="example notrun"><strong>No linebreak at the end</strong></p>
+<pre class="prettyprint lang-spec linenums">
+subject.normalize(
+'''
+hello
+world''') =&gt; &quot;hello\nworld&quot;</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -136,6 +152,25 @@ describe WhiteSpaceNormalizer{
     examples.forEach[
       subject.normalize(input) =&gt; result
     ]
+  }
+  
+  fact &quot;Linebreak at the end&quot;{
+    subject.normalize(
+    '''
+    hello
+    world
+    ''') =&gt; &quot;hello\nworld\n&quot;
+  }
+  
+  fact &quot;Linebreak at the end with trailing tabs&quot;{
+    subject.normalize(&quot;\n\t\t\t\t\t hello\n\t\t\t\t\t world\n\t\t\t\t\t&quot;) =&gt; &quot;hello\nworld\n&quot;
+  }
+  
+  fact &quot;No linebreak at the end&quot;{
+    subject.normalize(
+    '''
+    hello
+    world''') =&gt; &quot;hello\nworld&quot;
   }
   
 }
