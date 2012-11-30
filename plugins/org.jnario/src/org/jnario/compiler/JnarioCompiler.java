@@ -321,13 +321,6 @@ public class JnarioCompiler extends XtendCompiler {
 	}
 
 	protected Iterator<XExpression> allSubExpressions(XExpression expression) {
-		Predicate<XExpression> onlyKnownFeatures = new Predicate<XExpression>() {
-
-			public boolean apply(XExpression e) {
-				// FIXME
-				return !"<unkown>".equals(e.toString());
-			}
-		};
 		Predicate<XExpression> noSwitchCases = new Predicate<XExpression>() {
 			public boolean apply(XExpression e) {
 				return !(e.eContainer() instanceof XSwitchExpression);
@@ -340,7 +333,6 @@ public class JnarioCompiler extends XtendCompiler {
 		};
 		Iterable<XExpression> subExpressions = filter(expression.eContents(),
 				XExpression.class);
-		subExpressions = filter(subExpressions, onlyKnownFeatures);
 		subExpressions = filter(subExpressions, noLiteralExpressions);
 		subExpressions = filter(subExpressions, noSwitchCases);
 		return subExpressions.iterator();
@@ -355,7 +347,7 @@ public class JnarioCompiler extends XtendCompiler {
 			return;
 		}
 		String expr = serialize(expression);
-		if (valueMappings.contains(expr)) {
+		if (expr.isEmpty() || valueMappings.contains(expr)) {
 			return;
 		}
 		valueMappings.add(expr);

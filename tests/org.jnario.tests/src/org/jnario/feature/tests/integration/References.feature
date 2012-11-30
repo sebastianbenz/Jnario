@@ -334,3 +334,24 @@ Feature: References for steps
 				colors += "green"
 	 	'''
 	 	Then both should execute successfully
+
+	Scenario: Error messages in Step References
+		Given a feature
+		'''
+			Feature: Error Messages in Step References
+			 
+			Scenario: Defines a failing step
+				val aList = list("red")
+			Given an extension
+				try{
+					aList should contain "green"
+				}catch(AssertionError e){
+					val expected = 
+			'Expected aList should contain "green" but
+			     aList is <[red]>'
+					e.message should contain expected
+				}
+			Scenario: Redefines failing step
+			Given an extension                      
+		'''
+		Then it should execute successfully
