@@ -21,7 +21,7 @@ public class TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario exte
   @Order(0)
   @Named("When I have a scenario that uses one variable in different steps")
   public void whenIHaveAScenarioThatUsesOneVariableInDifferentSteps() {
-    StepArguments _stepArguments = new StepArguments("package bootstrap\nFeature: a feature\n\tScenario: a scenario with field\n\t\tpublic int x\n\t\tGiven a variable access\n\t\t\tx = 3\n\t\tWhen the variable is accessed\n\t\t\tx = x + 1 \n\t\tThen it is accessed\n\t\t\tx => 4\n\t\t");
+    StepArguments _stepArguments = new StepArguments("package bootstrap\nFeature: a feature\n\tScenario: a scenario with field\n\t\tpublic int x\n\t\tGiven a variable access\n\t\t\tx = 3\n\t\tWhen the variable is accessed\n\t\t\tx = x + 1 \n\t\tThen it is accessed\n\t\t\tx => 4\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;

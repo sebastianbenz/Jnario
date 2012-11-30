@@ -31,35 +31,35 @@ class SuiteClassNameProvider extends JnarioNameProvider{
 		this.exampleNameProvider = exampleNameProvider
 		this.featureNameProvider = featureNameProvider
 	}
-	
+
 	static val POSTFIX = "Suite"
 	
-	def removePrefix(Suite suite){
+	def protected removePrefix(Suite suite){
 		var name = suite.name.firstLine
 		if(name.nullOrEmpty) return null
 		name = name.substring(name.lastIndexOf('#')+1).trim
 		if(name.nullOrEmpty) return null else name
 	}
 	
-	def dispatch getClassName(Suite suite){
+	def protected dispatch internalGetClassName(Suite suite){
 		val name = suite.removePrefix
 		if(name == null) return null
 		name.toClassName + POSTFIX
 	}
 	
-	def dispatch String getClassName(EObject element){
+	def protected dispatch String internalGetClassName(EObject element){
 		element.classNameProvider?.toJavaClassName(element)
 	}	
 
-	override describe(EObject eObject) {
+	override protected internalDescribe(EObject eObject) {
 		doDescribe(eObject)
 	}
 	
-	def dispatch doDescribe(Suite suite){
+	def protected dispatch doDescribe(Suite suite){
 		suite.removePrefix?.convertToJavaString(true)
 	}
 	
-	def dispatch String doDescribe(EObject element){
+	def protected dispatch String doDescribe(EObject element){
 		element.classNameProvider?.describe(element)
 	}
 	
@@ -70,9 +70,16 @@ class SuiteClassNameProvider extends JnarioNameProvider{
 		resourceServiceProvider.get(typeof(JnarioNameProvider)) 
 	}
 	
-	override toJavaClassName(EObject eObject) {
-		getClassName(eObject)
-		
+	override protected internalToJavaClassName(EObject eObject) {
+		internalGetClassName(eObject)
+	}
+	
+	override protected internalToFieldName(EObject eObject) {
+		throw new UnsupportedOperationException("Auto-generated function stub")
+	}
+	
+	override protected internalToMethodName(EObject eObject) {
+		throw new UnsupportedOperationException("Auto-generated function stub")
 	}
 	
 }

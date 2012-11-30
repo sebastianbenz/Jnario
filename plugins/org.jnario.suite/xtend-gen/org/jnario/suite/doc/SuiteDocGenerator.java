@@ -64,8 +64,8 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
       final Suite rootSuite = IterableExtensions.<Suite>head(suites);
       final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
           public void apply(final HtmlFile it) {
-            String _className = SuiteDocGenerator.this._suiteClassNameProvider.getClassName(rootSuite);
-            it.setName(_className);
+            String _javaClassName = SuiteDocGenerator.this._suiteClassNameProvider.toJavaClassName(rootSuite);
+            it.setName(_javaClassName);
             String _describe = SuiteDocGenerator.this._suiteClassNameProvider.describe(rootSuite);
             String _decode = SuiteDocGenerator.this.decode(_describe);
             it.setTitle(_decode);
@@ -93,8 +93,8 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
       final Suite suite = ((Suite) file);
       final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
           public void apply(final HtmlFile it) {
-            String _className = SuiteDocGenerator.this._suiteClassNameProvider.getClassName(suite);
-            it.setName(_className);
+            String _javaClassName = SuiteDocGenerator.this._suiteClassNameProvider.toJavaClassName(suite);
+            it.setName(_javaClassName);
             String _describe = SuiteDocGenerator.this._suiteClassNameProvider.describe(suite);
             String _decode = SuiteDocGenerator.this.decode(_describe);
             it.setTitle(_decode);
@@ -235,8 +235,8 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
       String _root = this.root(context);
       String _plus = (_root + path);
       String _plus_1 = (_plus + "/");
-      String _className = this._suiteClassNameProvider.getClassName(spec);
-      String _htmlFileName = this.htmlFileName(_className);
+      String _javaClassName = this._suiteClassNameProvider.toJavaClassName(spec);
+      String _htmlFileName = this.htmlFileName(_javaClassName);
       String _plus_2 = (_plus_1 + _htmlFileName);
       _xblockexpression = (_plus_2);
     }

@@ -23,8 +23,8 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("toJavaClassName")
-public class ExampleNameProviderToJavaClassNameSpec extends ExampleNameProviderSpec {
+@Named("toJavaClassName[ExampleGroup]")
+public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleNameProviderSpec {
   @Subject
   public ExampleNameProvider subject;
   
@@ -110,7 +110,7 @@ public class ExampleNameProviderToJavaClassNameSpec extends ExampleNameProviderS
       "describe \'my_example\'");
     final Procedure1<String> _function = new Procedure1<String>() {
         public void apply(final String it) {
-          String _firstJavaClassName = ExampleNameProviderToJavaClassNameSpec.this.firstJavaClassName(it);
+          String _firstJavaClassName = ExampleNameProviderToJavaClassNameExampleGroupSpec.this.firstJavaClassName(it);
           boolean _doubleArrow = Should.operator_doubleArrow(_firstJavaClassName, "MyExampleSpec");
           Assert.assertTrue("\nExpected firstJavaClassName(it) => \'MyExampleSpec\' but"
            + "\n     firstJavaClassName(it) is " + new StringDescription().appendValue(_firstJavaClassName).toString()

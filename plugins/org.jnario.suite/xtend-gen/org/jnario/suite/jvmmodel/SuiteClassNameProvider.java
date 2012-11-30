@@ -27,7 +27,7 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
   
   private final static String POSTFIX = "Suite";
   
-  public String removePrefix(final Suite suite) {
+  protected String removePrefix(final Suite suite) {
     String _xblockexpression = null;
     {
       String _name = suite.getName();
@@ -53,7 +53,7 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
     return _xblockexpression;
   }
   
-  protected String _getClassName(final Suite suite) {
+  protected String _internalGetClassName(final Suite suite) {
     String _xblockexpression = null;
     {
       final String name = this.removePrefix(suite);
@@ -68,13 +68,13 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
     return _xblockexpression;
   }
   
-  protected String _getClassName(final EObject element) {
+  protected String _internalGetClassName(final EObject element) {
     JnarioNameProvider _classNameProvider = this.classNameProvider(element);
     String _javaClassName = _classNameProvider==null?(String)null:_classNameProvider.toJavaClassName(element);
     return _javaClassName;
   }
   
-  public String describe(final EObject eObject) {
+  protected String internalDescribe(final EObject eObject) {
     String _doDescribe = this.doDescribe(eObject);
     return _doDescribe;
   }
@@ -107,23 +107,33 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
     return _xblockexpression;
   }
   
-  public String toJavaClassName(final EObject eObject) {
-    String _className = this.getClassName(eObject);
-    return _className;
+  protected String internalToJavaClassName(final EObject eObject) {
+    String _internalGetClassName = this.internalGetClassName(eObject);
+    return _internalGetClassName;
   }
   
-  public String getClassName(final EObject suite) {
+  protected String internalToFieldName(final EObject eObject) {
+    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
+    throw _unsupportedOperationException;
+  }
+  
+  protected String internalToMethodName(final EObject eObject) {
+    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
+    throw _unsupportedOperationException;
+  }
+  
+  protected String internalGetClassName(final EObject suite) {
     if (suite instanceof Suite) {
-      return _getClassName((Suite)suite);
+      return _internalGetClassName((Suite)suite);
     } else if (suite != null) {
-      return _getClassName(suite);
+      return _internalGetClassName(suite);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(suite).toString());
     }
   }
   
-  public String doDescribe(final EObject suite) {
+  protected String doDescribe(final EObject suite) {
     if (suite instanceof Suite) {
       return _doDescribe((Suite)suite);
     } else if (suite != null) {

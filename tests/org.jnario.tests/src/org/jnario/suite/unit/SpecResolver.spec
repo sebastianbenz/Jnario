@@ -139,7 +139,7 @@ describe SpecResolver {
 	}
 	
 	def resolvedSpecs(Suite suite){
-		subject.resolveSpecs(suite).map[className].toList
+		subject.resolveSpecs(suite).map[toJavaClassName].toList
 	}
 
 }

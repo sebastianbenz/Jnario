@@ -34,7 +34,7 @@ public class SuiteExecutor extends BehaviorExecutor {
 		SuiteFile suiteFile = (SuiteFile) object;
 		CompositeResult result = new CompositeResult();
 		for (Suite suite : Iterables.filter(suiteFile.getXtendClasses(), Suite.class)) {
-			String suiteClassName = nameProvider.getClassName(suite);
+			String suiteClassName = nameProvider.toJavaClassName(suite);
 			String packageName = suite.getPackageName();
 			result.add(runTestsInClass(suiteClassName, packageName));
 		}

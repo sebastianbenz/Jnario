@@ -111,8 +111,8 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
       List<Specification> _resolveSpecs = this._specResolver.resolveSpecs(suite);
       final Function1<Specification,Boolean> _function = new Function1<Specification,Boolean>() {
           public Boolean apply(final Specification it) {
-            String _className = SuiteJvmModelInferrer.this._suiteClassNameProvider.getClassName(it);
-            boolean _notEquals = (!Objects.equal(_className, null));
+            String _javaClassName = SuiteJvmModelInferrer.this._suiteClassNameProvider.toJavaClassName(it);
+            boolean _notEquals = (!Objects.equal(_javaClassName, null));
             return Boolean.valueOf(_notEquals);
           }
         };

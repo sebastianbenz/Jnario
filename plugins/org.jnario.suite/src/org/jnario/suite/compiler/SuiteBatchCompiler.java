@@ -33,7 +33,7 @@ public class SuiteBatchCompiler extends JnarioBatchCompiler {
 	@Override
 	protected String getClassName(EObject eObject) {
 		if (eObject instanceof Specification) {
-			return nameProvider.getClassName((Specification) eObject);
+			return nameProvider.toJavaClassName((Specification) eObject);
 		}
 		return null;
 	}

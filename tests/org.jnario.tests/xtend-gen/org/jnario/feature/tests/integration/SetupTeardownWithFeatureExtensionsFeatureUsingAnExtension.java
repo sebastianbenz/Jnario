@@ -39,7 +39,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension extends S
   @Order(1)
   @Named("When I declare an extension field of type **ExampleExtension** in the background")
   public void whenIDeclareAnExtensionFieldOfTypeExampleExtensionInTheBackground() {
-    StepArguments _stepArguments = new StepArguments("import org.jnario.feature.tests.integration.ExampleExtension\n\nFeature: Feature with extensions\n  \n  Background: A common extension to all scenarios\n      extension static ExampleExtension = new ExampleExtension \n    Given a static extension field\n    \n  Scenario: Scenario 1\n    Given a step \n      println(\"step 1\")\n    Then we have two steps\n    println(\"step 2\")\n  Scenario: Scenario 2\n    Given a step \n      println(\"step 3\")\n    Then we have two steps\n      println(\"step 4\")\n      ");
+    StepArguments _stepArguments = new StepArguments("import org.jnario.feature.tests.integration.ExampleExtension\n\nFeature: Feature with extensions\n  \n  Background: A common extension to all scenarios\n      extension static ExampleExtension = new ExampleExtension \n    Given a static extension field\n    \n  Scenario: Scenario 1\n    Given a step \n      println(\"step 1\")\n    Then we have two steps\n    println(\"step 2\")\n  Scenario: Scenario 2\n    Given a step \n      println(\"step 3\")\n    Then we have two steps\n      println(\"step 4\")\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.feature = _first;
@@ -58,7 +58,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension extends S
   @Order(3)
   @Named("Then the execution order is")
   public void thenTheExecutionOrderIs() {
-    StepArguments _stepArguments = new StepArguments("before\nstep 1\nstep 2\nafter\nbefore\nstep 3\nstep 4\nafter\n      ");
+    StepArguments _stepArguments = new StepArguments("before\nstep 1\nstep 2\nafter\nbefore\nstep 3\nstep 4\nafter\n");
     final StepArguments args = _stepArguments;
     String _stop = this.recorder.stop();
     final String actual = _stop.trim();

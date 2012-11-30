@@ -32,7 +32,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		}
 		val feature = xtendClass as Feature
 		return HtmlFile::newHtmlFile[
-			name = feature.getClassName 
+			name = feature.toJavaClassName 
 			title = feature.name
 			content = feature.generateContent
 			rootFolder = feature.root

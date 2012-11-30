@@ -46,7 +46,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 		if(suites.empty) return HtmlFile::EMPTY_FILE
 		val rootSuite = suites.head
 		HtmlFile::newHtmlFile[
-			name = rootSuite.className
+			name = rootSuite.toJavaClassName
 			title = rootSuite.describe.decode
 			content = suites.generateContent
 			rootFolder = rootSuite.root
@@ -59,7 +59,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 	override HtmlFile createHtmlFile(XtendClass file) {
 		val suite = file as Suite
 		HtmlFile::newHtmlFile[
-			name = suite.className 
+			name = suite.toJavaClassName 
 			title = suite.describe.decode
 			content = suite.generateContent
 			rootFolder = suite.root
@@ -110,7 +110,7 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 		}else{
 			spec.packageName.replace(".", "/")
 		}
-		context.root + path + "/" + spec.className.htmlFileName
+		context.root + path + "/" + spec.toJavaClassName.htmlFileName
 	}
 	
 	def text(Reference ref){

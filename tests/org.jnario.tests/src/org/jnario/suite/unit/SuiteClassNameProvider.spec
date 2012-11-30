@@ -14,7 +14,7 @@ import static org.jnario.jnario.test.util.Suites.*
 @CreateWith(typeof(SuiteTestCreator))
 describe SuiteClassNameProvider {
 	
-	context getClassName{
+	context "toJavaClassName"{
 		def examples{
 			| name 										| expectedClassName |
 			| null										| null				|
@@ -23,10 +23,10 @@ describe SuiteClassNameProvider {
 			| "##My Suite \n with multiple lines"		| "MySuiteSuite"	|
 		}
 		
-		fact examples.forEach[subject.getClassName(suite(name)) => expectedClassName]
+		fact examples.forEach[subject.toJavaClassName(suite(name)) => expectedClassName]
 	}
 	
-	context ^describe{
+	context "describe"{
 		def examples{
 			| name 										| expectedClassName |
 			| null										| null				|

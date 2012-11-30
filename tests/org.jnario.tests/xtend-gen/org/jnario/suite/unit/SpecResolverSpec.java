@@ -165,8 +165,8 @@ public class SpecResolverSpec {
     List<Specification> _resolveSpecs = this.subject.resolveSpecs(suite);
     final Function1<Specification,String> _function = new Function1<Specification,String>() {
         public String apply(final Specification it) {
-          String _className = SpecResolverSpec.this._suiteClassNameProvider.getClassName(it);
-          return _className;
+          String _javaClassName = SpecResolverSpec.this._suiteClassNameProvider.toJavaClassName(it);
+          return _javaClassName;
         }
       };
     List<String> _map = ListExtensions.<Specification, String>map(_resolveSpecs, _function);

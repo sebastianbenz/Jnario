@@ -87,7 +87,7 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	public void checkDuplicateScenarioNames(Feature feature){
 		Set<String> names = newHashSet();
 		for (Scenario scenario : feature.getScenarios()) {
-			if(!names.add(classNameProvider.getClassName(scenario))){
+			if(!names.add(classNameProvider.toJavaClassName(scenario))){
 				error("Duplicate scenario: '" + scenario.getName() + "'", XtendPackage.Literals.XTEND_CLASS__NAME);
 			}
 		}

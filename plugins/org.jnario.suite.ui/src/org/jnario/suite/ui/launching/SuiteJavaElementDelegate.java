@@ -108,7 +108,7 @@ public class SuiteJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 			return null;
 		}
 		Suite suite = (Suite) suiteFile.getXtendClasses().get(0);
-		return nameProvider.getClassName(suite) + ".java";
+		return nameProvider.toJavaClassName(suite) + ".java";
 	}
 	
 	@Override

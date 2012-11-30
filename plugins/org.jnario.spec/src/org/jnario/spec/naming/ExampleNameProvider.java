@@ -10,6 +10,7 @@ package org.jnario.spec.naming;
 import static com.google.common.collect.Iterables.addAll;
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
 import static java.lang.Math.max;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.util.Strings.toFirstLower;
@@ -20,6 +21,7 @@ import static org.jnario.util.Strings.makeJunitConform;
 import static org.jnario.util.Strings.markAsPending;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 import org.eclipse.emf.ecore.EObject;
@@ -56,7 +58,53 @@ public class ExampleNameProvider extends JnarioNameProvider{
 	@Inject(optional=true) 
 	private JavaKeywords javaUtils = new JavaKeywords();
 
-	public String describe(ExampleGroup exampleGroup) {
+	protected String internalToMethodName(EObject eObject){
+		if(eObject == null){
+			return null;
+		}
+		if (eObject instanceof After) {
+			return _toMethodName((After)eObject);
+		}
+		if (eObject instanceof Before) {
+			return _toMethodName((Before)eObject);
+		}
+		if (eObject instanceof Example) {
+			return _toMethodName((Example)eObject);
+		}
+		throw new UnsupportedOperationException("Cannot determine method name for " + eObject.eClass().getName());
+	}
+
+	protected String internalDescribe(EObject eObject) {
+		if(eObject == null){
+			return null;
+		}
+		if (eObject instanceof ExampleGroup) {
+			return _describe((ExampleGroup) eObject);
+		}
+		if (eObject instanceof Example) {
+			return _describe((Example) eObject);
+		}
+		throw new UnsupportedOperationException("Cannote describe " + eObject.eClass().getName());
+	}
+
+	protected String internalToJavaClassName(EObject eObject) {
+		if(eObject == null){
+			return null;
+		}
+		if (eObject instanceof ExampleGroup) {
+			return _toJavaClassName((ExampleGroup) eObject);
+		}
+		if (eObject instanceof ExampleTable) {
+			return _toJavaClassName((ExampleTable) eObject);
+		}
+		ExampleGroup exampleGroup = getContainerOfType(eObject, ExampleGroup.class);
+		if(exampleGroup == null){
+			return null;
+		}
+		return _toJavaClassName(exampleGroup);
+	}
+
+	private String _describe(ExampleGroup exampleGroup) {
 		StringBuilder result = new StringBuilder();
 		if(exampleGroup.getTargetType() != null){
 			result.append(getTargetTypeName(exampleGroup));
@@ -72,7 +120,7 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		return makeJunitConform(result);
 	}
 
-	protected QualifiedName getOperationName(ExampleGroup exampleGroup) {
+	private QualifiedName getOperationName(ExampleGroup exampleGroup) {
 		EObject operation = (EObject) exampleGroup.eGet(SpecPackage.Literals.EXAMPLE_GROUP__TARGET_OPERATION, false);
 		if(operation.eIsProxy()){
 			String name = textForFeature(exampleGroup, SpecPackage.Literals.EXAMPLE_GROUP__TARGET_OPERATION);
@@ -81,7 +129,7 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		return operationNameProvider.apply(exampleGroup.getTargetOperation());
 	}
 
-	public String describe(Example example){
+	private String _describe(Example example){
 		StringBuilder sb = new StringBuilder();
 		if(example.getName() != null){
 			sb.append(example.getName());
@@ -92,35 +140,21 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		return makeJunitConform(sb).trim();
 	}
 
-	public String toJavaClassName(ExampleGroup exampleGroup) {
+	private String _toJavaClassName(ExampleGroup exampleGroup){
 		StringBuilder result = internalGetName(exampleGroup);
 		result.append(SPEC_POSTFIX);
 		return result.toString();
 	}
 
-	public String toMethodName(TestFunction function){
-		return new SpecSwitch<String>(){
-			public String caseAfter(After object) {
-				return toMethodName(object);
-			};
-			public String caseBefore(Before object) {
-				return toMethodName(object);
-			};
-			public String caseExample(Example object) {
-				return toMethodName(object);
-			};
-		}.doSwitch(function);
-	}
-	
-	public String toMethodName(Example example){
+	private String _toMethodName(Example example){
 		String name = "";
 		if(example.getName() != null){
 			name = memberDescriptionOf(example);
 		}
-		return toMethodName(name);
+		return _toMethodName(name);
 	}
 
-	protected String toMethodName(String name) {
+	private String _toMethodName(String name) {
 		StringBuilder result = new StringBuilder();
 		result.append("_");
 		result.append(toFirstLower(convertToCamelCase(name)));
@@ -131,19 +165,19 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		}
 	}
 	
-	public String toMethodName(Before before){
+	private String _toMethodName(Before before){
 		String name = "before";
-		return toMethodName(before, name);
+		return _toMethodName(before, name);
 	}
 	
-	public String toMethodName(After after){
+	private String _toMethodName(After after){
 		String name = "after";
-		return toMethodName(after, name);
+		return _toMethodName(after, name);
 	}
 	
-	public String toMethodName(TestFunction target, String defaultName){
+	private String _toMethodName(TestFunction target, String defaultName){
 		if(target.getName() != null){
-			return toMethodName(target.getName());
+			return _toMethodName(target.getName());
 		}
 		if(target.isStatic()){
 			defaultName += "All";
@@ -155,17 +189,21 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		return defaultName;
 	}
 	
-	public String toFieldName(ExampleTable exampleTable){
-		String name = exampleTable.getName();
-		return name == null ? "examples" : name;
+	protected String internalToFieldName(EObject eObject){
+		if (eObject instanceof ExampleTable) {
+			ExampleTable exampleTable = (ExampleTable) eObject;
+			String name = exampleTable.getName();
+			return name == null ? "examples" : name;
+		}
+		throw new UnsupportedOperationException("Cannot determin field name for " + eObject.eClass().getName());
 	}
 	
-	public String toJavaClassName(ExampleTable exampleTable){
+	private String _toJavaClassName(ExampleTable exampleTable){
 		ExampleGroup parent = getContainerOfType(exampleTable, ExampleGroup.class);
 		return toJavaClassName(parent) + toFirstUpper(toFieldName(exampleTable));
 	}
 
-	protected int countPreviousWithDefaultName(TestFunction target) {
+	private int countPreviousWithDefaultName(TestFunction target) {
 		List<? extends TestFunction> members = allMembers(target, target.getClass());
 		int index = members.indexOf(target);
 		int count = 1;
@@ -194,7 +232,7 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		return functions;
 	}
 	
-	protected StringBuilder internalGetName(ExampleGroup exampleGroup) {
+	private StringBuilder internalGetName(ExampleGroup exampleGroup) {
 		StringBuilder result = new StringBuilder();
 		if(exampleGroup.eContainer() != null){
 			ExampleGroup parent = getContainerOfType(exampleGroup.eContainer(), ExampleGroup.class);
@@ -214,7 +252,7 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		return result;
 	}
 
-	protected String getTargetTypeName(ExampleGroup exampleGroup) {
+	private String getTargetTypeName(ExampleGroup exampleGroup) {
 		String targetName;
 		if(isProxy(exampleGroup.getTargetType())){
 			targetName = resolveProxyTypeName(exampleGroup);
@@ -224,7 +262,7 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		return targetName;
 	}
 
-	protected boolean hasTargetOperation(ExampleGroup exampleGroup) {
+	private boolean hasTargetOperation(ExampleGroup exampleGroup) {
 		return exampleGroup.eIsSet(SpecPackage.Literals.EXAMPLE_GROUP__TARGET_OPERATION);
 	}
 
@@ -254,40 +292,6 @@ public class ExampleNameProvider extends JnarioNameProvider{
 			newName = "";
 		}
 		return newName;
-	}
-
-	public String describe(EObject eObject) {
-		if(eObject == null){
-			return null;
-		}
-		if (eObject instanceof ExampleGroup) {
-			return describe((ExampleGroup) eObject);
-		}
-		if (eObject instanceof ExampleTable) {
-			return describe((ExampleTable) eObject);
-		}
-		if (eObject instanceof Example) {
-			return describe((Example) eObject);
-		}
-		throw new UnsupportedOperationException("Cannote describe " + eObject.eClass().getName());
-	}
-	
-	
-	public String toJavaClassName(EObject eObject) {
-		if(eObject == null){
-			return null;
-		}
-		if (eObject instanceof ExampleGroup) {
-			return toJavaClassName((ExampleGroup) eObject);
-		}
-		if (eObject instanceof ExampleTable) {
-			return toJavaClassName((ExampleTable) eObject);
-		}
-		ExampleGroup exampleGroup = getContainerOfType(eObject, ExampleGroup.class);
-		if(exampleGroup == null){
-			return null;
-		}
-		return toJavaClassName(exampleGroup);
 	}
 
 }

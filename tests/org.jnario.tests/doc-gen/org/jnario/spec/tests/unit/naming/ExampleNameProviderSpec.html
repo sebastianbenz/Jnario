@@ -319,7 +319,7 @@ import static extension org.jnario.lib.Should.*
 @CreateWith(typeof(SpecTestCreator))
 describe ExampleNameProvider {
 
-  context toJavaClassName{ 
+  context &quot;toJavaClassName(ExampleGroup)&quot;{ 
     
     fact &quot;should remove all white spaces from ExampleGroup's description&quot;{
       firstJavaClassName(&quot;describe 'My Example'&quot;) should not contain &quot; &quot;
@@ -400,7 +400,7 @@ describe ExampleNameProvider {
     }
   }      
   
-    context toJavaClassName(ExampleTable){
+    context &quot;toJavaClassName(ExampleTable)&quot;{
       
       fact &quot;should combine example and parent name&quot;{
         exampleTableClassName('''
@@ -426,7 +426,7 @@ describe ExampleNameProvider {
       }
     }
   
-    context toMethodName(Example){
+    context &quot;toMethodName(Example)&quot;{
       
       fact &quot;converts method description to camel case starting in lowercase&quot;{
         newArrayList(
@@ -457,7 +457,7 @@ describe ExampleNameProvider {
       }
     }
     
-    context toMethodName(Before){
+    context &quot;toMethodName(Before)&quot;{
       
       fact &quot;should convert before description to camel case starting in lowercase&quot;{
         newArrayList(
@@ -524,7 +524,7 @@ describe ExampleNameProvider {
       }
     } 
     
-    context toMethodName(After){
+    context &quot;toMethodName(After)&quot;{
       
       fact &quot;should convert after description to camel case starting in lowercase&quot;{
       newArrayList(
@@ -610,7 +610,7 @@ describe ExampleNameProvider {
     
   }
  
-  context ^describe(ExampleGroup){
+  context &quot;describe(ExampleGroup)&quot;{
     
     fact &quot;should use the description&quot;{
       describeFirst(&quot;describe 'My Description'&quot;) =&gt; &quot;My Description&quot;
@@ -662,7 +662,7 @@ describe ExampleNameProvider {
     }
   }  
   
-  context ^describe(Example){
+  context &quot;describe(Example)&quot;{
     
     fact &quot;should use the description&quot;{
       describeFirst(&quot;'should do stuff' {true}&quot;) =&gt; &quot;should do stuff&quot;

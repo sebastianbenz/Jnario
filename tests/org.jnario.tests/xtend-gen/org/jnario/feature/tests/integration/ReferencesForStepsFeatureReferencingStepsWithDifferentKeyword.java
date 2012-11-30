@@ -28,7 +28,7 @@ public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword exten
   @Order(0)
   @Named("When I have a scenario with reused steps with different keywords that throw an exception")
   public void whenIHaveAScenarioWithReusedStepsWithDifferentKeywordsThatThrowAnException() {
-    StepArguments _stepArguments = new StepArguments("package bootstrap\nFeature: Test\n\tScenario: TestScenario 1\n\t\tGiven step\n\t\t\tthrow new RuntimeException()\n\t\t\n\tScenario: TestScenario 2\n\t\tWhen step\n\t\t\t");
+    StepArguments _stepArguments = new StepArguments("package bootstrap\nFeature: Test\n\tScenario: TestScenario 1\n\t\tGiven step\n\t\t\tthrow new RuntimeException()\n\t\t\n\tScenario: TestScenario 2\n\t\tWhen step\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;

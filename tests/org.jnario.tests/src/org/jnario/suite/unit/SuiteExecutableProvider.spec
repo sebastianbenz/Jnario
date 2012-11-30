@@ -51,7 +51,7 @@ describe SuiteExecutableProvider {
 		subject.getExecutables(suite("My Suite")) => list(suite("Child 1"), suite("Child 2"))
 	}
 	
-	fact "returns resolved specs"{
+	fact "returns resolved specs via link"{
 		parseSuite('''
 			package demo
 			import demo.*
@@ -64,7 +64,7 @@ describe SuiteExecutableProvider {
 		subject.getExecutables(suite("My Suite")).toSet => set(exampleGroup("My Spec"), feature())
 	}
 	 
-	fact "returns resolved specs"{
+	fact "returns resolved specs via regex"{
 		parseSuite('''
 			package demo
 			import demo.*

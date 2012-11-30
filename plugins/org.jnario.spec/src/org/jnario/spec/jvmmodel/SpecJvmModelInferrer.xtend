@@ -74,7 +74,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		]
 		exampleIndex = 0
 	}
-
+	
 	def infer(IJvmDeclaredTypeAcceptor acceptor, ExampleGroup exampleGroup, JvmGenericType superType){
 		if(superType != null){
 			exampleGroup.^extends = superType.createTypeRef
@@ -108,7 +108,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			inferredJvmType.getAnnotations().add(suppressWarnings);
 		}
 		testRuntime.updateExampleGroup(source, inferredJvmType)
-		inferredJvmType.annotations += source.toAnnotation(typeof(Named), (source as ExampleGroup).describe)
+		inferredJvmType.annotations += source.toAnnotation(typeof(Named), source.describe)
 		addDefaultConstructor(source, inferredJvmType);
 		if (source.getExtends() == null) {
 			val typeRefToObject = getTypeForName(typeof(Object), source);

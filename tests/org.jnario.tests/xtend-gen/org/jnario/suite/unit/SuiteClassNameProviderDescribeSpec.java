@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
-@Named("^describe")
+@Named("describe")
 public class SuiteClassNameProviderDescribeSpec extends SuiteClassNameProviderSpec {
   @Subject
   public SuiteClassNameProvider subject;

@@ -119,9 +119,9 @@ public class SuiteExecutableProviderSpec {
   }
   
   @Test
-  @Named("returns resolved specs")
+  @Named("returns resolved specs via link")
   @Order(2)
-  public void _returnsResolvedSpecs() throws Exception {
+  public void _returnsResolvedSpecsViaLink() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
     _builder.newLine();
@@ -155,9 +155,9 @@ public class SuiteExecutableProviderSpec {
   }
   
   @Test
-  @Named("returns resolved specs")
+  @Named("returns resolved specs via regex")
   @Order(3)
-  public void _returnsResolvedSpecs_1() throws Exception {
+  public void _returnsResolvedSpecsViaRegex() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
     _builder.newLine();

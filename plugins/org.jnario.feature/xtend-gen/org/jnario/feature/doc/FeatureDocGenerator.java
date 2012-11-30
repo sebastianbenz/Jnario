@@ -37,8 +37,8 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     final Feature feature = ((Feature) xtendClass);
     final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
         public void apply(final HtmlFile it) {
-          String _className = FeatureDocGenerator.this._featureClassNameProvider.getClassName(feature);
-          it.setName(_className);
+          String _javaClassName = FeatureDocGenerator.this._featureClassNameProvider.toJavaClassName(feature);
+          it.setName(_javaClassName);
           String _name = feature.getName();
           it.setTitle(_name);
           CharSequence _generateContent = FeatureDocGenerator.this.generateContent(feature);

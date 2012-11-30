@@ -160,7 +160,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     TestRuntimeSupport _testRuntime = this.getTestRuntime();
     _testRuntime.updateExampleGroup(source, inferredJvmType);
     EList<JvmAnnotationReference> _annotations_1 = inferredJvmType.getAnnotations();
-    String _describe = this._exampleNameProvider.describe(((ExampleGroup) source));
+    String _describe = this._exampleNameProvider.describe(source);
     JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(source, Named.class, _describe);
     this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
     this.addDefaultConstructor(source, inferredJvmType);
