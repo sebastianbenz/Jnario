@@ -214,7 +214,7 @@ class CssClassProvider extends ExecutableStateSwitch<String> {
 	override protected handlePassed(Passed execution) '''passed'''
 	override protected handlePending(Pending execution) '''pending'''
 }
-
+ 
 class ErrorMessageProvider extends ExecutableStateSwitch<String> {
 	override protected handleFailed(Failed result) '''
 			«FOR failure : result.failures»
