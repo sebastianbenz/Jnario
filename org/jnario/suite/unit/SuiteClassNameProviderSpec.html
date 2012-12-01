@@ -35,7 +35,7 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<h3 class="exampleGroup notrun"  id="getClassName_EObject">GetClassName[EObject]</h3>
+<h3 class="exampleGroup notrun"  id="toJavaClassName">ToJavaClassName</h3>
 <ul><li><p id="examples"><strong>Examples</strong></p>
 <table class="table table-striped table-bordered table-condensed">
 	<thead>
@@ -63,9 +63,9 @@
 	</tr>
 	</tbody>
 </table>
-</li><li><p id="examples_forEach_subject_getClassName_suite_name_expectedClassName" class="example notrun"><strong>examples.forEach[subject.getClassName[suite[name]] => expectedClassName]</strong></p>
+</li><li><p id="examples_forEach_subject_toJavaClassName_suite_name_expectedClassName" class="example notrun"><strong>examples.forEach[subject.toJavaClassName[suite[name]] => expectedClassName]</strong></p>
 </li></ul>
-<h3 class="exampleGroup notrun"  id="describe_EObject">Describe[EObject]</h3>
+<h3 class="exampleGroup notrun"  id="describe">Describe</h3>
 <ul><li><p id="examples"><strong>Examples</strong></p>
 <table class="table table-striped table-bordered table-condensed">
 	<thead>
@@ -151,7 +151,7 @@ import static org.jnario.jnario.test.util.Suites.*
 @CreateWith(typeof(SuiteTestCreator))
 describe SuiteClassNameProvider {
   
-  context getClassName{
+  context &quot;toJavaClassName&quot;{
     def examples{
       | name                     | expectedClassName |
       | null                    | null        |
@@ -160,10 +160,10 @@ describe SuiteClassNameProvider {
       | &quot;##My Suite \n with multiple lines&quot;    | &quot;MySuiteSuite&quot;  |
     }
     
-    fact examples.forEach[subject.getClassName(suite(name)) =&gt; expectedClassName]
+    fact examples.forEach[subject.toJavaClassName(suite(name)) =&gt; expectedClassName]
   }
   
-  context ^describe{
+  context &quot;describe&quot;{
     def examples{
       | name                     | expectedClassName |
       | null                    | null        |

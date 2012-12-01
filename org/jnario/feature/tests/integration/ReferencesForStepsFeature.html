@@ -351,6 +351,29 @@ Feature: Feature 2
 </li>
 </ul>
 </div>
+<div><h3 class="scenario notrun"  id="Scenario_Error_messages_in_Step_References">Scenario: Error messages in Step References
+</h3>
+<ul>
+<li><span class="step notrun"><p>Given a feature</p><pre>Feature: Error Messages in Step References
+ 
+Scenario: Defines a failing step
+  val aList = list(&quot;red&quot;)
+Given an extension
+  try{
+    aList should contain &quot;green&quot;
+  }catch(AssertionError e){
+    val expected = 
+'Expected aList should contain &quot;green&quot; but
+     aList is &lt;[red]&gt;'
+    e.message should contain expected
+  }
+Scenario: Redefines failing step
+Given an extension</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>References.feature</h3>
@@ -692,6 +715,27 @@ Feature: References for steps
         colors += &quot;green&quot;
      '''
      Then both should execute successfully
+
+  Scenario: Error messages in Step References
+    Given a feature
+    '''
+      Feature: Error Messages in Step References
+       
+      Scenario: Defines a failing step
+        val aList = list(&quot;red&quot;)
+      Given an extension
+        try{
+          aList should contain &quot;green&quot;
+        }catch(AssertionError e){
+          val expected = 
+      'Expected aList should contain &quot;green&quot; but
+           aList is &lt;[red]&gt;'
+          e.message should contain expected
+        }
+      Scenario: Redefines failing step
+      Given an extension                      
+    '''
+    Then it should execute successfully
 </pre>
 						    </p></div>
 						  </div>

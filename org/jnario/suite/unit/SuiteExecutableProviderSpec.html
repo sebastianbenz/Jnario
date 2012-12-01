@@ -48,7 +48,7 @@ parseSuite('''
 ''')
 
 subject.getExecutables(suite(&quot;My Suite&quot;)) =&gt; list(suite(&quot;Child 1&quot;), suite(&quot;Child 2&quot;))</pre>
-</li><li><p id="returns_resolved_specs" class="example notrun"><strong>returns resolved specs</strong></p>
+</li><li><p id="returns_resolved_specs_via_link" class="example notrun"><strong>returns resolved specs via link</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSuite('''
   package demo
@@ -60,7 +60,7 @@ parseSuite('''
 ''')
 
 subject.getExecutables(suite(&quot;My Suite&quot;)).toSet =&gt; set(exampleGroup(&quot;My Spec&quot;), feature())</pre>
-</li><li><p id="returns_resolved_specs" class="example notrun"><strong>returns resolved specs</strong></p>
+</li><li><p id="returns_resolved_specs_via_regex" class="example notrun"><strong>returns resolved specs via regex</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSuite('''
   package demo
@@ -131,7 +131,7 @@ describe SuiteExecutableProvider {
     subject.getExecutables(suite(&quot;My Suite&quot;)) =&gt; list(suite(&quot;Child 1&quot;), suite(&quot;Child 2&quot;))
   }
   
-  fact &quot;returns resolved specs&quot;{
+  fact &quot;returns resolved specs via link&quot;{
     parseSuite('''
       package demo
       import demo.*
@@ -144,7 +144,7 @@ describe SuiteExecutableProvider {
     subject.getExecutables(suite(&quot;My Suite&quot;)).toSet =&gt; set(exampleGroup(&quot;My Spec&quot;), feature())
   }
    
-  fact &quot;returns resolved specs&quot;{
+  fact &quot;returns resolved specs via regex&quot;{
     parseSuite('''
       package demo
       import demo.*
