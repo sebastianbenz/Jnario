@@ -131,6 +131,14 @@
         <artifactId>target-platform-configuration</artifactId>
         <version>${tycho-version}</version>
         <configuration>
+          <filter>
+            <type>java-package</type>
+            <id>org.hamcrest</id>
+            <restrictTo>
+               <type>eclipse-plugin</type>
+               <id>org.hamcrest.core</id>
+            </restrictTo>
+         </filter>
           <resolver>p2</resolver>
           <target>
             <artifact>

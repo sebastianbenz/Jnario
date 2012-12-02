@@ -5,11 +5,21 @@ Bundle-SymbolicName: org.jnario.lib;singleton:=true
 Bundle-Version: 0.3.0.qualifier
 Bundle-Vendor: BMW Car IT
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.jnario.lib,
+Export-Package: org.jnario.junit3,
+ org.jnario.lib,
  org.jnario.lib.internal;x-friends:="org.jnario.lib.tests",
  org.jnario.runner,
  org.jnario.runner.internal;x-friends:="org.jnario.lib.tests"
 Require-Bundle: org.eclipse.xtext.xbase.lib;bundle-version="2.3.0";visibility:=reexport,
- org.hamcrest;bundle-version="1.1.0",
- org.junit;visibility:=reexport,
  org.eclipse.xtend.lib;bundle-version="2.3.0";resolution:=optional
+Import-Package: junit.extensions,
+ junit.framework,
+ junit.runner,
+ org.hamcrest;core=split,
+ org.junit;resolution:=optional,
+ org.junit.rules;resolution:=optional,
+ org.junit.runner;resolution:=optional,
+ org.junit.runner.manipulation;resolution:=optional,
+ org.junit.runner.notification;resolution:=optional,
+ org.junit.runners;resolution:=optional,
+ org.junit.runners.model;resolution:=optional
