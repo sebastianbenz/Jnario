@@ -28,11 +28,11 @@ import java.util.Set;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.jnario.runner.internal.ExampleGroupRunnerBuilder;
 import org.jnario.runner.internal.ExtensionClass;
+import org.jnario.runner.internal.RunAfters;
+import org.jnario.runner.internal.RunBefores;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.internal.runners.statements.RunAfters;
-import org.junit.internal.runners.statements.RunBefores;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runner.Runner;
@@ -59,7 +59,6 @@ import com.google.common.collect.Iterables;
  * 
  * @author Sebastian Benz - Initial contribution and API
  */
-@SuppressWarnings("restriction")
 public class ExampleGroupRunner extends ParentRunner<Runner> {
 
 	private final class IsTestMethod implements Predicate<FrameworkMethod> {
@@ -104,7 +103,7 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 
 	@Override
 	protected String getName() {
-		return nameProvider.nameOf(getTestClass());
+		return nameProvider.nameOf(getTestClass().getJavaClass());
 	}
 
 	@Override

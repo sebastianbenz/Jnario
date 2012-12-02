@@ -20,6 +20,7 @@ import org.junit.runner.RunWith
 import org.junit.Test
 import org.jnario.runner.FeatureRunner
 import java.util.Collection
+import java.util.List
 
 class JUnit4RuntimeSupport implements TestRuntimeSupport {
 	 
@@ -57,8 +58,12 @@ class JUnit4RuntimeSupport implements TestRuntimeSupport {
 		operation.annotations += element.toAnnotation(typeof(Test))
 	}
 	
-	override updateFeature(XtendClass exampleGroup, JvmGenericType inferredType) {
-		inferredType.annotations += exampleGroup.toAnnotation(typeof(RunWith), typeof(FeatureRunner));
+	override updateFeature(XtendClass feature, JvmGenericType inferredType, List<JvmGenericType> scenarios) {
+		inferredType.annotations += feature.toAnnotation(typeof(RunWith), typeof(FeatureRunner));
+	}
+	
+	override updateScenario(XtendClass scenario, JvmGenericType inferredType) {
+		inferredType.annotations += scenario.toAnnotation(typeof(RunWith), typeof(FeatureRunner));
 	}
 
 	override updateSuite(XtendClass exampleGroup, JvmGenericType inferredType) {

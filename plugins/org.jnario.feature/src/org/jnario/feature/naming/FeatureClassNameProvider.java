@@ -146,7 +146,7 @@ public class FeatureClassNameProvider extends JnarioNameProvider{
 	@Override
 	protected String internalToMethodName(EObject eObject) {
 		if (eObject instanceof Step) {
-			stepNameProvider.getMethodName((Step) eObject);
+			return stepNameProvider.getMethodName((Step) eObject);
 		}
 		throw new UnsupportedOperationException();
 	}

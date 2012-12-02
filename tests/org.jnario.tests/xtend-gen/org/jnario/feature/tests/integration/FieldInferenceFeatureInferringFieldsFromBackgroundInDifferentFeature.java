@@ -59,13 +59,19 @@ public class FieldInferenceFeatureInferringFieldsFromBackgroundInDifferentFeatur
     Matcher<Result> _isSuccessful = ResultMatchers.isSuccessful();
     boolean _doubleArrow = Should.operator_doubleArrow(_execute, _isSuccessful);
     Assert.assertTrue("\nExpected runner.execute(feature1) => isSuccessful but"
-     + "\n     runner.execute(feature1) is " + new StringDescription().appendValue(_execute).toString() + "\n", _doubleArrow);
+     + "\n     runner.execute(feature1) is " + new StringDescription().appendValue(_execute).toString()
+     + "\n     runner is " + new StringDescription().appendValue(this.runner).toString()
+     + "\n     feature1 is " + new StringDescription().appendValue(this.feature1).toString()
+     + "\n     isSuccessful is " + new StringDescription().appendValue(_isSuccessful).toString() + "\n", _doubleArrow);
     
     Result _execute_1 = this.runner.execute(this.feature2);
     Matcher<Result> _isSuccessful_1 = ResultMatchers.isSuccessful();
     boolean _doubleArrow_1 = Should.operator_doubleArrow(_execute_1, _isSuccessful_1);
     Assert.assertTrue("\nExpected runner.execute(feature2) => isSuccessful but"
-     + "\n     runner.execute(feature2) is " + new StringDescription().appendValue(_execute_1).toString() + "\n", _doubleArrow_1);
+     + "\n     runner.execute(feature2) is " + new StringDescription().appendValue(_execute_1).toString()
+     + "\n     runner is " + new StringDescription().appendValue(this.runner).toString()
+     + "\n     feature2 is " + new StringDescription().appendValue(this.feature2).toString()
+     + "\n     isSuccessful is " + new StringDescription().appendValue(_isSuccessful_1).toString() + "\n", _doubleArrow_1);
     
   }
 }

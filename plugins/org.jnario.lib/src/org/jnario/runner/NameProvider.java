@@ -10,8 +10,6 @@ package org.jnario.runner;
 import java.lang.reflect.Method;
 
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.junit.runners.model.FrameworkMethod;
-import org.junit.runners.model.TestClass;
 
 /**
  * A converter from {@link Named} annotation values to unicode strings.
@@ -24,22 +22,12 @@ public class NameProvider {
 		return new NameProvider();
 	}
 
-	public String nameOf(FrameworkMethod method) {
-		Method javaMethod = method.getMethod();
-		return nameOf(javaMethod);
-	}
-	
 	public String nameOf(Method javaMethod) {
 		return nameOf(javaMethod.getAnnotation(Named.class), javaMethod.getName());
 	}
 
 	private String nameOf(Named named, String defaultName) {
 		return named == null ? defaultName : convertFromJavaString(named.value(), true);
-	}
-
-	public String nameOf(TestClass klass) {
-		Class<?> javaClass = klass.getJavaClass();
-		return nameOf(javaClass);
 	}
 
 	public String nameOf(Class<?> javaClass) {

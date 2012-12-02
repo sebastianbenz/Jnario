@@ -13,7 +13,6 @@ import static org.junit.Assert.assertEquals;
 import org.jnario.runner.NameProvider;
 import org.jnario.runner.Named;
 import org.junit.Test;
-import org.junit.runners.model.TestClass;
 
 public class NameProviderTest {
 
@@ -23,7 +22,7 @@ public class NameProviderTest {
 	
 	@Test
 	public void convertsFromJavaString() throws Exception {
-		String actual = new NameProvider().nameOf(new TestClass(Example.class));
+		String actual = new NameProvider().nameOf(Example.class);
 		assertEquals("string with special char " + convertFromJavaString("\\u00E4", true), actual);
 	}
 	

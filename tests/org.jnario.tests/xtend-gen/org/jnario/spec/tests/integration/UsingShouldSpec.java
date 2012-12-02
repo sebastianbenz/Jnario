@@ -51,8 +51,7 @@ public class UsingShouldSpec {
     Matcher<String> _nullValue = CoreMatchers.<String>nullValue();
     boolean _should_be_2 = Should.<String>should_be(
       "something", _nullValue);
-    Assert.assertFalse("\nExpected \"something\" should not be null but"
-     + "\n     \"something\" should not be null is " + new StringDescription().appendValue(true).toString() + "\n", _should_be_2);
+    Assert.assertFalse("\nExpected \"something\" should not be null but" + " did not." + "\n", _should_be_2);
     
     int _plus_1 = (1 + 1);
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));

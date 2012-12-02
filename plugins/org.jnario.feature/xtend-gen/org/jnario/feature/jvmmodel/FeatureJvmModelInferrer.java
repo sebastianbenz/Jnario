@@ -235,18 +235,18 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   
   protected void _init(final Feature feature, final JvmGenericType inferredJvmType, final List<JvmGenericType> scenarios) {
     final EList<JvmAnnotationReference> annotations = inferredJvmType.getAnnotations();
-    TestRuntimeSupport _testRuntime = this.getTestRuntime();
-    _testRuntime.updateFeature(feature, inferredJvmType);
     boolean _isEmpty = scenarios.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      TestRuntimeSupport _testRuntime_1 = this.getTestRuntime();
-      _testRuntime_1.addChildren(feature, inferredJvmType, scenarios);
+      TestRuntimeSupport _testRuntime = this.getTestRuntime();
+      _testRuntime.addChildren(feature, inferredJvmType, scenarios);
     }
     String _describe = this._stepNameProvider.describe(feature);
     JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(feature, Named.class, _describe);
     this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _annotation);
     super.initialize(feature, inferredJvmType);
+    TestRuntimeSupport _testRuntime_1 = this.getTestRuntime();
+    _testRuntime_1.updateFeature(feature, inferredJvmType, scenarios);
   }
   
   protected void _init(final Scenario scenario, final JvmGenericType inferredJvmType, final List<JvmGenericType> scenarios) {
@@ -261,7 +261,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     IterableExtensions.<XtendField>forEach(_filter, _function);
     final EList<JvmAnnotationReference> annotations = inferredJvmType.getAnnotations();
     TestRuntimeSupport _testRuntime = this.getTestRuntime();
-    _testRuntime.updateFeature(scenario, inferredJvmType);
+    _testRuntime.updateScenario(scenario, inferredJvmType);
     String _describe = this._stepNameProvider.describe(scenario);
     JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(scenario, Named.class, _describe);
     this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(annotations, _annotation);

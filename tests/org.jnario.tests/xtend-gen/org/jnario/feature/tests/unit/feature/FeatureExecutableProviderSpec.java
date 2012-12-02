@@ -59,7 +59,6 @@ public class FeatureExecutableProviderSpec {
     Assert.assertTrue("\nExpected feature().executables => list(scenario(\"Background: My Background\"), scenario(\"Scenario: My first Scenario\"), scenario(\"Scenario: My second Scenario\")) but"
      + "\n     feature().executables is " + new StringDescription().appendValue(_executables).toString()
      + "\n     feature() is " + new StringDescription().appendValue(_feature).toString()
-     + "\n      is " + new StringDescription().appendValue(this._modelStore).toString()
      + "\n     list(scenario(\"Background: My Background\"), scenario(\"Scenario: My first Scenario\"), scenario(\"Scenario: My second Scenario\")) is " + new StringDescription().appendValue(_list).toString()
      + "\n     scenario(\"Background: My Background\") is " + new StringDescription().appendValue(_scenario).toString()
      + "\n     scenario(\"Scenario: My first Scenario\") is " + new StringDescription().appendValue(_scenario_1).toString()
@@ -88,7 +87,6 @@ public class FeatureExecutableProviderSpec {
     Assert.assertTrue("\nExpected scenario(\"Scenario: My first Scenario\").executables => list(step(\"Given something\")) but"
      + "\n     scenario(\"Scenario: My first Scenario\").executables is " + new StringDescription().appendValue(_executables).toString()
      + "\n     scenario(\"Scenario: My first Scenario\") is " + new StringDescription().appendValue(_scenario).toString()
-     + "\n      is " + new StringDescription().appendValue(this._modelStore).toString()
      + "\n     list(step(\"Given something\")) is " + new StringDescription().appendValue(_list).toString()
      + "\n     step(\"Given something\") is " + new StringDescription().appendValue(_step).toString() + "\n", _doubleArrow);
     
@@ -119,7 +117,6 @@ public class FeatureExecutableProviderSpec {
     Assert.assertTrue("\nExpected scenario(\"Scenario: My first Scenario\").executables => list(step(\"Given something\"), step(\"And something else\")) but"
      + "\n     scenario(\"Scenario: My first Scenario\").executables is " + new StringDescription().appendValue(_executables).toString()
      + "\n     scenario(\"Scenario: My first Scenario\") is " + new StringDescription().appendValue(_scenario).toString()
-     + "\n      is " + new StringDescription().appendValue(this._modelStore).toString()
      + "\n     list(step(\"Given something\"), step(\"And something else\")) is " + new StringDescription().appendValue(_list).toString()
      + "\n     step(\"Given something\") is " + new StringDescription().appendValue(_step).toString()
      + "\n     step(\"And something else\") is " + new StringDescription().appendValue(_step_1).toString() + "\n", _doubleArrow);

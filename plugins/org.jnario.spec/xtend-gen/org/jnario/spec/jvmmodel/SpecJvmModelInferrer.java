@@ -157,8 +157,6 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       EList<JvmAnnotationReference> _annotations = inferredJvmType.getAnnotations();
       _annotations.add(suppressWarnings);
     }
-    TestRuntimeSupport _testRuntime = this.getTestRuntime();
-    _testRuntime.updateExampleGroup(source, inferredJvmType);
     EList<JvmAnnotationReference> _annotations_1 = inferredJvmType.getAnnotations();
     String _describe = this._exampleNameProvider.describe(source);
     JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(source, Named.class, _describe);
@@ -179,6 +177,8 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       JvmTypeReference _cloneWithProxies = this._extendedJvmTypesBuilder.cloneWithProxies(_extends_1);
       _superTypes_1.add(_cloneWithProxies);
     }
+    TestRuntimeSupport _testRuntime = this.getTestRuntime();
+    _testRuntime.updateExampleGroup(source, inferredJvmType);
     EList<JvmTypeReference> _implements = source.getImplements();
     for (final JvmTypeReference intf : _implements) {
       EList<JvmTypeReference> _superTypes_2 = inferredJvmType.getSuperTypes();

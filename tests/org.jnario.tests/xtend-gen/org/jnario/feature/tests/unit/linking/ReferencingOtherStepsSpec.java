@@ -69,7 +69,6 @@ public class ReferencingOtherStepsSpec {
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
      + "\n     first(typeof(GivenReference)).reference is " + new StringDescription().appendValue(_reference).toString()
      + "\n     first(typeof(GivenReference)) is " + new StringDescription().appendValue(_first).toString()
-     + "\n      is " + new StringDescription().appendValue(this.m).toString()
      + "\n     first(typeof(Given)) is " + new StringDescription().appendValue(_first_1).toString() + "\n", _doubleArrow);
     
   }
@@ -114,7 +113,6 @@ public class ReferencingOtherStepsSpec {
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
      + "\n     first(typeof(GivenReference)).reference is " + new StringDescription().appendValue(_reference).toString()
      + "\n     first(typeof(GivenReference)) is " + new StringDescription().appendValue(_first).toString()
-     + "\n      is " + new StringDescription().appendValue(this.m).toString()
      + "\n     first(typeof(Given)) is " + new StringDescription().appendValue(_first_1).toString() + "\n", _doubleArrow);
     
   }
@@ -162,7 +160,6 @@ public class ReferencingOtherStepsSpec {
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
      + "\n     first(typeof(GivenReference)).reference is " + new StringDescription().appendValue(_reference).toString()
      + "\n     first(typeof(GivenReference)) is " + new StringDescription().appendValue(_first).toString()
-     + "\n      is " + new StringDescription().appendValue(this.m).toString()
      + "\n     first(typeof(Given)) is " + new StringDescription().appendValue(_first_1).toString() + "\n", _doubleArrow);
     
   }
@@ -211,7 +208,6 @@ public class ReferencingOtherStepsSpec {
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
      + "\n     first(typeof(GivenReference)).reference is " + new StringDescription().appendValue(_reference).toString()
      + "\n     first(typeof(GivenReference)) is " + new StringDescription().appendValue(_first).toString()
-     + "\n      is " + new StringDescription().appendValue(this.m).toString()
      + "\n     first(typeof(Given)) is " + new StringDescription().appendValue(_first_1).toString() + "\n", _doubleArrow);
     
   }

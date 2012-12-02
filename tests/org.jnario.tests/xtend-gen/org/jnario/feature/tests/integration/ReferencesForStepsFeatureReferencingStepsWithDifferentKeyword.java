@@ -48,8 +48,10 @@ public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword exten
     Assert.assertTrue("\nExpected jnarioFile.run.failureCount => args.first.toInt but"
      + "\n     jnarioFile.run.failureCount is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
      + "\n     jnarioFile.run is " + new StringDescription().appendValue(_run).toString()
+     + "\n     jnarioFile is " + new StringDescription().appendValue(this.jnarioFile).toString()
      + "\n     args.first.toInt is " + new StringDescription().appendValue(Integer.valueOf(_int)).toString()
-     + "\n     args.first is " + new StringDescription().appendValue(_first).toString() + "\n", _doubleArrow);
+     + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
+     + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
 }

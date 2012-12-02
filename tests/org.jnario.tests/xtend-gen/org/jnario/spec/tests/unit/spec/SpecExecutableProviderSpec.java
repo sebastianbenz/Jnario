@@ -59,7 +59,6 @@ public class SpecExecutableProviderSpec {
     Assert.assertTrue("\nExpected exampleGroup(\"Something\").executables => list(example(\"fact 1\"), example(\"fact 2\")) but"
      + "\n     exampleGroup(\"Something\").executables is " + new StringDescription().appendValue(_executables).toString()
      + "\n     exampleGroup(\"Something\") is " + new StringDescription().appendValue(_exampleGroup).toString()
-     + "\n      is " + new StringDescription().appendValue(this._modelStore).toString()
      + "\n     list(example(\"fact 1\"), example(\"fact 2\")) is " + new StringDescription().appendValue(_list).toString()
      + "\n     example(\"fact 1\") is " + new StringDescription().appendValue(_example).toString()
      + "\n     example(\"fact 2\") is " + new StringDescription().appendValue(_example_1).toString() + "\n", _doubleArrow);
@@ -91,7 +90,6 @@ public class SpecExecutableProviderSpec {
     Assert.assertTrue("\nExpected exampleGroup(\"Something\").executables => list(exampleGroup(\"exampleGroup 1\"), exampleGroup(\"exampleGroup 2\")) but"
      + "\n     exampleGroup(\"Something\").executables is " + new StringDescription().appendValue(_executables).toString()
      + "\n     exampleGroup(\"Something\") is " + new StringDescription().appendValue(_exampleGroup).toString()
-     + "\n      is " + new StringDescription().appendValue(this._modelStore).toString()
      + "\n     list(exampleGroup(\"exampleGroup 1\"), exampleGroup(\"exampleGroup 2\")) is " + new StringDescription().appendValue(_list).toString()
      + "\n     exampleGroup(\"exampleGroup 1\") is " + new StringDescription().appendValue(_exampleGroup_1).toString()
      + "\n     exampleGroup(\"exampleGroup 2\") is " + new StringDescription().appendValue(_exampleGroup_2).toString() + "\n", _doubleArrow);

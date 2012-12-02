@@ -107,7 +107,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			suppressWarnings.getValues().add(annotationValue);
 			inferredJvmType.getAnnotations().add(suppressWarnings);
 		}
-		testRuntime.updateExampleGroup(source, inferredJvmType)
 		inferredJvmType.annotations += source.toAnnotation(typeof(Named), source.describe)
 		addDefaultConstructor(source, inferredJvmType);
 		if (source.getExtends() == null) {
@@ -117,6 +116,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		} else {
 			inferredJvmType.getSuperTypes().add(cloneWithProxies(source.getExtends()));
 		}
+		testRuntime.updateExampleGroup(source, inferredJvmType)
 		for (intf : source.getImplements()) {
 			inferredJvmType.getSuperTypes().add(cloneWithProxies(intf));
 		}

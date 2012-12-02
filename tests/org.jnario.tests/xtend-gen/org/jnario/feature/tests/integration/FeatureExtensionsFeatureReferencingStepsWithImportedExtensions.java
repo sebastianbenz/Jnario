@@ -50,8 +50,10 @@ public class FeatureExtensionsFeatureReferencingStepsWithImportedExtensions exte
     double _double = StringConversions.toDouble(_first);
     boolean _doubleArrow = Should.operator_doubleArrow(Double.valueOf(this.flooredValue), Double.valueOf(_double));
     Assert.assertTrue("\nExpected flooredValue => args.first.toDouble but"
+     + "\n     flooredValue is " + new StringDescription().appendValue(Double.valueOf(this.flooredValue)).toString()
      + "\n     args.first.toDouble is " + new StringDescription().appendValue(Double.valueOf(_double)).toString()
-     + "\n     args.first is " + new StringDescription().appendValue(_first).toString() + "\n", _doubleArrow);
+     + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
+     + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
 }

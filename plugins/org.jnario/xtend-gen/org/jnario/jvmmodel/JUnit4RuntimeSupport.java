@@ -2,6 +2,7 @@ package org.jnario.jvmmodel;
 
 import com.google.inject.Inject;
 import java.util.Collection;
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
@@ -76,9 +77,15 @@ public class JUnit4RuntimeSupport implements TestRuntimeSupport {
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
-  public void updateFeature(final XtendClass exampleGroup, final JvmGenericType inferredType) {
+  public void updateFeature(final XtendClass feature, final JvmGenericType inferredType, final List<JvmGenericType> scenarios) {
     EList<JvmAnnotationReference> _annotations = inferredType.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(exampleGroup, RunWith.class, FeatureRunner.class);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(feature, RunWith.class, FeatureRunner.class);
+    this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+  }
+  
+  public void updateScenario(final XtendClass scenario, final JvmGenericType inferredType) {
+    EList<JvmAnnotationReference> _annotations = inferredType.getAnnotations();
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(scenario, RunWith.class, FeatureRunner.class);
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   

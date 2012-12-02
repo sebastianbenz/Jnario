@@ -43,9 +43,9 @@ import org.jnario.Assertion;
 import org.jnario.MockLiteral;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
+import org.jnario.lib.Assert;
 import org.jnario.util.MockingSupport;
 import org.jnario.util.SourceAdapter;
-import org.junit.Assert;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;

@@ -111,7 +111,6 @@ public class SuiteExecutableProviderSpec {
      + "\n     subject.getExecutables(suite(\"My Suite\")) is " + new StringDescription().appendValue(_executables).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
      + "\n     suite(\"My Suite\") is " + new StringDescription().appendValue(_suite).toString()
-     + "\n      is " + new StringDescription().appendValue(this.m).toString()
      + "\n     list(suite(\"Child 1\"), suite(\"Child 2\")) is " + new StringDescription().appendValue(_list).toString()
      + "\n     suite(\"Child 1\") is " + new StringDescription().appendValue(_suite_1).toString()
      + "\n     suite(\"Child 2\") is " + new StringDescription().appendValue(_suite_2).toString() + "\n", _doubleArrow);
@@ -147,7 +146,6 @@ public class SuiteExecutableProviderSpec {
      + "\n     subject.getExecutables(suite(\"My Suite\")) is " + new StringDescription().appendValue(_executables).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
      + "\n     suite(\"My Suite\") is " + new StringDescription().appendValue(_suite).toString()
-     + "\n      is " + new StringDescription().appendValue(this.m).toString()
      + "\n     set(exampleGroup(\"My Spec\"), feature()) is " + new StringDescription().appendValue(_set_1).toString()
      + "\n     exampleGroup(\"My Spec\") is " + new StringDescription().appendValue(_exampleGroup).toString()
      + "\n     feature() is " + new StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
@@ -183,7 +181,6 @@ public class SuiteExecutableProviderSpec {
      + "\n     subject.getExecutables(suite(\"My Suite\")) is " + new StringDescription().appendValue(_executables).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
      + "\n     suite(\"My Suite\") is " + new StringDescription().appendValue(_suite).toString()
-     + "\n      is " + new StringDescription().appendValue(this.m).toString()
      + "\n     set(exampleGroup(\"My Spec\"), exampleGroup(\"String\"), feature()) is " + new StringDescription().appendValue(_set_1).toString()
      + "\n     exampleGroup(\"My Spec\") is " + new StringDescription().appendValue(_exampleGroup).toString()
      + "\n     exampleGroup(\"String\") is " + new StringDescription().appendValue(_exampleGroup_1).toString()

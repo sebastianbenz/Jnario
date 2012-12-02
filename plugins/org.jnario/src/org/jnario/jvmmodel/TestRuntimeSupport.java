@@ -1,6 +1,7 @@
 package org.jnario.jvmmodel;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
@@ -13,7 +14,8 @@ public interface TestRuntimeSupport {
 	
 	void updateExampleGroup(XtendClass exampleGroup, JvmGenericType inferredType);
 	void updateSuite(XtendClass suite, JvmGenericType inferredType);
-	void updateFeature(XtendClass exampleGroup, JvmGenericType inferredType);
+	void updateFeature(XtendClass feature, JvmGenericType inferredType, List<JvmGenericType> scenarios);
+	void updateScenario(XtendClass scenario, JvmGenericType inferredType);
 	void addChildren(Specification context, JvmGenericType parent, Collection<JvmGenericType> children);
 
 	void markAsTestMethod(Executable element, JvmOperation operation);

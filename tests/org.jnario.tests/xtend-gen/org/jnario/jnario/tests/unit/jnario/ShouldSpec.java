@@ -52,8 +52,7 @@ public class ShouldSpec {
     Assert.assertTrue("\nExpected !query.first(typeof(Should)).isNot but"
      + "\n     query.first(typeof(Should)).isNot is " + new StringDescription().appendValue(_isNot).toString()
      + "\n     query.first(typeof(Should)) is " + new StringDescription().appendValue(_first).toString()
-     + "\n     query is " + new StringDescription().appendValue(_query).toString()
-     + "\n      is " + new StringDescription().appendValue(this._modelStore).toString() + "\n", _not);
+     + "\n     query is " + new StringDescription().appendValue(_query).toString() + "\n", _not);
     
   }
   
@@ -77,8 +76,7 @@ public class ShouldSpec {
     boolean _isNot = _first.isNot();
     Assert.assertTrue("\nExpected query.first(typeof(Should)).isNot but"
      + "\n     query.first(typeof(Should)) is " + new StringDescription().appendValue(_first).toString()
-     + "\n     query is " + new StringDescription().appendValue(_query).toString()
-     + "\n      is " + new StringDescription().appendValue(this._modelStore).toString() + "\n", _isNot);
+     + "\n     query is " + new StringDescription().appendValue(_query).toString() + "\n", _isNot);
     
   }
   

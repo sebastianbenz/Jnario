@@ -90,7 +90,6 @@ public class ExampleColumnSpec {
           Assert.assertTrue("\nExpected cell.serialize.trim => value but"
            + "\n     cell.serialize.trim is " + new StringDescription().appendValue(_trim).toString()
            + "\n     cell.serialize is " + new StringDescription().appendValue(_serialize).toString()
-           + "\n      is " + new StringDescription().appendValue(ExampleColumnSpec.this._iSerializer).toString()
            + "\n     cell is " + new StringDescription().appendValue(cell).toString()
            + "\n     value is " + new StringDescription().appendValue(it.value).toString() + "\n", _doubleArrow);
           

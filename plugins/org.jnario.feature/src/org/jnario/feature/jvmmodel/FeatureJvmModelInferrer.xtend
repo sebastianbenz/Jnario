@@ -150,11 +150,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def dispatch void init(Feature feature, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios){
    		val annotations = inferredJvmType.annotations
-   		testRuntime.updateFeature(feature, inferredJvmType)
    		if(!scenarios.empty)
    			testRuntime.addChildren(feature, inferredJvmType, scenarios)
    		annotations += feature.toAnnotation(typeof(Named), feature.describe)
    		super.initialize(feature, inferredJvmType)
+   		testRuntime.updateFeature(feature, inferredJvmType, scenarios)
    	}
    	
    	def dispatch void init(Scenario scenario, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios){
@@ -164,7 +164,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			it.transform2(inferredJvmType)
 		]   		
    		val annotations = inferredJvmType.annotations
-   		testRuntime.updateFeature(scenario, inferredJvmType)
+   		testRuntime.updateScenario(scenario, inferredJvmType)
    		annotations += scenario.toAnnotation(typeof(Named), scenario.describe)
    		val feature = scenario.feature
 		var start = 0

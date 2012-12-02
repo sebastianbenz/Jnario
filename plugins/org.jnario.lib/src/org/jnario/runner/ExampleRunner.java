@@ -42,7 +42,7 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 			Function<FrameworkMethod, FrameworkMethod> {
 		public FrameworkMethod apply(final FrameworkMethod from) {
 			return new NamedFrameworkMethod(from.getMethod(),
-					nameProvider.nameOf(from));
+					nameProvider.nameOf(from.getMethod()));
 		}
 	}
 
@@ -124,7 +124,7 @@ public class ExampleRunner extends BlockJUnit4ClassRunner {
 	}
 
 	protected String testName() {
-		return nameProvider.nameOf(method);
+		return nameProvider.nameOf(method.getMethod());
 	}
 
 }

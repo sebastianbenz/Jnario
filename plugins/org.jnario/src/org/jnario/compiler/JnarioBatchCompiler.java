@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
+import org.eclipse.xtend.core.resource.XtendResource;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtext.common.types.JvmGenericType;
@@ -114,8 +115,7 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 		List<Resource> resources = newArrayList(resourceSet.getResources());
 		for (Resource resource : resources) {
 			if(fileExtensionProvider.isValid(resource.getURI().fileExtension())){
-				IResourceServiceProvider resourceServiceProvider = IResourceServiceProvider.Registry.INSTANCE
-						.getResourceServiceProvider(resource.getURI());
+				IResourceServiceProvider resourceServiceProvider = ((XtendResource)resource).getResourceServiceProvider();
 				IResourceValidator resourceValidator = resourceServiceProvider.getResourceValidator();
 				List<Issue> result = resourceValidator.validate(resource, CheckMode.ALL, null);
 				addAll(issues, result);

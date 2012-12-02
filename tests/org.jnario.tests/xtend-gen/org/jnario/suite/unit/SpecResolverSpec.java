@@ -120,7 +120,6 @@ public class SpecResolverSpec {
      + "\n     resolvedSpecs(firstSuite).toSet is " + new StringDescription().appendValue(_set).toString()
      + "\n     resolvedSpecs(firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
      + "\n     firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
-     + "\n      is " + new StringDescription().appendValue(this.m).toString()
      + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + new StringDescription().appendValue(_set_1).toString() + "\n", _doubleArrow);
     
   }
