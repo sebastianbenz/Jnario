@@ -1,4 +1,5 @@
 <external-repositories size="2">
 	<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
 	<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/</url>
+	<url>http://download.eclipse.org/modeling/emf/emf/updates/releases/</url>
 </external-repositories>
