@@ -28,7 +28,7 @@ Feature: Setup & Teardown with Feature Extensions
     var CharSequence feature
     var ConsoleRecorder recorder
 
-    Given a class **ExampleExtension** with JUnit before and after methods:
+/*    Given a class **ExampleExtension** with JUnit before and after methods:
       ''' 
         package org.jnario.feature.tests.integration
 
@@ -51,7 +51,7 @@ Feature: Setup & Teardown with Feature Extensions
 //            println("after all")
 //          }
         }
-      ''' 
+      ''' */
     When I declare an extension field of type **ExampleExtension** in the background
           '''
         import org.jnario.feature.tests.integration.ExampleExtension
@@ -60,7 +60,6 @@ Feature: Setup & Teardown with Feature Extensions
           
           Background: A common extension to all scenarios
               extension static ExampleExtension = new ExampleExtension 
-            Given a static extension field
             
           Scenario: Scenario 1
             Given a step 

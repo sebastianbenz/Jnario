@@ -51,4 +51,17 @@ class StepExpressionProvider {
 		ref.expression = expr
 		return expr
 	}
+	
+	def hasExpression(Step step){
+		if(step.expression != null){
+			return true
+		}
+		if(step instanceof StepReference){
+			val refStep = (step as StepReference).reference
+			if(refStep != null && !refStep.eIsProxy){
+				return true
+			}
+		}
+		return false
+	}
 }

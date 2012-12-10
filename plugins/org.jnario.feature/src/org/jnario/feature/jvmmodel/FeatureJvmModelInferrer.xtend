@@ -49,6 +49,7 @@ import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 import static extension com.google.common.base.Strings.*
 import static extension org.eclipse.xtext.EcoreUtil2.*
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import java.util.ArrayList
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -57,6 +58,8 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
 	public static val STEP_VALUES = "args"
+	
+	@Inject extension PendingStepsCalculator pendingStepsCalculator
 
 	@Inject extension ExtendedJvmTypesBuilder
 	
@@ -172,6 +175,14 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		feature.annotations.translateAnnotationsTo(inferredJvmType)
    		
    		val background = feature.background
+   		
+   		var ArrayList<Step> allSteps = newArrayList()
+   		if(background != null){
+   			allSteps.addAll(background.steps)
+   		}
+   		allSteps.addAll(scenario.steps)
+   		pendingStepsCalculator.setSteps(allSteps)
+   		
 		if(!(scenario instanceof Background) && background != null){
 			start = background.steps.generateBackgroundStepCalls(inferredJvmType)
 		}
@@ -310,7 +321,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	}
    	
    	def markAsPending(JvmOperation operation, Step step){
-   		if(step.pending){
+   		if(step.pendingOrAPreviousStepIsPending){
 			testRuntime.markAsPending(step, operation)
 		}
    	}

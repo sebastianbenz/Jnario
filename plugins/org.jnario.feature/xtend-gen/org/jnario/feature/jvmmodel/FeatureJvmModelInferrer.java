@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
@@ -57,6 +64,7 @@ import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.jvmmodel.JvmFieldReferenceUpdater;
+import org.jnario.feature.jvmmodel.PendingStepsCalculator;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.feature.jvmmodel.StepExpressionProvider;
 import org.jnario.feature.jvmmodel.StepReferenceFieldCreator;
@@ -78,6 +86,9 @@ import org.jnario.util.SourceAdapter;
 @SuppressWarnings("all")
 public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   public final static String STEP_VALUES = "args";
+  
+  @Inject
+  private PendingStepsCalculator pendingStepsCalculator;
   
   @Inject
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
@@ -270,24 +281,33 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     EList<XAnnotation> _annotations = feature.getAnnotations();
     this._extendedJvmTypesBuilder.translateAnnotationsTo(_annotations, inferredJvmType);
     final Background background = feature.getBackground();
+    ArrayList<Step> allSteps = CollectionLiterals.<Step>newArrayList();
+    boolean _notEquals = (!Objects.equal(background, null));
+    if (_notEquals) {
+      EList<Step> _steps = background.getSteps();
+      allSteps.addAll(_steps);
+    }
+    EList<Step> _steps_1 = scenario.getSteps();
+    allSteps.addAll(_steps_1);
+    this.pendingStepsCalculator.setSteps(allSteps);
     boolean _and = false;
     boolean _not = (!(scenario instanceof Background));
     if (!_not) {
       _and = false;
     } else {
-      boolean _notEquals = (!Objects.equal(background, null));
-      _and = (_not && _notEquals);
+      boolean _notEquals_1 = (!Objects.equal(background, null));
+      _and = (_not && _notEquals_1);
     }
     if (_and) {
-      EList<Step> _steps = background.getSteps();
-      int _generateBackgroundStepCalls = this.generateBackgroundStepCalls(_steps, inferredJvmType);
+      EList<Step> _steps_2 = background.getSteps();
+      int _generateBackgroundStepCalls = this.generateBackgroundStepCalls(_steps_2, inferredJvmType);
       start = _generateBackgroundStepCalls;
     }
-    EList<Step> _steps_1 = scenario.getSteps();
-    this.generateSteps(_steps_1, inferredJvmType, start, scenario);
+    EList<Step> _steps_3 = scenario.getSteps();
+    this.generateSteps(_steps_3, inferredJvmType, start, scenario);
     super.initialize(scenario, inferredJvmType);
-    EList<Step> _steps_2 = scenario.getSteps();
-    Iterable<StepReference> _filter_1 = Iterables.<StepReference>filter(_steps_2, StepReference.class);
+    EList<Step> _steps_4 = scenario.getSteps();
+    Iterable<StepReference> _filter_1 = Iterables.<StepReference>filter(_steps_4, StepReference.class);
     final Procedure1<StepReference> _function_1 = new Procedure1<StepReference>() {
         public void apply(final StepReference it) {
           StepImplementation _reference = it.getReference();
@@ -574,8 +594,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   public void markAsPending(final JvmOperation operation, final Step step) {
-    boolean _isPending = step.isPending();
-    if (_isPending) {
+    Boolean _isPendingOrAPreviousStepIsPending = this.pendingStepsCalculator.isPendingOrAPreviousStepIsPending(step);
+    if ((_isPendingOrAPreviousStepIsPending).booleanValue()) {
       TestRuntimeSupport _testRuntime = this.getTestRuntime();
       _testRuntime.markAsPending(step, operation);
     }
