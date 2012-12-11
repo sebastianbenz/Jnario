@@ -19,8 +19,8 @@ import org.junit.runner.RunWith;
 
 @Contains({ MethodBuilderXtendMethodBuilderSpec.class, MethodBuilderJavaMethodBuilderSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("MethodBuilder")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class MethodBuilderSpec {
   @Inject

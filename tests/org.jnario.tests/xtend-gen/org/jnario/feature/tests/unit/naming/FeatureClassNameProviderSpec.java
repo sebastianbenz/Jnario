@@ -18,8 +18,8 @@ import org.junit.runner.RunWith;
 
 @Contains({ FeatureClassNameProviderGetClassNameFeatureSpec.class, FeatureClassNameProviderGetClassNameBackgroundSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("FeatureClassNameProvider")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class FeatureClassNameProviderSpec {
   @Subject

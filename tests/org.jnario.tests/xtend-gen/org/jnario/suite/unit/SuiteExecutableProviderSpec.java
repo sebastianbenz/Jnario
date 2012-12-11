@@ -11,6 +11,7 @@ import org.jnario.Specification;
 import org.jnario.feature.feature.Feature;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SuiteTestCreator;
+import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
@@ -22,14 +23,13 @@ import org.jnario.runner.Subject;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.suite.jvmmodel.SuiteExecutableProvider;
 import org.jnario.suite.suite.Suite;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("SuiteExecutableProvider")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SuiteTestCreator.class)
 public class SuiteExecutableProviderSpec {
   @Subject

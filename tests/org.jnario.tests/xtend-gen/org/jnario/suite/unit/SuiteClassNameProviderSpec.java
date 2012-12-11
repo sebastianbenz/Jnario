@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
 
 @Contains({ SuiteClassNameProviderToJavaClassNameSpec.class, SuiteClassNameProviderDescribeSpec.class, SuiteClassNameProviderToQualifiedJavaClassNameSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("SuiteClassNameProvider")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SuiteTestCreator.class)
 public class SuiteClassNameProviderSpec {
 }

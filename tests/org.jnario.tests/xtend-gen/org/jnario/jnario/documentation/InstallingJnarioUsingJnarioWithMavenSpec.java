@@ -14,8 +14,8 @@ import org.junit.runner.RunWith;
  * demonstrating the usage of Jnario with Maven.
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Using Jnario with Maven")
+@RunWith(ExampleGroupRunner.class)
 public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSpec {
   /**
    * The XML for the Jnario runtime library is:

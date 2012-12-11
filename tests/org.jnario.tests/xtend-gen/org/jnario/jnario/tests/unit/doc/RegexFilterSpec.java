@@ -5,19 +5,19 @@ import org.hamcrest.StringDescription;
 import org.jnario.doc.Filter;
 import org.jnario.doc.RegexFilter;
 import org.jnario.jnario.tests.unit.doc.RegexFilterSpecFilteringExamples;
+import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("RegexFilter")
+@RunWith(ExampleGroupRunner.class)
 public class RegexFilterSpec {
   public ExampleTable<RegexFilterSpecFilteringExamples> _initRegexFilterSpecFilteringExamples() {
     return ExampleTable.create("filteringExamples", 

@@ -22,8 +22,8 @@ import org.junit.runner.RunWith;
 
 @Contains({ FeatureQualifiedNameProviderPackageNameSpec.class, FeatureQualifiedNameProviderStepImplementationSpec.class, FeatureQualifiedNameProviderStepReferenceSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("FeatureQualifiedNameProvider")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = FeatureTestCreator.class)
 public class FeatureQualifiedNameProviderSpec {
   @Subject

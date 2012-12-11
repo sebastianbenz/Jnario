@@ -11,10 +11,10 @@ import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
-@RunWith(FeatureRunner.class)
 @Contains({ FieldInferenceFeatureInferringFieldsFromOtherScenario.class, FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures.class, FieldInferenceFeatureInferringFieldsFromBackground.class, FieldInferenceFeatureInferringFieldsFromBackgroundInDifferentFeature.class })
 @Named("Field Inference")
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
+@RunWith(FeatureRunner.class)
 public class FieldInferenceFeature {
 }

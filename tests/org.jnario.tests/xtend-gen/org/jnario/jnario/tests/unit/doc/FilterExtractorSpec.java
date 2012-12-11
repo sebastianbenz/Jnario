@@ -12,6 +12,7 @@ import org.jnario.doc.FilterExtractor;
 import org.jnario.doc.FilteringResult;
 import org.jnario.jnario.tests.unit.doc.FilterExtractorSpecFilterCreation;
 import org.jnario.jnario.tests.unit.doc.FilterExtractorSpecFilterExtractions;
+import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -19,13 +20,12 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("FilterExtractor")
+@RunWith(ExampleGroupRunner.class)
 public class FilterExtractorSpec {
   @Subject
   public FilterExtractor subject;

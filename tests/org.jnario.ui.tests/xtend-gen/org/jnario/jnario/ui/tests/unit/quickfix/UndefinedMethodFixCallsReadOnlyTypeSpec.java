@@ -6,19 +6,19 @@ import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.ui.tests.unit.quickfix.JavaElementFinderStub;
 import org.jnario.jnario.ui.tests.unit.quickfix.UndefinedMethodFixSpec;
+import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.ui.quickfix.CallsReadOnlyType;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("CallsReadOnlyType")
+@RunWith(ExampleGroupRunner.class)
 public class UndefinedMethodFixCallsReadOnlyTypeSpec extends UndefinedMethodFixSpec {
   public CallsReadOnlyType subject;
   
@@ -53,9 +53,9 @@ public class UndefinedMethodFixCallsReadOnlyTypeSpec extends UndefinedMethodFixS
     _builder.newLine();
     boolean _receiverIsReadOnly = this.receiverIsReadOnly(_builder);
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_receiverIsReadOnly), Boolean.valueOf(true));
-    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\'.receiverIsReadOnly => true but"
-     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\'.receiverIsReadOnly is " + new StringDescription().appendValue(Boolean.valueOf(_receiverIsReadOnly)).toString()
-     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tString x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t\t\'\'\'.receiverIsReadOnly => true but"
+     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t\t\'\'\'.receiverIsReadOnly is " + new StringDescription().appendValue(Boolean.valueOf(_receiverIsReadOnly)).toString()
+     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tString x\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   
@@ -76,9 +76,9 @@ public class UndefinedMethodFixCallsReadOnlyTypeSpec extends UndefinedMethodFixS
     _builder.newLine();
     boolean _receiverIsReadOnly = this.receiverIsReadOnly(_builder);
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_receiverIsReadOnly), Boolean.valueOf(false));
-    Assert.assertTrue("\nExpected \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tSomethingSpec x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\'.receiverIsReadOnly => false but"
-     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tSomethingSpec x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\'.receiverIsReadOnly is " + new StringDescription().appendValue(Boolean.valueOf(_receiverIsReadOnly)).toString()
-     + "\n     \'\'\'\n\t\t\tdescribe \"Something\"{\n\t\t\t\tSomethingSpec x\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tSomethingSpec x\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t\t\'\'\'.receiverIsReadOnly => false but"
+     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tSomethingSpec x\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t\t\'\'\'.receiverIsReadOnly is " + new StringDescription().appendValue(Boolean.valueOf(_receiverIsReadOnly)).toString()
+     + "\n     \'\'\'\r\n\t\t\tdescribe \"Something\"{\r\n\t\t\t\tSomethingSpec x\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   

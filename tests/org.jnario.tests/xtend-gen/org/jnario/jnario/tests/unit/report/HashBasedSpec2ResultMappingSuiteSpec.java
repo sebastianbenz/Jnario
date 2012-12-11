@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Suite")
+@RunWith(ExampleGroupRunner.class)
 public class HashBasedSpec2ResultMappingSuiteSpec extends HashBasedSpec2ResultMappingSpec {
   @Test
   @Ignore

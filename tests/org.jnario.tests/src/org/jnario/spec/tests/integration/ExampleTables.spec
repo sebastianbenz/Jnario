@@ -7,13 +7,14 @@
  *******************************************************************************/
 package org.jnario.spec.tests.integration
 
-import static extension org.jnario.jnario.test.util.Helpers.*
-import static extension org.jnario.jnario.test.util.SpecExecutor.*
-import org.junit.Ignore
-import org.jnario.runner.CreateWith
-import org.jnario.jnario.test.util.SpecTestCreator
-import org.jnario.jnario.test.util.BehaviorExecutor
 import com.google.inject.Inject
+import org.jnario.jnario.test.util.BehaviorExecutor
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.runner.CreateWith
+
+import static extension org.jnario.jnario.test.util.Helpers.*
+import static extension org.jnario.lib.ExampleTableIterators.*
+import static extension org.jnario.lib.Should.*
 
 /*
  * Example tables are a great way to structure input and expected output data.
@@ -173,7 +174,6 @@ describe "Using Tables"{
    * `ExampleTable#forEach` executes the passed in procedure for all table rows. 
    * It will generate an error message for all procedures that have failed with the reason why they failed.
    */
-   @Ignore
    fact "Error message"{
 		errorMessage[
 		  example.forEach[
@@ -182,22 +182,24 @@ describe "Using Tables"{
 		].is('''
 			example failed
 			
-			        | value1     | value2     | sum     |
-			        | 1          | 2          | 3       | ?
-			        | 4          | 5          | 7       | ?     (1)
-			        | 7          | 8          | 14      | ?     (2)
+			        | value1     | value2     | sum      |
+			        | <1>        | <2>        | <3>      | ✓
+			        | <4>        | <5>        | <7>      | ✘     (1)
+			        | <7>        | <8>        | <14>     | ✘     (2)
 			
-			(1) Expected value1 + value2 => sum but
-			         value1 + value2 is 9
-			         value1 is 4
-			         value2 is 5
-			         sum is 7
-			    
-			(2) Expected value1 + value2 => sum but
-			         value1 + value2 is 15
-			         value1 is 7
-			         value2 is 8
-			         sum is 14''')
+			(1) java.lang.AssertionError: 
+			Expected value1 + value2 => sum but
+			     value1 + value2 is <9>
+			     value1 is <4>
+			     value2 is <5>
+			     sum is <7>
+			
+			(2) java.lang.AssertionError: 
+			Expected value1 + value2 => sum but
+			     value1 + value2 is <15>
+			     value1 is <7>
+			     value2 is <8>
+			     sum is <14>''')
 	}    
 
 }               

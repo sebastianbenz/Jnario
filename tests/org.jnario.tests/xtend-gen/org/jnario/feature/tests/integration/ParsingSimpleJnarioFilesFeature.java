@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-@RunWith(FeatureRunner.class)
 @Contains(ParsingSimpleJnarioFilesFeatureAndStuff.class)
 @Named("Parsing simple jnario files.")
 @SuppressWarnings("all")
+@RunWith(FeatureRunner.class)
 public class ParsingSimpleJnarioFilesFeature {
 }

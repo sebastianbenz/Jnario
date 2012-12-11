@@ -12,9 +12,9 @@ import org.junit.runner.RunWith;
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-@RunWith(FeatureRunner.class)
 @Contains({ BackgroundsFeatureItIsPossibleToAddABackgroundToAFeature.class, BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEveryScenarioClass.class, BackgroundsFeatureUsingFieldsFromBackgroundSteps.class, BackgroundsFeatureInstantiatingObjectsInBackgrounds.class })
 @Named("Backgrounds")
 @SuppressWarnings("all")
+@RunWith(FeatureRunner.class)
 public class BackgroundsFeature {
 }

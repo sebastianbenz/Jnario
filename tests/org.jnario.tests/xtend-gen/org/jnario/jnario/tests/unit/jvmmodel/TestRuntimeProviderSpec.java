@@ -13,12 +13,12 @@ import org.jnario.jvmmodel.JUnit3RuntimeSupport;
 import org.jnario.jvmmodel.JUnit4RuntimeSupport;
 import org.jnario.jvmmodel.TestRuntimeProvider;
 import org.jnario.jvmmodel.TestRuntimeSupport;
+import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,8 +26,8 @@ import org.mockito.Mockito;
 import org.mockito.stubbing.OngoingStubbing;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("TestRuntimeProvider")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class TestRuntimeProviderSpec {
   public TestRuntimeProvider subject;

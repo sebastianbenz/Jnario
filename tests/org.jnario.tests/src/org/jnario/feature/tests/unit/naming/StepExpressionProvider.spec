@@ -16,15 +16,17 @@ import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SpecTestCreator
 
 import static org.jnario.jnario.test.util.Query.*
+import org.jnario.jnario.test.util.FeatureTestCreator
+import org.jnario.feature.feature.StepReference
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-@CreateWith(typeof(SpecTestCreator))
+@CreateWith(typeof(FeatureTestCreator))
 describe StepExpressionProvider{
 
 	@Inject extension ModelStore modelStore
-	@Ignore
+
 	fact "should return the name for a step with definition"{
 		parseScenario('''
 			Feature: Example
@@ -32,9 +34,9 @@ describe StepExpressionProvider{
 					Given a step with an implementation
 						"the implementation"
 		''')
-		//assert step.stepExpression == subject.expressionOf(step)
+		assert step.expression == subject.expressionOf(step)
 	}
-	@Ignore
+
 	fact "should copy the referenced step's implementation and set the referencing step"{
 		parseScenario('''
 			Feature: Example
@@ -45,10 +47,10 @@ describe StepExpressionProvider{
 					Given a step 
 						"the implementation"
 		''')
-		/*val expr = subject.expressionOf(step)
+		val expr = subject.expressionOf(step)
 		assert expr != null
-		assert step.stepExpression == expr
-		assert (step as StepReference).reference.stepExpression != expr */
+		assert step.expression == expr
+		assert (step as StepReference).reference.expression != expr 
 	}
 	
 	def step(){

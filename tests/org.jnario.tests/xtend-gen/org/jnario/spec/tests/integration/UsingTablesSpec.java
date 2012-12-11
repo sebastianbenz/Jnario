@@ -7,6 +7,7 @@ import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.BehaviorExecutor;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.jnario.test.util.SpecTestCreator;
+import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -16,8 +17,6 @@ import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.integration.UsingTablesSpecExample;
-import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -25,8 +24,8 @@ import org.junit.runner.RunWith;
  * Example tables are a great way to structure input and expected output data.
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Using Tables")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class UsingTablesSpec {
   @Inject
@@ -321,7 +320,6 @@ public class UsingTablesSpec {
    * `ExampleTable#forEach` executes the passed in procedure for all table rows.
    * It will generate an error message for all procedures that have failed with the reason why they failed.
    */
-  @Ignore
   @Test
   @Named("Error message")
   @Order(6)
@@ -349,47 +347,50 @@ public class UsingTablesSpec {
     _builder.newLine();
     _builder.newLine();
     _builder.append("        ");
-    _builder.append("| value1     | value2     | sum     |");
+    _builder.append("| value1     | value2     | sum      |");
     _builder.newLine();
     _builder.append("        ");
-    _builder.append("| 1          | 2          | 3       | ?");
+    _builder.append("| <1>        | <2>        | <3>      | \u2713");
     _builder.newLine();
     _builder.append("        ");
-    _builder.append("| 4          | 5          | 7       | ?     (1)");
+    _builder.append("| <4>        | <5>        | <7>      | \u2718     (1)");
     _builder.newLine();
     _builder.append("        ");
-    _builder.append("| 7          | 8          | 14      | ?     (2)");
+    _builder.append("| <7>        | <8>        | <14>     | \u2718     (2)");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("(1) Expected value1 + value2 => sum but");
+    _builder.append("(1) java.lang.AssertionError: ");
     _builder.newLine();
-    _builder.append("         ");
-    _builder.append("value1 + value2 is 9");
+    _builder.append("Expected value1 + value2 => sum but");
     _builder.newLine();
-    _builder.append("         ");
-    _builder.append("value1 is 4");
+    _builder.append("     ");
+    _builder.append("value1 + value2 is <9>");
     _builder.newLine();
-    _builder.append("         ");
-    _builder.append("value2 is 5");
+    _builder.append("     ");
+    _builder.append("value1 is <4>");
     _builder.newLine();
-    _builder.append("         ");
-    _builder.append("sum is 7");
+    _builder.append("     ");
+    _builder.append("value2 is <5>");
     _builder.newLine();
-    _builder.append("    ");
+    _builder.append("     ");
+    _builder.append("sum is <7>");
     _builder.newLine();
-    _builder.append("(2) Expected value1 + value2 => sum but");
     _builder.newLine();
-    _builder.append("         ");
-    _builder.append("value1 + value2 is 15");
+    _builder.append("(2) java.lang.AssertionError: ");
     _builder.newLine();
-    _builder.append("         ");
-    _builder.append("value1 is 7");
+    _builder.append("Expected value1 + value2 => sum but");
     _builder.newLine();
-    _builder.append("         ");
-    _builder.append("value2 is 8");
+    _builder.append("     ");
+    _builder.append("value1 + value2 is <15>");
     _builder.newLine();
-    _builder.append("         ");
-    _builder.append("sum is 14");
+    _builder.append("     ");
+    _builder.append("value1 is <7>");
+    _builder.newLine();
+    _builder.append("     ");
+    _builder.append("value2 is <8>");
+    _builder.newLine();
+    _builder.append("     ");
+    _builder.append("sum is <14>");
     Helpers.is(_errorMessage, _builder);
   }
 }

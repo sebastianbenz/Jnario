@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
 
 @Contains({ SuiteValueConverterToStringSpec.class, SuiteValueConverterToValueSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("SuiteValueConverter")
+@RunWith(ExampleGroupRunner.class)
 public class SuiteValueConverterSpec {
   final IValueConverter<String> subject = new Function0<IValueConverter<String>>() {
     public IValueConverter<String> apply() {

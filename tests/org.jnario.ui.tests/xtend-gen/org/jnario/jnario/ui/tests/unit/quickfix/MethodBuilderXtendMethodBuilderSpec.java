@@ -11,8 +11,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("XtendMethodBuilder")
+@RunWith(ExampleGroupRunner.class)
 public class MethodBuilderXtendMethodBuilderSpec extends MethodBuilderSpec {
   @Test
   @Named("creates method with specified name")

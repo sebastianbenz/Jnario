@@ -17,8 +17,8 @@ import org.junit.runner.RunWith;
 
 @Contains({ UndefinedMethodFixIsUndefinedMethodSpec.class, UndefinedMethodFixCallsReadOnlyTypeSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("UndefinedMethodFix")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class UndefinedMethodFixSpec {
   @Inject

@@ -5,17 +5,17 @@ import org.jnario.feature.feature.Given;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.jnario.test.util.Features;
 import org.jnario.jnario.tests.unit.jnario.ExecutableIsPendingSpec;
+import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Scenario")
+@RunWith(ExampleGroupRunner.class)
 public class ExecutableIsPendingScenarioSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("scenario[\\\"Without steps\\\"].isPending[] should be true")

@@ -9,6 +9,7 @@ import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.jnario.test.util.Specs;
 import org.jnario.jnario.test.util.Suites;
+import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -22,13 +23,12 @@ import org.jnario.spec.spec.SpecPackage;
 import org.jnario.suite.scoping.SuiteSpecFilter;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuitePackage;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("SuiteSpecFilter")
+@RunWith(ExampleGroupRunner.class)
 public class SuiteSpecFilterSpec {
   @Subject
   public SuiteSpecFilter subject;

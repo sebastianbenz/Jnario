@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @Contains(ExecutableIsPendingSpec.class)
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Executable")
+@RunWith(ExampleGroupRunner.class)
 public class ExecutableSpec {
 }

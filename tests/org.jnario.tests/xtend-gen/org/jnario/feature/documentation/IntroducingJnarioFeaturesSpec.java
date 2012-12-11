@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
  */
 @Contains({ IntroducingJnarioFeaturesHowToWriteAFeatureSpec.class, IntroducingJnarioFeaturesViewsSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Introducing Jnario Features")
+@RunWith(ExampleGroupRunner.class)
 public class IntroducingJnarioFeaturesSpec {
 }

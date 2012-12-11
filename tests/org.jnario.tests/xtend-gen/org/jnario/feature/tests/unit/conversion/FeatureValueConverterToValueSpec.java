@@ -4,17 +4,17 @@ import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.unit.conversion.FeatureValueConverterSpec;
+import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("toValue")
+@RunWith(ExampleGroupRunner.class)
 public class FeatureValueConverterToValueSpec extends FeatureValueConverterSpec {
   @Test
   @Named("subject.toValue[\\\"Prefix: text\\\\n\\\", null] should be \\\"text\\\"")

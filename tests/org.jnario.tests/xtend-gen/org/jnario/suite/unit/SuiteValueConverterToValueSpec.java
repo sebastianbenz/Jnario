@@ -1,18 +1,18 @@
 package org.jnario.suite.unit;
 
 import org.hamcrest.StringDescription;
+import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.suite.unit.SuiteValueConverterSpec;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("toValue")
+@RunWith(ExampleGroupRunner.class)
 public class SuiteValueConverterToValueSpec extends SuiteValueConverterSpec {
   @Test
   @Named("removes escape character for dashes")

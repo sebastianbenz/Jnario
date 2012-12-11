@@ -6,9 +6,9 @@ import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
-@RunWith(FeatureRunner.class)
 @Contains(UsingMatchersInFeaturesFeatureUsingMatchersInJnario.class)
 @Named("Using Matchers in Features")
 @SuppressWarnings("all")
+@RunWith(FeatureRunner.class)
 public class UsingMatchersInFeaturesFeature {
 }

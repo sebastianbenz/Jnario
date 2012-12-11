@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-@RunWith(FeatureRunner.class)
 @Contains(SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension.class)
 @Named("Setup & Teardown with Feature Extensions")
 @SuppressWarnings("all")
+@RunWith(FeatureRunner.class)
 public class SetupTeardownWithFeatureExtensionsFeature {
 }

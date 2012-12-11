@@ -8,6 +8,7 @@
 package org.jnario.jnario.test.util;
 
 import static junit.framework.Assert.assertFalse;
+import static org.hamcrest.CoreMatchers.is;
 import static org.jnario.jnario.test.util.ResultMatchers.failureCountIs;
 import static org.junit.Assert.assertThat;
 
@@ -34,6 +35,11 @@ public class FeatureExecutor extends BehaviorExecutor{
 	
 	public static void isSuccessful(CharSequence content) {
 		assertThat(run(content), ResultMatchers.isSuccessful());
+	}
+	
+	public static void ignoreCountIs(CharSequence content, int expectedCount) {
+		Result result = run(content);
+		assertThat(result.getIgnoreCount(), is(expectedCount));
 	}
 	
 	public static void fails(CharSequence content) {

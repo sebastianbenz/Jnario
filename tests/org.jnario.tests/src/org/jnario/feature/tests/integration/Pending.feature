@@ -8,19 +8,14 @@
 package org.jnario.feature.tests.integration
 
 import static org.jnario.jnario.test.util.ResultMatchers.*
-import com.google.inject.Inject
-import org.jnario.jnario.test.util.FeatureExecutor
-import org.jnario.runner.CreateWith
-import org.jnario.jnario.test.util.FeatureTestCreator
+import static extension org.jnario.jnario.test.util.FeatureExecutor.*
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-@CreateWith(typeof(FeatureTestCreator))
 Feature: Pending steps
 	
 	Scenario: When one step of a scenario is pending then all following should be pending
-		@Inject FeatureExecutor runner
 		Given a scenario
 		'''
 			Feature: With pending steps
@@ -33,7 +28,7 @@ Feature: Pending steps
 		'''
 		Then it should execute successfully
 		And the expected number of ignored steps is "2"
-			runner.execute(jnarioFile) => ignoreCountIs(args.first.toInt)
+			jnarioFile.ignoreCountIs(args.first.toInt)
 			
 	Scenario: When an and step is pending the following steps should be pending
 	

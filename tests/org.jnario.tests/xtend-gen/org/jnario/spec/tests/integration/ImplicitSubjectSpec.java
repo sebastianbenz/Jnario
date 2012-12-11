@@ -22,8 +22,8 @@ import org.junit.runner.RunWith;
  * **SpecCreator**.
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Implicit Subject")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class ImplicitSubjectSpec {
   @Inject

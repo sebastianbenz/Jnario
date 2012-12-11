@@ -4,18 +4,18 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec;
+import org.jnario.lib.Assert;
 import org.jnario.report.Passed;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.spec.Example;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Example")
+@RunWith(ExampleGroupRunner.class)
 public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2ResultMappingSpec {
   final Passed aResult = new Function0<Passed>() {
     public Passed apply() {

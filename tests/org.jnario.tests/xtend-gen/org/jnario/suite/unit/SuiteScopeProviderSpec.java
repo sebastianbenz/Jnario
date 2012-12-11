@@ -8,6 +8,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ScopeTestExtension;
 import org.jnario.jnario.test.util.SuiteTestCreator;
+import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
@@ -16,14 +17,13 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.SuitePackage;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("SuiteScopeProvider")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SuiteTestCreator.class)
 public class SuiteScopeProviderSpec {
   @Inject

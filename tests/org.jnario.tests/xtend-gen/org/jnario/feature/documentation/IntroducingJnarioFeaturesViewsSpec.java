@@ -17,8 +17,8 @@ import org.junit.runner.RunWith;
  * that you can find in the main button bar while being in a feature file.
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Views")
+@RunWith(ExampleGroupRunner.class)
 public class IntroducingJnarioFeaturesViewsSpec extends IntroducingJnarioFeaturesSpec {
   /**
    * @filter('''|.isSuccessful)

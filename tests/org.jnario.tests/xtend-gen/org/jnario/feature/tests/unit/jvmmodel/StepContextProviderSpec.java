@@ -22,8 +22,8 @@ import org.junit.runner.RunWith;
 
 @Contains(StepContextProviderUsedFieldsSpec.class)
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("StepContextProvider")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = FeatureTestCreator.class)
 public class StepContextProviderSpec {
   @Subject

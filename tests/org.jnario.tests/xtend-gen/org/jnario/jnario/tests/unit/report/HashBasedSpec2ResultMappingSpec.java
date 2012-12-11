@@ -19,6 +19,7 @@ import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingFeatureSpe
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingScenarioSpec;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingStepSpec;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSuiteSpec;
+import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.report.Failed;
 import org.jnario.report.HashBasedSpec2ResultMapping;
@@ -34,14 +35,13 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
 import org.jnario.spec.spec.Example;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @Contains({ HashBasedSpec2ResultMappingExampleSpec.class, HashBasedSpec2ResultMappingExampleGroupSpec.class, HashBasedSpec2ResultMappingStepSpec.class, HashBasedSpec2ResultMappingScenarioSpec.class, HashBasedSpec2ResultMappingFeatureSpec.class, HashBasedSpec2ResultMappingBackgroundSpec.class, HashBasedSpec2ResultMappingSuiteSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("HashBasedSpec2ResultMapping")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class HashBasedSpec2ResultMappingSpec {
   @Subject
