@@ -160,9 +160,11 @@ public class JnarioCompiler extends XtendCompiler {
 		return getMethod(should, CoreMatchers.class, "nullValue");
 	}
 
-	protected JvmIdentifiableElement getMethod(XBinaryOperation should,
-			Class<?> type, String methodName) {
+	protected JvmIdentifiableElement getMethod(XBinaryOperation should, Class<?> type, String methodName) {
 		JvmGenericType coreMatchersType = (JvmGenericType) jvmType(type, should);
+		if(coreMatchersType == null){
+			return null;
+		}
 		Iterable<JvmOperation> operations = Iterables.filter(coreMatchersType.getMembers(), JvmOperation.class);
 		for (JvmOperation jvmOperation : operations) {
 			if(methodName.equals(jvmOperation.getSimpleName())){
@@ -229,7 +231,11 @@ public class JnarioCompiler extends XtendCompiler {
 	}
 
 	private JvmType jvmType(Class<?> type, EObject context) {
-		return getTypeReferences().getTypeForName(type, context).getType();
+		JvmTypeReference jvmTypeReference = getTypeReferences().getTypeForName(type, context);
+		if(jvmTypeReference == null){
+			return null;
+		}
+		return jvmTypeReference.getType();
 	}
 
 	public void generateMessageFor(Should should, ITreeAppendable b) {
