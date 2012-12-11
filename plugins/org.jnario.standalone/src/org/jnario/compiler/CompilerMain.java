@@ -9,8 +9,11 @@
 
 package org.jnario.compiler;
 
+import static com.google.common.collect.Lists.*;
+
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.log4j.BasicConfigurator;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -33,11 +36,6 @@ public class CompilerMain {
 		if ((args == null) || (args.length == 0)) {
 			printUsage();
 		}
-		
-		run(args, new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
-	}
-
-	private static void run(String[] args, ISetup...injectors) {
 		CompilerMain jnarioCompiler = new CompilerMain();
 		Iterator<String> arguments = Arrays.asList(args).iterator();
 		while (arguments.hasNext()) {
@@ -54,7 +52,7 @@ public class CompilerMain {
 				jnarioCompiler.setSourcePath(argument);
 			}
 		}
-		jnarioCompiler.compile(injectors);
+		jnarioCompiler.compile();
 	}
 	
 	private static void printUsage() {
@@ -92,14 +90,10 @@ public class CompilerMain {
 		this.sourcePath = sourcePath;
 	}
 
-	public int compile(ISetup... setups) {
-		if(setups.length == 0){
-			throw new IllegalArgumentException("no compiler setups");
-		}
+	public int compile() {
 		BasicConfigurator.configure();
-		
-		ResourceSet resourceSet = setups[0].createInjectorAndDoEMFRegistration().getInstance(ResourceSet.class);
-		for (ISetup setup : setups) {
+		ResourceSet resourceSet = SETUPS.get(0).createInjectorAndDoEMFRegistration().getInstance(ResourceSet.class);
+		for (ISetup setup : SETUPS) {
 			Injector injector = setup.createInjectorAndDoEMFRegistration();
 			JnarioBatchCompiler jnarioCompiler = injector.getInstance(JnarioBatchCompiler.class);
 			jnarioCompiler.setOutputPath(outputPath);
@@ -114,5 +108,7 @@ public class CompilerMain {
 		}
 		return OK;
 	}
+
+	public static final List<ISetup> SETUPS =  newArrayList(new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
 
 }

@@ -9,14 +9,10 @@ package org.jnario.typing;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend.core.typing.XtendTypeProvider;
-import org.eclipse.xtend.core.xtend.XtendFunction;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XBlockExpression;
-import org.eclipse.xtext.xbase.XClosure;
 import org.eclipse.xtext.xbase.XExpression;
 import org.jnario.Assertion;
 import org.jnario.MockLiteral;
@@ -32,8 +28,7 @@ import com.google.inject.Singleton;
 public class JnarioTypeProvider extends XtendTypeProvider {
 	
 	@Override
-	protected JvmTypeReference expectedType(EObject container, EReference reference, int index,
-			boolean rawType) {
+	protected JvmTypeReference expectedType(EObject container, EReference reference, int index,	boolean rawType) {
 		if(isInAssertion(container)){
 			return booleanType(container);
 		}else{

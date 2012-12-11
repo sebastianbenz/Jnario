@@ -2,7 +2,6 @@ package org.jnario.compiler;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.io.File;
 import java.util.List;
@@ -17,11 +16,8 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.mwe.NameBasedFilter;
 import org.eclipse.xtext.mwe.PathTraverser;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.jnario.compiler.SeverityFilter;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.report.Executable2ResultMapping;
@@ -57,14 +53,8 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
     ResourceSet _loadResources = this.loadResources();
     this.setResourceSet(_loadResources);
     ResourceSet _resourceSet = this.getResourceSet();
-    boolean _hasValidationErrors = this.hasValidationErrors(_resourceSet);
-    if (_hasValidationErrors) {
-      return false;
-    } else {
-      ResourceSet _resourceSet_1 = this.getResourceSet();
-      this.generateDocumentation(_resourceSet_1, this.resultMapping);
-      return true;
-    }
+    this.generateDocumentation(_resourceSet, this.resultMapping);
+    return true;
   }
   
   @Inject
@@ -120,18 +110,6 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
       EcoreUtil.resolveAll(_resourceSet_3);
       ResourceSet _resourceSet_4 = this.getResourceSet();
       _xblockexpression = (_resourceSet_4);
-    }
-    return _xblockexpression;
-  }
-  
-  public boolean hasValidationErrors(final ResourceSet resourceSet) {
-    boolean _xblockexpression = false;
-    {
-      final List<Issue> issues = this.validate(resourceSet);
-      final Iterable<Issue> errors = Iterables.<Issue>filter(issues, SeverityFilter.ERROR);
-      boolean _isEmpty = IterableExtensions.isEmpty(errors);
-      boolean _not = (!_isEmpty);
-      _xblockexpression = (_not);
     }
     return _xblockexpression;
   }

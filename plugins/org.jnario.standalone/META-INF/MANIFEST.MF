@@ -14,6 +14,7 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.3.0",
  org.jnario.spec;bundle-version="0.1.0",
  org.eclipse.xtext.xbase.lib;bundle-version="2.3.0",
  org.jnario.lib;bundle-version="0.1.0",
- org.jnario.suite;bundle-version="0.1.0"
+ org.jnario.suite;bundle-version="0.1.0",
+ org.apache.ant;bundle-version="1.8.3";resolution:=optional
 Import-Package: org.apache.log4j
 Export-Package: org.jnario.compiler
