@@ -206,4 +206,55 @@ public class CompilerSpec {
   public void _compilesRichStrings() throws Exception {
     this._behaviorExecutor.executesSuccessfully("\r\n\t\tdescribe \'Richstrings\'{\r\n\t\t\tfact {\r\n\t\t\t\tval x = \'world\'\r\n\t\t        \'\'\'hello \u00ABx\u00BB\'\'\'.toString => \'hello world\'\r\n\t\t    }\r\n\t\t}\r\n\t\t");
   }
+  
+  @Test
+  @Named("supports enums in tables")
+  @Order(9)
+  public void _supportsEnumsInTables() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import static org.jnario.spec.tests.unit.compiler.MyEnum.*");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("describe \"Tests type inference of the table columns\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("def myTable {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("| value  |");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("| VALUE1 |");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("| VALUE2 |");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}\t\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact \"Table column type get inferred by the stand-alone compile correctly\" {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("myTable.forEach [");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("value should not be null");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("]");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
+  }
 }

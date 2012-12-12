@@ -106,4 +106,25 @@ describe "Compiler"{
 		".executesSuccessfully
 	}
 	
+	fact "supports enums in tables"{
+		'''
+			import static org.jnario.spec.tests.unit.compiler.MyEnum.*
+			
+			describe "Tests type inference of the table columns"{
+				
+				
+				def myTable {
+					| value  |
+					| VALUE1 |
+					| VALUE2 |
+			    }		
+				
+				fact "Table column type get inferred by the stand-alone compile correctly" {
+					myTable.forEach [
+						value should not be null
+					]
+				}
+			}
+		'''.executesSuccessfully
+	}
 }

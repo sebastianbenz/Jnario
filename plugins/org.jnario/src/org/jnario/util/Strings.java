@@ -23,8 +23,6 @@ import java.util.Scanner;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-
-import com.google.common.io.Closeables;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
