@@ -15,17 +15,22 @@ import java.util.List;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.util.Primitives;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XStringLiteral;
+import org.eclipse.xtext.xbase.services.XbaseGrammarAccess.XLiteralElements;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
+import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.jnario.Assertion;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
 import org.jnario.MockLiteral;
+import org.jnario.ShouldThrow;
 import org.jnario.jvmmodel.TestRuntimeProvider;
 import org.jnario.jvmmodel.TestRuntimeSupport;
 import org.jnario.runner.Named;
@@ -44,11 +49,21 @@ public class JnarioJavaValidator extends AbstractDeclarativeValidator {
 	@Inject 
 	private ITypeProvider typeProvider;
 	
+	@Inject
+	private XExpressionHelper expressionHelper;
+	
 	@Inject 
 	private TypeReferences typeReferences;
 	
 	@Inject
 	private TestRuntimeProvider runtimeProvider;
+	
+	@Check
+	public void checkShouldThrow(ShouldThrow shouldThrow){
+		if(expressionHelper.isLiteral(shouldThrow.getExpression())){
+			error("Literals cannot throw exceptions", null);
+		}
+	}
 	
 	@Check
 	public void checkClassPath(MockLiteral clazz) {
