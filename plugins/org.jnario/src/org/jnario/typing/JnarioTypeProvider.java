@@ -7,6 +7,8 @@
  *******************************************************************************/
 package org.jnario.typing;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtend.core.typing.XtendTypeProvider;
@@ -15,10 +17,14 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.jnario.Assertion;
+import org.jnario.ExampleColumn;
+import org.jnario.ExampleTable;
 import org.jnario.MockLiteral;
 import org.jnario.Should;
 import org.jnario.ShouldThrow;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
 import com.google.inject.Singleton;
 
 /**
@@ -28,9 +34,11 @@ import com.google.inject.Singleton;
 public class JnarioTypeProvider extends XtendTypeProvider {
 	
 	@Override
-	protected JvmTypeReference expectedType(EObject container, EReference reference, int index,	boolean rawType) {
+	protected JvmTypeReference expectedType(EObject container, EReference reference, int index, boolean rawType) {
 		if(isInAssertion(container)){
 			return booleanType(container);
+		}else if(container instanceof ExampleTable){
+			return getTypeReferences().getTypeForName(Void.TYPE, container);
 		}else{
 			return super.expectedType(container, reference, index, rawType);
 		}
@@ -57,9 +65,20 @@ public class JnarioTypeProvider extends XtendTypeProvider {
 			return _type((ShouldThrow)expression, rawExpectation, rawType);
 		}else if (expression instanceof MockLiteral) {
 			return _type((MockLiteral)expression, rawExpectation, rawType);
+		}else if (expression instanceof ExampleColumn) {
+			return _type((ExampleColumn)expression, rawExpectation, rawType);
 		}else {
 			return super.type(expression, rawExpectation, rawType);
 		}
+	}
+	
+	protected JvmTypeReference _type(ExampleColumn object, JvmTypeReference rawExpectation, boolean rawType) {
+		List<JvmTypeReference> types = Lists.transform(object.getCells(), new Function<XExpression, JvmTypeReference>() {
+			public JvmTypeReference apply(XExpression expr){
+				return getType(expr);
+			}
+		});
+		return getCommonType(types);
 	}
 
 	protected JvmTypeReference _type(MockLiteral object, JvmTypeReference rawExpectation, boolean rawType) {

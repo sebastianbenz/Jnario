@@ -137,7 +137,7 @@ public class UsingTablesSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("expressions in tables")
+  @Named("Expressions in tables")
   @Order(3)
   public void _expressionsInTables() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
@@ -189,9 +189,9 @@ public class UsingTablesSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("referencing members")
+  @Named("rReferencing members")
   @Order(4)
-  public void _referencingMembers() throws Exception {
+  public void _rReferencingMembers() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -257,9 +257,9 @@ public class UsingTablesSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("Specifying column types")
+  @Named("Column type inference")
   @Order(5)
-  public void _specifyingColumnTypes() throws Exception {
+  public void _columnTypeInference() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -305,6 +305,59 @@ public class UsingTablesSpec {
     this._behaviorExecutor.executesSuccessfully(_builder);
   }
   
+  /**
+   * It is also possible to explicitly define the type of a column.
+   * @filter('''|.executesSuccessfully)
+   */
+  @Test
+  @Named("Specifying column types")
+  @Order(6)
+  public void _specifyingColumnTypes() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.ArrayList");
+    _builder.newLine();
+    _builder.append("import java.util.LinkedList");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("describe \"Example Tables\"{");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("def examplesWithType{");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("| Iterable<String> list    |");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("| new ArrayList<String>()  |");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("| new LinkedList<String>() |");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("fact \"computes the common super type\"{");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("examplesWithType.forEach[");
+    _builder.newLine();
+    _builder.append("      ");
+    _builder.append("assert list.empty");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("]");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
+  }
+  
   public ExampleTable<UsingTablesSpecExample> _initUsingTablesSpecExample() {
     return ExampleTable.create("example", 
       java.util.Arrays.asList("value1", "value2", "sum"), 
@@ -322,7 +375,7 @@ public class UsingTablesSpec {
    */
   @Test
   @Named("Error message")
-  @Order(6)
+  @Order(8)
   public void _errorMessage() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {

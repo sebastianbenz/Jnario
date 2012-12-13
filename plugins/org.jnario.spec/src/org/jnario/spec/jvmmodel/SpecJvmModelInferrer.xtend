@@ -56,7 +56,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 
 	@Inject extension ExampleNameProvider
 	
-	
 	@Inject extension ImplicitSubject 
 	
 	@Inject extension IJvmModelAssociator 
@@ -276,12 +275,12 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 				exampleTableType.members += column.toField
 				val jvmParam = typesFactory.createJvmFormalParameter();
 				jvmParam.name = column.name
-				jvmParam.setParameterType(cloneWithProxies(column.type));
+				jvmParam.setParameterType(cloneWithProxies(column.getOrCreateType));
 				constructor.parameters += jvmParam
 				associate(table, jvmParam); 
 				assignments += "this." + column.name + " = " + column.name + ";" 
 				
-				exampleTableType.members += table.toMethod("get" + column.name.toFirstUpper, column.type)[
+				exampleTableType.members += table.toMethod("get" + column.name.toFirstUpper, column.getOrCreateType)[
 					setBody[ITreeAppendable a |
 						a.append("return " + column.name + ";")
 					]

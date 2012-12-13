@@ -71,7 +71,7 @@ describe &quot;Example Tables&quot;{
     examples should not be null
   }     
 }</pre>
-</li><li><p id="expressions_in_tables" class="example notrun"><strong>expressions in tables</strong></p>
+</li><li><p id="Expressions_in_tables" class="example notrun"><strong>Expressions in tables</strong></p>
 <p>Values in an example table can be arbitrary non-void expressions, for examples closures:</p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
@@ -90,7 +90,7 @@ describe &quot;Example Tables&quot;{
     ]
   }       
 }</pre>
-</li><li><p id="referencing_members" class="example notrun"><strong>referencing members</strong></p>
+</li><li><p id="rReferencing_members" class="example notrun"><strong>rReferencing members</strong></p>
 <p>It is also possible to call methods or reference fields from within a table.</p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
@@ -115,7 +115,7 @@ describe &quot;Example Tables&quot;{
     ] 
   }   
 }</pre>
-</li><li><p id="Specifying_column_types" class="example notrun"><strong>Specifying column types</strong></p>
+</li><li><p id="Column_type_inference" class="example notrun"><strong>Column type inference</strong></p>
 <p>Jnario automatically infers the type of a column. It will use the common supertype of all expressions in a column.</p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
@@ -132,6 +132,25 @@ describe &quot;Example Tables&quot;{
   fact &quot;computes the common super type&quot;{
     examplesWithType.forEach[
       assert list.empty // works only if the type of list has been inferred as List&lt;String&gt;
+    ]
+  }
+}</pre>
+</li><li><p id="Specifying_column_types" class="example notrun"><strong>Specifying column types</strong></p>
+<p>It is also possible to explicitly define the type of a column.</p>
+<pre class="prettyprint lang-spec linenums">
+import java.util.ArrayList
+import java.util.LinkedList
+
+describe &quot;Example Tables&quot;{
+  def examplesWithType{
+    | Iterable&lt;String&gt; list    |
+    | new ArrayList&lt;String&gt;()  |
+    | new LinkedList&lt;String&gt;() |
+  }
+    
+  fact &quot;computes the common super type&quot;{
+    examplesWithType.forEach[
+      assert list.empty
     ]
   }
 }</pre>
@@ -276,7 +295,7 @@ describe &quot;Using Tables&quot;{
    * Values in an example table can be arbitrary non-void expressions, for examples closures:
    * @filter('''|.executesSuccessfully) 
    */
-  fact &quot;expressions in tables&quot;{
+  fact &quot;Expressions in tables&quot;{
     '''
     package bootstrap
     
@@ -301,7 +320,7 @@ describe &quot;Using Tables&quot;{
    * It is also possible to call methods or reference fields from within a table.
    * @filter('''|.executesSuccessfully) 
    */
-  fact &quot;referencing members&quot;{
+  fact &quot;rReferencing members&quot;{
     '''
     package bootstrap
     
@@ -334,7 +353,7 @@ describe &quot;Using Tables&quot;{
    * common supertype of all expressions in a column. 
    * @filter('''|.executesSuccessfully) 
    */
-  fact &quot;Specifying column types&quot;{
+  fact &quot;Column type inference&quot;{
   '''
   package bootstrap
   
@@ -350,6 +369,31 @@ describe &quot;Using Tables&quot;{
     fact &quot;computes the common super type&quot;{
       examplesWithType.forEach[
         assert list.empty // works only if the type of list has been inferred as List&lt;String&gt;
+      ]
+    }
+  }
+  '''.executesSuccessfully       
+  }
+  
+  /*
+   * It is also possible to explicitly define the type of a column. 
+   * @filter('''|.executesSuccessfully) 
+   */
+  fact &quot;Specifying column types&quot;{
+  '''
+  import java.util.ArrayList
+  import java.util.LinkedList
+  
+  describe &quot;Example Tables&quot;{
+    def examplesWithType{
+      | Iterable&lt;String&gt; list    |
+      | new ArrayList&lt;String&gt;()  |
+      | new LinkedList&lt;String&gt;() |
+    }
+      
+    fact &quot;computes the common super type&quot;{
+      examplesWithType.forEach[
+        assert list.empty
       ]
     }
   }

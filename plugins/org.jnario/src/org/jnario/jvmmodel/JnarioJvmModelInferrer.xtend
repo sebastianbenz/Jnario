@@ -7,36 +7,30 @@
  *******************************************************************************/
 package org.jnario.jvmmodel
 
-import com.google.common.collect.Iterables
-import com.google.common.collect.Lists
 import com.google.inject.Inject
+import java.util.NoSuchElementException
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtend.core.jvmmodel.XtendJvmModelInferrer
+import org.eclipse.xtend.core.xtend.XtendClass
+import org.eclipse.xtend.core.xtend.XtendField
+import org.eclipse.xtend.core.xtend.XtendFile
+import org.eclipse.xtext.EcoreUtil2
+import org.eclipse.xtext.common.types.JvmField
+import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
-import org.eclipse.xtext.common.types.util.TypeConformanceComputer
 import org.eclipse.xtext.common.types.util.TypeReferences
+import org.eclipse.xtext.xbase.XTypeLiteral
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.xtext.xbase.typing.ITypeProvider
-import org.jnario.ExampleColumn
-import org.eclipse.xtext.EcoreUtil2
-import org.eclipse.xtend.core.xtend.XtendFile
-import org.eclipse.xtend.core.xtend.XtendField
-import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.JvmField
-import org.jnario.runner.Extension
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
-import org.eclipse.xtend.core.xtend.XtendClass
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.jnario.ExampleColumn
 import org.jnario.runner.Extends
-import org.eclipse.xtext.xbase.XTypeLiteral
-import java.util.NoSuchElementException
-import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
+import org.jnario.runner.Extension
 
-import static com.google.common.base.Predicates.*
-
-import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 import static extension com.google.common.collect.Iterables.*
+import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 
 /**
  * @author Birgit Engelmann
@@ -45,13 +39,11 @@ import static extension com.google.common.collect.Iterables.*
 class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 
 	@Inject public XbaseCompiler compiler
-	@Inject extension ITypeProvider
-	@Inject extension TypeConformanceComputer
 	@Inject extension TypeReferences
-	@Inject extension JvmTypesBuilder
 	@Inject extension IJvmModelAssociations
 	@Inject TestRuntimeProvider runtime
 	TestRuntimeSupport testRuntime
+	@Inject	extension JvmTypesBuilder jvmTypesBuilder;
 
 	def toField(ExampleColumn column){
 		val field = column.toField(column.name, column.getOrCreateType)
@@ -61,22 +53,11 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 		return field
 	}
 	
-	def getOrCreateType(ExampleColumn column){
-		if(column.type == null || column.type.type == null){
-			if(column.cells.empty){
-				column.type = getTypeForName(typeof(Object), column)
-			}else{
-				var cellTypes = column.cells.transform[type]
-				cellTypes = Iterables::filter(cellTypes, notNull)
-				val cellTypeList = Lists::newArrayList(cellTypes)
-				if(cellTypeList.empty){
-					column.type = getTypeForName(typeof(Object), column)
-				}else{
-					column.type = cellTypeList.commonSuperType.cloneWithProxies
-				}
-			}
+	def getOrCreateType(ExampleColumn source){
+		if (source.type == null) {
+			source.setType(getTypeProxy(source));
 		}
-		return column.type
+		source.type
 	}
 
 	override infer(EObject obj, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {

@@ -28,7 +28,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * @model
  * @generated
  */
-public interface ExampleColumn extends XtendField {
+public interface ExampleColumn extends XtendField, XExpression {
 	/**
 	 * Returns the value of the '<em><b>Table</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.jnario.ExampleTable#getColumns <em>Columns</em>}'.

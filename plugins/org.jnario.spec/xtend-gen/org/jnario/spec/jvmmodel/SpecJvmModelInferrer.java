@@ -516,8 +516,8 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
                   final JvmFormalParameter jvmParam = SpecJvmModelInferrer.this.typesFactory.createJvmFormalParameter();
                   String _name = column.getName();
                   jvmParam.setName(_name);
-                  JvmTypeReference _type = column.getType();
-                  JvmTypeReference _cloneWithProxies = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.cloneWithProxies(_type);
+                  JvmTypeReference _orCreateType = SpecJvmModelInferrer.this.getOrCreateType(column);
+                  JvmTypeReference _cloneWithProxies = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.cloneWithProxies(_orCreateType);
                   jvmParam.setParameterType(_cloneWithProxies);
                   EList<JvmFormalParameter> _parameters = constructor.getParameters();
                   SpecJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, jvmParam);
@@ -533,7 +533,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
                   String _name_3 = column.getName();
                   String _firstUpper = Strings.toFirstUpper(_name_3);
                   String _plus_4 = ("get" + _firstUpper);
-                  JvmTypeReference _type_1 = column.getType();
+                  JvmTypeReference _orCreateType_1 = SpecJvmModelInferrer.this.getOrCreateType(column);
                   final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
                       public void apply(final JvmOperation it) {
                         final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
@@ -547,7 +547,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
                         SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
                       }
                     };
-                  JvmOperation _method = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toMethod(table, _plus_4, _type_1, _function);
+                  JvmOperation _method = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.toMethod(table, _plus_4, _orCreateType_1, _function);
                   SpecJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members_1, _method);
                 }
               };

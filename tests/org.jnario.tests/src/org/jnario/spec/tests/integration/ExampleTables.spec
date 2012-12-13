@@ -77,7 +77,7 @@ describe "Using Tables"{
    * Values in an example table can be arbitrary non-void expressions, for examples closures:
    * @filter('''|.executesSuccessfully) 
    */
-  fact "expressions in tables"{
+  fact "Expressions in tables"{
     '''
     package bootstrap
     
@@ -102,7 +102,7 @@ describe "Using Tables"{
    * It is also possible to call methods or reference fields from within a table.
    * @filter('''|.executesSuccessfully) 
    */
-  fact "referencing members"{
+  fact "rReferencing members"{
     '''
     package bootstrap
     
@@ -135,7 +135,7 @@ describe "Using Tables"{
    * common supertype of all expressions in a column. 
    * @filter('''|.executesSuccessfully) 
    */
-  fact "Specifying column types"{
+  fact "Column type inference"{
   '''
   package bootstrap
   
@@ -154,6 +154,31 @@ describe "Using Tables"{
       ]
     }
   }
+  '''.executesSuccessfully       
+  }
+  
+  /*
+   * It is also possible to explicitly define the type of a column. 
+   * @filter('''|.executesSuccessfully) 
+   */
+  fact "Specifying column types"{
+  '''
+	import java.util.ArrayList
+	import java.util.LinkedList
+	
+	describe "Example Tables"{
+	  def examplesWithType{
+	    | Iterable<String> list    |
+	    | new ArrayList<String>()  |
+	    | new LinkedList<String>() |
+	  }
+	    
+	  fact "computes the common super type"{
+	    examplesWithType.forEach[
+	      assert list.empty
+	    ]
+	  }
+	}
   '''.executesSuccessfully       
   }
   

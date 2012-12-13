@@ -18,6 +18,7 @@ import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XTypeLiteral;
+import org.jnario.*;
 import org.jnario.Assertion;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
@@ -129,6 +130,7 @@ public class JnarioSwitch<T> {
 				ExampleColumn exampleColumn = (ExampleColumn)theEObject;
 				T result = caseExampleColumn(exampleColumn);
 				if (result == null) result = caseXtendField(exampleColumn);
+				if (result == null) result = caseXExpression(exampleColumn);
 				if (result == null) result = caseXtendMember(exampleColumn);
 				if (result == null) result = caseXtendAnnotationTarget(exampleColumn);
 				if (result == null) result = defaultCase(theEObject);
