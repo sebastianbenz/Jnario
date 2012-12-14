@@ -189,9 +189,9 @@ public class UsingTablesSpec {
    * @filter('''|.executesSuccessfully)
    */
   @Test
-  @Named("rReferencing members")
+  @Named("Referencing members")
   @Order(4)
-  public void _rReferencingMembers() throws Exception {
+  public void _referencingMembers() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package bootstrap");
     _builder.newLine();
@@ -270,7 +270,7 @@ public class UsingTablesSpec {
     _builder.append("describe \"Example Tables\"{");
     _builder.newLine();
     _builder.append("  ");
-    _builder.append("def examplesWithType{");
+    _builder.append("def examplesWithTypeInference{");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("|          list            |");
@@ -289,7 +289,7 @@ public class UsingTablesSpec {
     _builder.append("fact \"computes the common super type\"{");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("examplesWithType.forEach[");
+    _builder.append("examplesWithTypeInference.forEach[");
     _builder.newLine();
     _builder.append("      ");
     _builder.append("assert list.empty // works only if the type of list has been inferred as List<String>");
@@ -375,7 +375,7 @@ public class UsingTablesSpec {
    */
   @Test
   @Named("Error message")
-  @Order(7)
+  @Order(8)
   public void _errorMessage() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {

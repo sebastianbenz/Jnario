@@ -90,7 +90,7 @@ describe &quot;Example Tables&quot;{
     ]
   }       
 }</pre>
-</li><li><p id="rReferencing_members" class="example notrun"><strong>rReferencing members</strong></p>
+</li><li><p id="Referencing_members" class="example notrun"><strong>Referencing members</strong></p>
 <p>It is also possible to call methods or reference fields from within a table.</p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
@@ -123,14 +123,14 @@ package bootstrap
 import java.util.*
 
 describe &quot;Example Tables&quot;{
-  def examplesWithType{
+  def examplesWithTypeInference{
     |          list            |
     | new ArrayList&lt;String&gt;()  |
     | new LinkedList&lt;String&gt;() |
   }     
 
   fact &quot;computes the common super type&quot;{
-    examplesWithType.forEach[
+    examplesWithTypeInference.forEach[
       assert list.empty // works only if the type of list has been inferred as List&lt;String&gt;
     ]
   }
@@ -320,7 +320,7 @@ describe &quot;Using Tables&quot;{
    * It is also possible to call methods or reference fields from within a table.
    * @filter('''|.executesSuccessfully) 
    */
-  fact &quot;rReferencing members&quot;{
+  fact &quot;Referencing members&quot;{
     '''
     package bootstrap
     
@@ -360,14 +360,14 @@ describe &quot;Using Tables&quot;{
   import java.util.*
 
   describe &quot;Example Tables&quot;{
-    def examplesWithType{
+    def examplesWithTypeInference{
       |          list            |
       | new ArrayList&lt;String&gt;()  |
       | new LinkedList&lt;String&gt;() |
     }     
 
     fact &quot;computes the common super type&quot;{
-      examplesWithType.forEach[
+      examplesWithTypeInference.forEach[
         assert list.empty // works only if the type of list has been inferred as List&lt;String&gt;
       ]
     }

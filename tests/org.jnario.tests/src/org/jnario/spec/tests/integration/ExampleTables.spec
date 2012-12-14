@@ -102,7 +102,7 @@ describe "Using Tables"{
    * It is also possible to call methods or reference fields from within a table.
    * @filter('''|.executesSuccessfully) 
    */
-  fact "rReferencing members"{
+  fact "Referencing members"{
     '''
     package bootstrap
     
@@ -142,14 +142,14 @@ describe "Using Tables"{
   import java.util.*
 
   describe "Example Tables"{
-    def examplesWithType{
+    def examplesWithTypeInference{
       |          list            |
       | new ArrayList<String>()  |
       | new LinkedList<String>() |
     }     
 
     fact "computes the common super type"{
-      examplesWithType.forEach[
+      examplesWithTypeInference.forEach[
         assert list.empty // works only if the type of list has been inferred as List<String>
       ]
     }
