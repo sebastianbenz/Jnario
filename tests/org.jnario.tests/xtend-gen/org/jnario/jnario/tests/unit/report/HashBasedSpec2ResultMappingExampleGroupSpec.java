@@ -8,7 +8,6 @@ import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.report.Failed;
 import org.jnario.report.NotRun;
@@ -19,12 +18,13 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.spec.ExampleGroup;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("ExampleGroup")
 @RunWith(ExampleGroupRunner.class)
+@Named("ExampleGroup")
 public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2ResultMappingSpec {
   final static String CLASSNAME = "RootSpec";
   

@@ -5,17 +5,17 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Given;
 import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("nameOf")
 @RunWith(ExampleGroupRunner.class)
+@Named("nameOf")
 public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
   @Test
   @Named("returns null if the step has no name")

@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
-import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -16,12 +15,13 @@ import org.jnario.suite.jvmmodel.SuiteNodeBuilder;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.unit.SuiteNodeBuilderParentSpecExamples;
 import org.jnario.suite.unit.SuiteNodeBuilderSpec;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("parent")
 @RunWith(ExampleGroupRunner.class)
+@Named("parent")
 public class SuiteNodeBuilderParentSpec extends SuiteNodeBuilderSpec {
   @Inject
   @Extension

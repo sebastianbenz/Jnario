@@ -13,8 +13,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Throws")
 @RunWith(ExampleGroupRunner.class)
+@Named("Throws")
 @CreateWith(value = SpecTestCreator.class)
 public class ThrowsSpec {
   @Inject

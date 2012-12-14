@@ -3,19 +3,19 @@ package org.jnario.standalone.tests;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.FeatureTestCreator;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.standalone.tests.JnarioDocCompilerSpec;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("FeatureDocCompiler")
 @RunWith(ExampleGroupRunner.class)
+@Named("FeatureDocCompiler")
 @CreateWith(value = FeatureTestCreator.class)
 public class JnarioDocCompilerFeatureDocCompilerSpec extends JnarioDocCompilerSpec {
   @Test

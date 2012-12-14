@@ -7,7 +7,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Query;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -16,12 +15,13 @@ import org.jnario.runner.Subject;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.tests.unit.naming.ExampleNameProviderSpec;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("toMethodName[Example]")
 @RunWith(ExampleGroupRunner.class)
+@Named("toMethodName[Example]")
 public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProviderSpec {
   @Subject
   public ExampleNameProvider subject;

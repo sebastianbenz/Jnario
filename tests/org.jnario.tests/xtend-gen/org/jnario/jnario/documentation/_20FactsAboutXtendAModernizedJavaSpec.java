@@ -6,11 +6,11 @@ import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -21,8 +21,8 @@ import org.junit.runner.RunWith;
  * one should be aware of.
  */
 @SuppressWarnings("all")
-@Named("A modernized Java")
 @RunWith(ExampleGroupRunner.class)
+@Named("A modernized Java")
 public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpec {
   /**
    * Semicolons are optional in Xtend.

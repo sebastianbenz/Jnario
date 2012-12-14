@@ -9,7 +9,6 @@ import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Query;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -18,12 +17,13 @@ import org.jnario.runner.Subject;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.tests.unit.naming.ExampleNameProviderSpec;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("toJavaClassName[ExampleGroup]")
 @RunWith(ExampleGroupRunner.class)
+@Named("toJavaClassName[ExampleGroup]")
 public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleNameProviderSpec {
   @Subject
   public ExampleNameProvider subject;

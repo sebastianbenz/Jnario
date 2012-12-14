@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
 
 @Contains({ FeatureValueConverterToValueSpec.class, FeatureValueConverterToStringSpec.class })
 @SuppressWarnings("all")
-@Named("FeatureValueConverter")
 @RunWith(ExampleGroupRunner.class)
+@Named("FeatureValueConverter")
 public class FeatureValueConverterSpec {
   FeatureValueConverter subject = new Function0<FeatureValueConverter>() {
     public FeatureValueConverter apply() {

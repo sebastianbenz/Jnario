@@ -57,8 +57,8 @@ import org.junit.runner.RunWith;
  * yet all the steps will be marked as _PENDING_ as a reminder that there is still work to do.
  */
 @SuppressWarnings("all")
-@Named("How to write a Feature?")
 @RunWith(ExampleGroupRunner.class)
+@Named("How to write a Feature?")
 public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends IntroducingJnarioFeaturesSpec {
   /**
    * @filter('''|.isSuccessful)

@@ -9,12 +9,12 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
-import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -24,8 +24,8 @@ import org.junit.runner.RunWith;
  * and its rich library of extension methods.
  */
 @SuppressWarnings("all")
-@Named("Functional Programming FTW")
 @RunWith(ExampleGroupRunner.class)
+@Named("Functional Programming FTW")
 public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAboutXtendSpec {
   /**
    * Xtend provides a rich set of extension methods for collections. Accessing elements

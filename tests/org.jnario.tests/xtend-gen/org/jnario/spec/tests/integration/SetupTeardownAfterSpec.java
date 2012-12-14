@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("After")
 @RunWith(ExampleGroupRunner.class)
+@Named("After")
 public class SetupTeardownAfterSpec extends SetupTeardownSpec {
   @Test
   @Named("Executes after each test")

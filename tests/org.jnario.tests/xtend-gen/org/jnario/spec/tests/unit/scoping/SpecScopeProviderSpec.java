@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ScopeTestExtension;
 import org.jnario.jnario.test.util.SpecTestCreator;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
@@ -16,12 +15,13 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecPackage;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("SpecScopeProvider")
 @RunWith(ExampleGroupRunner.class)
+@Named("SpecScopeProvider")
 @CreateWith(value = SpecTestCreator.class)
 public class SpecScopeProviderSpec {
   @Inject

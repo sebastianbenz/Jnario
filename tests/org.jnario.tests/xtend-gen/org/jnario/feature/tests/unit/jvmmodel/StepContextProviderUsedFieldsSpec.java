@@ -5,17 +5,17 @@ import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.unit.jvmmodel.StepContextProviderSpec;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("usedFields")
 @RunWith(ExampleGroupRunner.class)
+@Named("usedFields")
 public class StepContextProviderUsedFieldsSpec extends StepContextProviderSpec {
   @Test
   @Named("returns all called fields of scenario")

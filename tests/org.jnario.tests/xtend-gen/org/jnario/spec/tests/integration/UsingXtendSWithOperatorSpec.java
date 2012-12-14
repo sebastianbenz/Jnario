@@ -4,11 +4,11 @@ import java.util.Stack;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,8 +20,8 @@ import org.junit.runner.RunWith;
  * It works great together with Xtend's with operator. You can use it to:
  */
 @SuppressWarnings("all")
-@Named("Using Xtend\\\'s with Operator")
 @RunWith(ExampleGroupRunner.class)
+@Named("Using Xtend\\\'s with Operator")
 public class UsingXtendSWithOperatorSpec {
   @Test
   @Named("initialize fixtures")

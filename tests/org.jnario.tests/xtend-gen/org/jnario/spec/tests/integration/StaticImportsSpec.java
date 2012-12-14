@@ -13,8 +13,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("StaticImports")
 @RunWith(ExampleGroupRunner.class)
+@Named("StaticImports")
 @CreateWith(value = SpecTestCreator.class)
 public class StaticImportsSpec {
   @Inject

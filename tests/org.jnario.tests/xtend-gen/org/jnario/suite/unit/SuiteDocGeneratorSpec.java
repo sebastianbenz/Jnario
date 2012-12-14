@@ -24,8 +24,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("SuiteDocGenerator")
 @RunWith(ExampleGroupRunner.class)
+@Named("SuiteDocGenerator")
 @CreateWith(value = SuiteTestCreator.class)
 public class SuiteDocGeneratorSpec {
   @Subject

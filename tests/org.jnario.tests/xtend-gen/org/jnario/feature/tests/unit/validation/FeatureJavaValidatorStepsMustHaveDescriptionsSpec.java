@@ -12,8 +12,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Steps must have descriptions")
 @RunWith(ExampleGroupRunner.class)
+@Named("Steps must have descriptions")
 public class FeatureJavaValidatorStepsMustHaveDescriptionsSpec extends FeatureJavaValidatorSpec {
   @Test
   @Named("\\\'\\\'\\\' Feature: A feature Scenario: A scenario Given When Then \\\'\\\'\\\'.allOf[typeof[Step]][assertErrorContains[\\\"description\\\"]]")

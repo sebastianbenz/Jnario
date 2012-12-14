@@ -19,8 +19,8 @@ import org.junit.runner.RunWith;
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("all")
-@Named("ExampleGroup")
 @RunWith(ExampleGroupRunner.class)
+@Named("ExampleGroup")
 @CreateWith(value = SpecTestCreator.class)
 public class ExampleGroupSpec {
   @Inject

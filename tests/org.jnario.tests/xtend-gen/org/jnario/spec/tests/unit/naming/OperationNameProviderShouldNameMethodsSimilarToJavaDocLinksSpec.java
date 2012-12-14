@@ -1,18 +1,18 @@
 package org.jnario.spec.tests.unit.naming;
 
 import org.hamcrest.StringDescription;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.unit.naming.OperationNameProviderSpec;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("should name methods similar to JavaDoc links")
 @RunWith(ExampleGroupRunner.class)
+@Named("should name methods similar to JavaDoc links")
 public class OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec extends OperationNameProviderSpec {
   @Test
   @Named("nameOf[\\\"simpleOperation\\\"] => \\\"simpleOperation\\\"")

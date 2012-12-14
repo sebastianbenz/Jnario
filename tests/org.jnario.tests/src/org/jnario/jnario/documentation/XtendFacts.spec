@@ -23,7 +23,7 @@ import static extension java.util.Collections.*
  * by clicking on **source** in the upper right corner.
  */
 describe "20 Facts about Xtend"{
-  /*
+  /* 
    * The syntax of Xtend is quite similar to Java, but Xtend code 
    * is usually a lot shorter than its Java counterpart. However, 
    * there are some important differences between Java and Xtend 
@@ -330,7 +330,7 @@ describe "20 Facts about Xtend"{
      * </pre>
      * 
      * ...and we can even completely remove the 'it' variable:
-     * 
+     *
      */
     fact "Concise Lambda Expressions"{
       var (String)=>int lambda = [length] 

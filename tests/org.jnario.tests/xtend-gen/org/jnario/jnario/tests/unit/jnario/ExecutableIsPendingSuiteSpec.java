@@ -9,7 +9,6 @@ import org.jnario.jnario.test.util.Specs;
 import org.jnario.jnario.test.util.SuiteTestCreator;
 import org.jnario.jnario.test.util.Suites;
 import org.jnario.jnario.tests.unit.jnario.ExecutableIsPendingSpec;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
@@ -19,12 +18,13 @@ import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Suite")
 @RunWith(ExampleGroupRunner.class)
+@Named("Suite")
 @CreateWith(value = SuiteTestCreator.class)
 public class ExecutableIsPendingSuiteSpec extends ExecutableIsPendingSpec {
   @Inject

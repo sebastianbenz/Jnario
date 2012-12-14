@@ -1,18 +1,18 @@
 package org.jnario.suite.unit;
 
 import org.hamcrest.StringDescription;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.suite.unit.TextValueConverterSpec;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("toValue")
 @RunWith(ExampleGroupRunner.class)
+@Named("toValue")
 public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Test
   @Named("removes colon")

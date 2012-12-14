@@ -4,18 +4,18 @@ import java.util.Collections;
 import java.util.List;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
-import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Some important differences")
 @RunWith(ExampleGroupRunner.class)
+@Named("Some important differences")
 public class _20FactsAboutXtendSomeImportantDifferencesSpec extends _20FactsAboutXtendSpec {
   /**
    * Static class members are accessed via `::` and not `.` like in Java.

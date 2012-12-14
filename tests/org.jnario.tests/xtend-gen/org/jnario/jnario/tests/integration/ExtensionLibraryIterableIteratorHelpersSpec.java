@@ -6,7 +6,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.integration.ExtensionLibrarySpec;
-import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.JnarioIteratorExtensions;
@@ -14,6 +13,7 @@ import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -23,8 +23,8 @@ import org.junit.runner.RunWith;
  * methods to simplify accessing elements by index.
  */
 @SuppressWarnings("all")
-@Named("Iterable & Iterator Helpers")
 @RunWith(ExampleGroupRunner.class)
+@Named("Iterable & Iterator Helpers")
 public class ExtensionLibraryIterableIteratorHelpersSpec extends ExtensionLibrarySpec {
   /**
    * Accessing elements in iterables by index or type.

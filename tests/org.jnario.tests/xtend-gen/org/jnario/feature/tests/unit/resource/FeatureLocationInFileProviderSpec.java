@@ -20,8 +20,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("FeatureLocationInFileProvider")
 @RunWith(ExampleGroupRunner.class)
+@Named("FeatureLocationInFileProvider")
 @CreateWith(value = FeatureTestCreator.class)
 public class FeatureLocationInFileProviderSpec {
   @Subject

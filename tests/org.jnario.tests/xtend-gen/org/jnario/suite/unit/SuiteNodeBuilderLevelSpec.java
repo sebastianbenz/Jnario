@@ -1,7 +1,6 @@
 package org.jnario.suite.unit;
 
 import org.hamcrest.StringDescription;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -10,12 +9,13 @@ import org.jnario.runner.Subject;
 import org.jnario.suite.jvmmodel.SuiteNodeBuilder;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.unit.SuiteNodeBuilderSpec;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("level")
 @RunWith(ExampleGroupRunner.class)
+@Named("level")
 public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   @Subject
   public SuiteNodeBuilder subject;

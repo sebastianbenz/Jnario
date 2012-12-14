@@ -21,8 +21,8 @@ import org.junit.runner.RunWith;
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("all")
-@Named("SuiteJavaValidator")
 @RunWith(ExampleGroupRunner.class)
+@Named("SuiteJavaValidator")
 @CreateWith(value = SuiteTestCreator.class)
 public class SuiteJavaValidatorSpec {
   @Inject

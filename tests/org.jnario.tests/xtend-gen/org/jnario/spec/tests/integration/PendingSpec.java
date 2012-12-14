@@ -16,8 +16,8 @@ import org.junit.runner.Result;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Pending")
 @RunWith(ExampleGroupRunner.class)
+@Named("Pending")
 @CreateWith(value = SpecTestCreator.class)
 public class PendingSpec {
   @Inject

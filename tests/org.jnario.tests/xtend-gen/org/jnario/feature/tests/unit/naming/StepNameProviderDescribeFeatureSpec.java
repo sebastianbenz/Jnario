@@ -5,17 +5,17 @@ import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
 import org.jnario.jnario.test.util.Features;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("^describe[Feature]")
 @RunWith(ExampleGroupRunner.class)
+@Named("^describe[Feature]")
 public class StepNameProviderDescribeFeatureSpec extends StepNameProviderSpec {
   @Test
   @Named("removes multilines parameters")

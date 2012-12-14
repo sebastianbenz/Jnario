@@ -16,8 +16,8 @@ import org.junit.runner.RunWith;
  * JUnit rules work exactly as in JUnit. Just declare a public field with the rule annotation.
  */
 @SuppressWarnings("all")
-@Named("Using JUnit Rules in Specs")
 @RunWith(ExampleGroupRunner.class)
+@Named("Using JUnit Rules in Specs")
 @CreateWith(value = SpecTestCreator.class)
 public class UsingJUnitRulesInSpecsSpec {
   @Inject

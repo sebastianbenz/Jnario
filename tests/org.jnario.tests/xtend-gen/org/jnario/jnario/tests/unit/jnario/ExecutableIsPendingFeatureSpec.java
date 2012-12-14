@@ -6,17 +6,17 @@ import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.jnario.test.util.Features;
 import org.jnario.jnario.tests.unit.jnario.ExecutableIsPendingSpec;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Feature")
 @RunWith(ExampleGroupRunner.class)
+@Named("Feature")
 public class ExecutableIsPendingFeatureSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("feature[\\\"Without scenarios and without background\\\"].isPending[] should be true")

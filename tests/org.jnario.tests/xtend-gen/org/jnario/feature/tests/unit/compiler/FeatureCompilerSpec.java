@@ -13,8 +13,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Feature Compiler")
 @RunWith(ExampleGroupRunner.class)
+@Named("Feature Compiler")
 @CreateWith(value = FeatureTestCreator.class)
 public class FeatureCompilerSpec {
   @Inject
@@ -47,6 +47,6 @@ public class FeatureCompilerSpec {
   @Named("compiles rich strings")
   @Order(2)
   public void _compilesRichStrings() throws Exception {
-    this._behaviorExecutor.executesSuccessfully("\r\n\t\tFeature: Rich Strings\r\n\t\t\tScenario: A\r\n\t\t\tWhen I a rich strings\r\n\t\t\t\tval x = \'world\'\r\n\t\t\t\t\'\'\'hello \u00ABx\u00BB\'\'\'.toString => \'hello world\'\r\n\t\t");
+    this._behaviorExecutor.executesSuccessfully("\n\t\tFeature: Rich Strings\n\t\t\tScenario: A\n\t\t\tWhen I a rich strings\n\t\t\t\tval x = \'world\'\n\t\t\t\t\'\'\'hello \u00ABx\u00BB\'\'\'.toString => \'hello world\'\n\t\t");
   }
 }

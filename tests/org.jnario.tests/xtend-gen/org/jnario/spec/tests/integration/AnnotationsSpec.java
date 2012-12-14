@@ -15,8 +15,8 @@ import org.junit.runner.RunWith;
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("all")
-@Named("Annotations")
 @RunWith(ExampleGroupRunner.class)
+@Named("Annotations")
 @CreateWith(value = SpecTestCreator.class)
 public class AnnotationsSpec {
   @Inject

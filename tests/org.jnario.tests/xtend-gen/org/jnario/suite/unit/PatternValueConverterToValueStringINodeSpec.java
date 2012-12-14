@@ -2,7 +2,6 @@ package org.jnario.suite.unit;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
-import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -13,12 +12,13 @@ import org.jnario.runner.Subject;
 import org.jnario.suite.conversion.PatternValueConverter;
 import org.jnario.suite.unit.PatternValueConverterSpec;
 import org.jnario.suite.unit.PatternValueConverterToValueStringINodeSpecExamples;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("toValue[String, INode]")
 @RunWith(ExampleGroupRunner.class)
+@Named("toValue[String, INode]")
 public class PatternValueConverterToValueStringINodeSpec extends PatternValueConverterSpec {
   @Subject
   public PatternValueConverter subject;

@@ -9,7 +9,6 @@ import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
@@ -18,12 +17,13 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
 import org.jnario.spec.doc.SpecDocGenerator;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("SpecDocGenerator")
 @RunWith(ExampleGroupRunner.class)
+@Named("SpecDocGenerator")
 @CreateWith(value = SpecTestCreator.class)
 public class SpecDocGeneratorSpec {
   @Subject
@@ -45,7 +45,7 @@ public class SpecDocGeneratorSpec {
     boolean _notEquals = (!Objects.equal(scenarioDoc, null));
     boolean _contains = scenarioDoc.contains("<title>Example</title>");
     boolean _and = (_notEquals && _contains);
-    Assert.assertTrue("\nExpected scenarioDoc != null && \r\n\t\t\t\tscenarioDoc.contains(\"<title>Example</title>\") but"
+    Assert.assertTrue("\nExpected scenarioDoc != null && \n\t\t\t\tscenarioDoc.contains(\"<title>Example</title>\") but"
      + "\n     scenarioDoc != null is " + new StringDescription().appendValue(_notEquals).toString()
      + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString()
      + "\n     scenarioDoc.contains(\"<title>Example</title>\") is " + new StringDescription().appendValue(_contains).toString() + "\n", _and);
@@ -139,10 +139,10 @@ public class SpecDocGeneratorSpec {
     _builder_1.append("x = x + 1</pre>");
     String _string = _builder_1.toString();
     boolean _contains = scenarioDoc.contains(_string);
-    Assert.assertTrue("\nExpected scenarioDoc.contains(\'\'\'\r\n\t\t<p id=\"should_do_stuff\" class=\"example notrun\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\'.toString()) but"
+    Assert.assertTrue("\nExpected scenarioDoc.contains(\'\'\'\n\t\t<p id=\"should_do_stuff\" class=\"example notrun\"><strong>should do stuff</strong></p>\n\t\t<p>Example documentation</p>\n\t\t<pre class=\"prettyprint lang-spec linenums\">\n\t\tvar x = 0\n\t\tx = x + 1</pre>\'\'\'.toString()) but"
      + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString()
-     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\" class=\"example notrun\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\'.toString() is " + new StringDescription().appendValue(_string).toString()
-     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\" class=\"example notrun\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _contains);
+     + "\n     \'\'\'\n\t\t<p id=\"should_do_stuff\" class=\"example notrun\"><strong>should do stuff</strong></p>\n\t\t<p>Example documentation</p>\n\t\t<pre class=\"prettyprint lang-spec linenums\">\n\t\tvar x = 0\n\t\tx = x + 1</pre>\'\'\'.toString() is " + new StringDescription().appendValue(_string).toString()
+     + "\n     \'\'\'\n\t\t<p id=\"should_do_stuff\" class=\"example notrun\"><strong>should do stuff</strong></p>\n\t\t<p>Example documentation</p>\n\t\t<pre class=\"prettyprint lang-spec linenums\">\n\t\tvar x = 0\n\t\tx = x + 1</pre>\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _contains);
     
   }
   
@@ -237,9 +237,9 @@ public class SpecDocGeneratorSpec {
     _builder_1.newLine();
     _builder_1.append("1 + 1 =&gt; 2</pre>");
     boolean _should_contain = Should.should_contain(scenarioDoc, _builder_1);
-    Assert.assertFalse("\nExpected scenarioDoc should not contain \'\'\'<pre class=\"prettyprint lang-spec linenums\">\r\n1 + 1 =&gt; 2</pre>\'\'\' but"
+    Assert.assertFalse("\nExpected scenarioDoc should not contain \'\'\'<pre class=\"prettyprint lang-spec linenums\">\n1 + 1 =&gt; 2</pre>\'\'\' but"
      + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString()
-     + "\n     \'\'\'<pre class=\"prettyprint lang-spec linenums\">\r\n1 + 1 =&gt; 2</pre>\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _should_contain);
+     + "\n     \'\'\'<pre class=\"prettyprint lang-spec linenums\">\n1 + 1 =&gt; 2</pre>\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _should_contain);
     
   }
   

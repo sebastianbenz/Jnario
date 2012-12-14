@@ -4,7 +4,6 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.hamcrest.StringDescription;
 import org.jnario.ExampleTable;
 import org.jnario.jnario.test.util.Query;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -12,12 +11,13 @@ import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.tests.unit.naming.ExampleNameProviderSpec;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("toJavaClassName[ExampleTable]")
 @RunWith(ExampleGroupRunner.class)
+@Named("toJavaClassName[ExampleTable]")
 public class ExampleNameProviderToJavaClassNameExampleTableSpec extends ExampleNameProviderSpec {
   @Subject
   public ExampleNameProvider subject;

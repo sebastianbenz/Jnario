@@ -14,7 +14,6 @@ import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Specs;
 import org.jnario.jnario.test.util.SuiteTestCreator;
 import org.jnario.jnario.test.util.Suites;
-import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.Contains;
@@ -30,14 +29,15 @@ import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.unit.SpecResolverEvaluatesRegularExpressionsSpec;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @Contains(SpecResolverEvaluatesRegularExpressionsSpec.class)
 @SuppressWarnings("all")
-@Named("SpecResolver")
 @RunWith(ExampleGroupRunner.class)
+@Named("SpecResolver")
 @CreateWith(value = SuiteTestCreator.class)
 public class SpecResolverSpec {
   @Subject

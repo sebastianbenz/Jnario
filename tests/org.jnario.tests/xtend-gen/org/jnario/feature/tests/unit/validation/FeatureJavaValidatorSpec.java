@@ -30,8 +30,8 @@ import org.junit.runner.RunWith;
  */
 @Contains({ FeatureJavaValidatorFeaturesMustHaveDescriptionsSpec.class, FeatureJavaValidatorScenariosMustHaveDifferentNamesSpec.class, FeatureJavaValidatorScenariosMustHaveDescriptionsSpec.class, FeatureJavaValidatorStepsMustHaveDescriptionsSpec.class })
 @SuppressWarnings("all")
-@Named("FeatureJavaValidator")
 @RunWith(ExampleGroupRunner.class)
+@Named("FeatureJavaValidator")
 @CreateWith(value = FeatureTestCreator.class)
 public class FeatureJavaValidatorSpec {
   @Inject

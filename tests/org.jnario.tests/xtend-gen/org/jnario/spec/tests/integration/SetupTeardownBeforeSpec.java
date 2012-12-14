@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Before")
 @RunWith(ExampleGroupRunner.class)
+@Named("Before")
 public class SetupTeardownBeforeSpec extends SetupTeardownSpec {
   @Test
   @Named("Executes before each test")

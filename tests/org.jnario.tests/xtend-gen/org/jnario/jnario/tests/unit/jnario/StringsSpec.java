@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 
 @Contains({ StringsStartsWithWordSpec.class, StringsMakeJunitConformSpec.class, StringsTrimSpec.class, StringsTrailingWhitespaceSpec.class, StringsEndsWithSpec.class })
 @SuppressWarnings("all")
-@Named("Strings")
 @RunWith(ExampleGroupRunner.class)
+@Named("Strings")
 public class StringsSpec {
 }

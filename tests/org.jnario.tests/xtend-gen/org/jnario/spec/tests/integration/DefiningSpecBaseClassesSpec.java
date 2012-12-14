@@ -13,8 +13,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Defining Spec base classes")
 @RunWith(ExampleGroupRunner.class)
+@Named("Defining Spec base classes")
 @CreateWith(value = SpecTestCreator.class)
 public class DefiningSpecBaseClassesSpec {
   @Inject

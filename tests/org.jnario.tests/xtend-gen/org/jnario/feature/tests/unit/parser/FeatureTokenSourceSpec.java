@@ -14,19 +14,19 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import org.hamcrest.StringDescription;
 import org.jnario.feature.parser.FeatureTokenSource;
 import org.jnario.feature.parser.antlr.internal.InternalFeatureLexer;
-import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("FeatureTokenSource")
 @RunWith(ExampleGroupRunner.class)
+@Named("FeatureTokenSource")
 public class FeatureTokenSourceSpec {
   @Subject
   public FeatureTokenSource subject;

@@ -3,18 +3,18 @@ package org.jnario.jnario.tests.unit.jnario;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Specs;
 import org.jnario.jnario.tests.unit.jnario.ExecutableIsPendingSpec;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.spec.Example;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Example")
 @RunWith(ExampleGroupRunner.class)
+@Named("Example")
 public class ExecutableIsPendingExampleSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("pendingExample.isPending[] should be true")

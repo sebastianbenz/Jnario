@@ -5,7 +5,6 @@ import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.report.Failed;
 import org.jnario.report.Passed;
@@ -14,13 +13,14 @@ import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Scenario")
 @RunWith(ExampleGroupRunner.class)
+@Named("Scenario")
 @CreateWith(value = FeatureTestCreator.class)
 public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2ResultMappingSpec {
   @Before

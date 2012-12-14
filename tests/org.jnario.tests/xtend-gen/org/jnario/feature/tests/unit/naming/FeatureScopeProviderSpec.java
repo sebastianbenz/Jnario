@@ -18,8 +18,8 @@ import org.junit.runner.RunWith;
 
 @Contains(FeatureScopeProviderStepReferenceSpec.class)
 @SuppressWarnings("all")
-@Named("FeatureScopeProvider")
 @RunWith(ExampleGroupRunner.class)
+@Named("FeatureScopeProvider")
 @CreateWith(value = FeatureTestCreator.class)
 public class FeatureScopeProviderSpec {
   @Inject

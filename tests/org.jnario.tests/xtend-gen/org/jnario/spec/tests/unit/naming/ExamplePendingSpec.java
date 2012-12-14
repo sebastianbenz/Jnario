@@ -2,7 +2,6 @@ package org.jnario.spec.tests.unit.naming;
 
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
-import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -11,12 +10,13 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.unit.naming.ExamplePendingSpecExamples;
 import org.jnario.spec.tests.unit.naming.ExampleSpec;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Pending")
 @RunWith(ExampleGroupRunner.class)
+@Named("Pending")
 public class ExamplePendingSpec extends ExampleSpec {
   public ExampleTable<ExamplePendingSpecExamples> _initExamplePendingSpecExamples() {
     return ExampleTable.create("examples", 

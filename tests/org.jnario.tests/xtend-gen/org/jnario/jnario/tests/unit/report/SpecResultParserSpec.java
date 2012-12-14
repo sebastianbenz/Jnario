@@ -21,8 +21,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
 @SuppressWarnings("all")
-@Named("SpecResultParser")
 @RunWith(ExampleGroupRunner.class)
+@Named("SpecResultParser")
 public class SpecResultParserSpec {
   @Subject
   public SpecResultParser subject;

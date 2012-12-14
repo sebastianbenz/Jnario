@@ -4,7 +4,6 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.jnario.StringsMakeJunitConformSpecExamples;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
-import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -12,12 +11,13 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.util.Strings;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("makeJunitConform")
 @RunWith(ExampleGroupRunner.class)
+@Named("makeJunitConform")
 public class StringsMakeJunitConformSpec extends StringsSpec {
   public ExampleTable<StringsMakeJunitConformSpecExamples> _initStringsMakeJunitConformSpecExamples() {
     return ExampleTable.create("examples", 

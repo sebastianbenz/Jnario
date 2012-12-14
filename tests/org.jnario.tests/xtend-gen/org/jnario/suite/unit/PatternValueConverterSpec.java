@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 
 @Contains({ PatternValueConverterToStringStringSpec.class, PatternValueConverterToValueStringINodeSpec.class })
 @SuppressWarnings("all")
-@Named("PatternValueConverter")
 @RunWith(ExampleGroupRunner.class)
+@Named("PatternValueConverter")
 public class PatternValueConverterSpec {
 }

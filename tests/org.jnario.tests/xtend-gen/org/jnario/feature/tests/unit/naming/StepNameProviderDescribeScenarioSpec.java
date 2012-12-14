@@ -4,17 +4,17 @@ import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
 import org.jnario.jnario.test.util.Features;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("^describe[Scenario]")
 @RunWith(ExampleGroupRunner.class)
+@Named("^describe[Scenario]")
 public class StepNameProviderDescribeScenarioSpec extends StepNameProviderSpec {
   @Test
   @Named("scenario[\\\" With whitespace \\\"].desc =>  \\\"With whitespace\\\"")

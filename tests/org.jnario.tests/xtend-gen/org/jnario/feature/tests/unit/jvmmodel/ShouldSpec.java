@@ -13,8 +13,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Should")
 @RunWith(ExampleGroupRunner.class)
+@Named("Should")
 @CreateWith(value = FeatureTestCreator.class)
 public class ShouldSpec {
   @Inject

@@ -22,8 +22,8 @@ import org.junit.runner.RunWith;
 
 @Contains({ SuiteNodeBuilderParentSpec.class, SuiteNodeBuilderLevelSpec.class })
 @SuppressWarnings("all")
-@Named("SuiteNodeBuilder")
 @RunWith(ExampleGroupRunner.class)
+@Named("SuiteNodeBuilder")
 @CreateWith(value = SuiteTestCreator.class)
 public class SuiteNodeBuilderSpec {
   @Inject

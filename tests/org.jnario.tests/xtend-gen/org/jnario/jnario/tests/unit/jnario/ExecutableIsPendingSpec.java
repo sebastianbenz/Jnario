@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 
 @Contains({ ExecutableIsPendingFeatureSpec.class, ExecutableIsPendingScenarioSpec.class, ExecutableIsPendingStepSpec.class, ExecutableIsPendingExampleSpec.class, ExecutableIsPendingExampleGroupSpec.class, ExecutableIsPendingSuiteSpec.class })
 @SuppressWarnings("all")
-@Named("isPending")
 @RunWith(ExampleGroupRunner.class)
+@Named("isPending")
 public class ExecutableIsPendingSpec extends ExecutableSpec {
 }

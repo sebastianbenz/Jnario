@@ -8,13 +8,13 @@ import org.jnario.feature.feature.GivenReference;
 import org.jnario.feature.feature.StepImplementation;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.test.util.ModelStore;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -25,8 +25,8 @@ import org.junit.runner.RunWith;
  * (see last example).
  */
 @SuppressWarnings("all")
-@Named("Referencing other Steps")
 @RunWith(ExampleGroupRunner.class)
+@Named("Referencing other Steps")
 @CreateWith(value = FeatureTestCreator.class)
 public class ReferencingOtherStepsSpec {
   @Inject

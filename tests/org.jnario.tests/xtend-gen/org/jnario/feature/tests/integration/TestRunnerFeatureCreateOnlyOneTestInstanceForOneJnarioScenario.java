@@ -37,7 +37,6 @@ public class TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario exte
   
   @Test
   @Order(2)
-  @Ignore
   @Named("And it should execute successfully")
   public void andItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);

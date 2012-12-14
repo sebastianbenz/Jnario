@@ -13,7 +13,6 @@ import org.jnario.Executable;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.jnario.tests.integration.ParsingSpecResultsFromJUnitXMLReportsFeature;
-import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.JnarioIteratorExtensions;
 import org.jnario.lib.Should;
@@ -29,6 +28,7 @@ import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.spec.ExampleGroup;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

@@ -8,7 +8,6 @@ import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
@@ -18,12 +17,13 @@ import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
 import org.jnario.spec.naming.SpecQualifiedNameProvider;
 import org.jnario.spec.spec.ExampleGroup;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("SpecQualifiedNameProvider")
 @RunWith(ExampleGroupRunner.class)
+@Named("SpecQualifiedNameProvider")
 @CreateWith(value = SpecTestCreator.class)
 public class SpecQualifiedNameProviderSpec {
   @Subject

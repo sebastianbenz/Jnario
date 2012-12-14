@@ -19,8 +19,8 @@ import org.junit.runner.RunWith;
 
 @Contains({ ExampleNameProviderToJavaClassNameExampleGroupSpec.class, ExampleNameProviderToJavaClassNameExampleTableSpec.class, ExampleNameProviderToMethodNameExampleSpec.class, ExampleNameProviderToMethodNameBeforeSpec.class, ExampleNameProviderToMethodNameAfterSpec.class, ExampleNameProviderToFieldNameExampleTableSpec.class, ExampleNameProviderDescribeExampleGroupSpec.class, ExampleNameProviderDescribeExampleSpec.class })
 @SuppressWarnings("all")
-@Named("ExampleNameProvider")
 @RunWith(ExampleGroupRunner.class)
+@Named("ExampleNameProvider")
 @CreateWith(value = SpecTestCreator.class)
 public class ExampleNameProviderSpec {
   public Query parse(final CharSequence content) {

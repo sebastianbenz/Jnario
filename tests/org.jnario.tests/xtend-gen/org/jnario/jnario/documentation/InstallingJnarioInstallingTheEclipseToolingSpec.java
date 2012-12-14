@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
  * [Xtend distributions](http://www.eclipse.org/xtend/download.html).
  */
 @SuppressWarnings("all")
-@Named("Installing the Eclipse Tooling")
 @RunWith(ExampleGroupRunner.class)
+@Named("Installing the Eclipse Tooling")
 public class InstallingJnarioInstallingTheEclipseToolingSpec extends InstallingJnarioSpec {
 }

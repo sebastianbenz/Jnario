@@ -11,8 +11,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("Scenarios must have different names")
 @RunWith(ExampleGroupRunner.class)
+@Named("Scenarios must have different names")
 public class FeatureJavaValidatorScenariosMustHaveDifferentNamesSpec extends FeatureJavaValidatorSpec {
   @Test
   @Named("\\\'\\\'\\\' Feature: My Feature Scenario: Hallo Scenario: Hallo \\\'\\\'\\\'.select[typeof[Feature]].assertErrorContains[\\\"Duplicate scenario\\\"]")

@@ -8,19 +8,19 @@ import org.hamcrest.StringDescription;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.doc.HtmlAssets;
 import org.jnario.jnario.test.util.SpecTestCreator;
-import org.jnario.lib.Assert;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("HtmlAssets")
 @RunWith(ExampleGroupRunner.class)
+@Named("HtmlAssets")
 @CreateWith(value = SpecTestCreator.class)
 public class HtmlAssetsSpec {
   @Subject

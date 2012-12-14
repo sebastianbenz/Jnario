@@ -3,7 +3,6 @@ package org.jnario.suite.unit;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Suites;
-import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -15,12 +14,13 @@ import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.unit.SuiteClassNameProviderSpec;
 import org.jnario.suite.unit.SuiteClassNameProviderToJavaClassNameSpecExamples;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@Named("toJavaClassName")
 @RunWith(ExampleGroupRunner.class)
+@Named("toJavaClassName")
 public class SuiteClassNameProviderToJavaClassNameSpec extends SuiteClassNameProviderSpec {
   @Subject
   public SuiteClassNameProvider subject;

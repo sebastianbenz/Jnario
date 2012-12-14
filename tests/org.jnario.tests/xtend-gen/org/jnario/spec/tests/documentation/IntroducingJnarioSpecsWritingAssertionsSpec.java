@@ -5,12 +5,12 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Helpers;
-import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.documentation.IntroducingJnarioSpecsSpec;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -18,8 +18,8 @@ import org.junit.runner.RunWith;
  * Jnario provides different statements for writing assertions ([more...](/org/jnario/spec/tests/integration/AssertionSpec.html)).
  */
 @SuppressWarnings("all")
-@Named("Writing Assertions")
 @RunWith(ExampleGroupRunner.class)
+@Named("Writing Assertions")
 public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnarioSpecsSpec {
   /**
    * The `assert` statement fails if

@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 
 @Contains({ AssertionIntroductionSpec.class, AssertionNoMoreDebuggingSpec.class })
 @SuppressWarnings("all")
-@Named("Assertion")
 @RunWith(ExampleGroupRunner.class)
+@Named("Assertion")
 public class AssertionSpec {
 }
