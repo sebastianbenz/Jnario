@@ -44,7 +44,7 @@ parseScenario('''
       Given a step with an implementation
         &quot;the implementation&quot;
 ''')
-//assert step.stepExpression == subject.expressionOf(step)</pre>
+assert step.expression == subject.expressionOf(step)</pre>
 </li><li><p id="should_copy_the_referenced_step_s_implementation_and_set_the_referencing_step" class="example notrun"><strong>should copy the referenced step's implementation and set the referencing step</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseScenario('''
@@ -56,10 +56,10 @@ parseScenario('''
       Given a step 
         &quot;the implementation&quot;
 ''')
-/*val expr = subject.expressionOf(step)
+val expr = subject.expressionOf(step)
 assert expr != null
-assert step.stepExpression == expr
-assert (step as StepReference).reference.stepExpression != expr */</pre>
+assert step.expression == expr
+assert (step as StepReference).reference.expression != expr</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -84,15 +84,17 @@ import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SpecTestCreator
 
 import static org.jnario.jnario.test.util.Query.*
+import org.jnario.jnario.test.util.FeatureTestCreator
+import org.jnario.feature.feature.StepReference
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-@CreateWith(typeof(SpecTestCreator))
+@CreateWith(typeof(FeatureTestCreator))
 describe StepExpressionProvider{
 
   @Inject extension ModelStore modelStore
-  @Ignore
+
   fact &quot;should return the name for a step with definition&quot;{
     parseScenario('''
       Feature: Example
@@ -100,9 +102,9 @@ describe StepExpressionProvider{
           Given a step with an implementation
             &quot;the implementation&quot;
     ''')
-    //assert step.stepExpression == subject.expressionOf(step)
+    assert step.expression == subject.expressionOf(step)
   }
-  @Ignore
+
   fact &quot;should copy the referenced step's implementation and set the referencing step&quot;{
     parseScenario('''
       Feature: Example
@@ -113,10 +115,10 @@ describe StepExpressionProvider{
           Given a step 
             &quot;the implementation&quot;
     ''')
-    /*val expr = subject.expressionOf(step)
+    val expr = subject.expressionOf(step)
     assert expr != null
-    assert step.stepExpression == expr
-    assert (step as StepReference).reference.stepExpression != expr */
+    assert step.expression == expr
+    assert (step as StepReference).reference.expression != expr 
   }
   
   def step(){

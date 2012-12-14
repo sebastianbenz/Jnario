@@ -120,6 +120,27 @@ describe 'Richstrings'{
     }
 }
 &quot;.executesSuccessfully</pre>
+</li><li><p id="supports_enums_in_tables" class="example notrun"><strong>supports enums in tables</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  import static org.jnario.spec.tests.unit.compiler.MyEnum.*
+  
+  describe &quot;Tests type inference of the table columns&quot;{
+    
+    
+    def myTable {
+      | value  |
+      | VALUE1 |
+      | VALUE2 |
+      }    
+    
+    fact &quot;Table column type get inferred by the stand-alone compile correctly&quot; {
+      myTable.forEach [
+        value should not be null
+      ]
+    }
+  }
+'''.executesSuccessfully</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -234,6 +255,27 @@ describe &quot;Compiler&quot;{
     &quot;.executesSuccessfully
   }
   
+  fact &quot;supports enums in tables&quot;{
+    '''
+      import static org.jnario.spec.tests.unit.compiler.MyEnum.*
+      
+      describe &quot;Tests type inference of the table columns&quot;{
+        
+        
+        def myTable {
+          | value  |
+          | VALUE1 |
+          | VALUE2 |
+          }    
+        
+        fact &quot;Table column type get inferred by the stand-alone compile correctly&quot; {
+          myTable.forEach [
+            value should not be null
+          ]
+        }
+      }
+    '''.executesSuccessfully
+  }
 }
 </pre>
 						    </p></div>

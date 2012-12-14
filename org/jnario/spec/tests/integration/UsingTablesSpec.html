@@ -71,7 +71,7 @@ describe &quot;Example Tables&quot;{
     examples should not be null
   }     
 }</pre>
-</li><li><p id="expressions_in_tables" class="example notrun"><strong>expressions in tables</strong></p>
+</li><li><p id="Expressions_in_tables" class="example notrun"><strong>Expressions in tables</strong></p>
 <p>Values in an example table can be arbitrary non-void expressions, for examples closures:</p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
@@ -90,7 +90,7 @@ describe &quot;Example Tables&quot;{
     ]
   }       
 }</pre>
-</li><li><p id="referencing_members" class="example notrun"><strong>referencing members</strong></p>
+</li><li><p id="rReferencing_members" class="example notrun"><strong>rReferencing members</strong></p>
 <p>It is also possible to call methods or reference fields from within a table.</p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
@@ -115,7 +115,7 @@ describe &quot;Example Tables&quot;{
     ] 
   }   
 }</pre>
-</li><li><p id="Specifying_column_types" class="example notrun"><strong>Specifying column types</strong></p>
+</li><li><p id="Column_type_inference" class="example notrun"><strong>Column type inference</strong></p>
 <p>Jnario automatically infers the type of a column. It will use the common supertype of all expressions in a column.</p>
 <pre class="prettyprint lang-spec linenums">
 package bootstrap
@@ -132,6 +132,25 @@ describe &quot;Example Tables&quot;{
   fact &quot;computes the common super type&quot;{
     examplesWithType.forEach[
       assert list.empty // works only if the type of list has been inferred as List&lt;String&gt;
+    ]
+  }
+}</pre>
+</li><li><p id="Specifying_column_types" class="example notrun"><strong>Specifying column types</strong></p>
+<p>It is also possible to explicitly define the type of a column.</p>
+<pre class="prettyprint lang-spec linenums">
+import java.util.ArrayList
+import java.util.LinkedList
+
+describe &quot;Example Tables&quot;{
+  def examplesWithType{
+    | Iterable&lt;String&gt; list    |
+    | new ArrayList&lt;String&gt;()  |
+    | new LinkedList&lt;String&gt;() |
+  }
+    
+  fact &quot;computes the common super type&quot;{
+    examplesWithType.forEach[
+      assert list.empty
     ]
   }
 }</pre>
@@ -173,22 +192,24 @@ errorMessage[
 ].is('''
   example failed
   
-          | value1     | value2     | sum     |
-          | 1          | 2          | 3       | ?
-          | 4          | 5          | 7       | ?     (1)
-          | 7          | 8          | 14      | ?     (2)
+          | value1     | value2     | sum      |
+          | &lt;1&gt;        | &lt;2&gt;        | &lt;3&gt;      | &#10003;
+          | &lt;4&gt;        | &lt;5&gt;        | &lt;7&gt;      | &#10008;     (1)
+          | &lt;7&gt;        | &lt;8&gt;        | &lt;14&gt;     | &#10008;     (2)
   
-  (1) Expected value1 + value2 =&gt; sum but
-           value1 + value2 is 9
-           value1 is 4
-           value2 is 5
-           sum is 7
-      
-  (2) Expected value1 + value2 =&gt; sum but
-           value1 + value2 is 15
-           value1 is 7
-           value2 is 8
-           sum is 14''')</pre>
+  (1) java.lang.AssertionError: 
+  Expected value1 + value2 =&gt; sum but
+       value1 + value2 is &lt;9&gt;
+       value1 is &lt;4&gt;
+       value2 is &lt;5&gt;
+       sum is &lt;7&gt;
+  
+  (2) java.lang.AssertionError: 
+  Expected value1 + value2 =&gt; sum but
+       value1 + value2 is &lt;15&gt;
+       value1 is &lt;7&gt;
+       value2 is &lt;8&gt;
+       sum is &lt;14&gt;''')</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -204,13 +225,14 @@ errorMessage[
  *******************************************************************************/
 package org.jnario.spec.tests.integration
 
-import static extension org.jnario.jnario.test.util.Helpers.*
-import static extension org.jnario.jnario.test.util.SpecExecutor.*
-import org.junit.Ignore
-import org.jnario.runner.CreateWith
-import org.jnario.jnario.test.util.SpecTestCreator
-import org.jnario.jnario.test.util.BehaviorExecutor
 import com.google.inject.Inject
+import org.jnario.jnario.test.util.BehaviorExecutor
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.runner.CreateWith
+
+import static extension org.jnario.jnario.test.util.Helpers.*
+import static extension org.jnario.lib.ExampleTableIterators.*
+import static extension org.jnario.lib.Should.*
 
 /*
  * Example tables are a great way to structure input and expected output data.
@@ -273,7 +295,7 @@ describe &quot;Using Tables&quot;{
    * Values in an example table can be arbitrary non-void expressions, for examples closures:
    * @filter('''|.executesSuccessfully) 
    */
-  fact &quot;expressions in tables&quot;{
+  fact &quot;Expressions in tables&quot;{
     '''
     package bootstrap
     
@@ -298,7 +320,7 @@ describe &quot;Using Tables&quot;{
    * It is also possible to call methods or reference fields from within a table.
    * @filter('''|.executesSuccessfully) 
    */
-  fact &quot;referencing members&quot;{
+  fact &quot;rReferencing members&quot;{
     '''
     package bootstrap
     
@@ -331,7 +353,7 @@ describe &quot;Using Tables&quot;{
    * common supertype of all expressions in a column. 
    * @filter('''|.executesSuccessfully) 
    */
-  fact &quot;Specifying column types&quot;{
+  fact &quot;Column type inference&quot;{
   '''
   package bootstrap
   
@@ -347,6 +369,31 @@ describe &quot;Using Tables&quot;{
     fact &quot;computes the common super type&quot;{
       examplesWithType.forEach[
         assert list.empty // works only if the type of list has been inferred as List&lt;String&gt;
+      ]
+    }
+  }
+  '''.executesSuccessfully       
+  }
+  
+  /*
+   * It is also possible to explicitly define the type of a column. 
+   * @filter('''|.executesSuccessfully) 
+   */
+  fact &quot;Specifying column types&quot;{
+  '''
+  import java.util.ArrayList
+  import java.util.LinkedList
+  
+  describe &quot;Example Tables&quot;{
+    def examplesWithType{
+      | Iterable&lt;String&gt; list    |
+      | new ArrayList&lt;String&gt;()  |
+      | new LinkedList&lt;String&gt;() |
+    }
+      
+    fact &quot;computes the common super type&quot;{
+      examplesWithType.forEach[
+        assert list.empty
       ]
     }
   }
@@ -370,7 +417,6 @@ describe &quot;Using Tables&quot;{
    * `ExampleTable#forEach` executes the passed in procedure for all table rows. 
    * It will generate an error message for all procedures that have failed with the reason why they failed.
    */
-   @Ignore
    fact &quot;Error message&quot;{
     errorMessage[
       example.forEach[
@@ -379,22 +425,24 @@ describe &quot;Using Tables&quot;{
     ].is('''
       example failed
       
-              | value1     | value2     | sum     |
-              | 1          | 2          | 3       | ?
-              | 4          | 5          | 7       | ?     (1)
-              | 7          | 8          | 14      | ?     (2)
+              | value1     | value2     | sum      |
+              | &lt;1&gt;        | &lt;2&gt;        | &lt;3&gt;      | &#10003;
+              | &lt;4&gt;        | &lt;5&gt;        | &lt;7&gt;      | &#10008;     (1)
+              | &lt;7&gt;        | &lt;8&gt;        | &lt;14&gt;     | &#10008;     (2)
       
-      (1) Expected value1 + value2 =&gt; sum but
-               value1 + value2 is 9
-               value1 is 4
-               value2 is 5
-               sum is 7
-          
-      (2) Expected value1 + value2 =&gt; sum but
-               value1 + value2 is 15
-               value1 is 7
-               value2 is 8
-               sum is 14''')
+      (1) java.lang.AssertionError: 
+      Expected value1 + value2 =&gt; sum but
+           value1 + value2 is &lt;9&gt;
+           value1 is &lt;4&gt;
+           value2 is &lt;5&gt;
+           sum is &lt;7&gt;
+      
+      (2) java.lang.AssertionError: 
+      Expected value1 + value2 =&gt; sum but
+           value1 + value2 is &lt;15&gt;
+           value1 is &lt;7&gt;
+           value2 is &lt;8&gt;
+           sum is &lt;14&gt;''')
   }    
 
 }
