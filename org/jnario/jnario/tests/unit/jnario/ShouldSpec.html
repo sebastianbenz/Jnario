@@ -85,6 +85,13 @@ assert query.first(typeof(Should)).isNot</pre>
     fact new Stack().pop throws NoSuchElementException
   }
 '''.executionFails</pre>
+</li><li><p id="compares_arrays" class="example notrun"><strong>compares arrays</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  describe &quot;Test&quot;{
+    fact list(&quot;red&quot;).toArray =&gt; list(&quot;red&quot;).toArray
+  }
+'''.executesSuccessfully</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -167,6 +174,14 @@ describe Should{
         fact new Stack().pop throws NoSuchElementException
       }
     '''.executionFails
+  }
+  
+  fact &quot;compares arrays&quot;{
+    '''
+      describe &quot;Test&quot;{
+        fact list(&quot;red&quot;).toArray =&gt; list(&quot;red&quot;).toArray
+      }
+    '''.executesSuccessfully
   }
   
 }
