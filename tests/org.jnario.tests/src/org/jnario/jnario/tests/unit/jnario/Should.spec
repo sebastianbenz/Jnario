@@ -76,4 +76,12 @@ describe Should{
 		'''.executionFails
 	}
 	
+	fact "compares arrays"{
+		'''
+			describe "Test"{
+				fact list("red").toArray => list("red").toArray
+			}
+		'''.executesSuccessfully
+	}
+	
 }

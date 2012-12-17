@@ -9,6 +9,8 @@ package org.jnario.lib;
 
 import static com.google.common.collect.Iterables.contains;
 
+import java.util.Arrays;
+
 import org.eclipse.xtext.xbase.lib.Functions;
 import org.eclipse.xtext.xbase.lib.Procedures;
 import org.hamcrest.BaseMatcher;
@@ -52,7 +54,17 @@ public class Should{
 			Object result = ((Functions.Function1<Object,Object>)expected).apply(actual);
 			return result instanceof Boolean && ((Boolean)result);
 		}
+		if(isArray(actual) && isArray(expected)){
+			return Arrays.equals((Object[])actual, (Object[])expected);
+		}
 		return Objects.equal(actual, expected);
+	}
+
+	private static boolean isArray(Object obj) {
+		if(obj == null){
+			return false;
+		}
+		return obj.getClass().isArray();
 	}
 
 // does not work due to a type inference problem in xtend

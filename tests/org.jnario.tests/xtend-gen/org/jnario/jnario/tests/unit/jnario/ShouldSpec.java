@@ -8,18 +8,18 @@ import org.jnario.jnario.test.util.BehaviorExecutor;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.jnario.test.util.SpecTestCreator;
+import org.jnario.lib.Assert;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Should")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class ShouldSpec {
   @Inject
@@ -142,5 +142,20 @@ public class ShouldSpec {
     _builder.append("}");
     _builder.newLine();
     this._behaviorExecutor.executionFails(_builder);
+  }
+  
+  @Test
+  @Named("compares arrays")
+  @Order(7)
+  public void _comparesArrays() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Test\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact list(\"red\").toArray => list(\"red\").toArray");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
   }
 }
