@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Nesting before & after")
+@RunWith(ExampleGroupRunner.class)
 public class SetupTeardownNestingBeforeAfterSpec extends SetupTeardownSpec {
   @Test
   @Named("Before and after in parent are executed for childs")

@@ -7,6 +7,7 @@ import org.hamcrest.StringDescription;
 import org.jnario.Executable;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
+import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
@@ -18,13 +19,12 @@ import org.jnario.runner.Subject;
 import org.jnario.spec.jvmmodel.SpecExecutableProvider;
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("SpecExecutableProvider")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class SpecExecutableProviderSpec {
   @Subject

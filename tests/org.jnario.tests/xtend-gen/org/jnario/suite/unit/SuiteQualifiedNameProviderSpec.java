@@ -8,6 +8,7 @@ import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SuiteTestCreator;
+import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
@@ -17,13 +18,12 @@ import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
 import org.jnario.suite.naming.SuiteQualifiedNameProvider;
 import org.jnario.suite.suite.Suite;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("SuiteQualifiedNameProvider")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SuiteTestCreator.class)
 public class SuiteQualifiedNameProviderSpec {
   @Subject

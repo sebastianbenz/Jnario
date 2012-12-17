@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Given, When, Then...")
+@RunWith(ExampleGroupRunner.class)
 public class GivenWhenThenSpec {
   /**
    * If you have multiple **Givens**, **Whens** or **Thens** you can

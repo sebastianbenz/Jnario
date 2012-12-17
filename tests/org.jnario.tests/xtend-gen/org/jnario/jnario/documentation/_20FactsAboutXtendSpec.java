@@ -28,8 +28,8 @@ import org.junit.runner.RunWith;
  */
 @Contains({ _20FactsAboutXtendAModernizedJavaSpec.class, _20FactsAboutXtendSomeImportantDifferencesSpec.class, _20FactsAboutXtendTheUberSwitchExpressionSpec.class, _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec.class, _20FactsAboutXtendFunctionalProgrammingFTWSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("20 Facts about Xtend")
+@RunWith(ExampleGroupRunner.class)
 public class _20FactsAboutXtendSpec {
   public <T extends Object> Iterable<T> iterable(final T... elements) {
     final Function0<Iterator<T>> _function = new Function0<Iterator<T>>() {

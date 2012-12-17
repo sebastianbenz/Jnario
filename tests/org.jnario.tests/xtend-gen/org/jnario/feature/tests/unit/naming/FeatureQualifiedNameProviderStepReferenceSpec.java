@@ -2,17 +2,17 @@ package org.jnario.feature.tests.unit.naming;
 
 import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.unit.naming.FeatureQualifiedNameProviderSpec;
+import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("StepReference")
+@RunWith(ExampleGroupRunner.class)
 public class FeatureQualifiedNameProviderStepReferenceSpec extends FeatureQualifiedNameProviderSpec {
   @Test
   @Named("strips keyword")

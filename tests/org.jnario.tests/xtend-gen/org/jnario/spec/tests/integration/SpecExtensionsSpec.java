@@ -48,8 +48,8 @@ import org.junit.runner.RunWith;
  * each fact/spec, respectively:
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Spec Extensions")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class SpecExtensionsSpec {
   @Inject

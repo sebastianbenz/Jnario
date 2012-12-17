@@ -12,12 +12,12 @@ import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Helpers;
+import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -25,8 +25,8 @@ import org.junit.runner.RunWith;
  * You can use the `should` statement to express the expected behavior of objects.
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Using Should")
+@RunWith(ExampleGroupRunner.class)
 public class UsingShouldSpec {
   /**
    * `should` passes if the result of the left expression is
@@ -40,8 +40,8 @@ public class UsingShouldSpec {
   public void _toPass() throws Exception {
     boolean _should_be = Should.<Boolean>should_be(
       Boolean.valueOf(true), true);
-    Assert.assertTrue("\nExpected // equality\n\t\ttrue should be true but"
-     + "\n     // equality\n\t\ttrue should be true is " + new StringDescription().appendValue(true).toString() + "\n", _should_be);
+    Assert.assertTrue("\nExpected // equality\r\n\t\ttrue should be true but"
+     + "\n     // equality\r\n\t\ttrue should be true is " + new StringDescription().appendValue(true).toString() + "\n", _should_be);
     
     int _plus = (1 + 1);
     boolean _should_be_1 = Should.should_be(Integer.valueOf(_plus), Integer.valueOf(1));
@@ -60,8 +60,8 @@ public class UsingShouldSpec {
     
     boolean _doubleArrow_1 = Should.operator_doubleArrow(
       "a string", String.class);
-    Assert.assertTrue("\nExpected // types\n\t\t\"a string\" => typeof(String) but"
-     + "\n     // types\n\t\t\"a string\" => typeof(String) is " + new StringDescription().appendValue(_doubleArrow_1).toString() + "\n", _doubleArrow_1);
+    Assert.assertTrue("\nExpected // types\r\n\t\t\"a string\" => typeof(String) but"
+     + "\n     // types\r\n\t\t\"a string\" => typeof(String) is " + new StringDescription().appendValue(_doubleArrow_1).toString() + "\n", _doubleArrow_1);
     
     Class<? extends Object> _class = "a string".getClass();
     boolean _doubleArrow_2 = Should.operator_doubleArrow(_class, String.class);
@@ -70,8 +70,8 @@ public class UsingShouldSpec {
     
     boolean _should_contain = Should.should_contain(
       "something", "thing");
-    Assert.assertTrue("\nExpected // strings\n\t\t\"something\" should contain \"thing\" but"
-     + "\n     // strings\n\t\t\"something\" should contain \"thing\" is " + new StringDescription().appendValue(true).toString() + "\n", _should_contain);
+    Assert.assertTrue("\nExpected // strings\r\n\t\t\"something\" should contain \"thing\" but"
+     + "\n     // strings\r\n\t\t\"something\" should contain \"thing\" is " + new StringDescription().appendValue(true).toString() + "\n", _should_contain);
     
     boolean _should_contain_1 = Should.should_contain(
       "something", "any");
@@ -80,8 +80,8 @@ public class UsingShouldSpec {
     
     List<String> _list = JnarioCollectionLiterals.<String>list("something");
     boolean _should_contain_2 = Should.<String>should_contain(_list, "something");
-    Assert.assertTrue("\nExpected // iterables\n\t\tlist(\"something\") should contain \"something\" but"
-     + "\n     // iterables\n\t\tlist(\"something\") is " + new StringDescription().appendValue(_list).toString() + "\n", _should_contain_2);
+    Assert.assertTrue("\nExpected // iterables\r\n\t\tlist(\"something\") should contain \"something\" but"
+     + "\n     // iterables\r\n\t\tlist(\"something\") is " + new StringDescription().appendValue(_list).toString() + "\n", _should_contain_2);
     
     List<String> _list_1 = JnarioCollectionLiterals.<String>list("something");
     boolean _should_contain_3 = Should.<String>should_contain(_list_1, "something else");
@@ -110,20 +110,28 @@ public class UsingShouldSpec {
     Assert.assertTrue("\nExpected greeting => typeof(String) but"
      + "\n     greeting is " + new StringDescription().appendValue(greeting).toString() + "\n", _doubleArrow_3);
     
+    boolean expectedException = false;
+    String message = "";
     try{
       Stack<String> _stack = new Stack<String>();
       _stack.pop();
-      Assert.fail("Expected " + EmptyStackException.class.getName() + " in \n     // expecting exceptions\n\t\tnew Stack<String>().pop\n with:"
-       + "\n     // expecting exceptions\n\t\tnew Stack<String>() is " + new StringDescription().appendValue(_stack).toString());
+      message = "Expected " + EmptyStackException.class.getName() + " for \n     // expecting exceptions\r\n\t\tnew Stack<String>().pop\n with:"
+       + "\n     // expecting exceptions\r\n\t\tnew Stack<String>() is " + new StringDescription().appendValue(_stack).toString();
     }catch(EmptyStackException e){
+      expectedException = true;
     }
+    Assert.assertTrue(message, expectedException);
+    boolean expectedException_1 = false;
+    String message_1 = "";
     try{
       Stack<String> _stack_1 = new Stack<String>();
       _stack_1.pop();
-      Assert.fail("Expected " + EmptyStackException.class.getName() + " in \n     new Stack<String>().pop\n with:"
-       + "\n     new Stack<String>() is " + new StringDescription().appendValue(_stack_1).toString());
+      message_1 = "Expected " + EmptyStackException.class.getName() + " for \n     new Stack<String>().pop\n with:"
+       + "\n     new Stack<String>() is " + new StringDescription().appendValue(_stack_1).toString();
     }catch(EmptyStackException e){
+      expectedException_1 = true;
     }
+    Assert.assertTrue(message_1, expectedException_1);
   }
   
   /**
@@ -143,36 +151,50 @@ public class UsingShouldSpec {
   @Named("...or not to pass")
   @Order(2)
   public void _orNotToPass() throws Exception {
+    boolean expectedException = false;
+    String message = "";
     try{
       int _plus = (1 + 1);
       boolean _should_be = Should.should_be(Integer.valueOf(_plus), Integer.valueOf(1));
       Assert.assertTrue("\nExpected 1 + 1 should be 1 but"
        + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be);
       
-      Assert.fail("Expected " + AssertionError.class.getName() + " in \n     1 + 1 should be 1\n with:"
-       + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString());
+      message = "Expected " + AssertionError.class.getName() + " for \n     1 + 1 should be 1\n with:"
+       + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString();
     }catch(AssertionError e){
+      expectedException = true;
     }
+    Assert.assertTrue(message, expectedException);
+    boolean expectedException_1 = false;
+    String message_1 = "";
     try{
       int _plus_1 = (1 + 1);
       boolean _should_be_1 = Should.should_be(Integer.valueOf(_plus_1), Integer.valueOf(1));
       Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
        + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_1)).toString() + "\n", _should_be_1);
       
-      Assert.fail("Expected " + AssertionError.class.getName() + " in \n     1 + 1 should not be 1\n with:"
-       + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_1)).toString());
+      message_1 = "Expected " + AssertionError.class.getName() + " for \n     1 + 1 should not be 1\n with:"
+       + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_1)).toString();
     }catch(AssertionError e){
+      expectedException_1 = true;
     }
+    Assert.assertTrue(message_1, expectedException_1);
+    boolean expectedException_2 = false;
+    String message_2 = "";
     try{
       int _plus_2 = (1 + 1);
       boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus_2), Integer.valueOf(1));
       Assert.assertTrue("\nExpected 1 + 1 => 1 but"
        + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_2)).toString() + "\n", _doubleArrow);
       
-      Assert.fail("Expected " + AssertionError.class.getName() + " in \n     1 + 1 => 1\n with:"
-       + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_2)).toString());
+      message_2 = "Expected " + AssertionError.class.getName() + " for \n     1 + 1 => 1\n with:"
+       + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_2)).toString();
     }catch(AssertionError e){
+      expectedException_2 = true;
     }
+    Assert.assertTrue(message_2, expectedException_2);
+    boolean expectedException_3 = false;
+    String message_3 = "";
     try{
       Object _object = new Object();
       Matcher<?> _nullValue = CoreMatchers.nullValue();
@@ -180,10 +202,14 @@ public class UsingShouldSpec {
       Assert.assertTrue("\nExpected new Object => null but"
        + "\n     new Object is " + new StringDescription().appendValue(_object).toString() + "\n", _doubleArrow_1);
       
-      Assert.fail("Expected " + AssertionError.class.getName() + " in \n     new Object => null\n with:"
-       + "\n     new Object is " + new StringDescription().appendValue(_object).toString());
+      message_3 = "Expected " + AssertionError.class.getName() + " for \n     new Object => null\n with:"
+       + "\n     new Object is " + new StringDescription().appendValue(_object).toString();
     }catch(AssertionError e){
+      expectedException_3 = true;
     }
+    Assert.assertTrue(message_3, expectedException_3);
+    boolean expectedException_4 = false;
+    String message_4 = "";
     try{
       Object _object_1 = new Object();
       Matcher<Object> _nullValue_1 = CoreMatchers.<Object>nullValue();
@@ -191,15 +217,21 @@ public class UsingShouldSpec {
       Assert.assertTrue("\nExpected new Object should be null but"
        + "\n     new Object is " + new StringDescription().appendValue(_object_1).toString() + "\n", _should_be_2);
       
-      Assert.fail("Expected " + AssertionError.class.getName() + " in \n     new Object should be null\n with:"
-       + "\n     new Object is " + new StringDescription().appendValue(_object_1).toString());
+      message_4 = "Expected " + AssertionError.class.getName() + " for \n     new Object should be null\n with:"
+       + "\n     new Object is " + new StringDescription().appendValue(_object_1).toString();
     }catch(AssertionError e){
+      expectedException_4 = true;
     }
+    Assert.assertTrue(message_4, expectedException_4);
+    boolean expectedException_5 = false;
+    String message_5 = "";
     try{
       this.method();
-      Assert.fail("Expected " + IllegalArgumentException.class.getName() + " in \n     method()\n with:");
+      message_5 = "Expected " + IllegalArgumentException.class.getName() + " for \n     method()\n with:";
     }catch(IllegalArgumentException e){
+      expectedException_5 = true;
     }
+    Assert.assertTrue(message_5, expectedException_5);
   }
   
   /**
@@ -278,6 +310,8 @@ public class UsingShouldSpec {
   @Order(4)
   public void _shortCircuitInvocation() throws Exception {
     final String aString = null;
+    boolean expectedException = false;
+    String message = "";
     try{
       boolean _notEquals = (!Objects.equal(aString, null));
       int _length = aString.length();
@@ -289,14 +323,16 @@ public class UsingShouldSpec {
        + "\n     aString.length == 0 is " + new StringDescription().appendValue(_equals).toString()
        + "\n     aString.length is " + new StringDescription().appendValue(_length).toString() + "\n", _and);
       
-      Assert.fail("Expected " + NullPointerException.class.getName() + " in \n     assert aString != null && aString.length == 0\n with:"
+      message = "Expected " + NullPointerException.class.getName() + " for \n     assert aString != null && aString.length == 0\n with:"
        + "\n     aString != null && aString.length == 0 is " + new StringDescription().appendValue(_and).toString()
        + "\n     aString != null is " + new StringDescription().appendValue(_notEquals).toString()
        + "\n     aString is " + new StringDescription().appendValue(aString).toString()
        + "\n     aString.length == 0 is " + new StringDescription().appendValue(_equals).toString()
-       + "\n     aString.length is " + new StringDescription().appendValue(_length).toString());
+       + "\n     aString.length is " + new StringDescription().appendValue(_length).toString();
     }catch(NullPointerException e){
+      expectedException = true;
     }
+    Assert.assertTrue(message, expectedException);
   }
   
   /**

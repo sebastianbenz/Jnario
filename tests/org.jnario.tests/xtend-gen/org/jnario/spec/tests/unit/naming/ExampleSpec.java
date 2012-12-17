@@ -16,8 +16,8 @@ import org.junit.runner.RunWith;
 
 @Contains({ ExampleNameSpec.class, ExampleImplementationSpec.class, ExamplePendingSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Example")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class ExampleSpec {
   public Example parse(final String content) {

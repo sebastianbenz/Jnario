@@ -4,11 +4,11 @@ import java.util.Collections;
 import java.util.List;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
+import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -39,8 +39,8 @@ import org.junit.runner.RunWith;
  * </pre>
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Readable Code with Extension Methods")
+@RunWith(ExampleGroupRunner.class)
 public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20FactsAboutXtendSpec {
   /**
    * You can import static methods as extensions, for example, when we import:
@@ -59,8 +59,8 @@ public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20F
     Collections.<String>sort(colors);
     List<String> _list = JnarioCollectionLiterals.<String>list("blue", "green", "red");
     boolean _doubleArrow = this.<String>operator_doubleArrow(colors, _list);
-    Assert.assertTrue("\nExpected // sort is implemented by Collections#sort(List<T>)\n      colors => list(\"blue\", \"green\", \"red\") but"
-     + "\n     // sort is implemented by Collections#sort(List<T>)\n      colors is " + new StringDescription().appendValue(colors).toString()
+    Assert.assertTrue("\nExpected // sort is implemented by Collections#sort(List<T>)\r\n      colors => list(\"blue\", \"green\", \"red\") but"
+     + "\n     // sort is implemented by Collections#sort(List<T>)\r\n      colors is " + new StringDescription().appendValue(colors).toString()
      + "\n     list(\"blue\", \"green\", \"red\") is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
     
   }

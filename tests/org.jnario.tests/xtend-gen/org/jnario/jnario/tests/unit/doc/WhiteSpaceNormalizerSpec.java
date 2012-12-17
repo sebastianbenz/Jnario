@@ -5,6 +5,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.doc.WhiteSpaceNormalizer;
 import org.jnario.jnario.tests.unit.doc.WhiteSpaceNormalizerSpecExamples;
+import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -12,13 +13,12 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("WhiteSpaceNormalizer")
+@RunWith(ExampleGroupRunner.class)
 public class WhiteSpaceNormalizerSpec {
   @Subject
   public WhiteSpaceNormalizer subject;
@@ -72,10 +72,10 @@ public class WhiteSpaceNormalizerSpec {
     _builder.newLine();
     String _normalize = this.subject.normalize(_builder);
     boolean _doubleArrow = Should.operator_doubleArrow(_normalize, "hello\nworld\n");
-    Assert.assertTrue("\nExpected subject.normalize(\n\t\t\'\'\'\n\t\thello\n\t\tworld\n\t\t\'\'\') => \"hello\\nworld\\n\" but"
-     + "\n     subject.normalize(\n\t\t\'\'\'\n\t\thello\n\t\tworld\n\t\t\'\'\') is " + new StringDescription().appendValue(_normalize).toString()
+    Assert.assertTrue("\nExpected subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\r\n\t\t\'\'\') => \"hello\\nworld\\n\" but"
+     + "\n     subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\r\n\t\t\'\'\') is " + new StringDescription().appendValue(_normalize).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     \'\'\'\n\t\thello\n\t\tworld\n\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+     + "\n     \'\'\'\r\n\t\thello\r\n\t\tworld\r\n\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   
@@ -101,10 +101,10 @@ public class WhiteSpaceNormalizerSpec {
     _builder.append("world");
     String _normalize = this.subject.normalize(_builder);
     boolean _doubleArrow = Should.operator_doubleArrow(_normalize, "hello\nworld");
-    Assert.assertTrue("\nExpected subject.normalize(\n\t\t\'\'\'\n\t\thello\n\t\tworld\'\'\') => \"hello\\nworld\" but"
-     + "\n     subject.normalize(\n\t\t\'\'\'\n\t\thello\n\t\tworld\'\'\') is " + new StringDescription().appendValue(_normalize).toString()
+    Assert.assertTrue("\nExpected subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\'\'\') => \"hello\\nworld\" but"
+     + "\n     subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\'\'\') is " + new StringDescription().appendValue(_normalize).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     \'\'\'\n\t\thello\n\t\tworld\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+     + "\n     \'\'\'\r\n\t\thello\r\n\t\tworld\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
 }

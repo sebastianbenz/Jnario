@@ -19,8 +19,8 @@ import org.junit.runner.RunWith;
 
 @Contains({ JnarioDocCompilerFeatureDocCompilerSpec.class, JnarioDocCompilerSpecDocCompilerSpec.class, JnarioDocCompilerSuiteDocCompilerSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("JnarioDocCompiler")
+@RunWith(ExampleGroupRunner.class)
 public class JnarioDocCompilerSpec {
   @Inject
   @Rule

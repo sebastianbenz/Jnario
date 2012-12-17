@@ -6,6 +6,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.hamcrest.StringDescription;
 import org.jnario.Specification;
+import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -15,13 +16,12 @@ import org.jnario.suite.suite.PatternReference;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuiteFactory;
 import org.jnario.suite.unit.SpecResolverSpec;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("evaluates regular expressions")
+@RunWith(ExampleGroupRunner.class)
 public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpec {
   @Test
   @Named("example 1")

@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
  */
 @Contains({ InstallingJnarioInstallingTheEclipseToolingSpec.class, InstallingJnarioUsingJnarioWithMavenSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Installing Jnario")
+@RunWith(ExampleGroupRunner.class)
 public class InstallingJnarioSpec {
 }

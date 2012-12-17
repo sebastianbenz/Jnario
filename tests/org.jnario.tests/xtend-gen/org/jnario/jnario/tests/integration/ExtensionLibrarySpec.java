@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
  */
 @Contains({ ExtensionLibraryCollectionLiteralsSpec.class, ExtensionLibraryIterableIteratorHelpersSpec.class, ExtensionLibraryConvertingStringsSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Extension Library")
+@RunWith(ExampleGroupRunner.class)
 public class ExtensionLibrarySpec {
 }

@@ -11,9 +11,9 @@ import org.junit.runner.RunWith;
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-@RunWith(FeatureRunner.class)
 @Contains({ PendingStepsFeatureWhenOneStepOfAScenarioIsPendingThenAllFollowingShouldBePending.class, PendingStepsFeatureWhenAnAndStepIsPendingTheFollowingStepsShouldBePending.class, PendingStepsFeatureWhenAStepOfABackgroundAllFollowingStepsAndAllScenarioStepsShouldBePending.class })
 @Named("Pending steps")
 @SuppressWarnings("all")
+@RunWith(FeatureRunner.class)
 public class PendingStepsFeature {
 }

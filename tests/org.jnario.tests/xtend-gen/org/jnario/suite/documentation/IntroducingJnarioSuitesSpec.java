@@ -25,8 +25,8 @@ import org.junit.runner.RunWith;
  */
 @Contains(IntroducingJnarioSuitesGettingStartedSpec.class)
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Introducing Jnario Suites")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SuiteTestCreator.class)
 public class IntroducingJnarioSuitesSpec {
 }

@@ -26,10 +26,10 @@ import org.junit.runner.RunWith;
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-@RunWith(FeatureRunner.class)
 @Contains({ ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario.class, ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword.class, ReferencesForStepsFeatureUsingFieldsFromOtherSteps.class, ReferencesForStepsFeatureStepsWithShortNames.class, ReferencesForStepsFeatureFieldInitialization.class, ReferencesForStepsFeatureSteps.class, ReferencesForStepsFeatureExtensionFields.class, ReferencesForStepsFeatureExtensionFieldsInAndStep.class, ReferencesForStepsFeatureUsingClosuresInSteps.class, ReferencesForStepsFeatureMultipleStepReferencesCausesProblemWhenCopierDoesNotClearItsCache.class, ReferencesForStepsFeatureAccessingExtensionFieldMethods.class, ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps.class, ReferencesForStepsFeatureStepReferencesWithExtensionsInSameScenario.class, ReferencesForStepsFeatureScenarioReferencesTwoStepsFromDifferentScenariosWhichDefineTheSameField.class, ReferencesForStepsFeatureDuplicateExtensionViaStepRerferences.class, ReferencesForStepsFeatureErrorMessagesInStepReferences.class })
 @Named("References for steps")
 @CreateWith(value = FeatureTestCreator.class)
 @SuppressWarnings("all")
+@RunWith(FeatureRunner.class)
 public class ReferencesForStepsFeature {
 }

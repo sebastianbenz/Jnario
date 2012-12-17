@@ -4,12 +4,12 @@ import com.google.common.base.Objects;
 import java.util.List;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
+import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,8 +20,8 @@ import org.junit.runner.RunWith;
  * values but can be used for any object.
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("The Uber-Switch Expression")
+@RunWith(ExampleGroupRunner.class)
 public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAboutXtendSpec {
   /**
    * Cases support arbitrary expressions, if they evaluate to a boolean value, it will
@@ -52,8 +52,8 @@ public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAbout
       _switchResult = "It\'s another short string.";
     }
     boolean _doubleArrow = Should.operator_doubleArrow(_switchResult, "It\'s another short string.");
-    Assert.assertTrue("\nExpected switch myString {\n        case myString.length > 5 : \"a long string.\"\n        case \'some\'              : \"It\'s some string.\"\n        default                  : \"It\'s another short string.\"\n      } \n      \n      =>  \"It\'s another short string.\" but"
-     + "\n     switch myString {\n        case myString.length > 5 : \"a long string.\"\n        case \'some\'              : \"It\'s some string.\"\n        default                  : \"It\'s another short string.\"\n      } is " + new StringDescription().appendValue(_switchResult).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected switch myString {\r\n        case myString.length > 5 : \"a long string.\"\r\n        case \'some\'              : \"It\'s some string.\"\r\n        default                  : \"It\'s another short string.\"\r\n      } \r\n      \r\n      =>  \"It\'s another short string.\" but"
+     + "\n     switch myString {\r\n        case myString.length > 5 : \"a long string.\"\r\n        case \'some\'              : \"It\'s some string.\"\r\n        default                  : \"It\'s another short string.\"\r\n      } is " + new StringDescription().appendValue(_switchResult).toString() + "\n", _doubleArrow);
     
   }
   
@@ -95,8 +95,8 @@ public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAbout
       _switchResult = _minus;
     }
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_switchResult), Integer.valueOf(3));
-    Assert.assertTrue("\nExpected switch x {\n        String case x.length > 0 : x.length // length from String \n        List<?>                  : x.size    // size from List\n        default : -1\n      } \n      \n      => 3 but"
-     + "\n     switch x {\n        String case x.length > 0 : x.length // length from String \n        List<?>                  : x.size    // size from List\n        default : -1\n      } is " + new StringDescription().appendValue(Integer.valueOf(_switchResult)).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected switch x {\r\n        String case x.length > 0 : x.length // length from String \r\n        List<?>                  : x.size    // size from List\r\n        default : -1\r\n      } \r\n      \r\n      => 3 but"
+     + "\n     switch x {\r\n        String case x.length > 0 : x.length // length from String \r\n        List<?>                  : x.size    // size from List\r\n        default : -1\r\n      } is " + new StringDescription().appendValue(Integer.valueOf(_switchResult)).toString() + "\n", _doubleArrow);
     
   }
 }

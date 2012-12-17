@@ -13,12 +13,12 @@ import org.jnario.jvmmodel.JUnit3RuntimeSupport;
 import org.jnario.jvmmodel.JUnit4RuntimeSupport;
 import org.jnario.jvmmodel.TestRuntimeProvider;
 import org.jnario.jvmmodel.TestRuntimeSupport;
+import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,8 +26,8 @@ import org.mockito.Mockito;
 import org.mockito.stubbing.OngoingStubbing;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("TestRuntimeProvider")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class TestRuntimeProviderSpec {
   public TestRuntimeProvider subject;
@@ -101,12 +101,16 @@ public class TestRuntimeProviderSpec {
   @Named("throws NoSuchElementException if JUnit is not on classpath")
   @Order(3)
   public void _throwsNoSuchElementExceptionIfJUnitIsNotOnClasspath() throws Exception {
+    boolean expectedException = false;
+    String message = "";
     try{
       this.subject.get(this.anyNotifier);
-      Assert.fail("Expected " + NoSuchElementException.class.getName() + " in \n     subject.get(anyNotifier)\n with:"
+      message = "Expected " + NoSuchElementException.class.getName() + " for \n     subject.get(anyNotifier)\n with:"
        + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-       + "\n     anyNotifier is " + new StringDescription().appendValue(this.anyNotifier).toString());
+       + "\n     anyNotifier is " + new StringDescription().appendValue(this.anyNotifier).toString();
     }catch(NoSuchElementException e){
+      expectedException = true;
     }
+    Assert.assertTrue(message, expectedException);
   }
 }

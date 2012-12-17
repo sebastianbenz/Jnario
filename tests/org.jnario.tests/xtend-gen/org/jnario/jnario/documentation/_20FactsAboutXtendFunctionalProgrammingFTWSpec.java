@@ -9,12 +9,12 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
+import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -24,8 +24,8 @@ import org.junit.runner.RunWith;
  * and its rich library of extension methods.
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Functional Programming FTW")
+@RunWith(ExampleGroupRunner.class)
 public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAboutXtendSpec {
   /**
    * Xtend provides a rich set of extension methods for collections. Accessing elements
@@ -211,14 +211,14 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
           return Integer.valueOf(_length);
         }
       };
-    List<Integer> _map = ListExtensions.<String, Integer>map(strings, _function);
-    final Function2<Integer,Integer,Integer> _function_1 = new Function2<Integer,Integer,Integer>() {
-        public Integer apply(final Integer sum, final Integer size) {
-          int _plus = ((sum).intValue() + (size).intValue());
-          return Integer.valueOf(_plus);
+    List<Integer> _map = ListExtensions.<String, Integer>map(strings, (Function1<? super String,? extends String>)_function);
+    final Function2<Integer,Integer,String> _function_1 = new Function2<Integer,Integer,String>() {
+        public String apply(final Integer sum, final Integer size) {
+          String _plus = (sum + size);
+          return _plus;
         }
       };
-    final Integer charCount = IterableExtensions.<Integer>reduce(_map, _function_1);
+    final Integer charCount = IterableExtensions.<Integer>reduce(_map, (Function2<? super Integer,? super Integer,? extends Integer>)_function_1);
     boolean _doubleArrow = Should.operator_doubleArrow(charCount, Integer.valueOf(12));
     Assert.assertTrue("\nExpected charCount => 12 but"
      + "\n     charCount is " + new StringDescription().appendValue(charCount).toString() + "\n", _doubleArrow);

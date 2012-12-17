@@ -13,8 +13,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Compiler")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class CompilerSpec {
   @Inject
@@ -204,7 +204,7 @@ public class CompilerSpec {
   @Named("compiles rich strings")
   @Order(8)
   public void _compilesRichStrings() throws Exception {
-    this._behaviorExecutor.executesSuccessfully("\n\t\tdescribe \'Richstrings\'{\n\t\t\tfact {\n\t\t\t\tval x = \'world\'\n\t\t        \'\'\'hello \u00ABx\u00BB\'\'\'.toString => \'hello world\'\n\t\t    }\n\t\t}\n\t\t");
+    this._behaviorExecutor.executesSuccessfully("\r\n\t\tdescribe \'Richstrings\'{\r\n\t\t\tfact {\r\n\t\t\t\tval x = \'world\'\r\n\t\t        \'\'\'hello \u00ABx\u00BB\'\'\'.toString => \'hello world\'\r\n\t\t    }\r\n\t\t}\r\n\t\t");
   }
   
   @Test

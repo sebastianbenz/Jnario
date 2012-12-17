@@ -6,19 +6,19 @@ import org.jnario.feature.feature.Feature;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderGetClassNameFeatureSpecExamples;
 import org.jnario.feature.tests.unit.naming.FeatureClassNameProviderSpec;
 import org.jnario.jnario.test.util.Features;
+import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("getClassName[Feature]")
+@RunWith(ExampleGroupRunner.class)
 public class FeatureClassNameProviderGetClassNameFeatureSpec extends FeatureClassNameProviderSpec {
   public ExampleTable<FeatureClassNameProviderGetClassNameFeatureSpecExamples> _initFeatureClassNameProviderGetClassNameFeatureSpecExamples() {
     return ExampleTable.create("examples", 

@@ -10,12 +10,12 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.integration.ExtensionLibrarySpec;
+import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -24,8 +24,8 @@ import org.junit.runner.RunWith;
  * so much. Therefore, Jnario provides shorter versions of Xtend's collection literals.
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Collection Literals")
+@RunWith(ExampleGroupRunner.class)
 public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec {
   @Test
   @Named("List Literal")
@@ -96,12 +96,12 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
     Pair<String,String> _mappedTo_5 = Pair.<String, String>of("red", "tomato");
     HashMap<String,String> _newHashMap = CollectionLiterals.<String, String>newHashMap(_mappedTo_3, _mappedTo_4, _mappedTo_5);
     boolean _doubleArrow = Should.operator_doubleArrow(_map, _newHashMap);
-    Assert.assertTrue("\nExpected map(\n\t\t    \"green\"  -> \"apple\",\n\t\t    \"yellow\" -> \"banana\",\n\t\t    \"red\"    -> \"tomato\"\n\t\t  ) => newHashMap(\n\t\t    \"green\"  -> \"apple\",\n\t\t    \"yellow\" -> \"banana\",\n\t\t    \"red\"    -> \"tomato\"\n\t\t  ) but"
-     + "\n     map(\n\t\t    \"green\"  -> \"apple\",\n\t\t    \"yellow\" -> \"banana\",\n\t\t    \"red\"    -> \"tomato\"\n\t\t  ) is " + new StringDescription().appendValue(_map).toString()
+    Assert.assertTrue("\nExpected map(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) => newHashMap(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) but"
+     + "\n     map(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) is " + new StringDescription().appendValue(_map).toString()
      + "\n     \"green\"  -> \"apple\" is " + new StringDescription().appendValue(_mappedTo).toString()
      + "\n     \"yellow\" -> \"banana\" is " + new StringDescription().appendValue(_mappedTo_1).toString()
      + "\n     \"red\"    -> \"tomato\" is " + new StringDescription().appendValue(_mappedTo_2).toString()
-     + "\n     newHashMap(\n\t\t    \"green\"  -> \"apple\",\n\t\t    \"yellow\" -> \"banana\",\n\t\t    \"red\"    -> \"tomato\"\n\t\t  ) is " + new StringDescription().appendValue(_newHashMap).toString() + "\n", _doubleArrow);
+     + "\n     newHashMap(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) is " + new StringDescription().appendValue(_newHashMap).toString() + "\n", _doubleArrow);
     
   }
 }

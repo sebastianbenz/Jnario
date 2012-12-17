@@ -46,8 +46,8 @@ import org.junit.runner.RunWith;
  * in the `xtend-gen` folder.
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("How to write a Specification")
+@RunWith(ExampleGroupRunner.class)
 public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends IntroducingJnarioSpecsSpec {
   @Inject
   @Extension

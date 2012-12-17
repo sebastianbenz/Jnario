@@ -17,8 +17,8 @@ import org.junit.runner.RunWith;
  */
 @Contains({ IntroducingJnarioSpecsHowToWriteASpecificationSpec.class, IntroducingJnarioSpecsWritingAssertionsSpec.class })
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Introducing Jnario Specs")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class IntroducingJnarioSpecsSpec {
 }

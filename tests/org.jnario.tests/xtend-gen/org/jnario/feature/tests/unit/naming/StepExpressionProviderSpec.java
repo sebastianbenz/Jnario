@@ -12,13 +12,13 @@ import org.jnario.feature.jvmmodel.StepExpressionProvider;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
+import org.jnario.lib.Assert;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -26,8 +26,8 @@ import org.junit.runner.RunWith;
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("StepExpressionProvider")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = FeatureTestCreator.class)
 public class StepExpressionProviderSpec {
   @Subject

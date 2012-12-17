@@ -21,6 +21,7 @@ import org.jnario.feature.tests.unit.linking.StepArgumentsProviderSpecExamples;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.test.util.Features;
 import org.jnario.jnario.test.util.Query;
+import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.JnarioCollectionLiterals;
@@ -30,13 +31,12 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("StepArgumentsProvider")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = FeatureTestCreator.class)
 public class StepArgumentsProviderSpec {
   @Subject

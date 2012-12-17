@@ -1,11 +1,11 @@
 package org.jnario.spec.tests.integration;
 
 import org.hamcrest.StringDescription;
+import org.jnario.lib.Assert;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.integration.AssertionSpec;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -14,8 +14,8 @@ import org.junit.runner.RunWith;
  * write meaningful assertions.
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Introduction")
+@RunWith(ExampleGroupRunner.class)
 public class AssertionIntroductionSpec extends AssertionSpec {
   /**
    * `assert` passes if the expression evaluates to true.
@@ -39,12 +39,16 @@ public class AssertionIntroductionSpec extends AssertionSpec {
   @Named("...or not to pass")
   @Order(2)
   public void _orNotToPass() throws Exception {
+    boolean expectedException = false;
+    String message = "";
     try{
       Assert.assertTrue("\nExpected false but" + " did not." + "\n", false);
       
-      Assert.fail("Expected " + AssertionError.class.getName() + " in \n     {assert false}\n with:"
-       + "\n     assert false is " + new StringDescription().appendValue(true).toString());
+      message = "Expected " + AssertionError.class.getName() + " for \n     {assert false}\n with:"
+       + "\n     assert false is " + new StringDescription().appendValue(true).toString();
     }catch(AssertionError e){
+      expectedException = true;
     }
+    Assert.assertTrue(message, expectedException);
   }
 }

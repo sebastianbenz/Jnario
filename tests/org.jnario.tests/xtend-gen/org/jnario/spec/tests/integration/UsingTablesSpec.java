@@ -7,6 +7,7 @@ import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.BehaviorExecutor;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.jnario.test.util.SpecTestCreator;
+import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
@@ -16,7 +17,6 @@ import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.integration.UsingTablesSpecExample;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -24,8 +24,8 @@ import org.junit.runner.RunWith;
  * Example tables are a great way to structure input and expected output data.
  */
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("Using Tables")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class UsingTablesSpec {
   @Inject
@@ -375,7 +375,7 @@ public class UsingTablesSpec {
    */
   @Test
   @Named("Error message")
-  @Order(8)
+  @Order(7)
   public void _errorMessage() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {

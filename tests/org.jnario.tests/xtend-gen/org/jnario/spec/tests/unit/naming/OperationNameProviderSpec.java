@@ -29,8 +29,8 @@ import org.junit.runner.RunWith;
 
 @Contains(OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec.class)
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("OperationNameProvider")
+@RunWith(ExampleGroupRunner.class)
 @CreateWith(value = SpecTestCreator.class)
 public class OperationNameProviderSpec {
   @Inject

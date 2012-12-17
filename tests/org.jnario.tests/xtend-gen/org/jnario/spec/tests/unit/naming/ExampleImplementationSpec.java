@@ -7,6 +7,7 @@ import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 import org.jnario.Should;
+import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
 import org.jnario.runner.ExampleGroupRunner;
@@ -15,13 +16,12 @@ import org.jnario.runner.Order;
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.tests.unit.naming.ExampleImplementationSpecExamples;
 import org.jnario.spec.tests.unit.naming.ExampleSpec;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
-@RunWith(ExampleGroupRunner.class)
 @Named("implementation")
+@RunWith(ExampleGroupRunner.class)
 public class ExampleImplementationSpec extends ExampleSpec {
   public ExampleTable<ExampleImplementationSpecExamples> _initExampleImplementationSpecExamples() {
     return ExampleTable.create("examples", 
