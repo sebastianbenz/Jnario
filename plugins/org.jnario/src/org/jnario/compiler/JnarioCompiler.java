@@ -49,6 +49,7 @@ import org.jnario.util.SourceAdapter;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 
 /**
@@ -96,22 +97,29 @@ public class JnarioCompiler extends XtendCompiler {
 		if (should.getType() == null || should.getType().getType() == null) {
 			return;
 		}
+		String expectedException = b.declareSyntheticVariable(should, "expectedException");
+		b.newLine().append("boolean ").append(expectedException).append(" = false;").newLine();
+		String message = b.declareSyntheticVariable(should, "message");
+		b.append("String ").append(message).append(" = \"\";");
 		b.newLine().append("try{").increaseIndentation();
 		toJavaStatement(should.getExpression(), b, false);
-		b.newLine()
-				.append(assertType(should))
-				.append(".fail(\"Expected \" + ")
-				.append(should.getType().getType())
-				.append(".class.getName() + \" in ")
-				.append(javaStringNewLine())
-				.append("     ")
-				.append(serialize(should.getExpression()).replace("\n",
-						"\n    ")).append(javaStringNewLine())
-				.append(" with:\"");
+		b.newLine().append(message).append(" = \"Expected \" + ")
+		.append(should.getType().getType())
+		.append(".class.getName() + \" for ")
+		.append(javaStringNewLine())
+		.append("     ")
+		.append(serialize(should.getExpression()).replace("\n", "\n    ")).append(javaStringNewLine())
+		.append(" with:\"");
 		appendValues(should.getExpression(), b, new HashSet<String>());
-		b.append(");").decreaseIndentation().newLine().append("}catch(")
-				.append(should.getType().getType()).append(" e){")
-				.newLine().append("}");
+		b.append(";");
+		b.decreaseIndentation().newLine().append("}catch(").increaseIndentation()
+				.append(should.getType().getType()).append(" e){").newLine()
+				.append(expectedException).append(" = true;")
+				.decreaseIndentation().newLine().append("}");
+		b.newLine()
+		.append(assertType(should))
+		.append(".assertTrue(").append(message).append(", ")
+		.append(expectedException).append(");");
 	}
 	
 	
