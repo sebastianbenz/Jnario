@@ -222,7 +222,7 @@ describe "20 Facts about Xtend"{
    * </pre>
    */
   describe "Readable Code with Extension Methods"{
-    
+
     /*
      * You can import static methods as extensions, for example, when we import:
      * 
