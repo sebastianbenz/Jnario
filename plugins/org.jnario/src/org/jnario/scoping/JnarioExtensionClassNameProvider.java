@@ -37,7 +37,6 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 		result.put(ExampleTable.class, ExampleTableIterators.class);
 //		result.replaceValues(Object.class, ImmutableList.of(Should.class, Each.class, ObjectExtensions.class));
 		result.put(Object.class, Should.class);
-		result.put(Object.class, Wait.class);
 		result.put(Object.class, Each.class);
 		result.put(String.class, StringConversions.class);
 		result.put(Iterable.class, JnarioIterableExtensions.class);
@@ -50,6 +49,7 @@ public class JnarioExtensionClassNameProvider extends ExtensionClassNameProvider
 		Collection<String> result = super.computeLiteralClassNames();
 		result.add(Each.class.getName());
 		result.add(Should.class.getName());
+		result.add(Wait.class.getName());
 		result.add(JnarioCollectionLiterals.class.getName());
 		result.add(Assert.class.getName());
 		return result;
