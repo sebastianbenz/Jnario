@@ -10,6 +10,7 @@
  */
 package org.jnario.ui.quickfix;
 
+import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.ui.util.DisplayRunHelper.runAsyncInDisplayThread;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -32,7 +33,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtend.ide.quickfix.XtendQuickfixProvider;
 import org.eclipse.xtend.ide.wizards.NewXtendClassWizard;
 import org.eclipse.xtend.ide.wizards.NewXtendClassWizardPage;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.common.types.access.jdt.IJavaProjectProvider;
 import org.eclipse.xtext.resource.XtextResource;
@@ -102,7 +102,7 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 				@Override
 				public void process(XtextResource state) throws Exception {
 					EObject eObject = state.getEObject(issue.getUriToProblem().fragment());
-					XMemberFeatureCall memberFeatureCall = EcoreUtil2.getContainerOfType(eObject, XMemberFeatureCall.class);
+					XMemberFeatureCall memberFeatureCall = getContainerOfType(eObject, XMemberFeatureCall.class);
 					if(memberFeatureCall == null){
 						return;
 					}
@@ -228,8 +228,7 @@ public class JnarioQuickFixProvider extends XtendQuickfixProvider{
 		});
 	}
 	
-	protected String getIssueString(final Issue issue,
-			final IXtextDocument xtextDocument)
+	protected String getIssueString(final Issue issue, final IXtextDocument xtextDocument)
 			throws BadLocationException {
 		return xtextDocument.get(issue.getOffset(), issue.getLength());
 	}
