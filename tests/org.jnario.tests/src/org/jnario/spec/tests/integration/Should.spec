@@ -72,7 +72,7 @@ describe "Using Should"{
 	 */
 	fact "...or not to pass"{
 	  1 + 1 should be 1 throws AssertionError
-	  1 + 1 should not be 1 throws AssertionError
+	  1 + 1 should not be 2 throws AssertionError
 	  1 + 1 => 1 throws AssertionError
 	  new Object => null throws AssertionError
 	  new Object should be null throws AssertionError

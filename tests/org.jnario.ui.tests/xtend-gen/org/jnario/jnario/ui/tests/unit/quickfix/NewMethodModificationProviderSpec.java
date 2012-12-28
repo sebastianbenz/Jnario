@@ -68,9 +68,9 @@ public class NewMethodModificationProviderSpec {
     _builder.newLine();
     IModification _createModification = this.createModification(_builder);
     boolean _doubleArrow = Should.operator_doubleArrow(_createModification, CreateJavaMethod.class);
-    Assert.assertTrue("\nExpected \'\'\'\r\n\t\tclass Something{\r\n\t\t\tString x\r\n\t\t\tdef method(){\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t}\r\n\t\t\'\'\'.createModification => typeof(CreateJavaMethod) but"
-     + "\n     \'\'\'\r\n\t\tclass Something{\r\n\t\t\tString x\r\n\t\t\tdef method(){\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t}\r\n\t\t\'\'\'.createModification is " + new StringDescription().appendValue(_createModification).toString()
-     + "\n     \'\'\'\r\n\t\tclass Something{\r\n\t\t\tString x\r\n\t\t\tdef method(){\r\n\t\t\t\tfact x.unresolved\r\n\t\t\t}\r\n\t\t}\r\n\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \'\'\'\n\t\tclass Something{\n\t\t\tString x\n\t\t\tdef method(){\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t}\n\t\t\'\'\'.createModification => typeof(CreateJavaMethod) but"
+     + "\n     \'\'\'\n\t\tclass Something{\n\t\t\tString x\n\t\t\tdef method(){\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t}\n\t\t\'\'\'.createModification is " + new StringDescription().appendValue(_createModification).toString()
+     + "\n     \'\'\'\n\t\tclass Something{\n\t\t\tString x\n\t\t\tdef method(){\n\t\t\t\tfact x.unresolved\n\t\t\t}\n\t\t}\n\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   
@@ -105,9 +105,9 @@ public class NewMethodModificationProviderSpec {
     _builder_1.newLine();
     IModification _createModification = this.createModification(_builder_1);
     boolean _doubleArrow = Should.operator_doubleArrow(_createModification, CreateXtendMethod.class);
-    Assert.assertTrue("\nExpected \'\'\'\r\n\t\tclass Something{\r\n\t\t\tExample example\r\n\t\t\tdef method(){\r\n\t\t\t\t example.unresolved\r\n\t\t\t}\r\n\t\t}\r\n\t\t\'\'\'.createModification => typeof(CreateXtendMethod) but"
-     + "\n     \'\'\'\r\n\t\tclass Something{\r\n\t\t\tExample example\r\n\t\t\tdef method(){\r\n\t\t\t\t example.unresolved\r\n\t\t\t}\r\n\t\t}\r\n\t\t\'\'\'.createModification is " + new StringDescription().appendValue(_createModification).toString()
-     + "\n     \'\'\'\r\n\t\tclass Something{\r\n\t\t\tExample example\r\n\t\t\tdef method(){\r\n\t\t\t\t example.unresolved\r\n\t\t\t}\r\n\t\t}\r\n\t\t\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _doubleArrow);
+    Assert.assertTrue("\nExpected \'\'\'\n\t\tclass Something{\n\t\t\tExample example\n\t\t\tdef method(){\n\t\t\t\t example.unresolved\n\t\t\t}\n\t\t}\n\t\t\'\'\'.createModification => typeof(CreateXtendMethod) but"
+     + "\n     \'\'\'\n\t\tclass Something{\n\t\t\tExample example\n\t\t\tdef method(){\n\t\t\t\t example.unresolved\n\t\t\t}\n\t\t}\n\t\t\'\'\'.createModification is " + new StringDescription().appendValue(_createModification).toString()
+     + "\n     \'\'\'\n\t\tclass Something{\n\t\t\tExample example\n\t\t\tdef method(){\n\t\t\t\t example.unresolved\n\t\t\t}\n\t\t}\n\t\t\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _doubleArrow);
     
   }
   

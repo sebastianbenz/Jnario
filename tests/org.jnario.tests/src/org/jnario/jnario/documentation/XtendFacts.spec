@@ -12,7 +12,7 @@ import java.util.HashMap
 import java.util.List
 import static extension java.util.Collections.*
 
-/* 
+/*  
  * This document teaches you everything 
  * you need to know about Xtend to effectively use
  * [Jnario](http://www.jnario.org). For a more detailed 
