@@ -7,6 +7,20 @@ echo "next version:"
 read nextversion
 echo "Releasing $version"
 
+#pull the latest state from the repository
+git pull --rebase
+
+#prepare update site
+cd ../jnario-gh-pages
+git pull origin gh-pages
+cd ../jnario
+
+#run all tests
+mvn clean verify
+
+#create release branch
+git branch rb-$version
+
 #change the releng/update-site/category.xml file. Replace <version>.qualifier by <version+1>
 sed -i '' 's/$version/$nextversion/g' releng/org.jnario.updatesite/category.xml
 

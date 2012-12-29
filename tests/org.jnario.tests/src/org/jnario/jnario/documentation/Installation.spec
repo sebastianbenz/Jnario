@@ -45,7 +45,7 @@ describe "Installing Jnario"{
 		 *     <dependency>
 		 *       <groupId>org.jnario</groupId>
 		 *       <artifactId>org.jnario.lib.maven</artifactId>
-		 *       <version>0.2.1</version>
+		 *       <version>0.3.0</version>
 		 *       <scope>test</scope>
 		 *     </dependency>
 		 * 
@@ -84,7 +84,7 @@ describe "Installing Jnario"{
 		 *     <plugin>
 		 *       <groupId>org.jnario</groupId>
 		 *       <artifactId>jnario-maven-plugin</artifactId>
-		 *       <version>0.2.1</version>
+		 *       <version>0.3.0</version>
 		 *       <executions>
 		 *         <execution>
 		 *           <goals>

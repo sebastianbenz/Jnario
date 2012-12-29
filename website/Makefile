@@ -28,7 +28,7 @@ jnario:
 
 RES_FOLDERS = img css js ico
 SNAPSHOT_UPDATES = ${GH_PAGES}/updates/snapshot
-LIB_JAR = org.jnario.lib-0.3.0-SNAPSHOT.jar
+LIB_JAR = org.jnario.lib-0.4.0-SNAPSHOT.jar
 
 gh-pages: jnario
 	rm -f ${GH_PAGES}/*.html
