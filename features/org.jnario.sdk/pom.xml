@@ -5,10 +5,10 @@
   <parent>
     <artifactId>jnario</artifactId>
     <groupId>org.jnario</groupId><relativePath>../../pom.xml</relativePath>
-    <version>0.3.0-SNAPSHOT</version>
+    <version>0.4.0-SNAPSHOT</version>
   </parent>
   <groupId>org.jnario.features</groupId>
   <artifactId>org.jnario.sdk</artifactId>
-  <version>0.3.0-SNAPSHOT</version>
+  <version>0.4.0-SNAPSHOT</version>
   <packaging>eclipse-feature</packaging>
 </project>

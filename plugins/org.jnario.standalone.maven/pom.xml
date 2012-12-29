@@ -6,7 +6,7 @@
 	<name>Jnario Standalone Support</name>
 	<description>The required libraries to execute Jnario specifications without Eclipse.</description>
 	<groupId>org.jnario</groupId>
-	<version>0.3.0-SNAPSHOT</version>
+	<version>0.4.0-SNAPSHOT</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
