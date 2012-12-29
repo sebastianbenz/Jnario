@@ -41,7 +41,7 @@ when(typeReferences.getTypeForName(&quot;junit.framework.TestCase&quot;, anyNoti
 subject.get(anyNotifier) =&gt; typeof(JUnit3RuntimeSupport)</pre>
 </li><li><p id="returns_JUnit4_runtime_provider_if_JUnit4_is_on_classpath" class="example notrun"><strong>returns JUnit4 runtime provider if JUnit4 is on classpath</strong></p>
 <pre class="prettyprint lang-spec linenums">
-when(typeReferences.getTypeForName(&quot;org.junit.Test&quot;, anyNotifier)).thenReturn(resultingType)
+when(typeReferences.getTypeForName(&quot;org.junit.rules.TestRule&quot;, anyNotifier)).thenReturn(resultingType)
 subject.get(anyNotifier) =&gt; typeof(JUnit4RuntimeSupport)</pre>
 </li><li><p id="throws_NoSuchElementException_if_JUnit_is_not_on_classpath" class="example notrun"><strong>throws NoSuchElementException if JUnit is not on classpath</strong></p>
 <pre class="prettyprint lang-spec linenums">
@@ -88,7 +88,7 @@ describe TestRuntimeProvider{
   }
   
   fact &quot;returns JUnit4 runtime provider if JUnit4 is on classpath&quot;{
-    when(typeReferences.getTypeForName(&quot;org.junit.Test&quot;, anyNotifier)).thenReturn(resultingType)
+    when(typeReferences.getTypeForName(&quot;org.junit.rules.TestRule&quot;, anyNotifier)).thenReturn(resultingType)
     subject.get(anyNotifier) =&gt; typeof(JUnit4RuntimeSupport)
   }
 

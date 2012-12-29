@@ -76,7 +76,7 @@ def void method(){
 </pre><p>...and here are the examples:</p>
 <pre class="prettyprint lang-spec linenums">
 1 + 1 should be 1 throws AssertionError
-1 + 1 should not be 1 throws AssertionError
+1 + 1 should not be 2 throws AssertionError
 1 + 1 =&gt; 1 throws AssertionError
 new Object =&gt; null throws AssertionError
 new Object should be null throws AssertionError
@@ -194,7 +194,7 @@ describe &quot;Using Should&quot;{
    */
   fact &quot;...or not to pass&quot;{
     1 + 1 should be 1 throws AssertionError
-    1 + 1 should not be 1 throws AssertionError
+    1 + 1 should not be 2 throws AssertionError
     1 + 1 =&gt; 1 throws AssertionError
     new Object =&gt; null throws AssertionError
     new Object should be null throws AssertionError
