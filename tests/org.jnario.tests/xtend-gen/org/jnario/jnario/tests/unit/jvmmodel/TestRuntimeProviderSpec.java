@@ -85,7 +85,7 @@ public class TestRuntimeProviderSpec {
   @Named("returns JUnit4 runtime provider if JUnit4 is on classpath")
   @Order(2)
   public void _returnsJUnit4RuntimeProviderIfJUnit4IsOnClasspath() throws Exception {
-    JvmTypeReference _typeForName = this.typeReferences.getTypeForName("org.junit.Test", this.anyNotifier);
+    JvmTypeReference _typeForName = this.typeReferences.getTypeForName("org.junit.rules.TestRule", this.anyNotifier);
     OngoingStubbing<JvmTypeReference> _when = Mockito.<JvmTypeReference>when(_typeForName);
     _when.thenReturn(this.resultingType);
     TestRuntimeSupport _get = this.subject.get(this.anyNotifier);

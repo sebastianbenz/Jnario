@@ -1,12 +1,12 @@
 package org.jnario.jvmmodel
 
-import org.eclipse.xtext.common.types.util.TypeReferences
 import com.google.inject.Inject
-import org.eclipse.emf.ecore.EObject
 import com.google.inject.Provider
-import org.jnario.jvmmodel.JUnit3RuntimeSupport
-import org.jnario.jvmmodel.JUnit4RuntimeSupport
 import java.util.NoSuchElementException
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.common.types.util.TypeReferences
+
+import static org.jnario.jvmmodel.TestRuntimeProvider.*
 
 class TestRuntimeProvider {
 	
@@ -14,7 +14,7 @@ class TestRuntimeProvider {
 	Provider<JUnit3RuntimeSupport> junit3Support
 	
 	static val JUNIT3_CLASS = "junit.framework.TestCase"
-	static val JUNIT4_CLASS = "org.junit.Test"
+	static val JUNIT4_CLASS = "org.junit.rules.TestRule"
 	
 	extension TypeReferences typeReferences
 	

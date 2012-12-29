@@ -19,7 +19,7 @@ public class TestRuntimeProvider {
   
   private final static String JUNIT3_CLASS = "junit.framework.TestCase";
   
-  private final static String JUNIT4_CLASS = "org.junit.Test";
+  private final static String JUNIT4_CLASS = "org.junit.rules.TestRule";
   
   private TypeReferences typeReferences;
   

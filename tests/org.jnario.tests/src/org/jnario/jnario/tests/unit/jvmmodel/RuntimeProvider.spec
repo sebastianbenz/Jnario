@@ -34,7 +34,7 @@ describe TestRuntimeProvider{
 	}
 	
 	fact "returns JUnit4 runtime provider if JUnit4 is on classpath"{
-		when(typeReferences.getTypeForName("org.junit.Test", anyNotifier)).thenReturn(resultingType)
+		when(typeReferences.getTypeForName("org.junit.rules.TestRule", anyNotifier)).thenReturn(resultingType)
 		subject.get(anyNotifier) => typeof(JUnit4RuntimeSupport)
 	}
 
