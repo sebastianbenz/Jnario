@@ -275,16 +275,6 @@
 				</visibleWhen>
 			</command>
 		</menuContribution>
-		<menuContribution
-			locationURI="popup:#TextEditorContext?after=group.open">
-			<command commandId="org.eclipse.xtext.xbase.ui.hierarchy.QuickTypeHierarchy"
-				style="push"
-				tooltip="Quick Type Hierarchy">
-				<visibleWhen checkEnabled="false">
-					<reference definitionId="org.jnario.spec.Spec.Editor.opened"/>
-				</visibleWhen>
-			</command>
-		</menuContribution>
 	</extension>
 	<!-- Call Hierachy -->
 	<extension
