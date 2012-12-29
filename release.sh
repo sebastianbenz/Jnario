@@ -15,7 +15,7 @@ cd ../jnario
 # upload to maven central 
 URL="https://oss.sonatype.org/service/local/staging/deploy/maven2/"
 REPO="sonatype-nexus-staging"
-for project in "org.jnario.standalone.maven" "jnario-maven-plugin" "org.jnario.lib.maven" 
+for project in "org.jnario.standalone.maven" "jnario-maven-plugin" "org.jnario.lib.maven" "jnario-maven-report-plugin"
 do
 cd plugins/$project
 mvn versions:set -DnewVersion=$version -DgenerateBackupPoms=false
