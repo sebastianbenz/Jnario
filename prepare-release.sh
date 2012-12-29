@@ -22,7 +22,7 @@ mvn clean verify
 git branch rb-$version
 
 #change the releng/update-site/category.xml file. Replace <version>.qualifier by <version+1>
-sed -i "s/$version/$nextversion/g" releng/org.jnario.updatesite/category.xml
+sed -i '' 's/$version/$nextversion/g' releng/org.jnario.updatesite/category.xml
 
 #update master to the next -SNAPSHOT version. 
 
