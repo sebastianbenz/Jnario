@@ -7,11 +7,13 @@ import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
 @Named("Scenario: A simple scenario")
+@Ignore
 @SuppressWarnings("all")
 public class DefiningFeatureBasesClassesFeatureASimpleScenario extends DefiningFeatureBasesClassesFeature {
   CharSequence jnarioFile;

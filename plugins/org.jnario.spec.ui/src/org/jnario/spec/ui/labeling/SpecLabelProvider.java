@@ -12,7 +12,6 @@ package org.jnario.spec.ui.labeling;
 
 import static org.eclipse.xtext.util.Strings.convertFromJavaString;
 
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtend.ide.labeling.XtendImages;
 import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
@@ -32,11 +31,6 @@ import com.google.inject.Inject;
 @SuppressWarnings("restriction")
 public class SpecLabelProvider extends XtendLabelProvider {
 
-	@Inject
-	public SpecLabelProvider(AdapterFactoryLabelProvider delegate) {
-		super(delegate);
-	}
-	
 	@Inject
 	private XtendImages images;
 

@@ -8,6 +8,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -25,6 +26,7 @@ import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
 import org.jnario.suite.suite.SuiteFile;
 import org.jnario.util.Strings;
+import org.jnario.util.XtendTypes;
 
 @SuppressWarnings("all")
 public class SuiteDocGenerator extends AbstractDocGenerator {
@@ -44,8 +46,8 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     final Procedure1<SuiteFile> _function = new Procedure1<SuiteFile>() {
         public void apply(final SuiteFile it) {
           final HtmlFile htmlFile = SuiteDocGenerator.this.createHtmlFile(it);
-          EList<XtendClass> _xtendClasses = it.getXtendClasses();
-          XtendClass _head = IterableExtensions.<XtendClass>head(_xtendClasses);
+          EList<XtendTypeDeclaration> _xtendTypes = it.getXtendTypes();
+          XtendTypeDeclaration _head = IterableExtensions.<XtendTypeDeclaration>head(_xtendTypes);
           SuiteDocGenerator.this._htmlFileBuilder.generate(_head, fsa, htmlFile);
         }
       };
@@ -55,8 +57,8 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
   public HtmlFile createHtmlFile(final SuiteFile file) {
     HtmlFile _xblockexpression = null;
     {
-      EList<XtendClass> _xtendClasses = file.getXtendClasses();
-      final Iterable<Suite> suites = Iterables.<Suite>filter(_xtendClasses, Suite.class);
+      EList<XtendTypeDeclaration> _xtendTypes = file.getXtendTypes();
+      final Iterable<Suite> suites = Iterables.<Suite>filter(_xtendTypes, Suite.class);
       boolean _isEmpty = IterableExtensions.isEmpty(suites);
       if (_isEmpty) {
         return HtmlFile.EMPTY_FILE;
@@ -222,12 +224,12 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     String _xblockexpression = null;
     {
       String _xifexpression = null;
-      String _packageName = spec.getPackageName();
+      String _packageName = XtendTypes.packageName(spec);
       boolean _equals = Objects.equal(_packageName, null);
       if (_equals) {
         _xifexpression = "";
       } else {
-        String _packageName_1 = spec.getPackageName();
+        String _packageName_1 = XtendTypes.packageName(spec);
         String _replace = _packageName_1.replace(".", "/");
         _xifexpression = _replace;
       }

@@ -16,20 +16,19 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
+import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendFunction;
-import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
-import org.eclipse.xtext.common.types.JvmAnnotationType;
 import org.eclipse.xtext.common.types.JvmConstructor;
-import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.common.types.JvmVisibility;
+import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
@@ -41,13 +40,13 @@ import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
@@ -61,13 +60,11 @@ import org.jnario.feature.jvmmodel.PendingStepsCalculator;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.feature.jvmmodel.StepExpressionProvider;
 import org.jnario.feature.jvmmodel.StepReferenceFieldCreator;
-import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.jnario.feature.naming.StepNameProvider;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioJvmModelInferrer;
 import org.jnario.jvmmodel.TestRuntimeSupport;
 import org.jnario.lib.StepArguments;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.util.SourceAdapter;
@@ -90,9 +87,6 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   private TypeReferences _typeReferences;
   
   @Inject
-  private FeatureClassNameProvider _featureClassNameProvider;
-  
-  @Inject
   private StepNameProvider _stepNameProvider;
   
   @Inject
@@ -113,7 +107,15 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   @Inject
   private JvmFieldReferenceUpdater _jvmFieldReferenceUpdater;
   
+  @Inject
+  private TypesFactory typesFactory;
+  
   public void doInfer(final EObject object, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
+    boolean _not = (!(object instanceof XtendFile));
+    if (_not) {
+      return;
+    }
+    final ArrayList<Runnable> doLater = CollectionLiterals.<Runnable>newArrayList();
     final Feature feature = this.resolveFeature(object);
     boolean _or = false;
     boolean _equals = Objects.equal(feature, null);
@@ -128,47 +130,51 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       return;
     }
     Background _background = feature.getBackground();
-    final JvmGenericType background = this.toClass(_background, acceptor);
+    final JvmGenericType background = this.toClass(_background, acceptor, doLater, preIndexingPhase);
     EList<Scenario> _scenarios = feature.getScenarios();
-    final ArrayList<JvmGenericType> scenarios = this.toClass(_scenarios, acceptor, background);
-    this.toClass(feature, acceptor, scenarios, background);
+    final ArrayList<JvmGenericType> scenarios = this.toClass(_scenarios, acceptor, background, doLater, preIndexingPhase);
+    this.toClass(feature, acceptor, scenarios, background, doLater, preIndexingPhase);
+    boolean _not_1 = (!preIndexingPhase);
+    if (_not_1) {
+      for (final Runnable runnable : doLater) {
+        runnable.run();
+      }
+    }
   }
   
   public Feature resolveFeature(final EObject root) {
     final FeatureFile featureFile = ((FeatureFile) root);
-    EList<XtendClass> _xtendClasses = featureFile.getXtendClasses();
-    boolean _isEmpty = _xtendClasses.isEmpty();
+    EList<XtendTypeDeclaration> _xtendTypes = featureFile.getXtendTypes();
+    boolean _isEmpty = _xtendTypes.isEmpty();
     if (_isEmpty) {
       return null;
     }
-    EList<XtendClass> _xtendClasses_1 = featureFile.getXtendClasses();
-    final XtendClass xtendClass = _xtendClasses_1.get(0);
+    EList<XtendTypeDeclaration> _xtendTypes_1 = featureFile.getXtendTypes();
+    final XtendTypeDeclaration xtendClass = _xtendTypes_1.get(0);
     return ((Feature) xtendClass);
   }
   
-  public JvmGenericType toClass(final Background background, final IJvmDeclaredTypeAcceptor acceptor) {
+  public JvmGenericType toClass(final Background background, final IJvmDeclaredTypeAcceptor acceptor, final List<Runnable> doLater, final boolean preIndexingPhase) {
     JvmGenericType _xblockexpression = null;
     {
       boolean _equals = Objects.equal(background, null);
       if (_equals) {
         return null;
       }
-      final JvmGenericType backgroundClass = this.toClass(background);
-      backgroundClass.setAbstract(true);
       List<JvmGenericType> _emptyList = CollectionLiterals.<JvmGenericType>emptyList();
-      this.register(acceptor, background, backgroundClass, _emptyList);
-      _xblockexpression = (backgroundClass);
+      final JvmGenericType inferredJvmType = this.toClass(background, _emptyList, acceptor, doLater, preIndexingPhase);
+      inferredJvmType.setAbstract(true);
+      _xblockexpression = (inferredJvmType);
     }
     return _xblockexpression;
   }
   
-  public ArrayList<JvmGenericType> toClass(final List<Scenario> scenarios, final IJvmDeclaredTypeAcceptor acceptor, final JvmGenericType backgroundType) {
+  public ArrayList<JvmGenericType> toClass(final List<Scenario> scenarios, final IJvmDeclaredTypeAcceptor acceptor, final JvmGenericType backgroundType, final List<Runnable> doLater, final boolean preIndexingPhase) {
     final ArrayList<JvmGenericType> result = CollectionLiterals.<JvmGenericType>newArrayList();
     final Procedure1<Scenario> _function = new Procedure1<Scenario>() {
         public void apply(final Scenario it) {
-          final JvmGenericType inferredJvmType = FeatureJvmModelInferrer.this.toClass(it, backgroundType);
           List<JvmGenericType> _emptyList = CollectionLiterals.<JvmGenericType>emptyList();
-          FeatureJvmModelInferrer.this.register(acceptor, it, inferredJvmType, _emptyList);
+          final JvmGenericType inferredJvmType = FeatureJvmModelInferrer.this.toClass(it, _emptyList, acceptor, doLater, preIndexingPhase);
           result.add(inferredJvmType);
         }
       };
@@ -176,9 +182,9 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     return result;
   }
   
-  public void toClass(final Feature feature, final IJvmDeclaredTypeAcceptor acceptor, final List<JvmGenericType> scenarios, final JvmGenericType background) {
+  public void toClass(final Feature feature, final IJvmDeclaredTypeAcceptor acceptor, final List<JvmGenericType> scenarios, final JvmGenericType background, final List<Runnable> doLater, final boolean preIndexingPhase) {
     this.addSuperClass(feature);
-    final JvmGenericType inferredJvmType = this.toClass(feature);
+    final JvmGenericType inferredJvmType = this.toClass(feature, scenarios, acceptor, doLater, preIndexingPhase);
     boolean _equals = Objects.equal(background, null);
     if (_equals) {
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
@@ -202,39 +208,50 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         };
       IterableExtensions.<JvmGenericType>forEach(scenarios, _function_1);
     }
-    this.register(acceptor, feature, inferredJvmType, scenarios);
   }
   
-  public void register(final IJvmDeclaredTypeAcceptor acceptor, final XtendClass source, final JvmGenericType inferredJvmType, final List<JvmGenericType> scenarios) {
-    this._iJvmModelAssociator.associatePrimary(source, inferredJvmType);
-    IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(inferredJvmType);
-    final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
-        public void apply(final JvmGenericType it) {
-          FeatureJvmModelInferrer.this.initialize(source, inferredJvmType, scenarios);
-        }
-      };
-    _accept.initializeLater(_function);
+  public boolean register(final IJvmDeclaredTypeAcceptor acceptor, final XtendClass source, final JvmGenericType inferredJvmType, final List<JvmGenericType> scenarios, final List<Runnable> doLater, final boolean preIndexingPhase) {
+    boolean _xifexpression = false;
+    boolean _not = (!preIndexingPhase);
+    if (_not) {
+      final Procedure0 _function = new Procedure0() {
+          public void apply() {
+            FeatureJvmModelInferrer.this.init(source, inferredJvmType, scenarios);
+          }
+        };
+      boolean _add = doLater.add(new Runnable() {
+          public void run() {
+            _function.apply();
+          }
+      });
+      _xifexpression = _add;
+    }
+    return _xifexpression;
   }
   
-  public JvmGenericType toClass(final XtendClass xtendClass) {
-    JvmGenericType _class = this.toClass(xtendClass, null);
-    return _class;
-  }
-  
-  public JvmGenericType toClass(final XtendClass xtendClass, final JvmGenericType superClass) {
-    String _javaClassName = this._featureClassNameProvider.toJavaClassName(xtendClass);
-    final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
-        public void apply(final JvmGenericType it) {
-          String _packageName = xtendClass.getPackageName();
-          it.setPackageName(_packageName);
-        }
-      };
-    JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(xtendClass, _javaClassName, _function);
-    return _class;
-  }
-  
-  public void initialize(final XtendClass source, final JvmGenericType inferredJvmType, final List<JvmGenericType> scenarios) {
-    this.init(source, inferredJvmType, scenarios);
+  public JvmGenericType toClass(final XtendClass xtendClass, final List<JvmGenericType> scenarios, final IJvmDeclaredTypeAcceptor acceptor, final List<Runnable> doLater, final boolean preIndexingPhase) {
+    JvmGenericType _xblockexpression = null;
+    {
+      final JvmGenericType javaType = this.typesFactory.createJvmGenericType();
+      XtendFile _xtendFile = this.xtendFile(xtendClass);
+      this.setNameAndAssociate(_xtendFile, xtendClass, javaType);
+      acceptor.<JvmGenericType>accept(javaType);
+      boolean _not = (!preIndexingPhase);
+      if (_not) {
+        final Procedure0 _function = new Procedure0() {
+            public void apply() {
+              FeatureJvmModelInferrer.this.init(xtendClass, javaType, scenarios);
+            }
+          };
+        doLater.add(new Runnable() {
+            public void run() {
+              _function.apply();
+            }
+        });
+      }
+      _xblockexpression = (javaType);
+    }
+    return _xblockexpression;
   }
   
   protected void _init(final Feature feature, final JvmGenericType inferredJvmType, final List<JvmGenericType> scenarios) {
@@ -255,14 +272,6 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   
   protected void _init(final Scenario scenario, final JvmGenericType inferredJvmType, final List<JvmGenericType> scenarios) {
     this._stepReferenceFieldCreator.copyXtendMemberForReferences(scenario);
-    EList<XtendMember> _members = scenario.getMembers();
-    Iterable<XtendField> _filter = Iterables.<XtendField>filter(_members, XtendField.class);
-    final Procedure1<XtendField> _function = new Procedure1<XtendField>() {
-        public void apply(final XtendField it) {
-          FeatureJvmModelInferrer.this.transform2(it, inferredJvmType);
-        }
-      };
-    IterableExtensions.<XtendField>forEach(_filter, _function);
     final EList<JvmAnnotationReference> annotations = inferredJvmType.getAnnotations();
     TestRuntimeSupport _testRuntime = this.getTestRuntime();
     _testRuntime.updateScenario(scenario, inferredJvmType);
@@ -272,7 +281,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     final Feature feature = this.feature(scenario);
     int start = 0;
     EList<XAnnotation> _annotations = feature.getAnnotations();
-    this._extendedJvmTypesBuilder.translateAnnotationsTo(_annotations, inferredJvmType);
+    this.translateAnnotationsTo(_annotations, inferredJvmType);
     final Background background = feature.getBackground();
     ArrayList<Step> allSteps = CollectionLiterals.<Step>newArrayList();
     boolean _notEquals = (!Objects.equal(background, null));
@@ -300,8 +309,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     this.generateSteps(_steps_3, inferredJvmType, start, scenario);
     super.initialize(scenario, inferredJvmType);
     EList<Step> _steps_4 = scenario.getSteps();
-    Iterable<StepReference> _filter_1 = Iterables.<StepReference>filter(_steps_4, StepReference.class);
-    final Procedure1<StepReference> _function_1 = new Procedure1<StepReference>() {
+    Iterable<StepReference> _filter = Iterables.<StepReference>filter(_steps_4, StepReference.class);
+    final Procedure1<StepReference> _function = new Procedure1<StepReference>() {
         public void apply(final StepReference it) {
           StepImplementation _reference = it.getReference();
           boolean _equals = Objects.equal(_reference, null);
@@ -328,66 +337,13 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           FeatureJvmModelInferrer.this._jvmFieldReferenceUpdater.updateReferences(_expressionOf, originalType, inferredJvmType);
         }
       };
-    IterableExtensions.<StepReference>forEach(_filter_1, _function_1);
+    IterableExtensions.<StepReference>forEach(_filter, _function);
   }
   
-  protected void transform(final XtendFunction source, final JvmGenericType container) {
+  protected void transform(final XtendFunction source, final JvmGenericType container, final boolean allowDispatch) {
   }
   
-  protected void transform(final XtendField source, final JvmGenericType container) {
-  }
-  
-  /**
-   * We need to transform the fields earlier in order to correctly copy references to
-   * extension fields when resolving step references.
-   */
-  protected boolean transform2(final XtendField source, final JvmGenericType container) {
-    boolean _xblockexpression = false;
-    {
-      JvmVisibility _visibility = source.getVisibility();
-      boolean _equals = Objects.equal(_visibility, JvmVisibility.PRIVATE);
-      if (_equals) {
-        source.setVisibility(JvmVisibility.DEFAULT);
-      }
-      super.transform(source, container);
-      boolean _xifexpression = false;
-      boolean _isExtension = source.isExtension();
-      if (_isExtension) {
-        boolean _xblockexpression_1 = false;
-        {
-          Set<EObject> _jvmElements = this._iJvmModelAssociations.getJvmElements(source);
-          EObject _head = IterableExtensions.<EObject>head(_jvmElements);
-          final JvmField field = ((JvmField) _head);
-          field.setVisibility(JvmVisibility.PUBLIC);
-          boolean _xifexpression_1 = false;
-          EList<JvmAnnotationReference> _annotations = field.getAnnotations();
-          final Function1<JvmAnnotationReference,Boolean> _function = new Function1<JvmAnnotationReference,Boolean>() {
-              public Boolean apply(final JvmAnnotationReference it) {
-                String _simpleName = Extension.class.getSimpleName();
-                JvmAnnotationType _annotation = it.getAnnotation();
-                String _simpleName_1 = _annotation.getSimpleName();
-                boolean _equals = Objects.equal(_simpleName, _simpleName_1);
-                return Boolean.valueOf(_equals);
-              }
-            };
-          Iterable<JvmAnnotationReference> _filter = IterableExtensions.<JvmAnnotationReference>filter(_annotations, _function);
-          boolean _isEmpty = IterableExtensions.isEmpty(_filter);
-          if (_isEmpty) {
-            EList<JvmAnnotationReference> _annotations_1 = field.getAnnotations();
-            JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(source, Extension.class);
-            boolean _add = this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation);
-            _xifexpression_1 = _add;
-          }
-          _xblockexpression_1 = (_xifexpression_1);
-        }
-        _xifexpression = _xblockexpression_1;
-      }
-      _xblockexpression = (_xifexpression);
-    }
-    return _xblockexpression;
-  }
-  
-  protected String computeFieldName(final XtendField field, final JvmGenericType declaringType) {
+  protected String computeFieldName(final XtendField field) {
     String _xblockexpression = null;
     {
       XtendField source = field;
@@ -415,7 +371,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         }
         _while = _and_1;
       }
-      String _computeFieldName = super.computeFieldName(((XtendField) source), declaringType);
+      String _computeFieldName = super.computeFieldName(((XtendField) source));
       _xblockexpression = (_computeFieldName);
     }
     return _xblockexpression;

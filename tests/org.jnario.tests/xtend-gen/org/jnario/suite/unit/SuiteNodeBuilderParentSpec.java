@@ -51,7 +51,7 @@ public class SuiteNodeBuilderParentSpec extends SuiteNodeBuilderSpec {
         public void apply(final SuiteNodeBuilderParentSpecExamples it) {
           Suite _parent = SuiteNodeBuilderParentSpec.this._suiteNodeBuilder.parent(it.suites, it.position);
           String _name = _parent==null?(String)null:_parent.getName();
-          boolean _should_be = Should.should_be(_name, it.parent);
+          boolean _should_be = Should.<String>should_be(_name, it.parent);
           Assert.assertTrue("\nExpected parent(suites, position)?.name should be parent but"
            + "\n     parent(suites, position)?.name is " + new StringDescription().appendValue(_name).toString()
            + "\n     parent(suites, position) is " + new StringDescription().appendValue(_parent).toString()

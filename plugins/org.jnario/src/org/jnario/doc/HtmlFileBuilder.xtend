@@ -7,15 +7,16 @@
  *******************************************************************************/
 package org.jnario.doc
 
+import static extension org.jnario.util.XtendTypes.*
 import static extension org.jnario.util.Strings.*
-import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtext.generator.IFileSystemAccess
  
 import static org.jnario.doc.DocOutputConfigurationProvider.*
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration
 
 class HtmlFileBuilder {
 	
-	def generate(XtendClass context, IFileSystemAccess fsa, HtmlFile htmlFile){
+	def generate(XtendTypeDeclaration context, IFileSystemAccess fsa, HtmlFile htmlFile){
 		if(htmlFile.name == null) return
 		val content = htmlFile.toText
 		fsa.generateFile(filePath(context, htmlFile), DOC_OUTPUT, content)
@@ -26,7 +27,7 @@ class HtmlFileBuilder {
 		return result.trim("_".charAt(0)) + ".html"
 	}
 	
-	def private filePath(XtendClass xtendClass, HtmlFile htmlFile){
+	def private filePath(XtendTypeDeclaration xtendClass, HtmlFile htmlFile){
 		val fileName = "/" + htmlFile.name?.toHtmlFileName
 		if(xtendClass.packageName == null){
 			return fileName

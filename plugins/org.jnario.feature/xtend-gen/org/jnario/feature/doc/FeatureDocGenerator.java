@@ -199,16 +199,16 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     return _builder;
   }
   
-  public CharSequence generate(final Object step) {
-    if (step instanceof Step) {
-      return _generate((Step)step);
-    } else if (step instanceof Scenario) {
-      return _generate((Scenario)step);
-    } else if (step instanceof Iterable) {
-      return _generate((Iterable<Step>)step);
+  public CharSequence generate(final Object scenario) {
+    if (scenario instanceof Scenario) {
+      return _generate((Scenario)scenario);
+    } else if (scenario instanceof Step) {
+      return _generate((Step)scenario);
+    } else if (scenario instanceof Iterable) {
+      return _generate((Iterable<Step>)scenario);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(step).toString());
+        Arrays.<Object>asList(scenario).toString());
     }
   }
 }

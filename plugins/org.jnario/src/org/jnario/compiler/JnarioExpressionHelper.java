@@ -11,22 +11,27 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.typing.XtendExpressionHelper;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
+import org.eclipse.xtext.xbase.XBooleanLiteral;
 import org.eclipse.xtext.xbase.XClosure;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XNullLiteral;
+import org.eclipse.xtext.xbase.XNumberLiteral;
+import org.eclipse.xtext.xbase.XStringLiteral;
+import org.eclipse.xtext.xbase.XTypeLiteral;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.jnario.Assertion;
 
 public class JnarioExpressionHelper extends XtendExpressionHelper {
 
 	@Override
-	public boolean isShortCircuiteBooleanOperation(
-			XAbstractFeatureCall featureCall) {
-		if (!(featureCall instanceof XBinaryOperation)) {
-			return false;
-		}
+	public boolean isShortCircuitOperation(XAbstractFeatureCall featureCall) {
+//		if (!(featureCall instanceof XBinaryOperation)) {
+//			return false;
+//		}
 		if (isInAssertion(featureCall)) {
 			return false;
 		}
-		return super.isShortCircuiteBooleanOperation(featureCall);
+		return super.isShortCircuitOperation(featureCall);
 	}
 
 	protected boolean isInAssertion(XAbstractFeatureCall featureCall) {
@@ -47,6 +52,17 @@ public class JnarioExpressionHelper extends XtendExpressionHelper {
 	private Iterator<XExpression> filterExpressions(
 			Iterator<EObject> elements) {
 		return filter(elements, XExpression.class);
+	}
+
+
+	public boolean isLiteral(XExpression expr) {
+		return expr instanceof XClosure
+				|| expr instanceof XStringLiteral
+				|| expr instanceof XTypeLiteral
+				|| expr instanceof XBooleanLiteral
+				|| expr instanceof XNumberLiteral
+				|| expr instanceof XNullLiteral
+				|| expr instanceof XAnnotation;
 	}
 
 }

@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 
 import org.jnario.Executable;
 import org.jnario.Specification;
@@ -127,6 +129,8 @@ public class SuiteSwitch<T>
 				if (result == null) result = caseSpecification(suite);
 				if (result == null) result = caseXtendClass(suite);
 				if (result == null) result = caseExecutable(suite);
+				if (result == null) result = caseXtendTypeDeclaration(suite);
+				if (result == null) result = caseXtendMember(suite);
 				if (result == null) result = caseXtendAnnotationTarget(suite);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -242,6 +246,38 @@ public class SuiteSwitch<T>
 	 * @generated
 	 */
 	public T caseXtendAnnotationTarget(XtendAnnotationTarget object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Member</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Member</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXtendMember(XtendMember object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Type Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Type Declaration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXtendTypeDeclaration(XtendTypeDeclaration object)
 	{
 		return null;
 	}

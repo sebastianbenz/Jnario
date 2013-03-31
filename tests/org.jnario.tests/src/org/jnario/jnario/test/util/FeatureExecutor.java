@@ -58,7 +58,7 @@ public class FeatureExecutor extends BehaviorExecutor{
 			throws MalformedURLException, ClassNotFoundException {
 		CompositeResult result = new CompositeResult();
 		FeatureFile jnarioFile = (FeatureFile) object;
-		for (Feature  feature : Iterables.filter(jnarioFile.getXtendClasses(), Feature.class)) {
+		for (Feature  feature : Iterables.filter(jnarioFile.getXtendTypes(), Feature.class)) {
 			String jnarioClassName = nameProvider.toJavaClassName(feature);
 			String packageName = jnarioFile.getPackage();
 			result.add(runTestsInClass(jnarioClassName, packageName));
@@ -69,7 +69,7 @@ public class FeatureExecutor extends BehaviorExecutor{
 	protected void generateJava(EObject object) {
 		super.generateJava(object);
 		FeatureFile featureFile = (FeatureFile)object;
-		assertFalse("has no feature", featureFile.getXtendClasses().isEmpty());
-		assertFalse("has no scenarios", ((Feature)featureFile.getXtendClasses().get(0)).getScenarios().isEmpty());
+		assertFalse("has no feature", featureFile.getXtendTypes().isEmpty());
+		assertFalse("has no scenarios", ((Feature)featureFile.getXtendTypes().get(0)).getScenarios().isEmpty());
 	}
 }

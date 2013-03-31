@@ -30,10 +30,6 @@ public class SuiteLabelProvider extends XtendLabelProvider {
 
 	@Inject SuiteClassNameProvider nameProvider;
 	
-	@Inject
-	public SuiteLabelProvider(AdapterFactoryLabelProvider delegate) {
-		super(delegate);
-	}
 	
 	@Inject
 	private XtendImages images;

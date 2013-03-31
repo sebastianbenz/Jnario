@@ -19,6 +19,7 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 
 import org.jnario.Executable;
 import org.jnario.Specification;
@@ -169,6 +170,16 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 				return createXtendAnnotationTargetAdapter();
 			}
 			@Override
+			public Adapter caseXtendMember(XtendMember object)
+			{
+				return createXtendMemberAdapter();
+			}
+			@Override
+			public Adapter caseXtendTypeDeclaration(XtendTypeDeclaration object)
+			{
+				return createXtendTypeDeclarationAdapter();
+			}
+			@Override
 			public Adapter caseXtendClass(XtendClass object)
 			{
 				return createXtendClassAdapter();
@@ -182,11 +193,6 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 			public Adapter caseSpecification(Specification object)
 			{
 				return createSpecificationAdapter();
-			}
-			@Override
-			public Adapter caseXtendMember(XtendMember object)
-			{
-				return createXtendMemberAdapter();
 			}
 			@Override
 			public Adapter caseXtendFunction(XtendFunction object)
@@ -461,6 +467,36 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendMember <em>Member</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtend.core.xtend.XtendMember
+	 * @generated
+	 */
+	public Adapter createXtendMemberAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendTypeDeclaration <em>Type Declaration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtend.core.xtend.XtendTypeDeclaration
+	 * @generated
+	 */
+	public Adapter createXtendTypeDeclarationAdapter()
+	{
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendClass <em>Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -501,21 +537,6 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createSpecificationAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendMember <em>Member</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.xtend.core.xtend.XtendMember
-	 * @generated
-	 */
-	public Adapter createXtendMemberAdapter()
 	{
 		return null;
 	}

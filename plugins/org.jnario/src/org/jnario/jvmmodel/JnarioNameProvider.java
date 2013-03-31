@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
+import org.jnario.util.XtendTypes;
 
 import com.google.common.collect.MapMaker;
 import com.google.inject.Provider;
@@ -59,7 +60,7 @@ public abstract class JnarioNameProvider {
 
 	protected String getPackageName(EObject eObject) {
 		XtendClass xtendClass = getContainerOfType(eObject, XtendClass.class);
-		String packageName = xtendClass.getPackageName();
+		String packageName = XtendTypes.packageName(xtendClass);
 		return packageName;
 	}
 	

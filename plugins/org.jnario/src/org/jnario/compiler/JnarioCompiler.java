@@ -36,7 +36,6 @@ import org.eclipse.xtext.xbase.XSwitchExpression;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
-import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.StringDescription;
 import org.jnario.Assertion;
@@ -49,7 +48,6 @@ import org.jnario.util.SourceAdapter;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 
 /**
@@ -58,7 +56,7 @@ import com.google.inject.Inject;
 public class JnarioCompiler extends XtendCompiler {
 
 	@Inject
-	private XExpressionHelper expressionHelper;
+	private JnarioExpressionHelper expressionHelper;
 	
 	@Inject ISerializer serializer;
 
@@ -150,6 +148,9 @@ public class JnarioCompiler extends XtendCompiler {
 			JvmIdentifiableElement nullValueMatcher = getNullValueMatcher(should);
 			XFeatureCall featureCall = createFeatureCall(nullValueMatcher);
 			should.setRightOperand(featureCall);
+			if(!(should.getFeature() instanceof JvmOperation)){
+				return;
+			}
 			if(ObjectExtensions.class.getSimpleName().equals(((JvmOperation)should.getFeature()).getDeclaringType().getSimpleName())){
 				JvmIdentifiableElement operation = getMethod(should, org.jnario.lib.Should.class, "operator_doubleArrow");
 				should.setFeature(operation);
@@ -345,8 +346,8 @@ public class JnarioCompiler extends XtendCompiler {
 				return !expressionHelper.isLiteral(expr);
 			}
 		};
-		Iterable<XExpression> subExpressions = filter(expression.eContents(),
-				XExpression.class);
+		Iterable<XExpression> subExpressions = filter(expression.eContents(), XExpression.class);
+		
 		subExpressions = filter(subExpressions, noLiteralExpressions);
 		subExpressions = filter(subExpressions, noSwitchCases);
 		return subExpressions.iterator();

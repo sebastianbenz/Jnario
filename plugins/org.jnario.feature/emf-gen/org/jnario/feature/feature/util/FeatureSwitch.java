@@ -17,6 +17,7 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 
 import org.jnario.Executable;
 import org.jnario.Specification;
@@ -113,6 +114,8 @@ public class FeatureSwitch<T>
 				if (result == null) result = caseSpecification(feature);
 				if (result == null) result = caseXtendClass(feature);
 				if (result == null) result = caseExecutable(feature);
+				if (result == null) result = caseXtendTypeDeclaration(feature);
+				if (result == null) result = caseXtendMember(feature);
 				if (result == null) result = caseXtendAnnotationTarget(feature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -124,6 +127,8 @@ public class FeatureSwitch<T>
 				if (result == null) result = caseScenario(background);
 				if (result == null) result = caseXtendClass(background);
 				if (result == null) result = caseExecutable(background);
+				if (result == null) result = caseXtendTypeDeclaration(background);
+				if (result == null) result = caseXtendMember(background);
 				if (result == null) result = caseXtendAnnotationTarget(background);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -134,6 +139,8 @@ public class FeatureSwitch<T>
 				T result = caseScenario(scenario);
 				if (result == null) result = caseXtendClass(scenario);
 				if (result == null) result = caseExecutable(scenario);
+				if (result == null) result = caseXtendTypeDeclaration(scenario);
+				if (result == null) result = caseXtendMember(scenario);
 				if (result == null) result = caseXtendAnnotationTarget(scenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -546,6 +553,38 @@ public class FeatureSwitch<T>
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Member</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Member</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXtendMember(XtendMember object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Type Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Type Declaration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXtendTypeDeclaration(XtendTypeDeclaration object)
+	{
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -589,22 +628,6 @@ public class FeatureSwitch<T>
 	 * @generated
 	 */
 	public T caseSpecification(Specification object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Member</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Member</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseXtendMember(XtendMember object)
 	{
 		return null;
 	}

@@ -34,5 +34,6 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.jnario.spec.ui.contentassist,
  org.jnario.spec.ui.contentassist.antlr,
  org.jnario.spec.ui.internal,
- org.jnario.spec.ui.wizards
+ org.jnario.spec.ui.wizards,
+ org.jnario.spec.ui.quickfix
 Bundle-Activator: org.jnario.spec.ui.internal.SpecActivatorImpl

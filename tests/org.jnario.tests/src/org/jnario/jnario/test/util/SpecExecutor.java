@@ -32,7 +32,7 @@ public class SpecExecutor extends BehaviorExecutor{
 	protected Result runExamples(EObject object) throws MalformedURLException, ClassNotFoundException {
 		SpecFile spec = (SpecFile) object;
 		CompositeResult result = new CompositeResult();
-		for (ExampleGroup exampleGroup : Iterables.filter(spec.getXtendClasses(), ExampleGroup.class)) {
+		for (ExampleGroup exampleGroup : Iterables.filter(spec.getXtendTypes(), ExampleGroup.class)) {
 			String specClassName = nameProvider.toJavaClassName(exampleGroup);
 			String packageName = spec.getPackage();
 			result.add(runTestsInClass(specClassName, packageName));
@@ -42,6 +42,6 @@ public class SpecExecutor extends BehaviorExecutor{
 	
 	protected void generateJava(EObject object) {
 		super.generateJava(object);
-		assertFalse("has no examples", ((SpecFile)object).getXtendClasses().isEmpty());
+		assertFalse("has no examples", ((SpecFile)object).getXtendTypes().isEmpty());
 	}
 }

@@ -21,7 +21,7 @@ public class FeatureQuery {
 	
 	public Iterable<Step> allSteps(FeatureFile featureFile){
 		Iterable<Step> result = emptyList();
-		for (Feature feature : filter(featureFile.getXtendClasses(), Feature.class)) {
+		for (Feature feature : filter(featureFile.getXtendTypes(), Feature.class)) {
 			if(feature == null){
 				return result;
 			}

@@ -34,7 +34,7 @@ public class SuiteJavaValidator extends AbstractSuiteJavaValidator {
 	
 	@SuppressWarnings("restriction")
 	public Iterable<Suite> rootSuites(EObject context){
-		return filter(((SuiteFile)context.eResource().getContents().get(0)).getXtendClasses(), Suite.class);
+		return filter(((SuiteFile)context.eResource().getContents().get(0)).getXtendTypes(), Suite.class);
 	}
 
 	protected void warning(String message, EObject source, EStructuralFeature feature, String code, String... issueData) {

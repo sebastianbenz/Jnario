@@ -31,7 +31,7 @@ class StepNameProvider {
 			return null
 		}
 		// restore Given, Then, When keywords
-		textForFeature(step, XtendPackage::eINSTANCE.xtendClass_Name)
+		textForFeature(step, XtendPackage::eINSTANCE.xtendTypeDeclaration_Name)
 	}
 	
 	def dispatch nameOf(StepReference ref){

@@ -14,6 +14,7 @@ import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
@@ -145,6 +146,10 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseXBinaryOperation(XBinaryOperation object) {
 				return createXBinaryOperationAdapter();
+			}
+			@Override
+			public Adapter caseXtendTypeDeclaration(XtendTypeDeclaration object) {
+				return createXtendTypeDeclarationAdapter();
 			}
 			@Override
 			public Adapter caseXtendClass(XtendClass object) {
@@ -381,6 +386,20 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXBinaryOperationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendTypeDeclaration <em>Type Declaration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtend.core.xtend.XtendTypeDeclaration
+	 * @generated
+	 */
+	public Adapter createXtendTypeDeclarationAdapter() {
 		return null;
 	}
 

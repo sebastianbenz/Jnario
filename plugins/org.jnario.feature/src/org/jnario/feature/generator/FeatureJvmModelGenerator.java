@@ -9,6 +9,7 @@ package org.jnario.feature.generator;
 
 import org.eclipse.xtext.common.types.JvmExecutable;
 import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.xbase.compiler.GeneratorConfig;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.ILogicalContainerProvider;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypeExtensions;
@@ -27,18 +28,19 @@ public class FeatureJvmModelGenerator extends ExtendedJvmModelGenerator {
 	@Inject
 	private JvmTypeExtensions jvmTypeExtensions;
 
-	/**
-	 *  based on JvmModelGenerator, changed to generate an empty method instead of "throw UnsupportedOperationException"
-	 */
 	@Override
-	public void generateExecutableBody(JvmExecutable op, ITreeAppendable appendable) {
+	public void generateExecutableBody(JvmExecutable op, ITreeAppendable appendable, GeneratorConfig config) {
 		if(jvmTypeExtensions.getCompilationStrategy(op) == null && logicalContainerProvider.getAssociatedExpression(op) == null && op instanceof JvmOperation){
 			appendable.openScope();
 			appendable.increaseIndentation().append("{").newLine();
 			appendable.decreaseIndentation().newLine().append("}");
 			appendable.closeScope();		
 		}else{
-			super.generateExecutableBody(op, appendable);
+			super.generateExecutableBody(op, appendable, config);
 		}
 	}
+	
+	public boolean hasBody(JvmExecutable op) {
+		return true;
+	};
 }

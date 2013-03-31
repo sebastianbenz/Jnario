@@ -32,7 +32,7 @@ class SuiteNodeBuilder{
 	@Inject extension SpecResolver
 	
 	def Iterable<SuiteNode> buildNodeModel(SuiteFile suiteFile){
-		val suites = suiteFile.xtendClasses.filter(typeof(Suite)).toList
+		val suites = suiteFile.xtendTypes.filter(typeof(Suite)).toList
 		val result = <SuiteNode>newArrayList
 		if(suites.empty) return result
 		val mapping = <EObject, SuiteNode>newHashMap

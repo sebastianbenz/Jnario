@@ -264,7 +264,7 @@ public class Greeter{
   def generateDoc(CharSequence input){
     val resource = parseScenario(input)
     val featureFile= resource.contents.head as FeatureFile
-    return subject.generateContent(featureFile.xtendClasses.head as Feature).toString
+    return subject.generateContent(featureFile.xtendTypes.head as Feature).toString
   }
 }
 </pre>

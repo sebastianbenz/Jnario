@@ -20,6 +20,8 @@ import org.eclipse.xtext.common.types.TypesPackage;
 
 import org.eclipse.xtext.xbase.XbasePackage;
 
+import org.eclipse.xtext.xtype.XtypePackage;
+
 import org.jnario.JnarioPackage;
 
 import org.jnario.spec.spec.After;
@@ -131,6 +133,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
 		// Initialize simple dependencies
 		JnarioPackage.eINSTANCE.eClass();
+		XtypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theSpecPackage.createPackageContents();

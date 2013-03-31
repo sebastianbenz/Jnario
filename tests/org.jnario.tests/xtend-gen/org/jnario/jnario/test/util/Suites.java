@@ -2,7 +2,7 @@ package org.jnario.jnario.test.util;
 
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.jnario.Specification;
 import org.jnario.suite.suite.Reference;
@@ -17,8 +17,8 @@ public class Suites {
   
   public static SuiteFile suiteFile(final Suite... suites) {
     final SuiteFile file = Suites.factory.createSuiteFile();
-    EList<XtendClass> _xtendClasses = file.getXtendClasses();
-    _xtendClasses.addAll(((Collection<? extends XtendClass>)Conversions.doWrapArray(suites)));
+    EList<XtendTypeDeclaration> _xtendTypes = file.getXtendTypes();
+    _xtendTypes.addAll(((Collection<? extends XtendTypeDeclaration>)Conversions.doWrapArray(suites)));
     return file;
   }
   
@@ -50,8 +50,8 @@ public class Suites {
       suite.setName(name);
       final SuiteFile file = Suites.factory.createSuiteFile();
       file.setPackage(packageName);
-      EList<XtendClass> _xtendClasses = file.getXtendClasses();
-      _xtendClasses.add(suite);
+      EList<XtendTypeDeclaration> _xtendTypes = file.getXtendTypes();
+      _xtendTypes.add(suite);
       _xblockexpression = (suite);
     }
     return _xblockexpression;

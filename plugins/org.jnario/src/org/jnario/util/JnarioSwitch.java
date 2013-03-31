@@ -14,6 +14,7 @@ import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
@@ -157,6 +158,8 @@ public class JnarioSwitch<T> {
 				T result = caseSpecification(specification);
 				if (result == null) result = caseXtendClass(specification);
 				if (result == null) result = caseExecutable(specification);
+				if (result == null) result = caseXtendTypeDeclaration(specification);
+				if (result == null) result = caseXtendMember(specification);
 				if (result == null) result = caseXtendAnnotationTarget(specification);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -401,6 +404,21 @@ public class JnarioSwitch<T> {
 	 * @generated
 	 */
 	public T caseXBinaryOperation(XBinaryOperation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Type Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Type Declaration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXtendTypeDeclaration(XtendTypeDeclaration object) {
 		return null;
 	}
 

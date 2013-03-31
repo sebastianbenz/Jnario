@@ -45,8 +45,8 @@ public class SpecHighlightingCalculator extends JnarioHighlightingCalculator {
 			return;
 		}
 		SpecFile file = (SpecFile) root;
-		for (ExampleGroup exampleGroup : Iterables.filter(file.getXtendClasses(), ExampleGroup.class)) {
-			highlightDeprectedXtendAnnotationTarget(acceptor, exampleGroup);
+		for (ExampleGroup exampleGroup : Iterables.filter(file.getXtendTypes(), ExampleGroup.class)) {
+			highlightDeprecatedXtendAnnotationTarget(acceptor, exampleGroup);
 			provideHighlightingFor(exampleGroup, acceptor);
 		}
 		super.doProvideHighlightingFor(resource, acceptor);
@@ -77,7 +77,7 @@ public class SpecHighlightingCalculator extends JnarioHighlightingCalculator {
 					TestFunction function = (TestFunction) member;
 					highlightRichStrings(function.getExpression() ,acceptor);
 				}
-				highlightDeprectedXtendAnnotationTarget(acceptor, member);
+				highlightDeprecatedXtendAnnotationTarget(acceptor, member);
 			}
 		}
 	}

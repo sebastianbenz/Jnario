@@ -20,8 +20,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.viewers.StyledString;
-import org.eclipse.xtend.core.xtend.XtendPackage;
-import org.eclipse.xtend.ide.contentassist.ImportingTypesProposalProvider.FQNImporter;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.Keyword;
@@ -42,6 +40,9 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.xbase.XbaseQualifiedNameConverter;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xbase.conversion.XbaseQualifiedNameValueConverter;
+import org.eclipse.xtext.xbase.imports.RewritableImportSection;
+import org.eclipse.xtext.xbase.ui.contentassist.ImportingTypesProposalProvider;
+import org.eclipse.xtext.xbase.ui.imports.ReplaceConverter;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.StepReference;
@@ -58,13 +59,8 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	@Inject private IResourceDescriptions resourceDescriptions;
 	@Inject private IContainer.Manager containerManager;
 	@Inject private StepNameProvider stepNameProvider;
-	
-	@Override
-	public void completeImport_ImportedType(EObject model, Assignment assignment, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		completeJavaTypes(context, XtendPackage.Literals.XTEND_IMPORT__IMPORTED_TYPE, true,
-				getQualifiedNameValueConverter(), new TypeMatchFilters.All(IJavaSearchConstants.TYPE), acceptor);
-	}
+	@Inject private RewritableImportSection.Factory importSectionFactory;
+	@Inject	private ReplaceConverter replaceConverter;
 	
 	@Override
 	public void completeXAnnotation_AnnotationType(EObject model, Assignment assignment, ContentAssistContext context,
@@ -251,7 +247,10 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 				};
 			}
 		};
-		final FQNImporter fqnImporter = new FQNImporter(context.getResource(), context.getViewer(), scope, qualifiedNameConverter, null, qualifiedNameValueConverter);
+		
+		final ImportingTypesProposalProvider.FQNImporter fqnImporter = new ImportingTypesProposalProvider.FQNImporter(context.getResource(), context.getViewer(), scope, qualifiedNameConverter,
+				qualifiedNameValueConverter, importSectionFactory, replaceConverter);
+		
 		final ICompletionProposalAcceptor scopeAware = new ICompletionProposalAcceptor.Delegate(acceptor) {
 			@Override
 			public void accept(ICompletionProposal proposal) {

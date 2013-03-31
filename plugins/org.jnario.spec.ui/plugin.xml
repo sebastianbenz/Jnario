@@ -36,15 +36,6 @@
             </reference>
          </activeWhen>
       </handler>
-            <handler
-            class="org.jnario.spec.ui.SpecExecutableExtensionFactory:org.eclipse.xtend.ide.edit.OrganizeImportsHandler"
-            commandId="org.eclipse.xtext.xbase.ui.organizeImports">
-           	<activeWhen>
-				<reference
-					definitionId="org.jnario.spec.Spec.Editor.opened">
-				</reference>
-			</activeWhen>
-      </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
         <definition id="org.jnario.spec.Spec.Editor.opened">
@@ -732,7 +723,7 @@
 			</activeWhen>
       </handler>
       <handler
-            class="org.eclipse.xtend.ide.XtendExecutableExtensionFactory:org.eclipse.xtend.ide.edit.OrganizeImportsHandler"
+            class="org.eclipse.xtend.ide.XtendExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.imports.OrganizeImportsHandler"
             commandId="org.eclipse.xtext.xbase.ui.organizeImports">
            	<activeWhen>
 				<reference

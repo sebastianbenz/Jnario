@@ -23,7 +23,7 @@ import org.eclipse.xtext.validation.ResourceValidatorImpl;
  */
 public class FeatureResourceValidator extends ResourceValidatorImpl {
 
-	private static final String REFERENCE_ERROR_MESSAGE = "Couldn't resolve reference to ";
+	private static final String REFERENCE_ERROR_MESSAGE = "a step cannot be resolved.";
 
 	@Override
 	public List<Issue> validate(Resource resource, CheckMode mode,
@@ -34,7 +34,7 @@ public class FeatureResourceValidator extends ResourceValidatorImpl {
 		}
 		List<Issue> finalList = newArrayList();
 		for(Issue issue: validate){
-			if(!issue.getMessage().startsWith(REFERENCE_ERROR_MESSAGE + "Step")){
+			if(!issue.getMessage().startsWith(REFERENCE_ERROR_MESSAGE)){
 				finalList.add(issue);
 			}
 		}

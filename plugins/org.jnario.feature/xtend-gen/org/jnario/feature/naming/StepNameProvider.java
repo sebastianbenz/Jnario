@@ -36,8 +36,8 @@ public class StepNameProvider {
       if (_or) {
         return null;
       }
-      EAttribute _xtendClass_Name = XtendPackage.eINSTANCE.getXtendClass_Name();
-      String _textForFeature = Nodes.textForFeature(step, _xtendClass_Name);
+      EAttribute _xtendTypeDeclaration_Name = XtendPackage.eINSTANCE.getXtendTypeDeclaration_Name();
+      String _textForFeature = Nodes.textForFeature(step, _xtendTypeDeclaration_Name);
       _xblockexpression = (_textForFeature);
     }
     return _xblockexpression;

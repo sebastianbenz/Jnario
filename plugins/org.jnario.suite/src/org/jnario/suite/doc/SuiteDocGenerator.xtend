@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.jnario.suite.doc
 
+import static extension org.jnario.util.XtendTypes.*
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtend.core.xtend.XtendClass
@@ -37,12 +38,12 @@ class SuiteDocGenerator extends AbstractDocGenerator {
 		initResultMapping(spec2ResultMapping)
 		input.contents.filter(typeof(SuiteFile)).forEach[
 			val htmlFile = createHtmlFile()
-			xtendClasses.head.generate(fsa, htmlFile)	
+			xtendTypes.head.generate(fsa, htmlFile)	
 		]
 	}
    
 	def HtmlFile createHtmlFile(SuiteFile file) {
-		val suites = file.xtendClasses.filter(typeof(Suite))
+		val suites = file.xtendTypes.filter(typeof(Suite))
 		if(suites.empty) return HtmlFile::EMPTY_FILE
 		val rootSuite = suites.head
 		HtmlFile::newHtmlFile[

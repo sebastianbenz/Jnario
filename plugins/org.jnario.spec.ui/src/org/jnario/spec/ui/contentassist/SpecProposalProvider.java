@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
-import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
@@ -29,13 +28,6 @@ import org.jnario.spec.spec.TestFunction;
  */
 @SuppressWarnings("restriction")
 public class SpecProposalProvider extends AbstractSpecProposalProvider {
-	
-	@Override
-	public void completeImport_ImportedType(EObject model, Assignment assignment, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		completeJavaTypes(context, XtendPackage.Literals.XTEND_IMPORT__IMPORTED_TYPE, true,
-				getQualifiedNameValueConverter(), new TypeMatchFilters.All(IJavaSearchConstants.TYPE), acceptor);
-	}
 	
 	@Override
 	public void completeXAnnotation_AnnotationType(EObject model, Assignment assignment, ContentAssistContext context,

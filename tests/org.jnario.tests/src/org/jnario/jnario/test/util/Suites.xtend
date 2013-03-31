@@ -18,7 +18,7 @@ class Suites {
 	
 	def static suiteFile(Suite... suites){
 		val file = factory.createSuiteFile
-		file.xtendClasses.addAll(suites)
+		file.xtendTypes.addAll(suites)
 		return file
 	}
 	
@@ -39,7 +39,7 @@ class Suites {
 		suite.name = name
 		val file = factory.createSuiteFile
 		file.^package = packageName
-		file.xtendClasses += suite 
+		file.xtendTypes += suite 
 		suite
 	}
 	

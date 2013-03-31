@@ -21,7 +21,7 @@ public class FeatureValueConverterToValueSpec extends FeatureValueConverterSpec 
   @Order(1)
   public void _subjectToValuePrefixTextNNullShouldBeText() throws Exception {
     String _value = this.subject.toValue("Prefix: text\n", null);
-    boolean _should_be = Should.should_be(_value, "text");
+    boolean _should_be = Should.<String>should_be(_value, "text");
     Assert.assertTrue("\nExpected subject.toValue(\"Prefix: text\\n\", null) should be \"text\" but"
      + "\n     subject.toValue(\"Prefix: text\\n\", null) is " + new StringDescription().appendValue(_value).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _should_be);
@@ -46,7 +46,7 @@ public class FeatureValueConverterToValueSpec extends FeatureValueConverterSpec 
   @Order(3)
   public void _subjectToValueXxxNullShouldBeXxx() throws Exception {
     String _value = this.subject.toValue("xxx", null);
-    boolean _should_be = Should.should_be(_value, "xxx");
+    boolean _should_be = Should.<String>should_be(_value, "xxx");
     Assert.assertTrue("\nExpected subject.toValue(\"xxx\", null) should be \"xxx\" but"
      + "\n     subject.toValue(\"xxx\", null) is " + new StringDescription().appendValue(_value).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _should_be);

@@ -5,10 +5,12 @@ import org.jnario.feature.tests.integration.DefiningFeatureBasesClassesFeatureSc
 import org.jnario.runner.Contains;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 @Contains({ DefiningFeatureBasesClassesFeatureASimpleScenario.class, DefiningFeatureBasesClassesFeatureScenarioWithBackground.class })
 @Named("Defining Feature Bases Classes")
+@Ignore
 @SuppressWarnings("all")
 @RunWith(FeatureRunner.class)
 public class DefiningFeatureBasesClassesFeature {

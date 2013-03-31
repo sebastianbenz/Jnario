@@ -19,7 +19,7 @@ import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
-import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.util.jdt.IJavaElementFinder;
@@ -83,7 +83,7 @@ public class FeatureJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 		if(element == null){
 			return null;
 		}
-		for (XtendClass xtendClass : ((FeatureFile)element).getXtendClasses()) {
+		for (XtendTypeDeclaration xtendClass : ((FeatureFile)element).getXtendTypes()) {
 			return super.findAssociatedJvmElement(xtendClass);
 		}
 		return null;

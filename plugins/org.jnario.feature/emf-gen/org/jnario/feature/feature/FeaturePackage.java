@@ -85,6 +85,33 @@ public interface FeaturePackage extends EPackage
 	int FEATURE__ANNOTATIONS = JnarioPackage.SPECIFICATION__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__ANNOTATION_INFO = JnarioPackage.SPECIFICATION__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__MODIFIERS = JnarioPackage.SPECIFICATION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__DECLARING_TYPE = JnarioPackage.SPECIFICATION__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -94,13 +121,13 @@ public interface FeaturePackage extends EPackage
 	int FEATURE__NAME = JnarioPackage.SPECIFICATION__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__ABSTRACT = JnarioPackage.SPECIFICATION__ABSTRACT;
+	int FEATURE__MEMBERS = JnarioPackage.SPECIFICATION__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
@@ -119,24 +146,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int FEATURE__IMPLEMENTS = JnarioPackage.SPECIFICATION__IMPLEMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE__SUPER_TYPES = JnarioPackage.SPECIFICATION__SUPER_TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE__MEMBERS = JnarioPackage.SPECIFICATION__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
@@ -203,6 +212,33 @@ public interface FeaturePackage extends EPackage
 	int SCENARIO__ANNOTATIONS = XtendPackage.XTEND_CLASS__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__ANNOTATION_INFO = XtendPackage.XTEND_CLASS__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__MODIFIERS = XtendPackage.XTEND_CLASS__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__DECLARING_TYPE = XtendPackage.XTEND_CLASS__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -212,13 +248,13 @@ public interface FeaturePackage extends EPackage
 	int SCENARIO__NAME = XtendPackage.XTEND_CLASS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__ABSTRACT = XtendPackage.XTEND_CLASS__ABSTRACT;
+	int SCENARIO__MEMBERS = XtendPackage.XTEND_CLASS__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
@@ -237,24 +273,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int SCENARIO__IMPLEMENTS = XtendPackage.XTEND_CLASS__IMPLEMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCENARIO__SUPER_TYPES = XtendPackage.XTEND_CLASS__SUPER_TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCENARIO__MEMBERS = XtendPackage.XTEND_CLASS__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
@@ -294,6 +312,33 @@ public interface FeaturePackage extends EPackage
 	int BACKGROUND__ANNOTATIONS = SCENARIO__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__ANNOTATION_INFO = SCENARIO__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__MODIFIERS = SCENARIO__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND__DECLARING_TYPE = SCENARIO__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -303,13 +348,13 @@ public interface FeaturePackage extends EPackage
 	int BACKGROUND__NAME = SCENARIO__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND__ABSTRACT = SCENARIO__ABSTRACT;
+	int BACKGROUND__MEMBERS = SCENARIO__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
@@ -328,24 +373,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int BACKGROUND__IMPLEMENTS = SCENARIO__IMPLEMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND__SUPER_TYPES = SCENARIO__SUPER_TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BACKGROUND__MEMBERS = SCENARIO__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
@@ -394,6 +421,24 @@ public interface FeaturePackage extends EPackage
 	int STEP__ANNOTATION_INFO = XtendPackage.XTEND_FUNCTION__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP__MODIFIERS = XtendPackage.XTEND_FUNCTION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP__DECLARING_TYPE = XtendPackage.XTEND_FUNCTION__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -430,24 +475,6 @@ public interface FeaturePackage extends EPackage
 	int STEP__PARAMETERS = XtendPackage.XTEND_FUNCTION__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__OVERRIDE = XtendPackage.XTEND_FUNCTION__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__DISPATCH = XtendPackage.XTEND_FUNCTION__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -464,24 +491,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int STEP__TYPE_PARAMETERS = XtendPackage.XTEND_FUNCTION__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__VISIBILITY = XtendPackage.XTEND_FUNCTION__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__STATIC = XtendPackage.XTEND_FUNCTION__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -530,6 +539,24 @@ public interface FeaturePackage extends EPackage
 	int STEP_IMPLEMENTATION__ANNOTATION_INFO = STEP__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_IMPLEMENTATION__MODIFIERS = STEP__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_IMPLEMENTATION__DECLARING_TYPE = STEP__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -566,24 +593,6 @@ public interface FeaturePackage extends EPackage
 	int STEP_IMPLEMENTATION__PARAMETERS = STEP__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_IMPLEMENTATION__OVERRIDE = STEP__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_IMPLEMENTATION__DISPATCH = STEP__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -600,24 +609,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int STEP_IMPLEMENTATION__TYPE_PARAMETERS = STEP__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_IMPLEMENTATION__VISIBILITY = STEP__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_IMPLEMENTATION__STATIC = STEP__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -666,6 +657,24 @@ public interface FeaturePackage extends EPackage
 	int GIVEN__ANNOTATION_INFO = STEP_IMPLEMENTATION__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GIVEN__MODIFIERS = STEP_IMPLEMENTATION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GIVEN__DECLARING_TYPE = STEP_IMPLEMENTATION__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -702,24 +711,6 @@ public interface FeaturePackage extends EPackage
 	int GIVEN__PARAMETERS = STEP_IMPLEMENTATION__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GIVEN__OVERRIDE = STEP_IMPLEMENTATION__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GIVEN__DISPATCH = STEP_IMPLEMENTATION__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -736,24 +727,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int GIVEN__TYPE_PARAMETERS = STEP_IMPLEMENTATION__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GIVEN__VISIBILITY = STEP_IMPLEMENTATION__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GIVEN__STATIC = STEP_IMPLEMENTATION__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -802,6 +775,24 @@ public interface FeaturePackage extends EPackage
 	int WHEN__ANNOTATION_INFO = STEP_IMPLEMENTATION__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN__MODIFIERS = STEP_IMPLEMENTATION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN__DECLARING_TYPE = STEP_IMPLEMENTATION__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -838,24 +829,6 @@ public interface FeaturePackage extends EPackage
 	int WHEN__PARAMETERS = STEP_IMPLEMENTATION__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN__OVERRIDE = STEP_IMPLEMENTATION__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN__DISPATCH = STEP_IMPLEMENTATION__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -872,24 +845,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int WHEN__TYPE_PARAMETERS = STEP_IMPLEMENTATION__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN__VISIBILITY = STEP_IMPLEMENTATION__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN__STATIC = STEP_IMPLEMENTATION__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -938,6 +893,24 @@ public interface FeaturePackage extends EPackage
 	int THEN__ANNOTATION_INFO = STEP_IMPLEMENTATION__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THEN__MODIFIERS = STEP_IMPLEMENTATION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THEN__DECLARING_TYPE = STEP_IMPLEMENTATION__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -974,24 +947,6 @@ public interface FeaturePackage extends EPackage
 	int THEN__PARAMETERS = STEP_IMPLEMENTATION__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEN__OVERRIDE = STEP_IMPLEMENTATION__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEN__DISPATCH = STEP_IMPLEMENTATION__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1008,24 +963,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int THEN__TYPE_PARAMETERS = STEP_IMPLEMENTATION__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEN__VISIBILITY = STEP_IMPLEMENTATION__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEN__STATIC = STEP_IMPLEMENTATION__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -1074,6 +1011,24 @@ public interface FeaturePackage extends EPackage
 	int AND__ANNOTATION_INFO = STEP_IMPLEMENTATION__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND__MODIFIERS = STEP_IMPLEMENTATION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND__DECLARING_TYPE = STEP_IMPLEMENTATION__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1110,24 +1065,6 @@ public interface FeaturePackage extends EPackage
 	int AND__PARAMETERS = STEP_IMPLEMENTATION__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AND__OVERRIDE = STEP_IMPLEMENTATION__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AND__DISPATCH = STEP_IMPLEMENTATION__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1144,24 +1081,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int AND__TYPE_PARAMETERS = STEP_IMPLEMENTATION__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AND__VISIBILITY = STEP_IMPLEMENTATION__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AND__STATIC = STEP_IMPLEMENTATION__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -1192,22 +1111,22 @@ public interface FeaturePackage extends EPackage
 	int FEATURE_FILE = 8;
 
 	/**
-	 * The feature id for the '<em><b>Imports</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Import Section</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FILE__IMPORTS = XtendPackage.XTEND_FILE__IMPORTS;
+	int FEATURE_FILE__IMPORT_SECTION = XtendPackage.XTEND_FILE__IMPORT_SECTION;
 
 	/**
-	 * The feature id for the '<em><b>Xtend Classes</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Xtend Types</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FILE__XTEND_CLASSES = XtendPackage.XTEND_FILE__XTEND_CLASSES;
+	int FEATURE_FILE__XTEND_TYPES = XtendPackage.XTEND_FILE__XTEND_TYPES;
 
 	/**
 	 * The feature id for the '<em><b>Package</b></em>' attribute.
@@ -1256,6 +1175,24 @@ public interface FeaturePackage extends EPackage
 	int STEP_REFERENCE__ANNOTATION_INFO = STEP__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_REFERENCE__MODIFIERS = STEP__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_REFERENCE__DECLARING_TYPE = STEP__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1292,24 +1229,6 @@ public interface FeaturePackage extends EPackage
 	int STEP_REFERENCE__PARAMETERS = STEP__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_REFERENCE__OVERRIDE = STEP__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_REFERENCE__DISPATCH = STEP__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1326,24 +1245,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int STEP_REFERENCE__TYPE_PARAMETERS = STEP__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_REFERENCE__VISIBILITY = STEP__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_REFERENCE__STATIC = STEP__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -1401,6 +1302,24 @@ public interface FeaturePackage extends EPackage
 	int GIVEN_REFERENCE__ANNOTATION_INFO = STEP_REFERENCE__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GIVEN_REFERENCE__MODIFIERS = STEP_REFERENCE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GIVEN_REFERENCE__DECLARING_TYPE = STEP_REFERENCE__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1437,24 +1356,6 @@ public interface FeaturePackage extends EPackage
 	int GIVEN_REFERENCE__PARAMETERS = STEP_REFERENCE__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GIVEN_REFERENCE__OVERRIDE = STEP_REFERENCE__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GIVEN_REFERENCE__DISPATCH = STEP_REFERENCE__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1471,24 +1372,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int GIVEN_REFERENCE__TYPE_PARAMETERS = STEP_REFERENCE__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GIVEN_REFERENCE__VISIBILITY = STEP_REFERENCE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GIVEN_REFERENCE__STATIC = STEP_REFERENCE__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -1546,6 +1429,24 @@ public interface FeaturePackage extends EPackage
 	int WHEN_REFERENCE__ANNOTATION_INFO = STEP_REFERENCE__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_REFERENCE__MODIFIERS = STEP_REFERENCE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_REFERENCE__DECLARING_TYPE = STEP_REFERENCE__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1582,24 +1483,6 @@ public interface FeaturePackage extends EPackage
 	int WHEN_REFERENCE__PARAMETERS = STEP_REFERENCE__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN_REFERENCE__OVERRIDE = STEP_REFERENCE__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN_REFERENCE__DISPATCH = STEP_REFERENCE__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1616,24 +1499,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int WHEN_REFERENCE__TYPE_PARAMETERS = STEP_REFERENCE__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN_REFERENCE__VISIBILITY = STEP_REFERENCE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN_REFERENCE__STATIC = STEP_REFERENCE__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -1691,6 +1556,24 @@ public interface FeaturePackage extends EPackage
 	int THEN_REFERENCE__ANNOTATION_INFO = STEP_REFERENCE__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THEN_REFERENCE__MODIFIERS = STEP_REFERENCE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THEN_REFERENCE__DECLARING_TYPE = STEP_REFERENCE__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1727,24 +1610,6 @@ public interface FeaturePackage extends EPackage
 	int THEN_REFERENCE__PARAMETERS = STEP_REFERENCE__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEN_REFERENCE__OVERRIDE = STEP_REFERENCE__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEN_REFERENCE__DISPATCH = STEP_REFERENCE__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1761,24 +1626,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int THEN_REFERENCE__TYPE_PARAMETERS = STEP_REFERENCE__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEN_REFERENCE__VISIBILITY = STEP_REFERENCE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THEN_REFERENCE__STATIC = STEP_REFERENCE__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -1836,6 +1683,24 @@ public interface FeaturePackage extends EPackage
 	int AND_REFERENCE__ANNOTATION_INFO = STEP_REFERENCE__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_REFERENCE__MODIFIERS = STEP_REFERENCE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_REFERENCE__DECLARING_TYPE = STEP_REFERENCE__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1872,24 +1737,6 @@ public interface FeaturePackage extends EPackage
 	int AND_REFERENCE__PARAMETERS = STEP_REFERENCE__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AND_REFERENCE__OVERRIDE = STEP_REFERENCE__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AND_REFERENCE__DISPATCH = STEP_REFERENCE__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1906,24 +1753,6 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int AND_REFERENCE__TYPE_PARAMETERS = STEP_REFERENCE__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AND_REFERENCE__VISIBILITY = STEP_REFERENCE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AND_REFERENCE__STATIC = STEP_REFERENCE__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.

@@ -10,12 +10,12 @@ package org.jnario.spec.ui.outline;
 import static com.google.common.collect.Iterables.filter;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtend.ide.outline.XtendFeatureNode;
 import org.eclipse.xtend.ide.outline.XtendOutlineTreeProvider;
 import org.eclipse.xtext.common.types.JvmConstructor;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmFeature;
-import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.EObjectNode;
 import org.jnario.spec.spec.ExampleGroup;
@@ -27,7 +27,8 @@ import org.jnario.spec.spec.ExampleGroup;
 public class SpecOutlineTreeProvider extends XtendOutlineTreeProvider {
 
 	@Override
-	protected void createFeatureNodes(IOutlineNode parentNode, XtendClass xtendClass) {
+	protected void createFeatureNodes(IOutlineNode parentNode,
+			XtendTypeDeclaration xtendClass) {
 		super.createFeatureNodes(parentNode, xtendClass);
 		if (xtendClass instanceof ExampleGroup) {
 			ExampleGroup exampleGroup = (ExampleGroup) xtendClass;
@@ -40,7 +41,7 @@ public class SpecOutlineTreeProvider extends XtendOutlineTreeProvider {
 	
 	@Override
 	protected XtendFeatureNode createNodeForFeature(IOutlineNode parentNode,
-			JvmGenericType inferredType, JvmFeature jvmFeature,
+			JvmDeclaredType inferredType, JvmFeature jvmFeature,
 			EObject semanticFeature) {
 		if(jvmFeature instanceof JvmConstructor){
 			return null;

@@ -72,7 +72,7 @@ Feature: Some feature
 import java.util.*
 Feature: Test
   Background: 
-    List&lt;String&gt; values = new ArrayList()
+    List&lt;String&gt; values = new ArrayList&lt;String&gt;()
     Given a list
       values += &quot;hello&quot;
     
@@ -171,7 +171,7 @@ Feature: Backgrounds
         import java.util.*
         Feature: Test
           Background: 
-            List&lt;String&gt; values = new ArrayList()
+            List&lt;String&gt; values = new ArrayList&lt;String&gt;()
             Given a list
               values += &quot;hello&quot;
             

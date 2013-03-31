@@ -67,11 +67,10 @@ public class Should{
 		return obj.getClass().isArray();
 	}
 
-// does not work due to a type inference problem in xtend
 //	public static boolean operator_doubleArrow(Object actual, Class<?> expected) {
 //		return should_be(actual, expected);
 //	}
-//	
+
 //	public static <T> boolean operator_doubleArrow(T actual, Matcher<T> expected) {
 //		return should_be(actual, expected);
 //	}
@@ -80,8 +79,11 @@ public class Should{
 //		return should_be(actual, expected);
 //	}
 	
-	public static <T> boolean should_be(Object actual, Object expected){
-		return operator_doubleArrow(actual, expected);
+	public static <T> boolean should_be(T actual, T expected){
+		if(isArray(actual) && isArray(expected)){
+			return Arrays.equals((Object[])actual, (Object[])expected);
+		}
+		return Objects.equal(actual, expected);
 	}
 
 //	private static boolean haveSameTypeAndAreStrings(Object actual,

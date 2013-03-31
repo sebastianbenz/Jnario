@@ -16,7 +16,6 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend.core.xtend.XtendImport;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
@@ -28,7 +27,6 @@ import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionAcceptor;
 import org.eclipse.xtext.util.ITextRegion;
 import org.jnario.feature.feature.Background;
-import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepImplementation;
@@ -60,9 +58,7 @@ public class FeatureFoldingRegionProvider extends DefaultFoldingRegionProvider {
 	
 	@Override
 	protected void computeObjectFolding(EObject eObject, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
-		if(eObject instanceof FeatureFile){
-			calculateFolding((FeatureFile)eObject, foldingRegionAcceptor);
-		}else if(eObject instanceof Scenario){
+		if(eObject instanceof Scenario){
 			calculateFolding((Scenario)eObject, foldingRegionAcceptor);
 		}else if(eObject instanceof StepImplementation){
 			calculateFolding((Step)eObject, foldingRegionAcceptor);
@@ -71,15 +67,6 @@ public class FeatureFoldingRegionProvider extends DefaultFoldingRegionProvider {
 		}
 	}
 
-	private void calculateFolding(FeatureFile featureFile, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
-		EList<XtendImport> imports = featureFile.getImports();
-		if(imports.isEmpty()){
-			return;
-		}
-		int begin = 0;
-		XtendImport xtendImport = imports.get(imports.size()-1);
-		setFoldingRegion(xtendImport, begin, foldingRegionAcceptor);
-	}
 	
 	private void calculateFolding(Scenario scenario, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor){
 		int begin = getBegin(scenario);

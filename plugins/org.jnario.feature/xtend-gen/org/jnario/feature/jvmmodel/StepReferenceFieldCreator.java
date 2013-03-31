@@ -16,6 +16,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
+import org.jnario.feature.jvmmodel.ExpressionCopier;
 import org.jnario.feature.jvmmodel.VisibleMembersCalculator;
 import org.jnario.util.SourceAdapter;
 
@@ -26,6 +27,9 @@ import org.jnario.util.SourceAdapter;
 public class StepReferenceFieldCreator {
   @Inject
   private VisibleMembersCalculator _visibleMembersCalculator;
+  
+  @Inject
+  private ExpressionCopier _expressionCopier;
   
   public void copyXtendMemberForReferences(final EObject objectWithReference) {
     final List<StepReference> refs = EcoreUtil2.<StepReference>getAllContentsOfType(objectWithReference, StepReference.class);
@@ -80,7 +84,7 @@ public class StepReferenceFieldCreator {
       boolean _contains = fieldNames.contains(_name);
       boolean _not_1 = (!_contains);
       if (_not_1) {
-        final XtendField copiedMember = EcoreUtil2.<XtendField>clone(field);
+        final XtendField copiedMember = this._expressionCopier.<XtendField>cloneWithProxies(field);
         SourceAdapter.adapt(copiedMember, field);
         EList<XtendMember> _members = type.getMembers();
         _members.add(((XtendField) copiedMember));

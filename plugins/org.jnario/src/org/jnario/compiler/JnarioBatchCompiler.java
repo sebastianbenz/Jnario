@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
-import org.eclipse.xtend.core.resource.XtendResource;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
@@ -31,6 +31,7 @@ import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
+import org.eclipse.xtext.xbase.resource.XbaseResource;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
@@ -91,23 +92,23 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 		return outputDirectory;
 	}
 	
-	@Override
-	protected void generateJavaFiles(ResourceSet resourceSet) {
-		JavaIoFileSystemAccess javaIoFileSystemAccess = javaIoFileSystemAccessProvider.get();
-		javaIoFileSystemAccess.setOutputPath(outputPath);
-		
-		for (Resource resource : jnarioResources(resourceSet)) {
-			XtendFile file = filter(resource.getContents(), XtendFile.class).iterator().next();
-			for (XtendClass xtendClass : file.getXtendClasses()) {
-				String packageName = toPath(xtendClass.getPackageName());
-				for (JvmGenericType type : filter(resource.getContents(), JvmGenericType.class)) {
-					CharSequence generatedType = generator.generateType(type);
-					String fileName = packageName + type.getSimpleName() + ".java";
-					javaIoFileSystemAccess.generateFile(fileName, generatedType);
-				}
-			}
-		}
-	}
+//	@Override
+//	protected void generateJavaFiles(ResourceSet resourceSet) {
+//		JavaIoFileSystemAccess javaIoFileSystemAccess = javaIoFileSystemAccessProvider.get();
+//		javaIoFileSystemAccess.setOutputPath(outputPath);
+//		
+//		for (Resource resource : jnarioResources(resourceSet)) {
+//			XtendFile file = filter(resource.getContents(), XtendFile.class).iterator().next();
+//			for (XtendTypeDeclaration xtendClass : file.getXtendTypes()) {
+//				String packageName = toPath(file.getPackage());
+//				for (JvmGenericType type : filter(resource.getContents(), JvmGenericType.class)) {
+//					CharSequence generatedType = generator.generateType(type);
+//					String fileName = packageName + type.getSimpleName() + ".java";
+//					javaIoFileSystemAccess.generateFile(fileName, generatedType);
+//				}
+//			}
+//		}
+//	}
 	
 	@Override
 	protected List<Issue> validate(ResourceSet resourceSet) {
@@ -115,7 +116,7 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 		List<Resource> resources = newArrayList(resourceSet.getResources());
 		for (Resource resource : resources) {
 			if(fileExtensionProvider.isValid(resource.getURI().fileExtension())){
-				IResourceServiceProvider resourceServiceProvider = ((XtendResource)resource).getResourceServiceProvider();
+				IResourceServiceProvider resourceServiceProvider = ((XbaseResource)resource).getResourceServiceProvider();
 				IResourceValidator resourceValidator = resourceServiceProvider.getResourceValidator();
 				List<Issue> result = resourceValidator.validate(resource, CheckMode.ALL, null);
 				addAll(issues, result);
@@ -147,7 +148,7 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 	}
 	
 	protected String getPackageName(EObject obj) {
-		return getContainerOfType(obj, XtendClass.class).getPackageName();
+		return getContainerOfType(obj, XtendFile.class).getPackage();
 	}
 
 	protected abstract String getClassName(EObject eObject);

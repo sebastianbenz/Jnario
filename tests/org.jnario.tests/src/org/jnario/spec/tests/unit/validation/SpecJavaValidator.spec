@@ -40,7 +40,7 @@ describe SpecJavaValidator{
 		')
 		
 		val validationResult = validate(typeof(Assertion))
-		validationResult.assertErrorContains("invalid type")
+		validationResult.assertErrorContains("cannot convert from int to boolean")
 	}
 	
 	fact "duplicate names of example methods are ignored"{

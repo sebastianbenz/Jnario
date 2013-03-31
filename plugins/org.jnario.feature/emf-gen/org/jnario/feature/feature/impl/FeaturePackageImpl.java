@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.xtend.core.xtend.XtendPackage;
 
+import org.eclipse.xtext.xtype.XtypePackage;
+
 import org.jnario.JnarioPackage;
 
 import org.jnario.feature.feature.And;
@@ -199,6 +201,7 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 
 		// Initialize simple dependencies
 		JnarioPackage.eINSTANCE.eClass();
+		XtypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theFeaturePackage.createPackageContents();

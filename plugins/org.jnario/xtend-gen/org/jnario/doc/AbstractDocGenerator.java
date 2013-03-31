@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.generator.IFileSystemAccess;
@@ -82,14 +83,15 @@ public abstract class AbstractDocGenerator implements IGenerator {
     Iterable<XtendFile> _filter = Iterables.<XtendFile>filter(_contents, XtendFile.class);
     final Procedure1<XtendFile> _function = new Procedure1<XtendFile>() {
         public void apply(final XtendFile it) {
-          EList<XtendClass> _xtendClasses = it.getXtendClasses();
+          EList<XtendTypeDeclaration> _xtendTypes = it.getXtendTypes();
+          Iterable<XtendClass> _filter = Iterables.<XtendClass>filter(_xtendTypes, XtendClass.class);
           final Procedure1<XtendClass> _function = new Procedure1<XtendClass>() {
               public void apply(final XtendClass it) {
                 HtmlFile _createHtmlFile = AbstractDocGenerator.this.createHtmlFile(it);
                 AbstractDocGenerator.this._htmlFileBuilder.generate(it, fsa, _createHtmlFile);
               }
             };
-          IterableExtensions.<XtendClass>forEach(_xtendClasses, _function);
+          IterableExtensions.<XtendClass>forEach(_filter, _function);
         }
       };
     IterableExtensions.<XtendFile>forEach(_filter, _function);

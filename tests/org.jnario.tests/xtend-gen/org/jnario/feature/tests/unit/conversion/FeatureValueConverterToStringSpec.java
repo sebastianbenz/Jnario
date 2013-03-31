@@ -24,7 +24,7 @@ public class FeatureValueConverterToStringSpec extends FeatureValueConverterSpec
     String _string = this.subject.toString("text");
     String _newLine = Strings.newLine();
     String _plus = ("Prefix:text" + _newLine);
-    boolean _should_be = Should.should_be(_string, _plus);
+    boolean _should_be = Should.<String>should_be(_string, _plus);
     Assert.assertTrue("\nExpected subject.toString(\"text\") should be \"Prefix:text\" + Strings::newLine but"
      + "\n     subject.toString(\"text\") is " + new StringDescription().appendValue(_string).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()

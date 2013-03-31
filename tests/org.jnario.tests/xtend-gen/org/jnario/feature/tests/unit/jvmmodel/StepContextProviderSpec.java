@@ -36,7 +36,7 @@ public class StepContextProviderSpec {
   public Set<XtendField> fields(final String... names) {
     Set<XtendField> _xblockexpression = null;
     {
-      final Set<String> expected = IterableExtensions.<String>toSet(((Iterable<? extends String>)Conversions.doWrapArray(names)));
+      final Set<String> expected = IterableExtensions.<String>toSet(((Iterable<String>)Conversions.doWrapArray(names)));
       Iterable<XtendField> _filter = Iterables.<XtendField>filter(this.m, XtendField.class);
       final Function1<XtendField,Boolean> _function = new Function1<XtendField,Boolean>() {
           public Boolean apply(final XtendField it) {

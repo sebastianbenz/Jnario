@@ -16,7 +16,9 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.naming.XtendQualifiedNameProvider;
 import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
 
@@ -40,7 +42,7 @@ public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 		if (obj instanceof Step) {
 			return getStepName((Step) obj);
 		}else{
-			return super.getFullyQualifiedName(obj);
+			return super.getFullyQualifiedName(EcoreUtil2.getContainerOfType(obj, Feature.class));
 		}
 	}
 
