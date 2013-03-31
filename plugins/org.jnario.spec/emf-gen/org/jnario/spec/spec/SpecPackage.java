@@ -76,22 +76,22 @@ public interface SpecPackage extends EPackage
 	int SPEC_FILE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Imports</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Import Section</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPEC_FILE__IMPORTS = XtendPackage.XTEND_FILE__IMPORTS;
+	int SPEC_FILE__IMPORT_SECTION = XtendPackage.XTEND_FILE__IMPORT_SECTION;
 
 	/**
-	 * The feature id for the '<em><b>Xtend Classes</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Xtend Types</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPEC_FILE__XTEND_CLASSES = XtendPackage.XTEND_FILE__XTEND_CLASSES;
+	int SPEC_FILE__XTEND_TYPES = XtendPackage.XTEND_FILE__XTEND_TYPES;
 
 	/**
 	 * The feature id for the '<em><b>Package</b></em>' attribute.
@@ -131,6 +131,33 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE_GROUP__ANNOTATIONS = JnarioPackage.SPECIFICATION__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_GROUP__ANNOTATION_INFO = JnarioPackage.SPECIFICATION__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_GROUP__MODIFIERS = JnarioPackage.SPECIFICATION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_GROUP__DECLARING_TYPE = JnarioPackage.SPECIFICATION__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -140,13 +167,13 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE_GROUP__NAME = JnarioPackage.SPECIFICATION__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__ABSTRACT = JnarioPackage.SPECIFICATION__ABSTRACT;
+	int EXAMPLE_GROUP__MEMBERS = JnarioPackage.SPECIFICATION__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
@@ -167,24 +194,6 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE_GROUP__IMPLEMENTS = JnarioPackage.SPECIFICATION__IMPLEMENTS;
 
 	/**
-	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_GROUP__SUPER_TYPES = JnarioPackage.SPECIFICATION__SUPER_TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_GROUP__MEMBERS = JnarioPackage.SPECIFICATION__MEMBERS;
-
-	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -194,22 +203,13 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE_GROUP__TYPE_PARAMETERS = JnarioPackage.SPECIFICATION__TYPE_PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_GROUP__ANNOTATION_INFO = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Preamble</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__PREAMBLE = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 1;
+	int EXAMPLE_GROUP__PREAMBLE = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Target Type</b></em>' containment reference.
@@ -218,7 +218,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__TARGET_TYPE = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 2;
+	int EXAMPLE_GROUP__TARGET_TYPE = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Target Operation</b></em>' reference.
@@ -227,7 +227,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP__TARGET_OPERATION = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 3;
+	int EXAMPLE_GROUP__TARGET_OPERATION = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Example Group</em>' class.
@@ -236,7 +236,7 @@ public interface SpecPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP_FEATURE_COUNT = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 4;
+	int EXAMPLE_GROUP_FEATURE_COUNT = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.spec.spec.impl.TestFunctionImpl <em>Test Function</em>}' class.
@@ -265,6 +265,24 @@ public interface SpecPackage extends EPackage
 	 * @ordered
 	 */
 	int TEST_FUNCTION__ANNOTATION_INFO = XtendPackage.XTEND_FUNCTION__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__MODIFIERS = XtendPackage.XTEND_FUNCTION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__DECLARING_TYPE = XtendPackage.XTEND_FUNCTION__DECLARING_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -303,24 +321,6 @@ public interface SpecPackage extends EPackage
 	int TEST_FUNCTION__PARAMETERS = XtendPackage.XTEND_FUNCTION__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_FUNCTION__OVERRIDE = XtendPackage.XTEND_FUNCTION__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_FUNCTION__DISPATCH = XtendPackage.XTEND_FUNCTION__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -337,24 +337,6 @@ public interface SpecPackage extends EPackage
 	 * @ordered
 	 */
 	int TEST_FUNCTION__TYPE_PARAMETERS = XtendPackage.XTEND_FUNCTION__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_FUNCTION__VISIBILITY = XtendPackage.XTEND_FUNCTION__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_FUNCTION__STATIC = XtendPackage.XTEND_FUNCTION__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -403,6 +385,24 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE__ANNOTATION_INFO = TEST_FUNCTION__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__MODIFIERS = TEST_FUNCTION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__DECLARING_TYPE = TEST_FUNCTION__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -439,24 +439,6 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE__PARAMETERS = TEST_FUNCTION__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE__OVERRIDE = TEST_FUNCTION__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE__DISPATCH = TEST_FUNCTION__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -473,24 +455,6 @@ public interface SpecPackage extends EPackage
 	 * @ordered
 	 */
 	int EXAMPLE__TYPE_PARAMETERS = TEST_FUNCTION__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE__VISIBILITY = TEST_FUNCTION__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE__STATIC = TEST_FUNCTION__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -557,6 +521,24 @@ public interface SpecPackage extends EPackage
 	int BEFORE__ANNOTATION_INFO = TEST_FUNCTION__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__MODIFIERS = TEST_FUNCTION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__DECLARING_TYPE = TEST_FUNCTION__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -593,24 +575,6 @@ public interface SpecPackage extends EPackage
 	int BEFORE__PARAMETERS = TEST_FUNCTION__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEFORE__OVERRIDE = TEST_FUNCTION__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEFORE__DISPATCH = TEST_FUNCTION__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -627,24 +591,6 @@ public interface SpecPackage extends EPackage
 	 * @ordered
 	 */
 	int BEFORE__TYPE_PARAMETERS = TEST_FUNCTION__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEFORE__VISIBILITY = TEST_FUNCTION__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEFORE__STATIC = TEST_FUNCTION__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -693,6 +639,24 @@ public interface SpecPackage extends EPackage
 	int AFTER__ANNOTATION_INFO = TEST_FUNCTION__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__MODIFIERS = TEST_FUNCTION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__DECLARING_TYPE = TEST_FUNCTION__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -729,24 +693,6 @@ public interface SpecPackage extends EPackage
 	int AFTER__PARAMETERS = TEST_FUNCTION__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Override</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AFTER__OVERRIDE = TEST_FUNCTION__OVERRIDE;
-
-	/**
-	 * The feature id for the '<em><b>Dispatch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AFTER__DISPATCH = TEST_FUNCTION__DISPATCH;
-
-	/**
 	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -763,24 +709,6 @@ public interface SpecPackage extends EPackage
 	 * @ordered
 	 */
 	int AFTER__TYPE_PARAMETERS = TEST_FUNCTION__TYPE_PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AFTER__VISIBILITY = TEST_FUNCTION__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AFTER__STATIC = TEST_FUNCTION__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.

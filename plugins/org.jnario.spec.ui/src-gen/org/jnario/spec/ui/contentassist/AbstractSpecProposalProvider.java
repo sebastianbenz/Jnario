@@ -5,11 +5,9 @@ package org.jnario.spec.ui.contentassist;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.ide.contentassist.XtendProposalProvider;
-import org.eclipse.xtext.Assignment;
-import org.eclipse.xtext.CrossReference;
-import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.*;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 
 /**
  * Represents a generated, default implementation of interface {@link IProposalProvider}.
@@ -22,10 +20,10 @@ public class AbstractSpecProposalProvider extends XtendProposalProvider {
 	public void completeSpecFile_Package(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
-	public void completeSpecFile_Imports(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void completeSpecFile_ImportSection(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
-	public void completeSpecFile_XtendClasses(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void completeSpecFile_XtendTypes(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeExampleGroup_Annotations(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
@@ -67,8 +65,13 @@ public class AbstractSpecProposalProvider extends XtendProposalProvider {
 	public void completeMember_Members(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
-	public void completeMember_Static(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		// subclasses may override
+	public void completeMember_Modifiers(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		if (assignment.getTerminal() instanceof Keyword) {
+			// subclasses may override
+		}
+		if (assignment.getTerminal() instanceof RuleCall) {
+			completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+		}
 	}
 	public void completeMember_TargetOperation(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
@@ -79,26 +82,11 @@ public class AbstractSpecProposalProvider extends XtendProposalProvider {
 	public void completeMember_Rows(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
-	public void completeMember_Visibility(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
-	}
-	public void completeMember_Extension(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		// subclasses may override
-	}
-	public void completeMember_Final(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		// subclasses may override
-	}
 	public void completeMember_Type(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeMember_InitialValue(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
-	}
-	public void completeMember_Override(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		// subclasses may override
-	}
-	public void completeMember_Dispatch(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		// subclasses may override
 	}
 	public void completeMember_TypeParameters(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);

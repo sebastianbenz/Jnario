@@ -15,10 +15,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
-import org.eclipse.xtend.core.xtend.XtendMember;
-import org.eclipse.xtend.core.xtend.XtendPackage;
-
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
@@ -34,7 +30,6 @@ import org.jnario.spec.spec.SpecPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.jnario.spec.spec.impl.ExampleGroupImpl#getAnnotationInfo <em>Annotation Info</em>}</li>
  *   <li>{@link org.jnario.spec.spec.impl.ExampleGroupImpl#getPreamble <em>Preamble</em>}</li>
  *   <li>{@link org.jnario.spec.spec.impl.ExampleGroupImpl#getTargetType <em>Target Type</em>}</li>
  *   <li>{@link org.jnario.spec.spec.impl.ExampleGroupImpl#getTargetOperation <em>Target Operation</em>}</li>
@@ -45,16 +40,6 @@ import org.jnario.spec.spec.SpecPackage;
  */
 public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 {
-	/**
-	 * The cached value of the '{@link #getAnnotationInfo() <em>Annotation Info</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAnnotationInfo()
-	 * @generated
-	 * @ordered
-	 */
-	protected XtendAnnotationTarget annotationInfo;
-
 	/**
 	 * The default value of the '{@link #getPreamble() <em>Preamble</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -114,54 +99,6 @@ public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 	protected EClass eStaticClass()
 	{
 		return SpecPackage.Literals.EXAMPLE_GROUP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public XtendAnnotationTarget getAnnotationInfo()
-	{
-		return annotationInfo;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetAnnotationInfo(XtendAnnotationTarget newAnnotationInfo, NotificationChain msgs)
-	{
-		XtendAnnotationTarget oldAnnotationInfo = annotationInfo;
-		annotationInfo = newAnnotationInfo;
-		if (eNotificationRequired())
-		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO, oldAnnotationInfo, newAnnotationInfo);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAnnotationInfo(XtendAnnotationTarget newAnnotationInfo)
-	{
-		if (newAnnotationInfo != annotationInfo)
-		{
-			NotificationChain msgs = null;
-			if (annotationInfo != null)
-				msgs = ((InternalEObject)annotationInfo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO, null, msgs);
-			if (newAnnotationInfo != null)
-				msgs = ((InternalEObject)newAnnotationInfo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO, null, msgs);
-			msgs = basicSetAnnotationInfo(newAnnotationInfo, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO, newAnnotationInfo, newAnnotationInfo));
 	}
 
 	/**
@@ -288,8 +225,6 @@ public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 	{
 		switch (featureID)
 		{
-			case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO:
-				return basicSetAnnotationInfo(null, msgs);
 			case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
 				return basicSetTargetType(null, msgs);
 		}
@@ -306,8 +241,6 @@ public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 	{
 		switch (featureID)
 		{
-			case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO:
-				return getAnnotationInfo();
 			case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
 				return getPreamble();
 			case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
@@ -329,9 +262,6 @@ public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 	{
 		switch (featureID)
 		{
-			case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO:
-				setAnnotationInfo((XtendAnnotationTarget)newValue);
-				return;
 			case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
 				setPreamble((String)newValue);
 				return;
@@ -355,9 +285,6 @@ public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 	{
 		switch (featureID)
 		{
-			case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO:
-				setAnnotationInfo((XtendAnnotationTarget)null);
-				return;
 			case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
 				setPreamble(PREAMBLE_EDEFAULT);
 				return;
@@ -381,8 +308,6 @@ public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 	{
 		switch (featureID)
 		{
-			case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO:
-				return annotationInfo != null;
 			case SpecPackage.EXAMPLE_GROUP__PREAMBLE:
 				return PREAMBLE_EDEFAULT == null ? preamble != null : !PREAMBLE_EDEFAULT.equals(preamble);
 			case SpecPackage.EXAMPLE_GROUP__TARGET_TYPE:
@@ -391,44 +316,6 @@ public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 				return targetOperation != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-	{
-		if (baseClass == XtendMember.class)
-		{
-			switch (derivedFeatureID)
-			{
-				case SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO: return XtendPackage.XTEND_MEMBER__ANNOTATION_INFO;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-	{
-		if (baseClass == XtendMember.class)
-		{
-			switch (baseFeatureID)
-			{
-				case XtendPackage.XTEND_MEMBER__ANNOTATION_INFO: return SpecPackage.EXAMPLE_GROUP__ANNOTATION_INFO;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

@@ -10,8 +10,8 @@ import "http://www.org/Jnario"
 SpecFile:
 {SpecFile}
 ('package' package=QualifiedName)? 
-	imports+=Import*
-	(xtendClasses+=ExampleGroup)*
+	importSection=XImportSection?
+	(xtendTypes+=ExampleGroup)*
 ;
 
 ExampleGroup:  
@@ -45,9 +45,9 @@ Member returns xtend::XtendMember:
       		members+=Member*
       	'}')
     |	{Before.annotationInfo = current}
-		('before' (static?='all'|'each')? =>name=STRING? expression=XExpression)
+		('before' (modifiers+='all'|'each')? =>name=STRING? expression=XExpression)
 	|	{After.annotationInfo = current}
-		('after' (static?='all'|'each')? =>name=STRING? expression=XExpression)
+		('after' (modifiers+='all'|'each')? =>name=STRING? expression=XExpression)
     |	{ExampleGroup.annotationInfo = current}
 			(preamble=('context') targetOperation=[types::JvmOperation|Method]? name=STRING? '{'
       		members+=Member*
@@ -57,23 +57,34 @@ Member returns xtend::XtendMember:
 			('|' (columns+=ExampleColumn)*
 			(rows += ExampleRow)*)?
       	'}') 
-	|	{xtend::XtendField.annotationInfo = current}	
-			visibility=Visibility?   
-		 	(extension?='extension' static?='static'? (final?='val' | 'var')? type=JvmTypeReference name=ValidID?
-			| static?='static'? (type=JvmTypeReference | (final?='val' | 'var') type=JvmTypeReference?) name=ValidID)
-			('=' initialValue=XExpression)? ';'?
-	|	{xtend::XtendFunction.annotationInfo = current}
-			('def' | override?='override') visibility=Visibility? static?='static'? (dispatch?='dispatch'?) 
+	|{xtend::XtendField.annotationInfo = current} modifiers+=CommonModifier*
+		(
+			modifiers+=FieldModifier modifiers+=CommonModifier* 
+			type=JvmTypeReference? name=ValidID 
+		|
+			modifiers+='extension' (modifiers+=FieldModifier | modifiers+=CommonModifier)* 
+			type=JvmTypeReference name=ValidID?
+		| 
+			modifiers+=FieldModifier (modifiers+=CommonModifier)* modifiers+='extension' (modifiers+=CommonModifier)*  
+			type=JvmTypeReference name=ValidID?
+		|  
+			type=JvmTypeReference name=ValidID
+		) ('=' initialValue=XExpression)? ';'?
+		| (
+			{xtend::XtendFunction.annotationInfo = current} modifiers+=CommonModifier*
+			modifiers+=MethodModifier (modifiers+=CommonModifier | modifiers+=MethodModifier)* 
 			('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
-			( =>(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID '(')
-			| =>(returnType=JvmTypeReference name=ValidID '(')
-			| =>(createExtensionInfo=CreateExtensionInfo name=ValidID '(')
-			| name=ValidID '('
+			( 
+				=>(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID '(')
+			  | =>(returnType=JvmTypeReference name=ValidID '(')
+			  | =>(createExtensionInfo=CreateExtensionInfo name=ValidID '(')
+			  | name=ValidID '('
 			)
 			(parameters+=Parameter (',' parameters+=Parameter)*)? ')'
 			('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
-			(expression=XBlockExpression | expression=RichString )?
-	 );
+			(expression=XBlockExpression | expression=RichString | ';')?
+			)	
+		);
 
 
 XPrimaryExpression returns xbase::XExpression:
@@ -93,6 +104,7 @@ XPrimaryExpression returns xbase::XExpression:
 	Assertion;
 
 XLiteral returns xbase::XExpression:
+	XCollectionLiteral | 
 	XClosure |
 	XBooleanLiteral |
 	XNumberLiteral |

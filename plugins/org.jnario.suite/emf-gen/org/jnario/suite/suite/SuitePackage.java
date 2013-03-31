@@ -169,6 +169,33 @@ public interface SuitePackage extends EPackage
 	int SUITE__ANNOTATIONS = JnarioPackage.SPECIFICATION__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUITE__ANNOTATION_INFO = JnarioPackage.SPECIFICATION__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUITE__MODIFIERS = JnarioPackage.SPECIFICATION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUITE__DECLARING_TYPE = JnarioPackage.SPECIFICATION__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -178,13 +205,13 @@ public interface SuitePackage extends EPackage
 	int SUITE__NAME = JnarioPackage.SPECIFICATION__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUITE__ABSTRACT = JnarioPackage.SPECIFICATION__ABSTRACT;
+	int SUITE__MEMBERS = JnarioPackage.SPECIFICATION__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
@@ -203,24 +230,6 @@ public interface SuitePackage extends EPackage
 	 * @ordered
 	 */
 	int SUITE__IMPLEMENTS = JnarioPackage.SPECIFICATION__IMPLEMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUITE__SUPER_TYPES = JnarioPackage.SPECIFICATION__SUPER_TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUITE__MEMBERS = JnarioPackage.SPECIFICATION__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
@@ -260,22 +269,22 @@ public interface SuitePackage extends EPackage
 	int SUITE_FILE = 3;
 
 	/**
-	 * The feature id for the '<em><b>Imports</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Import Section</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUITE_FILE__IMPORTS = XtendPackage.XTEND_FILE__IMPORTS;
+	int SUITE_FILE__IMPORT_SECTION = XtendPackage.XTEND_FILE__IMPORT_SECTION;
 
 	/**
-	 * The feature id for the '<em><b>Xtend Classes</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Xtend Types</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUITE_FILE__XTEND_CLASSES = XtendPackage.XTEND_FILE__XTEND_CLASSES;
+	int SUITE_FILE__XTEND_TYPES = XtendPackage.XTEND_FILE__XTEND_TYPES;
 
 	/**
 	 * The feature id for the '<em><b>Package</b></em>' attribute.

@@ -20,14 +20,6 @@ public class ScenarioImplCustom extends ScenarioImpl {
 
 	private EList<Step> steps;
 
-	@Override
-	public String getPackageName() {
-		Feature feature = getContainerOfType(this, Feature.class);
-		if(feature == null){
-			return null;
-		}
-		return feature.getPackageName();
-	}
 	
 	@Override
 	public EList<Step> getSteps() {

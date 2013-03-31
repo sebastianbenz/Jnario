@@ -46,7 +46,7 @@ public class FeatureLocationInFileProvider extends XtendLocationInFileProvider {
 	}
 
 	public List<INode> nodesFor(Scenario element) {
-		return findNodesForFeature(element, XtendPackage.Literals.XTEND_CLASS__NAME);
+		return findNodesForFeature(element, XtendPackage.Literals.XTEND_TYPE_DECLARATION__NAME);
 	}
 	
 	

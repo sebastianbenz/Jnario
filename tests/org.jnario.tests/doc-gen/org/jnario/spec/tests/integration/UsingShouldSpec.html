@@ -57,12 +57,14 @@ list(&quot;something&quot;) should contain &quot;something&quot;
 list(&quot;something&quot;) should not contain &quot;something else&quot;
 
 // using xtend's &quot;with&quot; operator
-val greeting = &quot;hello world&quot; =&gt; [
-  length =&gt; 11
-  it should startWith(&quot;hello&quot;)
-  it should endWith(&quot;world&quot;) 
-]
-greeting =&gt; typeof(String)
+
+// FIXME
+//    val greeting = &quot;hello world&quot; =&gt; [
+//      length =&gt; 11
+//      it should startWith(&quot;hello&quot;)
+//      it should endWith(&quot;world&quot;)
+//    ]
+//    greeting =&gt; typeof(String)
 
 // expecting exceptions
 new Stack&lt;String&gt;().pop should throw EmptyStackException
@@ -167,12 +169,14 @@ describe &quot;Using Should&quot;{
     list(&quot;something&quot;) should not contain &quot;something else&quot;
     
     // using xtend's &quot;with&quot; operator
-    val greeting = &quot;hello world&quot; =&gt; [
-      length =&gt; 11
-      it should startWith(&quot;hello&quot;)
-      it should endWith(&quot;world&quot;) 
-    ]
-    greeting =&gt; typeof(String)
+    
+    // FIXME
+//    val greeting = &quot;hello world&quot; =&gt; [
+//      length =&gt; 11
+//      it should startWith(&quot;hello&quot;)
+//      it should endWith(&quot;world&quot;)
+//    ]
+//    greeting =&gt; typeof(String)
     
     // expecting exceptions
     new Stack&lt;String&gt;().pop should throw EmptyStackException

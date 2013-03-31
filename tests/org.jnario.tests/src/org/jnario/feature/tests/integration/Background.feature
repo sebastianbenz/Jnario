@@ -56,7 +56,7 @@ Feature: Backgrounds
 				import java.util.*
 				Feature: Test
 					Background: 
-						List<String> values = new ArrayList()
+						List<String> values = new ArrayList<String>()
 						Given a list
 							values += "hello"
 						

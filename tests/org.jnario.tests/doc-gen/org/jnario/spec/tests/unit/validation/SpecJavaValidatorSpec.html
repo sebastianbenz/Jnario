@@ -48,7 +48,7 @@ parseSpec('
 ')
 
 val validationResult = validate(typeof(Assertion))
-validationResult.assertErrorContains(&quot;invalid type&quot;)</pre>
+validationResult.assertErrorContains(&quot;cannot convert from int to boolean&quot;)</pre>
 </li><li><p id="duplicate_names_of_example_methods_are_ignored" class="example notrun"><strong>duplicate names of example methods are ignored</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('
@@ -209,7 +209,7 @@ describe SpecJavaValidator{
     ')
     
     val validationResult = validate(typeof(Assertion))
-    validationResult.assertErrorContains(&quot;invalid type&quot;)
+    validationResult.assertErrorContains(&quot;cannot convert from int to boolean&quot;)
   }
   
   fact &quot;duplicate names of example methods are ignored&quot;{

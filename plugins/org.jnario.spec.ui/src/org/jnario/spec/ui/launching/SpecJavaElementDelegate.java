@@ -34,8 +34,8 @@ public class SpecJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 			return null;
 		if (element instanceof SpecFile) {
 			SpecFile specFile = (SpecFile) element;
-			if(!specFile.getXtendClasses().isEmpty()){
-				element = specFile.getXtendClasses().get(0);
+			if(!specFile.getXtendTypes().isEmpty()){
+				element = specFile.getXtendTypes().get(0);
 			}
 		}else{
 			element = EcoreUtil2.getContainerOfType(element, XtendClass.class);

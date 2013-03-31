@@ -1,5 +1,8 @@
 package org.jnario.feature.tests.integration
 
+import org.junit.Ignore
+
+@Ignore
 Feature: Defining Feature Bases Classes
 	
 	Scenario: A simple scenario 

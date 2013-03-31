@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.xbase.XbasePackage;
+import org.eclipse.xtext.xtype.XtypePackage;
 import org.jnario.Assertion;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
@@ -145,6 +146,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 
 		// Initialize simple dependencies
 		XtendPackage.eINSTANCE.eClass();
+		XtypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theJnarioPackage.createPackageContents();

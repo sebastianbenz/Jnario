@@ -33,6 +33,8 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 
 	@Inject
 	private TypeReferences references;
+	
+	
 		
 	public JvmAnnotationReference toAnnotation(EObject sourceElement, String annotationTypeName, String valueName, Object value) {
 		JvmAnnotationReference result = TypesFactory.eINSTANCE.createJvmAnnotationReference();
@@ -86,7 +88,6 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 		setAnnotationValueName(valueName, jvmType, annotationValue);
 		result.getValues().add(annotationValue);
 		return result;
-		
 	}
 
 	protected void setAnnotationValueName(String valueName, JvmType jvmType,

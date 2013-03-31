@@ -1,17 +1,19 @@
-/*******************************************************************************
+/**
  * Copyright (c) 2012 BMW Car IT and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
+ */
 package org.jnario;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.xtend.core.xtend.XtendPackage;
+
 import org.eclipse.xtext.xbase.XbasePackage;
 
 /**
@@ -89,6 +91,24 @@ public interface JnarioPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXAMPLE_TABLE__ANNOTATION_INFO = XtendPackage.XTEND_MEMBER__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_TABLE__MODIFIERS = XtendPackage.XTEND_MEMBER__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_TABLE__DECLARING_TYPE = XtendPackage.XTEND_MEMBER__DECLARING_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -220,6 +240,24 @@ public interface JnarioPackage extends EPackage {
 	int EXAMPLE_COLUMN__ANNOTATION_INFO = XtendPackage.XTEND_FIELD__ANNOTATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__MODIFIERS = XtendPackage.XTEND_FIELD__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__DECLARING_TYPE = XtendPackage.XTEND_FIELD__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -229,15 +267,6 @@ public interface JnarioPackage extends EPackage {
 	int EXAMPLE_COLUMN__NAME = XtendPackage.XTEND_FIELD__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Final</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_COLUMN__FINAL = XtendPackage.XTEND_FIELD__FINAL;
-
-	/**
 	 * The feature id for the '<em><b>Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -245,33 +274,6 @@ public interface JnarioPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXAMPLE_COLUMN__TYPE = XtendPackage.XTEND_FIELD__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Extension</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_COLUMN__EXTENSION = XtendPackage.XTEND_FIELD__EXTENSION;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_COLUMN__VISIBILITY = XtendPackage.XTEND_FIELD__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_COLUMN__STATIC = XtendPackage.XTEND_FIELD__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
@@ -308,7 +310,6 @@ public interface JnarioPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXAMPLE_COLUMN_FEATURE_COUNT = XtendPackage.XTEND_FIELD_FEATURE_COUNT + 2;
-
 
 	/**
 	 * The meta object id for the '{@link org.jnario.impl.ShouldImpl <em>Should</em>}' class.
@@ -375,15 +376,6 @@ public interface JnarioPackage extends EPackage {
 	int SHOULD__IMPLICIT_FIRST_ARGUMENT = XbasePackage.XBINARY_OPERATION__IMPLICIT_FIRST_ARGUMENT;
 
 	/**
-	 * The feature id for the '<em><b>Actual Type Arguments</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SHOULD__ACTUAL_TYPE_ARGUMENTS = XbasePackage.XBINARY_OPERATION__ACTUAL_TYPE_ARGUMENTS;
-
-	/**
 	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -418,7 +410,6 @@ public interface JnarioPackage extends EPackage {
 	 * @ordered
 	 */
 	int SHOULD_FEATURE_COUNT = XbasePackage.XBINARY_OPERATION_FEATURE_COUNT + 1;
-
 
 	/**
 	 * The meta object id for the '{@link org.jnario.impl.ShouldThrowImpl <em>Should Throw</em>}' class.
@@ -457,7 +448,6 @@ public interface JnarioPackage extends EPackage {
 	 */
 	int SHOULD_THROW_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 2;
 
-
 	/**
 	 * The meta object id for the '{@link org.jnario.impl.SpecificationImpl <em>Specification</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -478,6 +468,33 @@ public interface JnarioPackage extends EPackage {
 	int SPECIFICATION__ANNOTATIONS = XtendPackage.XTEND_CLASS__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__ANNOTATION_INFO = XtendPackage.XTEND_CLASS__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__MODIFIERS = XtendPackage.XTEND_CLASS__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__DECLARING_TYPE = XtendPackage.XTEND_CLASS__DECLARING_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -487,13 +504,13 @@ public interface JnarioPackage extends EPackage {
 	int SPECIFICATION__NAME = XtendPackage.XTEND_CLASS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFICATION__ABSTRACT = XtendPackage.XTEND_CLASS__ABSTRACT;
+	int SPECIFICATION__MEMBERS = XtendPackage.XTEND_CLASS__MEMBERS;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' containment reference.
@@ -514,24 +531,6 @@ public interface JnarioPackage extends EPackage {
 	int SPECIFICATION__IMPLEMENTS = XtendPackage.XTEND_CLASS__IMPLEMENTS;
 
 	/**
-	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPECIFICATION__SUPER_TYPES = XtendPackage.XTEND_CLASS__SUPER_TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPECIFICATION__MEMBERS = XtendPackage.XTEND_CLASS__MEMBERS;
-
-	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -548,7 +547,6 @@ public interface JnarioPackage extends EPackage {
 	 * @ordered
 	 */
 	int SPECIFICATION_FEATURE_COUNT = XtendPackage.XTEND_CLASS_FEATURE_COUNT + 0;
-
 
 	/**
 	 * The meta object id for the '{@link org.jnario.Executable <em>Executable</em>}' class.
@@ -569,7 +567,6 @@ public interface JnarioPackage extends EPackage {
 	 */
 	int EXECUTABLE_FEATURE_COUNT = 0;
 
-
 	/**
 	 * The meta object id for the '{@link org.jnario.impl.MockLiteralImpl <em>Mock Literal</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -588,6 +585,15 @@ public interface JnarioPackage extends EPackage {
 	 * @ordered
 	 */
 	int MOCK_LITERAL__TYPE = XbasePackage.XTYPE_LITERAL__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Array Dimensions</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOCK_LITERAL__ARRAY_DIMENSIONS = XbasePackage.XTYPE_LITERAL__ARRAY_DIMENSIONS;
 
 	/**
 	 * The number of structural features of the '<em>Mock Literal</em>' class.

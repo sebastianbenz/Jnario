@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend.core.xtend.impl.XtendFieldImpl;
+import org.eclipse.xtend.core.xtend.impl.XtendFieldImplCustom;
 import org.eclipse.xtext.xbase.XExpression;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
@@ -36,9 +37,9 @@ import org.jnario.JnarioPackage;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated NOT
  */
-public class ExampleColumnImpl extends XtendFieldImpl implements ExampleColumn {
+public class ExampleColumnImpl extends XtendFieldImplCustom implements ExampleColumn {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

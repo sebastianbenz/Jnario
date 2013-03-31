@@ -40,7 +40,7 @@ public class ExampleNameSpec extends ExampleSpec {
           Example _parse = ExampleNameSpec.this.parse(it.example);
           String _name = _parse.getName();
           String _println = InputOutput.<String>println(_name);
-          boolean _should_be = Should.should_be(_println, it.name);
+          boolean _should_be = Should.<String>should_be(_println, it.name);
           Assert.assertTrue("\nExpected println(example.parse.name) should be name but"
            + "\n     println(example.parse.name) is " + new StringDescription().appendValue(_println).toString()
            + "\n     example.parse.name is " + new StringDescription().appendValue(_name).toString()

@@ -14,6 +14,7 @@ grammar org.jnario.feature.Feature with org.eclipse.xtend.core.Xtend
 
 import "http://www.eclipse.org/Xtext/Xbase/XAnnotations" as xannotations
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
+import "http://www.eclipse.org/xtext/xbase/Xtype" as xtype
 import "http://www.eclipse.org/xtend" as xtend
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 import "http://www.org/Jnario"
@@ -23,17 +24,9 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 FeatureFile returns xtend::XtendFile: 
 	{FeatureFile}
 	('package' package=QualifiedName)?
-	(imports += Import)*
-	(xtendClasses += Feature)?
+	importSection=XImportSection?
+	xtendTypes+=Feature?
 ;
-
-Import returns xtend::XtendImport: 
-	'import' (
-		(static?='static' extension?='extension'? importedType=[types::JvmType|QualifiedName] '.' '*') 
-		| importedType=[types::JvmType|QualifiedName] 
-		| importedNamespace=QualifiedNameWithWildCard) ';'?
-;
-
 
 Feature returns xtend::XtendClass:
 	{Feature}
@@ -42,27 +35,17 @@ Feature returns xtend::XtendClass:
 	description=TEXT?
 	background=Background?
 	scenarios+=Scenario*;
- 
-XAnnotation returns xannotations::XAnnotation:
-	{xannotations::XAnnotation}
-	'@' annotationType=[types::JvmAnnotationType | QualifiedName] (=>'('
-		(
-			elementValuePairs+=XAnnotationElementValuePair (',' elementValuePairs+=XAnnotationElementValuePair)* 
-		|	value=XAnnotationElementValue
-		)?
-	')')?
-;
 
 Background:
 	{Background}
 	name=BACKGROUND_TEXT
-	members+=Member*
+	(members+=Member)*
 	(members+=(Given|GivenReference) members+=(And|AndReference)*)?;
 
 Scenario :
 	{Scenario}
 	name=SCENARIO_TEXT
-	members+=Member*
+	(members+=Member)*
 	(members+=(Given|GivenReference) members+=(And|AndReference)*)?
 	(members+=(When|WhenReference) members+=(And|AndReference)*)?
 	(members+=(Then|ThenReference) members+=(And|AndReference)*)?;
@@ -70,12 +53,22 @@ Scenario :
 Member returns xtend::XtendMember:
 	{xtend::XtendMember} annotations+=XAnnotation* 
 	(
-		{xtend::XtendField.annotationInfo = current}	
-			visibility=Visibility?   
-		 	(extension?='extension' static?='static'?  (final?='val' | 'var')? type=JvmTypeReference name=ValidID?
-			| static?='static'? (type=JvmTypeReference | (final?='val' | 'var') type=JvmTypeReference?) name=ValidID)
-			('=' initialValue=XExpression)? ';'?
-	) ;
+		(	
+			{xtend::XtendField.annotationInfo = current} modifiers+=CommonModifier*
+			(
+				modifiers+=FieldModifier modifiers+=CommonModifier* 
+				type=JvmTypeReference? name=ValidID 
+			|
+				modifiers+='extension' (modifiers+=FieldModifier | modifiers+=CommonModifier)* 
+				type=JvmTypeReference name=ValidID?
+			| 
+				modifiers+=FieldModifier (modifiers+=CommonModifier)* modifiers+='extension' (modifiers+=CommonModifier)*  
+				type=JvmTypeReference name=ValidID?
+			|  
+				type=JvmTypeReference name=ValidID
+			) ('=' initialValue=XExpression)? ';'?
+		) 
+	);
 
 
 GivenReference:
@@ -152,8 +145,6 @@ XPrimaryExpression returns xbase::XExpression:
 	XParenthesizedExpression |
 	Assertion;
 
-
-
 XRelationalExpression returns xbase::XExpression:
 	XOtherOperatorExpression
 	( 
@@ -168,6 +159,7 @@ Should:
 ;
 
 XLiteral returns xbase::XExpression:
+	XCollectionLiteral |
 	XClosure |
 	XBooleanLiteral |
 	XNumberLiteral |

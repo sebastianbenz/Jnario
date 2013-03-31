@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -37,8 +37,8 @@ public class SuiteNodeBuilder {
   public Iterable<SuiteNode> buildNodeModel(final SuiteFile suiteFile) {
     ArrayList<SuiteNode> _xblockexpression = null;
     {
-      EList<XtendClass> _xtendClasses = suiteFile.getXtendClasses();
-      Iterable<Suite> _filter = Iterables.<Suite>filter(_xtendClasses, Suite.class);
+      EList<XtendTypeDeclaration> _xtendTypes = suiteFile.getXtendTypes();
+      Iterable<Suite> _filter = Iterables.<Suite>filter(_xtendTypes, Suite.class);
       final List<Suite> suites = IterableExtensions.<Suite>toList(_filter);
       final ArrayList<SuiteNode> result = CollectionLiterals.<SuiteNode>newArrayList();
       boolean _isEmpty = suites.isEmpty();

@@ -13,5 +13,5 @@ import org.jnario.compiler.JnarioCompiler;
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class FeatureCompiler extends JnarioCompiler {
-	
+
 }

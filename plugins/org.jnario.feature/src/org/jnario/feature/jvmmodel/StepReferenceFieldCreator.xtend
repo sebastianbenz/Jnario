@@ -24,6 +24,7 @@ import org.jnario.util.SourceAdapter
 class StepReferenceFieldCreator {
 
 	@Inject extension VisibleMembersCalculator
+	@Inject extension ExpressionCopier
 
 	def copyXtendMemberForReferences(EObject objectWithReference){
 		val refs = getAllContentsOfType(objectWithReference, typeof(StepReference))
@@ -51,7 +52,7 @@ class StepReferenceFieldCreator {
    		val type = objectWithReference as XtendClass
    		for(field: members.filter(typeof(XtendField))){
 			if(!fieldNames.contains(field.name)){
-				val copiedMember = clone(field)
+				val copiedMember = cloneWithProxies(field)
 				SourceAdapter::adapt(copiedMember, field);
 				type.members.add(copiedMember as XtendField)
 				fieldNames += field.name

@@ -5,7 +5,6 @@ import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Stack;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
@@ -40,11 +39,11 @@ public class UsingShouldSpec {
   public void _toPass() throws Exception {
     boolean _should_be = Should.<Boolean>should_be(
       Boolean.valueOf(true), true);
-    Assert.assertTrue("\nExpected // equality\n\t\ttrue should be true but"
-     + "\n     // equality\n\t\ttrue should be true is " + new StringDescription().appendValue(true).toString() + "\n", _should_be);
+    Assert.assertTrue("\nExpected // equality\r\n\t\ttrue should be true but"
+     + "\n     // equality\r\n\t\ttrue should be true is " + new StringDescription().appendValue(true).toString() + "\n", _should_be);
     
     int _plus = (1 + 1);
-    boolean _should_be_1 = Should.should_be(Integer.valueOf(_plus), Integer.valueOf(1));
+    boolean _should_be_1 = Should.<Integer>should_be(Integer.valueOf(_plus), Integer.valueOf(1));
     Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
      + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be_1);
     
@@ -60,8 +59,8 @@ public class UsingShouldSpec {
     
     boolean _doubleArrow_1 = Should.operator_doubleArrow(
       "a string", String.class);
-    Assert.assertTrue("\nExpected // types\n\t\t\"a string\" => typeof(String) but"
-     + "\n     // types\n\t\t\"a string\" => typeof(String) is " + new StringDescription().appendValue(_doubleArrow_1).toString() + "\n", _doubleArrow_1);
+    Assert.assertTrue("\nExpected // types\r\n\t\t\"a string\" => typeof(String) but"
+     + "\n     // types\r\n\t\t\"a string\" => typeof(String) is " + new StringDescription().appendValue(_doubleArrow_1).toString() + "\n", _doubleArrow_1);
     
     Class<? extends Object> _class = "a string".getClass();
     boolean _doubleArrow_2 = Should.operator_doubleArrow(_class, String.class);
@@ -70,8 +69,8 @@ public class UsingShouldSpec {
     
     boolean _should_contain = Should.should_contain(
       "something", "thing");
-    Assert.assertTrue("\nExpected // strings\n\t\t\"something\" should contain \"thing\" but"
-     + "\n     // strings\n\t\t\"something\" should contain \"thing\" is " + new StringDescription().appendValue(true).toString() + "\n", _should_contain);
+    Assert.assertTrue("\nExpected // strings\r\n\t\t\"something\" should contain \"thing\" but"
+     + "\n     // strings\r\n\t\t\"something\" should contain \"thing\" is " + new StringDescription().appendValue(true).toString() + "\n", _should_contain);
     
     boolean _should_contain_1 = Should.should_contain(
       "something", "any");
@@ -80,43 +79,21 @@ public class UsingShouldSpec {
     
     List<String> _list = JnarioCollectionLiterals.<String>list("something");
     boolean _should_contain_2 = Should.<String>should_contain(_list, "something");
-    Assert.assertTrue("\nExpected // iterables\n\t\tlist(\"something\") should contain \"something\" but"
-     + "\n     // iterables\n\t\tlist(\"something\") is " + new StringDescription().appendValue(_list).toString() + "\n", _should_contain_2);
+    Assert.assertTrue("\nExpected // iterables\r\n\t\tlist(\"something\") should contain \"something\" but"
+     + "\n     // iterables\r\n\t\tlist(\"something\") is " + new StringDescription().appendValue(_list).toString() + "\n", _should_contain_2);
     
     List<String> _list_1 = JnarioCollectionLiterals.<String>list("something");
     boolean _should_contain_3 = Should.<String>should_contain(_list_1, "something else");
     Assert.assertFalse("\nExpected list(\"something\") should not contain \"something else\" but"
      + "\n     list(\"something\") is " + new StringDescription().appendValue(_list_1).toString() + "\n", _should_contain_3);
     
-    final Procedure1<String> _function = new Procedure1<String>() {
-        public void apply(final String it) {
-          int _length = it.length();
-          boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_length), Integer.valueOf(11));
-          Assert.assertTrue("\nExpected length => 11 but"
-           + "\n     length is " + new StringDescription().appendValue(Integer.valueOf(_length)).toString() + "\n", _doubleArrow);
-          
-          boolean _should_startWith = Should.should_startWith(it, "hello");
-          Assert.assertTrue("\nExpected it should startWith(\"hello\") but"
-           + "\n     it is " + new StringDescription().appendValue(it).toString() + "\n", _should_startWith);
-          
-          boolean _should_endWith = Should.should_endWith(it, "world");
-          Assert.assertTrue("\nExpected it should endWith(\"world\") but"
-           + "\n     it is " + new StringDescription().appendValue(it).toString() + "\n", _should_endWith);
-          
-        }
-      };
-    final String greeting = ObjectExtensions.<String>operator_doubleArrow("hello world", _function);
-    boolean _doubleArrow_3 = Should.operator_doubleArrow(greeting, String.class);
-    Assert.assertTrue("\nExpected greeting => typeof(String) but"
-     + "\n     greeting is " + new StringDescription().appendValue(greeting).toString() + "\n", _doubleArrow_3);
-    
     boolean expectedException = false;
     String message = "";
     try{
       Stack<String> _stack = new Stack<String>();
       _stack.pop();
-      message = "Expected " + EmptyStackException.class.getName() + " for \n     // expecting exceptions\n\t\tnew Stack<String>().pop\n with:"
-       + "\n     // expecting exceptions\n\t\tnew Stack<String>() is " + new StringDescription().appendValue(_stack).toString();
+      message = "Expected " + EmptyStackException.class.getName() + " for \n     // using xtend\'s \"with\" operator\r\n\t\t\r\n\t\t// FIXME\r\n//\t\tval greeting = \"hello world\" => [\r\n//\t\t\tlength => 11\r\n//\t\t\tit should startWith(\"hello\")\r\n//\t\t\tit should endWith(\"world\")\r\n//\t\t]\r\n//\t\tgreeting => typeof(String)\r\n\t\t\r\n\t\t// expecting exceptions\r\n\t\tnew Stack<String>().pop\n with:"
+       + "\n     // using xtend\'s \"with\" operator\r\n\t\t\r\n\t\t// FIXME\r\n//\t\tval greeting = \"hello world\" => [\r\n//\t\t\tlength => 11\r\n//\t\t\tit should startWith(\"hello\")\r\n//\t\t\tit should endWith(\"world\")\r\n//\t\t]\r\n//\t\tgreeting => typeof(String)\r\n\t\t\r\n\t\t// expecting exceptions\r\n\t\tnew Stack<String>() is " + new StringDescription().appendValue(_stack).toString();
     }catch(EmptyStackException e){
       expectedException = true;
     }
@@ -155,7 +132,7 @@ public class UsingShouldSpec {
     String message = "";
     try{
       int _plus = (1 + 1);
-      boolean _should_be = Should.should_be(Integer.valueOf(_plus), Integer.valueOf(1));
+      boolean _should_be = Should.<Integer>should_be(Integer.valueOf(_plus), Integer.valueOf(1));
       Assert.assertTrue("\nExpected 1 + 1 should be 1 but"
        + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be);
       
@@ -169,7 +146,7 @@ public class UsingShouldSpec {
     String message_1 = "";
     try{
       int _plus_1 = (1 + 1);
-      boolean _should_be_1 = Should.should_be(Integer.valueOf(_plus_1), Integer.valueOf(2));
+      boolean _should_be_1 = Should.<Integer>should_be(Integer.valueOf(_plus_1), Integer.valueOf(2));
       Assert.assertFalse("\nExpected 1 + 1 should not be 2 but"
        + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_1)).toString() + "\n", _should_be_1);
       
@@ -262,7 +239,7 @@ public class UsingShouldSpec {
     final Procedure1<Boolean> _function_1 = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           String _upperCase = x.toUpperCase();
-          boolean _should_be = Should.should_be(_upperCase, "HELLO");
+          boolean _should_be = Should.<String>should_be(_upperCase, "HELLO");
           Assert.assertFalse("\nExpected x.toUpperCase should not be \"HELLO\" but"
            + "\n     x.toUpperCase is " + new StringDescription().appendValue(_upperCase).toString()
            + "\n     x is " + new StringDescription().appendValue(x).toString() + "\n", _should_be);

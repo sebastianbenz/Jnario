@@ -104,10 +104,10 @@ public class SuiteJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 			return null;
 		}
 		SuiteFile suiteFile = Iterables.filter(r.getContents(), SuiteFile.class).iterator().next();
-		if(suiteFile.getXtendClasses().isEmpty()){
+		if(suiteFile.getXtendTypes().isEmpty()){
 			return null;
 		}
-		Suite suite = (Suite) suiteFile.getXtendClasses().get(0);
+		Suite suite = (Suite) suiteFile.getXtendTypes().get(0);
 		return nameProvider.toJavaClassName(suite) + ".java";
 	}
 	
@@ -117,8 +117,8 @@ public class SuiteJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 			return null;
 		if (element instanceof XtendFile) {
 			XtendFile specFile = (XtendFile) element;
-			if(!specFile.getXtendClasses().isEmpty()){
-				element = specFile.getXtendClasses().get(0);
+			if(!specFile.getXtendTypes().isEmpty()){
+				element = specFile.getXtendTypes().get(0);
 			}
 		}else{
 			element = EcoreUtil2.getContainerOfType(element, XtendClass.class);

@@ -7,8 +7,8 @@
  *******************************************************************************/
 package org.jnario.feature.naming;
 
-import org.eclipse.xtend.core.featurecalls.XtendIdentifiableSimpleNameProvider;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
 import org.jnario.feature.feature.Step;
 
 import com.google.inject.Inject;
@@ -16,7 +16,7 @@ import com.google.inject.Inject;
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-public class FeatureIdentifiableSimpleNameProvider extends XtendIdentifiableSimpleNameProvider {
+public class FeatureIdentifiableSimpleNameProvider extends IdentifiableSimpleNameProvider {
 	
 	@Inject
 	private StepNameProvider stepNameProvider;

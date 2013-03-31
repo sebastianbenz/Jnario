@@ -4,8 +4,8 @@
  */
 package org.jnario.feature.ui;
 
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.DefaultUiModule;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
  * Manual modifications go to {org.jnario.feature.ui.FeatureUiModule}
@@ -26,6 +26,11 @@ public abstract class AbstractFeatureUiModule extends DefaultUiModule {
 	// contributed by org.eclipse.xtext.ui.generator.ImplicitUiFragment
 	public Class<? extends org.eclipse.xtext.ui.editor.XtextEditor> bindXtextEditor() {
 		return org.eclipse.xtext.xbase.ui.editor.XbaseEditor.class;
+	}
+
+	// contributed by org.eclipse.xtext.ui.generator.ImplicitUiFragment
+	public Class<? extends org.eclipse.xtext.ui.editor.model.XtextDocumentProvider> bindXtextDocumentProvider() {
+		return org.eclipse.xtext.xbase.ui.editor.XbaseDocumentProvider.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
@@ -144,11 +149,6 @@ public abstract class AbstractFeatureUiModule extends DefaultUiModule {
 	}
 
 	// contributed by org.eclipse.xtext.generator.types.TypesGeneratorFragment
-	public Class<? extends org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider> bindITypesProposalProvider() {
-		return org.eclipse.xtext.common.types.xtext.ui.JdtTypesProposalProvider.class;
-	}
-
-	// contributed by org.eclipse.xtext.generator.types.TypesGeneratorFragment
 	public Class<? extends org.eclipse.xtext.common.types.access.jdt.IJavaProjectProvider> bindIJavaProjectProvider() {
 		return org.eclipse.xtext.common.types.xtext.ui.XtextResourceSetBasedProjectProvider.class;
 	}
@@ -214,6 +214,16 @@ public abstract class AbstractFeatureUiModule extends DefaultUiModule {
 	}
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
+	public Class<? extends org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider.CrossRefResolutionConverter> bindDefaultQuickfixProvider$CrossRefResolutionConverter() {
+		return org.eclipse.xtext.xbase.ui.quickfix.XbaseCrossRefResolutionConverter.class;
+	}
+
+	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
+	@org.eclipse.xtext.service.SingletonBinding(eager=true)	public Class<? extends org.eclipse.xtext.xbase.ui.validation.XbaseUIValidator> bindXbaseUIValidator() {
+		return org.eclipse.xtext.xbase.ui.validation.XbaseUIValidator.class;
+	}
+
+	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
 	public Class<? extends org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler> bindFindReferencesHandler() {
 		return org.eclipse.xtext.xbase.ui.jvmmodel.findrefs.JvmModelFindReferenceHandler.class;
 	}
@@ -229,8 +239,8 @@ public abstract class AbstractFeatureUiModule extends DefaultUiModule {
 	}
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
-	public Class<? extends org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler> bindIRenameElementHandler() {
-		return org.eclipse.xtext.xbase.ui.jvmmodel.refactoring.JvmModelRenameElementHandler.class;
+	public Class<? extends org.eclipse.xtext.ui.refactoring.ui.IRenameContextFactory> bindIRenameContextFactory() {
+		return org.eclipse.xtext.xbase.ui.jvmmodel.refactoring.jdt.CombinedJvmJdtRenameContextFactory.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
@@ -264,6 +274,16 @@ public abstract class AbstractFeatureUiModule extends DefaultUiModule {
 			binder.bind(org.eclipse.xtext.ui.editor.IURIEditorOpener.class).annotatedWith(org.eclipse.xtext.ui.LanguageSpecific.class).to(org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener.class); 
 			binder.bind(org.eclipse.xtext.common.types.ui.navigation.IDerivedMemberAwareEditorOpener.class).to(org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener.class); 
 		};
+	}
+
+	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
+	public Class<? extends org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider> bindITypesProposalProvider() {
+		return org.eclipse.xtext.xbase.ui.contentassist.ImportingTypesProposalProvider.class;
+	}
+
+	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
+	public Class<? extends org.eclipse.xtext.xbase.imports.IUnresolvedTypeResolver> bindIUnresolvedTypeResolver() {
+		return org.eclipse.xtext.xbase.ui.imports.InteractiveUnresolvedTypeResolver.class;
 	}
 
 	// contributed by org.eclipse.xtext.ui.generator.templates.CodetemplatesGeneratorFragment

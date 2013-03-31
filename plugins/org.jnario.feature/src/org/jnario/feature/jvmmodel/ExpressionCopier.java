@@ -21,7 +21,7 @@ public class ExpressionCopier{
 		@Override
 		public EObject copy(EObject source) {
 			EObject target = super.copy(source);
-			modelAssociator.associate(source, target);
+//			modelAssociator.associate(source, target);
 			if (source instanceof XAbstractFeatureCall) {
 				XAbstractFeatureCall sourceFeatureCall = (XAbstractFeatureCall) source;
 				((XAbstractFeatureCall) source).getFeature();
@@ -29,10 +29,7 @@ public class ExpressionCopier{
 				targetFeatureCall.setImplicitFirstArgument((XExpression) copy(sourceFeatureCall.getImplicitFirstArgument()));
 				targetFeatureCall.setImplicitReceiver((XExpression) copy(sourceFeatureCall.getImplicitReceiver()));
 			}
-			if(source instanceof XExpression){
-				SourceAdapter.adapt(target, source);
-			}
-			if(source instanceof XtendField){
+			if(source instanceof XExpression || source instanceof XtendField){
 				SourceAdapter.adapt(target, source);
 			}
 			return target;

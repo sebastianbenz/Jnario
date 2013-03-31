@@ -35,7 +35,6 @@ import org.jnario.spec.ui.wizards.NewSpecWizard;
 import org.jnario.suite.suite.SuitePackage;
 import org.jnario.suite.ui.wizards.NewSuiteWizard;
 import org.jnario.ui.quickfix.JnarioQuickFixProvider;
-import org.jnario.ui.quickfix.NewTypePageConfigurer;
 import org.jnario.ui.wizards.NewJnarioFileWizard;
 import org.jnario.ui.wizards.NewJnarioFileWizardPageOne;
 import org.jnario.util.Strings;
@@ -48,8 +47,6 @@ public class SuiteQuickfixProvider extends JnarioQuickFixProvider {
 	@Inject Provider<NewSpecWizard> newSpecWizardProvider;
 	@Inject Provider<NewFeatureWizard> newFeatureWizardProvider;
 	@Inject Provider<NewSuiteWizard> newSuiteWizardProvider;
-	@Inject
-	private NewTypePageConfigurer newTypePageConfigurer;
 
 	@Inject
 	private IJavaProjectProvider projectProvider;

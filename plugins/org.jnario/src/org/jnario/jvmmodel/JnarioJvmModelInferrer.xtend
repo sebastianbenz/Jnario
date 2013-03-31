@@ -14,7 +14,9 @@ import org.eclipse.xtend.core.jvmmodel.XtendJvmModelInferrer
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtend.core.xtend.XtendField
 import org.eclipse.xtend.core.xtend.XtendFile
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration
 import org.eclipse.xtext.EcoreUtil2
+import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
@@ -25,6 +27,9 @@ import org.eclipse.xtext.xbase.compiler.XbaseCompiler
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.xtext.xbase.typesystem.IBatchTypeResolver
+import org.eclipse.xtext.xbase.typesystem.legacy.StandardTypeReferenceOwner
+import org.eclipse.xtext.xbase.typesystem.util.CommonTypeComputationServices
 import org.jnario.ExampleColumn
 import org.jnario.runner.Extends
 import org.jnario.runner.Extension
@@ -42,8 +47,11 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 	@Inject extension TypeReferences
 	@Inject extension IJvmModelAssociations
 	@Inject TestRuntimeProvider runtime
+	@Inject extension JnarioNameProvider
 	TestRuntimeSupport testRuntime
 	@Inject	extension JvmTypesBuilder jvmTypesBuilder;
+	@Inject extension CommonTypeComputationServices commonTypeComputationServices
+	@Inject private IBatchTypeResolver typeResolver
 
 	def toField(ExampleColumn column){
 		val field = column.toField(column.name, column.getOrCreateType)
@@ -54,9 +62,20 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 	}
 	
 	def getOrCreateType(ExampleColumn source){
-		if (source.type == null) {
-			source.setType(getTypeProxy(source));
+		if(source.type != null){
+			return source.type
 		}
+		
+		
+		val types = source.cells.map[
+			typeResolver.resolveTypes(source).getActualType(it)
+		].filter[it != null].toList
+		if(types.empty){
+			return null
+		}
+		val typeReferenceOwner = new StandardTypeReferenceOwner(commonTypeComputationServices, source)
+		val commonSuperType = typeConformanceComputer.getCommonSuperType(types, typeReferenceOwner)
+		source.type = commonSuperType.toTypeReference
 		source.type
 	}
 
@@ -74,12 +93,15 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 	}
 	
 	override protected transform(XtendField source, JvmGenericType container) {
-		if(source.visibility == JvmVisibility::PRIVATE){
-			source.visibility = JvmVisibility::DEFAULT
-		}
 		super.transform(source, container)
+		val field = source.jvmElements.head as JvmField
+		if(field == null){
+			return
+		}
+		if(field.visibility == JvmVisibility::PRIVATE){
+			field.setVisibility(JvmVisibility::DEFAULT)
+		}
 		if (source.isExtension()){
-			val field = source.jvmElements.head as JvmField
 			field.setVisibility(JvmVisibility::PUBLIC)
 			field.annotations += source.toAnnotation(typeof(Extension))
 		}
@@ -106,7 +128,7 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 		while(xtendType != null && xtendType instanceof XtendClass){
 			val current = xtendType as XtendClass
 			for(extendedType : current.annotations.filter[it.hasExtendsAnnotation].map[value as XTypeLiteral]){
-				if(current.superTypes.empty && extendedType.type != null){
+				if(current.^implements.empty && extendedType.type != null){
 					xtendClass.^extends = extendedType.type.createTypeRef()
 					return
 				}
@@ -117,5 +139,10 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 	
 	def protected hasExtendsAnnotation(XAnnotation annotation){
 		annotation.annotationType?.qualifiedName == typeof(Extends).name && annotation.value instanceof XTypeLiteral
+	}
+	
+	override protected void setNameAndAssociate(XtendFile file, XtendTypeDeclaration xtendType, JvmDeclaredType javaType) {
+		super.setNameAndAssociate(file, xtendType, javaType)
+		javaType.simpleName = xtendType.toJavaClassName
 	}
 }

@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -125,25 +124,8 @@ public class SpecResolverSpec {
   }
   
   @Test
-  @Named("filters unresolved specs")
-  @Order(2)
-  public void _filtersUnresolvedSpecs() throws Exception {
-    SpecReference _specReference = Suites.specReference(null);
-    SpecReference _specReference_1 = Suites.specReference(null);
-    final Suite suite = Suites.suiteWith("A Suite", _specReference, _specReference_1);
-    List<String> _resolvedSpecs = this.resolvedSpecs(suite);
-    List<?> _emptyList = CollectionLiterals.emptyList();
-    boolean _doubleArrow = Should.operator_doubleArrow(_resolvedSpecs, _emptyList);
-    Assert.assertTrue("\nExpected suite.resolvedSpecs => emptyList but"
-     + "\n     suite.resolvedSpecs is " + new StringDescription().appendValue(_resolvedSpecs).toString()
-     + "\n     suite is " + new StringDescription().appendValue(suite).toString()
-     + "\n     emptyList is " + new StringDescription().appendValue(_emptyList).toString() + "\n", _doubleArrow);
-    
-  }
-  
-  @Test
   @Named("ignores specs without name")
-  @Order(3)
+  @Order(2)
   public void _ignoresSpecsWithoutName() throws Exception {
     final ExampleGroup specWithoutName = Specs.exampleGroup(null);
     SpecReference _specReference = Suites.specReference(specWithoutName);

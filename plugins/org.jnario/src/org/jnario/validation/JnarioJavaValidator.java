@@ -7,7 +7,7 @@
  *******************************************************************************/
 package org.jnario.validation;
 
-import static org.eclipse.xtend.core.xtend.XtendPackage.Literals.XTEND_CLASS__NAME;
+import static org.eclipse.xtend.core.xtend.XtendPackage.Literals.XTEND_TYPE_DECLARATION__NAME;
 import static org.jnario.jvmmodel.DoubleArrowSupport.isDoubleArrow;
 
 import java.util.List;
@@ -28,6 +28,7 @@ import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
 import org.jnario.MockLiteral;
 import org.jnario.ShouldThrow;
+import org.jnario.compiler.JnarioExpressionHelper;
 import org.jnario.jvmmodel.TestRuntimeProvider;
 import org.jnario.runner.Named;
 import org.jnario.util.MockingSupport;
@@ -46,7 +47,7 @@ public class JnarioJavaValidator extends AbstractDeclarativeValidator {
 	private ITypeProvider typeProvider;
 	
 	@Inject
-	private XExpressionHelper expressionHelper;
+	private JnarioExpressionHelper expressionHelper;
 	
 	@Inject 
 	private TypeReferences typeReferences;
@@ -73,14 +74,14 @@ public class JnarioJavaValidator extends AbstractDeclarativeValidator {
 	public void checkClassPath(XtendClass clazz) {
 		if (typeReferences.findDeclaredType(Named.class, clazz) == null) {
 			error("Mandatory library bundle 'org.jnario.lib' 0.1.0 or higher not found on the classpath.", clazz,
-					XTEND_CLASS__NAME, JnarioIssueCodes.JNARIO_LIB_NOT_ON_CLASSPATH);
+					XTEND_TYPE_DECLARATION__NAME, JnarioIssueCodes.JNARIO_LIB_NOT_ON_CLASSPATH);
 		}
 		
 		try {
 			runtimeProvider.get(clazz);
 		} catch (Exception e) {
 			error(e.getMessage(), clazz,
-					XTEND_CLASS__NAME, JnarioIssueCodes.JUNIT_NOT_ON_CLASSPATH);
+					XTEND_TYPE_DECLARATION__NAME, JnarioIssueCodes.JUNIT_NOT_ON_CLASSPATH);
 		}
 	}
 	
@@ -94,16 +95,6 @@ public class JnarioJavaValidator extends AbstractDeclarativeValidator {
 	@Override
 	protected List<EPackage> getEPackages() {
 		return Lists.<EPackage>newArrayList(JnarioPackage.eINSTANCE);
-	}
-	
-	@Check
-	public void checkAssertExpressionIsBoolean(Assertion assertion){
-		JvmTypeReference actualType = typeProvider.getType(assertion.getExpression());
-		String actualTypeName = actualType.getQualifiedName();
-		if(!actualTypeName.equals(boolean.class.getName()) && 
-				!actualTypeName.equals(Boolean.class.getName())){
-			error(ILLEGAL_ASSERTION_EXPRESSION, null);
-		}
 	}
 	
 	@Check

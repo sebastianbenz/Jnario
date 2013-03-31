@@ -43,6 +43,10 @@ import org.jnario.spec.spec.TestFunction
 import static extension org.eclipse.xtext.util.Strings.*
 import org.eclipse.xtext.xbase.lib.Procedures$Procedure2
 import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtext.common.types.TypesFactory
+import org.eclipse.xtext.xbase.XbaseFactory
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
+import org.eclipse.xtend.core.xtend.XtendFile
  
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -58,40 +62,50 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	@Inject extension ImplicitSubject 
 	
-	@Inject extension IJvmModelAssociator 
-	
 	@Inject extension SyntheticNameClashResolver
 	
-	override doInfer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
-		if (!(e instanceof SpecFile)){
-			return
-		}
-		val specFile = e as SpecFile
+	@Inject TypesFactory typesFactory
+	
+	@Inject extension IJvmModelAssociations
+	
+	override doInfer(EObject object, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
+		if (!(object instanceof XtendFile))
+			return;
+		val xtendFile = object as XtendFile
+		val doLater = <Runnable>newArrayList()
 		
-		specFile.xtendClasses.filter(typeof(ExampleGroup)).forEach[
-			infer(acceptor, it, null)
-		]
+		for (declaration: xtendFile.getXtendTypes().filter(typeof(ExampleGroup))) {
+			acceptor.infer(declaration, null, doLater, preIndexingPhase)
+		}
 		exampleIndex = 0
+		if (!preIndexingPhase) {
+			for (Runnable runnable : doLater) {
+				runnable.run();
+			}
+		}
 	}
 	
-	def infer(IJvmDeclaredTypeAcceptor acceptor, ExampleGroup exampleGroup, JvmGenericType superType){
+	def infer(IJvmDeclaredTypeAcceptor acceptor, ExampleGroup exampleGroup, JvmGenericType superType, List<Runnable> doLater, boolean preIndexingPhase){
 		if(superType != null){
 			exampleGroup.^extends = superType.createTypeRef
 		}else{
 			exampleGroup.addSuperClass
 		}
-		val inferredJvmType = exampleGroup.toClass(exampleGroup.toJavaClassName)[
-			packageName = exampleGroup.packageName
-		]
-		register(acceptor, exampleGroup, inferredJvmType)
+		
+		val javaType = typesFactory.createJvmGenericType();
+		setNameAndAssociate(exampleGroup.xtendFile, exampleGroup, javaType);
+		acceptor.accept(javaType);
+		if (!preIndexingPhase) {
+			doLater.add([|initialize(exampleGroup, javaType)]);
+		}
 		val children = <JvmGenericType>newArrayList
 		exampleGroup.members.filter(typeof(ExampleGroup)).forEach[child | 
-			children += acceptor.infer(child, inferredJvmType)
+			children += acceptor.infer(child, javaType, doLater, preIndexingPhase)
 		]
 		if(!children.empty){
-			testRuntime.addChildren(exampleGroup, inferredJvmType, children)
+			testRuntime.addChildren(exampleGroup, javaType, children)
 		}
-		return inferredJvmType
+		return javaType
 	}
 
 	
@@ -120,41 +134,22 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			inferredJvmType.getSuperTypes().add(cloneWithProxies(intf));
 		}
 		copyAndFixTypeParameters(source.getTypeParameters(), inferredJvmType);
-		
-		val functions = <XtendFunction>newArrayList()
+	
+		exampleIndex = 0
 		for (member : source.getMembers()) {
-			if (member instanceof XtendField
-					|| member instanceof XtendConstructor
-					|| member instanceof ExampleGroup
-					|| member instanceof TestFunction
-					|| member instanceof ExampleTable) {
-				transformExamples(member, inferredJvmType);
-			}else if(member instanceof XtendFunction && (member as XtendFunction).getName() != null){
-				functions += member as XtendFunction
-			}
-			
-		}
-		// we have to add the implicit subject before the XtendFunctions are transformed
-		inferredJvmType.addImplicitSubject(source as ExampleGroup)
-		for (function : functions) {
-			transform(function, inferredJvmType);
+			transformExamples(member, inferredJvmType);
 		}
 		appendSyntheticDispatchMethods(source, inferredJvmType);
-		computeInferredReturnTypes(inferredJvmType);
 		translateAnnotationsTo(source.getAnnotations(), inferredJvmType);
 		setDocumentation(inferredJvmType, getDocumentation(source));
 		resolveNameClashes(inferredJvmType);
 	}
 	 
 	
-	def register(IJvmDeclaredTypeAcceptor acceptor, XtendClass source, JvmGenericType inferredJvmType){
-   		associatePrimary(source, inferredJvmType); 
-		acceptor.accept(inferredJvmType).initializeLater[initialize(source, inferredJvmType)] 
-   	}
    	
-   	override transform(XtendMember sourceMember, JvmGenericType container) {
+	override protected transform(XtendMember sourceMember, JvmGenericType container, boolean allowDispatch) {
    		// we use transformExamples instead
-   	}
+	}
    	
    	def void transformExamples(XtendMember sourceMember, JvmGenericType container) {
    		switch sourceMember {
@@ -162,7 +157,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
    			Before : transform(sourceMember as Before, container)
    			After: transform(sourceMember as After, container)
    			ExampleTable: transform(sourceMember as ExampleTable, container)
-   			XtendFunction: transform(sourceMember as XtendFunction, container)
+   			XtendFunction case sourceMember.name != null: transform(sourceMember as XtendFunction, container, false)
    			XtendField: transform(sourceMember as XtendField, container)
    			XtendConstructor: transform(sourceMember as XtendConstructor, container)
    		}
@@ -170,7 +165,10 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	def transform(Example element, JvmGenericType container) {
 		exampleIndex = exampleIndex + 1
-		val method = toMethod(element)
+		if(element.expression == null){
+			element.expression = XbaseFactory::eINSTANCE.createXBlockExpression
+		}
+		val method = toMethod(element, container)
 		testRuntime.markAsTestMethod(element, method)
 		if(element.pending){
 			testRuntime.markAsPending(element, method) 
@@ -196,7 +194,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	def transformAround(TestFunction element, JvmGenericType container, 
 		Procedure2<XtendMember, JvmOperation> around, Procedure2<XtendMember, JvmOperation> aroundAll){
-		val afterMethod = element.toMethod
+		val afterMethod = element.toMethod(container)
 		if(element.isStatic){
 			container.members += element.addIsExecutedField
 			aroundAll.apply(element as XtendMember, afterMethod)
@@ -215,15 +213,13 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		]
 	}
 	
-	def toMethod(TestFunction element){
-		element.toMethod(element.toMethodName, getTypeForName(Void::TYPE, element)) [
-			documentation = element.documentation
-			body = element.expression
-			element.annotations.translateAnnotationsTo(it)
-			exceptions += typeof(Exception).getTypeForName(element)
-			associatePrimary(element, it);
-			^static = element.^static
-		]
+	def toMethod(TestFunction element, JvmGenericType container){
+		element.setReturnType(getTypeForName(Void::TYPE, element))
+		super.transform(element, container, true)
+		val result = element.jvmElements.head as JvmOperation
+		result.simpleName = element.toMethodName
+		result.exceptions += typeof(Exception).getTypeForName(element)
+		result
 	}
 	
 	def void configureWith(JvmGenericType type, EObject source, SpecFile spec){
@@ -231,7 +227,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		type.packageName = spec.^package
 		type.documentation = source.documentation
 	}
-
 	 
 	def transform(ExampleTable table, JvmGenericType specType){
 		associateTableWithSpec(specType, table)

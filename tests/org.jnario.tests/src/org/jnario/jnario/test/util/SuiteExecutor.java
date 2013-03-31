@@ -33,9 +33,9 @@ public class SuiteExecutor extends BehaviorExecutor {
 	protected Result runExamples(EObject object) throws MalformedURLException, ClassNotFoundException {
 		SuiteFile suiteFile = (SuiteFile) object;
 		CompositeResult result = new CompositeResult();
-		for (Suite suite : Iterables.filter(suiteFile.getXtendClasses(), Suite.class)) {
+		for (Suite suite : Iterables.filter(suiteFile.getXtendTypes(), Suite.class)) {
 			String suiteClassName = nameProvider.toJavaClassName(suite);
-			String packageName = suite.getPackageName();
+			String packageName = suiteFile.getPackage();
 			result.add(runTestsInClass(suiteClassName, packageName));
 		}
 		return result;
@@ -43,6 +43,6 @@ public class SuiteExecutor extends BehaviorExecutor {
 	
 	protected void generateJava(EObject object) {
 		super.generateJava(object);
-		assertFalse("has no examples", ((SuiteFile)object).getXtendClasses().isEmpty());
+		assertFalse("has no examples", ((SuiteFile)object).getXtendTypes().isEmpty());
 	}
 }

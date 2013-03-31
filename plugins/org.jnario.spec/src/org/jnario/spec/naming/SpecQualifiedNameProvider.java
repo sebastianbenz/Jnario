@@ -18,6 +18,7 @@ import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecPackage;
 
 import com.google.inject.Inject;
+import static org.jnario.util.XtendTypes.*;
 
 @SuppressWarnings("restriction")
 public class SpecQualifiedNameProvider extends XtendQualifiedNameProvider {
@@ -50,7 +51,7 @@ public class SpecQualifiedNameProvider extends XtendQualifiedNameProvider {
 			return null;
 		}
 		
-		final String qualifiedName = (exampleGroup.getPackageName() != null ? exampleGroup.getPackageName() + "." : "")
+		final String qualifiedName = (packageName(exampleGroup) != null ? packageName(exampleGroup) + "." : "")
 				+ name;
 		return qualifiedNameConverter.toQualifiedName(qualifiedName);
 	}

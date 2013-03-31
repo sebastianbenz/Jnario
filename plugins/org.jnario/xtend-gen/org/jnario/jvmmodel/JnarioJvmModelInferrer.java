@@ -4,6 +4,7 @@ import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
@@ -12,9 +13,10 @@ import org.eclipse.xtend.core.jvmmodel.XtendJvmModelInferrer;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
-import org.eclipse.xtext.common.types.JvmAnnotationType;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
@@ -34,7 +36,15 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.typesystem.IBatchTypeResolver;
+import org.eclipse.xtext.xbase.typesystem.IResolvedTypes;
+import org.eclipse.xtext.xbase.typesystem.conformance.TypeConformanceComputer;
+import org.eclipse.xtext.xbase.typesystem.legacy.StandardTypeReferenceOwner;
+import org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference;
+import org.eclipse.xtext.xbase.typesystem.util.CommonTypeComputationServices;
 import org.jnario.ExampleColumn;
+import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.TestRuntimeProvider;
 import org.jnario.jvmmodel.TestRuntimeSupport;
 import org.jnario.runner.Extends;
@@ -58,10 +68,19 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   @Inject
   private TestRuntimeProvider runtime;
   
+  @Inject
+  private JnarioNameProvider _jnarioNameProvider;
+  
   private TestRuntimeSupport testRuntime;
   
   @Inject
   private JvmTypesBuilder jvmTypesBuilder;
+  
+  @Inject
+  private CommonTypeComputationServices commonTypeComputationServices;
+  
+  @Inject
+  private IBatchTypeResolver typeResolver;
   
   public JvmField toField(final ExampleColumn column) {
     String _name = column.getName();
@@ -78,11 +97,41 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
     JvmTypeReference _xblockexpression = null;
     {
       JvmTypeReference _type = source.getType();
-      boolean _equals = Objects.equal(_type, null);
-      if (_equals) {
-        JvmTypeReference _typeProxy = this.getTypeProxy(source);
-        source.setType(_typeProxy);
+      boolean _notEquals = (!Objects.equal(_type, null));
+      if (_notEquals) {
+        return source.getType();
       }
+      EList<XExpression> _cells = source.getCells();
+      final Function1<XExpression,LightweightTypeReference> _function = new Function1<XExpression,LightweightTypeReference>() {
+          public LightweightTypeReference apply(final XExpression it) {
+            IResolvedTypes _resolveTypes = JnarioJvmModelInferrer.this.typeResolver.resolveTypes(source);
+            LightweightTypeReference _actualType = _resolveTypes.getActualType(it);
+            return _actualType;
+          }
+        };
+      List<LightweightTypeReference> _map = ListExtensions.<XExpression, LightweightTypeReference>map(_cells, _function);
+      final Function1<LightweightTypeReference,Boolean> _function_1 = new Function1<LightweightTypeReference,Boolean>() {
+          public Boolean apply(final LightweightTypeReference it) {
+            boolean _notEquals = (!Objects.equal(it, null));
+            return _notEquals;
+          }
+        };
+      Iterable<LightweightTypeReference> _filter = Iterables.<LightweightTypeReference>filter(_map, new Predicate<LightweightTypeReference>() {
+          public boolean apply(LightweightTypeReference input) {
+            return _function_1.apply(input);
+          }
+      });
+      final List<LightweightTypeReference> types = IterableExtensions.<LightweightTypeReference>toList(_filter);
+      boolean _isEmpty = types.isEmpty();
+      if (_isEmpty) {
+        return null;
+      }
+      StandardTypeReferenceOwner _standardTypeReferenceOwner = new StandardTypeReferenceOwner(this.commonTypeComputationServices, source);
+      final StandardTypeReferenceOwner typeReferenceOwner = _standardTypeReferenceOwner;
+      TypeConformanceComputer _typeConformanceComputer = this.commonTypeComputationServices.getTypeConformanceComputer();
+      final LightweightTypeReference commonSuperType = _typeConformanceComputer.getCommonSuperType(types, typeReferenceOwner);
+      JvmTypeReference _typeReference = commonSuperType.toTypeReference();
+      source.setType(_typeReference);
       JvmTypeReference _type_1 = source.getType();
       _xblockexpression = (_type_1);
     }
@@ -110,17 +159,21 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   }
   
   protected void transform(final XtendField source, final JvmGenericType container) {
-    JvmVisibility _visibility = source.getVisibility();
-    boolean _equals = Objects.equal(_visibility, JvmVisibility.PRIVATE);
-    if (_equals) {
-      source.setVisibility(JvmVisibility.DEFAULT);
-    }
     super.transform(source, container);
+    Set<EObject> _jvmElements = this._iJvmModelAssociations.getJvmElements(source);
+    EObject _head = IterableExtensions.<EObject>head(_jvmElements);
+    final JvmField field = ((JvmField) _head);
+    boolean _equals = Objects.equal(field, null);
+    if (_equals) {
+      return;
+    }
+    JvmVisibility _visibility = field.getVisibility();
+    boolean _equals_1 = Objects.equal(_visibility, JvmVisibility.PRIVATE);
+    if (_equals_1) {
+      field.setVisibility(JvmVisibility.DEFAULT);
+    }
     boolean _isExtension = source.isExtension();
     if (_isExtension) {
-      Set<EObject> _jvmElements = this._iJvmModelAssociations.getJvmElements(source);
-      EObject _head = IterableExtensions.<EObject>head(_jvmElements);
-      final JvmField field = ((JvmField) _head);
       field.setVisibility(JvmVisibility.PUBLIC);
       EList<JvmAnnotationReference> _annotations = field.getAnnotations();
       JvmAnnotationReference _annotation = this.jvmTypesBuilder.toAnnotation(source, Extension.class);
@@ -182,8 +235,8 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
         Iterable<XTypeLiteral> _map = IterableExtensions.<XAnnotation, XTypeLiteral>map(_filter, _function_1);
         for (final XTypeLiteral extendedType : _map) {
           boolean _and_1 = false;
-          EList<JvmTypeReference> _superTypes = current.getSuperTypes();
-          boolean _isEmpty = _superTypes.isEmpty();
+          EList<JvmTypeReference> _implements = current.getImplements();
+          boolean _isEmpty = _implements.isEmpty();
           if (!_isEmpty) {
             _and_1 = false;
           } else {
@@ -214,7 +267,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   
   protected boolean hasExtendsAnnotation(final XAnnotation annotation) {
     boolean _and = false;
-    JvmAnnotationType _annotationType = annotation.getAnnotationType();
+    JvmType _annotationType = annotation.getAnnotationType();
     String _qualifiedName = _annotationType==null?(String)null:_annotationType.getQualifiedName();
     String _name = Extends.class.getName();
     boolean _equals = Objects.equal(_qualifiedName, _name);
@@ -225,5 +278,11 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
       _and = (_equals && (_value instanceof XTypeLiteral));
     }
     return _and;
+  }
+  
+  protected void setNameAndAssociate(final XtendFile file, final XtendTypeDeclaration xtendType, final JvmDeclaredType javaType) {
+    super.setNameAndAssociate(file, xtendType, javaType);
+    String _javaClassName = this._jnarioNameProvider.toJavaClassName(xtendType);
+    javaType.setSimpleName(_javaClassName);
   }
 }

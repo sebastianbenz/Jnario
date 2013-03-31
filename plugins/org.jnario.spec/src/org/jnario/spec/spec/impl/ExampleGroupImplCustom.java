@@ -31,22 +31,6 @@ public class ExampleGroupImplCustom extends org.jnario.spec.spec.impl.ExampleGro
 	}
 	
 	@Override
-	public String getPackageName() {
-		String packageName = super.getPackageName();
-		if(packageName != null){
-			return packageName;
-		}
-		if(eContainer() == null){
-			return null;
-		}
-		ExampleGroup parent = getContainerOfType(eContainer(), ExampleGroup.class);
-		if(parent == null){
-			return null;
-		}
-		return parent.getPackageName();
-	}
-	
-	@Override
 	public EList<XAnnotation> getAnnotations() {
 		if (getAnnotationInfo()!=null) {
 			return getAnnotationInfo().getAnnotations();

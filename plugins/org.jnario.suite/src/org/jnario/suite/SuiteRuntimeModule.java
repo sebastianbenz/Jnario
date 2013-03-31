@@ -10,31 +10,51 @@
  */
 package org.jnario.suite;
 
-import org.eclipse.xtend.core.featurecalls.XtendIdentifiableSimpleNameProvider;
+import org.eclipse.xtend.core.compiler.XtendCompiler;
+import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
+import org.eclipse.xtend.core.formatting.XtendFormatter;
+import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
-import org.eclipse.xtend.core.resource.XtendResource;
+import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
 import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
+import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
+import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
+import org.eclipse.xtend.core.typesystem.XtendTypeComputer;
+import org.eclipse.xtend.core.typing.XtendExpressionHelper;
+import org.eclipse.xtend.core.validation.XtendConfigurableIssueCodes;
 import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
+import org.eclipse.xtend.core.xtend.XtendFactory;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.generator.IFilePostProcessor;
+import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
+import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.validation.ConfigurableIssueCodesProvider;
+import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
+import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.compiler.output.TraceAwarePostProcessor;
-import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
+import org.eclipse.xtext.xbase.formatting.IBasicFormatter;
+import org.eclipse.xtext.xbase.imports.IImportsConfiguration;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.resource.JvmDeclaredTypeSignatureHashProvider.SignatureHashBuilder;
+import org.eclipse.xtext.xbase.resource.XbaseResource;
+import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputer;
+import org.eclipse.xtext.xbase.typesystem.internal.DefaultBatchTypeResolver;
+import org.eclipse.xtext.xbase.typesystem.internal.DefaultReentrantTypeResolver;
+import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
@@ -108,17 +128,12 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 
 	@Override
 	public Class<? extends XtextResource> bindXtextResource() {
-		return XtendResource.class;
+		return XbaseResource.class;
 	}
 	
 	public void configureIScopeProviderDelegate(Binder binder) {
 		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
 		.to(XtendImportedNamespaceScopeProvider.class);
-	}
-
-	@Override
-	public Class<? extends IdentifiableSimpleNameProvider> bindIdentifiableSimpleNameProvider() {
-		return XtendIdentifiableSimpleNameProvider.class;
 	}
 
 	public Class <? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
@@ -157,5 +172,58 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	
 	public Class<? extends org.jnario.compiler.JnarioBatchCompiler> bindJnarioBatchCompiler(){
 		return SuiteBatchCompiler.class;
+	}
+	
+	public XbaseFactory bindXbaseFactory() {
+		return XbaseFactory.eINSTANCE;
+	}
+	
+	public Class<? extends XExpressionHelper> bindXExpressionHelper() {
+		return XtendExpressionHelper.class;
+	}
+	
+	public Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
+		return XtendOutputConfigurationProvider.class;
+	}
+	
+	@Override
+	public Class<? extends ILocationInFileProvider> bindILocationInFileProvider() {
+		return XtendLocationInFileProvider.class;
+	}
+
+	public Class<? extends IBasicFormatter> bindIBasicFormatter() {
+		return XtendFormatter.class;
+	}
+
+	public Class<? extends IImportsConfiguration> bindIImportsConfiguration() {
+		return XtendImportsConfiguration.class;
+	}
+
+	@Override
+	public Class<? extends ConfigurableIssueCodesProvider> bindConfigurableIssueCodesProvider() {
+		return XtendConfigurableIssueCodes.class;
+	}
+	
+	public XtendFactory bindXtendFactory() {
+		return XtendFactory.eINSTANCE;
+	}
+
+	@Override
+	public Class<? extends DefaultBatchTypeResolver> bindDefaultBatchTypeResolver() {
+		return TypeDeclarationAwareBatchTypeResolver.class;
+	}
+
+	@Override
+	public Class<? extends DefaultReentrantTypeResolver> bindDefaultReentrantTypeResolver() {
+		return DispatchAndExtensionAwareReentrantTypeResolver.class;
+	}
+	
+	public Class<? extends XbaseCompiler> bindXbaseCompiler() {
+		return XtendCompiler.class;
+	}
+
+	@Override
+	public Class<? extends ITypeComputer> bindITypeComputer() {
+		return XtendTypeComputer.class;
 	}
 }

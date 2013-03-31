@@ -67,13 +67,13 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 //					XExpression initializer = field.getInitialValue();
 //					highlightRichStrings(initializer, acceptor);
 				}
-				highlightDeprectedXtendAnnotationTarget(acceptor, member);
+				highlightDeprecatedXtendAnnotationTarget(acceptor, member);
 			}
 			return highlightXtendClassName(scenario, SCENARIO_ID);
 		}
 
 		private Boolean highlightXtendClassName(XtendClass object, String id) {
-			List<INode> nodes = findNodesForFeature(object, XtendPackage.Literals.XTEND_CLASS__NAME);
+			List<INode> nodes = findNodesForFeature(object, XtendPackage.Literals.XTEND_TYPE_DECLARATION__NAME);
 			for (INode node : nodes) {
 				highlightNode(node, id, acceptor);
 			}
@@ -82,7 +82,7 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 		
 		@Override
 		public Boolean caseFeature(Feature feature) {
-			List<INode> nodes = findNodesForFeature(feature, XtendPackage.Literals.XTEND_CLASS__NAME);
+			List<INode> nodes = findNodesForFeature(feature, XtendPackage.Literals.XTEND_TYPE_DECLARATION__NAME);
 			for (INode node : nodes) {
 				highlightNode(node, FeatureHighlightingConfiguration.FEATURE_ID, acceptor);
 			}
