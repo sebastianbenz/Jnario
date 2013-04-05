@@ -15,11 +15,14 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtend.core.xtend.impl.XtendFieldImpl;
 import org.eclipse.xtend.core.xtend.impl.XtendFieldImplCustom;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.impl.XExpressionImpl;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
@@ -34,12 +37,42 @@ import org.jnario.JnarioPackage;
  * <ul>
  *   <li>{@link org.jnario.impl.ExampleColumnImpl#getTable <em>Table</em>}</li>
  *   <li>{@link org.jnario.impl.ExampleColumnImpl#getCells <em>Cells</em>}</li>
+ *   <li>{@link org.jnario.impl.ExampleColumnImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.jnario.impl.ExampleColumnImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
- * @generated NOT
+ * @generated
  */
-public class ExampleColumnImpl extends XtendFieldImplCustom implements ExampleColumn {
+public class ExampleColumnImpl extends EObjectImpl implements ExampleColumn {
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmTypeReference type;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -121,6 +154,70 @@ public class ExampleColumnImpl extends XtendFieldImplCustom implements ExampleCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.EXAMPLE_COLUMN__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JvmTypeReference getType() {
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetType(JvmTypeReference newType, NotificationChain msgs) {
+		JvmTypeReference oldType = type;
+		type = newType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JnarioPackage.EXAMPLE_COLUMN__TYPE, oldType, newType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(JvmTypeReference newType) {
+		if (newType != type) {
+			NotificationChain msgs = null;
+			if (type != null)
+				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.EXAMPLE_COLUMN__TYPE, null, msgs);
+			if (newType != null)
+				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JnarioPackage.EXAMPLE_COLUMN__TYPE, null, msgs);
+			msgs = basicSetType(newType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, JnarioPackage.EXAMPLE_COLUMN__TYPE, newType, newType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -142,6 +239,8 @@ public class ExampleColumnImpl extends XtendFieldImplCustom implements ExampleCo
 		switch (featureID) {
 			case JnarioPackage.EXAMPLE_COLUMN__TABLE:
 				return basicSetTable(null, msgs);
+			case JnarioPackage.EXAMPLE_COLUMN__TYPE:
+				return basicSetType(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -172,6 +271,10 @@ public class ExampleColumnImpl extends XtendFieldImplCustom implements ExampleCo
 				return getTable();
 			case JnarioPackage.EXAMPLE_COLUMN__CELLS:
 				return getCells();
+			case JnarioPackage.EXAMPLE_COLUMN__NAME:
+				return getName();
+			case JnarioPackage.EXAMPLE_COLUMN__TYPE:
+				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -192,6 +295,12 @@ public class ExampleColumnImpl extends XtendFieldImplCustom implements ExampleCo
 				getCells().clear();
 				getCells().addAll((Collection<? extends XExpression>)newValue);
 				return;
+			case JnarioPackage.EXAMPLE_COLUMN__NAME:
+				setName((String)newValue);
+				return;
+			case JnarioPackage.EXAMPLE_COLUMN__TYPE:
+				setType((JvmTypeReference)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -210,6 +319,12 @@ public class ExampleColumnImpl extends XtendFieldImplCustom implements ExampleCo
 			case JnarioPackage.EXAMPLE_COLUMN__CELLS:
 				getCells().clear();
 				return;
+			case JnarioPackage.EXAMPLE_COLUMN__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case JnarioPackage.EXAMPLE_COLUMN__TYPE:
+				setType((JvmTypeReference)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -226,8 +341,28 @@ public class ExampleColumnImpl extends XtendFieldImplCustom implements ExampleCo
 				return getTable() != null;
 			case JnarioPackage.EXAMPLE_COLUMN__CELLS:
 				return !getCells().isEmpty();
+			case JnarioPackage.EXAMPLE_COLUMN__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case JnarioPackage.EXAMPLE_COLUMN__TYPE:
+				return type != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ExampleColumnImpl

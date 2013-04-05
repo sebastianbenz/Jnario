@@ -20,12 +20,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExampleColumn" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendField ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression">
+  <eClassifiers xsi:type="ecore:EClass" name="ExampleColumn">
     <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//ExampleTable"
         eOpposite="#//ExampleTable/columns"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Should" eSuperTypes="../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XBinaryOperation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="not" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

@@ -222,76 +222,13 @@ public interface JnarioPackage extends EPackage {
 	int EXAMPLE_COLUMN = 3;
 
 	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_COLUMN__ANNOTATIONS = XtendPackage.XTEND_FIELD__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_COLUMN__ANNOTATION_INFO = XtendPackage.XTEND_FIELD__ANNOTATION_INFO;
-
-	/**
-	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_COLUMN__MODIFIERS = XtendPackage.XTEND_FIELD__MODIFIERS;
-
-	/**
-	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_COLUMN__DECLARING_TYPE = XtendPackage.XTEND_FIELD__DECLARING_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_COLUMN__NAME = XtendPackage.XTEND_FIELD__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_COLUMN__TYPE = XtendPackage.XTEND_FIELD__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_COLUMN__INITIAL_VALUE = XtendPackage.XTEND_FIELD__INITIAL_VALUE;
-
-	/**
 	 * The feature id for the '<em><b>Table</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__TABLE = XtendPackage.XTEND_FIELD_FEATURE_COUNT + 0;
+	int EXAMPLE_COLUMN__TABLE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Cells</b></em>' reference list.
@@ -300,7 +237,25 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__CELLS = XtendPackage.XTEND_FIELD_FEATURE_COUNT + 1;
+	int EXAMPLE_COLUMN__CELLS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__NAME = 2;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_COLUMN__TYPE = 3;
 
 	/**
 	 * The number of structural features of the '<em>Example Column</em>' class.
@@ -309,7 +264,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN_FEATURE_COUNT = XtendPackage.XTEND_FIELD_FEATURE_COUNT + 2;
+	int EXAMPLE_COLUMN_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.impl.ShouldImpl <em>Should</em>}' class.
@@ -734,6 +689,28 @@ public interface JnarioPackage extends EPackage {
 	EReference getExampleColumn_Cells();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.jnario.ExampleColumn#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.jnario.ExampleColumn#getName()
+	 * @see #getExampleColumn()
+	 * @generated
+	 */
+	EAttribute getExampleColumn_Name();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.jnario.ExampleColumn#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Type</em>'.
+	 * @see org.jnario.ExampleColumn#getType()
+	 * @see #getExampleColumn()
+	 * @generated
+	 */
+	EReference getExampleColumn_Type();
+
+	/**
 	 * Returns the meta object for class '{@link org.jnario.Should <em>Should</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -941,6 +918,22 @@ public interface JnarioPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXAMPLE_COLUMN__CELLS = eINSTANCE.getExampleColumn_Cells();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXAMPLE_COLUMN__NAME = eINSTANCE.getExampleColumn_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXAMPLE_COLUMN__TYPE = eINSTANCE.getExampleColumn_Type();
 
 		/**
 		 * The meta object literal for the '{@link org.jnario.impl.ShouldImpl <em>Should</em>}' class.
