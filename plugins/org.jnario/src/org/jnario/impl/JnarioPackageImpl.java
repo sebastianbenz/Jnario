@@ -276,6 +276,24 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getExampleColumn_Name() {
+		return (EAttribute)exampleColumnEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExampleColumn_Type() {
+		return (EReference)exampleColumnEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getShould() {
 		return shouldEClass;
 	}
@@ -386,6 +404,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		exampleColumnEClass = createEClass(EXAMPLE_COLUMN);
 		createEReference(exampleColumnEClass, EXAMPLE_COLUMN__TABLE);
 		createEReference(exampleColumnEClass, EXAMPLE_COLUMN__CELLS);
+		createEAttribute(exampleColumnEClass, EXAMPLE_COLUMN__NAME);
+		createEReference(exampleColumnEClass, EXAMPLE_COLUMN__TYPE);
 
 		shouldEClass = createEClass(SHOULD);
 		createEAttribute(shouldEClass, SHOULD__NOT);
@@ -437,8 +457,6 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		exampleTableEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
 		exampleTableEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		assertionEClass.getESuperTypes().add(theXbasePackage.getXExpression());
-		exampleColumnEClass.getESuperTypes().add(theXtendPackage.getXtendField());
-		exampleColumnEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		shouldEClass.getESuperTypes().add(theXbasePackage.getXBinaryOperation());
 		shouldThrowEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		specificationEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
@@ -463,6 +481,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		initEClass(exampleColumnEClass, ExampleColumn.class, "ExampleColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExampleColumn_Table(), this.getExampleTable(), this.getExampleTable_Columns(), "table", null, 0, 1, ExampleColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExampleColumn_Cells(), theXbasePackage.getXExpression(), null, "cells", null, 0, -1, ExampleColumn.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExampleColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, ExampleColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExampleColumn_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, ExampleColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(shouldEClass, Should.class, "Should", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getShould_Not(), ecorePackage.getEBoolean(), "not", null, 0, 1, Should.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -9,23 +9,29 @@ package org.jnario.spec.jvmmodel
 
 import com.google.common.base.Joiner
 import com.google.inject.Inject
+import java.util.Arrays
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtend.core.jvmmodel.SyntheticNameClashResolver
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtend.core.xtend.XtendConstructor
 import org.eclipse.xtend.core.xtend.XtendField
+import org.eclipse.xtend.core.xtend.XtendFile
 import org.eclipse.xtend.core.xtend.XtendFunction
 import org.eclipse.xtend.core.xtend.XtendMember
-import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.common.types.JvmAnnotationType
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmVisibility
+import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.util.Strings
+import org.eclipse.xtext.xbase.XExpression
+import org.eclipse.xtext.xbase.XbaseFactory
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
+import org.eclipse.xtext.xbase.lib.Procedures$Procedure2
 import org.jnario.ExampleTable
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
@@ -37,16 +43,9 @@ import org.jnario.spec.spec.After
 import org.jnario.spec.spec.Before
 import org.jnario.spec.spec.Example
 import org.jnario.spec.spec.ExampleGroup
-import org.jnario.spec.spec.SpecFile
 import org.jnario.spec.spec.TestFunction
 
 import static extension org.eclipse.xtext.util.Strings.*
-import org.eclipse.xtext.xbase.lib.Procedures$Procedure2
-import org.eclipse.xtext.common.types.JvmOperation
-import org.eclipse.xtext.common.types.TypesFactory
-import org.eclipse.xtext.xbase.XbaseFactory
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
-import org.eclipse.xtend.core.xtend.XtendFile
  
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -67,6 +66,8 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject TypesFactory typesFactory
 	
 	@Inject extension IJvmModelAssociations
+	
+	var index = 0
 	
 	override doInfer(EObject object, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		if (!(object instanceof XtendFile))
@@ -134,7 +135,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			inferredJvmType.getSuperTypes().add(cloneWithProxies(intf));
 		}
 		copyAndFixTypeParameters(source.getTypeParameters(), inferredJvmType);
-	
 		exampleIndex = 0
 		for (member : source.getMembers()) {
 			transformExamples(member, inferredJvmType);
@@ -222,7 +222,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		result
 	}
 	
-	def void configureWith(JvmGenericType type, EObject source, SpecFile spec){
+	def void configureWith(JvmGenericType type, EObject source, XtendFile spec){
 		spec.eResource.contents += type
 		type.packageName = spec.^package
 		type.documentation = source.documentation
@@ -230,11 +230,9 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	 
 	def transform(ExampleTable table, JvmGenericType specType){
 		associateTableWithSpec(specType, table)
-		// it is important to not create the class for the table as otherwise the cells cannot resolve members of the spec file
-		val spec = table.specFile
-		spec.toClass(table.toJavaClassName)[exampleTableType |
+		table.xtendFile.toClass(table.toJavaClassName)[exampleTableType |
 			exampleTableType.superTypes += getTypeForName(typeof(ExampleTableRow), table)
-			exampleTableType.configureWith(table, spec)
+			exampleTableType.configureWith(table, table.xtendFile)
 			
 			val type = getTypeForName(typeof(org.jnario.lib.ExampleTable), table, exampleTableType.createTypeRef)
 			
@@ -242,7 +240,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			
 			specType.members += table.toMethod(initMethodName, type)[
 				setBody[ITreeAppendable a |
-					exampleTableType.generateInitializationMethod(table, a)	
+					generateInitializationMethod(table, a)	
 				]
 			]
 			
@@ -266,21 +264,25 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			constructor.parameters += cellNames
 			assignments += "super(cellNames);"
 			
-			table.columns.forEach[column |
-				exampleTableType.members += column.toField
-				val jvmParam = typesFactory.createJvmFormalParameter();
-				jvmParam.name = column.name
-				jvmParam.setParameterType(cloneWithProxies(column.getOrCreateType));
-				constructor.parameters += jvmParam
-				associate(table, jvmParam); 
+			index = 0
+			table.columns.forEach[column | 
+				val columnType = if(column.type != null) column.type else inferredType
+				
+				exampleTableType.members += column.toField(column.name, columnType.cloneWithProxies)
+				
+				val param = column.toParameter(column.name, columnType.cloneWithProxies)
+				constructor.parameters += param
+				
+				val getter = column.toGetter(column.name, columnType.cloneWithProxies)
+				exampleTableType.members += getter
+
 				assignments += "this." + column.name + " = " + column.name + ";" 
 				
-				exampleTableType.members += table.toMethod("get" + column.name.toFirstUpper, column.getOrCreateType)[
-					setBody[ITreeAppendable a |
-						a.append("return " + column.name + ";")
-					]
-				]
 			]
+			table.rows.forEach[cells.forEach[
+				generateCellInitializerMethod(specType, table.initMethodName(index), it)
+				index = index + 1
+			]]
 			
 			constructor.setBody[ITreeAppendable a |
 				a.append(Joiner::on(Strings::newLine).join(assignments))
@@ -294,27 +296,19 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		]
 	} 
 	
-	def associateTableWithSpec(JvmGenericType type, ExampleTable table){
-		for(row : table.rows){
-			associate(row, type)
-		}
-	}
-	
-	def generateInitializationMethod(JvmGenericType exampleTableType, ExampleTable exampleTable, ITreeAppendable appendable){
-		for( row : exampleTable.rows){
-			for(cell :row.cells){
-				compiler.toJavaStatement(cell, appendable, true)
-			}
-		}
+	def void generateInitializationMethod(ExampleTable exampleTable, ITreeAppendable appendable){
+		val arraysType = getTypeForName(typeof(Arrays), exampleTable).type
 		appendable.append("return ExampleTable.create(\"" + exampleTable.toFieldName + "\", \n")
-		appendable.append('  java.util.Arrays.asList("' + exampleTable.columnNames.join('", "') + '"), ')
+		appendable.append('  ').append(arraysType).append('.asList("').append(exampleTable.columnNames.join('", "') + '"), ')
 		appendable.increaseIndentation()
 		appendable.append("\n")
+		index = 0
 		for(row : exampleTable.rows){
-		 	appendable.append("new ").append(exampleTableType.simpleName).append("(")
-		 	appendable.append('  java.util.Arrays.asList("' + row.cells.map[serialize.trim.convertToJavaString].join('", "') + '"), ')
+		 	appendable.append("new ").append(exampleTable.toJavaClassName).append("(")
+		 	appendable.append('  ').append(arraysType).append('.asList("' + row.cells.map[serialize.trim.convertToJavaString].join('", "') + '"), ')
 		 	for(cell :row.cells){
-		 		compiler.toJavaExpression(cell, appendable)
+		 		appendable.append(exampleTable.initMethodName(index) + "()")
+		 		index = index + 1
 		 		if(row.cells.last != cell){
 			 		appendable.append(", ")
 		 		}
@@ -327,12 +321,25 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		appendable.decreaseIndentation()
 		appendable.append("\n);")
 	}
+	
+	def associateTableWithSpec(JvmGenericType type, ExampleTable table){
+		for(row : table.rows){
+			associate(row, type)
+		}
+	}
+	
+	def initMethodName(ExampleTable exampleTable, int i){
+		"_init" + exampleTable.toJavaClassName + "Cell" + i 
+	}
+	
+	def generateCellInitializerMethod(JvmGenericType specType, String name, XExpression expression){
+		specType.members += expression.toMethod(name, inferredType)[
+			setBody(expression)
+		] 
+	}
 
 	def columnNames(ExampleTable exampleTable){
 		exampleTable.columns.map[it?.name]
 	}
 	
-	def specFile(EObject context){
-		EcoreUtil2::getContainerOfType(context, typeof(SpecFile))
-	}
 }

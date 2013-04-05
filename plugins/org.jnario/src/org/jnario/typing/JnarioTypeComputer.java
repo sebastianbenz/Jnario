@@ -5,7 +5,7 @@ import static com.google.common.collect.Lists.newArrayList;
 import java.util.List;
 
 import org.eclipse.xtend.core.typesystem.XtendTypeComputer;
-import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputationResult;
 import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputationState;
@@ -13,6 +13,8 @@ import org.eclipse.xtext.xbase.typesystem.conformance.ConformanceHint;
 import org.eclipse.xtext.xbase.typesystem.legacy.StandardTypeReferenceOwner;
 import org.eclipse.xtext.xbase.typesystem.references.ITypeReferenceOwner;
 import org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference;
+import org.eclipse.xtext.xbase.typesystem.references.OwnedConverter;
+import org.eclipse.xtext.xbase.typesystem.references.ParameterizedTypeReference;
 import org.eclipse.xtext.xbase.typesystem.util.CommonTypeComputationServices;
 import org.jnario.Assertion;
 import org.jnario.ExampleColumn;
@@ -25,6 +27,7 @@ import com.google.inject.Inject;
 public class JnarioTypeComputer extends XtendTypeComputer {
 	
 	@Inject CommonTypeComputationServices services;
+	@Inject TypeReferences  typeReferences;
 	
 	@Override
 	public void computeTypes(XExpression expression, ITypeComputationState state) {
@@ -32,22 +35,32 @@ public class JnarioTypeComputer extends XtendTypeComputer {
 			_computeType((Assertion)expression, state);
 		}else if(expression instanceof ShouldThrow){
 			_computeType((ShouldThrow)expression, state);
-		}else if(expression instanceof ExampleColumn){
-			_computeType((ExampleColumn)expression, state);
+//		}else if(expression instanceof ExampleColumn){
+//			_computeType((ExampleColumn)expression, state);
 		}else{
 			super.computeTypes(expression, state);
 		}
 	}
 	
 	protected void _computeType(ExampleColumn column, ITypeComputationState state) {
-		ITypeComputationState withoutExpectation = state.withoutExpectation();
-		List<LightweightTypeReference> types = newArrayList();
-		 for (XExpression cell : column.getCells()) {
-			ITypeComputationResult computedType = withoutExpectation.computeTypes(cell);
-			 types.add(computedType.getActualExpressionType());
-		}
 		ITypeReferenceOwner owner = new StandardTypeReferenceOwner(services, column);
-		state.acceptActualType(services.getTypeConformanceComputer().getCommonSuperType(types, owner));
+		ITypeComputationState childState;
+		LightweightTypeReference actualType;
+		if(column.getType() != null){
+			actualType = new OwnedConverter(owner).apply(column.getType());
+			childState = state.withExpectation(actualType);
+			for (XExpression cell : column.getCells()) {
+				childState.computeTypes(cell).getActualExpressionType();
+			}
+		}else{
+			childState = state.withoutExpectation();
+			List<LightweightTypeReference> types = newArrayList();
+			for (XExpression cell : column.getCells()) {
+				types.add(childState.computeTypes(cell).getActualExpressionType());
+			}
+			actualType = services.getTypeConformanceComputer().getCommonSuperType(types, owner);
+		}
+		state.acceptActualType(actualType);
 	}
 	
 	private void _computeType(ShouldThrow expression, ITypeComputationState state) {

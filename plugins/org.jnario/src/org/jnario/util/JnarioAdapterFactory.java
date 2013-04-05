@@ -136,10 +136,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 				return createXExpressionAdapter();
 			}
 			@Override
-			public Adapter caseXtendField(XtendField object) {
-				return createXtendFieldAdapter();
-			}
-			@Override
 			public Adapter caseXAbstractFeatureCall(XAbstractFeatureCall object) {
 				return createXAbstractFeatureCallAdapter();
 			}
@@ -344,20 +340,6 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXExpressionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendField <em>Field</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.xtend.core.xtend.XtendField
-	 * @generated
-	 */
-	public Adapter createXtendFieldAdapter() {
 		return null;
 	}
 

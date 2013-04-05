@@ -130,10 +130,6 @@ public class JnarioSwitch<T> {
 			case JnarioPackage.EXAMPLE_COLUMN: {
 				ExampleColumn exampleColumn = (ExampleColumn)theEObject;
 				T result = caseExampleColumn(exampleColumn);
-				if (result == null) result = caseXtendField(exampleColumn);
-				if (result == null) result = caseXExpression(exampleColumn);
-				if (result == null) result = caseXtendMember(exampleColumn);
-				if (result == null) result = caseXtendAnnotationTarget(exampleColumn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -359,21 +355,6 @@ public class JnarioSwitch<T> {
 	 * @generated
 	 */
 	public T caseXExpression(XExpression object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Field</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Field</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseXtendField(XtendField object) {
 		return null;
 	}
 

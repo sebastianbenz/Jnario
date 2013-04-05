@@ -1,33 +1,35 @@
 package org.jnario
 
-import org.junit.runner.RunWith
-import org.jnario.jnario.test.util.SpecTestCreator
-import org.jnario.spec.SpecStandaloneSetup
-import org.eclipse.xtext.xbase.compiler.JvmModelGenerator
-import org.eclipse.xtext.xbase.compiler.GeneratorConfig
-import org.jnario.jnario.test.util.ModelStore
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.xbase.compiler.GeneratorConfig
+import org.eclipse.xtext.xbase.compiler.JvmModelGenerator
 import org.jnario.feature.FeatureStandaloneSetup
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.spec.SpecStandaloneSetup
 
 class Main {
 	
 	def static void main(String[] args) {
-		val setup = new FeatureStandaloneSetup
+		val setup = new SpecStandaloneSetup
 		val injector = setup.createInjectorAndDoEMFRegistration
 		val modelStore = injector.getInstance(typeof(ModelStore))
-		val resource = modelStore.parseScenario('''
+		val resource = modelStore.parseSpec('''
 				package test
-				import java.util.*
-				Feature: Test
-					Scenario: TestScenario 1
-						val values = new ArrayList<String>()
-						Given a list
-							values += "hello"
-						
-					Scenario: TestScenario 2
-						Given a list
-						Then it should have contents
-							values.size => 1     
+				
+					
+					describe "Example Tables"{
+				    def myExampleWithClosures{
+				        | input |       operation            | result |
+				        |   "a" | [String s | s.toUpperCase] |   "A"  |
+				        |   "B" | [String s | s.toLowerCase] |   "b"  | 
+				      }  
+				      
+				      fact "supports closures as values"{   
+				        myExampleWithClosures.forEach[
+				          operation.apply(input) should be result
+				        ]
+				      }  
+					}                                            
 		''')
 		val generator = injector.getInstance(typeof(JvmModelGenerator))
 		resource.contents.filter(typeof(JvmGenericType)).forEach[

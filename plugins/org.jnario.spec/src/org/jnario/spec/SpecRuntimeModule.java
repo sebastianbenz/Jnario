@@ -81,6 +81,7 @@ import org.jnario.spec.naming.SpecQualifiedNameProvider;
 import org.jnario.spec.scoping.SpecResourceDescriptionStrategy;
 import org.jnario.spec.scoping.SpecScopeProvider;
 import org.jnario.typing.JnarioTypeComputer;
+import org.jnario.typing.JnarioTypeResolver;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -229,7 +230,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 
 	@Override
 	public Class<? extends DefaultReentrantTypeResolver> bindDefaultReentrantTypeResolver() {
-		return DispatchAndExtensionAwareReentrantTypeResolver.class;
+		return JnarioTypeResolver.class;
 	}
 	
 	@Override
