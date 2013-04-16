@@ -17,6 +17,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.jnario.Assertion;
+import org.jnario.ExampleCell;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleTable;
 import org.jnario.MockLiteral;
@@ -73,9 +74,9 @@ public class JnarioTypeProvider extends XtendTypeProvider {
 	}
 	
 	protected JvmTypeReference _type(ExampleColumn object, JvmTypeReference rawExpectation, boolean rawType) {
-		List<JvmTypeReference> types = Lists.transform(object.getCells(), new Function<XExpression, JvmTypeReference>() {
-			public JvmTypeReference apply(XExpression expr){
-				return getType(expr);
+		List<JvmTypeReference> types = Lists.transform(object.getCells(), new Function<ExampleCell, JvmTypeReference>() {
+			public JvmTypeReference apply(ExampleCell expr){
+				return getType(expr.getExpression());
 			}
 		});
 		return getCommonType(types);

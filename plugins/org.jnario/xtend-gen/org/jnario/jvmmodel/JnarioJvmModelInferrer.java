@@ -4,7 +4,6 @@ import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
@@ -36,14 +35,8 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.typesystem.IBatchTypeResolver;
-import org.eclipse.xtext.xbase.typesystem.IResolvedTypes;
-import org.eclipse.xtext.xbase.typesystem.conformance.TypeConformanceComputer;
-import org.eclipse.xtext.xbase.typesystem.legacy.StandardTypeReferenceOwner;
-import org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference;
 import org.eclipse.xtext.xbase.typesystem.util.CommonTypeComputationServices;
-import org.jnario.ExampleColumn;
 import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.TestRuntimeProvider;
 import org.jnario.jvmmodel.TestRuntimeSupport;
@@ -81,62 +74,6 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   
   @Inject
   private IBatchTypeResolver typeResolver;
-  
-  public JvmField toField(final ExampleColumn column) {
-    String _name = column.getName();
-    JvmTypeReference _orCreateType = this.getOrCreateType(column);
-    final JvmField field = this.jvmTypesBuilder.toField(column, _name, _orCreateType);
-    boolean _notEquals = (!Objects.equal(field, null));
-    if (_notEquals) {
-      field.setVisibility(JvmVisibility.PUBLIC);
-    }
-    return field;
-  }
-  
-  public JvmTypeReference getOrCreateType(final ExampleColumn source) {
-    JvmTypeReference _xblockexpression = null;
-    {
-      JvmTypeReference _type = source.getType();
-      boolean _notEquals = (!Objects.equal(_type, null));
-      if (_notEquals) {
-        return source.getType();
-      }
-      EList<XExpression> _cells = source.getCells();
-      final Function1<XExpression,LightweightTypeReference> _function = new Function1<XExpression,LightweightTypeReference>() {
-          public LightweightTypeReference apply(final XExpression it) {
-            IResolvedTypes _resolveTypes = JnarioJvmModelInferrer.this.typeResolver.resolveTypes(source);
-            LightweightTypeReference _actualType = _resolveTypes.getActualType(it);
-            return _actualType;
-          }
-        };
-      List<LightweightTypeReference> _map = ListExtensions.<XExpression, LightweightTypeReference>map(_cells, _function);
-      final Function1<LightweightTypeReference,Boolean> _function_1 = new Function1<LightweightTypeReference,Boolean>() {
-          public Boolean apply(final LightweightTypeReference it) {
-            boolean _notEquals = (!Objects.equal(it, null));
-            return _notEquals;
-          }
-        };
-      Iterable<LightweightTypeReference> _filter = Iterables.<LightweightTypeReference>filter(_map, new Predicate<LightweightTypeReference>() {
-          public boolean apply(LightweightTypeReference input) {
-            return _function_1.apply(input);
-          }
-      });
-      final List<LightweightTypeReference> types = IterableExtensions.<LightweightTypeReference>toList(_filter);
-      boolean _isEmpty = types.isEmpty();
-      if (_isEmpty) {
-        return null;
-      }
-      StandardTypeReferenceOwner _standardTypeReferenceOwner = new StandardTypeReferenceOwner(this.commonTypeComputationServices, source);
-      final StandardTypeReferenceOwner typeReferenceOwner = _standardTypeReferenceOwner;
-      TypeConformanceComputer _typeConformanceComputer = this.commonTypeComputationServices.getTypeConformanceComputer();
-      final LightweightTypeReference commonSuperType = _typeConformanceComputer.getCommonSuperType(types, typeReferenceOwner);
-      JvmTypeReference _typeReference = commonSuperType.toTypeReference();
-      source.setType(_typeReference);
-      JvmTypeReference _type_1 = source.getType();
-      _xblockexpression = (_type_1);
-    }
-    return _xblockexpression;
-  }
   
   public void infer(final EObject obj, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
     try {

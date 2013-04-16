@@ -19,10 +19,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtend.core.xtend.impl.XtendFieldImpl;
-import org.eclipse.xtend.core.xtend.impl.XtendFieldImplCustom;
+import org.jnario.ExampleCell;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.impl.XExpressionImpl;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
@@ -44,7 +42,7 @@ import org.jnario.JnarioPackage;
  *
  * @generated
  */
-public class ExampleColumnImpl extends XExpressionImpl implements ExampleColumn {
+public class ExampleColumnImpl extends EObjectImpl implements ExampleColumn {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -138,12 +136,12 @@ public class ExampleColumnImpl extends XExpressionImpl implements ExampleColumn 
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public EList<XExpression> getCells() {
-		EList<XExpression>	cells = new EObjectResolvingEList<XExpression>(XExpression.class, this, JnarioPackage.EXAMPLE_COLUMN__CELLS);
+	public EList<ExampleCell> getCells() {
+		EList<ExampleCell>	cells = new EObjectResolvingEList<ExampleCell>(ExampleCell.class, this, JnarioPackage.EXAMPLE_COLUMN__CELLS);
 		int columnIndex = getTable().getColumns().indexOf(this);
 		for (ExampleRow row : getTable().getRows()) {
 			if(row.getCells().size() > columnIndex){
-				cells.add(row.getCells().get(columnIndex).getExpression());
+				cells.add(row.getCells().get(columnIndex));
 			}
 		}
 		return cells;
@@ -293,7 +291,7 @@ public class ExampleColumnImpl extends XExpressionImpl implements ExampleColumn 
 				return;
 			case JnarioPackage.EXAMPLE_COLUMN__CELLS:
 				getCells().clear();
-				getCells().addAll((Collection<? extends XExpression>)newValue);
+				getCells().addAll((Collection<? extends ExampleCell>)newValue);
 				return;
 			case JnarioPackage.EXAMPLE_COLUMN__NAME:
 				setName((String)newValue);

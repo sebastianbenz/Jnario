@@ -228,7 +228,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__TABLE = XbasePackage.XEXPRESSION_FEATURE_COUNT + 0;
+	int EXAMPLE_COLUMN__TABLE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Cells</b></em>' reference list.
@@ -237,7 +237,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__CELLS = XbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
+	int EXAMPLE_COLUMN__CELLS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -246,7 +246,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__NAME = XbasePackage.XEXPRESSION_FEATURE_COUNT + 2;
+	int EXAMPLE_COLUMN__NAME = 2;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -255,7 +255,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__TYPE = XbasePackage.XEXPRESSION_FEATURE_COUNT + 3;
+	int EXAMPLE_COLUMN__TYPE = 3;
 
 	/**
 	 * The number of structural features of the '<em>Example Column</em>' class.
@@ -264,7 +264,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 4;
+	int EXAMPLE_COLUMN_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.impl.ShouldImpl <em>Should</em>}' class.
