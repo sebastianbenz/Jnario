@@ -74,6 +74,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory {
 			case JnarioPackage.SHOULD: return createShould();
 			case JnarioPackage.SHOULD_THROW: return createShouldThrow();
 			case JnarioPackage.MOCK_LITERAL: return createMockLiteral();
+			case JnarioPackage.EXAMPLE_CELL: return createExampleCell();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -147,6 +148,16 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory {
 	public MockLiteral createMockLiteral() {
 		MockLiteralImpl mockLiteral = new MockLiteralImpl();
 		return mockLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExampleCell createExampleCell() {
+		ExampleCellImpl exampleCell = new ExampleCellImpl();
+		return exampleCell;
 	}
 
 	/**

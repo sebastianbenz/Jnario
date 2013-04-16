@@ -77,6 +77,7 @@ import org.eclipse.xtext.xtype.XImportDeclaration;
 import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
 import org.jnario.Assertion;
+import org.jnario.ExampleCell;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
@@ -132,6 +133,12 @@ public class SpecSemanticSequencer extends XtendSemanticSequencer {
 				   context == grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_2_0_0_0() ||
 				   context == grammarAccess.getXUnaryOperationRule()) {
 					sequence_Assertion(context, (Assertion) semanticObject); 
+					return; 
+				}
+				else break;
+			case JnarioPackage.EXAMPLE_CELL:
+				if(context == grammarAccess.getExampleCellRule()) {
+					sequence_ExampleCell(context, (ExampleCell) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1514,6 +1521,15 @@ public class SpecSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     expression=XExpression
+	 */
+	protected void sequence_ExampleCell(EObject context, ExampleCell semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (type=JvmTypeReference? name=ValidID)
 	 */
 	protected void sequence_ExampleColumn(EObject context, ExampleColumn semanticObject) {
@@ -1532,7 +1548,7 @@ public class SpecSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (cells+=XExpression*)
+	 *     (cells+=ExampleCell*)
 	 */
 	protected void sequence_ExampleRow(EObject context, ExampleRow semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

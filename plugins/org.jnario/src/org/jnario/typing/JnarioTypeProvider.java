@@ -65,8 +65,8 @@ public class JnarioTypeProvider extends XtendTypeProvider {
 			return _type((ShouldThrow)expression, rawExpectation, rawType);
 		}else if (expression instanceof MockLiteral) {
 			return _type((MockLiteral)expression, rawExpectation, rawType);
-		}else if (expression instanceof ExampleColumn) {
-			return _type((ExampleColumn)expression, rawExpectation, rawType);
+//		}else if (expression instanceof ExampleColumn) {
+//			return _type((ExampleColumn)expression, rawExpectation, rawType);
 		}else {
 			return super.type(expression, rawExpectation, rawType);
 		}

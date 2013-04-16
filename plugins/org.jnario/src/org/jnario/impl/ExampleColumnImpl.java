@@ -44,7 +44,7 @@ import org.jnario.JnarioPackage;
  *
  * @generated
  */
-public class ExampleColumnImpl extends EObjectImpl implements ExampleColumn {
+public class ExampleColumnImpl extends XExpressionImpl implements ExampleColumn {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -143,7 +143,7 @@ public class ExampleColumnImpl extends EObjectImpl implements ExampleColumn {
 		int columnIndex = getTable().getColumns().indexOf(this);
 		for (ExampleRow row : getTable().getRows()) {
 			if(row.getCells().size() > columnIndex){
-				cells.add(row.getCells().get(columnIndex));
+				cells.add(row.getCells().get(columnIndex).getExpression());
 			}
 		}
 		return cells;

@@ -17,6 +17,7 @@ import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xtype.XtypePackage;
 import org.jnario.Assertion;
+import org.jnario.ExampleCell;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
@@ -97,6 +98,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * @generated
 	 */
 	private EClass mockLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass exampleCellEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -366,6 +374,15 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getExampleCell() {
+		return exampleCellEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public JnarioFactory getJnarioFactory() {
 		return (JnarioFactory)getEFactoryInstance();
 	}
@@ -419,6 +436,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		executableEClass = createEClass(EXECUTABLE);
 
 		mockLiteralEClass = createEClass(MOCK_LITERAL);
+
+		exampleCellEClass = createEClass(EXAMPLE_CELL);
 	}
 
 	/**
@@ -457,11 +476,13 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		exampleTableEClass.getESuperTypes().add(theXtendPackage.getXtendMember());
 		exampleTableEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		assertionEClass.getESuperTypes().add(theXbasePackage.getXExpression());
+		exampleColumnEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		shouldEClass.getESuperTypes().add(theXbasePackage.getXBinaryOperation());
 		shouldThrowEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 		specificationEClass.getESuperTypes().add(theXtendPackage.getXtendClass());
 		specificationEClass.getESuperTypes().add(this.getExecutable());
 		mockLiteralEClass.getESuperTypes().add(theXbasePackage.getXTypeLiteral());
+		exampleCellEClass.getESuperTypes().add(theXtendPackage.getXtendFunction());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(exampleTableEClass, ExampleTable.class, "ExampleTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -472,7 +493,7 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		addEOperation(exampleTableEClass, ecorePackage.getEBoolean(), "isValid", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(exampleRowEClass, ExampleRow.class, "ExampleRow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExampleRow_Cells(), theXbasePackage.getXExpression(), null, "cells", null, 0, -1, ExampleRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExampleRow_Cells(), this.getExampleCell(), null, "cells", null, 0, -1, ExampleRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExampleRow_Table(), this.getExampleTable(), this.getExampleTable_Rows(), "table", null, 0, 1, ExampleRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assertionEClass, Assertion.class, "Assertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -498,6 +519,8 @@ public class JnarioPackageImpl extends EPackageImpl implements JnarioPackage {
 		addEOperation(executableEClass, ecorePackage.getEBoolean(), "isPending", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(mockLiteralEClass, MockLiteral.class, "MockLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(exampleCellEClass, ExampleCell.class, "ExampleCell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

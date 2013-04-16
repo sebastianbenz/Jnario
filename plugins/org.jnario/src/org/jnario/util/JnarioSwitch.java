@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
@@ -130,6 +131,7 @@ public class JnarioSwitch<T> {
 			case JnarioPackage.EXAMPLE_COLUMN: {
 				ExampleColumn exampleColumn = (ExampleColumn)theEObject;
 				T result = caseExampleColumn(exampleColumn);
+				if (result == null) result = caseXExpression(exampleColumn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -171,6 +173,15 @@ public class JnarioSwitch<T> {
 				T result = caseMockLiteral(mockLiteral);
 				if (result == null) result = caseXTypeLiteral(mockLiteral);
 				if (result == null) result = caseXExpression(mockLiteral);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case JnarioPackage.EXAMPLE_CELL: {
+				ExampleCell exampleCell = (ExampleCell)theEObject;
+				T result = caseExampleCell(exampleCell);
+				if (result == null) result = caseXtendFunction(exampleCell);
+				if (result == null) result = caseXtendMember(exampleCell);
+				if (result == null) result = caseXtendAnnotationTarget(exampleCell);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -314,6 +325,21 @@ public class JnarioSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Example Cell</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Example Cell</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExampleCell(ExampleCell object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Annotation Target</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -430,6 +456,21 @@ public class JnarioSwitch<T> {
 	 * @generated
 	 */
 	public T caseXTypeLiteral(XTypeLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Function</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXtendFunction(XtendFunction object) {
 		return null;
 	}
 

@@ -23,6 +23,7 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.jnario.Assertion;
+import org.jnario.ExampleCell;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
@@ -99,8 +100,8 @@ public class JnarioJavaValidator extends AbstractDeclarativeValidator {
 	
 	@Check
 	public void checkExpressionsInTableDoNotReturnVoid(ExampleRow row){
-		for (XExpression cell : row.getCells()) {
-			JvmTypeReference actualType = typeProvider.getType(cell);
+		for (ExampleCell cell : row.getCells()) {
+			JvmTypeReference actualType = typeProvider.getType(cell.getExpression());
 			if(typeReferences.is(actualType, Void.TYPE)){
 				error("Expression must not be void", cell, null, 0);
 			}

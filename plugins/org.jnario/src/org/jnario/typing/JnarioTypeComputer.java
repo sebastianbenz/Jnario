@@ -35,17 +35,17 @@ public class JnarioTypeComputer extends XtendTypeComputer {
 			_computeType((Assertion)expression, state);
 		}else if(expression instanceof ShouldThrow){
 			_computeType((ShouldThrow)expression, state);
-//		}else if(expression instanceof ExampleColumn){
-//			_computeType((ExampleColumn)expression, state);
+		}else if(expression instanceof ExampleColumn){
+			_computeType((ExampleColumn)expression, state);
 		}else{
 			super.computeTypes(expression, state);
 		}
 	}
 	
 	protected void _computeType(ExampleColumn column, ITypeComputationState state) {
-		ITypeReferenceOwner owner = new StandardTypeReferenceOwner(services, column);
+		ITypeReferenceOwner owner = state.getReferenceOwner();
 		ITypeComputationState childState;
-		LightweightTypeReference actualType;
+		LightweightTypeReference actualType = null;
 		if(column.getType() != null){
 			actualType = new OwnedConverter(owner).apply(column.getType());
 			childState = state.withExpectation(actualType);
@@ -58,7 +58,9 @@ public class JnarioTypeComputer extends XtendTypeComputer {
 			for (XExpression cell : column.getCells()) {
 				types.add(childState.computeTypes(cell).getActualExpressionType());
 			}
-			actualType = services.getTypeConformanceComputer().getCommonSuperType(types, owner);
+			if(!types.isEmpty()){
+				actualType = services.getTypeConformanceComputer().getCommonSuperType(types, owner);
+			}
 		}
 		state.acceptActualType(actualType);
 	}

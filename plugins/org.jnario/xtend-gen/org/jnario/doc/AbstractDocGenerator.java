@@ -31,6 +31,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.jnario.ExampleCell;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
@@ -265,13 +266,14 @@ public abstract class AbstractDocGenerator implements IGenerator {
         _builder.append("<tr>");
         _builder.newLine();
         {
-          EList<XExpression> _cells = row.getCells();
-          for(final XExpression cell : _cells) {
+          EList<ExampleCell> _cells = row.getCells();
+          for(final ExampleCell cell : _cells) {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("<td>");
+            XExpression _expression = cell.getExpression();
             List<Filter> _emptyList = CollectionLiterals.<Filter>emptyList();
-            String _serialize = this.serialize(cell, _emptyList);
+            String _serialize = this.serialize(_expression, _emptyList);
             _builder.append(_serialize, "		");
             _builder.append("</td>");
             _builder.newLineIfNotEmpty();

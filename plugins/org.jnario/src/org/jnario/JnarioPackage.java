@@ -228,7 +228,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__TABLE = 0;
+	int EXAMPLE_COLUMN__TABLE = XbasePackage.XEXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Cells</b></em>' reference list.
@@ -237,7 +237,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__CELLS = 1;
+	int EXAMPLE_COLUMN__CELLS = XbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -246,7 +246,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__NAME = 2;
+	int EXAMPLE_COLUMN__NAME = XbasePackage.XEXPRESSION_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -255,7 +255,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN__TYPE = 3;
+	int EXAMPLE_COLUMN__TYPE = XbasePackage.XEXPRESSION_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Example Column</em>' class.
@@ -264,7 +264,7 @@ public interface JnarioPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_COLUMN_FEATURE_COUNT = 4;
+	int EXAMPLE_COLUMN_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.impl.ShouldImpl <em>Should</em>}' class.
@@ -561,6 +561,125 @@ public interface JnarioPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.jnario.impl.ExampleCellImpl <em>Example Cell</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.impl.ExampleCellImpl
+	 * @see org.jnario.impl.JnarioPackageImpl#getExampleCell()
+	 * @generated
+	 */
+	int EXAMPLE_CELL = 9;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_CELL__ANNOTATIONS = XtendPackage.XTEND_FUNCTION__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_CELL__ANNOTATION_INFO = XtendPackage.XTEND_FUNCTION__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_CELL__MODIFIERS = XtendPackage.XTEND_FUNCTION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_CELL__DECLARING_TYPE = XtendPackage.XTEND_FUNCTION__DECLARING_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_CELL__NAME = XtendPackage.XTEND_FUNCTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_CELL__EXPRESSION = XtendPackage.XTEND_FUNCTION__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_CELL__RETURN_TYPE = XtendPackage.XTEND_FUNCTION__RETURN_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_CELL__PARAMETERS = XtendPackage.XTEND_FUNCTION__PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_CELL__CREATE_EXTENSION_INFO = XtendPackage.XTEND_FUNCTION__CREATE_EXTENSION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_CELL__TYPE_PARAMETERS = XtendPackage.XTEND_FUNCTION__TYPE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_CELL__EXCEPTIONS = XtendPackage.XTEND_FUNCTION__EXCEPTIONS;
+
+	/**
+	 * The number of structural features of the '<em>Example Cell</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_CELL_FEATURE_COUNT = XtendPackage.XTEND_FUNCTION_FEATURE_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.jnario.ExampleTable <em>Example Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -794,6 +913,16 @@ public interface JnarioPackage extends EPackage {
 	EClass getMockLiteral();
 
 	/**
+	 * Returns the meta object for class '{@link org.jnario.ExampleCell <em>Example Cell</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Example Cell</em>'.
+	 * @see org.jnario.ExampleCell
+	 * @generated
+	 */
+	EClass getExampleCell();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1008,6 +1137,16 @@ public interface JnarioPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MOCK_LITERAL = eINSTANCE.getMockLiteral();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.impl.ExampleCellImpl <em>Example Cell</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.impl.ExampleCellImpl
+		 * @see org.jnario.impl.JnarioPackageImpl#getExampleCell()
+		 * @generated
+		 */
+		EClass EXAMPLE_CELL = eINSTANCE.getExampleCell();
 
 	}
 

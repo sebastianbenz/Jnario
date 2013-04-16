@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.jnario.ExampleCell;
 import org.eclipse.xtext.xbase.XExpression;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
@@ -47,7 +48,7 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<XExpression> cells;
+	protected EList<ExampleCell> cells;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,9 +74,9 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<XExpression> getCells() {
+	public EList<ExampleCell> getCells() {
 		if (cells == null) {
-			cells = new EObjectContainmentEList<XExpression>(XExpression.class, this, JnarioPackage.EXAMPLE_ROW__CELLS);
+			cells = new EObjectContainmentEList<ExampleCell>(ExampleCell.class, this, JnarioPackage.EXAMPLE_ROW__CELLS);
 		}
 		return cells;
 	}
@@ -194,7 +195,7 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 		switch (featureID) {
 			case JnarioPackage.EXAMPLE_ROW__CELLS:
 				getCells().clear();
-				getCells().addAll((Collection<? extends XExpression>)newValue);
+				getCells().addAll((Collection<? extends ExampleCell>)newValue);
 				return;
 			case JnarioPackage.EXAMPLE_ROW__TABLE:
 				setTable((ExampleTable)newValue);

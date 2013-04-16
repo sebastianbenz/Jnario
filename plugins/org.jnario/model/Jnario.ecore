@@ -11,8 +11,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExampleRow">
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
-        eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
-        containment="true"/>
+        eType="#//ExampleCell" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//ExampleTable"
         eOpposite="#//ExampleTable/rows"/>
   </eClassifiers>
@@ -20,7 +19,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExampleColumn">
+  <eClassifiers xsi:type="ecore:EClass" name="ExampleColumn" eSuperTypes="../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//ExampleTable"
         eOpposite="#//ExampleTable/columns"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
@@ -45,4 +44,5 @@
     <eOperations name="isPending" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MockLiteral" eSuperTypes="../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XTypeLiteral"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExampleCell" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendFunction"/>
 </ecore:EPackage>

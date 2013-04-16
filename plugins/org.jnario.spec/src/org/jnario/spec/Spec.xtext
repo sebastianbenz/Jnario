@@ -139,7 +139,12 @@ ExampleColumn:
 	type=JvmTypeReference? name=ValidID '|';
 
 ExampleRow: 
-	'|' {ExampleRow} (cells+=XExpression '|')*
+	'|' {ExampleRow} (cells+=ExampleCell '|')*
 ;
+
+ExampleCell:
+	expression=XExpression
+;
+
 
 terminal ML_COMMENT: '/*' -> (!('\\')'*/');

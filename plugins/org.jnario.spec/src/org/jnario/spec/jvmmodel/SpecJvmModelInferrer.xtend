@@ -46,6 +46,7 @@ import org.jnario.spec.spec.ExampleGroup
 import org.jnario.spec.spec.TestFunction
 
 import static extension org.eclipse.xtext.util.Strings.*
+import org.jnario.ExampleCell
  
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -146,21 +147,21 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	}
 	 
 	
-   	
+	
 	override protected transform(XtendMember sourceMember, JvmGenericType container, boolean allowDispatch) {
-   		// we use transformExamples instead
+		// we use transformExamples instead
 	}
-   	
-   	def void transformExamples(XtendMember sourceMember, JvmGenericType container) {
-   		switch sourceMember {
-   			Example: transform(sourceMember as Example, container)
-   			Before : transform(sourceMember as Before, container)
-   			After: transform(sourceMember as After, container)
-   			ExampleTable: transform(sourceMember as ExampleTable, container)
-   			XtendFunction case sourceMember.name != null: transform(sourceMember as XtendFunction, container, false)
-   			XtendField: transform(sourceMember as XtendField, container)
-   			XtendConstructor: transform(sourceMember as XtendConstructor, container)
-   		}
+	
+	def void transformExamples(XtendMember sourceMember, JvmGenericType container) {
+		switch sourceMember {
+			Example: transform(sourceMember as Example, container)
+			Before : transform(sourceMember as Before, container)
+			After: transform(sourceMember as After, container)
+			ExampleTable: transform(sourceMember as ExampleTable, container)
+			XtendFunction case sourceMember.name != null: transform(sourceMember as XtendFunction, container, false)
+			XtendField: transform(sourceMember as XtendField, container)
+			XtendConstructor: transform(sourceMember as XtendConstructor, container)
+		}
 	}
 	
 	def transform(Example element, JvmGenericType container) {
@@ -250,14 +251,13 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 					append(initMethodName).append("()")
 				]
 			]
-
+			
 			val constructor = table.toConstructor[simpleName=exampleTableType.simpleName]
 			exampleTableType.members += constructor
 			val assignments = <String>newArrayList()
 			
 			val stringType = getTypeForName(typeof(String), table)
 			val listType = getTypeForName(typeof(List), table, stringType)
-			
 			val cellNames = typesFactory.createJvmFormalParameter();
 			cellNames.name = "cellNames"
 			cellNames.setParameterType(listType);
@@ -275,19 +275,21 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 				
 				val getter = column.toGetter(column.name, columnType.cloneWithProxies)
 				exampleTableType.members += getter
-
+			
 				assignments += "this." + column.name + " = " + column.name + ";" 
-				
 			]
-			table.rows.forEach[cells.forEach[
-				generateCellInitializerMethod(specType, table.initMethodName(index), it)
-				index = index + 1
-			]]
+			
+			table.rows.forEach[
+				cells.forEach[
+					generateCellInitializerMethod(specType, table.initMethodName(index), it)
+					index = index + 1
+				]
+			]
 			
 			constructor.setBody[ITreeAppendable a |
 				a.append(Joiner::on(Strings::newLine).join(assignments))
 			]
-
+			
 			exampleTableType.members += table.toMethod("getCells", listType)[
 				setBody[ITreeAppendable a |
 					a.append('return java.util.Arrays.asList(toString(' + table.columnNames.join(') ,toString(') + '));')
@@ -332,9 +334,9 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		"_init" + exampleTable.toJavaClassName + "Cell" + i 
 	}
 	
-	def generateCellInitializerMethod(JvmGenericType specType, String name, XExpression expression){
-		specType.members += expression.toMethod(name, inferredType)[
-			setBody(expression)
+	def generateCellInitializerMethod(JvmGenericType specType, String name, ExampleCell cell){
+		specType.members += cell.toMethod(name, inferredType)[
+			setBody(cell.expression)
 		] 
 	}
 
