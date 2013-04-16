@@ -53,32 +53,6 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 	@Inject extension CommonTypeComputationServices commonTypeComputationServices
 	@Inject private IBatchTypeResolver typeResolver
 
-	def toField(ExampleColumn column){
-		val field = column.toField(column.name, column.getOrCreateType)
-		if(field != null){
-			field.visibility = JvmVisibility::PUBLIC
-		}
-		return field
-	}
-	
-	def getOrCreateType(ExampleColumn source){
-		if(source.type != null){
-			return source.type
-		}
-		
-		
-		val types = source.cells.map[
-			typeResolver.resolveTypes(source).getActualType(it)
-		].filter[it != null].toList
-		if(types.empty){
-			return null
-		}
-		val typeReferenceOwner = new StandardTypeReferenceOwner(commonTypeComputationServices, source)
-		val commonSuperType = typeConformanceComputer.getCommonSuperType(types, typeReferenceOwner)
-		source.type = commonSuperType.toTypeReference
-		source.type
-	}
-
 	override infer(EObject obj, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		try{
 			testRuntime = runtime.get(obj)

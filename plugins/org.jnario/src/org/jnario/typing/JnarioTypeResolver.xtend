@@ -16,6 +16,7 @@ import org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference
 import org.eclipse.xtext.xtype.XComputedTypeReference
 import org.jnario.ExampleColumn
 import org.jnario.ExampleTable
+import org.eclipse.xtext.common.types.JvmMember
 
 class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeResolver {
 	
@@ -34,38 +35,43 @@ class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeResolver 
 //	
 	
 	override protected _doPrepare(ResolvedTypes resolvedTypes, IFeatureScopeSession session, JvmConstructor constructor, Map<JvmIdentifiableElement,ResolvedTypes> resolvedTypesByContext) {
+		super._doPrepare(resolvedTypes, session, constructor, resolvedTypesByContext)
 		val source = constructor.primarySourceElement
 		if(source instanceof ExampleTable){
 			constructor.parameters.forEach[param |
 				val column = param.primarySourceElement as ExampleColumn
-				param.parameterType.setColumnTypeProvider(resolvedTypes, session, column, resolvedTypesByContext)
+				param.parameterType.setColumnTypeProvider(constructor, resolvedTypes, session, column, resolvedTypesByContext)
 			]
 		}
-		super._doPrepare(resolvedTypes, session, constructor, resolvedTypesByContext)
 	}
 	
 	override protected _doPrepare(ResolvedTypes resolvedTypes, IFeatureScopeSession session, JvmField field, Map<JvmIdentifiableElement,ResolvedTypes> resolvedTypesByContext) {
+		super._doPrepare(resolvedTypes, session, field, resolvedTypesByContext)
 		val source = field.primarySourceElement
 		if(source instanceof ExampleColumn){
-			field.type.setColumnTypeProvider(resolvedTypes, session, source as ExampleColumn, resolvedTypesByContext)
+			field.type.setColumnTypeProvider(field, resolvedTypes, session, source as ExampleColumn, resolvedTypesByContext)
 		}
-		super._doPrepare(resolvedTypes, session, field, resolvedTypesByContext)
 	}
 	
 	override protected _doPrepare(ResolvedTypes resolvedTypes, IFeatureScopeSession session, JvmOperation operation, Map<JvmIdentifiableElement,ResolvedTypes> resolvedTypesByContext) {
+		super._doPrepare(resolvedTypes, session, operation, resolvedTypesByContext)
 		val source = operation.primarySourceElement
 		if(source instanceof ExampleColumn){
-			operation.returnType.setColumnTypeProvider(resolvedTypes, session, source as ExampleColumn, resolvedTypesByContext)
+			operation.returnType.setColumnTypeProvider(operation, resolvedTypes, session, source as ExampleColumn, resolvedTypesByContext)
 		}
-		super._doPrepare(resolvedTypes, session, operation, resolvedTypesByContext)
 	}
 	
-	def void setColumnTypeProvider(JvmTypeReference typeRef, ResolvedTypes resolvedTypes, IFeatureScopeSession session, ExampleColumn column, Map<JvmIdentifiableElement,ResolvedTypes> resolvedTypesByContext){
+	def void setColumnTypeProvider(JvmTypeReference typeRef, JvmMember member, ResolvedTypes resolvedTypes, IFeatureScopeSession session, ExampleColumn column, Map<JvmIdentifiableElement,ResolvedTypes> resolvedTypesByContext){
 		if(!InferredTypeIndicator::isInferred(typeRef)){
 			return;
 		}
-		
-		(typeRef as XComputedTypeReference).setTypeProvider(new ColumnTypeProvider[
+		val casted = typeRef as XComputedTypeReference
+		val childResolvedTypes = declareTypeParameters(resolvedTypes, member, resolvedTypesByContext);
+		val indicator = casted.getTypeProvider() as InferredTypeIndicator
+		val reference = createComputedTypeReference(resolvedTypesByContext, childResolvedTypes, session, member, indicator, false);
+		casted.setEquivalent(reference);
+		val result = services.getXtypeFactory().createXComputedTypeReference();
+			result.setTypeProvider(new ColumnTypeProvider[
 //				var type = resolvedTypes.getActualType(column)
 //				if(type == null){
 //					computeTypes(resolvedTypesByContext, resolvedTypes, session, column)
@@ -74,11 +80,12 @@ class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeResolver 
 //				type?.toJavaCompliantTypeReference
 			val types = <LightweightTypeReference>newArrayList()
 			for (cell : column.cells) {
-				var type = resolvedTypes.getActualType(cell)
-				if(type == null){
-					computeTypes(resolvedTypesByContext, resolvedTypes, session, cell)
-				}
-				type = resolvedTypes.getActualType(cell)
+				val operation = cell.jvmElements.head as JvmIdentifiableElement
+				var type = resolvedTypes.getActualType(operation)
+//				if(type == null){
+//					computeTypes(resolvedTypesByContext, resolvedTypes, session, cell)
+//				}
+//				type = resolvedTypes.getActualType(cell)
 				if(type != null){
 					types.add(type);
 				}
@@ -89,5 +96,6 @@ class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeResolver 
 			}
 			services.getTypeConformanceComputer().getCommonSuperType(types, owner).toJavaCompliantTypeReference
 		])
+		casted.setEquivalent(result)
 	}
 }

@@ -32,7 +32,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * @model
  * @generated
  */
-public interface ExampleColumn extends XExpression {
+public interface ExampleColumn extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Table</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.jnario.ExampleTable#getColumns <em>Columns</em>}'.
@@ -63,7 +63,7 @@ public interface ExampleColumn extends XExpression {
 
 	/**
 	 * Returns the value of the '<em><b>Cells</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.xtext.xbase.XExpression}.
+	 * The list contents are of type {@link org.jnario.ExampleCell}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Cells</em>' reference list isn't clear,
@@ -75,7 +75,7 @@ public interface ExampleColumn extends XExpression {
 	 * @model transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
-	EList<XExpression> getCells();
+	EList<ExampleCell> getCells();
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

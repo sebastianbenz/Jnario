@@ -131,7 +131,6 @@ public class JnarioSwitch<T> {
 			case JnarioPackage.EXAMPLE_COLUMN: {
 				ExampleColumn exampleColumn = (ExampleColumn)theEObject;
 				T result = caseExampleColumn(exampleColumn);
-				if (result == null) result = caseXExpression(exampleColumn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
