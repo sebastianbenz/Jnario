@@ -31,7 +31,7 @@ import org.eclipse.xtext.xbase.XExpression;
 public interface ExampleRow extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Cells</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.xtext.xbase.XExpression}.
+	 * The list contents are of type {@link org.jnario.ExampleCell}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Cells</em>' containment reference list isn't clear,
@@ -43,7 +43,7 @@ public interface ExampleRow extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<XExpression> getCells();
+	EList<ExampleCell> getCells();
 
 	/**
 	 * Returns the value of the '<em><b>Table</b></em>' container reference.

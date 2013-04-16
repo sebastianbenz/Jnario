@@ -51,6 +51,7 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
+import org.jnario.ExampleCell;
 import org.jnario.ExampleColumn;
 import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
@@ -525,16 +526,16 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
             EList<ExampleRow> _rows = table.getRows();
             final Procedure1<ExampleRow> _function_4 = new Procedure1<ExampleRow>() {
                 public void apply(final ExampleRow it) {
-                  EList<XExpression> _cells = it.getCells();
-                  final Procedure1<XExpression> _function = new Procedure1<XExpression>() {
-                      public void apply(final XExpression it) {
+                  EList<ExampleCell> _cells = it.getCells();
+                  final Procedure1<ExampleCell> _function = new Procedure1<ExampleCell>() {
+                      public void apply(final ExampleCell it) {
                         String _initMethodName = SpecJvmModelInferrer.this.initMethodName(table, SpecJvmModelInferrer.this.index);
                         SpecJvmModelInferrer.this.generateCellInitializerMethod(specType, _initMethodName, it);
                         int _plus = (SpecJvmModelInferrer.this.index + 1);
                         SpecJvmModelInferrer.this.index = _plus;
                       }
                     };
-                  IterableExtensions.<XExpression>forEach(_cells, _function);
+                  IterableExtensions.<ExampleCell>forEach(_cells, _function);
                 }
               };
             IterableExtensions.<ExampleRow>forEach(_rows, _function_4);
@@ -598,30 +599,30 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
         _append_4.append("(");
         ITreeAppendable _append_5 = appendable.append("  ");
         ITreeAppendable _append_6 = _append_5.append(arraysType);
-        EList<XExpression> _cells = row.getCells();
-        final Function1<XExpression,String> _function = new Function1<XExpression,String>() {
-            public String apply(final XExpression it) {
+        EList<ExampleCell> _cells = row.getCells();
+        final Function1<ExampleCell,String> _function = new Function1<ExampleCell,String>() {
+            public String apply(final ExampleCell it) {
               String _serialize = SpecJvmModelInferrer.this.serialize(it);
               String _trim = _serialize.trim();
               String _convertToJavaString = Strings.convertToJavaString(_trim);
               return _convertToJavaString;
             }
           };
-        List<String> _map = ListExtensions.<XExpression, String>map(_cells, _function);
+        List<String> _map = ListExtensions.<ExampleCell, String>map(_cells, _function);
         String _join_1 = IterableExtensions.join(_map, "\", \"");
         String _plus_3 = (".asList(\"" + _join_1);
         String _plus_4 = (_plus_3 + "\"), ");
         _append_6.append(_plus_4);
-        EList<XExpression> _cells_1 = row.getCells();
-        for (final XExpression cell : _cells_1) {
+        EList<ExampleCell> _cells_1 = row.getCells();
+        for (final ExampleCell cell : _cells_1) {
           {
             String _initMethodName = this.initMethodName(exampleTable, this.index);
             String _plus_5 = (_initMethodName + "()");
             appendable.append(_plus_5);
             int _plus_6 = (this.index + 1);
             this.index = _plus_6;
-            EList<XExpression> _cells_2 = row.getCells();
-            XExpression _last = IterableExtensions.<XExpression>last(_cells_2);
+            EList<ExampleCell> _cells_2 = row.getCells();
+            ExampleCell _last = IterableExtensions.<ExampleCell>last(_cells_2);
             boolean _notEquals = (!Objects.equal(_last, cell));
             if (_notEquals) {
               appendable.append(", ");
@@ -656,15 +657,16 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     return _plus_2;
   }
   
-  public boolean generateCellInitializerMethod(final JvmGenericType specType, final String name, final XExpression expression) {
+  public boolean generateCellInitializerMethod(final JvmGenericType specType, final String name, final ExampleCell cell) {
     EList<JvmMember> _members = specType.getMembers();
     JvmTypeReference _inferredType = this._extendedJvmTypesBuilder.inferredType();
     final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
         public void apply(final JvmOperation it) {
-          SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, expression);
+          XExpression _expression = cell.getExpression();
+          SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _expression);
         }
       };
-    JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(expression, name, _inferredType, _function);
+    JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(cell, name, _inferredType, _function);
     boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
     return _add;
   }

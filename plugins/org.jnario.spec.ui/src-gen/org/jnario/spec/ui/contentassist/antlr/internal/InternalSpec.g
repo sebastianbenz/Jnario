@@ -421,6 +421,34 @@ finally {
 
 
 
+// Entry rule entryRuleExampleCell
+entryRuleExampleCell 
+:
+{ before(grammarAccess.getExampleCellRule()); }
+	 ruleExampleCell
+{ after(grammarAccess.getExampleCellRule()); } 
+	 EOF 
+;
+
+// Rule ExampleCell
+ruleExampleCell
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getExampleCellAccess().getExpressionAssignment()); }
+(rule__ExampleCell__ExpressionAssignment)
+{ after(grammarAccess.getExampleCellAccess().getExpressionAssignment()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 
 
 // Entry rule entryRuleType
@@ -28934,8 +28962,23 @@ rule__ExampleRow__CellsAssignment_2_0
     }
 :
 (
-{ before(grammarAccess.getExampleRowAccess().getCellsXExpressionParserRuleCall_2_0_0()); }
-	ruleXExpression{ after(grammarAccess.getExampleRowAccess().getCellsXExpressionParserRuleCall_2_0_0()); }
+{ before(grammarAccess.getExampleRowAccess().getCellsExampleCellParserRuleCall_2_0_0()); }
+	ruleExampleCell{ after(grammarAccess.getExampleRowAccess().getCellsExampleCellParserRuleCall_2_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ExampleCell__ExpressionAssignment
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getExampleCellAccess().getExpressionXExpressionParserRuleCall_0()); }
+	ruleXExpression{ after(grammarAccess.getExampleCellAccess().getExpressionXExpressionParserRuleCall_0()); }
 )
 
 ;

@@ -1,3 +1,4 @@
+
 /*******************************************************************************
  * Copyright (c) 2012 BMW Car IT and others.
  * All rights reserved. This program and the accompanying materials
@@ -161,7 +162,7 @@ abstract class AbstractDocGenerator implements IGenerator {
 			«FOR row : table.rows»
 			<tr>
 				«FOR cell : row.cells»
-				<td>«serialize(cell, emptyList)»</td>
+				<td>«serialize(cell.expression, emptyList)»</td>
 				«ENDFOR»
 			</tr>
 		  	«ENDFOR»

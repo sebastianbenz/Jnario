@@ -2399,9 +2399,9 @@ ruleExampleRow returns [EObject current=null]
 )((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getExampleRowAccess().getCellsXExpressionParserRuleCall_2_0_0()); 
+	        newCompositeNode(grammarAccess.getExampleRowAccess().getCellsExampleCellParserRuleCall_2_0_0()); 
 	    }
-		lv_cells_2_0=ruleXExpression		{
+		lv_cells_2_0=ruleExampleCell		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getExampleRowRule());
 	        }
@@ -2409,7 +2409,7 @@ ruleExampleRow returns [EObject current=null]
        			$current, 
        			"cells",
         		lv_cells_2_0, 
-        		"XExpression");
+        		"ExampleCell");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2419,6 +2419,45 @@ ruleExampleRow returns [EObject current=null]
     	newLeafNode(otherlv_3, grammarAccess.getExampleRowAccess().getVerticalLineKeyword_2_1());
     }
 )*)
+;
+
+
+
+
+
+// Entry rule entryRuleExampleCell
+entryRuleExampleCell returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getExampleCellRule()); }
+	 iv_ruleExampleCell=ruleExampleCell 
+	 { $current=$iv_ruleExampleCell.current; } 
+	 EOF 
+;
+
+// Rule ExampleCell
+ruleExampleCell returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getExampleCellAccess().getExpressionXExpressionParserRuleCall_0()); 
+	    }
+		lv_expression_0_0=ruleXExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getExampleCellRule());
+	        }
+       		set(
+       			$current, 
+       			"expression",
+        		lv_expression_0_0, 
+        		"XExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
 ;
 
 

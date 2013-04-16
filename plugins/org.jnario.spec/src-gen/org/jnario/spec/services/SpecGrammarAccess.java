@@ -1541,14 +1541,14 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cExampleRowAction_1 = (Action)cGroup.eContents().get(1);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Assignment cCellsAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
-		private final RuleCall cCellsXExpressionParserRuleCall_2_0_0 = (RuleCall)cCellsAssignment_2_0.eContents().get(0);
+		private final RuleCall cCellsExampleCellParserRuleCall_2_0_0 = (RuleCall)cCellsAssignment_2_0.eContents().get(0);
 		private final Keyword cVerticalLineKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
 		
 		//ExampleRow:
-		//	"|" {ExampleRow} (cells+=XExpression "|")*;
+		//	"|" {ExampleRow} (cells+=ExampleCell "|")*;
 		public ParserRule getRule() { return rule; }
 
-		//"|" {ExampleRow} (cells+=XExpression "|")*
+		//"|" {ExampleRow} (cells+=ExampleCell "|")*
 		public Group getGroup() { return cGroup; }
 
 		//"|"
@@ -1557,17 +1557,33 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//{ExampleRow}
 		public Action getExampleRowAction_1() { return cExampleRowAction_1; }
 
-		//(cells+=XExpression "|")*
+		//(cells+=ExampleCell "|")*
 		public Group getGroup_2() { return cGroup_2; }
 
-		//cells+=XExpression
+		//cells+=ExampleCell
 		public Assignment getCellsAssignment_2_0() { return cCellsAssignment_2_0; }
 
-		//XExpression
-		public RuleCall getCellsXExpressionParserRuleCall_2_0_0() { return cCellsXExpressionParserRuleCall_2_0_0; }
+		//ExampleCell
+		public RuleCall getCellsExampleCellParserRuleCall_2_0_0() { return cCellsExampleCellParserRuleCall_2_0_0; }
 
 		//"|"
 		public Keyword getVerticalLineKeyword_2_1() { return cVerticalLineKeyword_2_1; }
+	}
+
+	public class ExampleCellElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExampleCell");
+		private final Assignment cExpressionAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cExpressionXExpressionParserRuleCall_0 = (RuleCall)cExpressionAssignment.eContents().get(0);
+		
+		//ExampleCell:
+		//	expression=XExpression;
+		public ParserRule getRule() { return rule; }
+
+		//expression=XExpression
+		public Assignment getExpressionAssignment() { return cExpressionAssignment; }
+
+		//XExpression
+		public RuleCall getExpressionXExpressionParserRuleCall_0() { return cExpressionXExpressionParserRuleCall_0; }
 	}
 	
 	
@@ -1584,6 +1600,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private AssertionElements pAssertion;
 	private ExampleColumnElements pExampleColumn;
 	private ExampleRowElements pExampleRow;
+	private ExampleCellElements pExampleCell;
 	private TerminalRule tML_COMMENT;
 	
 	private final Grammar grammar;
@@ -1777,13 +1794,23 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ExampleRow:
-	//	"|" {ExampleRow} (cells+=XExpression "|")*;
+	//	"|" {ExampleRow} (cells+=ExampleCell "|")*;
 	public ExampleRowElements getExampleRowAccess() {
 		return (pExampleRow != null) ? pExampleRow : (pExampleRow = new ExampleRowElements());
 	}
 	
 	public ParserRule getExampleRowRule() {
 		return getExampleRowAccess().getRule();
+	}
+
+	//ExampleCell:
+	//	expression=XExpression;
+	public ExampleCellElements getExampleCellAccess() {
+		return (pExampleCell != null) ? pExampleCell : (pExampleCell = new ExampleCellElements());
+	}
+	
+	public ParserRule getExampleCellRule() {
+		return getExampleCellAccess().getRule();
 	}
 
 	//terminal ML_COMMENT:

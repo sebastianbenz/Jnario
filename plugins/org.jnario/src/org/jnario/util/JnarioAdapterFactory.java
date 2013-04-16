@@ -12,6 +12,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
@@ -124,6 +125,10 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 				return createMockLiteralAdapter();
 			}
 			@Override
+			public Adapter caseExampleCell(ExampleCell object) {
+				return createExampleCellAdapter();
+			}
+			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object) {
 				return createXtendAnnotationTargetAdapter();
 			}
@@ -154,6 +159,10 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseXTypeLiteral(XTypeLiteral object) {
 				return createXTypeLiteralAdapter();
+			}
+			@Override
+			public Adapter caseXtendFunction(XtendFunction object) {
+				return createXtendFunctionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -302,6 +311,20 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.ExampleCell <em>Example Cell</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.ExampleCell
+	 * @generated
+	 */
+	public Adapter createExampleCellAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendAnnotationTarget <em>Annotation Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -410,6 +433,20 @@ public class JnarioAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXTypeLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendFunction <em>Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtend.core.xtend.XtendFunction
+	 * @generated
+	 */
+	public Adapter createXtendFunctionAdapter() {
 		return null;
 	}
 

@@ -444,6 +444,7 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getExampleColumnAccess().getTypeAssignment_0(), "rule__ExampleColumn__TypeAssignment_0");
 					put(grammarAccess.getExampleColumnAccess().getNameAssignment_1(), "rule__ExampleColumn__NameAssignment_1");
 					put(grammarAccess.getExampleRowAccess().getCellsAssignment_2_0(), "rule__ExampleRow__CellsAssignment_2_0");
+					put(grammarAccess.getExampleCellAccess().getExpressionAssignment(), "rule__ExampleCell__ExpressionAssignment");
 					put(grammarAccess.getFileAccess().getPackageAssignment_0_1(), "rule__File__PackageAssignment_0_1");
 					put(grammarAccess.getFileAccess().getImportSectionAssignment_1(), "rule__File__ImportSectionAssignment_1");
 					put(grammarAccess.getFileAccess().getXtendTypesAssignment_2(), "rule__File__XtendTypesAssignment_2");
