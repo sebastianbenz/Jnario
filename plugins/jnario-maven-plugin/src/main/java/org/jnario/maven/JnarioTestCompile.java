@@ -17,9 +17,8 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.maven.XtendTestCompile;
 import org.eclipse.xtext.ISetup;
-import org.jnario.compiler.HtmlAssetsCompiler;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.compiler.JnarioBatchCompiler;
-import org.jnario.compiler.JnarioDocCompiler;
 import org.jnario.feature.FeatureStandaloneSetup;
 import org.jnario.spec.SpecStandaloneSetup;
 import org.jnario.suite.SuiteStandaloneSetup;
@@ -40,12 +39,7 @@ import com.google.inject.Provider;
 public class JnarioTestCompile extends XtendTestCompile {
 	
 	@Override
-	public void execute() throws MojoExecutionException {
-		if (isSkipped()) {
-			getLog().info("Jnario compiler skipped.");
-		}
-		configureLog4j();
-		
+	protected void internalExecute() throws MojoExecutionException {
 		// the order is important, the suite compiler must be executed last
 		List<Injector> injectors = createInjectors(new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
 		ResourceSet resourceSet = createResourceSet(injectors);
@@ -78,7 +72,18 @@ public class JnarioTestCompile extends XtendTestCompile {
 	private void execute(ResourceSet resourceSet, JnarioBatchCompiler compiler)
 			throws MojoExecutionException {
 		compiler.setResourceSet(resourceSet);
-		internalExecute(compiler);
+		final String defaultValue = project.getBasedir() + "/src/test/generated-sources/xtend";
+		getLog().debug("Output directory '" + testOutputDirectory + "'");
+		getLog().debug("Default directory '" + defaultValue + "'");
+		if (defaultValue.equals(testOutputDirectory)) {
+			determinateOutputDirectory(project.getBuild().getTestSourceDirectory(), new Procedure1<String>() {
+				public void apply(String xtendOutputDir) {
+					testOutputDirectory = xtendOutputDir;
+					getLog().info("Using Xtend output directory '" + testOutputDirectory + "'");
+				}
+			});
+		}
+		compileTestSources(compiler);
 	}
 
 }
