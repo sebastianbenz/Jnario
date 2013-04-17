@@ -16,19 +16,19 @@ class Main {
 		val resource = modelStore.parseSpec('''
 				package test
 				
-					
-						describe "Example Tables"{
-					    def myExampleWithClosures{
-					        | input |       operation            | result |
-					        |   "a" | [String s | s.toUpperCase] |   "A"  |
-					        |   "B" | [String s | s.toLowerCase] |   "b"  | 
-					      }  
-					      
-					      fact "supports closures as values"{   
-					        myExampleWithClosures.forEach[
-					          operation.apply(input) should be result
-					        ]
-					      }
+								
+									describe "Example Tables"{
+								    def examplesWithType{      
+				    | 			list 			|  
+				    | new ArrayList<String>()  	|
+				    | new LinkedList<String>() 	| 
+				  } 	
+				      
+«««				  fact "computes the common super type"{
+«««				    examplesWithType.forEach[
+«««				      assert list != null
+«««				    ] 
+«««				  } 
 						}
 		''')
 		val generator = injector.getInstance(typeof(JvmModelGenerator))

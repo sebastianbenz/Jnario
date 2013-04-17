@@ -5,6 +5,7 @@ import java.util.List;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 
 public abstract class SpecExecution {
+	
   private final String _className;
   
   public String getClassName() {
@@ -37,7 +38,8 @@ public abstract class SpecExecution {
     this._failures = failures;
   }
   
-  @Override
+
+@Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;

@@ -93,8 +93,8 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		}else{
 			exampleGroup.addSuperClass
 		}
-		
 		val javaType = typesFactory.createJvmGenericType();
+		javaType.addImplicitSubject(exampleGroup)
 		setNameAndAssociate(exampleGroup.xtendFile, exampleGroup, javaType);
 		acceptor.accept(javaType);
 		if (!preIndexingPhase) {
@@ -285,9 +285,9 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 					index = index + 1
 				]
 			]
-			
+			 
 			constructor.setBody[ITreeAppendable a |
-				a.append(Joiner::on(Strings::newLine).join(assignments))
+				assignments.forEach[a.append(it).newLine]
 			]
 			
 			exampleTableType.members += table.toMethod("getCells", listType)[

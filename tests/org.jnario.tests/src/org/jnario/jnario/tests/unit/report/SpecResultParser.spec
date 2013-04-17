@@ -1,7 +1,6 @@
 package org.jnario.jnario.tests.unit.report
 
 import org.eclipse.xtext.util.StringInputStream
-import org.jnario.report.Failed
 import org.jnario.report.Passed
 import org.jnario.report.SpecExecutionAcceptor
 import org.jnario.report.SpecFailure
@@ -12,6 +11,7 @@ import static org.jnario.jnario.tests.unit.report.SpecResultParserSpec.*
 import static org.mockito.Mockito.*
 
 import static extension org.jnario.jnario.test.util.Strings.*
+import org.jnario.report.Failed
 describe SpecResultParser{
 	
 	static val CLASSNAME = "demo.CalculatorSpec"

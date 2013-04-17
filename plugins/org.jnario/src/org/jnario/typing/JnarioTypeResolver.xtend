@@ -17,22 +17,11 @@ import org.eclipse.xtext.xtype.XComputedTypeReference
 import org.jnario.ExampleColumn
 import org.jnario.ExampleTable
 import org.eclipse.xtext.common.types.JvmMember
+import java.util.ArrayList
 
 class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeResolver {
 	
 	@Inject extension IJvmModelAssociations
-	
-//	override computeTypes(ResolvedTypes resolvedTypes, IFeatureScopeSession session, EObject element) {
-//		switch(element){
-//			ExampleTable: {
-//				element.columns.forEach[
-//					resolvedTypes.computeTypes(session, it)
-//				]
-//			}
-//			default: super.computeTypes(resolvedTypes, session, element)
-//		}
-//	}
-//	
 	
 	override protected _doPrepare(ResolvedTypes resolvedTypes, IFeatureScopeSession session, JvmConstructor constructor, Map<JvmIdentifiableElement,ResolvedTypes> resolvedTypesByContext) {
 		super._doPrepare(resolvedTypes, session, constructor, resolvedTypesByContext)
@@ -66,30 +55,13 @@ class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeResolver 
 			return;
 		}
 		val casted = typeRef as XComputedTypeReference
-		val childResolvedTypes = declareTypeParameters(resolvedTypes, member, resolvedTypesByContext);
-		val indicator = casted.getTypeProvider() as InferredTypeIndicator
-		val reference = createComputedTypeReference(resolvedTypesByContext, childResolvedTypes, session, member, indicator, false);
-		casted.setEquivalent(reference);
 		val result = services.getXtypeFactory().createXComputedTypeReference();
 			result.setTypeProvider(new ColumnTypeProvider[
-//				var type = resolvedTypes.getActualType(column)
-//				if(type == null){
-//					computeTypes(resolvedTypesByContext, resolvedTypes, session, column)
-//				}			
-//				type = resolvedTypes.getActualType(column)
-//				type?.toJavaCompliantTypeReference
-			val types = <LightweightTypeReference>newArrayList()
-			for (cell : column.cells) {
-				val operation = cell.jvmElements.head as JvmIdentifiableElement
-				var type = resolvedTypes.getActualType(operation)
-//				if(type == null){
-//					computeTypes(resolvedTypesByContext, resolvedTypes, session, cell)
-//				}
-//				type = resolvedTypes.getActualType(cell)
-				if(type != null){
-					types.add(type);
-				}
-			}
+			val types = column.cells.map[
+				val operation = jvmElements.head as JvmIdentifiableElement
+				val type = resolvedTypes.getActualType(operation)
+				type
+			]
 			val owner = resolvedTypes.referenceOwner
 			if(types.empty){
 				return null

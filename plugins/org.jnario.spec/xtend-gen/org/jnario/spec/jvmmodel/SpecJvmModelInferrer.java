@@ -1,6 +1,5 @@
 package org.jnario.spec.jvmmodel;
 
-import com.google.common.base.Joiner;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
@@ -129,6 +128,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       this.addSuperClass(exampleGroup);
     }
     final JvmGenericType javaType = this.typesFactory.createJvmGenericType();
+    this._implicitSubject.addImplicitSubject(javaType, exampleGroup);
     XtendFile _xtendFile = this.xtendFile(exampleGroup);
     this.setNameAndAssociate(_xtendFile, exampleGroup, javaType);
     acceptor.<JvmGenericType>accept(javaType);
@@ -541,10 +541,13 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
             IterableExtensions.<ExampleRow>forEach(_rows, _function_4);
             final Procedure1<ITreeAppendable> _function_5 = new Procedure1<ITreeAppendable>() {
                 public void apply(final ITreeAppendable a) {
-                  String _newLine = Strings.newLine();
-                  Joiner _on = Joiner.on(_newLine);
-                  String _join = _on.join(assignments);
-                  a.append(_join);
+                  final Procedure1<String> _function = new Procedure1<String>() {
+                      public void apply(final String it) {
+                        ITreeAppendable _append = a.append(it);
+                        _append.newLine();
+                      }
+                    };
+                  IterableExtensions.<String>forEach(assignments, _function);
                 }
               };
             SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(constructor, _function_5);
