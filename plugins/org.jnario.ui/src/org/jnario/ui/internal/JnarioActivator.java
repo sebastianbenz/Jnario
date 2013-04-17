@@ -51,7 +51,7 @@ public class JnarioActivator extends AbstractUIPlugin {
 	protected Injector createInjector() {
 		try {
 			Module sharedStateModule = getSharedStateModule();
-			Module jnarioModule = new JnarioUiModule();
+			Module jnarioModule = new JnarioUiModule(this);
 			return Guice.createInjector(Modules2.mixin(sharedStateModule, jnarioModule));
 		} catch (Exception e) {
 			logger.error("Failed to create injector for jnario");

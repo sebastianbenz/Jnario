@@ -10,19 +10,9 @@ package org.jnario.ui.preferences;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
+import org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage;
 
-public class JnarioPreferencePage extends FieldEditorPreferencePage
-	implements IWorkbenchPreferencePage {
+public class JnarioPreferencePage extends LanguageRootPreferencePage implements IWorkbenchPreferencePage {
 
-	public JnarioPreferencePage() {
-		super(GRID);
-	}
-	
-	public void init(IWorkbench workbench) {
-	}
-
-	@Override
-	protected void createFieldEditors() {
-	}
 	
 }

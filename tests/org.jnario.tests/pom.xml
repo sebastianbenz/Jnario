@@ -79,8 +79,7 @@
 				</property>
 			</activation>
 			<properties>
-				<tycho.test.jvmArgs>-Xms256m -Xmx1024m -XX:MaxPermSize=256m
-				</tycho.test.jvmArgs>
+				<tycho.test.jvmArgs>-Xms256m -Xmx1024m -XX:MaxPermSize=256m -XstartOnFirstThread</tycho.test.jvmArgs>
 				<osgi.ws>cocoa</osgi.ws>
 			</properties>
 		</profile>
