@@ -190,7 +190,7 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 	public void checkDuplicateFacts(ExampleGroup exampleGroup){
 		Map<String, Example> names = newHashMap();
 		for (Example example : filter(exampleGroup.getMembers(), Example.class)) {
-			String exampleName = exampleNameProvider.describe(example);
+			String exampleName = exampleNameProvider.toMethodName(example);
 			Example duplicate = names.get(exampleName);
 			if(duplicate != null){
 				markAsDuplicate(duplicate);

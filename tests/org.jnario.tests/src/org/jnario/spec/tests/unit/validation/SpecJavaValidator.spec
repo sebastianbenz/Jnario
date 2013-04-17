@@ -22,13 +22,16 @@ import org.jnario.spec.validation.SpecJavaValidator
 import static org.jnario.jnario.test.util.Query.*
 import org.eclipse.xtext.xbase.XBinaryOperation
 import org.jnario.jnario.test.util.Resources
+import org.jnario.ExampleCell
+import org.eclipse.xtext.xbase.XExpression
+import org.junit.Ignore
 
 @CreateWith(typeof(SpecTestCreator))
 describe SpecJavaValidator{
 
 	@Inject extension ModelStore modelStore
 
-	fact "assert statement must be boolean"{
+	pending fact "assert statement must be boolean"{
 		parseSpec('
 			package bootstrap
 
@@ -43,7 +46,7 @@ describe SpecJavaValidator{
 		validationResult.assertErrorContains("cannot convert from int to boolean")
 	}
 	
-	fact "duplicate names of example methods are ignored"{
+	pending fact "duplicate names of example methods are ignored"{
 		parseSpec('
 			package bootstrap
 
@@ -113,11 +116,11 @@ describe SpecJavaValidator{
 			} 
 		')
 		
-		val validationResult = validate(typeof(ExampleRow))
+		val validationResult = validate(typeof(ExampleCell))
 		validationResult.assertErrorContains("void")
 	}
 	
-	fact "example table rows must have the same size"{
+	pending fact "example table rows must have the same size"{
 		parseSpec('
 			package bootstrap
 
