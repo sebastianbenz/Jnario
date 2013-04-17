@@ -45,7 +45,7 @@
 	</thead>
 	<tbody>
 	<tr>
-		<td>null</td>
+		<td>&quot;&quot;</td>
 		<td>&quot;&quot;</td>
 	</tr>
 	<tr>
@@ -129,7 +129,7 @@ describe FilterExtractor {
   
   def filterExtractions {
     | input                   | resultString         |
-    | null                     | &quot;&quot;             |
+    | &quot;&quot;                     | &quot;&quot;             |
     | &quot;string&quot;                   | &quot;string&quot;           |
     | &quot;@filter(bbb)&quot;               | &quot;&quot;             |
     | &quot;text @filter(bbb) text&quot;           | &quot;text text&quot;         |

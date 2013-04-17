@@ -3,30 +3,32 @@ package org.jnario.jnario.tests.unit.jnario;
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
+@SuppressWarnings("all")
 public class ExampleColumnSpecExamples extends ExampleTableRow {
   public ExampleColumnSpecExamples(final List<String> cellNames, final int columnIndex, final int cellIndex, final String value) {
     super(cellNames);
     this.columnIndex = columnIndex;
     this.cellIndex = cellIndex;
     this.value = value;
+    
   }
   
-  public int columnIndex;
+  private int columnIndex;
   
   public int getColumnIndex() {
-    return columnIndex;
+    return this.columnIndex;
   }
   
-  public int cellIndex;
+  private int cellIndex;
   
   public int getCellIndex() {
-    return cellIndex;
+    return this.cellIndex;
   }
   
-  public String value;
+  private String value;
   
   public String getValue() {
-    return value;
+    return this.value;
   }
   
   public List<String> getCells() {

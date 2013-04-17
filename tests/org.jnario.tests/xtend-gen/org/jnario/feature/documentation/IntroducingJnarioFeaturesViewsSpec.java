@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.documentation;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -16,9 +23,9 @@ import org.junit.runner.RunWith;
  * To expand or collapse the definition of the steps use the feature button
  * that you can find in the main button bar while being in a feature file.
  */
-@SuppressWarnings("all")
 @Named("Views")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class IntroducingJnarioFeaturesViewsSpec extends IntroducingJnarioFeaturesSpec {
   /**
    * @filter('''|.isSuccessful)
@@ -26,7 +33,7 @@ public class IntroducingJnarioFeaturesViewsSpec extends IntroducingJnarioFeature
    */
   @Test
   @Named("Displaying step definitions")
-  @Order(4)
+  @Order(1)
   public void _displayingStepDefinitions() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -88,7 +95,7 @@ public class IntroducingJnarioFeaturesViewsSpec extends IntroducingJnarioFeature
    */
   @Test
   @Named("Hiding step definitions")
-  @Order(5)
+  @Order(2)
   public void _hidingStepDefinitions() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");

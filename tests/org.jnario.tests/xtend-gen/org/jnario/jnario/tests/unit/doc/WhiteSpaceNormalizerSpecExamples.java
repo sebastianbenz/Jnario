@@ -3,23 +3,25 @@ package org.jnario.jnario.tests.unit.doc;
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
+@SuppressWarnings("all")
 public class WhiteSpaceNormalizerSpecExamples extends ExampleTableRow {
   public WhiteSpaceNormalizerSpecExamples(final List<String> cellNames, final String input, final String result) {
     super(cellNames);
     this.input = input;
     this.result = result;
+    
   }
   
-  public String input;
+  private String input;
   
   public String getInput() {
-    return input;
+    return this.input;
   }
   
-  public String result;
+  private String result;
   
   public String getResult() {
-    return result;
+    return this.result;
   }
   
   public List<String> getCells() {

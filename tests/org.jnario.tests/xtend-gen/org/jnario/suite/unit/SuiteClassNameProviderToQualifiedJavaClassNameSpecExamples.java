@@ -3,30 +3,32 @@ package org.jnario.suite.unit;
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
+@SuppressWarnings("all")
 public class SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples extends ExampleTableRow {
   public SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples(final List<String> cellNames, final String name, final String packageName, final String qualifiedName) {
     super(cellNames);
     this.name = name;
     this.packageName = packageName;
     this.qualifiedName = qualifiedName;
+    
   }
   
-  public String name;
+  private String name;
   
   public String getName() {
-    return name;
+    return this.name;
   }
   
-  public String packageName;
+  private String packageName;
   
   public String getPackageName() {
-    return packageName;
+    return this.packageName;
   }
   
-  public String qualifiedName;
+  private String qualifiedName;
   
   public String getQualifiedName() {
-    return qualifiedName;
+    return this.qualifiedName;
   }
   
   public List<String> getCells() {

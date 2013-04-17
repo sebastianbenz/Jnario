@@ -13,9 +13,9 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("usedFields")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class StepContextProviderUsedFieldsSpec extends StepContextProviderSpec {
   @Test
   @Named("returns all called fields of scenario")

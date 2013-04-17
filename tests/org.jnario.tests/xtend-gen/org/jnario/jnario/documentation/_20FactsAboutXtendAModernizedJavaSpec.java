@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.documentation;
 
 import java.util.HashMap;
@@ -20,9 +27,9 @@ import org.junit.runner.RunWith;
  * there are some important differences between Java and Xtend
  * one should be aware of.
  */
-@SuppressWarnings("all")
 @Named("A modernized Java")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpec {
   /**
    * Semicolons are optional in Xtend.
@@ -98,6 +105,11 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
   
   final String greeting = "Hello ";
   
+  public String sayHello(final String name) {
+    String _plus = (this.greeting + name);
+    return _plus;
+  }
+  
   /**
    * Fields and methods can be declared in Xtend exactly like in Java. The only difference id
    * that method declarations must be preceded with `def`:
@@ -142,10 +154,5 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
     Assert.assertTrue("\nExpected 42.toString => \"42\" but"
      + "\n     42.toString is " + new StringDescription().appendValue(_string).toString() + "\n", _doubleArrow_1);
     
-  }
-  
-  public String sayHello(final String name) {
-    String _plus = (this.greeting + name);
-    return _plus;
   }
 }

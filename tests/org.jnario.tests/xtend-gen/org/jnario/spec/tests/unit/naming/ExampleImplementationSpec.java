@@ -1,5 +1,13 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.unit.naming;
 
+import java.util.Arrays;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -19,36 +27,54 @@ import org.jnario.spec.tests.unit.naming.ExampleSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("implementation")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class ExampleImplementationSpec extends ExampleSpec {
   public ExampleTable<ExampleImplementationSpecExamples> _initExampleImplementationSpecExamples() {
     return ExampleTable.create("examples", 
-      java.util.Arrays.asList("example", "type"), 
-      new ExampleImplementationSpecExamples(  java.util.Arrays.asList("\"fact \'with body\' {1}\"", "typeof(XBlockExpression)"), "fact \'with body\' {1}", XBlockExpression.class),
-      new ExampleImplementationSpecExamples(  java.util.Arrays.asList("\"fact \'with code\' should be \'with code\'\"", "typeof(Should)"), "fact \'with code\' should be \'with code\'", Should.class)
+      Arrays.asList("example", "type"), 
+      new ExampleImplementationSpecExamples(  Arrays.asList("\"fact \'with body\' {1}\"", "typeof(XBlockExpression)"), _initExampleImplementationSpecExamplesCell0(), _initExampleImplementationSpecExamplesCell1()),
+      new ExampleImplementationSpecExamples(  Arrays.asList("\"fact \'with code\' should be \'with code\'\"", "typeof(Should)"), _initExampleImplementationSpecExamplesCell2(), _initExampleImplementationSpecExamplesCell3())
     );
   }
   
   protected ExampleTable<ExampleImplementationSpecExamples> examples = _initExampleImplementationSpecExamples();
   
+  public String _initExampleImplementationSpecExamplesCell0() {
+    return "fact \'with body\' {1}";
+  }
+  
+  public Class<XBlockExpression> _initExampleImplementationSpecExamplesCell1() {
+    return XBlockExpression.class;
+  }
+  
+  public String _initExampleImplementationSpecExamplesCell2() {
+    return "fact \'with code\' should be \'with code\'";
+  }
+  
+  public Class<Should> _initExampleImplementationSpecExamplesCell3() {
+    return Should.class;
+  }
+  
   @Test
   @Named("examples.forEach[example.parse.expression should be instanceOf[type]]")
-  @Order(2)
+  @Order(1)
   public void _examplesForEachExampleParseExpressionShouldBeInstanceOfType() throws Exception {
     final Procedure1<ExampleImplementationSpecExamples> _function = new Procedure1<ExampleImplementationSpecExamples>() {
         public void apply(final ExampleImplementationSpecExamples it) {
-          Example _parse = ExampleImplementationSpec.this.parse(it.example);
+          String _example = it.getExample();
+          Example _parse = ExampleImplementationSpec.this.parse(_example);
           XExpression _expression = _parse.getExpression();
-          Matcher<Object> _instanceOf = CoreMatchers.instanceOf(it.type);
+          Class<? extends XExpression> _type = it.getType();
+          Matcher<Object> _instanceOf = CoreMatchers.instanceOf(_type);
           boolean _should_be = org.jnario.lib.Should.<Object>should_be(_expression, _instanceOf);
           Assert.assertTrue("\nExpected example.parse.expression should be instanceOf(type) but"
            + "\n     example.parse.expression is " + new StringDescription().appendValue(_expression).toString()
            + "\n     example.parse is " + new StringDescription().appendValue(_parse).toString()
-           + "\n     example is " + new StringDescription().appendValue(it.example).toString()
+           + "\n     example is " + new StringDescription().appendValue(_example).toString()
            + "\n     instanceOf(type) is " + new StringDescription().appendValue(_instanceOf).toString()
-           + "\n     type is " + new StringDescription().appendValue(it.type).toString() + "\n", _should_be);
+           + "\n     type is " + new StringDescription().appendValue(_type).toString() + "\n", _should_be);
           
         }
       };

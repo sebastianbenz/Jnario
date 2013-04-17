@@ -3,23 +3,25 @@ package org.jnario.jnario.tests.unit.doc;
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
+@SuppressWarnings("all")
 public class FilterExtractorSpecFilterExtractions extends ExampleTableRow {
   public FilterExtractorSpecFilterExtractions(final List<String> cellNames, final String input, final String resultString) {
     super(cellNames);
     this.input = input;
     this.resultString = resultString;
+    
   }
   
-  public String input;
+  private String input;
   
   public String getInput() {
-    return input;
+    return this.input;
   }
   
-  public String resultString;
+  private String resultString;
   
   public String getResultString() {
-    return resultString;
+    return this.resultString;
   }
   
   public List<String> getCells() {

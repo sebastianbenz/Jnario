@@ -14,6 +14,7 @@ import org.eclipse.jface.text.rules.ITokenScanner;
 import org.eclipse.jface.text.source.DefaultCharacterPairMatcher;
 import org.eclipse.jface.text.source.IAnnotationHover;
 import org.eclipse.jface.text.source.ICharacterPairMatcher;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
@@ -26,14 +27,12 @@ import org.eclipse.xtend.ide.builder.JavaProjectPreferencesInitializer;
 import org.eclipse.xtend.ide.contentassist.EscapeSequenceAwarePrefixMatcher;
 import org.eclipse.xtend.ide.contentassist.TemplateProposalProvider;
 import org.eclipse.xtend.ide.contentassist.XtendContentAssistFactory;
-import org.eclipse.xtend.ide.editor.InitiallyCollapsableAwareFoldingStructureProvider;
 import org.eclipse.xtend.ide.editor.OccurrenceComputer;
 import org.eclipse.xtend.ide.editor.OverrideIndicatorModelListener;
 import org.eclipse.xtend.ide.editor.OverrideIndicatorRulerAction;
 import org.eclipse.xtend.ide.editor.RichStringAwareSourceViewer;
 import org.eclipse.xtend.ide.editor.RichStringAwareToggleCommentAction;
 import org.eclipse.xtend.ide.editor.SingleLineCommentHelper;
-import org.eclipse.xtend.ide.editor.XtendFoldingRegionProvider;
 import org.eclipse.xtend.ide.editor.XtendNatureAddingEditorCallback;
 import org.eclipse.xtend.ide.editor.XtendSourceViewerConfiguration;
 import org.eclipse.xtend.ide.editor.model.XtendDocumentTokenSource;
@@ -42,12 +41,12 @@ import org.eclipse.xtend.ide.highlighting.RichStringAwareTokenScanner;
 import org.eclipse.xtend.ide.highlighting.ShowWhitespaceCharactersActionContributor;
 import org.eclipse.xtend.ide.hover.XtendAnnotationHover;
 import org.eclipse.xtend.ide.hover.XtendHoverDocumentationProvider;
-import org.eclipse.xtend.ide.hover.XtendHoverSignatureProvider;
 import org.eclipse.xtend.ide.hyperlinking.XtendHyperlinkHelper;
 import org.eclipse.xtend.ide.outline.ShowSyntheticMembersContribution;
 import org.eclipse.xtend.ide.outline.XtendOutlineNodeComparator;
 import org.eclipse.xtend.ide.outline.XtendOutlinePage;
 import org.eclipse.xtend.ide.outline.XtendQuickOutlineFilterAndSorter;
+import org.eclipse.xtend.ide.quickfix.CreateXtendTypeQuickfixes;
 import org.eclipse.xtend.ide.refactoring.XtendDependentElementsCalculator;
 import org.eclipse.xtend.ide.refactoring.XtendJdtRenameParticipantProcessor;
 import org.eclipse.xtend.ide.refactoring.XtendRefactoringPreferences;
@@ -60,6 +59,7 @@ import org.eclipse.xtext.builder.IXtextBuilderParticipant;
 import org.eclipse.xtext.builder.trace.TraceForStorageProvider;
 import org.eclipse.xtext.common.types.ui.navigation.IDerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.common.types.ui.refactoring.participant.JvmMemberRenameStrategy;
+import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.trace.ITraceForStorageProvider;
 import org.eclipse.xtext.service.SingletonBinding;
@@ -78,15 +78,12 @@ import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher;
 import org.eclipse.xtext.ui.editor.doubleClicking.DoubleClickStrategyProvider;
 import org.eclipse.xtext.ui.editor.embedded.IEditedResourceProvider;
-import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
-import org.eclipse.xtext.ui.editor.folding.IFoldingStructureProvider;
 import org.eclipse.xtext.ui.editor.formatting.IContentFormatterFactory;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.hover.html.IEObjectHoverDocumentationProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper;
 import org.eclipse.xtext.ui.editor.model.DocumentTokenSource;
 import org.eclipse.xtext.ui.editor.model.IResourceForEditorInputFactory;
-import org.eclipse.xtext.ui.editor.model.ITokenTypeToPartitionTypeMapper;
 import org.eclipse.xtext.ui.editor.model.TerminalsTokenTypeToPartitionMapper;
 import org.eclipse.xtext.ui.editor.occurrences.IOccurrenceComputer;
 import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
@@ -105,23 +102,27 @@ import org.eclipse.xtext.ui.refactoring.ui.IRenameContextFactory;
 import org.eclipse.xtext.ui.resource.IResourceUIServiceProvider;
 import org.eclipse.xtext.validation.IssueSeveritiesProvider;
 import org.eclipse.xtext.xbase.formatting.IFormattingPreferenceValuesProvider;
+import org.eclipse.xtext.xbase.ui.contentassist.ImportingTypesProposalProvider;
 import org.eclipse.xtext.xbase.ui.contentassist.ParameterContextInformationProvider;
-import org.eclipse.xtext.xbase.ui.editor.XbaseEditor;
 import org.eclipse.xtext.xbase.ui.editor.XbaseResourceForEditorInputFactory;
 import org.eclipse.xtext.xbase.ui.hover.XbaseDeclarativeHoverSignatureProvider;
 import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.xbase.ui.jvmmodel.refactoring.jdt.JdtRenameRefactoringParticipantProcessor;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
 import org.eclipse.xtext.xbase.ui.validation.XbaseIssueSeveritiesProvider;
+import org.jnario.feature.ui.hover.FeatureHoverSignatureProvider;
 import org.jnario.suite.generator.SuiteGenerator;
 import org.jnario.suite.ui.editor.SuiteDoubleClickStrategyProvider;
 import org.jnario.suite.ui.highlighting.SuiteHighlightingCalculator;
 import org.jnario.suite.ui.highlighting.SuiteHighlightingConfiguration;
 import org.jnario.suite.ui.highlighting.SuiteTokenHighlighting;
 import org.jnario.suite.ui.hover.SuiteHoverProvider;
+import org.jnario.suite.ui.labeling.SuiteLabelProvider;
 import org.jnario.suite.ui.launching.SuiteJavaElementDelegate;
+import org.jnario.suite.ui.quickfix.SuiteQuickfixProvider;
 import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
+import org.jnario.ui.quickfix.CreateJnarioTypeQuickfixes;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -141,10 +142,6 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 		return SuiteHighlightingCalculator.class;
 	}
 	
-	public Class<? extends ITokenTypeToPartitionTypeMapper> bindITokenTypeToPartitionTypeMapper() {
-		return TokenTypeToPartitionMapper.class;
-	}
-	
 	@Override
 	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
 		return SuiteHighlightingConfiguration.class;
@@ -159,99 +156,11 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 		return SuiteHoverProvider.class;
 	}
 	
-	public Class<? extends IFoldingRegionProvider> bindIFoldingRegionProvider() {
-		return XtendFoldingRegionProvider.class;
-	}
-
-	@Override
-	public Class<? extends IOccurrenceComputer> bindIOccurrenceComputer() {
-		return OccurrenceComputer.class;
-	}
-	
-
-	public Class<? extends XbaseDeclarativeHoverSignatureProvider> bindXbaseDeclarativeHoverSignatureProvider(){
-		return XtendHoverSignatureProvider.class;
-	}
-	
-	@Override
-	public Class<? extends IEObjectHoverDocumentationProvider> bindIEObjectHoverDocumentationProvider(){
-		return XtendHoverDocumentationProvider.class;
-	}
-
-	
-	
-	@Override
-	public Class<? extends IAnnotationHover> bindIAnnotationHover () {
-		return XtendAnnotationHover.class;
-	}
-
-
-	@Override
-	public Class<? extends AbstractEditStrategyProvider> bindAbstractEditStrategyProvider() {
-		return AutoEditStrategyProvider.class;
-	}
 
 	public Class<? extends DoubleClickStrategyProvider> bindDoubleClickStrategyProvider() {
 		return SuiteDoubleClickStrategyProvider.class;
 	}
 
-	@Override
-	public Class<? extends IComparator> bindOutlineFilterAndSorter$IComparator() {
-		return XtendOutlineNodeComparator.class;
-	}
-
-	public Class<? extends QuickOutlineFilterAndSorter> bindQuickOutlineFilterAndSorter() {
-		return XtendQuickOutlineFilterAndSorter.class;
-	}
-
-	@Override
-	public Class<? extends IContentOutlinePage> bindIContentOutlinePage() {
-		return XtendOutlinePage.class;
-	}
-
-	@Override
-	public Class<? extends IHyperlinkHelper> bindIHyperlinkHelper() {
-		return XtendHyperlinkHelper.class;
-	}
-
-	
-	public Class<? extends EclipseResourceFileSystemAccess2> bindEclipseResourceFileSystemAccess2() {
-		return JnarioSourceRelativeFileSystemAccess.class;
-	}
-	
-	@Override
-	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
-		return JnarioBuilderParticipant.class;
-	}
-	
-	@Override
-	public Class<? extends IContentFormatterFactory> bindIContentFormatterFactory() {
-		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=361385
-		return null;
-	}
-	
-	@Override
-	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
-		return XtendNatureAddingEditorCallback.class;
-	}
-	
-	public Class<? extends IResourceUIServiceProvider> bindIResourceUIServiceProvider() {
-		return XtendResourceUiServiceProvider.class;
-	}
-
-	@Override
-	public void configureLanguageSpecificURIEditorOpener(Binder binder) {
-		if (PlatformUI.isWorkbenchRunning()) {
-			binder.bind(IURIEditorOpener.class).annotatedWith(LanguageSpecific.class)
-					.to(DerivedMemberAwareEditorOpener.class);
-			binder.bind(IDerivedMemberAwareEditorOpener.class).to(DerivedMemberAwareEditorOpener.class);
-		}
-	}
-	
-	public Class<? extends org.eclipse.xtext.ui.editor.XtextEditor> bindXtextEditor() {
-		return XbaseEditor.class;
-	}
-	
 	public Class<? extends JavaElementDelegate> bindJavaElementDelegate(){
 		return SuiteJavaElementDelegate.class;
 	}
@@ -261,13 +170,45 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 	}
 	
 	public Class<? extends org.eclipse.xtext.ui.editor.quickfix.IssueResolutionProvider> bindIssueResolutionProvider() {
-		return org.jnario.suite.ui.quickfix.SuiteQuickfixProvider.class;
+		return SuiteQuickfixProvider.class;
 	}
+	
+	@Override
+	public Class<? extends ILabelProvider> bindILabelProvider() {
+		return SuiteLabelProvider.class;
+	}
+	
+
+	@Override
+	public void configure(Binder binder) {
+		super.configure(binder);
+		binder.bind(CreateXtendTypeQuickfixes.class).to(CreateJnarioTypeQuickfixes.class);
+	}
+
+	public void configureDebugMode(Binder binder) {
+		if (Boolean.getBoolean("org.eclipse.xtext.xtend.debug")) {
+			binder.bindConstant().annotatedWith(Names.named(AbstractEditStrategy.DEBUG)).to(true);
+		}
+		// matches ID of org.eclipse.ui.contexts extension registered in plugin.xml
+		binder.bindConstant().annotatedWith(Names.named(XtextEditor.KEY_BINDING_SCOPE)).to("org.jnario.feature.ui.FeatureEditorScope");
+	}
+	
+
+	@Override
+	public Class<? extends IOccurrenceComputer> bindIOccurrenceComputer() {
+		return OccurrenceComputer.class;
+	}
+	
 	@Override
 	public void configureIPreferenceStoreInitializer(Binder binder) {
 		binder.bind(IPreferenceStoreInitializer.class)
 			.annotatedWith(Names.named("RefactoringPreferences"))
 			.to(XtendRefactoringPreferences.Initializer.class);
+	}
+
+	@Override
+	public Class<? extends IRenameContextFactory> bindIRenameContextFactory() {
+		return XtendRenameContextFactory.class;
 	}
 
 	public Class<? extends RenameElementProcessor> bindRenameElementProcessor() {
@@ -294,16 +235,22 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 	public Class<? extends JdtRenameRefactoringParticipantProcessor> bindJdtRenameRefactoringParticipantProcessor() {
 		return XtendJdtRenameParticipantProcessor.class;
 	}
+
+	public Class<? extends XbaseDeclarativeHoverSignatureProvider> bindXbaseDeclarativeHoverSignatureProvider(){
+		return FeatureHoverSignatureProvider.class;
+	}
 	
-	public void configureDebugMode(Binder binder) {
-		if (Boolean.getBoolean("org.eclipse.xtext.xtend.debug")) {
-			binder.bindConstant().annotatedWith(Names.named(AbstractEditStrategy.DEBUG)).to(true);
-		}
-		// matches ID of org.eclipse.ui.contexts extension registered in plugin.xml
-		binder.bindConstant().annotatedWith(Names.named(XtextEditor.KEY_BINDING_SCOPE))
-				.to("org.eclipse.xtend.ide.XtendEditorScope");
+	@Override
+	public Class<? extends IEObjectHoverDocumentationProvider> bindIEObjectHoverDocumentationProvider(){
+		return XtendHoverDocumentationProvider.class;
 	}
 
+	
+	@Override
+	public Class<? extends ITemplateProposalProvider> bindITemplateProposalProvider() {
+		return TemplateProposalProvider.class;
+	}
+	
 	public void configureOverrideIndicatorSupport(Binder binder) {
 		binder.bind(IXtextEditorCallback.class).annotatedWith(Names.named("OverrideIndicatorModelListener")) //$NON-NLS-1$
 				.to(OverrideIndicatorModelListener.class);
@@ -311,13 +258,124 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 				OverrideIndicatorRulerAction.class);
 	}
 	
-	public Class<? extends IFormattingPreferenceValuesProvider> bindIFormattingPreferenceValuesProvider() {
-		return FormatterPreferenceValuesProvider.class;
-	}
-
 	@Override
 	public Class<? extends ITokenScanner> bindITokenScanner() {
 		return RichStringAwareTokenScanner.class;
+	}
+
+	@Override
+	public Class<? extends AbstractEditStrategyProvider> bindAbstractEditStrategyProvider() {
+		return AutoEditStrategyProvider.class;
+	}
+
+	@Override
+	public Class<? extends IComparator> bindOutlineFilterAndSorter$IComparator() {
+		return XtendOutlineNodeComparator.class;
+	}
+
+	public Class<? extends QuickOutlineFilterAndSorter> bindQuickOutlineFilterAndSorter() {
+		return XtendQuickOutlineFilterAndSorter.class;
+	}
+
+	@Override
+	public Class<? extends ITypesProposalProvider> bindITypesProposalProvider() {
+		return ImportingTypesProposalProvider.class;
+	}
+
+	@Override
+	public Class<? extends IContentOutlinePage> bindIContentOutlinePage() {
+		return XtendOutlinePage.class;
+	}
+
+	@Override
+	public Class<? extends IHyperlinkHelper> bindIHyperlinkHelper() {
+		return XtendHyperlinkHelper.class;
+	}
+
+	public Class<? extends EclipseResourceFileSystemAccess2> bindEclipseResourceFileSystemAccess2() {
+		return JnarioSourceRelativeFileSystemAccess.class;
+	}
+	
+	@Override
+	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
+		return JnarioBuilderParticipant.class;
+	}
+	
+	@Override
+	public Class<? extends ISingleLineCommentHelper> bindISingleLineCommentHelper() {
+		return SingleLineCommentHelper.class;
+	}
+	
+	
+	@Override
+	public Class<? extends IContentFormatterFactory> bindIContentFormatterFactory() {
+		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=361385
+		return null;
+	}
+	
+	
+	@Override
+	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
+		return XtendNatureAddingEditorCallback.class;
+	}
+	
+	public Class<? extends IResourceUIServiceProvider> bindIResourceUIServiceProvider() {
+		return XtendResourceUiServiceProvider.class;
+	}
+	
+	@Override
+	public void configureLanguageSpecificURIEditorOpener(Binder binder) {
+		if (PlatformUI.isWorkbenchRunning()) {
+			binder.bind(IURIEditorOpener.class).annotatedWith(LanguageSpecific.class)
+					.to(DerivedMemberAwareEditorOpener.class);
+			binder.bind(IDerivedMemberAwareEditorOpener.class).to(DerivedMemberAwareEditorOpener.class);
+		}
+	}
+	
+	@Override
+	public ICharacterPairMatcher bindICharacterPairMatcher() {
+		return new DefaultCharacterPairMatcher(new char[] { '(', ')', '{', '}', '[', ']', '«', '»' });
+	}
+
+	public Class<? extends XtextSourceViewer.Factory> bindSourceViewerFactory() {
+		return RichStringAwareSourceViewer.Factory.class;
+	}
+	
+	public Class<? extends ToggleSLCommentAction.Factory> bindToggleCommentFactory() {
+		return RichStringAwareToggleCommentAction.Factory.class;
+	}
+	
+	public Class<? extends ITraceForStorageProvider> bindTraceInformation() {
+		return TraceForStorageProvider.class;
+	}
+	
+	@Override
+	public Class<? extends IContentAssistantFactory> bindIContentAssistantFactory() {
+		return XtendContentAssistFactory.class;
+	}
+	
+	@Override
+	public Class<? extends IResourceForEditorInputFactory> bindIResourceForEditorInputFactory() {
+		return XbaseResourceForEditorInputFactory.class;
+	}
+	
+	public Class<? extends IContextInformationProvider> bindIContextInformationProvider() {
+		return ParameterContextInformationProvider.class;
+	}
+	
+	public Class<? extends PrefixMatcher.CamelCase> bindCamelCasePrefixMatcher() {
+		return EscapeSequenceAwarePrefixMatcher.class;
+	}
+	
+	public Class<? extends IFormattingPreferenceValuesProvider> bindIFormattingPreferenceValuesProvider() {
+		return FormatterPreferenceValuesProvider.class;
+	}
+	
+	
+
+	@Override
+	public Class<? extends IAnnotationHover> bindIAnnotationHover() {
+		return XtendAnnotationHover.class;
 	}
 
 	public Class<? extends TerminalsTokenTypeToPartitionMapper> bindTerminalsTokenTypeToPartitionMapper() {
@@ -329,43 +387,6 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 				.to(ShowWhitespaceCharactersActionContributor.class);
 	}
 
-	@Override
-	public Class<? extends ISingleLineCommentHelper> bindISingleLineCommentHelper() {
-		return SingleLineCommentHelper.class;
-	}
-
-	public Class<? extends XtextSourceViewer.Factory> bindSourceViewerFactory() {
-		return RichStringAwareSourceViewer.Factory.class;
-	}
-
-	public Class<? extends ToggleSLCommentAction.Factory> bindToggleCommentFactory() {
-		return RichStringAwareToggleCommentAction.Factory.class;
-	}
-
-	public Class<? extends IFoldingStructureProvider> bindIFoldingStructureProvider() {
-		return InitiallyCollapsableAwareFoldingStructureProvider.class;
-	}
-
-	@Override
-	public ICharacterPairMatcher bindICharacterPairMatcher() {
-		return new DefaultCharacterPairMatcher(new char[] { '(', ')', '{', '}', '[', ']', '´', 'ª' });
-	}
-
-
-	@Override
-	public Class<? extends IRenameContextFactory> bindIRenameContextFactory() {
-		return XtendRenameContextFactory.class;
-	}
-
-
-	@Override
-	public Class<? extends ITemplateProposalProvider> bindITemplateProposalProvider() {
-		return TemplateProposalProvider.class;
-	}
-
-	public Class<? extends ITraceForStorageProvider> bindTraceInformation() {
-		return TraceForStorageProvider.class;
-	}
 
 	public Class<? extends IEditedResourceProvider> bindIEditedResourceProvider() {
 		return FormatterResourceProvider.class;
@@ -405,22 +426,4 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 		return XtendDocumentTokenSource.class;
 	}
 	
-
-	@Override
-	public Class<? extends IContentAssistantFactory> bindIContentAssistantFactory() {
-		return XtendContentAssistFactory.class;
-	}
-	
-	@Override
-	public Class<? extends IResourceForEditorInputFactory> bindIResourceForEditorInputFactory() {
-		return XbaseResourceForEditorInputFactory.class;
-	}
-	
-	public Class<? extends IContextInformationProvider> bindIContextInformationProvider() {
-		return ParameterContextInformationProvider.class;
-	}
-	
-	public Class<? extends PrefixMatcher.CamelCase> bindCamelCasePrefixMatcher() {
-		return EscapeSequenceAwarePrefixMatcher.class;
-	}
 }

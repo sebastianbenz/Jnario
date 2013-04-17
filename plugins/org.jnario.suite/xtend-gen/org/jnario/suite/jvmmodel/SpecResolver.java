@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.suite.jvmmodel;
 
 import com.google.common.base.Objects;
@@ -22,8 +29,8 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.jnario.Specification;
@@ -37,12 +44,15 @@ import org.jnario.suite.suite.SuitePackage.Literals;
 @SuppressWarnings("all")
 public class SpecResolver {
   @Inject
+  @Extension
   private IScopeProvider scopeProvider;
   
   @Inject
+  @Extension
   private IQualifiedNameConverter _iQualifiedNameConverter;
   
   @Inject
+  @Extension
   private SuiteClassNameProvider _suiteClassNameProvider;
   
   protected List<Specification> _resolveSpecs(final Suite suite) {
@@ -129,8 +139,8 @@ public class SpecResolver {
         }
       };
     Iterable<Specification> _filter = IterableExtensions.<Specification>filter(specs, _function);
-    final Function2<Specification,Specification,Integer> _function_1 = new Function2<Specification,Specification,Integer>() {
-        public Integer apply(final Specification left, final Specification right) {
+    final Comparator<Specification> _function_1 = new Comparator<Specification>() {
+        public int compare(final Specification left, final Specification right) {
           int _xblockexpression = (int) 0;
           {
             final String leftName = SpecResolver.this._suiteClassNameProvider.describe(left);
@@ -152,11 +162,7 @@ public class SpecResolver {
           return _xblockexpression;
         }
       };
-    List<Specification> _sort = IterableExtensions.<Specification>sort(_filter, new Comparator<Specification>() {
-        public int compare(Specification o1,Specification o2) {
-          return _function_1.apply(o1,o2);
-        }
-    });
+    List<Specification> _sort = IterableExtensions.<Specification>sort(_filter, _function_1);
     return _sort;
   }
   

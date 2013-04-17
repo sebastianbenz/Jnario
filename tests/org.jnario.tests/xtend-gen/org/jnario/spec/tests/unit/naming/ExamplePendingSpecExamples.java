@@ -3,23 +3,25 @@ package org.jnario.spec.tests.unit.naming;
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
+@SuppressWarnings("all")
 public class ExamplePendingSpecExamples extends ExampleTableRow {
   public ExamplePendingSpecExamples(final List<String> cellNames, final String example, final boolean expected) {
     super(cellNames);
     this.example = example;
     this.expected = expected;
+    
   }
   
-  public String example;
+  private String example;
   
   public String getExample() {
-    return example;
+    return this.example;
   }
   
-  public boolean expected;
+  private boolean expected;
   
   public boolean getExpected() {
-    return expected;
+    return this.expected;
   }
   
   public List<String> getCells() {

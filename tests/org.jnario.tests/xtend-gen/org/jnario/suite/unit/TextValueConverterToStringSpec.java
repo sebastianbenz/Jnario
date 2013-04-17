@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.suite.unit;
 
 import org.hamcrest.StringDescription;
@@ -10,9 +17,9 @@ import org.jnario.suite.unit.TextValueConverterSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("toString")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class TextValueConverterToStringSpec extends TextValueConverterSpec {
   @Test
   @Named("adds colon")

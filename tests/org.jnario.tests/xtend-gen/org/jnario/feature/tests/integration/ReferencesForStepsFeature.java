@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.tests.integration;
 
 import org.jnario.feature.tests.integration.ReferencesForStepsFeatureAccessingExtensionFieldMethods;
@@ -9,6 +16,7 @@ import org.jnario.feature.tests.integration.ReferencesForStepsFeatureExtensionFi
 import org.jnario.feature.tests.integration.ReferencesForStepsFeatureExtensionFieldsInAndStep;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeatureFieldInitialization;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeatureMultipleStepReferencesCausesProblemWhenCopierDoesNotClearItsCache;
+import org.jnario.feature.tests.integration.ReferencesForStepsFeatureOrderingInStepReferences;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeatureScenarioReferencesTwoStepsFromDifferentScenariosWhichDefineTheSameField;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeatureStepReferencesWithExtensionsInSameScenario;
@@ -26,10 +34,10 @@ import org.junit.runner.RunWith;
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-@Contains({ ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario.class, ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword.class, ReferencesForStepsFeatureUsingFieldsFromOtherSteps.class, ReferencesForStepsFeatureStepsWithShortNames.class, ReferencesForStepsFeatureFieldInitialization.class, ReferencesForStepsFeatureSteps.class, ReferencesForStepsFeatureExtensionFields.class, ReferencesForStepsFeatureExtensionFieldsInAndStep.class, ReferencesForStepsFeatureUsingClosuresInSteps.class, ReferencesForStepsFeatureMultipleStepReferencesCausesProblemWhenCopierDoesNotClearItsCache.class, ReferencesForStepsFeatureAccessingExtensionFieldMethods.class, ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps.class, ReferencesForStepsFeatureStepReferencesWithExtensionsInSameScenario.class, ReferencesForStepsFeatureScenarioReferencesTwoStepsFromDifferentScenariosWhichDefineTheSameField.class, ReferencesForStepsFeatureDuplicateExtensionViaStepRerferences.class, ReferencesForStepsFeatureErrorMessagesInStepReferences.class })
+@Contains({ ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario.class, ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword.class, ReferencesForStepsFeatureUsingFieldsFromOtherSteps.class, ReferencesForStepsFeatureStepsWithShortNames.class, ReferencesForStepsFeatureFieldInitialization.class, ReferencesForStepsFeatureSteps.class, ReferencesForStepsFeatureExtensionFields.class, ReferencesForStepsFeatureExtensionFieldsInAndStep.class, ReferencesForStepsFeatureUsingClosuresInSteps.class, ReferencesForStepsFeatureMultipleStepReferencesCausesProblemWhenCopierDoesNotClearItsCache.class, ReferencesForStepsFeatureAccessingExtensionFieldMethods.class, ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps.class, ReferencesForStepsFeatureStepReferencesWithExtensionsInSameScenario.class, ReferencesForStepsFeatureScenarioReferencesTwoStepsFromDifferentScenariosWhichDefineTheSameField.class, ReferencesForStepsFeatureDuplicateExtensionViaStepRerferences.class, ReferencesForStepsFeatureErrorMessagesInStepReferences.class, ReferencesForStepsFeatureOrderingInStepReferences.class })
 @Named("References for steps")
-@CreateWith(value = FeatureTestCreator.class)
-@SuppressWarnings("all")
+@CreateWith(FeatureTestCreator.class)
 @RunWith(FeatureRunner.class)
+@SuppressWarnings("all")
 public class ReferencesForStepsFeature {
 }

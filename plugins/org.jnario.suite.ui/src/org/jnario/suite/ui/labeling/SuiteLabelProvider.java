@@ -10,7 +10,6 @@
 */
 package org.jnario.suite.ui.labeling;
 
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtend.ide.labeling.XtendImages;
 import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
@@ -28,11 +27,9 @@ import com.google.inject.Inject;
 @SuppressWarnings("restriction")
 public class SuiteLabelProvider extends XtendLabelProvider {
 
-	@Inject SuiteClassNameProvider nameProvider;
+	@Inject private SuiteClassNameProvider nameProvider;
 	
-	
-	@Inject
-	private XtendImages images;
+	@Inject private XtendImages images;
 	
 	public Image image(Suite element) {
 		return images.forClass(JvmVisibility.PUBLIC);

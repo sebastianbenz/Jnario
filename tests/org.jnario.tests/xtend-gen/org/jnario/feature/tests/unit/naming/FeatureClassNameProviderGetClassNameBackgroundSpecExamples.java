@@ -3,30 +3,32 @@ package org.jnario.feature.tests.unit.naming;
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
+@SuppressWarnings("all")
 public class FeatureClassNameProviderGetClassNameBackgroundSpecExamples extends ExampleTableRow {
   public FeatureClassNameProviderGetClassNameBackgroundSpecExamples(final List<String> cellNames, final String name, final String feature, final String expectedClassName) {
     super(cellNames);
     this.name = name;
     this.feature = feature;
     this.expectedClassName = expectedClassName;
+    
   }
   
-  public String name;
+  private String name;
   
   public String getName() {
-    return name;
+    return this.name;
   }
   
-  public String feature;
+  private String feature;
   
   public String getFeature() {
-    return feature;
+    return this.feature;
   }
   
-  public String expectedClassName;
+  private String expectedClassName;
   
   public String getExpectedClassName() {
-    return expectedClassName;
+    return this.expectedClassName;
   }
   
   public List<String> getCells() {

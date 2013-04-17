@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.standalone.tests;
 
 import org.hamcrest.Matcher;
@@ -13,14 +20,14 @@ import org.jnario.standalone.tests.JnarioDocCompilerSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("SuiteDocCompiler")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = SuiteTestCreator.class)
+@CreateWith(SuiteTestCreator.class)
+@SuppressWarnings("all")
 public class JnarioDocCompilerSuiteDocCompilerSpec extends JnarioDocCompilerSpec {
   @Test
   @Named("\\\"test/ExampleSuite.html\\\" should be generated")
-  @Order(3)
+  @Order(1)
   public void _testExampleSuiteHtmlShouldBeGenerated() throws Exception {
     Matcher<String> _generated = this.generated();
     boolean _should_be = Should.<String>should_be("test/ExampleSuite.html", _generated);

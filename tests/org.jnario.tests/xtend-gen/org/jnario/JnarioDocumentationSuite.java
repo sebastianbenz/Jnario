@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 
 @Named("Jnario Documentation")
 @Contains({ InstallationSuite.class, GettingStartedSuite.class, CommonConceptsSuite.class, FeaturesSuite.class, SpecsSuite.class, SupportSuite.class })
-@SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class JnarioDocumentationSuite {
 }

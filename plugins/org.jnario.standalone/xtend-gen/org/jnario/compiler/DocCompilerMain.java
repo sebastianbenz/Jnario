@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.compiler;
 
 import com.google.common.base.Objects;
@@ -13,7 +20,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -226,18 +232,14 @@ public class DocCompilerMain {
     try {
       SpecResultParser _specResultParser = new SpecResultParser();
       final SpecResultParser specResultParser = _specResultParser;
-      final Function1<File,Boolean> _function = new Function1<File,Boolean>() {
-          public Boolean apply(final File it) {
+      final FileFilter _function = new FileFilter() {
+          public boolean accept(final File it) {
             String _name = it.getName();
             boolean _endsWith = _name.endsWith("xml");
             return _endsWith;
           }
         };
-      File[] _listFiles = reportFolder.listFiles(new FileFilter() {
-          public boolean accept(File pathname) {
-            return _function.apply(pathname);
-          }
-      });
+      File[] _listFiles = reportFolder.listFiles(_function);
       for (final File file : _listFiles) {
         {
           FileInputStream is = null;
@@ -250,7 +252,7 @@ public class DocCompilerMain {
           }
         }
       }
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

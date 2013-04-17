@@ -355,3 +355,21 @@ Feature: References for steps
 			Given an extension                      
 		'''
 		Then it should execute successfully
+		
+		
+	Scenario: Ordering in step references
+		Given a feature
+		'''
+		Feature: Ordering of step references
+ 
+		Scenario: First
+			CharSequence jnarioFile
+			Then it should execute successfully
+				jnarioFile = ""
+				
+		Scenario: Second
+			When I have a scenario with a field
+				jnarioFile = ""
+		 	Then it should execute successfully
+		'''
+		Then it should execute successfully

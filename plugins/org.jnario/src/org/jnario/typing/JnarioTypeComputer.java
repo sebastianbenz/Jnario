@@ -42,8 +42,7 @@ public class JnarioTypeComputer extends XtendTypeComputer {
 	}
 	
 	private void _computeType(ShouldThrow expression, ITypeComputationState state) {
-		LightweightTypeReference throwable = getTypeForName(Throwable.class, state);
-		ITypeComputationState expressionState = state.withExpectation(throwable);
+		ITypeComputationState expressionState = state.withoutExpectation();
 		expressionState.computeTypes(expression.getExpression());
 		state.acceptActualType(getPrimitiveVoid(state), ConformanceHint.NO_IMPLICIT_RETURN);
 	}

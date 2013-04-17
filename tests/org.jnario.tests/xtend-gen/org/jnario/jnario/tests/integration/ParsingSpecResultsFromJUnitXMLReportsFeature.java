@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
 
 @Contains({ ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpecRuns.class, ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingFailedSpecRuns.class })
 @Named("Parsing spec results from JUnit XML reports")
-@CreateWith(value = SpecTestCreator.class)
-@SuppressWarnings("all")
+@CreateWith(SpecTestCreator.class)
 @RunWith(FeatureRunner.class)
+@SuppressWarnings("all")
 public class ParsingSpecResultsFromJUnitXMLReportsFeature {
 }

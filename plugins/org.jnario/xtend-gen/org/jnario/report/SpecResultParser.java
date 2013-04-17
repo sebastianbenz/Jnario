@@ -50,7 +50,7 @@ public class SpecResultParser extends DefaultHandler {
       final SAXParserFactory factory = SAXParserFactory.newInstance();
       final SAXParser saxParser = factory.newSAXParser();
       saxParser.parse(stream, this);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

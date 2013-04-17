@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.suite.unit;
 
 import java.util.List;
@@ -17,13 +24,13 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("evaluates regular expressions")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpec {
   @Test
   @Named("example 1")
-  @Order(3)
+  @Order(1)
   public void _example1() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -52,7 +59,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   
   @Test
   @Named("example 2")
-  @Order(4)
+  @Order(2)
   public void _example2() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -80,13 +87,13 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   @Test
   @Ignore
   @Named("returns empty list on null input [PENDING]")
-  @Order(5)
+  @Order(3)
   public void _returnsEmptyListOnNullInput() throws Exception {
   }
   
   @Test
   @Named("ignores unresolved elements")
-  @Order(6)
+  @Order(4)
   public void _ignoresUnresolvedElements() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -103,7 +110,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   
   @Test
   @Named("ignores containing suite")
-  @Order(7)
+  @Order(5)
   public void _ignoresContainingSuite() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");
@@ -132,7 +139,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
   
   @Test
   @Named("orders specs alphabetically")
-  @Order(8)
+  @Order(6)
   public void _ordersSpecsAlphabetically() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package demo");

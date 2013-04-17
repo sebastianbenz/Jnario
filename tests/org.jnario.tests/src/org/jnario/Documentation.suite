@@ -28,7 +28,6 @@ import org.jnario.spec.tests.integration.*
 ##Getting Started
 
 Learn how to write specifications in Jnario. 
-
 	- "Introducing Jnario Features":  how to write cucumber\-style executables 
 	     acceptance specifications.
 	- "Introducing Jnario Specs":  how to write specifications.

@@ -15,6 +15,7 @@ import org.eclipse.jface.text.rules.ITokenScanner;
 import org.eclipse.jface.text.source.DefaultCharacterPairMatcher;
 import org.eclipse.jface.text.source.IAnnotationHover;
 import org.eclipse.jface.text.source.ICharacterPairMatcher;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
@@ -45,6 +46,7 @@ import org.eclipse.xtend.ide.outline.ShowSyntheticMembersContribution;
 import org.eclipse.xtend.ide.outline.XtendOutlineNodeComparator;
 import org.eclipse.xtend.ide.outline.XtendOutlinePage;
 import org.eclipse.xtend.ide.outline.XtendQuickOutlineFilterAndSorter;
+import org.eclipse.xtend.ide.quickfix.CreateXtendTypeQuickfixes;
 import org.eclipse.xtend.ide.refactoring.XtendDependentElementsCalculator;
 import org.eclipse.xtend.ide.refactoring.XtendJdtRenameParticipantProcessor;
 import org.eclipse.xtend.ide.refactoring.XtendRefactoringPreferences;
@@ -124,10 +126,12 @@ import org.jnario.feature.ui.highlighting.FeatureSemanticHighlightingCalculator;
 import org.jnario.feature.ui.highlighting.FeatureTokenHighlighting;
 import org.jnario.feature.ui.hover.FeatureHoverProvider;
 import org.jnario.feature.ui.hover.FeatureHoverSignatureProvider;
+import org.jnario.feature.ui.labeling.FeatureLabelProvider;
 import org.jnario.feature.ui.launching.FeatureJavaElementDelegate;
 import org.jnario.feature.ui.parser.CustomFeatureLexer;
 import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
+import org.jnario.ui.quickfix.CreateJnarioTypeQuickfixes;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -203,6 +207,7 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 		super.configure(binder);
 		binder.bind(XtextEditor.class).to(FeatureEditor.class);
 		binder.bind(DefaultIndentLineAutoEditStrategy.class).to(FeatureIndentLineAutoEditStrategy.class);
+		binder.bind(CreateXtendTypeQuickfixes.class).to(CreateJnarioTypeQuickfixes.class);
 	}
 
 	public void configureDebugMode(Binder binder) {
@@ -448,6 +453,11 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 
 	public Class<? extends DocumentTokenSource> bindDocumentTokenSource(){
 		return XtendDocumentTokenSource.class;
+	}
+	
+	@Override
+	public Class<? extends ILabelProvider> bindILabelProvider() {
+		return FeatureLabelProvider.class;
 	}
 	
 }

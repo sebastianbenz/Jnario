@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.documentation;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -56,9 +63,9 @@ import org.junit.runner.RunWith;
  * You will see the result of the run and it will be green. Since the steps from scenario are not implemented
  * yet all the steps will be marked as _PENDING_ as a reminder that there is still work to do.
  */
-@SuppressWarnings("all")
 @Named("How to write a Feature?")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class IntroducingJnarioFeaturesHowToWriteAFeatureSpec extends IntroducingJnarioFeaturesSpec {
   /**
    * @filter('''|.isSuccessful)

@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeReferences;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.jvmmodel.JUnit3RuntimeSupport;
 import org.jnario.jvmmodel.JUnit4RuntimeSupport;
 import org.jnario.jvmmodel.TestRuntimeSupport;
@@ -21,6 +22,7 @@ public class TestRuntimeProvider {
   
   private final static String JUNIT4_CLASS = "org.junit.rules.TestRule";
   
+  @Extension
   private TypeReferences typeReferences;
   
   @Inject

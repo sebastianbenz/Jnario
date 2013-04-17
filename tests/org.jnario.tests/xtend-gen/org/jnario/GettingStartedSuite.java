@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
 @Named("Getting Started")
 @Contains({ _20FactsAboutXtendSpec.class, IntroducingJnarioFeaturesSpec.class, IntroducingJnarioSpecsSpec.class, IntroducingJnarioSuitesSpec.class })
-@SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class GettingStartedSuite {
 }

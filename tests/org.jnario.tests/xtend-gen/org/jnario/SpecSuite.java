@@ -33,7 +33,7 @@ import org.junit.runner.RunWith;
 
 @Named("Spec")
 @Contains({ AnnotationsSpec.class, AssertionSpec.class, CompilerSpec.class, CustomizingTheSpecCreationSpec.class, DefiningSpecBaseClassesSpec.class, ExampleSpec.class, ExampleGroupSpec.class, ExampleNameProviderSpec.class, ImplicitSubjectSpec.class, IntroducingJnarioSpecsSpec.class, MockingSpec.class, OperationNameProviderSpec.class, PendingSpec.class, SetupTeardownSpec.class, SpecExtensionsSpec.class, SpecDocGeneratorSpec.class, SpecExecutableProviderSpec.class, SpecJavaValidatorSpec.class, SpecQualifiedNameProviderSpec.class, SpecScopeProviderSpec.class, StaticImportsSpec.class, ThrowsSpec.class, UsingJUnitRulesInSpecsSpec.class, UsingShouldSpec.class, UsingTablesSpec.class, UsingXtendSWithOperatorSpec.class })
-@SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class SpecSuite {
 }

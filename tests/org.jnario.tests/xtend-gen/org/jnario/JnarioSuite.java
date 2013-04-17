@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
 @Named("Jnario")
 @Contains({ CommonSuite.class, SuiteSuite.class, FeatureSuite.class, SpecSuite.class })
-@SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class JnarioSuite {
 }

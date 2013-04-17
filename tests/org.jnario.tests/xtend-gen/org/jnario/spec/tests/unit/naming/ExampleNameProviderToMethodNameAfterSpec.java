@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.unit.naming;
 
 import java.util.ArrayList;
@@ -18,16 +25,16 @@ import org.jnario.spec.tests.unit.naming.ExampleNameProviderSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("toMethodName[After]")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProviderSpec {
   @Subject
   public ExampleNameProvider subject;
   
   @Test
   @Named("should convert after description to camel case starting in lowercase")
-  @Order(23)
+  @Order(1)
   public void _shouldConvertAfterDescriptionToCamelCaseStartingInLowercase() throws Exception {
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
       "after \'my example\'", 
@@ -48,7 +55,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   
   @Test
   @Named("should use after as default name")
-  @Order(24)
+  @Order(2)
   public void _shouldUseAfterAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("after{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "after");
@@ -59,7 +66,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   
   @Test
   @Named("should use afterAll as default name")
-  @Order(25)
+  @Order(3)
   public void _shouldUseAfterAllAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("after all{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "afterAll");
@@ -70,7 +77,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   
   @Test
   @Named("should enumerate after without description")
-  @Order(26)
+  @Order(4)
   public void _shouldEnumerateAfterWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName("after{}\r\n                 after{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "after2");
@@ -81,7 +88,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   
   @Test
   @Named("should enumerate nested after without description")
-  @Order(27)
+  @Order(5)
   public void _shouldEnumerateNestedAfterWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName(
       "after{}\r\n                 context{\r\n                   after{}\r\n                 }");
@@ -93,7 +100,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   
   @Test
   @Named("should enumerate nested after all without description")
-  @Order(28)
+  @Order(6)
   public void _shouldEnumerateNestedAfterAllWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName(
       "after all{}\r\n                 context{\r\n                   after all{}\r\n                 }");
@@ -105,7 +112,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   
   @Test
   @Named("nested after and after all keep their default name")
-  @Order(29)
+  @Order(7)
   public void _nestedAfterAndAfterAllKeepTheirDefaultName() throws Exception {
     String _secondMethodName = this.secondMethodName(
       "after{}\r\n                 context{\r\n                   after all{}\r\n                 }");

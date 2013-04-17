@@ -10,6 +10,7 @@ package org.jnario.spec.ui.outline;
 import static com.google.common.collect.Iterables.filter;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtend.ide.outline.XtendFeatureNode;
 import org.eclipse.xtend.ide.outline.XtendOutlineTreeProvider;
@@ -18,7 +19,11 @@ import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmFeature;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.EObjectNode;
+import org.jnario.ExampleCell;
+import org.jnario.ExampleTable;
 import org.jnario.spec.spec.ExampleGroup;
+
+import com.google.inject.Inject;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -26,6 +31,9 @@ import org.jnario.spec.spec.ExampleGroup;
 @SuppressWarnings("restriction")
 public class SpecOutlineTreeProvider extends XtendOutlineTreeProvider {
 
+	@Inject
+	private IXtendJvmAssociations associations;
+	
 	@Override
 	protected void createFeatureNodes(IOutlineNode parentNode,
 			XtendTypeDeclaration xtendClass) {
@@ -44,6 +52,13 @@ public class SpecOutlineTreeProvider extends XtendOutlineTreeProvider {
 			JvmDeclaredType inferredType, JvmFeature jvmFeature,
 			EObject semanticFeature) {
 		if(jvmFeature instanceof JvmConstructor){
+			return null;
+		}
+		EObject sourceElement = associations.getPrimarySourceElement(jvmFeature);
+		if(sourceElement instanceof ExampleCell){
+			return null;
+		}
+		if(sourceElement instanceof ExampleTable){
 			return null;
 		}
 		return super.createNodeForFeature(parentNode, inferredType, jvmFeature,

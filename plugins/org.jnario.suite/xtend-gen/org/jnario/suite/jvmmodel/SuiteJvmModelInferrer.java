@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.suite.jvmmodel;
 
 import com.google.common.base.Objects;
@@ -14,6 +21,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -33,18 +41,23 @@ import org.jnario.suite.suite.SuiteFile;
 @SuppressWarnings("all")
 public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
   @Inject
+  @Extension
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
   
   @Inject
+  @Extension
   private SuiteClassNameProvider _suiteClassNameProvider;
   
   @Inject
+  @Extension
   private SpecResolver _specResolver;
   
   @Inject
+  @Extension
   private TypeReferences types;
   
   @Inject
+  @Extension
   private SuiteNodeBuilder _suiteNodeBuilder;
   
   public void doInfer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
@@ -69,14 +82,14 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
       String _qualifiedJavaClassName = this._suiteClassNameProvider.toQualifiedJavaClassName(suite);
       final JvmGenericType suiteClass = this._extendedJvmTypesBuilder.toClass(suite, _qualifiedJavaClassName);
       List<SuiteNode> _children = node.getChildren();
-      final Function1<SuiteNode,JvmGenericType> _function = new Function1<SuiteNode,JvmGenericType>() {
-          public JvmGenericType apply(final SuiteNode it) {
-            JvmGenericType _infer = SuiteJvmModelInferrer.this.infer(it, acceptor);
+      final Function1<SuiteNode,Object> _function = new Function1<SuiteNode,Object>() {
+          public Object apply(final SuiteNode it) {
+            Object _infer = SuiteJvmModelInferrer.this.infer(it, acceptor);
             return _infer;
           }
         };
-      List<JvmGenericType> _map = ListExtensions.<SuiteNode, JvmGenericType>map(_children, _function);
-      final Set<JvmGenericType> subSuites = IterableExtensions.<JvmGenericType>toSet(_map);
+      List<Object> _map = ListExtensions.<SuiteNode, Object>map(_children, _function);
+      final Set<Object> subSuites = IterableExtensions.<Object>toSet(_map);
       IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(suiteClass);
       final Procedure1<JvmGenericType> _function_1 = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
@@ -85,7 +98,7 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
             JvmAnnotationReference _annotation = SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(suite, Named.class, _describe);
             SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
             Iterable<JvmType> _children = SuiteJvmModelInferrer.this.children(suite);
-            final Iterable<JvmType> children = Iterables.<JvmType>concat(_children, subSuites);
+            final Iterable<Object> children = Iterables.<Object>concat(_children, subSuites);
             boolean _isEmpty = IterableExtensions.isEmpty(children);
             boolean _not = (!_isEmpty);
             if (_not) {

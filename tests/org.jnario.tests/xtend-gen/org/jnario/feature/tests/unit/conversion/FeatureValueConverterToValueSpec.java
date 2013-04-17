@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.tests.unit.conversion;
 
 import org.hamcrest.CoreMatchers;
@@ -12,9 +19,9 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("toValue")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class FeatureValueConverterToValueSpec extends FeatureValueConverterSpec {
   @Test
   @Named("subject.toValue[\\\"Prefix: text\\\\n\\\", null] should be \\\"text\\\"")
@@ -33,8 +40,8 @@ public class FeatureValueConverterToValueSpec extends FeatureValueConverterSpec 
   @Order(2)
   public void _subjectToValueNullNullShouldBeNull() throws Exception {
     String _value = this.subject.toValue(null, null);
-    Matcher<String> _nullValue = CoreMatchers.<String>nullValue();
-    boolean _should_be = Should.<String>should_be(_value, _nullValue);
+    Matcher<Object> _nullValue = CoreMatchers.<Object>nullValue();
+    boolean _should_be = Should.should_be(_value, _nullValue);
     Assert.assertTrue("\nExpected subject.toValue(null, null) should be null but"
      + "\n     subject.toValue(null, null) is " + new StringDescription().appendValue(_value).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _should_be);

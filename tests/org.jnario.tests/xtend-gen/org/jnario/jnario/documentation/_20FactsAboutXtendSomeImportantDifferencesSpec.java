@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.documentation;
 
 import java.util.Collections;
@@ -13,9 +20,9 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("Some important differences")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class _20FactsAboutXtendSomeImportantDifferencesSpec extends _20FactsAboutXtendSpec {
   /**
    * Static class members are accessed via `::` and not `.` like in Java.
@@ -25,7 +32,7 @@ public class _20FactsAboutXtendSomeImportantDifferencesSpec extends _20FactsAbou
    */
   @Test
   @Named("Accessing static members differs from Java")
-  @Order(6)
+  @Order(1)
   public void _accessingStaticMembersDiffersFromJava() throws Exception {
     final List<String> colors = JnarioCollectionLiterals.<String>list("red", "blue", "green");
     Collections.<String>sort(colors);
@@ -46,7 +53,7 @@ public class _20FactsAboutXtendSomeImportantDifferencesSpec extends _20FactsAbou
    */
   @Test
   @Named("...as well as accessing types")
-  @Order(7)
+  @Order(2)
   public void _asWellAsAccessingTypes() throws Exception {
     String _name = String.class.getName();
     boolean _doubleArrow = Should.operator_doubleArrow(_name, "java.lang.String");
@@ -61,7 +68,7 @@ public class _20FactsAboutXtendSomeImportantDifferencesSpec extends _20FactsAbou
    */
   @Test
   @Named("Casts have a different syntax")
-  @Order(8)
+  @Order(3)
   public void _castsHaveADifferentSyntax() throws Exception {
     final Object obj = "a string";
     final String s = ((String) obj);

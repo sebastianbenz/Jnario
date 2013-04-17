@@ -1,7 +1,0 @@
-package org.jnario
-
-import org.jnario.feature.tests.integration.*
-
-#Current
-
-- "References for steps"

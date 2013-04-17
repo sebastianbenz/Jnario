@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.documentation;
 
 import org.jnario.jnario.documentation.InstallingJnarioSpec;
@@ -17,8 +24,8 @@ import org.junit.runner.RunWith;
  *  If you do not yet have an Eclipse on your machine, you can download one of the pre-packaged
  * [Xtend distributions](http://www.eclipse.org/xtend/download.html).
  */
-@SuppressWarnings("all")
 @Named("Installing the Eclipse Tooling")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class InstallingJnarioInstallingTheEclipseToolingSpec extends InstallingJnarioSpec {
 }

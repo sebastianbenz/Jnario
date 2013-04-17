@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.tests.unit.jnario;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -11,13 +18,13 @@ import org.jnario.util.Strings;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("endsWith")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class StringsEndsWithSpec extends StringsSpec {
   @Test
   @Named("assert \\\'\\\'\\\'hello\\\'\\\'\\\'.endsWith[\\\'\\\'\\\'lo\\\'\\\'\\\']")
-  @Order(5)
+  @Order(1)
   public void _assertHelloEndsWithLo() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("hello");
@@ -32,7 +39,7 @@ public class StringsEndsWithSpec extends StringsSpec {
   
   @Test
   @Named("assert !\\\'\\\'\\\'hello\\\'\\\'\\\'.endsWith[\\\'\\\'\\\'he\\\'\\\'\\\']")
-  @Order(6)
+  @Order(2)
   public void _assertHelloEndsWithHe() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("hello");
@@ -49,7 +56,7 @@ public class StringsEndsWithSpec extends StringsSpec {
   
   @Test
   @Named("assert !\\\'\\\'\\\'short\\\'\\\'\\\'.endsWith[\\\'\\\'\\\'longer\\\'\\\'\\\']")
-  @Order(7)
+  @Order(3)
   public void _assertShortEndsWithLonger() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("short");

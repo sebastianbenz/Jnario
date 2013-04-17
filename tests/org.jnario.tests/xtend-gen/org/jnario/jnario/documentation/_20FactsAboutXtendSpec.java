@@ -1,10 +1,16 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.documentation;
 
 import com.google.common.base.Objects;
 import java.util.Iterator;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.jnario.documentation._20FactsAboutXtendAModernizedJavaSpec;
 import org.jnario.jnario.documentation._20FactsAboutXtendFunctionalProgrammingFTWSpec;
@@ -27,22 +33,18 @@ import org.junit.runner.RunWith;
  * by clicking on **source** in the upper right corner.
  */
 @Contains({ _20FactsAboutXtendAModernizedJavaSpec.class, _20FactsAboutXtendSomeImportantDifferencesSpec.class, _20FactsAboutXtendTheUberSwitchExpressionSpec.class, _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec.class, _20FactsAboutXtendFunctionalProgrammingFTWSpec.class })
-@SuppressWarnings("all")
 @Named("20 Facts about Xtend")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class _20FactsAboutXtendSpec {
   public <T extends Object> Iterable<T> iterable(final T... elements) {
-    final Function0<Iterator<T>> _function = new Function0<Iterator<T>>() {
-        public Iterator<T> apply() {
+    final Iterable<T> _function = new Iterable<T>() {
+        public Iterator<T> iterator() {
           Iterator<T> _iterator = ((List<T>)Conversions.doWrapArray(elements)).iterator();
           return _iterator;
         }
       };
-    return new Iterable<T>() {
-        public Iterator<T> iterator() {
-          return _function.apply();
-        }
-    };
+    return _function;
   }
   
   public <T extends Object> boolean operator_doubleArrow(final Iterable<T> actual, final Iterable<T> expected) {

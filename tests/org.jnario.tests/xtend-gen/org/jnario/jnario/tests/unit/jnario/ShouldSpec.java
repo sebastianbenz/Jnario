@@ -1,7 +1,15 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.tests.unit.jnario;
 
 import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.hamcrest.StringDescription;
 import org.jnario.Should;
 import org.jnario.jnario.test.util.BehaviorExecutor;
@@ -11,23 +19,24 @@ import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.lib.Assert;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("Should")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = SpecTestCreator.class)
+@CreateWith(SpecTestCreator.class)
+@SuppressWarnings("all")
 public class ShouldSpec {
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ModelStore _modelStore;
   
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public BehaviorExecutor _behaviorExecutor;
   
   @Test
@@ -153,6 +162,26 @@ public class ShouldSpec {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("fact list(\"red\").toArray => list(\"red\").toArray");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
+  }
+  
+  @Test
+  @Named("infers throws type")
+  @Order(8)
+  public void _infersThrowsType() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.*");
+    _builder.newLine();
+    _builder.append("describe \"Test\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact new Stack<String>().pop should throw EmptyStackException");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact new Stack<String>().pop throws EmptyStackException");
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();

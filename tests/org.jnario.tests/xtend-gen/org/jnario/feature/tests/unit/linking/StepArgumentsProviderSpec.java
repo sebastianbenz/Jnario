@@ -1,8 +1,16 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.tests.unit.linking;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.List;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
@@ -11,6 +19,7 @@ import org.eclipse.xtext.linking.lazy.LazyLinkingResource;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.util.StringInputStream;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
@@ -23,7 +32,6 @@ import org.jnario.jnario.test.util.Features;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
-import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
@@ -34,10 +42,10 @@ import org.jnario.runner.Subject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("StepArgumentsProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = FeatureTestCreator.class)
+@CreateWith(FeatureTestCreator.class)
+@SuppressWarnings("all")
 public class StepArgumentsProviderSpec {
   @Subject
   public StepArgumentsProvider subject;
@@ -46,34 +54,122 @@ public class StepArgumentsProviderSpec {
   LazyLinkingResource resource;
   
   public ExampleTable<StepArgumentsProviderSpecExamples> _initStepArgumentsProviderSpecExamples() {
-    
-    List<Object> _list = JnarioCollectionLiterals.<Object>list();
-    List<String> _list_1 = JnarioCollectionLiterals.<String>list("hello");
-    List<String> _list_2 = JnarioCollectionLiterals.<String>list("hello", "world");
-    List<String> _list_3 = JnarioCollectionLiterals.<String>list("hello", "world");
-    List<String> _list_4 = JnarioCollectionLiterals.<String>list("\"hello\"");
-    List<String> _list_5 = JnarioCollectionLiterals.<String>list("hello");
-    List<String> _list_6 = JnarioCollectionLiterals.<String>list("hello \'nested\' ");
-    List<String> _list_7 = JnarioCollectionLiterals.<String>list("hello");
-    List<Object> _list_8 = JnarioCollectionLiterals.<Object>list();
-    List<Object> _list_9 = JnarioCollectionLiterals.<Object>list();
-    List<Object> _list_10 = JnarioCollectionLiterals.<Object>list();return ExampleTable.create("examples", 
-      java.util.Arrays.asList("step", "expectedArgs"), 
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given no values\'", "list()"), "Given no values", _list),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\"\'", "list(\"hello\")"), "Given \"hello\"", _list_1),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\" and \"world\"\'", "list(\"hello\", \"world\")"), "Given \"hello\" and \"world\"", _list_2),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given \"hello\" and \"world\"\'", "list(\"hello\", \"world\")"), "Given \"hello\" and \"world\"", _list_3),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\'Given an escaped quote in \"\\\\\\\"hello\\\\\\\"\"\'", "list(\'\"hello\"\')"), "Given an escaped quote in \"\\\"hello\\\"\"", _list_4),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\'\'\'hello\'\'\'\"", "list(\"hello\")"), "Given a multiline \n\'\'\'hello\'\'\'", _list_5),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\'\'\'hello \'nested\' \'\'\'\"", "list(\"hello \'nested\' \")"), "Given a multiline \n\'\'\'hello \'nested\' \'\'\'", _list_6),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\\t\\t\'\'\'hello\'\'\'\"", "list(\"hello\")"), "Given a multiline \n\t\t\'\'\'hello\'\'\'", _list_7),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n 1+1 => 2 \'\'\'hello\'\'\'\"", "list()"), "Given a multiline \n 1+1 => 2 \'\'\'hello\'\'\'", _list_8),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\\t\\t\'\'\'hello\"", "list()"), "Given a multiline \n\t\t\'\'\'hello", _list_9),
-      new StepArgumentsProviderSpecExamples(  java.util.Arrays.asList("\"Given a multiline \\n\\t\\t\'\'\'\"", "list()"), "Given a multiline \n\t\t\'\'\'", _list_10)
+    return ExampleTable.create("examples", 
+      Arrays.asList("step", "expectedArgs"), 
+      new StepArgumentsProviderSpecExamples(  Arrays.asList("\'Given no values\'", "list()"), _initStepArgumentsProviderSpecExamplesCell0(), _initStepArgumentsProviderSpecExamplesCell1()),
+      new StepArgumentsProviderSpecExamples(  Arrays.asList("\'Given \"hello\"\'", "list(\"hello\")"), _initStepArgumentsProviderSpecExamplesCell2(), _initStepArgumentsProviderSpecExamplesCell3()),
+      new StepArgumentsProviderSpecExamples(  Arrays.asList("\'Given \"hello\" and \"world\"\'", "list(\"hello\", \"world\")"), _initStepArgumentsProviderSpecExamplesCell4(), _initStepArgumentsProviderSpecExamplesCell5()),
+      new StepArgumentsProviderSpecExamples(  Arrays.asList("\'Given \"hello\" and \"world\"\'", "list(\"hello\", \"world\")"), _initStepArgumentsProviderSpecExamplesCell6(), _initStepArgumentsProviderSpecExamplesCell7()),
+      new StepArgumentsProviderSpecExamples(  Arrays.asList("\'Given an escaped quote in \"\\\\\\\"hello\\\\\\\"\"\'", "list(\'\"hello\"\')"), _initStepArgumentsProviderSpecExamplesCell8(), _initStepArgumentsProviderSpecExamplesCell9()),
+      new StepArgumentsProviderSpecExamples(  Arrays.asList("\"Given a multiline \\n\'\'\'hello\'\'\'\"", "list(\"hello\")"), _initStepArgumentsProviderSpecExamplesCell10(), _initStepArgumentsProviderSpecExamplesCell11()),
+      new StepArgumentsProviderSpecExamples(  Arrays.asList("\"Given a multiline \\n\'\'\'hello \'nested\' \'\'\'\"", "list(\"hello \'nested\' \")"), _initStepArgumentsProviderSpecExamplesCell12(), _initStepArgumentsProviderSpecExamplesCell13()),
+      new StepArgumentsProviderSpecExamples(  Arrays.asList("\"Given a multiline \\n\\t\\t\'\'\'hello\'\'\'\"", "list(\"hello\")"), _initStepArgumentsProviderSpecExamplesCell14(), _initStepArgumentsProviderSpecExamplesCell15()),
+      new StepArgumentsProviderSpecExamples(  Arrays.asList("\"Given a multiline \\n 1+1 => 2 \'\'\'hello\'\'\'\"", "list()"), _initStepArgumentsProviderSpecExamplesCell16(), _initStepArgumentsProviderSpecExamplesCell17()),
+      new StepArgumentsProviderSpecExamples(  Arrays.asList("\"Given a multiline \\n\\t\\t\'\'\'hello\"", "list()"), _initStepArgumentsProviderSpecExamplesCell18(), _initStepArgumentsProviderSpecExamplesCell19()),
+      new StepArgumentsProviderSpecExamples(  Arrays.asList("\"Given a multiline \\n\\t\\t\'\'\'\"", "list()"), _initStepArgumentsProviderSpecExamplesCell20(), _initStepArgumentsProviderSpecExamplesCell21())
     );
   }
   
   protected ExampleTable<StepArgumentsProviderSpecExamples> examples = _initStepArgumentsProviderSpecExamples();
+  
+  public String _initStepArgumentsProviderSpecExamplesCell0() {
+    return "Given no values";
+  }
+  
+  public List<Object> _initStepArgumentsProviderSpecExamplesCell1() {
+    List<Object> _list = JnarioCollectionLiterals.<Object>list();
+    return _list;
+  }
+  
+  public String _initStepArgumentsProviderSpecExamplesCell2() {
+    return "Given \"hello\"";
+  }
+  
+  public List<String> _initStepArgumentsProviderSpecExamplesCell3() {
+    List<String> _list = JnarioCollectionLiterals.<String>list("hello");
+    return _list;
+  }
+  
+  public String _initStepArgumentsProviderSpecExamplesCell4() {
+    return "Given \"hello\" and \"world\"";
+  }
+  
+  public List<String> _initStepArgumentsProviderSpecExamplesCell5() {
+    List<String> _list = JnarioCollectionLiterals.<String>list("hello", "world");
+    return _list;
+  }
+  
+  public String _initStepArgumentsProviderSpecExamplesCell6() {
+    return "Given \"hello\" and \"world\"";
+  }
+  
+  public List<String> _initStepArgumentsProviderSpecExamplesCell7() {
+    List<String> _list = JnarioCollectionLiterals.<String>list("hello", "world");
+    return _list;
+  }
+  
+  public String _initStepArgumentsProviderSpecExamplesCell8() {
+    return "Given an escaped quote in \"\\\"hello\\\"\"";
+  }
+  
+  public List<String> _initStepArgumentsProviderSpecExamplesCell9() {
+    List<String> _list = JnarioCollectionLiterals.<String>list("\"hello\"");
+    return _list;
+  }
+  
+  public String _initStepArgumentsProviderSpecExamplesCell10() {
+    return "Given a multiline \n\'\'\'hello\'\'\'";
+  }
+  
+  public List<String> _initStepArgumentsProviderSpecExamplesCell11() {
+    List<String> _list = JnarioCollectionLiterals.<String>list("hello");
+    return _list;
+  }
+  
+  public String _initStepArgumentsProviderSpecExamplesCell12() {
+    return "Given a multiline \n\'\'\'hello \'nested\' \'\'\'";
+  }
+  
+  public List<String> _initStepArgumentsProviderSpecExamplesCell13() {
+    List<String> _list = JnarioCollectionLiterals.<String>list("hello \'nested\' ");
+    return _list;
+  }
+  
+  public String _initStepArgumentsProviderSpecExamplesCell14() {
+    return "Given a multiline \n\t\t\'\'\'hello\'\'\'";
+  }
+  
+  public List<String> _initStepArgumentsProviderSpecExamplesCell15() {
+    List<String> _list = JnarioCollectionLiterals.<String>list("hello");
+    return _list;
+  }
+  
+  public String _initStepArgumentsProviderSpecExamplesCell16() {
+    return "Given a multiline \n 1+1 => 2 \'\'\'hello\'\'\'";
+  }
+  
+  public List<Object> _initStepArgumentsProviderSpecExamplesCell17() {
+    List<Object> _list = JnarioCollectionLiterals.<Object>list();
+    return _list;
+  }
+  
+  public String _initStepArgumentsProviderSpecExamplesCell18() {
+    return "Given a multiline \n\t\t\'\'\'hello";
+  }
+  
+  public List<Object> _initStepArgumentsProviderSpecExamplesCell19() {
+    List<Object> _list = JnarioCollectionLiterals.<Object>list();
+    return _list;
+  }
+  
+  public String _initStepArgumentsProviderSpecExamplesCell20() {
+    return "Given a multiline \n\t\t\'\'\'";
+  }
+  
+  public List<Object> _initStepArgumentsProviderSpecExamplesCell21() {
+    List<Object> _list = JnarioCollectionLiterals.<Object>list();
+    return _list;
+  }
   
   @Test
   @Named("extracts arguments from step descriptions")
@@ -81,16 +177,18 @@ public class StepArgumentsProviderSpec {
   public void _extractsArgumentsFromStepDescriptions() throws Exception {
     final Procedure1<StepArgumentsProviderSpecExamples> _function = new Procedure1<StepArgumentsProviderSpecExamples>() {
         public void apply(final StepArgumentsProviderSpecExamples it) {
-          Step _create = StepArgumentsProviderSpec.this.create(it.step);
+          String _step = it.getStep();
+          Step _create = StepArgumentsProviderSpec.this.create(_step);
           final List<String> foundArgs = StepArgumentsProviderSpec.this.subject.findStepArguments(_create);
-          boolean _doubleArrow = Should.operator_doubleArrow(foundArgs, it.expectedArgs);
+          List<? extends Object> _expectedArgs = it.getExpectedArgs();
+          boolean _doubleArrow = Should.operator_doubleArrow(foundArgs, _expectedArgs);
           Assert.assertTrue("\nExpected foundArgs => expectedArgs but"
            + "\n     foundArgs is " + new StringDescription().appendValue(foundArgs).toString()
-           + "\n     expectedArgs is " + new StringDescription().appendValue(it.expectedArgs).toString() + "\n", _doubleArrow);
+           + "\n     expectedArgs is " + new StringDescription().appendValue(_expectedArgs).toString() + "\n", _doubleArrow);
           
         }
       };
-    ExampleTableIterators.<StepArgumentsProviderSpecExamples>forEach(this.examples, _function);
+    IterableExtensions.<StepArgumentsProviderSpecExamples>forEach(this.examples, _function);
   }
   
   @Test
@@ -127,7 +225,7 @@ public class StepArgumentsProviderSpec {
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
       _builder.newLine();
-      final CharSequence scenario = _builder;
+      final String scenario = _builder.toString();
       IParser _parser = this.resource.getParser();
       String _string = scenario.toString();
       StringInputStream _stringInputStream = new StringInputStream(_string);

@@ -2,6 +2,7 @@ package org.jnario.jnario.tests.unit.report;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.hamcrest.StringDescription;
 import org.jnario.Executable;
@@ -30,7 +31,6 @@ import org.jnario.report.SpecFailure;
 import org.jnario.runner.Contains;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
@@ -39,10 +39,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @Contains({ HashBasedSpec2ResultMappingExampleSpec.class, HashBasedSpec2ResultMappingExampleGroupSpec.class, HashBasedSpec2ResultMappingStepSpec.class, HashBasedSpec2ResultMappingScenarioSpec.class, HashBasedSpec2ResultMappingFeatureSpec.class, HashBasedSpec2ResultMappingBackgroundSpec.class, HashBasedSpec2ResultMappingSuiteSpec.class })
-@SuppressWarnings("all")
 @Named("HashBasedSpec2ResultMapping")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = SpecTestCreator.class)
+@CreateWith(SpecTestCreator.class)
+@SuppressWarnings("all")
 public class HashBasedSpec2ResultMappingSpec {
   @Subject
   public HashBasedSpec2ResultMapping subject;
@@ -53,6 +53,7 @@ public class HashBasedSpec2ResultMappingSpec {
   
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ModelStore m;
   
   final static double anyExecutionTime = 0.0;

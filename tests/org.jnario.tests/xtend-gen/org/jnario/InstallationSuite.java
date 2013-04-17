@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @Named("Installation")
 @Contains(InstallingJnarioSpec.class)
-@SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class InstallationSuite {
 }

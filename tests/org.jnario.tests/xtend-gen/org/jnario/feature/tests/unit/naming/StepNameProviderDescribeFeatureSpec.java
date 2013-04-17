@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.tests.unit.naming;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -13,13 +20,13 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("^describe[Feature]")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class StepNameProviderDescribeFeatureSpec extends StepNameProviderSpec {
   @Test
   @Named("removes multilines parameters")
-  @Order(6)
+  @Order(1)
   public void _removesMultilinesParameters() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Scenario: MyScenario 2");
@@ -43,7 +50,7 @@ public class StepNameProviderDescribeFeatureSpec extends StepNameProviderSpec {
   
   @Test
   @Named("feature[\\\" With whitespace \\\"].desc =>  \\\"With whitespace\\\"")
-  @Order(7)
+  @Order(2)
   public void _featureWithWhitespaceDescWithWhitespace() throws Exception {
     Feature _feature = Features.feature(" With whitespace ");
     String _desc = this.desc(_feature);
@@ -56,7 +63,7 @@ public class StepNameProviderDescribeFeatureSpec extends StepNameProviderSpec {
   
   @Test
   @Named("feature[\\\"With [parentheses]\\\"].desc =>  \\\"With [parentheses]\\\"")
-  @Order(8)
+  @Order(3)
   public void _featureWithParenthesesDescWithParentheses() throws Exception {
     Feature _feature = Features.feature("With (parentheses)");
     String _desc = this.desc(_feature);

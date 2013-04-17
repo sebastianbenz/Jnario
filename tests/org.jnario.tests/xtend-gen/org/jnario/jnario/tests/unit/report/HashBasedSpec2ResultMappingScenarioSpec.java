@@ -18,10 +18,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("Scenario")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = FeatureTestCreator.class)
+@CreateWith(FeatureTestCreator.class)
+@SuppressWarnings("all")
 public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2ResultMappingSpec {
   @Before
   public void before() throws Exception {
@@ -47,7 +47,7 @@ public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2Resul
   
   @Test
   @Named("returns **Passed** if all children passed")
-  @Order(17)
+  @Order(1)
   public void _returnsPassedIfAllChildrenPassed() throws Exception {
     this.passedStep("Given my Step");
     this.passedStep("And other Step");
@@ -62,7 +62,7 @@ public class HashBasedSpec2ResultMappingScenarioSpec extends HashBasedSpec2Resul
   
   @Test
   @Named("returns **Failed** if one child failed")
-  @Order(18)
+  @Order(2)
   public void _returnsFailedIfOneChildFailed() throws Exception {
     this.passedStep("Given my Step");
     this.failedStep("And other Step");

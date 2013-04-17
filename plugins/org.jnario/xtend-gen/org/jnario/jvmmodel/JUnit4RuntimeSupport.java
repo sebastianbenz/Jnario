@@ -10,6 +10,7 @@ import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.Executable;
 import org.jnario.Specification;
 import org.jnario.jvmmodel.TestRuntimeSupport;
@@ -27,6 +28,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 public class JUnit4RuntimeSupport implements TestRuntimeSupport {
   @Inject
+  @Extension
   private JvmTypesBuilder _jvmTypesBuilder;
   
   public void addChildren(final Specification context, final JvmGenericType parent, final Collection<JvmGenericType> children) {

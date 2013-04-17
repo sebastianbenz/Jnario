@@ -14,6 +14,7 @@ import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.util.XbaseUsageCrossReferencer;
@@ -24,12 +25,15 @@ import org.jnario.feature.jvmmodel.VisibleMembersCalculator;
 @SuppressWarnings("all")
 public class StepContextProvider {
   @Inject
+  @Extension
   private StepExpressionProvider _stepExpressionProvider;
   
   @Inject
+  @Extension
   private IJvmModelAssociations _iJvmModelAssociations;
   
   @Inject
+  @Extension
   private VisibleMembersCalculator _visibleMembersCalculator;
   
   public Set<XtendField> usedFields(final Step step) {

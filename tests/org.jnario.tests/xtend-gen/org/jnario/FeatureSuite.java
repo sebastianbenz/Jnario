@@ -39,7 +39,7 @@ import org.junit.runner.RunWith;
 
 @Named("Feature")
 @Contains({ AccessOfVariablesFeature.class, BackgroundsFeature.class, CalculatorFeature.class, DefiningFeatureBasesClassesFeature.class, FeatureCompilerSpec.class, FeatureExtensionsFeature.class, FeatureClassNameProviderSpec.class, FeatureDocGeneratorSpec.class, FeatureExecutableProviderSpec.class, FeatureJavaValidatorSpec.class, FeatureLocationInFileProviderSpec.class, FeatureQualifiedNameProviderSpec.class, FeatureScopeProviderSpec.class, FeatureTokenSourceSpec.class, FeatureValueConverterSpec.class, FieldInferenceFeature.class, GivenWhenThenSpec.class, IntroducingJnarioFeaturesSpec.class, ParsingSimpleJnarioFilesFeature.class, PendingStepsFeature.class, ReferencesForStepsFeature.class, ReferencingOtherStepsSpec.class, SetupTeardownWithFeatureExtensionsFeature.class, ShouldSpec.class, StepParametersFeature.class, StepArgumentsProviderSpec.class, StepContextProviderSpec.class, StepExpressionProviderSpec.class, StepNameProviderSpec.class, TestRunnerFeature.class, UsingJUnitRulesInFeaturesFeature.class, UsingMatchersInFeaturesFeature.class })
-@SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class FeatureSuite {
 }

@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.standalone.tests;
 
 import org.hamcrest.Matcher;
@@ -13,10 +20,10 @@ import org.jnario.standalone.tests.JnarioDocCompilerSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("FeatureDocCompiler")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = FeatureTestCreator.class)
+@CreateWith(FeatureTestCreator.class)
+@SuppressWarnings("all")
 public class JnarioDocCompilerFeatureDocCompilerSpec extends JnarioDocCompilerSpec {
   @Test
   @Named("\\\"test/ExamplesFeature.html\\\" should be generated")

@@ -4,23 +4,25 @@ import java.util.List;
 import org.eclipse.xtext.xbase.XExpression;
 import org.jnario.lib.ExampleTableRow;
 
+@SuppressWarnings("all")
 public class ExampleImplementationSpecExamples extends ExampleTableRow {
   public ExampleImplementationSpecExamples(final List<String> cellNames, final String example, final Class<? extends XExpression> type) {
     super(cellNames);
     this.example = example;
     this.type = type;
+    
   }
   
-  public String example;
+  private String example;
   
   public String getExample() {
-    return example;
+    return this.example;
   }
   
-  public Class<? extends XExpression> type;
+  private Class<? extends XExpression> type;
   
   public Class<? extends XExpression> getType() {
-    return type;
+    return this.type;
   }
   
   public List<String> getCells() {

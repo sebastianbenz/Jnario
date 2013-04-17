@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.documentation;
 
 import java.util.Stack;
@@ -17,9 +24,9 @@ import org.junit.runner.RunWith;
 /**
  * Jnario provides different statements for writing assertions ([more...](/org/jnario/spec/tests/integration/AssertionSpec.html)).
  */
-@SuppressWarnings("all")
 @Named("Writing Assertions")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnarioSpecsSpec {
   /**
    * The `assert` statement fails if
@@ -27,11 +34,11 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
    */
   @Test
   @Named("\\\'assert\\\'")
-  @Order(11)
+  @Order(1)
   public void _assert() throws Exception {
     Assert.assertTrue("\nExpected true but" + " did not." + "\n", true);
     
-    Stack<?> _stack = new Stack<Object>();
+    Stack<Object> _stack = new Stack<Object>();
     boolean _empty = _stack.empty();
     Assert.assertTrue("\nExpected new Stack().empty but"
      + "\n     new Stack() is " + new StringDescription().appendValue(_stack).toString() + "\n", _empty);
@@ -51,7 +58,7 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
    */
   @Test
   @Named("\\\'should\\\' and `=>`")
-  @Order(12)
+  @Order(2)
   public void _shouldAnd() throws Exception {
     boolean _should_be = Should.<Boolean>should_be(
       Boolean.valueOf(true), true);
@@ -84,7 +91,7 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
    */
   @Test
   @Named("Self-explaining failures")
-  @Order(13)
+  @Order(3)
   public void _selfExplainingFailures() throws Exception {
     final int x = 0;
     final int y = 1;

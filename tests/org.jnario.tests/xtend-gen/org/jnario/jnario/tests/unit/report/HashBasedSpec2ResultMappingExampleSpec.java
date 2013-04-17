@@ -13,9 +13,9 @@ import org.jnario.spec.spec.Example;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("Example")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2ResultMappingSpec {
   final Passed aResult = new Function0<Passed>() {
     public Passed apply() {
@@ -40,7 +40,7 @@ public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2Result
   
   @Test
   @Named("matches if classname and name are equal")
-  @Order(3)
+  @Order(1)
   public void _matchesIfClassnameAndNameAreEqual() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package example");
@@ -76,7 +76,7 @@ public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2Result
   
   @Test
   @Named("includes pending state when matching")
-  @Order(4)
+  @Order(2)
   public void _includesPendingStateWhenMatching() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package example");

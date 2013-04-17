@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.tests.unit.parser;
 
 import java.util.List;
@@ -15,7 +22,6 @@ import org.hamcrest.StringDescription;
 import org.jnario.feature.parser.FeatureTokenSource;
 import org.jnario.feature.parser.antlr.internal.InternalFeatureLexer;
 import org.jnario.lib.Assert;
-import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -24,9 +30,9 @@ import org.jnario.runner.Subject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("FeatureTokenSource")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class FeatureTokenSourceSpec {
   @Subject
   public FeatureTokenSource subject;
@@ -220,7 +226,7 @@ public class FeatureTokenSourceSpec {
     
     final Procedure2<Token,Integer> _function = new Procedure2<Token,Integer>() {
         public void apply(final Token e, final Integer i) {
-          final CommonToken expected = JnarioIterableExtensions.<CommonToken>get(((Iterable<CommonToken>)Conversions.doWrapArray(expectedTokens)), (i).intValue());
+          final CommonToken expected = expectedTokens[(i).intValue()];
           final CommonToken actual = ((CommonToken) e);
           int _type = actual.getType();
           int _type_1 = expected.getType();

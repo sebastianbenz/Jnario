@@ -3,30 +3,32 @@ package org.jnario.jnario.tests.unit.doc;
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
+@SuppressWarnings("all")
 public class RegexFilterSpecFilteringExamples extends ExampleTableRow {
   public RegexFilterSpecFilteringExamples(final List<String> cellNames, final String string, final String regex, final String result) {
     super(cellNames);
     this.string = string;
     this.regex = regex;
     this.result = result;
+    
   }
   
-  public String string;
+  private String string;
   
   public String getString() {
-    return string;
+    return this.string;
   }
   
-  public String regex;
+  private String regex;
   
   public String getRegex() {
-    return regex;
+    return this.regex;
   }
   
-  public String result;
+  private String result;
   
   public String getResult() {
-    return result;
+    return this.result;
   }
   
   public List<String> getCells() {

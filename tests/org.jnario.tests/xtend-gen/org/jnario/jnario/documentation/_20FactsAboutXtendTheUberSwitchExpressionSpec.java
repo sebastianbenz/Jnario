@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.documentation;
 
 import com.google.common.base.Objects;
@@ -19,9 +26,9 @@ import org.junit.runner.RunWith;
  * evaluated at most and it is not limited to certain
  * values but can be used for any object.
  */
-@SuppressWarnings("all")
 @Named("The Uber-Switch Expression")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAboutXtendSpec {
   /**
    * Cases support arbitrary expressions, if they evaluate to a boolean value, it will
@@ -29,7 +36,7 @@ public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAbout
    */
   @Test
   @Named("Supports case expressions")
-  @Order(9)
+  @Order(1)
   public void _supportsCaseExpressions() throws Exception {
     final String myString = "Hello";
     String _switchResult = null;
@@ -64,7 +71,7 @@ public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAbout
    */
   @Test
   @Named("...and type guards [with type inference]")
-  @Order(10)
+  @Order(2)
   public void _andTypeGuardsWithTypeInference() throws Exception {
     List<Integer> _list = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3));
     final Object x = ((Object) _list);

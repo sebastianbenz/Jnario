@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.tests.unit.naming.FeatureScopeProviderStepReferenceSpec;
@@ -12,18 +13,18 @@ import org.jnario.jnario.test.util.ScopeTestExtension;
 import org.jnario.runner.Contains;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
 @Contains(FeatureScopeProviderStepReferenceSpec.class)
-@SuppressWarnings("all")
 @Named("FeatureScopeProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = FeatureTestCreator.class)
+@CreateWith(FeatureTestCreator.class)
+@SuppressWarnings("all")
 public class FeatureScopeProviderSpec {
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ScopeTestExtension e;
   
   public Set<String> targetOperationScope() {

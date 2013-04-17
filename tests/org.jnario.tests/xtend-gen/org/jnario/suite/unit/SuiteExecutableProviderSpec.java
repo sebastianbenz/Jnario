@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.hamcrest.StringDescription;
 import org.jnario.Executable;
@@ -16,7 +17,6 @@ import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
@@ -27,16 +27,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("SuiteExecutableProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = SuiteTestCreator.class)
+@CreateWith(SuiteTestCreator.class)
+@SuppressWarnings("all")
 public class SuiteExecutableProviderSpec {
   @Subject
   public SuiteExecutableProvider subject;
   
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ModelStore m;
   
   @Before

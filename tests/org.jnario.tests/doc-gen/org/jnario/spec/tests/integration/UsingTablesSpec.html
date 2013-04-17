@@ -125,13 +125,16 @@ import java.util.*
 describe &quot;Example Tables&quot;{
   def examplesWithTypeInference{
     |          list            |
+    | null                     |
     | new ArrayList&lt;String&gt;()  |
     | new LinkedList&lt;String&gt;() |
   }     
 
   fact &quot;computes the common super type&quot;{
     examplesWithTypeInference.forEach[
-      assert list.empty // works only if the type of list has been inferred as List&lt;String&gt;
+      if(list != null){
+        assert list.empty // works only if the type of list has been inferred as List&lt;String&gt;
+      }
     ]
   }
 }</pre>
@@ -362,16 +365,19 @@ describe &quot;Using Tables&quot;{
   describe &quot;Example Tables&quot;{
     def examplesWithTypeInference{
       |          list            |
+      | null                     |
       | new ArrayList&lt;String&gt;()  |
       | new LinkedList&lt;String&gt;() |
     }     
 
     fact &quot;computes the common super type&quot;{
       examplesWithTypeInference.forEach[
-        assert list.empty // works only if the type of list has been inferred as List&lt;String&gt;
+        if(list != null){
+          assert list.empty // works only if the type of list has been inferred as List&lt;String&gt;
+        }
       ]
     }
-  }
+  }  
   '''.executesSuccessfully       
   }
   

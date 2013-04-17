@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.suite.unit;
 
 import org.hamcrest.StringDescription;
@@ -13,16 +20,16 @@ import org.jnario.suite.unit.SuiteNodeBuilderSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("level")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   @Subject
   public SuiteNodeBuilder subject;
   
   @Test
   @Named("level[\\\"-\\\"]        => 1")
-  @Order(2)
+  @Order(1)
   public void _level1() throws Exception {
     int _level = this.level("#");
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(1));
@@ -33,7 +40,7 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   
   @Test
   @Named("level[\\\"-Suite\\\"]   => 1")
-  @Order(3)
+  @Order(2)
   public void _levelSuite1() throws Exception {
     int _level = this.level("#Suite");
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(1));
@@ -44,7 +51,7 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   
   @Test
   @Named("level[\\\"--Suite\\\"]  => 2")
-  @Order(4)
+  @Order(3)
   public void _levelSuite2() throws Exception {
     int _level = this.level("##Suite");
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(2));
@@ -55,7 +62,7 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   
   @Test
   @Named("level[\\\"---Suite\\\"] => 3")
-  @Order(5)
+  @Order(4)
   public void _levelSuite3() throws Exception {
     int _level = this.level("###Suite");
     boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(3));

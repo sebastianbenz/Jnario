@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
@@ -12,6 +19,7 @@ import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.feature.feature.StepImplementation;
@@ -26,9 +34,11 @@ import org.jnario.util.SourceAdapter;
 @SuppressWarnings("all")
 public class StepReferenceFieldCreator {
   @Inject
+  @Extension
   private VisibleMembersCalculator _visibleMembersCalculator;
   
   @Inject
+  @Extension
   private ExpressionCopier _expressionCopier;
   
   public void copyXtendMemberForReferences(final EObject objectWithReference) {

@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.tests.unit.validation;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -10,13 +17,13 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("Scenarios must have descriptions")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class FeatureJavaValidatorScenariosMustHaveDescriptionsSpec extends FeatureJavaValidatorSpec {
   @Test
   @Named("\\\'\\\'\\\' Feature: A Feature Scenario: \\\'\\\'\\\'.select[typeof[Scenario]].assertErrorContains[\\\"description\\\"]")
-  @Order(4)
+  @Order(1)
   public void _featureAFeatureScenarioSelectTypeofScenarioAssertErrorContainsDescription() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: A Feature");
