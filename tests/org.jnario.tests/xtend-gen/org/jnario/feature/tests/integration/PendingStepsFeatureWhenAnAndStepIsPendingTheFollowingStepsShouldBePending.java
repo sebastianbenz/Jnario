@@ -8,6 +8,7 @@ import org.jnario.lib.StringConversions;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -19,16 +20,15 @@ public class PendingStepsFeatureWhenAnAndStepIsPendingTheFollowingStepsShouldBeP
   
   @Test
   @Order(0)
+  @Ignore
   @Named("Given a scenario")
   public void givenAScenario() {
-    StepArguments _stepArguments = new StepArguments("Feature: With pending steps\n\tScenario: Scenario with pending steps\n\t\tint x\n\t\tGiven does something\n\t\t\tx = 3\n\t\tAnd a not implemented step\n\t\tWhen is implemented with\n\t\t\tx = x + 5\n\t\tThen does also something\n\t\t\tx => 8\n");
-    final StepArguments args = _stepArguments;
-    String _first = JnarioIterableExtensions.<String>first(args);
-    this.jnarioFile = _first;
+    
   }
   
   @Test
   @Order(1)
+  @Ignore
   @Named("Then it should execute successfully")
   public void thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
@@ -36,6 +36,7 @@ public class PendingStepsFeatureWhenAnAndStepIsPendingTheFollowingStepsShouldBeP
   
   @Test
   @Order(2)
+  @Ignore
   @Named("And the expected number of ignored steps is \\\"3\\\"")
   public void andTheExpectedNumberOfIgnoredStepsIs3() {
     StepArguments _stepArguments = new StepArguments("3");

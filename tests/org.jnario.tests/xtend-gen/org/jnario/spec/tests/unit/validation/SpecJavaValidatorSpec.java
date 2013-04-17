@@ -7,7 +7,7 @@ import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.jnario.Assertion;
-import org.jnario.ExampleRow;
+import org.jnario.ExampleCell;
 import org.jnario.ExampleTable;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
@@ -19,6 +19,7 @@ import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.spec.ExampleGroup;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -32,7 +33,8 @@ public class SpecJavaValidatorSpec {
   public ModelStore modelStore;
   
   @Test
-  @Named("assert statement must be boolean")
+  @Ignore
+  @Named("assert statement must be boolean [PENDING]")
   @Order(1)
   public void _assertStatementMustBeBoolean() throws Exception {
     this.modelStore.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact \"invalid assert\"{\r\n\t\t\t\t\tassert 1\r\n\t\t\t\t}\r\n\t\t\t} \r\n\t\t");
@@ -41,7 +43,8 @@ public class SpecJavaValidatorSpec {
   }
   
   @Test
-  @Named("duplicate names of example methods are ignored")
+  @Ignore
+  @Named("duplicate names of example methods are ignored [PENDING]")
   @Order(2)
   public void _duplicateNamesOfExampleMethodsAreIgnored() throws Exception {
     this.modelStore.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact \"a***\" \r\n      \t\t\tfact \"a???\" \r\n\t\t\t} \r\n\t\t");
@@ -81,12 +84,13 @@ public class SpecJavaValidatorSpec {
   @Order(6)
   public void _exampleTableValuesMustNotBeVoid() throws Exception {
     this.modelStore.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tdef examples{\r\n\t\t\t\t\t| a         |\r\n\t\t\t\t\t| throw new Exception() |\r\n\t\t\t\t}\r\n\t\t\t} \r\n\t\t");
-    final AssertableDiagnostics validationResult = this.validate(ExampleRow.class);
+    final AssertableDiagnostics validationResult = this.validate(ExampleCell.class);
     validationResult.assertErrorContains("void");
   }
   
   @Test
-  @Named("example table rows must have the same size")
+  @Ignore
+  @Named("example table rows must have the same size [PENDING]")
   @Order(7)
   public void _exampleTableRowsMustHaveTheSameSize() throws Exception {
     this.modelStore.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tdef examples{\r\n\t\t\t\t\t| a | b |\r\n\t\t\t\t\t| 0 |\r\n\t\t\t\t}\r\n\t\t\t} \r\n\t\t");

@@ -35,33 +35,8 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="assert_statement_must_be_boolean" class="example notrun"><strong>assert statement must be boolean</strong></p>
-<pre class="prettyprint lang-spec linenums">
-parseSpec('
-  package bootstrap
-
-  describe &quot;Example&quot;{
-    fact &quot;invalid assert&quot;{
-      assert 1
-    }
-  } 
-')
-
-val validationResult = validate(typeof(Assertion))
-validationResult.assertErrorContains(&quot;cannot convert from int to boolean&quot;)</pre>
-</li><li><p id="duplicate_names_of_example_methods_are_ignored" class="example notrun"><strong>duplicate names of example methods are ignored</strong></p>
-<pre class="prettyprint lang-spec linenums">
-parseSpec('
-  package bootstrap
-
-  describe &quot;Example&quot;{
-    fact &quot;a***&quot; 
-            fact &quot;a???&quot; 
-  } 
-')
-
-val validationResult = validate(typeof(ExampleGroup))
-validationResult.assertOK</pre>
+<ul><li><p id="assert_statement_must_be_boolean" class="example pending"><strong>assert statement must be boolean [PENDING]</strong></p>
+</li><li><p id="duplicate_names_of_example_methods_are_ignored" class="example pending"><strong>duplicate names of example methods are ignored [PENDING]</strong></p>
 </li><li><p id="specs_without_description_but_different_types_are_OK" class="example notrun"><strong>specs without description but different types are OK</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('
@@ -116,23 +91,9 @@ parseSpec('
   } 
 ')
 
-val validationResult = validate(typeof(ExampleRow))
+val validationResult = validate(typeof(ExampleCell))
 validationResult.assertErrorContains(&quot;void&quot;)</pre>
-</li><li><p id="example_table_rows_must_have_the_same_size" class="example notrun"><strong>example table rows must have the same size</strong></p>
-<pre class="prettyprint lang-spec linenums">
-parseSpec('
-  package bootstrap
-
-  describe &quot;Example&quot;{
-    def examples{
-      | a | b |
-      | 0 |
-    }
-  } 
-')
-
-val validationResult = validate(typeof(ExampleTable))
-validationResult.assertErrorContains(&quot;number&quot;)</pre>
+</li><li><p id="example_table_rows_must_have_the_same_size" class="example pending"><strong>example table rows must have the same size [PENDING]</strong></p>
 </li><li><p id="should_can_compare_objects_of_the_same_type" class="example notrun"><strong>should can compare objects of the same type</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('
@@ -191,13 +152,16 @@ import org.jnario.spec.validation.SpecJavaValidator
 import static org.jnario.jnario.test.util.Query.*
 import org.eclipse.xtext.xbase.XBinaryOperation
 import org.jnario.jnario.test.util.Resources
+import org.jnario.ExampleCell
+import org.eclipse.xtext.xbase.XExpression
+import org.junit.Ignore
 
 @CreateWith(typeof(SpecTestCreator))
 describe SpecJavaValidator{
 
   @Inject extension ModelStore modelStore
 
-  fact &quot;assert statement must be boolean&quot;{
+  pending fact &quot;assert statement must be boolean&quot;{
     parseSpec('
       package bootstrap
 
@@ -212,7 +176,7 @@ describe SpecJavaValidator{
     validationResult.assertErrorContains(&quot;cannot convert from int to boolean&quot;)
   }
   
-  fact &quot;duplicate names of example methods are ignored&quot;{
+  pending fact &quot;duplicate names of example methods are ignored&quot;{
     parseSpec('
       package bootstrap
 
@@ -282,11 +246,11 @@ describe SpecJavaValidator{
       } 
     ')
     
-    val validationResult = validate(typeof(ExampleRow))
+    val validationResult = validate(typeof(ExampleCell))
     validationResult.assertErrorContains(&quot;void&quot;)
   }
   
-  fact &quot;example table rows must have the same size&quot;{
+  pending fact &quot;example table rows must have the same size&quot;{
     parseSpec('
       package bootstrap
 
