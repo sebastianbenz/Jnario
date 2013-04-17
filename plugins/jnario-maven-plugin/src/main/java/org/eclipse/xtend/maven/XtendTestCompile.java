@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2011 itemis AG (http://www.itemis.eu) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.eclipse.xtend.maven;
 
 import static com.google.common.collect.Iterables.filter;
@@ -19,23 +12,27 @@ import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
  * Goal which compiles Xtend2 test sources.
- *
+ * 
  * @author Michael Clay - Initial contribution and API
+ * @goal testCompile
+ * @phase generate-test-sources
+ * @requiresDependencyResolution test
  */
-public class XtendTestCompile extends AbstractXtend2CompilerMojo {
+public class XtendTestCompile extends AbstractXtendCompilerMojo {
 	/**
 	 * Location of the generated test files.
 	 * 
 	 * @parameter default-value="${basedir}/src/test/generated-sources/xtend"
 	 * @required
 	 */
-	private String testOutputDirectory;
+	protected String testOutputDirectory;
 	/**
 	 * Location of the temporary compiler directory.
 	 * 
@@ -45,11 +42,21 @@ public class XtendTestCompile extends AbstractXtend2CompilerMojo {
 	private String testTempDirectory;
 
 	@Override
-	protected void internalExecute(XtendBatchCompiler xtend2BatchCompiler) throws MojoExecutionException {
-		compileTestSources(xtend2BatchCompiler);
+	protected void internalExecute() throws MojoExecutionException {
+		final String defaultValue = project.getBasedir() + "/src/test/generated-sources/xtend";
+		getLog().debug("Output directory '" + testOutputDirectory + "'");
+		getLog().debug("Default directory '" + defaultValue + "'");
+		if (defaultValue.equals(testOutputDirectory)) {
+			determinateOutputDirectory(project.getBuild().getTestSourceDirectory(), new Procedure1<String>() {
+				public void apply(String xtendOutputDir) {
+					testOutputDirectory = xtendOutputDir;
+					getLog().info("Using Xtend output directory '" + testOutputDirectory + "'");
+				}
+			});
+		}
+		compileTestSources(xtendBatchCompilerProvider.get());
 	}
 
-	@SuppressWarnings("unchecked")
 	protected void compileTestSources(XtendBatchCompiler xtend2BatchCompiler) throws MojoExecutionException {
 		List<String> testCompileSourceRoots = Lists.newArrayList(project.getTestCompileSourceRoots());
 		String testClassPath = concat(File.pathSeparator, getTestClassPath());
@@ -57,7 +64,6 @@ public class XtendTestCompile extends AbstractXtend2CompilerMojo {
 		compile(xtend2BatchCompiler, testClassPath, testCompileSourceRoots, testOutputDirectory);
 	}
 
-	@SuppressWarnings("unchecked")
 	protected List<String> getTestClassPath() {
 		Set<String> classPath = Sets.newLinkedHashSet();
 		classPath.add(project.getBuild().getTestSourceDirectory());
