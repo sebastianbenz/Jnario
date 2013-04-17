@@ -7,6 +7,7 @@ import org.xml.sax.Attributes
 import org.xml.sax.SAXException
 import java.util.List
 import static extension org.apache.commons.lang.StringEscapeUtils.*
+import org.jnario.report.Failed
 
 class SpecResultParser extends DefaultHandler{
 	double currentExecutionTime

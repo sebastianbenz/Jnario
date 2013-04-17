@@ -24,8 +24,8 @@ import static extension org.jnario.util.Strings.*
 class FeatureDocGenerator extends AbstractDocGenerator {
 	
 	@Inject extension FeatureClassNameProvider 
-	@Inject extension StepNameProvider  
-
+	@Inject extension StepNameProvider
+	
 	override createHtmlFile(XtendClass xtendClass) {
 		if(!(xtendClass instanceof Feature)){
 			return HtmlFile::EMPTY_FILE

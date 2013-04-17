@@ -8,7 +8,6 @@ import org.eclipse.xtext.diagnostics.IDiagnosticProducer;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.linking.XbaseLazyLinker;
 import org.jnario.spec.jvmmodel.ImplicitSubject;
-import org.jnario.spec.spec.ExampleGroup;
 
 @SuppressWarnings("all")
 public class SpecLazyLinker extends XbaseLazyLinker {
@@ -16,9 +15,6 @@ public class SpecLazyLinker extends XbaseLazyLinker {
   private ImplicitSubject _implicitSubject;
   
   protected void installProxies(final EObject obj, final IDiagnosticProducer producer, final Multimap<Setting,INode> settingsToLink) {
-    if ((obj instanceof ExampleGroup)) {
-      this._implicitSubject.addImplicitSubject(((ExampleGroup) obj));
-    }
     super.installProxies(obj, producer, settingsToLink);
   }
 }

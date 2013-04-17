@@ -1,8 +1,7 @@
 package org.jnario.typing;
 
-import com.google.common.base.Objects;
 import com.google.inject.Inject;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
@@ -16,19 +15,17 @@ import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.scoping.batch.IFeatureScopeSession;
 import org.eclipse.xtext.xbase.typesystem.InferredTypeIndicator;
 import org.eclipse.xtext.xbase.typesystem.conformance.TypeConformanceComputer;
 import org.eclipse.xtext.xbase.typesystem.internal.ResolvedTypes;
-import org.eclipse.xtext.xbase.typesystem.internal.StackedResolvedTypes;
 import org.eclipse.xtext.xbase.typesystem.references.ITypeReferenceOwner;
 import org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference;
 import org.eclipse.xtext.xbase.typesystem.util.CommonTypeComputationServices;
-import org.eclipse.xtext.xbase.typing.IJvmTypeReferenceProvider;
 import org.eclipse.xtext.xtype.XComputedTypeReference;
 import org.eclipse.xtext.xtype.XtypeFactory;
 import org.jnario.ExampleCell;
@@ -83,11 +80,6 @@ public class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeRe
       return;
     }
     final XComputedTypeReference casted = ((XComputedTypeReference) typeRef);
-    final StackedResolvedTypes childResolvedTypes = this.declareTypeParameters(resolvedTypes, member, resolvedTypesByContext);
-    IJvmTypeReferenceProvider _typeProvider = casted.getTypeProvider();
-    final InferredTypeIndicator indicator = ((InferredTypeIndicator) _typeProvider);
-    final JvmTypeReference reference = this.createComputedTypeReference(resolvedTypesByContext, childResolvedTypes, session, member, indicator, false);
-    casted.setEquivalent(reference);
     CommonTypeComputationServices _services = this.getServices();
     XtypeFactory _xtypeFactory = _services.getXtypeFactory();
     final XComputedTypeReference result = _xtypeFactory.createXComputedTypeReference();
@@ -95,20 +87,21 @@ public class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeRe
         public JvmTypeReference apply(final XComputedTypeReference it) {
           JvmTypeReference _xblockexpression = null;
           {
-            final ArrayList<LightweightTypeReference> types = CollectionLiterals.<LightweightTypeReference>newArrayList();
             EList<ExampleCell> _cells = column.getCells();
-            for (final ExampleCell cell : _cells) {
-              {
-                Set<EObject> _jvmElements = JnarioTypeResolver.this._iJvmModelAssociations.getJvmElements(cell);
-                EObject _head = IterableExtensions.<EObject>head(_jvmElements);
-                final JvmIdentifiableElement operation = ((JvmIdentifiableElement) _head);
-                LightweightTypeReference type = resolvedTypes.getActualType(operation);
-                boolean _notEquals = (!Objects.equal(type, null));
-                if (_notEquals) {
-                  types.add(type);
+            final Function1<ExampleCell,LightweightTypeReference> _function = new Function1<ExampleCell,LightweightTypeReference>() {
+                public LightweightTypeReference apply(final ExampleCell it) {
+                  LightweightTypeReference _xblockexpression = null;
+                  {
+                    Set<EObject> _jvmElements = JnarioTypeResolver.this._iJvmModelAssociations.getJvmElements(it);
+                    EObject _head = IterableExtensions.<EObject>head(_jvmElements);
+                    final JvmIdentifiableElement operation = ((JvmIdentifiableElement) _head);
+                    final LightweightTypeReference type = resolvedTypes.getActualType(operation);
+                    _xblockexpression = (type);
+                  }
+                  return _xblockexpression;
                 }
-              }
-            }
+              };
+            final List<LightweightTypeReference> types = ListExtensions.<ExampleCell, LightweightTypeReference>map(_cells, _function);
             final ITypeReferenceOwner owner = resolvedTypes.getReferenceOwner();
             boolean _isEmpty = types.isEmpty();
             if (_isEmpty) {

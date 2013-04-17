@@ -15,10 +15,10 @@ class SpecLazyLinker extends XbaseLazyLinker {
 	@Inject extension ImplicitSubject
 	
 	override protected installProxies(EObject obj, IDiagnosticProducer producer, Multimap<Setting,INode> settingsToLink) {
-		if(obj instanceof ExampleGroup){
-			(obj as ExampleGroup).addImplicitSubject
-		}
+//		if(obj instanceof ExampleGroup){
+//			(obj as ExampleGroup).addImplicitSubject
+//		}
 		super.installProxies(obj, producer, settingsToLink)
 	}
-	
+	 
 }

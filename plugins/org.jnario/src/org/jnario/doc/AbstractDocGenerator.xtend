@@ -14,8 +14,8 @@ import org.apache.commons.lang.StringEscapeUtils
 import org.apache.log4j.Logger
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtend.core.xtend.XtendFile
-import org.eclipse.xtend.core.xtend.XtendTypeDeclaration
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
@@ -36,7 +36,6 @@ import static org.jnario.doc.AbstractDocGenerator.*
 
 import static extension org.eclipse.xtext.util.Strings.*
 import static extension org.jnario.util.Strings.*
-import org.eclipse.xtend.core.xtend.XtendClass
 
 abstract class AbstractDocGenerator implements IGenerator {
 
