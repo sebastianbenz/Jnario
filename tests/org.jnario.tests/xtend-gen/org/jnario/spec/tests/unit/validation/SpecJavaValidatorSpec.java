@@ -71,7 +71,8 @@ public class SpecJavaValidatorSpec {
   }
   
   @Test
-  @Named("specs without description and same types are not OK")
+  @Ignore
+  @Named("specs without description and same types are not OK [PENDING]")
   @Order(5)
   public void _specsWithoutDescriptionAndSameTypesAreNotOK() throws Exception {
     this.modelStore.parseSpec("\r\n\t\t  package bootstrap\r\n\r\n\t\t  describe \"something\"{\r\n\t\t\t  describe String{\r\n\t\t\t  }\r\n\t\t\t  describe String{\r\n\t\t\t  }\t\r\n\t\t  }\r\n\t\t");
@@ -80,7 +81,8 @@ public class SpecJavaValidatorSpec {
   }
   
   @Test
-  @Named("example table values must not be void")
+  @Ignore
+  @Named("example table values must not be void [PENDING]")
   @Order(6)
   public void _exampleTableValuesMustNotBeVoid() throws Exception {
     this.modelStore.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tdef examples{\r\n\t\t\t\t\t| a         |\r\n\t\t\t\t\t| throw new Exception() |\r\n\t\t\t\t}\r\n\t\t\t} \r\n\t\t");

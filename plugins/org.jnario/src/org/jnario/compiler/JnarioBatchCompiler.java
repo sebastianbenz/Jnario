@@ -26,6 +26,7 @@ import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
@@ -116,7 +117,7 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 		List<Resource> resources = newArrayList(resourceSet.getResources());
 		for (Resource resource : resources) {
 			if(fileExtensionProvider.isValid(resource.getURI().fileExtension())){
-				IResourceServiceProvider resourceServiceProvider = ((XbaseResource)resource).getResourceServiceProvider();
+				IResourceServiceProvider resourceServiceProvider = ((XtextResource)resource).getResourceServiceProvider();
 				IResourceValidator resourceValidator = resourceServiceProvider.getResourceValidator();
 				List<Issue> result = resourceValidator.validate(resource, CheckMode.ALL, null);
 				addAll(issues, result);

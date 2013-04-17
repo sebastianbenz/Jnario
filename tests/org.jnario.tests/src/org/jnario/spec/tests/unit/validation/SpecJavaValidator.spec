@@ -89,7 +89,7 @@ describe SpecJavaValidator{
 		validationResult.assertOK
 	}
 	
-	fact "specs without description and same types are not OK"{
+	pending fact "specs without description and same types are not OK"{
 		parseSpec('
 		  package bootstrap
 
@@ -104,7 +104,7 @@ describe SpecJavaValidator{
 		validationResult.assertErrorContains("The spec 'String' is already defined.")
 	}
 	
-	fact "example table values must not be void"{
+	pending fact "example table values must not be void"{
 		parseSpec('
 			package bootstrap
 
