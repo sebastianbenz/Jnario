@@ -15,6 +15,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.jnario.compiler.JnarioBatchCompiler;
 import org.jnario.feature.feature.Feature;
@@ -37,9 +38,8 @@ public class FeatureBatchCompiler extends JnarioBatchCompiler {
 	}
 	
 	@Override
-	protected List<EObject> getObjectsWithClasses(ResourceSet resourceSet) {
-		TreeIterator<Notifier> allContents = resourceSet.getAllContents();
-		List<EObject> result = newArrayList();
+	protected void addObjectsWithClasses(Resource resource, List<EObject> result) {
+		TreeIterator<EObject> allContents = resource.getAllContents();
 		while (allContents.hasNext()) {
 			Notifier notifier = allContents.next();
 			if (notifier instanceof Feature) {
@@ -55,7 +55,6 @@ public class FeatureBatchCompiler extends JnarioBatchCompiler {
 				allContents.prune();
 			}
 		}
-		return result;
 	}
 
 }

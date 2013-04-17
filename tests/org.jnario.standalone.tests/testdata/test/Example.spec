@@ -18,7 +18,7 @@ describe "Spec Example" {
 		1 + 1 => 2
 	} 
 	describe "Nested Example" {
-		fact "should pass"{
+		fact "should pass aswell"{
 			1 + 1 => 2
 		} 
 	}

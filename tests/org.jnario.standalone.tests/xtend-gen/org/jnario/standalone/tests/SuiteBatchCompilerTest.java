@@ -2,6 +2,7 @@ package org.jnario.standalone.tests;
 
 import com.google.inject.Inject;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.List;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtext.junit4.InjectWith;
@@ -10,6 +11,7 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.Files;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.jnario.feature.FeatureStandaloneSetup;
 import org.jnario.jnario.test.util.ExtendedSuiteInjectorProvider;
 import org.jnario.jnario.test.util.ModelStore;
@@ -84,7 +86,17 @@ public class SuiteBatchCompilerTest {
     this.batchCompiler.compile();
     String _plus = (SuiteBatchCompilerTest.OUTPUT_DIRECTORY + "/test");
     File _file = new File(_plus);
-    String[] _list = _file.list();
+    final Function2<File,String,Boolean> _function = new Function2<File,String,Boolean>() {
+        public Boolean apply(final File dir, final String name) {
+          boolean _endsWith = name.endsWith(".java");
+          return _endsWith;
+        }
+      };
+    String[] _list = _file.list(new FilenameFilter() {
+        public boolean accept(File dir,String name) {
+          return _function.apply(dir,name);
+        }
+    });
     int _size = ((List<String>)Conversions.doWrapArray(_list)).size();
     Assert.assertEquals(1, _size);
   }

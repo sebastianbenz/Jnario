@@ -56,7 +56,7 @@ class FeatureBatchCompilerTest {
 	@Test
 	def void testCompileTestData() {
 		batchCompiler.compile
-		assertEquals(3, new File(OUTPUT_DIRECTORY+"/test").list.size)
+		assertEquals(3, new File(OUTPUT_DIRECTORY+"/test").list[dir, name | name.endsWith(".java")].size)
 	}
 
 }

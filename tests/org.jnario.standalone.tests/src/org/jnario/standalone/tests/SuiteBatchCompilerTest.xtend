@@ -58,12 +58,12 @@ class SuiteBatchCompilerTest {
            cleanFolder(new File(TEMP_DIRECTORY), null, true, true)
        }
 	}
-
+ 
 	@Test
 	def void testCompileTestData() {
 		batchCompiler.setResourceSet(resourceSet)
 		batchCompiler.compile()
-		assertEquals(1, new File(OUTPUT_DIRECTORY+"/test").list.size)
+		assertEquals(1, new File(OUTPUT_DIRECTORY+"/test").list[dir, name | name.endsWith(".java")].size)
 	}
 
 }
