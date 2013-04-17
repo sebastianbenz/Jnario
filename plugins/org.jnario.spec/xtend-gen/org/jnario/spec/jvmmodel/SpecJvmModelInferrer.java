@@ -128,7 +128,6 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       this.addSuperClass(exampleGroup);
     }
     final JvmGenericType javaType = this.typesFactory.createJvmGenericType();
-    this._implicitSubject.addImplicitSubject(javaType, exampleGroup);
     XtendFile _xtendFile = this.xtendFile(exampleGroup);
     this.setNameAndAssociate(_xtendFile, exampleGroup, javaType);
     acceptor.<JvmGenericType>accept(javaType);
@@ -215,6 +214,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     for (final XtendMember member : _members) {
       this.transformExamples(member, inferredJvmType);
     }
+    this._implicitSubject.addImplicitSubject(inferredJvmType, ((ExampleGroup) source));
     this.appendSyntheticDispatchMethods(source, inferredJvmType);
     EList<XAnnotation> _annotations_2 = source.getAnnotations();
     this.translateAnnotationsTo(_annotations_2, inferredJvmType);

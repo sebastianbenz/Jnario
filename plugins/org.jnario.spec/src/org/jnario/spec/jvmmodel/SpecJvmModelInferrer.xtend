@@ -94,7 +94,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			exampleGroup.addSuperClass
 		}
 		val javaType = typesFactory.createJvmGenericType();
-		javaType.addImplicitSubject(exampleGroup)
 		setNameAndAssociate(exampleGroup.xtendFile, exampleGroup, javaType);
 		acceptor.accept(javaType);
 		if (!preIndexingPhase) {
@@ -140,6 +139,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		for (member : source.getMembers()) {
 			transformExamples(member, inferredJvmType);
 		}
+		inferredJvmType.addImplicitSubject(source as ExampleGroup)
 		appendSyntheticDispatchMethods(source, inferredJvmType);
 		translateAnnotationsTo(source.getAnnotations(), inferredJvmType);
 		setDocumentation(inferredJvmType, getDocumentation(source));
