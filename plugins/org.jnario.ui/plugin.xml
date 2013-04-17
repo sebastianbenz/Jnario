@@ -29,15 +29,6 @@
           name="Jnario">
     </page>
  </extension>
-    <extension
-            point="org.eclipse.ui.preferencePages">
-        <page
-            category="org.jnario.ui.preferences"
-            class="org.jnario.ui.internal.JnarioExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.jnario.compiler.preferencePage"
-            name="Compiler">
-        </page>
-    </extension>
     <extension point="org.eclipse.ui.preferencePages">
 	    <page
 	        category="org.jnario.ui.preferences"
@@ -58,10 +49,19 @@
 	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
         </page>
     </extension>
-       <extension
+    <extension
+            point="org.eclipse.ui.preferencePages">
+        <page
+            category="org.jnario.ui.preferences"
+            class="org.jnario.ui.internal.JnarioExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.jnario.compiler.preferencePage"
+            name="Compiler">
+        </page>
+    </extension>
+    <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            category="org.jnario.Jnario"
+           category="org.jnario.Jnario"
             class="org.jnario.ui.internal.JnarioExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
             id="org.jnario.compiler.propertyPage"
             name="Compiler">
