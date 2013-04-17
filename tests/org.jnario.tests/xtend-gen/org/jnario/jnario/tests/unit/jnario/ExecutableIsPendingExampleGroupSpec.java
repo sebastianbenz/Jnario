@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.tests.unit.jnario;
 
 import org.hamcrest.StringDescription;
@@ -13,13 +20,13 @@ import org.jnario.spec.spec.ExampleGroup;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("ExampleGroup")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class ExecutableIsPendingExampleGroupSpec extends ExecutableIsPendingSpec {
   @Test
   @Named("exampleGroupWith[pendingExample].isPending should be true")
-  @Order(16)
+  @Order(1)
   public void _exampleGroupWithPendingExampleIsPendingShouldBeTrue() throws Exception {
     Example _pendingExample = Specs.pendingExample();
     ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_pendingExample);
@@ -34,7 +41,7 @@ public class ExecutableIsPendingExampleGroupSpec extends ExecutableIsPendingSpec
   
   @Test
   @Named("exampleGroupWith[implementedExample].isPending should be false")
-  @Order(17)
+  @Order(2)
   public void _exampleGroupWithImplementedExampleIsPendingShouldBeFalse() throws Exception {
     Example _implementedExample = Specs.implementedExample();
     ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_implementedExample);
@@ -49,7 +56,7 @@ public class ExecutableIsPendingExampleGroupSpec extends ExecutableIsPendingSpec
   
   @Test
   @Named("exampleGroupWith[pendingExample, implementedExample].isPending should be true")
-  @Order(18)
+  @Order(3)
   public void _exampleGroupWithPendingExampleImplementedExampleIsPendingShouldBeTrue() throws Exception {
     Example _pendingExample = Specs.pendingExample();
     Example _implementedExample = Specs.implementedExample();
@@ -66,7 +73,7 @@ public class ExecutableIsPendingExampleGroupSpec extends ExecutableIsPendingSpec
   
   @Test
   @Named("exampleGroupWith[pendingExampleGroup].isPending should be true")
-  @Order(19)
+  @Order(4)
   public void _exampleGroupWithPendingExampleGroupIsPendingShouldBeTrue() throws Exception {
     ExampleGroup _pendingExampleGroup = Specs.pendingExampleGroup();
     ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_pendingExampleGroup);

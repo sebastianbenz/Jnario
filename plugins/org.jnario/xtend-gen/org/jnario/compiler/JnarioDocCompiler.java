@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.compiler;
 
 import com.google.common.base.Objects;
@@ -16,7 +23,6 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.mwe.NameBasedFilter;
 import org.eclipse.xtext.mwe.PathTraverser;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
@@ -86,8 +92,8 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
       String _plus = ("source directories: " + _sourcePathDirectories);
       InputOutput.<String>println(_plus);
       List<String> _sourcePathDirectories_1 = this.getSourcePathDirectories();
-      final Function1<URI,Boolean> _function = new Function1<URI,Boolean>() {
-          public Boolean apply(final URI input) {
+      final Predicate<URI> _function = new Predicate<URI>() {
+          public boolean apply(final URI input) {
             final boolean matches = nameBasedFilter.matches(input);
             if (matches) {
               String _plus = ("loading resource: " + input);
@@ -98,11 +104,7 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
             return matches;
           }
         };
-      pathTraverser.resolvePathes(_sourcePathDirectories_1, new Predicate<URI>() {
-          public boolean apply(URI input) {
-            return _function.apply(input);
-          }
-      });
+      pathTraverser.resolvePathes(_sourcePathDirectories_1, _function);
       final File classDirectory = this.createTempDir("classes");
       ResourceSet _resourceSet_2 = this.getResourceSet();
       this.installJvmTypeProvider(_resourceSet_2, classDirectory);

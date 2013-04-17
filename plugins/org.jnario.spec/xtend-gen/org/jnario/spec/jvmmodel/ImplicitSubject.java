@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.jvmmodel;
 
 import com.google.common.base.Objects;
@@ -23,6 +30,7 @@ import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XbasePackage;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -40,6 +48,7 @@ import org.jnario.util.Nodes;
 @SuppressWarnings("all")
 public class ImplicitSubject {
   @Inject
+  @Extension
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
   
   public void addImplicitSubject(final JvmGenericType type, final ExampleGroup exampleGroup) {

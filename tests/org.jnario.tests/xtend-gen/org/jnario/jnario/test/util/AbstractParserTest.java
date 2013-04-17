@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.test.util;
 
 import com.google.common.base.Objects;
@@ -14,6 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource.Factory.Registry;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.resource.FileExtensionProvider;
 import org.eclipse.xtext.validation.Issue;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -27,6 +35,7 @@ import org.junit.Test;
 @SuppressWarnings("all")
 public class AbstractParserTest {
   @Inject
+  @Extension
   private ModelStore _modelStore;
   
   @Inject
@@ -56,17 +65,13 @@ public class AbstractParserTest {
     }
     Class<? extends Object> _context_1 = this.context();
     ClassPathUriProviderBuilder _startingFrom = ClassPathUriProviderBuilder.startingFrom(_context_1);
-    final Function1<URI,Boolean> _function = new Function1<URI,Boolean>() {
-        public Boolean apply(final URI it) {
+    final Predicate<URI> _function = new Predicate<URI>() {
+        public boolean apply(final URI it) {
           boolean _onlySpecFiles = AbstractParserTest.this.onlySpecFiles(it);
           return _onlySpecFiles;
         }
       };
-    IUriProvider _select = _startingFrom.select(new Predicate<URI>() {
-        public boolean apply(URI input) {
-          return _function.apply(input);
-        }
-    });
+    IUriProvider _select = _startingFrom.select(_function);
     this._modelStore.load(_select);
     List<Resource> _resources = this._modelStore.resources();
     final Function1<Resource,Boolean> _function_1 = new Function1<Resource,Boolean>() {

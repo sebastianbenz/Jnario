@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.tests.unit.jnario;
 
 import com.google.inject.Inject;
@@ -22,17 +29,17 @@ import org.jnario.suite.suite.Suite;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("Suite")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = SuiteTestCreator.class)
+@CreateWith(SuiteTestCreator.class)
+@SuppressWarnings("all")
 public class ExecutableIsPendingSuiteSpec extends ExecutableIsPendingSpec {
   @Inject
   XtextResource resource;
   
   @Test
   @Named("suiteWith[\\\"A suite\\\", specReference[pendingExampleGroup]].isPending should be true")
-  @Order(20)
+  @Order(1)
   public void _suiteWithASuiteSpecReferencePendingExampleGroupIsPendingShouldBeTrue() throws Exception {
     ExampleGroup _pendingExampleGroup = Specs.pendingExampleGroup();
     SpecReference _specReference = Suites.specReference(_pendingExampleGroup);
@@ -49,7 +56,7 @@ public class ExecutableIsPendingSuiteSpec extends ExecutableIsPendingSpec {
   
   @Test
   @Named("suiteWith[\\\"A suite\\\", specReference[exampleGroupWith[example[\\\"passing\\\"]]]].isPending should be false")
-  @Order(21)
+  @Order(2)
   public void _suiteWithASuiteSpecReferenceExampleGroupWithExamplePassingIsPendingShouldBeFalse() throws Exception {
     Example _example = Specs.example("passing");
     ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_example);

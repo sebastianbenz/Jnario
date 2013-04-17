@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.unit.naming;
 
 import org.hamcrest.StringDescription;
@@ -14,16 +21,16 @@ import org.jnario.spec.tests.unit.naming.ExampleNameProviderSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("describe[Example]")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderSpec {
   @Subject
   public ExampleNameProvider subject;
   
   @Test
   @Named("should use the description")
-  @Order(40)
+  @Order(1)
   public void _shouldUseTheDescription() throws Exception {
     String _describeFirst = this.describeFirst("\'should do stuff\' {true}");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "should do stuff");
@@ -34,7 +41,7 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
   
   @Test
   @Named("appends \\\'[PENDING]\\\' to pending example descriptions")
-  @Order(41)
+  @Order(2)
   public void _appendsPENDINGToPendingExampleDescriptions() throws Exception {
     String _describeFirst = this.describeFirst("\'should do stuff\'");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "should do stuff [PENDING]");

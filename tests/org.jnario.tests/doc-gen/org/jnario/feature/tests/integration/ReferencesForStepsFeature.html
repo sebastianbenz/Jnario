@@ -374,6 +374,25 @@ Given an extension</pre></span>
 </li>
 </ul>
 </div>
+<div><h3 class="scenario notrun"  id="Scenario_Ordering_in_step_references">Scenario: Ordering in step references
+</h3>
+<ul>
+<li><span class="step notrun"><p>Given a feature</p><pre>Feature: Ordering of step references
+ 
+Scenario: First
+  CharSequence jnarioFile
+  Then it should execute successfully
+    jnarioFile = &quot;&quot;
+    
+Scenario: Second
+  When I have a scenario with a field
+    jnarioFile = &quot;&quot;
+   Then it should execute successfully</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>References.feature</h3>
@@ -734,6 +753,24 @@ Feature: References for steps
         }
       Scenario: Redefines failing step
       Given an extension                      
+    '''
+    Then it should execute successfully
+    
+    
+  Scenario: Ordering in step references
+    Given a feature
+    '''
+    Feature: Ordering of step references
+ 
+    Scenario: First
+      CharSequence jnarioFile
+      Then it should execute successfully
+        jnarioFile = &quot;&quot;
+        
+    Scenario: Second
+      When I have a scenario with a field
+        jnarioFile = &quot;&quot;
+       Then it should execute successfully
     '''
     Then it should execute successfully
 </pre>

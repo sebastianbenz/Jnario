@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.unit.naming;
 
 import java.util.ArrayList;
@@ -21,9 +28,9 @@ import org.jnario.spec.tests.unit.naming.ExampleNameProviderSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("toJavaClassName[ExampleGroup]")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleNameProviderSpec {
   @Subject
   public ExampleNameProvider subject;
@@ -33,7 +40,7 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
   @Order(1)
   public void _shouldRemoveAllWhiteSpacesFromExampleGroupSDescription() throws Exception {
     String _firstJavaClassName = this.firstJavaClassName("describe \'My Example\'");
-    boolean _should_contain = Should.should_contain(_firstJavaClassName, " ");
+    boolean _should_contain = Should.<Object>should_contain(_firstJavaClassName, " ");
     Assert.assertFalse("\nExpected firstJavaClassName(\"describe \'My Example\'\") should not contain \" \" but"
      + "\n     firstJavaClassName(\"describe \'My Example\'\") is " + new StringDescription().appendValue(_firstJavaClassName).toString() + "\n", _should_contain);
     

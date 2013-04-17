@@ -41,6 +41,7 @@ Export-Package: org.jnario.feature,
  org.jnario.feature.parser.antlr,
  org.jnario.feature.parser.antlr.internal,
  org.jnario.feature.resource,
+ org.jnario.feature.scoping,
  org.jnario.feature.serializer,
  org.jnario.feature.services,
  org.jnario.feature.validation

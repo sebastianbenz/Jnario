@@ -2,23 +2,24 @@ package org.jnario.spec.tests.integration;
 
 import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.jnario.test.util.BehaviorExecutor;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("Defining Spec base classes")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = SpecTestCreator.class)
+@CreateWith(SpecTestCreator.class)
+@SuppressWarnings("all")
 public class DefiningSpecBaseClassesSpec {
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public BehaviorExecutor _behaviorExecutor;
   
   @Test

@@ -1,7 +1,16 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.integration;
 
 import com.google.inject.Inject;
+import java.util.Arrays;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.BehaviorExecutor;
@@ -13,7 +22,6 @@ import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.integration.UsingTablesSpecExample;
@@ -23,13 +31,14 @@ import org.junit.runner.RunWith;
 /**
  * Example tables are a great way to structure input and expected output data.
  */
-@SuppressWarnings("all")
 @Named("Using Tables")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = SpecTestCreator.class)
+@CreateWith(SpecTestCreator.class)
+@SuppressWarnings("all")
 public class UsingTablesSpec {
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public BehaviorExecutor _behaviorExecutor;
   
   /**
@@ -276,6 +285,9 @@ public class UsingTablesSpec {
     _builder.append("|          list            |");
     _builder.newLine();
     _builder.append("    ");
+    _builder.append("| null                     |");
+    _builder.newLine();
+    _builder.append("    ");
     _builder.append("| new ArrayList<String>()  |");
     _builder.newLine();
     _builder.append("    ");
@@ -291,8 +303,14 @@ public class UsingTablesSpec {
     _builder.append("    ");
     _builder.append("examplesWithTypeInference.forEach[");
     _builder.newLine();
-    _builder.append("      ");
+    _builder.append("    \t");
+    _builder.append("if(list != null){");
+    _builder.newLine();
+    _builder.append("        ");
     _builder.append("assert list.empty // works only if the type of list has been inferred as List<String>");
+    _builder.newLine();
+    _builder.append("    \t");
+    _builder.append("}");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("]");
@@ -300,7 +318,7 @@ public class UsingTablesSpec {
     _builder.append("  ");
     _builder.append("}");
     _builder.newLine();
-    _builder.append("}");
+    _builder.append("}  ");
     _builder.newLine();
     this._behaviorExecutor.executesSuccessfully(_builder);
   }
@@ -360,14 +378,50 @@ public class UsingTablesSpec {
   
   public ExampleTable<UsingTablesSpecExample> _initUsingTablesSpecExample() {
     return ExampleTable.create("example", 
-      java.util.Arrays.asList("value1", "value2", "sum"), 
-      new UsingTablesSpecExample(  java.util.Arrays.asList("1", "2", "3"), 1, 2, 3),
-      new UsingTablesSpecExample(  java.util.Arrays.asList("4", "5", "7"), 4, 5, 7),
-      new UsingTablesSpecExample(  java.util.Arrays.asList("7", "8", "14"), 7, 8, 14)
+      Arrays.asList("value1", "value2", "sum"), 
+      new UsingTablesSpecExample(  Arrays.asList("1", "2", "3"), _initUsingTablesSpecExampleCell0(), _initUsingTablesSpecExampleCell1(), _initUsingTablesSpecExampleCell2()),
+      new UsingTablesSpecExample(  Arrays.asList("4", "5", "7"), _initUsingTablesSpecExampleCell3(), _initUsingTablesSpecExampleCell4(), _initUsingTablesSpecExampleCell5()),
+      new UsingTablesSpecExample(  Arrays.asList("7", "8", "14"), _initUsingTablesSpecExampleCell6(), _initUsingTablesSpecExampleCell7(), _initUsingTablesSpecExampleCell8())
     );
   }
   
   protected ExampleTable<UsingTablesSpecExample> example = _initUsingTablesSpecExample();
+  
+  public int _initUsingTablesSpecExampleCell0() {
+    return 1;
+  }
+  
+  public int _initUsingTablesSpecExampleCell1() {
+    return 2;
+  }
+  
+  public int _initUsingTablesSpecExampleCell2() {
+    return 3;
+  }
+  
+  public int _initUsingTablesSpecExampleCell3() {
+    return 4;
+  }
+  
+  public int _initUsingTablesSpecExampleCell4() {
+    return 5;
+  }
+  
+  public int _initUsingTablesSpecExampleCell5() {
+    return 7;
+  }
+  
+  public int _initUsingTablesSpecExampleCell6() {
+    return 7;
+  }
+  
+  public int _initUsingTablesSpecExampleCell7() {
+    return 8;
+  }
+  
+  public int _initUsingTablesSpecExampleCell8() {
+    return 14;
+  }
   
   /**
    * `ExampleTable#forEach` executes the passed in procedure for all table rows.
@@ -381,13 +435,16 @@ public class UsingTablesSpec {
         public void apply(final Boolean it) {
           final Procedure1<UsingTablesSpecExample> _function = new Procedure1<UsingTablesSpecExample>() {
               public void apply(final UsingTablesSpecExample it) {
-                int _plus = (it.value1 + it.value2);
-                boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(it.sum));
+                int _value1 = it.getValue1();
+                int _value2 = it.getValue2();
+                int _plus = (_value1 + _value2);
+                int _sum = it.getSum();
+                boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(_sum));
                 Assert.assertTrue("\nExpected value1 + value2 => sum but"
                  + "\n     value1 + value2 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString()
-                 + "\n     value1 is " + new StringDescription().appendValue(it.value1).toString()
-                 + "\n     value2 is " + new StringDescription().appendValue(it.value2).toString()
-                 + "\n     sum is " + new StringDescription().appendValue(Integer.valueOf(it.sum)).toString() + "\n", _doubleArrow);
+                 + "\n     value1 is " + new StringDescription().appendValue(_value1).toString()
+                 + "\n     value2 is " + new StringDescription().appendValue(_value2).toString()
+                 + "\n     sum is " + new StringDescription().appendValue(Integer.valueOf(_sum)).toString() + "\n", _doubleArrow);
                 
               }
             };

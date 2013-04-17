@@ -1,15 +1,22 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.suite.documentation;
 
 import com.google.inject.Inject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Resources;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.suite.documentation.IntroducingJnarioSuitesSpec;
@@ -33,12 +40,13 @@ import org.junit.runner.RunWith;
  * 
  * <img width="600px" src="/img/tutorial/suite_buildpath.png" alt="New Suite Error"/>
  */
-@SuppressWarnings("all")
 @Named("Getting Started")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnarioSuitesSpec {
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ModelStore _modelStore;
   
   /**
@@ -131,6 +139,40 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
     _builder.newLine();
     Resource _parseSuite = this._modelStore.parseSuite(_builder);
     Resources.hasNoParseAndLinkingErrors(_parseSuite);
+  }
+  
+  public Resource parseExampleScenarioAndSpec() {
+    Resource _xblockexpression = null;
+    {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("package demo");
+      _builder.newLine();
+      _builder.append("Feature: My Feature");
+      _builder.newLine();
+      _builder.append("Scenario: My Scenario");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("When something happens");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Then it happens");
+      _builder.newLine();
+      this._modelStore.parseScenario(_builder);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("package demo");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("describe \"My Spec\"{");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("fact \"hello\".length => 5");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      Resource _parseSpec = this._modelStore.parseSpec(_builder_1);
+      _xblockexpression = (_parseSpec);
+    }
+    return _xblockexpression;
   }
   
   /**
@@ -244,39 +286,5 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
     _builder.newLine();
     Resource _parseSuite = this._modelStore.parseSuite(_builder);
     Resources.hasNoParseAndLinkingErrors(_parseSuite);
-  }
-  
-  public Resource parseExampleScenarioAndSpec() {
-    Resource _xblockexpression = null;
-    {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("package demo");
-      _builder.newLine();
-      _builder.append("Feature: My Feature");
-      _builder.newLine();
-      _builder.append("Scenario: My Scenario");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("When something happens");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("Then it happens");
-      _builder.newLine();
-      this._modelStore.parseScenario(_builder);
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("package demo");
-      _builder_1.newLine();
-      _builder_1.newLine();
-      _builder_1.append("describe \"My Spec\"{");
-      _builder_1.newLine();
-      _builder_1.append("\t");
-      _builder_1.append("fact \"hello\".length => 5");
-      _builder_1.newLine();
-      _builder_1.append("}");
-      _builder_1.newLine();
-      Resource _parseSpec = this._modelStore.parseSpec(_builder_1);
-      _xblockexpression = (_parseSpec);
-    }
-    return _xblockexpression;
   }
 }

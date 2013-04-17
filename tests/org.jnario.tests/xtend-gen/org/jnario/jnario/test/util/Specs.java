@@ -1,12 +1,18 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.test.util;
 
-import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XBooleanLiteral;
 import org.eclipse.xtext.xbase.XbaseFactory;
-import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.jnario.jnario.test.util.Features;
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
@@ -66,7 +72,7 @@ public class Specs {
     {
       final ExampleGroup group = Specs.exampleGroup(name);
       EList<XtendMember> _members = group.getMembers();
-      _members.addAll(((Collection<? extends XtendMember>)Conversions.doWrapArray(examples)));
+      CollectionExtensions.<XtendMember>addAll(_members, examples);
       _xblockexpression = (group);
     }
     return _xblockexpression;

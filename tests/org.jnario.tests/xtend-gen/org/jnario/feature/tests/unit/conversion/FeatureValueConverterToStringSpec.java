@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.tests.unit.conversion;
 
 import org.eclipse.xtext.util.Strings;
@@ -13,13 +20,13 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("toString")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class FeatureValueConverterToStringSpec extends FeatureValueConverterSpec {
   @Test
   @Named("subject.toString[\\\"text\\\"] should be \\\"Prefix:text\\\" + Strings::newLine")
-  @Order(4)
+  @Order(1)
   public void _subjectToStringTextShouldBePrefixTextStringsNewLine() throws Exception {
     String _string = this.subject.toString("text");
     String _newLine = Strings.newLine();
@@ -35,11 +42,11 @@ public class FeatureValueConverterToStringSpec extends FeatureValueConverterSpec
   
   @Test
   @Named("subject.toString[null] should be null")
-  @Order(5)
+  @Order(2)
   public void _subjectToStringNullShouldBeNull() throws Exception {
     String _string = this.subject.toString(null);
-    Matcher<String> _nullValue = CoreMatchers.<String>nullValue();
-    boolean _should_be = Should.<String>should_be(_string, _nullValue);
+    Matcher<Object> _nullValue = CoreMatchers.<Object>nullValue();
+    boolean _should_be = Should.should_be(_string, _nullValue);
     Assert.assertTrue("\nExpected subject.toString(null) should be null but"
      + "\n     subject.toString(null) is " + new StringDescription().appendValue(_string).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _should_be);

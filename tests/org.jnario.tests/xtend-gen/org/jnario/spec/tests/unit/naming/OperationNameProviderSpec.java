@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.unit.naming;
 
 import com.google.common.collect.Iterables;
@@ -11,6 +18,7 @@ import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.access.ClasspathTypeProviderFactory;
 import org.eclipse.xtext.common.types.access.impl.ClasspathTypeProvider;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -19,7 +27,6 @@ import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.runner.Contains;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.spec.naming.OperationNameProvider;
 import org.jnario.spec.tests.unit.naming.OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec;
@@ -28,10 +35,10 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 
 @Contains(OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec.class)
-@SuppressWarnings("all")
 @Named("OperationNameProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = SpecTestCreator.class)
+@CreateWith(SpecTestCreator.class)
+@SuppressWarnings("all")
 public class OperationNameProviderSpec {
   @Inject
   OperationNameProvider subject;
@@ -39,7 +46,7 @@ public class OperationNameProviderSpec {
   @Inject
   ClasspathTypeProviderFactory typeProviderFactory = new Function0<ClasspathTypeProviderFactory>() {
     public ClasspathTypeProviderFactory apply() {
-      Class<? extends Object> _class = OperationNameProviderSpec.this.getClass();
+      Class<? extends OperationNameProviderSpec> _class = OperationNameProviderSpec.this.getClass();
       ClassLoader _classLoader = _class.getClassLoader();
       ClasspathTypeProviderFactory _classpathTypeProviderFactory = new ClasspathTypeProviderFactory(_classLoader);
       return _classpathTypeProviderFactory;
@@ -50,6 +57,7 @@ public class OperationNameProviderSpec {
   
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ModelStore _modelStore;
   
   @Before

@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.doc;
 
 import com.google.common.base.Objects;
@@ -12,6 +19,7 @@ import org.eclipse.xtend.core.xtend.XtendPackage.Literals;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -28,9 +36,11 @@ import org.jnario.spec.spec.ExampleGroup;
 @SuppressWarnings("all")
 public class SpecDocGenerator extends AbstractDocGenerator {
   @Inject
+  @Extension
   private ExampleNameProvider _exampleNameProvider;
   
   @Inject
+  @Extension
   private FilterExtractor _filterExtractor;
   
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {
@@ -235,7 +245,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           _and = (_not && _eIsSet);
         }
         if (_and) {
-          String _codeBlock = this.toCodeBlock(example, filters);
+          CharSequence _codeBlock = this.toCodeBlock(example, filters);
           _builder.append(_codeBlock, "");
           _builder.newLineIfNotEmpty();
           String _errorMessage = this.errorMessage(example);
@@ -248,8 +258,8 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     return _xblockexpression;
   }
   
-  public String toCodeBlock(final Example example, final List<Filter> filters) {
-    String _xblockexpression = null;
+  public CharSequence toCodeBlock(final Example example, final List<Filter> filters) {
+    CharSequence _xblockexpression = null;
     {
       String prefix = "<pre class=\"prettyprint lang-spec linenums\">";
       String _apply = this.apply(filters, prefix);
@@ -266,7 +276,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
       _builder.newLineIfNotEmpty();
       _builder.append(code, "");
       _builder.append("</pre>");
-      _xblockexpression = (_builder.toString());
+      _xblockexpression = (_builder);
     }
     return _xblockexpression;
   }
@@ -323,7 +333,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     _builder.append(_generateDoc, "");
     _builder.newLineIfNotEmpty();
     int _plus = (level + 1);
-    StringConcatenation _generateMembers = this.generateMembers(exampleGroup, _plus);
+    Object _generateMembers = this.generateMembers(exampleGroup, _plus);
     _builder.append(_generateMembers, "");
     _builder.newLineIfNotEmpty();
     {

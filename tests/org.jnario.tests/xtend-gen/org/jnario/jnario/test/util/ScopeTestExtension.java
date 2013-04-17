@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.test.util;
 
 import com.google.inject.Inject;
@@ -10,6 +17,7 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.jnario.test.util.ModelStore;
@@ -22,6 +30,7 @@ public class ScopeTestExtension implements Iterable {
   private ModelStore store;
   
   @Inject
+  @Extension
   private IScopeProvider _iScopeProvider;
   
   public Resource parseSpec(final CharSequence content) {

@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.integration;
 
 import com.google.common.base.Objects;
@@ -23,9 +30,9 @@ import org.junit.runner.RunWith;
 /**
  * You can use the `should` statement to express the expected behavior of objects.
  */
-@SuppressWarnings("all")
 @Named("Using Should")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class UsingShouldSpec {
   /**
    * `should` passes if the result of the left expression is
@@ -47,8 +54,8 @@ public class UsingShouldSpec {
     Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
      + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be_1);
     
-    Matcher<String> _nullValue = CoreMatchers.<String>nullValue();
-    boolean _should_be_2 = Should.<String>should_be(
+    Matcher<Object> _nullValue = CoreMatchers.<Object>nullValue();
+    boolean _should_be_2 = Should.should_be(
       "something", _nullValue);
     Assert.assertFalse("\nExpected \"something\" should not be null but" + " did not." + "\n", _should_be_2);
     
@@ -62,17 +69,17 @@ public class UsingShouldSpec {
     Assert.assertTrue("\nExpected // types\r\n\t\t\"a string\" => typeof(String) but"
      + "\n     // types\r\n\t\t\"a string\" => typeof(String) is " + new StringDescription().appendValue(_doubleArrow_1).toString() + "\n", _doubleArrow_1);
     
-    Class<? extends Object> _class = "a string".getClass();
+    Class<? extends String> _class = "a string".getClass();
     boolean _doubleArrow_2 = Should.operator_doubleArrow(_class, String.class);
     Assert.assertTrue("\nExpected \"a string\".getClass => typeof(String) but"
      + "\n     \"a string\".getClass is " + new StringDescription().appendValue(_class).toString() + "\n", _doubleArrow_2);
     
-    boolean _should_contain = Should.should_contain(
+    boolean _should_contain = Should.<Object>should_contain(
       "something", "thing");
     Assert.assertTrue("\nExpected // strings\r\n\t\t\"something\" should contain \"thing\" but"
      + "\n     // strings\r\n\t\t\"something\" should contain \"thing\" is " + new StringDescription().appendValue(true).toString() + "\n", _should_contain);
     
-    boolean _should_contain_1 = Should.should_contain(
+    boolean _should_contain_1 = Should.<Object>should_contain(
       "something", "any");
     Assert.assertFalse("\nExpected \"something\" should not contain \"any\" but"
      + "\n     \"something\" should not contain \"any\" is " + new StringDescription().appendValue(true).toString() + "\n", _should_contain_1);
@@ -174,7 +181,7 @@ public class UsingShouldSpec {
     String message_3 = "";
     try{
       Object _object = new Object();
-      Matcher<?> _nullValue = CoreMatchers.nullValue();
+      Matcher<Object> _nullValue = CoreMatchers.<Object>nullValue();
       boolean _doubleArrow_1 = Should.operator_doubleArrow(_object, _nullValue);
       Assert.assertTrue("\nExpected new Object => null but"
        + "\n     new Object is " + new StringDescription().appendValue(_object).toString() + "\n", _doubleArrow_1);
@@ -190,7 +197,7 @@ public class UsingShouldSpec {
     try{
       Object _object_1 = new Object();
       Matcher<Object> _nullValue_1 = CoreMatchers.<Object>nullValue();
-      boolean _should_be_2 = Should.<Object>should_be(_object_1, _nullValue_1);
+      boolean _should_be_2 = Should.should_be(_object_1, _nullValue_1);
       Assert.assertTrue("\nExpected new Object should be null but"
        + "\n     new Object is " + new StringDescription().appendValue(_object_1).toString() + "\n", _should_be_2);
       
@@ -209,6 +216,11 @@ public class UsingShouldSpec {
       expectedException_5 = true;
     }
     Assert.assertTrue(message_5, expectedException_5);
+  }
+  
+  public void method() {
+    IllegalArgumentException _illegalArgumentException = new IllegalArgumentException();
+    throw _illegalArgumentException;
   }
   
   /**
@@ -340,16 +352,5 @@ public class UsingShouldSpec {
      + "\n     list(\"red\", \"green\") is " + new StringDescription().appendValue(_list).toString()
      + "\n     hasItem(\"red\") is " + new StringDescription().appendValue(_hasItem).toString() + "\n", _doubleArrow_1);
     
-    Matcher<Integer> _greaterThan = Matchers.<Integer>greaterThan(Integer.valueOf(5));
-    boolean _should_be = Should.<Integer>should_be(
-      Integer.valueOf(9), _greaterThan);
-    Assert.assertTrue("\nExpected 9 should be greaterThan(5) but"
-     + "\n     greaterThan(5) is " + new StringDescription().appendValue(_greaterThan).toString() + "\n", _should_be);
-    
-  }
-  
-  public void method() {
-    IllegalArgumentException _illegalArgumentException = new IllegalArgumentException();
-    throw _illegalArgumentException;
   }
 }

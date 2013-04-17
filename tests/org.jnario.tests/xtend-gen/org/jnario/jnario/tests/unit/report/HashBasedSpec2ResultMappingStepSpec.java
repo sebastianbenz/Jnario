@@ -15,10 +15,10 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("Step")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = FeatureTestCreator.class)
+@CreateWith(FeatureTestCreator.class)
+@SuppressWarnings("all")
 public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMappingSpec {
   final Passed aResult = new Function0<Passed>() {
     public Passed apply() {
@@ -68,7 +68,7 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
   
   @Test
   @Named("matches if classname and name are equal")
-  @Order(13)
+  @Order(1)
   public void _matchesIfClassnameAndNameAreEqual() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package example");
@@ -108,7 +108,7 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
   
   @Test
   @Named("includes pending state when matching")
-  @Order(14)
+  @Order(2)
   public void _includesPendingStateWhenMatching() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package example");
@@ -133,7 +133,7 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
   
   @Test
   @Named("handles escaped characters")
-  @Order(15)
+  @Order(3)
   public void _handlesEscapedCharacters() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package example");
@@ -161,7 +161,7 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
   
   @Test
   @Named("handles step arguments")
-  @Order(16)
+  @Order(4)
   public void _handlesStepArguments() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package example");

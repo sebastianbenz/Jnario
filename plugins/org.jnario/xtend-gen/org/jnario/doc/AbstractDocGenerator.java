@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.doc;
 
 import com.google.common.base.Objects;
@@ -26,6 +33,7 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -60,18 +68,23 @@ public abstract class AbstractDocGenerator implements IGenerator {
   private final static String SEP = "_";
   
   @Inject
+  @Extension
   private WhiteSpaceNormalizer _whiteSpaceNormalizer;
   
   @Inject
+  @Extension
   private PegDownProcessor _pegDownProcessor;
   
   @Inject
+  @Extension
   private HtmlFileBuilder _htmlFileBuilder;
   
   @Inject
+  @Extension
   private DocumentationProvider documentationProvider;
   
   @Inject
+  @Extension
   private Executable2ResultMapping spec2ResultMapping;
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {

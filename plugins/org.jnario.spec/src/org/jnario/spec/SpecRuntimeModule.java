@@ -50,6 +50,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.resource.JvmDeclaredTypeSignatureHashProvider.SignatureHashBuilder;
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedTypes;
+import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputer;
 import org.eclipse.xtext.xbase.typesystem.internal.DefaultBatchTypeResolver;
 import org.eclipse.xtext.xbase.typesystem.internal.DefaultReentrantTypeResolver;
@@ -78,6 +79,7 @@ import org.jnario.spec.jvmmodel.SpecLazyLinker;
 import org.jnario.spec.jvmmodel.SpecSyntheticNameClashResolver;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.naming.SpecQualifiedNameProvider;
+import org.jnario.spec.scoping.SpecBatchScopeProvider;
 import org.jnario.spec.scoping.SpecResourceDescriptionStrategy;
 import org.jnario.spec.scoping.SpecScopeProvider;
 import org.jnario.typing.JnarioTypeComputer;
@@ -238,4 +240,8 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 		return JnarioTypeComputer.class;
 	}
 	
+	@Override
+	public Class<? extends XbaseBatchScopeProvider> bindXbaseBatchScopeProvider() {
+		return SpecBatchScopeProvider.class;
+	}
 }

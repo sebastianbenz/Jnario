@@ -12,9 +12,9 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("StepReference")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class FeatureScopeProviderStepReferenceSpec extends FeatureScopeProviderSpec {
   @Test
   @Named("contains all implemented steps")

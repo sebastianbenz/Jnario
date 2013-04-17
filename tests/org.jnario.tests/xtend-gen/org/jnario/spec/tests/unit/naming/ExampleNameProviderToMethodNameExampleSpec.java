@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.unit.naming;
 
 import java.util.ArrayList;
@@ -19,16 +26,16 @@ import org.jnario.spec.tests.unit.naming.ExampleNameProviderSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("toMethodName[Example]")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProviderSpec {
   @Subject
   public ExampleNameProvider subject;
   
   @Test
   @Named("converts method description to camel case starting in lowercase")
-  @Order(13)
+  @Order(1)
   public void _convertsMethodDescriptionToCamelCaseStartingInLowercase() throws Exception {
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
       "\'my example\'", 
@@ -50,7 +57,7 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
   
   @Test
   @Named("shortens method name to 250 chars")
-  @Order(14)
+  @Order(2)
   public void _shortensMethodNameTo250Chars() throws Exception {
     String _nameOfLength = this.nameOfLength(251);
     String _firstMethodName = this.firstMethodName(_nameOfLength);

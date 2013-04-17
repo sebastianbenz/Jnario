@@ -6,6 +6,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.doc.WhiteSpaceNormalizer;
 import org.jnario.feature.feature.Step;
 import org.jnario.ui.doc.JnarioHoverProvider;
@@ -13,6 +14,7 @@ import org.jnario.ui.doc.JnarioHoverProvider;
 @SuppressWarnings("all")
 public class FeatureHoverProvider extends JnarioHoverProvider {
   @Inject
+  @Extension
   private WhiteSpaceNormalizer normalizer;
   
   protected String getDocumentation(final EObject o) {

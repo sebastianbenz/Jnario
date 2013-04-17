@@ -169,10 +169,10 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    	
    	def dispatch void init(Scenario scenario, JvmGenericType inferredJvmType, List<JvmGenericType> scenarios){
    		scenario.copyXtendMemberForReferences
-//		scenario.members.filter(typeof(XtendField)).forEach[
-////			initializeName
-//			transform(it, inferredJvmType)
-//		]   		
+		scenario.members.filter(typeof(XtendField)).forEach[
+//			initializeName
+			transform2(it, inferredJvmType)
+		]   		
    		val annotations = inferredJvmType.annotations
    		testRuntime.updateScenario(scenario, inferredJvmType)
    		annotations += scenario.toAnnotation(typeof(Named), scenario.describe)
@@ -210,7 +210,14 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		]
    	}
    	
-   	
+	override protected transform(XtendField source, JvmGenericType container) {
+	}
+	
+	def protected transform2(XtendField source, JvmGenericType container) {
+		super.transform(source, container)
+	}
+	
+		
 	override protected transform(XtendFunction source, JvmGenericType container, boolean allowDispatch) {
 	}
 	

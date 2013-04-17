@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.tests.integration;
 
 import java.util.ArrayList;
@@ -23,9 +30,9 @@ import org.junit.runner.RunWith;
  * When writing tests the concrete implementation of a collection usually doesn't matter
  * so much. Therefore, Jnario provides shorter versions of Xtend's collection literals.
  */
-@SuppressWarnings("all")
 @Named("Collection Literals")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec {
   @Test
   @Named("List Literal")

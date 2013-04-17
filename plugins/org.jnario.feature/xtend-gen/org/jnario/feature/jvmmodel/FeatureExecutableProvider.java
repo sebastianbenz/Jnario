@@ -1,7 +1,6 @@
 package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +41,7 @@ public class FeatureExecutableProvider implements ExecutableProvider {
       Background _background_1 = feature.getBackground();
       final ArrayList<Scenario> result = CollectionLiterals.<Scenario>newArrayList(_background_1);
       EList<Scenario> _scenarios = feature.getScenarios();
-      Iterables.<Scenario>addAll(result, _scenarios);
+      result.addAll(_scenarios);
       _xblockexpression = (result);
     }
     return _xblockexpression;

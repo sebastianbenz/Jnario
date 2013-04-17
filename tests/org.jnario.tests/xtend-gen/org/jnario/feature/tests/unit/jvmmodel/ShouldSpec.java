@@ -2,23 +2,24 @@ package org.jnario.feature.tests.unit.jvmmodel;
 
 import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.jnario.test.util.BehaviorExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("Should")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = FeatureTestCreator.class)
+@CreateWith(FeatureTestCreator.class)
+@SuppressWarnings("all")
 public class ShouldSpec {
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public BehaviorExecutor _behaviorExecutor;
   
   @Test

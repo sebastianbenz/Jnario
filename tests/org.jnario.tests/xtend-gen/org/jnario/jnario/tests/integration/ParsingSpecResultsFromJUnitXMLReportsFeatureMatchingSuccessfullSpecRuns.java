@@ -8,6 +8,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.util.StringInputStream;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.hamcrest.StringDescription;
 import org.jnario.Executable;
 import org.jnario.jnario.test.util.ModelStore;
@@ -24,7 +25,6 @@ import org.jnario.report.Passed;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecResultParser;
 import org.jnario.runner.CreateWith;
-import org.jnario.runner.Extension;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -34,11 +34,12 @@ import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
 @Named("Scenario: Matching successfull Spec Runs")
-@CreateWith(value = SpecTestCreator.class)
+@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpecRuns extends ParsingSpecResultsFromJUnitXMLReportsFeature {
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ModelStore _modelStore;
   
   @Inject

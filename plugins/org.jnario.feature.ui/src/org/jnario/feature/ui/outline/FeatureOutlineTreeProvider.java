@@ -46,7 +46,6 @@ public class FeatureOutlineTreeProvider extends XtendOutlineTreeProvider {
 		
 	}
 	
-	
 	@Override
 	protected XtendFeatureNode createNodeForFeature(IOutlineNode parentNode,
 			JvmDeclaredType inferredType, JvmFeature jvmFeature,

@@ -3,10 +3,10 @@ package org.jnario.report
 import com.google.inject.Inject
 import java.util.List
 import org.eclipse.xtext.resource.XtextResource
-import org.eclipse.xtext.xbase.lib.Pair
 import org.jnario.Executable
 import org.jnario.jvmmodel.ExecutableProvider
 import org.jnario.jvmmodel.JnarioNameProvider
+import org.eclipse.xtext.xbase.lib.Pair
 
 class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2ResultMapping{
 

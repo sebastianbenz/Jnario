@@ -1,9 +1,17 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.suite.unit;
 
 import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.FeaturePackage;
@@ -13,7 +21,6 @@ import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
@@ -26,20 +33,23 @@ import org.jnario.suite.suite.SuitePackage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("SuiteSpecFilter")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class SuiteSpecFilterSpec {
   @Subject
   public SuiteSpecFilter subject;
   
   @Extension
+  @org.jnario.runner.Extension
   public SuitePackage _suitePackage = SuitePackage.eINSTANCE;
   
   @Extension
+  @org.jnario.runner.Extension
   public SpecPackage _specPackage = SpecPackage.eINSTANCE;
   
   @Extension
+  @org.jnario.runner.Extension
   public FeaturePackage _featurePackage = FeaturePackage.eINSTANCE;
   
   @Test

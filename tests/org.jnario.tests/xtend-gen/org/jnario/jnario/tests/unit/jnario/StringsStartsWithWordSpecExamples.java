@@ -3,30 +3,32 @@ package org.jnario.jnario.tests.unit.jnario;
 import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 
+@SuppressWarnings("all")
 public class StringsStartsWithWordSpecExamples extends ExampleTableRow {
   public StringsStartsWithWordSpecExamples(final List<String> cellNames, final String string, final String word, final int index) {
     super(cellNames);
     this.string = string;
     this.word = word;
     this.index = index;
+    
   }
   
-  public String string;
+  private String string;
   
   public String getString() {
-    return string;
+    return this.string;
   }
   
-  public String word;
+  private String word;
   
   public String getWord() {
-    return word;
+    return this.word;
   }
   
-  public int index;
+  private int index;
   
   public int getIndex() {
-    return index;
+    return this.index;
   }
   
   public List<String> getCells() {

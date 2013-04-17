@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @Contains(DefiningFeatureBasesClassesFeatureScenarioWithBackground.class)
 @Named("Defining Feature Bases Classes")
 @Ignore
-@SuppressWarnings("all")
 @RunWith(FeatureRunner.class)
+@SuppressWarnings("all")
 public class DefiningFeatureBasesClassesFeature {
 }

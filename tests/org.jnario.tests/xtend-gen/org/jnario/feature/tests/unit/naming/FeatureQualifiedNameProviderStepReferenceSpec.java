@@ -10,13 +10,13 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("StepReference")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class FeatureQualifiedNameProviderStepReferenceSpec extends FeatureQualifiedNameProviderSpec {
   @Test
   @Named("strips keyword")
-  @Order(7)
+  @Order(1)
   public void _stripsKeyword() throws Exception {
     String _implementedStepName = this.implementedStepName("Given a step with implementation");
     boolean _doubleArrow = Should.operator_doubleArrow(_implementedStepName, "myPackage.a step with implementation");
@@ -27,7 +27,7 @@ public class FeatureQualifiedNameProviderStepReferenceSpec extends FeatureQualif
   
   @Test
   @Named("strips dot at end")
-  @Order(8)
+  @Order(2)
   public void _stripsDotAtEnd() throws Exception {
     String _stepName = this.stepName("Given a step with implementation.");
     boolean _doubleArrow = Should.operator_doubleArrow(_stepName, "myPackage.a step with implementation");
@@ -38,7 +38,7 @@ public class FeatureQualifiedNameProviderStepReferenceSpec extends FeatureQualif
   
   @Test
   @Named("strips argument values")
-  @Order(9)
+  @Order(3)
   public void _stripsArgumentValues() throws Exception {
     String _stepName = this.stepName("Given a step with \"arg\".");
     boolean _doubleArrow = Should.operator_doubleArrow(_stepName, "myPackage.a step with \"\"");

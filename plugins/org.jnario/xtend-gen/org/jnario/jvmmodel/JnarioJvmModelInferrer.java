@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jvmmodel;
 
 import com.google.common.base.Objects;
@@ -33,6 +40,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.typesystem.IBatchTypeResolver;
@@ -41,7 +49,6 @@ import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.TestRuntimeProvider;
 import org.jnario.jvmmodel.TestRuntimeSupport;
 import org.jnario.runner.Extends;
-import org.jnario.runner.Extension;
 
 /**
  * @author Birgit Engelmann
@@ -53,23 +60,28 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   public XbaseCompiler compiler;
   
   @Inject
+  @Extension
   private TypeReferences _typeReferences;
   
   @Inject
+  @Extension
   private IJvmModelAssociations _iJvmModelAssociations;
   
   @Inject
   private TestRuntimeProvider runtime;
   
   @Inject
+  @Extension
   private JnarioNameProvider _jnarioNameProvider;
   
   private TestRuntimeSupport testRuntime;
   
   @Inject
+  @Extension
   private JvmTypesBuilder jvmTypesBuilder;
   
   @Inject
+  @Extension
   private CommonTypeComputationServices commonTypeComputationServices;
   
   @Inject
@@ -113,7 +125,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
     if (_isExtension) {
       field.setVisibility(JvmVisibility.PUBLIC);
       EList<JvmAnnotationReference> _annotations = field.getAnnotations();
-      JvmAnnotationReference _annotation = this.jvmTypesBuilder.toAnnotation(source, Extension.class);
+      JvmAnnotationReference _annotation = this.jvmTypesBuilder.toAnnotation(source, org.jnario.runner.Extension.class);
       this.jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
     }
   }
@@ -152,17 +164,13 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
       {
         final XtendClass current = ((XtendClass) xtendType);
         EList<XAnnotation> _annotations = current.getAnnotations();
-        final Function1<XAnnotation,Boolean> _function = new Function1<XAnnotation,Boolean>() {
-            public Boolean apply(final XAnnotation it) {
+        final Predicate<XAnnotation> _function = new Predicate<XAnnotation>() {
+            public boolean apply(final XAnnotation it) {
               boolean _hasExtendsAnnotation = JnarioJvmModelInferrer.this.hasExtendsAnnotation(it);
               return _hasExtendsAnnotation;
             }
           };
-        Iterable<XAnnotation> _filter = Iterables.<XAnnotation>filter(_annotations, new Predicate<XAnnotation>() {
-            public boolean apply(XAnnotation input) {
-              return _function.apply(input);
-            }
-        });
+        Iterable<XAnnotation> _filter = Iterables.<XAnnotation>filter(_annotations, _function);
         final Function1<XAnnotation,XTypeLiteral> _function_1 = new Function1<XAnnotation,XTypeLiteral>() {
             public XTypeLiteral apply(final XAnnotation it) {
               XExpression _value = it.getValue();

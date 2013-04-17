@@ -21,7 +21,7 @@ import static org.jnario.jnario.test.util.Features.*
 import static org.jnario.jnario.test.util.Query.*
 
 import static extension org.jnario.lib.ExampleTableIterators.*
-import static extension org.jnario.lib.Should.*
+import static extension org.jnario.lib.Should.*import org.jnario.jnario.test.util.Features
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -116,8 +116,8 @@ describe StepNameProvider{
 	}
 	
 	context ^describe(Scenario){
-		fact scenario(" With whitespace ").desc =>  "With whitespace"
-		fact scenario("With (parentheses)").desc =>  "With [parentheses]"
+		fact Features::scenario(" With whitespace ").desc =>  "With whitespace"
+		fact Features::scenario("With (parentheses)").desc =>  "With [parentheses]"
 	} 
 	
 	def desc(Feature feature){

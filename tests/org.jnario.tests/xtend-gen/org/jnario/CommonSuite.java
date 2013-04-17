@@ -25,7 +25,7 @@ import org.junit.runner.RunWith;
 
 @Named("Common")
 @Contains({ _20FactsAboutXtendSpec.class, DocumentationProviderSpec.class, ExampleColumnSpec.class, ExampleTableSpec.class, ExecutableSpec.class, ExtensionLibrarySpec.class, FilterExtractorSpec.class, HashBasedSpec2ResultMappingSpec.class, HtmlAssetsSpec.class, HtmlAssetsCompilerSpec.class, InstallingJnarioSpec.class, ParsingSpecResultsFromJUnitXMLReportsFeature.class, RegexFilterSpec.class, ShouldSpec.class, SpecResultParserSpec.class, StringsSpec.class, TestRuntimeProviderSpec.class, WhiteSpaceNormalizerSpec.class })
-@SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class CommonSuite {
 }

@@ -1,9 +1,17 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.suite.unit;
 
 import com.google.inject.Inject;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -19,7 +27,6 @@ import org.jnario.lib.Should;
 import org.jnario.runner.Contains;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
@@ -34,20 +41,22 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @Contains(SpecResolverEvaluatesRegularExpressionsSpec.class)
-@SuppressWarnings("all")
 @Named("SpecResolver")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = SuiteTestCreator.class)
+@CreateWith(SuiteTestCreator.class)
+@SuppressWarnings("all")
 public class SpecResolverSpec {
   @Subject
   public SpecResolver subject;
   
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ModelStore m;
   
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public SuiteClassNameProvider _suiteClassNameProvider;
   
   @Before

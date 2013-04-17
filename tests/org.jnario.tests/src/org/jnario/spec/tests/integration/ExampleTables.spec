@@ -144,16 +144,19 @@ describe "Using Tables"{
   describe "Example Tables"{
     def examplesWithTypeInference{
       |          list            |
+      | null                     |
       | new ArrayList<String>()  |
       | new LinkedList<String>() |
     }     
 
     fact "computes the common super type"{
       examplesWithTypeInference.forEach[
-        assert list.empty // works only if the type of list has been inferred as List<String>
+      	if(list != null){
+          assert list.empty // works only if the type of list has been inferred as List<String>
+      	}
       ]
     }
-  }
+  }  
   '''.executesSuccessfully       
   }
   

@@ -3,6 +3,7 @@ package org.jnario.spec.tests.unit.spec;
 import com.google.inject.Inject;
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.hamcrest.StringDescription;
 import org.jnario.Executable;
 import org.jnario.jnario.test.util.ModelStore;
@@ -12,7 +13,6 @@ import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
@@ -22,16 +22,17 @@ import org.jnario.spec.spec.ExampleGroup;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("SpecExecutableProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = SpecTestCreator.class)
+@CreateWith(SpecTestCreator.class)
+@SuppressWarnings("all")
 public class SpecExecutableProviderSpec {
   @Subject
   public SpecExecutableProvider subject;
   
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ModelStore _modelStore;
   
   @Test

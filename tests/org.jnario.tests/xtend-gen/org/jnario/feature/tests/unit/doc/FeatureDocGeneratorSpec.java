@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.tests.unit.doc;
 
 import com.google.inject.Inject;
@@ -9,8 +16,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.hamcrest.StringDescription;
 import org.jnario.Executable;
@@ -27,7 +34,6 @@ import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecFailure;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
@@ -35,16 +41,17 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("FeatureDocGenerator")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = FeatureTestCreator.class)
+@CreateWith(FeatureTestCreator.class)
+@SuppressWarnings("all")
 public class FeatureDocGeneratorSpec {
   @Subject
   public FeatureDocGenerator subject;
   
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ModelStore _modelStore;
   
   @Inject
@@ -143,15 +150,15 @@ public class FeatureDocGeneratorSpec {
     _builder.append("\"\"       ");
     _builder.newLine();
     CharSequence _generateDocWithErrors = this.generateDocWithErrors(_builder);
-    boolean _should_contain = Should.should_contain(_generateDocWithErrors, "failed");
+    boolean _should_contain = Should.<Object>should_contain(_generateDocWithErrors, "failed");
     org.jnario.lib.Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tFeature: Example\r\n\t\t\t\r\n\t\t\tScenario: A failing Scenario\r\n\t\t\t\r\n\t\t\tGiven something\r\n\t\t\tWhen something happens \r\n\t\t\tThen there is an error\r\n\t\t\t\r\n\t\t\tScenario: Another scnario\r\n\t\t\tGiven something\r\n\t\t\t\t1 + 1 => 2\r\n\t\t\tThen something else\r\n\t\t\t\t\"\"       \r\n\t\t\'\'\'.generateDocWithErrors should contain \"failed\" but"
      + "\n     \'\'\'\r\n\t\t\tFeature: Example\r\n\t\t\t\r\n\t\t\tScenario: A failing Scenario\r\n\t\t\t\r\n\t\t\tGiven something\r\n\t\t\tWhen something happens \r\n\t\t\tThen there is an error\r\n\t\t\t\r\n\t\t\tScenario: Another scnario\r\n\t\t\tGiven something\r\n\t\t\t\t1 + 1 => 2\r\n\t\t\tThen something else\r\n\t\t\t\t\"\"       \r\n\t\t\'\'\'.generateDocWithErrors is " + new StringDescription().appendValue(_generateDocWithErrors).toString()
      + "\n     \'\'\'\r\n\t\t\tFeature: Example\r\n\t\t\t\r\n\t\t\tScenario: A failing Scenario\r\n\t\t\t\r\n\t\t\tGiven something\r\n\t\t\tWhen something happens \r\n\t\t\tThen there is an error\r\n\t\t\t\r\n\t\t\tScenario: Another scnario\r\n\t\t\tGiven something\r\n\t\t\t\t1 + 1 => 2\r\n\t\t\tThen something else\r\n\t\t\t\t\"\"       \r\n\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _should_contain);
     
   }
   
-  final CharSequence message = new Function0<CharSequence>() {
-    public CharSequence apply() {
+  final String message = new Function0<String>() {
+    public String apply() {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Expected result => args.first.toInt but      ");
       _builder.newLine();
@@ -167,13 +174,13 @@ public class FeatureDocGeneratorSpec {
       _builder.append(" \t\t");
       _builder.append("args is <[120]>");
       _builder.newLine();
-      return _builder;
+      return _builder.toString();
     }
   }.apply();
   
   public Executable2ResultMapping mappingWithFailures() {
-    final Function1<Executable,Failed> _function = new Function1<Executable,Failed>() {
-        public Failed apply(final Executable it) {
+    final Executable2ResultMapping _function = new Executable2ResultMapping() {
+        public SpecExecution getResult(final Executable it) {
           String _string = FeatureDocGeneratorSpec.this.message.toString();
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("java.lang.StringIndexOutOfBoundsException: String index out of range: -1");
@@ -205,11 +212,7 @@ public class FeatureDocGeneratorSpec {
           return _failingSpec;
         }
       };
-    Executable2ResultMapping _mapping = this.mapping = new Executable2ResultMapping() {
-        public SpecExecution getResult(Executable executable) {
-          return _function.apply(executable);
-        }
-    };
+    Executable2ResultMapping _mapping = this.mapping = _function;
     return _mapping;
   }
   

@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.tests.integration;
 
 import java.util.Iterator;
@@ -22,9 +29,9 @@ import org.junit.runner.RunWith;
  * elements collections, iterables or iterators. Jnario provides helper
  * methods to simplify accessing elements by index.
  */
-@SuppressWarnings("all")
 @Named("Iterable & Iterator Helpers")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class ExtensionLibraryIterableIteratorHelpersSpec extends ExtensionLibrarySpec {
   /**
    * Accessing elements in iterables by index or type.
@@ -32,7 +39,7 @@ public class ExtensionLibraryIterableIteratorHelpersSpec extends ExtensionLibrar
    */
   @Test
   @Named("Iterables")
-  @Order(4)
+  @Order(1)
   public void _iterables() throws Exception {
     final List<Integer> values = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5));
     Integer _first = JnarioIterableExtensions.<Integer>first(values);
@@ -99,7 +106,7 @@ public class ExtensionLibraryIterableIteratorHelpersSpec extends ExtensionLibrar
    */
   @Test
   @Named("Iterators")
-  @Order(5)
+  @Order(2)
   public void _iterators() throws Exception {
     final List<Integer> values = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5));
     Iterator<Integer> _iterator = values.iterator();

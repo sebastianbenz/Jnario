@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.doc;
 
 import com.google.inject.Singleton;
@@ -101,7 +108,7 @@ public class HtmlAssets {
   }
   
   private String load(final String file) {
-    Class<? extends Object> _class = this.getClass();
+    Class<? extends HtmlAssets> _class = this.getClass();
     final InputStream inputStream = _class.getResourceAsStream(file);
     return Strings.convertStreamToString(inputStream);
   }

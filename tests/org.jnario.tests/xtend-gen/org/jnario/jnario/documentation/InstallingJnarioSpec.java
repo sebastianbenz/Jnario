@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.documentation;
 
 import org.jnario.jnario.documentation.InstallingJnarioInstallingTheEclipseToolingSpec;
@@ -14,8 +21,8 @@ import org.junit.runner.RunWith;
  *  be compiled and executed standalone, for example, using [Maven](http://maven.apache.org/).
  */
 @Contains({ InstallingJnarioInstallingTheEclipseToolingSpec.class, InstallingJnarioUsingJnarioWithMavenSpec.class })
-@SuppressWarnings("all")
 @Named("Installing Jnario")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class InstallingJnarioSpec {
 }

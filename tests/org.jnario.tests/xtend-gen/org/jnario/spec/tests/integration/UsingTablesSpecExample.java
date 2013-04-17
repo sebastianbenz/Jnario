@@ -7,30 +7,32 @@ import org.jnario.lib.ExampleTableRow;
  * Jnario will include example tables in the generated documentation.
  * (The errors in the table are intentional, we need it in the next example).
  */
+@SuppressWarnings("all")
 public class UsingTablesSpecExample extends ExampleTableRow {
   public UsingTablesSpecExample(final List<String> cellNames, final int value1, final int value2, final int sum) {
     super(cellNames);
     this.value1 = value1;
     this.value2 = value2;
     this.sum = sum;
+    
   }
   
-  public int value1;
+  private int value1;
   
   public int getValue1() {
-    return value1;
+    return this.value1;
   }
   
-  public int value2;
+  private int value2;
   
   public int getValue2() {
-    return value2;
+    return this.value2;
   }
   
-  public int sum;
+  private int sum;
   
   public int getSum() {
-    return sum;
+    return this.sum;
   }
   
   public List<String> getCells() {

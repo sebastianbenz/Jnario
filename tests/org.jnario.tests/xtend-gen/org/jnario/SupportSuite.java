@@ -5,7 +5,7 @@ import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
 @Named("Support")
-@SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class SupportSuite {
 }

@@ -46,8 +46,8 @@ import org.jnario.spec.spec.ExampleGroup
 import org.jnario.spec.spec.TestFunction
 
 import static extension org.eclipse.xtext.util.Strings.*
-import org.jnario.ExampleCell
- 
+import org.jnario.ExampleCellimport org.eclipse.xtext.xbase.XNullLiteral
+
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
@@ -87,7 +87,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		}
 	}
 	
-	def infer(IJvmDeclaredTypeAcceptor acceptor, ExampleGroup exampleGroup, JvmGenericType superType, List<Runnable> doLater, boolean preIndexingPhase){
+	def JvmGenericType infer(IJvmDeclaredTypeAcceptor acceptor, ExampleGroup exampleGroup, JvmGenericType superType, List<Runnable> doLater, boolean preIndexingPhase){
 		if(superType != null){
 			exampleGroup.^extends = superType.createTypeRef
 		}else{
@@ -100,8 +100,8 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			doLater.add([|initialize(exampleGroup, javaType)]);
 		}
 		val children = <JvmGenericType>newArrayList
-		exampleGroup.members.filter(typeof(ExampleGroup)).forEach[child | 
-			children += acceptor.infer(child, javaType, doLater, preIndexingPhase)
+		exampleGroup.members.filter(typeof(ExampleGroup)).forEach[child |
+			children += infer(acceptor, child, javaType, doLater, preIndexingPhase) 
 		]
 		if(!children.empty){
 			testRuntime.addChildren(exampleGroup, javaType, children)
@@ -309,7 +309,11 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		 	appendable.append("new ").append(exampleTable.toJavaClassName).append("(")
 		 	appendable.append('  ').append(arraysType).append('.asList("' + row.cells.map[serialize.trim.convertToJavaString].join('", "') + '"), ')
 		 	for(cell :row.cells){
-		 		appendable.append(exampleTable.initMethodName(index) + "()")
+		 		if(cell.expression instanceof XNullLiteral){
+		 			appendable.append("null")
+		 		}else{
+			 		appendable.append(exampleTable.initMethodName(index) + "()")
+		 		}
 		 		index = index + 1
 		 		if(row.cells.last != cell){
 			 		appendable.append(", ")

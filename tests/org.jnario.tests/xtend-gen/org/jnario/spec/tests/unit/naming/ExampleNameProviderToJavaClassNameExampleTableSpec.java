@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.unit.naming;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -15,16 +22,16 @@ import org.jnario.spec.tests.unit.naming.ExampleNameProviderSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("toJavaClassName[ExampleTable]")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class ExampleNameProviderToJavaClassNameExampleTableSpec extends ExampleNameProviderSpec {
   @Subject
   public ExampleNameProvider subject;
   
   @Test
   @Named("should combine example and parent name")
-  @Order(11)
+  @Order(1)
   public void _shouldCombineExampleAndParentName() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'My Context\'{");
@@ -47,7 +54,7 @@ public class ExampleNameProviderToJavaClassNameExampleTableSpec extends ExampleN
   
   @Test
   @Named("should convert example name to first upper")
-  @Order(12)
+  @Order(2)
   public void _shouldConvertExampleNameToFirstUpper() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'My Context\'{");

@@ -1,9 +1,15 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.tests.unit;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
@@ -16,24 +22,20 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("DocumentationProvider")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class DocumentationProviderSpec {
   String comment = "";
   
   final DocumentationProvider subject = new Function0<DocumentationProvider>() {
     public DocumentationProvider apply() {
-      final Function1<EObject,String> _function = new Function1<EObject,String>() {
-          public String apply(final EObject it) {
+      final IEObjectDocumentationProvider _function = new IEObjectDocumentationProvider() {
+          public String getDocumentation(final EObject it) {
             return DocumentationProviderSpec.this.comment;
           }
         };
-      DocumentationProvider _documentationProvider = new DocumentationProvider(new IEObjectDocumentationProvider() {
-          public String getDocumentation(EObject o) {
-            return _function.apply(o);
-          }
-      });
+      DocumentationProvider _documentationProvider = new DocumentationProvider(_function);
       return _documentationProvider;
     }
   }.apply();
@@ -43,7 +45,7 @@ public class DocumentationProviderSpec {
   @Order(1)
   public void _returnsNullIfNoComment() throws Exception {
     String _documentation = this.documentation(null);
-    Matcher<?> _nullValue = CoreMatchers.nullValue();
+    Matcher<Object> _nullValue = CoreMatchers.<Object>nullValue();
     boolean _doubleArrow = Should.operator_doubleArrow(_documentation, _nullValue);
     Assert.assertTrue("\nExpected documentation(null) => null but"
      + "\n     documentation(null) is " + new StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);

@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.integration;
 
 import org.hamcrest.StringDescription;
@@ -13,9 +20,9 @@ import org.junit.runner.RunWith;
  * Jnario provides a special `assert` statement that makes it really easy to
  * write meaningful assertions.
  */
-@SuppressWarnings("all")
 @Named("Introduction")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class AssertionIntroductionSpec extends AssertionSpec {
   /**
    * `assert` passes if the expression evaluates to true.

@@ -1,8 +1,16 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.tests.unit.naming;
 
 import com.google.inject.Inject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFactory;
 import org.jnario.feature.feature.Given;
@@ -20,7 +28,6 @@ import org.jnario.jnario.test.util.Query;
 import org.jnario.runner.Contains;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Subject;
 import org.junit.runner.RunWith;
@@ -29,16 +36,17 @@ import org.junit.runner.RunWith;
  * @author Sebastian Benz - Initial contribution and API
  */
 @Contains({ StepNameProviderNameOfSpec.class, StepNameProviderDescribeFeatureSpec.class, StepNameProviderRemoveArgumentsSpec.class, StepNameProviderDescribeScenarioSpec.class })
-@SuppressWarnings("all")
 @Named("StepNameProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = FeatureTestCreator.class)
+@CreateWith(FeatureTestCreator.class)
+@SuppressWarnings("all")
 public class StepNameProviderSpec {
   @Subject
   public StepNameProvider subject;
   
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ModelStore modelStore;
   
   public String desc(final Feature feature) {
@@ -83,7 +91,7 @@ public class StepNameProviderSpec {
       _builder.newLine();
       _builder.append(s, "");
       _builder.newLineIfNotEmpty();
-      final CharSequence input = _builder;
+      final String input = _builder.toString();
       Resource _parseScenario = this.modelStore.parseScenario(input);
       _xblockexpression = (_parseScenario);
     }

@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.unit.naming;
 
 import java.util.ArrayList;
@@ -18,16 +25,16 @@ import org.jnario.spec.tests.unit.naming.ExampleNameProviderSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("toMethodName[Before]")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProviderSpec {
   @Subject
   public ExampleNameProvider subject;
   
   @Test
   @Named("should convert before description to camel case starting in lowercase")
-  @Order(15)
+  @Order(1)
   public void _shouldConvertBeforeDescriptionToCamelCaseStartingInLowercase() throws Exception {
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
       "before \'my example\'", 
@@ -48,7 +55,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   
   @Test
   @Named("should use before as default name")
-  @Order(16)
+  @Order(2)
   public void _shouldUseBeforeAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("before{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "before");
@@ -59,7 +66,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   
   @Test
   @Named("should use beforeAll as default name")
-  @Order(17)
+  @Order(3)
   public void _shouldUseBeforeAllAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("before all{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "beforeAll");
@@ -70,7 +77,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   
   @Test
   @Named("should enumerate before without description")
-  @Order(18)
+  @Order(4)
   public void _shouldEnumerateBeforeWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName("before{}\r\n                 before{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "before2");
@@ -81,7 +88,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   
   @Test
   @Named("should enumerate nested before without description")
-  @Order(19)
+  @Order(5)
   public void _shouldEnumerateNestedBeforeWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName(
       "before{}\r\n                 context{\r\n                   before{}\r\n                 }");
@@ -93,7 +100,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   
   @Test
   @Named("should enumerate nested before all without description")
-  @Order(20)
+  @Order(6)
   public void _shouldEnumerateNestedBeforeAllWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName(
       "before all{}\r\n                 context{\r\n                   before all{}\r\n                 }");
@@ -105,7 +112,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   
   @Test
   @Named("should keep default name of nested before and before all")
-  @Order(21)
+  @Order(7)
   public void _shouldKeepDefaultNameOfNestedBeforeAndBeforeAll() throws Exception {
     String _secondMethodName = this.secondMethodName(
       "before{}\r\n                 context{\r\n                   before all{}\r\n                 }");
@@ -117,7 +124,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   
   @Test
   @Named("should escape invalid names")
-  @Order(22)
+  @Order(8)
   public void _shouldEscapeInvalidNames() throws Exception {
     String _firstMethodName = this.firstMethodName("before \'null\'{}");
     boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "_null");

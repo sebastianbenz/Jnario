@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
@@ -18,6 +25,7 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendFunction;
+import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
@@ -43,10 +51,10 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
@@ -78,33 +86,43 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   public final static String STEP_VALUES = "args";
   
   @Inject
+  @Extension
   private PendingStepsCalculator pendingStepsCalculator;
   
   @Inject
+  @Extension
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
   
   @Inject
+  @Extension
   private TypeReferences _typeReferences;
   
   @Inject
+  @Extension
   private StepNameProvider _stepNameProvider;
   
   @Inject
+  @Extension
   private StepExpressionProvider _stepExpressionProvider;
   
   @Inject
+  @Extension
   private StepReferenceFieldCreator _stepReferenceFieldCreator;
   
   @Inject
+  @Extension
   private StepArgumentsProvider stepArgumentsProvider;
   
   @Inject
+  @Extension
   private IJvmModelAssociator _iJvmModelAssociator;
   
   @Inject
+  @Extension
   private IJvmModelAssociations _iJvmModelAssociations;
   
   @Inject
+  @Extension
   private JvmFieldReferenceUpdater _jvmFieldReferenceUpdater;
   
   @Inject
@@ -191,40 +209,36 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           public void apply(final JvmGenericType it) {
             EList<JvmTypeReference> _superTypes = it.getSuperTypes();
             JvmParameterizedTypeReference _createTypeRef = FeatureJvmModelInferrer.this._typeReferences.createTypeRef(inferredJvmType);
-            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes, _createTypeRef);
           }
         };
       IterableExtensions.<JvmGenericType>forEach(scenarios, _function);
     } else {
       EList<JvmTypeReference> _superTypes = background.getSuperTypes();
       JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(inferredJvmType);
-      this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
+      this._extendedJvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes, _createTypeRef);
       final Procedure1<JvmGenericType> _function_1 = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
             EList<JvmTypeReference> _superTypes = it.getSuperTypes();
             JvmParameterizedTypeReference _createTypeRef = FeatureJvmModelInferrer.this._typeReferences.createTypeRef(background);
-            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes, _createTypeRef);
           }
         };
       IterableExtensions.<JvmGenericType>forEach(scenarios, _function_1);
     }
   }
   
-  public boolean register(final IJvmDeclaredTypeAcceptor acceptor, final XtendClass source, final JvmGenericType inferredJvmType, final List<JvmGenericType> scenarios, final List<Runnable> doLater, final boolean preIndexingPhase) {
-    boolean _xifexpression = false;
+  public Boolean register(final IJvmDeclaredTypeAcceptor acceptor, final XtendClass source, final JvmGenericType inferredJvmType, final List<JvmGenericType> scenarios, final List<Runnable> doLater, final boolean preIndexingPhase) {
+    Boolean _xifexpression = null;
     boolean _not = (!preIndexingPhase);
     if (_not) {
-      final Procedure0 _function = new Procedure0() {
-          public void apply() {
+      final Runnable _function = new Runnable() {
+          public void run() {
             FeatureJvmModelInferrer.this.init(source, inferredJvmType, scenarios);
           }
         };
-      boolean _add = doLater.add(new Runnable() {
-          public void run() {
-            _function.apply();
-          }
-      });
-      _xifexpression = _add;
+      boolean _add = doLater.add(_function);
+      _xifexpression = Boolean.valueOf(_add);
     }
     return _xifexpression;
   }
@@ -238,16 +252,12 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       acceptor.<JvmGenericType>accept(javaType);
       boolean _not = (!preIndexingPhase);
       if (_not) {
-        final Procedure0 _function = new Procedure0() {
-            public void apply() {
+        final Runnable _function = new Runnable() {
+            public void run() {
               FeatureJvmModelInferrer.this.init(xtendClass, javaType, scenarios);
             }
           };
-        doLater.add(new Runnable() {
-            public void run() {
-              _function.apply();
-            }
-        });
+        doLater.add(_function);
       }
       _xblockexpression = (javaType);
     }
@@ -272,6 +282,14 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   
   protected void _init(final Scenario scenario, final JvmGenericType inferredJvmType, final List<JvmGenericType> scenarios) {
     this._stepReferenceFieldCreator.copyXtendMemberForReferences(scenario);
+    EList<XtendMember> _members = scenario.getMembers();
+    Iterable<XtendField> _filter = Iterables.<XtendField>filter(_members, XtendField.class);
+    final Procedure1<XtendField> _function = new Procedure1<XtendField>() {
+        public void apply(final XtendField it) {
+          FeatureJvmModelInferrer.this.transform2(it, inferredJvmType);
+        }
+      };
+    IterableExtensions.<XtendField>forEach(_filter, _function);
     final EList<JvmAnnotationReference> annotations = inferredJvmType.getAnnotations();
     TestRuntimeSupport _testRuntime = this.getTestRuntime();
     _testRuntime.updateScenario(scenario, inferredJvmType);
@@ -309,8 +327,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     this.generateSteps(_steps_3, inferredJvmType, start, scenario);
     super.initialize(scenario, inferredJvmType);
     EList<Step> _steps_4 = scenario.getSteps();
-    Iterable<StepReference> _filter = Iterables.<StepReference>filter(_steps_4, StepReference.class);
-    final Procedure1<StepReference> _function = new Procedure1<StepReference>() {
+    Iterable<StepReference> _filter_1 = Iterables.<StepReference>filter(_steps_4, StepReference.class);
+    final Procedure1<StepReference> _function_1 = new Procedure1<StepReference>() {
         public void apply(final StepReference it) {
           StepImplementation _reference = it.getReference();
           boolean _equals = Objects.equal(_reference, null);
@@ -337,7 +355,14 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           FeatureJvmModelInferrer.this._jvmFieldReferenceUpdater.updateReferences(_expressionOf, originalType, inferredJvmType);
         }
       };
-    IterableExtensions.<StepReference>forEach(_filter, _function);
+    IterableExtensions.<StepReference>forEach(_filter_1, _function_1);
+  }
+  
+  protected void transform(final XtendField source, final JvmGenericType container) {
+  }
+  
+  protected void transform2(final XtendField source, final JvmGenericType container) {
+    super.transform(source, container);
   }
   
   protected void transform(final XtendFunction source, final JvmGenericType container, final boolean allowDispatch) {
@@ -420,7 +445,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           final XStringLiteral arg = XbaseFactory.eINSTANCE.createXStringLiteral();
           arg.setValue(it);
           EList<XExpression> _arguments = argsConstructor.getArguments();
-          FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<XStringLiteral>operator_add(_arguments, arg);
+          FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<XExpression>operator_add(_arguments, arg);
         }
       };
     IterableExtensions.<String>forEach(arguments, _function_1);
@@ -488,7 +513,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           }
         };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, methodName, _typeForName, _function);
-      this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
+      this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members, _method);
       int _plus = (order + 1);
       _xblockexpression = (_plus);
     }
@@ -530,7 +555,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           }
         };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, _methodName, _typeForName, _function);
-      this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
+      this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members, _method);
       int _plus = (order + 1);
       _xblockexpression = (_plus);
     }

@@ -1,9 +1,17 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.util.HashMap;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.jvmmodel.StepExpressionProvider;
@@ -14,6 +22,7 @@ import org.jnario.feature.jvmmodel.StepExpressionProvider;
 @SuppressWarnings("all")
 public class PendingStepsCalculator {
   @Inject
+  @Extension
   private StepExpressionProvider _stepExpressionProvider;
   
   private HashMap<Step,Boolean> steps = new Function0<HashMap<Step,Boolean>>() {
@@ -55,6 +64,6 @@ public class PendingStepsCalculator {
     if (_and) {
       return this.steps.get(step);
     }
-    return Boolean.valueOf(false);
+    return false;
   }
 }

@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.unit.naming;
 
 import org.jnario.jnario.test.util.ModelStore;
@@ -18,10 +25,10 @@ import org.jnario.spec.tests.unit.naming.ExampleNameProviderToMethodNameExampleS
 import org.junit.runner.RunWith;
 
 @Contains({ ExampleNameProviderToJavaClassNameExampleGroupSpec.class, ExampleNameProviderToJavaClassNameExampleTableSpec.class, ExampleNameProviderToMethodNameExampleSpec.class, ExampleNameProviderToMethodNameBeforeSpec.class, ExampleNameProviderToMethodNameAfterSpec.class, ExampleNameProviderToFieldNameExampleTableSpec.class, ExampleNameProviderDescribeExampleGroupSpec.class, ExampleNameProviderDescribeExampleSpec.class })
-@SuppressWarnings("all")
 @Named("ExampleNameProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = SpecTestCreator.class)
+@CreateWith(SpecTestCreator.class)
+@SuppressWarnings("all")
 public class ExampleNameProviderSpec {
   public Query parse(final CharSequence content) {
     final String contentWithPackage = ("package test\n" + content);

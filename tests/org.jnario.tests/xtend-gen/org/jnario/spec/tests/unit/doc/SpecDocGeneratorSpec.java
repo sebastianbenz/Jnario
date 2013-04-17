@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.unit.doc;
 
 import com.google.common.base.Objects;
@@ -6,6 +13,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
@@ -13,7 +21,6 @@ import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.runner.Subject;
@@ -21,16 +28,17 @@ import org.jnario.spec.doc.SpecDocGenerator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("SpecDocGenerator")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = SpecTestCreator.class)
+@CreateWith(SpecTestCreator.class)
+@SuppressWarnings("all")
 public class SpecDocGeneratorSpec {
   @Subject
   public SpecDocGenerator subject;
   
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ModelStore _modelStore;
   
   @Inject
@@ -236,7 +244,7 @@ public class SpecDocGeneratorSpec {
     _builder_1.append("<pre class=\"prettyprint lang-spec linenums\">");
     _builder_1.newLine();
     _builder_1.append("1 + 1 =&gt; 2</pre>");
-    boolean _should_contain = Should.should_contain(scenarioDoc, _builder_1);
+    boolean _should_contain = Should.<Object>should_contain(scenarioDoc, _builder_1);
     Assert.assertFalse("\nExpected scenarioDoc should not contain \'\'\'<pre class=\"prettyprint lang-spec linenums\">\r\n1 + 1 =&gt; 2</pre>\'\'\' but"
      + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString()
      + "\n     \'\'\'<pre class=\"prettyprint lang-spec linenums\">\r\n1 + 1 =&gt; 2</pre>\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _should_contain);

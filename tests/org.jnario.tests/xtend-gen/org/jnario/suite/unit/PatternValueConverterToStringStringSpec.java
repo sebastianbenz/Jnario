@@ -1,11 +1,19 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.suite.unit;
 
+import java.util.Arrays;
 import org.eclipse.xtext.util.Strings;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
-import org.jnario.lib.ExampleTableIterators;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -17,23 +25,47 @@ import org.jnario.suite.unit.PatternValueConverterToStringStringSpecExamples;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("toString[String]")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class PatternValueConverterToStringStringSpec extends PatternValueConverterSpec {
   @Subject
   public PatternValueConverter subject;
   
   public ExampleTable<PatternValueConverterToStringStringSpecExamples> _initPatternValueConverterToStringStringSpecExamples() {
     return ExampleTable.create("examples", 
-      java.util.Arrays.asList("input", "result"), 
-      new PatternValueConverterToStringStringSpecExamples(  java.util.Arrays.asList("null", "\"\\\\\\\\\""), null, "\\\\"),
-      new PatternValueConverterToStringStringSpecExamples(  java.util.Arrays.asList("\"\"", "\"\\\\\\\\\""), "", "\\\\"),
-      new PatternValueConverterToStringStringSpecExamples(  java.util.Arrays.asList("\"apattern\"", "\"\\\\apattern\\\\\""), "apattern", "\\apattern\\")
+      Arrays.asList("input", "result"), 
+      new PatternValueConverterToStringStringSpecExamples(  Arrays.asList("null", "\"\\\\\\\\\""), null, _initPatternValueConverterToStringStringSpecExamplesCell1()),
+      new PatternValueConverterToStringStringSpecExamples(  Arrays.asList("\"\"", "\"\\\\\\\\\""), _initPatternValueConverterToStringStringSpecExamplesCell2(), _initPatternValueConverterToStringStringSpecExamplesCell3()),
+      new PatternValueConverterToStringStringSpecExamples(  Arrays.asList("\"apattern\"", "\"\\\\apattern\\\\\""), _initPatternValueConverterToStringStringSpecExamplesCell4(), _initPatternValueConverterToStringStringSpecExamplesCell5())
     );
   }
   
   protected ExampleTable<PatternValueConverterToStringStringSpecExamples> examples = _initPatternValueConverterToStringStringSpecExamples();
+  
+  public Object _initPatternValueConverterToStringStringSpecExamplesCell0() {
+    return null;
+  }
+  
+  public String _initPatternValueConverterToStringStringSpecExamplesCell1() {
+    return "\\\\";
+  }
+  
+  public String _initPatternValueConverterToStringStringSpecExamplesCell2() {
+    return "";
+  }
+  
+  public String _initPatternValueConverterToStringStringSpecExamplesCell3() {
+    return "\\\\";
+  }
+  
+  public String _initPatternValueConverterToStringStringSpecExamplesCell4() {
+    return "apattern";
+  }
+  
+  public String _initPatternValueConverterToStringStringSpecExamplesCell5() {
+    return "\\apattern\\";
+  }
   
   @Test
   @Named("examples.forEach[subject.toString[input] => result + newLine]")
@@ -41,20 +73,22 @@ public class PatternValueConverterToStringStringSpec extends PatternValueConvert
   public void _examplesForEachSubjectToStringInputResultNewLine() throws Exception {
     final Procedure1<PatternValueConverterToStringStringSpecExamples> _function = new Procedure1<PatternValueConverterToStringStringSpecExamples>() {
         public void apply(final PatternValueConverterToStringStringSpecExamples it) {
-          String _string = PatternValueConverterToStringStringSpec.this.subject.toString(it.input);
+          String _input = it.getInput();
+          String _string = PatternValueConverterToStringStringSpec.this.subject.toString(_input);
+          String _result = it.getResult();
           String _newLine = Strings.newLine();
-          String _plus = (it.result + _newLine);
+          String _plus = (_result + _newLine);
           boolean _doubleArrow = Should.operator_doubleArrow(_string, _plus);
           Assert.assertTrue("\nExpected subject.toString(input) => result + newLine but"
            + "\n     subject.toString(input) is " + new StringDescription().appendValue(_string).toString()
            + "\n     subject is " + new StringDescription().appendValue(PatternValueConverterToStringStringSpec.this.subject).toString()
-           + "\n     input is " + new StringDescription().appendValue(it.input).toString()
+           + "\n     input is " + new StringDescription().appendValue(_input).toString()
            + "\n     result + newLine is " + new StringDescription().appendValue(_plus).toString()
-           + "\n     result is " + new StringDescription().appendValue(it.result).toString()
+           + "\n     result is " + new StringDescription().appendValue(_result).toString()
            + "\n     newLine is " + new StringDescription().appendValue(_newLine).toString() + "\n", _doubleArrow);
           
         }
       };
-    ExampleTableIterators.<PatternValueConverterToStringStringSpecExamples>forEach(this.examples, _function);
+    IterableExtensions.<PatternValueConverterToStringStringSpecExamples>forEach(this.examples, _function);
   }
 }

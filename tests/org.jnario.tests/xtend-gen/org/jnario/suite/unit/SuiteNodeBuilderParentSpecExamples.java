@@ -4,30 +4,32 @@ import java.util.List;
 import org.jnario.lib.ExampleTableRow;
 import org.jnario.suite.suite.Suite;
 
+@SuppressWarnings("all")
 public class SuiteNodeBuilderParentSpecExamples extends ExampleTableRow {
   public SuiteNodeBuilderParentSpecExamples(final List<String> cellNames, final List<Suite> suites, final int position, final String parent) {
     super(cellNames);
     this.suites = suites;
     this.position = position;
     this.parent = parent;
+    
   }
   
-  public List<Suite> suites;
+  private List<Suite> suites;
   
   public List<Suite> getSuites() {
-    return suites;
+    return this.suites;
   }
   
-  public int position;
+  private int position;
   
   public int getPosition() {
-    return position;
+    return this.position;
   }
   
-  public String parent;
+  private String parent;
   
   public String getParent() {
-    return parent;
+    return this.parent;
   }
   
   public List<String> getCells() {

@@ -14,7 +14,7 @@ describe FilterExtractor {
 	
 	def filterExtractions {
 		| input 									| resultString 				|
-		| null 										| "" 						|
+		| "" 										| "" 						|
 		| "string" 									| "string" 					|
 		| "@filter(bbb)" 							| "" 						|
 		| "text @filter(bbb) text" 					| "text text" 				|

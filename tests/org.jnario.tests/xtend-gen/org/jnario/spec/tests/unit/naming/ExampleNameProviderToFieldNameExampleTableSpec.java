@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.unit.naming;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -15,16 +22,16 @@ import org.jnario.spec.tests.unit.naming.ExampleNameProviderSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("toFieldName[ExampleTable]")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class ExampleNameProviderToFieldNameExampleTableSpec extends ExampleNameProviderSpec {
   @Subject
   public ExampleNameProvider subject;
   
   @Test
   @Named("should use the example name")
-  @Order(30)
+  @Order(1)
   public void _shouldUseTheExampleName() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'My Context\'{");
@@ -50,7 +57,7 @@ public class ExampleNameProviderToFieldNameExampleTableSpec extends ExampleNameP
   
   @Test
   @Named("should use \\\'examples\\\' if no name is given")
-  @Order(31)
+  @Order(2)
   public void _shouldUseExamplesIfNoNameIsGiven() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'My Context\'{");

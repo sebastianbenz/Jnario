@@ -5,6 +5,7 @@ import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.naming.FeatureQualifiedNameProvider;
 import org.jnario.feature.tests.unit.naming.FeatureQualifiedNameProviderPackageNameSpec;
@@ -15,22 +16,22 @@ import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.runner.Contains;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Subject;
 import org.junit.runner.RunWith;
 
 @Contains({ FeatureQualifiedNameProviderPackageNameSpec.class, FeatureQualifiedNameProviderStepImplementationSpec.class, FeatureQualifiedNameProviderStepReferenceSpec.class })
-@SuppressWarnings("all")
 @Named("FeatureQualifiedNameProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = FeatureTestCreator.class)
+@CreateWith(FeatureTestCreator.class)
+@SuppressWarnings("all")
 public class FeatureQualifiedNameProviderSpec {
   @Subject
   public FeatureQualifiedNameProvider subject;
   
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ModelStore _modelStore;
   
   @Inject
@@ -69,7 +70,7 @@ public class FeatureQualifiedNameProviderSpec {
       _builder.newLine();
       _builder.append(s, "");
       _builder.newLineIfNotEmpty();
-      final CharSequence input = _builder;
+      final String input = _builder.toString();
       this._modelStore.parseScenario(input);
       Step _first = this._modelStore.<Step>first(Step.class);
       QualifiedName _fullyQualifiedName = this.subject.getFullyQualifiedName(_first);

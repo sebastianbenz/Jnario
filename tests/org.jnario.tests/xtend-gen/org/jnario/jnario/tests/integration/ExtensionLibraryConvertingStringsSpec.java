@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.tests.integration;
 
 import java.util.List;
@@ -20,16 +27,16 @@ import org.junit.runner.RunWith;
  * are always of type string. These extension methods simplify
  * converting these string parameters into other types or representations.
  */
-@SuppressWarnings("all")
 @Named("Converting Strings")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class ExtensionLibraryConvertingStringsSpec extends ExtensionLibrarySpec {
   /**
    * Converting strings to other primitive types.
    */
   @Test
   @Named("Converting Strings to Primitives")
-  @Order(6)
+  @Order(1)
   public void _convertingStringsToPrimitives() throws Exception {
     boolean _bool = StringConversions.toBool("true");
     boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_bool), Boolean.valueOf(true));
@@ -58,7 +65,7 @@ public class ExtensionLibraryConvertingStringsSpec extends ExtensionLibrarySpec 
    */
   @Test
   @Named("Converting Strings to Lists")
-  @Order(7)
+  @Order(2)
   public void _convertingStringsToLists() throws Exception {
     List<String> _list = StringConversions.toList("1,2,3");
     List<String> _list_1 = JnarioCollectionLiterals.<String>list("1", "2", "3");

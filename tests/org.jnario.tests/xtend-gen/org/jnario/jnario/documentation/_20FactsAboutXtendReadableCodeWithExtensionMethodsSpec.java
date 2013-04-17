@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.documentation;
 
 import java.util.Collections;
@@ -38,9 +45,9 @@ import org.junit.runner.RunWith;
  * "Hello".removeVowels
  * </pre>
  */
-@SuppressWarnings("all")
 @Named("Readable Code with Extension Methods")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20FactsAboutXtendSpec {
   /**
    * You can import static methods as extensions, for example, when we import:
@@ -53,7 +60,7 @@ public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20F
    */
   @Test
   @Named("Import static extension methods.")
-  @Order(11)
+  @Order(1)
   public void _importStaticExtensionMethods() throws Exception {
     final List<String> colors = JnarioCollectionLiterals.<String>list("red", "blue", "green");
     Collections.<String>sort(colors);
@@ -80,13 +87,19 @@ public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20F
    */
   @Test
   @Named("Local extension methods.")
-  @Order(12)
+  @Order(2)
   public void _localExtensionMethods() throws Exception {
     List<String> _list = JnarioCollectionLiterals.<String>list("red");
     boolean _hasOneElement = this.hasOneElement(_list);
     Assert.assertTrue("\nExpected list(\"red\").hasOneElement but"
      + "\n     list(\"red\") is " + new StringDescription().appendValue(_list).toString() + "\n", _hasOneElement);
     
+  }
+  
+  public boolean hasOneElement(final List<? extends Object> list) {
+    int _size = list.size();
+    boolean _equals = (_size == 1);
+    return _equals;
   }
   
   /**
@@ -106,18 +119,12 @@ public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20F
    */
   @Test
   @Named("Extension fields")
-  @Order(13)
+  @Order(3)
   public void _extensionFields() throws Exception {
     List<String> _list = JnarioCollectionLiterals.<String>list("red");
     boolean _hasOneElement = this.hasOneElement(_list);
     Assert.assertTrue("\nExpected list(\"red\").hasOneElement but"
      + "\n     list(\"red\") is " + new StringDescription().appendValue(_list).toString() + "\n", _hasOneElement);
     
-  }
-  
-  public boolean hasOneElement(final List<? extends Object> list) {
-    int _size = list.size();
-    boolean _equals = (_size == 1);
-    return _equals;
   }
 }

@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
@@ -6,6 +13,7 @@ import java.util.List;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
@@ -17,6 +25,7 @@ import org.jnario.feature.jvmmodel.ExpressionCopier;
 @SuppressWarnings("all")
 public class StepExpressionProvider {
   @Inject
+  @Extension
   private ExpressionCopier _expressionCopier;
   
   public List<XExpression> getExpressions(final Step step) {

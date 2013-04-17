@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.standalone.tests;
 
 import com.google.inject.Inject;
@@ -9,7 +16,6 @@ import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.util.Files;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.jnario.jnario.test.util.ExtendedSpecInjectorProvider;
 import org.jnario.spec.compiler.SpecBatchCompiler;
 import org.junit.After;
@@ -18,8 +24,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(value = XtextRunner.class)
-@InjectWith(value = ExtendedSpecInjectorProvider.class)
+@RunWith(XtextRunner.class)
+@InjectWith(ExtendedSpecInjectorProvider.class)
 @SuppressWarnings("all")
 public class SpecBatchCompilerTest {
   @Inject
@@ -42,7 +48,7 @@ public class SpecBatchCompilerTest {
       _file.mkdir();
       File _file_1 = new File(SpecBatchCompilerTest.OUTPUT_DIRECTORY);
       Files.cleanFolder(_file_1, null, true, false);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -58,7 +64,7 @@ public class SpecBatchCompilerTest {
         File _file_2 = new File(SpecBatchCompilerTest.TEMP_DIRECTORY);
         Files.cleanFolder(_file_2, null, true, true);
       }
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -68,17 +74,13 @@ public class SpecBatchCompilerTest {
     this.batchCompiler.compile();
     String _plus = (SpecBatchCompilerTest.OUTPUT_DIRECTORY + "/test");
     File _file = new File(_plus);
-    final Function2<File,String,Boolean> _function = new Function2<File,String,Boolean>() {
-        public Boolean apply(final File dir, final String name) {
+    final FilenameFilter _function = new FilenameFilter() {
+        public boolean accept(final File dir, final String name) {
           boolean _endsWith = name.endsWith(".java");
           return _endsWith;
         }
       };
-    String[] _list = _file.list(new FilenameFilter() {
-        public boolean accept(File dir,String name) {
-          return _function.apply(dir,name);
-        }
-    });
+    String[] _list = _file.list(_function);
     int _size = ((List<String>)Conversions.doWrapArray(_list)).size();
     Assert.assertEquals(3, _size);
   }

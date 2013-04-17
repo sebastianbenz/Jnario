@@ -18,10 +18,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("Background")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = FeatureTestCreator.class)
+@CreateWith(FeatureTestCreator.class)
+@SuppressWarnings("all")
 public class HashBasedSpec2ResultMappingBackgroundSpec extends HashBasedSpec2ResultMappingSpec {
   @Before
   public void before() throws Exception {
@@ -51,7 +51,7 @@ public class HashBasedSpec2ResultMappingBackgroundSpec extends HashBasedSpec2Res
   
   @Test
   @Named("returns **Passed** if all scenarios passed")
-  @Order(21)
+  @Order(1)
   public void _returnsPassedIfAllScenariosPassed() throws Exception {
     this.passedStep("Given a step");
     this.passedStep("Given another step");
@@ -66,7 +66,7 @@ public class HashBasedSpec2ResultMappingBackgroundSpec extends HashBasedSpec2Res
   
   @Test
   @Named("returns **Failed** if one scenario failed")
-  @Order(22)
+  @Order(2)
   public void _returnsFailedIfOneScenarioFailed() throws Exception {
     this.failedStep("Given a step");
     Background _background = this.background();

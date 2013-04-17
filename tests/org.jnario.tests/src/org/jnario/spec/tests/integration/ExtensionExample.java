@@ -7,6 +7,9 @@
  *******************************************************************************/
 package org.jnario.spec.tests.integration;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -32,5 +35,7 @@ public class ExtensionExample {
 	@AfterClass
 	public static void afterClass(){
 		System.out.println("after Class");
+		
+		Matcher<Integer> x = Matchers.greaterThan(4);
 	}
 }

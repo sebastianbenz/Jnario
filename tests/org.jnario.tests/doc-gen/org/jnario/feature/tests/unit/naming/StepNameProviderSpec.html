@@ -123,8 +123,8 @@ examples.forEach[
 ]</pre>
 </li></ul>
 <h3 class="exampleGroup notrun"  id="describe_Scenario">^describe[Scenario]</h3>
-<ul><li><p id="scenario_With_whitespace_desc_With_whitespace" class="example notrun"><strong>scenario[" With whitespace "].desc =>  "With whitespace"</strong></p>
-</li><li><p id="scenario_With_parentheses_desc_With_parentheses" class="example notrun"><strong>scenario["With [parentheses]"].desc =>  "With [parentheses]"</strong></p>
+<ul><li><p id="Features_scenario_With_whitespace_desc_With_whitespace" class="example notrun"><strong>Features::scenario[" With whitespace "].desc =>  "With whitespace"</strong></p>
+</li><li><p id="Features_scenario_With_parentheses_desc_With_parentheses" class="example notrun"><strong>Features::scenario["With [parentheses]"].desc =>  "With [parentheses]"</strong></p>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -155,6 +155,7 @@ import static org.jnario.jnario.test.util.Query.*
 
 import static extension org.jnario.lib.ExampleTableIterators.*
 import static extension org.jnario.lib.Should.*
+import org.jnario.jnario.test.util.Features
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -249,8 +250,8 @@ describe StepNameProvider{
   }
   
   context ^describe(Scenario){
-    fact scenario(&quot; With whitespace &quot;).desc =&gt;  &quot;With whitespace&quot;
-    fact scenario(&quot;With (parentheses)&quot;).desc =&gt;  &quot;With [parentheses]&quot;
+    fact Features::scenario(&quot; With whitespace &quot;).desc =&gt;  &quot;With whitespace&quot;
+    fact Features::scenario(&quot;With (parentheses)&quot;).desc =&gt;  &quot;With [parentheses]&quot;
   } 
   
   def desc(Feature feature){

@@ -17,7 +17,6 @@ import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
@@ -39,8 +38,30 @@ import com.google.inject.Inject;
 @SuppressWarnings("restriction")
 public class SuiteProposalProvider extends AbstractSuiteProposalProvider {
 	
+	public static final class QuoteAddingConverter extends XbaseQualifiedNameConverter {
+		@Override
+		public QualifiedName toQualifiedName(String qualifiedNameAsString) {
+			return new QualifiedName(qualifiedNameAsString.split("\\.")){
+				public String getLastSegment() {
+					return "\"" + super.getLastSegment();
+				};
+			};
+		}
+	}
+
+	public static final class AsteriksAddingConverter extends	XbaseQualifiedNameValueConverter {
+		@Override
+		public String toString(String value) {
+			int end = value.lastIndexOf('.');
+			String result = value.substring(1, end) + ".*";
+			return result;
+		}
+	}
+
 	@Inject private RewritableImportSection.Factory importSectionFactory;
 	@Inject	private ReplaceConverter replaceConverter;
+	@Inject	private QuoteAddingConverter quoteAddingConverter;
+	@Inject	private AsteriksAddingConverter asteriksAddingConverter;
 
 	@Override
 	public void completeXAnnotation_AnnotationType(EObject model, Assignment assignment, ContentAssistContext context,
@@ -55,26 +76,8 @@ public class SuiteProposalProvider extends AbstractSuiteProposalProvider {
 			ICompletionProposalAcceptor acceptor) {
 		
 		final IScope scope = getScopeProvider().getScope(model, SuitePackage.Literals.SPEC_REFERENCE__SPEC);
-		XbaseQualifiedNameValueConverter qualifiedNameValueConverter = new XbaseQualifiedNameValueConverter(){
-			@Override
-			public String toString(String value) {
-				int end = value.lastIndexOf('.');
-				String result = value.substring(1, end) + ".*";
-				return result;
-			}
-		};
-		final IQualifiedNameConverter qualifiedNameConverter = new XbaseQualifiedNameConverter(){
-			@Override
-			public QualifiedName toQualifiedName(String qualifiedNameAsString) {
-				return new QualifiedName(qualifiedNameAsString.split("\\.")){
-					public String getLastSegment() {
-						return "\"" + super.getLastSegment();
-					};
-				};
-			}
-		};
-		final ImportingTypesProposalProvider.FQNImporter fqnImporter = new ImportingTypesProposalProvider.FQNImporter(context.getResource(), context.getViewer(), scope, qualifiedNameConverter,
-				qualifiedNameValueConverter, importSectionFactory, replaceConverter);
+		final ImportingTypesProposalProvider.FQNImporter fqnImporter = new ImportingTypesProposalProvider.FQNImporter(context.getResource(), context.getViewer(), scope, quoteAddingConverter,
+				asteriksAddingConverter, importSectionFactory, replaceConverter);
 		
 		final ICompletionProposalAcceptor scopeAware = new ICompletionProposalAcceptor.Delegate(acceptor) {
 			@Override
@@ -83,7 +86,7 @@ public class SuiteProposalProvider extends AbstractSuiteProposalProvider {
 					ConfigurableCompletionProposal configurableCompletionProposal = (ConfigurableCompletionProposal) proposal;
 					String string = configurableCompletionProposal.getReplacementString();
 					string = trim(string, '"');
-					QualifiedName qualifiedName = qualifiedNameConverter.toQualifiedName(string);
+					QualifiedName qualifiedName = quoteAddingConverter.toQualifiedName(string);
 					IEObjectDescription element = scope.getSingleElement(qualifiedName);
 					if(element == null){
 						return;

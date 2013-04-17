@@ -16,6 +16,8 @@ import static org.eclipse.emf.ecore.util.EcoreUtil.resolve;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
@@ -25,8 +27,10 @@ import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
+import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.IContainer;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
@@ -56,6 +60,7 @@ import com.google.inject.Inject;
  */
 public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	
+	private static final Logger LOG = Logger.getLogger(FeatureProposalProvider.class);
 	@Inject private IResourceDescriptions resourceDescriptions;
 	@Inject private IContainer.Manager containerManager;
 	@Inject private StepNameProvider stepNameProvider;
@@ -109,13 +114,18 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 		super.completeThenReference_Reference(model, assignment, context, acceptor);
 	}
 
-	private void completeStepReference(EObject model,
-			ContentAssistContext context, ICompletionProposalAcceptor acceptor,
+	private void completeStepReference(EObject model, ContentAssistContext context, ICompletionProposalAcceptor acceptor,
 			String stepPrefix) {
 		IScope scope = createStepScope(model);
 		for (IEObjectDescription desc : scope.getAllElements()) {
-			StepReference ref = (StepReference) resolve(desc.getEObjectOrProxy(), model);
-			createProposal(context, acceptor, stepPrefix, ref);
+			EObject resolved = resolve(desc.getEObjectOrProxy(), model);
+			if (resolved instanceof StepReference) {
+				StepReference ref = (StepReference) resolved;
+				createProposal(context, acceptor, stepPrefix, ref);
+			}else{
+				LOG.warn("Illegal element " + resolved.eClass().getName() + " in step reference scope");
+			}
+				
 		}
 	}
 
@@ -231,10 +241,18 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 		XbaseQualifiedNameValueConverter qualifiedNameValueConverter = new XbaseQualifiedNameValueConverter(){
 			@Override
 			public String toString(String value) {
-				value = value.substring(prefix.length() + 1);
-				int end = value.lastIndexOf('.');
-				String result = value.substring(0, end) + ".*";
-				return result;
+//				value = value.substring(prefix.length() + 1);
+//				int end = value.lastIndexOf('.');
+//				String result = value.substring(0, end) + ".*";
+				return prefix + " " + value;
+			}
+			
+			@Override
+			public String toValue(String string, INode node) throws ValueConverterException {
+				if(string.length() > prefix.length()+1){
+					return string.substring(prefix.length()+1);
+				}
+				return string;
 			}
 		};
 		final IQualifiedNameConverter qualifiedNameConverter = new XbaseQualifiedNameConverter(){
@@ -242,9 +260,14 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 			public QualifiedName toQualifiedName(String qualifiedNameAsString) {
 				return new QualifiedName(qualifiedNameAsString.split("\\.")){
 					public String getLastSegment() {
-						return prefix + " " + super.getLastSegment();
+						return super.getLastSegment();
 					};
 				};
+			}
+			
+			@Override
+			public String toString(QualifiedName qualifiedName) {
+				return prefix + " " + qualifiedName.getLastSegment();
 			}
 		};
 		

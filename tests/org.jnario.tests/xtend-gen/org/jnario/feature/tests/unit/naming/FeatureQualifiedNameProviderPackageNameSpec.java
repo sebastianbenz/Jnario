@@ -10,9 +10,9 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("Package name")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class FeatureQualifiedNameProviderPackageNameSpec extends FeatureQualifiedNameProviderSpec {
   @Test
   @Named("package name is prepended")

@@ -1,10 +1,17 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.documentation;
 
 import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.jnario.test.util.BehaviorExecutor;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.tests.documentation.IntroducingJnarioSpecsSpec;
@@ -45,12 +52,13 @@ import org.junit.runner.RunWith;
  * In the background, Jnario automatically translates the stack specification into a JUnit test case `AStackSpec.java`
  * in the `xtend-gen` folder.
  */
-@SuppressWarnings("all")
 @Named("How to write a Specification")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class IntroducingJnarioSpecsHowToWriteASpecificationSpec extends IntroducingJnarioSpecsSpec {
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public BehaviorExecutor _behaviorExecutor;
   
   /**

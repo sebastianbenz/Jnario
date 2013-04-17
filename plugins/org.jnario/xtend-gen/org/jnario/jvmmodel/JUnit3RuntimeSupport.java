@@ -22,6 +22,7 @@ import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -36,12 +37,15 @@ import org.jnario.jvmmodel.TestRuntimeSupport;
 @SuppressWarnings("all")
 public class JUnit3RuntimeSupport implements TestRuntimeSupport {
   @Inject
+  @Extension
   private TypeReferences _typeReferences;
   
   @Inject
+  @Extension
   private JnarioNameProvider _jnarioNameProvider;
   
   @Inject
+  @Extension
   private ExtendedJvmTypesBuilder _extendedJvmTypesBuilder;
   
   public void afterAllMethod(final XtendMember before, final JvmOperation operation) {
@@ -121,7 +125,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
           }
         };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(exampleGroup, methodName, voidType, _function);
-      boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
+      boolean _add = this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members, _method);
       _xblockexpression = (_add);
     }
     return _xblockexpression;
@@ -203,7 +207,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
           }
         };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(context, "suite", testType, _function);
-      boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
+      boolean _add = this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members, _method);
       _xblockexpression = (_add);
     }
     return _xblockexpression;
@@ -215,7 +219,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
       final JvmTypeReference stringType = this._typeReferences.getTypeForName("java.lang.String", exampleGroup);
       EList<JvmMember> _members = inferredType.getMembers();
       JvmField _field = this._extendedJvmTypesBuilder.toField(exampleGroup, "__name", stringType);
-      this._extendedJvmTypesBuilder.<JvmField>operator_add(_members, _field);
+      this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members, _field);
       EList<JvmMember> _members_1 = inferredType.getMembers();
       final Procedure1<JvmConstructor> _function = new Procedure1<JvmConstructor>() {
           public void apply(final JvmConstructor it) {
@@ -235,7 +239,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
           }
         };
       JvmConstructor _constructor = this._extendedJvmTypesBuilder.toConstructor(exampleGroup, _function);
-      this._extendedJvmTypesBuilder.<JvmConstructor>operator_add(_members_1, _constructor);
+      this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members_1, _constructor);
       EList<JvmMember> _members_2 = inferredType.getMembers();
       final Procedure1<JvmOperation> _function_1 = new Procedure1<JvmOperation>() {
           public void apply(final JvmOperation it) {
@@ -250,7 +254,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
           }
         };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(exampleGroup, "getName", stringType, _function_1);
-      boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members_2, _method);
+      boolean _add = this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members_2, _method);
       _xblockexpression = (_add);
     }
     return _xblockexpression;
@@ -264,7 +268,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
       EList<JvmTypeReference> _superTypes_1 = inferredType.getSuperTypes();
       JvmTypeReference _typeForName = this._typeReferences.getTypeForName("junit.framework.TestCase", context);
       boolean _add = this._extendedJvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes_1, _typeForName);
-      _xifexpression = _add;
+      _xifexpression = Boolean.valueOf(_add);
     } else {
       JvmTypeReference _xifexpression_1 = null;
       EList<JvmTypeReference> _superTypes_2 = inferredType.getSuperTypes();
@@ -390,11 +394,11 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
         }
       };
     JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(scenario, "suite", testType, _function);
-    this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
+    this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members, _method);
     final JvmTypeReference queueType = this._typeReferences.getTypeForName("org.jnario.junit3.TestQueue", scenario);
     EList<JvmMember> _members_1 = inferredType.getMembers();
     JvmField _field = this._extendedJvmTypesBuilder.toField(scenario, "testQueue", queueType);
-    this._extendedJvmTypesBuilder.<JvmField>operator_add(_members_1, _field);
+    this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members_1, _field);
     EList<JvmMember> _members_2 = inferredType.getMembers();
     final Procedure1<JvmConstructor> _function_1 = new Procedure1<JvmConstructor>() {
         public void apply(final JvmConstructor it) {
@@ -414,7 +418,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
         }
       };
     JvmConstructor _constructor = this._extendedJvmTypesBuilder.toConstructor(scenario, _function_1);
-    this._extendedJvmTypesBuilder.<JvmConstructor>operator_add(_members_2, _constructor);
+    this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members_2, _constructor);
     final JvmTypeReference voidType = this._typeReferences.getTypeForName(Void.TYPE, scenario);
     EList<JvmMember> _members_3 = inferredType.getMembers();
     final Procedure1<JvmOperation> _function_2 = new Procedure1<JvmOperation>() {
@@ -443,7 +447,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
         }
       };
     JvmOperation _method_1 = this._extendedJvmTypesBuilder.toMethod(scenario, "setUp", voidType, _function_2);
-    this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members_3, _method_1);
+    this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members_3, _method_1);
     EList<JvmMember> _members_4 = inferredType.getMembers();
     final Procedure1<JvmOperation> _function_3 = new Procedure1<JvmOperation>() {
         public void apply(final JvmOperation it) {
@@ -475,7 +479,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
         }
       };
     JvmOperation _method_2 = this._extendedJvmTypesBuilder.toMethod(scenario, "tearDown", voidType, _function_3);
-    this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members_4, _method_2);
+    this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members_4, _method_2);
   }
   
   public void updateSuite(final XtendClass exampleGroup, final JvmGenericType inferredType) {

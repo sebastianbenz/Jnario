@@ -1,9 +1,15 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.test.util;
 
-import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
-import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.jnario.Specification;
 import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.SpecReference;
@@ -18,7 +24,7 @@ public class Suites {
   public static SuiteFile suiteFile(final Suite... suites) {
     final SuiteFile file = Suites.factory.createSuiteFile();
     EList<XtendTypeDeclaration> _xtendTypes = file.getXtendTypes();
-    _xtendTypes.addAll(((Collection<? extends XtendTypeDeclaration>)Conversions.doWrapArray(suites)));
+    CollectionExtensions.<XtendTypeDeclaration>addAll(_xtendTypes, suites);
     return file;
   }
   
@@ -27,7 +33,7 @@ public class Suites {
     {
       final Suite suite = Suites.suite(name);
       EList<Reference> _elements = suite.getElements();
-      _elements.addAll(((Collection<? extends Reference>)Conversions.doWrapArray(references)));
+      CollectionExtensions.<Reference>addAll(_elements, references);
       _xblockexpression = (suite);
     }
     return _xblockexpression;

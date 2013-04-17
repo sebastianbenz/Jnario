@@ -5,6 +5,7 @@ import com.google.inject.Inject;
 import java.util.Set;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.feature.feature.StepImplementation;
@@ -15,22 +16,22 @@ import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.runner.Contains;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.ExampleGroupRunner;
-import org.jnario.runner.Extension;
 import org.jnario.runner.Named;
 import org.jnario.runner.Subject;
 import org.junit.runner.RunWith;
 
 @Contains(StepContextProviderUsedFieldsSpec.class)
-@SuppressWarnings("all")
 @Named("StepContextProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(value = FeatureTestCreator.class)
+@CreateWith(FeatureTestCreator.class)
+@SuppressWarnings("all")
 public class StepContextProviderSpec {
   @Subject
   public StepContextProvider subject;
   
   @Inject
   @Extension
+  @org.jnario.runner.Extension
   public ModelStore m;
   
   public Set<XtendField> fields(final String... names) {

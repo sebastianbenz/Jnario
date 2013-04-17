@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
 @Named("Specs")
 @Contains({ ImplicitSubjectSpec.class, SpecExtensionsSpec.class, UsingJUnitRulesInSpecsSpec.class, UsingTablesSpec.class })
-@SuppressWarnings("all")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class SpecsSuite {
 }

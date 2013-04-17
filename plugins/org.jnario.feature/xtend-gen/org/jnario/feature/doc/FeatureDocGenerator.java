@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.feature.doc;
 
 import com.google.common.base.Objects;
@@ -10,6 +17,7 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.util.Strings;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
@@ -24,9 +32,11 @@ import org.jnario.feature.naming.StepNameProvider;
 @SuppressWarnings("all")
 public class FeatureDocGenerator extends AbstractDocGenerator {
   @Inject
+  @Extension
   private FeatureClassNameProvider _featureClassNameProvider;
   
   @Inject
+  @Extension
   private StepNameProvider _stepNameProvider;
   
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {
@@ -107,7 +117,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     _builder.append("</h3>");
     _builder.newLineIfNotEmpty();
     EList<Step> _steps = scenario.getSteps();
-    CharSequence _generate = this.generate(_steps);
+    Object _generate = this.generate(_steps);
     _builder.append(_generate, "");
     _builder.append("</div>");
     _builder.newLineIfNotEmpty();
@@ -121,7 +131,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     {
       for(final Step step : steps) {
         _builder.append("<li>");
-        CharSequence _generate = this.generate(step);
+        Object _generate = this.generate(step);
         _builder.append(_generate, "");
         _builder.append("</li>");
         _builder.newLineIfNotEmpty();
@@ -157,7 +167,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     result = _highlightArguments;
     String _markdown2Html = this.markdown2Html(result);
     result = _markdown2Html;
-    CharSequence _addCodeBlock = this.addCodeBlock(step);
+    String _addCodeBlock = this.addCodeBlock(step);
     String _plus = (result + _addCodeBlock);
     result = _plus;
     return result;
@@ -174,7 +184,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     return s;
   }
   
-  private CharSequence addCodeBlock(final Step step) {
+  private String addCodeBlock(final Step step) {
     final String text = this._stepNameProvider.nameOf(step);
     final int multiLineStart = text.indexOf("\n");
     int _minus = (-1);
@@ -196,7 +206,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     _builder.append("<pre>");
     _builder.append(codeBlock, "");
     _builder.append("</pre>");
-    return _builder;
+    return _builder.toString();
   }
   
   public CharSequence generate(final Object scenario) {

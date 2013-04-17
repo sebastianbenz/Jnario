@@ -1,12 +1,18 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.test.util;
 
-import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XbaseFactory;
-import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFactory;
@@ -66,7 +72,7 @@ public class Features {
     {
       final Scenario scenario = Features.scenario(name);
       EList<Step> _steps = scenario.getSteps();
-      _steps.addAll(((Collection<? extends Step>)Conversions.doWrapArray(steps)));
+      CollectionExtensions.<Step>addAll(_steps, steps);
       _xblockexpression = (scenario);
     }
     return _xblockexpression;
@@ -130,7 +136,7 @@ public class Features {
     {
       final Feature feature = Features.feature("Feature: with scenarios");
       EList<Scenario> _scenarios = feature.getScenarios();
-      _scenarios.addAll(((Collection<? extends Scenario>)Conversions.doWrapArray(scenarios)));
+      CollectionExtensions.<Scenario>addAll(_scenarios, scenarios);
       _xblockexpression = (feature);
     }
     return _xblockexpression;

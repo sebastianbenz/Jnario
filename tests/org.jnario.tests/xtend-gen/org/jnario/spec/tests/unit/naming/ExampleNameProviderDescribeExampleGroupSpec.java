@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.spec.tests.unit.naming;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -15,16 +22,16 @@ import org.jnario.spec.tests.unit.naming.ExampleNameProviderSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("describe[ExampleGroup]")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProviderSpec {
   @Subject
   public ExampleNameProvider subject;
   
   @Test
   @Named("should use the description")
-  @Order(32)
+  @Order(1)
   public void _shouldUseTheDescription() throws Exception {
     String _describeFirst = this.describeFirst("describe \'My Description\'");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "My Description");
@@ -35,7 +42,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should use the target type")
-  @Order(33)
+  @Order(2)
   public void _shouldUseTheTargetType() throws Exception {
     String _describeFirst = this.describeFirst("describe org.junit.Assert");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "Assert");
@@ -46,7 +53,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should use the unresolved target type")
-  @Order(34)
+  @Order(3)
   public void _shouldUseTheUnresolvedTargetType() throws Exception {
     String _describeFirst = this.describeFirst("describe Unresolved");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "Unresolved");
@@ -62,7 +69,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should combine target type and description")
-  @Order(35)
+  @Order(4)
   public void _shouldCombineTargetTypeAndDescription() throws Exception {
     String _describeFirst = this.describeFirst("describe org.junit.Assert \'and more\'");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeFirst, "Assert and more");
@@ -73,7 +80,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should use the target operation")
-  @Order(36)
+  @Order(5)
   public void _shouldUseTheTargetOperation() throws Exception {
     String _describeSecond = this.describeSecond("describe org.junit.Assert{\r\n                    context assertTrue(boolean) {}\r\n                 }");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeSecond, "assertTrue[boolean]");
@@ -84,7 +91,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should combine target operation and description")
-  @Order(37)
+  @Order(6)
   public void _shouldCombineTargetOperationAndDescription() throws Exception {
     String _describeSecond = this.describeSecond("describe org.junit.Assert{\r\n                    context assertTrue(boolean) \'and more\'{}\r\n                 }");
     boolean _doubleArrow = Should.operator_doubleArrow(_describeSecond, "assertTrue[boolean] and more");
@@ -95,7 +102,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should escape quotes")
-  @Order(38)
+  @Order(7)
   public void _shouldEscapeQuotes() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
@@ -116,7 +123,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   
   @Test
   @Named("should replace line breaks and leading whitespace with a single space")
-  @Order(39)
+  @Order(8)
   public void _shouldReplaceLineBreaksAndLeadingWhitespaceWithASingleSpace() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"Example\\n\\t 2\"");

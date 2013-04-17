@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.suite.doc;
 
 import com.google.common.base.Objects;
@@ -11,6 +18,7 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
@@ -31,12 +39,15 @@ import org.jnario.util.XtendTypes;
 @SuppressWarnings("all")
 public class SuiteDocGenerator extends AbstractDocGenerator {
   @Inject
+  @Extension
   private SuiteClassNameProvider _suiteClassNameProvider;
   
   @Inject
+  @Extension
   private SpecResolver _specResolver;
   
   @Inject
+  @Extension
   private HtmlFileBuilder _htmlFileBuilder;
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa, final Executable2ResultMapping spec2ResultMapping) {

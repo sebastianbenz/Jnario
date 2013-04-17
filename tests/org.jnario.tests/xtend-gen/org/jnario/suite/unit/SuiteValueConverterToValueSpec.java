@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.suite.unit;
 
 import org.hamcrest.StringDescription;
@@ -10,13 +17,13 @@ import org.jnario.suite.unit.SuiteValueConverterSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("toValue")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class SuiteValueConverterToValueSpec extends SuiteValueConverterSpec {
   @Test
   @Named("removes escape character for dashes")
-  @Order(3)
+  @Order(1)
   public void _removesEscapeCharacterForDashes() throws Exception {
     String _value = this.subject.toValue("##suite \\- with dash", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "##suite - with dash");
@@ -28,7 +35,7 @@ public class SuiteValueConverterToValueSpec extends SuiteValueConverterSpec {
   
   @Test
   @Named("removes escape character for  hashs")
-  @Order(4)
+  @Order(2)
   public void _removesEscapeCharacterForHashs() throws Exception {
     String _value = this.subject.toValue("##suite \\# with hash", null);
     boolean _doubleArrow = Should.operator_doubleArrow(_value, "##suite # with hash");

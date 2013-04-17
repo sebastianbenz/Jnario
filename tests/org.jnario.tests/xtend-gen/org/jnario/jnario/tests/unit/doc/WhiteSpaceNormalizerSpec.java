@@ -1,5 +1,13 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.jnario.jnario.tests.unit.doc;
 
+import java.util.Arrays;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
@@ -16,31 +24,119 @@ import org.jnario.runner.Subject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("all")
 @Named("WhiteSpaceNormalizer")
 @RunWith(ExampleGroupRunner.class)
+@SuppressWarnings("all")
 public class WhiteSpaceNormalizerSpec {
   @Subject
   public WhiteSpaceNormalizer subject;
   
   public ExampleTable<WhiteSpaceNormalizerSpecExamples> _initWhiteSpaceNormalizerSpecExamples() {
     return ExampleTable.create("examples", 
-      java.util.Arrays.asList("input", "result"), 
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("null", "\"\""), null, ""),
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\"", "\"\""), "", ""),
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\" \"", "\"\""), " ", ""),
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\thello\"", "\"hello\""), "\thello", "hello"),
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\thello\\n\\tworld\"", "\"hello\\nworld\""), "\thello\n\tworld", "hello\nworld"),
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\t\\thello\\n\\t\\tworld\"", "\"hello\\nworld\""), "\t\thello\n\t\tworld", "hello\nworld"),
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\t\\thello\\n\\tworld\"", "\"hello\\n\\tworld\""), "\t\thello\n\tworld", "hello\n\tworld"),
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\n\\t\\thello\\n\\tworld\"", "\"hello\\n\\tworld\""), "\n\t\thello\n\tworld", "hello\n\tworld"),
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\n\\t\\thello\\n\\tworld\\n\"", "\"hello\\n\\tworld\\n\""), "\n\t\thello\n\tworld\n", "hello\n\tworld\n"),
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\thello\\n\\t\"", "\"hello\\n\""), "\thello\n\t", "hello\n"),
-      new WhiteSpaceNormalizerSpecExamples(  java.util.Arrays.asList("\"\\thello\\t\"", "\"hello\\t\""), "\thello\t", "hello\t")
+      Arrays.asList("input", "result"), 
+      new WhiteSpaceNormalizerSpecExamples(  Arrays.asList("null", "\"\""), null, _initWhiteSpaceNormalizerSpecExamplesCell1()),
+      new WhiteSpaceNormalizerSpecExamples(  Arrays.asList("\"\"", "\"\""), _initWhiteSpaceNormalizerSpecExamplesCell2(), _initWhiteSpaceNormalizerSpecExamplesCell3()),
+      new WhiteSpaceNormalizerSpecExamples(  Arrays.asList("\" \"", "\"\""), _initWhiteSpaceNormalizerSpecExamplesCell4(), _initWhiteSpaceNormalizerSpecExamplesCell5()),
+      new WhiteSpaceNormalizerSpecExamples(  Arrays.asList("\"\\thello\"", "\"hello\""), _initWhiteSpaceNormalizerSpecExamplesCell6(), _initWhiteSpaceNormalizerSpecExamplesCell7()),
+      new WhiteSpaceNormalizerSpecExamples(  Arrays.asList("\"\\thello\\n\\tworld\"", "\"hello\\nworld\""), _initWhiteSpaceNormalizerSpecExamplesCell8(), _initWhiteSpaceNormalizerSpecExamplesCell9()),
+      new WhiteSpaceNormalizerSpecExamples(  Arrays.asList("\"\\t\\thello\\n\\t\\tworld\"", "\"hello\\nworld\""), _initWhiteSpaceNormalizerSpecExamplesCell10(), _initWhiteSpaceNormalizerSpecExamplesCell11()),
+      new WhiteSpaceNormalizerSpecExamples(  Arrays.asList("\"\\t\\thello\\n\\tworld\"", "\"hello\\n\\tworld\""), _initWhiteSpaceNormalizerSpecExamplesCell12(), _initWhiteSpaceNormalizerSpecExamplesCell13()),
+      new WhiteSpaceNormalizerSpecExamples(  Arrays.asList("\"\\n\\t\\thello\\n\\tworld\"", "\"hello\\n\\tworld\""), _initWhiteSpaceNormalizerSpecExamplesCell14(), _initWhiteSpaceNormalizerSpecExamplesCell15()),
+      new WhiteSpaceNormalizerSpecExamples(  Arrays.asList("\"\\n\\t\\thello\\n\\tworld\\n\"", "\"hello\\n\\tworld\\n\""), _initWhiteSpaceNormalizerSpecExamplesCell16(), _initWhiteSpaceNormalizerSpecExamplesCell17()),
+      new WhiteSpaceNormalizerSpecExamples(  Arrays.asList("\"\\thello\\n\\t\"", "\"hello\\n\""), _initWhiteSpaceNormalizerSpecExamplesCell18(), _initWhiteSpaceNormalizerSpecExamplesCell19()),
+      new WhiteSpaceNormalizerSpecExamples(  Arrays.asList("\"\\thello\\t\"", "\"hello\\t\""), _initWhiteSpaceNormalizerSpecExamplesCell20(), _initWhiteSpaceNormalizerSpecExamplesCell21())
     );
   }
   
   protected ExampleTable<WhiteSpaceNormalizerSpecExamples> examples = _initWhiteSpaceNormalizerSpecExamples();
+  
+  public Object _initWhiteSpaceNormalizerSpecExamplesCell0() {
+    return null;
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell1() {
+    return "";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell2() {
+    return "";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell3() {
+    return "";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell4() {
+    return " ";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell5() {
+    return "";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell6() {
+    return "\thello";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell7() {
+    return "hello";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell8() {
+    return "\thello\n\tworld";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell9() {
+    return "hello\nworld";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell10() {
+    return "\t\thello\n\t\tworld";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell11() {
+    return "hello\nworld";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell12() {
+    return "\t\thello\n\tworld";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell13() {
+    return "hello\n\tworld";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell14() {
+    return "\n\t\thello\n\tworld";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell15() {
+    return "hello\n\tworld";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell16() {
+    return "\n\t\thello\n\tworld\n";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell17() {
+    return "hello\n\tworld\n";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell18() {
+    return "\thello\n\t";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell19() {
+    return "hello\n";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell20() {
+    return "\thello\t";
+  }
+  
+  public String _initWhiteSpaceNormalizerSpecExamplesCell21() {
+    return "hello\t";
+  }
   
   @Test
   @Named("should remove trailing whitespace")
@@ -48,13 +144,15 @@ public class WhiteSpaceNormalizerSpec {
   public void _shouldRemoveTrailingWhitespace() throws Exception {
     final Procedure1<WhiteSpaceNormalizerSpecExamples> _function = new Procedure1<WhiteSpaceNormalizerSpecExamples>() {
         public void apply(final WhiteSpaceNormalizerSpecExamples it) {
-          String _normalize = WhiteSpaceNormalizerSpec.this.subject.normalize(it.input);
-          boolean _doubleArrow = Should.operator_doubleArrow(_normalize, it.result);
+          String _input = it.getInput();
+          String _normalize = WhiteSpaceNormalizerSpec.this.subject.normalize(_input);
+          String _result = it.getResult();
+          boolean _doubleArrow = Should.operator_doubleArrow(_normalize, _result);
           Assert.assertTrue("\nExpected subject.normalize(input) => result but"
            + "\n     subject.normalize(input) is " + new StringDescription().appendValue(_normalize).toString()
            + "\n     subject is " + new StringDescription().appendValue(WhiteSpaceNormalizerSpec.this.subject).toString()
-           + "\n     input is " + new StringDescription().appendValue(it.input).toString()
-           + "\n     result is " + new StringDescription().appendValue(it.result).toString() + "\n", _doubleArrow);
+           + "\n     input is " + new StringDescription().appendValue(_input).toString()
+           + "\n     result is " + new StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
           
         }
       };

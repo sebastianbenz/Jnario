@@ -84,4 +84,14 @@ describe Should{
 		'''.executesSuccessfully
 	}
 	
+	fact "infers throws type"{
+		'''
+		import java.util.*
+		describe "Test"{
+			fact new Stack<String>().pop should throw EmptyStackException
+			fact new Stack<String>().pop throws EmptyStackException
+		}
+		'''.executesSuccessfully
+	}
+	
 }

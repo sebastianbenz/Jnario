@@ -6,18 +6,17 @@ import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeR
 import org.eclipse.xtext.common.types.JvmConstructor
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmIdentifiableElement
+import org.eclipse.xtext.common.types.JvmMember
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.xbase.XNullLiteral
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.scoping.batch.IFeatureScopeSession
 import org.eclipse.xtext.xbase.typesystem.InferredTypeIndicator
 import org.eclipse.xtext.xbase.typesystem.internal.ResolvedTypes
-import org.eclipse.xtext.xbase.typesystem.references.LightweightTypeReference
 import org.eclipse.xtext.xtype.XComputedTypeReference
 import org.jnario.ExampleColumn
 import org.jnario.ExampleTable
-import org.eclipse.xtext.common.types.JvmMember
-import java.util.ArrayList
 
 class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeResolver {
 	
@@ -55,19 +54,20 @@ class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeResolver 
 			return;
 		}
 		val casted = typeRef as XComputedTypeReference
-		val result = services.getXtypeFactory().createXComputedTypeReference();
-			result.setTypeProvider(new ColumnTypeProvider[
-			val types = column.cells.map[
+		val resultRef = services.getXtypeFactory().createXComputedTypeReference();
+		resultRef.setTypeProvider(new ColumnTypeProvider[
+			val types = column.cells.filter[!(expression instanceof XNullLiteral)].map[
 				val operation = jvmElements.head as JvmIdentifiableElement
-				val type = resolvedTypes.getActualType(operation)
-				type
+					val type = resolvedTypes.getActualType(operation)
+					type
 			]
 			val owner = resolvedTypes.referenceOwner
 			if(types.empty){
 				return null
 			}
-			services.getTypeConformanceComputer().getCommonSuperType(types, owner).toJavaCompliantTypeReference
+			val result = services.getTypeConformanceComputer().getCommonSuperType(types.toList, owner).toJavaCompliantTypeReference
+			return result
 		])
-		casted.setEquivalent(result)
+		casted.setEquivalent(resultRef)
 	}
 }

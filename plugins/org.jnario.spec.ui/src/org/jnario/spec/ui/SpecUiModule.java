@@ -14,6 +14,7 @@ import org.eclipse.jface.text.rules.ITokenScanner;
 import org.eclipse.jface.text.source.DefaultCharacterPairMatcher;
 import org.eclipse.jface.text.source.IAnnotationHover;
 import org.eclipse.jface.text.source.ICharacterPairMatcher;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
@@ -51,6 +52,7 @@ import org.eclipse.xtend.ide.outline.ShowSyntheticMembersContribution;
 import org.eclipse.xtend.ide.outline.XtendOutlineNodeComparator;
 import org.eclipse.xtend.ide.outline.XtendOutlinePage;
 import org.eclipse.xtend.ide.outline.XtendQuickOutlineFilterAndSorter;
+import org.eclipse.xtend.ide.quickfix.CreateXtendTypeQuickfixes;
 import org.eclipse.xtend.ide.refactoring.XtendDependentElementsCalculator;
 import org.eclipse.xtend.ide.refactoring.XtendJdtRenameParticipantProcessor;
 import org.eclipse.xtend.ide.refactoring.XtendRefactoringPreferences;
@@ -117,13 +119,16 @@ import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOp
 import org.eclipse.xtext.xbase.ui.jvmmodel.refactoring.jdt.JdtRenameRefactoringParticipantProcessor;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
 import org.eclipse.xtext.xbase.ui.validation.XbaseIssueSeveritiesProvider;
+import org.jnario.spec.jvmmodel.SpecLazyLinker;
 import org.jnario.spec.ui.editor.SpecFoldingRegionProvider;
 import org.jnario.spec.ui.generator.SpecGenerator;
 import org.jnario.spec.ui.highlighting.SpecHighlightingCalculator;
+import org.jnario.spec.ui.labeling.SpecLabelProvider;
 import org.jnario.spec.ui.launching.SpecJavaElementDelegate;
 import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
 import org.jnario.ui.doc.JnarioHoverProvider;
+import org.jnario.ui.quickfix.CreateJnarioTypeQuickfixes;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -136,6 +141,13 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 	public SpecUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
+	
+	@Override
+	public void configure(Binder binder) {
+		super.configure(binder);
+		binder.bind(CreateXtendTypeQuickfixes.class).to(CreateJnarioTypeQuickfixes.class);
+	}
+	
 	
 	@Override
 	public Class<? extends IOccurrenceComputer> bindIOccurrenceComputer() {
@@ -422,6 +434,11 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 
 	public Class<? extends IFormattingPreferenceValuesProvider> bindIFormattingPreferenceValuesProvider() {
 		return FormatterPreferenceValuesProvider.class;
+	}
+	
+	@Override
+	public Class<? extends ILabelProvider> bindILabelProvider() {
+		return SpecLabelProvider.class;
 	}
 
 }
