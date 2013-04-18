@@ -9,5 +9,8 @@
    <feature url="features/org.jnario.ui_0.4.0.qualifier.jar" id="org.jnario.ui" version="0.4.0.qualifier">
       <category name="Jnario"/>
    </feature>
+   <feature url="features/org.jnario.m2e_0.4.0.qualifier.jar" id="org.jnario.m2e" version="0.4.0.qualifier">
+      <category name="Jnario"/>
+   </feature>
    <category-def name="Jnario" label="Jnario"/>
 </site>

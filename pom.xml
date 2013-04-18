@@ -52,6 +52,7 @@
     <module>plugins/jnario-maven-plugin</module>
     <module>plugins/jnario-maven-report-plugin</module>
     <module>plugins/org.jnario.m2e</module>
+    <module>features/org.jnario.m2e-feature</module>
   </modules>
 
   <repositories>
