@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.jnario.m2e"
+      label="%featureName"
+      version="0.4.0.qualifier"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
+
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License
+v1.0 which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html Description here.
+   </copyright>
+
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      %license
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.antlr.runtime"/>
+      <import plugin="org.apache.log4j"/>
+      <import plugin="org.apache.commons.logging"/>
+      <import plugin="org.eclipse.jdt.core" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext" version="2.4.1" match="equivalent"/>
+      <import plugin="org.apache.commons.lang"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.4.1" match="equivalent"/>
+      <import plugin="org.hamcrest.core"/>
+      <import plugin="org.eclipse.xtext.xbase" version="2.4.1" match="equivalent"/>
+      <import plugin="org.eclipse.xtend.core" version="2.4.1" match="equivalent"/>
+      <import plugin="org.objectweb.asm" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.hamcrest" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend2.lib" version="2.4.1" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.jnario.feature"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.jnario.spec"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.jnario.lib"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.jnario"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.jnario.standalone"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.jnario.suite"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
