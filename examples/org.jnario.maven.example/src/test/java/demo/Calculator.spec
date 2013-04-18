@@ -23,5 +23,7 @@ describe "Calculator"{
 		examples.forEach[a + b => sum]
 	}	
 
-	fact "this one is pending"
-}          
+	fact "this one is failing"{
+		1 + 1 => 3
+	}
+}           

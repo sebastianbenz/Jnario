@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0 </modelVersion>
 	<artifactId>org.jnario.maven.example </artifactId>
 	<name>Jnario Maven Example </name>
-	<version>0.3.0</version>
+	<version>0.4.0-SNAPSHOT</version>
 	<groupId>org.jnario </groupId>
 	<repositories>
 		<repository>
@@ -70,7 +70,7 @@
 			</plugin>
 			<plugin>
 				<groupId>org.jnario </groupId>
-				<artifactId>jnario-maven-report-plugin</artifactId>
+				<artifactId>report</artifactId>
 				<version>0.4.0-SNAPSHOT</version>
 				<executions>
 					<execution>
