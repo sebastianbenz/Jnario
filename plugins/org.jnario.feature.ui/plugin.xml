@@ -2,7 +2,18 @@
 <?eclipse version="3.0"?>
 
 <plugin>
-
+    <extension
+            point="org.eclipse.ui.editors">
+        <editor
+            class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            default="true"
+            extensions="feature"
+            id="org.jnario.feature.Feature"
+            matchingStrategy="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
+            name="Feature Editor">
+        </editor>
+    </extension>
     <extension
             point="org.eclipse.ui.editors">
         <editor
@@ -34,35 +45,29 @@
                     definitionId="org.jnario.feature.Feature.Editor.opened">
             </reference>
          </activeWhen>
-      </handler>
-            <handler
-            class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.imports.OrganizeImportsHandler"
-            commandId="org.eclipse.xtext.xbase.ui.organizeImports">
-           	<activeWhen>
-				<reference
-					definitionId="org.jnario.feature.Feature.Editor.opened">
-				</reference>
-			</activeWhen>
-			<handler
-            class="org.eclipse.xtend.ide.edit.InsertStringHandler$LeftGuillemet"
-            commandId="org.eclipse.xtend.ide.insertLeftGuillemet">
+      	</handler>
+      	<!-- copy qualified name -->
+        <handler
+            class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+            commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
             <activeWhen>
-				<reference
-					definitionId="org.jnario.feature.Feature.Editor.opened">
-				</reference>
-			</activeWhen>
-      </handler>
-      <handler
-            class="org.eclipse.xtend.ide.edit.InsertStringHandler$RightGuillemet"
-            commandId="org.eclipse.xtend.ide.insertRightGuillemet">
-           	<activeWhen>
-				<reference
-					definitionId="org.jnario.feature.Feature.Editor.opened">
-				</reference>
-			</activeWhen>
-      </handler>
-      </handler>
+				<reference definitionId="org.jnario.feature.Feature.Editor.opened" />
+            </activeWhen>
+        </handler>
+        <handler
+            class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+            commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
+            <activeWhen>
+            	<and>
+            		<reference definitionId="org.jnario.feature.Feature.XtextEditor.opened" />
+	                <iterate>
+						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+					</iterate>
+				</and>
+            </activeWhen>
+        </handler>
     </extension>
+    
     <extension point="org.eclipse.core.expressions.definitions">
         <definition id="org.jnario.feature.Feature.Editor.opened">
             <and>
@@ -112,8 +117,21 @@
             id="org.jnario.feature.Feature.validate"
             name="Validate">
       </command>
+      <!-- copy qualified name -->
+      <command
+            id="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+            categoryId="org.eclipse.ui.category.edit"
+            description="Copy the qualified name for the selected element"
+            name="Copy Qualified Name">
+      </command>
+      <command
+            id="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
+            categoryId="org.eclipse.ui.category.edit"
+            description="Copy the qualified name for the selected element"
+            name="Copy Qualified Name">
+      </command>
     </extension>
-    <extension point="org.eclipse.ui.menus">
+     <extension point="org.eclipse.ui.menus">
         <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
              <command
@@ -126,6 +144,36 @@
                 </reference>
             </visibleWhen>
          </command>  
+         </menuContribution>
+         <!-- copy qualified name -->
+         <menuContribution locationURI="popup:#TextEditorContext?after=copy">
+         	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName" 
+         		style="push" tooltip="Copy Qualified Name">
+            	<visibleWhen checkEnabled="false">
+                	<reference definitionId="org.jnario.feature.Feature.Editor.opened" />
+            	</visibleWhen>
+         	</command>  
+         </menuContribution>
+         <menuContribution locationURI="menu:edit?after=copy">
+         	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+            	style="push" tooltip="Copy Qualified Name">
+            	<visibleWhen checkEnabled="false">
+                	<reference definitionId="org.jnario.feature.Feature.Editor.opened" />
+            	</visibleWhen>
+         	</command>  
+         </menuContribution>
+         <menuContribution locationURI="popup:org.eclipse.xtext.ui.outline?after=additions">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName" 
+				style="push" tooltip="Copy Qualified Name">
+         		<visibleWhen checkEnabled="false">
+	            	<and>
+	            		<reference definitionId="org.jnario.feature.Feature.XtextEditor.opened" />
+						<iterate>
+							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+						</iterate>
+					</and>
+				</visibleWhen>
+			</command>
          </menuContribution>
     </extension>
     <extension point="org.eclipse.ui.menus">
@@ -148,7 +196,7 @@
                 </reference>
             </activeWhen>
         </handler>
-    </extension>   
+    </extension>    
 
 <!-- adding resource factories -->
 
@@ -273,20 +321,52 @@
 		</handler>
 		<handler 
 			class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.QuickTypeHierarchyHandler"
-			commandId="org.eclipse.xtext.xbase.ui.hierarchy.QuickTypeHierarchy">
+			commandId="org.eclipse.jdt.ui.edit.text.java.open.hierarchy">
 			<activeWhen>
 				<reference
 					definitionId="org.jnario.feature.Feature.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
+		<handler
+            class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.imports.OrganizeImportsHandler"
+            commandId="org.eclipse.xtext.xbase.ui.organizeImports">
+           	<activeWhen>
+				<reference
+					definitionId="org.jnario.feature.Feature.Editor.opened">
+				</reference>
+			</activeWhen>
+        </handler>
 	</extension>
 	<extension point="org.eclipse.ui.menus">
+	    <menuContribution
+            locationURI="popup:#TextEditorContext?after=group.edit">
+             <command
+                 commandId="org.eclipse.xtext.xbase.ui.organizeImports"
+                 style="push"
+                 tooltip="Organize Imports">
+                <visibleWhen checkEnabled="false">
+                    <reference
+                        definitionId="org.jnario.feature.Feature.Editor.opened">
+                    </reference>
+                </visibleWhen>
+            </command>  
+        </menuContribution>
 		<menuContribution
 			locationURI="popup:#TextEditorContext?after=group.open">
 			<command commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenTypeHierarchy"
 				style="push"
 				tooltip="Open Type Hierarchy">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="org.jnario.feature.Feature.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.jdt.ui.edit.text.java.open.hierarchy"
+				style="push"
+				tooltip="Quick Type Hierarchy">
 				<visibleWhen checkEnabled="false">
 					<reference definitionId="org.jnario.feature.Feature.Editor.opened"/>
 				</visibleWhen>
@@ -349,10 +429,36 @@
          </action>
       </viewerContribution>
    </extension>
+   
+    <!-- Introduce Local Variable Refactoring -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler 
+			class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.refactoring.ExtractVariableHandler"
+			commandId="org.eclipse.xtext.xbase.ui.refactoring.ExtractLocalVariable">
+			<activeWhen>
+				<reference
+					definitionId="org.jnario.feature.Feature.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+    <extension point="org.eclipse.ui.menus">
+         <menuContribution
+            locationURI="popup:#TextEditorContext?after=group.edit">
+         <command commandId="org.eclipse.xtext.xbase.ui.refactoring.ExtractLocalVariable"
+               style="push">
+            <visibleWhen checkEnabled="false">
+               <reference
+                     definitionId="org.jnario.feature.Feature.Editor.opened">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>  
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler"
+			class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
@@ -374,6 +480,15 @@
          </command>
       </menuContribution>
    </extension>
+   <extension point="org.eclipse.ui.preferencePages">
+	    <page
+	        category="org.jnario.feature.Feature"
+	        class="org.jnario.feature.ui.FeatureExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+	        id="org.jnario.feature.Feature.refactoring"
+	        name="Refactoring">
+	        <keywordReference id="org.jnario.feature.ui.keyword_Feature"/>
+	    </page>
+	</extension>
 
   <extension point="org.eclipse.compare.contentViewers">
     <viewer id="org.jnario.feature.Feature.compare.contentViewers"
