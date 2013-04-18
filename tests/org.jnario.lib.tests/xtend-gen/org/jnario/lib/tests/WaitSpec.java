@@ -1,8 +1,11 @@
 package org.jnario.lib.tests;
 
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.hamcrest.StringDescription;
+import org.jnario.lib.Assert;
 import org.jnario.lib.Clock;
 import org.jnario.lib.Sleeper;
+import org.jnario.lib.TimeoutError;
 import org.jnario.lib.Wait;
 import org.jnario.lib.tests.MockInjector;
 import org.jnario.runner.CreateWith;
@@ -70,8 +73,23 @@ public class WaitSpec {
   @Named("throws TimeoutError after specified time")
   @Order(3)
   public void _throwsTimeoutErrorAfterSpecifiedTime() throws Exception {
-    throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from void to Throwable");
+    this.subject.setDuration(100l);
+    Boolean _apply = this.condition.apply();
+    OngoingStubbing<Boolean> _when = Mockito.<Boolean>when(_apply);
+    _when.thenReturn(Boolean.valueOf(false));
+    long _currentTime = this.clock.currentTime();
+    OngoingStubbing<Long> _when_1 = Mockito.<Long>when(Long.valueOf(_currentTime));
+    _when_1.thenReturn(Long.valueOf(0l), Long.valueOf(50l), Long.valueOf(100l), Long.valueOf(150l));
+    boolean expectedException = false;
+    String message = "";
+    try{
+      this.waitFor(this.condition);
+      message = "Expected " + TimeoutError.class.getName() + " for \n     waitFor(condition)\n with:"
+       + "\n     condition is " + new StringDescription().appendValue(this.condition).toString();
+    }catch(TimeoutError e){
+      expectedException = true;
+    }
+    Assert.assertTrue(message, expectedException);
   }
   
   public void waitFor(final Function0<Boolean> condition) {
