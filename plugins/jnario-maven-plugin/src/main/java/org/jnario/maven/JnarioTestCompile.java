@@ -31,7 +31,6 @@ import com.google.inject.Provider;
  * Goal which compiles Jnario test sources.
  *
  * @author Sebastian Benz - Initial contribution and API
- * @extendsPlugin xtend-maven-plugin
  * @goal testCompile
  * @phase generate-test-sources
  * @requiresDependencyResolution test
@@ -69,8 +68,7 @@ public class JnarioTestCompile extends XtendTestCompile {
 		});
 	}
 
-	private void execute(ResourceSet resourceSet, JnarioBatchCompiler compiler)
-			throws MojoExecutionException {
+	private void execute(ResourceSet resourceSet, JnarioBatchCompiler compiler)	throws MojoExecutionException {
 		compiler.setResourceSet(resourceSet);
 		final String defaultValue = project.getBasedir() + "/src/test/generated-sources/xtend";
 		getLog().debug("Output directory '" + testOutputDirectory + "'");
