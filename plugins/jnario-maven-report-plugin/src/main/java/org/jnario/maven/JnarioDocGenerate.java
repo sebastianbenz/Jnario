@@ -61,20 +61,8 @@ public class JnarioDocGenerate extends XtendTestCompile {
 	 */
 	private String reportsDirectory;
 
-	/**
-	 * Skip the documentation generation.
-	 * 
-	 * @parameter default-value=s
-	 */
-	private boolean skipDocGeneration;
-
 	@Override
-	public void execute() throws MojoExecutionException {
-		if (skipDocGeneration) {
-			getLog().info("Jnario Report Generator skipped.");
-		}
-		configureLog4j();
-		
+	protected void internalExecute() throws MojoExecutionException {
 		getLog().info("Generating Jnario reports to " + docOutputDirectory);
 		
 		// the order is important, the suite compiler must be executed last
@@ -127,7 +115,6 @@ public class JnarioDocGenerate extends XtendTestCompile {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	protected void compileTestSources(XtendBatchCompiler xtend2BatchCompiler) throws MojoExecutionException {
 		getLog().info("Using source folders: " + project.getTestCompileSourceRoots());
 		List<String> testCompileSourceRoots = Lists.newArrayList(project.getTestCompileSourceRoots());
@@ -140,7 +127,7 @@ public class JnarioDocGenerate extends XtendTestCompile {
 		JnarioDocCompiler docCompiler = injector.getInstance(JnarioDocCompiler.class);
 		docCompiler.setResourceSet(resourceSet);
 		docCompiler.setExecutable2ResultMapping(resultMapping);
-		internalExecute(docCompiler);
+		compileTestSources(docCompiler);
 	}
 
 	private ResourceSet createResourceSet(List<Injector> injectors) {
