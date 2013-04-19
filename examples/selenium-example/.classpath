@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="src" path="src/test/xtend-gen"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/generated-sources">
 		<attributes>
 			<attribute name="optional" value="true"/>

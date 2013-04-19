@@ -131,7 +131,6 @@ describe "Using Should"{
 	fact "Combining hamcrest and should"{
 		"hello" => startsWith("h")
 		list("red", "green") => hasItem("red")
-		//FIXME 9 should be greaterThan(5) 
+		9 should be greaterThan(5) 
 	}
-		
 }

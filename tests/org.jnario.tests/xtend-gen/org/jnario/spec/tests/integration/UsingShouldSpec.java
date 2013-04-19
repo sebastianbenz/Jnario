@@ -352,5 +352,11 @@ public class UsingShouldSpec {
      + "\n     list(\"red\", \"green\") is " + new StringDescription().appendValue(_list).toString()
      + "\n     hasItem(\"red\") is " + new StringDescription().appendValue(_hasItem).toString() + "\n", _doubleArrow_1);
     
+    Matcher<Integer> _greaterThan = Matchers.<Integer>greaterThan(Integer.valueOf(5));
+    boolean _should_be = Should.<Integer>should_be(
+      Integer.valueOf(9), _greaterThan);
+    Assert.assertTrue("\nExpected 9 should be greaterThan(5) but"
+     + "\n     greaterThan(5) is " + new StringDescription().appendValue(_greaterThan).toString() + "\n", _should_be);
+    
   }
 }
