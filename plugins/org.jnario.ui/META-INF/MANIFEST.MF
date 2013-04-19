@@ -26,6 +26,7 @@ Export-Package: org.jnario.ui,
  org.jnario.ui.doc,
  org.jnario.ui.highlighting,
  org.jnario.ui.quickfix,
+ org.jnario.ui.validator,
  org.jnario.ui.wizards
 Import-Package: org.apache.log4j;version="1.2.15"
 Bundle-Activator: org.jnario.ui.internal.JnarioActivator

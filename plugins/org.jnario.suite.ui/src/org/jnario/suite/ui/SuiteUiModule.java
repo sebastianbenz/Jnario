@@ -123,6 +123,7 @@ import org.jnario.suite.ui.quickfix.SuiteQuickfixProvider;
 import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
 import org.jnario.ui.quickfix.CreateJnarioTypeQuickfixes;
+import org.jnario.ui.validator.JnarioUIValidator;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -400,7 +401,7 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 	@Override
 	@org.eclipse.xtext.service.SingletonBinding(eager = true)
 	public Class<? extends org.eclipse.xtext.xbase.ui.validation.XbaseUIValidator> bindXbaseUIValidator() {
-		return org.eclipse.xtend.ide.validator.XtendUIValidator.class;
+		return JnarioUIValidator.class;
 	}
 	
 	@SingletonBinding(eager = true)

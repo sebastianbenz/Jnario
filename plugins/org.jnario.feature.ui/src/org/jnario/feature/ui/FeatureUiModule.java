@@ -129,6 +129,7 @@ import org.jnario.feature.ui.hover.FeatureHoverSignatureProvider;
 import org.jnario.feature.ui.labeling.FeatureLabelProvider;
 import org.jnario.feature.ui.launching.FeatureJavaElementDelegate;
 import org.jnario.feature.ui.parser.CustomFeatureLexer;
+import org.jnario.feature.ui.validator.FeatureUIValidator;
 import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
 import org.jnario.ui.quickfix.CreateJnarioTypeQuickfixes;
@@ -429,7 +430,7 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	@Override
 	@org.eclipse.xtext.service.SingletonBinding(eager = true)
 	public Class<? extends org.eclipse.xtext.xbase.ui.validation.XbaseUIValidator> bindXbaseUIValidator() {
-		return org.eclipse.xtend.ide.validator.XtendUIValidator.class;
+		return FeatureUIValidator.class;
 	}
 	
 	@SingletonBinding(eager = true)

@@ -125,10 +125,12 @@ import org.jnario.spec.ui.generator.SpecGenerator;
 import org.jnario.spec.ui.highlighting.SpecHighlightingCalculator;
 import org.jnario.spec.ui.labeling.SpecLabelProvider;
 import org.jnario.spec.ui.launching.SpecJavaElementDelegate;
+import org.jnario.spec.ui.validator.SpecUIValidator;
 import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
 import org.jnario.ui.doc.JnarioHoverProvider;
 import org.jnario.ui.quickfix.CreateJnarioTypeQuickfixes;
+import org.jnario.ui.validator.JnarioUIValidator;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -395,7 +397,7 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 	@Override
 	@org.eclipse.xtext.service.SingletonBinding(eager = true)
 	public Class<? extends org.eclipse.xtext.xbase.ui.validation.XbaseUIValidator> bindXbaseUIValidator() {
-		return org.eclipse.xtend.ide.validator.XtendUIValidator.class;
+		return SpecUIValidator.class;
 	}
 	
 	@SingletonBinding(eager = true)

@@ -68,6 +68,7 @@ import org.jnario.feature.generator.FeatureJvmModelGenerator;
 import org.jnario.feature.jvmmodel.FeatureExecutableProvider;
 import org.jnario.feature.jvmmodel.FeatureJvmModelInferrer;
 import org.jnario.feature.linking.FeatureLazyLinker;
+import org.jnario.feature.linking.FeatureLinkingDiagnosticMessageProvider;
 import org.jnario.feature.linking.FeatureLinkingService;
 import org.jnario.feature.naming.FeatureClassNameProvider;
 import org.jnario.feature.naming.FeatureIdentifiableSimpleNameProvider;
@@ -107,7 +108,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	}
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
-		return XtendLinkingDiagnosticMessageProvider.class;
+		return FeatureLinkingDiagnosticMessageProvider.class;
 	}
 	
 	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder(){

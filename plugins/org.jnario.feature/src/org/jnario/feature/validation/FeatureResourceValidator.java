@@ -8,14 +8,6 @@
 
 package org.jnario.feature.validation;
 
-import static com.google.common.collect.Lists.newArrayList;
-
-import java.util.List;
-
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.util.CancelIndicator;
-import org.eclipse.xtext.validation.CheckMode;
-import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.validation.ResourceValidatorImpl;
 
 /**
@@ -23,22 +15,4 @@ import org.eclipse.xtext.validation.ResourceValidatorImpl;
  */
 public class FeatureResourceValidator extends ResourceValidatorImpl {
 
-	private static final String REFERENCE_ERROR_MESSAGE = "cannot be resolved.";
-
-	@Override
-	public List<Issue> validate(Resource resource, CheckMode mode,
-			CancelIndicator mon) {
-		List<Issue> validate = super.validate(resource, mode, mon);
-		if(validate == null){
-			return null;
-		}
-		List<Issue> finalList = newArrayList();
-		for(Issue issue: validate){
-			if(!issue.getMessage().endsWith(REFERENCE_ERROR_MESSAGE)){
-				finalList.add(issue);
-			}
-		}
-		
-		return finalList;
-	}
 }
