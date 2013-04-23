@@ -12,7 +12,7 @@ public class JnarioPreferenceStoreAccess extends PreferenceStoreAccessImpl {
 	@Override
 	@Inject
 	public void setLanguageNameAsQualifier(@Named("languageName") String languageName) {
-		super.setLanguageNameAsQualifier("jnario");
+		super.setLanguageNameAsQualifier("org.jnario.Jnario");
 	}
 	
 }
