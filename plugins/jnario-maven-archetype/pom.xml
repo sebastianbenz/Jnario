@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>jnario-archetype</artifactId>
+	<packaging>maven-archetype</packaging>
+	<name>Create a simple Jnario project</name>
+	<url>http://jnario.org</url>
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.archetype</groupId>
+				<artifactId>archetype-packaging</artifactId>
+				<version>2.2</version>
+			</extension>
+		</extensions>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-archetype-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<version>0.4.0</version>
+	<licenses>
+		<license>
+			<name>Eclipse Public License v1.0</name>
+			<comments>
+			All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.htm
+			</comments>
+		</license>
+	</licenses>
+	<inceptionYear>2012</inceptionYear>
+	<issueManagement>
+		<system>Github Issues</system>
+		<url>
+https://github.com/bmwcarit/Jnario/issues
+</url>
+	</issueManagement>
+	<organization>
+		<name>BMW Car IT</name>
+		<url>http://www.bmw-carit.de/</url>
+	</organization>
+	<scm>
+		<connection>scm:git:git://github.com/bmwcarit/Jnario.git</connection>
+		<developerConnection>scm:git:git@github.com:bmwcarit/Jnario.git</developerConnection>
+		<url>https://github.com/bmwcarit/Jnario</url>
+	</scm>
+	<developers>
+		<developer>
+			<id>sebastianbenz</id>
+			<name>Sebastian Benz</name>
+			<email>sebastian.benz@gmail.com</email>
+			<timezone>GMT+2</timezone>
+			<roles>
+			</roles>
+		</developer>
+		<developer>
+			<id>birgitengelmann</id>
+			<name>Birgit Engelmann</name>
+			<email>birgit.engelmann@bmw-carit.de</email>
+			<timezone>GMT+2</timezone>
+			<roles>
+			</roles>
+		</developer>
+	</developers>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus snapshot repository</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<name>Sonatype Nexus release repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+	<groupId>org.jnario</groupId>
+</project>
