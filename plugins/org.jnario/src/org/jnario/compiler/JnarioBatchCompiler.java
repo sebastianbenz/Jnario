@@ -63,7 +63,7 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 
 	}
 
-	private static final Logger log = Logger.getLogger(JnarioBatchCompiler.class);
+	private final Logger log = Logger.getLogger(getClass());
 	
 	@Inject
 	private JvmModelGenerator generator;

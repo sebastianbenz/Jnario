@@ -19,7 +19,6 @@
           <goal>generate</goal>
         </goals>
       </pluginExecutionFilter>
-      
       <action>
         <ignore />
       </action>
