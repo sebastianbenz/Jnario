@@ -38,13 +38,37 @@
 <h3 class="exampleGroup notrun"  id="same_file">Same file</h3>
 <ul><li><p id="proposes_implemented_steps" class="example notrun"><strong>proposes implemented steps</strong></p>
 <pre class="prettyprint lang-spec linenums">
-newBuilder.append('''
+val builder = newBuilder.append('''
   Feature: My Feature
     Scenario: My Scenario
     Given an implemented step
       1 + 1 =&gt; 2
     
-''').assertProposal(&quot;And an implemented step&quot;)</pre>
+''')
+builder.assertProposal(&quot;And an implemented step&quot;)
+builder.assertProposal(&quot;But an implemented step&quot;)</pre>
+</li><li><p id="proposes_unimplemented_steps" class="example notrun"><strong>proposes unimplemented steps</strong></p>
+<pre class="prettyprint lang-spec linenums">
+val builder = newBuilder.append('''
+  Feature: My Feature
+    Scenario: My Scenario
+    Given a pending step
+    
+''')
+builder.assertProposal(&quot;And a pending step&quot;)
+builder.assertProposal(&quot;But a pending step&quot;)</pre>
+</li><li><p id="does_not_provide_given_for_then" class="example notrun"><strong>does not provide given for then</strong></p>
+<pre class="prettyprint lang-spec linenums">
+val builder = newBuilder.append('''
+  Feature: My Feature
+    Scenario: My Scenario
+    Given a step
+    Then another step
+    
+''')
+builder.assertProposalsContainNot(&quot;And a step&quot;)
+builder.assertProposal(&quot;And another step&quot;)
+builder.assertProposal(&quot;But another step&quot;)</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -61,28 +85,58 @@ import org.eclipse.xtext.junit4.XtextRunner
 import org.jnario.runner.Extends
 import org.eclipse.xtext.junit4.ui.AbstractContentAssistProcessorTest
 import org.jnario.feature.FeatureStandaloneSetup
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.FeatureUiTestCreator
+import org.jnario.jnario.test.util.AbstractContentAssistProcessorTest2
+import org.jnario.jnario.test.util.AbstractContentAssistProcessorTest2$ContentAssistProcessorTestBuilder2
 
-@Extends(typeof(AbstractContentAssistProcessorTest))
+@Extends(typeof(AbstractContentAssistProcessorTest2))
 describe &quot;FeatureProposalProvider&quot;{
+  
+  ContentAssistProcessorTestBuilder2 builder
   
   context &quot;same file&quot;{
     fact &quot;proposes implemented steps&quot;{
-      newBuilder.append('''
+      val builder = newBuilder.append('''
         Feature: My Feature
           Scenario: My Scenario
           Given an implemented step
             1 + 1 =&gt; 2
           
-      ''').assertProposal(&quot;And an implemented step&quot;)
-      
+      ''')
+      builder.assertProposal(&quot;And an implemented step&quot;)
+      builder.assertProposal(&quot;But an implemented step&quot;)
     }
     
+    fact &quot;proposes unimplemented steps&quot;{
+      val builder = newBuilder.append('''
+        Feature: My Feature
+          Scenario: My Scenario
+          Given a pending step
+          
+      ''')
+      builder.assertProposal(&quot;And a pending step&quot;)
+      builder.assertProposal(&quot;But a pending step&quot;)
+    }
+    
+    fact &quot;does not provide given for then&quot;{
+      val builder = newBuilder.append('''
+        Feature: My Feature
+          Scenario: My Scenario
+          Given a step
+          Then another step
+          
+      ''')
+      builder.assertProposalsContainNot(&quot;And a step&quot;)
+      builder.assertProposal(&quot;And another step&quot;)
+      builder.assertProposal(&quot;But another step&quot;)
+    }
   }
   
   
   
   override protected doGetSetup() {
-    [|new FeatureUiInjectorProvider().injector]
+    new FeatureUiStandaloneSetup
   }
   
 }

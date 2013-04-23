@@ -505,7 +505,7 @@ public class UsingTablesSpec {
   }
   
   /**
-   * @filter(.*)
+   * A table column with a single null value will be inferred to java.lang.Object.
    */
   @Test
   @Named("type inference uses null for one column with null value")
@@ -522,6 +522,36 @@ public class UsingTablesSpec {
     _builder.newLine();
     _builder.append("        ");
     _builder.append("| null  |");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
+  }
+  
+  /**
+   * Primitives will be converted to their wrapper type if one cell is null.
+   */
+  @Test
+  @Named("Primitives & null")
+  @Order(9)
+  public void _primitivesNull() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"TableBug\" {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("def gkzData {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("| value |");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("| null  |");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("| 1     |");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("}");

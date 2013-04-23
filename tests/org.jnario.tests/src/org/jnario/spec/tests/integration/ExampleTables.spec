@@ -231,9 +231,8 @@ describe "Using Tables"{
 	}    
 	
 	/*
-	 * @filter(.*)
+	 * A table column with a single null value will be inferred to java.lang.Object.
 	 */
-	
 	fact "type inference uses null for one column with null value"{
 		'''
 			describe "TableBug" {
@@ -244,5 +243,20 @@ describe "Using Tables"{
 			}
 		'''.executesSuccessfully
 	}
-
+	
+	/*
+	 * Primitives will be converted to their wrapper type if one cell is null.
+	 */
+	fact "Primitives & null"{
+		'''
+			describe "TableBug" {
+			    def gkzData {
+			        | value |
+			        | null  |
+			        | 1     |
+			    }
+			}
+		'''.executesSuccessfully
+	}
+	
 }               

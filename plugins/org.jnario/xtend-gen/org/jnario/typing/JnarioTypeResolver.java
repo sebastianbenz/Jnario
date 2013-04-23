@@ -126,8 +126,16 @@ public class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeRe
           CommonTypeComputationServices _services_2 = JnarioTypeResolver.this.getServices();
           TypeConformanceComputer _typeConformanceComputer = _services_2.getTypeConformanceComputer();
           List<LightweightTypeReference> _list = IterableExtensions.<LightweightTypeReference>toList(types);
-          LightweightTypeReference _commonSuperType = _typeConformanceComputer.getCommonSuperType(_list, owner);
-          return _commonSuperType.toJavaCompliantTypeReference();
+          LightweightTypeReference result = _typeConformanceComputer.getCommonSuperType(_list, owner);
+          EList<ExampleCell> _cells_1 = column.getCells();
+          int _size = _cells_1.size();
+          int _size_1 = IterableExtensions.size(types);
+          boolean _notEquals = (_size != _size_1);
+          if (_notEquals) {
+            LightweightTypeReference _wrapperTypeIfPrimitive = result.getWrapperTypeIfPrimitive();
+            result = _wrapperTypeIfPrimitive;
+          }
+          return result.toJavaCompliantTypeReference();
         }
       };
     ColumnTypeProvider _columnTypeProvider = new ColumnTypeProvider(_function);

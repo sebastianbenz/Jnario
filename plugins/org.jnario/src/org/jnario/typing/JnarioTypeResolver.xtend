@@ -65,7 +65,11 @@ class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeResolver 
 			if(types.empty){
 				return services.typeReferences.createTypeRef(services.typeReferences.findDeclaredType(typeof(Object), member))
 			}
-			return services.getTypeConformanceComputer().getCommonSuperType(types.toList, owner).toJavaCompliantTypeReference
+			var result = services.getTypeConformanceComputer().getCommonSuperType(types.toList, owner)
+			if(column.cells.size != types.size){
+				result = result.wrapperTypeIfPrimitive
+			}
+			return result.toJavaCompliantTypeReference;
 		])
 		casted.setEquivalent(resultRef)
 	}

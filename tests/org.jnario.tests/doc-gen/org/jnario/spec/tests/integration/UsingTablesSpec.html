@@ -214,6 +214,28 @@ errorMessage[
        value2 is &lt;8&gt;
        sum is &lt;14&gt;''')</pre>
 </li><li><p id="type_inference_uses_null_for_one_column_with_null_value" class="example notrun"><strong>type inference uses null for one column with null value</strong></p>
+<p>A table column with a single null value will be inferred to java.lang.Object.</p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  describe &quot;TableBug&quot; {
+      def gkzData {
+          | value |
+          | null  |
+      }
+  }
+'''.executesSuccessfully</pre>
+</li><li><p id="Primitives_null" class="example notrun"><strong>Primitives & null</strong></p>
+<p>Primitives will be converted to their wrapper type if one cell is null.</p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  describe &quot;TableBug&quot; {
+      def gkzData {
+          | value |
+          | null  |
+          | 1     |
+      }
+  }
+'''.executesSuccessfully</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -453,9 +475,8 @@ describe &quot;Using Tables&quot;{
   }    
   
   /*
-   * @filter(.*)
+   * A table column with a single null value will be inferred to java.lang.Object.
    */
-  
   fact &quot;type inference uses null for one column with null value&quot;{
     '''
       describe &quot;TableBug&quot; {
@@ -466,7 +487,22 @@ describe &quot;Using Tables&quot;{
       }
     '''.executesSuccessfully
   }
-
+  
+  /*
+   * Primitives will be converted to their wrapper type if one cell is null.
+   */
+  fact &quot;Primitives &amp; null&quot;{
+    '''
+      describe &quot;TableBug&quot; {
+          def gkzData {
+              | value |
+              | null  |
+              | 1     |
+          }
+      }
+    '''.executesSuccessfully
+  }
+  
 }
 </pre>
 						    </p></div>

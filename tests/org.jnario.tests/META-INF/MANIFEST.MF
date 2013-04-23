@@ -32,7 +32,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.jnario.suite.ui;bundle-version="0.4.0",
  org.mockito;bundle-version="1.8.4",
  org.objenesis;bundle-version="1.0.0",
- org.jnario.ui;bundle-version="0.4.0"
+ org.jnario.ui;bundle-version="0.4.0",
+ org.eclipse.jface.text
 Import-Package: org.apache.commons.logging,
  org.apache.log4j,
  org.junit.runner;version="4.5.0",

@@ -1,8 +1,8 @@
 package org.jnario.feature.tests.unit.contentassist;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.junit4.ui.ContentAssistProcessorTestBuilder;
 import org.jnario.feature.tests.unit.contentassist.FeatureProposalProviderSpec;
+import org.jnario.jnario.test.util.AbstractContentAssistProcessorTest2.ContentAssistProcessorTestBuilder2;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -17,7 +17,7 @@ public class FeatureProposalProviderSameFileSpec extends FeatureProposalProvider
   @Named("proposes implemented steps")
   @Order(1)
   public void _proposesImplementedSteps() throws Exception {
-    ContentAssistProcessorTestBuilder _newBuilder = this.newBuilder();
+    ContentAssistProcessorTestBuilder2 _newBuilder = this.newBuilder();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: My Feature");
     _builder.newLine();
@@ -32,7 +32,54 @@ public class FeatureProposalProviderSameFileSpec extends FeatureProposalProvider
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
-    ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-    _append.assertProposal("And an implemented step");
+    final ContentAssistProcessorTestBuilder2 builder = _newBuilder.append(_builder.toString());
+    builder.assertProposal("And an implemented step");
+    builder.assertProposal("But an implemented step");
+  }
+  
+  @Test
+  @Named("proposes unimplemented steps")
+  @Order(2)
+  public void _proposesUnimplementedSteps() throws Exception {
+    ContentAssistProcessorTestBuilder2 _newBuilder = this.newBuilder();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("Feature: My Feature");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Scenario: My Scenario");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Given a pending step");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    final ContentAssistProcessorTestBuilder2 builder = _newBuilder.append(_builder.toString());
+    builder.assertProposal("And a pending step");
+    builder.assertProposal("But a pending step");
+  }
+  
+  @Test
+  @Named("does not provide given for then")
+  @Order(3)
+  public void _doesNotProvideGivenForThen() throws Exception {
+    ContentAssistProcessorTestBuilder2 _newBuilder = this.newBuilder();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("Feature: My Feature");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Scenario: My Scenario");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Given a step");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Then another step");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    final ContentAssistProcessorTestBuilder2 builder = _newBuilder.append(_builder.toString());
+    builder.assertProposalsContainNot("And a step");
+    builder.assertProposal("And another step");
+    builder.assertProposal("But another step");
   }
 }
