@@ -503,4 +503,31 @@ public class UsingTablesSpec {
     _builder.append("sum is <14>");
     Helpers.is(_errorMessage, _builder);
   }
+  
+  /**
+   * @filter(.*)
+   */
+  @Test
+  @Named("type inference uses null for one column with null value")
+  @Order(8)
+  public void _typeInferenceUsesNullForOneColumnWithNullValue() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"TableBug\" {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("def gkzData {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("| value |");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("| null  |");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
+  }
 }

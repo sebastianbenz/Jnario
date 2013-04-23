@@ -213,6 +213,7 @@ errorMessage[
        value1 is &lt;7&gt;
        value2 is &lt;8&gt;
        sum is &lt;14&gt;''')</pre>
+</li><li><p id="type_inference_uses_null_for_one_column_with_null_value" class="example notrun"><strong>type inference uses null for one column with null value</strong></p>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -450,6 +451,21 @@ describe &quot;Using Tables&quot;{
            value2 is &lt;8&gt;
            sum is &lt;14&gt;''')
   }    
+  
+  /*
+   * @filter(.*)
+   */
+  
+  fact &quot;type inference uses null for one column with null value&quot;{
+    '''
+      describe &quot;TableBug&quot; {
+          def gkzData {
+              | value |
+              | null  |
+          }
+      }
+    '''.executesSuccessfully
+  }
 
 }
 </pre>

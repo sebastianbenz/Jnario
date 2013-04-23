@@ -13,7 +13,9 @@ import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XNullLiteral;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
@@ -114,14 +116,18 @@ public class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeRe
           final ITypeReferenceOwner owner = resolvedTypes.getReferenceOwner();
           boolean _isEmpty = IterableExtensions.isEmpty(types);
           if (_isEmpty) {
-            return null;
+            CommonTypeComputationServices _services = JnarioTypeResolver.this.getServices();
+            TypeReferences _typeReferences = _services.getTypeReferences();
+            CommonTypeComputationServices _services_1 = JnarioTypeResolver.this.getServices();
+            TypeReferences _typeReferences_1 = _services_1.getTypeReferences();
+            JvmType _findDeclaredType = _typeReferences_1.findDeclaredType(Object.class, member);
+            return _typeReferences.createTypeRef(_findDeclaredType);
           }
-          CommonTypeComputationServices _services = JnarioTypeResolver.this.getServices();
-          TypeConformanceComputer _typeConformanceComputer = _services.getTypeConformanceComputer();
+          CommonTypeComputationServices _services_2 = JnarioTypeResolver.this.getServices();
+          TypeConformanceComputer _typeConformanceComputer = _services_2.getTypeConformanceComputer();
           List<LightweightTypeReference> _list = IterableExtensions.<LightweightTypeReference>toList(types);
           LightweightTypeReference _commonSuperType = _typeConformanceComputer.getCommonSuperType(_list, owner);
-          final JvmTypeReference result = _commonSuperType.toJavaCompliantTypeReference();
-          return result;
+          return _commonSuperType.toJavaCompliantTypeReference();
         }
       };
     ColumnTypeProvider _columnTypeProvider = new ColumnTypeProvider(_function);

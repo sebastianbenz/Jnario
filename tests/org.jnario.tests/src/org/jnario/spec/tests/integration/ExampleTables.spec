@@ -229,5 +229,20 @@ describe "Using Tables"{
 			     value2 is <8>
 			     sum is <14>''')
 	}    
+	
+	/*
+	 * @filter(.*)
+	 */
+	
+	fact "type inference uses null for one column with null value"{
+		'''
+			describe "TableBug" {
+			    def gkzData {
+			        | value |
+			        | null  |
+			    }
+			}
+		'''.executesSuccessfully
+	}
 
 }               

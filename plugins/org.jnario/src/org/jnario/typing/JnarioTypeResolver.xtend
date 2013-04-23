@@ -63,10 +63,9 @@ class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeResolver 
 			]
 			val owner = resolvedTypes.referenceOwner
 			if(types.empty){
-				return null
+				return services.typeReferences.createTypeRef(services.typeReferences.findDeclaredType(typeof(Object), member))
 			}
-			val result = services.getTypeConformanceComputer().getCommonSuperType(types.toList, owner).toJavaCompliantTypeReference
-			return result
+			return services.getTypeConformanceComputer().getCommonSuperType(types.toList, owner).toJavaCompliantTypeReference
 		])
 		casted.setEquivalent(resultRef)
 	}
