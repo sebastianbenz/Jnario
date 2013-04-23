@@ -72,7 +72,7 @@ public class XtendTestCompile extends AbstractXtendCompilerMojo {
 		addDependencies(classPath, project.getTestArtifacts());
 		return newArrayList(filter(classPath, FILE_EXISTS));
 	}
-
+	
 	@Override
 	protected String getTempDirectory() {
 		return testTempDirectory;
