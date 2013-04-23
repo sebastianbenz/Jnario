@@ -67,12 +67,4 @@ public class CalculatorSpec {
       + "\n=> cannot be resolved"
       + "\n+ cannot be resolved");
   }
-  
-  @Test
-  public void _thisOneIsFailing() throws Exception {
-    throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from int to Procedure1<? super Integer>"
-      + "\nType mismatch: cannot convert from int to Procedure1<? super Integer>"
-      + "\nType mismatch: cannot convert from int to Procedure1<? super Integer>");
-  }
 }

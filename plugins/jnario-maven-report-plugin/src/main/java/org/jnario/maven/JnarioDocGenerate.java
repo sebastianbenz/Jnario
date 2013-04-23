@@ -13,6 +13,7 @@ import java.util.List;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
+import org.eclipse.xtend.maven.MavenProjectResourceSetProvider;
 import org.eclipse.xtend.maven.XtendTestCompile;
 import org.eclipse.xtext.ISetup;
 import org.jnario.compiler.HtmlAssetsCompiler;
@@ -70,7 +71,7 @@ public class JnarioDocGenerate extends XtendTestCompile {
 		generateCssAndJsFiles(injectors);
 
 		HashBasedSpec2ResultMapping resultMapping = createSpec2ResultMapping(injectors);
-		ResourceSet resourceSet = createResourceSet(injectors);
+		ResourceSet resourceSet = createResourceSet();
 		
 		for (Injector injector : injectors) {
 			generateDoc(resourceSet, injector, resultMapping);
@@ -130,10 +131,9 @@ public class JnarioDocGenerate extends XtendTestCompile {
 		compileTestSources(docCompiler);
 	}
 
-	private ResourceSet createResourceSet(List<Injector> injectors) {
-		Provider<ResourceSet> resourceSetProvider = injectors.get(0).getProvider(ResourceSet.class);
-		ResourceSet resourceSet = resourceSetProvider.get();
-		return resourceSet;
+	private ResourceSet createResourceSet() {
+		Provider<ResourceSet> resourceSetProvider = new MavenProjectResourceSetProvider(project);
+		return resourceSetProvider.get();
 	}
 
 	private List<Injector> createInjectors(ISetup... setups) {

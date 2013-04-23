@@ -6,7 +6,9 @@
         <artifactId>jnario-maven-plugin</artifactId>
         <versionRange>[0.4.0,)</versionRange>
         <goals>
+          <goal>compile</goal>
           <goal>testCompile</goal>
+          <goal>xtend-test-install-debug-info</goal>
         </goals>
       </pluginExecutionFilter>
       <pluginExecutionFilter>

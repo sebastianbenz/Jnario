@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.xtend.maven.MavenProjectResourceSetProvider;
 import org.eclipse.xtend.maven.XtendTestCompile;
 import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -41,7 +42,7 @@ public class JnarioTestCompile extends XtendTestCompile {
 	protected void internalExecute() throws MojoExecutionException {
 		// the order is important, the suite compiler must be executed last
 		List<Injector> injectors = createInjectors(new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
-		ResourceSet resourceSet = createResourceSet(injectors);
+		ResourceSet resourceSet = createResourceSet();
 		
 		for (Injector injector : injectors) {
 			compile(injector, resourceSet);
@@ -54,10 +55,9 @@ public class JnarioTestCompile extends XtendTestCompile {
 		execute(resourceSet, compiler);
 	}
  
-	private ResourceSet createResourceSet(List<Injector> injectors) {
-		Provider<ResourceSet> resourceSetProvider = injectors.get(0).getProvider(ResourceSet.class);
-		ResourceSet resourceSet = resourceSetProvider.get();
-		return resourceSet;
+	private ResourceSet createResourceSet() {
+		Provider<ResourceSet> resourceSetProvider = new MavenProjectResourceSetProvider(project);
+		return resourceSetProvider.get();
 	}
 
 	private List<Injector> createInjectors(ISetup... setups) {
