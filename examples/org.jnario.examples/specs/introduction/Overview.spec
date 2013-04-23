@@ -7,17 +7,13 @@
  *******************************************************************************/
 package introduction
 
-
-import static extension org.jnario.jnario.test.util.Helpers.*
-import static extension org.jnario.lib.Each.*
-import static extension org.jnario.lib.Should.*
-import static extension org.jnario.jnario.test.util.SpecExecutor.*
-import org.jnario.jnario.test.util.BehaviorExecutor
 import com.google.inject.Inject
-import org.jnario.runner.CreateWith
-import org.jnario.runner.SpecCreator
 import org.jnario.jnario.test.util.SpecExecutor
 import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.runner.CreateWith
+
+import static extension org.jnario.jnario.test.util.Helpers.*
+
 /*
  * <p align="center"><img src="file://localhost/Users/sebastian/Desktop/Specs.png"/></p>
  *  
@@ -34,7 +30,7 @@ import org.jnario.jnario.test.util.SpecTestCreator
  * with *Jnario Specs*.
  */
 @CreateWith(typeof(SpecTestCreator))
-describe "Jnario Specs fact BDD for Java"{
+describe "Jnario Specs - facts for Java"{
   @Inject extension SpecExecutor
  
   /* 
@@ -60,10 +56,10 @@ describe "Jnario Specs fact BDD for Java"{
     val y = 1
     errorMessage[assert x == 1 && y == 0].is('''
       Expected x == 1 && y == 0 but
-           x == 1 is false
-           x is 0
-           y == 0 is false  
-           y is 1'''
+           x == 1 is <false>
+           x is <0>
+           y == 0 is <false>
+           y is <1>'''
       )  
   }   
 
