@@ -28,6 +28,7 @@ mvn gpg:sign-and-deploy-file -Dpackaging=jar -Durl=$URL -DrepositoryId=$REPO -Dp
 mvn gpg:sign-and-deploy-file -Dpackaging=jar -Durl=$URL -DrepositoryId=$REPO -DpomFile=pom.xml -Dfile=target/$project-$version-javadoc.jar -Dclassifier=javadoc
 cd ../..
 done
+mvn gpg:sign-and-deploy-file -Dpackaging=jar -Durl=$URL -DrepositoryId=$REPO -DpomFile=pom.xml -Dfile=target/jnario-maven-archetype-$version.jar
 
 echo "Successfully staged maven artifacts. Manually close & release via https://oss.sonatype.org/index.html#stagingRepositories"
 

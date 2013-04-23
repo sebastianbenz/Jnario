@@ -30,7 +30,7 @@ sed -i '' 's/$version/$nextversion/g' releng/org.jnario.updatesite/category.xml
 mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$nextversion-SNAPSHOT
 
 #update maven managed projects
-for project in "org.jnario.standalone.maven" "jnario-maven-plugin" "org.jnario.lib.maven" "jnario-maven-report-plugin"
+for project in "org.jnario.standalone.maven" "jnario-maven-plugin" "org.jnario.lib.maven" "jnario-maven-report-plugin" "jnario-maven-archetype"
 do
 cd plugins/$project
 mvn versions:set -DnewVersion=$nextversion-SNAPSHOT -DgenerateBackupPoms=false
