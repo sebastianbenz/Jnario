@@ -7,13 +7,12 @@
  *******************************************************************************/
 package org.jnario.doc
 
-import java.util.regex.Pattern
-
-import static org.jnario.doc.FilterExtractor.*
-import static org.jnario.doc.FilteringResult.*
 import java.util.List
 import java.util.Map
+import java.util.regex.Pattern
 import org.eclipse.xtext.xbase.lib.Functions$Function1
+
+import static org.jnario.doc.FilteringResult.*
 
 class FilterExtractor {
 

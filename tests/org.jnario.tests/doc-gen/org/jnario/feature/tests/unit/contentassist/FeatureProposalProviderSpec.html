@@ -36,39 +36,9 @@
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
 <h3 class="exampleGroup notrun"  id="same_file">Same file</h3>
-<ul><li><p id="proposes_implemented_steps" class="example notrun"><strong>proposes implemented steps</strong></p>
-<pre class="prettyprint lang-spec linenums">
-val builder = newBuilder.append('''
-  Feature: My Feature
-    Scenario: My Scenario
-    Given an implemented step
-      1 + 1 =&gt; 2
-    
-''')
-builder.assertProposal(&quot;And an implemented step&quot;)
-builder.assertProposal(&quot;But an implemented step&quot;)</pre>
-</li><li><p id="proposes_unimplemented_steps" class="example notrun"><strong>proposes unimplemented steps</strong></p>
-<pre class="prettyprint lang-spec linenums">
-val builder = newBuilder.append('''
-  Feature: My Feature
-    Scenario: My Scenario
-    Given a pending step
-    
-''')
-builder.assertProposal(&quot;And a pending step&quot;)
-builder.assertProposal(&quot;But a pending step&quot;)</pre>
-</li><li><p id="does_not_provide_given_for_then" class="example notrun"><strong>does not provide given for then</strong></p>
-<pre class="prettyprint lang-spec linenums">
-val builder = newBuilder.append('''
-  Feature: My Feature
-    Scenario: My Scenario
-    Given a step
-    Then another step
-    
-''')
-builder.assertProposalsContainNot(&quot;And a step&quot;)
-builder.assertProposal(&quot;And another step&quot;)
-builder.assertProposal(&quot;But another step&quot;)</pre>
+<ul><li><p id="proposes_implemented_steps" class="example pending"><strong>proposes implemented steps [PENDING]</strong></p>
+</li><li><p id="proposes_unimplemented_steps" class="example pending"><strong>proposes unimplemented steps [PENDING]</strong></p>
+</li><li><p id="does_not_provide_given_for_then" class="example pending"><strong>does not provide given for then [PENDING]</strong></p>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -96,7 +66,7 @@ describe &quot;FeatureProposalProvider&quot;{
   ContentAssistProcessorTestBuilder2 builder
   
   context &quot;same file&quot;{
-    fact &quot;proposes implemented steps&quot;{
+    pending fact &quot;proposes implemented steps&quot;{
       val builder = newBuilder.append('''
         Feature: My Feature
           Scenario: My Scenario
@@ -108,7 +78,7 @@ describe &quot;FeatureProposalProvider&quot;{
       builder.assertProposal(&quot;But an implemented step&quot;)
     }
     
-    fact &quot;proposes unimplemented steps&quot;{
+    pending fact &quot;proposes unimplemented steps&quot;{
       val builder = newBuilder.append('''
         Feature: My Feature
           Scenario: My Scenario
@@ -119,7 +89,7 @@ describe &quot;FeatureProposalProvider&quot;{
       builder.assertProposal(&quot;But a pending step&quot;)
     }
     
-    fact &quot;does not provide given for then&quot;{
+    pending fact &quot;does not provide given for then&quot;{
       val builder = newBuilder.append('''
         Feature: My Feature
           Scenario: My Scenario

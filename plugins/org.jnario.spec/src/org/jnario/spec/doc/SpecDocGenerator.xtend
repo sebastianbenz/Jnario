@@ -49,7 +49,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 		«exampleGroup.generateMembers(1)»
 	'''
 	
-	def private generateMembers(ExampleGroup exampleGroup, int level){
+	def private StringConcatenation generateMembers(ExampleGroup exampleGroup, int level){
 		val result = new StringConcatenation
 		var inList = false	
 		val members = exampleGroup.members.filter[(it instanceof Example) 

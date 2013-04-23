@@ -333,7 +333,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     _builder.append(_generateDoc, "");
     _builder.newLineIfNotEmpty();
     int _plus = (level + 1);
-    Object _generateMembers = this.generateMembers(exampleGroup, _plus);
+    StringConcatenation _generateMembers = this.generateMembers(exampleGroup, _plus);
     _builder.append(_generateMembers, "");
     _builder.newLineIfNotEmpty();
     {
