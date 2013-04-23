@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 BMW Car IT and others.
+# * Copyright (c) 2012 BMW Car IT and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,9 @@ import java.util.List;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.xtend.core.XtendStandaloneSetup;
+import org.eclipse.xtend.core.compiler.XtendCompiler;
+import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.maven.MavenProjectResourceSetProvider;
 import org.eclipse.xtend.maven.XtendTestCompile;
 import org.eclipse.xtext.ISetup;
@@ -38,15 +41,27 @@ import com.google.inject.Provider;
  */
 public class JnarioTestCompile extends XtendTestCompile {
 	
+	private Provider<ResourceSet> resourceSetProvider;
+
 	@Override
 	protected void internalExecute() throws MojoExecutionException {
 		// the order is important, the suite compiler must be executed last
 		List<Injector> injectors = createInjectors(new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
-		ResourceSet resourceSet = createResourceSet();
-		
+		final ResourceSet resourceSet = createResourceSet();
+		resourceSetProvider = new Provider<ResourceSet>() {
+			public ResourceSet get() {
+				return resourceSet;
+			}
+		};
+		compileXtendSources();
 		for (Injector injector : injectors) {
 			compile(injector, resourceSet);
 		}
+	}
+
+	public void compileXtendSources() throws MojoExecutionException {
+		XtendBatchCompiler xtendCompiler = new XtendStandaloneSetup().createInjectorAndDoEMFRegistration().getInstance(XtendBatchCompiler.class);
+		super.compileTestSources(xtendCompiler);
 	}
 
 	private void compile(Injector injector, ResourceSet resourceSet)
@@ -82,6 +97,11 @@ public class JnarioTestCompile extends XtendTestCompile {
 			});
 		}
 		compileTestSources(compiler);
+	}
+	
+	@Override
+	protected Provider<ResourceSet> getResourceSetProvider() {
+		return resourceSetProvider;
 	}
 
 }

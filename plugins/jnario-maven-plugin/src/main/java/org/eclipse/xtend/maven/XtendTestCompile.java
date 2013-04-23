@@ -70,6 +70,7 @@ public class XtendTestCompile extends AbstractXtendCompilerMojo {
 			throw new WrappedException(e);
 		}
 		addDependencies(classPath, project.getTestArtifacts());
+		System.out.println(classPath);
 		return newArrayList(filter(classPath, FILE_EXISTS));
 	}
 
