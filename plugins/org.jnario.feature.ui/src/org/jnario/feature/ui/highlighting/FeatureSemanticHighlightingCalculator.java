@@ -8,6 +8,7 @@
 package org.jnario.feature.ui.highlighting;
 
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.findNodesForFeature;
+import static org.jnario.feature.ui.highlighting.FeatureHighlightingConfiguration.CODE_ID;
 import static org.jnario.feature.ui.highlighting.FeatureHighlightingConfiguration.SCENARIO_ID;
 import static org.jnario.util.Strings.getFirstWord;
 
@@ -24,14 +25,12 @@ import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XNumberLiteral;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
-import org.jnario.ExampleTable;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
@@ -40,6 +39,7 @@ import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.feature.util.FeatureSwitch;
 import org.jnario.feature.jvmmodel.StepArgumentsProvider;
 import org.jnario.ui.highlighting.JnarioHighlightingCalculator;
+import org.jnario.util.Strings;
 
 import com.google.inject.Inject;
 
@@ -107,6 +107,16 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 				highlightFirstWordOfReference(ref, ref.getReference());
 			}
 			highlightIdentifiers(step);
+			List<INode> nodes;
+			if (step instanceof StepReference) {
+				nodes = NodeModelUtils.findNodesForFeature(step, FeaturePackage.Literals.STEP_REFERENCE__REFERENCE);
+			}else{
+				nodes = NodeModelUtils.findNodesForFeature(step, XtendPackage.Literals.XTEND_FUNCTION__NAME);
+			}
+			INode lastChild = nodes.get(nodes.size()-1);
+			String text = lastChild.getText();
+			String trailingWhitespace = Strings.trailingWhitespace(text);
+			acceptor.addPosition(lastChild.getOffset() + text.length() - trailingWhitespace.length(), trailingWhitespace.length(), CODE_ID);
 			return Boolean.TRUE;
 		}
 
