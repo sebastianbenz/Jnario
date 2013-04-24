@@ -8,18 +8,21 @@
 package org.jnario.feature.jvmmodel
 
 import com.google.inject.Inject
+import java.util.ArrayList
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtend.core.xtend.XtendField
+import org.eclipse.xtend.core.xtend.XtendFile
 import org.eclipse.xtend.core.xtend.XtendFunction
 import org.eclipse.xtext.common.types.JvmConstructor
-import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
-import org.eclipse.xtext.common.types.JvmVisibility
+import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 import org.eclipse.xtext.xbase.XConstructorCall
+import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.xbase.XVariableDeclaration
 import org.eclipse.xtext.xbase.XbaseFactory
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
@@ -33,25 +36,18 @@ import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.StepImplementation
 import org.jnario.feature.feature.StepReference
-import org.jnario.feature.naming.FeatureClassNameProvider
 import org.jnario.feature.naming.StepNameProvider
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
 import org.jnario.lib.StepArguments
-import org.jnario.runner.Extension
 import org.jnario.runner.Named
 import org.jnario.runner.Order
 import org.jnario.util.SourceAdapter
 
 import static com.google.common.collect.Iterators.*
-import static org.jnario.feature.jvmmodel.FeatureJvmModelInferrer.*
 
 import static extension com.google.common.base.Strings.*
 import static extension org.eclipse.xtext.EcoreUtil2.*
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils
-import java.util.ArrayList
-import org.eclipse.xtend.core.xtend.XtendFile
-import org.eclipse.xtext.common.types.TypesFactory
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -203,12 +199,25 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    			if(original == null){
    				return
    			}
-   			val originalType = original.jvmElements.filter(typeof(JvmGenericType)).findFirst[
-   				it.primarySourceElement == original
-   			]
-   			expressionOf(it).updateReferences(originalType, inferredJvmType)
+   			val expr = expressionOf(it)
+   			updateReferences(original, expr, inferredJvmType)
+   		]
+   		scenario.members.filter(typeof(XtendField)).filter[initialValue != null].forEach[
+   			val source = SourceAdapter::find(it)
+   			if(source == null){
+   				return
+   			}
+   			val original = source.getContainerOfType(typeof(Scenario))
+   			original.updateReferences(it.initialValue, inferredJvmType)
    		]
    	}
+
+	def updateReferences(Scenario original, XExpression expr, JvmGenericType inferredJvmType) {
+		val originalType = original.jvmElements.filter(typeof(JvmGenericType)).findFirst[
+			it.primarySourceElement == original
+		]
+		expr.updateReferences(originalType, inferredJvmType)
+	}
    	
 	override protected transform(XtendField source, JvmGenericType container) {
 	}

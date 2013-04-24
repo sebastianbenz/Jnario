@@ -14,19 +14,28 @@ import org.jnario.feature.feature.Step;
 @SuppressWarnings("all")
 public class VisibleMembersCalculator {
   public Iterable<XtendMember> allVisibleMembers(final Step step) {
-    final Scenario scenario = EcoreUtil2.<Scenario>getContainerOfType(step, Scenario.class);
-    boolean _equals = Objects.equal(scenario, null);
-    if (_equals) {
-      return CollectionLiterals.<XtendMember>emptyList();
+    Iterable<XtendMember> _xblockexpression = null;
+    {
+      final Scenario scenario = EcoreUtil2.<Scenario>getContainerOfType(step, Scenario.class);
+      boolean _equals = Objects.equal(scenario, null);
+      if (_equals) {
+        return CollectionLiterals.<XtendMember>emptyList();
+      }
+      Iterable<XtendMember> _allVisibleMembers = this.allVisibleMembers(scenario);
+      _xblockexpression = (_allVisibleMembers);
     }
+    return _xblockexpression;
+  }
+  
+  public Iterable<XtendMember> allVisibleMembers(final Scenario scenario) {
     EList<XtendMember> members = scenario.getMembers();
     if ((scenario instanceof Background)) {
       return members;
     }
     final Feature feature = EcoreUtil2.<Feature>getContainerOfType(scenario, Feature.class);
     Background _background = feature.getBackground();
-    boolean _equals_1 = Objects.equal(_background, null);
-    if (_equals_1) {
+    boolean _equals = Objects.equal(_background, null);
+    if (_equals) {
       return members;
     }
     Background _background_1 = feature.getBackground();

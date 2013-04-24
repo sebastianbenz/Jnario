@@ -341,21 +341,48 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           if (_equals_1) {
             return;
           }
-          Set<EObject> _jvmElements = FeatureJvmModelInferrer.this._iJvmModelAssociations.getJvmElements(original);
-          Iterable<JvmGenericType> _filter = Iterables.<JvmGenericType>filter(_jvmElements, JvmGenericType.class);
-          final Function1<JvmGenericType,Boolean> _function = new Function1<JvmGenericType,Boolean>() {
-              public Boolean apply(final JvmGenericType it) {
-                EObject _primarySourceElement = FeatureJvmModelInferrer.this._iJvmModelAssociations.getPrimarySourceElement(it);
-                boolean _equals = Objects.equal(_primarySourceElement, original);
-                return Boolean.valueOf(_equals);
-              }
-            };
-          final JvmGenericType originalType = IterableExtensions.<JvmGenericType>findFirst(_filter, _function);
-          XExpression _expressionOf = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(it);
-          FeatureJvmModelInferrer.this._jvmFieldReferenceUpdater.updateReferences(_expressionOf, originalType, inferredJvmType);
+          final XExpression expr = FeatureJvmModelInferrer.this._stepExpressionProvider.expressionOf(it);
+          FeatureJvmModelInferrer.this.updateReferences(original, expr, inferredJvmType);
         }
       };
     IterableExtensions.<StepReference>forEach(_filter_1, _function_1);
+    EList<XtendMember> _members_1 = scenario.getMembers();
+    Iterable<XtendField> _filter_2 = Iterables.<XtendField>filter(_members_1, XtendField.class);
+    final Function1<XtendField,Boolean> _function_2 = new Function1<XtendField,Boolean>() {
+        public Boolean apply(final XtendField it) {
+          XExpression _initialValue = it.getInitialValue();
+          boolean _notEquals = (!Objects.equal(_initialValue, null));
+          return Boolean.valueOf(_notEquals);
+        }
+      };
+    Iterable<XtendField> _filter_3 = IterableExtensions.<XtendField>filter(_filter_2, _function_2);
+    final Procedure1<XtendField> _function_3 = new Procedure1<XtendField>() {
+        public void apply(final XtendField it) {
+          final EObject source = SourceAdapter.find(it);
+          boolean _equals = Objects.equal(source, null);
+          if (_equals) {
+            return;
+          }
+          final Scenario original = EcoreUtil2.<Scenario>getContainerOfType(source, Scenario.class);
+          XExpression _initialValue = it.getInitialValue();
+          FeatureJvmModelInferrer.this.updateReferences(original, _initialValue, inferredJvmType);
+        }
+      };
+    IterableExtensions.<XtendField>forEach(_filter_3, _function_3);
+  }
+  
+  public void updateReferences(final Scenario original, final XExpression expr, final JvmGenericType inferredJvmType) {
+    Set<EObject> _jvmElements = this._iJvmModelAssociations.getJvmElements(original);
+    Iterable<JvmGenericType> _filter = Iterables.<JvmGenericType>filter(_jvmElements, JvmGenericType.class);
+    final Function1<JvmGenericType,Boolean> _function = new Function1<JvmGenericType,Boolean>() {
+        public Boolean apply(final JvmGenericType it) {
+          EObject _primarySourceElement = FeatureJvmModelInferrer.this._iJvmModelAssociations.getPrimarySourceElement(it);
+          boolean _equals = Objects.equal(_primarySourceElement, original);
+          return Boolean.valueOf(_equals);
+        }
+      };
+    final JvmGenericType originalType = IterableExtensions.<JvmGenericType>findFirst(_filter, _function);
+    this._jvmFieldReferenceUpdater.updateReferences(expr, originalType, inferredJvmType);
   }
   
   protected void transform(final XtendField source, final JvmGenericType container) {

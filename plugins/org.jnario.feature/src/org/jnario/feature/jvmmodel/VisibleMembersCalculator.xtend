@@ -14,6 +14,10 @@ class VisibleMembersCalculator {
 		if(scenario == null){
 			return <XtendMember>emptyList
 		}
+		allVisibleMembers(scenario)
+   	}
+
+	def allVisibleMembers(Scenario scenario) {
 		var members = scenario.members
 		if(scenario instanceof Background){
 			return members
@@ -23,6 +27,6 @@ class VisibleMembersCalculator {
 			return members
 		}
 		return members + feature.background.members
-   	}
+	}
 	
 }

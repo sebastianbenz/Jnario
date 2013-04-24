@@ -13,9 +13,8 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.eclipse.xtend.core.xtend.XtendField
 import org.eclipse.xtend.core.xtend.XtendMember
+import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.StepReference
-
-import static org.eclipse.xtext.EcoreUtil2.*
 import org.jnario.util.SourceAdapter
 
 /**
@@ -26,19 +25,17 @@ class StepReferenceFieldCreator {
 	@Inject extension VisibleMembersCalculator
 	@Inject extension ExpressionCopier
 
-	def copyXtendMemberForReferences(EObject objectWithReference){
-		val refs = getAllContentsOfType(objectWithReference, typeof(StepReference))
+	def copyXtendMemberForReferences(Scenario scenario){
+		val refs = scenario.steps.filter(typeof(StepReference)).filter[reference?.expression != null]
+		val fieldNames = scenario.existingFieldNamesForContainerOfStepReference
 		for(ref: refs){
-			if(ref.reference?.expression != null){
-				val fieldNames = ref.existingFieldNamesForContainerOfStepReference
-				val members = ref.reference.allVisibleMembers
-				objectWithReference.copyFields(members, fieldNames)					
-			}
+			val members = ref.reference.allVisibleMembers
+			scenario.copyFields(members, fieldNames)					
 		}
    	}
    	
-   	def private getExistingFieldNamesForContainerOfStepReference(StepReference ref){
-   		ref.allVisibleMembers.existingFieldNames
+   	def private getExistingFieldNamesForContainerOfStepReference(Scenario scenario){
+   		scenario.allVisibleMembers.existingFieldNames
    	}
    	
    	def private getExistingFieldNames(Iterable<XtendMember> members){

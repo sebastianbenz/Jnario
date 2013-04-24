@@ -393,6 +393,24 @@ Scenario: Second
 </li>
 </ul>
 </div>
+<div><h3 class="scenario notrun"  id="Scenario_Field_dependencies">Scenario: Field dependencies
+</h3>
+<ul>
+<li><span class="step notrun"><p>Given a feature</p><pre>Feature: Field dependencies
+   
+  Scenario: First
+    val x = &quot;hello&quot;
+    val y = x
+  When it should execute successfully
+    println(x + y)
+
+  Scenario: Second
+    When it should execute successfully</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>References.feature</h3>
@@ -773,6 +791,22 @@ Feature: References for steps
        Then it should execute successfully
     '''
     Then it should execute successfully
+    
+  Scenario: Field dependencies
+    Given a feature
+      '''
+  Feature: Field dependencies
+     
+    Scenario: First
+      val x = &quot;hello&quot;
+      val y = x
+    When it should execute successfully
+      println(x + y)
+  
+    Scenario: Second
+      When it should execute successfully
+      '''
+  Then it should execute successfully
 </pre>
 						    </p></div>
 						  </div>

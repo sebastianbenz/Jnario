@@ -24,8 +24,9 @@ public class ExpressionCopier{
 //			modelAssociator.associate(source, target);
 			if (source instanceof XAbstractFeatureCall) {
 				XAbstractFeatureCall sourceFeatureCall = (XAbstractFeatureCall) source;
-				((XAbstractFeatureCall) source).getFeature();
+				
 				XAbstractFeatureCall targetFeatureCall = (XAbstractFeatureCall) target;
+				targetFeatureCall.setFeature(((XAbstractFeatureCall) source).getFeature());
 				targetFeatureCall.setImplicitFirstArgument((XExpression) copy(sourceFeatureCall.getImplicitFirstArgument()));
 				targetFeatureCall.setImplicitReceiver((XExpression) copy(sourceFeatureCall.getImplicitReceiver()));
 			}

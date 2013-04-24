@@ -373,3 +373,19 @@ Feature: References for steps
 		 	Then it should execute successfully
 		'''
 		Then it should execute successfully
+		
+	Scenario: Field dependencies
+		Given a feature
+			'''
+	Feature: Field dependencies
+	 	
+	  Scenario: First
+	  	val x = "hello"
+	  	val y = x
+	  When it should execute successfully
+	  	println(x + y)
+	
+	  Scenario: Second
+	  	When it should execute successfully
+			'''
+	Then it should execute successfully

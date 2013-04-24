@@ -10,18 +10,18 @@ package org.jnario.feature.jvmmodel;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.jnario.feature.feature.Scenario;
+import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.jvmmodel.ExpressionCopier;
@@ -41,23 +41,30 @@ public class StepReferenceFieldCreator {
   @Extension
   private ExpressionCopier _expressionCopier;
   
-  public void copyXtendMemberForReferences(final EObject objectWithReference) {
-    final List<StepReference> refs = EcoreUtil2.<StepReference>getAllContentsOfType(objectWithReference, StepReference.class);
+  public void copyXtendMemberForReferences(final Scenario scenario) {
+    EList<Step> _steps = scenario.getSteps();
+    Iterable<StepReference> _filter = Iterables.<StepReference>filter(_steps, StepReference.class);
+    final Function1<StepReference,Boolean> _function = new Function1<StepReference,Boolean>() {
+        public Boolean apply(final StepReference it) {
+          StepImplementation _reference = it.getReference();
+          XExpression _expression = _reference==null?(XExpression)null:_reference.getExpression();
+          boolean _notEquals = (!Objects.equal(_expression, null));
+          return Boolean.valueOf(_notEquals);
+        }
+      };
+    final Iterable<StepReference> refs = IterableExtensions.<StepReference>filter(_filter, _function);
+    final Set<String> fieldNames = this.getExistingFieldNamesForContainerOfStepReference(scenario);
     for (final StepReference ref : refs) {
-      StepImplementation _reference = ref.getReference();
-      XExpression _expression = _reference==null?(XExpression)null:_reference.getExpression();
-      boolean _notEquals = (!Objects.equal(_expression, null));
-      if (_notEquals) {
-        final Set<String> fieldNames = this.getExistingFieldNamesForContainerOfStepReference(ref);
-        StepImplementation _reference_1 = ref.getReference();
-        final Iterable<XtendMember> members = this._visibleMembersCalculator.allVisibleMembers(_reference_1);
-        this.copyFields(objectWithReference, members, fieldNames);
+      {
+        StepImplementation _reference = ref.getReference();
+        final Iterable<XtendMember> members = this._visibleMembersCalculator.allVisibleMembers(_reference);
+        this.copyFields(scenario, members, fieldNames);
       }
     }
   }
   
-  private Set<String> getExistingFieldNamesForContainerOfStepReference(final StepReference ref) {
-    Iterable<XtendMember> _allVisibleMembers = this._visibleMembersCalculator.allVisibleMembers(ref);
+  private Set<String> getExistingFieldNamesForContainerOfStepReference(final Scenario scenario) {
+    Iterable<XtendMember> _allVisibleMembers = this._visibleMembersCalculator.allVisibleMembers(scenario);
     Set<String> _existingFieldNames = this.getExistingFieldNames(_allVisibleMembers);
     return _existingFieldNames;
   }
