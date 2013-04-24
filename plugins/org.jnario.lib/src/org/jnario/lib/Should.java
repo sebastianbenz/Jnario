@@ -71,7 +71,7 @@ public class Should{
 //		return should_be(actual, expected);
 //	}
 
-//	public static <T> boolean operator_doubleArrow(T actual, Matcher<T> expected) {
+//	public static <T> boolean operator_doubleArrow(T actual, Matcher<? super T> expected) {
 //		return should_be(actual, expected);
 //	}
 //	
@@ -95,7 +95,7 @@ public class Should{
 		return expectedType.isInstance(actual);
 	}
 	
-	public static <T> boolean should_be(T actual, Matcher<T> matcher){
+	public static <T> boolean should_be(T actual, Matcher<? super T> matcher){
 		if(matcher == null){
 			return actual == null;
 		}
@@ -106,7 +106,7 @@ public class Should{
 		return contains(actual, element);
 	}
 	
-	public static <T> boolean should_contain(Iterable<T> collection, Matcher<T> matcher){
+	public static <T> boolean should_contain(Iterable<T> collection, Matcher<? super T> matcher){
 		for (T item : collection) {
             if (matcher.matches(item)){
                 return true;
@@ -134,7 +134,7 @@ public class Should{
 		return s.toString().endsWith(substring);
 	}
 	
-	public static <T> Matcher<T> matches(final String desc, final Functions.Function1<T, Boolean> matcher){
+	public static <T> Matcher<? super T> matches(final String desc, final Functions.Function1<T, Boolean> matcher){
 		return new BaseMatcher<T>() {
 
 			public void describeTo(Description description) {
