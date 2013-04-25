@@ -6,7 +6,7 @@ Jnario is a framework for writing executable specifications for Java. It provide
 
 #Dependencies & Installation
 
-* Jnario requires at least [Eclipse 3.6](http://eclipse.org/downloads/) with [Xtext 2.3](http://www.xtext.org) and [Xtend 2.3](http://www.eclipse.org/xtend/). You can install both from this update site `http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/`.
+* Jnario requires at least [Eclipse 3.6](http://eclipse.org/downloads/) with [Xtext 2.4](http://www.xtext.org) and [Xtend 2.4](http://www.eclipse.org/xtend/). You can install both from this update site `http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/`.
 * The latest snapshot verion of Jnario can be installed from the following update site `http://www.jnario.org/updates/snapshot/`.
 
 ##Examples
@@ -62,7 +62,7 @@ describe Stack{
 ##Setting up a development environment
 
 * If you haven't got an Eclipse installation, download the [Xtend Distribution](http://www.eclipse.org/xtend/download.html). 
-* Install the latest Xtext 2.3 release from: `http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/` (this is not required if you have downloaded the Xtend distribution).
+* Install the latest Xtext 2.4 release from: `http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/` (this is not required if you have downloaded the Xtend distribution).
 * Install the latest Jnario snapshot: `http://www.jnario.org/updates/snapshot/`.
 * Clone the jnario repository: 
 
