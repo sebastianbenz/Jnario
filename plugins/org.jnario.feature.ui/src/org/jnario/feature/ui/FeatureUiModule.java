@@ -46,6 +46,7 @@ import org.eclipse.xtend.ide.outline.ShowSyntheticMembersContribution;
 import org.eclipse.xtend.ide.outline.XtendOutlineNodeComparator;
 import org.eclipse.xtend.ide.outline.XtendOutlinePage;
 import org.eclipse.xtend.ide.outline.XtendQuickOutlineFilterAndSorter;
+import org.eclipse.xtend.ide.quickfix.CreateMemberQuickfixes;
 import org.eclipse.xtend.ide.quickfix.CreateXtendTypeQuickfixes;
 import org.eclipse.xtend.ide.refactoring.XtendDependentElementsCalculator;
 import org.eclipse.xtend.ide.refactoring.XtendJdtRenameParticipantProcessor;
@@ -129,6 +130,7 @@ import org.jnario.feature.ui.hover.FeatureHoverSignatureProvider;
 import org.jnario.feature.ui.labeling.FeatureLabelProvider;
 import org.jnario.feature.ui.launching.FeatureJavaElementDelegate;
 import org.jnario.feature.ui.parser.CustomFeatureLexer;
+import org.jnario.feature.ui.quickfix.FeatureCreateMemberQuickfixes;
 import org.jnario.feature.ui.validator.FeatureUIValidator;
 import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
@@ -209,6 +211,7 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 		binder.bind(XtextEditor.class).to(FeatureEditor.class);
 		binder.bind(DefaultIndentLineAutoEditStrategy.class).to(FeatureIndentLineAutoEditStrategy.class);
 		binder.bind(CreateXtendTypeQuickfixes.class).to(CreateJnarioTypeQuickfixes.class);
+		binder.bind(CreateMemberQuickfixes.class).to(FeatureCreateMemberQuickfixes.class);
 	}
 
 	public void configureDebugMode(Binder binder) {
