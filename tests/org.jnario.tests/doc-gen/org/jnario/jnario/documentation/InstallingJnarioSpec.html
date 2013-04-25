@@ -39,13 +39,20 @@
 <h3 class="exampleGroup pending"  id="Installing_the_Eclipse_Tooling">Installing the Eclipse Tooling</h3>
 <p>Jnario requires Eclipse 3.5 or higher and a Java SDK 5 or higher. You can install Jnario runtime and tooling via the <a href="http://marketplace.eclipse.org/content/jnario">Eclipse Marketplace</a> or using the following update sites:</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>For official releases:</strong> <code>http://www.jnario.org/updates/releases/</code></p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>For the latest stable snapshot:</strong> <code>http://www.jnario.org/updates/snapshot/</code></p><p>If you do not yet have an Eclipse on your machine, you can download one of the pre-packaged <a href="http://www.eclipse.org/xtend/download.html">Xtend distributions</a>.</p>
 <h3 class="exampleGroup notrun"  id="Using_Jnario_with_Maven">Using Jnario with Maven</h3>
-<p>The runtime library as well as a plug-in to run the compiler in a Maven build can be be installed from <a href="http://search.maven.org/#search%7Cga%7C1%7Cjnario">Maven Central</a>. There is also an <a href="https://github.com/bmwcarit/Jnario/tree/master/examples/org.jnario.maven.example">example project</a> demonstrating the usage of Jnario with Maven.</p>
+<p>The runtime library as well as a plug-in to run the compiler in a Maven build can be be installed from <a href="http://search.maven.org/#search%7Cga%7C1%7Cjnario">Maven Central</a>. The easiest way to get started is to use the Jnario maven archetype:</p>
+<pre class="prettyprint">mvn archetype:generate                                  \
+-DarchetypeGroupId=org.jnario                           \
+-DarchetypeArtifactId=jnario-archetype                  \
+-DarchetypeVersion=0.4.0                                \
+-DgroupId=org.example                                   \
+-DartifactId=myproject
+</code></pre><p>There is also an <a href="https://github.com/bmwcarit/Jnario/tree/master/examples/org.jnario.maven.example">example project</a> demonstrating the usage of Jnario with Maven.</p>
 <ul><li><p id="Jnario_Runtime" class="example notrun"><strong>Jnario Runtime</strong></p>
 <p>The XML for the Jnario runtime library is:</p>
 <pre class="prettyprint">&lt;dependency&gt;
   &lt;groupId&gt;org.jnario&lt;/groupId&gt;
   &lt;artifactId&gt;org.jnario.lib.maven&lt;/artifactId&gt;
-  &lt;version&gt;0.3.0&lt;/version&gt;
+  &lt;version&gt;0.4.0&lt;/version&gt;
   &lt;scope&gt;test&lt;/scope&gt;
 &lt;/dependency&gt;
 </code></pre>
@@ -71,16 +78,17 @@
 <pre class="prettyprint">&lt;plugin&gt;
   &lt;groupId&gt;org.jnario&lt;/groupId&gt;
   &lt;artifactId&gt;jnario-maven-plugin&lt;/artifactId&gt;
-  &lt;version&gt;0.3.0&lt;/version&gt;
+  &lt;version&gt;0.4.0&lt;/version&gt;
   &lt;executions&gt;
     &lt;execution&gt;
       &lt;goals&gt;
         &lt;goal&gt;testCompile&lt;/goal&gt;
+        &lt;goal&gt;xtend-test-install-debug-info&lt;/goal&gt;
       &lt;/goals&gt;
     &lt;/execution&gt;
   &lt;/executions&gt;
 &lt;/plugin&gt;
-</code></pre>
+</code></pre><p><span class="label label-important">Important</span> For performance reasons, the Jnario compiler also includes the Xtend compiler. Make sure not register the Xtend compiler for the <em>testCompile</em> phase, as this would execute the Xtend compiler twice.</p>
 </li><li><p id="Configuring_Eclipse" class="example notrun"><strong>Configuring Eclipse</strong></p>
 <p>The outputDirectory can be specified to match the default of the Eclipse plug-in (xtend-gen). You can also change the configuration in Eclipse to match the Maven default (generated-sources). To do so right-click on the project and select Properties or if you prefer a global setting choose <strong>Eclipse-&gt;Preferences</strong>. In the category <strong>Jnario/Compiler</strong> enter  the directory name (see screenshot). It is interpreted as a relative path to the parent of the source folder, which includes the to-be-compiled Xtend file.</p>
 <p align="center"><img width="500px" src="/img/tutorial/project_compiler_settings.png" alt="Configuring project specific compiler settings."/></p>
@@ -125,7 +133,16 @@ describe &quot;Installing Jnario&quot;{
   
   /*
    * The runtime library as well as a plug-in to run the compiler in a 
-   * Maven build can be be installed from [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cjnario).
+   * Maven build can be be installed from [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cjnario). 
+   * The easiest way to get started is to use the Jnario maven archetype:
+   * 
+   *     mvn archetype:generate                                  \
+   *     -DarchetypeGroupId=org.jnario                           \
+   *     -DarchetypeArtifactId=jnario-archetype                  \
+   *     -DarchetypeVersion=0.4.0                                \
+   *     -DgroupId=org.example                                   \
+   *     -DartifactId=myproject
+   * 
    * There is also an [example project](https://github.com/bmwcarit/Jnario/tree/master/examples/org.jnario.maven.example) 
    * demonstrating the usage of Jnario with Maven.
    */
@@ -137,7 +154,7 @@ describe &quot;Installing Jnario&quot;{
      *     &lt;dependency&gt;
      *       &lt;groupId&gt;org.jnario&lt;/groupId&gt;
      *       &lt;artifactId&gt;org.jnario.lib.maven&lt;/artifactId&gt;
-     *       &lt;version&gt;0.3.0&lt;/version&gt;
+     *       &lt;version&gt;0.4.0&lt;/version&gt;
      *       &lt;scope&gt;test&lt;/scope&gt;
      *     &lt;/dependency&gt;
      * 
@@ -176,15 +193,21 @@ describe &quot;Installing Jnario&quot;{
      *     &lt;plugin&gt;
      *       &lt;groupId&gt;org.jnario&lt;/groupId&gt;
      *       &lt;artifactId&gt;jnario-maven-plugin&lt;/artifactId&gt;
-     *       &lt;version&gt;0.3.0&lt;/version&gt;
+     *       &lt;version&gt;0.4.0&lt;/version&gt;
      *       &lt;executions&gt;
      *         &lt;execution&gt;
      *           &lt;goals&gt;
      *             &lt;goal&gt;testCompile&lt;/goal&gt;
+     *             &lt;goal&gt;xtend-test-install-debug-info&lt;/goal&gt;
      *           &lt;/goals&gt;
      *         &lt;/execution&gt;
      *       &lt;/executions&gt;
      *     &lt;/plugin&gt;
+     *  
+     * &lt;span class=&quot;label label-important&quot;&gt;Important&lt;/span&gt; For 
+     * performance reasons, the Jnario compiler also includes the Xtend compiler. Make sure 
+     * not register the Xtend compiler for the *testCompile* phase, as this would execute the
+     * Xtend compiler twice.
      * 
      * @filter(.*)
      * 

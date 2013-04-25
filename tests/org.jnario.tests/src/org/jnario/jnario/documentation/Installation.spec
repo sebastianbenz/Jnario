@@ -33,7 +33,16 @@ describe "Installing Jnario"{
 	
 	/*
 	 * The runtime library as well as a plug-in to run the compiler in a 
-	 * Maven build can be be installed from [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cjnario).
+	 * Maven build can be be installed from [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cjnario). 
+	 * The easiest way to get started is to use the Jnario maven archetype:
+	 * 
+	 *     mvn archetype:generate                                  \
+	 *     -DarchetypeGroupId=org.jnario                           \
+	 *     -DarchetypeArtifactId=jnario-archetype                  \
+	 *     -DarchetypeVersion=0.4.0                                \
+	 *     -DgroupId=org.example                                   \
+	 *     -DartifactId=myproject
+	 * 
 	 * There is also an [example project](https://github.com/bmwcarit/Jnario/tree/master/examples/org.jnario.maven.example) 
 	 * demonstrating the usage of Jnario with Maven.
 	 */
@@ -45,7 +54,7 @@ describe "Installing Jnario"{
 		 *     <dependency>
 		 *       <groupId>org.jnario</groupId>
 		 *       <artifactId>org.jnario.lib.maven</artifactId>
-		 *       <version>0.3.0</version>
+		 *       <version>0.4.0</version>
 		 *       <scope>test</scope>
 		 *     </dependency>
 		 * 
@@ -84,15 +93,21 @@ describe "Installing Jnario"{
 		 *     <plugin>
 		 *       <groupId>org.jnario</groupId>
 		 *       <artifactId>jnario-maven-plugin</artifactId>
-		 *       <version>0.3.0</version>
+		 *       <version>0.4.0</version>
 		 *       <executions>
 		 *         <execution>
 		 *           <goals>
 		 *             <goal>testCompile</goal>
+		 *             <goal>xtend-test-install-debug-info</goal>
 		 *           </goals>
 		 *         </execution>
 		 *       </executions>
 		 *     </plugin>
+		 *  
+		 * <span class="label label-important">Important</span> For 
+		 * performance reasons, the Jnario compiler also includes the Xtend compiler. Make sure 
+		 * not register the Xtend compiler for the *testCompile* phase, as this would execute the
+		 * Xtend compiler twice.
 		 * 
 		 * @filter(.*)
 		 * 
