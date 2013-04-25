@@ -70,4 +70,7 @@
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
 </location>
 </locations>
+<launcherArgs>
+<vmArgs>-Xms40m -Xmx1024m -XX:MaxPermSize=256m</vmArgs>
+</launcherArgs>
 </target>

@@ -123,6 +123,8 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getThenAccess().getGroup(), "rule__Then__Group__0");
 					put(grammarAccess.getAndReferenceAccess().getGroup(), "rule__AndReference__Group__0");
 					put(grammarAccess.getAndAccess().getGroup(), "rule__And__Group__0");
+					put(grammarAccess.getButReferenceAccess().getGroup(), "rule__ButReference__Group__0");
+					put(grammarAccess.getButAccess().getGroup(), "rule__But__Group__0");
 					put(grammarAccess.getBlockExpressionAccess().getGroup(), "rule__BlockExpression__Group__0");
 					put(grammarAccess.getXRelationalExpressionAccess().getGroup(), "rule__XRelationalExpression__Group__0");
 					put(grammarAccess.getXRelationalExpressionAccess().getGroup_1_0(), "rule__XRelationalExpression__Group_1_0__0");
@@ -394,6 +396,9 @@ public class FeatureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAndReferenceAccess().getReferenceAssignment_1(), "rule__AndReference__ReferenceAssignment_1");
 					put(grammarAccess.getAndAccess().getNameAssignment_1(), "rule__And__NameAssignment_1");
 					put(grammarAccess.getAndAccess().getExpressionAssignment_2(), "rule__And__ExpressionAssignment_2");
+					put(grammarAccess.getButReferenceAccess().getReferenceAssignment_1(), "rule__ButReference__ReferenceAssignment_1");
+					put(grammarAccess.getButAccess().getNameAssignment_1(), "rule__But__NameAssignment_1");
+					put(grammarAccess.getButAccess().getExpressionAssignment_2(), "rule__But__ExpressionAssignment_2");
 					put(grammarAccess.getBlockExpressionAccess().getExpressionsAssignment_0(), "rule__BlockExpression__ExpressionsAssignment_0");
 					put(grammarAccess.getXRelationalExpressionAccess().getFeatureAssignment_1_0_0_0_1(), "rule__XRelationalExpression__FeatureAssignment_1_0_0_0_1");
 					put(grammarAccess.getXRelationalExpressionAccess().getRightOperandAssignment_1_0_1(), "rule__XRelationalExpression__RightOperandAssignment_1_0_1");

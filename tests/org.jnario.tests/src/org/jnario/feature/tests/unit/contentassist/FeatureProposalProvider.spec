@@ -19,7 +19,7 @@ describe "FeatureProposalProvider"{
 	ContentAssistProcessorTestBuilder2 builder
 	
 	context "same file"{
-		pending fact "proposes implemented steps"{
+		fact "proposes implemented steps"{
 			val builder = newBuilder.append('''
 				Feature: My Feature
 					Scenario: My Scenario
@@ -31,7 +31,7 @@ describe "FeatureProposalProvider"{
 			builder.assertProposal("But an implemented step")
 		}
 		
-		pending fact "proposes unimplemented steps"{
+		fact "proposes unimplemented steps"{
 			val builder = newBuilder.append('''
 				Feature: My Feature
 					Scenario: My Scenario
@@ -42,7 +42,7 @@ describe "FeatureProposalProvider"{
 			builder.assertProposal("But a pending step")
 		}
 		
-		pending fact "does not provide given for then"{
+		fact "does not provide given for then"{
 			val builder = newBuilder.append('''
 				Feature: My Feature
 					Scenario: My Scenario

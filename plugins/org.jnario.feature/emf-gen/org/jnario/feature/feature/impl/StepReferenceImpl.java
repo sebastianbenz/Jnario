@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.jnario.feature.feature.FeaturePackage;
+import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
 
@@ -26,6 +27,7 @@ import org.jnario.feature.feature.StepReference;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.jnario.feature.feature.impl.StepReferenceImpl#getReference <em>Reference</em>}</li>
+ *   <li>{@link org.jnario.feature.feature.impl.StepReferenceImpl#getSyntheticStepReference <em>Synthetic Step Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,6 +44,16 @@ public class StepReferenceImpl extends StepImplCustom implements StepReference
 	 * @ordered
 	 */
 	protected StepImplementation reference;
+
+	/**
+	 * The cached value of the '{@link #getSyntheticStepReference() <em>Synthetic Step Reference</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSyntheticStepReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected Step syntheticStepReference;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,6 +124,49 @@ public class StepReferenceImpl extends StepImplCustom implements StepReference
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Step getSyntheticStepReference()
+	{
+		if (syntheticStepReference != null && syntheticStepReference.eIsProxy())
+		{
+			InternalEObject oldSyntheticStepReference = (InternalEObject)syntheticStepReference;
+			syntheticStepReference = (Step)eResolveProxy(oldSyntheticStepReference);
+			if (syntheticStepReference != oldSyntheticStepReference)
+			{
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FeaturePackage.STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE, oldSyntheticStepReference, syntheticStepReference));
+			}
+		}
+		return syntheticStepReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Step basicGetSyntheticStepReference()
+	{
+		return syntheticStepReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSyntheticStepReference(Step newSyntheticStepReference)
+	{
+		Step oldSyntheticStepReference = syntheticStepReference;
+		syntheticStepReference = newSyntheticStepReference;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FeaturePackage.STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE, oldSyntheticStepReference, syntheticStepReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType)
 	{
@@ -120,6 +175,9 @@ public class StepReferenceImpl extends StepImplCustom implements StepReference
 			case FeaturePackage.STEP_REFERENCE__REFERENCE:
 				if (resolve) return getReference();
 				return basicGetReference();
+			case FeaturePackage.STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE:
+				if (resolve) return getSyntheticStepReference();
+				return basicGetSyntheticStepReference();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -136,6 +194,9 @@ public class StepReferenceImpl extends StepImplCustom implements StepReference
 		{
 			case FeaturePackage.STEP_REFERENCE__REFERENCE:
 				setReference((StepImplementation)newValue);
+				return;
+			case FeaturePackage.STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE:
+				setSyntheticStepReference((Step)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -154,6 +215,9 @@ public class StepReferenceImpl extends StepImplCustom implements StepReference
 			case FeaturePackage.STEP_REFERENCE__REFERENCE:
 				setReference((StepImplementation)null);
 				return;
+			case FeaturePackage.STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE:
+				setSyntheticStepReference((Step)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -170,6 +234,8 @@ public class StepReferenceImpl extends StepImplCustom implements StepReference
 		{
 			case FeaturePackage.STEP_REFERENCE__REFERENCE:
 				return reference != null;
+			case FeaturePackage.STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE:
+				return syntheticStepReference != null;
 		}
 		return super.eIsSet(featureID);
 	}

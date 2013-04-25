@@ -1265,13 +1265,22 @@ public interface FeaturePackage extends EPackage
 	int STEP_REFERENCE__REFERENCE = STEP_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Synthetic Step Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE = STEP_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Step Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STEP_REFERENCE_FEATURE_COUNT = STEP_FEATURE_COUNT + 1;
+	int STEP_REFERENCE_FEATURE_COUNT = STEP_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.feature.feature.impl.GivenReferenceImpl <em>Given Reference</em>}' class.
@@ -1390,6 +1399,15 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int GIVEN_REFERENCE__REFERENCE = STEP_REFERENCE__REFERENCE;
+
+	/**
+	 * The feature id for the '<em><b>Synthetic Step Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GIVEN_REFERENCE__SYNTHETIC_STEP_REFERENCE = STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE;
 
 	/**
 	 * The number of structural features of the '<em>Given Reference</em>' class.
@@ -1519,6 +1537,15 @@ public interface FeaturePackage extends EPackage
 	int WHEN_REFERENCE__REFERENCE = STEP_REFERENCE__REFERENCE;
 
 	/**
+	 * The feature id for the '<em><b>Synthetic Step Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_REFERENCE__SYNTHETIC_STEP_REFERENCE = STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE;
+
+	/**
 	 * The number of structural features of the '<em>When Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1644,6 +1671,15 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int THEN_REFERENCE__REFERENCE = STEP_REFERENCE__REFERENCE;
+
+	/**
+	 * The feature id for the '<em><b>Synthetic Step Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THEN_REFERENCE__SYNTHETIC_STEP_REFERENCE = STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE;
 
 	/**
 	 * The number of structural features of the '<em>Then Reference</em>' class.
@@ -1773,6 +1809,15 @@ public interface FeaturePackage extends EPackage
 	int AND_REFERENCE__REFERENCE = STEP_REFERENCE__REFERENCE;
 
 	/**
+	 * The feature id for the '<em><b>Synthetic Step Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_REFERENCE__SYNTHETIC_STEP_REFERENCE = STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE;
+
+	/**
 	 * The number of structural features of the '<em>And Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1780,6 +1825,260 @@ public interface FeaturePackage extends EPackage
 	 * @ordered
 	 */
 	int AND_REFERENCE_FEATURE_COUNT = STEP_REFERENCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.jnario.feature.feature.impl.ButImpl <em>But</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.feature.feature.impl.ButImpl
+	 * @see org.jnario.feature.feature.impl.FeaturePackageImpl#getBut()
+	 * @generated
+	 */
+	int BUT = 15;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT__ANNOTATIONS = STEP_IMPLEMENTATION__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT__ANNOTATION_INFO = STEP_IMPLEMENTATION__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT__MODIFIERS = STEP_IMPLEMENTATION__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT__DECLARING_TYPE = STEP_IMPLEMENTATION__DECLARING_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT__NAME = STEP_IMPLEMENTATION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT__EXPRESSION = STEP_IMPLEMENTATION__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT__RETURN_TYPE = STEP_IMPLEMENTATION__RETURN_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT__PARAMETERS = STEP_IMPLEMENTATION__PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT__CREATE_EXTENSION_INFO = STEP_IMPLEMENTATION__CREATE_EXTENSION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT__TYPE_PARAMETERS = STEP_IMPLEMENTATION__TYPE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT__EXCEPTIONS = STEP_IMPLEMENTATION__EXCEPTIONS;
+
+	/**
+	 * The number of structural features of the '<em>But</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_FEATURE_COUNT = STEP_IMPLEMENTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.jnario.feature.feature.impl.ButReferenceImpl <em>But Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.jnario.feature.feature.impl.ButReferenceImpl
+	 * @see org.jnario.feature.feature.impl.FeaturePackageImpl#getButReference()
+	 * @generated
+	 */
+	int BUT_REFERENCE = 16;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE__ANNOTATIONS = STEP_REFERENCE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE__ANNOTATION_INFO = STEP_REFERENCE__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE__MODIFIERS = STEP_REFERENCE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE__DECLARING_TYPE = STEP_REFERENCE__DECLARING_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE__NAME = STEP_REFERENCE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE__EXPRESSION = STEP_REFERENCE__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE__RETURN_TYPE = STEP_REFERENCE__RETURN_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE__PARAMETERS = STEP_REFERENCE__PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE__CREATE_EXTENSION_INFO = STEP_REFERENCE__CREATE_EXTENSION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE__TYPE_PARAMETERS = STEP_REFERENCE__TYPE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE__EXCEPTIONS = STEP_REFERENCE__EXCEPTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE__REFERENCE = STEP_REFERENCE__REFERENCE;
+
+	/**
+	 * The feature id for the '<em><b>Synthetic Step Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE__SYNTHETIC_STEP_REFERENCE = STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE;
+
+	/**
+	 * The number of structural features of the '<em>But Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUT_REFERENCE_FEATURE_COUNT = STEP_REFERENCE_FEATURE_COUNT + 0;
 
 
 	/**
@@ -1967,6 +2266,17 @@ public interface FeaturePackage extends EPackage
 	EReference getStepReference_Reference();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.jnario.feature.feature.StepReference#getSyntheticStepReference <em>Synthetic Step Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Synthetic Step Reference</em>'.
+	 * @see org.jnario.feature.feature.StepReference#getSyntheticStepReference()
+	 * @see #getStepReference()
+	 * @generated
+	 */
+	EReference getStepReference_SyntheticStepReference();
+
+	/**
 	 * Returns the meta object for class '{@link org.jnario.feature.feature.StepImplementation <em>Step Implementation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1975,6 +2285,26 @@ public interface FeaturePackage extends EPackage
 	 * @generated
 	 */
 	EClass getStepImplementation();
+
+	/**
+	 * Returns the meta object for class '{@link org.jnario.feature.feature.But <em>But</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>But</em>'.
+	 * @see org.jnario.feature.feature.But
+	 * @generated
+	 */
+	EClass getBut();
+
+	/**
+	 * Returns the meta object for class '{@link org.jnario.feature.feature.ButReference <em>But Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>But Reference</em>'.
+	 * @see org.jnario.feature.feature.ButReference
+	 * @generated
+	 */
+	EClass getButReference();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2172,6 +2502,14 @@ public interface FeaturePackage extends EPackage
 		EReference STEP_REFERENCE__REFERENCE = eINSTANCE.getStepReference_Reference();
 
 		/**
+		 * The meta object literal for the '<em><b>Synthetic Step Reference</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE = eINSTANCE.getStepReference_SyntheticStepReference();
+
+		/**
 		 * The meta object literal for the '{@link org.jnario.feature.feature.impl.StepImplementationImpl <em>Step Implementation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2180,6 +2518,26 @@ public interface FeaturePackage extends EPackage
 		 * @generated
 		 */
 		EClass STEP_IMPLEMENTATION = eINSTANCE.getStepImplementation();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.feature.feature.impl.ButImpl <em>But</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.feature.feature.impl.ButImpl
+		 * @see org.jnario.feature.feature.impl.FeaturePackageImpl#getBut()
+		 * @generated
+		 */
+		EClass BUT = eINSTANCE.getBut();
+
+		/**
+		 * The meta object literal for the '{@link org.jnario.feature.feature.impl.ButReferenceImpl <em>But Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.jnario.feature.feature.impl.ButReferenceImpl
+		 * @see org.jnario.feature.feature.impl.FeaturePackageImpl#getButReference()
+		 * @generated
+		 */
+		EClass BUT_REFERENCE = eINSTANCE.getButReference();
 
 	}
 

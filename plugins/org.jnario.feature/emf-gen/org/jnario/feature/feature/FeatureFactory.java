@@ -163,6 +163,24 @@ public interface FeatureFactory extends EFactory
 	StepImplementation createStepImplementation();
 
 	/**
+	 * Returns a new object of class '<em>But</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>But</em>'.
+	 * @generated
+	 */
+	But createBut();
+
+	/**
+	 * Returns a new object of class '<em>But Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>But Reference</em>'.
+	 * @generated
+	 */
+	ButReference createButReference();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

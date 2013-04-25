@@ -57,7 +57,8 @@ public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 		if(isEmpty(name)){
 			return null;
 		}else{
-			return toQualifiedName(step, format(name));
+			String formattedName = format(name);
+			return toQualifiedName(step, formattedName);
 		}
 	}
 

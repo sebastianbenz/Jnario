@@ -525,6 +525,36 @@ ruleScenario returns [EObject current=null]
 	        afterParserOrEnumRuleCall();
 	    }
 
+    |		{ 
+	        newCompositeNode(grammarAccess.getScenarioAccess().getMembersButParserRuleCall_3_1_0_2()); 
+	    }
+		lv_members_4_3=ruleBut		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getScenarioRule());
+	        }
+       		add(
+       			$current, 
+       			"members",
+        		lv_members_4_3, 
+        		"But");
+	        afterParserOrEnumRuleCall();
+	    }
+
+    |		{ 
+	        newCompositeNode(grammarAccess.getScenarioAccess().getMembersButReferenceParserRuleCall_3_1_0_3()); 
+	    }
+		lv_members_4_4=ruleButReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getScenarioRule());
+	        }
+       		add(
+       			$current, 
+       			"members",
+        		lv_members_4_4, 
+        		"ButReference");
+	        afterParserOrEnumRuleCall();
+	    }
+
 )
 
 )
@@ -597,6 +627,36 @@ ruleScenario returns [EObject current=null]
 	        afterParserOrEnumRuleCall();
 	    }
 
+    |		{ 
+	        newCompositeNode(grammarAccess.getScenarioAccess().getMembersButParserRuleCall_4_1_0_2()); 
+	    }
+		lv_members_6_3=ruleBut		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getScenarioRule());
+	        }
+       		add(
+       			$current, 
+       			"members",
+        		lv_members_6_3, 
+        		"But");
+	        afterParserOrEnumRuleCall();
+	    }
+
+    |		{ 
+	        newCompositeNode(grammarAccess.getScenarioAccess().getMembersButReferenceParserRuleCall_4_1_0_3()); 
+	    }
+		lv_members_6_4=ruleButReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getScenarioRule());
+	        }
+       		add(
+       			$current, 
+       			"members",
+        		lv_members_6_4, 
+        		"ButReference");
+	        afterParserOrEnumRuleCall();
+	    }
+
 )
 
 )
@@ -666,6 +726,36 @@ ruleScenario returns [EObject current=null]
        			"members",
         		lv_members_8_2, 
         		"AndReference");
+	        afterParserOrEnumRuleCall();
+	    }
+
+    |		{ 
+	        newCompositeNode(grammarAccess.getScenarioAccess().getMembersButParserRuleCall_5_1_0_2()); 
+	    }
+		lv_members_8_3=ruleBut		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getScenarioRule());
+	        }
+       		add(
+       			$current, 
+       			"members",
+        		lv_members_8_3, 
+        		"But");
+	        afterParserOrEnumRuleCall();
+	    }
+
+    |		{ 
+	        newCompositeNode(grammarAccess.getScenarioAccess().getMembersButReferenceParserRuleCall_5_1_0_3()); 
+	    }
+		lv_members_8_4=ruleButReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getScenarioRule());
+	        }
+       		add(
+       			$current, 
+       			"members",
+        		lv_members_8_4, 
+        		"ButReference");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1473,6 +1563,109 @@ ruleAnd returns [EObject current=null]
 		lv_expression_2_0=ruleBlockExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getAndRule());
+	        }
+       		set(
+       			$current, 
+       			"expression",
+        		lv_expression_2_0, 
+        		"BlockExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
+;
+
+
+
+
+
+// Entry rule entryRuleButReference
+entryRuleButReference returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getButReferenceRule()); }
+	 iv_ruleButReference=ruleButReference 
+	 { $current=$iv_ruleButReference.current; } 
+	 EOF 
+;
+
+// Rule ButReference
+ruleButReference returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getButReferenceAccess().getButReferenceAction_0(),
+            $current);
+    }
+)(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getButReferenceRule());
+	        }
+        }
+	otherlv_1=RULE_BUT_TEXT
+	{
+		newLeafNode(otherlv_1, grammarAccess.getButReferenceAccess().getReferenceButCrossReference_1_0()); 
+	}
+
+)
+))
+;
+
+
+
+
+
+// Entry rule entryRuleBut
+entryRuleBut returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getButRule()); }
+	 iv_ruleBut=ruleBut 
+	 { $current=$iv_ruleBut.current; } 
+	 EOF 
+;
+
+// Rule But
+ruleBut returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getButAccess().getButAction_0(),
+            $current);
+    }
+)(
+(
+		lv_name_1_0=RULE_BUT_TEXT
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getButAccess().getNameBUT_TEXTTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getButRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"BUT_TEXT");
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getButAccess().getExpressionBlockExpressionParserRuleCall_2_0()); 
+	    }
+		lv_expression_2_0=ruleBlockExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getButRule());
 	        }
        		set(
        			$current, 
@@ -9572,7 +9765,9 @@ RULE_WHEN_TEXT : 'When ' RULE_STEP_WITH_ARGS;
 
 RULE_THEN_TEXT : 'Then ' RULE_STEP_WITH_ARGS;
 
-RULE_AND_TEXT : ('And '|'But ') RULE_STEP_WITH_ARGS;
+RULE_AND_TEXT : 'And ' RULE_STEP_WITH_ARGS;
+
+RULE_BUT_TEXT : 'But ' RULE_STEP_WITH_ARGS;
 
 RULE_TEXT : '____dummy____'+;
 

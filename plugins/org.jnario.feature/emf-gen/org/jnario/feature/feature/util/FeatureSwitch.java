@@ -292,6 +292,32 @@ public class FeatureSwitch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case FeaturePackage.BUT:
+			{
+				But but = (But)theEObject;
+				T result = caseBut(but);
+				if (result == null) result = caseStepImplementation(but);
+				if (result == null) result = caseStep(but);
+				if (result == null) result = caseXtendFunction(but);
+				if (result == null) result = caseExecutable(but);
+				if (result == null) result = caseXtendMember(but);
+				if (result == null) result = caseXtendAnnotationTarget(but);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FeaturePackage.BUT_REFERENCE:
+			{
+				ButReference butReference = (ButReference)theEObject;
+				T result = caseButReference(butReference);
+				if (result == null) result = caseStepReference(butReference);
+				if (result == null) result = caseStep(butReference);
+				if (result == null) result = caseXtendFunction(butReference);
+				if (result == null) result = caseExecutable(butReference);
+				if (result == null) result = caseXtendMember(butReference);
+				if (result == null) result = caseXtendAnnotationTarget(butReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -532,6 +558,38 @@ public class FeatureSwitch<T>
 	 * @generated
 	 */
 	public T caseStepImplementation(StepImplementation object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>But</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>But</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBut(But object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>But Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>But Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseButReference(ButReference object)
 	{
 		return null;
 	}

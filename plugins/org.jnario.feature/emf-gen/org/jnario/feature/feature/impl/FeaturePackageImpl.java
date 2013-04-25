@@ -23,6 +23,8 @@ import org.jnario.JnarioPackage;
 import org.jnario.feature.feature.And;
 import org.jnario.feature.feature.AndReference;
 import org.jnario.feature.feature.Background;
+import org.jnario.feature.feature.But;
+import org.jnario.feature.feature.ButReference;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFactory;
 import org.jnario.feature.feature.FeatureFile;
@@ -150,6 +152,20 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * @generated
 	 */
 	private EClass stepImplementationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass butEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass butReferenceEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -403,9 +419,39 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getStepReference_SyntheticStepReference()
+	{
+		return (EReference)stepReferenceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getStepImplementation()
 	{
 		return stepImplementationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBut()
+	{
+		return butEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getButReference()
+	{
+		return butReferenceEClass;
 	}
 
 	/**
@@ -469,8 +515,13 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 
 		stepReferenceEClass = createEClass(STEP_REFERENCE);
 		createEReference(stepReferenceEClass, STEP_REFERENCE__REFERENCE);
+		createEReference(stepReferenceEClass, STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE);
 
 		stepImplementationEClass = createEClass(STEP_IMPLEMENTATION);
+
+		butEClass = createEClass(BUT);
+
+		butReferenceEClass = createEClass(BUT_REFERENCE);
 	}
 
 	/**
@@ -523,6 +574,8 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 		andReferenceEClass.getESuperTypes().add(this.getStepReference());
 		stepReferenceEClass.getESuperTypes().add(this.getStep());
 		stepImplementationEClass.getESuperTypes().add(this.getStep());
+		butEClass.getESuperTypes().add(this.getStepImplementation());
+		butReferenceEClass.getESuperTypes().add(this.getStepReference());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -558,8 +611,13 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 
 		initEClass(stepReferenceEClass, StepReference.class, "StepReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStepReference_Reference(), this.getStepImplementation(), null, "reference", null, 0, 1, StepReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStepReference_SyntheticStepReference(), this.getStep(), null, "syntheticStepReference", null, 0, 1, StepReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stepImplementationEClass, StepImplementation.class, "StepImplementation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(butEClass, But.class, "But", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(butReferenceEClass, ButReference.class, "ButReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

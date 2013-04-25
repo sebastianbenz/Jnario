@@ -31,6 +31,8 @@ public class FeatureTokenHighlighting extends TokenToAttributeIdMapper{
 			return FeatureHighlightingConfiguration.STEP_TEXT_ID;
 		}else if("RULE_AND_TEXT".equals(tokenName)) {
 			return FeatureHighlightingConfiguration.STEP_TEXT_ID;
+		}else if("RULE_BUT_TEXT".equals(tokenName)) {
+			return FeatureHighlightingConfiguration.STEP_TEXT_ID;
 		}else if("RULE_BACKGROUND_TEXT".equals(tokenName)) {
 			return FeatureHighlightingConfiguration.SCENARIO_ID;
 		}else if("RULE_TEXT".equals(tokenName)) {

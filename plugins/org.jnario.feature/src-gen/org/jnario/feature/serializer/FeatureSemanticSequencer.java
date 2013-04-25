@@ -82,6 +82,8 @@ import org.jnario.ShouldThrow;
 import org.jnario.feature.feature.And;
 import org.jnario.feature.feature.AndReference;
 import org.jnario.feature.feature.Background;
+import org.jnario.feature.feature.But;
+import org.jnario.feature.feature.ButReference;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.feature.FeaturePackage;
@@ -117,6 +119,18 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 			case FeaturePackage.BACKGROUND:
 				if(context == grammarAccess.getBackgroundRule()) {
 					sequence_Background(context, (Background) semanticObject); 
+					return; 
+				}
+				else break;
+			case FeaturePackage.BUT:
+				if(context == grammarAccess.getButRule()) {
+					sequence_But(context, (But) semanticObject); 
+					return; 
+				}
+				else break;
+			case FeaturePackage.BUT_REFERENCE:
+				if(context == grammarAccess.getButReferenceRule()) {
+					sequence_ButReference(context, (ButReference) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1564,6 +1578,24 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     reference=[But|BUT_TEXT]
+	 */
+	protected void sequence_ButReference(EObject context, ButReference semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=BUT_TEXT expression=BlockExpression)
+	 */
+	protected void sequence_But(EObject context, But semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (package=QualifiedName? importSection=XImportSection? xtendTypes+=Feature?)
 	 */
 	protected void sequence_FeatureFile(EObject context, FeatureFile semanticObject) {
@@ -1658,9 +1690,9 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	 *     (
 	 *         name=SCENARIO_TEXT 
 	 *         members+=Member* 
-	 *         ((members+=Given | members+=GivenReference) (members+=And | members+=AndReference)*)? 
-	 *         ((members+=When | members+=WhenReference) (members+=And | members+=AndReference)*)? 
-	 *         ((members+=Then | members+=ThenReference) (members+=And | members+=AndReference)*)?
+	 *         ((members+=Given | members+=GivenReference) (members+=And | members+=AndReference | members+=But | members+=ButReference)*)? 
+	 *         ((members+=When | members+=WhenReference) (members+=And | members+=AndReference | members+=But | members+=ButReference)*)? 
+	 *         ((members+=Then | members+=ThenReference) (members+=And | members+=AndReference | members+=But | members+=ButReference)*)?
 	 *     )
 	 */
 	protected void sequence_Scenario(EObject context, Scenario semanticObject) {

@@ -84,6 +84,8 @@ public class FeatureFactoryImpl extends EFactoryImpl implements FeatureFactory
 			case FeaturePackage.AND_REFERENCE: return createAndReference();
 			case FeaturePackage.STEP_REFERENCE: return createStepReference();
 			case FeaturePackage.STEP_IMPLEMENTATION: return createStepImplementation();
+			case FeaturePackage.BUT: return createBut();
+			case FeaturePackage.BUT_REFERENCE: return createButReference();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -252,6 +254,28 @@ public class FeatureFactoryImpl extends EFactoryImpl implements FeatureFactory
 	{
 		StepImplementationImpl stepImplementation = new StepImplementationImpl();
 		return stepImplementation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public But createBut()
+	{
+		ButImpl but = new ButImpl();
+		return but;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ButReference createButReference()
+	{
+		ButReferenceImpl butReference = new ButReferenceImpl();
+		return butReference;
 	}
 
 	/**

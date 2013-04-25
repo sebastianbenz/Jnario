@@ -165,6 +165,16 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 				return createStepImplementationAdapter();
 			}
 			@Override
+			public Adapter caseBut(But object)
+			{
+				return createButAdapter();
+			}
+			@Override
+			public Adapter caseButReference(ButReference object)
+			{
+				return createButReferenceAdapter();
+			}
+			@Override
 			public Adapter caseXtendAnnotationTarget(XtendAnnotationTarget object)
 			{
 				return createXtendAnnotationTargetAdapter();
@@ -447,6 +457,36 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createStepImplementationAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.feature.feature.But <em>But</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.feature.feature.But
+	 * @generated
+	 */
+	public Adapter createButAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.jnario.feature.feature.ButReference <em>But Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.jnario.feature.feature.ButReference
+	 * @generated
+	 */
+	public Adapter createButReferenceAdapter()
 	{
 		return null;
 	}

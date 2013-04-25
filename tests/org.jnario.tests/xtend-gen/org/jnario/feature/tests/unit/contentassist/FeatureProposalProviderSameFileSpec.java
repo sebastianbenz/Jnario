@@ -6,7 +6,6 @@ import org.jnario.jnario.test.util.AbstractContentAssistProcessorTest2.ContentAs
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -15,8 +14,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 public class FeatureProposalProviderSameFileSpec extends FeatureProposalProviderSpec {
   @Test
-  @Ignore
-  @Named("proposes implemented steps [PENDING]")
+  @Named("proposes implemented steps")
   @Order(1)
   public void _proposesImplementedSteps() throws Exception {
     ContentAssistProcessorTestBuilder2 _newBuilder = this.newBuilder();
@@ -40,8 +38,7 @@ public class FeatureProposalProviderSameFileSpec extends FeatureProposalProvider
   }
   
   @Test
-  @Ignore
-  @Named("proposes unimplemented steps [PENDING]")
+  @Named("proposes unimplemented steps")
   @Order(2)
   public void _proposesUnimplementedSteps() throws Exception {
     ContentAssistProcessorTestBuilder2 _newBuilder = this.newBuilder();
@@ -62,8 +59,7 @@ public class FeatureProposalProviderSameFileSpec extends FeatureProposalProvider
   }
   
   @Test
-  @Ignore
-  @Named("does not provide given for then [PENDING]")
+  @Named("does not provide given for then")
   @Order(3)
   public void _doesNotProvideGivenForThen() throws Exception {
     ContentAssistProcessorTestBuilder2 _newBuilder = this.newBuilder();

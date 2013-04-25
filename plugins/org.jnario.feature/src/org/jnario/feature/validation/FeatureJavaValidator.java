@@ -27,8 +27,8 @@ import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.ComposedChecks;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
-import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
+import org.eclipse.xtext.xbase.validation.IssueCodes;
 import org.jnario.ExampleTable;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
@@ -50,11 +50,6 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	@Inject StepNameProvider nameProvider;
 	@Inject FeatureClassNameProvider classNameProvider;
 
-	@Override
-	public void checkInnerExpressions(XExpression block) {
-		super.checkInnerExpressions(block);
-	}
-	
 	@Check(CheckType.FAST)
 	public void checkFeaturesHaveAName(Feature feature){
 		if(isNullOrEmpty(feature.getName())){
@@ -152,5 +147,13 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	@Check
 	public void checkDuplicateAndOverriddenFunctions(
 			XtendTypeDeclaration xtendType) {
+	}
+	
+	@Override
+	protected void addIssue(String message, EObject source, String issueCode) {
+		if(IssueCodes.IMPORT_WILDCARD_DEPRECATED == issueCode){
+			return;
+		}
+		super.addIssue(message, source, issueCode);
 	}
 }
