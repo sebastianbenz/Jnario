@@ -36,7 +36,6 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
       <import plugin="org.eclipse.xtext.xbase" version="2.4.0" match="equivalent"/>
       <import plugin="org.eclipse.xtend.core" version="2.4.0" match="equivalent"/>
       <import plugin="org.objectweb.asm" version="3.2.0" match="greaterOrEqual"/>
-      <import plugin="org.hamcrest" version="1.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtend2.lib" version="2.4.0" match="greaterOrEqual"/>
    </requires>
 
@@ -77,6 +76,20 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
 
    <plugin
          id="org.jnario.suite"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.hamcrest.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.hamcrest.core.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
