@@ -23,8 +23,10 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.jnario.ui,
  org.jnario.ui.builder,
  org.jnario.ui.buildpath,
+ org.jnario.ui.contentassist,
  org.jnario.ui.doc,
  org.jnario.ui.highlighting,
+ org.jnario.ui.preferences,
  org.jnario.ui.quickfix,
  org.jnario.ui.validator,
  org.jnario.ui.wizards

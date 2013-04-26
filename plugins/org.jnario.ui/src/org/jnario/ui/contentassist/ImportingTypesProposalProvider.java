@@ -1,4 +1,4 @@
-package org.jnario.suite.ui.contentassist;
+package org.jnario.ui.contentassist;
 
 import static java.util.Collections.emptyList;
 
@@ -154,14 +154,20 @@ public class ImportingTypesProposalProvider extends JdtTypesProposalProvider {
 				}
 				proposal.setCursorPosition(escapedShortname.length());
 				document.replace(proposal.getReplacementOffset(), proposal.getReplacementLength(), escapedShortname);
-			
+				
 				// add import statement
-				String importStatement = (startWithLineBreak ? lineSeparator + "import " : "import ") + importConverter.toString(typeName);
+				String importStatement = importConverter.toString(typeName);
+				for (XImportDeclaration importDeclaration : imports) {
+					if((importDeclaration.getImportedNamespace()).equals(importStatement)){
+						return;
+					}
+				}
+				importStatement = (startWithLineBreak ? lineSeparator + "import " : "import ") + importStatement;
 				if (endWithLineBreak) {
 					importStatement += lineSeparator;
 					importStatement += lineSeparator;
 				}
-				document.replace(offset, 0, importStatement.toString());
+				document.replace(offset, 0, importStatement);
 				proposal.setCursorPosition(proposal.getCursorPosition() + importStatement.length());
 				
 				// set the pixel coordinates

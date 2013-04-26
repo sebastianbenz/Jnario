@@ -15,7 +15,6 @@ import static org.jnario.util.Strings.trim;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
-import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
@@ -29,13 +28,8 @@ import org.eclipse.xtext.xbase.XbaseQualifiedNameConverter;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xbase.conversion.XbaseQualifiedNameValueConverter;
 import org.jnario.suite.suite.SuitePackage;
-import org.jnario.suite.ui.contentassist.ImportingTypesProposalProvider.FQNImporter;
-import org.jnario.util.Strings;
+import org.jnario.ui.contentassist.ImportingTypesProposalProvider.FQNImporter;
 
-import com.google.common.base.Joiner;
-/**
- * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
- */
 @SuppressWarnings("restriction")
 public class SuiteProposalProvider extends AbstractSuiteProposalProvider {
 

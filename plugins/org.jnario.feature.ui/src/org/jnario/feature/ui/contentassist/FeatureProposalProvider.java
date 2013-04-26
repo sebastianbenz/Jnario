@@ -14,7 +14,6 @@ import static com.google.common.collect.Iterables.addAll;
 import static com.google.common.collect.Lists.newArrayList;
 import static org.eclipse.emf.ecore.util.EcoreUtil.resolve;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
-import static org.eclipse.xtext.util.Strings.notNull;
 import static org.jnario.feature.jvmmodel.StepTypeProvider.GIVEN;
 import static org.jnario.feature.jvmmodel.StepTypeProvider.THEN;
 import static org.jnario.feature.jvmmodel.StepTypeProvider.WHEN;
@@ -23,37 +22,21 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
-import org.eclipse.jface.text.BadLocationException;
-import org.eclipse.jface.text.DocumentRewriteSession;
-import org.eclipse.jface.text.DocumentRewriteSessionType;
-import org.eclipse.jface.text.IDocument;
-import org.eclipse.jface.text.IDocumentExtension4;
 import org.eclipse.jface.text.ITextViewer;
-import org.eclipse.jface.text.ITextViewerExtension;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.viewers.StyledString;
-import org.eclipse.swt.custom.StyledText;
-import org.eclipse.text.edits.TextEdit;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
-import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
-import org.eclipse.xtext.common.types.xtext.ui.JdtTypesProposalProvider.FQNShortener;
 import org.eclipse.xtext.conversion.IValueConverter;
-import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.IContainer;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
@@ -64,8 +47,6 @@ import org.eclipse.xtext.scoping.impl.SimpleScope;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
-import org.eclipse.xtext.util.ReplaceRegion;
 import org.eclipse.xtext.xbase.XbaseQualifiedNameConverter;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xbase.conversion.XbaseQualifiedNameValueConverter;
@@ -73,7 +54,6 @@ import org.eclipse.xtext.xbase.imports.IImportsConfiguration;
 import org.eclipse.xtext.xbase.imports.ImportSectionRegionUtil;
 import org.eclipse.xtext.xbase.imports.RewritableImportSection;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-import org.eclipse.xtext.xbase.ui.contentassist.ImportingTypesProposalProvider;
 import org.eclipse.xtext.xbase.ui.imports.ReplaceConverter;
 import org.eclipse.xtext.xtype.XImportSection;
 import org.jnario.feature.feature.Feature;
@@ -83,6 +63,7 @@ import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.jvmmodel.StepTypeProvider;
 import org.jnario.feature.naming.StepNameProvider;
+import org.jnario.ui.contentassist.ImportingTypesProposalProvider.FQNImporter;
 
 import com.google.common.base.Strings;
 import com.google.inject.Inject;
@@ -156,21 +137,6 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	public void completeButReference_Reference(EObject model,
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-	}
-
-	private void completeStepReference(EObject model, ContentAssistContext context, ICompletionProposalAcceptor acceptor,
-			String stepPrefix) {
-		IScope scope = createStepScope(model);
-		for (IEObjectDescription desc : scope.getAllElements()) {
-			EObject resolved = resolve(desc.getEObjectOrProxy(), model);
-			if (resolved instanceof StepReference) {
-				StepReference ref = (StepReference) resolved;
-				createProposal(context, acceptor, stepPrefix, ref);
-			}else{
-				LOG.warn("Illegal element " + resolved.eClass().getName() + " in step reference scope");
-			}
-				
-		}
 	}
 
 	protected IScope createStepScope(EObject model) {
@@ -272,13 +238,12 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	
 	public void completeStepReference(ICompletionProposalAcceptor acceptor, ContentAssistContext context, String prefix, Set<EClass> expected) {
 		prefix = prefix + " ";
-		System.out.println(context.getPrefix());
 		acceptor.accept(createCompletionProposal(prefix, prefix, getLabelProvider().getImage("step.png"), context));
 		IScope scope = getScopeProvider().getScope(context.getCurrentModel(), FeaturePackage.Literals.STEP_REFERENCE__SYNTHETIC_STEP_REFERENCE);
 		for (IEObjectDescription desc : scope.getAllElements()) {
 			Step step = (Step) resolve(desc.getEObjectOrProxy(), context.getCurrentModel());
 			Scenario scenario = getContainerOfType(step, Scenario.class);
-			String proposal = prefix + desc.getName().getLastSegment();
+			String proposal = getQualifiedNameConverter().toString(desc.getQualifiedName().skipLast(1)) + "." + prefix + desc.getName().getLastSegment();
 			if(expected.contains(desc.getEClass()) && context.getMatcher().isCandidateMatchingPrefix(proposal, context.getPrefix())){
 				acceptor = createStepFqnShorterner(context, acceptor, scope, desc.getQualifiedName(), scenario);
 				String displayString = step.isPending() ? proposal + " [PENDING]" : proposal;
@@ -305,75 +270,26 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	}
 	
 	public ICompletionProposalAcceptor createStepFqnShorterner(final ContentAssistContext context, ICompletionProposalAcceptor acceptor, final IScope scope, final QualifiedName qualifiedName, Scenario scenario) {
-		final ITextViewer viewer = context.getViewer();
-		final XtextResource resource = context.getResource();
-		final JvmDeclaredType jvmType = (JvmDeclaredType) associations.getJvmElements(scenario).iterator().next();
-		final ReplacementTextApplier fqnImporter = new ReplacementTextApplier() {
+		XbaseQualifiedNameValueConverter qualifiedNameValueConverter = new XbaseQualifiedNameValueConverter(){
 			@Override
-			public void apply(IDocument document, ConfigurableCompletionProposal proposal) throws BadLocationException {
-				int topPixel = -1;
-				// store the pixel coordinates to prevent the ui from flickering
-				StyledText widget = viewer.getTextWidget();
-				if (widget != null)
-					topPixel = widget.getTopPixel();
-				ITextViewerExtension viewerExtension = null;
-				if (viewer instanceof ITextViewerExtension) {
-					viewerExtension = (ITextViewerExtension) viewer;
-					viewerExtension.setRedraw(false);
-				}
-				
-				RewritableImportSection importSection = importSectionFactory.parse(resource);
-				IEObjectDescription typeToImport = scope.getSingleElement(qualifiedName);
-				if(typeToImport == null) {
-					LOG.error("Could not find unique type named '" + notNull(qualifiedName) + "' in scope");
-					if (viewerExtension != null)
-						viewerExtension.setRedraw(true);
-					return;
-				}
-				importSection.addImport(jvmType);
-				
-				DocumentRewriteSession rewriteSession = null;
-				try {
-					if (document instanceof IDocumentExtension4) {
-						rewriteSession = ((IDocumentExtension4) document)
-								.startRewriteSession(DocumentRewriteSessionType.UNRESTRICTED_SMALL);
-					}
-					String escapedShortname = proposal.getReplacementString();
-					proposal.setCursorPosition(escapedShortname.length());
-					int initialCursorLine = document.getLineOfOffset(proposal.getReplacementOffset());
-					document.replace(proposal.getReplacementOffset(), proposal.getReplacementLength(), escapedShortname);
-
-					// add import statement
-					List<ReplaceRegion> importChanges = importSection.rewrite();
-					if(importChanges.isEmpty()){
-						return;
-					}
-					TextEdit textEdit = replaceConverter.convertToTextEdit(importChanges);
-					textEdit.apply(document);
-					int cursorPosition = proposal.getCursorPosition() + replaceConverter.getReplaceLengthDelta(importChanges);
-					proposal.setCursorPosition(cursorPosition);
-					int newCursorLine = document.getLineOfOffset(cursorPosition);
-
-					// set the pixel coordinates
-					if (widget != null) {
-						int additionalTopPixel = (newCursorLine - initialCursorLine) * widget.getLineHeight();
-						widget.setTopPixel(topPixel + additionalTopPixel);
-					}
-				} finally {
-					if (rewriteSession != null) {
-						((IDocumentExtension4) document).stopRewriteSession(rewriteSession);
-					}
-					if (viewerExtension != null)
-						viewerExtension.setRedraw(true);
-				}
+			public String toString(String value) {
+				int end = value.lastIndexOf('.');
+				String result = value.substring(0, end) + ".*";
+				return result;
 			}
-
+		};
+		final IQualifiedNameConverter qualifiedNameConverter = new XbaseQualifiedNameConverter(){
 			@Override
-			public String getActualReplacementString(ConfigurableCompletionProposal proposal) {
-				return proposal.getReplacementString();
+			public QualifiedName toQualifiedName(String qualifiedNameAsString) {
+				return new QualifiedName(qualifiedNameAsString.split("\\.")){
+					public String getLastSegment() {
+						return super.getLastSegment();
+					};
+				};
 			}
 		};
 		
+		final FQNImporter fqnImporter = new FQNImporter(context.getResource(), context.getViewer(), scope, qualifiedNameConverter, null, qualifiedNameValueConverter);
 		final ICompletionProposalAcceptor scopeAware = new ICompletionProposalAcceptor.Delegate(acceptor) {
 			@Override
 			public void accept(ICompletionProposal proposal) {
