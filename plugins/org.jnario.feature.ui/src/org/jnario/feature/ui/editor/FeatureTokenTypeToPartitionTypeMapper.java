@@ -33,6 +33,7 @@ public class FeatureTokenTypeToPartitionTypeMapper extends TokenTypeToPartitionM
 			"RULE_WHEN_TEXT",
 			"RULE_THEN_TEXT",
 			"RULE_AND_TEXT",
+			"RULE_BUT_TEXT",
 			"RULE_BACKGROUND_TEXT",
 			"RULE_EXAMPLE_TEXT",
 			"RULE_ANY_OTHER",

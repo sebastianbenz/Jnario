@@ -26,7 +26,9 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionAcceptor;
 import org.eclipse.xtext.util.ITextRegion;
+import org.eclipse.xtext.xtype.XImportSection;
 import org.jnario.feature.feature.Background;
+import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepImplementation;
@@ -58,7 +60,9 @@ public class FeatureFoldingRegionProvider extends DefaultFoldingRegionProvider {
 	
 	@Override
 	protected void computeObjectFolding(EObject eObject, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
-		if(eObject instanceof Scenario){
+		if(eObject instanceof FeatureFile){
+			calculateFolding((FeatureFile)eObject, foldingRegionAcceptor);
+		}else if(eObject instanceof Scenario){
 			calculateFolding((Scenario)eObject, foldingRegionAcceptor);
 		}else if(eObject instanceof StepImplementation){
 			calculateFolding((Step)eObject, foldingRegionAcceptor);
@@ -66,7 +70,15 @@ public class FeatureFoldingRegionProvider extends DefaultFoldingRegionProvider {
 			calculateFolding((Background)eObject, foldingRegionAcceptor);
 		}
 	}
-
+	
+	private void calculateFolding(FeatureFile featureFile, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
+		XImportSection importSection = featureFile.getImportSection();
+		if(importSection == null  || importSection.getImportDeclarations().isEmpty()){
+			return;
+		}
+		int begin = 0;
+		setFoldingRegion(importSection, begin, foldingRegionAcceptor);
+	}
 	
 	private void calculateFolding(Scenario scenario, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor){
 		int begin = getBegin(scenario);
