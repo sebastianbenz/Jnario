@@ -23,60 +23,11 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
    </license>
 
    <requires>
-      <import plugin="org.eclipse.emf.ecore"/>
-      <import plugin="org.eclipse.emf.common"/>
-      <import plugin="org.antlr.runtime"/>
-      <import plugin="org.apache.log4j"/>
-      <import plugin="org.apache.commons.logging"/>
-      <import plugin="org.eclipse.jdt.core" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext" version="2.4.0" match="equivalent"/>
-      <import plugin="org.apache.commons.lang"/>
-      <import plugin="org.eclipse.xtext.xbase.lib" version="2.4.0" match="equivalent"/>
-      <import plugin="org.hamcrest.core"/>
-      <import plugin="org.eclipse.xtext.xbase" version="2.4.0" match="equivalent"/>
-      <import plugin="org.eclipse.xtend.core" version="2.4.0" match="equivalent"/>
-      <import plugin="org.objectweb.asm" version="3.2.0" match="greaterOrEqual"/>
-      <import plugin="org.hamcrest" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtend2.lib" version="2.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.m2e.core"/>
    </requires>
 
    <plugin
-         id="org.jnario.feature"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.jnario.spec"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.jnario.lib"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.jnario"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.jnario.standalone"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.jnario.suite"
+         id="org.jnario.m2e"
          download-size="0"
          install-size="0"
          version="0.0.0"

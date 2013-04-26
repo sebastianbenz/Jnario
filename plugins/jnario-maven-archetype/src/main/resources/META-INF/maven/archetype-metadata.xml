@@ -31,8 +31,7 @@
 		<fileSet encoding="UTF-8">
 			<directory>.settings</directory>
 			<includes>
-				<include>**/*.Jnario.prefs</include>
-				<include>**/*.Xtend.prefs</include>
+				<include>**/*.prefs</include>
 			</includes>
 		</fileSet>
 	</fileSets>

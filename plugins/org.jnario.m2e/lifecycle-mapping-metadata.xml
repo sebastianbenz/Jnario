@@ -1,25 +1,32 @@
 <lifecycleMappingMetadata>
-  <pluginExecutions>
-    <pluginExecution>
-      <pluginExecutionFilter>
-        <groupId>org.jnario</groupId>
-        <artifactId>jnario-maven-plugin</artifactId>
-        <goals>
-          <goal>compile</goal>
-          <goal>testCompile</goal>
-          <goal>xtend-test-install-debug-info</goal>
-        </goals>
-      </pluginExecutionFilter>
-      <pluginExecutionFilter>
-        <groupId>org.jnario</groupId>
-        <artifactId>jnario-maven-report-plugin</artifactId>
-        <goals>
-          <goal>generate</goal>
-        </goals>
-      </pluginExecutionFilter>
-      <action>
-        <ignore />
-      </action>
-    </pluginExecution>
-  </pluginExecutions>
+	<pluginExecutions>
+		<pluginExecution>
+			<pluginExecutionFilter>
+				<groupId>org.jnario</groupId>
+				<artifactId>jnario-maven-plugin</artifactId>
+				<versionRange>[0.3.0,)</versionRange>
+				<goals>
+					<goal>compile</goal>
+					<goal>testCompile</goal>
+					<goal>xtend-test-install-debug-info</goal>
+				</goals>
+			</pluginExecutionFilter>
+			<action>
+				<ignore />
+			</action>
+		</pluginExecution>
+		<pluginExecution>
+			<pluginExecutionFilter>
+				<groupId>org.jnario</groupId>
+				<versionRange>[0.3.0,)</versionRange>
+				<artifactId>jnario-maven-report-plugin</artifactId>
+				<goals>
+					<goal>generate</goal>
+				</goals>
+			</pluginExecutionFilter>
+			<action>
+				<ignore />
+			</action>
+		</pluginExecution>
+	</pluginExecutions>
 </lifecycleMappingMetadata>
