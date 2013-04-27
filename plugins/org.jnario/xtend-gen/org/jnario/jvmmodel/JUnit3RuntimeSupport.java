@@ -24,7 +24,6 @@ import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -138,8 +137,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
         public Boolean apply(final XtendFunction it) {
           EClass _eClass = it.eClass();
           String _name = _eClass.getName();
-          String _println = InputOutput.<String>println(_name);
-          boolean _equals = Objects.equal(_println, "Before");
+          boolean _equals = Objects.equal(_name, "Before");
           return Boolean.valueOf(_equals);
         }
       };

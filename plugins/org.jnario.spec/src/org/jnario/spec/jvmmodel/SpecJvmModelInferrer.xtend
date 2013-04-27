@@ -197,7 +197,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		Procedure2<XtendMember, JvmOperation> around, Procedure2<XtendMember, JvmOperation> aroundAll){
 		val afterMethod = element.toMethod(container)
 		if(element.isStatic){
-			container.members += element.addIsExecutedField
+//			container.members += element.addIsExecutedField
 			aroundAll.apply(element as XtendMember, afterMethod)
 		}else{
 			around.apply(element, afterMethod)
@@ -205,14 +205,14 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	    container.members += afterMethod
 	}
 	
-	def addIsExecutedField(TestFunction element){
-		element.toField("_" + element.toMethodName + "IsExecuted", getTypeForName(typeof(Boolean), element))[
-			setInitializer[
-				append(" false")
-			]
-			^static = true
-		]
-	}
+//	def addIsExecutedField(TestFunction element){
+//		element.toField("_" + element.toMethodName + "IsExecuted", getTypeForName(typeof(Boolean), element))[
+//			setInitializer[
+//				append(" false")
+//			]
+//			^static = true
+//		]
+//	}
 	
 	def toMethod(TestFunction element, JvmGenericType container){
 		element.setReturnType(getTypeForName(Void::TYPE, element))

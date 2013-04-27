@@ -366,38 +366,15 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       final JvmOperation afterMethod = this.toMethod(element, container);
       boolean _isStatic = element.isStatic();
       if (_isStatic) {
-        EList<JvmMember> _members = container.getMembers();
-        JvmField _addIsExecutedField = this.addIsExecutedField(element);
-        this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members, _addIsExecutedField);
         aroundAll.apply(((XtendMember) element), afterMethod);
       } else {
         around.apply(element, afterMethod);
       }
-      EList<JvmMember> _members_1 = container.getMembers();
-      boolean _add = this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members_1, afterMethod);
+      EList<JvmMember> _members = container.getMembers();
+      boolean _add = this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members, afterMethod);
       _xblockexpression = (_add);
     }
     return _xblockexpression;
-  }
-  
-  public JvmField addIsExecutedField(final TestFunction element) {
-    String _methodName = this._exampleNameProvider.toMethodName(element);
-    String _plus = ("_" + _methodName);
-    String _plus_1 = (_plus + "IsExecuted");
-    JvmTypeReference _typeForName = this._typeReferences.getTypeForName(Boolean.class, element);
-    final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
-        public void apply(final JvmField it) {
-          final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
-              public void apply(final ITreeAppendable it) {
-                it.append(" false");
-              }
-            };
-          SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setInitializer(it, _function);
-          it.setStatic(true);
-        }
-      };
-    JvmField _field = this._extendedJvmTypesBuilder.toField(element, _plus_1, _typeForName, _function);
-    return _field;
   }
   
   public JvmOperation toMethod(final TestFunction element, final JvmGenericType container) {

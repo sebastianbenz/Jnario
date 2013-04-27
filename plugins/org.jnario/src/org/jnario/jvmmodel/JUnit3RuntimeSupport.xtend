@@ -52,6 +52,7 @@ class JUnit3RuntimeSupport implements TestRuntimeSupport {
 		generateSetup("setUp", exampleGroup, inferredType, exampleGroup.befores)
 		generateSetup("tearDown", exampleGroup, inferredType, exampleGroup.afters)
 	}
+	
 	def generateSetup(String methodName, XtendClass exampleGroup, JvmGenericType type, Iterable<XtendFunction> executables) {
 		val voidType = getTypeForName(Void::TYPE, exampleGroup)
 		type.members += exampleGroup.toMethod(methodName, voidType)[
@@ -69,7 +70,7 @@ class JUnit3RuntimeSupport implements TestRuntimeSupport {
 	}
 	
 	def private befores(XtendClass exampleGroup){
-		exampleGroup.members.filter(typeof(XtendFunction)).filter[println(eClass.name) == "Before"]
+		exampleGroup.members.filter(typeof(XtendFunction)).filter[eClass.name == "Before"]
 	}
 
 	def private afters(XtendClass exampleGroup){
