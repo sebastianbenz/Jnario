@@ -48,7 +48,7 @@ describe "JnarioDocCompiler"{
 		fact "test/ExampleSuite.html" should be generated 
 	}
 	
-	def Matcher<String> generated(){
+	def Matcher<? super String> generated(){
 		matches("generated", [new File(folder.root.toString + "/" + it).exists])
-	}
+	} 
 }
