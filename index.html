@@ -17,7 +17,6 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="css/jnario-responsive.min.css" rel="stylesheet">
-
 <!-- <link
 	href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
 	rel="stylesheet" type="text/css">
@@ -101,7 +100,7 @@ describe "The String 'Hello World'"{
 						<h3>Specify executable scenarios</h3>
 						<p>
 							You can write executable acceptance specifications
-							similiar to <a href="http://cukes.info">Cucumber</a>, but
+							similiar to <a href="http://cukes.info/">Cucumber</a>, but
 							with less maintenance overhead.
 						</p>
 					</div>
@@ -180,6 +179,7 @@ describe "Map/Reduce"{
 					<div class="span12">
 						<h1>Unit & integration specs</h1>
 					</div>
+
 					<div class="span4">
 						<h3>Write facts about your code</h3>
 						<p>
@@ -445,6 +445,7 @@ This is a subsection in which we list all our unit specs:
 			</section>
 		</div>
 	</div>
+<!--
 	<div class="content light">
 		<div class="container">
 			<section>
@@ -516,7 +517,7 @@ This is a subsection in which we list all our unit specs:
 &lt;dependency&gt;
   &lt;groupId&gt;org.jnario&lt;/groupId&gt;
   &lt;artifactId&gt;org.jnario.lib.maven&lt;/artifactId&gt;
-  &lt;version&gt;0.3.0&lt;/version&gt;
+  &lt;version&gt;0.4.0&lt;/version&gt;
   &lt;scope&gt;test&lt;/scope&gt;
 &lt;/dependency&gt;</pre>
 						</p>
@@ -533,11 +534,12 @@ This is a subsection in which we list all our unit specs:
   &lt;plugin&gt;
     &lt;groupId&gt;org.jnario&lt;/groupId&gt;
     &lt;artifactId&gt;jnario-maven-plugin&lt;/artifactId&gt;
-    &lt;version&gt;0.3.0&lt;/version&gt;
+    &lt;version&gt;0.4.0&lt;/version&gt;
     &lt;executions&gt;
       &lt;execution&gt;
         &lt;goals&gt;
           &lt;goal&gt;testCompile&lt;/goal&gt;
+          &lt;goal&gt;xtend-test-install-debug-info&lt;/goal&gt;
         &lt;/goals&gt;
       &lt;/execution&gt;
     &lt;/executions&gt;
@@ -571,6 +573,12 @@ This is a subsection in which we list all our unit specs:
 		</div>
 	</div>
 -->
+		</section>
+	</div>
+</div>
+		<section class="footer dark">
+			<div class="container">
+				<footer>
 				<div class="row">
 					<div class="span12">
 						<h1>Support</h1>
@@ -590,13 +598,6 @@ This is a subsection in which we list all our unit specs:
 						</p>
 					</div>
 				</div>
-		</section>
-	</div>
-</div>
-
-		<section class="footer dark">
-			<div class="container">
-				<footer>
 					<div class="row">
 						<div class="span12">
 							<h1>About</h1>
