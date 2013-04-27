@@ -55,7 +55,7 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 		«ENDFOR»
 	'''
 
-	def dispatch generate(Scenario scenario)'''
+	def dispatch CharSequence generate(Scenario scenario)'''
 		<div><h3 class="scenario «scenario.executionStateClass»" «id(scenario.name)»>«scenario.name»</h3>
 		«generate(scenario.steps)»</div>
 	'''

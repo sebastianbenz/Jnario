@@ -101,7 +101,6 @@ public class JnarioDocGenerate extends XtendTestCompile {
 		for (File file : reportFolder.listFiles(new XmlFiles())) {
 			FileInputStream is = null;
 			try {
-				getLog().info("Parsing Results: " + file);
 				is = new FileInputStream(file);
 				specResultParser.parse(is, resultMapping);
 			} catch (Exception e) {

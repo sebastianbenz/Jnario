@@ -31,9 +31,7 @@ import org.jnario.report.NotRun
 import org.jnario.report.Passed
 import org.jnario.report.Pending
 import org.pegdown.PegDownProcessor
-
-import static org.jnario.doc.AbstractDocGenerator.*
-
+import static extension org.apache.commons.lang.StringEscapeUtils.*
 import static extension org.eclipse.xtext.util.Strings.*
 import static extension org.jnario.util.Strings.*
 
@@ -220,7 +218,7 @@ class ErrorMessageProvider extends ExecutableStateSwitch<String> {
 	override protected handleFailed(Failed result) '''
 			«FOR failure : result.failures»
 			 <pre class="errormessage">
-			 «failure.message»</pre>
+			 «failure.message.escapeHtml»</pre>
 			«ENDFOR»
 	'''
 	override protected handleNotRun(NotRun execution) ''''''

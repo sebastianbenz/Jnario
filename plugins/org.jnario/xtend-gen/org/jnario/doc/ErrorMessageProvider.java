@@ -8,6 +8,7 @@
 package org.jnario.doc;
 
 import java.util.List;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.jnario.report.ExecutableStateSwitch;
 import org.jnario.report.Failed;
@@ -26,7 +27,8 @@ public class ErrorMessageProvider extends ExecutableStateSwitch<String> {
         _builder.append("<pre class=\"errormessage\">");
         _builder.newLine();
         String _message = failure.getMessage();
-        _builder.append(_message, "");
+        String _escapeHtml = StringEscapeUtils.escapeHtml(_message);
+        _builder.append(_escapeHtml, "");
         _builder.append("</pre>");
         _builder.newLineIfNotEmpty();
       }

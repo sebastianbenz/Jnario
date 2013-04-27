@@ -229,7 +229,6 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           _builder.append(_decode, "");
           _builder.append("</strong></p>");
           _builder.newLineIfNotEmpty();
-        } else {
         }
       }
       _builder.append(docString, "");
@@ -248,11 +247,11 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           CharSequence _codeBlock = this.toCodeBlock(example, filters);
           _builder.append(_codeBlock, "");
           _builder.newLineIfNotEmpty();
-          String _errorMessage = this.errorMessage(example);
-          _builder.append(_errorMessage, "");
-          _builder.newLineIfNotEmpty();
         }
       }
+      String _errorMessage = this.errorMessage(example);
+      _builder.append(_errorMessage, "");
+      _builder.newLineIfNotEmpty();
       _xblockexpression = (_builder);
     }
     return _xblockexpression;
