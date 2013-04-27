@@ -1,4 +1,4 @@
-package gameoflife.specs;
+package gameoflife;
 
 import diverse.SelectMultipleSpecsSuite;
 import gameoflife.specs.CellLocationSpec;

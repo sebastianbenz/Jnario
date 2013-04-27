@@ -1,4 +1,4 @@
-package gameoflife.specs;
+package gameoflife;
 
 import gameoflife.features.PlayingGameOfLifeFeature;
 import org.jnario.runner.Contains;

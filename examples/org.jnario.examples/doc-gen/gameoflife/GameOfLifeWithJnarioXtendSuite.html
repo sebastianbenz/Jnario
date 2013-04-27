@@ -10,14 +10,14 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<link rel="stylesheet" href="../../css/bootstrap.min.css">
-<link rel="stylesheet" href="../../css/bootstrap-responsive.min.css">
-<link rel="stylesheet" href="../../css/custom.css">
-<link rel="stylesheet" href="../../css/prettify.css">
-<script type="text/javascript" src="../../js/prettify.js"></script>
-<script type="text/javascript" src="../../js/lang-jnario.js"></script>
-<script type="text/javascript" src="../../js/jquery.js"></script>
-<script type="text/javascript" src="../../js/bootstrap-tab.js"></script>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="../css/prettify.css">
+<script type="text/javascript" src="../js/prettify.js"></script>
+<script type="text/javascript" src="../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/bootstrap-tab.js"></script>
 </head>
 
 <body onload="prettyPrint()">
@@ -35,30 +35,28 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<p>This documentation is generated from a specification for <a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">Conway's Game of Life</a> written in <a href="http://www.jnario.org">Jnario</a>. It has been created during the code retreat at the <a href="http://socrates-conference.de">Socrates conference</a> by <a href="https://www.xing.com/profile/Jaroslaw_Klose">Jaroslaw</a> and <a href="https://twitter.com/sebabenz">Sebastian</a>. The acual game of life is implemented with Xtend: <a href="GameOfLife.html">GameOfLife.xtend</a>. </p><p><span class="label label-info">Info</span> You can look at the corrresponding Jnario source code by clicking on the "source" tab in the upper right corner. For example, this file is generated from a <a href="http://sebastianbenz.de/introducing-jnario-suites">Jnario Suite</a>.</p>
+<p>This documentation is generated from a specification for <a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">Conway's Game of Life</a> written in <a href="http://www.jnario.org">Jnario</a>. It has been created during the code retreat at the <a href="http://socrates-conference.de">Socrates conference</a> by <a href="https://www.xing.com/profile/Jaroslaw_Klose">Jaroslaw</a> and <a href="https://twitter.com/sebabenz">Sebastian</a>. The acual game of life is implemented with Xtend: <a href="GameOfLife.html">GameOfLife.xtend</a>. </p><p><img src="http://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif"  alt="Game of Life"/></p><p><span class="label label-info">Info</span> You can look at the corrresponding Jnario source code by clicking on the "source" tab in the upper right corner. For example, this file is generated from a <a href="http://sebastianbenz.de/introducing-jnario-suites">Jnario Suite</a>.</p>
 <span id="Features" class="suite notrun"><h2>Features</h2></span>
 <p>The acceptance specs for game of life are written using the Jnario feature language, which is similar to Cucumber. However, there is one big difference between Jnario and Cucumber.  You don't need to create separate step definitions to make your steps executable.  You can directly add the necessary code below your steps.</p>
 <ul>
-	<li><a class="specref notrun" href="../../gameoflife/features/PlayingGameOfLifeFeature.html">Playing Game of Life</a></li>
+	<li><a class="specref notrun" href="../gameoflife/features/PlayingGameOfLifeFeature.html">Playing Game of Life</a></li>
 </ul>
 <span id="Unit_Specifications" class="suite notrun"><h2>Unit Specifications</h2></span>
 <p>The unit specs are written using Jnario specs language, which has a syntax that is specifially tailored to the purpose of writing tests. For example, Jnario supports tables for simplify specifying different sets of inputs and expected outputs.</p>
 <ul>
-	<li><a class="specref notrun" href="../../gameoflife/specs/CellLocationSpec.html">CellLocation</a></li>
-	<li><a class="specref notrun" href="../../gameoflife/specs/EvolutionSpec.html">Evolution</a></li>
-	<li><a class="specref notrun" href="../../gameoflife/specs/RulesSpec.html">Rules</a></li>
-	<li><a class="specref notrun" href="../../diverse/SelectMultipleSpecsSuite.html">Select multiple specs</a></li>
-	<li><a class="specref notrun" href="../../gameoflife/specs/WorldSpec.html">World</a></li>
+	<li><a class="specref notrun" href="../gameoflife/specs/CellLocationSpec.html">CellLocation</a></li>
+	<li><a class="specref notrun" href="../gameoflife/specs/EvolutionSpec.html">Evolution</a></li>
+	<li><a class="specref notrun" href="../gameoflife/specs/RulesSpec.html">Rules</a></li>
+	<li><a class="specref notrun" href="../diverse/SelectMultipleSpecsSuite.html">Select multiple specs</a></li>
+	<li><a class="specref notrun" href="../gameoflife/specs/WorldSpec.html">World</a></li>
 </ul>
 							</div>
 						    <div class="tab-pane" id="source">
-						    	<h3>GameOfLife.suite</h3>
+						    	<h3>Overview.suite</h3>
 						    	<p>
 <pre class="prettyprint lang-suite linenums">
-package gameoflife.specs
+package gameoflife
 
-import org.jnario.jnario.documentation.*
-import gameoflife.specs.*
 import gameoflife.features.*
 
 #Game of Life with Jnario &amp; Xtend
@@ -70,6 +68,8 @@ It has been created during the code retreat
 at the [Socrates conference](http://socrates\-conference.de) by 
 [Jaroslaw](https://www.xing.com/profile/Jaroslaw_Klose) and [Sebastian](https://twitter.com/sebabenz).
 The acual game of life is implemented  with Xtend: [GameOfLife.xtend](GameOfLife.html). 
+
+![Game of Life](http://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif)
 
 &lt;span class=&quot;label label\-info&quot;&gt;Info&lt;/span&gt; You can look at 
 the corrresponding Jnario source code by clicking on the &quot;source&quot; tab in the upper

@@ -1,7 +1,7 @@
-package gameoflife.specs;
+package gameoflife;
 
-import gameoflife.specs.FeaturesSuite;
-import gameoflife.specs.UnitSpecificationsSuite;
+import gameoflife.FeaturesSuite;
+import gameoflife.UnitSpecificationsSuite;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;

@@ -1,7 +1,5 @@
-package gameoflife.specs
+package gameoflife
 
-import org.jnario.jnario.documentation.*
-import gameoflife.specs.*
 import gameoflife.features.*
 
 #Game of Life with Jnario & Xtend
@@ -13,6 +11,8 @@ It has been created during the code retreat
 at the [Socrates conference](http://socrates\-conference.de) by 
 [Jaroslaw](https://www.xing.com/profile/Jaroslaw_Klose) and [Sebastian](https://twitter.com/sebabenz).
 The acual game of life is implemented  with Xtend: [GameOfLife.xtend](GameOfLife.html). 
+
+![Game of Life](http://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif)
 
 <span class="label label\-info">Info</span> You can look at 
 the corrresponding Jnario source code by clicking on the "source" tab in the upper
