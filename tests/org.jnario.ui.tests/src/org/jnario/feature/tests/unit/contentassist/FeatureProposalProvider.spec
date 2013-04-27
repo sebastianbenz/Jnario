@@ -1,16 +1,7 @@
 package org.jnario.feature.tests.unit.contentassist
 
-import org.jnario.feature.ui.contentassist.FeatureProposalProvider
-import org.jnario.feature.FeatureUiInjectorProvider
-import org.eclipse.xtext.junit4.InjectWith
-import org.junit.runner.RunWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.jnario.runner.Extends
-import org.eclipse.xtext.junit4.ui.AbstractContentAssistProcessorTest
-import org.jnario.feature.FeatureStandaloneSetup
-import org.jnario.runner.CreateWith
-import org.jnario.jnario.test.util.FeatureUiTestCreator
 import org.jnario.jnario.test.util.AbstractContentAssistProcessorTest2
+import org.jnario.runner.Extends
 import org.jnario.jnario.test.util.AbstractContentAssistProcessorTest2$ContentAssistProcessorTestBuilder2
 
 @Extends(typeof(AbstractContentAssistProcessorTest2))
