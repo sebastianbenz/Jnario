@@ -1,37 +1,28 @@
 package org.jnario.jnario.tests.unit.report
 
-import static org.hamcrest.CoreMatchers.*
 import com.google.inject.Inject
 import org.jnario.Executable
+import org.jnario.feature.feature.Background
+import org.jnario.feature.feature.Feature
+import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.jnario.test.util.FeatureTestCreator
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.jnario.test.util.Specs
+import org.jnario.report.Failed
 import org.jnario.report.HashBasedSpec2ResultMapping
+import org.jnario.report.NotRun
+import org.jnario.report.Passed
+import org.jnario.report.Pending
 import org.jnario.report.SpecExecution
 import org.jnario.report.SpecFailure
 import org.jnario.runner.CreateWith
 import org.jnario.spec.spec.Example
 
-import static org.jnario.jnario.test.util.Specs.*
-import static org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingExampleGroupSpec.*
-import static org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec.*
-import static org.jnario.report.SpecExecution.*
-import static org.mockito.Mockito.*
-
-import static org.jnario.jnario.test.util.Features.*
-import static extension org.jnario.lib.Should.*
-import org.jnario.report.NotRun
-import org.jnario.report.Passed
-import org.jnario.report.Failed
-import static org.jnario.report.NotRun.*
-import static org.jnario.report.Passed.*
+import static org.hamcrest.CoreMatchers.*
 import static org.jnario.report.Failed.*
-import org.jnario.feature.feature.Scenario
-import org.jnario.jnario.test.util.Specs
-import org.jnario.feature.feature.Feature
-import org.jnario.feature.feature.Background
-import org.jnario.report.Pending
+import static org.jnario.report.Passed.*
 
 @CreateWith(typeof(SpecTestCreator))
 describe HashBasedSpec2ResultMapping {

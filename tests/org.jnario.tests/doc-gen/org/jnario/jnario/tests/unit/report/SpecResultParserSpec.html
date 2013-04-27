@@ -87,6 +87,13 @@ verify(acceptor).accept(pendingSpec)</pre>
 '''.toXml.parse 
 
 verify(acceptor).accept(new Passed(CLASSNAME, 'When I entered \\\&quot;50\\\&quot; and \\\&quot;70\\\&quot;', EXECUTION_TIME))</pre>
+</li><li><p id="removes_from_escaped_strings" class="example notrun"><strong>removes ',' from escaped strings</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+   &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;cell[-1\u002C 1].plus[cell[3\u002C4]] =&amp;gt; cell[2\u002C5]&quot;/&gt;
+'''.toXml.parse  2
+
+verify(acceptor).accept(new Passed(CLASSNAME, 'cell[-1, 1].plus[cell[3,4]] =&gt; cell[2,5]', EXECUTION_TIME))</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -184,6 +191,16 @@ describe SpecResultParser{
     
     verify(acceptor).accept(new Passed(CLASSNAME, 'When I entered \\\&quot;50\\\&quot; and \\\&quot;70\\\&quot;', EXECUTION_TIME))
   }
+  
+  fact &quot;removes '\u002C' from escaped strings&quot; {
+    '''
+       &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;cell[-1\u002C 1].plus[cell[3\u002C4]] =&amp;gt; cell[2\u002C5]&quot;/&gt;
+    '''.toXml.parse  2
+    
+    verify(acceptor).accept(new Passed(CLASSNAME, 'cell[-1, 1].plus[cell[3,4]] =&gt; cell[2,5]', EXECUTION_TIME))
+  }
+  
+  
   
   def passingSpec(){
     new Passed(CLASSNAME, NAME, EXECUTION_TIME)

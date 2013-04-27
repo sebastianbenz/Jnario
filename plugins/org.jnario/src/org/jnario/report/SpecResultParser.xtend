@@ -126,7 +126,6 @@ class SpecResultParser extends DefaultHandler{
 	}
 	
 	def convertValue(Attributes attributes, String key) {
-		attributes.getValue(key)
+		attributes.getValue(key).replace("\\u002C", ",")
 	}
-	
 }

@@ -217,6 +217,7 @@ public class SpecResultParser extends DefaultHandler {
   
   public String convertValue(final Attributes attributes, final String key) {
     String _value = attributes.getValue(key);
-    return _value;
+    String _replace = _value.replace("\\u002C", ",");
+    return _replace;
   }
 }

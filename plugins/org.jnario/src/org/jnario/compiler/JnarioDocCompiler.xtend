@@ -45,7 +45,6 @@ class JnarioDocCompiler extends XtendBatchCompiler{
 		val nameBasedFilter = new NameBasedFilter();
 		nameBasedFilter.setExtension(fileExtensionProvider.getPrimaryFileExtension());
 		val pathTraverser = new PathTraverser();
-		println("source directories: " + getSourcePathDirectories())
 		pathTraverser.resolvePathes(getSourcePathDirectories(), [input |
 				val matches = nameBasedFilter.matches(input);
 				if (matches) {

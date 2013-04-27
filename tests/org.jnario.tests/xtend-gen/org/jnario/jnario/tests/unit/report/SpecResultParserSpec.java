@@ -245,6 +245,25 @@ public class SpecResultParserSpec {
     _verify.accept(_passed);
   }
   
+  @Test
+  @Named("removes \\\',\\\' from escaped strings")
+  @Order(7)
+  public void _removesFromEscapedStrings() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<testcase time=\"");
+    _builder.append(SpecResultParserSpec.EXECUTION_TIME, "");
+    _builder.append("\" classname=\"");
+    _builder.append(SpecResultParserSpec.CLASSNAME, "");
+    _builder.append("\" name=\"cell[-1\\u002C 1].plus[cell[3\\u002C4]] =&gt; cell[2\\u002C5]\"/>");
+    _builder.newLineIfNotEmpty();
+    CharSequence _xml = this.toXml(_builder);
+    this.parse(_xml);
+    /* 2 */
+    SpecExecutionAcceptor _verify = Mockito.<SpecExecutionAcceptor>verify(this.acceptor);
+    Passed _passed = new Passed(SpecResultParserSpec.CLASSNAME, "cell[-1, 1].plus[cell[3,4]] => cell[2,5]", SpecResultParserSpec.EXECUTION_TIME);
+    _verify.accept(_passed);
+  }
+  
   public Passed passingSpec() {
     Passed _passed = new Passed(SpecResultParserSpec.CLASSNAME, SpecResultParserSpec.NAME, SpecResultParserSpec.EXECUTION_TIME);
     return _passed;

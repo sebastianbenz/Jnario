@@ -29,8 +29,19 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<profiles>
+		<profile>
+			<id>sun-jvm</id>
+			<activation>
+				<property>
+					<name>java.vendor.url</name>
+					<value>http://java.sun.com/</value>
+				</property>
+			</activation>
+			<properties>
+				<tycho.test.jvmArgs>-Xms256m -Xmx1024m -XX:MaxPermSize=256M</tycho.test.jvmArgs>
+			</properties>
+		</profile>
 		<profile>
 			<id>osx</id>
 			<activation>
@@ -39,22 +50,10 @@
 					<value>http://www.apple.com/</value>
 				</property>
 			</activation>
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.eclipse.tycho</groupId>
-							<artifactId>tycho-surefire-plugin</artifactId>
-							<version>${tycho-version}</version>
-							<configuration>
-								<argLine>-XstartOnFirstThread</argLine>
-							</configuration>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
+			<properties>
+				<tycho.test.jvmArgs>-Xms256m -Xmx1024m -XX:MaxPermSize=256m -XstartOnFirstThread</tycho.test.jvmArgs>
+				<osgi.ws>cocoa</osgi.ws>
+			</properties>
 		</profile>
 	</profiles>
-
-
 </project>

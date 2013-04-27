@@ -23,7 +23,6 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.mwe.NameBasedFilter;
 import org.eclipse.xtext.mwe.PathTraverser;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.report.Executable2ResultMapping;
@@ -89,9 +88,6 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
       PathTraverser _pathTraverser = new PathTraverser();
       final PathTraverser pathTraverser = _pathTraverser;
       List<String> _sourcePathDirectories = this.getSourcePathDirectories();
-      String _plus = ("source directories: " + _sourcePathDirectories);
-      InputOutput.<String>println(_plus);
-      List<String> _sourcePathDirectories_1 = this.getSourcePathDirectories();
       final Predicate<URI> _function = new Predicate<URI>() {
           public boolean apply(final URI input) {
             final boolean matches = nameBasedFilter.matches(input);
@@ -102,7 +98,7 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
             return matches;
           }
         };
-      pathTraverser.resolvePathes(_sourcePathDirectories_1, _function);
+      pathTraverser.resolvePathes(_sourcePathDirectories, _function);
       final File classDirectory = this.createTempDir("classes");
       ResourceSet _resourceSet_2 = this.getResourceSet();
       this.installJvmTypeProvider(_resourceSet_2, classDirectory);
