@@ -51,10 +51,13 @@ class Evolution{
       world.deadCells.filter[getBecomesAlive.apply(world, it)]
     )
   } 
-  
   def private apply(Rule rule, World world, CellLocation cell){
     rule.becomesAlive(world.livingNeighbours(cell))
   }  
+}
+
+interface Rule {
+  def boolean becomesAlive(int neighbourCount)
 }
 
 class EvolveLiveCells implements Rule{
