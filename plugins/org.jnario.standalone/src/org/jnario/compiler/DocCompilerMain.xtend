@@ -13,13 +13,10 @@ import java.io.File
 import java.io.FileInputStream
 import org.apache.log4j.BasicConfigurator
 import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.xtend.lib.Property
 import org.jnario.report.HashBasedSpec2ResultMapping
 import org.jnario.report.SpecResultParser
 
 import static org.jnario.compiler.CompilerMain.*
-import static org.jnario.compiler.DocCompilerMain.*
-
 
 class DocCompilerMain {
 	

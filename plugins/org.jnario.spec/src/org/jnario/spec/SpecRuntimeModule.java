@@ -21,6 +21,7 @@ import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
 import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
 import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
+import org.eclipse.xtend.core.validation.ModifierValidator;
 import org.eclipse.xtend.core.validation.XtendConfigurableIssueCodes;
 import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtend.core.xtend.XtendFactory;
@@ -82,6 +83,7 @@ import org.jnario.spec.naming.SpecQualifiedNameProvider;
 import org.jnario.spec.scoping.SpecBatchScopeProvider;
 import org.jnario.spec.scoping.SpecResourceDescriptionStrategy;
 import org.jnario.spec.scoping.SpecScopeProvider;
+import org.jnario.spec.validation.SpecModifierValidator;
 import org.jnario.typing.JnarioTypeComputer;
 import org.jnario.typing.JnarioTypeResolver;
 

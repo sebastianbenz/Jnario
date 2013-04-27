@@ -9,6 +9,7 @@ package org.jnario.spec.validation;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Maps.newHashMap;
 import static com.google.common.collect.Sets.newLinkedHashSet;
 
@@ -28,6 +29,8 @@ import org.eclipse.xtext.validation.ComposedChecks;
 import org.eclipse.xtext.xbase.XExpression;
 import org.jnario.ExampleColumn;
 import org.jnario.spec.naming.ExampleNameProvider;
+import org.jnario.spec.spec.After;
+import org.jnario.spec.spec.Before;
 import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.TestFunction;
@@ -45,6 +48,17 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 	@Inject
 	private ExampleNameProvider exampleNameProvider;
 	
+	private SpecModifierValidator setupModifierValidator = new SpecModifierValidator(newArrayList("all"), this);
+	
+	@Override
+	@Check
+	protected void checkModifiers(XtendFunction xtendFunction) {
+		if ((xtendFunction instanceof Before) || (xtendFunction instanceof After)) {
+			setupModifierValidator.checkModifiers(xtendFunction, exampleNameProvider.toMethodName(xtendFunction));
+		}else{
+			super.checkModifiers(xtendFunction);
+		}
+	}
 
 	@Check
 	public void checkClasses(ExampleGroup exampleGroup) {
