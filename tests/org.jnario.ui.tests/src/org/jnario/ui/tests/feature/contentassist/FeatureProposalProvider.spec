@@ -1,8 +1,8 @@
-package org.jnario.feature.tests.unit.contentassist
+package org.jnario.ui.tests.feature.contentassist
 
-import org.jnario.jnario.test.util.AbstractContentAssistProcessorTest2
 import org.jnario.runner.Extends
-import org.jnario.jnario.test.util.AbstractContentAssistProcessorTest2$ContentAssistProcessorTestBuilder2
+import org.jnario.ui.tests.util.AbstractContentAssistProcessorTest2
+import org.jnario.ui.tests.util.AbstractContentAssistProcessorTest2$ContentAssistProcessorTestBuilder2
 
 @Extends(typeof(AbstractContentAssistProcessorTest2))
 describe "FeatureProposalProvider"{

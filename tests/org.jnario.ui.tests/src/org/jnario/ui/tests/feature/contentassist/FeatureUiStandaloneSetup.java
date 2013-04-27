@@ -1,4 +1,4 @@
-package org.jnario.feature.tests.unit.contentassist;
+package org.jnario.ui.tests.feature.contentassist;
 
 import org.jnario.feature.FeatureStandaloneSetup;
 import org.jnario.feature.FeatureUiInjectorProvider;

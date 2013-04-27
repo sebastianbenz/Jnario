@@ -1,4 +1,4 @@
-package org.jnario.jnario.test.util;
+package org.jnario.ui.tests.util;
 
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.ISetup;

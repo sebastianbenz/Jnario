@@ -1,0 +1,5 @@
+package org.jnario.ui.tests
+
+#JnarioUiTests
+
+- \org.jnario.ui.tests.*\
