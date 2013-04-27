@@ -1,9 +1,6 @@
 package org.jnario.feature.tests.unit.feature;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.google.inject.Inject;
-import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -62,147 +59,93 @@ public class StepTypeProviderSpec {
   public ModelStore _modelStore;
   
   @Test
-  @Named("createGiven.expectedTypes => -[given, givenReference]")
+  @Named("createGiven.expectedTypes => GIVEN")
   @Order(1)
-  public void _createGivenExpectedTypesGivenGivenReference() throws Exception {
+  public void _createGivenExpectedTypesGIVEN() throws Exception {
     Given _createGiven = this.factory.createGiven();
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createGiven);
-    EClass _given = this.pack.getGiven();
-    EClass _givenReference = this.pack.getGivenReference();
-    List<EClass> _xlistliteral = null;
-    Builder<EClass> _builder = ImmutableList.builder();
-    _builder.add(_given);
-    _builder.add(_givenReference);
-    _xlistliteral = _builder.build();
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, _xlistliteral);
-    Assert.assertTrue("\nExpected createGiven.expectedTypes => #[given, givenReference] but"
+    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.GIVEN);
+    Assert.assertTrue("\nExpected createGiven.expectedTypes => GIVEN but"
      + "\n     createGiven.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     createGiven is " + new StringDescription().appendValue(_createGiven).toString()
-     + "\n     #[given, givenReference] is " + new StringDescription().appendValue(_xlistliteral).toString()
-     + "\n     given is " + new StringDescription().appendValue(_given).toString()
-     + "\n     givenReference is " + new StringDescription().appendValue(_givenReference).toString() + "\n", _doubleArrow);
+     + "\n     GIVEN is " + new StringDescription().appendValue(StepTypeProvider.GIVEN).toString() + "\n", _doubleArrow);
     
   }
   
   @Test
-  @Named("createGivenReference.expectedTypes => -[given, givenReference]")
+  @Named("createGivenReference.expectedTypes => GIVEN")
   @Order(2)
-  public void _createGivenReferenceExpectedTypesGivenGivenReference() throws Exception {
+  public void _createGivenReferenceExpectedTypesGIVEN() throws Exception {
     GivenReference _createGivenReference = this.factory.createGivenReference();
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createGivenReference);
-    EClass _given = this.pack.getGiven();
-    EClass _givenReference = this.pack.getGivenReference();
-    List<EClass> _xlistliteral = null;
-    Builder<EClass> _builder = ImmutableList.builder();
-    _builder.add(_given);
-    _builder.add(_givenReference);
-    _xlistliteral = _builder.build();
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, _xlistliteral);
-    Assert.assertTrue("\nExpected createGivenReference.expectedTypes => #[given, givenReference] but"
+    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.GIVEN);
+    Assert.assertTrue("\nExpected createGivenReference.expectedTypes => GIVEN but"
      + "\n     createGivenReference.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     createGivenReference is " + new StringDescription().appendValue(_createGivenReference).toString()
-     + "\n     #[given, givenReference] is " + new StringDescription().appendValue(_xlistliteral).toString()
-     + "\n     given is " + new StringDescription().appendValue(_given).toString()
-     + "\n     givenReference is " + new StringDescription().appendValue(_givenReference).toString() + "\n", _doubleArrow);
+     + "\n     GIVEN is " + new StringDescription().appendValue(StepTypeProvider.GIVEN).toString() + "\n", _doubleArrow);
     
   }
   
   @Test
-  @Named("createWhen.expectedTypes => -[when, whenReference]")
+  @Named("createWhen.expectedTypes => WHEN")
   @Order(3)
-  public void _createWhenExpectedTypesWhenWhenReference() throws Exception {
+  public void _createWhenExpectedTypesWHEN() throws Exception {
     When _createWhen = this.factory.createWhen();
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createWhen);
-    EClass _when = this.pack.getWhen();
-    EClass _whenReference = this.pack.getWhenReference();
-    List<EClass> _xlistliteral = null;
-    Builder<EClass> _builder = ImmutableList.builder();
-    _builder.add(_when);
-    _builder.add(_whenReference);
-    _xlistliteral = _builder.build();
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, _xlistliteral);
-    Assert.assertTrue("\nExpected createWhen.expectedTypes => #[when, whenReference] but"
+    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.WHEN);
+    Assert.assertTrue("\nExpected createWhen.expectedTypes => WHEN but"
      + "\n     createWhen.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     createWhen is " + new StringDescription().appendValue(_createWhen).toString()
-     + "\n     #[when, whenReference] is " + new StringDescription().appendValue(_xlistliteral).toString()
-     + "\n     when is " + new StringDescription().appendValue(_when).toString()
-     + "\n     whenReference is " + new StringDescription().appendValue(_whenReference).toString() + "\n", _doubleArrow);
+     + "\n     WHEN is " + new StringDescription().appendValue(StepTypeProvider.WHEN).toString() + "\n", _doubleArrow);
     
   }
   
   @Test
-  @Named("createWhenReference.expectedTypes => -[when, whenReference]")
+  @Named("createWhenReference.expectedTypes => WHEN")
   @Order(4)
-  public void _createWhenReferenceExpectedTypesWhenWhenReference() throws Exception {
+  public void _createWhenReferenceExpectedTypesWHEN() throws Exception {
     WhenReference _createWhenReference = this.factory.createWhenReference();
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createWhenReference);
-    EClass _when = this.pack.getWhen();
-    EClass _whenReference = this.pack.getWhenReference();
-    List<EClass> _xlistliteral = null;
-    Builder<EClass> _builder = ImmutableList.builder();
-    _builder.add(_when);
-    _builder.add(_whenReference);
-    _xlistliteral = _builder.build();
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, _xlistliteral);
-    Assert.assertTrue("\nExpected createWhenReference.expectedTypes => #[when, whenReference] but"
+    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.WHEN);
+    Assert.assertTrue("\nExpected createWhenReference.expectedTypes => WHEN but"
      + "\n     createWhenReference.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     createWhenReference is " + new StringDescription().appendValue(_createWhenReference).toString()
-     + "\n     #[when, whenReference] is " + new StringDescription().appendValue(_xlistliteral).toString()
-     + "\n     when is " + new StringDescription().appendValue(_when).toString()
-     + "\n     whenReference is " + new StringDescription().appendValue(_whenReference).toString() + "\n", _doubleArrow);
+     + "\n     WHEN is " + new StringDescription().appendValue(StepTypeProvider.WHEN).toString() + "\n", _doubleArrow);
     
   }
   
   @Test
-  @Named("createThen.expectedTypes => -[then, thenReference]")
+  @Named("createThen.expectedTypes => THEN")
   @Order(5)
-  public void _createThenExpectedTypesThenThenReference() throws Exception {
+  public void _createThenExpectedTypesTHEN() throws Exception {
     Then _createThen = this.factory.createThen();
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createThen);
-    EClass _then = this.pack.getThen();
-    EClass _thenReference = this.pack.getThenReference();
-    List<EClass> _xlistliteral = null;
-    Builder<EClass> _builder = ImmutableList.builder();
-    _builder.add(_then);
-    _builder.add(_thenReference);
-    _xlistliteral = _builder.build();
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, _xlistliteral);
-    Assert.assertTrue("\nExpected createThen.expectedTypes => #[then, thenReference] but"
+    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.THEN);
+    Assert.assertTrue("\nExpected createThen.expectedTypes => THEN but"
      + "\n     createThen.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     createThen is " + new StringDescription().appendValue(_createThen).toString()
-     + "\n     #[then, thenReference] is " + new StringDescription().appendValue(_xlistliteral).toString()
-     + "\n     then is " + new StringDescription().appendValue(_then).toString()
-     + "\n     thenReference is " + new StringDescription().appendValue(_thenReference).toString() + "\n", _doubleArrow);
+     + "\n     THEN is " + new StringDescription().appendValue(StepTypeProvider.THEN).toString() + "\n", _doubleArrow);
     
   }
   
   @Test
-  @Named("createThenReference.expectedTypes => -[then, thenReference]")
+  @Named("createThenReference.expectedTypes => THEN")
   @Order(6)
-  public void _createThenReferenceExpectedTypesThenThenReference() throws Exception {
+  public void _createThenReferenceExpectedTypesTHEN() throws Exception {
     ThenReference _createThenReference = this.factory.createThenReference();
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createThenReference);
-    EClass _then = this.pack.getThen();
-    EClass _thenReference = this.pack.getThenReference();
-    List<EClass> _xlistliteral = null;
-    Builder<EClass> _builder = ImmutableList.builder();
-    _builder.add(_then);
-    _builder.add(_thenReference);
-    _xlistliteral = _builder.build();
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, _xlistliteral);
-    Assert.assertTrue("\nExpected createThenReference.expectedTypes => #[then, thenReference] but"
+    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.THEN);
+    Assert.assertTrue("\nExpected createThenReference.expectedTypes => THEN but"
      + "\n     createThenReference.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     createThenReference is " + new StringDescription().appendValue(_createThenReference).toString()
-     + "\n     #[then, thenReference] is " + new StringDescription().appendValue(_xlistliteral).toString()
-     + "\n     then is " + new StringDescription().appendValue(_then).toString()
-     + "\n     thenReference is " + new StringDescription().appendValue(_thenReference).toString() + "\n", _doubleArrow);
+     + "\n     THEN is " + new StringDescription().appendValue(StepTypeProvider.THEN).toString() + "\n", _doubleArrow);
     
   }
   
   @Test
-  @Named("\\\'\\\'\\\' Feature: something Scenario: scenario Given something And something else And something else \\\'\\\'\\\'.expectedTypes =>  -[given, givenReference]")
+  @Named("\\\'\\\'\\\' Feature: something Scenario: scenario Given something And something else And something else \\\'\\\'\\\'.expectedTypes =>  GIVEN")
   @Order(7)
-  public void _featureSomethingScenarioScenarioGivenSomethingAndSomethingElseAndSomethingElseExpectedTypesGivenGivenReference() throws Exception {
+  public void _featureSomethingScenarioScenarioGivenSomethingAndSomethingElseAndSomethingElseExpectedTypesGIVEN() throws Exception {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: something");
     _builder.newLine();
@@ -218,20 +161,11 @@ public class StepTypeProviderSpec {
     _builder.append("And something else");
     _builder.newLine();
     Set<EClass> _expectedTypes = this.expectedTypes(_builder);
-    EClass _given = this.pack.getGiven();
-    EClass _givenReference = this.pack.getGivenReference();
-    List<EClass> _xlistliteral = null;
-    Builder<EClass> _builder_1 = ImmutableList.builder();
-    _builder_1.add(_given);
-    _builder_1.add(_givenReference);
-    _xlistliteral = _builder_1.build();
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, _xlistliteral);
-    Assert.assertTrue("\nExpected \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tAnd something else\n\t\t\tAnd something else\n\t\'\'\'.expectedTypes =>  #[given, givenReference] but"
+    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.GIVEN);
+    Assert.assertTrue("\nExpected \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tAnd something else\n\t\t\tAnd something else\n\t\'\'\'.expectedTypes =>  GIVEN but"
      + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tAnd something else\n\t\t\tAnd something else\n\t\'\'\'.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tAnd something else\n\t\t\tAnd something else\n\t\'\'\' is " + new StringDescription().appendValue(_builder).toString()
-     + "\n     #[given, givenReference] is " + new StringDescription().appendValue(_xlistliteral).toString()
-     + "\n     given is " + new StringDescription().appendValue(_given).toString()
-     + "\n     givenReference is " + new StringDescription().appendValue(_givenReference).toString() + "\n", _doubleArrow);
+     + "\n     GIVEN is " + new StringDescription().appendValue(StepTypeProvider.GIVEN).toString() + "\n", _doubleArrow);
     
   }
   

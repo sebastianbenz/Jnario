@@ -33,8 +33,8 @@ public class FeatureProposalProviderSameFileSpec extends FeatureProposalProvider
     _builder.append("\t");
     _builder.newLine();
     final ContentAssistProcessorTestBuilder2 builder = _newBuilder.append(_builder.toString());
-    builder.assertProposal("And an implemented step");
-    builder.assertProposal("But an implemented step");
+    builder.assertProposal("features.And an implemented step");
+    builder.assertProposal("features.But an implemented step");
   }
   
   @Test
@@ -54,8 +54,8 @@ public class FeatureProposalProviderSameFileSpec extends FeatureProposalProvider
     _builder.append("\t");
     _builder.newLine();
     final ContentAssistProcessorTestBuilder2 builder = _newBuilder.append(_builder.toString());
-    builder.assertProposal("And a pending step");
-    builder.assertProposal("But a pending step");
+    builder.assertProposal("features.And a pending step");
+    builder.assertProposal("features.But a pending step");
   }
   
   @Test
@@ -79,7 +79,7 @@ public class FeatureProposalProviderSameFileSpec extends FeatureProposalProvider
     _builder.newLine();
     final ContentAssistProcessorTestBuilder2 builder = _newBuilder.append(_builder.toString());
     builder.assertProposalsContainNot("And a step");
-    builder.assertProposal("And another step");
-    builder.assertProposal("But another step");
+    builder.assertProposal("features.And another step");
+    builder.assertProposal("features.But another step");
   }
 }

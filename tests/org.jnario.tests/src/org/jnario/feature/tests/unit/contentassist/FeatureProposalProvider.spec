@@ -27,8 +27,8 @@ describe "FeatureProposalProvider"{
 						1 + 1 => 2
 					
 			''')
-			builder.assertProposal("And an implemented step")
-			builder.assertProposal("But an implemented step")
+			builder.assertProposal("features.And an implemented step")
+			builder.assertProposal("features.But an implemented step")
 		}
 		
 		fact "proposes unimplemented steps"{
@@ -38,8 +38,8 @@ describe "FeatureProposalProvider"{
 					Given a pending step
 					
 			''')
-			builder.assertProposal("And a pending step")
-			builder.assertProposal("But a pending step")
+			builder.assertProposal("features.And a pending step")
+			builder.assertProposal("features.But a pending step")
 		}
 		
 		fact "does not provide given for then"{
@@ -51,8 +51,8 @@ describe "FeatureProposalProvider"{
 					
 			''')
 			builder.assertProposalsContainNot("And a step")
-			builder.assertProposal("And another step")
-			builder.assertProposal("But another step")
+			builder.assertProposal("features.And another step")
+			builder.assertProposal("features.But another step")
 		}
 	}
 	

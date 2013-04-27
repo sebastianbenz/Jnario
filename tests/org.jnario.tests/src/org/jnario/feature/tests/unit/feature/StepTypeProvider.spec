@@ -1,10 +1,10 @@
 package org.jnario.feature.tests.unit.feature
 
 import org.jnario.feature.jvmmodel.StepTypeProvider
+import static org.jnario.feature.jvmmodel.StepTypeProvider.*
 import org.jnario.feature.feature.FeatureFactory
 import org.jnario.feature.feature.FeaturePackage
 import org.jnario.runner.CreateWith
-import org.jnario.runner.SpecCreator
 import org.jnario.jnario.test.util.SpecTestCreator
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.ModelStore
@@ -17,12 +17,12 @@ describe StepTypeProvider {
 	extension FeaturePackage pack = FeaturePackage::eINSTANCE
 	@Inject extension ModelStore
 	 
-	fact createGiven.expectedTypes => #[given, givenReference]
-	fact createGivenReference.expectedTypes => #[given, givenReference]
-	fact createWhen.expectedTypes => #[when, whenReference]
-	fact createWhenReference.expectedTypes => #[when, whenReference]
-	fact createThen.expectedTypes => #[then, thenReference]
-	fact createThenReference.expectedTypes => #[then, thenReference]
+	fact createGiven.expectedTypes => GIVEN
+	fact createGivenReference.expectedTypes => GIVEN
+	fact createWhen.expectedTypes => WHEN
+	fact createWhenReference.expectedTypes => WHEN
+	fact createThen.expectedTypes => THEN
+	fact createThenReference.expectedTypes => THEN
 	
 	fact '''
 		Feature: something
@@ -30,7 +30,7 @@ describe StepTypeProvider {
 			Given something
 			And something else
 			And something else
-	'''.expectedTypes =>  #[given, givenReference]
+	'''.expectedTypes =>  GIVEN
 	
 	def expectedTypes(CharSequence s){
 		s.parseScenario

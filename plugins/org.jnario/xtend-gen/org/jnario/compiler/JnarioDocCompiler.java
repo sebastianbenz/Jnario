@@ -96,8 +96,6 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
           public boolean apply(final URI input) {
             final boolean matches = nameBasedFilter.matches(input);
             if (matches) {
-              String _plus = ("loading resource: " + input);
-              InputOutput.<String>println(_plus);
               ResourceSet _resourceSet = JnarioDocCompiler.this.getResourceSet();
               _resourceSet.getResource(input, true);
             }

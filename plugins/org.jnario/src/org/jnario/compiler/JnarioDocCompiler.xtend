@@ -49,7 +49,6 @@ class JnarioDocCompiler extends XtendBatchCompiler{
 		pathTraverser.resolvePathes(getSourcePathDirectories(), [input |
 				val matches = nameBasedFilter.matches(input);
 				if (matches) {
-					println("loading resource: " + input)
 					resourceSet.getResource(input, true);
 				}
 				return matches;
