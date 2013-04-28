@@ -8,3 +8,4 @@ org.eclipse.xtend.*
 *._trace
 *.smap
 .launch
+*.swp
