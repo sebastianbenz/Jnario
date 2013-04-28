@@ -111,4 +111,5 @@ https://github.com/bmwcarit/Jnario/issues
 		</repository>
 	</distributionManagement>
 	<groupId>org.jnario</groupId>
+	<description>Maven archetype for setting up a jnario project.</description>
 </project>
