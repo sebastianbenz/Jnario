@@ -7,6 +7,9 @@
  */
 package org.jnario.jnario.tests.integration;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,8 +30,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * When writing tests the concrete implementation of a collection usually doesn't matter
- * so much. Therefore, Jnario provides shorter versions of Xtend's collection literals.
+ * Xtend has it's own collection literals which of course
+ * work in Jnario as well.
  */
 @Named("Collection Literals")
 @RunWith(ExampleGroupRunner.class)
@@ -38,24 +41,38 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
   @Named("List Literal")
   @Order(1)
   public void _listLiteral() throws Exception {
-    List<String> _list = JnarioCollectionLiterals.<String>list("green", "red");
+    List<String> _xlistliteral = null;
+    Builder<String> _builder = ImmutableList.builder();
+    _builder.add("green");
+    _builder.add("red");
+    _xlistliteral = _builder.build();
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("green", "red");
-    boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(_list, _newArrayList);
-    Assert.assertTrue("\nExpected list(\"green\", \"red\")             => newArrayList(\"green\", \"red\") but"
-     + "\n     list(\"green\", \"red\") is " + new StringDescription().appendValue(_list).toString()
+    boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(_xlistliteral, _newArrayList);
+    Assert.assertTrue("\nExpected #[\"green\", \"red\"]         => newArrayList(\"green\", \"red\") but"
+     + "\n     #[\"green\", \"red\"] is " + new StringDescription().appendValue(_xlistliteral).toString()
      + "\n     newArrayList(\"green\", \"red\") is " + new StringDescription().appendValue(_newArrayList).toString() + "\n", _doubleArrow);
     
-    List<String> _list_1 = JnarioCollectionLiterals.<String>list("green");
-    List<String> _list_2 = JnarioCollectionLiterals.<String>list("red");
-    List<List<String>> _list_3 = JnarioCollectionLiterals.<List<String>>list(_list_1, _list_2);
+    List<String> _xlistliteral_1 = null;
+    Builder<String> _builder_1 = ImmutableList.builder();
+    _builder_1.add("green");
+    _xlistliteral_1 = _builder_1.build();
+    List<String> _xlistliteral_2 = null;
+    Builder<String> _builder_2 = ImmutableList.builder();
+    _builder_2.add("red");
+    _xlistliteral_2 = _builder_2.build();
+    List<List<String>> _xlistliteral_3 = null;
+    Builder<List<String>> _builder_3 = ImmutableList.builder();
+    _builder_3.add(_xlistliteral_1);
+    _builder_3.add(_xlistliteral_2);
+    _xlistliteral_3 = _builder_3.build();
     ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("green");
     ArrayList<String> _newArrayList_2 = CollectionLiterals.<String>newArrayList("red");
     ArrayList<ArrayList<String>> _newArrayList_3 = CollectionLiterals.<ArrayList<String>>newArrayList(_newArrayList_1, _newArrayList_2);
-    boolean _doubleArrow_1 = Should.<List<? extends List<String>>>operator_doubleArrow(_list_3, _newArrayList_3);
-    Assert.assertTrue("\nExpected list(list(\"green\"), list(\"red\")) => newArrayList(newArrayList(\"green\"), newArrayList(\"red\")) but"
-     + "\n     list(list(\"green\"), list(\"red\")) is " + new StringDescription().appendValue(_list_3).toString()
-     + "\n     list(\"green\") is " + new StringDescription().appendValue(_list_1).toString()
-     + "\n     list(\"red\") is " + new StringDescription().appendValue(_list_2).toString()
+    boolean _doubleArrow_1 = Should.<List<? extends List<String>>>operator_doubleArrow(_xlistliteral_3, _newArrayList_3);
+    Assert.assertTrue("\nExpected #[#[\"green\"], #[\"red\"]]   => newArrayList(newArrayList(\"green\"), newArrayList(\"red\")) but"
+     + "\n     #[#[\"green\"], #[\"red\"]] is " + new StringDescription().appendValue(_xlistliteral_3).toString()
+     + "\n     #[\"green\"] is " + new StringDescription().appendValue(_xlistliteral_1).toString()
+     + "\n     #[\"red\"] is " + new StringDescription().appendValue(_xlistliteral_2).toString()
      + "\n     newArrayList(newArrayList(\"green\"), newArrayList(\"red\")) is " + new StringDescription().appendValue(_newArrayList_3).toString()
      + "\n     newArrayList(\"green\") is " + new StringDescription().appendValue(_newArrayList_1).toString()
      + "\n     newArrayList(\"red\") is " + new StringDescription().appendValue(_newArrayList_2).toString() + "\n", _doubleArrow_1);
@@ -66,24 +83,38 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
   @Named("Set Literal")
   @Order(2)
   public void _setLiteral() throws Exception {
-    Set<String> _set = JnarioCollectionLiterals.<String>set("green", "red");
+    Set<String> _xsetliteral = null;
+    com.google.common.collect.ImmutableSet.Builder<String> _builder = ImmutableSet.builder();
+    _builder.add("green");
+    _builder.add("red");
+    _xsetliteral = _builder.build();
     HashSet<String> _newHashSet = CollectionLiterals.<String>newHashSet("green", "red");
-    boolean _doubleArrow = Should.<Set<String>>operator_doubleArrow(_set, _newHashSet);
-    Assert.assertTrue("\nExpected set(\"green\", \"red\")              => newHashSet(\"green\", \"red\") but"
-     + "\n     set(\"green\", \"red\") is " + new StringDescription().appendValue(_set).toString()
+    boolean _doubleArrow = Should.<Set<String>>operator_doubleArrow(_xsetliteral, _newHashSet);
+    Assert.assertTrue("\nExpected #{\"green\", \"red\"}         => newHashSet(\"green\", \"red\") but"
+     + "\n     #{\"green\", \"red\"} is " + new StringDescription().appendValue(_xsetliteral).toString()
      + "\n     newHashSet(\"green\", \"red\") is " + new StringDescription().appendValue(_newHashSet).toString() + "\n", _doubleArrow);
     
-    Set<String> _set_1 = JnarioCollectionLiterals.<String>set("green");
-    Set<String> _set_2 = JnarioCollectionLiterals.<String>set("red");
-    Set<Set<String>> _set_3 = JnarioCollectionLiterals.<Set<String>>set(_set_1, _set_2);
+    Set<Set<String>> _xsetliteral_1 = null;
+    Set<String> _xsetliteral_2 = null;
+    com.google.common.collect.ImmutableSet.Builder<String> _builder_1 = ImmutableSet.builder();
+    _builder_1.add("green");
+    _xsetliteral_2 = _builder_1.build();
+    Set<String> _xsetliteral_3 = null;
+    com.google.common.collect.ImmutableSet.Builder<String> _builder_2 = ImmutableSet.builder();
+    _builder_2.add("red");
+    _xsetliteral_3 = _builder_2.build();
+    com.google.common.collect.ImmutableSet.Builder<Set<String>> _builder_3 = ImmutableSet.builder();
+    _builder_3.add(_xsetliteral_2);
+    _builder_3.add(_xsetliteral_3);
+    _xsetliteral_1 = _builder_3.build();
     HashSet<String> _newHashSet_1 = CollectionLiterals.<String>newHashSet("green");
     HashSet<String> _newHashSet_2 = CollectionLiterals.<String>newHashSet("red");
     HashSet<HashSet<String>> _newHashSet_3 = CollectionLiterals.<HashSet<String>>newHashSet(_newHashSet_1, _newHashSet_2);
-    boolean _doubleArrow_1 = Should.<Set<? extends Set<String>>>operator_doubleArrow(_set_3, _newHashSet_3);
-    Assert.assertTrue("\nExpected set(set(\"green\"), set(\"red\"))    => newHashSet(newHashSet(\"green\"), newHashSet(\"red\")) but"
-     + "\n     set(set(\"green\"), set(\"red\")) is " + new StringDescription().appendValue(_set_3).toString()
-     + "\n     set(\"green\") is " + new StringDescription().appendValue(_set_1).toString()
-     + "\n     set(\"red\") is " + new StringDescription().appendValue(_set_2).toString()
+    boolean _doubleArrow_1 = Should.<Set<? extends Set<String>>>operator_doubleArrow(_xsetliteral_1, _newHashSet_3);
+    Assert.assertTrue("\nExpected #{#{\"green\"}, #{\"red\"}}    => newHashSet(newHashSet(\"green\"), newHashSet(\"red\")) but"
+     + "\n     #{#{\"green\"}, #{\"red\"}} is " + new StringDescription().appendValue(_xsetliteral_1).toString()
+     + "\n     #{\"green\"} is " + new StringDescription().appendValue(_xsetliteral_2).toString()
+     + "\n     #{\"red\"} is " + new StringDescription().appendValue(_xsetliteral_3).toString()
      + "\n     newHashSet(newHashSet(\"green\"), newHashSet(\"red\")) is " + new StringDescription().appendValue(_newHashSet_3).toString()
      + "\n     newHashSet(\"green\") is " + new StringDescription().appendValue(_newHashSet_1).toString()
      + "\n     newHashSet(\"red\") is " + new StringDescription().appendValue(_newHashSet_2).toString() + "\n", _doubleArrow_1);

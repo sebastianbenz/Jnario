@@ -18,19 +18,19 @@ import static org.jnario.lib.JnarioCollectionLiterals.*
 describe "Extension Library"{
 	
 	/*
-	 * When writing tests the concrete implementation of a collection usually doesn't matter
-	 * so much. Therefore, Jnario provides shorter versions of Xtend's collection literals.
+	 * Xtend has it's own collection literals which of course 
+	 * work in Jnario as well. 
 	 */
 	describe "Collection Literals"{
 		
 		fact "List Literal"{
-		  list("green", "red")             => newArrayList("green", "red")
-		  list(list("green"), list("red")) => newArrayList(newArrayList("green"), newArrayList("red"))
+		  #["green", "red"]         => newArrayList("green", "red")
+		  #[#["green"], #["red"]]   => newArrayList(newArrayList("green"), newArrayList("red"))
 		}
 		
 		fact "Set Literal"{
-		  set("green", "red")              => newHashSet("green", "red")
-		  set(set("green"), set("red"))    => newHashSet(newHashSet("green"), newHashSet("red"))
+		  #{"green", "red"}         => newHashSet("green", "red")
+		  #{#{"green"}, #{"red"}}    => newHashSet(newHashSet("green"), newHashSet("red"))
 		}  
 		
 		fact "Map Literal"{
