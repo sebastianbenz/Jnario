@@ -2,7 +2,7 @@
 <feature
       id="org.jnario.sdk"
       label="%featureName"
-      version="0.4.0.qualifier"
+      version="0.4.0.201304281503"
       provider-name="%providerName">
 
    <description>
