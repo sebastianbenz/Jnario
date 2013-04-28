@@ -25,7 +25,7 @@ public class Each {
 	 * @param table a table with examples
 	 * @param assertion a closure which performs an assertion on each row.
 	 */
-	public <T extends ExampleTableRow> void forEach(ExampleTable<T> table, Procedure1<T> assertion) {
+	public static <T extends ExampleTableRow> void forEach(ExampleTable<T> table, Procedure1<T> assertion) {
 		ExampleTableIterators.forEach(table, assertion);
 	}
 

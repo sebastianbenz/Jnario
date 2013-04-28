@@ -12,7 +12,6 @@ import static com.google.common.collect.Iterables.contains;
 import java.util.Arrays;
 
 import org.eclipse.xtext.xbase.lib.Functions;
-import org.eclipse.xtext.xbase.lib.Procedures;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -38,28 +37,30 @@ import com.google.common.base.Objects;
  */
 public class Should{
 	
-	@SuppressWarnings("unchecked")
-	public static boolean operator_doubleArrow(Object actual, Object expected) {
-		if (expected instanceof Matcher<?>) {
-			return ((Matcher<?>)expected).matches(actual);
-		}
-		if (!(actual instanceof Class<?>) && (expected instanceof Class<?>)) {
-			return should_be(actual, (Class<?>) expected);
-		}
-		if (expected instanceof Procedures.Procedure1<?>) {
-			((Procedures.Procedure1<Object>)expected).apply(actual);
-			return true;
-		}
-		if (expected instanceof Functions.Function1<?,?>) {
-			Object result = ((Functions.Function1<Object,Object>)expected).apply(actual);
-			return result instanceof Boolean && ((Boolean)result);
-		}
-		if(isArray(actual) && isArray(expected)){
-			return Arrays.equals((Object[])actual, (Object[])expected);
-		}
-		return Objects.equal(actual, expected);
+	public static boolean operator_doubleArrow(Class<?> actual, Class<?> expected){
+		return should_be(actual, expected);
 	}
-
+	
+	public static <T> boolean operator_doubleArrow(T actual, T expected){
+		return should_be(actual, expected);
+	}
+	
+	public static boolean operator_doubleArrow(Object actual, Class<?> expectedType){
+		return should_be(actual, expectedType);
+	}
+	
+	public static <T> boolean operator_doubleArrow(T actual, Matcher<? super T> matcher){
+		return should_be(actual, matcher);
+	}
+	
+	public static <T> boolean operator_doubleArrow(T actual, boolean result){
+		return should_be(actual, result);
+	}
+	
+	public static <T> boolean operator_doubleArrow(T actual, Functions.Function1<T,Boolean> matcher){
+		return should_be(actual, matcher);
+	}
+	
 	private static boolean isArray(Object obj) {
 		if(obj == null){
 			return false;
@@ -90,7 +91,11 @@ public class Should{
 //			Object expected) {
 //		return actual != null && expected != null && actual.getClass().equals(expected.getClass()) && actual instanceof CharSequence;
 //	}
-
+	
+	public static boolean should_be(Class<?> actual, Class<?> expectedType){
+		return actual.equals(expectedType);
+	}
+	
 	public static boolean should_be(Object actual, Class<?> expectedType){
 		return expectedType.isInstance(actual);
 	}
