@@ -14,7 +14,6 @@ import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
 import org.eclipse.xtend.core.formatting.XtendFormatter;
 import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
-import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
 import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
 import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
@@ -38,6 +37,7 @@ import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.validation.ConfigurableIssueCodesProvider;
 import org.eclipse.xtext.validation.IResourceValidator;
+import org.eclipse.xtext.validation.NamesAreUniqueValidationHelper;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
@@ -77,6 +77,7 @@ import org.jnario.feature.parser.CustomFeatureParser;
 import org.jnario.feature.resource.FeatureLocationInFileProvider;
 import org.jnario.feature.scoping.FeatureScopeProvider;
 import org.jnario.feature.scoping.FeatureScopeProviderAccess;
+import org.jnario.feature.validation.FeatureNamesAreUniqueValidationHelper;
 import org.jnario.feature.validation.FeatureResourceValidator;
 import org.jnario.jvmmodel.ExecutableProvider;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
@@ -105,6 +106,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 		binder.bind(Executable2ResultMapping.class).to(HashBasedSpec2ResultMapping.class);
 		binder.bind(ImplicitlyImportedTypes.class).to(JnarioImplicitlyImportedTypes.class);
 		binder.bind(ScopeProviderAccess.class).to(FeatureScopeProviderAccess.class);
+		binder.bind(NamesAreUniqueValidationHelper.class).to(FeatureNamesAreUniqueValidationHelper.class);
 	}
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {

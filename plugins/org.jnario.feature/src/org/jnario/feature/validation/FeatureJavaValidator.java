@@ -26,6 +26,7 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.validation.ComposedChecks;
+import org.eclipse.xtext.validation.NamesAreUniqueValidator;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.validation.IssueCodes;
@@ -44,7 +45,7 @@ import com.google.inject.Inject;
  * @author Birgit Engelmann - Initial contribution and API
  * @author Sebastian Benz
  */
-@ComposedChecks(validators={JnarioJavaValidator.class})
+@ComposedChecks(validators={JnarioJavaValidator.class, NamesAreUniqueValidator.class})
 public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	
 	@Inject StepNameProvider nameProvider;
