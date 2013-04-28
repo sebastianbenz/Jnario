@@ -46,11 +46,10 @@ Feature: Feature Extensions
 		List list
 		When sorting the colors "red, green, blue"
 			list = args.first.split(",").map[it.trim].sort
-		Then they should be ordered
-			list => list("blue","green","red")
+		Then they should be ordered "blue, green, red"
+			list => args.first.toList
 			
 	Scenario: Referencing multiple extensions
 		When sorting the colors "yellow, red"
-		Then they should be ordered
-			list => list("red","yellow")
+		Then they should be ordered "red, yellow"
 			

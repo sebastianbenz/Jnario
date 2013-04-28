@@ -84,7 +84,7 @@
 <ul>
 <li><span class="step notrun"><p>When sorting the colors <code>"red, green, blue"</code></p></span>
 </li>
-<li><span class="step notrun"><p>Then they should be ordered</p></span>
+<li><span class="step notrun"><p>Then they should be ordered <code>"blue, green, red"</code></p></span>
 </li>
 </ul>
 </div>
@@ -93,7 +93,7 @@
 <ul>
 <li><span class="step notrun"><p>When sorting the colors <code>"yellow, red"</code></p></span>
 </li>
-<li><span class="step notrun"><p>Then they should be ordered</p></span>
+<li><span class="step notrun"><p>Then they should be ordered <code>"red, yellow"</code></p></span>
 </li>
 </ul>
 </div>
@@ -150,13 +150,12 @@ Feature: Feature Extensions
     List list
     When sorting the colors &quot;red, green, blue&quot;
       list = args.first.split(&quot;,&quot;).map[it.trim].sort
-    Then they should be ordered
-      list =&gt; list(&quot;blue&quot;,&quot;green&quot;,&quot;red&quot;)
+    Then they should be ordered &quot;blue, green, red&quot;
+      list =&gt; args.first.toList
       
   Scenario: Referencing multiple extensions
     When sorting the colors &quot;yellow, red&quot;
-    Then they should be ordered
-      list =&gt; list(&quot;red&quot;,&quot;yellow&quot;)
+    Then they should be ordered &quot;red, yellow&quot;
 </pre>
 						    </p></div>
 						  </div>

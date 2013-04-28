@@ -15,10 +15,10 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.integration.FeatureExtensionsFeature;
 import org.jnario.lib.Assert;
-import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
 import org.jnario.lib.StepArguments;
+import org.jnario.lib.StringConversions;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -52,13 +52,18 @@ public class FeatureExtensionsFeatureReferencingMultipleExtensions extends Featu
   
   @Test
   @Order(1)
-  @Named("Then they should be ordered")
-  public void thenTheyShouldBeOrdered() {
-    List<String> _list = JnarioCollectionLiterals.<String>list("red", "yellow");
+  @Named("Then they should be ordered \\\"red, yellow\\\"")
+  public void thenTheyShouldBeOrderedRedYellow() {
+    StepArguments _stepArguments = new StepArguments("red, yellow");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    List<String> _list = StringConversions.toList(_first);
     boolean _doubleArrow = Should.operator_doubleArrow(this.list, _list);
-    Assert.assertTrue("\nExpected list => list(\"red\",\"yellow\") but"
+    Assert.assertTrue("\nExpected list => args.first.toList but"
      + "\n     list is " + new StringDescription().appendValue(this.list).toString()
-     + "\n     list(\"red\",\"yellow\") is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
+     + "\n     args.first.toList is " + new StringDescription().appendValue(_list).toString()
+     + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
+     + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
 }

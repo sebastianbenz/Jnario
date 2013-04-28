@@ -89,7 +89,6 @@ Feature: Field Inference
 					Given a string "value"
 						myString = args.first
 			'''
-			feature1 = args.first
 		And another feature 
 			'''
 			Feature: Feature 2

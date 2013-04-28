@@ -7,7 +7,10 @@
  */
 package org.jnario.feature.tests.integration;
 
+import com.google.inject.Inject;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
+import org.jnario.jnario.test.util.BehaviorExecutor;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.lib.JnarioIterableExtensions;
@@ -24,7 +27,14 @@ import org.junit.runner.RunWith;
 @CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class ReferencesForStepsFeatureStepReferencesWithExtensionsInSameScenario extends ReferencesForStepsFeature {
+  @Inject
+  @Extension
+  @org.jnario.runner.Extension
+  public BehaviorExecutor behaviorExecutor;
+  
   CharSequence jnarioFile;
+  
+  CharSequence jnarioFile2;
   
   @Test
   @Order(0)

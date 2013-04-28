@@ -152,7 +152,6 @@ Feature: References for steps
 					And we can use it inside other steps
 						x.myExtensionMethod
 	 	'''
-	 	 	jnarioFile = args.first
 	 	Then it should execute successfully
 	 
 	 Scenario: Extension fields in And step
@@ -176,7 +175,6 @@ Feature: References for steps
 						And we can use it inside other steps
 							x.myExtensionMethod
 		'''
-	 	 	jnarioFile = args.first
 	 	Then it should execute successfully	
 	 	
 	 Scenario: Using closures in steps
@@ -287,7 +285,6 @@ Feature: References for steps
 				args.first.greet => args.second
 			But greeting "World" is "Hello World"
 	 	'''
-	 		jnarioFile = args.first
 	 	Then it should execute successfully
 	 	
 	 Scenario: Scenario references two steps from different scenarios which define the same field

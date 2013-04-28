@@ -1,9 +1,9 @@
 package org.jnario.jnario.documentation
 
 /*
- * You can generate HTML reports for your specifications written in Jnario. If you generate these reports using Maven
- * youThis is a great way to communicate the 
- * progress of your project with your stakeholders. 
+ * It is possible to generate HTML reports for your specifications written in Jnario. 
+ * They are a great way to communicate the progress of your project with your stakeholders. 
+ * You can generate these reports using Maven.
  * 
  * ![A failing feature report.](/img/report_error.png)
  * 
