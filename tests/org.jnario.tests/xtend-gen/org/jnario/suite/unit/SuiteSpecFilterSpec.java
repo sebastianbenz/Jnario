@@ -59,7 +59,7 @@ public class SuiteSpecFilterSpec {
     EClass _suite = this._suitePackage.getSuite();
     IEObjectDescription _desc = this.desc(_suite);
     boolean _apply = this.subject.apply(_desc);
-    boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_apply), Boolean.valueOf(true));
+    boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_apply), true);
     Assert.assertTrue("\nExpected subject.apply(desc(suite)) => true but"
      + "\n     subject.apply(desc(suite)) is " + new StringDescription().appendValue(Boolean.valueOf(_apply)).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
@@ -75,7 +75,7 @@ public class SuiteSpecFilterSpec {
     EClass _feature = this._featurePackage.getFeature();
     IEObjectDescription _desc = this.desc(_feature);
     boolean _apply = this.subject.apply(_desc);
-    boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_apply), Boolean.valueOf(true));
+    boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_apply), true);
     Assert.assertTrue("\nExpected subject.apply(desc(feature)) => true but"
      + "\n     subject.apply(desc(feature)) is " + new StringDescription().appendValue(Boolean.valueOf(_apply)).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
@@ -90,7 +90,7 @@ public class SuiteSpecFilterSpec {
   public void _rootSpecsPass() throws Exception {
     IEObjectDescription _rootSpec = this.rootSpec();
     boolean _apply = this.subject.apply(_rootSpec);
-    boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_apply), Boolean.valueOf(true));
+    boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_apply), true);
     Assert.assertTrue("\nExpected subject.apply(rootSpec) => true but"
      + "\n     subject.apply(rootSpec) is " + new StringDescription().appendValue(Boolean.valueOf(_apply)).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
@@ -104,7 +104,7 @@ public class SuiteSpecFilterSpec {
   public void _childSpecsFail() throws Exception {
     IEObjectDescription _childSpec = this.childSpec();
     boolean _apply = this.subject.apply(_childSpec);
-    boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_apply), Boolean.valueOf(false));
+    boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_apply), false);
     Assert.assertTrue("\nExpected subject.apply(childSpec) => false but"
      + "\n     subject.apply(childSpec) is " + new StringDescription().appendValue(Boolean.valueOf(_apply)).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()

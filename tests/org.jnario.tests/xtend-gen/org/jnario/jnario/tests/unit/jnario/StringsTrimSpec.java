@@ -8,12 +8,12 @@
 package org.jnario.jnario.tests.unit.jnario;
 
 import java.util.Arrays;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
 import org.jnario.jnario.tests.unit.jnario.StringsTrimSpecExamples;
 import org.jnario.lib.Assert;
+import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -108,7 +108,7 @@ public class StringsTrimSpec extends StringsSpec {
           char _charAt = "_".charAt(0);
           String _trim = Strings.trim(_string, _charAt);
           String _result = it.getResult();
-          boolean _doubleArrow = Should.operator_doubleArrow(_trim, _result);
+          boolean _doubleArrow = Should.<String>operator_doubleArrow(_trim, _result);
           Assert.assertTrue("\nExpected string.trim(\'_\'.charAt(0)) => result but"
            + "\n     string.trim(\'_\'.charAt(0)) is " + new StringDescription().appendValue(_trim).toString()
            + "\n     string is " + new StringDescription().appendValue(_string).toString()
@@ -117,6 +117,6 @@ public class StringsTrimSpec extends StringsSpec {
           
         }
       };
-    IterableExtensions.<StringsTrimSpecExamples>forEach(this.examples, _function);
+    Each.<StringsTrimSpecExamples>forEach(this.examples, _function);
   }
 }

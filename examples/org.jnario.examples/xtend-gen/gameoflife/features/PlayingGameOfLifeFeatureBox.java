@@ -42,7 +42,7 @@ public class PlayingGameOfLifeFeatureBox extends PlayingGameOfLifeFeature {
     this.world = _evolve;
     String _first = JnarioIterableExtensions.<String>first(args);
     World _parseWorld = World.parseWorld(_first);
-    boolean _doubleArrow = Should.operator_doubleArrow(
+    boolean _doubleArrow = Should.<World>operator_doubleArrow(
       this.world, _parseWorld);
     Assert.assertTrue("\nExpected world => parseWorld(args.first) but"
      + "\n     world is " + new StringDescription().appendValue(this.world).toString()

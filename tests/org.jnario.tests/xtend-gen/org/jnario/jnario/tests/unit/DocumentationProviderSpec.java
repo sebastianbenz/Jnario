@@ -57,7 +57,7 @@ public class DocumentationProviderSpec {
   @Order(2)
   public void _returnsComment() throws Exception {
     String _documentation = this.documentation("Hello World");
-    boolean _doubleArrow = Should.operator_doubleArrow(_documentation, "Hello World");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_documentation, "Hello World");
     Assert.assertTrue("\nExpected documentation(\"Hello World\") => \"Hello World\" but"
      + "\n     documentation(\"Hello World\") is " + new StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
     
@@ -68,7 +68,7 @@ public class DocumentationProviderSpec {
   @Order(3)
   public void _canBeEscapedWith() throws Exception {
     String _documentation = this.documentation("Hello \\/*World");
-    boolean _doubleArrow = Should.operator_doubleArrow(_documentation, "Hello /*World");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_documentation, "Hello /*World");
     Assert.assertTrue("\nExpected documentation(\"Hello \\\\/*World\") => \"Hello /*World\" but"
      + "\n     documentation(\"Hello \\\\/*World\") is " + new StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
     
@@ -79,7 +79,7 @@ public class DocumentationProviderSpec {
   @Order(4)
   public void _canBeUnescapedWith() throws Exception {
     String _documentation = this.documentation("Hello \\\\/*World");
-    boolean _doubleArrow = Should.operator_doubleArrow(_documentation, "Hello \\/*World");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_documentation, "Hello \\/*World");
     Assert.assertTrue("\nExpected documentation(\"Hello \\\\\\\\/*World\") => \"Hello \\\\/*World\" but"
      + "\n     documentation(\"Hello \\\\\\\\/*World\") is " + new StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
     
@@ -90,7 +90,7 @@ public class DocumentationProviderSpec {
   @Order(5)
   public void _canAlsoBeEscapedWith() throws Exception {
     String _documentation = this.documentation("Hello \\*/World");
-    boolean _doubleArrow = Should.operator_doubleArrow(_documentation, "Hello */World");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_documentation, "Hello */World");
     Assert.assertTrue("\nExpected documentation(\"Hello \\\\*/World\") => \"Hello */World\" but"
      + "\n     documentation(\"Hello \\\\*/World\") is " + new StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
     
@@ -101,7 +101,7 @@ public class DocumentationProviderSpec {
   @Order(6)
   public void _canAlsoBeUnescapedWith() throws Exception {
     String _documentation = this.documentation("Hello \\\\*/World");
-    boolean _doubleArrow = Should.operator_doubleArrow(_documentation, "Hello \\*/World");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_documentation, "Hello \\*/World");
     Assert.assertTrue("\nExpected documentation(\"Hello \\\\\\\\*/World\") => \"Hello \\\\*/World\" but"
      + "\n     documentation(\"Hello \\\\\\\\*/World\") is " + new StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
     

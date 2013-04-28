@@ -40,7 +40,7 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
   public void _listLiteral() throws Exception {
     List<String> _list = JnarioCollectionLiterals.<String>list("green", "red");
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("green", "red");
-    boolean _doubleArrow = Should.operator_doubleArrow(_list, _newArrayList);
+    boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(_list, _newArrayList);
     Assert.assertTrue("\nExpected list(\"green\", \"red\")             => newArrayList(\"green\", \"red\") but"
      + "\n     list(\"green\", \"red\") is " + new StringDescription().appendValue(_list).toString()
      + "\n     newArrayList(\"green\", \"red\") is " + new StringDescription().appendValue(_newArrayList).toString() + "\n", _doubleArrow);
@@ -51,7 +51,7 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
     ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("green");
     ArrayList<String> _newArrayList_2 = CollectionLiterals.<String>newArrayList("red");
     ArrayList<ArrayList<String>> _newArrayList_3 = CollectionLiterals.<ArrayList<String>>newArrayList(_newArrayList_1, _newArrayList_2);
-    boolean _doubleArrow_1 = Should.operator_doubleArrow(_list_3, _newArrayList_3);
+    boolean _doubleArrow_1 = Should.<List<? extends List<String>>>operator_doubleArrow(_list_3, _newArrayList_3);
     Assert.assertTrue("\nExpected list(list(\"green\"), list(\"red\")) => newArrayList(newArrayList(\"green\"), newArrayList(\"red\")) but"
      + "\n     list(list(\"green\"), list(\"red\")) is " + new StringDescription().appendValue(_list_3).toString()
      + "\n     list(\"green\") is " + new StringDescription().appendValue(_list_1).toString()
@@ -68,7 +68,7 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
   public void _setLiteral() throws Exception {
     Set<String> _set = JnarioCollectionLiterals.<String>set("green", "red");
     HashSet<String> _newHashSet = CollectionLiterals.<String>newHashSet("green", "red");
-    boolean _doubleArrow = Should.operator_doubleArrow(_set, _newHashSet);
+    boolean _doubleArrow = Should.<Set<String>>operator_doubleArrow(_set, _newHashSet);
     Assert.assertTrue("\nExpected set(\"green\", \"red\")              => newHashSet(\"green\", \"red\") but"
      + "\n     set(\"green\", \"red\") is " + new StringDescription().appendValue(_set).toString()
      + "\n     newHashSet(\"green\", \"red\") is " + new StringDescription().appendValue(_newHashSet).toString() + "\n", _doubleArrow);
@@ -79,7 +79,7 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
     HashSet<String> _newHashSet_1 = CollectionLiterals.<String>newHashSet("green");
     HashSet<String> _newHashSet_2 = CollectionLiterals.<String>newHashSet("red");
     HashSet<HashSet<String>> _newHashSet_3 = CollectionLiterals.<HashSet<String>>newHashSet(_newHashSet_1, _newHashSet_2);
-    boolean _doubleArrow_1 = Should.operator_doubleArrow(_set_3, _newHashSet_3);
+    boolean _doubleArrow_1 = Should.<Set<? extends Set<String>>>operator_doubleArrow(_set_3, _newHashSet_3);
     Assert.assertTrue("\nExpected set(set(\"green\"), set(\"red\"))    => newHashSet(newHashSet(\"green\"), newHashSet(\"red\")) but"
      + "\n     set(set(\"green\"), set(\"red\")) is " + new StringDescription().appendValue(_set_3).toString()
      + "\n     set(\"green\") is " + new StringDescription().appendValue(_set_1).toString()
@@ -102,7 +102,7 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
     Pair<String,String> _mappedTo_4 = Pair.<String, String>of("yellow", "banana");
     Pair<String,String> _mappedTo_5 = Pair.<String, String>of("red", "tomato");
     HashMap<String,String> _newHashMap = CollectionLiterals.<String, String>newHashMap(_mappedTo_3, _mappedTo_4, _mappedTo_5);
-    boolean _doubleArrow = Should.operator_doubleArrow(_map, _newHashMap);
+    boolean _doubleArrow = Should.<Map<String,String>>operator_doubleArrow(_map, _newHashMap);
     Assert.assertTrue("\nExpected map(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) => newHashMap(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) but"
      + "\n     map(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) is " + new StringDescription().appendValue(_map).toString()
      + "\n     \"green\"  -> \"apple\" is " + new StringDescription().appendValue(_mappedTo).toString()

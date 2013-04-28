@@ -41,7 +41,7 @@ public class EvolutionLiveCellsSpec extends EvolutionSpec {
     World _evolve = evolution.evolve(this.worldWithLiveCell);
     Set<CellLocation> _livingCells = _evolve.getLivingCells();
     Set<CellLocation> _set = JnarioCollectionLiterals.<CellLocation>set(this.livingCell);
-    boolean _doubleArrow = Should.operator_doubleArrow(_livingCells, _set);
+    boolean _doubleArrow = Should.<Set<CellLocation>>operator_doubleArrow(_livingCells, _set);
     Assert.assertTrue("\nExpected evolution.evolve(worldWithLiveCell).livingCells => set(livingCell) but"
      + "\n     evolution.evolve(worldWithLiveCell).livingCells is " + new StringDescription().appendValue(_livingCells).toString()
      + "\n     evolution.evolve(worldWithLiveCell) is " + new StringDescription().appendValue(_evolve).toString()

@@ -43,7 +43,7 @@ public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEverySce
   public void thenEveryClassShouldHaveAMethodThatThrowsARuntimeExeception() {
     Result _run = FeatureExecutor.run(this.jnarioFile);
     int _failureCount = _run.getFailureCount();
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2));
     Assert.assertTrue("\nExpected jnarioFile.run.failureCount => 2 but"
      + "\n     jnarioFile.run.failureCount is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
      + "\n     jnarioFile.run is " + new StringDescription().appendValue(_run).toString()

@@ -9,10 +9,10 @@ package org.jnario.suite.unit;
 
 import java.util.Arrays;
 import org.eclipse.xtext.util.Strings;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
+import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -78,7 +78,7 @@ public class PatternValueConverterToStringStringSpec extends PatternValueConvert
           String _result = it.getResult();
           String _newLine = Strings.newLine();
           String _plus = (_result + _newLine);
-          boolean _doubleArrow = Should.operator_doubleArrow(_string, _plus);
+          boolean _doubleArrow = Should.<String>operator_doubleArrow(_string, _plus);
           Assert.assertTrue("\nExpected subject.toString(input) => result + newLine but"
            + "\n     subject.toString(input) is " + new StringDescription().appendValue(_string).toString()
            + "\n     subject is " + new StringDescription().appendValue(PatternValueConverterToStringStringSpec.this.subject).toString()
@@ -89,6 +89,6 @@ public class PatternValueConverterToStringStringSpec extends PatternValueConvert
           
         }
       };
-    IterableExtensions.<PatternValueConverterToStringStringSpecExamples>forEach(this.examples, _function);
+    Each.<PatternValueConverterToStringStringSpecExamples>forEach(this.examples, _function);
   }
 }

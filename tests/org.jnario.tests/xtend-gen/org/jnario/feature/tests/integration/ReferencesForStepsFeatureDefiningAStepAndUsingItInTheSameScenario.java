@@ -51,7 +51,7 @@ public class ReferencesForStepsFeatureDefiningAStepAndUsingItInTheSameScenario e
     int _failureCount = _run.getFailureCount();
     String _first = JnarioIterableExtensions.<String>first(args);
     int _int = StringConversions.toInt(_first);
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(_int));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(_int));
     Assert.assertTrue("\nExpected jnarioFile.run.failureCount => args.first.toInt but"
      + "\n     jnarioFile.run.failureCount is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
      + "\n     jnarioFile.run is " + new StringDescription().appendValue(_run).toString()

@@ -26,7 +26,7 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Order(1)
   public void _removesColon() throws Exception {
     String _value = this.subject.toValue(":suite", null);
-    boolean _doubleArrow = Should.operator_doubleArrow(_value, "suite");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, "suite");
     Assert.assertTrue("\nExpected subject.toValue(\":suite\", null) => \"suite\" but"
      + "\n     subject.toValue(\":suite\", null) is " + new StringDescription().appendValue(_value).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
@@ -38,7 +38,7 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Order(2)
   public void _removesWhitespaceAfterColon() throws Exception {
     String _value = this.subject.toValue(": suite", null);
-    boolean _doubleArrow = Should.operator_doubleArrow(_value, "suite");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, "suite");
     Assert.assertTrue("\nExpected subject.toValue(\": suite\", null) => \"suite\" but"
      + "\n     subject.toValue(\": suite\", null) is " + new StringDescription().appendValue(_value).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
@@ -50,7 +50,7 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Order(3)
   public void _removesEscapeCharacterForDashes() throws Exception {
     String _value = this.subject.toValue(":suite \\- with dash", null);
-    boolean _doubleArrow = Should.operator_doubleArrow(_value, "suite - with dash");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, "suite - with dash");
     Assert.assertTrue("\nExpected subject.toValue(\":suite \\\\- with dash\", null) => \"suite - with dash\" but"
      + "\n     subject.toValue(\":suite \\\\- with dash\", null) is " + new StringDescription().appendValue(_value).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
@@ -62,7 +62,7 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Order(4)
   public void _removesEscapeCharacterForHashs() throws Exception {
     String _value = this.subject.toValue(":suite \\# with hash", null);
-    boolean _doubleArrow = Should.operator_doubleArrow(_value, "suite # with hash");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, "suite # with hash");
     Assert.assertTrue("\nExpected subject.toValue(\":suite \\\\# with hash\", null) => \"suite # with hash\" but"
      + "\n     subject.toValue(\":suite \\\\# with hash\", null) is " + new StringDescription().appendValue(_value).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);

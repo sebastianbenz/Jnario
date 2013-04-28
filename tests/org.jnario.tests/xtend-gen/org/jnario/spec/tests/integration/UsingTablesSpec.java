@@ -439,7 +439,7 @@ public class UsingTablesSpec {
                 int _value2 = it.getValue2();
                 int _plus = (_value1 + _value2);
                 int _sum = it.getSum();
-                boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(_sum));
+                boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(_sum));
                 Assert.assertTrue("\nExpected value1 + value2 => sum but"
                  + "\n     value1 + value2 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString()
                  + "\n     value1 is " + new StringDescription().appendValue(_value1).toString()

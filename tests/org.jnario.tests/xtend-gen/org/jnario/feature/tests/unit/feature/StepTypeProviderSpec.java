@@ -64,7 +64,7 @@ public class StepTypeProviderSpec {
   public void _createGivenExpectedTypesGIVEN() throws Exception {
     Given _createGiven = this.factory.createGiven();
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createGiven);
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.GIVEN);
+    boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.GIVEN);
     Assert.assertTrue("\nExpected createGiven.expectedTypes => GIVEN but"
      + "\n     createGiven.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     createGiven is " + new StringDescription().appendValue(_createGiven).toString()
@@ -78,7 +78,7 @@ public class StepTypeProviderSpec {
   public void _createGivenReferenceExpectedTypesGIVEN() throws Exception {
     GivenReference _createGivenReference = this.factory.createGivenReference();
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createGivenReference);
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.GIVEN);
+    boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.GIVEN);
     Assert.assertTrue("\nExpected createGivenReference.expectedTypes => GIVEN but"
      + "\n     createGivenReference.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     createGivenReference is " + new StringDescription().appendValue(_createGivenReference).toString()
@@ -92,7 +92,7 @@ public class StepTypeProviderSpec {
   public void _createWhenExpectedTypesWHEN() throws Exception {
     When _createWhen = this.factory.createWhen();
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createWhen);
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.WHEN);
+    boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.WHEN);
     Assert.assertTrue("\nExpected createWhen.expectedTypes => WHEN but"
      + "\n     createWhen.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     createWhen is " + new StringDescription().appendValue(_createWhen).toString()
@@ -106,7 +106,7 @@ public class StepTypeProviderSpec {
   public void _createWhenReferenceExpectedTypesWHEN() throws Exception {
     WhenReference _createWhenReference = this.factory.createWhenReference();
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createWhenReference);
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.WHEN);
+    boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.WHEN);
     Assert.assertTrue("\nExpected createWhenReference.expectedTypes => WHEN but"
      + "\n     createWhenReference.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     createWhenReference is " + new StringDescription().appendValue(_createWhenReference).toString()
@@ -120,7 +120,7 @@ public class StepTypeProviderSpec {
   public void _createThenExpectedTypesTHEN() throws Exception {
     Then _createThen = this.factory.createThen();
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createThen);
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.THEN);
+    boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.THEN);
     Assert.assertTrue("\nExpected createThen.expectedTypes => THEN but"
      + "\n     createThen.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     createThen is " + new StringDescription().appendValue(_createThen).toString()
@@ -134,7 +134,7 @@ public class StepTypeProviderSpec {
   public void _createThenReferenceExpectedTypesTHEN() throws Exception {
     ThenReference _createThenReference = this.factory.createThenReference();
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createThenReference);
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.THEN);
+    boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.THEN);
     Assert.assertTrue("\nExpected createThenReference.expectedTypes => THEN but"
      + "\n     createThenReference.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     createThenReference is " + new StringDescription().appendValue(_createThenReference).toString()
@@ -161,7 +161,7 @@ public class StepTypeProviderSpec {
     _builder.append("And something else");
     _builder.newLine();
     Set<EClass> _expectedTypes = this.expectedTypes(_builder);
-    boolean _doubleArrow = Should.operator_doubleArrow(_expectedTypes, StepTypeProvider.GIVEN);
+    boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.GIVEN);
     Assert.assertTrue("\nExpected \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tAnd something else\n\t\t\tAnd something else\n\t\'\'\'.expectedTypes =>  GIVEN but"
      + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tAnd something else\n\t\t\tAnd something else\n\t\'\'\'.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
      + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tAnd something else\n\t\t\tAnd something else\n\t\'\'\' is " + new StringDescription().appendValue(_builder).toString()

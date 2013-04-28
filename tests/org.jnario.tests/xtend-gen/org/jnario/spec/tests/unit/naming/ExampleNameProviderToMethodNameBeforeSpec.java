@@ -44,7 +44,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
     final Procedure1<String> _function = new Procedure1<String>() {
         public void apply(final String it) {
           String _firstMethodName = ExampleNameProviderToMethodNameBeforeSpec.this.firstMethodName(it);
-          boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "_myExample");
+          boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "_myExample");
           Assert.assertTrue("\nExpected firstMethodName => \'_myExample\' but"
            + "\n     firstMethodName is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
           
@@ -58,7 +58,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   @Order(2)
   public void _shouldUseBeforeAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("before{}");
-    boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "before");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "before");
     Assert.assertTrue("\nExpected firstMethodName(\"before{}\") => \"before\" but"
      + "\n     firstMethodName(\"before{}\") is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
     
@@ -69,7 +69,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   @Order(3)
   public void _shouldUseBeforeAllAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("before all{}");
-    boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "beforeAll");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "beforeAll");
     Assert.assertTrue("\nExpected firstMethodName(\"before all{}\") => \"beforeAll\" but"
      + "\n     firstMethodName(\"before all{}\") is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
     
@@ -80,7 +80,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   @Order(4)
   public void _shouldEnumerateBeforeWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName("before{}\r\n                 before{}");
-    boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "before2");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_secondMethodName, "before2");
     Assert.assertTrue("\nExpected secondMethodName(\"before{}\r\n                 before{}\") => \"before2\" but"
      + "\n     secondMethodName(\"before{}\r\n                 before{}\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
     
@@ -92,7 +92,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   public void _shouldEnumerateNestedBeforeWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName(
       "before{}\r\n                 context{\r\n                   before{}\r\n                 }");
-    boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "before2");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_secondMethodName, "before2");
     Assert.assertTrue("\nExpected secondMethodName(\r\n                \"before{}\r\n                 context{\r\n                   before{}\r\n                 }\") => \"before2\" but"
      + "\n     secondMethodName(\r\n                \"before{}\r\n                 context{\r\n                   before{}\r\n                 }\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
     
@@ -104,7 +104,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   public void _shouldEnumerateNestedBeforeAllWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName(
       "before all{}\r\n                 context{\r\n                   before all{}\r\n                 }");
-    boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "beforeAll2");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_secondMethodName, "beforeAll2");
     Assert.assertTrue("\nExpected secondMethodName(\r\n                \"before all{}\r\n                 context{\r\n                   before all{}\r\n                 }\") => \"beforeAll2\" but"
      + "\n     secondMethodName(\r\n                \"before all{}\r\n                 context{\r\n                   before all{}\r\n                 }\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
     
@@ -116,7 +116,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   public void _shouldKeepDefaultNameOfNestedBeforeAndBeforeAll() throws Exception {
     String _secondMethodName = this.secondMethodName(
       "before{}\r\n                 context{\r\n                   before all{}\r\n                 }");
-    boolean _doubleArrow = Should.operator_doubleArrow(_secondMethodName, "beforeAll");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_secondMethodName, "beforeAll");
     Assert.assertTrue("\nExpected secondMethodName(\r\n                \"before{}\r\n                 context{\r\n                   before all{}\r\n                 }\") => \"beforeAll\" but"
      + "\n     secondMethodName(\r\n                \"before{}\r\n                 context{\r\n                   before all{}\r\n                 }\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
     
@@ -127,7 +127,7 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
   @Order(8)
   public void _shouldEscapeInvalidNames() throws Exception {
     String _firstMethodName = this.firstMethodName("before \'null\'{}");
-    boolean _doubleArrow = Should.operator_doubleArrow(_firstMethodName, "_null");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "_null");
     Assert.assertTrue("\nExpected firstMethodName(\"before \'null\'{}\") => \"_null\" but"
      + "\n     firstMethodName(\"before \'null\'{}\") is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
     

@@ -123,7 +123,7 @@ public class SpecResolverSpec {
     List<String> _resolvedSpecs = this.resolvedSpecs(_firstSuite);
     Set<String> _set = IterableExtensions.<String>toSet(_resolvedSpecs);
     Set<String> _set_1 = JnarioCollectionLiterals.<String>set("MySpecSpec", "MyFeatureFeature");
-    boolean _doubleArrow = Should.operator_doubleArrow(_set, _set_1);
+    boolean _doubleArrow = Should.<Set<String>>operator_doubleArrow(_set, _set_1);
     Assert.assertTrue("\nExpected resolvedSpecs(firstSuite).toSet => set(\"MySpecSpec\", \"MyFeatureFeature\") but"
      + "\n     resolvedSpecs(firstSuite).toSet is " + new StringDescription().appendValue(_set).toString()
      + "\n     resolvedSpecs(firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
@@ -141,7 +141,7 @@ public class SpecResolverSpec {
     final Suite suite = Suites.suiteWith("A Suite", _specReference);
     List<Specification> _resolveSpecs = this.subject.resolveSpecs(suite);
     List<ExampleGroup> _list = JnarioCollectionLiterals.<ExampleGroup>list(specWithoutName);
-    boolean _doubleArrow = Should.operator_doubleArrow(_resolveSpecs, _list);
+    boolean _doubleArrow = Should.<List<? extends Specification>>operator_doubleArrow(_resolveSpecs, _list);
     Assert.assertTrue("\nExpected subject.resolveSpecs(suite) => list(specWithoutName) but"
      + "\n     subject.resolveSpecs(suite) is " + new StringDescription().appendValue(_resolveSpecs).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()

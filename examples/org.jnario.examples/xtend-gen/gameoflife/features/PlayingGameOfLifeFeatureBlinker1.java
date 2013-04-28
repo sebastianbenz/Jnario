@@ -42,7 +42,7 @@ public class PlayingGameOfLifeFeatureBlinker1 extends PlayingGameOfLifeFeature {
     this.world = _evolve;
     String _first = JnarioIterableExtensions.<String>first(args);
     World _parseWorld = World.parseWorld(_first);
-    boolean _doubleArrow = Should.operator_doubleArrow(this.world, _parseWorld);
+    boolean _doubleArrow = Should.<World>operator_doubleArrow(this.world, _parseWorld);
     Assert.assertTrue("\nExpected world => parseWorld(args.first) but"
      + "\n     world is " + new StringDescription().appendValue(this.world).toString()
      + "\n     parseWorld(args.first) is " + new StringDescription().appendValue(_parseWorld).toString()

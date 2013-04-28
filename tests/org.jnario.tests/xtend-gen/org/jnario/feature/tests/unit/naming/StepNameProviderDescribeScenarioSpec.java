@@ -29,7 +29,7 @@ public class StepNameProviderDescribeScenarioSpec extends StepNameProviderSpec {
   public void _featuresScenarioWithWhitespaceDescWithWhitespace() throws Exception {
     Scenario _scenario = Features.scenario(" With whitespace ");
     String _desc = this.desc(_scenario);
-    boolean _doubleArrow = Should.operator_doubleArrow(_desc, "With whitespace");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_desc, "With whitespace");
     Assert.assertTrue("\nExpected Features::scenario(\" With whitespace \").desc =>  \"With whitespace\" but"
      + "\n     Features::scenario(\" With whitespace \").desc is " + new StringDescription().appendValue(_desc).toString()
      + "\n     Features::scenario(\" With whitespace \") is " + new StringDescription().appendValue(_scenario).toString() + "\n", _doubleArrow);
@@ -42,7 +42,7 @@ public class StepNameProviderDescribeScenarioSpec extends StepNameProviderSpec {
   public void _featuresScenarioWithParenthesesDescWithParentheses() throws Exception {
     Scenario _scenario = Features.scenario("With (parentheses)");
     String _desc = this.desc(_scenario);
-    boolean _doubleArrow = Should.operator_doubleArrow(_desc, "With [parentheses]");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_desc, "With [parentheses]");
     Assert.assertTrue("\nExpected Features::scenario(\"With (parentheses)\").desc =>  \"With [parentheses]\" but"
      + "\n     Features::scenario(\"With (parentheses)\").desc is " + new StringDescription().appendValue(_desc).toString()
      + "\n     Features::scenario(\"With (parentheses)\") is " + new StringDescription().appendValue(_scenario).toString() + "\n", _doubleArrow);

@@ -107,7 +107,7 @@ public class SuiteExecutableProviderSpec {
     Suite _suite_1 = this.m.suite("Child 1");
     Suite _suite_2 = this.m.suite("Child 2");
     List<Suite> _list = JnarioCollectionLiterals.<Suite>list(_suite_1, _suite_2);
-    boolean _doubleArrow = Should.operator_doubleArrow(_executables, _list);
+    boolean _doubleArrow = Should.<List<? extends Executable>>operator_doubleArrow(_executables, _list);
     Assert.assertTrue("\nExpected subject.getExecutables(suite(\"My Suite\")) => list(suite(\"Child 1\"), suite(\"Child 2\")) but"
      + "\n     subject.getExecutables(suite(\"My Suite\")) is " + new StringDescription().appendValue(_executables).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
@@ -141,7 +141,7 @@ public class SuiteExecutableProviderSpec {
     ExampleGroup _exampleGroup = this.m.exampleGroup("My Spec");
     Feature _feature = this.m.feature();
     Set<Specification> _set_1 = JnarioCollectionLiterals.<Specification>set(_exampleGroup, _feature);
-    boolean _doubleArrow = Should.operator_doubleArrow(_set, _set_1);
+    boolean _doubleArrow = Should.<Set<? extends Executable>>operator_doubleArrow(_set, _set_1);
     Assert.assertTrue("\nExpected subject.getExecutables(suite(\"My Suite\")).toSet => set(exampleGroup(\"My Spec\"), feature()) but"
      + "\n     subject.getExecutables(suite(\"My Suite\")).toSet is " + new StringDescription().appendValue(_set).toString()
      + "\n     subject.getExecutables(suite(\"My Suite\")) is " + new StringDescription().appendValue(_executables).toString()
@@ -176,7 +176,7 @@ public class SuiteExecutableProviderSpec {
     ExampleGroup _exampleGroup_1 = this.m.exampleGroup("String");
     Feature _feature = this.m.feature();
     Set<Specification> _set_1 = JnarioCollectionLiterals.<Specification>set(_exampleGroup, _exampleGroup_1, _feature);
-    boolean _doubleArrow = Should.operator_doubleArrow(_set, _set_1);
+    boolean _doubleArrow = Should.<Set<? extends Executable>>operator_doubleArrow(_set, _set_1);
     Assert.assertTrue("\nExpected subject.getExecutables(suite(\"My Suite\")).toSet => set(exampleGroup(\"My Spec\"), exampleGroup(\"String\"), feature()) but"
      + "\n     subject.getExecutables(suite(\"My Suite\")).toSet is " + new StringDescription().appendValue(_set).toString()
      + "\n     subject.getExecutables(suite(\"My Suite\")) is " + new StringDescription().appendValue(_executables).toString()

@@ -47,7 +47,7 @@ public class ParsingSimpleJnarioFilesFeatureAndStuff extends ParsingSimpleJnario
   @Named("Then the adding these should be the result.")
   public void thenTheAddingTheseShouldBeTheResult() {
     int _plus = (this.x + this.y);
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(this.z));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(this.z));
     Assert.assertTrue("\nExpected (x+y) => z but"
      + "\n     x+y is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString()
      + "\n     x is " + new StringDescription().appendValue(this.x).toString()

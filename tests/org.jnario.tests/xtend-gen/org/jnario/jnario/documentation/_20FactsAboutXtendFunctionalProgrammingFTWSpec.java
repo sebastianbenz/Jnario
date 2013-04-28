@@ -44,7 +44,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
   public void _simpleAccessToListElements() throws Exception {
     final List<String> colors = JnarioCollectionLiterals.<String>list("red", "blue", "green");
     String _head = IterableExtensions.<String>head(colors);
-    boolean _doubleArrow = Should.operator_doubleArrow(_head, "red");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_head, "red");
     Assert.assertTrue("\nExpected colors.head => \"red\" but"
      + "\n     colors.head is " + new StringDescription().appendValue(_head).toString()
      + "\n     colors is " + new StringDescription().appendValue(colors).toString() + "\n", _doubleArrow);
@@ -58,13 +58,13 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
      + "\n     iterable(\"blue\", \"green\") is " + new StringDescription().appendValue(_iterable).toString() + "\n", _doubleArrow_1);
     
     String _last = IterableExtensions.<String>last(colors);
-    boolean _doubleArrow_2 = Should.operator_doubleArrow(_last, "green");
+    boolean _doubleArrow_2 = Should.<String>operator_doubleArrow(_last, "green");
     Assert.assertTrue("\nExpected colors.last => \"green\" but"
      + "\n     colors.last is " + new StringDescription().appendValue(_last).toString()
      + "\n     colors is " + new StringDescription().appendValue(colors).toString() + "\n", _doubleArrow_2);
     
     boolean _isEmpty = colors.isEmpty();
-    boolean _doubleArrow_3 = Should.operator_doubleArrow(Boolean.valueOf(_isEmpty), Boolean.valueOf(false));
+    boolean _doubleArrow_3 = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_isEmpty), false);
     Assert.assertTrue("\nExpected colors.empty => false but"
      + "\n     colors.empty is " + new StringDescription().appendValue(Boolean.valueOf(_isEmpty)).toString()
      + "\n     colors is " + new StringDescription().appendValue(colors).toString() + "\n", _doubleArrow_3);
@@ -129,7 +129,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
       };
     Function1<? super String,? extends Integer> lambda = _function;
     Integer _apply = lambda.apply("hello");
-    boolean _doubleArrow = Should.operator_doubleArrow(_apply, Integer.valueOf(5));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(_apply, Integer.valueOf(5));
     Assert.assertTrue("\nExpected lambda.apply(\"hello\") => 5 but"
      + "\n     lambda.apply(\"hello\") is " + new StringDescription().appendValue(_apply).toString()
      + "\n     lambda is " + new StringDescription().appendValue(lambda).toString() + "\n", _doubleArrow);
@@ -226,7 +226,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
         }
       };
     final Integer charCount = IterableExtensions.<Integer>reduce(_map, _function_1);
-    boolean _doubleArrow = Should.operator_doubleArrow(charCount, Integer.valueOf(12));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(charCount, Integer.valueOf(12));
     Assert.assertTrue("\nExpected charCount => 12 but"
      + "\n     charCount is " + new StringDescription().appendValue(charCount).toString() + "\n", _doubleArrow);
     

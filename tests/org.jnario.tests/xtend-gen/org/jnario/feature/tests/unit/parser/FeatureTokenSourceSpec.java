@@ -217,7 +217,7 @@ public class FeatureTokenSourceSpec {
     final List<Token> actualTokens = IteratorExtensions.<Token>toList(this.tokenAcceptor);
     int _size = actualTokens.size();
     int _size_1 = ((List<CommonToken>)Conversions.doWrapArray(expectedTokens)).size();
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(_size_1));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(_size_1));
     Assert.assertTrue("\nExpected actualTokens.size => expectedTokens.size but"
      + "\n     actualTokens.size is " + new StringDescription().appendValue(Integer.valueOf(_size)).toString()
      + "\n     actualTokens is " + new StringDescription().appendValue(actualTokens).toString()
@@ -230,7 +230,7 @@ public class FeatureTokenSourceSpec {
           final CommonToken actual = ((CommonToken) e);
           int _type = actual.getType();
           int _type_1 = expected.getType();
-          boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_type), Integer.valueOf(_type_1));
+          boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_type), Integer.valueOf(_type_1));
           Assert.assertTrue("\nExpected actual.type => expected.type but"
            + "\n     actual.type is " + new StringDescription().appendValue(Integer.valueOf(_type)).toString()
            + "\n     actual is " + new StringDescription().appendValue(actual).toString()
@@ -239,7 +239,7 @@ public class FeatureTokenSourceSpec {
           
           String _text = actual.getText();
           String _text_1 = expected.getText();
-          boolean _doubleArrow_1 = Should.operator_doubleArrow(_text, _text_1);
+          boolean _doubleArrow_1 = Should.<String>operator_doubleArrow(_text, _text_1);
           Assert.assertTrue("\nExpected actual.text => expected.text but"
            + "\n     actual.text is " + new StringDescription().appendValue(_text).toString()
            + "\n     actual is " + new StringDescription().appendValue(actual).toString()
@@ -248,7 +248,7 @@ public class FeatureTokenSourceSpec {
           
           int _line = actual.getLine();
           int _line_1 = expected.getLine();
-          boolean _doubleArrow_2 = Should.operator_doubleArrow(Integer.valueOf(_line), Integer.valueOf(_line_1));
+          boolean _doubleArrow_2 = Should.<Integer>operator_doubleArrow(Integer.valueOf(_line), Integer.valueOf(_line_1));
           Assert.assertTrue("\nExpected actual.line => expected.line but"
            + "\n     actual.line is " + new StringDescription().appendValue(Integer.valueOf(_line)).toString()
            + "\n     actual is " + new StringDescription().appendValue(actual).toString()

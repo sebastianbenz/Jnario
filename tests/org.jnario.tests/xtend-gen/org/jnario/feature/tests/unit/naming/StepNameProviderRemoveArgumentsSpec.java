@@ -69,7 +69,7 @@ public class StepNameProviderRemoveArgumentsSpec extends StepNameProviderSpec {
           String _step_1 = it.getStep();
           String _removeArguments = StepNameProviderRemoveArgumentsSpec.this.subject.removeArguments(_step_1);
           String _result = it.getResult();
-          boolean _doubleArrow = Should.operator_doubleArrow(_removeArguments, _result);
+          boolean _doubleArrow = Should.<String>operator_doubleArrow(_removeArguments, _result);
           Assert.assertTrue("\nExpected subject.removeArguments(step) => result but"
            + "\n     subject.removeArguments(step) is " + new StringDescription().appendValue(_removeArguments).toString()
            + "\n     subject is " + new StringDescription().appendValue(StepNameProviderRemoveArgumentsSpec.this.subject).toString()

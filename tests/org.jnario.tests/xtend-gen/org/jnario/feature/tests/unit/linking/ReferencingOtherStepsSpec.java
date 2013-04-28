@@ -72,8 +72,8 @@ public class ReferencingOtherStepsSpec {
     this.m.parseScenario(_builder);
     GivenReference _first = this.m.<GivenReference>first(GivenReference.class);
     StepImplementation _reference = _first.getReference();
-    Given _first_1 = this.m.<Given>first(Given.class);
-    boolean _doubleArrow = Should.operator_doubleArrow(_reference, _first_1);
+    StepImplementation _first_1 = this.m.<StepImplementation>first(Given.class);
+    boolean _doubleArrow = Should.<StepImplementation>operator_doubleArrow(_reference, _first_1);
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
      + "\n     first(typeof(GivenReference)).reference is " + new StringDescription().appendValue(_reference).toString()
      + "\n     first(typeof(GivenReference)) is " + new StringDescription().appendValue(_first).toString()
@@ -116,8 +116,8 @@ public class ReferencingOtherStepsSpec {
     this.m.parseScenario(_builder);
     GivenReference _first = this.m.<GivenReference>first(GivenReference.class);
     StepImplementation _reference = _first.getReference();
-    Given _first_1 = this.m.<Given>first(Given.class);
-    boolean _doubleArrow = Should.operator_doubleArrow(_reference, _first_1);
+    StepImplementation _first_1 = this.m.<StepImplementation>first(Given.class);
+    boolean _doubleArrow = Should.<StepImplementation>operator_doubleArrow(_reference, _first_1);
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
      + "\n     first(typeof(GivenReference)).reference is " + new StringDescription().appendValue(_reference).toString()
      + "\n     first(typeof(GivenReference)) is " + new StringDescription().appendValue(_first).toString()
@@ -163,8 +163,8 @@ public class ReferencingOtherStepsSpec {
     this.m.parseScenario(_builder_1);
     GivenReference _first = this.m.<GivenReference>first(GivenReference.class);
     StepImplementation _reference = _first.getReference();
-    Given _first_1 = this.m.<Given>first(Given.class);
-    boolean _doubleArrow = Should.operator_doubleArrow(_reference, _first_1);
+    StepImplementation _first_1 = this.m.<StepImplementation>first(Given.class);
+    boolean _doubleArrow = Should.<StepImplementation>operator_doubleArrow(_reference, _first_1);
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
      + "\n     first(typeof(GivenReference)).reference is " + new StringDescription().appendValue(_reference).toString()
      + "\n     first(typeof(GivenReference)) is " + new StringDescription().appendValue(_first).toString()
@@ -211,8 +211,8 @@ public class ReferencingOtherStepsSpec {
     this.m.parseScenario(_builder_1);
     GivenReference _first = this.m.<GivenReference>first(GivenReference.class);
     StepImplementation _reference = _first.getReference();
-    Given _first_1 = this.m.<Given>first(Given.class);
-    boolean _doubleArrow = Should.operator_doubleArrow(_reference, _first_1);
+    StepImplementation _first_1 = this.m.<StepImplementation>first(Given.class);
+    boolean _doubleArrow = Should.<StepImplementation>operator_doubleArrow(_reference, _first_1);
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
      + "\n     first(typeof(GivenReference)).reference is " + new StringDescription().appendValue(_reference).toString()
      + "\n     first(typeof(GivenReference)) is " + new StringDescription().appendValue(_first).toString()

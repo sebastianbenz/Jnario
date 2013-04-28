@@ -8,10 +8,10 @@
 package org.jnario.suite.unit;
 
 import java.util.Arrays;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
+import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -75,7 +75,7 @@ public class PatternValueConverterToValueStringINodeSpec extends PatternValueCon
           String _input = it.getInput();
           String _value = PatternValueConverterToValueStringINodeSpec.this.subject.toValue(_input, null);
           String _result = it.getResult();
-          boolean _doubleArrow = Should.operator_doubleArrow(_value, _result);
+          boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, _result);
           Assert.assertTrue("\nExpected subject.toValue(input, null) => result but"
            + "\n     subject.toValue(input, null) is " + new StringDescription().appendValue(_value).toString()
            + "\n     subject is " + new StringDescription().appendValue(PatternValueConverterToValueStringINodeSpec.this.subject).toString()
@@ -84,6 +84,6 @@ public class PatternValueConverterToValueStringINodeSpec extends PatternValueCon
           
         }
       };
-    IterableExtensions.<PatternValueConverterToValueStringINodeSpecExamples>forEach(this.examples, _function);
+    Each.<PatternValueConverterToValueStringINodeSpecExamples>forEach(this.examples, _function);
   }
 }

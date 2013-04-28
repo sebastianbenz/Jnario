@@ -8,12 +8,12 @@
 package org.jnario.jnario.tests.unit.jnario;
 
 import java.util.Arrays;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
 import org.jnario.jnario.tests.unit.jnario.StringsTrailingWhitespaceSpecExamples;
 import org.jnario.lib.Assert;
+import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -125,7 +125,7 @@ public class StringsTrailingWhitespaceSpec extends StringsSpec {
           String _string = it.getString();
           String _trailingWhitespace = Strings.trailingWhitespace(_string);
           String _result = it.getResult();
-          boolean _doubleArrow = Should.operator_doubleArrow(_trailingWhitespace, _result);
+          boolean _doubleArrow = Should.<String>operator_doubleArrow(_trailingWhitespace, _result);
           Assert.assertTrue("\nExpected string.trailingWhitespace => result but"
            + "\n     string.trailingWhitespace is " + new StringDescription().appendValue(_trailingWhitespace).toString()
            + "\n     string is " + new StringDescription().appendValue(_string).toString()
@@ -133,6 +133,6 @@ public class StringsTrailingWhitespaceSpec extends StringsSpec {
           
         }
       };
-    IterableExtensions.<StringsTrailingWhitespaceSpecExamples>forEach(this.examples, _function);
+    Each.<StringsTrailingWhitespaceSpecExamples>forEach(this.examples, _function);
   }
 }

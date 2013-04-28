@@ -8,12 +8,12 @@
 package org.jnario.jnario.tests.unit.jnario;
 
 import java.util.Arrays;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
 import org.jnario.jnario.tests.unit.jnario.StringsStartsWithWordSpecExamples;
 import org.jnario.lib.Assert;
+import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -125,7 +125,7 @@ public class StringsStartsWithWordSpec extends StringsSpec {
           String _word = it.getWord();
           int _startsWithWord = Strings.startsWithWord(_string, _word);
           int _index = it.getIndex();
-          boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_startsWithWord), Integer.valueOf(_index));
+          boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_startsWithWord), Integer.valueOf(_index));
           Assert.assertTrue("\nExpected string.startsWithWord(word) => index but"
            + "\n     string.startsWithWord(word) is " + new StringDescription().appendValue(Integer.valueOf(_startsWithWord)).toString()
            + "\n     string is " + new StringDescription().appendValue(_string).toString()
@@ -134,6 +134,6 @@ public class StringsStartsWithWordSpec extends StringsSpec {
           
         }
       };
-    IterableExtensions.<StringsStartsWithWordSpecExamples>forEach(this.examples, _function);
+    Each.<StringsStartsWithWordSpecExamples>forEach(this.examples, _function);
   }
 }

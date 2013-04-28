@@ -47,7 +47,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
     List<String> _resolvedSpecs = this.resolvedSpecs(_firstSuite);
     Set<String> _set = IterableExtensions.<String>toSet(_resolvedSpecs);
     Set<String> _set_1 = JnarioCollectionLiterals.<String>set("MySpecSpec", "MyFeatureFeature");
-    boolean _doubleArrow = Should.operator_doubleArrow(_set, _set_1);
+    boolean _doubleArrow = Should.<Set<String>>operator_doubleArrow(_set, _set_1);
     Assert.assertTrue("\nExpected resolvedSpecs(m.firstSuite).toSet => set(\"MySpecSpec\", \"MyFeatureFeature\") but"
      + "\n     resolvedSpecs(m.firstSuite).toSet is " + new StringDescription().appendValue(_set).toString()
      + "\n     resolvedSpecs(m.firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
@@ -75,7 +75,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
     Suite _firstSuite = this.m.firstSuite();
     List<String> _resolvedSpecs = this.resolvedSpecs(_firstSuite);
     List<String> _list = JnarioCollectionLiterals.<String>list("MySpecSpec");
-    boolean _doubleArrow = Should.operator_doubleArrow(_resolvedSpecs, _list);
+    boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(_resolvedSpecs, _list);
     Assert.assertTrue("\nExpected resolvedSpecs(m.firstSuite) => list(\"MySpecSpec\") but"
      + "\n     resolvedSpecs(m.firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
      + "\n     m.firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
@@ -127,7 +127,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
     List<String> _resolvedSpecs = this.resolvedSpecs(_firstSuite);
     Set<String> _set = IterableExtensions.<String>toSet(_resolvedSpecs);
     Set<String> _set_1 = JnarioCollectionLiterals.<String>set("MySpecSpec", "MyFeatureFeature", "StringSpec");
-    boolean _doubleArrow = Should.operator_doubleArrow(_set, _set_1);
+    boolean _doubleArrow = Should.<Set<String>>operator_doubleArrow(_set, _set_1);
     Assert.assertTrue("\nExpected resolvedSpecs(m.firstSuite).toSet => set(\"MySpecSpec\", \"MyFeatureFeature\", \"StringSpec\") but"
      + "\n     resolvedSpecs(m.firstSuite).toSet is " + new StringDescription().appendValue(_set).toString()
      + "\n     resolvedSpecs(m.firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
@@ -155,7 +155,7 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
     Suite _firstSuite = this.m.firstSuite();
     List<String> _resolvedSpecs = this.resolvedSpecs(_firstSuite);
     List<String> _list = JnarioCollectionLiterals.<String>list("MyFeatureFeature", "MySpecSpec", "StringSpec");
-    boolean _doubleArrow = Should.operator_doubleArrow(_resolvedSpecs, _list);
+    boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(_resolvedSpecs, _list);
     Assert.assertTrue("\nExpected resolvedSpecs(m.firstSuite) => list(\"MyFeatureFeature\", \"MySpecSpec\", \"StringSpec\") but"
      + "\n     resolvedSpecs(m.firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
      + "\n     m.firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()

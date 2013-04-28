@@ -19,7 +19,7 @@ public class WorldLivingNeighboursSpec extends WorldSpec {
   @Order(1)
   public void _returnsNumberOfLiveNeighbours() throws Exception {
     int _livingNeighbours = this.worldWithTwoLiveNeighbours.livingNeighbours(this.liveCell);
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_livingNeighbours), Integer.valueOf(1));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_livingNeighbours), Integer.valueOf(1));
     Assert.assertTrue("\nExpected worldWithTwoLiveNeighbours.livingNeighbours(liveCell) => 1 but"
      + "\n     worldWithTwoLiveNeighbours.livingNeighbours(liveCell) is " + new StringDescription().appendValue(Integer.valueOf(_livingNeighbours)).toString()
      + "\n     worldWithTwoLiveNeighbours is " + new StringDescription().appendValue(this.worldWithTwoLiveNeighbours).toString()

@@ -67,7 +67,7 @@ public class HtmlAssetsCompilerSpec {
     Files.writeStringIntoFile(file, "Hello World");
     this.doCompile();
     String _readFileIntoString = Files.readFileIntoString(file);
-    boolean _doubleArrow = Should.operator_doubleArrow(_readFileIntoString, "Hello World");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_readFileIntoString, "Hello World");
     Assert.assertTrue("\nExpected readFileIntoString(file) => \"Hello World\" but"
      + "\n     readFileIntoString(file) is " + new StringDescription().appendValue(_readFileIntoString).toString()
      + "\n     file is " + new StringDescription().appendValue(file).toString() + "\n", _doubleArrow);

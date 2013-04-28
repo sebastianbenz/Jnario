@@ -156,7 +156,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
     ExampleGroup _exampleGroup = this.m.exampleGroup("Root");
     SpecExecution _result = this.result(_exampleGroup);
     double _executionTimeInSeconds = _result.getExecutionTimeInSeconds();
-    boolean _doubleArrow = Should.operator_doubleArrow(Double.valueOf(_executionTimeInSeconds), Double.valueOf(3.0));
+    boolean _doubleArrow = Should.<Double>operator_doubleArrow(Double.valueOf(_executionTimeInSeconds), Double.valueOf(3.0));
     Assert.assertTrue("\nExpected m.exampleGroup(\"Root\").result.executionTimeInSeconds => 3.0 but"
      + "\n     m.exampleGroup(\"Root\").result.executionTimeInSeconds is " + new StringDescription().appendValue(Double.valueOf(_executionTimeInSeconds)).toString()
      + "\n     m.exampleGroup(\"Root\").result is " + new StringDescription().appendValue(_result).toString()
@@ -185,7 +185,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
     ExampleGroup _exampleGroup = this.m.exampleGroup("Root");
     SpecExecution _result = this.result(_exampleGroup);
     String _className = _result.getClassName();
-    boolean _doubleArrow = Should.operator_doubleArrow(_className, "RootSpec");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_className, "RootSpec");
     Assert.assertTrue("\nExpected m.exampleGroup(\"Root\").result.className => \"RootSpec\" but"
      + "\n     m.exampleGroup(\"Root\").result.className is " + new StringDescription().appendValue(_className).toString()
      + "\n     m.exampleGroup(\"Root\").result is " + new StringDescription().appendValue(_result).toString()
@@ -214,7 +214,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
     ExampleGroup _exampleGroup = this.m.exampleGroup("Root");
     SpecExecution _result = this.result(_exampleGroup);
     String _name = _result.getName();
-    boolean _doubleArrow = Should.operator_doubleArrow(_name, "Root");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_name, "Root");
     Assert.assertTrue("\nExpected m.exampleGroup(\"Root\").result.name => \"Root\" but"
      + "\n     m.exampleGroup(\"Root\").result.name is " + new StringDescription().appendValue(_name).toString()
      + "\n     m.exampleGroup(\"Root\").result is " + new StringDescription().appendValue(_result).toString()
@@ -244,7 +244,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
     final SpecExecution first = this.result(exampleGroup);
     final SpecExecution second = this.result(exampleGroup);
     Matcher<SpecExecution> _sameInstance = CoreMatchers.<SpecExecution>sameInstance(second);
-    boolean _doubleArrow = Should.operator_doubleArrow(first, _sameInstance);
+    boolean _doubleArrow = Should.<SpecExecution>operator_doubleArrow(first, _sameInstance);
     Assert.assertTrue("\nExpected first => sameInstance(second) but"
      + "\n     first is " + new StringDescription().appendValue(first).toString()
      + "\n     sameInstance(second) is " + new StringDescription().appendValue(_sameInstance).toString()

@@ -56,7 +56,7 @@ public class FeatureExecutableProviderSpec {
     Scenario _scenario_1 = this._modelStore.scenario("Scenario: My first Scenario");
     Scenario _scenario_2 = this._modelStore.scenario("Scenario: My second Scenario");
     List<Scenario> _list = JnarioCollectionLiterals.<Scenario>list(_scenario, _scenario_1, _scenario_2);
-    boolean _doubleArrow = Should.operator_doubleArrow(_executables, _list);
+    boolean _doubleArrow = Should.<List<? extends Executable>>operator_doubleArrow(_executables, _list);
     Assert.assertTrue("\nExpected feature().executables => list(scenario(\"Background: My Background\"), scenario(\"Scenario: My first Scenario\"), scenario(\"Scenario: My second Scenario\")) but"
      + "\n     feature().executables is " + new StringDescription().appendValue(_executables).toString()
      + "\n     feature() is " + new StringDescription().appendValue(_feature).toString()
@@ -84,7 +84,7 @@ public class FeatureExecutableProviderSpec {
     List<? extends Executable> _executables = this.executables(_scenario);
     Step _step = this._modelStore.step("Given something");
     List<Step> _list = JnarioCollectionLiterals.<Step>list(_step);
-    boolean _doubleArrow = Should.operator_doubleArrow(_executables, _list);
+    boolean _doubleArrow = Should.<List<? extends Executable>>operator_doubleArrow(_executables, _list);
     Assert.assertTrue("\nExpected scenario(\"Scenario: My first Scenario\").executables => list(step(\"Given something\")) but"
      + "\n     scenario(\"Scenario: My first Scenario\").executables is " + new StringDescription().appendValue(_executables).toString()
      + "\n     scenario(\"Scenario: My first Scenario\") is " + new StringDescription().appendValue(_scenario).toString()
@@ -114,7 +114,7 @@ public class FeatureExecutableProviderSpec {
     Step _step = this._modelStore.step("Given something");
     Step _step_1 = this._modelStore.step("And something else");
     List<Step> _list = JnarioCollectionLiterals.<Step>list(_step, _step_1);
-    boolean _doubleArrow = Should.operator_doubleArrow(_executables, _list);
+    boolean _doubleArrow = Should.<List<? extends Executable>>operator_doubleArrow(_executables, _list);
     Assert.assertTrue("\nExpected scenario(\"Scenario: My first Scenario\").executables => list(step(\"Given something\"), step(\"And something else\")) but"
      + "\n     scenario(\"Scenario: My first Scenario\").executables is " + new StringDescription().appendValue(_executables).toString()
      + "\n     scenario(\"Scenario: My first Scenario\") is " + new StringDescription().appendValue(_scenario).toString()

@@ -8,11 +8,11 @@
 package org.jnario.suite.unit;
 
 import java.util.Arrays;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Suites;
 import org.jnario.lib.Assert;
+import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -87,7 +87,7 @@ public class SuiteClassNameProviderToJavaClassNameSpec extends SuiteClassNamePro
           Suite _suite = Suites.suite(_name);
           String _javaClassName = SuiteClassNameProviderToJavaClassNameSpec.this.subject.toJavaClassName(_suite);
           String _expectedClassName = it.getExpectedClassName();
-          boolean _doubleArrow = Should.operator_doubleArrow(_javaClassName, _expectedClassName);
+          boolean _doubleArrow = Should.<String>operator_doubleArrow(_javaClassName, _expectedClassName);
           Assert.assertTrue("\nExpected subject.toJavaClassName(suite(name)) => expectedClassName but"
            + "\n     subject.toJavaClassName(suite(name)) is " + new StringDescription().appendValue(_javaClassName).toString()
            + "\n     subject is " + new StringDescription().appendValue(SuiteClassNameProviderToJavaClassNameSpec.this.subject).toString()
@@ -97,6 +97,6 @@ public class SuiteClassNameProviderToJavaClassNameSpec extends SuiteClassNamePro
           
         }
       };
-    IterableExtensions.<SuiteClassNameProviderToJavaClassNameSpecExamples>forEach(this.examples, _function);
+    Each.<SuiteClassNameProviderToJavaClassNameSpecExamples>forEach(this.examples, _function);
   }
 }

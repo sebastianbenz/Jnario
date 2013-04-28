@@ -12,6 +12,8 @@ import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Stack;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
@@ -21,6 +23,7 @@ import org.jnario.jnario.test.util.Helpers;
 import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
+import org.jnario.lib.Wait;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -46,8 +49,8 @@ public class UsingShouldSpec {
   public void _toPass() throws Exception {
     boolean _should_be = Should.<Boolean>should_be(
       Boolean.valueOf(true), true);
-    Assert.assertTrue("\nExpected // equality\r\n\t\ttrue should be true but"
-     + "\n     // equality\r\n\t\ttrue should be true is " + new StringDescription().appendValue(true).toString() + "\n", _should_be);
+    Assert.assertTrue("\nExpected // equality\r\n    true should be true but"
+     + "\n     // equality\r\n    true should be true is " + new StringDescription().appendValue(true).toString() + "\n", _should_be);
     
     int _plus = (1 + 1);
     boolean _should_be_1 = Should.<Integer>should_be(Integer.valueOf(_plus), Integer.valueOf(1));
@@ -60,14 +63,14 @@ public class UsingShouldSpec {
     Assert.assertFalse("\nExpected \"something\" should not be null but" + " did not." + "\n", _should_be_2);
     
     int _plus_1 = (1 + 1);
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
     Assert.assertTrue("\nExpected 1 + 1 => 2 but"
      + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_1)).toString() + "\n", _doubleArrow);
     
     boolean _doubleArrow_1 = Should.operator_doubleArrow(
       "a string", String.class);
-    Assert.assertTrue("\nExpected // types\r\n\t\t\"a string\" => typeof(String) but"
-     + "\n     // types\r\n\t\t\"a string\" => typeof(String) is " + new StringDescription().appendValue(_doubleArrow_1).toString() + "\n", _doubleArrow_1);
+    Assert.assertTrue("\nExpected // types\r\n    \"a string\" => typeof(String) but"
+     + "\n     // types\r\n    \"a string\" => typeof(String) is " + new StringDescription().appendValue(_doubleArrow_1).toString() + "\n", _doubleArrow_1);
     
     Class<? extends String> _class = "a string".getClass();
     boolean _doubleArrow_2 = Should.operator_doubleArrow(_class, String.class);
@@ -76,8 +79,8 @@ public class UsingShouldSpec {
     
     boolean _should_contain = Should.<Object>should_contain(
       "something", "thing");
-    Assert.assertTrue("\nExpected // strings\r\n\t\t\"something\" should contain \"thing\" but"
-     + "\n     // strings\r\n\t\t\"something\" should contain \"thing\" is " + new StringDescription().appendValue(true).toString() + "\n", _should_contain);
+    Assert.assertTrue("\nExpected // strings\r\n    \"something\" should contain \"thing\" but"
+     + "\n     // strings\r\n    \"something\" should contain \"thing\" is " + new StringDescription().appendValue(true).toString() + "\n", _should_contain);
     
     boolean _should_contain_1 = Should.<Object>should_contain(
       "something", "any");
@@ -86,21 +89,43 @@ public class UsingShouldSpec {
     
     List<String> _list = JnarioCollectionLiterals.<String>list("something");
     boolean _should_contain_2 = Should.<String>should_contain(_list, "something");
-    Assert.assertTrue("\nExpected // iterables\r\n\t\tlist(\"something\") should contain \"something\" but"
-     + "\n     // iterables\r\n\t\tlist(\"something\") is " + new StringDescription().appendValue(_list).toString() + "\n", _should_contain_2);
+    Assert.assertTrue("\nExpected // iterables\r\n    list(\"something\") should contain \"something\" but"
+     + "\n     // iterables\r\n    list(\"something\") is " + new StringDescription().appendValue(_list).toString() + "\n", _should_contain_2);
     
     List<String> _list_1 = JnarioCollectionLiterals.<String>list("something");
     boolean _should_contain_3 = Should.<String>should_contain(_list_1, "something else");
     Assert.assertFalse("\nExpected list(\"something\") should not contain \"something else\" but"
      + "\n     list(\"something\") is " + new StringDescription().appendValue(_list_1).toString() + "\n", _should_contain_3);
     
+    final Procedure1<String> _function = new Procedure1<String>() {
+        public void apply(final String it) {
+          int _length = it.length();
+          boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_length), Integer.valueOf(11));
+          Assert.assertTrue("\nExpected length => 11 but"
+           + "\n     length is " + new StringDescription().appendValue(Integer.valueOf(_length)).toString() + "\n", _doubleArrow);
+          
+          boolean _should_startWith = Should.should_startWith(it, "hello");
+          Assert.assertTrue("\nExpected it should startWith(\"hello\") but"
+           + "\n     it is " + new StringDescription().appendValue(it).toString() + "\n", _should_startWith);
+          
+          boolean _should_endWith = Should.should_endWith(it, "world");
+          Assert.assertTrue("\nExpected it should endWith(\"world\") but"
+           + "\n     it is " + new StringDescription().appendValue(it).toString() + "\n", _should_endWith);
+          
+        }
+      };
+    final String greeting = ObjectExtensions.<String>operator_doubleArrow("hello world", _function);
+    boolean _doubleArrow_3 = Should.operator_doubleArrow(greeting, String.class);
+    Assert.assertTrue("\nExpected greeting => typeof(String) but"
+     + "\n     greeting is " + new StringDescription().appendValue(greeting).toString() + "\n", _doubleArrow_3);
+    
     boolean expectedException = false;
     String message = "";
     try{
       Stack<String> _stack = new Stack<String>();
       _stack.pop();
-      message = "Expected " + EmptyStackException.class.getName() + " for \n     // using xtend\'s \"with\" operator\r\n\t\t\r\n\t\t// FIXME\r\n//\t\tval greeting = \"hello world\" => [\r\n//\t\t\tlength => 11\r\n//\t\t\tit should startWith(\"hello\")\r\n//\t\t\tit should endWith(\"world\")\r\n//\t\t]\r\n//\t\tgreeting => typeof(String)\r\n\t\t\r\n\t\t// expecting exceptions\r\n\t\tnew Stack<String>().pop\n with:"
-       + "\n     // using xtend\'s \"with\" operator\r\n\t\t\r\n\t\t// FIXME\r\n//\t\tval greeting = \"hello world\" => [\r\n//\t\t\tlength => 11\r\n//\t\t\tit should startWith(\"hello\")\r\n//\t\t\tit should endWith(\"world\")\r\n//\t\t]\r\n//\t\tgreeting => typeof(String)\r\n\t\t\r\n\t\t// expecting exceptions\r\n\t\tnew Stack<String>() is " + new StringDescription().appendValue(_stack).toString();
+      message = "Expected " + EmptyStackException.class.getName() + " for \n     // expecting exceptions\r\n    new Stack<String>().pop\n with:"
+       + "\n     // expecting exceptions\r\n    new Stack<String>() is " + new StringDescription().appendValue(_stack).toString();
     }catch(EmptyStackException e){
       expectedException = true;
     }
@@ -167,7 +192,7 @@ public class UsingShouldSpec {
     String message_2 = "";
     try{
       int _plus_2 = (1 + 1);
-      boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus_2), Integer.valueOf(1));
+      boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus_2), Integer.valueOf(1));
       Assert.assertTrue("\nExpected 1 + 1 => 1 but"
        + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_2)).toString() + "\n", _doubleArrow);
       
@@ -234,7 +259,7 @@ public class UsingShouldSpec {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
           int _plus = (1 + 1);
-          boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(1));
+          boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(1));
           Assert.assertTrue("\nExpected 1 + 1 => 1 but"
            + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _doubleArrow);
           
@@ -271,7 +296,7 @@ public class UsingShouldSpec {
     final String y = "world";
     final Procedure1<Boolean> _function_2 = new Procedure1<Boolean>() {
         public void apply(final Boolean it) {
-          boolean _doubleArrow = Should.operator_doubleArrow(x, y);
+          boolean _doubleArrow = Should.<String>operator_doubleArrow(x, y);
           Assert.assertTrue("\nExpected x => y but"
            + "\n     x is " + new StringDescription().appendValue(x).toString()
            + "\n     y is " + new StringDescription().appendValue(y).toString() + "\n", _doubleArrow);
@@ -291,12 +316,127 @@ public class UsingShouldSpec {
   }
   
   /**
+   * This useful helper automatically waits until a condition turns true.
+   * Expects a lambda expression returning a boolean value. The error message,
+   * polling interval and duration are configurable.
+   */
+  @Test
+  @Named("Wait for something")
+  @Order(4)
+  public void _waitForSomething() throws Exception {
+    final Function1<Wait,Boolean> _function = new Function1<Wait,Boolean>() {
+        public Boolean apply(final Wait it) {
+          boolean _greaterThan = (1 > 0);
+          return Boolean.valueOf(_greaterThan);
+        }
+      };
+    Wait.waitUntil(_function);
+    final Function1<Wait,Boolean> _function_1 = new Function1<Wait,Boolean>() {
+        public Boolean apply(final Wait it) {
+          boolean _xblockexpression = false;
+          {
+            it.setMessage("Custom error message");
+            it.setDuration(100);
+            it.setPollingInterval(10);
+            boolean _greaterThan = (1 > 0);
+            _xblockexpression = (_greaterThan);
+          }
+          return Boolean.valueOf(_xblockexpression);
+        }
+      };
+    Wait.waitUntil(_function_1);
+  }
+  
+  /**
+   * You can also define your own *should* matchers by
+   * defining a method with the prefix *should_XXXX* in
+   * the current scope. The method needs to return a boolean
+   * value. For example, when we define
+   * a method *should_eat*:
+   * 
+   *     def should_eat(String animal, String food){
+   *       animal == "Monkey" && food == "Banana"
+   *     }
+   * 
+   * We can use "eat" in our should expressions:
+   */
+  @Test
+  @Named("Define your own matchers")
+  @Order(5)
+  public void _defineYourOwnMatchers() throws Exception {
+    boolean _should_eat = this.should_eat(
+      "Monkey", "Banana");
+    Assert.assertTrue("\nExpected \"Monkey\" should eat \"Banana\" but" + " did not." + "\n", _should_eat);
+    
+    boolean expectedException = false;
+    String message = "";
+    try{
+      boolean _should_eat_1 = this.should_eat(
+        "Monkey", "Rocks");
+      Assert.assertTrue("\nExpected \"Monkey\" should eat \"Rocks\" but" + " did not." + "\n", _should_eat_1);
+      
+      message = "Expected " + AssertionError.class.getName() + " for \n     \"Monkey\" should eat \"Rocks\"\n with:";
+    }catch(AssertionError e){
+      expectedException = true;
+    }
+    Assert.assertTrue(message, expectedException);
+  }
+  
+  public boolean should_eat(final String animal, final String food) {
+    boolean _and = false;
+    boolean _equals = Objects.equal(animal, "Monkey");
+    if (!_equals) {
+      _and = false;
+    } else {
+      boolean _equals_1 = Objects.equal(food, "Banana");
+      _and = (_equals && _equals_1);
+    }
+    return _and;
+  }
+  
+  /**
+   * You can also the `should` and `=>` together with [hamcrest](http://code.google.com/p/hamcrest/)
+   * matchers. The following static import statements are needed to run the examples:
+   * 
+   *     import static org.hamcrest.CoreMatchers.startsWith
+   *     import static org.hamcrest.CoreMatchers.equalTo
+   *     import static org.hamcrest.Matchers.hasItem
+   * 
+   * If the right-hand side of a should expression is a matcher, the matcher will be evaluated instead
+   * of testing for equality:
+   */
+  @Test
+  @Named("Combining hamcrest and should")
+  @Order(6)
+  public void _combiningHamcrestAndShould() throws Exception {
+    Matcher<String> _startsWith = Matchers.startsWith("h");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(
+      "hello", _startsWith);
+    Assert.assertTrue("\nExpected \"hello\" => startsWith(\"h\") but"
+     + "\n     startsWith(\"h\") is " + new StringDescription().appendValue(_startsWith).toString() + "\n", _doubleArrow);
+    
+    List<String> _list = JnarioCollectionLiterals.<String>list("red", "green");
+    Matcher<Iterable<String>> _hasItem = Matchers.<String>hasItem("red");
+    boolean _doubleArrow_1 = Should.<Iterable<String>>operator_doubleArrow(_list, _hasItem);
+    Assert.assertTrue("\nExpected list(\"red\", \"green\") => hasItem(\"red\") but"
+     + "\n     list(\"red\", \"green\") is " + new StringDescription().appendValue(_list).toString()
+     + "\n     hasItem(\"red\") is " + new StringDescription().appendValue(_hasItem).toString() + "\n", _doubleArrow_1);
+    
+    Matcher<Integer> _greaterThan = Matchers.<Integer>greaterThan(Integer.valueOf(5));
+    boolean _should_be = Should.<Integer>should_be(
+      Integer.valueOf(9), _greaterThan);
+    Assert.assertTrue("\nExpected 9 should be greaterThan(5) but"
+     + "\n     greaterThan(5) is " + new StringDescription().appendValue(_greaterThan).toString() + "\n", _should_be);
+    
+  }
+  
+  /**
    * In order to be able to print the value of all subexpressions when an assertion failed,
    * we disabled the short circuit semantics of '&&' and '||' within assertions.
    */
   @Test
   @Named("Short Circuit Invocation")
-  @Order(4)
+  @Order(7)
   public void _shortCircuitInvocation() throws Exception {
     final String aString = null;
     boolean expectedException = false;
@@ -322,41 +462,5 @@ public class UsingShouldSpec {
       expectedException = true;
     }
     Assert.assertTrue(message, expectedException);
-  }
-  
-  /**
-   * You can also the `should` and `=>` together with [hamcrest](http://code.google.com/p/hamcrest/)
-   * matchers. The following static import statements are needed to run the examples:
-   * 
-   *     import static org.hamcrest.CoreMatchers.startsWith
-   *     import static org.hamcrest.CoreMatchers.equalTo
-   *     import static org.hamcrest.Matchers.hasItem
-   * 
-   * If the right-hand side of a should expression is a matcher, the matcher will be evaluated instead
-   * of testing for equality:
-   */
-  @Test
-  @Named("Combining hamcrest and should")
-  @Order(5)
-  public void _combiningHamcrestAndShould() throws Exception {
-    Matcher<String> _startsWith = Matchers.startsWith("h");
-    boolean _doubleArrow = Should.operator_doubleArrow(
-      "hello", _startsWith);
-    Assert.assertTrue("\nExpected \"hello\" => startsWith(\"h\") but"
-     + "\n     startsWith(\"h\") is " + new StringDescription().appendValue(_startsWith).toString() + "\n", _doubleArrow);
-    
-    List<String> _list = JnarioCollectionLiterals.<String>list("red", "green");
-    Matcher<Iterable<String>> _hasItem = Matchers.<String>hasItem("red");
-    boolean _doubleArrow_1 = Should.operator_doubleArrow(_list, _hasItem);
-    Assert.assertTrue("\nExpected list(\"red\", \"green\") => hasItem(\"red\") but"
-     + "\n     list(\"red\", \"green\") is " + new StringDescription().appendValue(_list).toString()
-     + "\n     hasItem(\"red\") is " + new StringDescription().appendValue(_hasItem).toString() + "\n", _doubleArrow_1);
-    
-    Matcher<Integer> _greaterThan = Matchers.<Integer>greaterThan(Integer.valueOf(5));
-    boolean _should_be = Should.<Integer>should_be(
-      Integer.valueOf(9), _greaterThan);
-    Assert.assertTrue("\nExpected 9 should be greaterThan(5) but"
-     + "\n     greaterThan(5) is " + new StringDescription().appendValue(_greaterThan).toString() + "\n", _should_be);
-    
   }
 }

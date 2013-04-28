@@ -42,7 +42,7 @@ public class StepContextProviderUsedFieldsSpec extends StepContextProviderSpec {
     _builder.newLine();
     final Set<XtendField> usedFields = this.usedFields(_builder);
     Set<XtendField> _fields = this.fields("field1");
-    boolean _doubleArrow = Should.operator_doubleArrow(usedFields, _fields);
+    boolean _doubleArrow = Should.<Set<XtendField>>operator_doubleArrow(usedFields, _fields);
     Assert.assertTrue("\nExpected usedFields => fields(\"field1\") but"
      + "\n     usedFields is " + new StringDescription().appendValue(usedFields).toString()
      + "\n     fields(\"field1\") is " + new StringDescription().appendValue(_fields).toString() + "\n", _doubleArrow);
@@ -86,7 +86,7 @@ public class StepContextProviderUsedFieldsSpec extends StepContextProviderSpec {
     _builder.newLine();
     final Set<XtendField> usedFields = this.usedFields(_builder);
     Set<XtendField> _fields = this.fields("field1", "field3");
-    boolean _doubleArrow = Should.operator_doubleArrow(usedFields, _fields);
+    boolean _doubleArrow = Should.<Set<XtendField>>operator_doubleArrow(usedFields, _fields);
     Assert.assertTrue("\nExpected usedFields => fields(\"field1\", \"field3\") but"
      + "\n     usedFields is " + new StringDescription().appendValue(usedFields).toString()
      + "\n     fields(\"field1\", \"field3\") is " + new StringDescription().appendValue(_fields).toString() + "\n", _doubleArrow);

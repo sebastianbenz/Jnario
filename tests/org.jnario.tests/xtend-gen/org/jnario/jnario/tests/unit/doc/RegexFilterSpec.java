@@ -8,13 +8,13 @@
 package org.jnario.jnario.tests.unit.doc;
 
 import java.util.Arrays;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.doc.Filter;
 import org.jnario.doc.RegexFilter;
 import org.jnario.jnario.tests.unit.doc.RegexFilterSpecFilteringExamples;
 import org.jnario.lib.Assert;
+import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -111,7 +111,7 @@ public class RegexFilterSpec {
           String _string = it.getString();
           String _apply = filter.apply(_string);
           String _result = it.getResult();
-          boolean _doubleArrow = Should.operator_doubleArrow(_apply, _result);
+          boolean _doubleArrow = Should.<String>operator_doubleArrow(_apply, _result);
           Assert.assertTrue("\nExpected filter.apply(string) => result but"
            + "\n     filter.apply(string) is " + new StringDescription().appendValue(_apply).toString()
            + "\n     filter is " + new StringDescription().appendValue(filter).toString()
@@ -120,6 +120,6 @@ public class RegexFilterSpec {
           
         }
       };
-    IterableExtensions.<RegexFilterSpecFilteringExamples>forEach(this.filteringExamples, _function);
+    Each.<RegexFilterSpecFilteringExamples>forEach(this.filteringExamples, _function);
   }
 }

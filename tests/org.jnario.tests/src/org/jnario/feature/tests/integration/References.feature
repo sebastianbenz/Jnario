@@ -8,7 +8,6 @@
 package org.jnario.feature.tests.integration
 
 import static extension org.jnario.jnario.test.util.FeatureExecutor.*
-import static org.jnario.jnario.test.util.ResultMatchers.*
 import org.jnario.jnario.test.util.FeatureTestCreator
 import org.jnario.runner.CreateWith
 import com.google.inject.Inject

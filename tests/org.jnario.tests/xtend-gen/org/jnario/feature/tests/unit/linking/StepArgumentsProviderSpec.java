@@ -19,7 +19,6 @@ import org.eclipse.xtext.linking.lazy.LazyLinkingResource;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.util.StringInputStream;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
@@ -31,6 +30,7 @@ import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.test.util.Features;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.lib.Assert;
+import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
@@ -181,14 +181,14 @@ public class StepArgumentsProviderSpec {
           Step _create = StepArgumentsProviderSpec.this.create(_step);
           final List<String> foundArgs = StepArgumentsProviderSpec.this.subject.findStepArguments(_create);
           List<? extends Object> _expectedArgs = it.getExpectedArgs();
-          boolean _doubleArrow = Should.operator_doubleArrow(foundArgs, _expectedArgs);
+          boolean _doubleArrow = Should.<List<? extends Object>>operator_doubleArrow(foundArgs, _expectedArgs);
           Assert.assertTrue("\nExpected foundArgs => expectedArgs but"
            + "\n     foundArgs is " + new StringDescription().appendValue(foundArgs).toString()
            + "\n     expectedArgs is " + new StringDescription().appendValue(_expectedArgs).toString() + "\n", _doubleArrow);
           
         }
       };
-    IterableExtensions.<StepArgumentsProviderSpecExamples>forEach(this.examples, _function);
+    Each.<StepArgumentsProviderSpecExamples>forEach(this.examples, _function);
   }
   
   @Test
@@ -197,8 +197,8 @@ public class StepArgumentsProviderSpec {
   public void _returnsEmptyListIfStepHasNoName() throws Exception {
     Given _step = Features.step(null);
     List<String> _findStepArguments = this.subject.findStepArguments(_step);
-    List<Object> _list = JnarioCollectionLiterals.<Object>list();
-    boolean _doubleArrow = Should.operator_doubleArrow(_findStepArguments, _list);
+    List<String> _list = JnarioCollectionLiterals.<String>list();
+    boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(_findStepArguments, _list);
     Assert.assertTrue("\nExpected subject.findStepArguments(step(null)) => list() but"
      + "\n     subject.findStepArguments(step(null)) is " + new StringDescription().appendValue(_findStepArguments).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()

@@ -53,7 +53,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _doubleArrow = Should.operator_doubleArrow(_stepName, "Given a step with an implementation");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_stepName, "Given a step with an implementation");
     Assert.assertTrue("\nExpected stepName => \"Given a step with an implementation\" but"
      + "\n     stepName is " + new StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
     
@@ -79,7 +79,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _doubleArrow = Should.operator_doubleArrow(_stepName, "Given a step with a resolved reference");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_stepName, "Given a step with a resolved reference");
     Assert.assertTrue("\nExpected stepName => \"Given a step with a resolved reference\" but"
      + "\n     stepName is " + new StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
     
@@ -97,7 +97,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _doubleArrow = Should.operator_doubleArrow(_stepName, "Given a step with an unresolved reference");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_stepName, "Given a step with an unresolved reference");
     Assert.assertTrue("\nExpected stepName => \"Given a step with an unresolved reference\" but"
      + "\n     stepName is " + new StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
     
@@ -118,7 +118,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _doubleArrow = Should.operator_doubleArrow(_stepName, "Given a step with two values \"a\" and \"b\"");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_stepName, "Given a step with two values \"a\" and \"b\"");
     Assert.assertTrue("\nExpected stepName => \'Given a step with two values \"a\" and \"b\"\' but"
      + "\n     stepName is " + new StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
     

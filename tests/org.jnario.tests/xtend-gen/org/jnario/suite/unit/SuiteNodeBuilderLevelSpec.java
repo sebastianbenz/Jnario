@@ -32,7 +32,7 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   @Order(1)
   public void _level1() throws Exception {
     int _level = this.level("#");
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(1));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(1));
     Assert.assertTrue("\nExpected level(\"#\")        => 1 but"
      + "\n     level(\"#\") is " + new StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
     
@@ -43,7 +43,7 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   @Order(2)
   public void _levelSuite1() throws Exception {
     int _level = this.level("#Suite");
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(1));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(1));
     Assert.assertTrue("\nExpected level(\"#Suite\")   => 1 but"
      + "\n     level(\"#Suite\") is " + new StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
     
@@ -54,7 +54,7 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   @Order(3)
   public void _levelSuite2() throws Exception {
     int _level = this.level("##Suite");
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(2));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(2));
     Assert.assertTrue("\nExpected level(\"##Suite\")  => 2 but"
      + "\n     level(\"##Suite\") is " + new StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
     
@@ -65,7 +65,7 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   @Order(4)
   public void _levelSuite3() throws Exception {
     int _level = this.level("###Suite");
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(3));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(3));
     Assert.assertTrue("\nExpected level(\"###Suite\") => 3 but"
      + "\n     level(\"###Suite\") is " + new StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
     

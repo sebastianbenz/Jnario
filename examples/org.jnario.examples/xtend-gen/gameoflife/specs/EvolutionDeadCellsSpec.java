@@ -40,7 +40,7 @@ public class EvolutionDeadCellsSpec extends EvolutionSpec {
     World _evolve = evolution.evolve(this.worldWithLiveCell);
     Set<CellLocation> _livingCells = _evolve.getLivingCells();
     Set<CellLocation> _neighbours = this.livingCell.neighbours();
-    boolean _doubleArrow = Should.operator_doubleArrow(_livingCells, _neighbours);
+    boolean _doubleArrow = Should.<Set<CellLocation>>operator_doubleArrow(_livingCells, _neighbours);
     Assert.assertTrue("\nExpected evolution.evolve(worldWithLiveCell).livingCells => livingCell.neighbours but"
      + "\n     evolution.evolve(worldWithLiveCell).livingCells is " + new StringDescription().appendValue(_livingCells).toString()
      + "\n     evolution.evolve(worldWithLiveCell) is " + new StringDescription().appendValue(_evolve).toString()

@@ -29,7 +29,7 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Using Multiple extensions")
 @SuppressWarnings("all")
 public class FeatureExtensionsFeatureUsingMultipleExtensions extends FeatureExtensionsFeature {
-  List list;
+  List<String> list;
   
   @Test
   @Order(0)
@@ -58,7 +58,7 @@ public class FeatureExtensionsFeatureUsingMultipleExtensions extends FeatureExte
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     List<String> _list = StringConversions.toList(_first);
-    boolean _doubleArrow = Should.operator_doubleArrow(this.list, _list);
+    boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(this.list, _list);
     Assert.assertTrue("\nExpected list => args.first.toList but"
      + "\n     list is " + new StringDescription().appendValue(this.list).toString()
      + "\n     args.first.toList is " + new StringDescription().appendValue(_list).toString()

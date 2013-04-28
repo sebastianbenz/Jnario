@@ -62,7 +62,7 @@ public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
     final StepArguments args = _stepArguments;
     String _result = this.calculator.result();
     String _first = JnarioIterableExtensions.<String>first(args);
-    boolean _doubleArrow = Should.operator_doubleArrow(_result, _first);
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_result, _first);
     Assert.assertTrue("\nExpected calculator.result =>  args.first but"
      + "\n     calculator.result is " + new StringDescription().appendValue(_result).toString()
      + "\n     calculator is " + new StringDescription().appendValue(this.calculator).toString()

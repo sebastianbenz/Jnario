@@ -56,7 +56,7 @@ public class _20FactsAboutXtendSomeImportantDifferencesSpec extends _20FactsAbou
   @Order(2)
   public void _asWellAsAccessingTypes() throws Exception {
     String _name = String.class.getName();
-    boolean _doubleArrow = Should.operator_doubleArrow(_name, "java.lang.String");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_name, "java.lang.String");
     Assert.assertTrue("\nExpected typeof(String).name => \"java.lang.String\" but"
      + "\n     typeof(String).name is " + new StringDescription().appendValue(_name).toString() + "\n", _doubleArrow);
     

@@ -24,7 +24,7 @@ public class CellLocationCalculatingRelativeCellLocationsSpec extends CellLocati
     CellLocation _cell_1 = CellLocation.cell(3, 4);
     CellLocation _plus = _cell.plus(_cell_1);
     CellLocation _cell_2 = CellLocation.cell(2, 5);
-    boolean _doubleArrow = Should.operator_doubleArrow(_plus, _cell_2);
+    boolean _doubleArrow = Should.<CellLocation>operator_doubleArrow(_plus, _cell_2);
     Assert.assertTrue("\nExpected cell(-1, 1).plus(cell(3,4)) => cell(2,5) but"
      + "\n     cell(-1, 1).plus(cell(3,4)) is " + new StringDescription().appendValue(_plus).toString()
      + "\n     cell(-1, 1) is " + new StringDescription().appendValue(_cell).toString()

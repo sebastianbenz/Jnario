@@ -8,12 +8,12 @@
 package org.jnario.jnario.tests.unit.jnario;
 
 import java.util.Arrays;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.jnario.StringsMakeJunitConformSpecExamples;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
 import org.jnario.lib.Assert;
+import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -98,7 +98,7 @@ public class StringsMakeJunitConformSpec extends StringsSpec {
           String _string = it.getString();
           String _makeJunitConform = Strings.makeJunitConform(_string);
           String _result = it.getResult();
-          boolean _doubleArrow = Should.operator_doubleArrow(_makeJunitConform, _result);
+          boolean _doubleArrow = Should.<String>operator_doubleArrow(_makeJunitConform, _result);
           Assert.assertTrue("\nExpected string.makeJunitConform => result but"
            + "\n     string.makeJunitConform is " + new StringDescription().appendValue(_makeJunitConform).toString()
            + "\n     string is " + new StringDescription().appendValue(_string).toString()
@@ -106,6 +106,6 @@ public class StringsMakeJunitConformSpec extends StringsSpec {
           
         }
       };
-    IterableExtensions.<StringsMakeJunitConformSpecExamples>forEach(this.examples, _function);
+    Each.<StringsMakeJunitConformSpecExamples>forEach(this.examples, _function);
   }
 }

@@ -64,7 +64,7 @@ public class FieldInferenceFeatureInferringFieldsFromBackgroundInDifferentFeatur
   public void thenBothShouldExecuteSuccessfully() {
     Result _execute = this.runner.execute(this.feature1);
     Matcher<Result> _isSuccessful = ResultMatchers.isSuccessful();
-    boolean _doubleArrow = Should.operator_doubleArrow(_execute, _isSuccessful);
+    boolean _doubleArrow = Should.<Result>operator_doubleArrow(_execute, _isSuccessful);
     Assert.assertTrue("\nExpected runner.execute(feature1) => isSuccessful but"
      + "\n     runner.execute(feature1) is " + new StringDescription().appendValue(_execute).toString()
      + "\n     runner is " + new StringDescription().appendValue(this.runner).toString()
@@ -73,7 +73,7 @@ public class FieldInferenceFeatureInferringFieldsFromBackgroundInDifferentFeatur
     
     Result _execute_1 = this.runner.execute(this.feature2);
     Matcher<Result> _isSuccessful_1 = ResultMatchers.isSuccessful();
-    boolean _doubleArrow_1 = Should.operator_doubleArrow(_execute_1, _isSuccessful_1);
+    boolean _doubleArrow_1 = Should.<Result>operator_doubleArrow(_execute_1, _isSuccessful_1);
     Assert.assertTrue("\nExpected runner.execute(feature2) => isSuccessful but"
      + "\n     runner.execute(feature2) is " + new StringDescription().appendValue(_execute_1).toString()
      + "\n     runner is " + new StringDescription().appendValue(this.runner).toString()

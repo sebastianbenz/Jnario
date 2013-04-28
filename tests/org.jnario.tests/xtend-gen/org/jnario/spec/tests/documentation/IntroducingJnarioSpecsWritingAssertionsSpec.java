@@ -65,8 +65,8 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
     Assert.assertTrue("\nExpected true should be true but"
      + "\n     true should be true is " + new StringDescription().appendValue(true).toString() + "\n", _should_be);
     
-    boolean _doubleArrow = Should.operator_doubleArrow(
-      Boolean.valueOf(false), Boolean.valueOf(false));
+    boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(
+      Boolean.valueOf(false), false);
     Assert.assertTrue("\nExpected false => false but"
      + "\n     false => false is " + new StringDescription().appendValue(_doubleArrow).toString() + "\n", _doubleArrow);
     
@@ -76,7 +76,7 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
      + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be_1);
     
     int _plus_1 = (1 + 1);
-    boolean _doubleArrow_1 = Should.operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
+    boolean _doubleArrow_1 = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
     Assert.assertTrue("\nExpected 1 + 1 => 2 but"
      + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_1)).toString() + "\n", _doubleArrow_1);
     

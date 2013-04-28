@@ -12,7 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
@@ -22,6 +21,7 @@ import org.jnario.doc.FilteringResult;
 import org.jnario.jnario.tests.unit.doc.FilterExtractorSpecFilterCreation;
 import org.jnario.jnario.tests.unit.doc.FilterExtractorSpecFilterExtractions;
 import org.jnario.lib.Assert;
+import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -157,7 +157,7 @@ public class FilterExtractorSpec {
           String _input = it.getInput();
           String _stringAfterExtract = FilterExtractorSpec.this.stringAfterExtract(_input);
           String _resultString = it.getResultString();
-          boolean _doubleArrow = Should.operator_doubleArrow(_stringAfterExtract, _resultString);
+          boolean _doubleArrow = Should.<String>operator_doubleArrow(_stringAfterExtract, _resultString);
           Assert.assertTrue("\nExpected stringAfterExtract(input) => resultString but"
            + "\n     stringAfterExtract(input) is " + new StringDescription().appendValue(_stringAfterExtract).toString()
            + "\n     input is " + new StringDescription().appendValue(_input).toString()
@@ -165,7 +165,7 @@ public class FilterExtractorSpec {
           
         }
       };
-    IterableExtensions.<FilterExtractorSpecFilterExtractions>forEach(this.filterExtractions, _function);
+    Each.<FilterExtractorSpecFilterExtractions>forEach(this.filterExtractions, _function);
   }
   
   @Test
@@ -177,7 +177,7 @@ public class FilterExtractorSpec {
           String _input = it.getInput();
           List<String> _extractedFilters = FilterExtractorSpec.this.extractedFilters(_input);
           List<String> _resultingFilters = it.getResultingFilters();
-          boolean _doubleArrow = Should.operator_doubleArrow(_extractedFilters, _resultingFilters);
+          boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(_extractedFilters, _resultingFilters);
           Assert.assertTrue("\nExpected extractedFilters(input) => resultingFilters but"
            + "\n     extractedFilters(input) is " + new StringDescription().appendValue(_extractedFilters).toString()
            + "\n     input is " + new StringDescription().appendValue(_input).toString()
@@ -185,7 +185,7 @@ public class FilterExtractorSpec {
           
         }
       };
-    IterableExtensions.<FilterExtractorSpecFilterCreation>forEach(this.filterCreation, _function);
+    Each.<FilterExtractorSpecFilterCreation>forEach(this.filterCreation, _function);
   }
   
   public String stringAfterExtract(final String input) {

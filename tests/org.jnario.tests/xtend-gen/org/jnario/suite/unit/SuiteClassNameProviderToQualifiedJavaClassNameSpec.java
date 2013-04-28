@@ -8,11 +8,11 @@
 package org.jnario.suite.unit;
 
 import java.util.Arrays;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Suites;
 import org.jnario.lib.Assert;
+import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -104,13 +104,13 @@ public class SuiteClassNameProviderToQualifiedJavaClassNameSpec extends SuiteCla
           Suite _suite = Suites.suite(_name, _packageName);
           final String actualName = SuiteClassNameProviderToQualifiedJavaClassNameSpec.this.subject.toQualifiedJavaClassName(_suite);
           String _qualifiedName = it.getQualifiedName();
-          boolean _doubleArrow = Should.operator_doubleArrow(actualName, _qualifiedName);
+          boolean _doubleArrow = Should.<String>operator_doubleArrow(actualName, _qualifiedName);
           Assert.assertTrue("\nExpected actualName => qualifiedName but"
            + "\n     actualName is " + new StringDescription().appendValue(actualName).toString()
            + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
           
         }
       };
-    IterableExtensions.<SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples>forEach(this.examples, _function);
+    Each.<SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples>forEach(this.examples, _function);
   }
 }

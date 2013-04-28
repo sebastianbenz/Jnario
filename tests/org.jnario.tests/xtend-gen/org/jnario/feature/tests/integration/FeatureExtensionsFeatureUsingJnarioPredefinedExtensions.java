@@ -54,7 +54,7 @@ public class FeatureExtensionsFeatureUsingJnarioPredefinedExtensions extends Fea
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     int _int = StringConversions.toInt(_first);
-    boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(this.number), Integer.valueOf(_int));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(this.number), Integer.valueOf(_int));
     Assert.assertTrue("\nExpected number => args.first.toInt but"
      + "\n     number is " + new StringDescription().appendValue(Integer.valueOf(this.number)).toString()
      + "\n     args.first.toInt is " + new StringDescription().appendValue(Integer.valueOf(_int)).toString()

@@ -4,10 +4,10 @@ import gameoflife.EvolveLiveCells;
 import gameoflife.specs.RulesEvolveLiveCellsSpecLiveCells;
 import gameoflife.specs.RulesSpec;
 import java.util.Arrays;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
+import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -77,15 +77,15 @@ public class RulesEvolveLiveCellsSpec extends RulesSpec {
           int _liveNeighbourCount = it.getLiveNeighbourCount();
           boolean _becomesAlive = RulesEvolveLiveCellsSpec.this.subject.becomesAlive(_liveNeighbourCount);
           boolean _result = it.getResult();
-          boolean _doubleArrow = Should.operator_doubleArrow(Boolean.valueOf(_becomesAlive), Boolean.valueOf(_result));
+          boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_becomesAlive), _result);
           Assert.assertTrue("\nExpected subject.becomesAlive(liveNeighbourCount) => result but"
            + "\n     subject.becomesAlive(liveNeighbourCount) is " + new StringDescription().appendValue(Boolean.valueOf(_becomesAlive)).toString()
            + "\n     subject is " + new StringDescription().appendValue(RulesEvolveLiveCellsSpec.this.subject).toString()
            + "\n     liveNeighbourCount is " + new StringDescription().appendValue(_liveNeighbourCount).toString()
-           + "\n     result is " + new StringDescription().appendValue(Boolean.valueOf(_result)).toString() + "\n", _doubleArrow);
+           + "\n     result is " + new StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
           
         }
       };
-    IterableExtensions.<RulesEvolveLiveCellsSpecLiveCells>forEach(this.liveCells, _function);
+    Each.<RulesEvolveLiveCellsSpecLiveCells>forEach(this.liveCells, _function);
   }
 }

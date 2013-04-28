@@ -90,13 +90,13 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
   public void _syntacticSugarPairs() throws Exception {
     final Pair<String,String> pair = Pair.<String, String>of("spain", "italy");
     String _key = pair.getKey();
-    boolean _doubleArrow = Should.operator_doubleArrow(_key, "spain");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_key, "spain");
     Assert.assertTrue("\nExpected pair.key   => \"spain\" but"
      + "\n     pair.key is " + new StringDescription().appendValue(_key).toString()
      + "\n     pair is " + new StringDescription().appendValue(pair).toString() + "\n", _doubleArrow);
     
     String _value = pair.getValue();
-    boolean _doubleArrow_1 = Should.operator_doubleArrow(_value, "italy");
+    boolean _doubleArrow_1 = Should.<String>operator_doubleArrow(_value, "italy");
     Assert.assertTrue("\nExpected pair.value => \"italy\" but"
      + "\n     pair.value is " + new StringDescription().appendValue(_value).toString()
      + "\n     pair is " + new StringDescription().appendValue(pair).toString() + "\n", _doubleArrow_1);
@@ -143,14 +143,14 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
   public void _fieldsMethodsWorkAlmostLikeInJava() throws Exception {
     String _sayHello = this.sayHello("Sebastian");
     String _plus = (this.greeting + "Sebastian");
-    boolean _doubleArrow = Should.operator_doubleArrow(_sayHello, _plus);
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_sayHello, _plus);
     Assert.assertTrue("\nExpected sayHello(\"Sebastian\") => greeting + \"Sebastian\" but"
      + "\n     sayHello(\"Sebastian\") is " + new StringDescription().appendValue(_sayHello).toString()
      + "\n     greeting + \"Sebastian\" is " + new StringDescription().appendValue(_plus).toString()
      + "\n     greeting is " + new StringDescription().appendValue(this.greeting).toString() + "\n", _doubleArrow);
     
     String _string = Integer.valueOf(42).toString();
-    boolean _doubleArrow_1 = Should.operator_doubleArrow(_string, "42");
+    boolean _doubleArrow_1 = Should.<String>operator_doubleArrow(_string, "42");
     Assert.assertTrue("\nExpected 42.toString => \"42\" but"
      + "\n     42.toString is " + new StringDescription().appendValue(_string).toString() + "\n", _doubleArrow_1);
     

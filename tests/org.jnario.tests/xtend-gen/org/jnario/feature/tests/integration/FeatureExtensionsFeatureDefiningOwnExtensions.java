@@ -55,7 +55,7 @@ public class FeatureExtensionsFeatureDefiningOwnExtensions extends FeatureExtens
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
     double _double = StringConversions.toDouble(_first);
-    boolean _doubleArrow = Should.operator_doubleArrow(Double.valueOf(this.flooredValue), Double.valueOf(_double));
+    boolean _doubleArrow = Should.<Double>operator_doubleArrow(Double.valueOf(this.flooredValue), Double.valueOf(_double));
     Assert.assertTrue("\nExpected flooredValue => args.first.toDouble but"
      + "\n     flooredValue is " + new StringDescription().appendValue(Double.valueOf(this.flooredValue)).toString()
      + "\n     args.first.toDouble is " + new StringDescription().appendValue(Double.valueOf(_double)).toString()

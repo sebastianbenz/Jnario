@@ -47,7 +47,7 @@ public class ExampleNameProviderToFieldNameExampleTableSpec extends ExampleNameP
     Query _parse = this.parse(_builder);
     final ExampleTable exampleTable = _parse.<ExampleTable>first(ExampleTable.class);
     String _fieldName = this.subject.toFieldName(exampleTable);
-    boolean _doubleArrow = Should.operator_doubleArrow(_fieldName, "myExample");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_fieldName, "myExample");
     Assert.assertTrue("\nExpected subject.toFieldName(exampleTable) => \"myExample\" but"
      + "\n     subject.toFieldName(exampleTable) is " + new StringDescription().appendValue(_fieldName).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
@@ -73,7 +73,7 @@ public class ExampleNameProviderToFieldNameExampleTableSpec extends ExampleNameP
     Query _parse = this.parse(_builder);
     final ExampleTable exampleTable = _parse.<ExampleTable>first(ExampleTable.class);
     String _fieldName = this.subject.toFieldName(exampleTable);
-    boolean _doubleArrow = Should.operator_doubleArrow(_fieldName, "examples");
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_fieldName, "examples");
     Assert.assertTrue("\nExpected subject.toFieldName(exampleTable) => \"examples\" but"
      + "\n     subject.toFieldName(exampleTable) is " + new StringDescription().appendValue(_fieldName).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()

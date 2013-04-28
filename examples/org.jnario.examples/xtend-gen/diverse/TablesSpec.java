@@ -2,10 +2,10 @@ package diverse;
 
 import diverse.TablesSpecAdditions;
 import java.util.Arrays;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
+import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -88,7 +88,7 @@ public class TablesSpec {
           int _b = it.getB();
           int _plus = (_a + _b);
           int _sum = it.getSum();
-          boolean _doubleArrow = Should.operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(_sum));
+          boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(_sum));
           Assert.assertTrue("\nExpected a + b => sum but"
            + "\n     a + b is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString()
            + "\n     a is " + new StringDescription().appendValue(_a).toString()
@@ -97,6 +97,6 @@ public class TablesSpec {
           
         }
       };
-    IterableExtensions.<TablesSpecAdditions>forEach(this.additions, _function);
+    Each.<TablesSpecAdditions>forEach(this.additions, _function);
   }
 }

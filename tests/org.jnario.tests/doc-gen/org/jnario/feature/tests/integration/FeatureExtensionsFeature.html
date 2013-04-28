@@ -147,7 +147,7 @@ Feature: Feature Extensions
     Then the value should be &quot;13.0&quot;
     
   Scenario: Using Multiple extensions
-    List list
+    List&lt;String&gt; list
     When sorting the colors &quot;red, green, blue&quot;
       list = args.first.split(&quot;,&quot;).map[it.trim].sort
     Then they should be ordered &quot;blue, green, red&quot;
