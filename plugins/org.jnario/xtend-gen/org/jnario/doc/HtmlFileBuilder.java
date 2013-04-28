@@ -29,9 +29,8 @@ public class HtmlFileBuilder {
   }
   
   public String toHtmlFileName(final CharSequence nameWithoutExtension) {
-    String result = nameWithoutExtension.toString();
-    char _charAt = "_".charAt(0);
-    String _trim = Strings.trim(result, _charAt);
+    String result = nameWithoutExtension==null?(String)null:nameWithoutExtension.toString();
+    String _trim = Strings.trim(result, '_');
     return (_trim + ".html");
   }
   

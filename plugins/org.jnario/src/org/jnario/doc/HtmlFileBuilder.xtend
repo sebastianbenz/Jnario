@@ -23,8 +23,8 @@ class HtmlFileBuilder {
 	}
 	
 	def toHtmlFileName(CharSequence nameWithoutExtension){
-		var result = nameWithoutExtension.toString
-		return result.trim("_".charAt(0)) + ".html"
+		var result = nameWithoutExtension?.toString
+		return result.trim("_") + ".html"
 	}
 	
 	def private filePath(XtendTypeDeclaration xtendClass, HtmlFile htmlFile){

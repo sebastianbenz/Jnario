@@ -43,8 +43,6 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.typesystem.IBatchTypeResolver;
-import org.eclipse.xtext.xbase.typesystem.util.CommonTypeComputationServices;
 import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.TestRuntimeProvider;
 import org.jnario.jvmmodel.TestRuntimeSupport;
@@ -79,13 +77,6 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   @Inject
   @Extension
   private JvmTypesBuilder jvmTypesBuilder;
-  
-  @Inject
-  @Extension
-  private CommonTypeComputationServices commonTypeComputationServices;
-  
-  @Inject
-  private IBatchTypeResolver typeResolver;
   
   public void infer(final EObject obj, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
     try {

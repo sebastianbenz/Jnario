@@ -27,10 +27,6 @@ import org.eclipse.xtext.xbase.compiler.XbaseCompiler
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.xtext.xbase.typesystem.IBatchTypeResolver
-import org.eclipse.xtext.xbase.typesystem.legacy.StandardTypeReferenceOwner
-import org.eclipse.xtext.xbase.typesystem.util.CommonTypeComputationServices
-import org.jnario.ExampleColumn
 import org.jnario.runner.Extends
 import org.jnario.runner.Extension
 
@@ -50,8 +46,6 @@ class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
 	@Inject extension JnarioNameProvider
 	TestRuntimeSupport testRuntime
 	@Inject	extension JvmTypesBuilder jvmTypesBuilder;
-	@Inject extension CommonTypeComputationServices commonTypeComputationServices
-	@Inject private IBatchTypeResolver typeResolver
 
 	override infer(EObject obj, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		try{
