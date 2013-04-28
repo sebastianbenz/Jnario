@@ -57,10 +57,6 @@ public class Should{
 		return should_be(actual, result);
 	}
 	
-	public static <T> boolean operator_doubleArrow(T actual, Functions.Function1<T,Boolean> matcher){
-		return should_be(actual, matcher);
-	}
-	
 	private static boolean isArray(Object obj) {
 		if(obj == null){
 			return false;

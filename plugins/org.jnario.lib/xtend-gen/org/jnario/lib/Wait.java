@@ -7,8 +7,28 @@ import org.jnario.lib.Clock;
 import org.jnario.lib.Sleeper;
 import org.jnario.lib.TimeoutError;
 
+/**
+ * A helper for automatically waiting until a condition turns true. Use it like this:
+ * 
+ * <code>
+ * fact "Wait for something"{
+ *   // define wait condition using lambdas
+ *   waitUntil[1 > 0]
+ *   // configuration options
+ *   waitUntil[
+ *     message = "Custom error message"
+ *     duration = 100
+ *     pollingInterval = 10
+ *     1 > 0
+ *   ]
+ * }
+ * </code>
+ */
 @SuppressWarnings("all")
 public class Wait {
+  /**
+   * Wait until the provided function evaluates to true.
+   */
   public static void waitUntil(final Function1<Wait,Boolean> initializer) {
     Wait _wait = new Wait(Sleeper.SYSTEM_SLEEPER, Clock.SYSTEM_CLOCK);
     final Wait wait = _wait;
