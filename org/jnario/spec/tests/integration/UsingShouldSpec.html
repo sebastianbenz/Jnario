@@ -58,13 +58,12 @@ list(&quot;something&quot;) should not contain &quot;something else&quot;
 
 // using xtend's &quot;with&quot; operator
 
-// FIXME
-//    val greeting = &quot;hello world&quot; =&gt; [
-//      length =&gt; 11
-//      it should startWith(&quot;hello&quot;)
-//      it should endWith(&quot;world&quot;)
-//    ]
-//    greeting =&gt; typeof(String)
+val greeting = &quot;hello world&quot; =&gt; [
+  length =&gt; 11
+  it should startWith(&quot;hello&quot;)
+  it should endWith(&quot;world&quot;)
+]
+greeting =&gt; typeof(String)
 
 // expecting exceptions
 new Stack&lt;String&gt;().pop should throw EmptyStackException
@@ -101,11 +100,25 @@ errorMessage[x =&gt; y].is('''
   Expected x =&gt; y but
        x is &quot;hello&quot;
        y is &quot;world&quot;''')</pre>
-</li><li><p id="Short_Circuit_Invocation" class="example notrun"><strong>Short Circuit Invocation</strong></p>
-<p>In order to be able to print the value of all subexpressions when an assertion failed, we disabled the short circuit semantics of '&amp;&amp;' and '||' within assertions.</p>
+</li><li><p id="Wait_for_something" class="example notrun"><strong>Wait for something</strong></p>
+<p>This useful helper automatically waits until a condition turns true. Expects a lambda expression returning a boolean value. The error message, polling interval and duration are configurable.</p>
 <pre class="prettyprint lang-spec linenums">
-val String aString = null
-(assert aString != null &amp;&amp; aString.length == 0) throws NullPointerException</pre>
+waitUntil[1 &gt; 0]
+waitUntil[
+  message = &quot;Custom error message&quot;
+  duration = 100
+  pollingInterval = 10
+  1 &gt; 0
+]</pre>
+</li><li><p id="Define_your_own_matchers" class="example notrun"><strong>Define your own matchers</strong></p>
+<p>You can also define your own <em>should</em> matchers by defining a method with the prefix <em>should_XXXX</em> in the current scope. The method needs to return a boolean value. For example, when we define a method <em>should_eat</em>:</p>
+<pre class="prettyprint">def should_eat(String animal, String food){
+  animal == &quot;Monkey&quot; &amp;&amp; food == &quot;Banana&quot;
+}
+</code></pre><p>We can use "eat" in our should expressions:</p>
+<pre class="prettyprint lang-spec linenums">
+&quot;Monkey&quot; should eat &quot;Banana&quot;
+&quot;Monkey&quot; should eat &quot;Rocks&quot; throws AssertionError</pre>
 </li><li><p id="Combining_hamcrest_and_should" class="example notrun"><strong>Combining hamcrest and should</strong></p>
 <p>You can also the <code>should</code> and <code>=&gt;</code> together with <a href="http://code.google.com/p/hamcrest/">hamcrest</a> matchers. The following static import statements are needed to run the examples:</p>
 <pre class="prettyprint">import static org.hamcrest.CoreMatchers.startsWith
@@ -116,6 +129,11 @@ import static org.hamcrest.Matchers.hasItem
 &quot;hello&quot; =&gt; startsWith(&quot;h&quot;)
 list(&quot;red&quot;, &quot;green&quot;) =&gt; hasItem(&quot;red&quot;)
 9 should be greaterThan(5)</pre>
+</li><li><p id="Short_Circuit_Invocation" class="example notrun"><strong>Short Circuit Invocation</strong></p>
+<p>In order to be able to print the value of all subexpressions when an assertion failed, we disabled the short circuit semantics of '&amp;&amp;' and '||' within assertions.</p>
+<pre class="prettyprint lang-spec linenums">
+val String aString = null
+(assert aString != null &amp;&amp; aString.length == 0) throws NullPointerException</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -170,13 +188,12 @@ describe &quot;Using Should&quot;{
     
     // using xtend's &quot;with&quot; operator
     
-    // FIXME
-//    val greeting = &quot;hello world&quot; =&gt; [
-//      length =&gt; 11
-//      it should startWith(&quot;hello&quot;)
-//      it should endWith(&quot;world&quot;)
-//    ]
-//    greeting =&gt; typeof(String)
+    val greeting = &quot;hello world&quot; =&gt; [
+      length =&gt; 11
+      it should startWith(&quot;hello&quot;)
+      it should endWith(&quot;world&quot;)
+    ]
+    greeting =&gt; typeof(String)
     
     // expecting exceptions
     new Stack&lt;String&gt;().pop should throw EmptyStackException
@@ -233,12 +250,40 @@ describe &quot;Using Should&quot;{
   }  
   
   /*
-   * In order to be able to print the value of all subexpressions when an assertion failed, 
-   * we disabled the short circuit semantics of '&amp;&amp;' and '||' within assertions. 
+   * This useful helper automatically waits until a condition turns true.
+   * Expects a lambda expression returning a boolean value. The error message,
+   * polling interval and duration are configurable.
    */
-  fact &quot;Short Circuit Invocation&quot;{
-    val String aString = null
-    (assert aString != null &amp;&amp; aString.length == 0) throws NullPointerException 
+  fact &quot;Wait for something&quot;{
+    waitUntil[1 &gt; 0]
+    waitUntil[
+      message = &quot;Custom error message&quot;
+      duration = 100
+      pollingInterval = 10
+      1 &gt; 0
+    ]
+  }
+  
+  /*
+   * You can also define your own *should* matchers by 
+   * defining a method with the prefix *should_XXXX* in 
+   * the current scope. The method needs to return a boolean
+   * value. For example, when we define 
+   * a method *should_eat*: 
+   * 
+   *     def should_eat(String animal, String food){
+   *       animal == &quot;Monkey&quot; &amp;&amp; food == &quot;Banana&quot;
+   *     }
+   * 
+   * We can use &quot;eat&quot; in our should expressions:
+   */ 
+  fact &quot;Define your own matchers&quot;{
+    &quot;Monkey&quot; should eat &quot;Banana&quot;
+    &quot;Monkey&quot; should eat &quot;Rocks&quot; throws AssertionError
+  }
+  
+  def should_eat(String animal, String food){
+    animal == &quot;Monkey&quot; &amp;&amp; food == &quot;Banana&quot;
   }
   
   /*
@@ -257,6 +302,16 @@ describe &quot;Using Should&quot;{
     list(&quot;red&quot;, &quot;green&quot;) =&gt; hasItem(&quot;red&quot;)
     9 should be greaterThan(5) 
   }
+  
+  /*
+   * In order to be able to print the value of all subexpressions when an assertion failed, 
+   * we disabled the short circuit semantics of '&amp;&amp;' and '||' within assertions. 
+   */
+  fact &quot;Short Circuit Invocation&quot;{
+    val String aString = null
+    (assert aString != null &amp;&amp; aString.length == 0) throws NullPointerException 
+  }
+  
 }
 </pre>
 						    </p></div>

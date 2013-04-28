@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header pending">
+				<div class="page-header notrun">
 					<h1>StepTypeProvider</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -35,13 +35,13 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="createGiven_expectedTypes_given_givenReference" class="example notrun"><strong>createGiven.expectedTypes => -[given, givenReference]</strong></p>
-</li><li><p id="createGivenReference_expectedTypes_given_givenReference" class="example notrun"><strong>createGivenReference.expectedTypes => -[given, givenReference]</strong></p>
-</li><li><p id="createWhen_expectedTypes_when_whenReference" class="example notrun"><strong>createWhen.expectedTypes => -[when, whenReference]</strong></p>
-</li><li><p id="createWhenReference_expectedTypes_when_whenReference" class="example notrun"><strong>createWhenReference.expectedTypes => -[when, whenReference]</strong></p>
-</li><li><p id="createThen_expectedTypes_then_thenReference" class="example notrun"><strong>createThen.expectedTypes => -[then, thenReference]</strong></p>
-</li><li><p id="createThenReference_expectedTypes_then_thenReference" class="example notrun"><strong>createThenReference.expectedTypes => -[then, thenReference]</strong></p>
-</li><li><p id="Feature_something_Scenario_scenario_Given_something_And_something_else_And_something_else_expectedTypes_given_givenReference" class="example notrun"><strong>''' Feature: something Scenario: scenario Given something And something else And something else '''.expectedTypes =>  -[given, givenReference]</strong></p>
+<ul><li><p id="createGiven_expectedTypes_GIVEN" class="example notrun"><strong>createGiven.expectedTypes => GIVEN</strong></p>
+</li><li><p id="createGivenReference_expectedTypes_GIVEN" class="example notrun"><strong>createGivenReference.expectedTypes => GIVEN</strong></p>
+</li><li><p id="createWhen_expectedTypes_WHEN" class="example notrun"><strong>createWhen.expectedTypes => WHEN</strong></p>
+</li><li><p id="createWhenReference_expectedTypes_WHEN" class="example notrun"><strong>createWhenReference.expectedTypes => WHEN</strong></p>
+</li><li><p id="createThen_expectedTypes_THEN" class="example notrun"><strong>createThen.expectedTypes => THEN</strong></p>
+</li><li><p id="createThenReference_expectedTypes_THEN" class="example notrun"><strong>createThenReference.expectedTypes => THEN</strong></p>
+</li><li><p id="Feature_something_Scenario_scenario_Given_something_And_something_else_And_something_else_expectedTypes_GIVEN" class="example notrun"><strong>''' Feature: something Scenario: scenario Given something And something else And something else '''.expectedTypes =>  GIVEN</strong></p>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -51,10 +51,10 @@
 package org.jnario.feature.tests.unit.feature
 
 import org.jnario.feature.jvmmodel.StepTypeProvider
+import static org.jnario.feature.jvmmodel.StepTypeProvider.*
 import org.jnario.feature.feature.FeatureFactory
 import org.jnario.feature.feature.FeaturePackage
 import org.jnario.runner.CreateWith
-import org.jnario.runner.SpecCreator
 import org.jnario.jnario.test.util.SpecTestCreator
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.ModelStore
@@ -67,12 +67,12 @@ describe StepTypeProvider {
   extension FeaturePackage pack = FeaturePackage::eINSTANCE
   @Inject extension ModelStore
    
-  fact createGiven.expectedTypes =&gt; #[given, givenReference]
-  fact createGivenReference.expectedTypes =&gt; #[given, givenReference]
-  fact createWhen.expectedTypes =&gt; #[when, whenReference]
-  fact createWhenReference.expectedTypes =&gt; #[when, whenReference]
-  fact createThen.expectedTypes =&gt; #[then, thenReference]
-  fact createThenReference.expectedTypes =&gt; #[then, thenReference]
+  fact createGiven.expectedTypes =&gt; GIVEN
+  fact createGivenReference.expectedTypes =&gt; GIVEN
+  fact createWhen.expectedTypes =&gt; WHEN
+  fact createWhenReference.expectedTypes =&gt; WHEN
+  fact createThen.expectedTypes =&gt; THEN
+  fact createThenReference.expectedTypes =&gt; THEN
   
   fact '''
     Feature: something
@@ -80,7 +80,7 @@ describe StepTypeProvider {
       Given something
       And something else
       And something else
-  '''.expectedTypes =&gt;  #[given, givenReference]
+  '''.expectedTypes =&gt;  GIVEN
   
   def expectedTypes(CharSequence s){
     s.parseScenario

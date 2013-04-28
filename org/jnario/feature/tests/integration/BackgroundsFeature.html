@@ -159,7 +159,6 @@ Feature: Backgrounds
           Scenario: Scenario 1
           Scenario: Scenario 2
       '''
-      jnarioFile = args.first
     Then every class should have a method that throws a RuntimeExeception
       jnarioFile.run.failureCount =&gt; 2
       
@@ -203,7 +202,6 @@ Feature: Backgrounds
             When I enter two numbers &quot;20&quot; and &quot;80&quot;
               Then it returns &quot;100&quot;
       '''  
-      jnarioFile = args.first  
      Then it should execute successfully
 </pre>
 						    </p></div>
