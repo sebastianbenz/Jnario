@@ -75,7 +75,20 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 		}
 		XVariableDeclaration stepValuesDec = createVariableForStepArguments(arguments);
 		EList<XExpression> expressions = ((XBlockExpression)step.getExpression()).getExpressions();
+		if(argumentsVariableAlreadyDeclared(expressions)){
+			return;
+		}
 		expressions.add(0, stepValuesDec);
+	}
+
+	public boolean argumentsVariableAlreadyDeclared(EList<XExpression> expressions) {
+		if (expressions.get(0) instanceof XVariableDeclaration) {
+			XVariableDeclaration variableDeclaration = (XVariableDeclaration) expressions.get(0);
+			if(FeatureJvmModelInferrer.STEP_VALUES.equals(variableDeclaration.getName())){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	private XVariableDeclaration createVariableForStepArguments(List<String> arguments){
