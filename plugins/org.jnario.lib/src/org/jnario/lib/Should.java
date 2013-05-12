@@ -76,6 +76,10 @@ public class Should{
 //		return should_be(actual, expected);
 //	}
 	
+	public static <T> boolean should_be(T obj, Functions.Function1<T, Boolean> func){
+		return func.apply(obj);
+	}
+	
 	public static <T> boolean should_be(T actual, T expected){
 		if(isArray(actual) && isArray(expected)){
 			return Arrays.equals((Object[])actual, (Object[])expected);

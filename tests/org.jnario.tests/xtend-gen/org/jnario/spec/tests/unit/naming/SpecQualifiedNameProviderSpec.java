@@ -52,7 +52,7 @@ public class SpecQualifiedNameProviderSpec {
     this._modelStore.parseSpec(_builder);
     String _qualifiedName = this.qualifiedName();
     Matcher<Object> _nullValue = CoreMatchers.<Object>nullValue();
-    boolean _should_be = Should.should_be(_qualifiedName, _nullValue);
+    boolean _should_be = Should.<String>should_be(_qualifiedName, _nullValue);
     Assert.assertTrue("\nExpected qualifiedName should be null but"
      + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _should_be);
     
@@ -61,7 +61,7 @@ public class SpecQualifiedNameProviderSpec {
     this._modelStore.parseSpec(_builder_1);
     String _qualifiedName_1 = this.qualifiedName();
     Matcher<Object> _nullValue_1 = CoreMatchers.<Object>nullValue();
-    boolean _should_be_1 = Should.should_be(_qualifiedName_1, _nullValue_1);
+    boolean _should_be_1 = Should.<String>should_be(_qualifiedName_1, _nullValue_1);
     Assert.assertTrue("\nExpected qualifiedName should be null but"
      + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName_1).toString() + "\n", _should_be_1);
     
