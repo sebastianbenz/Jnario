@@ -92,7 +92,7 @@ public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 		if(name.endsWith(".")){
 			name = name.substring(0, name.length()-1);
 		}
-		return name;
+		return name.trim();
 	}
 	
 }

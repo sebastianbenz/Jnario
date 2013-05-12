@@ -66,6 +66,7 @@ import org.jnario.feature.naming.StepNameProvider;
 import org.jnario.ui.contentassist.ImportingTypesProposalProvider.FQNImporter;
 
 import com.google.common.base.Strings;
+import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 
 /**
@@ -246,9 +247,9 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 			String proposal = getQualifiedNameConverter().toString(desc.getQualifiedName().skipLast(1)) + "." + prefix + desc.getName().getLastSegment();
 			if(expected.contains(desc.getEClass()) && context.getMatcher().isCandidateMatchingPrefix(proposal, context.getPrefix())){
 				acceptor = createStepFqnShorterner(context, acceptor, scope, desc.getQualifiedName(), scenario);
-				String displayString = step.isPending() ? proposal + " [PENDING]" : proposal;
+				String displayString = proposal;
 				StyledString styledDisplayString = getStyledDisplayString(step, displayString, scenario.getName());
-				acceptor.accept(doCreateProposal(proposal, styledDisplayString, getLabelProvider().getImage(step), 1000, context));
+				acceptor.accept(createCompletionProposal(proposal, styledDisplayString, getLabelProvider().getImage(step), 1000, context.getPrefix(), context));
 			}
 		}
 	}
