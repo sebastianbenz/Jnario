@@ -24,6 +24,7 @@ import org.eclipse.xtend.ide.XtendPreferenceStoreInitializer;
 import org.eclipse.xtend.ide.XtendResourceUiServiceProvider;
 import org.eclipse.xtend.ide.autoedit.TokenTypeToPartitionMapper;
 import org.eclipse.xtend.ide.builder.JavaProjectPreferencesInitializer;
+import org.eclipse.xtend.ide.codebuilder.CodeBuilderFactory;
 import org.eclipse.xtend.ide.contentassist.EscapeSequenceAwarePrefixMatcher;
 import org.eclipse.xtend.ide.contentassist.TemplateProposalProvider;
 import org.eclipse.xtend.ide.contentassist.XtendContentAssistFactory;
@@ -135,6 +136,7 @@ import org.jnario.feature.ui.validator.FeatureUIValidator;
 import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
 import org.jnario.ui.quickfix.CreateJnarioTypeQuickfixes;
+import org.jnario.ui.quickfix.JnarioCodeBuilderFactory;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -212,6 +214,7 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 		binder.bind(DefaultIndentLineAutoEditStrategy.class).to(FeatureIndentLineAutoEditStrategy.class);
 		binder.bind(CreateXtendTypeQuickfixes.class).to(CreateJnarioTypeQuickfixes.class);
 		binder.bind(CreateMemberQuickfixes.class).to(FeatureCreateMemberQuickfixes.class);
+		binder.bind(CodeBuilderFactory.class).to(JnarioCodeBuilderFactory.class);
 	}
 
 	public void configureDebugMode(Binder binder) {

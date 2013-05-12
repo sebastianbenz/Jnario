@@ -24,6 +24,7 @@ import org.eclipse.xtend.ide.XtendResourceUiServiceProvider;
 import org.eclipse.xtend.ide.autoedit.AutoEditStrategyProvider;
 import org.eclipse.xtend.ide.autoedit.TokenTypeToPartitionMapper;
 import org.eclipse.xtend.ide.builder.JavaProjectPreferencesInitializer;
+import org.eclipse.xtend.ide.codebuilder.CodeBuilderFactory;
 import org.eclipse.xtend.ide.contentassist.EscapeSequenceAwarePrefixMatcher;
 import org.eclipse.xtend.ide.contentassist.TemplateProposalProvider;
 import org.eclipse.xtend.ide.contentassist.XtendContentAssistFactory;
@@ -123,6 +124,7 @@ import org.jnario.suite.ui.quickfix.SuiteQuickfixProvider;
 import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
 import org.jnario.ui.quickfix.CreateJnarioTypeQuickfixes;
+import org.jnario.ui.quickfix.JnarioCodeBuilderFactory;
 import org.jnario.ui.validator.JnarioUIValidator;
 
 import com.google.inject.Binder;
@@ -136,7 +138,6 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 	public SuiteUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
-	
 	
 	@Override
 	public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
@@ -184,6 +185,7 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 	public void configure(Binder binder) {
 		super.configure(binder);
 		binder.bind(CreateXtendTypeQuickfixes.class).to(CreateJnarioTypeQuickfixes.class);
+		binder.bind(CodeBuilderFactory.class).to(JnarioCodeBuilderFactory.class);
 	}
 
 	public void configureDebugMode(Binder binder) {
