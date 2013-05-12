@@ -1,8 +1,8 @@
 package org.jnario.feature.jvmmodel;
 
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -23,35 +23,57 @@ import org.jnario.feature.feature.WhenReference;
 public class StepTypeProvider {
   public final static Set<EClass> ANDS = new Function0<Set<EClass>>() {
     public Set<EClass> apply() {
+      Set<EClass> _xsetliteral = null;
       EClass _but = FeaturePackage.eINSTANCE.getBut();
       EClass _butReference = FeaturePackage.eINSTANCE.getButReference();
       EClass _and = FeaturePackage.eINSTANCE.getAnd();
       EClass _andReference = FeaturePackage.eINSTANCE.getAndReference();
-      return Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(_but, _butReference, _and, _andReference));
+      Builder<EClass> _builder = ImmutableSet.builder();
+      _builder.add(_but);
+      _builder.add(_butReference);
+      _builder.add(_and);
+      _builder.add(_andReference);
+      _xsetliteral = _builder.build();
+      return _xsetliteral;
     }
   }.apply();
   
   public final static Set<EClass> GIVEN = new Function0<Set<EClass>>() {
     public Set<EClass> apply() {
+      Set<EClass> _xsetliteral = null;
       EClass _given = FeaturePackage.eINSTANCE.getGiven();
       EClass _givenReference = FeaturePackage.eINSTANCE.getGivenReference();
-      return Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(_given, _givenReference));
+      Builder<EClass> _builder = ImmutableSet.builder();
+      _builder.add(_given);
+      _builder.add(_givenReference);
+      _xsetliteral = _builder.build();
+      return _xsetliteral;
     }
   }.apply();
   
   public final static Set<EClass> WHEN = new Function0<Set<EClass>>() {
     public Set<EClass> apply() {
+      Set<EClass> _xsetliteral = null;
       EClass _when = FeaturePackage.eINSTANCE.getWhen();
       EClass _whenReference = FeaturePackage.eINSTANCE.getWhenReference();
-      return Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(_when, _whenReference));
+      Builder<EClass> _builder = ImmutableSet.builder();
+      _builder.add(_when);
+      _builder.add(_whenReference);
+      _xsetliteral = _builder.build();
+      return _xsetliteral;
     }
   }.apply();
   
   public final static Set<EClass> THEN = new Function0<Set<EClass>>() {
     public Set<EClass> apply() {
+      Set<EClass> _xsetliteral = null;
       EClass _then = FeaturePackage.eINSTANCE.getThen();
       EClass _thenReference = FeaturePackage.eINSTANCE.getThenReference();
-      return Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(_then, _thenReference));
+      Builder<EClass> _builder = ImmutableSet.builder();
+      _builder.add(_then);
+      _builder.add(_thenReference);
+      _xsetliteral = _builder.build();
+      return _xsetliteral;
     }
   }.apply();
   

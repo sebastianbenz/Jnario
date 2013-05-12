@@ -8,10 +8,7 @@
 package org.jnario.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.xtend.core.xtend.impl.XtendFunctionImpl;
 import org.eclipse.xtend.core.xtend.impl.XtendFunctionImplCustom;
-
 import org.jnario.ExampleCell;
 import org.jnario.JnarioPackage;
 

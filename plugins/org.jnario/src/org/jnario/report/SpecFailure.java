@@ -1,7 +1,6 @@
 package org.jnario.report;
 
 import org.eclipse.xtend.lib.Data;
-import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 
 @Data
 @SuppressWarnings("all")

@@ -24,7 +24,7 @@ public class Suites {
   public static SuiteFile suiteFile(final Suite... suites) {
     final SuiteFile file = Suites.factory.createSuiteFile();
     EList<XtendTypeDeclaration> _xtendTypes = file.getXtendTypes();
-    CollectionExtensions.<Suite>addAll(_xtendTypes, suites);
+    CollectionExtensions.<XtendTypeDeclaration>addAll(_xtendTypes, suites);
     return file;
   }
   
@@ -33,7 +33,7 @@ public class Suites {
     {
       final Suite suite = Suites.suite(name);
       EList<Reference> _elements = suite.getElements();
-      CollectionExtensions.<SpecReference>addAll(_elements, references);
+      CollectionExtensions.<Reference>addAll(_elements, references);
       _xblockexpression = (suite);
     }
     return _xblockexpression;

@@ -15,7 +15,6 @@ import org.eclipse.xtend.core.formatting.XtendFormatter;
 import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
-import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
 import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
 import org.eclipse.xtend.core.validation.XtendConfigurableIssueCodes;
@@ -86,6 +85,7 @@ import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.HashBasedSpec2ResultMapping;
 import org.jnario.scoping.JnarioImplicitlyImportedTypes;
+import org.jnario.scoping.JnarioImportedNamespaceScopeProvider;
 import org.jnario.typing.JnarioTypeComputer;
 
 import com.google.inject.Binder;
@@ -129,7 +129,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	@Override
 	public void configureIScopeProviderDelegate(Binder binder) {
 		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
-		.to(XtendImportedNamespaceScopeProvider.class);
+		.to(JnarioImportedNamespaceScopeProvider.class);
 	}
 
 	@Override

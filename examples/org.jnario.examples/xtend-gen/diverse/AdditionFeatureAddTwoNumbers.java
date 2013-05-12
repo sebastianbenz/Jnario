@@ -11,7 +11,6 @@ import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -38,15 +37,16 @@ public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
   
   @Test
   @Order(1)
-  @Ignore
-  @Named("And I have entered \\\"70\\\" into the calculator [PENDING]")
+  @Named("And I have entered \\\"70\\\" into the calculator")
   public void andIHaveEntered70IntoTheCalculator() {
-    
+    StepArguments _stepArguments = new StepArguments("70");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.calculator.enter(_first);
   }
   
   @Test
   @Order(2)
-  @Ignore
   @Named("When I press \\\"add\\\"")
   public void whenIPressAdd() {
     StepArguments _stepArguments = new StepArguments("add");
@@ -56,7 +56,6 @@ public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
   
   @Test
   @Order(3)
-  @Ignore
   @Named("Then the result should be \\\"120\\\"")
   public void thenTheResultShouldBe120() {
     StepArguments _stepArguments = new StepArguments("120");

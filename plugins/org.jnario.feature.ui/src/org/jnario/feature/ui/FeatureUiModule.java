@@ -24,6 +24,7 @@ import org.eclipse.xtend.ide.XtendPreferenceStoreInitializer;
 import org.eclipse.xtend.ide.XtendResourceUiServiceProvider;
 import org.eclipse.xtend.ide.autoedit.TokenTypeToPartitionMapper;
 import org.eclipse.xtend.ide.builder.JavaProjectPreferencesInitializer;
+import org.eclipse.xtend.ide.codebuilder.CodeBuilderFactory;
 import org.eclipse.xtend.ide.contentassist.EscapeSequenceAwarePrefixMatcher;
 import org.eclipse.xtend.ide.contentassist.TemplateProposalProvider;
 import org.eclipse.xtend.ide.contentassist.XtendContentAssistFactory;
@@ -63,6 +64,7 @@ import org.eclipse.xtext.common.types.ui.refactoring.participant.JvmMemberRename
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.trace.ITraceForStorageProvider;
+import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.service.SingletonBinding;
 import org.eclipse.xtext.ui.LanguageSpecific;
 import org.eclipse.xtext.ui.editor.IURIEditorOpener;
@@ -79,6 +81,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher;
 import org.eclipse.xtext.ui.editor.doubleClicking.DoubleClickStrategyProvider;
 import org.eclipse.xtext.ui.editor.embedded.IEditedResourceProvider;
+import org.eclipse.xtext.ui.editor.findrefs.IReferenceFinder;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingStructureProvider;
 import org.eclipse.xtext.ui.editor.formatting.IContentFormatterFactory;
@@ -106,6 +109,8 @@ import org.eclipse.xtext.ui.refactoring.ui.IRenameContextFactory;
 import org.eclipse.xtext.ui.resource.IResourceUIServiceProvider;
 import org.eclipse.xtext.validation.IssueSeveritiesProvider;
 import org.eclipse.xtext.xbase.formatting.IFormattingPreferenceValuesProvider;
+import org.eclipse.xtext.xbase.imports.ConflictResolver;
+import org.eclipse.xtext.xbase.imports.ImportOrganizer;
 import org.eclipse.xtext.xbase.ui.contentassist.ImportingTypesProposalProvider;
 import org.eclipse.xtext.xbase.ui.contentassist.ParameterContextInformationProvider;
 import org.eclipse.xtext.xbase.ui.editor.XbaseResourceForEditorInputFactory;
@@ -127,6 +132,8 @@ import org.jnario.feature.ui.highlighting.FeatureSemanticHighlightingCalculator;
 import org.jnario.feature.ui.highlighting.FeatureTokenHighlighting;
 import org.jnario.feature.ui.hover.FeatureHoverProvider;
 import org.jnario.feature.ui.hover.FeatureHoverSignatureProvider;
+import org.jnario.feature.ui.imports.FeatureConflictResolver;
+import org.jnario.feature.ui.imports.FeatureImportOrganizer;
 import org.jnario.feature.ui.labeling.FeatureLabelProvider;
 import org.jnario.feature.ui.launching.FeatureJavaElementDelegate;
 import org.jnario.feature.ui.parser.CustomFeatureLexer;
@@ -135,6 +142,7 @@ import org.jnario.feature.ui.validator.FeatureUIValidator;
 import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
 import org.jnario.ui.quickfix.CreateJnarioTypeQuickfixes;
+import org.jnario.ui.quickfix.JnarioCodeBuilderFactory;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -212,6 +220,9 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 		binder.bind(DefaultIndentLineAutoEditStrategy.class).to(FeatureIndentLineAutoEditStrategy.class);
 		binder.bind(CreateXtendTypeQuickfixes.class).to(CreateJnarioTypeQuickfixes.class);
 		binder.bind(CreateMemberQuickfixes.class).to(FeatureCreateMemberQuickfixes.class);
+		binder.bind(CodeBuilderFactory.class).to(JnarioCodeBuilderFactory.class);
+		binder.bind(ImportOrganizer.class).to(FeatureImportOrganizer.class);
+		binder.bind(ConflictResolver.class).to(FeatureConflictResolver.class);
 	}
 
 	public void configureDebugMode(Binder binder) {

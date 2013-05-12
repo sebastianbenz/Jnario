@@ -2,7 +2,6 @@ package org.jnario.scoping;
 
 import java.util.List;
 
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedTypes;
 import org.jnario.lib.Each;
 import org.jnario.lib.JnarioCollectionLiterals;

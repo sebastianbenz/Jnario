@@ -417,7 +417,7 @@ public class UsingShouldSpec {
     
     List<String> _list = JnarioCollectionLiterals.<String>list("red", "green");
     Matcher<Iterable<String>> _hasItem = Matchers.<String>hasItem("red");
-    boolean _doubleArrow_1 = Should.<List<String>>operator_doubleArrow(_list, _hasItem);
+    boolean _doubleArrow_1 = Should.<Iterable<String>>operator_doubleArrow(_list, _hasItem);
     Assert.assertTrue("\nExpected list(\"red\", \"green\") => hasItem(\"red\") but"
      + "\n     list(\"red\", \"green\") is " + new StringDescription().appendValue(_list).toString()
      + "\n     hasItem(\"red\") is " + new StringDescription().appendValue(_hasItem).toString() + "\n", _doubleArrow_1);

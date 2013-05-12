@@ -209,19 +209,19 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           public void apply(final JvmGenericType it) {
             EList<JvmTypeReference> _superTypes = it.getSuperTypes();
             JvmParameterizedTypeReference _createTypeRef = FeatureJvmModelInferrer.this._typeReferences.createTypeRef(inferredJvmType);
-            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes, _createTypeRef);
           }
         };
       IterableExtensions.<JvmGenericType>forEach(scenarios, _function);
     } else {
       EList<JvmTypeReference> _superTypes = background.getSuperTypes();
       JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(inferredJvmType);
-      this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
+      this._extendedJvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes, _createTypeRef);
       final Procedure1<JvmGenericType> _function_1 = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
             EList<JvmTypeReference> _superTypes = it.getSuperTypes();
             JvmParameterizedTypeReference _createTypeRef = FeatureJvmModelInferrer.this._typeReferences.createTypeRef(background);
-            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmParameterizedTypeReference>operator_add(_superTypes, _createTypeRef);
+            FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes, _createTypeRef);
           }
         };
       IterableExtensions.<JvmGenericType>forEach(scenarios, _function_1);
@@ -472,7 +472,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           final XStringLiteral arg = XbaseFactory.eINSTANCE.createXStringLiteral();
           arg.setValue(it);
           EList<XExpression> _arguments = argsConstructor.getArguments();
-          FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<XStringLiteral>operator_add(_arguments, arg);
+          FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<XExpression>operator_add(_arguments, arg);
         }
       };
     IterableExtensions.<String>forEach(arguments, _function_1);
@@ -540,7 +540,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           }
         };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, methodName, _typeForName, _function);
-      this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
+      this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members, _method);
       int _plus = (order + 1);
       _xblockexpression = (_plus);
     }
@@ -582,7 +582,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           }
         };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, _methodName, _typeForName, _function);
-      this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
+      this._extendedJvmTypesBuilder.<JvmMember>operator_add(_members, _method);
       int _plus = (order + 1);
       _xblockexpression = (_plus);
     }

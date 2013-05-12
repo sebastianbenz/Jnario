@@ -1,6 +1,7 @@
 package org.jnario.lib.tests;
 
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Clock;
 import org.jnario.lib.Sleeper;
@@ -83,7 +84,8 @@ public class WaitSpec {
     String message = "";
     try{
       this.waitFor(this.condition);
-      message = "Expected " + TimeoutError.class.getName() + " for \n     waitFor(condition)\n with:";
+      message = "Expected " + TimeoutError.class.getName() + " for \n     waitFor(condition)\n with:"
+       + "\n     condition is " + new StringDescription().appendValue(this.condition).toString();
     }catch(TimeoutError e){
       expectedException = true;
     }
