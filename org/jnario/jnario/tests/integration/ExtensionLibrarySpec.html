@@ -37,15 +37,15 @@
 							  	<div class="tab-pane active" id="spec">
 <p>Jnario extends the extension library of Xtend with additional functions which can be useful when writing tests.</p>
 <h3 class="exampleGroup notrun"  id="Collection_Literals">Collection Literals</h3>
-<p>Xtend has it's own collection literals which of course work in Jnario as well.</p>
+<p>When writing tests the concrete implementation of a collection usually doesn't matter so much. Therefore, Jnario provides shorter versions of Xtend's collection literals.</p>
 <ul><li><p id="List_Literal" class="example notrun"><strong>List Literal</strong></p>
 <pre class="prettyprint lang-spec linenums">
-#[&quot;green&quot;, &quot;red&quot;]         =&gt; newArrayList(&quot;green&quot;, &quot;red&quot;)
-#[#[&quot;green&quot;], #[&quot;red&quot;]]   =&gt; newArrayList(newArrayList(&quot;green&quot;), newArrayList(&quot;red&quot;))</pre>
+list(&quot;green&quot;, &quot;red&quot;)             =&gt; newArrayList(&quot;green&quot;, &quot;red&quot;)
+list(list(&quot;green&quot;), list(&quot;red&quot;)) =&gt; newArrayList(newArrayList(&quot;green&quot;), newArrayList(&quot;red&quot;))</pre>
 </li><li><p id="Set_Literal" class="example notrun"><strong>Set Literal</strong></p>
 <pre class="prettyprint lang-spec linenums">
-#{&quot;green&quot;, &quot;red&quot;}         =&gt; newHashSet(&quot;green&quot;, &quot;red&quot;)
-#{#{&quot;green&quot;}, #{&quot;red&quot;}}    =&gt; newHashSet(newHashSet(&quot;green&quot;), newHashSet(&quot;red&quot;))</pre>
+set(&quot;green&quot;, &quot;red&quot;)              =&gt; newHashSet(&quot;green&quot;, &quot;red&quot;)
+set(set(&quot;green&quot;), set(&quot;red&quot;))    =&gt; newHashSet(newHashSet(&quot;green&quot;), newHashSet(&quot;red&quot;))</pre>
 </li><li><p id="Map_Literal" class="example notrun"><strong>Map Literal</strong></p>
 <pre class="prettyprint lang-spec linenums">
 map(
@@ -138,19 +138,19 @@ import static org.jnario.lib.JnarioCollectionLiterals.*
 describe &quot;Extension Library&quot;{
   
   /*
-   * Xtend has it's own collection literals which of course 
-   * work in Jnario as well. 
+   * When writing tests the concrete implementation of a collection usually doesn't matter
+   * so much. Therefore, Jnario provides shorter versions of Xtend's collection literals.
    */
   describe &quot;Collection Literals&quot;{
     
     fact &quot;List Literal&quot;{
-      #[&quot;green&quot;, &quot;red&quot;]         =&gt; newArrayList(&quot;green&quot;, &quot;red&quot;)
-      #[#[&quot;green&quot;], #[&quot;red&quot;]]   =&gt; newArrayList(newArrayList(&quot;green&quot;), newArrayList(&quot;red&quot;))
+      list(&quot;green&quot;, &quot;red&quot;)             =&gt; newArrayList(&quot;green&quot;, &quot;red&quot;)
+      list(list(&quot;green&quot;), list(&quot;red&quot;)) =&gt; newArrayList(newArrayList(&quot;green&quot;), newArrayList(&quot;red&quot;))
     }
     
     fact &quot;Set Literal&quot;{
-      #{&quot;green&quot;, &quot;red&quot;}         =&gt; newHashSet(&quot;green&quot;, &quot;red&quot;)
-      #{#{&quot;green&quot;}, #{&quot;red&quot;}}    =&gt; newHashSet(newHashSet(&quot;green&quot;), newHashSet(&quot;red&quot;))
+      set(&quot;green&quot;, &quot;red&quot;)              =&gt; newHashSet(&quot;green&quot;, &quot;red&quot;)
+      set(set(&quot;green&quot;), set(&quot;red&quot;))    =&gt; newHashSet(newHashSet(&quot;green&quot;), newHashSet(&quot;red&quot;))
     }  
     
     fact &quot;Map Literal&quot;{
