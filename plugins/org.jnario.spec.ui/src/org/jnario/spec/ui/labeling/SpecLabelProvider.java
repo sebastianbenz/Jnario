@@ -13,9 +13,12 @@ package org.jnario.spec.ui.labeling;
 import static org.eclipse.xtext.util.Strings.convertFromJavaString;
 
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.ide.labeling.XtendImages;
 import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmVisibility;
+import org.eclipse.xtext.xbase.ui.labeling.XbaseImageAdornments;
 import org.jnario.ExampleTable;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.Example;
@@ -37,17 +40,22 @@ public class SpecLabelProvider extends XtendLabelProvider {
 	@Inject
 	private ExampleNameProvider exampleNameProvider;
 
+	@Inject
+	private XbaseImageAdornments adornments;
+
+	@Inject
+	private IXtendJvmAssociations associations;
 	
 	public Image image(ExampleTable element) {
-		return images.forField(JvmVisibility.PROTECTED, false, false);
+		return images.forField(JvmVisibility.PROTECTED, adornments.get((JvmIdentifiableElement) associations.getJvmElements(element).iterator().next()));
 	}
 	
 	public Image image(ExampleGroup element) {
-		return images.forClass(JvmVisibility.PUBLIC);
+		return images.forClass(JvmVisibility.PUBLIC, adornments.get(associations.getInferredType(element)));
 	}
 	
 	public Image image(TestFunction element) {
-		return images.forOperation(JvmVisibility.PUBLIC, false);
+		return images.forOperation(JvmVisibility.PUBLIC, adornments.get(associations.getDirectlyInferredOperation(element)));
 	}
 
 	public String text(ExampleGroup element) {

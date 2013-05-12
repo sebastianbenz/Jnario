@@ -1,7 +1,6 @@
 package org.jnario.feature.tests.integration;
 
 import org.jnario.feature.tests.integration.DefiningFeatureBasesClassesFeature;
-import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -14,8 +13,6 @@ import org.junit.runner.RunWith;
 @Ignore
 @SuppressWarnings("all")
 public class DefiningFeatureBasesClassesFeatureScenarioWithBackground extends DefiningFeatureBasesClassesFeature {
-  CharSequence jnarioFile;
-  
   @Test
   @Order(0)
   @Ignore
@@ -27,8 +24,8 @@ public class DefiningFeatureBasesClassesFeatureScenarioWithBackground extends De
   @Test
   @Order(1)
   @Ignore
-  @Named("Then it should execute successfully")
+  @Named("Then it should execute successfully [PENDING]")
   public void thenItShouldExecuteSuccessfully() {
-    FeatureExecutor.isSuccessful(this.jnarioFile);
+    
   }
 }

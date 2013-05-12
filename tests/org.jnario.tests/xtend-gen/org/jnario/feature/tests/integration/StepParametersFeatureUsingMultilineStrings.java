@@ -8,10 +8,10 @@
 package org.jnario.feature.tests.integration;
 
 import org.jnario.feature.tests.integration.StepParametersFeature;
-import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -19,19 +19,19 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Using multiline Strings")
 @SuppressWarnings("all")
 public class StepParametersFeatureUsingMultilineStrings extends StepParametersFeature {
-  CharSequence jnarioFile;
-  
   @Test
   @Order(0)
   @Named("When I have a scenario with multiline strings")
   public void whenIHaveAScenarioWithMultilineStrings() {
-    this.jnarioFile = "\r\n\t\t\t\tpackage bootstrap \r\n\t\t\t\tFeature: Test feature\r\n\t\t\t\t\tScenario: using multiline strings in step definitions\r\n\t\t\t\t\t\tString x\r\n\t\t\t\t\t\tGiven the multine string: \r\n\t\t\t\t\t\t\t\'\'\'hello\'\'\'\r\n\t\t\t\t\t\t\tx = args.first\r\n\t\t\t\t\t\tThen it should be \"hello\"\r\n\t\t\t\t\t\t\tx should be args.first\r\n\t\t\t";
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field jnarioFile is undefined for the type Scenario: Using multiline Strings\r\n");
   }
   
   @Test
   @Order(1)
-  @Named("Then it should execute successfully")
+  @Ignore
+  @Named("Then it should execute successfully [PENDING]")
   public void thenItShouldExecuteSuccessfully() {
-    FeatureExecutor.isSuccessful(this.jnarioFile);
+    
   }
 }

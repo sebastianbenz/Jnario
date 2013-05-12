@@ -46,15 +46,14 @@ public class FeatureOutlineTreeProvider extends XtendOutlineTreeProvider {
 		
 	}
 	
-	@Override
 	protected XtendFeatureNode createNodeForFeature(IOutlineNode parentNode,
 			JvmDeclaredType inferredType, JvmFeature jvmFeature,
-			EObject semanticFeature) {
+			EObject semanticFeature, int inheritanceDepth) {
 		if(jvmFeature instanceof JvmConstructor){
 			return null;
 		}
 		return super.createNodeForFeature(parentNode, inferredType, jvmFeature,
-				semanticFeature);
+				semanticFeature, inheritanceDepth);
 	}
 	
 	protected boolean _isLeaf(Scenario element) {

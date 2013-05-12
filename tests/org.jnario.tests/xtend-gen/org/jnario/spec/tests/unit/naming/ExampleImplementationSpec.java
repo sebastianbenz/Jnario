@@ -68,7 +68,7 @@ public class ExampleImplementationSpec extends ExampleSpec {
           XExpression _expression = _parse.getExpression();
           Class<? extends XExpression> _type = it.getType();
           Matcher<Object> _instanceOf = CoreMatchers.instanceOf(_type);
-          boolean _should_be = org.jnario.lib.Should.<Object>should_be(_expression, _instanceOf);
+          boolean _should_be = org.jnario.lib.Should.<XExpression>should_be(_expression, _instanceOf);
           Assert.assertTrue("\nExpected example.parse.expression should be instanceOf(type) but"
            + "\n     example.parse.expression is " + new StringDescription().appendValue(_expression).toString()
            + "\n     example.parse is " + new StringDescription().appendValue(_parse).toString()

@@ -13,9 +13,9 @@ import org.eclipse.xtext.resource.IResourceDescription
 import org.eclipse.xtext.resource.IResourceDescription$Delta
 import org.eclipse.xtext.resource.IResourceDescriptions
 
-import static org.jnario.suite.resource.SuiteResourceDescriptionManager.*
+import static org.jnario.suite.resource.SuiteResourceDescriptionManager.*import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager
 
-class SuiteResourceDescriptionManager extends DerivedStateAwareResourceDescriptionManager {
+class SuiteResourceDescriptionManager extends XtendResourceDescriptionManager {
 	
 	static val FILE_EXTENSIONS = newHashSet("suite", "spec", "feature") 
 	

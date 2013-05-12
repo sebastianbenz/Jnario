@@ -12,7 +12,8 @@ import org.jnario.jnario.test.util.FeatureTestCreator
 import com.google.inject.Inject
 import static extension org.jnario.jnario.test.util.ResultMatchers.*
 import org.jnario.jnario.test.util.FeatureExecutor
- 
+import org.jnario.feature.tests.integration.BackgroundsFeature.*
+
 @CreateWith(typeof(FeatureTestCreator))
 Feature: Field Inference
 

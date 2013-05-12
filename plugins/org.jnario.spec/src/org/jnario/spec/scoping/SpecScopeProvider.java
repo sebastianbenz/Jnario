@@ -29,10 +29,12 @@ import org.jnario.spec.spec.SpecPackage;
 
 import com.google.common.base.Function;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
+@Singleton
 public class SpecScopeProvider extends JnarioScopeProvider {
 	
 	@Inject

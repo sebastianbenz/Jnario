@@ -10,9 +10,13 @@ package org.jnario.spec.ui.quickfix;
 
 import org.jnario.ui.quickfix.JnarioQuickFixProvider;
 
+import com.google.inject.Singleton;
+
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
+
+@Singleton
 public class SpecQuickfixProvider extends JnarioQuickFixProvider {
 
 	

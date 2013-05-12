@@ -13,9 +13,12 @@ package org.jnario.feature.ui.labeling;
 import static org.eclipse.xtext.util.Strings.convertFromJavaString;
 
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.ide.labeling.XtendImages;
 import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmVisibility;
+import org.eclipse.xtext.xbase.ui.labeling.XbaseImageAdornments;
 import org.jnario.ExampleTable;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
@@ -36,24 +39,30 @@ public class FeatureLabelProvider extends XtendLabelProvider {
 	@Inject
 	private StepNameProvider stepNameProvider;
 
+	@Inject
+	private XbaseImageAdornments adornments;
+
+	@Inject
+	private IXtendJvmAssociations associations;
+	
 	public Image image(Background element) {
-		return images.forClass(JvmVisibility.PUBLIC);
+		return images.forClass(JvmVisibility.PUBLIC, adornments.get(associations.getInferredType(element)));
 	}
 	
 	public Image image(ExampleTable element) {
-		return images.forField(JvmVisibility.PROTECTED, false, false);
+		return images.forField(JvmVisibility.PROTECTED, adornments.get((JvmIdentifiableElement) associations.getJvmElements(element).iterator().next()));
 	}
 	
 	public Image image(Step element) {
-		return images.forOperation(JvmVisibility.PUBLIC, false);
+		return images.forOperation(JvmVisibility.PUBLIC, adornments.get(associations.getDirectlyInferredOperation(element)));
 	}
 	
 	public Image image(Scenario element) {
-		return images.forClass(JvmVisibility.PUBLIC);
+		return images.forClass(JvmVisibility.PUBLIC, adornments.get(associations.getInferredType(element)));
 	}
 	
 	public Image image(Feature element) {
-		return images.forClass(JvmVisibility.PUBLIC);
+		return images.forClass(JvmVisibility.PUBLIC, adornments.get(associations.getInferredType(element)));
 	}
 
 	public String text(Background element) {

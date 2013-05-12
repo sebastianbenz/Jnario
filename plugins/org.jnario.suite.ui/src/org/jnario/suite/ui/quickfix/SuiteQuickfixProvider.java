@@ -41,7 +41,10 @@ import org.jnario.util.Strings;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.google.inject.Singleton;
 @SuppressWarnings("restriction")
+
+@Singleton
 public class SuiteQuickfixProvider extends JnarioQuickFixProvider {
 
 	@Inject Provider<NewSpecWizard> newSpecWizardProvider;

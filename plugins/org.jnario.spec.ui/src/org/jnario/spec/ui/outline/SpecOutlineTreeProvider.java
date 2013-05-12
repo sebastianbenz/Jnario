@@ -50,7 +50,7 @@ public class SpecOutlineTreeProvider extends XtendOutlineTreeProvider {
 	@Override
 	protected XtendFeatureNode createNodeForFeature(IOutlineNode parentNode,
 			JvmDeclaredType inferredType, JvmFeature jvmFeature,
-			EObject semanticFeature) {
+			EObject semanticFeature, int inheritanceDepth) {
 		if(jvmFeature instanceof JvmConstructor){
 			return null;
 		}
@@ -62,7 +62,7 @@ public class SpecOutlineTreeProvider extends XtendOutlineTreeProvider {
 			return null;
 		}
 		return super.createNodeForFeature(parentNode, inferredType, jvmFeature,
-				semanticFeature);
+				semanticFeature, inheritanceDepth);
 	}
 	
 	protected boolean _isLeaf(ExampleGroup element) {

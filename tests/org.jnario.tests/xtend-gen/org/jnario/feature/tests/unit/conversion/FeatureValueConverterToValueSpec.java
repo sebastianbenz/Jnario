@@ -41,7 +41,7 @@ public class FeatureValueConverterToValueSpec extends FeatureValueConverterSpec 
   public void _subjectToValueNullNullShouldBeNull() throws Exception {
     String _value = this.subject.toValue(null, null);
     Matcher<Object> _nullValue = CoreMatchers.<Object>nullValue();
-    boolean _should_be = Should.should_be(_value, _nullValue);
+    boolean _should_be = Should.<String>should_be(_value, _nullValue);
     Assert.assertTrue("\nExpected subject.toValue(null, null) should be null but"
      + "\n     subject.toValue(null, null) is " + new StringDescription().appendValue(_value).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _should_be);

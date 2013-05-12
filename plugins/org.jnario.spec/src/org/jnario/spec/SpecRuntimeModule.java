@@ -18,6 +18,7 @@ import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.jvmmodel.SyntheticNameClashResolver;
 import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
 import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
+import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
 import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
 import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
@@ -37,9 +38,12 @@ import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
+import org.eclipse.xtext.resource.IResourceDescription.Manager;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.validation.CompositeEValidator;
 import org.eclipse.xtext.validation.ConfigurableIssueCodesProvider;
+import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
@@ -70,6 +74,7 @@ import org.jnario.linking.JnarioLinkingService;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.HashBasedSpec2ResultMapping;
 import org.jnario.scoping.JnarioImplicitlyImportedTypes;
+import org.jnario.scoping.JnarioImportedNamespaceScopeProvider;
 import org.jnario.spec.compiler.SpecBatchCompiler;
 import org.jnario.spec.conversion.SpecValueConverterService;
 import org.jnario.spec.doc.SpecDocGenerator;
@@ -106,6 +111,8 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 		binder.bind(ExecutableProvider.class).to(SpecExecutableProvider.class);
 		binder.bind(Executable2ResultMapping.class).to(HashBasedSpec2ResultMapping.class);
 		binder.bind(ImplicitlyImportedTypes.class).to(JnarioImplicitlyImportedTypes.class);
+		binder.bind(boolean.class).annotatedWith(
+				Names.named(CompositeEValidator.USE_EOBJECT_VALIDATOR)).toInstance(false);
 	}
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
@@ -137,7 +144,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	@Override
 	public void configureIScopeProviderDelegate(Binder binder) {
 		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
-		.to(XtendImportedNamespaceScopeProvider.class);
+		.to(JnarioImportedNamespaceScopeProvider.class);
 	}
 
 	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
@@ -243,7 +250,17 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	}
 	
 	@Override
+	public Class<? extends Manager> bindIResourceDescription$Manager() {
+		return XtendResourceDescriptionManager.class;
+	}
+	
+	@Override
 	public Class<? extends XbaseBatchScopeProvider> bindXbaseBatchScopeProvider() {
 		return SpecBatchScopeProvider.class;
+	}
+	
+	@Override
+	public Class<? extends IResourceValidator> bindIResourceValidator() {
+		return org.eclipse.xtend.core.validation.CachingResourceValidatorImpl.class;
 	}
 }

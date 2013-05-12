@@ -73,19 +73,6 @@ import com.google.inject.Inject;
  */
 public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	
-	public static class FeatureRewritableImportSection extends RewritableImportSection{
-
-		public FeatureRewritableImportSection(XtextResource resource,
-				IImportsConfiguration importsConfiguration,
-				XImportSection originalImportSection, String lineSeparator,
-				ImportSectionRegionUtil regionUtil,
-				IValueConverter<String> nameConverter) {
-			super(resource, importsConfiguration, originalImportSection, lineSeparator,
-					regionUtil, nameConverter);
-		}
-		
-	}
-	
 	private static final Logger LOG = Logger.getLogger(FeatureProposalProvider.class);
 	@Inject private IResourceDescriptions resourceDescriptions;
 	@Inject private IContainer.Manager containerManager;
@@ -244,6 +231,7 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 			Step step = (Step) resolve(desc.getEObjectOrProxy(), context.getCurrentModel());
 			Scenario scenario = getContainerOfType(step, Scenario.class);
 			String proposal = getQualifiedNameConverter().toString(desc.getQualifiedName().skipLast(1)) + "." + prefix + desc.getName().getLastSegment();
+			System.out.println(proposal);
 			if(expected.contains(desc.getEClass()) && context.getMatcher().isCandidateMatchingPrefix(proposal, context.getPrefix())){
 				acceptor = createStepFqnShorterner(context, acceptor, scope, desc.getQualifiedName(), scenario);
 				String displayString = step.isPending() ? proposal + " [PENDING]" : proposal;

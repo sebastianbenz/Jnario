@@ -8,12 +8,12 @@
 package org.jnario.feature.tests.integration;
 
 import org.jnario.feature.tests.integration.UsingJUnitRulesInFeaturesFeature;
-import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -35,8 +35,9 @@ public class UsingJUnitRulesInFeaturesFeatureUsingJUnitRules extends UsingJUnitR
   
   @Test
   @Order(1)
-  @Named("Then it should execute successfully")
+  @Ignore
+  @Named("Then it should execute successfully [PENDING]")
   public void thenItShouldExecuteSuccessfully() {
-    FeatureExecutor.isSuccessful(this.jnarioFile);
+    
   }
 }

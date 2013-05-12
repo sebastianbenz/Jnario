@@ -58,7 +58,7 @@ public class UsingShouldSpec {
      + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be_1);
     
     Matcher<Object> _nullValue = CoreMatchers.<Object>nullValue();
-    boolean _should_be_2 = Should.should_be(
+    boolean _should_be_2 = Should.<String>should_be(
       "something", _nullValue);
     Assert.assertFalse("\nExpected \"something\" should not be null but" + " did not." + "\n", _should_be_2);
     
@@ -222,7 +222,7 @@ public class UsingShouldSpec {
     try{
       Object _object_1 = new Object();
       Matcher<Object> _nullValue_1 = CoreMatchers.<Object>nullValue();
-      boolean _should_be_2 = Should.should_be(_object_1, _nullValue_1);
+      boolean _should_be_2 = Should.<Object>should_be(_object_1, _nullValue_1);
       Assert.assertTrue("\nExpected new Object should be null but"
        + "\n     new Object is " + new StringDescription().appendValue(_object_1).toString() + "\n", _should_be_2);
       
@@ -417,7 +417,7 @@ public class UsingShouldSpec {
     
     List<String> _list = JnarioCollectionLiterals.<String>list("red", "green");
     Matcher<Iterable<String>> _hasItem = Matchers.<String>hasItem("red");
-    boolean _doubleArrow_1 = Should.<Iterable<String>>operator_doubleArrow(_list, _hasItem);
+    boolean _doubleArrow_1 = Should.<List<String>>operator_doubleArrow(_list, _hasItem);
     Assert.assertTrue("\nExpected list(\"red\", \"green\") => hasItem(\"red\") but"
      + "\n     list(\"red\", \"green\") is " + new StringDescription().appendValue(_list).toString()
      + "\n     hasItem(\"red\") is " + new StringDescription().appendValue(_hasItem).toString() + "\n", _doubleArrow_1);

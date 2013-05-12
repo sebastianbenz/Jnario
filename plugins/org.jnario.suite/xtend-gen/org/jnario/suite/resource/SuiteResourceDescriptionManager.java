@@ -11,7 +11,7 @@ import com.google.common.base.Objects;
 import java.util.Collection;
 import java.util.HashSet;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.xtext.resource.DerivedStateAwareResourceDescriptionManager;
+import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.IResourceDescription.Delta;
 import org.eclipse.xtext.resource.IResourceDescriptions;
@@ -21,7 +21,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
-public class SuiteResourceDescriptionManager extends DerivedStateAwareResourceDescriptionManager {
+public class SuiteResourceDescriptionManager extends XtendResourceDescriptionManager {
   private final static HashSet<String> FILE_EXTENSIONS = new Function0<HashSet<String>>() {
     public HashSet<String> apply() {
       HashSet<String> _newHashSet = CollectionLiterals.<String>newHashSet("suite", "spec", "feature");

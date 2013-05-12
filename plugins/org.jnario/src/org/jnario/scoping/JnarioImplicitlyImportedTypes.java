@@ -9,6 +9,7 @@ import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.JnarioIteratorExtensions;
 import org.jnario.lib.Should;
+import org.jnario.lib.StepArguments;
 import org.jnario.lib.StringConversions;
 import org.jnario.lib.Wait;
 import org.junit.Assert;
@@ -25,6 +26,7 @@ public class JnarioImplicitlyImportedTypes extends ImplicitlyImportedTypes {
 		result.add(StringConversions.class);
 		result.add(JnarioIterableExtensions.class);
 		result.add(JnarioIteratorExtensions.class);
+		result.add(StepArguments.class);
 		return result;
 	}
 	

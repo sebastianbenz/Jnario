@@ -8,7 +8,6 @@
 package org.jnario.feature.tests.integration;
 
 import org.jnario.feature.tests.integration.TestRunnerFeature;
-import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
@@ -45,8 +44,8 @@ public class TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario exte
   @Test
   @Order(2)
   @Ignore
-  @Named("And it should execute successfully")
+  @Named("And it should execute successfully [PENDING]")
   public void andItShouldExecuteSuccessfully() {
-    FeatureExecutor.isSuccessful(this.jnarioFile);
+    
   }
 }

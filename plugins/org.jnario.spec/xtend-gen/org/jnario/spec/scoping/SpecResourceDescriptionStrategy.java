@@ -9,11 +9,11 @@ package org.jnario.spec.scoping;
 
 import com.google.common.collect.ImmutableMap.Builder;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
+import org.jnario.scoping.JnarioResourceDescriptionStrategy;
 import org.jnario.spec.spec.ExampleGroup;
 
 @SuppressWarnings("all")
-public class SpecResourceDescriptionStrategy extends XtendResourceDescriptionStrategy {
+public class SpecResourceDescriptionStrategy extends JnarioResourceDescriptionStrategy {
   public final static String ROOT_SPEC = "root";
   
   public final static String TRUE = "1";

@@ -11,9 +11,11 @@
 package org.jnario.suite.ui.labeling;
 
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.ide.labeling.XtendImages;
 import org.eclipse.xtend.ide.labeling.XtendLabelProvider;
 import org.eclipse.xtext.common.types.JvmVisibility;
+import org.eclipse.xtext.xbase.ui.labeling.XbaseImageAdornments;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.Suite;
 
@@ -31,8 +33,14 @@ public class SuiteLabelProvider extends XtendLabelProvider {
 	
 	@Inject private XtendImages images;
 	
+	@Inject
+	private XbaseImageAdornments adornments;
+	
+	@Inject
+	private IXtendJvmAssociations associations;
+	
 	public Image image(Suite element) {
-		return images.forClass(JvmVisibility.PUBLIC);
+		return images.forClass(JvmVisibility.PUBLIC, adornments.get(associations.getInferredType(element)));
 	}
 	
 	public String text(Suite element) {

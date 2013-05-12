@@ -13,8 +13,9 @@ import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy
 import org.jnario.spec.spec.ExampleGroup
 
 import static java.lang.String.*
-import static org.jnario.spec.scoping.SpecResourceDescriptionStrategy.*
-class SpecResourceDescriptionStrategy extends XtendResourceDescriptionStrategy {
+import static org.jnario.spec.scoping.SpecResourceDescriptionStrategy.*import org.jnario.scoping.JnarioResourceDescriptionStrategy
+
+class SpecResourceDescriptionStrategy extends JnarioResourceDescriptionStrategy {
 	
 	public static val ROOT_SPEC = "root"
 	public static val TRUE = "1"

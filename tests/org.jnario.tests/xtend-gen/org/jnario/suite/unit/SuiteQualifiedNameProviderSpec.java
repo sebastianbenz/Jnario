@@ -111,7 +111,7 @@ public class SuiteQualifiedNameProviderSpec {
     this._modelStore.parseSuite(_builder);
     String _qualifiedName = this.qualifiedName();
     Matcher<Object> _nullValue = CoreMatchers.<Object>nullValue();
-    boolean _should_be = Should.should_be(_qualifiedName, _nullValue);
+    boolean _should_be = Should.<String>should_be(_qualifiedName, _nullValue);
     Assert.assertTrue("\nExpected qualifiedName should be null but"
      + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _should_be);
     
