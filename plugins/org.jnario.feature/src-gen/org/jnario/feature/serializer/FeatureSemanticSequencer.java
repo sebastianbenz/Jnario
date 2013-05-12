@@ -1560,7 +1560,11 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=BACKGROUND_TEXT members+=Member* ((members+=Given | members+=GivenReference) (members+=And | members+=AndReference)*)?)
+	 *     (
+	 *         name=BACKGROUND_TEXT 
+	 *         members+=Member* 
+	 *         ((members+=Given | members+=GivenReference) (members+=And | members+=AndReference | members+=But | members+=ButReference)*)?
+	 *     )
 	 */
 	protected void sequence_Background(EObject context, Background semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

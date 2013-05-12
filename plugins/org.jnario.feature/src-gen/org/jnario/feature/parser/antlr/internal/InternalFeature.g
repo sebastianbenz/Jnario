@@ -390,6 +390,36 @@ ruleBackground returns [EObject current=null]
 	        afterParserOrEnumRuleCall();
 	    }
 
+    |		{ 
+	        newCompositeNode(grammarAccess.getBackgroundAccess().getMembersButParserRuleCall_3_1_0_2()); 
+	    }
+		lv_members_4_3=ruleBut		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getBackgroundRule());
+	        }
+       		add(
+       			$current, 
+       			"members",
+        		lv_members_4_3, 
+        		"But");
+	        afterParserOrEnumRuleCall();
+	    }
+
+    |		{ 
+	        newCompositeNode(grammarAccess.getBackgroundAccess().getMembersButReferenceParserRuleCall_3_1_0_3()); 
+	    }
+		lv_members_4_4=ruleButReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getBackgroundRule());
+	        }
+       		add(
+       			$current, 
+       			"members",
+        		lv_members_4_4, 
+        		"ButReference");
+	        afterParserOrEnumRuleCall();
+	    }
+
 )
 
 )
@@ -9771,7 +9801,7 @@ RULE_BUT_TEXT : 'But ' RULE_STEP_WITH_ARGS;
 
 RULE_TEXT : '____dummy____'+;
 
-fragment RULE_STEP_WITH_ARGS : ~(('\r'|'\n'))* '\r'? ('\n' RULE_SPACES RULE_RICH_TEXT?|EOF);
+fragment RULE_STEP_WITH_ARGS : ~(('\r'|'\n'))* '\r'? ('\n' RULE_SPACES RULE_RICH_TEXT? RULE_SPACES|EOF);
 
 fragment RULE_MNL : ~(('\r'|'\n'))* RULE_NL;
 

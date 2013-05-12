@@ -3248,6 +3248,18 @@ rule__Background__MembersAlternatives_3_1_0
 { after(grammarAccess.getBackgroundAccess().getMembersAndReferenceParserRuleCall_3_1_0_1()); }
 )
 
+    |(
+{ before(grammarAccess.getBackgroundAccess().getMembersButParserRuleCall_3_1_0_2()); }
+	ruleBut
+{ after(grammarAccess.getBackgroundAccess().getMembersButParserRuleCall_3_1_0_2()); }
+)
+
+    |(
+{ before(grammarAccess.getBackgroundAccess().getMembersButReferenceParserRuleCall_3_1_0_3()); }
+	ruleButReference
+{ after(grammarAccess.getBackgroundAccess().getMembersButReferenceParserRuleCall_3_1_0_3()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -29368,7 +29380,7 @@ RULE_BUT_TEXT : 'But ' RULE_STEP_WITH_ARGS;
 
 RULE_TEXT : '____dummy____'+;
 
-fragment RULE_STEP_WITH_ARGS : ~(('\r'|'\n'))* '\r'? ('\n' RULE_SPACES RULE_RICH_TEXT?|EOF);
+fragment RULE_STEP_WITH_ARGS : ~(('\r'|'\n'))* '\r'? ('\n' RULE_SPACES RULE_RICH_TEXT? RULE_SPACES|EOF);
 
 fragment RULE_MNL : ~(('\r'|'\n'))* RULE_NL;
 

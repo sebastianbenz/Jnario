@@ -142,13 +142,16 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cMembersAlternatives_3_1_0 = (Alternatives)cMembersAssignment_3_1.eContents().get(0);
 		private final RuleCall cMembersAndParserRuleCall_3_1_0_0 = (RuleCall)cMembersAlternatives_3_1_0.eContents().get(0);
 		private final RuleCall cMembersAndReferenceParserRuleCall_3_1_0_1 = (RuleCall)cMembersAlternatives_3_1_0.eContents().get(1);
+		private final RuleCall cMembersButParserRuleCall_3_1_0_2 = (RuleCall)cMembersAlternatives_3_1_0.eContents().get(2);
+		private final RuleCall cMembersButReferenceParserRuleCall_3_1_0_3 = (RuleCall)cMembersAlternatives_3_1_0.eContents().get(3);
 		
 		//Background:
-		//	{Background} name=BACKGROUND_TEXT members+=Member* (members+=(Given | GivenReference) members+=(And |
-		//	AndReference)*)?;
+		//	{Background} name=BACKGROUND_TEXT members+=Member* (members+=(Given | GivenReference) members+=(And | AndReference |
+		//	But | ButReference)*)?;
 		public ParserRule getRule() { return rule; }
 
-		//{Background} name=BACKGROUND_TEXT members+=Member* (members+=(Given | GivenReference) members+=(And | AndReference)*)?
+		//{Background} name=BACKGROUND_TEXT members+=Member* (members+=(Given | GivenReference) members+=(And | AndReference | But
+		//| ButReference)*)?
 		public Group getGroup() { return cGroup; }
 
 		//{Background}
@@ -166,7 +169,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//Member
 		public RuleCall getMembersMemberParserRuleCall_2_0() { return cMembersMemberParserRuleCall_2_0; }
 
-		//(members+=(Given | GivenReference) members+=(And | AndReference)*)?
+		//(members+=(Given | GivenReference) members+=(And | AndReference | But | ButReference)*)?
 		public Group getGroup_3() { return cGroup_3; }
 
 		//members+=(Given | GivenReference)
@@ -181,10 +184,10 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		//GivenReference
 		public RuleCall getMembersGivenReferenceParserRuleCall_3_0_0_1() { return cMembersGivenReferenceParserRuleCall_3_0_0_1; }
 
-		//members+=(And | AndReference)*
+		//members+=(And | AndReference | But | ButReference)*
 		public Assignment getMembersAssignment_3_1() { return cMembersAssignment_3_1; }
 
-		//And | AndReference
+		//And | AndReference | But | ButReference
 		public Alternatives getMembersAlternatives_3_1_0() { return cMembersAlternatives_3_1_0; }
 
 		//And
@@ -192,6 +195,12 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 
 		//AndReference
 		public RuleCall getMembersAndReferenceParserRuleCall_3_1_0_1() { return cMembersAndReferenceParserRuleCall_3_1_0_1; }
+
+		//But
+		public RuleCall getMembersButParserRuleCall_3_1_0_2() { return cMembersButParserRuleCall_3_1_0_2; }
+
+		//ButReference
+		public RuleCall getMembersButReferenceParserRuleCall_3_1_0_3() { return cMembersButReferenceParserRuleCall_3_1_0_3; }
 	}
 
 	public class ScenarioElements extends AbstractParserRuleElementFinder {
@@ -1393,8 +1402,8 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Background:
-	//	{Background} name=BACKGROUND_TEXT members+=Member* (members+=(Given | GivenReference) members+=(And |
-	//	AndReference)*)?;
+	//	{Background} name=BACKGROUND_TEXT members+=Member* (members+=(Given | GivenReference) members+=(And | AndReference |
+	//	But | ButReference)*)?;
 	public BackgroundElements getBackgroundAccess() {
 		return (pBackground != null) ? pBackground : (pBackground = new BackgroundElements());
 	}
@@ -1686,7 +1695,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal fragment STEP_WITH_ARGS:
-	//	!("\r" | "\n")* "\r"? ("\n" SPACES RICH_TEXT? | EOF);
+	//	!("\r" | "\n")* "\r"? ("\n" SPACES RICH_TEXT? SPACES | EOF);
 	public TerminalRule getSTEP_WITH_ARGSRule() {
 		return (tSTEP_WITH_ARGS != null) ? tSTEP_WITH_ARGS : (tSTEP_WITH_ARGS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STEP_WITH_ARGS"));
 	} 
