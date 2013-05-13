@@ -89,7 +89,7 @@ Feature: Field Inference
 					Given a string "value"
 						myString = args.first
 			'''
-		And another feature 
+		And another feature
 			'''
 			Feature: Feature 2
 				Scenario: My Scenario 2
@@ -97,6 +97,5 @@ Feature: Field Inference
 					Then my string is "test"
 						myString => args.first   
 			'''
-			feature2 = args.first
 		Then both should execute successfully 
  

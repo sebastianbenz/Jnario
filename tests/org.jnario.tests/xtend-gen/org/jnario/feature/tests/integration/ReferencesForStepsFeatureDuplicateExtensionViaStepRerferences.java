@@ -22,6 +22,7 @@ import org.jnario.runner.CreateWith;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
@@ -50,16 +51,15 @@ public class ReferencesForStepsFeatureDuplicateExtensionViaStepRerferences exten
   
   @Test
   @Order(1)
+  @Ignore
   @Named("And another feature")
   public void andAnotherFeature() {
-    StepArguments _stepArguments = new StepArguments("import java.util.List\nFeature: Feature 2\n\t\tScenario: Scenario with other colors\n\t\t\t\textension List<String> colors = <String>list\n\t\t\tGiven a color red\n\t\t\tAnd a color green\n\t\t\t\tcolors += \"green\"\n");
-    final StepArguments args = _stepArguments;
-    String _first = JnarioIterableExtensions.<String>first(args);
-    this.feature2 = _first;
+    
   }
   
   @Test
   @Order(2)
+  @Ignore
   @Named("Then both should execute successfully")
   public void thenBothShouldExecuteSuccessfully() {
     Result _execute = this.runner.execute(this.feature1);

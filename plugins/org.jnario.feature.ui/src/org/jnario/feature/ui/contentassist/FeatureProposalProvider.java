@@ -249,7 +249,7 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 				acceptor = createStepFqnShorterner(context, acceptor, scope, desc.getQualifiedName(), scenario);
 				String displayString = proposal;
 				StyledString styledDisplayString = getStyledDisplayString(step, displayString, scenario.getName());
-				acceptor.accept(createCompletionProposal(proposal, styledDisplayString, getLabelProvider().getImage(step), 1000, context.getPrefix(), context));
+				acceptor.accept(doCreateProposal(proposal, styledDisplayString, getLabelProvider().getImage(step), 1000, context));
 			}
 		}
 	}

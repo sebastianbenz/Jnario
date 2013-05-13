@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>org.jnario</groupId>
 			<artifactId>org.jnario.lib.maven</artifactId>
-			<version>0.4.1-SNAPSHOT</version>
+			<version>0.4.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

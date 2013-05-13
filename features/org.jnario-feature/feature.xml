@@ -2,7 +2,7 @@
 <feature
       id="org.jnario"
       label="%featureName"
-      version="0.4.1.201305130006"
+      version="0.4.2.201305131752"
       provider-name="%providerName">
 
    <description>

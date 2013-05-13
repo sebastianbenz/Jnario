@@ -158,7 +158,7 @@ public class ImportingTypesProposalProvider extends JdtTypesProposalProvider {
 				// add import statement
 				String importStatement = importConverter.toString(typeName);
 				for (XImportDeclaration importDeclaration : imports) {
-					if((importDeclaration.getImportedNamespace()).equals(importStatement)){
+					if(importDeclaration == null || importStatement.equals(importDeclaration.getImportedNamespace())){
 						return;
 					}
 				}

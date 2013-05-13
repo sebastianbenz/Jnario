@@ -11,7 +11,7 @@ Require-Bundle: org.hamcrest,
  com.google.guava,
  org.junit,
  org.eclipse.xtext.xbase.lib,
- org.jnario.tests;bundle-version="0.4.1",
+ org.jnario.tests;bundle-version="0.4.2",
  com.google.inject;bundle-version="3.0.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 

@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jnario</groupId>
   <artifactId>jnario</artifactId>
-  <version>0.4.1.201305130006</version>
+  <version>0.4.2.201305131752</version>
   <packaging>pom</packaging>
 
   <properties>
