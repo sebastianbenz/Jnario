@@ -36,6 +36,7 @@ import org.eclipse.xtext.xbase.XSwitchExpression;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.typing.Closures;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.StringDescription;
 import org.jnario.Assertion;
@@ -361,6 +362,9 @@ public class JnarioCompiler extends XtendCompiler {
 		if (isVoid(expression)) {
 			return;
 		}
+		if(isClosure(expression)){
+			return;
+		}
 		String expr = serialize(expression);
 		if (expr.isEmpty() || valueMappings.contains(expr)) {
 			return;
@@ -375,8 +379,12 @@ public class JnarioCompiler extends XtendCompiler {
 		toJavaExpression(expression, b);
 		b.append(").toString()");
 	}
-
 	
+	private boolean isClosure(XExpression expression) {
+		JvmTypeReference type = getType(expression);
+		return type.getQualifiedName().startsWith("org.eclipse.xtext.xbase.lib.Functions");
+	}
+
 	@Override
 	protected boolean isVariableDeclarationRequired(XExpression expr,
 			ITreeAppendable b) {
