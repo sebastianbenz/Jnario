@@ -17,21 +17,20 @@ import java.util.Stack
  * It works great together with Xtend's with operator. You can use it to:
  */
 describe "Using Xtend's with Operator"{
-	// FIXME
-//	fact "initialize fixtures"{
-//		val stackWithTwoElements = new Stack<String> => [
-//			add("red")
-//			add("blue")
-//		] 
-//		stackWithTwoElements.size => 2
-//	}
-//	fact "write multiple assertions"{
-//		"hello world" => [
-//			length => 11
-//			it should startWith("hello")
-//			it should endWith("world")
-//		]
-//	} 
+	fact "initialize fixtures"{
+		val stackWithTwoElements = new Stack<String> => [
+			add("red")
+			add("blue")
+		] 
+		stackWithTwoElements.size => 2
+	}
+	fact "write multiple assertions"{
+		"hello world" => [
+			length => 11
+			it should startWith("hello")
+			it should endWith("world")
+		]
+	} 
 }
 
  

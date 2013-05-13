@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header pending">
+				<div class="page-header notrun">
 					<h1>References for steps</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -150,10 +150,10 @@ Scenario: Stack adding more elements
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Extension_fields">Scenario: Extension fields 
+<div><h3 class="scenario notrun"  id="Scenario_Extension_fields">Scenario: Extension fields 
 </h3>
 <ul>
-<li><span class="step pending"><p>When I have a scenario with a variable that is initialized</p><pre>import org.jnario.feature.tests.integration.MyExtension
+<li><span class="step notrun"><p>When I have a scenario with a variable that is initialized</p><pre>import org.jnario.feature.tests.integration.MyExtension
     Feature: Extension Fields
       Scenario: A scenario with an extension field
         extension MyExtension myExtension = new MyExtension
@@ -173,10 +173,10 @@ Scenario: Stack adding more elements
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Extension_fields_in_And_step">Scenario: Extension fields in And step
+<div><h3 class="scenario notrun"  id="Scenario_Extension_fields_in_And_step">Scenario: Extension fields in And step
 </h3>
 <ul>
-<li><span class="step pending"><p>When I have a scenario with a variable that is initialized</p><pre>import org.jnario.feature.tests.integration.MyExtension
+<li><span class="step notrun"><p>When I have a scenario with a variable that is initialized</p><pre>import org.jnario.feature.tests.integration.MyExtension
       Feature: Extension Fields
         Scenario: A scenario with an extension field
           extension MyExtension myExtension = new MyExtension
@@ -328,7 +328,7 @@ Feature: Step references with extensions in same step
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Duplicate_extension_via_step_rerferences">Scenario: Duplicate extension via step rerferences
+<div><h3 class="scenario notrun"  id="Scenario_Duplicate_extension_via_step_rerferences">Scenario: Duplicate extension via step rerferences
 </h3>
 <ul>
 <li><span class="step notrun"><p>When I have a feature</p><pre>import java.util.List
@@ -339,7 +339,7 @@ Feature: Feature 1
         colors += &quot;red&quot;
       And a color green</pre></span>
 </li>
-<li><span class="step pending"><p>And another feature</p><pre>import java.util.List
+<li><span class="step notrun"><p>And another feature</p><pre>import java.util.List
 Feature: Feature 2
     Scenario: Scenario with other colors
         extension List&lt;String&gt; colors = &lt;String&gt;list
