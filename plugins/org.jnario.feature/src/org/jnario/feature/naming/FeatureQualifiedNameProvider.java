@@ -7,6 +7,8 @@
  *******************************************************************************/
 package org.jnario.feature.naming;
 
+import static java.lang.Character.UNASSIGNED;
+import static java.lang.Character.isWhitespace;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.util.Strings.isEmpty;
 
@@ -92,7 +94,7 @@ public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 		if(name.endsWith(".")){
 			name = name.substring(0, name.length()-1);
 		}
-		return name.trim();
+		return name;
 	}
 	
 }

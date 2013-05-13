@@ -9,7 +9,6 @@ package org.jnario.feature.naming;
 
 import com.google.common.base.Objects;
 import java.util.Arrays;
-import java.util.regex.Matcher;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtend.core.xtend.XtendPackage;
@@ -18,7 +17,7 @@ import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
-import org.jnario.feature.jvmmodel.StepArgumentsProvider;
+import org.jnario.feature.naming.ArgumentsHelper;
 import org.jnario.util.Nodes;
 import org.jnario.util.Strings;
 
@@ -111,10 +110,15 @@ public class StepNameProvider {
     return name.substring(_plus);
   }
   
-  public String removeArguments(final String name) {
-    String firstLine = Strings.firstLine(name);
-    Matcher _matcher = StepArgumentsProvider.ARG_PATTERN.matcher(firstLine);
-    return _matcher.replaceAll("\"\"");
+  public String removeArguments(final String text) {
+    String _xblockexpression = null;
+    {
+      String name = Strings.firstLine(text);
+      String _removeArgumentValues = ArgumentsHelper.removeArgumentValues(name);
+      String _trim = _removeArgumentValues.trim();
+      _xblockexpression = (_trim);
+    }
+    return _xblockexpression;
   }
   
   public String nameOf(final Step ref) {

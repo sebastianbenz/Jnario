@@ -1,5 +1,6 @@
 package org.jnario.feature.tests.unit.naming
 
+import static org.junit.Assert.*
 import org.jnario.feature.naming.FeatureQualifiedNameProvider
 import org.jnario.jnario.test.util.ModelStore
 import org.jnario.runner.CreateWith
@@ -7,6 +8,7 @@ import org.jnario.jnario.test.util.FeatureTestCreator
 import com.google.inject.Inject
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.jnario.feature.feature.Step
+import static org.eclipse.xtext.xbase.lib.IterableExtensions.*
 
 @CreateWith(typeof(FeatureTestCreator))
 describe FeatureQualifiedNameProvider {
@@ -29,30 +31,26 @@ describe FeatureQualifiedNameProvider {
 		}
 	}
 
-	context "StepImplementation"{
-		fact "strips keyword"{
-			"Given a step with implementation".implementedStepName => "myPackage.a step with implementation"
+	context "Step Name"{
+		def examples{
+			| description					| name									| expected									|
+			| "strips keyword"				| "Given a step with implementation"	| "myPackage.a step with implementation"	|
+			| "strips dot at end" 			| "Given a step with implementation."	| "myPackage.a step with implementation"	|
+			| "strips argument values" 		| "Given a step with \"arg\"."			| 'myPackage.a step with ""'				|
+			| "removes double spaces" 		| "Given  two spaces"					| "myPackage.two spaces"					|
+			| "removes double tabs" 		| "Given a		two tabs"				| "myPackage.a two tabs"						|
+			| "removes space after tab"		| "Given a	 space after tab"			| "myPackage.a space after tab"				|
+			| "removes space at end"		| "Given space at end "					| "myPackage.space at end"					|
 		}
-		fact "strips dot at end"{
-			"Given a step with implementation.".implementedStepName => "myPackage.a step with implementation"
+		fact "StepImplementation"{
+			IterableExtensions::forEach(examples)[assertEquals(description, expected, name.implementedStepName); clear]
 		}
-		fact "strips argument values"{
-			"Given a step with \"arg\".".implementedStepName => 'myPackage.a step with ""'
+		
+		fact "StepReference"{
+			IterableExtensions::forEach(examples)[assertEquals(description, expected, name.stepName); clear]
 		}
 	}
 	
-	context "StepReference"{
-		fact "strips keyword"{
-			"Given a step with implementation".implementedStepName => "myPackage.a step with implementation"
-		}
-		fact "strips dot at end"{
-			"Given a step with implementation.".stepName => "myPackage.a step with implementation"
-		}
-		fact "strips argument values"{
-			"Given a step with \"arg\".".stepName => 'myPackage.a step with ""'
-		}
-	}
-
 	def implementedStepName(CharSequence s){
 		'''
 		«s»
