@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Test Runner</title>
+<title>Using JUnit Rules in Features</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -24,8 +24,8 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header pending">
-					<h1>Test Runner</h1>
+				<div class="page-header notrun">
+					<h1>Using JUnit Rules in Features</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 						<li><a href="#source" data-toggle="tab">Source</a></li>
@@ -35,29 +35,30 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<div><h3 class="scenario pending"  id="Scenario_Create_only_one_test_instance_for_one_jnario_scenario">Scenario: Create only one test instance for one jnario scenario
+<p>You can use <a href="http://kentbeck.github.com/junit/javadoc/latest/org/junit/rules/TestRule.html">JUnit rules</a> in your feature. Just define a field with the <code>@Rule</code> annotation like you would do in a normal JUnit test case. </p>
+<div><h3 class="scenario notrun"  id="Scenario_Using_JUnit_Rules">Scenario: Using JUnit Rules 
 </h3>
 <ul>
-<li><span class="step notrun"><p>When I have a scenario that uses one variable in different steps</p><pre>package bootstrap
-Feature: a feature
-  Scenario: a scenario with field
-    public int x
-    Given a variable access
-      x = 3
-    When the variable is accessed
-      x = x + 1 
-    Then it is accessed
-      x =&gt; 4</pre></span>
+<li><span class="step notrun"><p>When I have a feature with JUnit rules</p><pre>package demo
+import org.junit.Rule
+import org.junit.rules.TemporaryFolder
+
+Feature:  JUnit Rules
+
+  Scenario: Using rules in a Feature
+    @Rule public val folder = new TemporaryFolder
+  
+    Given a feature with a rule
+    Then the rule should be initialized
+      folder.root should not be null</pre></span>
 </li>
-<li><span class="step pending"><p>Then the scenario should have no validation errors that the variable was not defined [PENDING]</p></span>
-</li>
-<li><span class="step notrun"><p>And it should execute successfully</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
 							</div>
 						    <div class="tab-pane" id="source">
-						    	<h3>Runner.feature</h3>
+						    	<h3>Rules.feature</h3>
 						    	<p>
 <pre class="prettyprint lang-feature linenums">
 /*******************************************************************************
@@ -69,32 +70,30 @@ Feature: a feature
  *******************************************************************************/
 package org.jnario.feature.tests.integration
 
-import static extension org.jnario.jnario.test.util.FeatureExecutor.*
-import static org.jnario.jnario.test.util.ResultMatchers.*
+Feature: Using JUnit Rules in Features
 
-/**
- * @author Birgit Engelmann - Initial contribution and API
- */
-Feature: Test Runner
+You can use [JUnit rules](http://kentbeck.github.com/junit/javadoc/latest/org/junit/rules/TestRule.html) in your feature. Just define a field with the `@Rule` annotation
+like you would do in a normal JUnit test case. 
 
-  Scenario: Create only one test instance for one jnario scenario
+  Scenario: Using JUnit Rules 
     CharSequence jnarioFile
-    When I have a scenario that uses one variable in different steps
-    '''
-      package bootstrap
-      Feature: a feature
-        Scenario: a scenario with field
-          public int x
-          Given a variable access
-            x = 3
-          When the variable is accessed
-            x = x + 1 
-          Then it is accessed
-            x =&gt; 4
-    '''
-    jnarioFile = args.first        
-    Then the scenario should have no validation errors that the variable was not defined
-    And it should execute successfully
+    When I have a feature with JUnit rules
+      '''
+        package demo
+        import org.junit.Rule
+        import org.junit.rules.TemporaryFolder
+        
+        Feature:  JUnit Rules
+        
+          Scenario: Using rules in a Feature
+            @Rule public val folder = new TemporaryFolder
+          
+            Given a feature with a rule
+            Then the rule should be initialized
+              folder.root should not be null  
+      '''
+      jnarioFile = args.first
+    Then it should execute successfully
 </pre>
 						    </p></div>
 						  </div>

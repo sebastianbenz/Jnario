@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header pending">
+				<div class="page-header notrun">
 					<h1>References for steps</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -67,7 +67,7 @@ Feature: Test
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Using_fields_from_other_steps">Scenario: Using fields from other steps
+<div><h3 class="scenario notrun"  id="Scenario_Using_fields_from_other_steps">Scenario: Using fields from other steps
 </h3>
 <ul>
 <li><span class="step notrun"><p>When I have a scenario with a field</p><pre>package bootstrap
@@ -83,11 +83,11 @@ Feature: Test
     Then it should have contents
       values.size =&gt; 1</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Steps_with_short_names">Scenario: Steps with short names
+<div><h3 class="scenario notrun"  id="Scenario_Steps_with_short_names">Scenario: Steps with short names
 </h3>
 <ul>
 <li><span class="step notrun"><p>When I have a scenario with references and short step names [1 word]</p><pre>package bootstrap
@@ -102,11 +102,11 @@ Feature: Test
     Then step
       x =&gt; 3</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Field_initialization">Scenario: Field initialization
+<div><h3 class="scenario notrun"  id="Scenario_Field_initialization">Scenario: Field initialization
 </h3>
 <ul>
 <li><span class="step notrun"><p>When I have a scenario with field initialized in a given step</p><pre>import java.util.Stack
@@ -128,11 +128,11 @@ Scenario: Stack adding more elements
   When I add a value &quot;something else&quot;
   Then the stack should contain &quot;something else&quot;</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Steps">Scenario: Steps 
+<div><h3 class="scenario notrun"  id="Scenario_Steps">Scenario: Steps 
 </h3>
 <ul>
 <li><span class="step notrun"><p>When I have a scenario with a variable that is initialized</p><pre>import java.util.concurrent.TimeUnit
@@ -146,14 +146,14 @@ Scenario: Stack adding more elements
     Scenario: Scenario 2
     When test</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Extension_fields">Scenario: Extension fields 
+<div><h3 class="scenario notrun"  id="Scenario_Extension_fields">Scenario: Extension fields 
 </h3>
 <ul>
-<li><span class="step pending"><p>When I have a scenario with a variable that is initialized</p><pre>import org.jnario.feature.tests.integration.MyExtension
+<li><span class="step notrun"><p>When I have a scenario with a variable that is initialized</p><pre>import org.jnario.feature.tests.integration.MyExtension
     Feature: Extension Fields
       Scenario: A scenario with an extension field
         extension MyExtension myExtension = new MyExtension
@@ -169,14 +169,14 @@ Scenario: Stack adding more elements
           And we can use it inside other steps
             x.myExtensionMethod</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Extension_fields_in_And_step">Scenario: Extension fields in And step
+<div><h3 class="scenario notrun"  id="Scenario_Extension_fields_in_And_step">Scenario: Extension fields in And step
 </h3>
 <ul>
-<li><span class="step pending"><p>When I have a scenario with a variable that is initialized</p><pre>import org.jnario.feature.tests.integration.MyExtension
+<li><span class="step notrun"><p>When I have a scenario with a variable that is initialized</p><pre>import org.jnario.feature.tests.integration.MyExtension
       Feature: Extension Fields
         Scenario: A scenario with an extension field
           extension MyExtension myExtension = new MyExtension
@@ -194,11 +194,11 @@ Scenario: Stack adding more elements
             And we can use it inside other steps
               x.myExtensionMethod</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Using_closures_in_steps">Scenario: Using closures in steps
+<div><h3 class="scenario notrun"  id="Scenario_Using_closures_in_steps">Scenario: Using closures in steps
 </h3>
 <ul>
 <li><span class="step notrun"><p>When I have a scenario which uses closures</p><pre>Feature: Using Closures
@@ -216,11 +216,11 @@ Scenario: Stack adding more elements
         Then they are uppercase
           colors =&gt; list(&quot;RED&quot;, &quot;BLUE&quot;)</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Multiple_Step_References_causes_problem_when_copier_does_not_clear_its_cache">Scenario: Multiple Step References (causes problem when copier does not clear its cache)
+<div><h3 class="scenario notrun"  id="Scenario_Multiple_Step_References_causes_problem_when_copier_does_not_clear_its_cache">Scenario: Multiple Step References (causes problem when copier does not clear its cache)
 </h3>
 <ul>
 <li><span class="step notrun"><p>When I have a feature with multiple scenarios</p><pre>Feature: Field Inference
@@ -245,11 +245,11 @@ Scenario: Stack adding more elements
       feature1 = args.first
     Then both should execute successfully</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Accessing_extension_field_methods">Scenario: Accessing extension field methods
+<div><h3 class="scenario notrun"  id="Scenario_Accessing_extension_field_methods">Scenario: Accessing extension field methods
 </h3>
 <ul>
 <li><span class="step notrun"><p>When I access extension field methods from referenced steps</p><pre>Feature: Sharing extension field
@@ -264,7 +264,7 @@ Scenario: Stack adding more elements
         
         Given an extension field access</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
@@ -290,7 +290,7 @@ Given it is upper case</pre></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Step_references_with_extensions_in_same_scenario">Scenario: Step references with extensions in same scenario
+<div><h3 class="scenario notrun"  id="Scenario_Step_references_with_extensions_in_same_scenario">Scenario: Step references with extensions in same scenario
 </h3>
 <ul>
 <li><span class="step notrun"><p>Given a feature</p><pre>import org.jnario.feature.tests.integration.ExampleExtension
@@ -301,11 +301,11 @@ Feature: Step references with extensions in same step
         args.first.greet =&gt; args.second
       But greeting &quot;World&quot; is &quot;Hello World&quot;</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Scenario_references_two_steps_from_different_scenarios_which_define_the_same_field">Scenario: Scenario references two steps from different scenarios which define the same field
+<div><h3 class="scenario notrun"  id="Scenario_Scenario_references_two_steps_from_different_scenarios_which_define_the_same_field">Scenario: Scenario references two steps from different scenarios which define the same field
 </h3>
 <ul>
 <li><span class="step notrun"><p>Given a feature</p><pre>Feature: Field inference
@@ -324,11 +324,11 @@ Feature: Step references with extensions in same step
         Then colors are red &amp; green
         colors =&gt; list(&quot;green&quot;, &quot;red&quot;)</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Duplicate_extension_via_step_rerferences">Scenario: Duplicate extension via step rerferences
+<div><h3 class="scenario notrun"  id="Scenario_Duplicate_extension_via_step_rerferences">Scenario: Duplicate extension via step rerferences
 </h3>
 <ul>
 <li><span class="step notrun"><p>When I have a feature</p><pre>import java.util.List
@@ -339,7 +339,7 @@ Feature: Feature 1
         colors += &quot;red&quot;
       And a color green</pre></span>
 </li>
-<li><span class="step pending"><p>And another feature</p><pre>import java.util.List
+<li><span class="step notrun"><p>And another feature</p><pre>import java.util.List
 Feature: Feature 2
     Scenario: Scenario with other colors
         extension List&lt;String&gt; colors = &lt;String&gt;list
@@ -351,7 +351,7 @@ Feature: Feature 2
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Error_messages_in_Step_References">Scenario: Error messages in Step References
+<div><h3 class="scenario notrun"  id="Scenario_Error_messages_in_Step_References">Scenario: Error messages in Step References
 </h3>
 <ul>
 <li><span class="step notrun"><p>Given a feature</p><pre>Feature: Error Messages in Step References
@@ -370,11 +370,11 @@ Given an extension
 Scenario: Redefines failing step
 Given an extension</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Ordering_in_step_references">Scenario: Ordering in step references
+<div><h3 class="scenario notrun"  id="Scenario_Ordering_in_step_references">Scenario: Ordering in step references
 </h3>
 <ul>
 <li><span class="step notrun"><p>Given a feature</p><pre>Feature: Ordering of step references
@@ -389,11 +389,11 @@ Scenario: Second
     jnarioFile = &quot;&quot;
    Then it should execute successfully</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
-<div><h3 class="scenario pending"  id="Scenario_Field_dependencies">Scenario: Field dependencies
+<div><h3 class="scenario notrun"  id="Scenario_Field_dependencies">Scenario: Field dependencies
 </h3>
 <ul>
 <li><span class="step notrun"><p>Given a feature</p><pre>Feature: Field dependencies
@@ -407,7 +407,7 @@ Scenario: Second
   Scenario: Second
     When it should execute successfully</pre></span>
 </li>
-<li><span class="step pending"><p>Then it should execute successfully [PENDING]</p></span>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
 </ul>
 </div>
