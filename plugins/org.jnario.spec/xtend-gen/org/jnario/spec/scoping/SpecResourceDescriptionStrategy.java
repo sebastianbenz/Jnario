@@ -9,25 +9,20 @@ package org.jnario.spec.scoping;
 
 import com.google.common.collect.ImmutableMap.Builder;
 import org.eclipse.emf.ecore.EObject;
-import org.jnario.scoping.JnarioResourceDescriptionStrategy;
 import org.jnario.spec.spec.ExampleGroup;
 
 @SuppressWarnings("all")
-public class SpecResourceDescriptionStrategy extends JnarioResourceDescriptionStrategy {
+public class SpecResourceDescriptionStrategy /* implements JnarioResourceDescriptionStrategy  */{
   public final static String ROOT_SPEC = "root";
   
   public final static String TRUE = "1";
   
   public final static String FALSE = "0";
   
-  public void createUserData(final EObject eObject, final Builder<String,String> userData) {
-    super.createUserData(eObject, userData);
-    if ((eObject instanceof ExampleGroup)) {
-      final ExampleGroup exampleGroup = ((ExampleGroup) eObject);
-      String _isRoot = this.isRoot(exampleGroup);
-      String _valueOf = String.valueOf(_isRoot);
-      userData.put(SpecResourceDescriptionStrategy.ROOT_SPEC, _valueOf);
-    }
+  public Builder<String,String> createUserData(final EObject eObject, final Builder<String,String> userData) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field super is undefined for the type SpecResourceDescriptionStrategy"
+      + "\ncreateUserData cannot be resolved");
   }
   
   public String isRoot(final ExampleGroup exampleGroup) {
