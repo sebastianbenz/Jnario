@@ -2,7 +2,6 @@ package org.jnario.feature.jvmmodel
 
 import java.util.Set
 import org.eclipse.emf.ecore.EClass
-import org.jnario.feature.feature.FeaturePackage
 import org.jnario.feature.feature.Given
 import org.jnario.feature.feature.GivenReference
 import org.jnario.feature.feature.Scenario
@@ -46,18 +45,25 @@ class StepTypeProvider {
 	}
 	
 	def dispatch Set<EClass> getExpectedTypes(Step step){
+		step.definingStep.expectedTypes
+	}
+	
+	def EClass getActualType(Step step){
+		step.definingStep.eClass
+	}
+	
+	private def getDefiningStep(Step step){
 		val container = step.eContainer() as Scenario
 		val index = container.getSteps().indexOf(step)
 		var i = index
 		while(i >= 0){
 			val candidate = container.getSteps().get(i);
 			if(!ANDS.contains(candidate.eClass)){
-				return candidate.expectedTypes
+				return candidate
 			}
 			i = i - 1
 		}
-		emptySet
+		step
 	}
-	
 	
 }

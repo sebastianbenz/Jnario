@@ -169,6 +169,47 @@ public class StepTypeProviderSpec {
     
   }
   
+  @Test
+  @Named("calculates actual type")
+  @Order(8)
+  public void _calculatesActualType() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("Feature: something");
+    _builder.newLine();
+    _builder.append("Scenario: scenario");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Given something");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("But something else");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("And something else");
+    _builder.newLine();
+    EClass _actualType = this.actualType(_builder);
+    EClass _givenReference = this.pack.getGivenReference();
+    boolean _doubleArrow = Should.<EClass>operator_doubleArrow(_actualType, _givenReference);
+    Assert.assertTrue("\nExpected \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tBut something else\n\t\t\tAnd something else\n\t\'\'\'.actualType =>  givenReference but"
+     + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tBut something else\n\t\t\tAnd something else\n\t\'\'\'.actualType is " + new StringDescription().appendValue(_actualType).toString()
+     + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tBut something else\n\t\t\tAnd something else\n\t\'\'\' is " + new StringDescription().appendValue(_builder).toString()
+     + "\n     givenReference is " + new StringDescription().appendValue(_givenReference).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  public EClass actualType(final CharSequence s) {
+    EClass _xblockexpression = null;
+    {
+      this._modelStore.parseScenario(s);
+      Scenario _firstScenario = this._modelStore.firstScenario();
+      EList<Step> _steps = _firstScenario.getSteps();
+      Step _last = IterableExtensions.<Step>last(_steps);
+      EClass _actualType = this._stepTypeProvider.getActualType(_last);
+      _xblockexpression = (_actualType);
+    }
+    return _xblockexpression;
+  }
+  
   public Set<EClass> expectedTypes(final CharSequence s) {
     Set<EClass> _xblockexpression = null;
     {

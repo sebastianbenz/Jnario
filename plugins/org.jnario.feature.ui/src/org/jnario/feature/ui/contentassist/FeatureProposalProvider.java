@@ -245,7 +245,8 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 			Step step = (Step) resolve(desc.getEObjectOrProxy(), context.getCurrentModel());
 			Scenario scenario = getContainerOfType(step, Scenario.class);
 			String proposal = getQualifiedNameConverter().toString(desc.getQualifiedName().skipLast(1)) + "." + prefix + desc.getName().getLastSegment();
-			if(expected.contains(desc.getEClass()) && context.getMatcher().isCandidateMatchingPrefix(proposal, context.getPrefix())){
+			
+			if(expected.contains(stepTypeProvider.getActualType(step)) && context.getMatcher().isCandidateMatchingPrefix(proposal, context.getPrefix())){
 				acceptor = createStepFqnShorterner(context, acceptor, scope, desc.getQualifiedName(), scenario);
 				String displayString = proposal;
 				StyledString styledDisplayString = getStyledDisplayString(step, displayString, scenario.getName());
