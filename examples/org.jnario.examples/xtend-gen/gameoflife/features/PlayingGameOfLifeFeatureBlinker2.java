@@ -11,7 +11,6 @@ import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -23,15 +22,17 @@ public class PlayingGameOfLifeFeatureBlinker2 extends PlayingGameOfLifeFeature {
   
   @Test
   @Order(0)
-  @Ignore
   @Named("Given a world")
   public void givenAWorld() {
-    
+    StepArguments _stepArguments = new StepArguments("-----\n-----\n-XXX-\n-----\n-----\n");
+    final StepArguments args = _stepArguments;
+    String _first = JnarioIterableExtensions.<String>first(args);
+    World _parseWorld = World.parseWorld(_first);
+    this.world = _parseWorld;
   }
   
   @Test
   @Order(1)
-  @Ignore
   @Named("Then the world evolves into")
   public void thenTheWorldEvolvesInto() {
     StepArguments _stepArguments = new StepArguments("-----\n--X--\n--X--\n--X--\n-----\n");

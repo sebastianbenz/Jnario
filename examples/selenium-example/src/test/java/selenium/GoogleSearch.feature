@@ -16,8 +16,10 @@ Feature: Searching via Google
       findElement(By::name("btnG")).click()
     Then the result should contain "Jnario - Executable Specifications for Java"
       waitUntil[findElement(By::id("resultStats")) != null]
-      findElement(By::tagName("body")).getText() should contain args.first
+      val content = findElement(By::tagName("body")).getText() 
+      content should contain args.first
 
   Scenario: Searching for Xtend
     When I search for "Xtend Lang"
     Then the result should contain "Xtend - Modernized Java"
+       

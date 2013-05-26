@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Jnario Library
 Bundle-SymbolicName: org.jnario.lib;singleton:=true
-Bundle-Version: 0.4.2.201305131752
+Bundle-Version: 0.4.3.201305262254
 Bundle-Vendor: BMW Car IT
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.jnario.junit3,

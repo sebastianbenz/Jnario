@@ -24,7 +24,7 @@
  <extension
        point="org.eclipse.ui.preferencePages">
     <page
-          class="org.jnario.ui.preferences.JnarioPreferencePage"
+          class="org.jnario.ui.internal.JnarioExecutableExtensionFactory:org.jnario.ui.preferences.JnarioPreferencePage"
           id="org.jnario.ui.preferences"
           name="Jnario">
     </page>

@@ -11,7 +11,12 @@ package org.jnario.maven;
 import static com.google.common.collect.Lists.transform;
 import static java.util.Arrays.asList;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -42,6 +47,14 @@ import com.google.inject.Provider;
 public class JnarioTestCompile extends XtendTestCompile {
 	
 	private Provider<ResourceSet> resourceSetProvider;
+	
+	/**
+	 * Location of the Xtend settings file.
+	 * 
+	 * @parameter default-value="${basedir}/.settings/org.jnario.Jnario.prefs"
+	 * @readonly
+	 */
+	private String propertiesFileLocation;
 
 	@Override
 	protected void internalExecute() throws MojoExecutionException {
@@ -102,6 +115,35 @@ public class JnarioTestCompile extends XtendTestCompile {
 	@Override
 	protected Provider<ResourceSet> getResourceSetProvider() {
 		return resourceSetProvider;
+	}
+	
+	protected void determinateOutputDirectory(String sourceDirectory, Procedure1<String> fieldSetter) {
+		if (propertiesFileLocation != null) {
+			File f = new File(propertiesFileLocation);
+			if (f.canRead()) {
+				Properties xtendSettings = new Properties();
+				try {
+					xtendSettings.load(new FileInputStream(f));
+					// TODO read Xtend setup to compute the properties file loc and property name
+					String xtendOutputDirProp = xtendSettings.getProperty("outlet.DEFAULT_OUTPUT.directory", null);
+					if (xtendOutputDirProp != null) {
+						File srcDir = new File(sourceDirectory);
+						getLog().debug("Source dir : " + srcDir.getPath() + " exists " + srcDir.exists());
+						if (srcDir.exists() && srcDir.getParent() != null) {
+							String path = new File(srcDir.getParent(), xtendOutputDirProp).getPath();
+							getLog().debug("Applying Xtend property: " + xtendOutputDirProp);
+							fieldSetter.apply(path);
+						}
+					}
+				} catch (FileNotFoundException e) {
+					getLog().warn(e);
+				} catch (IOException e) {
+					getLog().warn(e);
+				}
+			} else {
+				getLog().info("Can't load Jnario properties:" + propertiesFileLocation);
+			}
+		}
 	}
 
 }

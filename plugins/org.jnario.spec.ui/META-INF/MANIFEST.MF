@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.jnario.spec.ui
 Bundle-Vendor: BMW Car IT
-Bundle-Version: 0.4.2.201305131752
+Bundle-Version: 0.4.3.201305262254
 Bundle-SymbolicName: org.jnario.spec.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
@@ -23,10 +23,10 @@ Require-Bundle: org.jnario.spec;visibility:=reexport,
  org.eclipse.jdt.core,
  org.eclipse.pde.ui,
  org.eclipse.xtend.ide;bundle-version="[2.4.0,2.4.2)",
- org.jnario;bundle-version="0.4.2",
+ org.jnario;bundle-version="0.4.3",
  org.eclipse.jdt.ui,
  com.ibm.icu,
- org.jnario.ui;bundle-version="0.4.2",
+ org.jnario.ui;bundle-version="0.4.3",
  org.eclipse.xtext.xbase.lib;bundle-version="[2.4.0,2.4.2)"
 Import-Package: org.apache.log4j,
  org.apache.commons.logging

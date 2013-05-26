@@ -33,7 +33,6 @@ public class JnarioSharedState implements Module {
 
 	public void configure(Binder binder) {
 		binder.bind(IPreferenceStoreAccess.class).to(JnarioPreferenceStoreAccess.class).in(Scopes.SINGLETON);
-		binder.bind(EclipseOutputConfigurationProvider.class).toInstance(injector().getInstance(EclipseOutputConfigurationProvider.class));
 		binder.bind(IPreferenceStoreInitializer.class)
 				.annotatedWith(Names.named("RefactoringPreferences"))
 				.to(XtendRefactoringPreferences.Initializer.class);
