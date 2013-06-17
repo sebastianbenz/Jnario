@@ -103,7 +103,11 @@ public class AbstractParserTest {
   public String strippedFileExtension(final URI uri) {
     String _xblockexpression = null;
     {
-      final String fileExtension = uri==null?(String)null:uri.fileExtension();
+      String _fileExtension = null;
+      if (uri!=null) {
+        _fileExtension=uri.fileExtension();
+      }
+      final String fileExtension = _fileExtension;
       boolean _equals = Objects.equal(fileExtension, null);
       if (_equals) {
         return "";

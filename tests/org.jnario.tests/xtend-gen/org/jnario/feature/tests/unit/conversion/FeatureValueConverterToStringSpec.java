@@ -36,7 +36,8 @@ public class FeatureValueConverterToStringSpec extends FeatureValueConverterSpec
      + "\n     subject.toString(\"text\") is " + new StringDescription().appendValue(_string).toString()
      + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
      + "\n     \"Prefix:text\" + Strings::newLine is " + new StringDescription().appendValue(_plus).toString()
-     + "\n     Strings::newLine is " + new StringDescription().appendValue(_newLine).toString() + "\n", _should_be);
+     + "\n     Strings::newLine is " + new StringDescription().appendValue(_newLine).toString()
+     + "\n     Strings is " + new StringDescription().appendValue(Strings.class).toString() + "\n", _should_be);
     
   }
   

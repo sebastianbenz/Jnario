@@ -125,7 +125,11 @@ public class ImplicitSubject {
       return true;
     }
     JvmTypeReference _extendedClass = type.getExtendedClass();
-    final JvmType extendedClass = _extendedClass==null?(JvmType)null:_extendedClass.getType();
+    JvmType _type = null;
+    if (_extendedClass!=null) {
+      _type=_extendedClass.getType();
+    }
+    final JvmType extendedClass = _type;
     boolean _equals = Objects.equal(extendedClass, null);
     if (_equals) {
       return false;

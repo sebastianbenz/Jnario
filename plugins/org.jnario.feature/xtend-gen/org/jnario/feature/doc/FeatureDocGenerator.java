@@ -69,8 +69,11 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   
   public CharSequence generateContent(final Feature feature) {
     StringConcatenation _builder = new StringConcatenation();
+    String _markdown2Html = null;
     String _description = feature.getDescription();
-    String _markdown2Html = _description==null?(String)null:this.markdown2Html(_description);
+    if (_description!=null) {
+      _markdown2Html=this.markdown2Html(_description);
+    }
     _builder.append(_markdown2Html, "");
     _builder.newLineIfNotEmpty();
     {

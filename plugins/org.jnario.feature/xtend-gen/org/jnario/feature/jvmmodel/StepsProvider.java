@@ -1,10 +1,9 @@
 package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.google.common.collect.Iterables;
-import java.util.List;
+import com.google.common.collect.Lists;
+import java.util.Collections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -52,11 +51,7 @@ public class StepsProvider {
               }
               EList<Scenario> _scenarios = it.getScenarios();
               Background _background_1 = it.getBackground();
-              List<Background> _xlistliteral = null;
-              Builder<Background> _builder = ImmutableList.builder();
-              _builder.add(_background_1);
-              _xlistliteral = _builder.build();
-              Iterable<Scenario> _plus = Iterables.<Scenario>concat(_scenarios, _xlistliteral);
+              Iterable<Scenario> _plus = Iterables.<Scenario>concat(_scenarios, Collections.<Background>unmodifiableList(Lists.<Background>newArrayList(_background_1)));
               _xblockexpression = (_plus);
             }
             return _xblockexpression;

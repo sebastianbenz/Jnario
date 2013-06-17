@@ -670,7 +670,10 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     EList<ExampleColumn> _columns = exampleTable.getColumns();
     final Function1<ExampleColumn,String> _function = new Function1<ExampleColumn,String>() {
         public String apply(final ExampleColumn it) {
-          String _name = it==null?(String)null:it.getName();
+          String _name = null;
+          if (it!=null) {
+            _name=it.getName();
+          }
           return _name;
         }
       };

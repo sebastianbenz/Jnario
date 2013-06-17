@@ -29,14 +29,21 @@ public class HtmlFileBuilder {
   }
   
   public String toHtmlFileName(final CharSequence nameWithoutExtension) {
-    String result = nameWithoutExtension==null?(String)null:nameWithoutExtension.toString();
+    String _string = null;
+    if (nameWithoutExtension!=null) {
+      _string=nameWithoutExtension.toString();
+    }
+    String result = _string;
     String _trim = Strings.trim(result, '_');
     return (_trim + ".html");
   }
   
   private String filePath(final XtendTypeDeclaration xtendClass, final HtmlFile htmlFile) {
+    String _htmlFileName = null;
     CharSequence _name = htmlFile.getName();
-    String _htmlFileName = _name==null?(String)null:this.toHtmlFileName(_name);
+    if (_name!=null) {
+      _htmlFileName=this.toHtmlFileName(_name);
+    }
     final String fileName = ("/" + _htmlFileName);
     String _packageName = XtendTypes.packageName(xtendClass);
     boolean _equals = Objects.equal(_packageName, null);

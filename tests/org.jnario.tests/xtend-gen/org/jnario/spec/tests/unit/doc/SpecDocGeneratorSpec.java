@@ -327,6 +327,10 @@ public class SpecDocGeneratorSpec {
     Map<String,CharSequence> _files = this.fsa.getFiles();
     String _plus = ("DOC_OUTPUT/" + name);
     CharSequence _get = _files.get(_plus);
-    return _get==null?(String)null:_get.toString();
+    String _string = null;
+    if (_get!=null) {
+      _string=_get.toString();
+    }
+    return _string;
   }
 }

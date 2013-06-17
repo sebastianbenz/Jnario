@@ -142,7 +142,10 @@ public class SpecQualifiedNameProviderSpec {
   public String qualifiedName() {
     ExampleGroup _firstSpec = this._modelStore.firstSpec();
     QualifiedName _fullyQualifiedName = this.subject.getFullyQualifiedName(_firstSpec);
-    String _string = _fullyQualifiedName==null?(String)null:_fullyQualifiedName.toString();
+    String _string = null;
+    if (_fullyQualifiedName!=null) {
+      _string=_fullyQualifiedName.toString();
+    }
     return _string;
   }
 }

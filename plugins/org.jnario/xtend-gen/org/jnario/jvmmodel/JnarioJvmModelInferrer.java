@@ -123,7 +123,11 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   
   public String serialize(final EObject obj) {
     ICompositeNode _node = NodeModelUtils.getNode(obj);
-    return _node==null?(String)null:_node.getText();
+    String _text = null;
+    if (_node!=null) {
+      _text=_node.getText();
+    }
+    return _text;
   }
   
   public XtendFile xtendFile(final EObject obj) {
@@ -133,7 +137,10 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   
   public String packageName(final EObject obj) {
     XtendFile _xtendFile = this.xtendFile(obj);
-    String _package = _xtendFile==null?(String)null:_xtendFile.getPackage();
+    String _package = null;
+    if (_xtendFile!=null) {
+      _package=_xtendFile.getPackage();
+    }
     return _package;
   }
   
@@ -204,7 +211,10 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   protected boolean hasExtendsAnnotation(final XAnnotation annotation) {
     boolean _and = false;
     JvmType _annotationType = annotation.getAnnotationType();
-    String _qualifiedName = _annotationType==null?(String)null:_annotationType.getQualifiedName();
+    String _qualifiedName = null;
+    if (_annotationType!=null) {
+      _qualifiedName=_annotationType.getQualifiedName();
+    }
     String _name = Extends.class.getName();
     boolean _equals = Objects.equal(_qualifiedName, _name);
     if (!_equals) {
