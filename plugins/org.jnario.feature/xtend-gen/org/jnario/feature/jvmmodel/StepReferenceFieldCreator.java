@@ -47,7 +47,10 @@ public class StepReferenceFieldCreator {
     final Function1<StepReference,Boolean> _function = new Function1<StepReference,Boolean>() {
         public Boolean apply(final StepReference it) {
           StepImplementation _reference = it.getReference();
-          XExpression _expression = _reference==null?(XExpression)null:_reference.getExpression();
+          XExpression _expression = null;
+          if (_reference!=null) {
+            _expression=_reference.getExpression();
+          }
           boolean _notEquals = (!Objects.equal(_expression, null));
           return Boolean.valueOf(_notEquals);
         }

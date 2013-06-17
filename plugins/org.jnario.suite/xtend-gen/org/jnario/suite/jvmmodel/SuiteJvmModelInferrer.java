@@ -140,7 +140,10 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
       final Function1<String,JvmType> _function_2 = new Function1<String,JvmType>() {
           public JvmType apply(final String it) {
             JvmTypeReference _typeForName = SuiteJvmModelInferrer.this.types.getTypeForName(it, suite);
-            JvmType _type = _typeForName==null?(JvmType)null:_typeForName.getType();
+            JvmType _type = null;
+            if (_typeForName!=null) {
+              _type=_typeForName.getType();
+            }
             return _type;
           }
         };

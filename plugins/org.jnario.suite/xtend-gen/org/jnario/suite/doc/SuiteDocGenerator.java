@@ -262,7 +262,10 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
       if (ref instanceof SpecReference) {
         final SpecReference _specReference = (SpecReference)ref;
         String _text = _specReference.getText();
-        String _trim = _text==null?(String)null:_text.trim();
+        String _trim = null;
+        if (_text!=null) {
+          _trim=_text.trim();
+        }
         boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_trim);
         boolean _not = (!_isNullOrEmpty);
         if (_not) {

@@ -11,14 +11,17 @@ import com.google.common.base.Objects;
 import java.util.Collection;
 import java.util.HashSet;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.IResourceDescription.Delta;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
-public class SuiteResourceDescriptionManager /* implements XtendResourceDescriptionManager  */{
+public class SuiteResourceDescriptionManager extends XtendResourceDescriptionManager {
   private final static HashSet<String> FILE_EXTENSIONS = new Function0<HashSet<String>>() {
     public HashSet<String> apply() {
       HashSet<String> _newHashSet = CollectionLiterals.<String>newHashSet("suite", "spec", "feature");
@@ -27,9 +30,19 @@ public class SuiteResourceDescriptionManager /* implements XtendResourceDescript
   }.apply();
   
   public boolean isAffected(final Collection<Delta> deltas, final IResourceDescription candidate, final IResourceDescriptions context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field super is undefined for the type SuiteResourceDescriptionManager"
-      + "\nisAffected cannot be resolved");
+    boolean _isAffected = super.isAffected(deltas, candidate, context);
+    if (_isAffected) {
+      return true;
+    }
+    final Function1<Delta,Boolean> _function = new Function1<Delta,Boolean>() {
+        public Boolean apply(final Delta it) {
+          boolean _isNewSpec = SuiteResourceDescriptionManager.this.isNewSpec(it);
+          return Boolean.valueOf(_isNewSpec);
+        }
+      };
+    Iterable<Delta> _filter = IterableExtensions.<Delta>filter(deltas, _function);
+    boolean _isEmpty = IterableExtensions.isEmpty(_filter);
+    return (!_isEmpty);
   }
   
   public boolean isNewSpec(final Delta delta) {

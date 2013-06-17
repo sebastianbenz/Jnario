@@ -55,7 +55,11 @@ public class StepExpressionProvider {
     if (_notEquals) {
       return ref.getExpression();
     }
-    final StepImplementation step = ref==null?(StepImplementation)null:ref.getReference();
+    StepImplementation _reference = null;
+    if (ref!=null) {
+      _reference=ref.getReference();
+    }
+    final StepImplementation step = _reference;
     boolean _or = false;
     boolean _equals = Objects.equal(step, null);
     if (_equals) {

@@ -77,7 +77,10 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
   
   protected String _internalGetClassName(final EObject element) {
     JnarioNameProvider _classNameProvider = this.classNameProvider(element);
-    String _javaClassName = _classNameProvider==null?(String)null:_classNameProvider.toJavaClassName(element);
+    String _javaClassName = null;
+    if (_classNameProvider!=null) {
+      _javaClassName=_classNameProvider.toJavaClassName(element);
+    }
     return _javaClassName;
   }
   
@@ -87,14 +90,20 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
   }
   
   protected String _doDescribe(final Suite suite) {
+    String _convertToJavaString = null;
     String _removePrefix = this.removePrefix(suite);
-    String _convertToJavaString = _removePrefix==null?(String)null:org.eclipse.xtext.util.Strings.convertToJavaString(_removePrefix, true);
+    if (_removePrefix!=null) {
+      _convertToJavaString=org.eclipse.xtext.util.Strings.convertToJavaString(_removePrefix, true);
+    }
     return _convertToJavaString;
   }
   
   protected String _doDescribe(final EObject element) {
     JnarioNameProvider _classNameProvider = this.classNameProvider(element);
-    String _describe = _classNameProvider==null?(String)null:_classNameProvider.describe(element);
+    String _describe = null;
+    if (_classNameProvider!=null) {
+      _describe=_classNameProvider.describe(element);
+    }
     return _describe;
   }
   

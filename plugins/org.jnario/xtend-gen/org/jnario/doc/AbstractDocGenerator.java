@@ -209,9 +209,15 @@ public abstract class AbstractDocGenerator implements IGenerator {
   }
   
   protected String id(final String id) {
-    String _replaceAll = id==null?(String)null:id.replaceAll("\\W+", AbstractDocGenerator.SEP);
-    char _charAt = AbstractDocGenerator.SEP.charAt(0);
-    String _trim = _replaceAll==null?(String)null:org.jnario.util.Strings.trim(_replaceAll, _charAt);
+    String _trim = null;
+    String _replaceAll = null;
+    if (id!=null) {
+      _replaceAll=id.replaceAll("\\W+", AbstractDocGenerator.SEP);
+    }
+    if (_replaceAll!=null) {
+      char _charAt = AbstractDocGenerator.SEP.charAt(0);
+      _trim=org.jnario.util.Strings.trim(_replaceAll, _charAt);
+    }
     String _plus = (" id=\"" + _trim);
     return (_plus + "\"");
   }

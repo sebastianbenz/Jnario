@@ -109,9 +109,15 @@ public class SpecResolver {
       final Function1<Specification,Boolean> _function_2 = new Function1<Specification,Boolean>() {
           public Boolean apply(final Specification it) {
             Resource _eResource = it.eResource();
-            URI _uRI = _eResource==null?(URI)null:_eResource.getURI();
+            URI _uRI = null;
+            if (_eResource!=null) {
+              _uRI=_eResource.getURI();
+            }
             Resource _eResource_1 = specRef.eResource();
-            URI _uRI_1 = _eResource_1==null?(URI)null:_eResource_1.getURI();
+            URI _uRI_1 = null;
+            if (_eResource_1!=null) {
+              _uRI_1=_eResource_1.getURI();
+            }
             boolean _notEquals = (!Objects.equal(_uRI, _uRI_1));
             return Boolean.valueOf(_notEquals);
           }
