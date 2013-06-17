@@ -11,8 +11,8 @@
 		<project.build.sourceEncoding>${sourceEncoding}</project.build.sourceEncoding>
 		<project.build.resourceEncoding>${sourceEncoding}</project.build.resourceEncoding>
 		<maven.compiler.encoding>${sourceEncoding}</maven.compiler.encoding>
-		<xtend.version>2.4.1</xtend.version>
-		<jnario.version>0.5.0</jnario.version>
+		<xtend.version>2.4.2</xtend.version>
+		<jnario.version>0.5.0-SNAPSHOT</jnario.version>
 	</properties>
 
 	<repositories>

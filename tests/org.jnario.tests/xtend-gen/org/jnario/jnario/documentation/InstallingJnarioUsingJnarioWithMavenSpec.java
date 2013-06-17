@@ -22,7 +22,7 @@ import org.junit.runner.RunWith;
  *     mvn archetype:generate                                  \
  *     -DarchetypeGroupId=org.jnario                           \
  *     -DarchetypeArtifactId=jnario-archetype                  \
- *     -DarchetypeVersion=0.4.1                                \
+ *     -DarchetypeVersion=0.5.0                                \
  *     -DgroupId=org.example                                   \
  *     -DartifactId=myproject
  * 
@@ -39,7 +39,7 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    *     <dependency>
    *       <groupId>org.jnario</groupId>
    *       <artifactId>org.jnario.lib.maven</artifactId>
-   *       <version>0.4.1</version>
+   *       <version>0.5.0</version>
    *       <scope>test</scope>
    *     </dependency>
    * 
@@ -74,7 +74,7 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    */
   @Test
   @Named("Executing specs")
-  @Order(2)
+  @Order(5)
   public void _executingSpecs() throws Exception {
     /* "not yet implemented" */
   }
@@ -85,7 +85,7 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    *     <plugin>
    *       <groupId>org.jnario</groupId>
    *       <artifactId>jnario-maven-plugin</artifactId>
-   *       <version>0.4.1</version>
+   *       <version>0.5.0</version>
    *       <executions>
    *         <execution>
    *           <goals>
@@ -105,7 +105,7 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    */
   @Test
   @Named("Jnario Compiler")
-  @Order(3)
+  @Order(6)
   public void _jnarioCompiler() throws Exception {
     /* "not yet implemented" */
   }
@@ -125,7 +125,7 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    */
   @Test
   @Named("Configuring Eclipse")
-  @Order(4)
+  @Order(7)
   public void _configuringEclipse() throws Exception {
     /* "not yet implemented" */
   }

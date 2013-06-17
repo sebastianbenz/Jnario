@@ -6,6 +6,8 @@ import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XFeatureCall;
+import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.jnario.util.SourceAdapter;
 
@@ -29,6 +31,19 @@ public class ExpressionCopier{
 				targetFeatureCall.setFeature(((XAbstractFeatureCall) source).getFeature());
 				targetFeatureCall.setImplicitFirstArgument((XExpression) copy(sourceFeatureCall.getImplicitFirstArgument()));
 				targetFeatureCall.setImplicitReceiver((XExpression) copy(sourceFeatureCall.getImplicitReceiver()));
+			}
+			if (source instanceof XMemberFeatureCall) {
+				XMemberFeatureCall sourceFeatureCall = (XMemberFeatureCall) source;
+				XMemberFeatureCall targetFeatureCall = (XMemberFeatureCall) target;
+				targetFeatureCall.setExplicitOperationCall(sourceFeatureCall.isExplicitOperationCall());
+				targetFeatureCall.setExplicitStatic(sourceFeatureCall.isExplicitStatic());
+				targetFeatureCall.setTypeLiteral(sourceFeatureCall.isTypeLiteral());
+			}
+			if (source instanceof XFeatureCall) {
+				XFeatureCall sourceFeatureCall = (XFeatureCall) source;
+				XFeatureCall targetFeatureCall = (XFeatureCall) target;
+				targetFeatureCall.setExplicitOperationCall(sourceFeatureCall.isExplicitOperationCall());
+				targetFeatureCall.setTypeLiteral(sourceFeatureCall.isTypeLiteral());
 			}
 			if(source instanceof XExpression || source instanceof XtendField){
 				SourceAdapter.adapt(target, source);
