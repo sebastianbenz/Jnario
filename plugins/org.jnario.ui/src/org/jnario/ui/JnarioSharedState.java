@@ -10,14 +10,11 @@ import static com.google.inject.name.Names.named;
 
 import org.eclipse.xtend.ide.XtendPreferenceStoreInitializer;
 import org.eclipse.xtend.ide.refactoring.XtendRefactoringPreferences;
-import org.eclipse.xtext.Constants;
 import org.eclipse.xtext.builder.EclipseOutputConfigurationProvider;
 import org.eclipse.xtext.builder.preferences.BuilderPreferenceAccess;
 import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
 import org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreAccess;
 import org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreInitializer;
-import org.eclipse.xtext.ui.editor.preferences.PreferenceStoreAccessImpl;
-import org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferences.Initializer;
 import org.jnario.ui.internal.JnarioActivator;
 import org.jnario.ui.preferences.JnarioPreferenceStoreAccess;
 
