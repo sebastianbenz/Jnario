@@ -1602,6 +1602,13 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private ExampleRowElements pExampleRow;
 	private ExampleCellElements pExampleCell;
 	private TerminalRule tML_COMMENT;
+	private TerminalRule tRICH_TEXT;
+	private TerminalRule tRICH_TEXT_START;
+	private TerminalRule tRICH_TEXT_END;
+	private TerminalRule tRICH_TEXT_INBETWEEN;
+	private TerminalRule tCOMMENT_RICH_TEXT_INBETWEEN;
+	private TerminalRule tCOMMENT_RICH_TEXT_END;
+	private TerminalRule tIN_RICH_STRING;
 	
 	private final Grammar grammar;
 
@@ -1817,6 +1824,48 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	"/ *"->(!"\\" "* /");
 	public TerminalRule getML_COMMENTRule() {
 		return (tML_COMMENT != null) ? tML_COMMENT : (tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ML_COMMENT"));
+	} 
+
+	//terminal RICH_TEXT:
+	//	"\'\'\'" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
+	public TerminalRule getRICH_TEXTRule() {
+		return (tRICH_TEXT != null) ? tRICH_TEXT : (tRICH_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT"));
+	} 
+
+	//terminal RICH_TEXT_START:
+	//	"\'\'\'" IN_RICH_STRING* ("\'" "\'"?)? "«";
+	public TerminalRule getRICH_TEXT_STARTRule() {
+		return (tRICH_TEXT_START != null) ? tRICH_TEXT_START : (tRICH_TEXT_START = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_START"));
+	} 
+
+	//terminal RICH_TEXT_END:
+	//	"»" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
+	public TerminalRule getRICH_TEXT_ENDRule() {
+		return (tRICH_TEXT_END != null) ? tRICH_TEXT_END : (tRICH_TEXT_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_END"));
+	} 
+
+	//terminal RICH_TEXT_INBETWEEN:
+	//	"»" IN_RICH_STRING* ("\'" "\'"?)? "«";
+	public TerminalRule getRICH_TEXT_INBETWEENRule() {
+		return (tRICH_TEXT_INBETWEEN != null) ? tRICH_TEXT_INBETWEEN : (tRICH_TEXT_INBETWEEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_INBETWEEN"));
+	} 
+
+	//terminal COMMENT_RICH_TEXT_INBETWEEN:
+	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'" "\'"?)? "«")?;
+	public TerminalRule getCOMMENT_RICH_TEXT_INBETWEENRule() {
+		return (tCOMMENT_RICH_TEXT_INBETWEEN != null) ? tCOMMENT_RICH_TEXT_INBETWEEN : (tCOMMENT_RICH_TEXT_INBETWEEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COMMENT_RICH_TEXT_INBETWEEN"));
+	} 
+
+	//terminal COMMENT_RICH_TEXT_END:
+	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF) | EOF);
+	public TerminalRule getCOMMENT_RICH_TEXT_ENDRule() {
+		return (tCOMMENT_RICH_TEXT_END != null) ? tCOMMENT_RICH_TEXT_END : (tCOMMENT_RICH_TEXT_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COMMENT_RICH_TEXT_END"));
+	} 
+
+	//terminal fragment IN_RICH_STRING:
+	//	"\'\'" !("«" | "\'") | "\'" !("«" | "\'") | !("«" | "\'");
+	public TerminalRule getIN_RICH_STRINGRule() {
+		return (tIN_RICH_STRING != null) ? tIN_RICH_STRING : (tIN_RICH_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IN_RICH_STRING"));
 	} 
 
 	//File returns XtendFile:
@@ -2098,48 +2147,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	public ParserRule getRichStringElseIfRule() {
 		return getRichStringElseIfAccess().getRule();
 	}
-
-	//terminal RICH_TEXT:
-	//	"\'\'\'" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
-	public TerminalRule getRICH_TEXTRule() {
-		return gaXtend.getRICH_TEXTRule();
-	} 
-
-	//terminal RICH_TEXT_START:
-	//	"\'\'\'" IN_RICH_STRING* ("\'" "\'"?)? "�";
-	public TerminalRule getRICH_TEXT_STARTRule() {
-		return gaXtend.getRICH_TEXT_STARTRule();
-	} 
-
-	//terminal RICH_TEXT_END:
-	//	"�" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
-	public TerminalRule getRICH_TEXT_ENDRule() {
-		return gaXtend.getRICH_TEXT_ENDRule();
-	} 
-
-	//terminal RICH_TEXT_INBETWEEN:
-	//	"�" IN_RICH_STRING* ("\'" "\'"?)? "�";
-	public TerminalRule getRICH_TEXT_INBETWEENRule() {
-		return gaXtend.getRICH_TEXT_INBETWEENRule();
-	} 
-
-	//terminal COMMENT_RICH_TEXT_INBETWEEN:
-	//	"��" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'" "\'"?)? "�")?;
-	public TerminalRule getCOMMENT_RICH_TEXT_INBETWEENRule() {
-		return gaXtend.getCOMMENT_RICH_TEXT_INBETWEENRule();
-	} 
-
-	//terminal COMMENT_RICH_TEXT_END:
-	//	"��" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF) | EOF);
-	public TerminalRule getCOMMENT_RICH_TEXT_ENDRule() {
-		return gaXtend.getCOMMENT_RICH_TEXT_ENDRule();
-	} 
-
-	//terminal fragment IN_RICH_STRING:
-	//	"\'\'" !("�" | "\'") | "\'" !("�" | "\'") | !("�" | "\'");
-	public TerminalRule getIN_RICH_STRINGRule() {
-		return gaXtend.getIN_RICH_STRINGRule();
-	} 
 
 	//XAnnotation:
 	//	{XAnnotation} "@" annotationType=[types::JvmAnnotationType|QualifiedName] ("("
@@ -2725,7 +2732,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	// * / StaticQualifier:
 	//	(ValidID "::")+;
 	public XbaseGrammarAccess.StaticQualifierElements getStaticQualifierAccess() {
-		return gaXtend.getStaticQualifierAccess();
+		return null;
 	}
 	
 	public ParserRule getStaticQualifierRule() {

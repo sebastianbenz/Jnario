@@ -480,19 +480,37 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   
   public void setStepValueType(final XVariableDeclaration variableDec, final Step step) {
     JvmTypeReference typeRef = this._typeReferences.getTypeForName(StepArguments.class, step);
+    boolean _or = false;
     boolean _equals = Objects.equal(typeRef, null);
     if (_equals) {
+      _or = true;
+    } else {
+      boolean _eIsProxy = typeRef.eIsProxy();
+      _or = (_equals || _eIsProxy);
+    }
+    if (_or) {
       return;
     }
     variableDec.setType(typeRef);
     JvmType _type = typeRef.getType();
     final JvmGenericType type = ((JvmGenericType) _type);
+    boolean _or_1 = false;
+    boolean _equals_1 = Objects.equal(type, null);
+    if (_equals_1) {
+      _or_1 = true;
+    } else {
+      boolean _eIsProxy_1 = type.eIsProxy();
+      _or_1 = (_equals_1 || _eIsProxy_1);
+    }
+    if (_or_1) {
+      return;
+    }
     XExpression _right = variableDec.getRight();
     XConstructorCall constructor = ((XConstructorCall) _right);
     EList<JvmMember> _members = type.getMembers();
     Iterator<JvmMember> _iterator = _members.iterator();
-    UnmodifiableIterator<JvmConstructor> _filter = Iterators.<JvmConstructor>filter(_iterator, JvmConstructor.class);
-    JvmConstructor _next = _filter.next();
+    final UnmodifiableIterator<JvmConstructor> constructors = Iterators.<JvmConstructor>filter(_iterator, JvmConstructor.class);
+    JvmConstructor _next = constructors.next();
     constructor.setConstructor(_next);
   }
   

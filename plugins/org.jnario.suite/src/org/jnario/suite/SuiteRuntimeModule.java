@@ -77,6 +77,7 @@ import org.jnario.suite.jvmmodel.SuiteExecutableProvider;
 import org.jnario.suite.jvmmodel.SuiteJvmModelInferrer;
 import org.jnario.suite.naming.SuiteQualifiedNameProvider;
 import org.jnario.suite.resource.SuiteResourceDescriptionManager;
+import org.jnario.suite.scoping.SuiteImportedNamespaceScopeProvider;
 import org.jnario.suite.scoping.SuiteScopeProvider;
 
 import com.google.inject.Binder;
@@ -137,7 +138,7 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	
 	public void configureIScopeProviderDelegate(Binder binder) {
 		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
-		.to(JnarioImportedNamespaceScopeProvider.class);
+		.to(SuiteImportedNamespaceScopeProvider.class);
 	}
 
 	public Class <? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {

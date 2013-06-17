@@ -21,6 +21,9 @@ import com.google.common.collect.Sets;
  * Goal which compiles Xtend2 test sources.
  * 
  * @author Michael Clay - Initial contribution and API
+ * @goal testCompile
+ * @phase generate-test-sources
+ * @requiresDependencyResolution test
  */
 public class XtendTestCompile extends AbstractXtendCompilerMojo {
 	/**
@@ -29,7 +32,7 @@ public class XtendTestCompile extends AbstractXtendCompilerMojo {
 	 * @parameter default-value="${basedir}/src/test/generated-sources/xtend"
 	 * @required
 	 */
-	protected String testOutputDirectory;
+	private String testOutputDirectory;
 	/**
 	 * Location of the temporary compiler directory.
 	 * 
@@ -72,7 +75,7 @@ public class XtendTestCompile extends AbstractXtendCompilerMojo {
 		addDependencies(classPath, project.getTestArtifacts());
 		return newArrayList(filter(classPath, FILE_EXISTS));
 	}
-	
+
 	@Override
 	protected String getTempDirectory() {
 		return testTempDirectory;

@@ -1363,7 +1363,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	// * / StaticQualifier:
 	//	(ValidID "::")+;
 	public XbaseGrammarAccess.StaticQualifierElements getStaticQualifierAccess() {
-		return gaXtend.getStaticQualifierAccess();
+		return null;
 	}
 	
 	public ParserRule getStaticQualifierRule() {

@@ -21,7 +21,6 @@ import java.util.Set;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
@@ -75,7 +74,7 @@ public abstract class AbstractXtendCompilerMojo extends AbstractXtendMojo {
 
 	protected void compile(XtendBatchCompiler xtend2BatchCompiler, String classPath, List<String> sourceDirectories,
 			String outputPath) throws MojoExecutionException {
-		xtend2BatchCompiler.setResourceSetProvider(getResourceSetProvider());
+		xtend2BatchCompiler.setResourceSetProvider(new MavenProjectResourceSetProvider(project));
 		Iterable<String> filtered = filter(sourceDirectories, FILE_EXISTS);
 		if (Iterables.isEmpty(filtered)) {
 			getLog().info(
@@ -101,10 +100,6 @@ public abstract class AbstractXtendCompilerMojo extends AbstractXtendMojo {
 			throw new MojoExecutionException("Error compiling xtend sources in '"
 					+ concat(File.pathSeparator, newArrayList(filtered)) + "'.");
 		}
-	}
-
-	protected Provider<ResourceSet> getResourceSetProvider() {
-		return new MavenProjectResourceSetProvider(project);
 	}
 
 	protected abstract String getTempDirectory();

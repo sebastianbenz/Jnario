@@ -76,6 +76,7 @@ import org.jnario.feature.naming.FeatureIdentifiableSimpleNameProvider;
 import org.jnario.feature.naming.FeatureQualifiedNameProvider;
 import org.jnario.feature.parser.CustomFeatureParser;
 import org.jnario.feature.resource.FeatureLocationInFileProvider;
+import org.jnario.feature.scoping.FeatureImportedNamespaceScopeProvider;
 import org.jnario.feature.scoping.FeatureScopeProvider;
 import org.jnario.feature.scoping.FeatureScopeProviderAccess;
 import org.jnario.feature.validation.FeatureNamesAreUniqueValidationHelper;
@@ -133,7 +134,7 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	@Override
 	public void configureIScopeProviderDelegate(Binder binder) {
 		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
-		.to(JnarioImportedNamespaceScopeProvider.class);
+		.to(FeatureImportedNamespaceScopeProvider.class);
 	}
 
 	@Override

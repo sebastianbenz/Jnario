@@ -60,13 +60,7 @@ public class FeatureLinkingService extends DefaultLinkingService {
 		final IScope scope = getScope(context, ref);
 		IEObjectDescription eObjectDescription = null;
 		QualifiedName qualifiedLinkName =  qualifiedNameConverter.toQualifiedName(crossRefString);
-		for (IEObjectDescription desc : scope.getAllElements()) {
-			System.out.println(desc.getName());
-			if(desc.getQualifiedName().equals(qualifiedLinkName)){
-				eObjectDescription = desc;
-				break;
-			}
-		}
+		eObjectDescription = scope.getSingleElement(qualifiedLinkName);
 		if (eObjectDescription == null) {
 			return Collections.emptyList();
 		}

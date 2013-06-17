@@ -263,13 +263,17 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
    	def setStepValueType(XVariableDeclaration variableDec, Step step){
 		var typeRef = getTypeForName(typeof(StepArguments), step)
-		if(typeRef == null){
+		if(typeRef == null || typeRef.eIsProxy){
 			return
 		}
-		variableDec.type = typeRef		
+		variableDec.type = typeRef
 		val type = typeRef.type as JvmGenericType
+		if(type == null || type.eIsProxy){
+			return
+		}
 		var constructor = variableDec.right as XConstructorCall
-		constructor.constructor = filter(type.members.iterator, typeof(JvmConstructor)).next
+		val constructors = filter(type.members.iterator, typeof(JvmConstructor))
+		constructor.constructor = constructors.next
 	}
 
 

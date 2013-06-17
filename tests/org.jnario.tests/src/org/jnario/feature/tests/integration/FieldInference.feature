@@ -56,7 +56,6 @@ Feature: Field Inference
 					Then my string is "test"
 						myString => args.first   
 			'''
-			feature2 = args.first
 		Then both should execute successfully 
 			runner.execute(feature1) => isSuccessful
 			runner.execute(feature2) => isSuccessful

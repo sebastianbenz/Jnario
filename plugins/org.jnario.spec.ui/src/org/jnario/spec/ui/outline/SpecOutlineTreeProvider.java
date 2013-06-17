@@ -41,7 +41,7 @@ public class SpecOutlineTreeProvider extends XtendOutlineTreeProvider {
 		if (xtendClass instanceof ExampleGroup) {
 			ExampleGroup exampleGroup = (ExampleGroup) xtendClass;
 			for (ExampleGroup child : filter(exampleGroup.getMembers(), ExampleGroup.class)) {
-				EObjectNode classNode = createEObjectNode(parentNode, child);
+				EObjectNode classNode = createNode(parentNode, child);
 				createFeatureNodes(classNode, child);
 			}
 		}

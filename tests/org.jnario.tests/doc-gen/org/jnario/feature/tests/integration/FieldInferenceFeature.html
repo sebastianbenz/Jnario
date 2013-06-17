@@ -174,7 +174,6 @@ Feature: Field Inference
           Then my string is &quot;test&quot;
             myString =&gt; args.first   
       '''
-      feature2 = args.first
     Then both should execute successfully 
       runner.execute(feature1) =&gt; isSuccessful
       runner.execute(feature2) =&gt; isSuccessful

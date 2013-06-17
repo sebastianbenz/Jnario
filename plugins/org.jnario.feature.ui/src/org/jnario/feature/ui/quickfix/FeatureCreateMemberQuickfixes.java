@@ -16,12 +16,14 @@ public class FeatureCreateMemberQuickfixes extends CreateMemberQuickfixes{
 	protected void newMethodQuickfix(JvmDeclaredType containerType,
 			String name, @Nullable JvmTypeReference returnType,
 			List<JvmTypeReference> parameterTypes, boolean isStatic,
-			boolean isExtension, boolean isLocal, XAbstractFeatureCall call,
-			Issue issue, IssueResolutionAcceptor issueResolutionAcceptor) {
+			boolean isAbstract, boolean isExtension, boolean isLocal,
+			XAbstractFeatureCall call, Issue issue,
+			IssueResolutionAcceptor issueResolutionAcceptor) {
 		if(isLocal){
 			return;
 		}
 		super.newMethodQuickfix(containerType, name, returnType, parameterTypes,
-				isStatic, isExtension, isLocal, call, issue, issueResolutionAcceptor);
+				isStatic, isAbstract, isExtension, isLocal, call, issue,
+				issueResolutionAcceptor);
 	}
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtend.ide.validator.XtendUIValidator;
-import org.jnario.JnarioPackage;
 import org.jnario.spec.spec.SpecPackage;
 
 public class SpecUIValidator extends XtendUIValidator {

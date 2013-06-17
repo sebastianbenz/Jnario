@@ -12,6 +12,8 @@ package org.jnario.spec.ui.labeling;
 
 import static org.eclipse.xtext.util.Strings.convertFromJavaString;
 
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.ide.labeling.XtendImages;
@@ -34,6 +36,10 @@ import com.google.inject.Inject;
 @SuppressWarnings("restriction")
 public class SpecLabelProvider extends XtendLabelProvider {
 
+	@Inject public SpecLabelProvider(AdapterFactoryLabelProvider delegate) {
+		super(delegate);
+	}
+
 	@Inject
 	private XtendImages images;
 
@@ -46,15 +52,15 @@ public class SpecLabelProvider extends XtendLabelProvider {
 	@Inject
 	private IXtendJvmAssociations associations;
 	
-	public Image image(ExampleTable element) {
+	public ImageDescriptor _imageDescriptor(ExampleTable element) {
 		return images.forField(JvmVisibility.PROTECTED, adornments.get((JvmIdentifiableElement) associations.getJvmElements(element).iterator().next()));
 	}
 	
-	public Image image(ExampleGroup element) {
+	public ImageDescriptor _imageDescriptor(ExampleGroup element) {
 		return images.forClass(JvmVisibility.PUBLIC, adornments.get(associations.getInferredType(element)));
 	}
 	
-	public Image image(TestFunction element) {
+	public ImageDescriptor _imageDescriptor(TestFunction element) {
 		return images.forOperation(JvmVisibility.PUBLIC, adornments.get(associations.getDirectlyInferredOperation(element)));
 	}
 

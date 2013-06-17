@@ -12,6 +12,8 @@ package org.jnario.feature.ui.labeling;
 
 import static org.eclipse.xtext.util.Strings.convertFromJavaString;
 
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.ide.labeling.XtendImages;
@@ -33,6 +35,10 @@ import com.google.inject.Inject;
  */
 public class FeatureLabelProvider extends XtendLabelProvider {
 
+	@Inject public FeatureLabelProvider(AdapterFactoryLabelProvider delegate) {
+		super(delegate);
+	}
+
 	@Inject
 	private XtendImages images;
 
@@ -45,23 +51,23 @@ public class FeatureLabelProvider extends XtendLabelProvider {
 	@Inject
 	private IXtendJvmAssociations associations;
 	
-	public Image image(Background element) {
+	public ImageDescriptor _imageDescriptor(Background element) {
 		return images.forClass(JvmVisibility.PUBLIC, adornments.get(associations.getInferredType(element)));
 	}
 	
-	public Image image(ExampleTable element) {
+	public ImageDescriptor _imageDescriptor(ExampleTable element) {
 		return images.forField(JvmVisibility.PROTECTED, adornments.get((JvmIdentifiableElement) associations.getJvmElements(element).iterator().next()));
 	}
 	
-	public Image image(Step element) {
+	public ImageDescriptor _imageDescriptor(Step element) {
 		return images.forOperation(JvmVisibility.PUBLIC, adornments.get(associations.getDirectlyInferredOperation(element)));
 	}
 	
-	public Image image(Scenario element) {
+	public ImageDescriptor _imageDescriptor(Scenario element) {
 		return images.forClass(JvmVisibility.PUBLIC, adornments.get(associations.getInferredType(element)));
 	}
 	
-	public Image image(Feature element) {
+	public ImageDescriptor _imageDescriptor(Feature element) {
 		return images.forClass(JvmVisibility.PUBLIC, adornments.get(associations.getInferredType(element)));
 	}
 

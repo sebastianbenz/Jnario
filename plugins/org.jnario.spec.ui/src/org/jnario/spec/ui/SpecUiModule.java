@@ -123,7 +123,6 @@ import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOp
 import org.eclipse.xtext.xbase.ui.jvmmodel.refactoring.jdt.JdtRenameRefactoringParticipantProcessor;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
 import org.eclipse.xtext.xbase.ui.validation.XbaseIssueSeveritiesProvider;
-import org.jnario.spec.jvmmodel.SpecLazyLinker;
 import org.jnario.spec.ui.editor.SpecFoldingRegionProvider;
 import org.jnario.spec.ui.generator.SpecGenerator;
 import org.jnario.spec.ui.highlighting.SpecHighlightingCalculator;
@@ -135,7 +134,6 @@ import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
 import org.jnario.ui.doc.JnarioHoverProvider;
 import org.jnario.ui.quickfix.CreateJnarioTypeQuickfixes;
 import org.jnario.ui.quickfix.JnarioCodeBuilderFactory;
-import org.jnario.ui.validator.JnarioUIValidator;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;

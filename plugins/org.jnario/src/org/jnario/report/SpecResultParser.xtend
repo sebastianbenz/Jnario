@@ -1,13 +1,11 @@
 package org.jnario.report
 
 import java.io.InputStream
+import java.util.List
 import javax.xml.parsers.SAXParserFactory
-import org.xml.sax.helpers.DefaultHandler
 import org.xml.sax.Attributes
 import org.xml.sax.SAXException
-import java.util.List
-import static extension org.apache.commons.lang.StringEscapeUtils.*
-import org.jnario.report.Failed
+import org.xml.sax.helpers.DefaultHandler
 
 class SpecResultParser extends DefaultHandler{
 	double currentExecutionTime

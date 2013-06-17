@@ -7,18 +7,18 @@
  *******************************************************************************/
 package org.jnario.feature.naming
 
-import static extension org.jnario.util.Strings.*
 import com.google.common.base.Strings
+import org.eclipse.xtend.core.xtend.XtendPackage
+import org.jnario.feature.feature.Feature
 import org.jnario.feature.feature.FeaturePackage
+import org.jnario.feature.feature.Scenario
 import org.jnario.feature.feature.Step
 import org.jnario.feature.feature.StepReference
 
-import static org.jnario.feature.naming.StepNameProvider.*
+import static org.eclipse.xtext.util.Strings.*
 import static org.jnario.util.Nodes.*
-import org.jnario.feature.jvmmodel.StepArgumentsProvider
-import org.jnario.feature.feature.Feature
-import org.jnario.feature.feature.Scenario
-import org.eclipse.xtend.core.xtend.XtendPackage
+
+import static extension org.jnario.util.Strings.*
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -74,8 +74,8 @@ class StepNameProvider {
 		return name.substring(index + 1)
 	}
 	
-	def removeArguments(String name){
-		var firstLine = name.firstLine
-		return StepArgumentsProvider::ARG_PATTERN.matcher(firstLine).replaceAll('""')
+	def removeArguments(String text){
+		var name = text.firstLine
+		ArgumentsHelper::removeArgumentValues(name).trim
 	}
 }

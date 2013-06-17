@@ -204,3 +204,15 @@ terminal fragment MNL: !('\r'|'\n')* NL;
 terminal fragment COLON: SPACES ':';
 terminal fragment NL: '\r'? '\n'?;
 terminal fragment SPACES: (' '|'\t')*;
+
+terminal RICH_TEXT : "'''" IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF);
+terminal RICH_TEXT_START : "'''" IN_RICH_STRING* ("'" "'"?)? '«';
+terminal RICH_TEXT_END : '»' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF) ;
+terminal RICH_TEXT_INBETWEEN : '»' IN_RICH_STRING* ("'" "'"?)? '«';
+terminal COMMENT_RICH_TEXT_INBETWEEN: "««" !('\n'|'\r')* ('\r'? '\n' IN_RICH_STRING* ("'" "'"?)? '«')?; 
+terminal COMMENT_RICH_TEXT_END: "««" !('\n'|'\r')* (('\r'? '\n' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF)) | EOF); 
+
+terminal fragment IN_RICH_STRING : 
+	  "''" !('«'|"'") 
+	| "'" !('«'|"'")
+	| !('«'|"'");
