@@ -97,7 +97,7 @@ public class ExampleColumnImpl extends EObjectImpl implements ExampleColumn {
 	 */
 	public ExampleTable getTable() {
 		if (eContainerFeatureID() != JnarioPackage.EXAMPLE_COLUMN__TABLE) return null;
-		return (ExampleTable)eContainer();
+		return (ExampleTable)eInternalContainer();
 	}
 
 	/**

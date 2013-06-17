@@ -35,7 +35,7 @@ public class FeatureFactoryImpl extends EFactoryImpl implements FeatureFactory
 	{
 		try
 		{
-			FeatureFactory theFeatureFactory = (FeatureFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.org/jnario/feature/Feature"); 
+			FeatureFactory theFeatureFactory = (FeatureFactory)EPackage.Registry.INSTANCE.getEFactory(FeaturePackage.eNS_URI);
 			if (theFeatureFactory != null)
 			{
 				return theFeatureFactory;

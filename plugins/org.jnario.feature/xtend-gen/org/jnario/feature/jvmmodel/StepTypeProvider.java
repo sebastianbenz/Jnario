@@ -7,7 +7,6 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Given;
@@ -80,7 +79,19 @@ public class StepTypeProvider {
   }
   
   protected Set<EClass> _getExpectedTypes(final Step step) {
-    Set<EClass> _xblockexpression = null;
+    Step _definingStep = this.getDefiningStep(step);
+    Set<EClass> _expectedTypes = this.getExpectedTypes(_definingStep);
+    return _expectedTypes;
+  }
+  
+  public EClass getActualType(final Step step) {
+    Step _definingStep = this.getDefiningStep(step);
+    EClass _eClass = _definingStep.eClass();
+    return _eClass;
+  }
+  
+  private Step getDefiningStep(final Step step) {
+    Step _xblockexpression = null;
     {
       EObject _eContainer = step.eContainer();
       final Scenario container = ((Scenario) _eContainer);
@@ -97,7 +108,7 @@ public class StepTypeProvider {
           boolean _contains = StepTypeProvider.ANDS.contains(_eClass);
           boolean _not = (!_contains);
           if (_not) {
-            return this.getExpectedTypes(candidate);
+            return candidate;
           }
           int _minus = (i - 1);
           i = _minus;
@@ -105,8 +116,7 @@ public class StepTypeProvider {
         boolean _greaterEqualsThan_1 = (i >= 0);
         _while = _greaterEqualsThan_1;
       }
-      Set<EClass> _emptySet = CollectionLiterals.<EClass>emptySet();
-      _xblockexpression = (_emptySet);
+      _xblockexpression = (step);
     }
     return _xblockexpression;
   }

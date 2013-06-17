@@ -32,6 +32,22 @@ describe StepTypeProvider {
 			And something else
 	'''.expectedTypes =>  GIVEN
 	
+	fact "calculates actual type"{
+	'''
+		Feature: something
+		Scenario: scenario
+			Given something
+			But something else
+			And something else
+	'''.actualType =>  givenReference
+	}
+	
+	def actualType(CharSequence s){
+		s.parseScenario
+		firstScenario.steps.last.actualType
+	}
+	
+	
 	def expectedTypes(CharSequence s){
 		s.parseScenario
 		firstScenario.steps.last.expectedTypes

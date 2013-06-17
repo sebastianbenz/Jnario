@@ -55,7 +55,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	<version>0.5.0-SNAPSHOT</version>
+	<version>0.4.3</version>
 	<licenses>
 		<license>
 			<name>Eclipse Public License v1.0</name>
@@ -111,4 +111,5 @@ https://github.com/bmwcarit/Jnario/issues
 		</repository>
 	</distributionManagement>
 	<groupId>org.jnario</groupId>
+	<description>Maven archetype for setting up a jnario project.</description>
 </project>

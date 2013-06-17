@@ -42,6 +42,15 @@
 </li><li><p id="createThen_expectedTypes_THEN" class="example notrun"><strong>createThen.expectedTypes => THEN</strong></p>
 </li><li><p id="createThenReference_expectedTypes_THEN" class="example notrun"><strong>createThenReference.expectedTypes => THEN</strong></p>
 </li><li><p id="Feature_something_Scenario_scenario_Given_something_And_something_else_And_something_else_expectedTypes_GIVEN" class="example notrun"><strong>''' Feature: something Scenario: scenario Given something And something else And something else '''.expectedTypes =>  GIVEN</strong></p>
+</li><li><p id="calculates_actual_type" class="example notrun"><strong>calculates actual type</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  Feature: something
+  Scenario: scenario
+    Given something
+    But something else
+    And something else
+'''.actualType =&gt;  givenReference</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -81,6 +90,22 @@ describe StepTypeProvider {
       And something else
       And something else
   '''.expectedTypes =&gt;  GIVEN
+  
+  fact &quot;calculates actual type&quot;{
+  '''
+    Feature: something
+    Scenario: scenario
+      Given something
+      But something else
+      And something else
+  '''.actualType =&gt;  givenReference
+  }
+  
+  def actualType(CharSequence s){
+    s.parseScenario
+    firstScenario.steps.last.actualType
+  }
+  
   
   def expectedTypes(CharSequence s){
     s.parseScenario

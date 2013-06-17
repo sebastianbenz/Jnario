@@ -35,7 +35,7 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
 	{
 		try
 		{
-			SpecFactory theSpecFactory = (SpecFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.org/jnario/spec/Spec"); 
+			SpecFactory theSpecFactory = (SpecFactory)EPackage.Registry.INSTANCE.getEFactory(SpecPackage.eNS_URI);
 			if (theSpecFactory != null)
 			{
 				return theSpecFactory;

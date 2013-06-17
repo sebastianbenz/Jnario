@@ -38,7 +38,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory {
 	 */
 	public static JnarioFactory init() {
 		try {
-			JnarioFactory theJnarioFactory = (JnarioFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.org/Jnario"); 
+			JnarioFactory theJnarioFactory = (JnarioFactory)EPackage.Registry.INSTANCE.getEFactory(JnarioPackage.eNS_URI);
 			if (theJnarioFactory != null) {
 				return theJnarioFactory;
 			}

@@ -88,7 +88,7 @@ public class ExampleRowImpl extends EObjectImpl implements ExampleRow {
 	 */
 	public ExampleTable getTable() {
 		if (eContainerFeatureID() != JnarioPackage.EXAMPLE_ROW__TABLE) return null;
-		return (ExampleTable)eContainer();
+		return (ExampleTable)eInternalContainer();
 	}
 
 	/**

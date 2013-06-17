@@ -9,8 +9,7 @@ import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.naming.FeatureQualifiedNameProvider;
 import org.jnario.feature.tests.unit.naming.FeatureQualifiedNameProviderPackageNameSpec;
-import org.jnario.feature.tests.unit.naming.FeatureQualifiedNameProviderStepImplementationSpec;
-import org.jnario.feature.tests.unit.naming.FeatureQualifiedNameProviderStepReferenceSpec;
+import org.jnario.feature.tests.unit.naming.FeatureQualifiedNameProviderStepNameSpec;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.runner.Contains;
@@ -20,7 +19,7 @@ import org.jnario.runner.Named;
 import org.jnario.runner.Subject;
 import org.junit.runner.RunWith;
 
-@Contains({ FeatureQualifiedNameProviderPackageNameSpec.class, FeatureQualifiedNameProviderStepImplementationSpec.class, FeatureQualifiedNameProviderStepReferenceSpec.class })
+@Contains({ FeatureQualifiedNameProviderPackageNameSpec.class, FeatureQualifiedNameProviderStepNameSpec.class })
 @Named("FeatureQualifiedNameProvider")
 @RunWith(ExampleGroupRunner.class)
 @CreateWith(FeatureTestCreator.class)

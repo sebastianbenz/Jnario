@@ -35,7 +35,7 @@ public class SuiteFactoryImpl extends EFactoryImpl implements SuiteFactory
 	{
 		try
 		{
-			SuiteFactory theSuiteFactory = (SuiteFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.jnario.org/suite/Suite"); 
+			SuiteFactory theSuiteFactory = (SuiteFactory)EPackage.Registry.INSTANCE.getEFactory(SuitePackage.eNS_URI);
 			if (theSuiteFactory != null)
 			{
 				return theSuiteFactory;
