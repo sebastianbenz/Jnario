@@ -88,12 +88,6 @@ footer h1 {
   background: #fdf6e3;
   color: #333;
 }
-.light h1,
-.light h2,
-.light h3,
-.light h4 {
-  text-shadow: 0px -1px 1px #ffffff;
-}
 .dark {
   background: #333;
   /* Old browsers */
@@ -108,12 +102,6 @@ footer h1 {
 }
 .dark a {
   color: #BCD279;
-}
-.dark h1,
-.dark h2,
-.dark h3,
-.dark h4 {
-  text-shadow: 0px -1px 1px #262626;
 }
 .green {
   background-color: #BCD279;
