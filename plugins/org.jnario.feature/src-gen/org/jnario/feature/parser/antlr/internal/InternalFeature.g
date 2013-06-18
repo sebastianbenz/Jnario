@@ -2292,6 +2292,8 @@ ruleAssertion returns [EObject current=null]
 
 
 
+
+
 // Entry rule entryRuleType
 entryRuleType returns [EObject current=null] 
 	:
@@ -9009,8 +9011,6 @@ ruleNumber returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 finally {
 	myHiddenTokenState.restore();
 }
-
-
 
 
 

@@ -64,6 +64,9 @@ public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 
 	private QualifiedName toQualifiedName(EObject obj, String name) {
 		String packageName = getPackageName(obj);
+		if(isEmpty(packageName)){
+			return QualifiedName.create(name);
+		}
 		List<String> segments = new LinkedList<String>();
 		StringBuilder segment = new StringBuilder();
 		for(int i = 0; i < packageName.length(); i++){

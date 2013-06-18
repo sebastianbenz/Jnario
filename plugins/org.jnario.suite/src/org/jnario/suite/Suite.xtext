@@ -49,3 +49,10 @@ terminal TEXT: ':' ('\\' ('#'|'-') |!('-'|'#'))*  ;
 terminal ID:
 	'^'? ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*;
 
+/**
+ * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
+ * which makes downstream grammars break on classloading, when a rule is removed.
+ */
+StaticQualifier:
+	(ValidID '::')+
+;

@@ -1585,6 +1585,32 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//XExpression
 		public RuleCall getExpressionXExpressionParserRuleCall_0() { return cExpressionXExpressionParserRuleCall_0; }
 	}
+
+	public class StaticQualifierElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StaticQualifier");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cValidIDParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cColonColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		/// **
+		//
+		// * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
+		//
+		// * which makes downstream grammars break on classloading, when a rule is removed.
+		//
+		// * / StaticQualifier:
+		//	(ValidID "::")+;
+		public ParserRule getRule() { return rule; }
+
+		//(ValidID "::")+
+		public Group getGroup() { return cGroup; }
+
+		//ValidID
+		public RuleCall getValidIDParserRuleCall_0() { return cValidIDParserRuleCall_0; }
+
+		//"::"
+		public Keyword getColonColonKeyword_1() { return cColonColonKeyword_1; }
+	}
 	
 	
 	private SpecFileElements pSpecFile;
@@ -1609,6 +1635,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private TerminalRule tCOMMENT_RICH_TEXT_INBETWEEN;
 	private TerminalRule tCOMMENT_RICH_TEXT_END;
 	private TerminalRule tIN_RICH_STRING;
+	private StaticQualifierElements pStaticQualifier;
 	
 	private final Grammar grammar;
 
@@ -1867,6 +1894,22 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	public TerminalRule getIN_RICH_STRINGRule() {
 		return (tIN_RICH_STRING != null) ? tIN_RICH_STRING : (tIN_RICH_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IN_RICH_STRING"));
 	} 
+
+	/// **
+	//
+	// * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
+	//
+	// * which makes downstream grammars break on classloading, when a rule is removed.
+	//
+	// * / StaticQualifier:
+	//	(ValidID "::")+;
+	public StaticQualifierElements getStaticQualifierAccess() {
+		return (pStaticQualifier != null) ? pStaticQualifier : (pStaticQualifier = new StaticQualifierElements());
+	}
+	
+	public ParserRule getStaticQualifierRule() {
+		return getStaticQualifierAccess().getRule();
+	}
 
 	//File returns XtendFile:
 	//	("package" package=QualifiedName ";"?)? importSection=XImportSection? xtendTypes+=Type*;
@@ -2724,19 +2767,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getNumberRule() {
 		return getNumberAccess().getRule();
-	}
-
-	/// **
-	// * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
-	// * which makes downstream grammars break on classloading, when a rule is removed.
-	// * / StaticQualifier:
-	//	(ValidID "::")+;
-	public XbaseGrammarAccess.StaticQualifierElements getStaticQualifierAccess() {
-		return null;
-	}
-	
-	public ParserRule getStaticQualifierRule() {
-		return getStaticQualifierAccess().getRule();
 	}
 
 	//terminal HEX:

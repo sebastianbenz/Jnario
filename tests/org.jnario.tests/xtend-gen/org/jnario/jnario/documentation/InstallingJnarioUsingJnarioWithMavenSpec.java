@@ -74,7 +74,7 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    */
   @Test
   @Named("Executing specs")
-  @Order(5)
+  @Order(2)
   public void _executingSpecs() throws Exception {
     /* "not yet implemented" */
   }
@@ -105,7 +105,7 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    */
   @Test
   @Named("Jnario Compiler")
-  @Order(6)
+  @Order(3)
   public void _jnarioCompiler() throws Exception {
     /* "not yet implemented" */
   }
@@ -125,7 +125,7 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    */
   @Test
   @Named("Configuring Eclipse")
-  @Order(7)
+  @Order(4)
   public void _configuringEclipse() throws Exception {
     /* "not yet implemented" */
   }

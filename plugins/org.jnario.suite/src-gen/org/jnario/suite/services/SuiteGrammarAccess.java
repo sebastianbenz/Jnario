@@ -264,6 +264,32 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidID
 		public RuleCall getValidIDParserRuleCall_1_1() { return cValidIDParserRuleCall_1_1; }
 	}
+
+	public class StaticQualifierElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StaticQualifier");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cValidIDParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cColonColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		/// **
+		//
+		// * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
+		//
+		// * which makes downstream grammars break on classloading, when a rule is removed.
+		//
+		// * / StaticQualifier:
+		//	(ValidID "::")+;
+		public ParserRule getRule() { return rule; }
+
+		//(ValidID "::")+
+		public Group getGroup() { return cGroup; }
+
+		//ValidID
+		public RuleCall getValidIDParserRuleCall_0() { return cValidIDParserRuleCall_0; }
+
+		//"::"
+		public Keyword getColonColonKeyword_1() { return cColonColonKeyword_1; }
+	}
 	
 	
 	private SuiteFileElements pSuiteFile;
@@ -277,6 +303,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	private TerminalRule tPATTERN;
 	private TerminalRule tTEXT;
 	private TerminalRule tID;
+	private StaticQualifierElements pStaticQualifier;
 	
 	private final Grammar grammar;
 
@@ -409,6 +436,22 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	public TerminalRule getIDRule() {
 		return (tID != null) ? tID : (tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID"));
 	} 
+
+	/// **
+	//
+	// * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
+	//
+	// * which makes downstream grammars break on classloading, when a rule is removed.
+	//
+	// * / StaticQualifier:
+	//	(ValidID "::")+;
+	public StaticQualifierElements getStaticQualifierAccess() {
+		return (pStaticQualifier != null) ? pStaticQualifier : (pStaticQualifier = new StaticQualifierElements());
+	}
+	
+	public ParserRule getStaticQualifierRule() {
+		return getStaticQualifierAccess().getRule();
+	}
 
 	//File returns XtendFile:
 	//	("package" package=QualifiedName ";"?)? importSection=XImportSection? xtendTypes+=Type*;
@@ -1355,19 +1398,6 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getNumberRule() {
 		return getNumberAccess().getRule();
-	}
-
-	/// **
-	// * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
-	// * which makes downstream grammars break on classloading, when a rule is removed.
-	// * / StaticQualifier:
-	//	(ValidID "::")+;
-	public XbaseGrammarAccess.StaticQualifierElements getStaticQualifierAccess() {
-		return null;
-	}
-	
-	public ParserRule getStaticQualifierRule() {
-		return getStaticQualifierAccess().getRule();
 	}
 
 	//terminal HEX:

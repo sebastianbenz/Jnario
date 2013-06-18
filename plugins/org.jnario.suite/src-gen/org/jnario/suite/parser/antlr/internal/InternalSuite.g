@@ -427,6 +427,8 @@ ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
 
 
 
+
+
 // Entry rule entryRuleType
 entryRuleType returns [EObject current=null] 
 	:
@@ -8694,8 +8696,6 @@ ruleNumber returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 finally {
 	myHiddenTokenState.restore();
 }
-
-
 
 
 

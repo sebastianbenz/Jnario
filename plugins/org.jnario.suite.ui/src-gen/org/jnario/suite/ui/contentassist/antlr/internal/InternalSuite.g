@@ -229,6 +229,8 @@ finally {
 
 
 
+
+
 // Entry rule entryRuleType
 entryRuleType 
 :
@@ -2564,8 +2566,6 @@ finally {
 	restoreStackSize(stackSize);
 	myHiddenTokenState.restore();
 }
-
-
 
 
 
@@ -5470,6 +5470,7 @@ rule__QualifiedName__Group_1__1__Impl
 finally {
 	restoreStackSize(stackSize);
 }
+
 
 
 
@@ -23858,7 +23859,6 @@ rule__Number__Group_1_1__1__Impl
 finally {
 	restoreStackSize(stackSize);
 }
-
 
 
 

@@ -166,6 +166,7 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getExampleColumnAccess().getGroup(), "rule__ExampleColumn__Group__0");
 					put(grammarAccess.getExampleRowAccess().getGroup(), "rule__ExampleRow__Group__0");
 					put(grammarAccess.getExampleRowAccess().getGroup_2(), "rule__ExampleRow__Group_2__0");
+					put(grammarAccess.getStaticQualifierAccess().getGroup(), "rule__StaticQualifier__Group__0");
 					put(grammarAccess.getFileAccess().getGroup(), "rule__File__Group__0");
 					put(grammarAccess.getFileAccess().getGroup_0(), "rule__File__Group_0__0");
 					put(grammarAccess.getTypeAccess().getGroup(), "rule__Type__Group__0");
@@ -349,7 +350,6 @@ public class SpecParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 					put(grammarAccess.getNumberAccess().getGroup_1(), "rule__Number__Group_1__0");
 					put(grammarAccess.getNumberAccess().getGroup_1_1(), "rule__Number__Group_1_1__0");
-					put(grammarAccess.getStaticQualifierAccess().getGroup(), "rule__StaticQualifier__Group__0");
 					put(grammarAccess.getJvmTypeReferenceAccess().getGroup_0(), "rule__JvmTypeReference__Group_0__0");
 					put(grammarAccess.getJvmTypeReferenceAccess().getGroup_0_1(), "rule__JvmTypeReference__Group_0_1__0");
 					put(grammarAccess.getJvmTypeReferenceAccess().getGroup_0_1_0(), "rule__JvmTypeReference__Group_0_1_0__0");
