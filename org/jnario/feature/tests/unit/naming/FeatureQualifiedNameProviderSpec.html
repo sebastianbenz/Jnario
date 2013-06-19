@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FeatureQualifiedNameProvider</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header notrun">
+					<h1>FeatureQualifiedNameProvider</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<h3 class="exampleGroup notrun"  id="Package_name">Package name</h3>
+<ul><li><p id="package_name_is_prepended" class="example notrun"><strong>package name is prepended</strong></p>
+<pre class="prettyprint lang-spec linenums">
+stepName(&quot;Given a step&quot;, &quot;myPackage&quot;) should startWith(&quot;myPackage.&quot;)</pre>
+</li><li><p id="package_name_is_separated_by" class="example notrun"><strong>package name is separated by '.'</strong></p>
+<pre class="prettyprint lang-spec linenums">
+stepName(&quot;Given a step&quot;, &quot;myPackage.subpackage&quot;) should startWith(&quot;myPackage.subpackage.&quot;)</pre>
+</li><li><p id="default_package_name_is_features" class="example notrun"><strong>default package name is 'features'</strong></p>
+<pre class="prettyprint lang-spec linenums">
+stepName(&quot;Given a step&quot;, null) should startWith(&quot;features.&quot;)</pre>
+</li></ul>
+<h3 class="exampleGroup notrun"  id="Step_Name">Step Name</h3>
+<ul><li><p id="examples"><strong>Examples</strong></p>
+<table class="table table-striped table-bordered table-condensed">
+	<thead>
+		<tr>
+		<th>description</th>
+		<th>name</th>
+		<th>expected</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>&quot;strips keyword&quot;</td>
+		<td>&quot;Given a step with implementation&quot;</td>
+		<td>&quot;myPackage.a step with implementation&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;strips dot at end&quot;</td>
+		<td>&quot;Given a step with implementation.&quot;</td>
+		<td>&quot;myPackage.a step with implementation&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;strips argument values&quot;</td>
+		<td>&quot;Given a step with \&quot;arg\&quot;.&quot;</td>
+		<td>'myPackage.a step with &quot;&quot;'</td>
+	</tr>
+	<tr>
+		<td>&quot;removes double spaces&quot;</td>
+		<td>&quot;Given  two spaces&quot;</td>
+		<td>&quot;myPackage.two spaces&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;removes double tabs&quot;</td>
+		<td>&quot;Given a    two tabs&quot;</td>
+		<td>&quot;myPackage.a two tabs&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;removes space after tab&quot;</td>
+		<td>&quot;Given a   space after tab&quot;</td>
+		<td>&quot;myPackage.a space after tab&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;removes space at end&quot;</td>
+		<td>&quot;Given space at end &quot;</td>
+		<td>&quot;myPackage.space at end&quot;</td>
+	</tr>
+	</tbody>
+</table>
+</li><li><p id="StepImplementation" class="example notrun"><strong>StepImplementation</strong></p>
+<pre class="prettyprint lang-spec linenums">
+IterableExtensions::forEach(examples)[assertEquals(description, expected, name.implementedStepName); clear]</pre>
+</li><li><p id="StepReference" class="example notrun"><strong>StepReference</strong></p>
+<pre class="prettyprint lang-spec linenums">
+IterableExtensions::forEach(examples)[assertEquals(description, expected, name.stepName); clear]</pre>
+</li></ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>FeatureQualifiedNameProvider.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+package org.jnario.feature.tests.unit.naming
+
+import static org.junit.Assert.*
+import org.jnario.feature.naming.FeatureQualifiedNameProvider
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.FeatureTestCreator
+import com.google.inject.Inject
+import org.eclipse.xtext.naming.IQualifiedNameConverter
+import org.jnario.feature.feature.Step
+import static org.eclipse.xtext.xbase.lib.IterableExtensions.*
+
+@CreateWith(typeof(FeatureTestCreator))
+describe FeatureQualifiedNameProvider {
+
+  @Inject extension ModelStore 
+  @Inject IQualifiedNameConverter converter
+
+
+  context &quot;Package name&quot;{
+    fact &quot;package name is prepended&quot;{
+      stepName(&quot;Given a step&quot;, &quot;myPackage&quot;) should startWith(&quot;myPackage.&quot;)
+    }
+    
+    fact &quot;package name is separated by '.'&quot;{
+      stepName(&quot;Given a step&quot;, &quot;myPackage.subpackage&quot;) should startWith(&quot;myPackage.subpackage.&quot;)
+    }
+    
+    fact &quot;default package name is 'features'&quot;{
+      stepName(&quot;Given a step&quot;, null) should startWith(&quot;features.&quot;)
+    }
+  }
+
+  context &quot;Step Name&quot;{
+    def examples{
+      | description          | name                  | expected                  |
+      | &quot;strips keyword&quot;        | &quot;Given a step with implementation&quot;  | &quot;myPackage.a step with implementation&quot;  |
+      | &quot;strips dot at end&quot;       | &quot;Given a step with implementation.&quot;  | &quot;myPackage.a step with implementation&quot;  |
+      | &quot;strips argument values&quot;     | &quot;Given a step with \&quot;arg\&quot;.&quot;      | 'myPackage.a step with &quot;&quot;'        |
+      | &quot;removes double spaces&quot;     | &quot;Given  two spaces&quot;          | &quot;myPackage.two spaces&quot;          |
+      | &quot;removes double tabs&quot;     | &quot;Given a    two tabs&quot;        | &quot;myPackage.a two tabs&quot;            |
+      | &quot;removes space after tab&quot;    | &quot;Given a   space after tab&quot;      | &quot;myPackage.a space after tab&quot;        |
+      | &quot;removes space at end&quot;    | &quot;Given space at end &quot;          | &quot;myPackage.space at end&quot;          |
+    }
+    fact &quot;StepImplementation&quot;{
+      IterableExtensions::forEach(examples)[assertEquals(description, expected, name.implementedStepName); clear]
+    }
+    
+    fact &quot;StepReference&quot;{
+      IterableExtensions::forEach(examples)[assertEquals(description, expected, name.stepName); clear]
+    }
+  }
+  
+  def implementedStepName(CharSequence s){
+    '''
+    &laquo;s&raquo;
+    val x = &quot;&quot;
+    '''.stepName
+  }
+  
+  def stepName(CharSequence s){
+    s.stepName(&quot;myPackage&quot;)
+  }
+  
+  def stepName(CharSequence s, String packageName){
+    val input = '''
+      &laquo;IF packageName != null&raquo;
+      package &laquo;packageName&raquo;
+      &laquo;ENDIF&raquo;
+      Feature: MyFeature
+      Scenario: The Scenario
+      &laquo;s&raquo;
+    '''
+    parseScenario(input)
+    converter.toString(subject.getFullyQualifiedName(first(typeof(Step))))
+  }
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- /container -->
+
+</body>
+</html>

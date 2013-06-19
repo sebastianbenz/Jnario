@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WhiteSpaceNormalizer</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header notrun">
+					<h1>WhiteSpaceNormalizer</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<ul><li><p id="examples"><strong>Examples</strong></p>
+<table class="table table-striped table-bordered table-condensed">
+	<thead>
+		<tr>
+		<th>input</th>
+		<th>result</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>null</td>
+		<td>&quot;&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;&quot;</td>
+		<td>&quot;&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot; &quot;</td>
+		<td>&quot;&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;\thello&quot;</td>
+		<td>&quot;hello&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;\thello\n\tworld&quot;</td>
+		<td>&quot;hello\nworld&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;\t\thello\n\t\tworld&quot;</td>
+		<td>&quot;hello\nworld&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;\t\thello\n\tworld&quot;</td>
+		<td>&quot;hello\n\tworld&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;\n\t\thello\n\tworld&quot;</td>
+		<td>&quot;hello\n\tworld&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;\n\t\thello\n\tworld\n&quot;</td>
+		<td>&quot;hello\n\tworld\n&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;\thello\n\t&quot;</td>
+		<td>&quot;hello\n&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;\thello\t&quot;</td>
+		<td>&quot;hello\t&quot;</td>
+	</tr>
+	</tbody>
+</table>
+</li><li><p id="should_remove_trailing_whitespace" class="example notrun"><strong>should remove trailing whitespace</strong></p>
+<pre class="prettyprint lang-spec linenums">
+examples.forEach[
+  subject.normalize(input) =&gt; result
+]</pre>
+</li><li><p id="Linebreak_at_the_end" class="example notrun"><strong>Linebreak at the end</strong></p>
+<pre class="prettyprint lang-spec linenums">
+subject.normalize(
+'''
+hello
+world
+''') =&gt; &quot;hello\nworld\n&quot;</pre>
+</li><li><p id="Linebreak_at_the_end_with_trailing_tabs" class="example notrun"><strong>Linebreak at the end with trailing tabs</strong></p>
+<pre class="prettyprint lang-spec linenums">
+subject.normalize(&quot;\n\t\t\t\t\t hello\n\t\t\t\t\t world\n\t\t\t\t\t&quot;) =&gt; &quot;hello\nworld\n&quot;</pre>
+</li><li><p id="No_linebreak_at_the_end" class="example notrun"><strong>No linebreak at the end</strong></p>
+<pre class="prettyprint lang-spec linenums">
+subject.normalize(
+'''
+hello
+world''') =&gt; &quot;hello\nworld&quot;</pre>
+</li></ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>WhiteSpaceNormalizer.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.jnario.tests.unit.doc
+
+import org.jnario.doc.WhiteSpaceNormalizer
+
+import static extension org.jnario.lib.ExampleTableIterators.*
+import static extension org.jnario.lib.Should.*
+
+describe WhiteSpaceNormalizer{
+
+  def examples {
+    | input           | result       |
+    | null            | &quot;&quot;        |
+    | &quot;&quot;            | &quot;&quot;        |
+    | &quot; &quot;            | &quot;&quot;        |
+    | &quot;\thello&quot;          | &quot;hello&quot;       |
+    | &quot;\thello\n\tworld&quot;     | &quot;hello\nworld&quot;  |
+    | &quot;\t\thello\n\t\tworld&quot;   | &quot;hello\nworld&quot;  |
+    | &quot;\t\thello\n\tworld&quot;     | &quot;hello\n\tworld&quot;  |
+    | &quot;\n\t\thello\n\tworld&quot;   | &quot;hello\n\tworld&quot;  |
+    | &quot;\n\t\thello\n\tworld\n&quot;   | &quot;hello\n\tworld\n&quot;|
+    | &quot;\thello\n\t&quot;       | &quot;hello\n&quot;      |
+    | &quot;\thello\t&quot;         | &quot;hello\t&quot;      |
+  }
+  
+  fact &quot;should remove trailing whitespace&quot;{
+    examples.forEach[
+      subject.normalize(input) =&gt; result
+    ]
+  }
+  
+  fact &quot;Linebreak at the end&quot;{
+    subject.normalize(
+    '''
+    hello
+    world
+    ''') =&gt; &quot;hello\nworld\n&quot;
+  }
+  
+  fact &quot;Linebreak at the end with trailing tabs&quot;{
+    subject.normalize(&quot;\n\t\t\t\t\t hello\n\t\t\t\t\t world\n\t\t\t\t\t&quot;) =&gt; &quot;hello\nworld\n&quot;
+  }
+  
+  fact &quot;No linebreak at the end&quot;{
+    subject.normalize(
+    '''
+    hello
+    world''') =&gt; &quot;hello\nworld&quot;
+  }
+  
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- /container -->
+
+</body>
+</html>

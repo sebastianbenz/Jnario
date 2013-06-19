@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>References for steps</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header notrun">
+					<h1>References for steps</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<div><h3 class="scenario notrun"  id="Scenario_Defining_a_step_and_using_it_in_the_same_scenario">Scenario: Defining a step and using it in the same scenario
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I have a scenario with reused steps that throw an exception</p><pre>package bootstrap
+Feature: Test
+  Scenario: TestScenario 1
+    Given step
+      throw new RuntimeException()
+    
+  Scenario: TestScenario 2
+    Given step</pre></span>
+</li>
+<li><span class="step notrun"><p>Then the number of failures should be <code>"2"</code></p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Referencing_steps_with_different_keyword">Scenario: Referencing steps with different keyword
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I have a scenario with reused steps with different keywords that throw an exception</p><pre>package bootstrap
+Feature: Test
+  Scenario: TestScenario 1
+    Given step
+      throw new RuntimeException()
+    
+  Scenario: TestScenario 2
+    When step</pre></span>
+</li>
+<li><span class="step notrun"><p>Then the number of failures should be <code>"2"</code></p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Using_fields_from_other_steps">Scenario: Using fields from other steps
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I have a scenario with a field</p><pre>package bootstrap
+import java.util.*
+Feature: Test
+  Scenario: TestScenario 1
+    List&lt;String&gt; values = new ArrayList()
+    Given a list
+      values += &quot;hello&quot;
+    
+  Scenario: TestScenario 2
+    Given a list
+    Then it should have contents
+      values.size =&gt; 1</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Steps_with_short_names">Scenario: Steps with short names
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I have a scenario with references and short step names [1 word]</p><pre>package bootstrap
+import java.util.*
+Feature: Test
+  Scenario: TestScenario1
+    int x
+    Given step
+      x = 3
+  Scenario: TestScenario2
+    Given step
+    Then step
+      x =&gt; 3</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Field_initialization">Scenario: Field initialization
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I have a scenario with field initialized in a given step</p><pre>import java.util.Stack
+
+Feature: Stack
+
+
+Scenario: Stack adding elements
+  Stack&lt;String&gt; stack
+  Given a stack
+    stack= new Stack&lt;String&gt;()
+  When I add a value &quot;something&quot;
+    stack.add(&quot;something&quot;)
+  Then the stack should contain &quot;something&quot;
+    assert stack.contains(&quot;something&quot;)
+
+Scenario: Stack adding more elements
+  Given a stack
+  When I add a value &quot;something else&quot;
+  Then the stack should contain &quot;something else&quot;</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Steps">Scenario: Steps 
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I have a scenario with a variable that is initialized</p><pre>import java.util.concurrent.TimeUnit
+
+    Feature: Test
+    
+    Scenario: Scenario
+    When test
+    val test = TimeUnit::MINUTES
+    
+    Scenario: Scenario 2
+    When test</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Extension_fields">Scenario: Extension fields 
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I have a scenario with a variable that is initialized</p><pre>import org.jnario.feature.tests.integration.MyExtension
+    Feature: Extension Fields
+      Scenario: A scenario with an extension field
+        extension MyExtension myExtension = new MyExtension
+        val x = &lt;String&gt;newArrayList
+        Given an implementation that uses the extension
+          x.myExtensionMethod
+        Then extension is called
+          assert myExtension.called
+                
+      Scenario: Another scenario that uses the extension
+        Given an implementation that uses the extension
+        Then extension is called
+          And we can use it inside other steps
+            x.myExtensionMethod</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Extension_fields_in_And_step">Scenario: Extension fields in And step
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I have a scenario with a variable that is initialized</p><pre>import org.jnario.feature.tests.integration.MyExtension
+      Feature: Extension Fields
+        Scenario: A scenario with an extension field
+          extension MyExtension myExtension = new MyExtension
+          val x = &lt;String&gt;newArrayList
+          Given an empty step
+          And an implementation that uses the extension
+            x.myExtensionMethod
+          Then extension is called
+            assert myExtension.called
+                  
+        Scenario: Another scenario that uses the extension
+          Given an empty step
+          And an implementation that uses the extension
+          Then extension is called
+            And we can use it inside other steps
+              x.myExtensionMethod</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Using_closures_in_steps">Scenario: Using closures in steps
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I have a scenario which uses closures</p><pre>Feature: Using Closures
+
+      Scenario: Steps which define closures
+        var colors = list(&quot;green&quot;, &quot;blue&quot;)
+        When we convert all strings to uppercase
+          colors = colors.map[toUpperCase]
+        Then they are uppercase
+          colors =&gt; list(&quot;GREEN&quot;, &quot;BLUE&quot;)
+    
+      Scenario: Steps which reference steps with closures
+        var colors = list(&quot;red&quot;, &quot;blue&quot;)
+        When we convert all strings to uppercase
+        Then they are uppercase
+          colors =&gt; list(&quot;RED&quot;, &quot;BLUE&quot;)</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Multiple_Step_References_causes_problem_when_copier_does_not_clear_its_cache">Scenario: Multiple Step References (causes problem when copier does not clear its cache)
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I have a feature with multiple scenarios</p><pre>Feature: Field Inference
+ 
+  Scenario: Scenario 1
+    CharSequence jnarioFile2
+     Then it should execute successfully
+      println(jnarioFile2)
+                  
+  Scenario: Scenario 2
+    CharSequence feature1
+    Then both should execute successfully 
+      println(feature1)
+                          
+  Scenario: Scenario 3
+    When I have a feature with a background and two scenarios &quot;Feature: Feature 1&quot;         
+      jnarioFile2 = args.first
+    Then it should execute successfully
+         
+  Scenario: Scenario 4
+    When I have a feature &quot;Feature: Feature 1&quot;
+      feature1 = args.first
+    Then both should execute successfully</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Accessing_extension_field_methods">Scenario: Accessing extension field methods
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I access extension field methods from referenced steps</p><pre>Feature: Sharing extension field
+
+      Scenario: Accessing extension field methods
+        extension String = &quot;hello&quot;
+       
+        Given an extension field access
+          concat(&quot; world&quot;) should be &quot;hello world&quot;
+    
+      Scenario: Accessing extension field methods in referenced steps
+        
+        Given an extension field access</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Background_steps_referencing_other_steps">Scenario: Background steps referencing other steps
+</h3>
+<ul>
+<li><span class="step notrun"><p>Given a feature</p><pre>Feature: Feature 1
+Background:
+String testString
+Given something
+testString = &quot;test&quot;
+And it is upper case
+testString.toUpperCase
+Scenario: Scenario 1</pre></span>
+</li>
+<li><span class="step notrun"><p>When referencing the backround steps from another background</p><pre>Feature: Feature 2
+Background:
+Given something
+Scenario: Scenario 2
+Given it is upper case</pre></span>
+</li>
+<li><span class="step notrun"><p>Then they should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Step_references_with_extensions_in_same_scenario">Scenario: Step references with extensions in same scenario
+</h3>
+<ul>
+<li><span class="step notrun"><p>Given a feature</p><pre>import org.jnario.feature.tests.integration.ExampleExtension
+Feature: Step references with extensions in same step
+      Scenario: Greetings
+        extension static ExampleExtension = new ExampleExtension
+      When greeting &quot;Sebastian&quot; is &quot;Hello Sebastian&quot;
+        args.first.greet =&gt; args.second
+      But greeting &quot;World&quot; is &quot;Hello World&quot;</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Scenario_references_two_steps_from_different_scenarios_which_define_the_same_field">Scenario: Scenario references two steps from different scenarios which define the same field
+</h3>
+<ul>
+<li><span class="step notrun"><p>Given a feature</p><pre>Feature: Field inference
+      Scenario: Scenario with field colors
+        val colors = &lt;String&gt;list  
+        Given a color red
+          colors += &quot;red&quot;
+      Scenario: Other scenario with field colors
+        val colors = &lt;String&gt;list 
+        Given a color green
+          colors += &quot;green&quot;
+      Scenario: Two steps reuse same field
+        
+        Given a color green
+        And a color red
+        Then colors are red &amp; green
+        colors =&gt; list(&quot;green&quot;, &quot;red&quot;)</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Duplicate_extension_via_step_rerferences">Scenario: Duplicate extension via step rerferences
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I have a feature</p><pre>import java.util.List
+Feature: Feature 1
+    Scenario: Scenario with field colors
+      extension List&lt;String&gt; colors = &lt;String&gt;list
+      Given a color red
+        colors += &quot;red&quot;
+      And a color green</pre></span>
+</li>
+<li><span class="step notrun"><p>And another feature</p><pre>import java.util.List
+Feature: Feature 2
+    Scenario: Scenario with other colors
+        extension List&lt;String&gt; colors = &lt;String&gt;list
+      Given a color red
+      And a color green
+        colors += &quot;green&quot;</pre></span>
+</li>
+<li><span class="step notrun"><p>Then both should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Error_messages_in_Step_References">Scenario: Error messages in Step References
+</h3>
+<ul>
+<li><span class="step notrun"><p>Given a feature</p><pre>Feature: Error Messages in Step References
+ 
+Scenario: Defines a failing step
+  val aList = list(&quot;red&quot;)
+Given an extension
+  try{
+    aList should contain &quot;green&quot;
+  }catch(AssertionError e){
+    val expected = 
+'Expected aList should contain &quot;green&quot; but
+     aList is &lt;[red]&gt;'
+    e.message should contain expected
+  }
+Scenario: Redefines failing step
+Given an extension</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Ordering_in_step_references">Scenario: Ordering in step references
+</h3>
+<ul>
+<li><span class="step notrun"><p>Given a feature</p><pre>Feature: Ordering of step references
+ 
+Scenario: First
+  CharSequence jnarioFile
+  Then it should execute successfully
+    jnarioFile = &quot;&quot;
+    
+Scenario: Second
+  When I have a scenario with a field
+    jnarioFile = &quot;&quot;
+   Then it should execute successfully</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+<div><h3 class="scenario notrun"  id="Scenario_Field_dependencies">Scenario: Field dependencies
+</h3>
+<ul>
+<li><span class="step notrun"><p>Given a feature</p><pre>Feature: Field dependencies
+   
+  Scenario: First
+    val x = &quot;hello&quot;
+    val y = x
+  When it should execute successfully
+    println(x + y)
+
+  Scenario: Second
+    When it should execute successfully</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>References.feature</h3>
+						    	<p>
+<pre class="prettyprint lang-feature linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.feature.tests.integration
+
+import static extension org.jnario.jnario.test.util.FeatureExecutor.*
+import org.jnario.jnario.test.util.FeatureTestCreator
+import org.jnario.runner.CreateWith
+import com.google.inject.Inject
+import org.jnario.jnario.test.util.BehaviorExecutor
+
+/**
+ * @author Birgit Engelmann - Initial contribution and API
+ */
+ @CreateWith(typeof(FeatureTestCreator))
+Feature: References for steps
+
+  Scenario: Defining a step and using it in the same scenario
+    CharSequence jnarioFile
+    When I have a scenario with reused steps that throw an exception
+      '''
+      package bootstrap
+      Feature: Test
+        Scenario: TestScenario 1
+          Given step
+            throw new RuntimeException()
+          
+        Scenario: TestScenario 2
+          Given step
+      '''
+      jnarioFile = args.first
+    Then the number of failures should be &quot;2&quot;
+      jnarioFile.run.failureCount =&gt; args.first.toInt
+      
+  Scenario: Referencing steps with different keyword
+    CharSequence jnarioFile
+    When I have a scenario with reused steps with different keywords that throw an exception
+      '''
+        package bootstrap
+        Feature: Test
+          Scenario: TestScenario 1
+            Given step
+              throw new RuntimeException()
+            
+          Scenario: TestScenario 2
+            When step
+      '''
+      jnarioFile = args.first
+     Then the number of failures should be &quot;2&quot;
+   
+   Scenario: Using fields from other steps
+    When I have a scenario with a field
+      '''
+        package bootstrap
+        import java.util.*
+        Feature: Test
+          Scenario: TestScenario 1
+            List&lt;String&gt; values = new ArrayList()
+            Given a list
+              values += &quot;hello&quot;
+            
+          Scenario: TestScenario 2
+            Given a list
+            Then it should have contents
+              values.size =&gt; 1
+      '''
+      jnarioFile = args.first
+     Then it should execute successfully
+     
+   Scenario: Steps with short names
+     When I have a scenario with references and short step names (1 word)
+       '''
+         package bootstrap
+         import java.util.*
+         Feature: Test
+           Scenario: TestScenario1
+             int x
+             Given step
+               x = 3
+           Scenario: TestScenario2
+             Given step
+             Then step
+               x =&gt; 3
+       '''
+       jnarioFile = args.first
+     Then it should execute successfully
+       
+   Scenario: Field initialization
+     When I have a scenario with field initialized in a given step
+       '''
+        import java.util.Stack
+        
+        Feature: Stack
+        
+        
+        Scenario: Stack adding elements
+          Stack&lt;String&gt; stack
+          Given a stack
+            stack= new Stack&lt;String&gt;()
+          When I add a value &quot;something&quot;
+            stack.add(&quot;something&quot;)
+          Then the stack should contain &quot;something&quot;
+            assert stack.contains(&quot;something&quot;)
+        
+        Scenario: Stack adding more elements
+          Given a stack
+          When I add a value &quot;something else&quot;
+          Then the stack should contain &quot;something else&quot;
+       '''
+       jnarioFile = args.first
+     Then it should execute successfully  
+     
+     
+   Scenario: Steps 
+     When I have a scenario with a variable that is initialized 
+     '''
+     import java.util.concurrent.TimeUnit
+
+    Feature: Test
+    
+    Scenario: Scenario
+    When test
+    val test = TimeUnit::MINUTES
+    
+    Scenario: Scenario 2
+    When test
+     '''
+        jnarioFile = args.first
+     Then it should execute successfully  
+     
+   Scenario: Extension fields 
+     When I have a scenario with a variable that is initialized 
+     '''
+     import org.jnario.feature.tests.integration.MyExtension
+    Feature: Extension Fields
+      Scenario: A scenario with an extension field
+        extension MyExtension myExtension = new MyExtension
+        val x = &lt;String&gt;newArrayList
+        Given an implementation that uses the extension
+          x.myExtensionMethod
+        Then extension is called
+          assert myExtension.called
+                
+      Scenario: Another scenario that uses the extension
+        Given an implementation that uses the extension
+        Then extension is called
+          And we can use it inside other steps
+            x.myExtensionMethod
+     '''
+     Then it should execute successfully
+   
+   Scenario: Extension fields in And step
+     When I have a scenario with a variable that is initialized 
+     '''
+       import org.jnario.feature.tests.integration.MyExtension
+      Feature: Extension Fields
+        Scenario: A scenario with an extension field
+          extension MyExtension myExtension = new MyExtension
+          val x = &lt;String&gt;newArrayList
+          Given an empty step
+          And an implementation that uses the extension
+            x.myExtensionMethod
+          Then extension is called
+            assert myExtension.called
+                  
+        Scenario: Another scenario that uses the extension
+          Given an empty step
+          And an implementation that uses the extension
+          Then extension is called
+            And we can use it inside other steps
+              x.myExtensionMethod
+    '''
+     Then it should execute successfully  
+     
+   Scenario: Using closures in steps
+      When I have a scenario which uses closures
+      '''
+      Feature: Using Closures
+
+      Scenario: Steps which define closures
+        var colors = list(&quot;green&quot;, &quot;blue&quot;)
+        When we convert all strings to uppercase
+          colors = colors.map[toUpperCase]
+        Then they are uppercase
+          colors =&gt; list(&quot;GREEN&quot;, &quot;BLUE&quot;)
+    
+      Scenario: Steps which reference steps with closures
+        var colors = list(&quot;red&quot;, &quot;blue&quot;)
+        When we convert all strings to uppercase
+        Then they are uppercase
+          colors =&gt; list(&quot;RED&quot;, &quot;BLUE&quot;)
+      '''
+        jnarioFile = args.first
+      Then it should execute successfully  
+      
+    Scenario: Multiple Step References (causes problem when copier does not clear its cache)
+      When I have a feature with multiple scenarios
+      '''
+      Feature: Field Inference
+       
+        Scenario: Scenario 1
+          CharSequence jnarioFile2
+           Then it should execute successfully
+            println(jnarioFile2)
+                        
+        Scenario: Scenario 2
+          CharSequence feature1
+          Then both should execute successfully 
+            println(feature1)
+                                
+        Scenario: Scenario 3
+          When I have a feature with a background and two scenarios &quot;Feature: Feature 1&quot;         
+            jnarioFile2 = args.first
+          Then it should execute successfully
+               
+        Scenario: Scenario 4
+          When I have a feature &quot;Feature: Feature 1&quot;
+            feature1 = args.first
+          Then both should execute successfully 
+          '''
+        jnarioFile = args.first
+      Then it should execute successfully  
+      
+      
+   Scenario: Accessing extension field methods
+     When I access extension field methods from referenced steps
+     '''
+     Feature: Sharing extension field
+
+      Scenario: Accessing extension field methods
+        extension String = &quot;hello&quot;
+       
+        Given an extension field access
+          concat(&quot; world&quot;) should be &quot;hello world&quot;
+    
+      Scenario: Accessing extension field methods in referenced steps
+        
+        Given an extension field access
+     '''
+     jnarioFile = args.first
+     Then it should execute successfully
+
+  Scenario: Background steps referencing other steps
+     @Inject extension BehaviorExecutor behaviorExecutor
+     CharSequence jnarioFile
+     CharSequence jnarioFile2
+     Given a feature
+     '''
+      Feature: Feature 1
+      Background:
+      String testString
+      Given something
+      testString = &quot;test&quot;
+      And it is upper case
+      testString.toUpperCase
+      Scenario: Scenario 1
+     '''
+       jnarioFile = args.first
+     When referencing the backround steps from another background
+     '''
+      Feature: Feature 2
+      Background:
+      Given something
+      Scenario: Scenario 2
+      Given it is upper case
+     '''
+       jnarioFile2 = args.first
+     Then they should execute successfully
+       jnarioFile.executesSuccessfully
+       jnarioFile2.executesSuccessfully
+       
+   Scenario: Step references with extensions in same scenario
+     Given a feature
+     '''
+     import org.jnario.feature.tests.integration.ExampleExtension
+     Feature: Step references with extensions in same step
+      Scenario: Greetings
+        extension static ExampleExtension = new ExampleExtension
+      When greeting &quot;Sebastian&quot; is &quot;Hello Sebastian&quot;
+        args.first.greet =&gt; args.second
+      But greeting &quot;World&quot; is &quot;Hello World&quot;
+     '''
+     Then it should execute successfully
+     
+   Scenario: Scenario references two steps from different scenarios which define the same field
+     Given a feature
+     '''
+     Feature: Field inference
+      Scenario: Scenario with field colors
+        val colors = &lt;String&gt;list  
+        Given a color red
+          colors += &quot;red&quot;
+      Scenario: Other scenario with field colors
+        val colors = &lt;String&gt;list 
+        Given a color green
+          colors += &quot;green&quot;
+      Scenario: Two steps reuse same field
+        
+        Given a color green
+        And a color red
+        Then colors are red &amp; green
+        colors =&gt; list(&quot;green&quot;, &quot;red&quot;)
+     '''
+     Then it should execute successfully
+     
+   Scenario: Duplicate extension via step rerferences
+     
+     When I have a feature
+     '''
+     import java.util.List
+     Feature: Feature 1
+    Scenario: Scenario with field colors
+      extension List&lt;String&gt; colors = &lt;String&gt;list
+      Given a color red
+        colors += &quot;red&quot;
+      And a color green
+     '''
+     And another feature 
+     '''
+     import java.util.List
+     Feature: Feature 2
+    Scenario: Scenario with other colors
+        extension List&lt;String&gt; colors = &lt;String&gt;list
+      Given a color red
+      And a color green
+        colors += &quot;green&quot;
+     '''
+     Then both should execute successfully
+
+  Scenario: Error messages in Step References
+    Given a feature
+    '''
+      Feature: Error Messages in Step References
+       
+      Scenario: Defines a failing step
+        val aList = list(&quot;red&quot;)
+      Given an extension
+        try{
+          aList should contain &quot;green&quot;
+        }catch(AssertionError e){
+          val expected = 
+      'Expected aList should contain &quot;green&quot; but
+           aList is &lt;[red]&gt;'
+          e.message should contain expected
+        }
+      Scenario: Redefines failing step
+      Given an extension                      
+    '''
+    Then it should execute successfully
+    
+    
+  Scenario: Ordering in step references
+    Given a feature
+    '''
+    Feature: Ordering of step references
+ 
+    Scenario: First
+      CharSequence jnarioFile
+      Then it should execute successfully
+        jnarioFile = &quot;&quot;
+        
+    Scenario: Second
+      When I have a scenario with a field
+        jnarioFile = &quot;&quot;
+       Then it should execute successfully
+    '''
+    Then it should execute successfully
+    
+  Scenario: Field dependencies
+    Given a feature
+      '''
+  Feature: Field dependencies
+     
+    Scenario: First
+      val x = &quot;hello&quot;
+      val y = x
+    When it should execute successfully
+      println(x + y)
+  
+    Scenario: Second
+      When it should execute successfully
+      '''
+  Then it should execute successfully
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- /container -->
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Setup & Teardown with Feature Extensions</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header notrun">
+					<h1>Setup & Teardown with Feature Extensions</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<p>Feature extensions can be used to share common setup and teardown operations between different features and/or specs. Whenever you are missing helper methods in feature definitions, you should use extensions instead. You can declare extension fields in scenarios to perform setup and teardown operations before/after the scenario is executed.</p>
+<div><h3 class="scenario notrun"  id="Scenario_Using_an_Extension">Scenario: Using an Extension
+</h3>
+<ul>
+<li><span class="step notrun"><p>When I declare an extension field of type <strong>ExampleExtension</strong> in the background</p><pre>import org.jnario.feature.tests.integration.ExampleExtension
+
+Feature: Feature with extensions
+  
+  Background: A common extension to all scenarios
+      extension static ExampleExtension = new ExampleExtension 
+    
+  Scenario: Scenario 1
+    Given a step 
+      println(&quot;step 1&quot;)
+    Then we have two steps
+    println(&quot;step 2&quot;)
+  Scenario: Scenario 2
+    Given a step 
+      println(&quot;step 3&quot;)
+    Then we have two steps
+      println(&quot;step 4&quot;)</pre></span>
+</li>
+<li><span class="step notrun"><p>And execute the feature</p></span>
+</li>
+<li><span class="step notrun"><p>Then the execution order is</p><pre>before
+step 1
+step 2
+after
+before
+step 3
+step 4
+after</pre></span>
+</li>
+</ul>
+</div>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>SetupExtensions.feature</h3>
+						    	<p>
+<pre class="prettyprint lang-feature linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.feature.tests.integration
+
+import static extension org.jnario.jnario.test.util.FeatureExecutor.*
+import static org.jnario.jnario.test.util.ResultMatchers.*
+import org.jnario.jnario.test.util.ConsoleRecorder
+import static org.junit.Assert.*
+import org.eclipse.xtext.util.Strings
+
+/**
+ * @author Sebastian Benz - Initial contribution and API
+ */
+Feature: Setup &amp; Teardown with Feature Extensions
+
+  Feature extensions can be used to share common setup and teardown 
+  operations between different features and/or specs. Whenever you are
+  missing helper methods in feature definitions, you should use extensions
+  instead. You can declare extension fields in scenarios to perform setup and
+  teardown operations before/after the scenario is executed.
+
+  Scenario: Using an Extension
+    var CharSequence feature
+    var ConsoleRecorder recorder
+
+/*    Given a class **ExampleExtension** with JUnit before and after methods:
+      ''' 
+        package org.jnario.feature.tests.integration
+
+        import org.junit.Before
+        import org.junit.After
+        
+        class ExampleExtension {
+          @Before def before(){
+            println(&quot;before&quot;)
+          }
+          
+          @After def after(){
+            println(&quot;after&quot;)
+          }
+//          @BeforeClass def beforeAll(){
+//            println(&quot;before all&quot;)
+//          }
+//  
+//          @AfterClass def afterAll(){
+//            println(&quot;after all&quot;)
+//          }
+        }
+      ''' */
+    When I declare an extension field of type **ExampleExtension** in the background
+          '''
+        import org.jnario.feature.tests.integration.ExampleExtension
+
+        Feature: Feature with extensions
+          
+          Background: A common extension to all scenarios
+              extension static ExampleExtension = new ExampleExtension 
+            
+          Scenario: Scenario 1
+            Given a step 
+              println(&quot;step 1&quot;)
+            Then we have two steps
+            println(&quot;step 2&quot;)
+          Scenario: Scenario 2
+            Given a step 
+              println(&quot;step 3&quot;)
+            Then we have two steps
+              println(&quot;step 4&quot;)
+      '''
+      feature = args.first
+      And execute the feature
+            recorder = ConsoleRecorder::start
+       feature.isSuccessful
+    Then the execution order is
+          '''
+        before
+        step 1
+        step 2
+        after
+        before
+        step 3
+        step 4
+        after
+      '''
+      val actual = recorder.stop.trim
+      val expected = args.first.trim.split(&quot;\n&quot;).map[trim].join(Strings::newLine)
+      assertEquals(expected, actual)
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- /container -->
+
+</body>
+</html>

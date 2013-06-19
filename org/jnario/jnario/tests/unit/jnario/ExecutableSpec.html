@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Executable</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header notrun">
+					<h1>Executable</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<h3 class="exampleGroup notrun"  id="isPending">IsPending</h3>
+<div class="level">
+<h4 class="exampleGroup notrun"  id="Feature">Feature</h4>
+<ul><li><p id="feature_Without_scenarios_and_without_background_isPending_should_be_true" class="example notrun"><strong>feature["Without scenarios and without background"].isPending[] should be true</strong></p>
+</li><li><p id="featureWith_implementedScenario_isPending_should_be_false" class="example notrun"><strong>featureWith[implementedScenario].isPending[] should be false</strong></p>
+</li><li><p id="featureWith_scenarioWithoutSteps_implementedScenario_isPending_should_be_true" class="example notrun"><strong>featureWith[scenarioWithoutSteps, implementedScenario].isPending[] should be true</strong></p>
+</li><li><p id="featureWithBackground_implementedBackground_isPending_should_be_true" class="example notrun"><strong>featureWithBackground[implementedBackground].isPending[] should be true</strong></p>
+</li><li><p id="featureWithBackground_backgroundWithoutSteps_isPending_should_be_true" class="example notrun"><strong>featureWithBackground[backgroundWithoutSteps].isPending[] should be true</strong></p>
+</li><li><p id="featureWithBackgroundAndScenario_backgroundWithoutSteps_implementedScenario_isPending_should_be_true" class="example notrun"><strong>featureWithBackgroundAndScenario[backgroundWithoutSteps, implementedScenario].isPending[] should be true</strong></p>
+</li><li><p id="featureWithBackgroundAndScenario_implementedBackground_implementedScenario_isPending_should_be_false" class="example notrun"><strong>featureWithBackgroundAndScenario[implementedBackground, implementedScenario].isPending[] should be false</strong></p>
+</li></ul>
+</div>
+<div class="level">
+<h4 class="exampleGroup notrun"  id="Scenario">Scenario</h4>
+<ul><li><p id="scenario_Without_steps_isPending_should_be_true" class="example notrun"><strong>scenario["Without steps"].isPending[] should be true</strong></p>
+</li><li><p id="scenarioWith_stepWithoutImplementation_isPending_should_be_true" class="example notrun"><strong>scenarioWith[stepWithoutImplementation].isPending[] should be true</strong></p>
+</li><li><p id="scenarioWith_implementedStep_isPending_should_be_false" class="example notrun"><strong>scenarioWith[implementedStep].isPending[] should be false</strong></p>
+</li><li><p id="scenarioWith_stepWithoutImplementation_implementedStep_isPending_should_be_true" class="example notrun"><strong>scenarioWith[stepWithoutImplementation, implementedStep].isPending[] should be true</strong></p>
+</li></ul>
+</div>
+<div class="level">
+<h4 class="exampleGroup notrun"  id="Step">Step</h4>
+<ul><li><p id="stepWithoutImplementation_isPending_should_be_true" class="example notrun"><strong>stepWithoutImplementation.isPending[] should be true</strong></p>
+</li><li><p id="implementedStep_isPending_should_be_false" class="example notrun"><strong>implementedStep.isPending[] should be false</strong></p>
+</li></ul>
+</div>
+<div class="level">
+<h4 class="exampleGroup notrun"  id="Example">Example</h4>
+<ul><li><p id="pendingExample_isPending_should_be_true" class="example notrun"><strong>pendingExample.isPending[] should be true</strong></p>
+</li><li><p id="implementedExample_isPending_should_be_false" class="example notrun"><strong>implementedExample.isPending[] should be false</strong></p>
+</li></ul>
+</div>
+<div class="level">
+<h4 class="exampleGroup notrun"  id="ExampleGroup">ExampleGroup</h4>
+<ul><li><p id="exampleGroupWith_pendingExample_isPending_should_be_true" class="example notrun"><strong>exampleGroupWith[pendingExample].isPending should be true</strong></p>
+</li><li><p id="exampleGroupWith_implementedExample_isPending_should_be_false" class="example notrun"><strong>exampleGroupWith[implementedExample].isPending should be false</strong></p>
+</li><li><p id="exampleGroupWith_pendingExample_implementedExample_isPending_should_be_true" class="example notrun"><strong>exampleGroupWith[pendingExample, implementedExample].isPending should be true</strong></p>
+</li><li><p id="exampleGroupWith_pendingExampleGroup_isPending_should_be_true" class="example notrun"><strong>exampleGroupWith[pendingExampleGroup].isPending should be true</strong></p>
+</li></ul>
+</div>
+<div class="level">
+<h4 class="exampleGroup notrun"  id="Suite">Suite</h4>
+<ul><li><p id="suiteWith_A_suite_specReference_pendingExampleGroup_isPending_should_be_true" class="example notrun"><strong>suiteWith["A suite", specReference[pendingExampleGroup]].isPending should be true</strong></p>
+</li><li><p id="suiteWith_A_suite_specReference_exampleGroupWith_example_passing_isPending_should_be_false" class="example notrun"><strong>suiteWith["A suite", specReference[exampleGroupWith[example["passing"]]]].isPending should be false</strong></p>
+</li></ul>
+</div>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>Executable.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.jnario.tests.unit.jnario
+
+import org.jnario.Executable
+import org.jnario.feature.feature.Feature
+import org.jnario.feature.feature.Scenario
+import org.jnario.feature.feature.Step
+import org.jnario.spec.spec.Example
+import org.jnario.spec.spec.ExampleGroup
+
+import static org.jnario.jnario.test.util.Features.*
+import static org.jnario.jnario.test.util.Specs.*
+import org.jnario.suite.suite.Suite
+import static org.jnario.jnario.test.util.Suites.*
+import com.google.inject.Inject
+import org.eclipse.xtext.resource.XtextResource
+import org.jnario.suite.suite.SpecReference
+import org.jnario.jnario.test.util.Suites
+import org.jnario.runner.CreateWith
+import org.jnario.jnario.test.util.SuiteTestCreator
+
+describe Executable{
+  
+  context isPending{
+    describe Feature{
+      fact feature(&quot;Without scenarios and without background&quot;).isPending() should be true
+      fact featureWith(implementedScenario).isPending() should be false
+      fact featureWith(scenarioWithoutSteps, implementedScenario).isPending() should be true
+      fact featureWithBackground(implementedBackground).isPending() should be true
+      fact featureWithBackground(backgroundWithoutSteps).isPending() should be true
+      fact featureWithBackgroundAndScenario(backgroundWithoutSteps, implementedScenario).isPending() should be true
+      fact featureWithBackgroundAndScenario(implementedBackground, implementedScenario).isPending() should be false
+    }
+    
+    describe Scenario{
+      fact scenario(&quot;Without steps&quot;).isPending() should be true
+      fact scenarioWith(stepWithoutImplementation).isPending() should be true
+      fact scenarioWith(implementedStep).isPending() should be false
+      fact scenarioWith(stepWithoutImplementation, implementedStep).isPending() should be true
+    }
+     
+    describe Step{
+      fact stepWithoutImplementation.isPending() should be true
+      fact implementedStep.isPending() should be false
+    }
+    
+    describe Example{
+      fact pendingExample.isPending() should be true
+      fact implementedExample.isPending() should be false
+    }
+    
+    describe ExampleGroup{
+      fact exampleGroupWith(pendingExample).isPending should be true
+      fact exampleGroupWith(implementedExample).isPending should be false
+      fact exampleGroupWith(pendingExample, implementedExample).isPending should be true
+      fact exampleGroupWith(pendingExampleGroup).isPending should be true
+    }
+    
+    @CreateWith(typeof(SuiteTestCreator))
+    describe Suite{
+      @Inject XtextResource resource
+      fact suiteWith(&quot;A suite&quot;, specReference(pendingExampleGroup)).isPending should be true
+      fact suiteWith(&quot;A suite&quot;, specReference(exampleGroupWith(example(&quot;passing&quot;)))).isPending should be false
+      
+      def suiteWith(String name, SpecReference... references){
+        val result = Suites::suiteWith(name, references)
+        resource.contents += result
+        result
+      }
+    }
+  }
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- /container -->
+
+</body>
+</html>
