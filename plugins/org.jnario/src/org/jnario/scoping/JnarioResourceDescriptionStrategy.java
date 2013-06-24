@@ -14,8 +14,7 @@ import org.eclipse.xtext.util.IAcceptor;
 import org.jnario.Executable;
 import org.jnario.Specification;
 
-public class JnarioResourceDescriptionStrategy extends
-		XtendResourceDescriptionStrategy {
+public class JnarioResourceDescriptionStrategy extends	XtendResourceDescriptionStrategy {
 	
 	private static final Logger LOG = Logger.getLogger(JnarioResourceDescriptionStrategy.class);
 
@@ -47,9 +46,9 @@ public class JnarioResourceDescriptionStrategy extends
 	@Override
 	public boolean createReferenceDescriptions(EObject from, URI exportedContainerURI,
 			IAcceptor<IReferenceDescription> acceptor) {
-		if(isJnarioElement(from)){
-			return true;
-		}
+//		if(isJnarioElement(from)){
+//			return true;
+//		}
 		return false;
 	}
 	
