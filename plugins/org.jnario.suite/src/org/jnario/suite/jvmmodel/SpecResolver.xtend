@@ -21,7 +21,7 @@ import static java.util.Collections.*
 import static org.eclipse.emf.ecore.util.EcoreUtil.*
 import static org.jnario.suite.suite.SuitePackage$Literals.*
 
-import static extension com.google.common.base.Strings.*
+import static extension com.google.common.base.Strings.*import org.jnario.JnarioPackage
 
 class SpecResolver {
 	
@@ -40,14 +40,18 @@ class SpecResolver {
 	def dispatch List<Specification> resolveSpecs(PatternReference specRef){
 		if(specRef.pattern.isNullOrEmpty) return emptyList
 		val scope = getScope(specRef, SPEC_REFERENCE__SPEC)
+		var specs = scope.allElements.filter[
+			JnarioPackage$Literals.SPECIFICATION.isSuperTypeOf(EClass)
+		]
 		val pattern = Pattern::compile(specRef.pattern)
-		val allElements = scope.allElements.filter[
+		specs = specs.filter[
 			pattern.matcher(toString(it.qualifiedName)).matches
 		]
-		val specs = allElements.map[resolve(EObjectOrProxy, specRef)].filter(typeof(Specification)).filter[
-			it.eResource?.URI != specRef.eResource?.URI
-		]
-		specs.toMap[toQualifiedJavaClassName].values.sort
+		val suiteResource = specRef.eResource
+		specs.map[resolve(EObjectOrProxy, specRef)]
+			.filter(typeof(Specification))
+			.filter[eResource != suiteResource]
+			.toMap[toQualifiedJavaClassName].values.sort
 	}
 	
 	def private sort(Iterable<Specification> specs){
