@@ -469,7 +469,9 @@ public class UsingTablesSpec {
     _builder.append("| <7>        | <8>        | <14>     | \u2718     (2)");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("(1) java.lang.AssertionError: ");
+    _builder.append("(1) | <4>        | <5>        | <7>      | \u2718");
+    _builder.newLine();
+    _builder.append("java.lang.AssertionError: ");
     _builder.newLine();
     _builder.append("Expected value1 + value2 => sum but");
     _builder.newLine();
@@ -486,7 +488,9 @@ public class UsingTablesSpec {
     _builder.append("sum is <7>");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("(2) java.lang.AssertionError: ");
+    _builder.append("(2) | <7>        | <8>        | <14>     | \u2718");
+    _builder.newLine();
+    _builder.append("java.lang.AssertionError: ");
     _builder.newLine();
     _builder.append("Expected value1 + value2 => sum but");
     _builder.newLine();

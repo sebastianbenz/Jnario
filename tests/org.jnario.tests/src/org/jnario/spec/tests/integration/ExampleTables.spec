@@ -215,14 +215,16 @@ describe "Using Tables"{
 			        | <4>        | <5>        | <7>      | ✘     (1)
 			        | <7>        | <8>        | <14>     | ✘     (2)
 			
-			(1) java.lang.AssertionError: 
+			(1) | <4>        | <5>        | <7>      | ✘
+			java.lang.AssertionError: 
 			Expected value1 + value2 => sum but
 			     value1 + value2 is <9>
 			     value1 is <4>
 			     value2 is <5>
 			     sum is <7>
 			
-			(2) java.lang.AssertionError: 
+			(2) | <7>        | <8>        | <14>     | ✘
+			java.lang.AssertionError: 
 			Expected value1 + value2 => sum but
 			     value1 + value2 is <15>
 			     value1 is <7>

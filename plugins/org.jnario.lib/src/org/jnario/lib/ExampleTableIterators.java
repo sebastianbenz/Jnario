@@ -77,12 +77,13 @@ public class ExampleTableIterators<T extends ExampleTableRow> {
 		describeColumns(formatString, message);
 		int i = 1;
 		for (RowResult result : results) {
+			message.append(INDENT);
 			describeRow(formatString, message, result);
 			if (result instanceof RowFailed) {
 				message.append("     (");
 				message.append(i);
 				message.append(")");
-				describeCause(causes, i, (RowFailed) result);
+				describeCause(formatString, causes, i, (RowFailed) result);
 				i++;
 			}
 			message.append("\n");
@@ -113,17 +114,18 @@ public class ExampleTableIterators<T extends ExampleTableRow> {
 	}
 
 	protected void describeRow(String formatString, StringBuilder message, RowResult result) {
-		message.append(INDENT);
 		List<String> cells = result.getValue().getCells();
 		message.append(format(formatString, cells.toArray()));
 		message.append(" ");
 		message.append(result);
 	}
 
-	protected void describeCause(StringBuilder causes, int i, RowFailed result) {
+	protected void describeCause(String formatString, StringBuilder causes, int i, RowFailed result) {
 		causes.append("\n(");
 		causes.append(i);
 		causes.append(") ");
+		describeRow(formatString, causes, result);
+		causes.append("\n");
 		Throwable cause = result.getCause();
 		causes.append(cause.toString());
 	}

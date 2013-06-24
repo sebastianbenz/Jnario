@@ -17,7 +17,7 @@ describe DocumentationProvider {
 	fact "returns null if no comment"{
 		documentation(null) => null
 	}
-	
+	 
 	fact "returns comment"{
 		documentation("Hello World") => "Hello World"
 	}
