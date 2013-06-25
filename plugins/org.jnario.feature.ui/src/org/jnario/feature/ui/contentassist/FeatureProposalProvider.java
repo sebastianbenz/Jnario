@@ -25,13 +25,16 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
+import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
+import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IContainer;
@@ -47,9 +50,12 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.xbase.XbaseQualifiedNameConverter;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xbase.conversion.XbaseQualifiedNameValueConverter;
+import org.eclipse.xtext.xbase.imports.IImportsConfiguration;
+import org.eclipse.xtext.xbase.imports.ImportSectionRegionUtil;
 import org.eclipse.xtext.xbase.imports.RewritableImportSection;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.ui.imports.ReplaceConverter;
+import org.eclipse.xtext.xtype.XImportSection;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
@@ -60,12 +66,26 @@ import org.jnario.feature.naming.StepNameProvider;
 import org.jnario.ui.contentassist.ImportingTypesProposalProvider.FQNImporter;
 
 import com.google.common.base.Strings;
+import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
 public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
+	
+	public static class FeatureRewritableImportSection extends RewritableImportSection{
+
+		public FeatureRewritableImportSection(XtextResource resource,
+				IImportsConfiguration importsConfiguration,
+				XImportSection originalImportSection, String lineSeparator,
+				ImportSectionRegionUtil regionUtil,
+				IValueConverter<String> nameConverter) {
+			super(resource, importsConfiguration, originalImportSection, lineSeparator,
+					regionUtil, nameConverter);
+		}
+		
+	}
 	
 	private static final Logger LOG = Logger.getLogger(FeatureProposalProvider.class);
 	@Inject private IResourceDescriptions resourceDescriptions;
@@ -225,9 +245,10 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 			Step step = (Step) resolve(desc.getEObjectOrProxy(), context.getCurrentModel());
 			Scenario scenario = getContainerOfType(step, Scenario.class);
 			String proposal = getQualifiedNameConverter().toString(desc.getQualifiedName().skipLast(1)) + "." + prefix + desc.getName().getLastSegment();
-			if(expected.contains(desc.getEClass()) && context.getMatcher().isCandidateMatchingPrefix(proposal, context.getPrefix())){
+			
+			if(expected.contains(stepTypeProvider.getActualType(step)) && context.getMatcher().isCandidateMatchingPrefix(proposal, context.getPrefix())){
 				acceptor = createStepFqnShorterner(context, acceptor, scope, desc.getQualifiedName(), scenario);
-				String displayString = step.isPending() ? proposal + " [PENDING]" : proposal;
+				String displayString = proposal;
 				StyledString styledDisplayString = getStyledDisplayString(step, displayString, scenario.getName());
 				acceptor.accept(doCreateProposal(proposal, styledDisplayString, getLabelProvider().getImage(step), 1000, context));
 			}
