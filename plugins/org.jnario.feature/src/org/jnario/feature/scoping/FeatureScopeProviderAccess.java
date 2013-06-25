@@ -16,6 +16,7 @@ import org.eclipse.xtext.linking.impl.LinkingHelper;
 import org.eclipse.xtext.linking.lazy.LazyURIEncoder;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -23,6 +24,8 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XFeatureCall;
+import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.scoping.batch.IFeatureScopeSession;
 import org.eclipse.xtext.xbase.typesystem.IResolvedTypes;
@@ -32,9 +35,11 @@ import org.eclipse.xtext.xbase.typesystem.internal.AppliedFeatureLinkingCandidat
 import org.eclipse.xtext.xbase.typesystem.internal.NullFeatureLinkingCandidate;
 import org.eclipse.xtext.xbase.typesystem.internal.ResolvedTypes;
 import org.eclipse.xtext.xbase.typesystem.internal.ScopeProviderAccess;
+import org.eclipse.xtext.xbase.typesystem.internal.ScopeProviderAccess.ErrorDescription;
 import org.jnario.util.SourceAdapter;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 
 public class FeatureScopeProviderAccess extends ScopeProviderAccess {
@@ -62,7 +67,6 @@ public class FeatureScopeProviderAccess extends ScopeProviderAccess {
 		return result;
 	}
 
-	@NonNullByDefault
 	public Iterable<IEObjectDescription> getCandidateDescriptions(XExpression expression, EReference reference, @Nullable EObject toBeLinked,
 			IFeatureScopeSession session, IResolvedTypes types) throws IllegalNodeException {
 		if (toBeLinked == null) {
@@ -74,16 +78,13 @@ public class FeatureScopeProviderAccess extends ScopeProviderAccess {
 		URI uri = EcoreUtil.getURI(toBeLinked);
 		String fragment = uri.fragment();
 		if (encoder.isCrossLinkFragment(expression.eResource(), fragment)) {
-			List<String> split = Strings.split(fragment, LazyURIEncoder.SEP);
-			INode compositeNode = NodeModelUtils.getNode(expression);
-			if (compositeNode == null){
+			INode node;
+			try{
+				node = encoder.getNode(expression, fragment);
+			}catch(IllegalStateException e){
 				EObject source = SourceAdapter.find(expression);
-				if(source == null){
-					throw new IllegalStateException("Couldn't resolve lazy link, because no node model is attached.");
-				}
-				compositeNode = NodeModelUtils.getNode(source);
+				node = encoder.getNode(source, fragment);
 			}
-			INode node = encoder.getNode(compositeNode, split.get(3));
 			final EClass requiredType = reference.getEReferenceType();
 			if (requiredType == null)
 				return Collections.emptyList();
@@ -94,7 +95,11 @@ public class FeatureScopeProviderAccess extends ScopeProviderAccess {
 				QualifiedName qualifiedLinkName = qualifiedNameConverter.toQualifiedName(crossRefString);
 				Iterable<IEObjectDescription> descriptions = scope.getElements(qualifiedLinkName);
 				if (Iterables.isEmpty(descriptions)) {
-					return Collections.<IEObjectDescription>singletonList(new ErrorDescription(node, qualifiedLinkName));
+					INode errorNode = getErrorNode(expression, node);
+					if (errorNode != node) {
+						qualifiedLinkName = getErrorName(errorNode);
+					}
+					return Collections.<IEObjectDescription>singletonList(new ErrorDescription(getErrorNode(expression, node), qualifiedLinkName));
 				}
 				return descriptions;
 			}
@@ -102,5 +107,81 @@ public class FeatureScopeProviderAccess extends ScopeProviderAccess {
 		} else {
 			throw new IllegalStateException(expression + " uses unsupported uri fragment " + uri);
 		}
+		
+		
+	}
+	
+	/**
+	 * Returns the node that best describes the error, e.g. if there is an expression
+	 * <code>com::foo::DoesNotExist::method()</code> the error will be rooted at <code>com</code>, but
+	 * the real problem is <code>com::foo::DoesNotExist</code>.
+	 */
+	private INode getErrorNode(XExpression expression, INode node) {
+		if (expression instanceof XFeatureCall) {
+			XFeatureCall featureCall = (XFeatureCall) expression;
+			if (!canBeTypeLiteral(featureCall)) {
+				return node;
+			}
+			if (featureCall.eContainingFeature() == XbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
+				XMemberFeatureCall container = (XMemberFeatureCall) featureCall.eContainer();
+				if (canBeTypeLiteral(container)) {
+					boolean explicitStatic = container.isExplicitStatic();
+					XMemberFeatureCall outerMost = getLongestTypeLiteralCandidate(container, explicitStatic);
+					if (outerMost != null)
+						return NodeModelUtils.getNode(outerMost);
+				}
+			}
+		}
+		return node;
+	}
+	
+	@Nullable
+	private XMemberFeatureCall getLongestTypeLiteralCandidate(XMemberFeatureCall current, boolean mustBeStatic) {
+		if (current.eContainingFeature() == XbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
+			XMemberFeatureCall container = (XMemberFeatureCall) current.eContainer();
+			if (canBeTypeLiteral(container)) {
+				if (!mustBeStatic && !container.isExplicitStatic()) {
+					return null;
+				}
+				if (mustBeStatic != container.isExplicitStatic()) {
+					return current;
+				}
+				if (mustBeStatic && container.eContainingFeature() != XbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
+					return current;
+				}
+				return getLongestTypeLiteralCandidate(container, mustBeStatic);
+			}
+		}
+		if (mustBeStatic) {
+			return null;
+		}
+		if (!mustBeStatic && !current.isExplicitStatic()) {
+			return null;
+		}
+		return current;
+	}
+	
+	private boolean canBeTypeLiteral(XAbstractFeatureCall featureCall) {
+		return !featureCall.isExplicitOperationCallOrBuilderSyntax() && featureCall.getTypeArguments().isEmpty();
+	}
+	
+	private QualifiedName getErrorName(INode errorNode) {
+		List<String> segments = Lists.newArrayListWithCapacity(4);
+		for(ILeafNode leaf: errorNode.getLeafNodes()) {
+			if (!leaf.isHidden()) {
+				String text = leaf.getText();
+				// XParenthesizedExpression
+				if (text.equals("(") || text.equals(")")) {
+					continue;
+				}
+				if (!text.equals(".") && !text.equals("::")) {
+					if (text.charAt(0) == '^')
+						segments.add(text.substring(1));
+					else
+						segments.add(text);
+				}
+			}
+		}
+		return QualifiedName.create(segments);
 	}
 }
