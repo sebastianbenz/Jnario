@@ -30,8 +30,4 @@ public class RegexFilterSpecFilteringExamples extends ExampleTableRow {
   public String getResult() {
     return this.result;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(string) ,toString(regex) ,toString(result));
-  }
 }

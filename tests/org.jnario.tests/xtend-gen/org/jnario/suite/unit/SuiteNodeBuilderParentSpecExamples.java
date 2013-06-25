@@ -31,8 +31,4 @@ public class SuiteNodeBuilderParentSpecExamples extends ExampleTableRow {
   public String getParent() {
     return this.parent;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(suites) ,toString(position) ,toString(parent));
-  }
 }

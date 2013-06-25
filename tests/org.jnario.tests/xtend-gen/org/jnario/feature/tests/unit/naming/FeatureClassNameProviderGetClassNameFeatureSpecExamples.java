@@ -23,8 +23,4 @@ public class FeatureClassNameProviderGetClassNameFeatureSpecExamples extends Exa
   public String getExpectedClassName() {
     return this.expectedClassName;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(name) ,toString(expectedClassName));
-  }
 }

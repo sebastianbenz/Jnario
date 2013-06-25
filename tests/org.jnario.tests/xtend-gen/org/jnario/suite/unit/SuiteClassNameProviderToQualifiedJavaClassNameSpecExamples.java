@@ -30,8 +30,4 @@ public class SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples extends 
   public String getQualifiedName() {
     return this.qualifiedName;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(name) ,toString(packageName) ,toString(qualifiedName));
-  }
 }

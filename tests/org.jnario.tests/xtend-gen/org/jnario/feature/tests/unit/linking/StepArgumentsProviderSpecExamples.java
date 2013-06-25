@@ -23,8 +23,4 @@ public class StepArgumentsProviderSpecExamples extends ExampleTableRow {
   public List<? extends Object> getExpectedArgs() {
     return this.expectedArgs;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(step) ,toString(expectedArgs));
-  }
 }

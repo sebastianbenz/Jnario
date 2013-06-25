@@ -23,8 +23,4 @@ public class StringsTrailingWhitespaceSpecExamples extends ExampleTableRow {
   public String getResult() {
     return this.result;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(string) ,toString(result));
-  }
 }

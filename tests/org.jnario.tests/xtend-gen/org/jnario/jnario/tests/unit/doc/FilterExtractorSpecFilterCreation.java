@@ -23,8 +23,4 @@ public class FilterExtractorSpecFilterCreation extends ExampleTableRow {
   public List<String> getResultingFilters() {
     return this.resultingFilters;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(input) ,toString(resultingFilters));
-  }
 }

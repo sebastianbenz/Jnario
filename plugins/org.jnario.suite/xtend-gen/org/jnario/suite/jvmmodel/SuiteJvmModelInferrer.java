@@ -19,6 +19,7 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeReferences;
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
 import org.eclipse.xtext.xbase.lib.Extension;
@@ -59,6 +60,10 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
   @Inject
   @Extension
   private SuiteNodeBuilder _suiteNodeBuilder;
+  
+  @Inject
+  @Extension
+  private IQualifiedNameConverter _iQualifiedNameConverter;
   
   public void doInfer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
     boolean _not = (!(e instanceof SuiteFile));

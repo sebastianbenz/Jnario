@@ -30,8 +30,4 @@ public class FeatureQualifiedNameProviderStepNameSpecExamples extends ExampleTab
   public String getExpected() {
     return this.expected;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(description) ,toString(name) ,toString(expected));
-  }
 }

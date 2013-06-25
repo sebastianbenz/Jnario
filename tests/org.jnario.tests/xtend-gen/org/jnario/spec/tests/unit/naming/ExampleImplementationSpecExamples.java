@@ -24,8 +24,4 @@ public class ExampleImplementationSpecExamples extends ExampleTableRow {
   public Class<? extends XExpression> getType() {
     return this.type;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(example) ,toString(type));
-  }
 }

@@ -23,8 +23,4 @@ public class FilterExtractorSpecFilterExtractions extends ExampleTableRow {
   public String getResultString() {
     return this.resultString;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(input) ,toString(resultString));
-  }
 }

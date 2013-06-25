@@ -34,8 +34,4 @@ public class UsingTablesSpecExample extends ExampleTableRow {
   public int getSum() {
     return this.sum;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(value1) ,toString(value2) ,toString(sum));
-  }
 }

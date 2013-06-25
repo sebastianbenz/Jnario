@@ -209,13 +209,13 @@ describe "Using Tables"{
 		  ]
 		].is('''
 			example failed
+
+			        | value1     | value2     | sum     |
+			        | 1          | 2          | 3       | ✓
+			        | 4          | 5          | 7       | ✘     (1)
+			        | 7          | 8          | 14      | ✘     (2)
 			
-			        | value1     | value2     | sum      |
-			        | <1>        | <2>        | <3>      | ✓
-			        | <4>        | <5>        | <7>      | ✘     (1)
-			        | <7>        | <8>        | <14>     | ✘     (2)
-			
-			(1) | <4>        | <5>        | <7>      | ✘
+			(1) | 4          | 5          | 7       | ✘
 			java.lang.AssertionError: 
 			Expected value1 + value2 => sum but
 			     value1 + value2 is <9>
@@ -223,7 +223,7 @@ describe "Using Tables"{
 			     value2 is <5>
 			     sum is <7>
 			
-			(2) | <7>        | <8>        | <14>     | ✘
+			(2) | 7          | 8          | 14      | ✘
 			java.lang.AssertionError: 
 			Expected value1 + value2 => sum but
 			     value1 + value2 is <15>

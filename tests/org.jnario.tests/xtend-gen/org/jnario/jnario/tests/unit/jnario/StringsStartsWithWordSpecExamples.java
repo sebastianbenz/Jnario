@@ -30,8 +30,4 @@ public class StringsStartsWithWordSpecExamples extends ExampleTableRow {
   public int getIndex() {
     return this.index;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(string) ,toString(word) ,toString(index));
-  }
 }

@@ -23,8 +23,4 @@ public class PatternValueConverterToValueStringINodeSpecExamples extends Example
   public String getResult() {
     return this.result;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(input) ,toString(result));
-  }
 }

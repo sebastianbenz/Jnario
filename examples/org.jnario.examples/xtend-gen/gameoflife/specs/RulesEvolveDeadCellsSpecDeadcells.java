@@ -23,8 +23,4 @@ public class RulesEvolveDeadCellsSpecDeadcells extends ExampleTableRow {
   public boolean getResult() {
     return this.result;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(liveNeighbourCount) ,toString(result));
-  }
 }

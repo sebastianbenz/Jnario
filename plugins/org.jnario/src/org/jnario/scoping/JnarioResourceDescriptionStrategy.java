@@ -37,20 +37,20 @@ public class JnarioResourceDescriptionStrategy extends	XtendResourceDescriptionS
 		return true;
 	}
 	
-	private boolean isJnarioElement(EObject eObject) {
+	protected boolean isJnarioElement(EObject eObject) {
 		return (eObject instanceof Executable) || 
 		(eObject instanceof XtendFile) || 
 		(eObject instanceof Specification);
 	}
 
-	@Override
-	public boolean createReferenceDescriptions(EObject from, URI exportedContainerURI,
-			IAcceptor<IReferenceDescription> acceptor) {
+//	@Override
+//	public boolean createReferenceDescriptions(EObject from, URI exportedContainerURI,
+//			IAcceptor<IReferenceDescription> acceptor) {
 //		if(isJnarioElement(from)){
+//			System.out.println(from.eResource().getURI());
 //			return true;
 //		}
-		return false;
-	}
-	
+//		return false;
+//	}
 
 }

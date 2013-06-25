@@ -194,13 +194,13 @@ errorMessage[
   ]
 ].is('''
   example failed
+
+          | value1     | value2     | sum     |
+          | 1          | 2          | 3       | &#10003;
+          | 4          | 5          | 7       | &#10008;     (1)
+          | 7          | 8          | 14      | &#10008;     (2)
   
-          | value1     | value2     | sum      |
-          | &lt;1&gt;        | &lt;2&gt;        | &lt;3&gt;      | &#10003;
-          | &lt;4&gt;        | &lt;5&gt;        | &lt;7&gt;      | &#10008;     (1)
-          | &lt;7&gt;        | &lt;8&gt;        | &lt;14&gt;     | &#10008;     (2)
-  
-  (1) | &lt;4&gt;        | &lt;5&gt;        | &lt;7&gt;      | &#10008;
+  (1) | 4          | 5          | 7       | &#10008;
   java.lang.AssertionError: 
   Expected value1 + value2 =&gt; sum but
        value1 + value2 is &lt;9&gt;
@@ -208,7 +208,7 @@ errorMessage[
        value2 is &lt;5&gt;
        sum is &lt;7&gt;
   
-  (2) | &lt;7&gt;        | &lt;8&gt;        | &lt;14&gt;     | &#10008;
+  (2) | 7          | 8          | 14      | &#10008;
   java.lang.AssertionError: 
   Expected value1 + value2 =&gt; sum but
        value1 + value2 is &lt;15&gt;
@@ -455,13 +455,13 @@ describe &quot;Using Tables&quot;{
       ]
     ].is('''
       example failed
+
+              | value1     | value2     | sum     |
+              | 1          | 2          | 3       | &#10003;
+              | 4          | 5          | 7       | &#10008;     (1)
+              | 7          | 8          | 14      | &#10008;     (2)
       
-              | value1     | value2     | sum      |
-              | &lt;1&gt;        | &lt;2&gt;        | &lt;3&gt;      | &#10003;
-              | &lt;4&gt;        | &lt;5&gt;        | &lt;7&gt;      | &#10008;     (1)
-              | &lt;7&gt;        | &lt;8&gt;        | &lt;14&gt;     | &#10008;     (2)
-      
-      (1) | &lt;4&gt;        | &lt;5&gt;        | &lt;7&gt;      | &#10008;
+      (1) | 4          | 5          | 7       | &#10008;
       java.lang.AssertionError: 
       Expected value1 + value2 =&gt; sum but
            value1 + value2 is &lt;9&gt;
@@ -469,7 +469,7 @@ describe &quot;Using Tables&quot;{
            value2 is &lt;5&gt;
            sum is &lt;7&gt;
       
-      (2) | &lt;7&gt;        | &lt;8&gt;        | &lt;14&gt;     | &#10008;
+      (2) | 7          | 8          | 14      | &#10008;
       java.lang.AssertionError: 
       Expected value1 + value2 =&gt; sum but
            value1 + value2 is &lt;15&gt;

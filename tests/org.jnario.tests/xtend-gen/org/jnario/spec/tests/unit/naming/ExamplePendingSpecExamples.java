@@ -23,8 +23,4 @@ public class ExamplePendingSpecExamples extends ExampleTableRow {
   public boolean getExpected() {
     return this.expected;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(example) ,toString(expected));
-  }
 }

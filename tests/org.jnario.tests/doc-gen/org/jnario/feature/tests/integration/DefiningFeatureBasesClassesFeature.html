@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="tabbable">
 			<div class="content">
-				<div class="page-header pending">
+				<div class="page-header notrun">
 					<h1>Defining Feature Bases Classes</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
@@ -36,10 +36,10 @@
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
 <p>// Scenario: A simple scenario </p>
-<div><h3 class="scenario pending"  id="Scenario_Scenario_with_Background">Scenario: Scenario with Background
+<div><h3 class="scenario notrun"  id="Scenario_Scenario_with_Background">Scenario: Scenario with Background
 </h3>
 <ul>
-<li><span class="step pending"><p>Given a scenario</p><pre>import org.jnario.runner.Extends
+<li><span class="step notrun"><p>Given a scenario</p><pre>import org.jnario.runner.Extends
 import junit.framework.TestCase
 
 @Extends(typeof(TestCase)) 
@@ -107,6 +107,7 @@ Feature: Defining Feature Bases Classes
         And my background class extends my feature class
           typeof(ExtendAnnotationFeatureBackground).superclass =&gt; typeof(ExtendAnnotationFeature)
     '''
+    jnarioFile = args.first
     Then it should execute successfully
 </pre>
 						    </p></div>

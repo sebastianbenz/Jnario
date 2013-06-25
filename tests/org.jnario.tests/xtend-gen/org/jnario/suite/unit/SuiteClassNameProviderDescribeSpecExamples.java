@@ -23,8 +23,4 @@ public class SuiteClassNameProviderDescribeSpecExamples extends ExampleTableRow 
   public String getExpectedClassName() {
     return this.expectedClassName;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(name) ,toString(expectedClassName));
-  }
 }

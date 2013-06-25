@@ -42,4 +42,5 @@ Feature: Defining Feature Bases Classes
 				And my background class extends my feature class
 					typeof(ExtendAnnotationFeatureBackground).superclass => typeof(ExtendAnnotationFeature)
 		'''
+		jnarioFile = args.first
 		Then it should execute successfully		

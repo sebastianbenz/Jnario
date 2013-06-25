@@ -29,6 +29,9 @@ public class SuiteResourceDescriptionManager extends XtendResourceDescriptionMan
     }
   }.apply();
   
+  /**
+   * Every spec change means new potential matches for a spec reg ex.
+   */
   public boolean isAffected(final Collection<Delta> deltas, final IResourceDescription candidate, final IResourceDescriptions context) {
     boolean _isAffected = super.isAffected(deltas, candidate, context);
     if (_isAffected) {

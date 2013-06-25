@@ -19,6 +19,9 @@ class SuiteResourceDescriptionManager extends XtendResourceDescriptionManager {
 	
 	static val FILE_EXTENSIONS = newHashSet("suite", "spec", "feature") 
 	
+	/*
+	 * Every spec change means new potential matches for a spec reg ex.  
+	 */
 	override isAffected(Collection<Delta> deltas, IResourceDescription candidate, IResourceDescriptions context) {
 		if(super.isAffected(deltas, candidate, context)){
 			return true
@@ -30,5 +33,5 @@ class SuiteResourceDescriptionManager extends XtendResourceDescriptionManager {
 	def isNewSpec(Delta delta){
 		delta.^new != null && FILE_EXTENSIONS.contains(delta.uri.fileExtension)
 	}
-	
+
 }

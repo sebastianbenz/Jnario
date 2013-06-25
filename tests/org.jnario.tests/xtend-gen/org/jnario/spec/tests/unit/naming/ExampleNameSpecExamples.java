@@ -23,8 +23,4 @@ public class ExampleNameSpecExamples extends ExampleTableRow {
   public String getName() {
     return this.name;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(example) ,toString(name));
-  }
 }

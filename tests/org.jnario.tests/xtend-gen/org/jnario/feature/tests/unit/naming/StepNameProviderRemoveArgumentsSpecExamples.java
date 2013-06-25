@@ -23,8 +23,4 @@ public class StepNameProviderRemoveArgumentsSpecExamples extends ExampleTableRow
   public String getResult() {
     return this.result;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(step) ,toString(result));
-  }
 }

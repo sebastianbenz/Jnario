@@ -17,7 +17,8 @@ import org.jnario.jvmmodel.JnarioJvmModelInferrer
 import org.jnario.runner.Named
 import org.jnario.suite.suite.Suite
 import org.jnario.suite.suite.SuiteFile
-import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmGenericTypeimport org.eclipse.xtext.linking.impl.ImportedNamesAdapter
+import org.eclipse.xtext.naming.IQualifiedNameConverter
 
 class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 
@@ -26,6 +27,7 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject extension SpecResolver
 	@Inject extension TypeReferences types
 	@Inject extension SuiteNodeBuilder
+	@Inject extension IQualifiedNameConverter
 	
 	override doInfer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		if (!(e instanceof SuiteFile)){

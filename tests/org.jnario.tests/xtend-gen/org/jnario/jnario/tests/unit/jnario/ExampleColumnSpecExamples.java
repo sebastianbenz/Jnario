@@ -30,8 +30,4 @@ public class ExampleColumnSpecExamples extends ExampleTableRow {
   public String getValue() {
     return this.value;
   }
-  
-  public List<String> getCells() {
-    return java.util.Arrays.asList(toString(columnIndex) ,toString(cellIndex) ,toString(value));
-  }
 }
