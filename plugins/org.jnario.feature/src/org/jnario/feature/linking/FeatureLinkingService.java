@@ -22,7 +22,9 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
+import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Step;
+import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.naming.StepNameProvider;
 
 import com.google.inject.Inject;
@@ -40,31 +42,28 @@ public class FeatureLinkingService extends DefaultLinkingService {
 	
 	public List<EObject> getLinkedObjects(EObject context, EReference ref, INode node)
 			throws IllegalNodeException {
-		if(context instanceof Step){
+		if(context instanceof StepReference && ref == FeaturePackage.Literals.STEP_REFERENCE__REFERENCE){
 			return getLinkedStep(context, ref, node);
 		}else{
 			return super.getLinkedObjects(context, ref, node);
 		}
 	}
-
-	private List<EObject> getLinkedStep(EObject context, EReference ref,
-			INode node) {
+	
+	public List<EObject> getLinkedStep(EObject context, EReference ref, INode node)
+			throws IllegalNodeException {
 		final EClass requiredType = ref.getEReferenceType();
 		if (requiredType == null)
 			return Collections.<EObject> emptyList();
-		
-		String crossRefString = getReferencedStepName(node);
-		if (isEmpty(crossRefString)) {
-			return Collections.emptyList();
+
+		final String crossRefString = getReferencedStepName(node);
+		if (crossRefString != null && !crossRefString.equals("")) {
+			final IScope scope = getScope(context, ref);
+			QualifiedName qualifiedLinkName =  qualifiedNameConverter.toQualifiedName(crossRefString);
+			IEObjectDescription eObjectDescription = scope.getSingleElement(qualifiedLinkName);
+			if (eObjectDescription != null) 
+				return Collections.singletonList(eObjectDescription.getEObjectOrProxy());
 		}
-		final IScope scope = getScope(context, ref);
-		IEObjectDescription eObjectDescription = null;
-		QualifiedName qualifiedLinkName =  qualifiedNameConverter.toQualifiedName(crossRefString);
-		eObjectDescription = scope.getSingleElement(qualifiedLinkName);
-		if (eObjectDescription == null) {
-			return Collections.emptyList();
-		}
-		return Collections.singletonList(eObjectDescription.getEObjectOrProxy());
+		return Collections.emptyList();
 	}
 
 	private String getReferencedStepName(INode node) {
