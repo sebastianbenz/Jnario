@@ -1,6 +1,5 @@
 package gameoflife;
 
-import diverse.SelectMultipleSpecsSuite;
 import gameoflife.specs.CellLocationSpec;
 import gameoflife.specs.EvolutionSpec;
 import gameoflife.specs.RulesSpec;
@@ -11,7 +10,7 @@ import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
 @Named("Unit Specifications")
-@Contains({ CellLocationSpec.class, EvolutionSpec.class, RulesSpec.class, SelectMultipleSpecsSuite.class, WorldSpec.class })
+@Contains({ CellLocationSpec.class, EvolutionSpec.class, RulesSpec.class, WorldSpec.class })
 @RunWith(ExampleGroupRunner.class)
 @SuppressWarnings("all")
 public class UnitSpecificationsSuite {

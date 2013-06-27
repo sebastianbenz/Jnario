@@ -14,10 +14,6 @@
 	</properties>
 	<repositories>
 		<repository>
-			<id>eclipse.xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven/</url>
-		</repository>
-		<repository>
 			<id>scala.tools</id>
 			<url>http://scala-tools.org/repo-releases</url>
 		</repository>
@@ -51,12 +47,12 @@
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
 			<artifactId>org.eclipse.xtend.lib</artifactId>
-			<version>2.4.2-SNAPSHOT</version>
+			<version>2.4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
 			<artifactId>org.eclipse.xtend.standalone</artifactId>
-			<version>2.4.2-SNAPSHOT</version>
+			<version>2.4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
