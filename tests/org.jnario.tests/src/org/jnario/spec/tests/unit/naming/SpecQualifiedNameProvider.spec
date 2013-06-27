@@ -15,7 +15,7 @@ import org.jnario.jnario.test.util.SpecTestCreator
 
 @CreateWith(typeof(SpecTestCreator))
 describe SpecQualifiedNameProvider {
-
+ 
 	@Inject extension ModelStore
 
 	fact "null if spec description is empty"{

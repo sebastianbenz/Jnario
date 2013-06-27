@@ -2,8 +2,6 @@ package org.jnario.spec.tests.integration
 
 import org.jnario.jnario.test.util.SpecTestCreator
 import org.jnario.runner.CreateWith
-import com.google.inject.Inject
-import org.jnario.jnario.test.util.BehaviorExecutor
 
 @CreateWith(typeof(SpecTestCreator))
 describe "Mocking"{

@@ -11,18 +11,6 @@
 	<name>Jnario Maven Example</name>
 	<version>0.5.0-SNAPSHOT</version>
 	<groupId>org.jnario</groupId>
-	<repositories>
-		<repository>
-			<id>xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven/</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven/</url>
-		</pluginRepository>
-	</pluginRepositories>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>

@@ -375,7 +375,7 @@ public class JnarioCompiler extends XtendCompiler {
 		b.append(expr);
 		b.append(" is \"");
 		b.append(" + new ");
-		b.append(jvmType("org.hamcrest.StringDescription", expression));
+		b.append("org.hamcrest.StringDescription");
 		b.append("().appendValue(");
 		toJavaExpression(expression, b);
 		b.append(").toString()");

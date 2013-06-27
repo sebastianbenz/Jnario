@@ -8,7 +8,6 @@
 package org.jnario.feature.compiler;
 
 import static com.google.common.collect.Iterables.filter;
-import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.List;
 
@@ -16,7 +15,6 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.jnario.compiler.JnarioBatchCompiler;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;

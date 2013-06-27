@@ -13,16 +13,6 @@
 	</properties>
 	<repositories>
 		<repository>
-			<id>Xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
 			<id>scala.tools</id>
 			<url>http://scala-tools.org/repo-releases</url>
 		</repository>

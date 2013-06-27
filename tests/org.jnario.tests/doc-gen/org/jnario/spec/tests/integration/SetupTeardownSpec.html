@@ -194,7 +194,7 @@ import org.jnario.jnario.test.util.SpecTestCreator
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.BehaviorExecutor
 import org.jnario.jnario.test.util.ConsoleRecorder
-
+import org.junit.Assert
 
 @CreateWith(typeof(SpecTestCreator))
 describe &quot;Setup &amp; Teardown&quot; {
@@ -348,7 +348,7 @@ describe &quot;Setup &amp; Teardown&quot; {
     val recording = ConsoleRecorder::start
     spec.executesSuccessfully
     val actual = recording.stop
-    assertEquals(expected, actual) 
+    Assert.assertEquals(expected, actual) 
   }
 
 }

@@ -12,6 +12,7 @@ import org.jnario.jnario.test.util.BehaviorExecutor
 import org.jnario.jnario.test.util.ConsoleRecorder
 import org.jnario.jnario.test.util.SpecTestCreator
 import org.jnario.runner.CreateWith
+import org.junit.Assert
 
 /*
  * Extensions can be used to share common setup and tear down behavior across different specifications.
@@ -83,6 +84,6 @@ describe "Spec Extensions"{
 		val recording = ConsoleRecorder::start
 		spec.executesSuccessfully
 		val actual = recording.stop
-		assertEquals(expected, actual) 
+		Assert.assertEquals(expected, actual) 
 	}
 }
