@@ -36,9 +36,6 @@ import org.eclipse.xtext.xbase.XSwitchExpression;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
-import org.eclipse.xtext.xbase.typing.Closures;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.StringDescription;
 import org.jnario.Assertion;
 import org.jnario.MockLiteral;
 import org.jnario.Should;
@@ -153,7 +150,7 @@ public class JnarioCompiler extends XtendCompiler {
 				return;
 			}
 			if(ObjectExtensions.class.getSimpleName().equals(((JvmOperation)should.getFeature()).getDeclaringType().getSimpleName())){
-				JvmIdentifiableElement operation = getMethod(should, org.jnario.lib.Should.class, "operator_doubleArrow");
+				JvmIdentifiableElement operation = getMethod(should, org.jnario.lib.Should.class.getName(), "operator_doubleArrow");
 				should.setFeature(operation);
 			}
 		}
@@ -167,10 +164,10 @@ public class JnarioCompiler extends XtendCompiler {
 	}
 
 	protected JvmIdentifiableElement getNullValueMatcher(XBinaryOperation should) {
-		return getMethod(should, CoreMatchers.class, "nullValue");
+		return getMethod(should, "org.hamcrest.CoreMatchers", "nullValue");
 	}
 
-	protected JvmIdentifiableElement getMethod(XBinaryOperation should, Class<?> type, String methodName) {
+	protected JvmIdentifiableElement getMethod(XBinaryOperation should, String type, String methodName) {
 		JvmGenericType coreMatchersType = (JvmGenericType) jvmType(type, should);
 		if(coreMatchersType == null){
 			return null;
@@ -239,8 +236,12 @@ public class JnarioCompiler extends XtendCompiler {
 		JvmTypeReference type = getTypeProvider().getType(expr);
 		return getTypeReferences().is(type, Void.TYPE);
 	}
-
+	
 	private JvmType jvmType(Class<?> type, EObject context) {
+		return jvmType(type.getName(), context);
+	}
+
+	private JvmType jvmType(String type, EObject context) {
 		JvmTypeReference jvmTypeReference = getTypeReferences().getTypeForName(type, context);
 		if(jvmTypeReference == null){
 			return null;
@@ -374,7 +375,7 @@ public class JnarioCompiler extends XtendCompiler {
 		b.append(expr);
 		b.append(" is \"");
 		b.append(" + new ");
-		b.append(jvmType(StringDescription.class, expression));
+		b.append(jvmType("org.hamcrest.StringDescription", expression));
 		b.append("().appendValue(");
 		toJavaExpression(expression, b);
 		b.append(").toString()");
