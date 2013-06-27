@@ -17,16 +17,11 @@ import org.jnario.jvmmodel.TestRuntimeSupport;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.FeatureRunner;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
 @SuppressWarnings("all")
 public class JUnit4RuntimeSupport implements TestRuntimeSupport {
+  private final static String RUN_WITH = "org.junit.runner.RunWith";
+  
   @Inject
   @Extension
   private JvmTypesBuilder _jvmTypesBuilder;
@@ -39,61 +34,61 @@ public class JUnit4RuntimeSupport implements TestRuntimeSupport {
   
   public void afterAllMethod(final XtendMember after, final JvmOperation operation) {
     EList<JvmAnnotationReference> _annotations = operation.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(after, AfterClass.class);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(after, "org.junit.AfterClass");
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
   public void afterMethod(final XtendMember after, final JvmOperation operation) {
     EList<JvmAnnotationReference> _annotations = operation.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(after, After.class);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(after, "org.junit.After");
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
   public void beforeAllMethod(final XtendMember before, final JvmOperation operation) {
     EList<JvmAnnotationReference> _annotations = operation.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(before, BeforeClass.class);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(before, "org.junit.BeforeClass");
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
   public void beforeMethod(final XtendMember before, final JvmOperation operation) {
     EList<JvmAnnotationReference> _annotations = operation.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(before, Before.class);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(before, "org.junit.Before");
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
   public void markAsPending(final Executable element, final JvmOperation operation) {
     EList<JvmAnnotationReference> _annotations = operation.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(element, Ignore.class);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(element, "org.junit.Ignore");
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
   public void updateExampleGroup(final XtendClass exampleGroup, final JvmGenericType inferredType) {
     EList<JvmAnnotationReference> _annotations = inferredType.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(exampleGroup, RunWith.class, ExampleGroupRunner.class);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(exampleGroup, JUnit4RuntimeSupport.RUN_WITH, ExampleGroupRunner.class);
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
   public void markAsTestMethod(final Executable element, final JvmOperation operation) {
     EList<JvmAnnotationReference> _annotations = operation.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(element, Test.class);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(element, "org.junit.Test");
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
   public void updateFeature(final XtendClass feature, final JvmGenericType inferredType, final List<JvmGenericType> scenarios) {
     EList<JvmAnnotationReference> _annotations = inferredType.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(feature, RunWith.class, FeatureRunner.class);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(feature, JUnit4RuntimeSupport.RUN_WITH, FeatureRunner.class);
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
   public void updateScenario(final XtendClass scenario, final JvmGenericType inferredType) {
     EList<JvmAnnotationReference> _annotations = inferredType.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(scenario, RunWith.class, FeatureRunner.class);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(scenario, JUnit4RuntimeSupport.RUN_WITH, FeatureRunner.class);
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
   public void updateSuite(final XtendClass exampleGroup, final JvmGenericType inferredType) {
     EList<JvmAnnotationReference> _annotations = inferredType.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(exampleGroup, RunWith.class, ExampleGroupRunner.class);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(exampleGroup, JUnit4RuntimeSupport.RUN_WITH, ExampleGroupRunner.class);
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
 }

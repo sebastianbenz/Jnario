@@ -8,21 +8,16 @@ import com.google.inject.Inject
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtend.core.xtend.XtendMember
 import org.eclipse.xtext.common.types.JvmOperation
-import org.junit.Before
-import org.junit.BeforeClass
-import org.junit.After
-import org.junit.AfterClass
 import org.jnario.Executable
-import org.junit.Ignore
 import org.jnario.runner.ExampleGroupRunner
 import org.eclipse.xtend.core.xtend.XtendClass
-import org.junit.runner.RunWith
-import org.junit.Test
 import org.jnario.runner.FeatureRunner
 import java.util.Collection
 import java.util.List
 
 class JUnit4RuntimeSupport implements TestRuntimeSupport {
+	
+	val static RUN_WITH = "org.junit.runner.RunWith"
 	 
 	@Inject extension JvmTypesBuilder 
 	
@@ -31,43 +26,43 @@ class JUnit4RuntimeSupport implements TestRuntimeSupport {
 	}
 
 	override afterAllMethod(XtendMember after, JvmOperation operation) {
-		operation.annotations += after.toAnnotation(typeof(AfterClass))
+		operation.annotations += after.toAnnotation("org.junit.AfterClass")
 	}
 	
 	override afterMethod(XtendMember after, JvmOperation operation) {
-		operation.annotations += after.toAnnotation(typeof(After))
+		operation.annotations += after.toAnnotation("org.junit.After")
 	}
 	
 	override beforeAllMethod(XtendMember before, JvmOperation operation) {
-		operation.annotations += before.toAnnotation(typeof(BeforeClass))
+		operation.annotations += before.toAnnotation("org.junit.BeforeClass")
 	}
 	
 	override beforeMethod(XtendMember before, JvmOperation operation) {
-		operation.annotations += before.toAnnotation(typeof(Before))
+		operation.annotations += before.toAnnotation("org.junit.Before")
 	}
 
 	override markAsPending(Executable element, JvmOperation operation) {
-		operation.annotations += element.toAnnotation(typeof(Ignore))
+		operation.annotations += element.toAnnotation("org.junit.Ignore")
 	}
 
 	override updateExampleGroup(XtendClass exampleGroup, JvmGenericType inferredType) {
-		inferredType.annotations += exampleGroup.toAnnotation(typeof(RunWith), typeof(ExampleGroupRunner));
+		inferredType.annotations += exampleGroup.toAnnotation(RUN_WITH, typeof(ExampleGroupRunner));
 	}
 
 	override markAsTestMethod(Executable element, JvmOperation operation) {
-		operation.annotations += element.toAnnotation(typeof(Test))
+		operation.annotations += element.toAnnotation("org.junit.Test")
 	}
 	
 	override updateFeature(XtendClass feature, JvmGenericType inferredType, List<JvmGenericType> scenarios) {
-		inferredType.annotations += feature.toAnnotation(typeof(RunWith), typeof(FeatureRunner));
+		inferredType.annotations += feature.toAnnotation(RUN_WITH, typeof(FeatureRunner));
 	}
 	
 	override updateScenario(XtendClass scenario, JvmGenericType inferredType) {
-		inferredType.annotations += scenario.toAnnotation(typeof(RunWith), typeof(FeatureRunner));
+		inferredType.annotations += scenario.toAnnotation(RUN_WITH, typeof(FeatureRunner));
 	}
 
 	override updateSuite(XtendClass exampleGroup, JvmGenericType inferredType) {
-		inferredType.annotations += exampleGroup.toAnnotation(typeof(RunWith), typeof(ExampleGroupRunner));
+		inferredType.annotations += exampleGroup.toAnnotation(RUN_WITH, typeof(ExampleGroupRunner));
 	}
 	
 }

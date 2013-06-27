@@ -2,7 +2,6 @@ package org.jnario.scoping;
 
 import java.util.List;
 
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedTypes;
 import org.jnario.lib.Each;
 import org.jnario.lib.JnarioCollectionLiterals;
@@ -12,7 +11,6 @@ import org.jnario.lib.Should;
 import org.jnario.lib.StepArguments;
 import org.jnario.lib.StringConversions;
 import org.jnario.lib.Wait;
-import org.junit.Assert;
 
 public class JnarioImplicitlyImportedTypes extends ImplicitlyImportedTypes {
 
@@ -37,7 +35,6 @@ public class JnarioImplicitlyImportedTypes extends ImplicitlyImportedTypes {
 		result.add(Should.class);
 		result.add(Wait.class);
 		result.add(JnarioCollectionLiterals.class);
-		result.add(Assert.class);
 		return result;
 	}
 	
