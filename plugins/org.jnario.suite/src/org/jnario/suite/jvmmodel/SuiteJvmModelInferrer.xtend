@@ -25,9 +25,8 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject extension ExtendedJvmTypesBuilder
 	@Inject extension SuiteClassNameProvider
 	@Inject extension SpecResolver
-	@Inject extension TypeReferences types
+	@Inject extension TypeReferences
 	@Inject extension SuiteNodeBuilder
-	@Inject extension IQualifiedNameConverter
 	
 	override doInfer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		if (!(e instanceof SuiteFile)){
@@ -40,7 +39,7 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 		]
 	}
 
-   	def infer(SuiteNode node, IJvmDeclaredTypeAcceptor acceptor) {
+   	def JvmGenericType infer(SuiteNode node, IJvmDeclaredTypeAcceptor acceptor) {
    		val suite = node.suite
    		val suiteClass = suite.toClass(suite.toQualifiedJavaClassName)
 		val subSuites = node.children.map[infer(acceptor)].toSet

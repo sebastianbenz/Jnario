@@ -2,6 +2,20 @@ package org.jnario;
 
 import org.jnario.feature.documentation.GivenWhenThenSpec;
 import org.jnario.feature.documentation.IntroducingJnarioFeaturesSpec;
+import org.jnario.feature.tests.integration.AccessOfVariablesFeature;
+import org.jnario.feature.tests.integration.BackgroundsFeature;
+import org.jnario.feature.tests.integration.CalculatorFeature;
+import org.jnario.feature.tests.integration.DefiningFeatureBasesClassesFeature;
+import org.jnario.feature.tests.integration.FeatureExtensionsFeature;
+import org.jnario.feature.tests.integration.FieldInferenceFeature;
+import org.jnario.feature.tests.integration.ParsingSimpleJnarioFilesFeature;
+import org.jnario.feature.tests.integration.PendingStepsFeature;
+import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
+import org.jnario.feature.tests.integration.SetupTeardownWithFeatureExtensionsFeature;
+import org.jnario.feature.tests.integration.StepParametersFeature;
+import org.jnario.feature.tests.integration.TestRunnerFeature;
+import org.jnario.feature.tests.integration.UsingJUnitRulesInFeaturesFeature;
+import org.jnario.feature.tests.integration.UsingMatchersInFeaturesFeature;
 import org.jnario.feature.tests.unit.compiler.FeatureCompilerSpec;
 import org.jnario.feature.tests.unit.conversion.FeatureValueConverterSpec;
 import org.jnario.feature.tests.unit.doc.FeatureDocGeneratorSpec;
@@ -25,7 +39,7 @@ import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
 @Named("Feature")
-@Contains({ FeatureCompilerSpec.class, FeatureClassNameProviderSpec.class, FeatureDocGeneratorSpec.class, FeatureExecutableProviderSpec.class, FeatureJavaValidatorSpec.class, FeatureLocationInFileProviderSpec.class, FeatureQualifiedNameProviderSpec.class, FeatureScopeProviderSpec.class, FeatureTokenSourceSpec.class, FeatureValueConverterSpec.class, GivenWhenThenSpec.class, IntroducingJnarioFeaturesSpec.class, ReferencingOtherStepsSpec.class, ShouldSpec.class, StepArgumentsProviderSpec.class, StepContextProviderSpec.class, StepExpressionProviderSpec.class, StepNameProviderSpec.class, StepTypeProviderSpec.class })
+@Contains({ AccessOfVariablesFeature.class, BackgroundsFeature.class, CalculatorFeature.class, DefiningFeatureBasesClassesFeature.class, FeatureCompilerSpec.class, FeatureExtensionsFeature.class, FeatureClassNameProviderSpec.class, FeatureDocGeneratorSpec.class, FeatureExecutableProviderSpec.class, FeatureJavaValidatorSpec.class, FeatureLocationInFileProviderSpec.class, FeatureQualifiedNameProviderSpec.class, FeatureScopeProviderSpec.class, FeatureTokenSourceSpec.class, FeatureValueConverterSpec.class, FieldInferenceFeature.class, GivenWhenThenSpec.class, IntroducingJnarioFeaturesSpec.class, ParsingSimpleJnarioFilesFeature.class, PendingStepsFeature.class, ReferencesForStepsFeature.class, ReferencingOtherStepsSpec.class, SetupTeardownWithFeatureExtensionsFeature.class, ShouldSpec.class, StepParametersFeature.class, StepArgumentsProviderSpec.class, StepContextProviderSpec.class, StepExpressionProviderSpec.class, StepNameProviderSpec.class, StepTypeProviderSpec.class, TestRunnerFeature.class, UsingJUnitRulesInFeaturesFeature.class, UsingMatchersInFeaturesFeature.class })
 @RunWith(ExampleGroupRunner.class)
 @SuppressWarnings("all")
 public class FeatureSuite {

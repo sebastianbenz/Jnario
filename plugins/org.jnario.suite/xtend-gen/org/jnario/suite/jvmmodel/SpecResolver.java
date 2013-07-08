@@ -116,6 +116,7 @@ public class SpecResolver {
         };
       Iterable<EObject> _map = IterableExtensions.<IEObjectDescription, EObject>map(specs, _function_2);
       Iterable<Specification> _filter_1 = Iterables.<Specification>filter(_map, Specification.class);
+      final Iterable<Specification> resolvedSpecs = IterableExtensions.<Specification>filterNull(_filter_1);
       final Function1<Specification,Boolean> _function_3 = new Function1<Specification,Boolean>() {
           public Boolean apply(final Specification it) {
             Resource _eResource = it.eResource();
@@ -123,15 +124,15 @@ public class SpecResolver {
             return Boolean.valueOf(_notEquals);
           }
         };
-      Iterable<Specification> _filter_2 = IterableExtensions.<Specification>filter(_filter_1, _function_3);
+      final Iterable<Specification> withoutSuites = IterableExtensions.<Specification>filter(resolvedSpecs, _function_3);
       final Function1<Specification,String> _function_4 = new Function1<Specification,String>() {
           public String apply(final Specification it) {
             String _qualifiedJavaClassName = SpecResolver.this._suiteClassNameProvider.toQualifiedJavaClassName(it);
             return _qualifiedJavaClassName;
           }
         };
-      Map<String,Specification> _map_1 = IterableExtensions.<String, Specification>toMap(_filter_2, _function_4);
-      Collection<Specification> _values = _map_1.values();
+      final Map<String,Specification> classNames = IterableExtensions.<String, Specification>toMap(withoutSuites, _function_4);
+      Collection<Specification> _values = classNames.values();
       List<Specification> _sort = this.sort(_values);
       _xblockexpression = (_sort);
     }

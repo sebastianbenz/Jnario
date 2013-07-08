@@ -70,7 +70,6 @@ Member returns xtend::XtendMember :
 		) 
 	);
 
-
 GivenReference:
 	{GivenReference}
 	reference=[Given|GIVEN_TEXT] 

@@ -19,7 +19,6 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeReferences;
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
 import org.eclipse.xtext.xbase.lib.Extension;
@@ -55,15 +54,11 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
   
   @Inject
   @Extension
-  private TypeReferences types;
+  private TypeReferences _typeReferences;
   
   @Inject
   @Extension
   private SuiteNodeBuilder _suiteNodeBuilder;
-  
-  @Inject
-  @Extension
-  private IQualifiedNameConverter _iQualifiedNameConverter;
   
   public void doInfer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
     boolean _not = (!(e instanceof SuiteFile));
@@ -87,14 +82,14 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
       String _qualifiedJavaClassName = this._suiteClassNameProvider.toQualifiedJavaClassName(suite);
       final JvmGenericType suiteClass = this._extendedJvmTypesBuilder.toClass(suite, _qualifiedJavaClassName);
       List<SuiteNode> _children = node.getChildren();
-      final Function1<SuiteNode,Object> _function = new Function1<SuiteNode,Object>() {
-          public Object apply(final SuiteNode it) {
-            Object _infer = SuiteJvmModelInferrer.this.infer(it, acceptor);
+      final Function1<SuiteNode,JvmGenericType> _function = new Function1<SuiteNode,JvmGenericType>() {
+          public JvmGenericType apply(final SuiteNode it) {
+            JvmGenericType _infer = SuiteJvmModelInferrer.this.infer(it, acceptor);
             return _infer;
           }
         };
-      List<Object> _map = ListExtensions.<SuiteNode, Object>map(_children, _function);
-      final Set<Object> subSuites = IterableExtensions.<Object>toSet(_map);
+      List<JvmGenericType> _map = ListExtensions.<SuiteNode, JvmGenericType>map(_children, _function);
+      final Set<JvmGenericType> subSuites = IterableExtensions.<JvmGenericType>toSet(_map);
       IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(suiteClass);
       final Procedure1<JvmGenericType> _function_1 = new Procedure1<JvmGenericType>() {
           public void apply(final JvmGenericType it) {
@@ -103,7 +98,7 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
             JvmAnnotationReference _annotation = SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(suite, Named.class, _describe);
             SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
             Iterable<JvmType> _children = SuiteJvmModelInferrer.this.children(suite);
-            final Iterable<Object> children = Iterables.<Object>concat(_children, subSuites);
+            final Iterable<JvmType> children = Iterables.<JvmType>concat(_children, subSuites);
             boolean _isEmpty = IterableExtensions.isEmpty(children);
             boolean _not = (!_isEmpty);
             if (_not) {
@@ -144,7 +139,7 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
       final Iterable<String> types = IterableExtensions.<Specification, String>map(specs, _function_1);
       final Function1<String,JvmType> _function_2 = new Function1<String,JvmType>() {
           public JvmType apply(final String it) {
-            JvmTypeReference _typeForName = SuiteJvmModelInferrer.this.types.getTypeForName(it, suite);
+            JvmTypeReference _typeForName = SuiteJvmModelInferrer.this._typeReferences.getTypeForName(it, suite);
             JvmType _type = null;
             if (_typeForName!=null) {
               _type=_typeForName.getType();

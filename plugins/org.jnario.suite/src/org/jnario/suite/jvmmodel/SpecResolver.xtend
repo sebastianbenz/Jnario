@@ -48,10 +48,12 @@ class SpecResolver {
 			pattern.matcher(toString(it.qualifiedName)).matches
 		]
 		val suiteResource = specRef.eResource
-		specs.map[resolve(EObjectOrProxy, specRef)]
-			.filter(typeof(Specification))
-			.filter[eResource != suiteResource]
-			.toMap[toQualifiedJavaClassName].values.sort
+		val resolvedSpecs = specs.map[resolve(EObjectOrProxy, specRef)]
+								 .filter(Specification)
+								 .filterNull
+		val withoutSuites = resolvedSpecs.filter[eResource != suiteResource]
+		val classNames    = withoutSuites.toMap[toQualifiedJavaClassName]
+		classNames.values.sort
 	}
 	
 	def private sort(Iterable<Specification> specs){
