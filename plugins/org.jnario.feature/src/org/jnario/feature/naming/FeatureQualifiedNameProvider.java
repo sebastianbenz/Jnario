@@ -16,13 +16,17 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.naming.XtendQualifiedNameProvider;
 import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.util.IResourceScopeCache;
 import org.jnario.feature.feature.Feature;
+import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -31,6 +35,8 @@ import com.google.inject.Inject;
 public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 
 	private StepNameProvider stepNameProvider;
+	@Inject
+	private IResourceScopeCache cache = IResourceScopeCache.NullImpl.INSTANCE;
 	
 	@Inject
 	public FeatureQualifiedNameProvider(StepNameProvider stepNameProvider) {
@@ -41,25 +47,41 @@ public class FeatureQualifiedNameProvider extends XtendQualifiedNameProvider {
 	public QualifiedName getFullyQualifiedName(EObject obj) {
 		if (obj instanceof Step) {
 			return getStepName((Step) obj);
-		}else{
-			return super.getFullyQualifiedName(EcoreUtil2.getContainerOfType(obj, Feature.class));
+		}
+		if(obj instanceof Scenario){
+			String typeName = ((Scenario)obj).getName();
+			if (typeName == null)
+				return null;
+			String packageName = getPackageName(obj);
+			if (packageName != null) {
+				return getConverter().toQualifiedName(packageName).append(typeName);
+			}
+			return QualifiedName.create(typeName);
+		}
+		else{
+			return super.getFullyQualifiedName(obj);
 		}
 	}
 
-	public QualifiedName getStepName(Step step) {
-		String name = null;
-		if (step instanceof StepReference) {
-			name  = stepNameProvider.nameOf((StepReference)step);
-			name = stepNameProvider.removeKeywords(name);
-		}else{
-			name = step.getName();
-		}
-		if(isEmpty(name)){
-			return null;
-		}else{
-			String formattedName = format(name);
-			return toQualifiedName(step, formattedName);
-		}
+	public QualifiedName getStepName(final Step step) {
+		return cache.get(step, step.eResource(), new Provider<QualifiedName>() {
+			public QualifiedName get() {
+				String name = null;
+				if (step instanceof StepReference) {
+					name = stepNameProvider.nameOf((StepReference)step);
+					name = stepNameProvider.removeKeywords(name);
+				}else{
+					name = step.getName();
+				}
+				if(isEmpty(name)){
+					return null;
+				}else{
+					String formattedName = format(name);
+					return toQualifiedName(step, formattedName);
+				}
+			}
+		});
+		
 	}
 
 	private QualifiedName toQualifiedName(EObject obj, String name) {
