@@ -10,7 +10,6 @@ package org.jnario.spec.naming;
 import static com.google.common.collect.Iterables.addAll;
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
 import static java.lang.Math.max;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.eclipse.xtext.util.Strings.toFirstLower;
@@ -21,17 +20,14 @@ import static org.jnario.util.Strings.makeJunitConform;
 import static org.jnario.util.Strings.markAsPending;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
-import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.util.SimpleAttributeResolver;
 import org.eclipse.xtext.xbase.compiler.JavaKeywords;
 import org.jnario.ExampleTable;
 import org.jnario.jvmmodel.JnarioNameProvider;
@@ -41,7 +37,6 @@ import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecPackage;
 import org.jnario.spec.spec.TestFunction;
-import org.jnario.spec.spec.util.SpecSwitch;
 
 import com.google.inject.Inject;
 /**
@@ -247,7 +242,9 @@ public class ExampleNameProvider extends JnarioNameProvider{
 			String operationName = getOperationName(exampleGroup).toString();
 			result.append(toFirstUpper(operationName));
 		}
-		result.append(toFirstUpper(memberDescriptionOf(exampleGroup)));
+		if(exampleGroup.getName() != null){
+			result.append(toFirstUpper(exampleGroup.getName()));
+		}
 		result = convertToCamelCase(result);
 		return result;
 	}
@@ -286,12 +283,12 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		}
 	}
 	
-	private String memberDescriptionOf(XtendMember member) {
-		String newName = SimpleAttributeResolver.NAME_RESOLVER.apply(member);
-		if(newName == null){
-			newName = "";
-		}
-		return newName;
+	private String memberDescriptionOf(Example member) {
+		return member.getName();
+	}
+	
+	private String memberDescriptionOf(ExampleGroup member) {
+		return member.getName();
 	}
 
 }
