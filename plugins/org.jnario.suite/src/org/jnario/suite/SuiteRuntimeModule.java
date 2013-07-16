@@ -66,6 +66,7 @@ import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.HashBasedSpec2ResultMapping;
+import org.jnario.scoping.JnarioResourceDescriptionStrategy;
 import org.jnario.suite.compiler.SuiteBatchCompiler;
 import org.jnario.suite.conversion.SuiteValueConverterService;
 import org.jnario.suite.doc.SuiteDocGenerator;
@@ -140,7 +141,7 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	}
 
 	public Class <? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
-		return XtendResourceDescriptionStrategy.class;
+		return JnarioResourceDescriptionStrategy.class;
 	}
 
 	public Class<? extends JvmModelAssociator> bindJvmModelAssociator() {
