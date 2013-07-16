@@ -44,7 +44,7 @@ class StepNameProvider {
 	
 	def getMethodName(Step step){
 		var originalName = nameOf(step).firstLine.trim;
-		return toFirstLower(convertToCamelCase(originalName));
+		return org.jnario.util.Strings.toMethodName(originalName);
 	}
 	
 	def describe(Feature feature){

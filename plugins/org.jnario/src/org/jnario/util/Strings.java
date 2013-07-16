@@ -83,7 +83,6 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		return -1;
 	}
 	
-	@SuppressWarnings("resource")
 	public static String convertStreamToString(InputStream is) { 
 		String result = new Scanner(is).useDelimiter("\\A").next();
 	    closeQuietly(is);
@@ -287,4 +286,14 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		return true;
 	}
 
+	public static String toMethodName(String name) {
+		StringBuilder result = new StringBuilder();
+		result.append("_");
+		result.append(toFirstLower(convertToCamelCase(name)));
+		if(result.length() > 249){
+			return result.substring(0, 250);
+		}else{
+			return result.toString();
+		}
+	}
 }

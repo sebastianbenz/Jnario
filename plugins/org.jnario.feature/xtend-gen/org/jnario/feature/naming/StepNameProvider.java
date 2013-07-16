@@ -66,8 +66,7 @@ public class StepNameProvider {
     String _nameOf = this.nameOf(step);
     String _firstLine = Strings.firstLine(_nameOf);
     String originalName = _firstLine.trim();
-    String _convertToCamelCase = Strings.convertToCamelCase(originalName);
-    return org.eclipse.xtext.util.Strings.toFirstLower(_convertToCamelCase);
+    return Strings.toMethodName(originalName);
   }
   
   public String describe(final Feature feature) {

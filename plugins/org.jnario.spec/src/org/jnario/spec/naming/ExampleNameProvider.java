@@ -12,7 +12,6 @@ import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Lists.newArrayList;
 import static java.lang.Math.max;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
-import static org.eclipse.xtext.util.Strings.toFirstLower;
 import static org.eclipse.xtext.util.Strings.toFirstUpper;
 import static org.jnario.util.Nodes.textForFeature;
 import static org.jnario.util.Strings.convertToCamelCase;
@@ -37,6 +36,7 @@ import org.jnario.spec.spec.Example;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecPackage;
 import org.jnario.spec.spec.TestFunction;
+import org.jnario.util.Strings;
 
 import com.google.inject.Inject;
 /**
@@ -144,22 +144,11 @@ public class ExampleNameProvider extends JnarioNameProvider{
 	private String _toMethodName(Example example){
 		String name = "";
 		if(example.getName() != null){
-			name = memberDescriptionOf(example);
+			name = example.getName();
 		}
-		return _toMethodName(name);
+		return Strings.toMethodName(name);
 	}
 
-	private String _toMethodName(String name) {
-		StringBuilder result = new StringBuilder();
-		result.append("_");
-		result.append(toFirstLower(convertToCamelCase(name)));
-		if(result.length() > 249){
-			return result.substring(0, 250);
-		}else{
-			return result.toString();
-		}
-	}
-	
 	private String _toMethodName(Before before){
 		String name = "before";
 		return _toMethodName(before, name);
@@ -172,7 +161,7 @@ public class ExampleNameProvider extends JnarioNameProvider{
 	
 	private String _toMethodName(TestFunction target, String defaultName){
 		if(target.getName() != null){
-			return _toMethodName(target.getName());
+			return Strings.toMethodName(target.getName());
 		}
 		if(target.isStatic()){
 			defaultName += "All";
@@ -281,14 +270,6 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		}else{
 			return true;
 		}
-	}
-	
-	private String memberDescriptionOf(Example member) {
-		return member.getName();
-	}
-	
-	private String memberDescriptionOf(ExampleGroup member) {
-		return member.getName();
 	}
 
 }
