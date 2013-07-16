@@ -312,6 +312,7 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(Strings.class);
 		javaCompiler.addClassPathOfClass(Suite.class);
 		javaCompiler.addClassPathOfClass(Mockito.class);
+		javaCompiler.addClassPathOfClass(Maps.class);
 		javaCompiler.addClassPathOfClass(org.jnario.feature.tests.integration.Calculator.class);
 	}
 

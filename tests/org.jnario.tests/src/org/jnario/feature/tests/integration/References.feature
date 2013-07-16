@@ -12,6 +12,7 @@ import org.jnario.jnario.test.util.FeatureTestCreator
 import org.jnario.runner.CreateWith
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.BehaviorExecutor
+import org.jnario.feature.tests.integration.*
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -385,3 +386,20 @@ Feature: References for steps
 	  	When it should execute successfully
 			'''
 	Then it should execute successfully
+	
+	Scenario: Static methods with parameters
+		Given a feature
+		'''
+		import com.google.common.collect.Maps
+		
+		Feature: Static methods with parameters
+			
+		  Scenario: Define step using static method parameters
+		
+		    Given a step
+		      val y = Maps.newHashMapWithExpectedSize(3)
+		
+		  Scenario: Reference step using static method parameters
+		    Given a step
+		'''
+		Then it should execute successfully

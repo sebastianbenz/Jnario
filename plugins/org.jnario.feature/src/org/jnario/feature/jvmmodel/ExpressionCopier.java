@@ -28,7 +28,7 @@ public class ExpressionCopier{
 			if (source instanceof XAbstractFeatureCall) {
 				XAbstractFeatureCall sourceFeatureCall = (XAbstractFeatureCall) source;
 				XAbstractFeatureCall targetFeatureCall = (XAbstractFeatureCall) target;
-				targetFeatureCall.setFeature(((XAbstractFeatureCall) source).getFeature());
+				targetFeatureCall.setFeature(sourceFeatureCall.getFeature());
 				targetFeatureCall.setImplicitFirstArgument((XExpression) copy(sourceFeatureCall.getImplicitFirstArgument()));
 				targetFeatureCall.setImplicitReceiver((XExpression) copy(sourceFeatureCall.getImplicitReceiver()));
 			}
@@ -38,6 +38,7 @@ public class ExpressionCopier{
 				targetFeatureCall.setExplicitOperationCall(sourceFeatureCall.isExplicitOperationCall());
 				targetFeatureCall.setExplicitStatic(sourceFeatureCall.isExplicitStatic());
 				targetFeatureCall.setTypeLiteral(sourceFeatureCall.isTypeLiteral());
+				targetFeatureCall.setStaticWithDeclaringType(sourceFeatureCall.isStaticWithDeclaringType());
 			}
 			if (source instanceof XFeatureCall) {
 				XFeatureCall sourceFeatureCall = (XFeatureCall) source;
