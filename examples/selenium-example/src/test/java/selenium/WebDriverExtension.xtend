@@ -26,8 +26,12 @@ class WebDriverExtension  {
       driver.get(url)
     }
 
-    def findElement(By arg){
-      driver.findElement(arg)
+    def findElement(String name){
+      driver.findElement(By.name(name))
+    }
+    
+    def findElement(By by){
+      driver.findElement(by)
     }
     
     def waitUntil(Function<WebDriver, Boolean> predicate){

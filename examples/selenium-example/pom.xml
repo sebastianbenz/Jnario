@@ -7,21 +7,9 @@
 		<project.build.sourceEncoding>${sourceEncoding}</project.build.sourceEncoding>
 		<project.build.resourceEncoding>${sourceEncoding}</project.build.resourceEncoding>
 		<maven.compiler.encoding>${sourceEncoding}</maven.compiler.encoding>
-		<xtend.version>2.4.1</xtend.version>
-		<jnario.version>0.4.3</jnario.version>
+		<xtend.version>2.4.2</xtend.version>
+		<jnario.version>0.5.0-SNAPSHOT</jnario.version>
 	</properties>
-	<repositories>
-		<repository>
-			<id>xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven/</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven/</url>
-		</pluginRepository>
-	</pluginRepositories>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -120,5 +108,5 @@
 	</build>
 	<url>http://www.jnario.org</url>
 	<groupId>org.jnario</groupId>
-	<version>0.4.1</version>
+	<version>0.5.0</version>
 </project>
