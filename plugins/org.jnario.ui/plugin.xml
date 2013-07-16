@@ -71,4 +71,10 @@
 	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
         </page>
     </extension>
+    <extension
+          point="org.eclipse.xtext.ui.shared.overridingGuiceModule">
+       <module
+             class="org.jnario.ui.JnarioXtextBuilderExtension">
+       </module>
+    </extension>
 </plugin>
