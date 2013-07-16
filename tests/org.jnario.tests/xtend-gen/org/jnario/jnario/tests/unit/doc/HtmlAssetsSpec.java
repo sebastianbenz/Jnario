@@ -11,7 +11,6 @@ import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.util.Map;
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
-import org.hamcrest.StringDescription;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.doc.HtmlAssets;
 import org.jnario.jnario.test.util.SpecTestCreator;
@@ -48,12 +47,12 @@ public class HtmlAssetsSpec {
     String _generatedFile = this.generatedFile("js/prettify.js");
     boolean _notEquals = (!Objects.equal(_generatedFile, null));
     Assert.assertTrue("\nExpected generatedFile(\"js/prettify.js\") != null but"
-     + "\n     generatedFile(\"js/prettify.js\") is " + new StringDescription().appendValue(_generatedFile).toString() + "\n", _notEquals);
+     + "\n     generatedFile(\"js/prettify.js\") is " + new org.hamcrest.StringDescription().appendValue(_generatedFile).toString() + "\n", _notEquals);
     
     String _generatedFile_1 = this.generatedFile("js/lang-jnario.js");
     boolean _notEquals_1 = (!Objects.equal(_generatedFile_1, null));
     Assert.assertTrue("\nExpected generatedFile(\"js/lang-jnario.js\") != null but"
-     + "\n     generatedFile(\"js/lang-jnario.js\") is " + new StringDescription().appendValue(_generatedFile_1).toString() + "\n", _notEquals_1);
+     + "\n     generatedFile(\"js/lang-jnario.js\") is " + new org.hamcrest.StringDescription().appendValue(_generatedFile_1).toString() + "\n", _notEquals_1);
     
   }
   
@@ -64,17 +63,17 @@ public class HtmlAssetsSpec {
     String _generatedFile = this.generatedFile("css/bootstrap-responsive.min.css");
     boolean _notEquals = (!Objects.equal(_generatedFile, null));
     Assert.assertTrue("\nExpected generatedFile(\"css/bootstrap-responsive.min.css\") != null but"
-     + "\n     generatedFile(\"css/bootstrap-responsive.min.css\") is " + new StringDescription().appendValue(_generatedFile).toString() + "\n", _notEquals);
+     + "\n     generatedFile(\"css/bootstrap-responsive.min.css\") is " + new org.hamcrest.StringDescription().appendValue(_generatedFile).toString() + "\n", _notEquals);
     
     String _generatedFile_1 = this.generatedFile("css/custom.css");
     boolean _notEquals_1 = (!Objects.equal(_generatedFile_1, null));
     Assert.assertTrue("\nExpected generatedFile(\"css/custom.css\") != null but"
-     + "\n     generatedFile(\"css/custom.css\") is " + new StringDescription().appendValue(_generatedFile_1).toString() + "\n", _notEquals_1);
+     + "\n     generatedFile(\"css/custom.css\") is " + new org.hamcrest.StringDescription().appendValue(_generatedFile_1).toString() + "\n", _notEquals_1);
     
     String _generatedFile_2 = this.generatedFile("css/prettify.css");
     boolean _notEquals_2 = (!Objects.equal(_generatedFile_2, null));
     Assert.assertTrue("\nExpected generatedFile(\"css/prettify.css\") != null but"
-     + "\n     generatedFile(\"css/prettify.css\") is " + new StringDescription().appendValue(_generatedFile_2).toString() + "\n", _notEquals_2);
+     + "\n     generatedFile(\"css/prettify.css\") is " + new org.hamcrest.StringDescription().appendValue(_generatedFile_2).toString() + "\n", _notEquals_2);
     
   }
   

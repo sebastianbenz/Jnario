@@ -11,7 +11,6 @@ import java.util.HashMap;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Pair;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
@@ -68,14 +67,14 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
     final String greeting = "Hello World";
     boolean _doubleArrow = Should.operator_doubleArrow(greeting, String.class);
     Assert.assertTrue("\nExpected greeting => typeof(String) but"
-     + "\n     greeting is " + new StringDescription().appendValue(greeting).toString() + "\n", _doubleArrow);
+     + "\n     greeting is " + new org.hamcrest.StringDescription().appendValue(greeting).toString() + "\n", _doubleArrow);
     
     Pair<String,String> _mappedTo = Pair.<String, String>of("german", "Hallo");
     Pair<String,String> _mappedTo_1 = Pair.<String, String>of("english", "Hello");
     final HashMap<String,String> greetings = CollectionLiterals.<String, String>newHashMap(_mappedTo, _mappedTo_1);
     boolean _doubleArrow_1 = Should.operator_doubleArrow(greetings, HashMap.class);
     Assert.assertTrue("\nExpected greetings => typeof(HashMap) but"
-     + "\n     greetings is " + new StringDescription().appendValue(greetings).toString() + "\n", _doubleArrow_1);
+     + "\n     greetings is " + new org.hamcrest.StringDescription().appendValue(greetings).toString() + "\n", _doubleArrow_1);
     
   }
   
@@ -92,14 +91,14 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
     String _key = pair.getKey();
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_key, "spain");
     Assert.assertTrue("\nExpected pair.key   => \"spain\" but"
-     + "\n     pair.key is " + new StringDescription().appendValue(_key).toString()
-     + "\n     pair is " + new StringDescription().appendValue(pair).toString() + "\n", _doubleArrow);
+     + "\n     pair.key is " + new org.hamcrest.StringDescription().appendValue(_key).toString()
+     + "\n     pair is " + new org.hamcrest.StringDescription().appendValue(pair).toString() + "\n", _doubleArrow);
     
     String _value = pair.getValue();
     boolean _doubleArrow_1 = Should.<String>operator_doubleArrow(_value, "italy");
     Assert.assertTrue("\nExpected pair.value => \"italy\" but"
-     + "\n     pair.value is " + new StringDescription().appendValue(_value).toString()
-     + "\n     pair is " + new StringDescription().appendValue(pair).toString() + "\n", _doubleArrow_1);
+     + "\n     pair.value is " + new org.hamcrest.StringDescription().appendValue(_value).toString()
+     + "\n     pair is " + new org.hamcrest.StringDescription().appendValue(pair).toString() + "\n", _doubleArrow_1);
     
   }
   
@@ -145,14 +144,14 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
     String _plus = (this.greeting + "Sebastian");
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_sayHello, _plus);
     Assert.assertTrue("\nExpected sayHello(\"Sebastian\") => greeting + \"Sebastian\" but"
-     + "\n     sayHello(\"Sebastian\") is " + new StringDescription().appendValue(_sayHello).toString()
-     + "\n     greeting + \"Sebastian\" is " + new StringDescription().appendValue(_plus).toString()
-     + "\n     greeting is " + new StringDescription().appendValue(this.greeting).toString() + "\n", _doubleArrow);
+     + "\n     sayHello(\"Sebastian\") is " + new org.hamcrest.StringDescription().appendValue(_sayHello).toString()
+     + "\n     greeting + \"Sebastian\" is " + new org.hamcrest.StringDescription().appendValue(_plus).toString()
+     + "\n     greeting is " + new org.hamcrest.StringDescription().appendValue(this.greeting).toString() + "\n", _doubleArrow);
     
     String _string = Integer.valueOf(42).toString();
     boolean _doubleArrow_1 = Should.<String>operator_doubleArrow(_string, "42");
     Assert.assertTrue("\nExpected 42.toString => \"42\" but"
-     + "\n     42.toString is " + new StringDescription().appendValue(_string).toString() + "\n", _doubleArrow_1);
+     + "\n     42.toString is " + new org.hamcrest.StringDescription().appendValue(_string).toString() + "\n", _doubleArrow_1);
     
   }
 }

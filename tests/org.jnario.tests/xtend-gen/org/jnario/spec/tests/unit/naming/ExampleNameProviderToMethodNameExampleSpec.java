@@ -12,7 +12,6 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
@@ -47,8 +46,8 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
           String _firstMethodName = ExampleNameProviderToMethodNameExampleSpec.this.firstMethodName(it);
           boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "_myExample");
           Assert.assertTrue("\nExpected firstMethodName(it) => \'_myExample\' but"
-           + "\n     firstMethodName(it) is " + new StringDescription().appendValue(_firstMethodName).toString()
-           + "\n     it is " + new StringDescription().appendValue(it).toString() + "\n", _doubleArrow);
+           + "\n     firstMethodName(it) is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString()
+           + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _doubleArrow);
           
         }
       };
@@ -64,9 +63,9 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
     int _length = _firstMethodName.length();
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_length), Integer.valueOf(250));
     Assert.assertTrue("\nExpected firstMethodName(nameOfLength(251)).length => 250 but"
-     + "\n     firstMethodName(nameOfLength(251)).length is " + new StringDescription().appendValue(Integer.valueOf(_length)).toString()
-     + "\n     firstMethodName(nameOfLength(251)) is " + new StringDescription().appendValue(_firstMethodName).toString()
-     + "\n     nameOfLength(251) is " + new StringDescription().appendValue(_nameOfLength).toString() + "\n", _doubleArrow);
+     + "\n     firstMethodName(nameOfLength(251)).length is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_length)).toString()
+     + "\n     firstMethodName(nameOfLength(251)) is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString()
+     + "\n     nameOfLength(251) is " + new org.hamcrest.StringDescription().appendValue(_nameOfLength).toString() + "\n", _doubleArrow);
     
   }
   

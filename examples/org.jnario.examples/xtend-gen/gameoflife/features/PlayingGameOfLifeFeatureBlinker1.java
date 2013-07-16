@@ -3,7 +3,6 @@ package gameoflife.features;
 import gameoflife.Evolution;
 import gameoflife.World;
 import gameoflife.features.PlayingGameOfLifeFeature;
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
@@ -44,10 +43,10 @@ public class PlayingGameOfLifeFeatureBlinker1 extends PlayingGameOfLifeFeature {
     World _parseWorld = World.parseWorld(_first);
     boolean _doubleArrow = Should.<World>operator_doubleArrow(this.world, _parseWorld);
     Assert.assertTrue("\nExpected world => parseWorld(args.first) but"
-     + "\n     world is " + new StringDescription().appendValue(this.world).toString()
-     + "\n     parseWorld(args.first) is " + new StringDescription().appendValue(_parseWorld).toString()
-     + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
-     + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+     + "\n     world is " + new org.hamcrest.StringDescription().appendValue(this.world).toString()
+     + "\n     parseWorld(args.first) is " + new org.hamcrest.StringDescription().appendValue(_parseWorld).toString()
+     + "\n     args.first is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
+     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
 }

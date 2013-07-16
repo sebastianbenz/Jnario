@@ -9,7 +9,6 @@ package org.jnario.jnario.documentation;
 
 import java.util.Collections;
 import java.util.List;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
 import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
@@ -67,8 +66,8 @@ public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20F
     List<String> _list = JnarioCollectionLiterals.<String>list("blue", "green", "red");
     boolean _doubleArrow = this.<String>operator_doubleArrow(colors, _list);
     Assert.assertTrue("\nExpected // sort is implemented by Collections#sort(List<T>)\r\n      colors => list(\"blue\", \"green\", \"red\") but"
-     + "\n     // sort is implemented by Collections#sort(List<T>)\r\n      colors is " + new StringDescription().appendValue(colors).toString()
-     + "\n     list(\"blue\", \"green\", \"red\") is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
+     + "\n     // sort is implemented by Collections#sort(List<T>)\r\n      colors is " + new org.hamcrest.StringDescription().appendValue(colors).toString()
+     + "\n     list(\"blue\", \"green\", \"red\") is " + new org.hamcrest.StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
     
   }
   
@@ -92,7 +91,7 @@ public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20F
     List<String> _list = JnarioCollectionLiterals.<String>list("red");
     boolean _hasOneElement = this.hasOneElement(_list);
     Assert.assertTrue("\nExpected list(\"red\").hasOneElement but"
-     + "\n     list(\"red\") is " + new StringDescription().appendValue(_list).toString() + "\n", _hasOneElement);
+     + "\n     list(\"red\") is " + new org.hamcrest.StringDescription().appendValue(_list).toString() + "\n", _hasOneElement);
     
   }
   
@@ -124,7 +123,7 @@ public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20F
     List<String> _list = JnarioCollectionLiterals.<String>list("red");
     boolean _hasOneElement = this.hasOneElement(_list);
     Assert.assertTrue("\nExpected list(\"red\").hasOneElement but"
-     + "\n     list(\"red\") is " + new StringDescription().appendValue(_list).toString() + "\n", _hasOneElement);
+     + "\n     list(\"red\") is " + new org.hamcrest.StringDescription().appendValue(_list).toString() + "\n", _hasOneElement);
     
   }
 }

@@ -7,7 +7,6 @@
  */
 package org.jnario.feature.tests.integration;
 
-import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.integration.ParsingSimpleJnarioFilesFeature;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
@@ -49,10 +48,10 @@ public class ParsingSimpleJnarioFilesFeatureAndStuff extends ParsingSimpleJnario
     int _plus = (this.x + this.y);
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(this.z));
     Assert.assertTrue("\nExpected (x+y) => z but"
-     + "\n     x+y is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString()
-     + "\n     x is " + new StringDescription().appendValue(this.x).toString()
-     + "\n     y is " + new StringDescription().appendValue(this.y).toString()
-     + "\n     z is " + new StringDescription().appendValue(Integer.valueOf(this.z)).toString() + "\n", _doubleArrow);
+     + "\n     x+y is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString()
+     + "\n     x is " + new org.hamcrest.StringDescription().appendValue(this.x).toString()
+     + "\n     y is " + new org.hamcrest.StringDescription().appendValue(this.y).toString()
+     + "\n     z is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(this.z)).toString() + "\n", _doubleArrow);
     
   }
 }

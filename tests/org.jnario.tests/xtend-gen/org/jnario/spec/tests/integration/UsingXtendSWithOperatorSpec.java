@@ -10,7 +10,6 @@ package org.jnario.spec.tests.integration;
 import java.util.Stack;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -45,8 +44,8 @@ public class UsingXtendSWithOperatorSpec {
     int _size = stackWithTwoElements.size();
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(2));
     Assert.assertTrue("\nExpected stackWithTwoElements.size => 2 but"
-     + "\n     stackWithTwoElements.size is " + new StringDescription().appendValue(Integer.valueOf(_size)).toString()
-     + "\n     stackWithTwoElements is " + new StringDescription().appendValue(stackWithTwoElements).toString() + "\n", _doubleArrow);
+     + "\n     stackWithTwoElements.size is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_size)).toString()
+     + "\n     stackWithTwoElements is " + new org.hamcrest.StringDescription().appendValue(stackWithTwoElements).toString() + "\n", _doubleArrow);
     
   }
   
@@ -59,15 +58,15 @@ public class UsingXtendSWithOperatorSpec {
           int _length = it.length();
           boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_length), Integer.valueOf(11));
           Assert.assertTrue("\nExpected length => 11 but"
-           + "\n     length is " + new StringDescription().appendValue(Integer.valueOf(_length)).toString() + "\n", _doubleArrow);
+           + "\n     length is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_length)).toString() + "\n", _doubleArrow);
           
           boolean _should_startWith = Should.should_startWith(it, "hello");
           Assert.assertTrue("\nExpected it should startWith(\"hello\") but"
-           + "\n     it is " + new StringDescription().appendValue(it).toString() + "\n", _should_startWith);
+           + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _should_startWith);
           
           boolean _should_endWith = Should.should_endWith(it, "world");
           Assert.assertTrue("\nExpected it should endWith(\"world\") but"
-           + "\n     it is " + new StringDescription().appendValue(it).toString() + "\n", _should_endWith);
+           + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _should_endWith);
           
         }
       };

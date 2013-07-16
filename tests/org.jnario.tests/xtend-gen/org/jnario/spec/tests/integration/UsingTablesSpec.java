@@ -12,7 +12,6 @@ import java.util.Arrays;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.BehaviorExecutor;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.jnario.test.util.SpecTestCreator;
@@ -441,10 +440,10 @@ public class UsingTablesSpec {
                 int _sum = it.getSum();
                 boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(_sum));
                 Assert.assertTrue("\nExpected value1 + value2 => sum but"
-                 + "\n     value1 + value2 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString()
-                 + "\n     value1 is " + new StringDescription().appendValue(_value1).toString()
-                 + "\n     value2 is " + new StringDescription().appendValue(_value2).toString()
-                 + "\n     sum is " + new StringDescription().appendValue(Integer.valueOf(_sum)).toString() + "\n", _doubleArrow);
+                 + "\n     value1 + value2 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString()
+                 + "\n     value1 is " + new org.hamcrest.StringDescription().appendValue(_value1).toString()
+                 + "\n     value2 is " + new org.hamcrest.StringDescription().appendValue(_value2).toString()
+                 + "\n     sum is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_sum)).toString() + "\n", _doubleArrow);
                 
               }
             };

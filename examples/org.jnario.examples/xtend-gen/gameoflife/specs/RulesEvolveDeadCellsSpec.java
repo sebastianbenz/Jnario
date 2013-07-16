@@ -5,7 +5,6 @@ import gameoflife.specs.RulesEvolveDeadCellsSpecDeadcells;
 import gameoflife.specs.RulesSpec;
 import java.util.Arrays;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
@@ -70,10 +69,10 @@ public class RulesEvolveDeadCellsSpec extends RulesSpec {
           boolean _result = it.getResult();
           boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_becomesAlive), _result);
           Assert.assertTrue("\nExpected subject.becomesAlive(liveNeighbourCount) => result but"
-           + "\n     subject.becomesAlive(liveNeighbourCount) is " + new StringDescription().appendValue(Boolean.valueOf(_becomesAlive)).toString()
-           + "\n     subject is " + new StringDescription().appendValue(RulesEvolveDeadCellsSpec.this.subject).toString()
-           + "\n     liveNeighbourCount is " + new StringDescription().appendValue(_liveNeighbourCount).toString()
-           + "\n     result is " + new StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+           + "\n     subject.becomesAlive(liveNeighbourCount) is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_becomesAlive)).toString()
+           + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(RulesEvolveDeadCellsSpec.this.subject).toString()
+           + "\n     liveNeighbourCount is " + new org.hamcrest.StringDescription().appendValue(_liveNeighbourCount).toString()
+           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
           
         }
       };

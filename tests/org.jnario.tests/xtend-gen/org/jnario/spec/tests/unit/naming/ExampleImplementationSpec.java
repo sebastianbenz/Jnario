@@ -13,7 +13,6 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
-import org.hamcrest.StringDescription;
 import org.jnario.Should;
 import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
@@ -67,14 +66,14 @@ public class ExampleImplementationSpec extends ExampleSpec {
           Example _parse = ExampleImplementationSpec.this.parse(_example);
           XExpression _expression = _parse.getExpression();
           Class<? extends XExpression> _type = it.getType();
-          Matcher<Object> _instanceOf = CoreMatchers.instanceOf(_type);
+          Matcher<XExpression> _instanceOf = CoreMatchers.<XExpression>instanceOf(_type);
           boolean _should_be = org.jnario.lib.Should.<XExpression>should_be(_expression, _instanceOf);
           Assert.assertTrue("\nExpected example.parse.expression should be instanceOf(type) but"
-           + "\n     example.parse.expression is " + new StringDescription().appendValue(_expression).toString()
-           + "\n     example.parse is " + new StringDescription().appendValue(_parse).toString()
-           + "\n     example is " + new StringDescription().appendValue(_example).toString()
-           + "\n     instanceOf(type) is " + new StringDescription().appendValue(_instanceOf).toString()
-           + "\n     type is " + new StringDescription().appendValue(_type).toString() + "\n", _should_be);
+           + "\n     example.parse.expression is " + new org.hamcrest.StringDescription().appendValue(_expression).toString()
+           + "\n     example.parse is " + new org.hamcrest.StringDescription().appendValue(_parse).toString()
+           + "\n     example is " + new org.hamcrest.StringDescription().appendValue(_example).toString()
+           + "\n     instanceOf(type) is " + new org.hamcrest.StringDescription().appendValue(_instanceOf).toString()
+           + "\n     type is " + new org.hamcrest.StringDescription().appendValue(_type).toString() + "\n", _should_be);
           
         }
       };

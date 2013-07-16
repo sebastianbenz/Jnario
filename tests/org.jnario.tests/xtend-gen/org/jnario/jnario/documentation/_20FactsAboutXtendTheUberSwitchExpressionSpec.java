@@ -9,7 +9,6 @@ package org.jnario.jnario.documentation;
 
 import com.google.common.base.Objects;
 import java.util.List;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
 import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
@@ -60,7 +59,7 @@ public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAbout
     }
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_switchResult, "It\'s another short string.");
     Assert.assertTrue("\nExpected switch myString {\r\n        case myString.length > 5 : \"a long string.\"\r\n        case \'some\'              : \"It\'s some string.\"\r\n        default                  : \"It\'s another short string.\"\r\n      } \r\n      \r\n      =>  \"It\'s another short string.\" but"
-     + "\n     switch myString {\r\n        case myString.length > 5 : \"a long string.\"\r\n        case \'some\'              : \"It\'s some string.\"\r\n        default                  : \"It\'s another short string.\"\r\n      } is " + new StringDescription().appendValue(_switchResult).toString() + "\n", _doubleArrow);
+     + "\n     switch myString {\r\n        case myString.length > 5 : \"a long string.\"\r\n        case \'some\'              : \"It\'s some string.\"\r\n        default                  : \"It\'s another short string.\"\r\n      } is " + new org.hamcrest.StringDescription().appendValue(_switchResult).toString() + "\n", _doubleArrow);
     
   }
   
@@ -103,7 +102,7 @@ public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAbout
     }
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_switchResult), Integer.valueOf(3));
     Assert.assertTrue("\nExpected switch x {\r\n        String case x.length > 0 : x.length // length from String \r\n        List<?>                  : x.size    // size from List\r\n        default : -1\r\n      } \r\n      \r\n      => 3 but"
-     + "\n     switch x {\r\n        String case x.length > 0 : x.length // length from String \r\n        List<?>                  : x.size    // size from List\r\n        default : -1\r\n      } is " + new StringDescription().appendValue(Integer.valueOf(_switchResult)).toString() + "\n", _doubleArrow);
+     + "\n     switch x {\r\n        String case x.length > 0 : x.length // length from String \r\n        List<?>                  : x.size    // size from List\r\n        default : -1\r\n      } is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_switchResult)).toString() + "\n", _doubleArrow);
     
   }
 }

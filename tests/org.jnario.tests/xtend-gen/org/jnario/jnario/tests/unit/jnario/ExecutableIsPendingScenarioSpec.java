@@ -7,7 +7,6 @@
  */
 package org.jnario.jnario.tests.unit.jnario;
 
-import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Given;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.jnario.test.util.Features;
@@ -32,8 +31,8 @@ public class ExecutableIsPendingScenarioSpec extends ExecutableIsPendingSpec {
     boolean _isPending = _scenario.isPending();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_isPending), true);
     Assert.assertTrue("\nExpected scenario(\"Without steps\").isPending() should be true but"
-     + "\n     scenario(\"Without steps\").isPending() is " + new StringDescription().appendValue(Boolean.valueOf(_isPending)).toString()
-     + "\n     scenario(\"Without steps\") is " + new StringDescription().appendValue(_scenario).toString() + "\n", _should_be);
+     + "\n     scenario(\"Without steps\").isPending() is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_isPending)).toString()
+     + "\n     scenario(\"Without steps\") is " + new org.hamcrest.StringDescription().appendValue(_scenario).toString() + "\n", _should_be);
     
   }
   
@@ -46,9 +45,9 @@ public class ExecutableIsPendingScenarioSpec extends ExecutableIsPendingSpec {
     boolean _isPending = _scenarioWith.isPending();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_isPending), true);
     Assert.assertTrue("\nExpected scenarioWith(stepWithoutImplementation).isPending() should be true but"
-     + "\n     scenarioWith(stepWithoutImplementation).isPending() is " + new StringDescription().appendValue(Boolean.valueOf(_isPending)).toString()
-     + "\n     scenarioWith(stepWithoutImplementation) is " + new StringDescription().appendValue(_scenarioWith).toString()
-     + "\n     stepWithoutImplementation is " + new StringDescription().appendValue(_stepWithoutImplementation).toString() + "\n", _should_be);
+     + "\n     scenarioWith(stepWithoutImplementation).isPending() is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_isPending)).toString()
+     + "\n     scenarioWith(stepWithoutImplementation) is " + new org.hamcrest.StringDescription().appendValue(_scenarioWith).toString()
+     + "\n     stepWithoutImplementation is " + new org.hamcrest.StringDescription().appendValue(_stepWithoutImplementation).toString() + "\n", _should_be);
     
   }
   
@@ -61,9 +60,9 @@ public class ExecutableIsPendingScenarioSpec extends ExecutableIsPendingSpec {
     boolean _isPending = _scenarioWith.isPending();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_isPending), false);
     Assert.assertTrue("\nExpected scenarioWith(implementedStep).isPending() should be false but"
-     + "\n     scenarioWith(implementedStep).isPending() is " + new StringDescription().appendValue(Boolean.valueOf(_isPending)).toString()
-     + "\n     scenarioWith(implementedStep) is " + new StringDescription().appendValue(_scenarioWith).toString()
-     + "\n     implementedStep is " + new StringDescription().appendValue(_implementedStep).toString() + "\n", _should_be);
+     + "\n     scenarioWith(implementedStep).isPending() is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_isPending)).toString()
+     + "\n     scenarioWith(implementedStep) is " + new org.hamcrest.StringDescription().appendValue(_scenarioWith).toString()
+     + "\n     implementedStep is " + new org.hamcrest.StringDescription().appendValue(_implementedStep).toString() + "\n", _should_be);
     
   }
   
@@ -77,10 +76,10 @@ public class ExecutableIsPendingScenarioSpec extends ExecutableIsPendingSpec {
     boolean _isPending = _scenarioWith.isPending();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_isPending), true);
     Assert.assertTrue("\nExpected scenarioWith(stepWithoutImplementation, implementedStep).isPending() should be true but"
-     + "\n     scenarioWith(stepWithoutImplementation, implementedStep).isPending() is " + new StringDescription().appendValue(Boolean.valueOf(_isPending)).toString()
-     + "\n     scenarioWith(stepWithoutImplementation, implementedStep) is " + new StringDescription().appendValue(_scenarioWith).toString()
-     + "\n     stepWithoutImplementation is " + new StringDescription().appendValue(_stepWithoutImplementation).toString()
-     + "\n     implementedStep is " + new StringDescription().appendValue(_implementedStep).toString() + "\n", _should_be);
+     + "\n     scenarioWith(stepWithoutImplementation, implementedStep).isPending() is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_isPending)).toString()
+     + "\n     scenarioWith(stepWithoutImplementation, implementedStep) is " + new org.hamcrest.StringDescription().appendValue(_scenarioWith).toString()
+     + "\n     stepWithoutImplementation is " + new org.hamcrest.StringDescription().appendValue(_stepWithoutImplementation).toString()
+     + "\n     implementedStep is " + new org.hamcrest.StringDescription().appendValue(_implementedStep).toString() + "\n", _should_be);
     
   }
 }

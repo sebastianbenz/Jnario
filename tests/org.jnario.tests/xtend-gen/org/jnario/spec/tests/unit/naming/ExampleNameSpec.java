@@ -10,7 +10,6 @@ package org.jnario.spec.tests.unit.naming;
 import java.util.Arrays;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.ExampleTableIterators;
@@ -76,11 +75,11 @@ public class ExampleNameSpec extends ExampleSpec {
           String _name_1 = it.getName();
           boolean _should_be = Should.<String>should_be(_println, _name_1);
           Assert.assertTrue("\nExpected println(example.parse.name) should be name but"
-           + "\n     println(example.parse.name) is " + new StringDescription().appendValue(_println).toString()
-           + "\n     example.parse.name is " + new StringDescription().appendValue(_name).toString()
-           + "\n     example.parse is " + new StringDescription().appendValue(_parse).toString()
-           + "\n     example is " + new StringDescription().appendValue(_example).toString()
-           + "\n     name is " + new StringDescription().appendValue(_name_1).toString() + "\n", _should_be);
+           + "\n     println(example.parse.name) is " + new org.hamcrest.StringDescription().appendValue(_println).toString()
+           + "\n     example.parse.name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
+           + "\n     example.parse is " + new org.hamcrest.StringDescription().appendValue(_parse).toString()
+           + "\n     example is " + new org.hamcrest.StringDescription().appendValue(_example).toString()
+           + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name_1).toString() + "\n", _should_be);
           
         }
       };

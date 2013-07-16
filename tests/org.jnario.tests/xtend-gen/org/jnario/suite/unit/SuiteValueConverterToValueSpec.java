@@ -7,7 +7,6 @@
  */
 package org.jnario.suite.unit;
 
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -28,8 +27,8 @@ public class SuiteValueConverterToValueSpec extends SuiteValueConverterSpec {
     String _value = this.subject.toValue("##suite \\- with dash", null);
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, "##suite - with dash");
     Assert.assertTrue("\nExpected subject.toValue(\"##suite \\\\- with dash\", null) => \"##suite - with dash\" but"
-     + "\n     subject.toValue(\"##suite \\\\- with dash\", null) is " + new StringDescription().appendValue(_value).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+     + "\n     subject.toValue(\"##suite \\\\- with dash\", null) is " + new org.hamcrest.StringDescription().appendValue(_value).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
   }
   
@@ -40,8 +39,8 @@ public class SuiteValueConverterToValueSpec extends SuiteValueConverterSpec {
     String _value = this.subject.toValue("##suite \\# with hash", null);
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, "##suite # with hash");
     Assert.assertTrue("\nExpected subject.toValue(\"##suite \\\\# with hash\", null) => \"##suite # with hash\" but"
-     + "\n     subject.toValue(\"##suite \\\\# with hash\", null) is " + new StringDescription().appendValue(_value).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+     + "\n     subject.toValue(\"##suite \\\\# with hash\", null) is " + new org.hamcrest.StringDescription().appendValue(_value).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
   }
 }

@@ -7,7 +7,6 @@
  */
 package org.jnario.feature.tests.integration;
 
-import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.integration.BackgroundsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.Assert;
@@ -45,9 +44,9 @@ public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEverySce
     int _failureCount = _run.getFailureCount();
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2));
     Assert.assertTrue("\nExpected jnarioFile.run.failureCount => 2 but"
-     + "\n     jnarioFile.run.failureCount is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
-     + "\n     jnarioFile.run is " + new StringDescription().appendValue(_run).toString()
-     + "\n     jnarioFile is " + new StringDescription().appendValue(this.jnarioFile).toString() + "\n", _doubleArrow);
+     + "\n     jnarioFile.run.failureCount is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
+     + "\n     jnarioFile.run is " + new org.hamcrest.StringDescription().appendValue(_run).toString()
+     + "\n     jnarioFile is " + new org.hamcrest.StringDescription().appendValue(this.jnarioFile).toString() + "\n", _doubleArrow);
     
   }
 }

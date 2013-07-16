@@ -8,7 +8,6 @@
 package org.jnario.jnario.tests.unit.jnario;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
 import org.jnario.lib.Assert;
 import org.jnario.runner.ExampleGroupRunner;
@@ -32,8 +31,8 @@ public class StringsEndsWithSpec extends StringsSpec {
     _builder_1.append("lo");
     boolean _endsWith = Strings.endsWith(_builder, _builder_1);
     Assert.assertTrue("\nExpected \'\'\'hello\'\'\'.endsWith(\'\'\'lo\'\'\') but"
-     + "\n     \'\'\'hello\'\'\' is " + new StringDescription().appendValue(_builder).toString()
-     + "\n     \'\'\'lo\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _endsWith);
+     + "\n     \'\'\'hello\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString()
+     + "\n     \'\'\'lo\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder_1).toString() + "\n", _endsWith);
     
   }
   
@@ -48,9 +47,9 @@ public class StringsEndsWithSpec extends StringsSpec {
     boolean _endsWith = Strings.endsWith(_builder, _builder_1);
     boolean _not = (!_endsWith);
     Assert.assertTrue("\nExpected !\'\'\'hello\'\'\'.endsWith(\'\'\'he\'\'\') but"
-     + "\n     \'\'\'hello\'\'\'.endsWith(\'\'\'he\'\'\') is " + new StringDescription().appendValue(_endsWith).toString()
-     + "\n     \'\'\'hello\'\'\' is " + new StringDescription().appendValue(_builder).toString()
-     + "\n     \'\'\'he\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _not);
+     + "\n     \'\'\'hello\'\'\'.endsWith(\'\'\'he\'\'\') is " + new org.hamcrest.StringDescription().appendValue(_endsWith).toString()
+     + "\n     \'\'\'hello\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString()
+     + "\n     \'\'\'he\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder_1).toString() + "\n", _not);
     
   }
   
@@ -65,9 +64,9 @@ public class StringsEndsWithSpec extends StringsSpec {
     boolean _endsWith = Strings.endsWith(_builder, _builder_1);
     boolean _not = (!_endsWith);
     Assert.assertTrue("\nExpected !\'\'\'short\'\'\'.endsWith(\'\'\'longer\'\'\') but"
-     + "\n     \'\'\'short\'\'\'.endsWith(\'\'\'longer\'\'\') is " + new StringDescription().appendValue(_endsWith).toString()
-     + "\n     \'\'\'short\'\'\' is " + new StringDescription().appendValue(_builder).toString()
-     + "\n     \'\'\'longer\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _not);
+     + "\n     \'\'\'short\'\'\'.endsWith(\'\'\'longer\'\'\') is " + new org.hamcrest.StringDescription().appendValue(_endsWith).toString()
+     + "\n     \'\'\'short\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString()
+     + "\n     \'\'\'longer\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder_1).toString() + "\n", _not);
     
   }
 }

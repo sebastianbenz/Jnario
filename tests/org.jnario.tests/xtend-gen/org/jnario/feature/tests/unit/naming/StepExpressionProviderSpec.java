@@ -12,7 +12,6 @@ import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepImplementation;
 import org.jnario.feature.feature.StepReference;
@@ -68,10 +67,10 @@ public class StepExpressionProviderSpec {
     XExpression _expressionOf = this.subject.expressionOf(_step_1);
     boolean _equals = Objects.equal(_expression, _expressionOf);
     Assert.assertTrue("\nExpected step.expression == subject.expressionOf(step) but"
-     + "\n     step.expression is " + new StringDescription().appendValue(_expression).toString()
-     + "\n     step is " + new StringDescription().appendValue(_step).toString()
-     + "\n     subject.expressionOf(step) is " + new StringDescription().appendValue(_expressionOf).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _equals);
+     + "\n     step.expression is " + new org.hamcrest.StringDescription().appendValue(_expression).toString()
+     + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step).toString()
+     + "\n     subject.expressionOf(step) is " + new org.hamcrest.StringDescription().appendValue(_expressionOf).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _equals);
     
   }
   
@@ -104,26 +103,26 @@ public class StepExpressionProviderSpec {
     final XExpression expr = this.subject.expressionOf(_step);
     boolean _notEquals = (!Objects.equal(expr, null));
     Assert.assertTrue("\nExpected expr != null but"
-     + "\n     expr is " + new StringDescription().appendValue(expr).toString() + "\n", _notEquals);
+     + "\n     expr is " + new org.hamcrest.StringDescription().appendValue(expr).toString() + "\n", _notEquals);
     
     Step _step_1 = this.step();
     XExpression _expression = _step_1.getExpression();
     boolean _equals = Objects.equal(_expression, expr);
     Assert.assertTrue("\nExpected step.expression == expr but"
-     + "\n     step.expression is " + new StringDescription().appendValue(_expression).toString()
-     + "\n     step is " + new StringDescription().appendValue(_step_1).toString()
-     + "\n     expr is " + new StringDescription().appendValue(expr).toString() + "\n", _equals);
+     + "\n     step.expression is " + new org.hamcrest.StringDescription().appendValue(_expression).toString()
+     + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step_1).toString()
+     + "\n     expr is " + new org.hamcrest.StringDescription().appendValue(expr).toString() + "\n", _equals);
     
     Step _step_2 = this.step();
     StepImplementation _reference = ((StepReference) _step_2).getReference();
     XExpression _expression_1 = _reference.getExpression();
     boolean _notEquals_1 = (!Objects.equal(_expression_1, expr));
     Assert.assertTrue("\nExpected (step as StepReference).reference.expression != expr but"
-     + "\n     (step as StepReference).reference.expression is " + new StringDescription().appendValue(_expression_1).toString()
-     + "\n     (step as StepReference).reference is " + new StringDescription().appendValue(_reference).toString()
-     + "\n     step as StepReference is " + new StringDescription().appendValue(((StepReference) _step_2)).toString()
-     + "\n     step is " + new StringDescription().appendValue(_step_2).toString()
-     + "\n     expr is " + new StringDescription().appendValue(expr).toString() + "\n", _notEquals_1);
+     + "\n     (step as StepReference).reference.expression is " + new org.hamcrest.StringDescription().appendValue(_expression_1).toString()
+     + "\n     (step as StepReference).reference is " + new org.hamcrest.StringDescription().appendValue(_reference).toString()
+     + "\n     step as StepReference is " + new org.hamcrest.StringDescription().appendValue(((StepReference) _step_2)).toString()
+     + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step_2).toString()
+     + "\n     expr is " + new org.hamcrest.StringDescription().appendValue(expr).toString() + "\n", _notEquals_1);
     
   }
   

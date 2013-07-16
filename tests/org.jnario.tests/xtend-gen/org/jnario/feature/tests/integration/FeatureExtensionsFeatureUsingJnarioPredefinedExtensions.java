@@ -7,7 +7,6 @@
  */
 package org.jnario.feature.tests.integration;
 
-import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.integration.FeatureExtensionsFeature;
 import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioIterableExtensions;
@@ -56,10 +55,10 @@ public class FeatureExtensionsFeatureUsingJnarioPredefinedExtensions extends Fea
     int _int = StringConversions.toInt(_first);
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(this.number), Integer.valueOf(_int));
     Assert.assertTrue("\nExpected number => args.first.toInt but"
-     + "\n     number is " + new StringDescription().appendValue(Integer.valueOf(this.number)).toString()
-     + "\n     args.first.toInt is " + new StringDescription().appendValue(Integer.valueOf(_int)).toString()
-     + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
-     + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+     + "\n     number is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(this.number)).toString()
+     + "\n     args.first.toInt is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_int)).toString()
+     + "\n     args.first is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
+     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
 }

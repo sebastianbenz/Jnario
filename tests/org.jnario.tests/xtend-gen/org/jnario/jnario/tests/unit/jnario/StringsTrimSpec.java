@@ -9,7 +9,6 @@ package org.jnario.jnario.tests.unit.jnario;
 
 import java.util.Arrays;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
 import org.jnario.jnario.tests.unit.jnario.StringsTrimSpecExamples;
 import org.jnario.lib.Assert;
@@ -110,10 +109,10 @@ public class StringsTrimSpec extends StringsSpec {
           String _result = it.getResult();
           boolean _doubleArrow = Should.<String>operator_doubleArrow(_trim, _result);
           Assert.assertTrue("\nExpected string.trim(\'_\'.charAt(0)) => result but"
-           + "\n     string.trim(\'_\'.charAt(0)) is " + new StringDescription().appendValue(_trim).toString()
-           + "\n     string is " + new StringDescription().appendValue(_string).toString()
-           + "\n     \'_\'.charAt(0) is " + new StringDescription().appendValue(_charAt).toString()
-           + "\n     result is " + new StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+           + "\n     string.trim(\'_\'.charAt(0)) is " + new org.hamcrest.StringDescription().appendValue(_trim).toString()
+           + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
+           + "\n     \'_\'.charAt(0) is " + new org.hamcrest.StringDescription().appendValue(_charAt).toString()
+           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
           
         }
       };

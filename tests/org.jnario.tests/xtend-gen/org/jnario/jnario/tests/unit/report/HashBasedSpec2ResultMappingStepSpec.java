@@ -2,7 +2,6 @@ package org.jnario.jnario.tests.unit.report;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Step;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec;
@@ -89,20 +88,20 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
     Step _step = this.step();
     boolean _should_match = this.should_match(_step, this.aResult);
     Assert.assertTrue("\nExpected step should match aResult but"
-     + "\n     step is " + new StringDescription().appendValue(_step).toString()
-     + "\n     aResult is " + new StringDescription().appendValue(this.aResult).toString() + "\n", _should_match);
+     + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step).toString()
+     + "\n     aResult is " + new org.hamcrest.StringDescription().appendValue(this.aResult).toString() + "\n", _should_match);
     
     Step _step_1 = this.step();
     boolean _should_match_1 = this.should_match(_step_1, this.aResultWithDifferentClassName);
     Assert.assertFalse("\nExpected step should not match aResultWithDifferentClassName but"
-     + "\n     step is " + new StringDescription().appendValue(_step_1).toString()
-     + "\n     aResultWithDifferentClassName is " + new StringDescription().appendValue(this.aResultWithDifferentClassName).toString() + "\n", _should_match_1);
+     + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step_1).toString()
+     + "\n     aResultWithDifferentClassName is " + new org.hamcrest.StringDescription().appendValue(this.aResultWithDifferentClassName).toString() + "\n", _should_match_1);
     
     Step _step_2 = this.step();
     boolean _should_match_2 = this.should_match(_step_2, this.aResultWithDifferentName);
     Assert.assertFalse("\nExpected step should not match aResultWithDifferentName but"
-     + "\n     step is " + new StringDescription().appendValue(_step_2).toString()
-     + "\n     aResultWithDifferentName is " + new StringDescription().appendValue(this.aResultWithDifferentName).toString() + "\n", _should_match_2);
+     + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step_2).toString()
+     + "\n     aResultWithDifferentName is " + new org.hamcrest.StringDescription().appendValue(this.aResultWithDifferentName).toString() + "\n", _should_match_2);
     
   }
   
@@ -126,8 +125,8 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
     Step _step = this.step();
     boolean _should_match = this.should_match(_step, this.pendingResult);
     Assert.assertTrue("\nExpected step should match pendingResult but"
-     + "\n     step is " + new StringDescription().appendValue(_step).toString()
-     + "\n     pendingResult is " + new StringDescription().appendValue(this.pendingResult).toString() + "\n", _should_match);
+     + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step).toString()
+     + "\n     pendingResult is " + new org.hamcrest.StringDescription().appendValue(this.pendingResult).toString() + "\n", _should_match);
     
   }
   
@@ -154,8 +153,8 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
     Step _step = this.step();
     boolean _should_match = this.should_match(_step, this.resultWithUnicodeChars);
     Assert.assertTrue("\nExpected step should match resultWithUnicodeChars but"
-     + "\n     step is " + new StringDescription().appendValue(_step).toString()
-     + "\n     resultWithUnicodeChars is " + new StringDescription().appendValue(this.resultWithUnicodeChars).toString() + "\n", _should_match);
+     + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step).toString()
+     + "\n     resultWithUnicodeChars is " + new org.hamcrest.StringDescription().appendValue(this.resultWithUnicodeChars).toString() + "\n", _should_match);
     
   }
   
@@ -182,8 +181,8 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
     Step _step = this.step();
     boolean _should_match = this.should_match(_step, this.resultWithArgs);
     Assert.assertTrue("\nExpected step should match resultWithArgs but"
-     + "\n     step is " + new StringDescription().appendValue(_step).toString()
-     + "\n     resultWithArgs is " + new StringDescription().appendValue(this.resultWithArgs).toString() + "\n", _should_match);
+     + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step).toString()
+     + "\n     resultWithArgs is " + new org.hamcrest.StringDescription().appendValue(this.resultWithArgs).toString() + "\n", _should_match);
     
   }
 }

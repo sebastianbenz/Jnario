@@ -7,7 +7,6 @@
  */
 package org.jnario.spec.tests.integration;
 
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -35,7 +34,7 @@ public class AssertionIntroductionSpec extends AssertionSpec {
     
     boolean _equals = (1 == 1);
     Assert.assertTrue("\nExpected 1 == 1 but"
-     + "\n     1 == 1 is " + new StringDescription().appendValue(_equals).toString() + "\n", _equals);
+     + "\n     1 == 1 is " + new org.hamcrest.StringDescription().appendValue(_equals).toString() + "\n", _equals);
     
   }
   
@@ -52,7 +51,7 @@ public class AssertionIntroductionSpec extends AssertionSpec {
       Assert.assertTrue("\nExpected false but" + " did not." + "\n", false);
       
       message = "Expected " + AssertionError.class.getName() + " for \n     {assert false}\n with:"
-       + "\n     assert false is " + new StringDescription().appendValue(true).toString();
+       + "\n     assert false is " + new org.hamcrest.StringDescription().appendValue(true).toString();
     }catch(AssertionError e){
       expectedException = true;
     }

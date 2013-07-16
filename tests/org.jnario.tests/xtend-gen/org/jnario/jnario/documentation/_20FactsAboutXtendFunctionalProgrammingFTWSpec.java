@@ -14,7 +14,6 @@ import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.documentation._20FactsAboutXtendSpec;
 import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
@@ -46,28 +45,28 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
     String _head = IterableExtensions.<String>head(colors);
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_head, "red");
     Assert.assertTrue("\nExpected colors.head => \"red\" but"
-     + "\n     colors.head is " + new StringDescription().appendValue(_head).toString()
-     + "\n     colors is " + new StringDescription().appendValue(colors).toString() + "\n", _doubleArrow);
+     + "\n     colors.head is " + new org.hamcrest.StringDescription().appendValue(_head).toString()
+     + "\n     colors is " + new org.hamcrest.StringDescription().appendValue(colors).toString() + "\n", _doubleArrow);
     
     Iterable<String> _tail = IterableExtensions.<String>tail(colors);
     Iterable<String> _iterable = this.<String>iterable("blue", "green");
     boolean _doubleArrow_1 = this.<String>operator_doubleArrow(_tail, _iterable);
     Assert.assertTrue("\nExpected colors.tail => iterable(\"blue\", \"green\") but"
-     + "\n     colors.tail is " + new StringDescription().appendValue(_tail).toString()
-     + "\n     colors is " + new StringDescription().appendValue(colors).toString()
-     + "\n     iterable(\"blue\", \"green\") is " + new StringDescription().appendValue(_iterable).toString() + "\n", _doubleArrow_1);
+     + "\n     colors.tail is " + new org.hamcrest.StringDescription().appendValue(_tail).toString()
+     + "\n     colors is " + new org.hamcrest.StringDescription().appendValue(colors).toString()
+     + "\n     iterable(\"blue\", \"green\") is " + new org.hamcrest.StringDescription().appendValue(_iterable).toString() + "\n", _doubleArrow_1);
     
     String _last = IterableExtensions.<String>last(colors);
     boolean _doubleArrow_2 = Should.<String>operator_doubleArrow(_last, "green");
     Assert.assertTrue("\nExpected colors.last => \"green\" but"
-     + "\n     colors.last is " + new StringDescription().appendValue(_last).toString()
-     + "\n     colors is " + new StringDescription().appendValue(colors).toString() + "\n", _doubleArrow_2);
+     + "\n     colors.last is " + new org.hamcrest.StringDescription().appendValue(_last).toString()
+     + "\n     colors is " + new org.hamcrest.StringDescription().appendValue(colors).toString() + "\n", _doubleArrow_2);
     
     boolean _isEmpty = colors.isEmpty();
     boolean _doubleArrow_3 = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_isEmpty), false);
     Assert.assertTrue("\nExpected colors.empty => false but"
-     + "\n     colors.empty is " + new StringDescription().appendValue(Boolean.valueOf(_isEmpty)).toString()
-     + "\n     colors is " + new StringDescription().appendValue(colors).toString() + "\n", _doubleArrow_3);
+     + "\n     colors.empty is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_isEmpty)).toString()
+     + "\n     colors is " + new org.hamcrest.StringDescription().appendValue(colors).toString() + "\n", _doubleArrow_3);
     
   }
   
@@ -85,10 +84,10 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
     Iterable<Integer> _iterable = this.<Integer>iterable(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4));
     boolean _doubleArrow = this.<Integer>operator_doubleArrow(_plus, _iterable);
     Assert.assertTrue("\nExpected list(1, 2) + list(3, 4) => iterable(1, 2, 3, 4) but"
-     + "\n     list(1, 2) + list(3, 4) is " + new StringDescription().appendValue(_plus).toString()
-     + "\n     list(1, 2) is " + new StringDescription().appendValue(_list).toString()
-     + "\n     list(3, 4) is " + new StringDescription().appendValue(_list_1).toString()
-     + "\n     iterable(1, 2, 3, 4) is " + new StringDescription().appendValue(_iterable).toString() + "\n", _doubleArrow);
+     + "\n     list(1, 2) + list(3, 4) is " + new org.hamcrest.StringDescription().appendValue(_plus).toString()
+     + "\n     list(1, 2) is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
+     + "\n     list(3, 4) is " + new org.hamcrest.StringDescription().appendValue(_list_1).toString()
+     + "\n     iterable(1, 2, 3, 4) is " + new org.hamcrest.StringDescription().appendValue(_iterable).toString() + "\n", _doubleArrow);
     
   }
   
@@ -131,8 +130,8 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
     Integer _apply = lambda.apply("hello");
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(_apply, Integer.valueOf(5));
     Assert.assertTrue("\nExpected lambda.apply(\"hello\") => 5 but"
-     + "\n     lambda.apply(\"hello\") is " + new StringDescription().appendValue(_apply).toString()
-     + "\n     lambda is " + new StringDescription().appendValue(lambda).toString() + "\n", _doubleArrow);
+     + "\n     lambda.apply(\"hello\") is " + new org.hamcrest.StringDescription().appendValue(_apply).toString()
+     + "\n     lambda is " + new org.hamcrest.StringDescription().appendValue(lambda).toString() + "\n", _doubleArrow);
     
   }
   
@@ -151,7 +150,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
         public void apply(final Integer it) {
           boolean _greaterThan = ((it).intValue() > 10);
           Assert.assertTrue("\nExpected it > 10 but"
-           + "\n     it is " + new StringDescription().appendValue((it).intValue()).toString() + "\n", _greaterThan);
+           + "\n     it is " + new org.hamcrest.StringDescription().appendValue((it).intValue()).toString() + "\n", _greaterThan);
           
         }
       };
@@ -171,9 +170,9 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
     Iterable<String> _iterable = this.<String>iterable("a string");
     boolean _doubleArrow = this.<String>operator_doubleArrow(_filter, _iterable);
     Assert.assertTrue("\nExpected list(\"a string\", 42, true).filter(typeof(String)) => iterable(\"a string\") but"
-     + "\n     list(\"a string\", 42, true).filter(typeof(String)) is " + new StringDescription().appendValue(_filter).toString()
-     + "\n     list(\"a string\", 42, true) is " + new StringDescription().appendValue(_list).toString()
-     + "\n     iterable(\"a string\") is " + new StringDescription().appendValue(_iterable).toString() + "\n", _doubleArrow);
+     + "\n     list(\"a string\", 42, true).filter(typeof(String)) is " + new org.hamcrest.StringDescription().appendValue(_filter).toString()
+     + "\n     list(\"a string\", 42, true) is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
+     + "\n     iterable(\"a string\") is " + new org.hamcrest.StringDescription().appendValue(_iterable).toString() + "\n", _doubleArrow);
     
   }
   
@@ -196,9 +195,9 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
     List<String> _list_1 = JnarioCollectionLiterals.<String>list("blue");
     boolean _doubleArrow = this.<String>operator_doubleArrow(_filter, _list_1);
     Assert.assertTrue("\nExpected list(\"red\", \"blue\", \"green\").filter[startsWith(\"b\")] => list(\"blue\") but"
-     + "\n     list(\"red\", \"blue\", \"green\").filter[startsWith(\"b\")] is " + new StringDescription().appendValue(_filter).toString()
-     + "\n     list(\"red\", \"blue\", \"green\") is " + new StringDescription().appendValue(_list).toString()
-     + "\n     list(\"blue\") is " + new StringDescription().appendValue(_list_1).toString() + "\n", _doubleArrow);
+     + "\n     list(\"red\", \"blue\", \"green\").filter[startsWith(\"b\")] is " + new org.hamcrest.StringDescription().appendValue(_filter).toString()
+     + "\n     list(\"red\", \"blue\", \"green\") is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
+     + "\n     list(\"blue\") is " + new org.hamcrest.StringDescription().appendValue(_list_1).toString() + "\n", _doubleArrow);
     
   }
   
@@ -228,7 +227,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
     final Integer charCount = IterableExtensions.<Integer>reduce(_map, _function_1);
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(charCount, Integer.valueOf(12));
     Assert.assertTrue("\nExpected charCount => 12 but"
-     + "\n     charCount is " + new StringDescription().appendValue(charCount).toString() + "\n", _doubleArrow);
+     + "\n     charCount is " + new org.hamcrest.StringDescription().appendValue(charCount).toString() + "\n", _doubleArrow);
     
   }
 }

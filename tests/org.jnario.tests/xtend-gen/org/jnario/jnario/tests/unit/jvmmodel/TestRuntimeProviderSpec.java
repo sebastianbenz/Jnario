@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.jvmmodel.JUnit3RuntimeSupport;
 import org.jnario.jvmmodel.JUnit4RuntimeSupport;
@@ -75,9 +74,9 @@ public class TestRuntimeProviderSpec {
     TestRuntimeSupport _get = this.subject.get(this.anyNotifier);
     boolean _doubleArrow = Should.operator_doubleArrow(_get, JUnit3RuntimeSupport.class);
     Assert.assertTrue("\nExpected subject.get(anyNotifier) => typeof(JUnit3RuntimeSupport) but"
-     + "\n     subject.get(anyNotifier) is " + new StringDescription().appendValue(_get).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     anyNotifier is " + new StringDescription().appendValue(this.anyNotifier).toString() + "\n", _doubleArrow);
+     + "\n     subject.get(anyNotifier) is " + new org.hamcrest.StringDescription().appendValue(_get).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
+     + "\n     anyNotifier is " + new org.hamcrest.StringDescription().appendValue(this.anyNotifier).toString() + "\n", _doubleArrow);
     
   }
   
@@ -91,9 +90,9 @@ public class TestRuntimeProviderSpec {
     TestRuntimeSupport _get = this.subject.get(this.anyNotifier);
     boolean _doubleArrow = Should.operator_doubleArrow(_get, JUnit4RuntimeSupport.class);
     Assert.assertTrue("\nExpected subject.get(anyNotifier) => typeof(JUnit4RuntimeSupport) but"
-     + "\n     subject.get(anyNotifier) is " + new StringDescription().appendValue(_get).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     anyNotifier is " + new StringDescription().appendValue(this.anyNotifier).toString() + "\n", _doubleArrow);
+     + "\n     subject.get(anyNotifier) is " + new org.hamcrest.StringDescription().appendValue(_get).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
+     + "\n     anyNotifier is " + new org.hamcrest.StringDescription().appendValue(this.anyNotifier).toString() + "\n", _doubleArrow);
     
   }
   
@@ -106,8 +105,8 @@ public class TestRuntimeProviderSpec {
     try{
       this.subject.get(this.anyNotifier);
       message = "Expected " + NoSuchElementException.class.getName() + " for \n     subject.get(anyNotifier)\n with:"
-       + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-       + "\n     anyNotifier is " + new StringDescription().appendValue(this.anyNotifier).toString();
+       + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
+       + "\n     anyNotifier is " + new org.hamcrest.StringDescription().appendValue(this.anyNotifier).toString();
     }catch(NoSuchElementException e){
       expectedException = true;
     }

@@ -7,7 +7,6 @@ import gameoflife.World;
 import gameoflife.specs.EvolutionSpec;
 import java.util.Set;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -42,12 +41,12 @@ public class EvolutionDeadCellsSpec extends EvolutionSpec {
     Set<CellLocation> _neighbours = this.livingCell.neighbours();
     boolean _doubleArrow = Should.<Set<CellLocation>>operator_doubleArrow(_livingCells, _neighbours);
     Assert.assertTrue("\nExpected evolution.evolve(worldWithLiveCell).livingCells => livingCell.neighbours but"
-     + "\n     evolution.evolve(worldWithLiveCell).livingCells is " + new StringDescription().appendValue(_livingCells).toString()
-     + "\n     evolution.evolve(worldWithLiveCell) is " + new StringDescription().appendValue(_evolve).toString()
-     + "\n     evolution is " + new StringDescription().appendValue(evolution).toString()
-     + "\n     worldWithLiveCell is " + new StringDescription().appendValue(this.worldWithLiveCell).toString()
-     + "\n     livingCell.neighbours is " + new StringDescription().appendValue(_neighbours).toString()
-     + "\n     livingCell is " + new StringDescription().appendValue(this.livingCell).toString() + "\n", _doubleArrow);
+     + "\n     evolution.evolve(worldWithLiveCell).livingCells is " + new org.hamcrest.StringDescription().appendValue(_livingCells).toString()
+     + "\n     evolution.evolve(worldWithLiveCell) is " + new org.hamcrest.StringDescription().appendValue(_evolve).toString()
+     + "\n     evolution is " + new org.hamcrest.StringDescription().appendValue(evolution).toString()
+     + "\n     worldWithLiveCell is " + new org.hamcrest.StringDescription().appendValue(this.worldWithLiveCell).toString()
+     + "\n     livingCell.neighbours is " + new org.hamcrest.StringDescription().appendValue(_neighbours).toString()
+     + "\n     livingCell is " + new org.hamcrest.StringDescription().appendValue(this.livingCell).toString() + "\n", _doubleArrow);
     
   }
 }

@@ -12,7 +12,6 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ScopeTestExtension;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.lib.Assert;
@@ -44,12 +43,12 @@ public class SpecScopeProviderSpec {
     Set<String> _targetOperationScope = this.targetOperationScope();
     boolean _should_contain = Should.<String>should_contain(_targetOperationScope, "assertNotNull(String, Object)");
     Assert.assertTrue("\nExpected targetOperationScope should contain \"assertNotNull(String, Object)\" but"
-     + "\n     targetOperationScope is " + new StringDescription().appendValue(_targetOperationScope).toString() + "\n", _should_contain);
+     + "\n     targetOperationScope is " + new org.hamcrest.StringDescription().appendValue(_targetOperationScope).toString() + "\n", _should_contain);
     
     Set<String> _targetOperationScope_1 = this.targetOperationScope();
     boolean _should_contain_1 = Should.<String>should_contain(_targetOperationScope_1, "assertNotNull");
     Assert.assertTrue("\nExpected targetOperationScope should contain  \"assertNotNull\" but"
-     + "\n     targetOperationScope is " + new StringDescription().appendValue(_targetOperationScope_1).toString() + "\n", _should_contain_1);
+     + "\n     targetOperationScope is " + new org.hamcrest.StringDescription().appendValue(_targetOperationScope_1).toString() + "\n", _should_contain_1);
     
   }
   

@@ -15,7 +15,6 @@ import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
-import org.hamcrest.StringDescription;
 import org.jnario.Specification;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Specs;
@@ -125,10 +124,10 @@ public class SpecResolverSpec {
     Set<String> _set_1 = JnarioCollectionLiterals.<String>set("MySpecSpec", "MyFeatureFeature");
     boolean _doubleArrow = Should.<Set<String>>operator_doubleArrow(_set, _set_1);
     Assert.assertTrue("\nExpected resolvedSpecs(firstSuite).toSet => set(\"MySpecSpec\", \"MyFeatureFeature\") but"
-     + "\n     resolvedSpecs(firstSuite).toSet is " + new StringDescription().appendValue(_set).toString()
-     + "\n     resolvedSpecs(firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
-     + "\n     firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
-     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + new StringDescription().appendValue(_set_1).toString() + "\n", _doubleArrow);
+     + "\n     resolvedSpecs(firstSuite).toSet is " + new org.hamcrest.StringDescription().appendValue(_set).toString()
+     + "\n     resolvedSpecs(firstSuite) is " + new org.hamcrest.StringDescription().appendValue(_resolvedSpecs).toString()
+     + "\n     firstSuite is " + new org.hamcrest.StringDescription().appendValue(_firstSuite).toString()
+     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + new org.hamcrest.StringDescription().appendValue(_set_1).toString() + "\n", _doubleArrow);
     
   }
   
@@ -143,11 +142,11 @@ public class SpecResolverSpec {
     List<ExampleGroup> _list = JnarioCollectionLiterals.<ExampleGroup>list(specWithoutName);
     boolean _doubleArrow = Should.<List<? extends Specification>>operator_doubleArrow(_resolveSpecs, _list);
     Assert.assertTrue("\nExpected subject.resolveSpecs(suite) => list(specWithoutName) but"
-     + "\n     subject.resolveSpecs(suite) is " + new StringDescription().appendValue(_resolveSpecs).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     suite is " + new StringDescription().appendValue(suite).toString()
-     + "\n     list(specWithoutName) is " + new StringDescription().appendValue(_list).toString()
-     + "\n     specWithoutName is " + new StringDescription().appendValue(specWithoutName).toString() + "\n", _doubleArrow);
+     + "\n     subject.resolveSpecs(suite) is " + new org.hamcrest.StringDescription().appendValue(_resolveSpecs).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
+     + "\n     suite is " + new org.hamcrest.StringDescription().appendValue(suite).toString()
+     + "\n     list(specWithoutName) is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
+     + "\n     specWithoutName is " + new org.hamcrest.StringDescription().appendValue(specWithoutName).toString() + "\n", _doubleArrow);
     
   }
   

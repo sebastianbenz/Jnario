@@ -3,7 +3,6 @@ package diverse;
 import diverse.TablesSpecAdditions;
 import java.util.Arrays;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
@@ -90,10 +89,10 @@ public class TablesSpec {
           int _sum = it.getSum();
           boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(_sum));
           Assert.assertTrue("\nExpected a + b => sum but"
-           + "\n     a + b is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString()
-           + "\n     a is " + new StringDescription().appendValue(_a).toString()
-           + "\n     b is " + new StringDescription().appendValue(_b).toString()
-           + "\n     sum is " + new StringDescription().appendValue(Integer.valueOf(_sum)).toString() + "\n", _doubleArrow);
+           + "\n     a + b is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString()
+           + "\n     a is " + new org.hamcrest.StringDescription().appendValue(_a).toString()
+           + "\n     b is " + new org.hamcrest.StringDescription().appendValue(_b).toString()
+           + "\n     sum is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_sum)).toString() + "\n", _doubleArrow);
           
         }
       };

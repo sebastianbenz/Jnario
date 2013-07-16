@@ -8,7 +8,6 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.FeatureFactory;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Given;
@@ -66,9 +65,9 @@ public class StepTypeProviderSpec {
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createGiven);
     boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.GIVEN);
     Assert.assertTrue("\nExpected createGiven.expectedTypes => GIVEN but"
-     + "\n     createGiven.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
-     + "\n     createGiven is " + new StringDescription().appendValue(_createGiven).toString()
-     + "\n     GIVEN is " + new StringDescription().appendValue(StepTypeProvider.GIVEN).toString() + "\n", _doubleArrow);
+     + "\n     createGiven.expectedTypes is " + new org.hamcrest.StringDescription().appendValue(_expectedTypes).toString()
+     + "\n     createGiven is " + new org.hamcrest.StringDescription().appendValue(_createGiven).toString()
+     + "\n     GIVEN is " + new org.hamcrest.StringDescription().appendValue(StepTypeProvider.GIVEN).toString() + "\n", _doubleArrow);
     
   }
   
@@ -80,9 +79,9 @@ public class StepTypeProviderSpec {
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createGivenReference);
     boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.GIVEN);
     Assert.assertTrue("\nExpected createGivenReference.expectedTypes => GIVEN but"
-     + "\n     createGivenReference.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
-     + "\n     createGivenReference is " + new StringDescription().appendValue(_createGivenReference).toString()
-     + "\n     GIVEN is " + new StringDescription().appendValue(StepTypeProvider.GIVEN).toString() + "\n", _doubleArrow);
+     + "\n     createGivenReference.expectedTypes is " + new org.hamcrest.StringDescription().appendValue(_expectedTypes).toString()
+     + "\n     createGivenReference is " + new org.hamcrest.StringDescription().appendValue(_createGivenReference).toString()
+     + "\n     GIVEN is " + new org.hamcrest.StringDescription().appendValue(StepTypeProvider.GIVEN).toString() + "\n", _doubleArrow);
     
   }
   
@@ -94,9 +93,9 @@ public class StepTypeProviderSpec {
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createWhen);
     boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.WHEN);
     Assert.assertTrue("\nExpected createWhen.expectedTypes => WHEN but"
-     + "\n     createWhen.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
-     + "\n     createWhen is " + new StringDescription().appendValue(_createWhen).toString()
-     + "\n     WHEN is " + new StringDescription().appendValue(StepTypeProvider.WHEN).toString() + "\n", _doubleArrow);
+     + "\n     createWhen.expectedTypes is " + new org.hamcrest.StringDescription().appendValue(_expectedTypes).toString()
+     + "\n     createWhen is " + new org.hamcrest.StringDescription().appendValue(_createWhen).toString()
+     + "\n     WHEN is " + new org.hamcrest.StringDescription().appendValue(StepTypeProvider.WHEN).toString() + "\n", _doubleArrow);
     
   }
   
@@ -108,9 +107,9 @@ public class StepTypeProviderSpec {
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createWhenReference);
     boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.WHEN);
     Assert.assertTrue("\nExpected createWhenReference.expectedTypes => WHEN but"
-     + "\n     createWhenReference.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
-     + "\n     createWhenReference is " + new StringDescription().appendValue(_createWhenReference).toString()
-     + "\n     WHEN is " + new StringDescription().appendValue(StepTypeProvider.WHEN).toString() + "\n", _doubleArrow);
+     + "\n     createWhenReference.expectedTypes is " + new org.hamcrest.StringDescription().appendValue(_expectedTypes).toString()
+     + "\n     createWhenReference is " + new org.hamcrest.StringDescription().appendValue(_createWhenReference).toString()
+     + "\n     WHEN is " + new org.hamcrest.StringDescription().appendValue(StepTypeProvider.WHEN).toString() + "\n", _doubleArrow);
     
   }
   
@@ -122,9 +121,9 @@ public class StepTypeProviderSpec {
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createThen);
     boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.THEN);
     Assert.assertTrue("\nExpected createThen.expectedTypes => THEN but"
-     + "\n     createThen.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
-     + "\n     createThen is " + new StringDescription().appendValue(_createThen).toString()
-     + "\n     THEN is " + new StringDescription().appendValue(StepTypeProvider.THEN).toString() + "\n", _doubleArrow);
+     + "\n     createThen.expectedTypes is " + new org.hamcrest.StringDescription().appendValue(_expectedTypes).toString()
+     + "\n     createThen is " + new org.hamcrest.StringDescription().appendValue(_createThen).toString()
+     + "\n     THEN is " + new org.hamcrest.StringDescription().appendValue(StepTypeProvider.THEN).toString() + "\n", _doubleArrow);
     
   }
   
@@ -136,9 +135,9 @@ public class StepTypeProviderSpec {
     Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_createThenReference);
     boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.THEN);
     Assert.assertTrue("\nExpected createThenReference.expectedTypes => THEN but"
-     + "\n     createThenReference.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
-     + "\n     createThenReference is " + new StringDescription().appendValue(_createThenReference).toString()
-     + "\n     THEN is " + new StringDescription().appendValue(StepTypeProvider.THEN).toString() + "\n", _doubleArrow);
+     + "\n     createThenReference.expectedTypes is " + new org.hamcrest.StringDescription().appendValue(_expectedTypes).toString()
+     + "\n     createThenReference is " + new org.hamcrest.StringDescription().appendValue(_createThenReference).toString()
+     + "\n     THEN is " + new org.hamcrest.StringDescription().appendValue(StepTypeProvider.THEN).toString() + "\n", _doubleArrow);
     
   }
   
@@ -163,9 +162,9 @@ public class StepTypeProviderSpec {
     Set<EClass> _expectedTypes = this.expectedTypes(_builder);
     boolean _doubleArrow = Should.<Set<EClass>>operator_doubleArrow(_expectedTypes, StepTypeProvider.GIVEN);
     Assert.assertTrue("\nExpected \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tAnd something else\n\t\t\tAnd something else\n\t\'\'\'.expectedTypes =>  GIVEN but"
-     + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tAnd something else\n\t\t\tAnd something else\n\t\'\'\'.expectedTypes is " + new StringDescription().appendValue(_expectedTypes).toString()
-     + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tAnd something else\n\t\t\tAnd something else\n\t\'\'\' is " + new StringDescription().appendValue(_builder).toString()
-     + "\n     GIVEN is " + new StringDescription().appendValue(StepTypeProvider.GIVEN).toString() + "\n", _doubleArrow);
+     + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tAnd something else\n\t\t\tAnd something else\n\t\'\'\'.expectedTypes is " + new org.hamcrest.StringDescription().appendValue(_expectedTypes).toString()
+     + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tAnd something else\n\t\t\tAnd something else\n\t\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString()
+     + "\n     GIVEN is " + new org.hamcrest.StringDescription().appendValue(StepTypeProvider.GIVEN).toString() + "\n", _doubleArrow);
     
   }
   
@@ -191,9 +190,9 @@ public class StepTypeProviderSpec {
     EClass _givenReference = this.pack.getGivenReference();
     boolean _doubleArrow = Should.<EClass>operator_doubleArrow(_actualType, _givenReference);
     Assert.assertTrue("\nExpected \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tBut something else\n\t\t\tAnd something else\n\t\'\'\'.actualType =>  givenReference but"
-     + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tBut something else\n\t\t\tAnd something else\n\t\'\'\'.actualType is " + new StringDescription().appendValue(_actualType).toString()
-     + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tBut something else\n\t\t\tAnd something else\n\t\'\'\' is " + new StringDescription().appendValue(_builder).toString()
-     + "\n     givenReference is " + new StringDescription().appendValue(_givenReference).toString() + "\n", _doubleArrow);
+     + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tBut something else\n\t\t\tAnd something else\n\t\'\'\'.actualType is " + new org.hamcrest.StringDescription().appendValue(_actualType).toString()
+     + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tBut something else\n\t\t\tAnd something else\n\t\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString()
+     + "\n     givenReference is " + new org.hamcrest.StringDescription().appendValue(_givenReference).toString() + "\n", _doubleArrow);
     
   }
   

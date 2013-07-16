@@ -10,7 +10,6 @@ package org.jnario.feature.tests.unit.naming;
 import java.util.Arrays;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.unit.naming.StepNameProviderRemoveArgumentsSpecExamples;
 import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
 import org.jnario.lib.Assert;
@@ -71,10 +70,10 @@ public class StepNameProviderRemoveArgumentsSpec extends StepNameProviderSpec {
           String _result = it.getResult();
           boolean _doubleArrow = Should.<String>operator_doubleArrow(_removeArguments, _result);
           Assert.assertTrue("\nExpected subject.removeArguments(step) => result but"
-           + "\n     subject.removeArguments(step) is " + new StringDescription().appendValue(_removeArguments).toString()
-           + "\n     subject is " + new StringDescription().appendValue(StepNameProviderRemoveArgumentsSpec.this.subject).toString()
-           + "\n     step is " + new StringDescription().appendValue(_step_1).toString()
-           + "\n     result is " + new StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+           + "\n     subject.removeArguments(step) is " + new org.hamcrest.StringDescription().appendValue(_removeArguments).toString()
+           + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(StepNameProviderRemoveArgumentsSpec.this.subject).toString()
+           + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step_1).toString()
+           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
           
         }
       };

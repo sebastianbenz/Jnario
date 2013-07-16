@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -31,10 +30,10 @@ public class WorldDeadCellsSpec extends WorldSpec {
     Set<CellLocation> _emptySet = CollectionLiterals.<CellLocation>emptySet();
     boolean _doubleArrow = Should.<Set<CellLocation>>operator_doubleArrow(_deadCells, _emptySet);
     Assert.assertTrue("\nExpected worldWith(emptyList).deadCells => emptySet but"
-     + "\n     worldWith(emptyList).deadCells is " + new StringDescription().appendValue(_deadCells).toString()
-     + "\n     worldWith(emptyList) is " + new StringDescription().appendValue(_worldWith).toString()
-     + "\n     emptyList is " + new StringDescription().appendValue(_emptyList).toString()
-     + "\n     emptySet is " + new StringDescription().appendValue(_emptySet).toString() + "\n", _doubleArrow);
+     + "\n     worldWith(emptyList).deadCells is " + new org.hamcrest.StringDescription().appendValue(_deadCells).toString()
+     + "\n     worldWith(emptyList) is " + new org.hamcrest.StringDescription().appendValue(_worldWith).toString()
+     + "\n     emptyList is " + new org.hamcrest.StringDescription().appendValue(_emptyList).toString()
+     + "\n     emptySet is " + new org.hamcrest.StringDescription().appendValue(_emptySet).toString() + "\n", _doubleArrow);
     
   }
   
@@ -46,10 +45,10 @@ public class WorldDeadCellsSpec extends WorldSpec {
     Set<CellLocation> _neighbours = this.liveCell.neighbours();
     boolean _doubleArrow = Should.<Set<CellLocation>>operator_doubleArrow(_deadCells, _neighbours);
     Assert.assertTrue("\nExpected worldWithLiveCell.deadCells => liveCell.neighbours but"
-     + "\n     worldWithLiveCell.deadCells is " + new StringDescription().appendValue(_deadCells).toString()
-     + "\n     worldWithLiveCell is " + new StringDescription().appendValue(this.worldWithLiveCell).toString()
-     + "\n     liveCell.neighbours is " + new StringDescription().appendValue(_neighbours).toString()
-     + "\n     liveCell is " + new StringDescription().appendValue(this.liveCell).toString() + "\n", _doubleArrow);
+     + "\n     worldWithLiveCell.deadCells is " + new org.hamcrest.StringDescription().appendValue(_deadCells).toString()
+     + "\n     worldWithLiveCell is " + new org.hamcrest.StringDescription().appendValue(this.worldWithLiveCell).toString()
+     + "\n     liveCell.neighbours is " + new org.hamcrest.StringDescription().appendValue(_neighbours).toString()
+     + "\n     liveCell is " + new org.hamcrest.StringDescription().appendValue(this.liveCell).toString() + "\n", _doubleArrow);
     
   }
   
@@ -61,9 +60,9 @@ public class WorldDeadCellsSpec extends WorldSpec {
     Set<CellLocation> _allNonLivingNeighbours = this.allNonLivingNeighbours();
     boolean _doubleArrow = Should.<Set<CellLocation>>operator_doubleArrow(_deadCells, _allNonLivingNeighbours);
     Assert.assertTrue("\nExpected worldWithTwoLiveNeighbours.deadCells => allNonLivingNeighbours but"
-     + "\n     worldWithTwoLiveNeighbours.deadCells is " + new StringDescription().appendValue(_deadCells).toString()
-     + "\n     worldWithTwoLiveNeighbours is " + new StringDescription().appendValue(this.worldWithTwoLiveNeighbours).toString()
-     + "\n     allNonLivingNeighbours is " + new StringDescription().appendValue(_allNonLivingNeighbours).toString() + "\n", _doubleArrow);
+     + "\n     worldWithTwoLiveNeighbours.deadCells is " + new org.hamcrest.StringDescription().appendValue(_deadCells).toString()
+     + "\n     worldWithTwoLiveNeighbours is " + new org.hamcrest.StringDescription().appendValue(this.worldWithTwoLiveNeighbours).toString()
+     + "\n     allNonLivingNeighbours is " + new org.hamcrest.StringDescription().appendValue(_allNonLivingNeighbours).toString() + "\n", _doubleArrow);
     
   }
   

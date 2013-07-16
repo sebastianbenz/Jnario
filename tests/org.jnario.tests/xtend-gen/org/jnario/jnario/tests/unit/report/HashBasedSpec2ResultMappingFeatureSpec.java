@@ -1,7 +1,6 @@
 package org.jnario.jnario.tests.unit.report;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Feature;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec;
@@ -57,8 +56,8 @@ public class HashBasedSpec2ResultMappingFeatureSpec extends HashBasedSpec2Result
     SpecExecution _result = this.result(_feature);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, Passed.class);
     Assert.assertTrue("\nExpected feature.result => typeof(Passed) but"
-     + "\n     feature.result is " + new StringDescription().appendValue(_result).toString()
-     + "\n     feature is " + new StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
+     + "\n     feature.result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     feature is " + new org.hamcrest.StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
     
   }
   
@@ -72,8 +71,8 @@ public class HashBasedSpec2ResultMappingFeatureSpec extends HashBasedSpec2Result
     SpecExecution _result = this.result(_feature);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, Failed.class);
     Assert.assertTrue("\nExpected feature.result => typeof(Failed) but"
-     + "\n     feature.result is " + new StringDescription().appendValue(_result).toString()
-     + "\n     feature is " + new StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
+     + "\n     feature.result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     feature is " + new org.hamcrest.StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
     
   }
 }

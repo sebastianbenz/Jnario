@@ -2,7 +2,6 @@ package org.jnario.feature.tests.unit.naming;
 
 import java.util.Set;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.unit.naming.FeatureScopeProviderSpec;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
@@ -43,12 +42,12 @@ public class FeatureScopeProviderStepReferenceSpec extends FeatureScopeProviderS
     Set<String> _targetOperationScope = this.targetOperationScope();
     boolean _should_contain = Should.<String>should_contain(_targetOperationScope, "myPackage.a step");
     Assert.assertTrue("\nExpected targetOperationScope should contain \"myPackage.a step\" but"
-     + "\n     targetOperationScope is " + new StringDescription().appendValue(_targetOperationScope).toString() + "\n", _should_contain);
+     + "\n     targetOperationScope is " + new org.hamcrest.StringDescription().appendValue(_targetOperationScope).toString() + "\n", _should_contain);
     
     Set<String> _targetOperationScope_1 = this.targetOperationScope();
     boolean _should_contain_1 = Should.<String>should_contain(_targetOperationScope_1, "myPackage.another step");
     Assert.assertFalse("\nExpected targetOperationScope should not contain \"myPackage.another step\" but"
-     + "\n     targetOperationScope is " + new StringDescription().appendValue(_targetOperationScope_1).toString() + "\n", _should_contain_1);
+     + "\n     targetOperationScope is " + new org.hamcrest.StringDescription().appendValue(_targetOperationScope_1).toString() + "\n", _should_contain_1);
     
   }
 }

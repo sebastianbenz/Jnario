@@ -7,7 +7,6 @@ import gameoflife.World;
 import gameoflife.specs.EvolutionSpec;
 import java.util.Set;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
@@ -43,12 +42,12 @@ public class EvolutionLiveCellsSpec extends EvolutionSpec {
     Set<CellLocation> _set = JnarioCollectionLiterals.<CellLocation>set(this.livingCell);
     boolean _doubleArrow = Should.<Set<CellLocation>>operator_doubleArrow(_livingCells, _set);
     Assert.assertTrue("\nExpected evolution.evolve(worldWithLiveCell).livingCells => set(livingCell) but"
-     + "\n     evolution.evolve(worldWithLiveCell).livingCells is " + new StringDescription().appendValue(_livingCells).toString()
-     + "\n     evolution.evolve(worldWithLiveCell) is " + new StringDescription().appendValue(_evolve).toString()
-     + "\n     evolution is " + new StringDescription().appendValue(evolution).toString()
-     + "\n     worldWithLiveCell is " + new StringDescription().appendValue(this.worldWithLiveCell).toString()
-     + "\n     set(livingCell) is " + new StringDescription().appendValue(_set).toString()
-     + "\n     livingCell is " + new StringDescription().appendValue(this.livingCell).toString() + "\n", _doubleArrow);
+     + "\n     evolution.evolve(worldWithLiveCell).livingCells is " + new org.hamcrest.StringDescription().appendValue(_livingCells).toString()
+     + "\n     evolution.evolve(worldWithLiveCell) is " + new org.hamcrest.StringDescription().appendValue(_evolve).toString()
+     + "\n     evolution is " + new org.hamcrest.StringDescription().appendValue(evolution).toString()
+     + "\n     worldWithLiveCell is " + new org.hamcrest.StringDescription().appendValue(this.worldWithLiveCell).toString()
+     + "\n     set(livingCell) is " + new org.hamcrest.StringDescription().appendValue(_set).toString()
+     + "\n     livingCell is " + new org.hamcrest.StringDescription().appendValue(this.livingCell).toString() + "\n", _doubleArrow);
     
   }
 }

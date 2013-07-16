@@ -7,7 +7,6 @@
  */
 package org.jnario.suite.unit;
 
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -34,7 +33,7 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
     int _level = this.level("#");
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(1));
     Assert.assertTrue("\nExpected level(\"#\")        => 1 but"
-     + "\n     level(\"#\") is " + new StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
+     + "\n     level(\"#\") is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
     
   }
   
@@ -45,7 +44,7 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
     int _level = this.level("#Suite");
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(1));
     Assert.assertTrue("\nExpected level(\"#Suite\")   => 1 but"
-     + "\n     level(\"#Suite\") is " + new StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
+     + "\n     level(\"#Suite\") is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
     
   }
   
@@ -56,7 +55,7 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
     int _level = this.level("##Suite");
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(2));
     Assert.assertTrue("\nExpected level(\"##Suite\")  => 2 but"
-     + "\n     level(\"##Suite\") is " + new StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
+     + "\n     level(\"##Suite\") is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
     
   }
   
@@ -67,7 +66,7 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
     int _level = this.level("###Suite");
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_level), Integer.valueOf(3));
     Assert.assertTrue("\nExpected level(\"###Suite\") => 3 but"
-     + "\n     level(\"###Suite\") is " + new StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
+     + "\n     level(\"###Suite\") is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_level)).toString() + "\n", _doubleArrow);
     
   }
   

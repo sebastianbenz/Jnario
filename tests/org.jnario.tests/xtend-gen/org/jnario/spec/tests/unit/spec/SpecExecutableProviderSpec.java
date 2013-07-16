@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.hamcrest.StringDescription;
 import org.jnario.Executable;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
@@ -58,11 +57,11 @@ public class SpecExecutableProviderSpec {
     List<Example> _list = JnarioCollectionLiterals.<Example>list(_example, _example_1);
     boolean _doubleArrow = Should.<List<? extends Executable>>operator_doubleArrow(_executables, _list);
     Assert.assertTrue("\nExpected exampleGroup(\"Something\").executables => list(example(\"fact 1\"), example(\"fact 2\")) but"
-     + "\n     exampleGroup(\"Something\").executables is " + new StringDescription().appendValue(_executables).toString()
-     + "\n     exampleGroup(\"Something\") is " + new StringDescription().appendValue(_exampleGroup).toString()
-     + "\n     list(example(\"fact 1\"), example(\"fact 2\")) is " + new StringDescription().appendValue(_list).toString()
-     + "\n     example(\"fact 1\") is " + new StringDescription().appendValue(_example).toString()
-     + "\n     example(\"fact 2\") is " + new StringDescription().appendValue(_example_1).toString() + "\n", _doubleArrow);
+     + "\n     exampleGroup(\"Something\").executables is " + new org.hamcrest.StringDescription().appendValue(_executables).toString()
+     + "\n     exampleGroup(\"Something\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     list(example(\"fact 1\"), example(\"fact 2\")) is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
+     + "\n     example(\"fact 1\") is " + new org.hamcrest.StringDescription().appendValue(_example).toString()
+     + "\n     example(\"fact 2\") is " + new org.hamcrest.StringDescription().appendValue(_example_1).toString() + "\n", _doubleArrow);
     
   }
   
@@ -89,11 +88,11 @@ public class SpecExecutableProviderSpec {
     List<ExampleGroup> _list = JnarioCollectionLiterals.<ExampleGroup>list(_exampleGroup_1, _exampleGroup_2);
     boolean _doubleArrow = Should.<List<? extends Executable>>operator_doubleArrow(_executables, _list);
     Assert.assertTrue("\nExpected exampleGroup(\"Something\").executables => list(exampleGroup(\"exampleGroup 1\"), exampleGroup(\"exampleGroup 2\")) but"
-     + "\n     exampleGroup(\"Something\").executables is " + new StringDescription().appendValue(_executables).toString()
-     + "\n     exampleGroup(\"Something\") is " + new StringDescription().appendValue(_exampleGroup).toString()
-     + "\n     list(exampleGroup(\"exampleGroup 1\"), exampleGroup(\"exampleGroup 2\")) is " + new StringDescription().appendValue(_list).toString()
-     + "\n     exampleGroup(\"exampleGroup 1\") is " + new StringDescription().appendValue(_exampleGroup_1).toString()
-     + "\n     exampleGroup(\"exampleGroup 2\") is " + new StringDescription().appendValue(_exampleGroup_2).toString() + "\n", _doubleArrow);
+     + "\n     exampleGroup(\"Something\").executables is " + new org.hamcrest.StringDescription().appendValue(_executables).toString()
+     + "\n     exampleGroup(\"Something\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     list(exampleGroup(\"exampleGroup 1\"), exampleGroup(\"exampleGroup 2\")) is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
+     + "\n     exampleGroup(\"exampleGroup 1\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup_1).toString()
+     + "\n     exampleGroup(\"exampleGroup 2\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup_2).toString() + "\n", _doubleArrow);
     
   }
   

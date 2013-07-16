@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Set;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Pair;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.integration.ExtensionLibrarySpec;
 import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
@@ -45,8 +44,8 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
     boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(
       Collections.<String>unmodifiableList(Lists.<String>newArrayList("green", "red")), _newArrayList);
     Assert.assertTrue("\nExpected #[\"green\", \"red\"]         => newArrayList(\"green\", \"red\") but"
-     + "\n     #[\"green\", \"red\"] is " + new StringDescription().appendValue(Collections.<String>unmodifiableList(Lists.<String>newArrayList("green", "red"))).toString()
-     + "\n     newArrayList(\"green\", \"red\") is " + new StringDescription().appendValue(_newArrayList).toString() + "\n", _doubleArrow);
+     + "\n     #[\"green\", \"red\"] is " + new org.hamcrest.StringDescription().appendValue(Collections.<String>unmodifiableList(Lists.<String>newArrayList("green", "red"))).toString()
+     + "\n     newArrayList(\"green\", \"red\") is " + new org.hamcrest.StringDescription().appendValue(_newArrayList).toString() + "\n", _doubleArrow);
     
     ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("green");
     ArrayList<String> _newArrayList_2 = CollectionLiterals.<String>newArrayList("red");
@@ -54,12 +53,12 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
     boolean _doubleArrow_1 = Should.<List<? extends List<String>>>operator_doubleArrow(
       Collections.<List<String>>unmodifiableList(Lists.<List<String>>newArrayList(Collections.<String>unmodifiableList(Lists.<String>newArrayList("green")), Collections.<String>unmodifiableList(Lists.<String>newArrayList("red")))), _newArrayList_3);
     Assert.assertTrue("\nExpected #[#[\"green\"], #[\"red\"]]   => newArrayList(newArrayList(\"green\"), newArrayList(\"red\")) but"
-     + "\n     #[#[\"green\"], #[\"red\"]] is " + new StringDescription().appendValue(Collections.<List<String>>unmodifiableList(Lists.<List<String>>newArrayList(Collections.<String>unmodifiableList(Lists.<String>newArrayList("green")), Collections.<String>unmodifiableList(Lists.<String>newArrayList("red"))))).toString()
-     + "\n     #[\"green\"] is " + new StringDescription().appendValue(Collections.<String>unmodifiableList(Lists.<String>newArrayList("green"))).toString()
-     + "\n     #[\"red\"] is " + new StringDescription().appendValue(Collections.<String>unmodifiableList(Lists.<String>newArrayList("red"))).toString()
-     + "\n     newArrayList(newArrayList(\"green\"), newArrayList(\"red\")) is " + new StringDescription().appendValue(_newArrayList_3).toString()
-     + "\n     newArrayList(\"green\") is " + new StringDescription().appendValue(_newArrayList_1).toString()
-     + "\n     newArrayList(\"red\") is " + new StringDescription().appendValue(_newArrayList_2).toString() + "\n", _doubleArrow_1);
+     + "\n     #[#[\"green\"], #[\"red\"]] is " + new org.hamcrest.StringDescription().appendValue(Collections.<List<String>>unmodifiableList(Lists.<List<String>>newArrayList(Collections.<String>unmodifiableList(Lists.<String>newArrayList("green")), Collections.<String>unmodifiableList(Lists.<String>newArrayList("red"))))).toString()
+     + "\n     #[\"green\"] is " + new org.hamcrest.StringDescription().appendValue(Collections.<String>unmodifiableList(Lists.<String>newArrayList("green"))).toString()
+     + "\n     #[\"red\"] is " + new org.hamcrest.StringDescription().appendValue(Collections.<String>unmodifiableList(Lists.<String>newArrayList("red"))).toString()
+     + "\n     newArrayList(newArrayList(\"green\"), newArrayList(\"red\")) is " + new org.hamcrest.StringDescription().appendValue(_newArrayList_3).toString()
+     + "\n     newArrayList(\"green\") is " + new org.hamcrest.StringDescription().appendValue(_newArrayList_1).toString()
+     + "\n     newArrayList(\"red\") is " + new org.hamcrest.StringDescription().appendValue(_newArrayList_2).toString() + "\n", _doubleArrow_1);
     
   }
   
@@ -71,8 +70,8 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
     boolean _doubleArrow = Should.<Set<String>>operator_doubleArrow(
       Collections.<String>unmodifiableSet(Sets.<String>newHashSet("green", "red")), _newHashSet);
     Assert.assertTrue("\nExpected #{\"green\", \"red\"}         => newHashSet(\"green\", \"red\") but"
-     + "\n     #{\"green\", \"red\"} is " + new StringDescription().appendValue(Collections.<String>unmodifiableSet(Sets.<String>newHashSet("green", "red"))).toString()
-     + "\n     newHashSet(\"green\", \"red\") is " + new StringDescription().appendValue(_newHashSet).toString() + "\n", _doubleArrow);
+     + "\n     #{\"green\", \"red\"} is " + new org.hamcrest.StringDescription().appendValue(Collections.<String>unmodifiableSet(Sets.<String>newHashSet("green", "red"))).toString()
+     + "\n     newHashSet(\"green\", \"red\") is " + new org.hamcrest.StringDescription().appendValue(_newHashSet).toString() + "\n", _doubleArrow);
     
     HashSet<String> _newHashSet_1 = CollectionLiterals.<String>newHashSet("green");
     HashSet<String> _newHashSet_2 = CollectionLiterals.<String>newHashSet("red");
@@ -80,12 +79,12 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
     boolean _doubleArrow_1 = Should.<Set<? extends Set<String>>>operator_doubleArrow(
       Collections.<Set<String>>unmodifiableSet(Sets.<Set<String>>newHashSet(Collections.<String>unmodifiableSet(Sets.<String>newHashSet("green")), Collections.<String>unmodifiableSet(Sets.<String>newHashSet("red")))), _newHashSet_3);
     Assert.assertTrue("\nExpected #{#{\"green\"}, #{\"red\"}}    => newHashSet(newHashSet(\"green\"), newHashSet(\"red\")) but"
-     + "\n     #{#{\"green\"}, #{\"red\"}} is " + new StringDescription().appendValue(Collections.<Set<String>>unmodifiableSet(Sets.<Set<String>>newHashSet(Collections.<String>unmodifiableSet(Sets.<String>newHashSet("green")), Collections.<String>unmodifiableSet(Sets.<String>newHashSet("red"))))).toString()
-     + "\n     #{\"green\"} is " + new StringDescription().appendValue(Collections.<String>unmodifiableSet(Sets.<String>newHashSet("green"))).toString()
-     + "\n     #{\"red\"} is " + new StringDescription().appendValue(Collections.<String>unmodifiableSet(Sets.<String>newHashSet("red"))).toString()
-     + "\n     newHashSet(newHashSet(\"green\"), newHashSet(\"red\")) is " + new StringDescription().appendValue(_newHashSet_3).toString()
-     + "\n     newHashSet(\"green\") is " + new StringDescription().appendValue(_newHashSet_1).toString()
-     + "\n     newHashSet(\"red\") is " + new StringDescription().appendValue(_newHashSet_2).toString() + "\n", _doubleArrow_1);
+     + "\n     #{#{\"green\"}, #{\"red\"}} is " + new org.hamcrest.StringDescription().appendValue(Collections.<Set<String>>unmodifiableSet(Sets.<Set<String>>newHashSet(Collections.<String>unmodifiableSet(Sets.<String>newHashSet("green")), Collections.<String>unmodifiableSet(Sets.<String>newHashSet("red"))))).toString()
+     + "\n     #{\"green\"} is " + new org.hamcrest.StringDescription().appendValue(Collections.<String>unmodifiableSet(Sets.<String>newHashSet("green"))).toString()
+     + "\n     #{\"red\"} is " + new org.hamcrest.StringDescription().appendValue(Collections.<String>unmodifiableSet(Sets.<String>newHashSet("red"))).toString()
+     + "\n     newHashSet(newHashSet(\"green\"), newHashSet(\"red\")) is " + new org.hamcrest.StringDescription().appendValue(_newHashSet_3).toString()
+     + "\n     newHashSet(\"green\") is " + new org.hamcrest.StringDescription().appendValue(_newHashSet_1).toString()
+     + "\n     newHashSet(\"red\") is " + new org.hamcrest.StringDescription().appendValue(_newHashSet_2).toString() + "\n", _doubleArrow_1);
     
   }
   
@@ -103,11 +102,11 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
     HashMap<String,String> _newHashMap = CollectionLiterals.<String, String>newHashMap(_mappedTo_3, _mappedTo_4, _mappedTo_5);
     boolean _doubleArrow = Should.<Map<String,String>>operator_doubleArrow(_map, _newHashMap);
     Assert.assertTrue("\nExpected map(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) => newHashMap(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) but"
-     + "\n     map(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) is " + new StringDescription().appendValue(_map).toString()
-     + "\n     \"green\"  -> \"apple\" is " + new StringDescription().appendValue(_mappedTo).toString()
-     + "\n     \"yellow\" -> \"banana\" is " + new StringDescription().appendValue(_mappedTo_1).toString()
-     + "\n     \"red\"    -> \"tomato\" is " + new StringDescription().appendValue(_mappedTo_2).toString()
-     + "\n     newHashMap(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) is " + new StringDescription().appendValue(_newHashMap).toString() + "\n", _doubleArrow);
+     + "\n     map(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) is " + new org.hamcrest.StringDescription().appendValue(_map).toString()
+     + "\n     \"green\"  -> \"apple\" is " + new org.hamcrest.StringDescription().appendValue(_mappedTo).toString()
+     + "\n     \"yellow\" -> \"banana\" is " + new org.hamcrest.StringDescription().appendValue(_mappedTo_1).toString()
+     + "\n     \"red\"    -> \"tomato\" is " + new org.hamcrest.StringDescription().appendValue(_mappedTo_2).toString()
+     + "\n     newHashMap(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) is " + new org.hamcrest.StringDescription().appendValue(_newHashMap).toString() + "\n", _doubleArrow);
     
   }
 }

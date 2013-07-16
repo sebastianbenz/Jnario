@@ -3,7 +3,6 @@ package diverse;
 import calculator.SimpleCalculator;
 import diverse.AdditionFeature;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
@@ -64,10 +63,10 @@ public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
     String _first = JnarioIterableExtensions.<String>first(args);
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_result, _first);
     Assert.assertTrue("\nExpected calculator.result =>  args.first but"
-     + "\n     calculator.result is " + new StringDescription().appendValue(_result).toString()
-     + "\n     calculator is " + new StringDescription().appendValue(this.calculator).toString()
-     + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
-     + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+     + "\n     calculator.result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     calculator is " + new org.hamcrest.StringDescription().appendValue(this.calculator).toString()
+     + "\n     args.first is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
+     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
 }

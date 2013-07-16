@@ -8,7 +8,7 @@
 		<project.build.resourceEncoding>${sourceEncoding}</project.build.resourceEncoding>
 		<maven.compiler.encoding>${sourceEncoding}</maven.compiler.encoding>
 		<xtend.version>2.4.1</xtend.version>
-		<jnario.version>0.4.1</jnario.version>
+		<jnario.version>0.4.3</jnario.version>
 	</properties>
 	<repositories>
 		<repository>

@@ -9,7 +9,6 @@ package org.jnario.feature.tests.unit.naming;
 
 import com.google.common.base.Objects;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Given;
 import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
 import org.jnario.lib.Assert;
@@ -32,9 +31,9 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
     String _nameOf = this.subject.nameOf(_emptyStep);
     boolean _equals = Objects.equal(_nameOf, null);
     Assert.assertTrue("\nExpected subject.nameOf(emptyStep) == null but"
-     + "\n     subject.nameOf(emptyStep) is " + new StringDescription().appendValue(_nameOf).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     emptyStep is " + new StringDescription().appendValue(_emptyStep).toString() + "\n", _equals);
+     + "\n     subject.nameOf(emptyStep) is " + new org.hamcrest.StringDescription().appendValue(_nameOf).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
+     + "\n     emptyStep is " + new org.hamcrest.StringDescription().appendValue(_emptyStep).toString() + "\n", _equals);
     
   }
   
@@ -55,7 +54,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
     String _stepName = this.stepName();
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_stepName, "Given a step with an implementation");
     Assert.assertTrue("\nExpected stepName => \"Given a step with an implementation\" but"
-     + "\n     stepName is " + new StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
+     + "\n     stepName is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -81,7 +80,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
     String _stepName = this.stepName();
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_stepName, "Given a step with a resolved reference");
     Assert.assertTrue("\nExpected stepName => \"Given a step with a resolved reference\" but"
-     + "\n     stepName is " + new StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
+     + "\n     stepName is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -99,7 +98,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
     String _stepName = this.stepName();
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_stepName, "Given a step with an unresolved reference");
     Assert.assertTrue("\nExpected stepName => \"Given a step with an unresolved reference\" but"
-     + "\n     stepName is " + new StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
+     + "\n     stepName is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -120,7 +119,7 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
     String _stepName = this.stepName();
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_stepName, "Given a step with two values \"a\" and \"b\"");
     Assert.assertTrue("\nExpected stepName => \'Given a step with two values \"a\" and \"b\"\' but"
-     + "\n     stepName is " + new StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
+     + "\n     stepName is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
     
   }
 }

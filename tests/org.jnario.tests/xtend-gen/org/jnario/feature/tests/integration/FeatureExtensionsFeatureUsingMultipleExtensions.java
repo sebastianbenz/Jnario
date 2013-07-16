@@ -12,7 +12,6 @@ import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
-import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.integration.FeatureExtensionsFeature;
 import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioIterableExtensions;
@@ -60,10 +59,10 @@ public class FeatureExtensionsFeatureUsingMultipleExtensions extends FeatureExte
     List<String> _list = StringConversions.toList(_first);
     boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(this.list, _list);
     Assert.assertTrue("\nExpected list => args.first.toList but"
-     + "\n     list is " + new StringDescription().appendValue(this.list).toString()
-     + "\n     args.first.toList is " + new StringDescription().appendValue(_list).toString()
-     + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
-     + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+     + "\n     list is " + new org.hamcrest.StringDescription().appendValue(this.list).toString()
+     + "\n     args.first.toList is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
+     + "\n     args.first is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
+     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
 }

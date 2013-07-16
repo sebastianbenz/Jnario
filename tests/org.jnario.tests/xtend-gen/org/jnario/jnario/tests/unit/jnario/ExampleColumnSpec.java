@@ -14,7 +14,6 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.ExampleCell;
 import org.jnario.ExampleColumn;
 import org.jnario.jnario.test.util.ModelStore;
@@ -149,10 +148,10 @@ public class ExampleColumnSpec {
           String _value = it.getValue();
           boolean _doubleArrow = Should.<String>operator_doubleArrow(_trim, _value);
           Assert.assertTrue("\nExpected cell.serialize.trim => value but"
-           + "\n     cell.serialize.trim is " + new StringDescription().appendValue(_trim).toString()
-           + "\n     cell.serialize is " + new StringDescription().appendValue(_serialize).toString()
-           + "\n     cell is " + new StringDescription().appendValue(cell).toString()
-           + "\n     value is " + new StringDescription().appendValue(_value).toString() + "\n", _doubleArrow);
+           + "\n     cell.serialize.trim is " + new org.hamcrest.StringDescription().appendValue(_trim).toString()
+           + "\n     cell.serialize is " + new org.hamcrest.StringDescription().appendValue(_serialize).toString()
+           + "\n     cell is " + new org.hamcrest.StringDescription().appendValue(cell).toString()
+           + "\n     value is " + new org.hamcrest.StringDescription().appendValue(_value).toString() + "\n", _doubleArrow);
           
         }
       };

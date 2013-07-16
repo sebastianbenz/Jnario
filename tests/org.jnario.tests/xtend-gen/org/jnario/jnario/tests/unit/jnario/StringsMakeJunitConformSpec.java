@@ -9,7 +9,6 @@ package org.jnario.jnario.tests.unit.jnario;
 
 import java.util.Arrays;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.jnario.StringsMakeJunitConformSpecExamples;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
 import org.jnario.lib.Assert;
@@ -100,9 +99,9 @@ public class StringsMakeJunitConformSpec extends StringsSpec {
           String _result = it.getResult();
           boolean _doubleArrow = Should.<String>operator_doubleArrow(_makeJunitConform, _result);
           Assert.assertTrue("\nExpected string.makeJunitConform => result but"
-           + "\n     string.makeJunitConform is " + new StringDescription().appendValue(_makeJunitConform).toString()
-           + "\n     string is " + new StringDescription().appendValue(_string).toString()
-           + "\n     result is " + new StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+           + "\n     string.makeJunitConform is " + new org.hamcrest.StringDescription().appendValue(_makeJunitConform).toString()
+           + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
+           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
           
         }
       };

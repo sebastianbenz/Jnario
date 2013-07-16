@@ -10,7 +10,6 @@ package org.jnario.jnario.tests.unit.doc;
 import java.util.Arrays;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.doc.WhiteSpaceNormalizer;
 import org.jnario.jnario.tests.unit.doc.WhiteSpaceNormalizerSpecExamples;
 import org.jnario.lib.Assert;
@@ -149,10 +148,10 @@ public class WhiteSpaceNormalizerSpec {
           String _result = it.getResult();
           boolean _doubleArrow = Should.<String>operator_doubleArrow(_normalize, _result);
           Assert.assertTrue("\nExpected subject.normalize(input) => result but"
-           + "\n     subject.normalize(input) is " + new StringDescription().appendValue(_normalize).toString()
-           + "\n     subject is " + new StringDescription().appendValue(WhiteSpaceNormalizerSpec.this.subject).toString()
-           + "\n     input is " + new StringDescription().appendValue(_input).toString()
-           + "\n     result is " + new StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+           + "\n     subject.normalize(input) is " + new org.hamcrest.StringDescription().appendValue(_normalize).toString()
+           + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(WhiteSpaceNormalizerSpec.this.subject).toString()
+           + "\n     input is " + new org.hamcrest.StringDescription().appendValue(_input).toString()
+           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
           
         }
       };
@@ -171,9 +170,9 @@ public class WhiteSpaceNormalizerSpec {
     String _normalize = this.subject.normalize(_builder);
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_normalize, "hello\nworld\n");
     Assert.assertTrue("\nExpected subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\r\n\t\t\'\'\') => \"hello\\nworld\\n\" but"
-     + "\n     subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\r\n\t\t\'\'\') is " + new StringDescription().appendValue(_normalize).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     \'\'\'\r\n\t\thello\r\n\t\tworld\r\n\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+     + "\n     subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\r\n\t\t\'\'\') is " + new org.hamcrest.StringDescription().appendValue(_normalize).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
+     + "\n     \'\'\'\r\n\t\thello\r\n\t\tworld\r\n\t\t\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
   
@@ -184,8 +183,8 @@ public class WhiteSpaceNormalizerSpec {
     String _normalize = this.subject.normalize("\n\t\t\t\t\t hello\n\t\t\t\t\t world\n\t\t\t\t\t");
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_normalize, "hello\nworld\n");
     Assert.assertTrue("\nExpected subject.normalize(\"\\n\\t\\t\\t\\t\\t hello\\n\\t\\t\\t\\t\\t world\\n\\t\\t\\t\\t\\t\") => \"hello\\nworld\\n\" but"
-     + "\n     subject.normalize(\"\\n\\t\\t\\t\\t\\t hello\\n\\t\\t\\t\\t\\t world\\n\\t\\t\\t\\t\\t\") is " + new StringDescription().appendValue(_normalize).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+     + "\n     subject.normalize(\"\\n\\t\\t\\t\\t\\t hello\\n\\t\\t\\t\\t\\t world\\n\\t\\t\\t\\t\\t\") is " + new org.hamcrest.StringDescription().appendValue(_normalize).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
   }
   
@@ -200,9 +199,9 @@ public class WhiteSpaceNormalizerSpec {
     String _normalize = this.subject.normalize(_builder);
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_normalize, "hello\nworld");
     Assert.assertTrue("\nExpected subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\'\'\') => \"hello\\nworld\" but"
-     + "\n     subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\'\'\') is " + new StringDescription().appendValue(_normalize).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     \'\'\'\r\n\t\thello\r\n\t\tworld\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+     + "\n     subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\'\'\') is " + new org.hamcrest.StringDescription().appendValue(_normalize).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
+     + "\n     \'\'\'\r\n\t\thello\r\n\t\tworld\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
     
   }
 }

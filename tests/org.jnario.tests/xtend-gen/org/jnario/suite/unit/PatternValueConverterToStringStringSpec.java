@@ -10,7 +10,6 @@ package org.jnario.suite.unit;
 import java.util.Arrays;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
@@ -80,12 +79,12 @@ public class PatternValueConverterToStringStringSpec extends PatternValueConvert
           String _plus = (_result + _newLine);
           boolean _doubleArrow = Should.<String>operator_doubleArrow(_string, _plus);
           Assert.assertTrue("\nExpected subject.toString(input) => result + newLine but"
-           + "\n     subject.toString(input) is " + new StringDescription().appendValue(_string).toString()
-           + "\n     subject is " + new StringDescription().appendValue(PatternValueConverterToStringStringSpec.this.subject).toString()
-           + "\n     input is " + new StringDescription().appendValue(_input).toString()
-           + "\n     result + newLine is " + new StringDescription().appendValue(_plus).toString()
-           + "\n     result is " + new StringDescription().appendValue(_result).toString()
-           + "\n     newLine is " + new StringDescription().appendValue(_newLine).toString() + "\n", _doubleArrow);
+           + "\n     subject.toString(input) is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
+           + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(PatternValueConverterToStringStringSpec.this.subject).toString()
+           + "\n     input is " + new org.hamcrest.StringDescription().appendValue(_input).toString()
+           + "\n     result + newLine is " + new org.hamcrest.StringDescription().appendValue(_plus).toString()
+           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+           + "\n     newLine is " + new org.hamcrest.StringDescription().appendValue(_newLine).toString() + "\n", _doubleArrow);
           
         }
       };

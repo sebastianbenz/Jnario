@@ -9,7 +9,6 @@ package org.jnario.jnario.tests.unit.jnario;
 
 import java.util.Arrays;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.jnario.StringsSpec;
 import org.jnario.jnario.tests.unit.jnario.StringsStartsWithWordSpecExamples;
 import org.jnario.lib.Assert;
@@ -127,10 +126,10 @@ public class StringsStartsWithWordSpec extends StringsSpec {
           int _index = it.getIndex();
           boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_startsWithWord), Integer.valueOf(_index));
           Assert.assertTrue("\nExpected string.startsWithWord(word) => index but"
-           + "\n     string.startsWithWord(word) is " + new StringDescription().appendValue(Integer.valueOf(_startsWithWord)).toString()
-           + "\n     string is " + new StringDescription().appendValue(_string).toString()
-           + "\n     word is " + new StringDescription().appendValue(_word).toString()
-           + "\n     index is " + new StringDescription().appendValue(Integer.valueOf(_index)).toString() + "\n", _doubleArrow);
+           + "\n     string.startsWithWord(word) is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_startsWithWord)).toString()
+           + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
+           + "\n     word is " + new org.hamcrest.StringDescription().appendValue(_word).toString()
+           + "\n     index is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_index)).toString() + "\n", _doubleArrow);
           
         }
       };

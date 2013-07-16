@@ -8,7 +8,6 @@
 package org.jnario.standalone.tests;
 
 import org.hamcrest.Matcher;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
@@ -32,7 +31,7 @@ public class JnarioDocCompilerFeatureDocCompilerSpec extends JnarioDocCompilerSp
     Matcher<? super String> _generated = this.generated();
     boolean _should_be = Should.<String>should_be("test/ExamplesFeature.html", _generated);
     Assert.assertTrue("\nExpected \"test/ExamplesFeature.html\" should be generated but"
-     + "\n     generated is " + new StringDescription().appendValue(_generated).toString() + "\n", _should_be);
+     + "\n     generated is " + new org.hamcrest.StringDescription().appendValue(_generated).toString() + "\n", _should_be);
     
   }
 }

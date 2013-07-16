@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Set;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.Should;
@@ -49,11 +48,11 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
     Set<String> _set_1 = JnarioCollectionLiterals.<String>set("MySpecSpec", "MyFeatureFeature");
     boolean _doubleArrow = Should.<Set<String>>operator_doubleArrow(_set, _set_1);
     Assert.assertTrue("\nExpected resolvedSpecs(m.firstSuite).toSet => set(\"MySpecSpec\", \"MyFeatureFeature\") but"
-     + "\n     resolvedSpecs(m.firstSuite).toSet is " + new StringDescription().appendValue(_set).toString()
-     + "\n     resolvedSpecs(m.firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
-     + "\n     m.firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
-     + "\n     m is " + new StringDescription().appendValue(this.m).toString()
-     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + new StringDescription().appendValue(_set_1).toString() + "\n", _doubleArrow);
+     + "\n     resolvedSpecs(m.firstSuite).toSet is " + new org.hamcrest.StringDescription().appendValue(_set).toString()
+     + "\n     resolvedSpecs(m.firstSuite) is " + new org.hamcrest.StringDescription().appendValue(_resolvedSpecs).toString()
+     + "\n     m.firstSuite is " + new org.hamcrest.StringDescription().appendValue(_firstSuite).toString()
+     + "\n     m is " + new org.hamcrest.StringDescription().appendValue(this.m).toString()
+     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + new org.hamcrest.StringDescription().appendValue(_set_1).toString() + "\n", _doubleArrow);
     
   }
   
@@ -77,10 +76,10 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
     List<String> _list = JnarioCollectionLiterals.<String>list("MySpecSpec");
     boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(_resolvedSpecs, _list);
     Assert.assertTrue("\nExpected resolvedSpecs(m.firstSuite) => list(\"MySpecSpec\") but"
-     + "\n     resolvedSpecs(m.firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
-     + "\n     m.firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
-     + "\n     m is " + new StringDescription().appendValue(this.m).toString()
-     + "\n     list(\"MySpecSpec\") is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
+     + "\n     resolvedSpecs(m.firstSuite) is " + new org.hamcrest.StringDescription().appendValue(_resolvedSpecs).toString()
+     + "\n     m.firstSuite is " + new org.hamcrest.StringDescription().appendValue(_firstSuite).toString()
+     + "\n     m is " + new org.hamcrest.StringDescription().appendValue(this.m).toString()
+     + "\n     list(\"MySpecSpec\") is " + new org.hamcrest.StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
     
   }
   
@@ -129,11 +128,11 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
     Set<String> _set_1 = JnarioCollectionLiterals.<String>set("MySpecSpec", "MyFeatureFeature", "StringSpec");
     boolean _doubleArrow = Should.<Set<String>>operator_doubleArrow(_set, _set_1);
     Assert.assertTrue("\nExpected resolvedSpecs(m.firstSuite).toSet => set(\"MySpecSpec\", \"MyFeatureFeature\", \"StringSpec\") but"
-     + "\n     resolvedSpecs(m.firstSuite).toSet is " + new StringDescription().appendValue(_set).toString()
-     + "\n     resolvedSpecs(m.firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
-     + "\n     m.firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
-     + "\n     m is " + new StringDescription().appendValue(this.m).toString()
-     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\", \"StringSpec\") is " + new StringDescription().appendValue(_set_1).toString() + "\n", _doubleArrow);
+     + "\n     resolvedSpecs(m.firstSuite).toSet is " + new org.hamcrest.StringDescription().appendValue(_set).toString()
+     + "\n     resolvedSpecs(m.firstSuite) is " + new org.hamcrest.StringDescription().appendValue(_resolvedSpecs).toString()
+     + "\n     m.firstSuite is " + new org.hamcrest.StringDescription().appendValue(_firstSuite).toString()
+     + "\n     m is " + new org.hamcrest.StringDescription().appendValue(this.m).toString()
+     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\", \"StringSpec\") is " + new org.hamcrest.StringDescription().appendValue(_set_1).toString() + "\n", _doubleArrow);
     
   }
   
@@ -157,10 +156,10 @@ public class SpecResolverEvaluatesRegularExpressionsSpec extends SpecResolverSpe
     List<String> _list = JnarioCollectionLiterals.<String>list("MyFeatureFeature", "MySpecSpec", "StringSpec");
     boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(_resolvedSpecs, _list);
     Assert.assertTrue("\nExpected resolvedSpecs(m.firstSuite) => list(\"MyFeatureFeature\", \"MySpecSpec\", \"StringSpec\") but"
-     + "\n     resolvedSpecs(m.firstSuite) is " + new StringDescription().appendValue(_resolvedSpecs).toString()
-     + "\n     m.firstSuite is " + new StringDescription().appendValue(_firstSuite).toString()
-     + "\n     m is " + new StringDescription().appendValue(this.m).toString()
-     + "\n     list(\"MyFeatureFeature\", \"MySpecSpec\", \"StringSpec\") is " + new StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
+     + "\n     resolvedSpecs(m.firstSuite) is " + new org.hamcrest.StringDescription().appendValue(_resolvedSpecs).toString()
+     + "\n     m.firstSuite is " + new org.hamcrest.StringDescription().appendValue(_firstSuite).toString()
+     + "\n     m is " + new org.hamcrest.StringDescription().appendValue(this.m).toString()
+     + "\n     list(\"MyFeatureFeature\", \"MySpecSpec\", \"StringSpec\") is " + new org.hamcrest.StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
     
   }
 }

@@ -14,7 +14,6 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.doc.Filter;
 import org.jnario.doc.FilterExtractor;
 import org.jnario.doc.FilteringResult;
@@ -159,9 +158,9 @@ public class FilterExtractorSpec {
           String _resultString = it.getResultString();
           boolean _doubleArrow = Should.<String>operator_doubleArrow(_stringAfterExtract, _resultString);
           Assert.assertTrue("\nExpected stringAfterExtract(input) => resultString but"
-           + "\n     stringAfterExtract(input) is " + new StringDescription().appendValue(_stringAfterExtract).toString()
-           + "\n     input is " + new StringDescription().appendValue(_input).toString()
-           + "\n     resultString is " + new StringDescription().appendValue(_resultString).toString() + "\n", _doubleArrow);
+           + "\n     stringAfterExtract(input) is " + new org.hamcrest.StringDescription().appendValue(_stringAfterExtract).toString()
+           + "\n     input is " + new org.hamcrest.StringDescription().appendValue(_input).toString()
+           + "\n     resultString is " + new org.hamcrest.StringDescription().appendValue(_resultString).toString() + "\n", _doubleArrow);
           
         }
       };
@@ -179,9 +178,9 @@ public class FilterExtractorSpec {
           List<String> _resultingFilters = it.getResultingFilters();
           boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(_extractedFilters, _resultingFilters);
           Assert.assertTrue("\nExpected extractedFilters(input) => resultingFilters but"
-           + "\n     extractedFilters(input) is " + new StringDescription().appendValue(_extractedFilters).toString()
-           + "\n     input is " + new StringDescription().appendValue(_input).toString()
-           + "\n     resultingFilters is " + new StringDescription().appendValue(_resultingFilters).toString() + "\n", _doubleArrow);
+           + "\n     extractedFilters(input) is " + new org.hamcrest.StringDescription().appendValue(_extractedFilters).toString()
+           + "\n     input is " + new org.hamcrest.StringDescription().appendValue(_input).toString()
+           + "\n     resultingFilters is " + new org.hamcrest.StringDescription().appendValue(_resultingFilters).toString() + "\n", _doubleArrow);
           
         }
       };

@@ -9,7 +9,6 @@ package org.jnario.jnario.tests.unit.doc;
 
 import java.util.Arrays;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.doc.Filter;
 import org.jnario.doc.RegexFilter;
 import org.jnario.jnario.tests.unit.doc.RegexFilterSpecFilteringExamples;
@@ -113,10 +112,10 @@ public class RegexFilterSpec {
           String _result = it.getResult();
           boolean _doubleArrow = Should.<String>operator_doubleArrow(_apply, _result);
           Assert.assertTrue("\nExpected filter.apply(string) => result but"
-           + "\n     filter.apply(string) is " + new StringDescription().appendValue(_apply).toString()
-           + "\n     filter is " + new StringDescription().appendValue(filter).toString()
-           + "\n     string is " + new StringDescription().appendValue(_string).toString()
-           + "\n     result is " + new StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+           + "\n     filter.apply(string) is " + new org.hamcrest.StringDescription().appendValue(_apply).toString()
+           + "\n     filter is " + new org.hamcrest.StringDescription().appendValue(filter).toString()
+           + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
+           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
           
         }
       };

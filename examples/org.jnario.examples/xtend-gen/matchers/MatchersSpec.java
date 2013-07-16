@@ -2,7 +2,6 @@ package matchers;
 
 import matchers.Person;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -25,13 +24,13 @@ public class MatchersSpec {
     Function1<Person,Boolean> _underAge = this.underAge();
     Boolean _should_be = this.<Person>should_be(personOfAgeFour, _underAge);
     Assert.assertFalse("\nExpected personOfAgeFour should not be underAge but"
-     + "\n     personOfAgeFour is " + new StringDescription().appendValue(personOfAgeFour).toString() + "\n", _should_be);
+     + "\n     personOfAgeFour is " + new org.hamcrest.StringDescription().appendValue(personOfAgeFour).toString() + "\n", _should_be);
     
     Function1<Person,Boolean> _olderThan = this.olderThan(personOfAgeFive);
     Boolean _should_be_1 = this.<Person>should_be(personOfAgeFour, _olderThan);
     Assert.assertTrue("\nExpected personOfAgeFour should be olderThan(personOfAgeFive) but"
-     + "\n     personOfAgeFour is " + new StringDescription().appendValue(personOfAgeFour).toString()
-     + "\n     personOfAgeFive is " + new StringDescription().appendValue(personOfAgeFive).toString() + "\n", _should_be_1);
+     + "\n     personOfAgeFour is " + new org.hamcrest.StringDescription().appendValue(personOfAgeFour).toString()
+     + "\n     personOfAgeFive is " + new org.hamcrest.StringDescription().appendValue(personOfAgeFive).toString() + "\n", _should_be_1);
     
   }
   

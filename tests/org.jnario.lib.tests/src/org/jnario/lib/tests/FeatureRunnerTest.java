@@ -55,7 +55,7 @@ public class FeatureRunnerTest {
 	@RunWith(FeatureRunner.class)
 	public static class Scenario1{
 		
-		@Rule public static MyRule rule = new MyRule();
+		@Rule public MyRule rule = new MyRule();
 		
 		private static Object fieldCheck = null;
 		private Object field = new Object();
@@ -86,7 +86,7 @@ public class FeatureRunnerTest {
 	@RunWith(FeatureRunner.class)
 	public static class Scenario2{
 		
-		@Rule public static MyRule rule = new MyRule();
+		@Rule public MyRule rule = new MyRule();
 		
 		@Order(1)
 		@Test public void step4(){

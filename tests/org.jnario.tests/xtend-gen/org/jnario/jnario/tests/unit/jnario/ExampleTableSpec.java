@@ -10,7 +10,6 @@ package org.jnario.jnario.tests.unit.jnario;
 import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.hamcrest.StringDescription;
 import org.jnario.ExampleTable;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
@@ -64,8 +63,8 @@ public class ExampleTableSpec {
     ExampleTable _first = _query.<ExampleTable>first(ExampleTable.class);
     boolean _isValid = _first.isValid();
     Assert.assertTrue("\nExpected query.first(typeof(ExampleTable)).isValid() but"
-     + "\n     query.first(typeof(ExampleTable)) is " + new StringDescription().appendValue(_first).toString()
-     + "\n     query is " + new StringDescription().appendValue(_query).toString() + "\n", _isValid);
+     + "\n     query.first(typeof(ExampleTable)) is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
+     + "\n     query is " + new org.hamcrest.StringDescription().appendValue(_query).toString() + "\n", _isValid);
     
   }
   
@@ -101,9 +100,9 @@ public class ExampleTableSpec {
     boolean _isValid = _first.isValid();
     boolean _not = (!_isValid);
     Assert.assertTrue("\nExpected !query.first(typeof(ExampleTable)).isValid() but"
-     + "\n     query.first(typeof(ExampleTable)).isValid() is " + new StringDescription().appendValue(_isValid).toString()
-     + "\n     query.first(typeof(ExampleTable)) is " + new StringDescription().appendValue(_first).toString()
-     + "\n     query is " + new StringDescription().appendValue(_query).toString() + "\n", _not);
+     + "\n     query.first(typeof(ExampleTable)).isValid() is " + new org.hamcrest.StringDescription().appendValue(_isValid).toString()
+     + "\n     query.first(typeof(ExampleTable)) is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
+     + "\n     query is " + new org.hamcrest.StringDescription().appendValue(_query).toString() + "\n", _not);
     
   }
 }

@@ -4,7 +4,6 @@ import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.hamcrest.StringDescription;
 import org.jnario.Executable;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
@@ -79,9 +78,9 @@ public class HashBasedSpec2ResultMappingSpec {
     SpecExecution _result = this.subject.getResult(this.anyExecutable);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, NotRun.class);
     Assert.assertTrue("\nExpected subject.getResult(anyExecutable) => typeof(NotRun) but"
-     + "\n     subject.getResult(anyExecutable) is " + new StringDescription().appendValue(_result).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     anyExecutable is " + new StringDescription().appendValue(this.anyExecutable).toString() + "\n", _doubleArrow);
+     + "\n     subject.getResult(anyExecutable) is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
+     + "\n     anyExecutable is " + new org.hamcrest.StringDescription().appendValue(this.anyExecutable).toString() + "\n", _doubleArrow);
     
   }
   
@@ -92,8 +91,8 @@ public class HashBasedSpec2ResultMappingSpec {
     SpecExecution _result = this.subject.getResult(null);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, NotRun.class);
     Assert.assertTrue("\nExpected subject.getResult(null) => typeof(NotRun) but"
-     + "\n     subject.getResult(null) is " + new StringDescription().appendValue(_result).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+     + "\n     subject.getResult(null) is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
   }
   

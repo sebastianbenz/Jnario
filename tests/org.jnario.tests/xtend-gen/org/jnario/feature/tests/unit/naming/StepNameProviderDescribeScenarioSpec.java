@@ -7,7 +7,6 @@
  */
 package org.jnario.feature.tests.unit.naming;
 
-import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.tests.unit.naming.StepNameProviderSpec;
 import org.jnario.jnario.test.util.Features;
@@ -31,9 +30,9 @@ public class StepNameProviderDescribeScenarioSpec extends StepNameProviderSpec {
     String _desc = this.desc(_scenario);
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_desc, "With whitespace");
     Assert.assertTrue("\nExpected Features::scenario(\" With whitespace \").desc =>  \"With whitespace\" but"
-     + "\n     Features::scenario(\" With whitespace \").desc is " + new StringDescription().appendValue(_desc).toString()
-     + "\n     Features::scenario(\" With whitespace \") is " + new StringDescription().appendValue(_scenario).toString()
-     + "\n     Features is " + new StringDescription().appendValue(Features.class).toString() + "\n", _doubleArrow);
+     + "\n     Features::scenario(\" With whitespace \").desc is " + new org.hamcrest.StringDescription().appendValue(_desc).toString()
+     + "\n     Features::scenario(\" With whitespace \") is " + new org.hamcrest.StringDescription().appendValue(_scenario).toString()
+     + "\n     Features is " + new org.hamcrest.StringDescription().appendValue(Features.class).toString() + "\n", _doubleArrow);
     
   }
   
@@ -45,9 +44,9 @@ public class StepNameProviderDescribeScenarioSpec extends StepNameProviderSpec {
     String _desc = this.desc(_scenario);
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_desc, "With [parentheses]");
     Assert.assertTrue("\nExpected Features::scenario(\"With (parentheses)\").desc =>  \"With [parentheses]\" but"
-     + "\n     Features::scenario(\"With (parentheses)\").desc is " + new StringDescription().appendValue(_desc).toString()
-     + "\n     Features::scenario(\"With (parentheses)\") is " + new StringDescription().appendValue(_scenario).toString()
-     + "\n     Features is " + new StringDescription().appendValue(Features.class).toString() + "\n", _doubleArrow);
+     + "\n     Features::scenario(\"With (parentheses)\").desc is " + new org.hamcrest.StringDescription().appendValue(_desc).toString()
+     + "\n     Features::scenario(\"With (parentheses)\") is " + new org.hamcrest.StringDescription().appendValue(_scenario).toString()
+     + "\n     Features is " + new org.hamcrest.StringDescription().appendValue(Features.class).toString() + "\n", _doubleArrow);
     
   }
 }

@@ -8,9 +8,7 @@
 package org.jnario.feature.tests.unit.conversion;
 
 import org.eclipse.xtext.util.Strings;
-import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
-import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.unit.conversion.FeatureValueConverterSpec;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
@@ -33,11 +31,11 @@ public class FeatureValueConverterToStringSpec extends FeatureValueConverterSpec
     String _plus = ("Prefix:text" + _newLine);
     boolean _should_be = Should.<String>should_be(_string, _plus);
     Assert.assertTrue("\nExpected subject.toString(\"text\") should be \"Prefix:text\" + Strings::newLine but"
-     + "\n     subject.toString(\"text\") is " + new StringDescription().appendValue(_string).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     \"Prefix:text\" + Strings::newLine is " + new StringDescription().appendValue(_plus).toString()
-     + "\n     Strings::newLine is " + new StringDescription().appendValue(_newLine).toString()
-     + "\n     Strings is " + new StringDescription().appendValue(Strings.class).toString() + "\n", _should_be);
+     + "\n     subject.toString(\"text\") is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
+     + "\n     \"Prefix:text\" + Strings::newLine is " + new org.hamcrest.StringDescription().appendValue(_plus).toString()
+     + "\n     Strings::newLine is " + new org.hamcrest.StringDescription().appendValue(_newLine).toString()
+     + "\n     Strings is " + new org.hamcrest.StringDescription().appendValue(Strings.class).toString() + "\n", _should_be);
     
   }
   
@@ -46,11 +44,11 @@ public class FeatureValueConverterToStringSpec extends FeatureValueConverterSpec
   @Order(2)
   public void _subjectToStringNullShouldBeNull() throws Exception {
     String _string = this.subject.toString(null);
-    Matcher<Object> _nullValue = CoreMatchers.<Object>nullValue();
+    Matcher<Object> _nullValue = Should.<Object>nullValue();
     boolean _should_be = Should.<String>should_be(_string, _nullValue);
     Assert.assertTrue("\nExpected subject.toString(null) should be null but"
-     + "\n     subject.toString(null) is " + new StringDescription().appendValue(_string).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString() + "\n", _should_be);
+     + "\n     subject.toString(null) is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _should_be);
     
   }
 }

@@ -7,7 +7,6 @@
  */
 package org.jnario.feature.tests.integration;
 
-import org.hamcrest.StringDescription;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
@@ -53,12 +52,12 @@ public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword exten
     int _int = StringConversions.toInt(_first);
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(_int));
     Assert.assertTrue("\nExpected jnarioFile.run.failureCount => args.first.toInt but"
-     + "\n     jnarioFile.run.failureCount is " + new StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
-     + "\n     jnarioFile.run is " + new StringDescription().appendValue(_run).toString()
-     + "\n     jnarioFile is " + new StringDescription().appendValue(this.jnarioFile).toString()
-     + "\n     args.first.toInt is " + new StringDescription().appendValue(Integer.valueOf(_int)).toString()
-     + "\n     args.first is " + new StringDescription().appendValue(_first).toString()
-     + "\n     args is " + new StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+     + "\n     jnarioFile.run.failureCount is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
+     + "\n     jnarioFile.run is " + new org.hamcrest.StringDescription().appendValue(_run).toString()
+     + "\n     jnarioFile is " + new org.hamcrest.StringDescription().appendValue(this.jnarioFile).toString()
+     + "\n     args.first.toInt is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_int)).toString()
+     + "\n     args.first is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
+     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
     
   }
 }

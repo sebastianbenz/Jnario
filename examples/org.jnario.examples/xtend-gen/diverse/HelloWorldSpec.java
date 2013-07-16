@@ -1,6 +1,5 @@
 package diverse;
 
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -20,7 +19,7 @@ public class HelloWorldSpec {
     int _length = "Hello World".length();
     boolean _should_be = Should.<Integer>should_be(Integer.valueOf(_length), Integer.valueOf(11));
     Assert.assertTrue("\nExpected \"Hello World\".length should be 11 but"
-     + "\n     \"Hello World\".length is " + new StringDescription().appendValue(Integer.valueOf(_length)).toString() + "\n", _should_be);
+     + "\n     \"Hello World\".length is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_length)).toString() + "\n", _should_be);
     
   }
 }

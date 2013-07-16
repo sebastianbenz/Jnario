@@ -1,7 +1,6 @@
 package org.jnario.jnario.tests.unit.report;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Background;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec;
@@ -59,8 +58,8 @@ public class HashBasedSpec2ResultMappingBackgroundSpec extends HashBasedSpec2Res
     SpecExecution _result = this.result(_background);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, Passed.class);
     Assert.assertTrue("\nExpected background.result => typeof(Passed) but"
-     + "\n     background.result is " + new StringDescription().appendValue(_result).toString()
-     + "\n     background is " + new StringDescription().appendValue(_background).toString() + "\n", _doubleArrow);
+     + "\n     background.result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     background is " + new org.hamcrest.StringDescription().appendValue(_background).toString() + "\n", _doubleArrow);
     
   }
   
@@ -73,8 +72,8 @@ public class HashBasedSpec2ResultMappingBackgroundSpec extends HashBasedSpec2Res
     SpecExecution _result = this.result(_background);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, Failed.class);
     Assert.assertTrue("\nExpected background.result => typeof(Failed) but"
-     + "\n     background.result is " + new StringDescription().appendValue(_result).toString()
-     + "\n     background is " + new StringDescription().appendValue(_background).toString() + "\n", _doubleArrow);
+     + "\n     background.result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     background is " + new org.hamcrest.StringDescription().appendValue(_background).toString() + "\n", _doubleArrow);
     
   }
 }

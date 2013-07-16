@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.util.StringInputStream;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.hamcrest.StringDescription;
 import org.jnario.Executable;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
@@ -88,12 +87,12 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpec
     if (_equals) {
       boolean _doubleArrow = Should.operator_doubleArrow(result, Passed.class);
       Assert.assertTrue("\nExpected result => typeof(Passed) but"
-       + "\n     result is " + new StringDescription().appendValue(result).toString() + "\n", _doubleArrow);
+       + "\n     result is " + new org.hamcrest.StringDescription().appendValue(result).toString() + "\n", _doubleArrow);
       
     } else {
       boolean _doubleArrow_1 = Should.operator_doubleArrow(result, Failed.class);
       Assert.assertTrue("\nExpected result => typeof(Failed) but"
-       + "\n     result is " + new StringDescription().appendValue(result).toString() + "\n", _doubleArrow_1);
+       + "\n     result is " + new org.hamcrest.StringDescription().appendValue(result).toString() + "\n", _doubleArrow_1);
       
     }
   }

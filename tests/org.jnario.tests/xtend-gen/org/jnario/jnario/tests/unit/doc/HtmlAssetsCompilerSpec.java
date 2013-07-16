@@ -11,7 +11,6 @@ import com.google.inject.Inject;
 import java.io.File;
 import org.eclipse.xtext.util.Files;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.hamcrest.StringDescription;
 import org.jnario.compiler.HtmlAssetsCompiler;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.lib.Assert;
@@ -48,12 +47,12 @@ public class HtmlAssetsCompilerSpec {
     File _file = this.file("js/prettify.js");
     boolean _exists = _file.exists();
     Assert.assertTrue("\nExpected file(\"js/prettify.js\").exists but"
-     + "\n     file(\"js/prettify.js\") is " + new StringDescription().appendValue(_file).toString() + "\n", _exists);
+     + "\n     file(\"js/prettify.js\") is " + new org.hamcrest.StringDescription().appendValue(_file).toString() + "\n", _exists);
     
     File _file_1 = this.file("css/prettify.css");
     boolean _exists_1 = _file_1.exists();
     Assert.assertTrue("\nExpected file(\"css/prettify.css\").exists but"
-     + "\n     file(\"css/prettify.css\") is " + new StringDescription().appendValue(_file_1).toString() + "\n", _exists_1);
+     + "\n     file(\"css/prettify.css\") is " + new org.hamcrest.StringDescription().appendValue(_file_1).toString() + "\n", _exists_1);
     
   }
   
@@ -69,8 +68,8 @@ public class HtmlAssetsCompilerSpec {
     String _readFileIntoString = Files.readFileIntoString(file);
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_readFileIntoString, "Hello World");
     Assert.assertTrue("\nExpected readFileIntoString(file) => \"Hello World\" but"
-     + "\n     readFileIntoString(file) is " + new StringDescription().appendValue(_readFileIntoString).toString()
-     + "\n     file is " + new StringDescription().appendValue(file).toString() + "\n", _doubleArrow);
+     + "\n     readFileIntoString(file) is " + new org.hamcrest.StringDescription().appendValue(_readFileIntoString).toString()
+     + "\n     file is " + new org.hamcrest.StringDescription().appendValue(file).toString() + "\n", _doubleArrow);
     
   }
   

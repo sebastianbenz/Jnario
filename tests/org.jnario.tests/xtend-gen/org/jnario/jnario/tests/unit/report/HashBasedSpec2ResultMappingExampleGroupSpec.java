@@ -6,7 +6,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
@@ -48,9 +47,9 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
     SpecExecution _result = this.result(_exampleGroup);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, Pending.class);
     Assert.assertTrue("\nExpected m.exampleGroup(\"Root\").result => typeof(Pending) but"
-     + "\n     m.exampleGroup(\"Root\").result is " + new StringDescription().appendValue(_result).toString()
-     + "\n     m.exampleGroup(\"Root\") is " + new StringDescription().appendValue(_exampleGroup).toString()
-     + "\n     m is " + new StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
+     + "\n     m.exampleGroup(\"Root\").result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     m.exampleGroup(\"Root\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     m is " + new org.hamcrest.StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
     
   }
   
@@ -74,9 +73,9 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
     SpecExecution _result = this.result(_exampleGroup);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, NotRun.class);
     Assert.assertTrue("\nExpected m.exampleGroup(\"Root\").result => typeof(NotRun) but"
-     + "\n     m.exampleGroup(\"Root\").result is " + new StringDescription().appendValue(_result).toString()
-     + "\n     m.exampleGroup(\"Root\") is " + new StringDescription().appendValue(_exampleGroup).toString()
-     + "\n     m is " + new StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
+     + "\n     m.exampleGroup(\"Root\").result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     m.exampleGroup(\"Root\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     m is " + new org.hamcrest.StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
     
   }
   
@@ -101,9 +100,9 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
     SpecExecution _result = this.result(_exampleGroup);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, Passed.class);
     Assert.assertTrue("\nExpected m.exampleGroup(\"Root\").result => typeof(Passed) but"
-     + "\n     m.exampleGroup(\"Root\").result is " + new StringDescription().appendValue(_result).toString()
-     + "\n     m.exampleGroup(\"Root\") is " + new StringDescription().appendValue(_exampleGroup).toString()
-     + "\n     m is " + new StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
+     + "\n     m.exampleGroup(\"Root\").result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     m.exampleGroup(\"Root\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     m is " + new org.hamcrest.StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
     
   }
   
@@ -129,9 +128,9 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
     SpecExecution _result = this.result(_exampleGroup);
     boolean _doubleArrow = Should.operator_doubleArrow(_result, Failed.class);
     Assert.assertTrue("\nExpected m.exampleGroup(\"Root\").result => typeof(Failed) but"
-     + "\n     m.exampleGroup(\"Root\").result is " + new StringDescription().appendValue(_result).toString()
-     + "\n     m.exampleGroup(\"Root\") is " + new StringDescription().appendValue(_exampleGroup).toString()
-     + "\n     m is " + new StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
+     + "\n     m.exampleGroup(\"Root\").result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     m.exampleGroup(\"Root\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     m is " + new org.hamcrest.StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
     
   }
   
@@ -158,10 +157,10 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
     double _executionTimeInSeconds = _result.getExecutionTimeInSeconds();
     boolean _doubleArrow = Should.<Double>operator_doubleArrow(Double.valueOf(_executionTimeInSeconds), Double.valueOf(3.0));
     Assert.assertTrue("\nExpected m.exampleGroup(\"Root\").result.executionTimeInSeconds => 3.0 but"
-     + "\n     m.exampleGroup(\"Root\").result.executionTimeInSeconds is " + new StringDescription().appendValue(Double.valueOf(_executionTimeInSeconds)).toString()
-     + "\n     m.exampleGroup(\"Root\").result is " + new StringDescription().appendValue(_result).toString()
-     + "\n     m.exampleGroup(\"Root\") is " + new StringDescription().appendValue(_exampleGroup).toString()
-     + "\n     m is " + new StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
+     + "\n     m.exampleGroup(\"Root\").result.executionTimeInSeconds is " + new org.hamcrest.StringDescription().appendValue(Double.valueOf(_executionTimeInSeconds)).toString()
+     + "\n     m.exampleGroup(\"Root\").result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     m.exampleGroup(\"Root\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     m is " + new org.hamcrest.StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
     
   }
   
@@ -187,10 +186,10 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
     String _className = _result.getClassName();
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_className, "RootSpec");
     Assert.assertTrue("\nExpected m.exampleGroup(\"Root\").result.className => \"RootSpec\" but"
-     + "\n     m.exampleGroup(\"Root\").result.className is " + new StringDescription().appendValue(_className).toString()
-     + "\n     m.exampleGroup(\"Root\").result is " + new StringDescription().appendValue(_result).toString()
-     + "\n     m.exampleGroup(\"Root\") is " + new StringDescription().appendValue(_exampleGroup).toString()
-     + "\n     m is " + new StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
+     + "\n     m.exampleGroup(\"Root\").result.className is " + new org.hamcrest.StringDescription().appendValue(_className).toString()
+     + "\n     m.exampleGroup(\"Root\").result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     m.exampleGroup(\"Root\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     m is " + new org.hamcrest.StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
     
   }
   
@@ -216,10 +215,10 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
     String _name = _result.getName();
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_name, "Root");
     Assert.assertTrue("\nExpected m.exampleGroup(\"Root\").result.name => \"Root\" but"
-     + "\n     m.exampleGroup(\"Root\").result.name is " + new StringDescription().appendValue(_name).toString()
-     + "\n     m.exampleGroup(\"Root\").result is " + new StringDescription().appendValue(_result).toString()
-     + "\n     m.exampleGroup(\"Root\") is " + new StringDescription().appendValue(_exampleGroup).toString()
-     + "\n     m is " + new StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
+     + "\n     m.exampleGroup(\"Root\").result.name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
+     + "\n     m.exampleGroup(\"Root\").result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     m.exampleGroup(\"Root\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     m is " + new org.hamcrest.StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
     
   }
   
@@ -246,9 +245,9 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
     Matcher<SpecExecution> _sameInstance = CoreMatchers.<SpecExecution>sameInstance(second);
     boolean _doubleArrow = Should.<SpecExecution>operator_doubleArrow(first, _sameInstance);
     Assert.assertTrue("\nExpected first => sameInstance(second) but"
-     + "\n     first is " + new StringDescription().appendValue(first).toString()
-     + "\n     sameInstance(second) is " + new StringDescription().appendValue(_sameInstance).toString()
-     + "\n     second is " + new StringDescription().appendValue(second).toString() + "\n", _doubleArrow);
+     + "\n     first is " + new org.hamcrest.StringDescription().appendValue(first).toString()
+     + "\n     sameInstance(second) is " + new org.hamcrest.StringDescription().appendValue(_sameInstance).toString()
+     + "\n     second is " + new org.hamcrest.StringDescription().appendValue(second).toString() + "\n", _doubleArrow);
     
   }
   

@@ -9,7 +9,6 @@ package org.jnario.suite.unit;
 
 import java.util.Arrays;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Suites;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Each;
@@ -89,11 +88,11 @@ public class SuiteClassNameProviderDescribeSpec extends SuiteClassNameProviderSp
           String _expectedClassName = it.getExpectedClassName();
           boolean _doubleArrow = Should.<String>operator_doubleArrow(_describe, _expectedClassName);
           Assert.assertTrue("\nExpected subject.^describe(suite(name)) => expectedClassName but"
-           + "\n     subject.^describe(suite(name)) is " + new StringDescription().appendValue(_describe).toString()
-           + "\n     subject is " + new StringDescription().appendValue(SuiteClassNameProviderDescribeSpec.this.subject).toString()
-           + "\n     suite(name) is " + new StringDescription().appendValue(_suite).toString()
-           + "\n     name is " + new StringDescription().appendValue(_name).toString()
-           + "\n     expectedClassName is " + new StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
+           + "\n     subject.^describe(suite(name)) is " + new org.hamcrest.StringDescription().appendValue(_describe).toString()
+           + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(SuiteClassNameProviderDescribeSpec.this.subject).toString()
+           + "\n     suite(name) is " + new org.hamcrest.StringDescription().appendValue(_suite).toString()
+           + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
+           + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
           
         }
       };

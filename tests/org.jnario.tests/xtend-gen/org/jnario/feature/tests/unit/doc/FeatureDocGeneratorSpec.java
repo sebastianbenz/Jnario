@@ -19,7 +19,6 @@ import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.hamcrest.StringDescription;
 import org.jnario.Executable;
 import org.jnario.feature.doc.FeatureDocGenerator;
 import org.jnario.feature.feature.Feature;
@@ -152,8 +151,8 @@ public class FeatureDocGeneratorSpec {
     CharSequence _generateDocWithErrors = this.generateDocWithErrors(_builder);
     boolean _should_contain = Should.<Object>should_contain(_generateDocWithErrors, "failed");
     org.jnario.lib.Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tFeature: Example\r\n\t\t\t\r\n\t\t\tScenario: A failing Scenario\r\n\t\t\t\r\n\t\t\tGiven something\r\n\t\t\tWhen something happens \r\n\t\t\tThen there is an error\r\n\t\t\t\r\n\t\t\tScenario: Another scnario\r\n\t\t\tGiven something\r\n\t\t\t\t1 + 1 => 2\r\n\t\t\tThen something else\r\n\t\t\t\t\"\"       \r\n\t\t\'\'\'.generateDocWithErrors should contain \"failed\" but"
-     + "\n     \'\'\'\r\n\t\t\tFeature: Example\r\n\t\t\t\r\n\t\t\tScenario: A failing Scenario\r\n\t\t\t\r\n\t\t\tGiven something\r\n\t\t\tWhen something happens \r\n\t\t\tThen there is an error\r\n\t\t\t\r\n\t\t\tScenario: Another scnario\r\n\t\t\tGiven something\r\n\t\t\t\t1 + 1 => 2\r\n\t\t\tThen something else\r\n\t\t\t\t\"\"       \r\n\t\t\'\'\'.generateDocWithErrors is " + new StringDescription().appendValue(_generateDocWithErrors).toString()
-     + "\n     \'\'\'\r\n\t\t\tFeature: Example\r\n\t\t\t\r\n\t\t\tScenario: A failing Scenario\r\n\t\t\t\r\n\t\t\tGiven something\r\n\t\t\tWhen something happens \r\n\t\t\tThen there is an error\r\n\t\t\t\r\n\t\t\tScenario: Another scnario\r\n\t\t\tGiven something\r\n\t\t\t\t1 + 1 => 2\r\n\t\t\tThen something else\r\n\t\t\t\t\"\"       \r\n\t\t\'\'\' is " + new StringDescription().appendValue(_builder).toString() + "\n", _should_contain);
+     + "\n     \'\'\'\r\n\t\t\tFeature: Example\r\n\t\t\t\r\n\t\t\tScenario: A failing Scenario\r\n\t\t\t\r\n\t\t\tGiven something\r\n\t\t\tWhen something happens \r\n\t\t\tThen there is an error\r\n\t\t\t\r\n\t\t\tScenario: Another scnario\r\n\t\t\tGiven something\r\n\t\t\t\t1 + 1 => 2\r\n\t\t\tThen something else\r\n\t\t\t\t\"\"       \r\n\t\t\'\'\'.generateDocWithErrors is " + new org.hamcrest.StringDescription().appendValue(_generateDocWithErrors).toString()
+     + "\n     \'\'\'\r\n\t\t\tFeature: Example\r\n\t\t\t\r\n\t\t\tScenario: A failing Scenario\r\n\t\t\t\r\n\t\t\tGiven something\r\n\t\t\tWhen something happens \r\n\t\t\tThen there is an error\r\n\t\t\t\r\n\t\t\tScenario: Another scnario\r\n\t\t\tGiven something\r\n\t\t\t\t1 + 1 => 2\r\n\t\t\tThen something else\r\n\t\t\t\t\"\"       \r\n\t\t\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", _should_contain);
     
   }
   

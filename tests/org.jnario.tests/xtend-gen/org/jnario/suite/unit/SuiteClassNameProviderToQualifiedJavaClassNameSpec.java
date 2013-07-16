@@ -9,7 +9,6 @@ package org.jnario.suite.unit;
 
 import java.util.Arrays;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Suites;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Each;
@@ -106,8 +105,8 @@ public class SuiteClassNameProviderToQualifiedJavaClassNameSpec extends SuiteCla
           String _qualifiedName = it.getQualifiedName();
           boolean _doubleArrow = Should.<String>operator_doubleArrow(actualName, _qualifiedName);
           Assert.assertTrue("\nExpected actualName => qualifiedName but"
-           + "\n     actualName is " + new StringDescription().appendValue(actualName).toString()
-           + "\n     qualifiedName is " + new StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+           + "\n     actualName is " + new org.hamcrest.StringDescription().appendValue(actualName).toString()
+           + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
           
         }
       };

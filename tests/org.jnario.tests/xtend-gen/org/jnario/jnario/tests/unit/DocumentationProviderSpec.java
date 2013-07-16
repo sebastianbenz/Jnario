@@ -10,9 +10,7 @@ package org.jnario.jnario.tests.unit;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
-import org.hamcrest.StringDescription;
 import org.jnario.doc.DocumentationProvider;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
@@ -45,10 +43,10 @@ public class DocumentationProviderSpec {
   @Order(1)
   public void _returnsNullIfNoComment() throws Exception {
     String _documentation = this.documentation(null);
-    Matcher<Object> _nullValue = CoreMatchers.<Object>nullValue();
+    Matcher<Object> _nullValue = Should.<Object>nullValue();
     boolean _doubleArrow = Should.operator_doubleArrow(_documentation, _nullValue);
     Assert.assertTrue("\nExpected documentation(null) => null but"
-     + "\n     documentation(null) is " + new StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
+     + "\n     documentation(null) is " + new org.hamcrest.StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
     
   }
   
@@ -59,7 +57,7 @@ public class DocumentationProviderSpec {
     String _documentation = this.documentation("Hello World");
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_documentation, "Hello World");
     Assert.assertTrue("\nExpected documentation(\"Hello World\") => \"Hello World\" but"
-     + "\n     documentation(\"Hello World\") is " + new StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
+     + "\n     documentation(\"Hello World\") is " + new org.hamcrest.StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
     
   }
   
@@ -70,7 +68,7 @@ public class DocumentationProviderSpec {
     String _documentation = this.documentation("Hello \\/*World");
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_documentation, "Hello /*World");
     Assert.assertTrue("\nExpected documentation(\"Hello \\\\/*World\") => \"Hello /*World\" but"
-     + "\n     documentation(\"Hello \\\\/*World\") is " + new StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
+     + "\n     documentation(\"Hello \\\\/*World\") is " + new org.hamcrest.StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
     
   }
   
@@ -81,7 +79,7 @@ public class DocumentationProviderSpec {
     String _documentation = this.documentation("Hello \\\\/*World");
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_documentation, "Hello \\/*World");
     Assert.assertTrue("\nExpected documentation(\"Hello \\\\\\\\/*World\") => \"Hello \\\\/*World\" but"
-     + "\n     documentation(\"Hello \\\\\\\\/*World\") is " + new StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
+     + "\n     documentation(\"Hello \\\\\\\\/*World\") is " + new org.hamcrest.StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
     
   }
   
@@ -92,7 +90,7 @@ public class DocumentationProviderSpec {
     String _documentation = this.documentation("Hello \\*/World");
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_documentation, "Hello */World");
     Assert.assertTrue("\nExpected documentation(\"Hello \\\\*/World\") => \"Hello */World\" but"
-     + "\n     documentation(\"Hello \\\\*/World\") is " + new StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
+     + "\n     documentation(\"Hello \\\\*/World\") is " + new org.hamcrest.StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
     
   }
   
@@ -103,7 +101,7 @@ public class DocumentationProviderSpec {
     String _documentation = this.documentation("Hello \\\\*/World");
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_documentation, "Hello \\*/World");
     Assert.assertTrue("\nExpected documentation(\"Hello \\\\\\\\*/World\") => \"Hello \\\\*/World\" but"
-     + "\n     documentation(\"Hello \\\\\\\\*/World\") is " + new StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
+     + "\n     documentation(\"Hello \\\\\\\\*/World\") is " + new org.hamcrest.StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
     
   }
   

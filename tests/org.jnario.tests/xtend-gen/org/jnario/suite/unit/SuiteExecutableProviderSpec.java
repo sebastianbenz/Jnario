@@ -6,7 +6,6 @@ import java.util.Set;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.hamcrest.StringDescription;
 import org.jnario.Executable;
 import org.jnario.Specification;
 import org.jnario.feature.feature.Feature;
@@ -109,12 +108,12 @@ public class SuiteExecutableProviderSpec {
     List<Suite> _list = JnarioCollectionLiterals.<Suite>list(_suite_1, _suite_2);
     boolean _doubleArrow = Should.<List<? extends Executable>>operator_doubleArrow(_executables, _list);
     Assert.assertTrue("\nExpected subject.getExecutables(suite(\"My Suite\")) => list(suite(\"Child 1\"), suite(\"Child 2\")) but"
-     + "\n     subject.getExecutables(suite(\"My Suite\")) is " + new StringDescription().appendValue(_executables).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     suite(\"My Suite\") is " + new StringDescription().appendValue(_suite).toString()
-     + "\n     list(suite(\"Child 1\"), suite(\"Child 2\")) is " + new StringDescription().appendValue(_list).toString()
-     + "\n     suite(\"Child 1\") is " + new StringDescription().appendValue(_suite_1).toString()
-     + "\n     suite(\"Child 2\") is " + new StringDescription().appendValue(_suite_2).toString() + "\n", _doubleArrow);
+     + "\n     subject.getExecutables(suite(\"My Suite\")) is " + new org.hamcrest.StringDescription().appendValue(_executables).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
+     + "\n     suite(\"My Suite\") is " + new org.hamcrest.StringDescription().appendValue(_suite).toString()
+     + "\n     list(suite(\"Child 1\"), suite(\"Child 2\")) is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
+     + "\n     suite(\"Child 1\") is " + new org.hamcrest.StringDescription().appendValue(_suite_1).toString()
+     + "\n     suite(\"Child 2\") is " + new org.hamcrest.StringDescription().appendValue(_suite_2).toString() + "\n", _doubleArrow);
     
   }
   
@@ -143,13 +142,13 @@ public class SuiteExecutableProviderSpec {
     Set<Specification> _set_1 = JnarioCollectionLiterals.<Specification>set(_exampleGroup, _feature);
     boolean _doubleArrow = Should.<Set<? extends Executable>>operator_doubleArrow(_set, _set_1);
     Assert.assertTrue("\nExpected subject.getExecutables(suite(\"My Suite\")).toSet => set(exampleGroup(\"My Spec\"), feature()) but"
-     + "\n     subject.getExecutables(suite(\"My Suite\")).toSet is " + new StringDescription().appendValue(_set).toString()
-     + "\n     subject.getExecutables(suite(\"My Suite\")) is " + new StringDescription().appendValue(_executables).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     suite(\"My Suite\") is " + new StringDescription().appendValue(_suite).toString()
-     + "\n     set(exampleGroup(\"My Spec\"), feature()) is " + new StringDescription().appendValue(_set_1).toString()
-     + "\n     exampleGroup(\"My Spec\") is " + new StringDescription().appendValue(_exampleGroup).toString()
-     + "\n     feature() is " + new StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
+     + "\n     subject.getExecutables(suite(\"My Suite\")).toSet is " + new org.hamcrest.StringDescription().appendValue(_set).toString()
+     + "\n     subject.getExecutables(suite(\"My Suite\")) is " + new org.hamcrest.StringDescription().appendValue(_executables).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
+     + "\n     suite(\"My Suite\") is " + new org.hamcrest.StringDescription().appendValue(_suite).toString()
+     + "\n     set(exampleGroup(\"My Spec\"), feature()) is " + new org.hamcrest.StringDescription().appendValue(_set_1).toString()
+     + "\n     exampleGroup(\"My Spec\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     feature() is " + new org.hamcrest.StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
     
   }
   
@@ -178,14 +177,14 @@ public class SuiteExecutableProviderSpec {
     Set<Specification> _set_1 = JnarioCollectionLiterals.<Specification>set(_exampleGroup, _exampleGroup_1, _feature);
     boolean _doubleArrow = Should.<Set<? extends Executable>>operator_doubleArrow(_set, _set_1);
     Assert.assertTrue("\nExpected subject.getExecutables(suite(\"My Suite\")).toSet => set(exampleGroup(\"My Spec\"), exampleGroup(\"String\"), feature()) but"
-     + "\n     subject.getExecutables(suite(\"My Suite\")).toSet is " + new StringDescription().appendValue(_set).toString()
-     + "\n     subject.getExecutables(suite(\"My Suite\")) is " + new StringDescription().appendValue(_executables).toString()
-     + "\n     subject is " + new StringDescription().appendValue(this.subject).toString()
-     + "\n     suite(\"My Suite\") is " + new StringDescription().appendValue(_suite).toString()
-     + "\n     set(exampleGroup(\"My Spec\"), exampleGroup(\"String\"), feature()) is " + new StringDescription().appendValue(_set_1).toString()
-     + "\n     exampleGroup(\"My Spec\") is " + new StringDescription().appendValue(_exampleGroup).toString()
-     + "\n     exampleGroup(\"String\") is " + new StringDescription().appendValue(_exampleGroup_1).toString()
-     + "\n     feature() is " + new StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
+     + "\n     subject.getExecutables(suite(\"My Suite\")).toSet is " + new org.hamcrest.StringDescription().appendValue(_set).toString()
+     + "\n     subject.getExecutables(suite(\"My Suite\")) is " + new org.hamcrest.StringDescription().appendValue(_executables).toString()
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
+     + "\n     suite(\"My Suite\") is " + new org.hamcrest.StringDescription().appendValue(_suite).toString()
+     + "\n     set(exampleGroup(\"My Spec\"), exampleGroup(\"String\"), feature()) is " + new org.hamcrest.StringDescription().appendValue(_set_1).toString()
+     + "\n     exampleGroup(\"My Spec\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     exampleGroup(\"String\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup_1).toString()
+     + "\n     feature() is " + new org.hamcrest.StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
     
   }
 }

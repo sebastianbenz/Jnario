@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ScopeTestExtension;
 import org.jnario.jnario.test.util.SuiteTestCreator;
 import org.jnario.lib.Assert;
@@ -95,12 +94,12 @@ public class SuiteScopeProviderSpec {
     Set<String> _specScope = this.specScope();
     boolean _should_contain = Should.<String>should_contain(_specScope, "RootSpec");
     Assert.assertTrue("\nExpected specScope should contain \"RootSpec\" but"
-     + "\n     specScope is " + new StringDescription().appendValue(_specScope).toString() + "\n", _should_contain);
+     + "\n     specScope is " + new org.hamcrest.StringDescription().appendValue(_specScope).toString() + "\n", _should_contain);
     
     Set<String> _specScope_1 = this.specScope();
     boolean _should_contain_1 = Should.<String>should_contain(_specScope_1, "SubSpec 1");
     Assert.assertFalse("\nExpected specScope should not contain  \"SubSpec 1\" but"
-     + "\n     specScope is " + new StringDescription().appendValue(_specScope_1).toString() + "\n", _should_contain_1);
+     + "\n     specScope is " + new org.hamcrest.StringDescription().appendValue(_specScope_1).toString() + "\n", _should_contain_1);
     
   }
   

@@ -7,7 +7,6 @@
  */
 package org.jnario.jnario.tests.unit.jnario;
 
-import org.hamcrest.StringDescription;
 import org.jnario.feature.feature.Given;
 import org.jnario.jnario.test.util.Features;
 import org.jnario.jnario.tests.unit.jnario.ExecutableIsPendingSpec;
@@ -31,8 +30,8 @@ public class ExecutableIsPendingStepSpec extends ExecutableIsPendingSpec {
     boolean _isPending = _stepWithoutImplementation.isPending();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_isPending), true);
     Assert.assertTrue("\nExpected stepWithoutImplementation.isPending() should be true but"
-     + "\n     stepWithoutImplementation.isPending() is " + new StringDescription().appendValue(Boolean.valueOf(_isPending)).toString()
-     + "\n     stepWithoutImplementation is " + new StringDescription().appendValue(_stepWithoutImplementation).toString() + "\n", _should_be);
+     + "\n     stepWithoutImplementation.isPending() is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_isPending)).toString()
+     + "\n     stepWithoutImplementation is " + new org.hamcrest.StringDescription().appendValue(_stepWithoutImplementation).toString() + "\n", _should_be);
     
   }
   
@@ -44,8 +43,8 @@ public class ExecutableIsPendingStepSpec extends ExecutableIsPendingSpec {
     boolean _isPending = _implementedStep.isPending();
     boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_isPending), false);
     Assert.assertTrue("\nExpected implementedStep.isPending() should be false but"
-     + "\n     implementedStep.isPending() is " + new StringDescription().appendValue(Boolean.valueOf(_isPending)).toString()
-     + "\n     implementedStep is " + new StringDescription().appendValue(_implementedStep).toString() + "\n", _should_be);
+     + "\n     implementedStep.isPending() is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_isPending)).toString()
+     + "\n     implementedStep is " + new org.hamcrest.StringDescription().appendValue(_implementedStep).toString() + "\n", _should_be);
     
   }
 }

@@ -2,7 +2,6 @@ package gameoflife.specs;
 
 import gameoflife.CellLocation;
 import gameoflife.specs.CellLocationSpec;
-import org.hamcrest.StringDescription;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -26,11 +25,11 @@ public class CellLocationCalculatingRelativeCellLocationsSpec extends CellLocati
     CellLocation _cell_2 = CellLocation.cell(2, 5);
     boolean _doubleArrow = Should.<CellLocation>operator_doubleArrow(_plus, _cell_2);
     Assert.assertTrue("\nExpected cell(-1, 1).plus(cell(3,4)) => cell(2,5) but"
-     + "\n     cell(-1, 1).plus(cell(3,4)) is " + new StringDescription().appendValue(_plus).toString()
-     + "\n     cell(-1, 1) is " + new StringDescription().appendValue(_cell).toString()
-     + "\n     -1 is " + new StringDescription().appendValue(_minus).toString()
-     + "\n     cell(3,4) is " + new StringDescription().appendValue(_cell_1).toString()
-     + "\n     cell(2,5) is " + new StringDescription().appendValue(_cell_2).toString() + "\n", _doubleArrow);
+     + "\n     cell(-1, 1).plus(cell(3,4)) is " + new org.hamcrest.StringDescription().appendValue(_plus).toString()
+     + "\n     cell(-1, 1) is " + new org.hamcrest.StringDescription().appendValue(_cell).toString()
+     + "\n     -1 is " + new org.hamcrest.StringDescription().appendValue(_minus).toString()
+     + "\n     cell(3,4) is " + new org.hamcrest.StringDescription().appendValue(_cell_1).toString()
+     + "\n     cell(2,5) is " + new org.hamcrest.StringDescription().appendValue(_cell_2).toString() + "\n", _doubleArrow);
     
   }
 }

@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.lib.Assert;
@@ -54,9 +53,9 @@ public class SpecDocGeneratorSpec {
     boolean _contains = scenarioDoc.contains("<title>Example</title>");
     boolean _and = (_notEquals && _contains);
     Assert.assertTrue("\nExpected scenarioDoc != null && \r\n\t\t\t\tscenarioDoc.contains(\"<title>Example</title>\") but"
-     + "\n     scenarioDoc != null is " + new StringDescription().appendValue(_notEquals).toString()
-     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString()
-     + "\n     scenarioDoc.contains(\"<title>Example</title>\") is " + new StringDescription().appendValue(_contains).toString() + "\n", _and);
+     + "\n     scenarioDoc != null is " + new org.hamcrest.StringDescription().appendValue(_notEquals).toString()
+     + "\n     scenarioDoc is " + new org.hamcrest.StringDescription().appendValue(scenarioDoc).toString()
+     + "\n     scenarioDoc.contains(\"<title>Example</title>\") is " + new org.hamcrest.StringDescription().appendValue(_contains).toString() + "\n", _and);
     
     scenarioDoc.contains("<h1>Example</h1>");
   }
@@ -94,13 +93,13 @@ public class SpecDocGeneratorSpec {
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
     boolean _contains = scenarioDoc.contains("<p>This is an example.</p>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\"<p>This is an example.</p>\") but"
-     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
+     + "\n     scenarioDoc is " + new org.hamcrest.StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
     
     boolean _contains_1 = scenarioDoc.contains("<p>Irrelevant documentation.</p>");
     boolean _not = (!_contains_1);
     Assert.assertTrue("\nExpected !scenarioDoc.contains(\"<p>Irrelevant documentation.</p>\") but"
-     + "\n     scenarioDoc.contains(\"<p>Irrelevant documentation.</p>\") is " + new StringDescription().appendValue(_contains_1).toString()
-     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _not);
+     + "\n     scenarioDoc.contains(\"<p>Irrelevant documentation.</p>\") is " + new org.hamcrest.StringDescription().appendValue(_contains_1).toString()
+     + "\n     scenarioDoc is " + new org.hamcrest.StringDescription().appendValue(scenarioDoc).toString() + "\n", _not);
     
   }
   
@@ -148,9 +147,9 @@ public class SpecDocGeneratorSpec {
     String _string = _builder_1.toString();
     boolean _contains = scenarioDoc.contains(_string);
     Assert.assertTrue("\nExpected scenarioDoc.contains(\'\'\'\r\n\t\t<p id=\"should_do_stuff\" class=\"example notrun\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\'.toString()) but"
-     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString()
-     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\" class=\"example notrun\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\'.toString() is " + new StringDescription().appendValue(_string).toString()
-     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\" class=\"example notrun\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _contains);
+     + "\n     scenarioDoc is " + new org.hamcrest.StringDescription().appendValue(scenarioDoc).toString()
+     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\" class=\"example notrun\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\'.toString() is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
+     + "\n     \'\'\'\r\n\t\t<p id=\"should_do_stuff\" class=\"example notrun\"><strong>should do stuff</strong></p>\r\n\t\t<p>Example documentation</p>\r\n\t\t<pre class=\"prettyprint lang-spec linenums\">\r\n\t\tvar x = 0\r\n\t\tx = x + 1</pre>\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder_1).toString() + "\n", _contains);
     
   }
   
@@ -177,7 +176,7 @@ public class SpecDocGeneratorSpec {
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
     boolean _contains = scenarioDoc.contains("<h1>Example Heading</h1>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\"<h1>Example Heading</h1>\") but"
-     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
+     + "\n     scenarioDoc is " + new org.hamcrest.StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
     
   }
   
@@ -206,23 +205,23 @@ public class SpecDocGeneratorSpec {
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
     boolean _contains = scenarioDoc.contains("<p id=\"myExample\"><strong>MyExample</strong></p>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\'<p id=\"myExample\"><strong>MyExample</strong></p>\') but"
-     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
+     + "\n     scenarioDoc is " + new org.hamcrest.StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
     
     boolean _contains_1 = scenarioDoc.contains("<th>a</th>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\"<th>a</th>\") but"
-     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains_1);
+     + "\n     scenarioDoc is " + new org.hamcrest.StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains_1);
     
     boolean _contains_2 = scenarioDoc.contains("<th>b</th>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\"<th>b</th>\") but"
-     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains_2);
+     + "\n     scenarioDoc is " + new org.hamcrest.StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains_2);
     
     boolean _contains_3 = scenarioDoc.contains("<td>1</td>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\"<td>1</td>\") but"
-     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains_3);
+     + "\n     scenarioDoc is " + new org.hamcrest.StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains_3);
     
     boolean _contains_4 = scenarioDoc.contains("<td>2</td>");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\"<td>2</td>\") but"
-     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains_4);
+     + "\n     scenarioDoc is " + new org.hamcrest.StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains_4);
     
   }
   
@@ -246,8 +245,8 @@ public class SpecDocGeneratorSpec {
     _builder_1.append("1 + 1 =&gt; 2</pre>");
     boolean _should_contain = Should.<Object>should_contain(scenarioDoc, _builder_1);
     Assert.assertFalse("\nExpected scenarioDoc should not contain \'\'\'<pre class=\"prettyprint lang-spec linenums\">\r\n1 + 1 =&gt; 2</pre>\'\'\' but"
-     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString()
-     + "\n     \'\'\'<pre class=\"prettyprint lang-spec linenums\">\r\n1 + 1 =&gt; 2</pre>\'\'\' is " + new StringDescription().appendValue(_builder_1).toString() + "\n", _should_contain);
+     + "\n     scenarioDoc is " + new org.hamcrest.StringDescription().appendValue(scenarioDoc).toString()
+     + "\n     \'\'\'<pre class=\"prettyprint lang-spec linenums\">\r\n1 + 1 =&gt; 2</pre>\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder_1).toString() + "\n", _should_contain);
     
   }
   
@@ -282,7 +281,7 @@ public class SpecDocGeneratorSpec {
     final String scenarioDoc = this.generatedFile("ExampleSpec.html");
     boolean _contains = scenarioDoc.contains("aaaaaa");
     Assert.assertTrue("\nExpected scenarioDoc.contains(\'aaaaaa\') but"
-     + "\n     scenarioDoc is " + new StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
+     + "\n     scenarioDoc is " + new org.hamcrest.StringDescription().appendValue(scenarioDoc).toString() + "\n", _contains);
     
   }
   

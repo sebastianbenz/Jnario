@@ -10,7 +10,6 @@ package org.jnario.spec.tests.documentation;
 import java.util.Stack;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Helpers;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
@@ -41,11 +40,11 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
     Stack<Object> _stack = new Stack<Object>();
     boolean _empty = _stack.empty();
     Assert.assertTrue("\nExpected new Stack().empty but"
-     + "\n     new Stack() is " + new StringDescription().appendValue(_stack).toString() + "\n", _empty);
+     + "\n     new Stack() is " + new org.hamcrest.StringDescription().appendValue(_stack).toString() + "\n", _empty);
     
     boolean _startsWith = "Hello".startsWith("H");
     Assert.assertTrue("\nExpected \"Hello\".startsWith(\"H\") but"
-     + "\n     \"Hello\".startsWith(\"H\") is " + new StringDescription().appendValue(_startsWith).toString() + "\n", _startsWith);
+     + "\n     \"Hello\".startsWith(\"H\") is " + new org.hamcrest.StringDescription().appendValue(_startsWith).toString() + "\n", _startsWith);
     
   }
   
@@ -63,22 +62,22 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
     boolean _should_be = Should.<Boolean>should_be(
       Boolean.valueOf(true), true);
     Assert.assertTrue("\nExpected true should be true but"
-     + "\n     true should be true is " + new StringDescription().appendValue(true).toString() + "\n", _should_be);
+     + "\n     true should be true is " + new org.hamcrest.StringDescription().appendValue(true).toString() + "\n", _should_be);
     
     boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(
       Boolean.valueOf(false), false);
     Assert.assertTrue("\nExpected false => false but"
-     + "\n     false => false is " + new StringDescription().appendValue(_doubleArrow).toString() + "\n", _doubleArrow);
+     + "\n     false => false is " + new org.hamcrest.StringDescription().appendValue(_doubleArrow).toString() + "\n", _doubleArrow);
     
     int _plus = (1 + 1);
     boolean _should_be_1 = Should.<Integer>should_be(Integer.valueOf(_plus), Integer.valueOf(1));
     Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
-     + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be_1);
+     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be_1);
     
     int _plus_1 = (1 + 1);
     boolean _doubleArrow_1 = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
     Assert.assertTrue("\nExpected 1 + 1 => 2 but"
-     + "\n     1 + 1 is " + new StringDescription().appendValue(Integer.valueOf(_plus_1)).toString() + "\n", _doubleArrow_1);
+     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus_1)).toString() + "\n", _doubleArrow_1);
     
   }
   
@@ -101,10 +100,10 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
           boolean _equals_1 = (y == 0);
           boolean _and = (_equals && _equals_1);
           Assert.assertTrue("\nExpected x == 1 && y == 0 but"
-           + "\n     x == 1 is " + new StringDescription().appendValue(_equals).toString()
-           + "\n     x is " + new StringDescription().appendValue(x).toString()
-           + "\n     y == 0 is " + new StringDescription().appendValue(_equals_1).toString()
-           + "\n     y is " + new StringDescription().appendValue(y).toString() + "\n", _and);
+           + "\n     x == 1 is " + new org.hamcrest.StringDescription().appendValue(_equals).toString()
+           + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString()
+           + "\n     y == 0 is " + new org.hamcrest.StringDescription().appendValue(_equals_1).toString()
+           + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", _and);
           
         }
       };
@@ -130,8 +129,8 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
           String _upperCase = greeting.toUpperCase();
           boolean _should_be = Should.<String>should_be(_upperCase, "HELLO");
           Assert.assertFalse("\nExpected greeting.toUpperCase should not be \"HELLO\" but"
-           + "\n     greeting.toUpperCase is " + new StringDescription().appendValue(_upperCase).toString()
-           + "\n     greeting is " + new StringDescription().appendValue(greeting).toString() + "\n", _should_be);
+           + "\n     greeting.toUpperCase is " + new org.hamcrest.StringDescription().appendValue(_upperCase).toString()
+           + "\n     greeting is " + new org.hamcrest.StringDescription().appendValue(greeting).toString() + "\n", _should_be);
           
         }
       };

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.hamcrest.StringDescription;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
@@ -46,7 +45,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
           String _firstMethodName = ExampleNameProviderToMethodNameAfterSpec.this.firstMethodName(it);
           boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "_myExample");
           Assert.assertTrue("\nExpected firstMethodName => \'_myExample\' but"
-           + "\n     firstMethodName is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
+           + "\n     firstMethodName is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
           
         }
       };
@@ -60,7 +59,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
     String _firstMethodName = this.firstMethodName("after{}");
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "after");
     Assert.assertTrue("\nExpected firstMethodName(\"after{}\") => \"after\" but"
-     + "\n     firstMethodName(\"after{}\") is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
+     + "\n     firstMethodName(\"after{}\") is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -71,7 +70,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
     String _firstMethodName = this.firstMethodName("after all{}");
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "afterAll");
     Assert.assertTrue("\nExpected firstMethodName(\"after all{}\") => \"afterAll\" but"
-     + "\n     firstMethodName(\"after all{}\") is " + new StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
+     + "\n     firstMethodName(\"after all{}\") is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -82,7 +81,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
     String _secondMethodName = this.secondMethodName("after{}\r\n                 after{}");
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_secondMethodName, "after2");
     Assert.assertTrue("\nExpected secondMethodName(\"after{}\r\n                 after{}\") => \"after2\" but"
-     + "\n     secondMethodName(\"after{}\r\n                 after{}\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+     + "\n     secondMethodName(\"after{}\r\n                 after{}\") is " + new org.hamcrest.StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -94,7 +93,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
       "after{}\r\n                 context{\r\n                   after{}\r\n                 }");
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_secondMethodName, "after2");
     Assert.assertTrue("\nExpected secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after{}\r\n                 }\") => \"after2\" but"
-     + "\n     secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after{}\r\n                 }\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+     + "\n     secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after{}\r\n                 }\") is " + new org.hamcrest.StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -106,7 +105,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
       "after all{}\r\n                 context{\r\n                   after all{}\r\n                 }");
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_secondMethodName, "afterAll2");
     Assert.assertTrue("\nExpected secondMethodName(\r\n                \"after all{}\r\n                 context{\r\n                   after all{}\r\n                 }\") => \"afterAll2\" but"
-     + "\n     secondMethodName(\r\n                \"after all{}\r\n                 context{\r\n                   after all{}\r\n                 }\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+     + "\n     secondMethodName(\r\n                \"after all{}\r\n                 context{\r\n                   after all{}\r\n                 }\") is " + new org.hamcrest.StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
     
   }
   
@@ -118,7 +117,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
       "after{}\r\n                 context{\r\n                   after all{}\r\n                 }");
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_secondMethodName, "afterAll");
     Assert.assertTrue("\nExpected secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after all{}\r\n                 }\") => \"afterAll\" but"
-     + "\n     secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after all{}\r\n                 }\") is " + new StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+     + "\n     secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after all{}\r\n                 }\") is " + new org.hamcrest.StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
     
   }
   
