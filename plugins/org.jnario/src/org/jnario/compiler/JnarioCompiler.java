@@ -164,7 +164,7 @@ public class JnarioCompiler extends XtendCompiler {
 	}
 
 	protected JvmIdentifiableElement getNullValueMatcher(XBinaryOperation should) {
-		return getMethod(should, "org.hamcrest.CoreMatchers", "nullValue");
+		return getMethod(should, org.jnario.lib.Should.class.getName(), "nullValue");
 	}
 
 	protected JvmIdentifiableElement getMethod(XBinaryOperation should, String type, String methodName) {

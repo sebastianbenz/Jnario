@@ -145,7 +145,7 @@ public class Should{
 			public void describeTo(Description description) {
 				description.appendText(desc);
 			}
-
+			
 			@SuppressWarnings("unchecked")
 			public boolean matches(Object item) {
 				return matcher.apply((T) item);
@@ -160,5 +160,18 @@ public class Should{
 	 */
 	public static <T> T _(){
 		return null;
+	}
+	
+	public static <T> Matcher<T> nullValue(){
+		return new BaseMatcher<T>() {
+
+			public boolean matches(Object item) {
+				return item == null;
+			}
+
+			public void describeTo(Description description) {
+				description.appendText("null");
+			}
+		};
 	}
 }

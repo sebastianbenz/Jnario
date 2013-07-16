@@ -7,17 +7,22 @@
  *******************************************************************************/
 package org.jnario.lib.tests;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.Is.isA;
 import static org.junit.Assert.assertThat;
 
 import java.lang.reflect.Method;
 import java.util.HashSet;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.core.Is;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.NameProvider;
 import org.jnario.runner.internal.ExampleGroupRunnerBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runner.Runner;
 import org.junit.runners.JUnit4;
 import org.junit.runners.model.InitializationError;
 
@@ -40,15 +45,15 @@ public class ExampleGroupRunnerBuilderTest {
 	
 	@Test
 	public void defaultIsExampleGroupRunner() throws Exception {
-		assertThat(build(ExampleWithoutRunner.class), is(ExampleGroupRunner.class));
+		assertThat(build(ExampleWithoutRunner.class), is(instanceOf(ExampleGroupRunner.class)));
 	}
 	
 	@Test
 	public void usesAnnotatedRunner() throws Exception {
-		assertThat(build(ExampleWithRunner.class), is(JUnit4.class));
+		assertThat(build(ExampleWithRunner.class), is(instanceOf(JUnit4.class)));
 	}
 
-	private Object build(Class<?> type) throws InitializationError {
+	private Runner build(Class<?> type) throws InitializationError {
 		return new ExampleGroupRunnerBuilder(type, nameProvider, new HashSet<Method>()).build();
 	}
 	
