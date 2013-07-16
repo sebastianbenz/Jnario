@@ -7,8 +7,6 @@
  *******************************************************************************/
 package org.jnario.feature.linking;
 
-import static com.google.common.collect.Iterables.filter;
-
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -63,8 +61,12 @@ public class FeatureLazyLinker extends JnarioLazyLinker {
 	}
 	
 	private void generateArguments(Iterable<Step> steps) {
-		for(Step step: filter(steps, StepImplementation.class)){
-			generateArguments(step);
+		for (Step step : steps) {
+			if (step instanceof StepImplementation) {
+				generateArguments(step);
+			}else{
+				step.setExpression(null);
+			}
 		}
 	}
 
