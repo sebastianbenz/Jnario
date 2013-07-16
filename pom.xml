@@ -12,8 +12,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
     <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-    <platform-version-name>juno</platform-version-name>
-    <eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
+    <platform-version-name>kepler</platform-version-name>
   </properties>
 
   <prerequisites>
@@ -54,34 +53,6 @@
     <module>features/org.jnario.m2e-feature</module>
     <module>plugins/jnario-maven-archetype</module>
   </modules>
-
-  <repositories>
-    <repository>
-      <id>juno</id>
-      <layout>p2</layout>
-      <url>${eclipse-site}</url>
-    </repository>
-    <repository>
-      <id>eclipse.xtend</id>
-      <url>http://build.eclipse.org/common/xtend/maven/</url>
-    </repository>
-  </repositories>
-
-  <profiles>
-    <profile>
-      <id>platform-juno</id>
-      <activation>
-        <property>
-          <name>platform-version-name</name>
-          <value>juno</value>
-        </property>
-      </activation>
-      <properties>
-        <eclipse-site>http://download.eclipse.org/releases/juno</eclipse-site>
-        <platform-version>[3.7,3.8)</platform-version>
-      </properties>
-    </profile>
-  </profiles>
 
   <build>
     <plugins>
@@ -147,7 +118,7 @@
               <groupId>org.jnario</groupId>
               <artifactId>org.jnario.target</artifactId>
               <version>${project.version}</version>
-              <classifier>juno</classifier>
+              <classifier>kepler</classifier>
             </artifact>
           </target>
           <ignoreTychoRepositories>true</ignoreTychoRepositories>
