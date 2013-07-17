@@ -3,11 +3,87 @@
 
 <repository name="org.jnario.updatesite" type="org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository" version="1.0.0">
   <properties size="1">
-    <property name="p2.timestamp" value="1373322933059"/>
+    <property name="p2.timestamp" value="1374094167211"/>
   </properties>
   <units size="30">
-    <unit id="org.jnario.spec.ui" version="0.5.0.201307082234">
-      <update id="org.jnario.spec.ui" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
+    <unit id="org.hamcrest.core" version="1.3.0.v201303031735" singleton="false">
+      <update id="org.hamcrest.core" range="[0.0.0,1.3.0.v201303031735)" severity="0"/>
+      <properties size="5">
+        <property name="df_LT.pluginName" value="Hamcrest Core Library of Matchers"/>
+        <property name="df_LT.providerName" value="Eclipse Orbit"/>
+        <property name="org.eclipse.equinox.p2.name" value="%pluginName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="plugin"/>
+      </properties>
+      <provides size="7">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.hamcrest.core" version="1.3.0.v201303031735"/>
+        <provided namespace="osgi.bundle" name="org.hamcrest.core" version="1.3.0.v201303031735"/>
+        <provided namespace="java.package" name="org.hamcrest" version="1.3.0"/>
+        <provided namespace="java.package" name="org.hamcrest.core" version="1.3.0"/>
+        <provided namespace="java.package" name="org.hamcrest.internal" version="1.3.0"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.hamcrest.core" version="1.3.0.v201303031735"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.hamcrest.core
+Bundle-Version: 1.3.0.v201303031735
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.jnario.standalone" version="0.5.0.201307172048" singleton="false">
+      <update id="org.jnario.standalone" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="8">
+        <property name="df_LT.providerName" value="BMW Car IT"/>
+        <property name="df_LT.pluginName" value="Jnario Standalone Compiler"/>
+        <property name="org.eclipse.equinox.p2.name" value="%pluginName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="plugin"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.standalone"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+      </properties>
+      <provides size="5">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.standalone" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.standalone" version="0.5.0.201307172048"/>
+        <provided namespace="java.package" name="org.jnario.compiler" version="0.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <requires size="11">
+        <required namespace="osgi.bundle" name="org.eclipse.xtext" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtend.core" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.eclipse.jdt.core" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.jnario.feature" range="0.5.0"/>
+        <required namespace="osgi.bundle" name="org.jnario" range="0.5.0"/>
+        <required namespace="osgi.bundle" name="org.jnario.spec" range="0.5.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase.lib" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.jnario.lib" range="0.5.0"/>
+        <required namespace="osgi.bundle" name="org.jnario.suite" range="0.5.0"/>
+        <required namespace="osgi.bundle" name="org.apache.ant" range="1.8.3" optional="true" greedy="false"/>
+        <required namespace="java.package" name="org.apache.log4j" range="0.0.0"/>
+      </requires>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.jnario.standalone" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.jnario.standalone
+Bundle-Version: 0.5.0.201307172048
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.jnario.spec.ui" version="0.5.0.201307172048">
+      <update id="org.jnario.spec.ui" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
       <properties size="6">
         <property name="org.eclipse.equinox.p2.name" value="org.jnario.spec.ui"/>
         <property name="org.eclipse.equinox.p2.provider" value="BMW Car IT"/>
@@ -17,8 +93,8 @@
         <property name="maven-version" value="0.5.0-SNAPSHOT"/>
       </properties>
       <provides size="8">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec.ui" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.spec.ui" version="0.5.0.201307082234"/>
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec.ui" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.spec.ui" version="0.5.0.201307172048"/>
         <provided namespace="java.package" name="org.jnario.spec.ui.contentassist" version="0.0.0"/>
         <provided namespace="java.package" name="org.jnario.spec.ui.contentassist.antlr" version="0.0.0"/>
         <provided namespace="java.package" name="org.jnario.spec.ui.internal" version="0.0.0"/>
@@ -53,20 +129,433 @@
         <required namespace="java.package" name="org.apache.commons.logging" range="0.0.0"/>
       </requires>
       <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.spec.ui" version="0.5.0.201307082234"/>
+        <artifact classifier="osgi.bundle" id="org.jnario.spec.ui" version="0.5.0.201307172048"/>
       </artifacts>
       <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
       <touchpointData size="1">
         <instructions size="1">
           <instruction key="manifest">
             Bundle-SymbolicName: org.jnario.spec.ui; singleton:=true
-Bundle-Version: 0.5.0.201307082234
+Bundle-Version: 0.5.0.201307172048
           </instruction>
         </instructions>
       </touchpointData>
     </unit>
-    <unit id="org.jnario.sdk.feature.group" version="0.5.0.201307082234" singleton="false">
-      <update id="org.jnario.sdk.feature.group" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
+    <unit id="org.jnario.ui.source" version="0.5.0.201307172048" singleton="false">
+      <update id="org.jnario.ui.source" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="9">
+        <property name="df_LT.bundleVendor" value="BWM Car IT"/>
+        <property name="df_LT.bundleName" value="org.jnario.ui Source"/>
+        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.ui"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+        <property name="maven-classifier" value="sources"/>
+      </properties>
+      <provides size="4">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.source" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.ui.source" version="0.5.0.201307172048"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.jnario.ui.source" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.jnario.ui.source
+Bundle-Version: 0.5.0.201307172048
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.jnario.feature.ui.source" version="0.5.0.201307172048" singleton="false">
+      <update id="org.jnario.feature.ui.source" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="9">
+        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
+        <property name="df_LT.bundleName" value="org.jnario.feature.ui Source"/>
+        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.feature.ui"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+        <property name="maven-classifier" value="sources"/>
+      </properties>
+      <provides size="4">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.ui.source" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.feature.ui.source" version="0.5.0.201307172048"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.jnario.feature.ui.source" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.jnario.feature.ui.source
+Bundle-Version: 0.5.0.201307172048
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.jnario.source" version="0.5.0.201307172048" singleton="false">
+      <update id="org.jnario.source" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="9">
+        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
+        <property name="df_LT.bundleName" value="Common Source"/>
+        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+        <property name="maven-classifier" value="sources"/>
+      </properties>
+      <provides size="4">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.source" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.source" version="0.5.0.201307172048"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.jnario.source" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.jnario.source
+Bundle-Version: 0.5.0.201307172048
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.jnario.spec" version="0.5.0.201307172048">
+      <update id="org.jnario.spec" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="8">
+        <property name="df_LT.providerName" value="BMW Car IT"/>
+        <property name="df_LT.pluginName" value="Spec Model"/>
+        <property name="org.eclipse.equinox.p2.name" value="%pluginName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="plugin"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.spec"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+      </properties>
+      <provides size="19">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.spec" version="0.5.0.201307172048"/>
+        <provided namespace="java.package" name="org.jnario.spec" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.compiler" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.doc" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.formatting" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.jvmmodel" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.naming" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.parser.antlr" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.parser.antlr.internal" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.scoping" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.serializer" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.services" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.spec" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.spec.impl" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.spec.util" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.spec.validation" version="0.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <requires size="19">
+        <required namespace="osgi.bundle" name="org.eclipse.xtext" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase" range="[2.4.2,2.5.0)" optional="true" greedy="false"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.generator" range="0.0.0" optional="true" greedy="false"/>
+        <required namespace="osgi.bundle" name="org.eclipse.emf.codegen.ecore" range="0.0.0" optional="true" greedy="false"/>
+        <required namespace="osgi.bundle" name="org.eclipse.emf.mwe.utils" range="0.0.0" optional="true" greedy="false"/>
+        <required namespace="osgi.bundle" name="org.eclipse.emf.mwe2.launch" range="0.0.0" optional="true" greedy="false"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.util" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.eclipse.emf.ecore" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.emf.common" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.antlr.runtime" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.common.types" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.jnario.lib" range="0.5.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtend.core" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.jnario" range="0.5.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase.lib" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.eclipse.jdt.annotation" range="1.0.0" optional="true" greedy="false"/>
+        <required namespace="osgi.bundle" name="org.apache.commons.lang" range="0.0.0"/>
+        <required namespace="java.package" name="org.apache.log4j" range="0.0.0"/>
+        <required namespace="java.package" name="org.apache.commons.logging" range="0.0.0"/>
+      </requires>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.jnario.spec" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.jnario.spec; singleton:=true
+Bundle-Version: 0.5.0.201307172048
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.jnario.m2e" version="0.5.0.201307172048">
+      <update id="org.jnario.m2e" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="8">
+        <property name="df_LT.providerName" value="Sebastian Benz"/>
+        <property name="df_LT.pluginName" value="Jnario m2e Integration"/>
+        <property name="org.eclipse.equinox.p2.name" value="%pluginName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="plugin"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.m2e"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+      </properties>
+      <provides size="4">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.m2e" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.m2e" version="0.5.0.201307172048"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <requires size="1">
+        <required namespace="osgi.bundle" name="org.eclipse.m2e.core" range="1.0.0" optional="true" greedy="false"/>
+      </requires>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.jnario.m2e" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.jnario.m2e;singleton:=true
+Bundle-Version: 0.5.0.201307172048
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.jnario.standalone.source" version="0.5.0.201307172048" singleton="false">
+      <update id="org.jnario.standalone.source" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="9">
+        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
+        <property name="df_LT.bundleName" value="Jnario Standalone Compiler  Source"/>
+        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.standalone"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+        <property name="maven-classifier" value="sources"/>
+      </properties>
+      <provides size="4">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.standalone.source" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.standalone.source" version="0.5.0.201307172048"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.jnario.standalone.source" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.jnario.standalone.source
+Bundle-Version: 0.5.0.201307172048
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.jnario.m2e.feature.jar" version="0.5.0.201307172048">
+      <properties size="10">
+        <property name="org.eclipse.equinox.p2.name" value="%featureName"/>
+        <property name="org.eclipse.equinox.p2.description" value="%description"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
+        <property name="df_LT.featureName" value="Jnario M2E Support"/>
+        <property name="df_LT.providerName" value="BMW Car IT"/>
+        <property name="df_LT.description" value="Jnario M2E Support Feature"/>
+        <property name="df_LT.license" value="Eclipse Public License - v 1.0"/>
+        <property name="maven-groupId" value="org.jnario.features"/>
+        <property name="maven-artifactId" value="org.jnario.m2e"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+      </properties>
+      <provides size="3">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.m2e.feature.jar" version="0.5.0.201307172048"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="feature" version="1.0.0"/>
+        <provided namespace="org.eclipse.update.feature" name="org.jnario.m2e" version="0.5.0.201307172048"/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size="1">
+        <artifact classifier="org.eclipse.update.feature" id="org.jnario.m2e" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="zipped">
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+      <licenses size="1">
+        <license uri="http://www.eclipse.org/legal/epl-v10.html" url="http://www.eclipse.org/legal/epl-v10.html">
+          %license
+        </license>
+      </licenses>
+      <copyright>
+        Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
+
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License
+v1.0 which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html Description here.
+      </copyright>
+    </unit>
+    <unit id="org.jnario.spec.source" version="0.5.0.201307172048" singleton="false">
+      <update id="org.jnario.spec.source" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="9">
+        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
+        <property name="df_LT.bundleName" value="Spec Model Source"/>
+        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.spec"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+        <property name="maven-classifier" value="sources"/>
+      </properties>
+      <provides size="4">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec.source" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.spec.source" version="0.5.0.201307172048"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.jnario.spec.source" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.jnario.spec.source
+Bundle-Version: 0.5.0.201307172048
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.jnario.lib.source" version="0.5.0.201307172048" singleton="false">
+      <update id="org.jnario.lib.source" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="9">
+        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
+        <property name="df_LT.bundleName" value="Jnario Library Source"/>
+        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.lib"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+        <property name="maven-classifier" value="sources"/>
+      </properties>
+      <provides size="4">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.lib.source" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.lib.source" version="0.5.0.201307172048"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.jnario.lib.source" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.jnario.lib.source
+Bundle-Version: 0.5.0.201307172048
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.hamcrest.core.source" version="1.1.0.v20090501071000" singleton="false">
+      <update id="org.hamcrest.core.source" range="[0.0.0,1.1.0.v20090501071000)" severity="0"/>
+      <properties size="5">
+        <property name="df_LT.pluginName" value="Hamcrest Core Library of Matchers Source"/>
+        <property name="df_LT.providerName" value="Eclipse.org"/>
+        <property name="org.eclipse.equinox.p2.name" value="%pluginName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="plugin"/>
+      </properties>
+      <provides size="4">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.hamcrest.core.source" version="1.1.0.v20090501071000"/>
+        <provided namespace="osgi.bundle" name="org.hamcrest.core.source" version="1.1.0.v20090501071000"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.hamcrest.core.source" version="1.1.0.v20090501071000"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.hamcrest.core.source
+Bundle-Version: 1.1.0.v20090501071000
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.jnario.feature.jar" version="0.5.0.201307172048">
+      <properties size="10">
+        <property name="org.eclipse.equinox.p2.name" value="%featureName"/>
+        <property name="org.eclipse.equinox.p2.description" value="%description"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
+        <property name="df_LT.featureName" value="Jnario Runtime"/>
+        <property name="df_LT.providerName" value="BMW Car IT"/>
+        <property name="df_LT.description" value="Jnario Runtime  Feature"/>
+        <property name="df_LT.license" value="Eclipse Public License - v 1.0"/>
+        <property name="maven-groupId" value="org.jnario.features"/>
+        <property name="maven-artifactId" value="org.jnario"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+      </properties>
+      <provides size="3">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.jar" version="0.5.0.201307172048"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="feature" version="1.0.0"/>
+        <provided namespace="org.eclipse.update.feature" name="org.jnario" version="0.5.0.201307172048"/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size="1">
+        <artifact classifier="org.eclipse.update.feature" id="org.jnario" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="zipped">
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+      <licenses size="1">
+        <license uri="http://www.eclipse.org/legal/epl-v10.html" url="http://www.eclipse.org/legal/epl-v10.html">
+          %license
+        </license>
+      </licenses>
+      <copyright>
+        Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
+
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License
+v1.0 which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html Description here.
+      </copyright>
+    </unit>
+    <unit id="org.jnario.sdk.feature.group" version="0.5.0.201307172048" singleton="false">
+      <update id="org.jnario.sdk.feature.group" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
       <properties size="11">
         <property name="org.eclipse.equinox.p2.name" value="%featureName"/>
         <property name="org.eclipse.equinox.p2.description" value="%description"/>
@@ -81,21 +570,21 @@ Bundle-Version: 0.5.0.201307082234
         <property name="df_LT.license" value="Eclipse Public License - v 1.0"/>
       </properties>
       <provides size="2">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.sdk.feature.group" version="0.5.0.201307082234"/>
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.sdk.feature.group" version="0.5.0.201307172048"/>
         <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
       </provides>
       <requires size="11">
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.group" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.feature.group" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.source" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec.source" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.lib.source" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.source" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.standalone.source" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.ui.source" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec.ui.source" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.source" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.sdk.feature.jar" range="[0.5.0.201307082234,0.5.0.201307082234]">
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.group" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.feature.group" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.source" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec.source" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.lib.source" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.source" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.standalone.source" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.ui.source" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec.ui.source" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.source" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.sdk.feature.jar" range="[0.5.0.201307172048,0.5.0.201307172048]">
           <filter>
             (org.eclipse.update.install.features=true)
           </filter>
@@ -116,8 +605,56 @@ v1.0 which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html Description here.
       </copyright>
     </unit>
-    <unit id="org.jnario.feature" version="0.5.0.201307082234">
-      <update id="org.jnario.feature" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
+    <unit id="org.jnario.spec.ui.source" version="0.5.0.201307172048" singleton="false">
+      <update id="org.jnario.spec.ui.source" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="9">
+        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
+        <property name="df_LT.bundleName" value="org.jnario.spec.ui Source"/>
+        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.spec.ui"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+        <property name="maven-classifier" value="sources"/>
+      </properties>
+      <provides size="4">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec.ui.source" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.spec.ui.source" version="0.5.0.201307172048"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.jnario.spec.ui.source" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.jnario.spec.ui.source
+Bundle-Version: 0.5.0.201307172048
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="201307172048.Jnario" version="1.0.0.07c-cL3yvE7UEMcF6N6UElD">
+      <properties size="2">
+        <property name="org.eclipse.equinox.p2.name" value="Jnario"/>
+        <property name="org.eclipse.equinox.p2.type.category" value="true"/>
+      </properties>
+      <provides size="1">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="201307172048.Jnario" version="1.0.0.07c-cL3yvE7UEMcF6N6UElD"/>
+      </provides>
+      <requires size="4">
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.group" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.m2e.feature.group" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.sdk.feature.group" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.feature.group" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+      </requires>
+      <touchpoint id="null" version="0.0.0"/>
+    </unit>
+    <unit id="org.jnario.feature" version="0.5.0.201307172048">
+      <update id="org.jnario.feature" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
       <properties size="8">
         <property name="df_LT.providerName" value="BMW Car IT"/>
         <property name="df_LT.pluginName" value="org.jnario.feature"/>
@@ -129,8 +666,8 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
         <property name="maven-version" value="0.5.0-SNAPSHOT"/>
       </properties>
       <provides size="24">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.feature" version="0.5.0.201307082234"/>
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.feature" version="0.5.0.201307172048"/>
         <provided namespace="java.package" name="org.jnario.feature" version="0.0.0"/>
         <provided namespace="java.package" name="org.jnario.feature.compiler" version="0.0.0"/>
         <provided namespace="java.package" name="org.jnario.feature.conversion" version="0.0.0"/>
@@ -175,331 +712,20 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
         <required namespace="java.package" name="org.apache.commons.logging" range="0.0.0"/>
       </requires>
       <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.feature" version="0.5.0.201307082234"/>
+        <artifact classifier="osgi.bundle" id="org.jnario.feature" version="0.5.0.201307172048"/>
       </artifacts>
       <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
       <touchpointData size="1">
         <instructions size="1">
           <instruction key="manifest">
             Bundle-SymbolicName: org.jnario.feature;singleton:=true
-Bundle-Version: 0.5.0.201307082234
+Bundle-Version: 0.5.0.201307172048
           </instruction>
         </instructions>
       </touchpointData>
     </unit>
-    <unit id="org.jnario.source" version="0.5.0.201307082234" singleton="false">
-      <update id="org.jnario.source" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="9">
-        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
-        <property name="df_LT.bundleName" value="Common Source"/>
-        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-        <property name="maven-classifier" value="sources"/>
-      </properties>
-      <provides size="4">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.source" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.source" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.source" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.source
-Bundle-Version: 0.5.0.201307082234
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id="org.hamcrest.core.source" version="1.1.0.v20090501071000" singleton="false">
-      <update id="org.hamcrest.core.source" range="[0.0.0,1.1.0.v20090501071000)" severity="0"/>
-      <properties size="5">
-        <property name="df_LT.pluginName" value="Hamcrest Core Library of Matchers Source"/>
-        <property name="df_LT.providerName" value="Eclipse.org"/>
-        <property name="org.eclipse.equinox.p2.name" value="%pluginName"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="plugin"/>
-      </properties>
-      <provides size="4">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.hamcrest.core.source" version="1.1.0.v20090501071000"/>
-        <provided namespace="osgi.bundle" name="org.hamcrest.core.source" version="1.1.0.v20090501071000"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.hamcrest.core.source" version="1.1.0.v20090501071000"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.hamcrest.core.source
-Bundle-Version: 1.1.0.v20090501071000
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id="org.jnario.spec.ui.source" version="0.5.0.201307082234" singleton="false">
-      <update id="org.jnario.spec.ui.source" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="9">
-        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
-        <property name="df_LT.bundleName" value="org.jnario.spec.ui Source"/>
-        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario.spec.ui"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-        <property name="maven-classifier" value="sources"/>
-      </properties>
-      <provides size="4">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec.ui.source" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.spec.ui.source" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.spec.ui.source" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.spec.ui.source
-Bundle-Version: 0.5.0.201307082234
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id="org.jnario.m2e.feature.jar" version="0.5.0.201307082234">
-      <properties size="10">
-        <property name="org.eclipse.equinox.p2.name" value="%featureName"/>
-        <property name="org.eclipse.equinox.p2.description" value="%description"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
-        <property name="df_LT.featureName" value="Jnario M2E Support"/>
-        <property name="df_LT.providerName" value="BMW Car IT"/>
-        <property name="df_LT.description" value="Jnario M2E Support Feature"/>
-        <property name="df_LT.license" value="Eclipse Public License - v 1.0"/>
-        <property name="maven-groupId" value="org.jnario.features"/>
-        <property name="maven-artifactId" value="org.jnario.m2e"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-      </properties>
-      <provides size="3">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.m2e.feature.jar" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="feature" version="1.0.0"/>
-        <provided namespace="org.eclipse.update.feature" name="org.jnario.m2e" version="0.5.0.201307082234"/>
-      </provides>
-      <filter>
-        (org.eclipse.update.install.features=true)
-      </filter>
-      <artifacts size="1">
-        <artifact classifier="org.eclipse.update.feature" id="org.jnario.m2e" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="zipped">
-            true
-          </instruction>
-        </instructions>
-      </touchpointData>
-      <licenses size="1">
-        <license uri="http://www.eclipse.org/legal/epl-v10.html" url="http://www.eclipse.org/legal/epl-v10.html">
-          %license
-        </license>
-      </licenses>
-      <copyright>
-        Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
-
-All rights reserved. This program and the accompanying materials
-are made available under the terms of the Eclipse Public License
-v1.0 which accompanies this distribution, and is available at
-http://www.eclipse.org/legal/epl-v10.html Description here.
-      </copyright>
-    </unit>
-    <unit id="org.jnario.spec" version="0.5.0.201307082234">
-      <update id="org.jnario.spec" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="8">
-        <property name="df_LT.providerName" value="BMW Car IT"/>
-        <property name="df_LT.pluginName" value="Spec Model"/>
-        <property name="org.eclipse.equinox.p2.name" value="%pluginName"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="plugin"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario.spec"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-      </properties>
-      <provides size="19">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.spec" version="0.5.0.201307082234"/>
-        <provided namespace="java.package" name="org.jnario.spec" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.compiler" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.doc" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.formatting" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.jvmmodel" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.naming" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.parser.antlr" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.parser.antlr.internal" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.scoping" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.serializer" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.services" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.spec" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.spec.impl" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.spec.util" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.spec.validation" version="0.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <requires size="19">
-        <required namespace="osgi.bundle" name="org.eclipse.xtext" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase" range="[2.4.2,2.5.0)" optional="true" greedy="false"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.generator" range="0.0.0" optional="true" greedy="false"/>
-        <required namespace="osgi.bundle" name="org.eclipse.emf.codegen.ecore" range="0.0.0" optional="true" greedy="false"/>
-        <required namespace="osgi.bundle" name="org.eclipse.emf.mwe.utils" range="0.0.0" optional="true" greedy="false"/>
-        <required namespace="osgi.bundle" name="org.eclipse.emf.mwe2.launch" range="0.0.0" optional="true" greedy="false"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.util" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.eclipse.emf.ecore" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.emf.common" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.antlr.runtime" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.common.types" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.jnario.lib" range="0.5.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtend.core" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.jnario" range="0.5.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase.lib" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.eclipse.jdt.annotation" range="1.0.0" optional="true" greedy="false"/>
-        <required namespace="osgi.bundle" name="org.apache.commons.lang" range="0.0.0"/>
-        <required namespace="java.package" name="org.apache.log4j" range="0.0.0"/>
-        <required namespace="java.package" name="org.apache.commons.logging" range="0.0.0"/>
-      </requires>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.spec" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.spec; singleton:=true
-Bundle-Version: 0.5.0.201307082234
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id="org.jnario.m2e.feature.group" version="0.5.0.201307082234" singleton="false">
-      <update id="org.jnario.m2e.feature.group" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="11">
-        <property name="org.eclipse.equinox.p2.name" value="%featureName"/>
-        <property name="org.eclipse.equinox.p2.description" value="%description"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
-        <property name="org.eclipse.equinox.p2.type.group" value="true"/>
-        <property name="maven-groupId" value="org.jnario.features"/>
-        <property name="maven-artifactId" value="org.jnario.m2e"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-        <property name="df_LT.featureName" value="Jnario M2E Support"/>
-        <property name="df_LT.providerName" value="BMW Car IT"/>
-        <property name="df_LT.description" value="Jnario M2E Support Feature"/>
-        <property name="df_LT.license" value="Eclipse Public License - v 1.0"/>
-      </properties>
-      <provides size="2">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.m2e.feature.group" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <requires size="3">
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.m2e.core" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.m2e" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.m2e.feature.jar" range="[0.5.0.201307082234,0.5.0.201307082234]">
-          <filter>
-            (org.eclipse.update.install.features=true)
-          </filter>
-        </required>
-      </requires>
-      <touchpoint id="null" version="0.0.0"/>
-      <licenses size="1">
-        <license uri="http://www.eclipse.org/legal/epl-v10.html" url="http://www.eclipse.org/legal/epl-v10.html">
-          %license
-        </license>
-      </licenses>
-      <copyright>
-        Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
-
-All rights reserved. This program and the accompanying materials
-are made available under the terms of the Eclipse Public License
-v1.0 which accompanies this distribution, and is available at
-http://www.eclipse.org/legal/epl-v10.html Description here.
-      </copyright>
-    </unit>
-    <unit id="org.hamcrest.core" version="1.1.0.v20090501071000" singleton="false">
-      <update id="org.hamcrest.core" range="[0.0.0,1.1.0.v20090501071000)" severity="0"/>
-      <properties size="5">
-        <property name="df_LT.pluginName" value="Hamcrest Core Library of Matchers"/>
-        <property name="df_LT.providerName" value="Eclipse.org"/>
-        <property name="org.eclipse.equinox.p2.name" value="%pluginName"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="plugin"/>
-      </properties>
-      <provides size="7">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.hamcrest.core" version="1.1.0.v20090501071000"/>
-        <provided namespace="osgi.bundle" name="org.hamcrest.core" version="1.1.0.v20090501071000"/>
-        <provided namespace="java.package" name="org.hamcrest" version="1.1.0"/>
-        <provided namespace="java.package" name="org.hamcrest.core" version="1.1.0"/>
-        <provided namespace="java.package" name="org.hamcrest.internal" version="1.1.0"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.hamcrest.core" version="1.1.0.v20090501071000"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.hamcrest.core
-Bundle-Version: 1.1.0.v20090501071000
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id="org.jnario.lib.source" version="0.5.0.201307082234" singleton="false">
-      <update id="org.jnario.lib.source" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="9">
-        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
-        <property name="df_LT.bundleName" value="Jnario Library Source"/>
-        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario.lib"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-        <property name="maven-classifier" value="sources"/>
-      </properties>
-      <provides size="4">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.lib.source" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.lib.source" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.lib.source" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.lib.source
-Bundle-Version: 0.5.0.201307082234
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id="org.jnario" version="0.5.0.201307082234">
-      <update id="org.jnario" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
+    <unit id="org.jnario" version="0.5.0.201307172048">
+      <update id="org.jnario" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
       <properties size="5">
         <property name="org.eclipse.equinox.p2.name" value="Common"/>
         <property name="org.eclipse.equinox.p2.provider" value="BMW Car IT"/>
@@ -508,8 +734,8 @@ Bundle-Version: 0.5.0.201307082234
         <property name="maven-version" value="0.5.0-SNAPSHOT"/>
       </properties>
       <provides size="17">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario" version="0.5.0.201307082234"/>
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario" version="0.5.0.201307172048"/>
         <provided namespace="java.package" name="org.jnario" version="0.0.0"/>
         <provided namespace="java.package" name="org.jnario.compiler" version="0.0.0"/>
         <provided namespace="java.package" name="org.jnario.conversion" version="0.0.0"/>
@@ -540,41 +766,182 @@ Bundle-Version: 0.5.0.201307082234
         <required namespace="java.package" name="org.apache.log4j" range="0.0.0"/>
       </requires>
       <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario" version="0.5.0.201307082234"/>
+        <artifact classifier="osgi.bundle" id="org.jnario" version="0.5.0.201307172048"/>
       </artifacts>
       <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
       <touchpointData size="1">
         <instructions size="1">
           <instruction key="manifest">
             Bundle-SymbolicName: org.jnario;singleton:=true
-Bundle-Version: 0.5.0.201307082234
+Bundle-Version: 0.5.0.201307172048
           </instruction>
         </instructions>
       </touchpointData>
     </unit>
-    <unit id="org.jnario.feature.jar" version="0.5.0.201307082234">
+    <unit id="org.jnario.lib" version="0.5.0.201307172048">
+      <update id="org.jnario.lib" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="5">
+        <property name="org.eclipse.equinox.p2.name" value="Jnario Library"/>
+        <property name="org.eclipse.equinox.p2.provider" value="BMW Car IT"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.lib"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+      </properties>
+      <provides size="8">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.lib" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.lib" version="0.5.0.201307172048"/>
+        <provided namespace="java.package" name="org.jnario.junit3" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.lib" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.lib.internal" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.runner" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.runner.internal" version="0.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
+      </provides>
+      <requires size="13">
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase.lib" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtend.lib" range="[2.4.2,2.5.0)" optional="true" greedy="false"/>
+        <required namespace="java.package" name="junit.extensions" range="0.0.0"/>
+        <required namespace="java.package" name="junit.framework" range="0.0.0"/>
+        <required namespace="java.package" name="junit.runner" range="0.0.0"/>
+        <required namespace="java.package" name="org.hamcrest" range="0.0.0"/>
+        <required namespace="java.package" name="org.junit" range="0.0.0" optional="true" greedy="false"/>
+        <required namespace="java.package" name="org.junit.rules" range="0.0.0" optional="true" greedy="false"/>
+        <required namespace="java.package" name="org.junit.runner" range="0.0.0" optional="true" greedy="false"/>
+        <required namespace="java.package" name="org.junit.runner.manipulation" range="0.0.0" optional="true" greedy="false"/>
+        <required namespace="java.package" name="org.junit.runner.notification" range="0.0.0" optional="true" greedy="false"/>
+        <required namespace="java.package" name="org.junit.runners" range="0.0.0" optional="true" greedy="false"/>
+        <required namespace="java.package" name="org.junit.runners.model" range="0.0.0" optional="true" greedy="false"/>
+      </requires>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.jnario.lib" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.jnario.lib;singleton:=true
+Bundle-Version: 0.5.0.201307172048
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.jnario.feature.source" version="0.5.0.201307172048" singleton="false">
+      <update id="org.jnario.feature.source" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="9">
+        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
+        <property name="df_LT.bundleName" value="org.jnario.feature Source"/>
+        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.feature"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+        <property name="maven-classifier" value="sources"/>
+      </properties>
+      <provides size="4">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.source" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.feature.source" version="0.5.0.201307172048"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.jnario.feature.source" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.jnario.feature.source
+Bundle-Version: 0.5.0.201307172048
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.jnario.suite.ui" version="0.5.0.201307172048">
+      <update id="org.jnario.suite.ui" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="8">
+        <property name="df_LT.providerName" value="BMW Car IT"/>
+        <property name="df_LT.pluginName" value="Jnario Suite UI"/>
+        <property name="org.eclipse.equinox.p2.name" value="%pluginName"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
+        <property name="org.eclipse.equinox.p2.bundle.localization" value="plugin"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.suite.ui"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+      </properties>
+      <provides size="8">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.suite.ui" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.suite.ui" version="0.5.0.201307172048"/>
+        <provided namespace="java.package" name="org.jnario.suite.ui.contentassist" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.suite.ui.contentassist.antlr" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.suite.ui.internal" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.suite.ui.quickfix" version="0.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
+      </provides>
+      <requires size="25">
+        <required namespace="osgi.bundle" name="org.jnario.suite" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.ui" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.ui.editors" range="3.5.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.ui.ide" range="3.5.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.ui.shared" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase.ui" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.ui" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.builder" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.antlr.runtime" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.common.types.ui" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.ui.codetemplates.ui" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.compare" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.jdt.core" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtend.ide" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtend.lib" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="com.google.guava" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase.lib" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.jnario" range="0.5.0"/>
+        <required namespace="osgi.bundle" name="org.jnario.ui" range="0.5.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.jdt.ui" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.jdt.junit" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.pde.ui" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.jnario.feature.ui" range="0.5.0"/>
+        <required namespace="osgi.bundle" name="org.jnario.spec.ui" range="0.5.0"/>
+        <required namespace="java.package" name="org.apache.log4j" range="0.0.0"/>
+      </requires>
+      <artifacts size="1">
+        <artifact classifier="osgi.bundle" id="org.jnario.suite.ui" version="0.5.0.201307172048"/>
+      </artifacts>
+      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
+      <touchpointData size="1">
+        <instructions size="1">
+          <instruction key="manifest">
+            Bundle-SymbolicName: org.jnario.suite.ui; singleton:=true
+Bundle-Version: 0.5.0.201307172048
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id="org.jnario.ui.feature.jar" version="0.5.0.201307172048">
       <properties size="10">
         <property name="org.eclipse.equinox.p2.name" value="%featureName"/>
         <property name="org.eclipse.equinox.p2.description" value="%description"/>
         <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
-        <property name="df_LT.featureName" value="Jnario Runtime"/>
+        <property name="df_LT.featureName" value="Jnario IDE"/>
         <property name="df_LT.providerName" value="BMW Car IT"/>
-        <property name="df_LT.description" value="Jnario Runtime  Feature"/>
+        <property name="df_LT.description" value="Jnario IDE Feature"/>
         <property name="df_LT.license" value="Eclipse Public License - v 1.0"/>
         <property name="maven-groupId" value="org.jnario.features"/>
-        <property name="maven-artifactId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.ui"/>
         <property name="maven-version" value="0.5.0-SNAPSHOT"/>
       </properties>
       <provides size="3">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.jar" version="0.5.0.201307082234"/>
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.feature.jar" version="0.5.0.201307172048"/>
         <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="feature" version="1.0.0"/>
-        <provided namespace="org.eclipse.update.feature" name="org.jnario" version="0.5.0.201307082234"/>
+        <provided namespace="org.eclipse.update.feature" name="org.jnario.ui" version="0.5.0.201307172048"/>
       </provides>
       <filter>
         (org.eclipse.update.install.features=true)
       </filter>
       <artifacts size="1">
-        <artifact classifier="org.eclipse.update.feature" id="org.jnario" version="0.5.0.201307082234"/>
+        <artifact classifier="org.eclipse.update.feature" id="org.jnario.ui" version="0.5.0.201307172048"/>
       </artifacts>
       <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
       <touchpointData size="1">
@@ -591,47 +958,146 @@ Bundle-Version: 0.5.0.201307082234
       </licenses>
       <copyright>
         Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
-
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License
 v1.0 which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html Description here.
       </copyright>
     </unit>
-    <unit id="org.jnario.feature.source" version="0.5.0.201307082234" singleton="false">
-      <update id="org.jnario.feature.source" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="9">
-        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
-        <property name="df_LT.bundleName" value="org.jnario.feature Source"/>
-        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario.feature"/>
+    <unit id="org.jnario.ui.feature.group" version="0.5.0.201307172048" singleton="false">
+      <update id="org.jnario.ui.feature.group" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="11">
+        <property name="org.eclipse.equinox.p2.name" value="%featureName"/>
+        <property name="org.eclipse.equinox.p2.description" value="%description"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
+        <property name="org.eclipse.equinox.p2.type.group" value="true"/>
+        <property name="maven-groupId" value="org.jnario.features"/>
+        <property name="maven-artifactId" value="org.jnario.ui"/>
         <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-        <property name="maven-classifier" value="sources"/>
+        <property name="df_LT.featureName" value="Jnario IDE"/>
+        <property name="df_LT.providerName" value="BMW Car IT"/>
+        <property name="df_LT.description" value="Jnario IDE Feature"/>
+        <property name="df_LT.license" value="Eclipse Public License - v 1.0"/>
       </properties>
-      <provides size="4">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.source" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.feature.source" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
+      <provides size="2">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.feature.group" version="0.5.0.201307172048"/>
         <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
       </provides>
+      <requires size="38">
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.ui" range="2.4.2"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.ui.editors" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.ui.ide" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.ui.shared" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.ui" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.builder" range="2.4.2"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.antlr.runtime" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.common.types.ui" range="2.4.2"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.ui.codetemplates.ui" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.compare" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.xbase.ui" range="2.4.2"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.jdt.junit" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.pde.ui" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario" range="0.5.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.debug.core" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.debug.ui" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature" range="0.5.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.xbase.lib" range="2.4.2"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.jdt.ui" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.jdt.core" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.apache.commons.logging" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.apache.log4j" range="1.2.15"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtend.core" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.ui.editors" range="3.5.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.ui.ide" range="3.5.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtend.ide" range="2.4.2"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="com.ibm.icu" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.core.resources" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.core.runtime" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.lib" range="0.5.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.suite" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="com.google.guava" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.ui" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec.ui" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.suite.ui" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.feature.jar" range="[0.5.0.201307172048,0.5.0.201307172048]">
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id="null" version="0.0.0"/>
+      <licenses size="1">
+        <license uri="http://www.eclipse.org/legal/epl-v10.html" url="http://www.eclipse.org/legal/epl-v10.html">
+          %license
+        </license>
+      </licenses>
+      <copyright>
+        Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License
+v1.0 which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html Description here.
+      </copyright>
+    </unit>
+    <unit id="org.jnario.ui" version="0.5.0.201307172048">
+      <update id="org.jnario.ui" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="5">
+        <property name="org.eclipse.equinox.p2.name" value="org.jnario.ui"/>
+        <property name="org.eclipse.equinox.p2.provider" value="BWM Car IT"/>
+        <property name="maven-groupId" value="org.jnario"/>
+        <property name="maven-artifactId" value="org.jnario.ui"/>
+        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+      </properties>
+      <provides size="14">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.ui" version="0.5.0.201307172048"/>
+        <provided namespace="java.package" name="org.jnario.ui" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.ui.builder" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.ui.buildpath" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.ui.contentassist" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.ui.doc" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.ui.highlighting" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.ui.preferences" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.ui.quickfix" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.ui.validator" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.ui.findrefs" version="0.0.0"/>
+        <provided namespace="java.package" name="org.jnario.ui.wizards" version="0.0.0"/>
+        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
+      </provides>
+      <requires size="15">
+        <required namespace="osgi.bundle" name="org.eclipse.core.resources" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.builder" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.eclipse.jdt.core" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.core.runtime" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.ui" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.jnario" range="0.5.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtend.ide" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.common.types.ui" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.eclipse.jdt.ui" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase.ui" range="[2.4.2,2.5.0)"/>
+        <required namespace="osgi.bundle" name="org.jnario.lib" range="0.5.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.ui" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.jdt.junit" range="0.0.0"/>
+        <required namespace="osgi.bundle" name="org.eclipse.xtext.ui.shared" range="[2.4.2,2.5.0)"/>
+        <required namespace="java.package" name="org.apache.log4j" range="1.2.15"/>
+      </requires>
       <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.feature.source" version="0.5.0.201307082234"/>
+        <artifact classifier="osgi.bundle" id="org.jnario.ui" version="0.5.0.201307172048"/>
       </artifacts>
       <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
       <touchpointData size="1">
         <instructions size="1">
           <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.feature.source
-Bundle-Version: 0.5.0.201307082234
+            Bundle-SymbolicName: org.jnario.ui;singleton:=true
+Bundle-Version: 0.5.0.201307172048
           </instruction>
         </instructions>
       </touchpointData>
     </unit>
-    <unit id="org.jnario.feature.ui" version="0.5.0.201307082234">
-      <update id="org.jnario.feature.ui" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
+    <unit id="org.jnario.feature.ui" version="0.5.0.201307172048">
+      <update id="org.jnario.feature.ui" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
       <properties size="6">
         <property name="org.eclipse.equinox.p2.name" value="org.jnario.feature.ui"/>
         <property name="org.eclipse.equinox.p2.provider" value="BMW Car IT"/>
@@ -641,8 +1107,8 @@ Bundle-Version: 0.5.0.201307082234
         <property name="maven-version" value="0.5.0-SNAPSHOT"/>
       </properties>
       <provides size="9">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.ui" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.feature.ui" version="0.5.0.201307082234"/>
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.ui" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.feature.ui" version="0.5.0.201307172048"/>
         <provided namespace="java.package" name="org.jnario.feature.ui.contentassist" version="0.0.0"/>
         <provided namespace="java.package" name="org.jnario.feature.ui.contentassist.antlr" version="0.0.0"/>
         <provided namespace="java.package" name="org.jnario.feature.ui.internal" version="0.0.0"/>
@@ -683,150 +1149,104 @@ Bundle-Version: 0.5.0.201307082234
         <required namespace="java.package" name="org.eclipse.xtend.core.xtend" range="0.0.0"/>
       </requires>
       <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.feature.ui" version="0.5.0.201307082234"/>
+        <artifact classifier="osgi.bundle" id="org.jnario.feature.ui" version="0.5.0.201307172048"/>
       </artifacts>
       <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
       <touchpointData size="1">
         <instructions size="1">
           <instruction key="manifest">
             Bundle-SymbolicName: org.jnario.feature.ui; singleton:=true
-Bundle-Version: 0.5.0.201307082234
+Bundle-Version: 0.5.0.201307172048
           </instruction>
         </instructions>
       </touchpointData>
     </unit>
-    <unit id="org.jnario.standalone" version="0.5.0.201307082234" singleton="false">
-      <update id="org.jnario.standalone" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="8">
-        <property name="df_LT.providerName" value="BMW Car IT"/>
-        <property name="df_LT.pluginName" value="Jnario Standalone Compiler"/>
-        <property name="org.eclipse.equinox.p2.name" value="%pluginName"/>
+    <unit id="org.jnario.feature.group" version="0.5.0.201307172048" singleton="false">
+      <update id="org.jnario.feature.group" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="11">
+        <property name="org.eclipse.equinox.p2.name" value="%featureName"/>
+        <property name="org.eclipse.equinox.p2.description" value="%description"/>
         <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="plugin"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario.standalone"/>
+        <property name="org.eclipse.equinox.p2.type.group" value="true"/>
+        <property name="maven-groupId" value="org.jnario.features"/>
+        <property name="maven-artifactId" value="org.jnario"/>
         <property name="maven-version" value="0.5.0-SNAPSHOT"/>
+        <property name="df_LT.featureName" value="Jnario Runtime"/>
+        <property name="df_LT.providerName" value="BMW Car IT"/>
+        <property name="df_LT.description" value="Jnario Runtime  Feature"/>
+        <property name="df_LT.license" value="Eclipse Public License - v 1.0"/>
       </properties>
-      <provides size="5">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.standalone" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.standalone" version="0.5.0.201307082234"/>
-        <provided namespace="java.package" name="org.jnario.compiler" version="0.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
+      <provides size="2">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.group" version="0.5.0.201307172048"/>
         <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
       </provides>
-      <requires size="11">
-        <required namespace="osgi.bundle" name="org.eclipse.xtext" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtend.core" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.eclipse.jdt.core" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.jnario.feature" range="0.5.0"/>
-        <required namespace="osgi.bundle" name="org.jnario" range="0.5.0"/>
-        <required namespace="osgi.bundle" name="org.jnario.spec" range="0.5.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase.lib" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.jnario.lib" range="0.5.0"/>
-        <required namespace="osgi.bundle" name="org.jnario.suite" range="0.5.0"/>
-        <required namespace="osgi.bundle" name="org.apache.ant" range="1.8.3" optional="true" greedy="false"/>
-        <required namespace="java.package" name="org.apache.log4j" range="0.0.0"/>
+      <requires size="23">
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.emf.ecore" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.emf.common" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.antlr.runtime" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.apache.log4j" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.apache.commons.logging" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.jdt.core" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext" range="[2.4.2,2.5.0)"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.apache.commons.lang" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.xbase.lib" range="[2.4.2,2.5.0)"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.hamcrest.core" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.xbase" range="[2.4.2,2.5.0)"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtend.core" range="[2.4.2,2.5.0)"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.objectweb.asm" range="3.2.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtend2.lib" range="2.4.2"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.lib" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.standalone" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.suite" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.hamcrest.core" range="[1.3.0.v201303031735,1.3.0.v201303031735]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.hamcrest.core.source" range="[1.1.0.v20090501071000,1.1.0.v20090501071000]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.jar" range="[0.5.0.201307172048,0.5.0.201307172048]">
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
       </requires>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.standalone" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.standalone
-Bundle-Version: 0.5.0.201307082234
-          </instruction>
-        </instructions>
-      </touchpointData>
+      <touchpoint id="null" version="0.0.0"/>
+      <licenses size="1">
+        <license uri="http://www.eclipse.org/legal/epl-v10.html" url="http://www.eclipse.org/legal/epl-v10.html">
+          %license
+        </license>
+      </licenses>
+      <copyright>
+        Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
+
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License
+v1.0 which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html Description here.
+      </copyright>
     </unit>
-    <unit id="org.jnario.standalone.source" version="0.5.0.201307082234" singleton="false">
-      <update id="org.jnario.standalone.source" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="9">
-        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
-        <property name="df_LT.bundleName" value="Jnario Standalone Compiler  Source"/>
-        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario.standalone"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-        <property name="maven-classifier" value="sources"/>
-      </properties>
-      <provides size="4">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.standalone.source" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.standalone.source" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.standalone.source" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.standalone.source
-Bundle-Version: 0.5.0.201307082234
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id="org.jnario.spec.source" version="0.5.0.201307082234" singleton="false">
-      <update id="org.jnario.spec.source" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="9">
-        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
-        <property name="df_LT.bundleName" value="Spec Model Source"/>
-        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario.spec"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-        <property name="maven-classifier" value="sources"/>
-      </properties>
-      <provides size="4">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec.source" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.spec.source" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.spec.source" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.spec.source
-Bundle-Version: 0.5.0.201307082234
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id="org.jnario.ui.feature.jar" version="0.5.0.201307082234">
+    <unit id="org.jnario.sdk.feature.jar" version="0.5.0.201307172048">
       <properties size="10">
         <property name="org.eclipse.equinox.p2.name" value="%featureName"/>
         <property name="org.eclipse.equinox.p2.description" value="%description"/>
         <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
-        <property name="df_LT.featureName" value="Jnario IDE"/>
+        <property name="df_LT.featureName" value="Jnario SDK"/>
         <property name="df_LT.providerName" value="BMW Car IT"/>
-        <property name="df_LT.description" value="Jnario IDE Feature"/>
+        <property name="df_LT.description" value="Jnario SDK Feature"/>
         <property name="df_LT.license" value="Eclipse Public License - v 1.0"/>
         <property name="maven-groupId" value="org.jnario.features"/>
-        <property name="maven-artifactId" value="org.jnario.ui"/>
+        <property name="maven-artifactId" value="org.jnario.sdk"/>
         <property name="maven-version" value="0.5.0-SNAPSHOT"/>
       </properties>
       <provides size="3">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.feature.jar" version="0.5.0.201307082234"/>
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.sdk.feature.jar" version="0.5.0.201307172048"/>
         <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="feature" version="1.0.0"/>
-        <provided namespace="org.eclipse.update.feature" name="org.jnario.ui" version="0.5.0.201307082234"/>
+        <provided namespace="org.eclipse.update.feature" name="org.jnario.sdk" version="0.5.0.201307172048"/>
       </provides>
       <filter>
         (org.eclipse.update.install.features=true)
       </filter>
       <artifacts size="1">
-        <artifact classifier="org.eclipse.update.feature" id="org.jnario.ui" version="0.5.0.201307082234"/>
+        <artifact classifier="org.eclipse.update.feature" id="org.jnario.sdk" version="0.5.0.201307172048"/>
       </artifacts>
       <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
       <touchpointData size="1">
@@ -843,46 +1263,58 @@ Bundle-Version: 0.5.0.201307082234
       </licenses>
       <copyright>
         Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
+
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License
 v1.0 which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html Description here.
       </copyright>
     </unit>
-    <unit id="org.jnario.feature.ui.source" version="0.5.0.201307082234" singleton="false">
-      <update id="org.jnario.feature.ui.source" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="9">
-        <property name="df_LT.bundleVendor" value="BMW Car IT"/>
-        <property name="df_LT.bundleName" value="org.jnario.feature.ui Source"/>
-        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario.feature.ui"/>
+    <unit id="org.jnario.m2e.feature.group" version="0.5.0.201307172048" singleton="false">
+      <update id="org.jnario.m2e.feature.group" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
+      <properties size="11">
+        <property name="org.eclipse.equinox.p2.name" value="%featureName"/>
+        <property name="org.eclipse.equinox.p2.description" value="%description"/>
+        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
+        <property name="org.eclipse.equinox.p2.type.group" value="true"/>
+        <property name="maven-groupId" value="org.jnario.features"/>
+        <property name="maven-artifactId" value="org.jnario.m2e"/>
         <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-        <property name="maven-classifier" value="sources"/>
+        <property name="df_LT.featureName" value="Jnario M2E Support"/>
+        <property name="df_LT.providerName" value="BMW Car IT"/>
+        <property name="df_LT.description" value="Jnario M2E Support Feature"/>
+        <property name="df_LT.license" value="Eclipse Public License - v 1.0"/>
       </properties>
-      <provides size="4">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.ui.source" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.feature.ui.source" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
+      <provides size="2">
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.m2e.feature.group" version="0.5.0.201307172048"/>
         <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
       </provides>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.feature.ui.source" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.feature.ui.source
-Bundle-Version: 0.5.0.201307082234
-          </instruction>
-        </instructions>
-      </touchpointData>
+      <requires size="3">
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.m2e.core" range="0.0.0"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.m2e" range="[0.5.0.201307172048,0.5.0.201307172048]"/>
+        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.m2e.feature.jar" range="[0.5.0.201307172048,0.5.0.201307172048]">
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id="null" version="0.0.0"/>
+      <licenses size="1">
+        <license uri="http://www.eclipse.org/legal/epl-v10.html" url="http://www.eclipse.org/legal/epl-v10.html">
+          %license
+        </license>
+      </licenses>
+      <copyright>
+        Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
+
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License
+v1.0 which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html Description here.
+      </copyright>
     </unit>
-    <unit id="org.jnario.suite" version="0.5.0.201307082234">
-      <update id="org.jnario.suite" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
+    <unit id="org.jnario.suite" version="0.5.0.201307172048">
+      <update id="org.jnario.suite" range="[0.0.0,0.5.0.201307172048)" severity="0"/>
       <properties size="8">
         <property name="df_LT.providerName" value="BMW Car IT"/>
         <property name="df_LT.pluginName" value="Jnario Suite Runtime"/>
@@ -894,8 +1326,8 @@ Bundle-Version: 0.5.0.201307082234
         <property name="maven-version" value="0.5.0-SNAPSHOT"/>
       </properties>
       <provides size="21">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.suite" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.suite" version="0.5.0.201307082234"/>
+        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.suite" version="0.5.0.201307172048"/>
+        <provided namespace="osgi.bundle" name="org.jnario.suite" version="0.5.0.201307172048"/>
         <provided namespace="java.package" name="org.jnario.suite" version="0.0.0"/>
         <provided namespace="java.package" name="org.jnario.suite.compiler" version="0.0.0"/>
         <provided namespace="java.package" name="org.jnario.suite.conversion" version="0.0.0"/>
@@ -940,446 +1372,14 @@ Bundle-Version: 0.5.0.201307082234
         <required namespace="java.package" name="org.eclipse.xtext.xbase.lib" range="0.0.0"/>
       </requires>
       <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.suite" version="0.5.0.201307082234"/>
+        <artifact classifier="osgi.bundle" id="org.jnario.suite" version="0.5.0.201307172048"/>
       </artifacts>
       <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
       <touchpointData size="1">
         <instructions size="1">
           <instruction key="manifest">
             Bundle-SymbolicName: org.jnario.suite; singleton:=true
-Bundle-Version: 0.5.0.201307082234
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id="org.jnario.ui.feature.group" version="0.5.0.201307082234" singleton="false">
-      <update id="org.jnario.ui.feature.group" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="11">
-        <property name="org.eclipse.equinox.p2.name" value="%featureName"/>
-        <property name="org.eclipse.equinox.p2.description" value="%description"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
-        <property name="org.eclipse.equinox.p2.type.group" value="true"/>
-        <property name="maven-groupId" value="org.jnario.features"/>
-        <property name="maven-artifactId" value="org.jnario.ui"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-        <property name="df_LT.featureName" value="Jnario IDE"/>
-        <property name="df_LT.providerName" value="BMW Car IT"/>
-        <property name="df_LT.description" value="Jnario IDE Feature"/>
-        <property name="df_LT.license" value="Eclipse Public License - v 1.0"/>
-      </properties>
-      <provides size="2">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.feature.group" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <requires size="38">
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.ui" range="2.4.2"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.ui.editors" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.ui.ide" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.ui.shared" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.ui" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.builder" range="2.4.2"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.antlr.runtime" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.common.types.ui" range="2.4.2"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.ui.codetemplates.ui" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.compare" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.xbase.ui" range="2.4.2"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.jdt.junit" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.pde.ui" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario" range="0.5.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.debug.core" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.debug.ui" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature" range="0.5.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.xbase.lib" range="2.4.2"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.jdt.ui" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.jdt.core" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.apache.commons.logging" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.apache.log4j" range="1.2.15"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtend.core" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.ui.editors" range="3.5.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.ui.ide" range="3.5.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtend.ide" range="2.4.2"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="com.ibm.icu" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.core.resources" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.core.runtime" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.lib" range="0.5.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.suite" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="com.google.guava" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.ui" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec.ui" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.suite.ui" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.feature.jar" range="[0.5.0.201307082234,0.5.0.201307082234]">
-          <filter>
-            (org.eclipse.update.install.features=true)
-          </filter>
-        </required>
-      </requires>
-      <touchpoint id="null" version="0.0.0"/>
-      <licenses size="1">
-        <license uri="http://www.eclipse.org/legal/epl-v10.html" url="http://www.eclipse.org/legal/epl-v10.html">
-          %license
-        </license>
-      </licenses>
-      <copyright>
-        Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
-All rights reserved. This program and the accompanying materials
-are made available under the terms of the Eclipse Public License
-v1.0 which accompanies this distribution, and is available at
-http://www.eclipse.org/legal/epl-v10.html Description here.
-      </copyright>
-    </unit>
-    <unit id="201307082234.Jnario" version="1.0.0.07c-cL5WvE7UEMcF6FDUUck">
-      <properties size="2">
-        <property name="org.eclipse.equinox.p2.name" value="Jnario"/>
-        <property name="org.eclipse.equinox.p2.type.category" value="true"/>
-      </properties>
-      <provides size="1">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="201307082234.Jnario" version="1.0.0.07c-cL5WvE7UEMcF6FDUUck"/>
-      </provides>
-      <requires size="4">
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.feature.group" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.m2e.feature.group" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.group" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.sdk.feature.group" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-      </requires>
-      <touchpoint id="null" version="0.0.0"/>
-    </unit>
-    <unit id="org.jnario.suite.ui" version="0.5.0.201307082234">
-      <update id="org.jnario.suite.ui" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="8">
-        <property name="df_LT.providerName" value="BMW Car IT"/>
-        <property name="df_LT.pluginName" value="Jnario Suite UI"/>
-        <property name="org.eclipse.equinox.p2.name" value="%pluginName"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="plugin"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario.suite.ui"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-      </properties>
-      <provides size="8">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.suite.ui" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.suite.ui" version="0.5.0.201307082234"/>
-        <provided namespace="java.package" name="org.jnario.suite.ui.contentassist" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.suite.ui.contentassist.antlr" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.suite.ui.internal" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.suite.ui.quickfix" version="0.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <requires size="25">
-        <required namespace="osgi.bundle" name="org.jnario.suite" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.ui" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.ui.editors" range="3.5.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.ui.ide" range="3.5.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.ui.shared" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase.ui" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.ui" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.builder" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.antlr.runtime" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.common.types.ui" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.ui.codetemplates.ui" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.compare" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.jdt.core" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtend.ide" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtend.lib" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="com.google.guava" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase.lib" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.jnario" range="0.5.0"/>
-        <required namespace="osgi.bundle" name="org.jnario.ui" range="0.5.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.jdt.ui" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.jdt.junit" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.pde.ui" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.jnario.feature.ui" range="0.5.0"/>
-        <required namespace="osgi.bundle" name="org.jnario.spec.ui" range="0.5.0"/>
-        <required namespace="java.package" name="org.apache.log4j" range="0.0.0"/>
-      </requires>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.suite.ui" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.suite.ui; singleton:=true
-Bundle-Version: 0.5.0.201307082234
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id="org.jnario.sdk.feature.jar" version="0.5.0.201307082234">
-      <properties size="10">
-        <property name="org.eclipse.equinox.p2.name" value="%featureName"/>
-        <property name="org.eclipse.equinox.p2.description" value="%description"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
-        <property name="df_LT.featureName" value="Jnario SDK"/>
-        <property name="df_LT.providerName" value="BMW Car IT"/>
-        <property name="df_LT.description" value="Jnario SDK Feature"/>
-        <property name="df_LT.license" value="Eclipse Public License - v 1.0"/>
-        <property name="maven-groupId" value="org.jnario.features"/>
-        <property name="maven-artifactId" value="org.jnario.sdk"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-      </properties>
-      <provides size="3">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.sdk.feature.jar" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="feature" version="1.0.0"/>
-        <provided namespace="org.eclipse.update.feature" name="org.jnario.sdk" version="0.5.0.201307082234"/>
-      </provides>
-      <filter>
-        (org.eclipse.update.install.features=true)
-      </filter>
-      <artifacts size="1">
-        <artifact classifier="org.eclipse.update.feature" id="org.jnario.sdk" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="zipped">
-            true
-          </instruction>
-        </instructions>
-      </touchpointData>
-      <licenses size="1">
-        <license uri="http://www.eclipse.org/legal/epl-v10.html" url="http://www.eclipse.org/legal/epl-v10.html">
-          %license
-        </license>
-      </licenses>
-      <copyright>
-        Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
-
-All rights reserved. This program and the accompanying materials
-are made available under the terms of the Eclipse Public License
-v1.0 which accompanies this distribution, and is available at
-http://www.eclipse.org/legal/epl-v10.html Description here.
-      </copyright>
-    </unit>
-    <unit id="org.jnario.m2e" version="0.5.0.201307082234">
-      <update id="org.jnario.m2e" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="8">
-        <property name="df_LT.providerName" value="Sebastian Benz"/>
-        <property name="df_LT.pluginName" value="Jnario m2e Integration"/>
-        <property name="org.eclipse.equinox.p2.name" value="%pluginName"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="plugin"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario.m2e"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-      </properties>
-      <provides size="4">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.m2e" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.m2e" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <requires size="1">
-        <required namespace="osgi.bundle" name="org.eclipse.m2e.core" range="1.0.0" optional="true" greedy="false"/>
-      </requires>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.m2e" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.m2e;singleton:=true
-Bundle-Version: 0.5.0.201307082234
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id="org.jnario.feature.group" version="0.5.0.201307082234" singleton="false">
-      <update id="org.jnario.feature.group" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="11">
-        <property name="org.eclipse.equinox.p2.name" value="%featureName"/>
-        <property name="org.eclipse.equinox.p2.description" value="%description"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%providerName"/>
-        <property name="org.eclipse.equinox.p2.type.group" value="true"/>
-        <property name="maven-groupId" value="org.jnario.features"/>
-        <property name="maven-artifactId" value="org.jnario"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-        <property name="df_LT.featureName" value="Jnario Runtime"/>
-        <property name="df_LT.providerName" value="BMW Car IT"/>
-        <property name="df_LT.description" value="Jnario Runtime  Feature"/>
-        <property name="df_LT.license" value="Eclipse Public License - v 1.0"/>
-      </properties>
-      <provides size="2">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.group" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <requires size="23">
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.emf.ecore" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.emf.common" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.antlr.runtime" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.apache.log4j" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.apache.commons.logging" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.jdt.core" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext" range="[2.4.2,2.5.0)"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.apache.commons.lang" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.xbase.lib" range="[2.4.2,2.5.0)"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.hamcrest.core" range="0.0.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtext.xbase" range="[2.4.2,2.5.0)"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtend.core" range="[2.4.2,2.5.0)"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.objectweb.asm" range="3.2.0"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.eclipse.xtend2.lib" range="2.4.2"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.spec" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.lib" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.standalone" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.suite" range="[0.5.0.201307082234,0.5.0.201307082234]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.hamcrest.core" range="[1.1.0.v20090501071000,1.1.0.v20090501071000]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.hamcrest.core.source" range="[1.1.0.v20090501071000,1.1.0.v20090501071000]"/>
-        <required namespace="org.eclipse.equinox.p2.iu" name="org.jnario.feature.jar" range="[0.5.0.201307082234,0.5.0.201307082234]">
-          <filter>
-            (org.eclipse.update.install.features=true)
-          </filter>
-        </required>
-      </requires>
-      <touchpoint id="null" version="0.0.0"/>
-      <licenses size="1">
-        <license uri="http://www.eclipse.org/legal/epl-v10.html" url="http://www.eclipse.org/legal/epl-v10.html">
-          %license
-        </license>
-      </licenses>
-      <copyright>
-        Copyright (c) 2012 BMW Car IT (http://www.bmw-carit.de) and others.
-
-All rights reserved. This program and the accompanying materials
-are made available under the terms of the Eclipse Public License
-v1.0 which accompanies this distribution, and is available at
-http://www.eclipse.org/legal/epl-v10.html Description here.
-      </copyright>
-    </unit>
-    <unit id="org.jnario.ui.source" version="0.5.0.201307082234" singleton="false">
-      <update id="org.jnario.ui.source" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="9">
-        <property name="df_LT.bundleVendor" value="BWM Car IT"/>
-        <property name="df_LT.bundleName" value="org.jnario.ui Source"/>
-        <property name="org.eclipse.equinox.p2.name" value="%bundleName"/>
-        <property name="org.eclipse.equinox.p2.provider" value="%bundleVendor"/>
-        <property name="org.eclipse.equinox.p2.bundle.localization" value="OSGI-INF/l10n/bundle-src"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario.ui"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-        <property name="maven-classifier" value="sources"/>
-      </properties>
-      <provides size="4">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui.source" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.ui.source" version="0.5.0.201307082234"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="source" version="1.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.localization" name="df_LT" version="1.0.0"/>
-      </provides>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.ui.source" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.ui.source
-Bundle-Version: 0.5.0.201307082234
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id="org.jnario.lib" version="0.5.0.201307082234">
-      <update id="org.jnario.lib" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="5">
-        <property name="org.eclipse.equinox.p2.name" value="Jnario Library"/>
-        <property name="org.eclipse.equinox.p2.provider" value="BMW Car IT"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario.lib"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-      </properties>
-      <provides size="8">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.lib" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.lib" version="0.5.0.201307082234"/>
-        <provided namespace="java.package" name="org.jnario.junit3" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.lib" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.lib.internal" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.runner" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.runner.internal" version="0.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
-      </provides>
-      <requires size="13">
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase.lib" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtend.lib" range="[2.4.2,2.5.0)" optional="true" greedy="false"/>
-        <required namespace="java.package" name="junit.extensions" range="0.0.0"/>
-        <required namespace="java.package" name="junit.framework" range="0.0.0"/>
-        <required namespace="java.package" name="junit.runner" range="0.0.0"/>
-        <required namespace="java.package" name="org.hamcrest" range="0.0.0"/>
-        <required namespace="java.package" name="org.junit" range="0.0.0" optional="true" greedy="false"/>
-        <required namespace="java.package" name="org.junit.rules" range="0.0.0" optional="true" greedy="false"/>
-        <required namespace="java.package" name="org.junit.runner" range="0.0.0" optional="true" greedy="false"/>
-        <required namespace="java.package" name="org.junit.runner.manipulation" range="0.0.0" optional="true" greedy="false"/>
-        <required namespace="java.package" name="org.junit.runner.notification" range="0.0.0" optional="true" greedy="false"/>
-        <required namespace="java.package" name="org.junit.runners" range="0.0.0" optional="true" greedy="false"/>
-        <required namespace="java.package" name="org.junit.runners.model" range="0.0.0" optional="true" greedy="false"/>
-      </requires>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.lib" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.lib;singleton:=true
-Bundle-Version: 0.5.0.201307082234
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id="org.jnario.ui" version="0.5.0.201307082234">
-      <update id="org.jnario.ui" range="[0.0.0,0.5.0.201307082234)" severity="0"/>
-      <properties size="5">
-        <property name="org.eclipse.equinox.p2.name" value="org.jnario.ui"/>
-        <property name="org.eclipse.equinox.p2.provider" value="BWM Car IT"/>
-        <property name="maven-groupId" value="org.jnario"/>
-        <property name="maven-artifactId" value="org.jnario.ui"/>
-        <property name="maven-version" value="0.5.0-SNAPSHOT"/>
-      </properties>
-      <provides size="14">
-        <provided namespace="org.eclipse.equinox.p2.iu" name="org.jnario.ui" version="0.5.0.201307082234"/>
-        <provided namespace="osgi.bundle" name="org.jnario.ui" version="0.5.0.201307082234"/>
-        <provided namespace="java.package" name="org.jnario.ui" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.ui.builder" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.ui.buildpath" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.ui.contentassist" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.ui.doc" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.ui.highlighting" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.ui.preferences" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.ui.quickfix" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.ui.validator" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.ui.findrefs" version="0.0.0"/>
-        <provided namespace="java.package" name="org.jnario.ui.wizards" version="0.0.0"/>
-        <provided namespace="org.eclipse.equinox.p2.eclipse.type" name="bundle" version="1.0.0"/>
-      </provides>
-      <requires size="15">
-        <required namespace="osgi.bundle" name="org.eclipse.core.resources" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.builder" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.eclipse.jdt.core" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.core.runtime" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.ui" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.jnario" range="0.5.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtend.ide" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.common.types.ui" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.eclipse.jdt.ui" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.xbase.ui" range="[2.4.2,2.5.0)"/>
-        <required namespace="osgi.bundle" name="org.jnario.lib" range="0.5.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.ui" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.jdt.junit" range="0.0.0"/>
-        <required namespace="osgi.bundle" name="org.eclipse.xtext.ui.shared" range="[2.4.2,2.5.0)"/>
-        <required namespace="java.package" name="org.apache.log4j" range="1.2.15"/>
-      </requires>
-      <artifacts size="1">
-        <artifact classifier="osgi.bundle" id="org.jnario.ui" version="0.5.0.201307082234"/>
-      </artifacts>
-      <touchpoint id="org.eclipse.equinox.p2.osgi" version="1.0.0"/>
-      <touchpointData size="1">
-        <instructions size="1">
-          <instruction key="manifest">
-            Bundle-SymbolicName: org.jnario.ui;singleton:=true
-Bundle-Version: 0.5.0.201307082234
+Bundle-Version: 0.5.0.201307172048
           </instruction>
         </instructions>
       </touchpointData>
