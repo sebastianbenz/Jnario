@@ -17,6 +17,8 @@ import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.jvmmodel.SyntheticNameClashResolver;
 import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
+import org.eclipse.xtend.core.macro.fsaccess.FileSystemAccessSPI;
+import org.eclipse.xtend.core.macro.fsaccess.RuntimeFileSystemAccessImpl;
 import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
 import org.eclipse.xtend.core.scoping.XtendImportedNamespaceScopeProvider;
@@ -38,7 +40,9 @@ import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
+import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.IResourceDescription.Manager;
+import org.eclipse.xtext.resource.impl.EagerResourceSetBasedResourceDescriptions;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.validation.CompositeEValidator;
@@ -262,5 +266,14 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	@Override
 	public Class<? extends IResourceValidator> bindIResourceValidator() {
 		return org.eclipse.xtend.core.validation.CachingResourceValidatorImpl.class;
+	}
+	
+	@Override
+	public void configureIResourceDescriptions(com.google.inject.Binder binder) {
+		binder.bind(IResourceDescriptions.class).to(EagerResourceSetBasedResourceDescriptions.class);
+	}
+	
+	public Class<? extends FileSystemAccessSPI> bindFileSystemAccessPSI() {
+		return RuntimeFileSystemAccessImpl.class;
 	}
 }

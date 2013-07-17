@@ -14,6 +14,8 @@ import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
 import org.eclipse.xtend.core.formatting.XtendFormatter;
 import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
+import org.eclipse.xtend.core.macro.fsaccess.FileSystemAccessSPI;
+import org.eclipse.xtend.core.macro.fsaccess.RuntimeFileSystemAccessImpl;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
 import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
@@ -32,7 +34,10 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
+import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.IResourceDescription.Manager;
+import org.eclipse.xtext.resource.containers.IAllContainersState.Provider;
+import org.eclipse.xtext.resource.impl.EagerResourceSetBasedResourceDescriptions;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.validation.CompositeEValidator;
@@ -86,6 +91,7 @@ import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.HashBasedSpec2ResultMapping;
+import org.jnario.scoping.EagerResourceSetBasedAllContainersStateProvider;
 import org.jnario.scoping.JnarioImplicitlyImportedTypes;
 import org.jnario.scoping.JnarioImportedNamespaceScopeProvider;
 import org.jnario.scoping.JnarioResourceDescriptionStrategy;
@@ -265,5 +271,18 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 		return org.eclipse.xtend.core.validation.CachingResourceValidatorImpl.class;
 	}
 	
+	@Override
+	public Class<? extends Provider> bindIAllContainersState$Provider() {
+		return EagerResourceSetBasedAllContainersStateProvider.class;
+	}
+	
+	@Override
+	public void configureIResourceDescriptions(com.google.inject.Binder binder) {
+		binder.bind(IResourceDescriptions.class).to(EagerResourceSetBasedResourceDescriptions.class);
+	}
+	
+	public Class<? extends FileSystemAccessSPI> bindFileSystemAccessPSI() {
+		return RuntimeFileSystemAccessImpl.class;
+	}
 
 }

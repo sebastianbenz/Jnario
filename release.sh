@@ -6,7 +6,7 @@ read version
 #make the release build
 mvn clean install -Dmaven.test.skip=true -P release 
 
-publish update site
+#publish update site
 cd ../jnario-gh-pages
 git add --all
 git commit -a -m "new release $version"
