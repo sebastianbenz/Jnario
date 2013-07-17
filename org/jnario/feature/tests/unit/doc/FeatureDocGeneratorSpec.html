@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FeatureDocGenerator</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header notrun">
+					<h1>FeatureDocGenerator</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<ul><li><p id="generates_scenario_documentation" class="example notrun"><strong>generates scenario documentation</strong></p>
+<pre class="prettyprint lang-spec linenums">
+val actual = 
+&quot;
+  package test
+
+  Feature: Example Feature
+    
+    This is a description.
+    
+    Scenario: Example Scenario
+    
+      String input
+    
+      Given a step with an argument \&quot;something\&quot;, another \&quot;argument\&quot; and a multiline string:
+      '''
+        import java.util.Collections.*;
+        
+        public class Greeter{
+          public static void main(String args[]){
+            List&lt;String&gt; list = new ArrayList&lt;String&gt;(); // should escape angle brackets
+            Systen.out.println('Hello World');
+          }
+        }''' 
+        input = args.first
+        println(args.last)
+      When I do something that is pending.
+        And something else that is pending
+        But this is implemented
+          1 + 1 =&gt; 2
+      Then it results in \&quot;something else\&quot;
+        input + ' else' =&gt; args.first                                    
+&quot;.generateDoc
+
+val expected = '''
+&lt;p&gt;This is a description.&lt;/p&gt;
+&lt;div&gt;&lt;h3 class=&quot;scenario pending&quot;  id=&quot;Scenario_Example_Scenario&quot;&gt;Scenario: Example Scenario
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&quot;step notrun&quot;&gt;&lt;p&gt;Given a step with an argument &lt;code&gt;&quot;something&quot;&lt;/code&gt;, another &lt;code&gt;&quot;argument&quot;&lt;/code&gt; and a multiline string:&lt;/p&gt;&lt;pre&gt;import java.util.Collections.*;
+
+public class Greeter{
+  public static void main(String args[]){
+    List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;(); // should escape angle brackets
+    Systen.out.println('Hello World');
+  }
+}&lt;/pre&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;step pending&quot;&gt;&lt;p&gt;When I do something that is pending. [PENDING]&lt;/p&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;step pending&quot;&gt;&lt;p&gt;And something else that is pending [PENDING]&lt;/p&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;step notrun&quot;&gt;&lt;p&gt;But this is implemented&lt;/p&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;step notrun&quot;&gt;&lt;p&gt;Then it results in &lt;code&gt;&quot;something else&quot;&lt;/code&gt;&lt;/p&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+  '''.toString
+
+assertEquals(expected, actual)</pre>
+</li><li><p id="Includes_failure_state_in_Feature" class="example notrun"><strong>Includes failure state in Feature</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  Feature: Example
+  
+  Scenario: A failing Scenario
+  
+  Given something
+  When something happens 
+  Then there is an error
+  
+  Scenario: Another scnario
+  Given something
+    1 + 1 =&gt; 2
+  Then something else
+    &quot;&quot;       
+'''.generateDocWithErrors should contain &quot;failed&quot;</pre>
+</li></ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>FeatureDocGenerator.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.feature.tests.unit.doc
+
+import com.google.inject.Inject
+import org.eclipse.xtext.generator.InMemoryFileSystemAccess
+import org.jnario.feature.doc.FeatureDocGenerator
+import org.jnario.feature.feature.Feature
+import org.jnario.feature.feature.FeatureFile
+import org.jnario.jnario.test.util.FeatureTestCreator
+import org.jnario.jnario.test.util.ModelStore
+import org.jnario.report.Executable2ResultMapping
+import org.jnario.report.Failed
+import org.jnario.report.SpecFailure
+import org.jnario.runner.CreateWith
+
+import static org.junit.Assert.*
+
+import static extension org.jnario.lib.JnarioIterableExtensions.*
+import static extension org.jnario.lib.Should.*
+
+@CreateWith(typeof(FeatureTestCreator))
+describe FeatureDocGenerator {
+  
+  @Inject extension ModelStore 
+  @Inject InMemoryFileSystemAccess fsa
+  @Inject Executable2ResultMapping mapping
+  
+  fact &quot;generates scenario documentation&quot;{
+    val actual = 
+    &quot;
+      package test
+
+      Feature: Example Feature
+        
+        This is a description.
+        
+        Scenario: Example Scenario
+        
+          String input
+        
+          Given a step with an argument \&quot;something\&quot;, another \&quot;argument\&quot; and a multiline string:
+          '''
+            import java.util.Collections.*;
+            
+            public class Greeter{
+              public static void main(String args[]){
+                List&lt;String&gt; list = new ArrayList&lt;String&gt;(); // should escape angle brackets
+                Systen.out.println('Hello World');
+              }
+            }''' 
+            input = args.first
+            println(args.last)
+          When I do something that is pending.
+            And something else that is pending
+            But this is implemented
+              1 + 1 =&gt; 2
+          Then it results in \&quot;something else\&quot;
+            input + ' else' =&gt; args.first                                    
+    &quot;.generateDoc
+    
+    val expected = '''
+&lt;p&gt;This is a description.&lt;/p&gt;
+&lt;div&gt;&lt;h3 class=&quot;scenario pending&quot;  id=&quot;Scenario_Example_Scenario&quot;&gt;Scenario: Example Scenario
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&quot;step notrun&quot;&gt;&lt;p&gt;Given a step with an argument &lt;code&gt;&quot;something&quot;&lt;/code&gt;, another &lt;code&gt;&quot;argument&quot;&lt;/code&gt; and a multiline string:&lt;/p&gt;&lt;pre&gt;import java.util.Collections.*;
+
+public class Greeter{
+  public static void main(String args[]){
+    List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;(); // should escape angle brackets
+    Systen.out.println('Hello World');
+  }
+}&lt;/pre&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;step pending&quot;&gt;&lt;p&gt;When I do something that is pending. [PENDING]&lt;/p&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;step pending&quot;&gt;&lt;p&gt;And something else that is pending [PENDING]&lt;/p&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;step notrun&quot;&gt;&lt;p&gt;But this is implemented&lt;/p&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;step notrun&quot;&gt;&lt;p&gt;Then it results in &lt;code&gt;&quot;something else&quot;&lt;/code&gt;&lt;/p&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+      '''.toString
+    
+    assertEquals(expected, actual)
+  }
+  
+  fact &quot;Includes failure state in Feature&quot;{
+    '''
+      Feature: Example
+      
+      Scenario: A failing Scenario
+      
+      Given something
+      When something happens 
+      Then there is an error
+      
+      Scenario: Another scnario
+      Given something
+        1 + 1 =&gt; 2
+      Then something else
+        &quot;&quot;       
+    '''.generateDocWithErrors should contain &quot;failed&quot;
+  }
+  
+  val message = '''
+    Expected result =&gt; args.first.toInt but      
+         result is &lt;122&gt;     
+         args.first.toInt is &lt;120&gt;       
+         args.first is &quot;120&quot;     
+         args is &lt;[120]&gt;
+  '''
+  
+  def mappingWithFailures(){
+    mapping = [
+      Failed::failingSpec(&quot;org.jnario.Class&quot;, &quot;This Feature&quot;, 0.3,  new SpecFailure(message.toString, &quot;Exception&quot;, '''
+        java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+          at java.lang.String.substring(String.java:1937)
+          at java.lang.String.substring(String.java:1904)
+          at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:44)
+          at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:1)
+          at org.jnario.doc.HtmlFile.newHtmlFile(HtmlFile.java:21)
+          at org.jnario.feature.doc.FeatureDocGenerator.createHtmlFile(FeatureDocGenerator.java:57)
+          at org.jnario.doc.AbstractDocGenerator$2$1.apply(AbstractDocGenerator.java:88)
+      '''.toString))
+    ]
+  }
+  
+  def generateDocWithErrors(CharSequence input){
+    val resource = parseScenario(input)
+    subject.doGenerate(resource, fsa, mappingWithFailures)
+    fsa.files.values.first
+  }
+  
+  def generateDoc(CharSequence input){
+    val resource = parseScenario(input)
+    val featureFile= resource.contents.head as FeatureFile
+    return subject.generateContent(featureFile.xtendTypes.head as Feature).toString
+  }
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- Start Google Analytics Installation --><script type="text/javascript">var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-30225034-1"]);_gaq.push(["_setDomainName","jnario.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script><!-- End Google Analytics Installation -->
+
+</body>
+</html>

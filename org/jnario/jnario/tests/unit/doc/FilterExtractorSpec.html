@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FilterExtractor</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header notrun">
+					<h1>FilterExtractor</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<ul><li><p id="filterExtractions"><strong>FilterExtractions</strong></p>
+<table class="table table-striped table-bordered table-condensed">
+	<thead>
+		<tr>
+		<th>input</th>
+		<th>resultString</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>&quot;&quot;</td>
+		<td>&quot;&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;string&quot;</td>
+		<td>&quot;string&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;@filter(bbb)&quot;</td>
+		<td>&quot;&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;text @filter(bbb) text&quot;</td>
+		<td>&quot;text text&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;text@filter(bbb) text&quot;</td>
+		<td>&quot;text@filter(bbb) text&quot;</td>
+	</tr>
+	<tr>
+		<td>&quot;text @filter(bbb) text @filter(.*) text&quot;</td>
+		<td>&quot;text text text&quot;</td>
+	</tr>
+	</tbody>
+</table>
+</li><li><p id="filterCreation"><strong>FilterCreation</strong></p>
+<table class="table table-striped table-bordered table-condensed">
+	<thead>
+		<tr>
+		<th>input</th>
+		<th>resultingFilters</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>null</td>
+		<td>&lt;String&gt;emptyList</td>
+	</tr>
+	<tr>
+		<td>&quot;string&quot;</td>
+		<td>&lt;String&gt;emptyList</td>
+	</tr>
+	<tr>
+		<td>&quot;@filter(bbb)&quot;</td>
+		<td>newArrayList(&quot;bbb&quot;)</td>
+	</tr>
+	<tr>
+		<td>&quot;text @filter(bbb) text  @filter(.*)&quot;</td>
+		<td>newArrayList(&quot;bbb&quot;, &quot;.*&quot;)</td>
+	</tr>
+	</tbody>
+</table>
+</li><li><p id="should_remove_all_filter_annotations_from_a_string" class="example notrun"><strong>should remove all filter annotations from a string</strong></p>
+<pre class="prettyprint lang-spec linenums">
+filterExtractions.forEach[
+  stringAfterExtract(input) =&gt; resultString
+]</pre>
+</li><li><p id="should_extract_and_create_filters" class="example notrun"><strong>should extract and create filters</strong></p>
+<pre class="prettyprint lang-spec linenums">
+filterCreation.forEach[
+  extractedFilters(input) =&gt; resultingFilters
+]</pre>
+</li></ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>FilterExtractor.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.jnario.tests.unit.doc
+
+import java.util.List
+import org.jnario.doc.FilterExtractor
+
+describe FilterExtractor {
+  
+  def filterExtractions {
+    | input                   | resultString         |
+    | &quot;&quot;                     | &quot;&quot;             |
+    | &quot;string&quot;                   | &quot;string&quot;           |
+    | &quot;@filter(bbb)&quot;               | &quot;&quot;             |
+    | &quot;text @filter(bbb) text&quot;           | &quot;text text&quot;         |
+    | &quot;text@filter(bbb) text&quot;           | &quot;text@filter(bbb) text&quot;   |
+    | &quot;text @filter(bbb) text @filter(.*) text&quot; | &quot;text text text&quot;       |
+  }
+  
+  def filterCreation {
+    | input                 | resultingFilters       |
+    | null                   | &lt;String&gt;emptyList     |
+    | &quot;string&quot;                 | &lt;String&gt;emptyList     |
+    | &quot;@filter(bbb)&quot;             | newArrayList(&quot;bbb&quot;)     |
+//    | &quot;@filter(a(b*)a)&quot;            | newArrayList(&quot;a(b*)a&quot;)   |
+    | &quot;text @filter(bbb) text  @filter(.*)&quot; | newArrayList(&quot;bbb&quot;, &quot;.*&quot;) |
+  }
+
+  fact &quot;should remove all filter annotations from a string&quot;{
+    filterExtractions.forEach[
+      stringAfterExtract(input) =&gt; resultString
+    ]
+  }
+  
+  fact &quot;should extract and create filters&quot;{
+    filterCreation.forEach[
+      extractedFilters(input) =&gt; resultingFilters
+    ]
+  }
+  
+  def stringAfterExtract(String input){
+    subject.apply(input).string
+  }
+  
+  def List&lt;String&gt; extractedFilters(String input){
+    subject.apply(input).filters.map[toString]
+  }
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- Start Google Analytics Installation --><script type="text/javascript">var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-30225034-1"]);_gaq.push(["_setDomainName","jnario.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script><!-- End Google Analytics Installation -->
+
+</body>
+</html>

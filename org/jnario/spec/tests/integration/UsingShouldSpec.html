@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Using Should</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header notrun">
+					<h1>Using Should</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<p>You can use the <code>should</code> statement to express the expected behavior of objects.</p>
+<ul><li><p id="To_pass" class="example notrun"><strong>To pass..</strong></p>
+<p><code>should</code> passes if the result of the left expression is equal to the result of the right expression. You can use <code>not</code> to assert that the expressions have different results. There is also a short cut available: <code>=&gt;</code> which has the same effect as <code>should be</code>.</p>
+<pre class="prettyprint lang-spec linenums">
+// equality
+true should be true
+1 + 1 should not be 1 
+&quot;something&quot; should not be null 
+1 + 1 =&gt; 2 
+// types
+&quot;a string&quot; =&gt; typeof(String)
+&quot;a string&quot;.getClass =&gt; typeof(String)
+
+// strings
+&quot;something&quot; should contain &quot;thing&quot;
+&quot;something&quot; should not contain &quot;any&quot;
+
+// iterables
+list(&quot;something&quot;) should contain &quot;something&quot;
+list(&quot;something&quot;) should not contain &quot;something else&quot;
+
+// using xtend's &quot;with&quot; operator
+
+val greeting = &quot;hello world&quot; =&gt; [
+  length =&gt; 11
+  it should startWith(&quot;hello&quot;)
+  it should endWith(&quot;world&quot;)
+]
+greeting =&gt; typeof(String)
+
+// expecting exceptions
+new Stack&lt;String&gt;().pop should throw EmptyStackException
+new Stack&lt;String&gt;().pop throws EmptyStackException</pre>
+</li><li><p id="or_not_to_pass" class="example notrun"><strong>...or not to pass</strong></p>
+<p><code>should</code> throws an AssertionError if the result of the left expression does not equal the result of the right expression. Here is a helper method we are going to use:</p>
+<pre class="prettyprint lang-spec">
+def void method(){
+  throw new IllegalArgumentException
+}
+</pre><p>...and here are the examples:</p>
+<pre class="prettyprint lang-spec linenums">
+1 + 1 should be 1 throws AssertionError
+1 + 1 should not be 2 throws AssertionError
+1 + 1 =&gt; 1 throws AssertionError
+new Object =&gt; null throws AssertionError
+new Object should be null throws AssertionError
+method() throws IllegalArgumentException</pre>
+</li><li><p id="Why_did_it_fail" class="example notrun"><strong>Why did it fail?</strong></p>
+<p>When failing, <code>should</code> and <code>=&gt;</code> try to give you as much context information as possible. The error message will print the values of all expressions and their subexpressions.</p>
+<pre class="prettyprint lang-spec linenums">
+errorMessage[1 + 1 =&gt; 1].is('''
+ Expected 1 + 1 =&gt; 1 but
+      1 + 1 is &lt;2&gt;''')  
+
+val x = &quot;hello&quot;        
+errorMessage[x.toUpperCase should not be &quot;HELLO&quot;].is('''
+  Expected x.toUpperCase should not be &quot;HELLO&quot; but
+       x.toUpperCase is &quot;HELLO&quot;
+       x is &quot;hello&quot;''')    
+       
+val y = &quot;world&quot;        
+errorMessage[x =&gt; y].is('''
+  Expected x =&gt; y but
+       x is &quot;hello&quot;
+       y is &quot;world&quot;''')</pre>
+</li><li><p id="Wait_for_something" class="example notrun"><strong>Wait for something</strong></p>
+<p>This useful helper automatically waits until a condition turns true. Expects a lambda expression returning a boolean value. The error message, polling interval and duration are configurable.</p>
+<pre class="prettyprint lang-spec linenums">
+waitUntil[1 &gt; 0]
+waitUntil[
+  message = &quot;Custom error message&quot;
+  duration = 100
+  pollingInterval = 10
+  1 &gt; 0
+]</pre>
+</li><li><p id="Define_your_own_matchers" class="example notrun"><strong>Define your own matchers</strong></p>
+<p>You can also define your own <em>should</em> matchers by defining a method with the prefix <em>should_XXXX</em> in the current scope. The method needs to return a boolean value. For example, when we define a method <em>should_eat</em>:</p>
+<pre class="prettyprint">def should_eat(String animal, String food){
+  animal == &quot;Monkey&quot; &amp;&amp; food == &quot;Banana&quot;
+}
+</code></pre><p>We can use "eat" in our should expressions:</p>
+<pre class="prettyprint lang-spec linenums">
+&quot;Monkey&quot; should eat &quot;Banana&quot;
+&quot;Monkey&quot; should eat &quot;Rocks&quot; throws AssertionError</pre>
+</li><li><p id="Combining_hamcrest_and_should" class="example notrun"><strong>Combining hamcrest and should</strong></p>
+<p>You can also the <code>should</code> and <code>=&gt;</code> together with <a href="http://code.google.com/p/hamcrest/">hamcrest</a> matchers. The following static import statements are needed to run the examples:</p>
+<pre class="prettyprint">import static org.hamcrest.CoreMatchers.startsWith
+import static org.hamcrest.CoreMatchers.equalTo
+import static org.hamcrest.Matchers.hasItem
+</code></pre><p>If the right-hand side of a should expression is a matcher, the matcher will be evaluated instead of testing for equality:</p>
+<pre class="prettyprint lang-spec linenums">
+&quot;hello&quot; =&gt; startsWith(&quot;h&quot;)
+list(&quot;red&quot;, &quot;green&quot;) =&gt; hasItem(&quot;red&quot;)
+9 should be greaterThan(5)</pre>
+</li><li><p id="Short_Circuit_Invocation" class="example notrun"><strong>Short Circuit Invocation</strong></p>
+<p>In order to be able to print the value of all subexpressions when an assertion failed, we disabled the short circuit semantics of '&amp;&amp;' and '||' within assertions.</p>
+<pre class="prettyprint lang-spec linenums">
+val String aString = null
+(assert aString != null &amp;&amp; aString.length == 0) throws NullPointerException</pre>
+</li></ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>Should.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+/*******************************************************************************
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.jnario.spec.tests.integration
+
+import static org.hamcrest.Matchers.*
+import static org.jnario.lib.JnarioCollectionLiterals.*
+
+import static extension org.jnario.jnario.test.util.Helpers.*
+import static extension org.jnario.lib.Should.*
+import java.util.Stack
+import java.util.EmptyStackException
+
+/*
+ * You can use the `should` statement to express the expected behavior of objects.
+ */
+describe &quot;Using Should&quot;{
+ 
+  /*
+   * `should` passes if the result of the left expression is 
+   * equal to the result of the right expression. You can use `not` to  
+   * assert that the expressions have different results. There is also 
+   * a short cut available: `=&gt;` which has the same effect as `should be`.
+   */
+  fact &quot;To pass..&quot;{
+    // equality
+    true should be true
+    1 + 1 should not be 1 
+    &quot;something&quot; should not be null 
+    1 + 1 =&gt; 2 
+    // types
+    &quot;a string&quot; =&gt; typeof(String)
+    &quot;a string&quot;.getClass =&gt; typeof(String)
+
+    // strings
+    &quot;something&quot; should contain &quot;thing&quot;
+    &quot;something&quot; should not contain &quot;any&quot;
+
+    // iterables
+    list(&quot;something&quot;) should contain &quot;something&quot;
+    list(&quot;something&quot;) should not contain &quot;something else&quot;
+    
+    // using xtend's &quot;with&quot; operator
+    
+    val greeting = &quot;hello world&quot; =&gt; [
+      length =&gt; 11
+      it should startWith(&quot;hello&quot;)
+      it should endWith(&quot;world&quot;)
+    ]
+    greeting =&gt; typeof(String)
+    
+    // expecting exceptions
+    new Stack&lt;String&gt;().pop should throw EmptyStackException
+    new Stack&lt;String&gt;().pop throws EmptyStackException
+  }
+
+  /*     
+   * `should` throws an AssertionError if the result of the left 
+   * expression does not equal the result of the right expression.
+   * Here is a helper method we are going to use:
+   * 
+   * &lt;pre class=&quot;prettyprint lang-spec&quot;&gt;
+   * def void method(){
+   *   throw new IllegalArgumentException
+   * }
+   * &lt;/pre&gt;
+   * 
+   * ...and here are the examples:
+   */
+  fact &quot;...or not to pass&quot;{
+    1 + 1 should be 1 throws AssertionError
+    1 + 1 should not be 2 throws AssertionError
+    1 + 1 =&gt; 1 throws AssertionError
+    new Object =&gt; null throws AssertionError
+    new Object should be null throws AssertionError
+    method() throws IllegalArgumentException
+  }
+  
+  def void method(){
+    throw new IllegalArgumentException
+  }
+ 
+  /*
+   * When failing, `should` and `=&gt;` try to give you as much context information as possible. 
+   * The error message will print the values of all expressions and their subexpressions.
+   *  
+   */
+  fact &quot;Why did it fail?&quot;{
+    errorMessage[1 + 1 =&gt; 1].is('''
+     Expected 1 + 1 =&gt; 1 but
+          1 + 1 is &lt;2&gt;''')  
+    
+    val x = &quot;hello&quot;        
+    errorMessage[x.toUpperCase should not be &quot;HELLO&quot;].is('''
+      Expected x.toUpperCase should not be &quot;HELLO&quot; but
+           x.toUpperCase is &quot;HELLO&quot;
+           x is &quot;hello&quot;''')    
+           
+    val y = &quot;world&quot;        
+    errorMessage[x =&gt; y].is('''
+      Expected x =&gt; y but
+           x is &quot;hello&quot;
+           y is &quot;world&quot;''')    
+  }  
+  
+  /*
+   * This useful helper automatically waits until a condition turns true.
+   * Expects a lambda expression returning a boolean value. The error message,
+   * polling interval and duration are configurable.
+   */
+  fact &quot;Wait for something&quot;{
+    waitUntil[1 &gt; 0]
+    waitUntil[
+      message = &quot;Custom error message&quot;
+      duration = 100
+      pollingInterval = 10
+      1 &gt; 0
+    ]
+  }
+  
+  /*
+   * You can also define your own *should* matchers by 
+   * defining a method with the prefix *should_XXXX* in 
+   * the current scope. The method needs to return a boolean
+   * value. For example, when we define 
+   * a method *should_eat*: 
+   * 
+   *     def should_eat(String animal, String food){
+   *       animal == &quot;Monkey&quot; &amp;&amp; food == &quot;Banana&quot;
+   *     }
+   * 
+   * We can use &quot;eat&quot; in our should expressions:
+   */ 
+  fact &quot;Define your own matchers&quot;{
+    &quot;Monkey&quot; should eat &quot;Banana&quot;
+    &quot;Monkey&quot; should eat &quot;Rocks&quot; throws AssertionError
+  }
+  
+  def should_eat(String animal, String food){
+    animal == &quot;Monkey&quot; &amp;&amp; food == &quot;Banana&quot;
+  }
+  
+  /*
+   * You can also the `should` and `=&gt;` together with [hamcrest](http://code.google.com/p/hamcrest/) 
+   * matchers. The following static import statements are needed to run the examples:
+   *  
+   *     import static org.hamcrest.CoreMatchers.startsWith
+   *     import static org.hamcrest.CoreMatchers.equalTo
+   *     import static org.hamcrest.Matchers.hasItem
+   * 
+   * If the right-hand side of a should expression is a matcher, the matcher will be evaluated instead
+   * of testing for equality:
+   */ 
+  fact &quot;Combining hamcrest and should&quot;{
+    &quot;hello&quot; =&gt; startsWith(&quot;h&quot;)
+    list(&quot;red&quot;, &quot;green&quot;) =&gt; hasItem(&quot;red&quot;)
+    9 should be greaterThan(5) 
+  }
+  
+  /*
+   * In order to be able to print the value of all subexpressions when an assertion failed, 
+   * we disabled the short circuit semantics of '&amp;&amp;' and '||' within assertions. 
+   */
+  fact &quot;Short Circuit Invocation&quot;{
+    val String aString = null
+    (assert aString != null &amp;&amp; aString.length == 0) throws NullPointerException 
+  }
+  
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- Start Google Analytics Installation --><script type="text/javascript">var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-30225034-1"]);_gaq.push(["_setDomainName","jnario.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script><!-- End Google Analytics Installation -->
+
+</body>
+</html>
