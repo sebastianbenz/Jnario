@@ -8,7 +8,7 @@ read nextversion
 echo "Releasing $version"
 
 #pull the latest state from the repository
-git pull --rebase
+#git pull --rebase
 
 #prepare update site
 cd ../jnario-gh-pages
@@ -16,10 +16,10 @@ git pull origin gh-pages
 cd ../jnario
 
 #run all tests
-mvn clean verify
+#mvn clean verify
 
 #create release branch
-git branch rb-$version
+#git branch rb-$version
 
 #change the releng/update-site/category.xml file. Replace <version>.qualifier by <version+1>
 sed -i '' 's/$version/$nextversion/g' releng/org.jnario.updatesite/category.xml
@@ -28,7 +28,7 @@ sed -i '' 's/$version/$nextversion/g' releng/org.jnario.updatesite/site.xml
 #update master to the next -SNAPSHOT version. 
 
 #update tycho managed plugins
-mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$nextversion-SNAPSHOT
+mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:0.17.0:set-version -DnewVersion=$nextversion-SNAPSHOT
 
 #update maven managed projects
 for project in "org.jnario.standalone.maven" "jnario-maven-plugin" "org.jnario.lib.maven" "jnario-maven-report-plugin" "jnario-maven-archetype"
