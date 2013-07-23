@@ -10,23 +10,34 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<xtend.version>2.4.3-SNAPSHOT</xtend.version>
 	</properties>
 	<repositories>
 		<repository>
 			<id>scala.tools</id>
 			<url>http://scala-tools.org/repo-releases</url>
 		</repository>
+		<repository>
+        <id>xtend.snapshots</id>
+        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        <releases>
+           <enabled>false</enabled>
+        </releases>
+        <snapshots>
+          <enabled>true</enabled>
+        </snapshots>        
+     </repository>
 	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
 			<artifactId>org.eclipse.xtend.lib</artifactId>
-			<version>2.4.2</version>
+			<version>${xtend.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
 			<artifactId>xtend-maven-plugin</artifactId>
-			<version>2.4.2</version>
+			<version>${xtend.version}</version>
 			<type>maven-plugin</type>
 		</dependency>
 		<dependency>
@@ -37,7 +48,7 @@
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
 			<artifactId>org.eclipse.xtend.standalone</artifactId>
-			<version>2.4.2</version>
+			<version>${xtend.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>

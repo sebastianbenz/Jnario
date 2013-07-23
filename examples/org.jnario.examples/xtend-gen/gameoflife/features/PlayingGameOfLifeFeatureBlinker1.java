@@ -22,7 +22,7 @@ public class PlayingGameOfLifeFeatureBlinker1 extends PlayingGameOfLifeFeature {
   @Test
   @Order(0)
   @Named("Given a world")
-  public void givenAWorld() {
+  public void _givenAWorld() {
     StepArguments _stepArguments = new StepArguments("-----\n--X--\n--X--\n--X--\n-----\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -33,7 +33,7 @@ public class PlayingGameOfLifeFeatureBlinker1 extends PlayingGameOfLifeFeature {
   @Test
   @Order(1)
   @Named("Then the world evolves into")
-  public void thenTheWorldEvolvesInto() {
+  public void _thenTheWorldEvolvesInto() {
     StepArguments _stepArguments = new StepArguments("-----\n-----\n-XXX-\n-----\n-----\n");
     final StepArguments args = _stepArguments;
     Evolution _gameOfLife = Evolution.gameOfLife();

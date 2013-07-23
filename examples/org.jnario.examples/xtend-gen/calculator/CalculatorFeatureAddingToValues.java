@@ -16,7 +16,7 @@ public class CalculatorFeatureAddingToValues extends CalculatorFeature {
   @Order(0)
   @Ignore
   @Named("Given I have a Calculator [PENDING]")
-  public void givenIHaveACalculator() {
+  public void _givenIHaveACalculator() {
     
   }
   
@@ -24,7 +24,7 @@ public class CalculatorFeatureAddingToValues extends CalculatorFeature {
   @Order(1)
   @Ignore
   @Named("When I add two values [PENDING]")
-  public void whenIAddTwoValues() {
+  public void _whenIAddTwoValues() {
     
   }
   
@@ -32,7 +32,7 @@ public class CalculatorFeatureAddingToValues extends CalculatorFeature {
   @Order(2)
   @Ignore
   @Named("Then it should print the result. [PENDING]")
-  public void thenItShouldPrintTheResult() {
+  public void _thenItShouldPrintTheResult() {
     
   }
 }

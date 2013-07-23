@@ -27,7 +27,7 @@ public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
   @Test
   @Order(0)
   @Named("Given I have entered \\\"50\\\" into the calculator")
-  public void givenIHaveEntered50IntoTheCalculator() {
+  public void _givenIHaveEntered50IntoTheCalculator() {
     StepArguments _stepArguments = new StepArguments("50");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -37,7 +37,7 @@ public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
   @Test
   @Order(1)
   @Named("And I have entered \\\"70\\\" into the calculator")
-  public void andIHaveEntered70IntoTheCalculator() {
+  public void _andIHaveEntered70IntoTheCalculator() {
     StepArguments _stepArguments = new StepArguments("70");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -47,7 +47,7 @@ public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
   @Test
   @Order(2)
   @Named("When I press \\\"add\\\"")
-  public void whenIPressAdd() {
+  public void _whenIPressAdd() {
     StepArguments _stepArguments = new StepArguments("add");
     final StepArguments args = _stepArguments;
     this.calculator.add();
@@ -56,7 +56,7 @@ public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
   @Test
   @Order(3)
   @Named("Then the result should be \\\"120\\\"")
-  public void thenTheResultShouldBe120() {
+  public void _thenTheResultShouldBe120() {
     StepArguments _stepArguments = new StepArguments("120");
     final StepArguments args = _stepArguments;
     String _result = this.calculator.result();

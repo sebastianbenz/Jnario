@@ -30,7 +30,7 @@ public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
   @Test
   @Order(0)
   @Named("When I entered \\\"50\\\" and \\\"70\\\"")
-  public void whenIEntered50And70() {
+  public void _whenIEntered50And70() {
     StepArguments _stepArguments = new StepArguments("50", "70");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -42,7 +42,7 @@ public class AdditionFeatureAddTwoNumbers extends AdditionFeature {
   @Test
   @Order(1)
   @Named("Then the result should be \\\"120\\\"")
-  public void thenTheResultShouldBe120() {
+  public void _thenTheResultShouldBe120() {
     StepArguments _stepArguments = new StepArguments("120");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);

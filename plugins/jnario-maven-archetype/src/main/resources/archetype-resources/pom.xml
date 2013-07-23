@@ -11,9 +11,38 @@
 		<project.build.sourceEncoding>${sourceEncoding}</project.build.sourceEncoding>
 		<project.build.resourceEncoding>${sourceEncoding}</project.build.resourceEncoding>
 		<maven.compiler.encoding>${sourceEncoding}</maven.compiler.encoding>
-		<xtend.version>2.4.3</xtend.version>
+		<xtend.version>2.4.3-SNAPSHOT</xtend.version>
 		<jnario.version>0.6.0-SNAPSHOT</jnario.version>
 	</properties>
+	<repositories>
+		<repository>
+			<id>scala.tools</id>
+			<url>http://scala-tools.org/repo-releases</url>
+		</repository>
+		<repository>
+			<id>xtend.snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>xtend.snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<dependencies>
 		<dependency>
@@ -79,12 +108,12 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.12</version>
 				<configuration>
-	 				<includes>
+					<includes>
 						<include> **\/*Spec.java</include>
 						<include> **\/*Feature.java</include>
 						<include> **\/*Test.java</include>
 						<include> **\/*TestCase.java</include>
-					</includes> 
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>

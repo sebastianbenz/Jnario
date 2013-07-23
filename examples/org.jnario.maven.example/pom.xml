@@ -5,12 +5,41 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<xtend.version>2.4.3-SNAPSHOT</xtend.version>
+		<jnario.version>0.6.0-SNAPSHOT</jnario.version>
 	</properties>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.jnario.maven.example</artifactId>
 	<name>Jnario Maven Example</name>
-	<version>0.6.0-SNAPSHOT</version>
+	<version>${jnario.version}</version>
 	<groupId>org.jnario</groupId>
+	
+	<repositories>
+		<repository>
+			<id>xtend.snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>xtend.snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -21,12 +50,12 @@
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
 			<artifactId>org.eclipse.xtend.lib</artifactId>
-			<version>2.4.3</version>
+			<version>${xtend.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jnario</groupId>
 			<artifactId>org.jnario.lib.maven</artifactId>
-			<version>0.6.0-SNAPSHOT</version>
+			<version>${jnario.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -35,11 +64,11 @@
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
-				<version>2.4.3</version>
+				<version>${xtend.version}</version>
 				<executions>
 					<execution>
 						<goals>
-							<goal>compile</goal> 
+							<goal>compile</goal>
 							<goal>xtend-install-debug-info</goal>
 						</goals>
 					</execution>
@@ -48,7 +77,7 @@
 			<plugin>
 				<groupId>org.jnario</groupId>
 				<artifactId>jnario-maven-plugin</artifactId>
-				<version>0.6.0-SNAPSHOT</version>
+				<version>${jnario.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -61,7 +90,7 @@
 			<plugin>
 				<groupId>org.jnario</groupId>
 				<artifactId>report</artifactId>
-				<version>0.6.0-SNAPSHOT</version>
+				<version>${jnario.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -85,12 +114,12 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.12</version>
 				<configuration>
-	 				<includes>
+					<includes>
 						<include> **\/*Spec.java</include>
 						<include> **\/*Feature.java</include>
 						<include> **\/*Test.java</include>
 						<include> **\/*TestCase.java</include>
-					</includes> 
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>
