@@ -24,7 +24,9 @@ import org.junit.runner.RunWith
 import static org.eclipse.xtext.util.Files.*
 import static org.jnario.standalone.tests.SuiteBatchCompilerTest.*
 import static org.junit.Assert.*
-import org.jnario.jnario.test.util.ExtendedSuiteInjectorProvider
+import org.jnario.jnario.test.util.ExtendedSuiteInjectorProviderimport org.eclipse.emf.ecore.resource.ResourceSet
+import com.google.common.io.Files
+import com.google.common.base.Charsets
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ExtendedSuiteInjectorProvider))
@@ -61,9 +63,12 @@ class SuiteBatchCompilerTest {
  
 	@Test
 	def void testCompileTestData() {
-		batchCompiler.setResourceSet(resourceSet)
+		batchCompiler.setResourceSetProvider([|resourceSet as ResourceSet])
 		batchCompiler.compile()
-		assertEquals(1, new File(OUTPUT_DIRECTORY+"/test").list[dir, name | name.endsWith(".java")].size)
+		val outputDir = new File(OUTPUT_DIRECTORY+"/test")
+		assertEquals(1, outputDir.list[dir, name | name.endsWith(".java")].size)
+//		val fileContent = Files.toString(new File(outputDir, "ExampleSuite.java"), Charsets::UTF_8)
+//		assertTrue("Expected to be to contain others specs, but was: \n\n" + fileContent, fileContent.contains("@Contains"))
 	}
 
 }

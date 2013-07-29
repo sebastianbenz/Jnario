@@ -27,7 +27,7 @@ public class PendingStepsFeatureWhenAnAndStepIsPendingTheFollowingStepsShouldBeP
   @Test
   @Order(0)
   @Named("Given a scenario")
-  public void givenAScenario() {
+  public void _givenAScenario() {
     StepArguments _stepArguments = new StepArguments("Feature: With pending steps\n\tScenario: Scenario with pending steps\n\t\tint x\n\t\tGiven does something\n\t\t\tx = 3\n\t\tAnd a not implemented step\n\t\tWhen is implemented with\n\t\t\tx = x + 5\n\t\tThen does also something\n\t\t\tx => 8\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -37,14 +37,14 @@ public class PendingStepsFeatureWhenAnAndStepIsPendingTheFollowingStepsShouldBeP
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
   
   @Test
   @Order(2)
   @Named("And the expected number of ignored steps is \\\"3\\\"")
-  public void andTheExpectedNumberOfIgnoredStepsIs3() {
+  public void _andTheExpectedNumberOfIgnoredStepsIs3() {
     StepArguments _stepArguments = new StepArguments("3");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);

@@ -26,7 +26,7 @@ public class BackgroundsFeatureItIsPossibleToAddABackgroundToAFeature extends Ba
   @Test
   @Order(0)
   @Named("When I have a feature with a background")
-  public void whenIHaveAFeatureWithABackground() {
+  public void _whenIHaveAFeatureWithABackground() {
     StepArguments _stepArguments = new StepArguments("package bootstrap\nFeature: Some feature\n\tBackground:\n\t\tGiven a user name\n\t\t\tval x = \"an implementation\"\n\tScenario: Scenario 1\n\tScenario: Scenario 2\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -36,7 +36,7 @@ public class BackgroundsFeatureItIsPossibleToAddABackgroundToAFeature extends Ba
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

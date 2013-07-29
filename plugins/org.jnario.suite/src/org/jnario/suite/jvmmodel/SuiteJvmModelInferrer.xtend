@@ -58,7 +58,8 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
    	def Iterable<JvmType> children(Suite suite){ 
    		val specs = suite.resolveSpecs.filter[it.toJavaClassName != null]
    		val types = specs.map[it.toQualifiedJavaClassName]
-   		types.map[getTypeForName(it, suite)?.type] 
+   		val result = types.map[getTypeForName(it, suite)?.type]
+   		result 
    	}
 }
 

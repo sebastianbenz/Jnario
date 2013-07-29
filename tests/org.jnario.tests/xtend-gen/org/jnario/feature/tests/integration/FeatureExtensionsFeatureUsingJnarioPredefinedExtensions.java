@@ -30,7 +30,7 @@ public class FeatureExtensionsFeatureUsingJnarioPredefinedExtensions extends Fea
   @Test
   @Order(0)
   @Named("Given the number \\\"5\\\" as string")
-  public void givenTheNumber5AsString() {
+  public void _givenTheNumber5AsString() {
     StepArguments _stepArguments = new StepArguments("5");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -40,7 +40,7 @@ public class FeatureExtensionsFeatureUsingJnarioPredefinedExtensions extends Fea
   @Test
   @Order(1)
   @Named("When it is converted to int")
-  public void whenItIsConvertedToInt() {
+  public void _whenItIsConvertedToInt() {
     int _int = StringConversions.toInt(this.numberString);
     this.number = _int;
   }
@@ -48,7 +48,7 @@ public class FeatureExtensionsFeatureUsingJnarioPredefinedExtensions extends Fea
   @Test
   @Order(2)
   @Named("Then it should be \\\"5\\\"")
-  public void thenItShouldBe5() {
+  public void _thenItShouldBe5() {
     StepArguments _stepArguments = new StepArguments("5");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);

@@ -24,14 +24,14 @@ public class StepParametersFeatureWhiteSpaceNormalizing extends StepParametersFe
   @Test
   @Order(0)
   @Named("When I have a scenario with a multiline string")
-  public void whenIHaveAScenarioWithAMultilineString() {
+  public void _whenIHaveAScenarioWithAMultilineString() {
     this.jnarioFile = "\r\n\t\tFeature: Multiline String\r\n\t\t\tScenario: Example\r\n\t\t\t\tString arg \r\n\t\t\t\tGiven a step with a multiline argument:\r\n\t\t\t\t\t\'\'\'\r\n\t\t\t\t\t hello\r\n\t\t\t\t\t world\r\n\t\t\t\t\t\'\'\'\r\n\t\t\t\t\targ = args.first\r\n\t\t\t\tThen the whitespace should be normalized\r\n\t\t\t\t\tassertEquals(\'hello\nworld\n\', arg)\r\n\t\t";
   }
   
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

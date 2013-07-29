@@ -27,7 +27,7 @@ public class TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario exte
   @Test
   @Order(0)
   @Named("When I have a scenario that uses one variable in different steps")
-  public void whenIHaveAScenarioThatUsesOneVariableInDifferentSteps() {
+  public void _whenIHaveAScenarioThatUsesOneVariableInDifferentSteps() {
     StepArguments _stepArguments = new StepArguments("package bootstrap\nFeature: a feature\n\tScenario: a scenario with field\n\t\tpublic int x\n\t\tGiven a variable access\n\t\t\tx = 3\n\t\tWhen the variable is accessed\n\t\t\tx = x + 1 \n\t\tThen it is accessed\n\t\t\tx => 4\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -38,7 +38,7 @@ public class TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario exte
   @Order(1)
   @Ignore
   @Named("Then the scenario should have no validation errors that the variable was not defined [PENDING]")
-  public void thenTheScenarioShouldHaveNoValidationErrorsThatTheVariableWasNotDefined() {
+  public void _thenTheScenarioShouldHaveNoValidationErrorsThatTheVariableWasNotDefined() {
     
   }
   
@@ -46,7 +46,7 @@ public class TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario exte
   @Order(2)
   @Ignore
   @Named("And it should execute successfully")
-  public void andItShouldExecuteSuccessfully() {
+  public void _andItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

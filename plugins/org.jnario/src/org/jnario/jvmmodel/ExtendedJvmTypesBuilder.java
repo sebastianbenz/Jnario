@@ -34,8 +34,6 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 	@Inject
 	private TypeReferences references;
 	
-	
-		
 	public JvmAnnotationReference toAnnotation(EObject sourceElement, String annotationTypeName, String valueName, Object value) {
 		JvmAnnotationReference result = TypesFactory.eINSTANCE.createJvmAnnotationReference();
 		JvmType jvmType = references.findDeclaredType(annotationTypeName, sourceElement);

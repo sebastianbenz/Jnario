@@ -29,7 +29,7 @@ public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEverySce
   @Test
   @Order(0)
   @Named("When I have a feature with a background")
-  public void whenIHaveAFeatureWithABackground() {
+  public void _whenIHaveAFeatureWithABackground() {
     StepArguments _stepArguments = new StepArguments("package bootstrap\nFeature: Some feature\n\tBackground:\n\t\tGiven a user name\n\t\t\tthrow new RuntimeException()\n\tScenario: Scenario 1\n\tScenario: Scenario 2\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -39,7 +39,7 @@ public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEverySce
   @Test
   @Order(1)
   @Named("Then every class should have a method that throws a RuntimeExeception")
-  public void thenEveryClassShouldHaveAMethodThatThrowsARuntimeExeception() {
+  public void _thenEveryClassShouldHaveAMethodThatThrowsARuntimeExeception() {
     Result _run = FeatureExecutor.run(this.jnarioFile);
     int _failureCount = _run.getFailureCount();
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2));

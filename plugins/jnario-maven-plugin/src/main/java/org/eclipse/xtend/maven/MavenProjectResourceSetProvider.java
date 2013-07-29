@@ -11,16 +11,14 @@ import com.google.inject.Provider;
  */
 public class MavenProjectResourceSetProvider implements Provider<ResourceSet> {
 
-	private MavenProject project;
+	ResourceSet rs;
 
 	public MavenProjectResourceSetProvider(MavenProject project) {
-		super();
-		this.project = project;
+		rs = new XtextResourceSet();
+		MavenProjectAdapter.install(rs, project);
 	}
 
 	public ResourceSet get() {
-		ResourceSet rs = new XtextResourceSet();
-		MavenProjectAdapter.install(rs, project);
 		return rs;
 	}
 }

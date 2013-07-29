@@ -26,7 +26,7 @@ public class AccessOfVariablesFeatureAccessAVariableThatWasAssignedAValueOfAVari
   @Test
   @Order(0)
   @Named("When I have a complex usage of variables")
-  public void whenIHaveAComplexUsageOfVariables() {
+  public void _whenIHaveAComplexUsageOfVariables() {
     StepArguments _stepArguments = new StepArguments("package bootstrap3\nFeature: Variable test\n\tScenario: Some scenario\n\t\tint x\n\t\tint y\n\t\tGiven a step with a variable\n\t\t\tx = 3\n\t\tWhen I assign it a different value\n\t\t\ty = x\n\t\tThen y should be 3\n\t\t\ty => 3\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -36,7 +36,7 @@ public class AccessOfVariablesFeatureAccessAVariableThatWasAssignedAValueOfAVari
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

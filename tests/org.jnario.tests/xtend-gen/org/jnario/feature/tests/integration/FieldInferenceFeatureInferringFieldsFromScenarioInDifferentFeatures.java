@@ -40,7 +40,7 @@ public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures
   @Test
   @Order(0)
   @Named("When I have a feature")
-  public void whenIHaveAFeature() {
+  public void _whenIHaveAFeature() {
     StepArguments _stepArguments = new StepArguments("Feature: Feature 1\n\tScenario: My Scenario\n\t\tString myString\n\t\tGiven a string \"value\"\n\t\t\tmyString = args.first\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -50,7 +50,7 @@ public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures
   @Test
   @Order(1)
   @Named("And another feature")
-  public void andAnotherFeature() {
+  public void _andAnotherFeature() {
     StepArguments _stepArguments = new StepArguments("Feature: Feature 2\n\tScenario: My Scenario 2\n\t\tGiven a string \"test\"\n\t\tThen my string is \"test\"\n\t\t\tmyString => args.first   \n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -60,7 +60,7 @@ public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures
   @Test
   @Order(2)
   @Named("Then both should execute successfully")
-  public void thenBothShouldExecuteSuccessfully() {
+  public void _thenBothShouldExecuteSuccessfully() {
     Result _execute = this.runner.execute(this.feature1);
     Matcher<Result> _isSuccessful = ResultMatchers.isSuccessful();
     boolean _doubleArrow = Should.<Result>operator_doubleArrow(_execute, _isSuccessful);

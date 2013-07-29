@@ -24,14 +24,14 @@ public class StepParametersFeatureUsingMultilineStrings extends StepParametersFe
   @Test
   @Order(0)
   @Named("When I have a scenario with multiline strings")
-  public void whenIHaveAScenarioWithMultilineStrings() {
+  public void _whenIHaveAScenarioWithMultilineStrings() {
     this.jnarioFile = "\r\n\t\t\t\tpackage bootstrap \r\n\t\t\t\tFeature: Test feature\r\n\t\t\t\t\tScenario: using multiline strings in step definitions\r\n\t\t\t\t\t\tString x\r\n\t\t\t\t\t\tGiven the multine string: \r\n\t\t\t\t\t\t\t\'\'\'hello\'\'\'\r\n\t\t\t\t\t\t\tx = args.first\r\n\t\t\t\t\t\tThen it should be \"hello\"\r\n\t\t\t\t\t\t\tx should be args.first\r\n\t\t\t";
   }
   
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

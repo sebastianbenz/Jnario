@@ -29,7 +29,7 @@ public class FieldInferenceFeatureInferringFieldsFromBackground extends FieldInf
   @Test
   @Order(0)
   @Named("When I have a feature with a background and two scenarios")
-  public void whenIHaveAFeatureWithABackgroundAndTwoScenarios() {
+  public void _whenIHaveAFeatureWithABackgroundAndTwoScenarios() {
     StepArguments _stepArguments = new StepArguments("Feature: My Feature\n\tBackground: with field\n\t\tString myString\n\t\t\n\tScenario: My Scenario\n\t\tGiven a string \"value\"\n\t\t\tmyString = args.first\n\tScenario: My Scenario 2\n\t\tGiven a string \"test\"\n\t\tThen my string is \"test\"\n\t\t\tmyString => args.first  \n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -39,7 +39,7 @@ public class FieldInferenceFeatureInferringFieldsFromBackground extends FieldInf
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

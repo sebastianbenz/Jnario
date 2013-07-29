@@ -30,7 +30,7 @@ public class FeatureExtensionsFeatureDefiningOwnExtensions extends FeatureExtens
   @Test
   @Order(0)
   @Named("Given the value \\\"12.5\\\"")
-  public void givenTheValue125() {
+  public void _givenTheValue125() {
     StepArguments _stepArguments = new StepArguments("12.5");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -41,7 +41,7 @@ public class FeatureExtensionsFeatureDefiningOwnExtensions extends FeatureExtens
   @Test
   @Order(1)
   @Named("When I floor it")
-  public void whenIFloorIt() {
+  public void _whenIFloorIt() {
     double _floor = Math.floor(this.value);
     this.flooredValue = _floor;
   }
@@ -49,7 +49,7 @@ public class FeatureExtensionsFeatureDefiningOwnExtensions extends FeatureExtens
   @Test
   @Order(2)
   @Named("Then the value should be \\\"12.0\\\"")
-  public void thenTheValueShouldBe120() {
+  public void _thenTheValueShouldBe120() {
     StepArguments _stepArguments = new StepArguments("12.0");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);

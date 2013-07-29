@@ -40,7 +40,7 @@ public class ReferencesForStepsFeatureDuplicateExtensionViaStepRerferences exten
   @Test
   @Order(0)
   @Named("When I have a feature")
-  public void whenIHaveAFeature() {
+  public void _whenIHaveAFeature() {
     StepArguments _stepArguments = new StepArguments("import java.util.List\nFeature: Feature 1\n\t\tScenario: Scenario with field colors\n\t\t\textension List<String> colors = <String>list\n\t\t\tGiven a color red\n\t\t\t\tcolors += \"red\"\n\t\t\tAnd a color green\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -50,7 +50,7 @@ public class ReferencesForStepsFeatureDuplicateExtensionViaStepRerferences exten
   @Test
   @Order(1)
   @Named("And another feature")
-  public void andAnotherFeature() {
+  public void _andAnotherFeature() {
     StepArguments _stepArguments = new StepArguments("import java.util.List\nFeature: Feature 2\n\t\tScenario: Scenario with other colors\n\t\t\t\textension List<String> colors = <String>list\n\t\t\tGiven a color red\n\t\t\tAnd a color green\n\t\t\t\tcolors += \"green\"\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -60,7 +60,7 @@ public class ReferencesForStepsFeatureDuplicateExtensionViaStepRerferences exten
   @Test
   @Order(2)
   @Named("Then both should execute successfully")
-  public void thenBothShouldExecuteSuccessfully() {
+  public void _thenBothShouldExecuteSuccessfully() {
     Result _execute = this.runner.execute(this.feature1);
     Matcher<Result> _isSuccessful = ResultMatchers.isSuccessful();
     boolean _doubleArrow = Should.<Result>operator_doubleArrow(_execute, _isSuccessful);

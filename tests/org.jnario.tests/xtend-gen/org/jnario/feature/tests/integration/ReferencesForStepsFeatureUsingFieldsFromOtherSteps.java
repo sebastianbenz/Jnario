@@ -29,7 +29,7 @@ public class ReferencesForStepsFeatureUsingFieldsFromOtherSteps extends Referenc
   @Test
   @Order(0)
   @Named("When I have a scenario with a field")
-  public void whenIHaveAScenarioWithAField() {
+  public void _whenIHaveAScenarioWithAField() {
     StepArguments _stepArguments = new StepArguments("package bootstrap\nimport java.util.*\nFeature: Test\n\tScenario: TestScenario 1\n\t\tList<String> values = new ArrayList()\n\t\tGiven a list\n\t\t\tvalues += \"hello\"\n\t\t\n\tScenario: TestScenario 2\n\t\tGiven a list\n\t\tThen it should have contents\n\t\t\tvalues.size => 1\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -39,7 +39,7 @@ public class ReferencesForStepsFeatureUsingFieldsFromOtherSteps extends Referenc
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

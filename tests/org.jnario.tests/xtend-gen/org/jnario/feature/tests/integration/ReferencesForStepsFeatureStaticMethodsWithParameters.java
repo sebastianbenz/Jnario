@@ -39,7 +39,7 @@ public class ReferencesForStepsFeatureStaticMethodsWithParameters extends Refere
   @Test
   @Order(0)
   @Named("Given a feature")
-  public void givenAFeature() {
+  public void _givenAFeature() {
     StepArguments _stepArguments = new StepArguments("import com.google.common.collect.Maps\n\nFeature: Static methods with parameters\n\t\n  Scenario: Define step using static method parameters\n\n    Given a step\n      val y = Maps.newHashMapWithExpectedSize(3)\n\n  Scenario: Reference step using static method parameters\n    Given a step\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -49,7 +49,7 @@ public class ReferencesForStepsFeatureStaticMethodsWithParameters extends Refere
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

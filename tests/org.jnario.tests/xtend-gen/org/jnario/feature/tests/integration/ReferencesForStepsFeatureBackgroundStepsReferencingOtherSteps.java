@@ -38,7 +38,7 @@ public class ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps exten
   @Test
   @Order(0)
   @Named("Given a feature")
-  public void givenAFeature() {
+  public void _givenAFeature() {
     StepArguments _stepArguments = new StepArguments("Feature: Feature 1\nBackground:\nString testString\nGiven something\ntestString = \"test\"\nAnd it is upper case\ntestString.toUpperCase\nScenario: Scenario 1\n\t \t");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -48,7 +48,7 @@ public class ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps exten
   @Test
   @Order(1)
   @Named("When referencing the backround steps from another background")
-  public void whenReferencingTheBackroundStepsFromAnotherBackground() {
+  public void _whenReferencingTheBackroundStepsFromAnotherBackground() {
     StepArguments _stepArguments = new StepArguments("Feature: Feature 2\nBackground:\nGiven something\nScenario: Scenario 2\nGiven it is upper case\n\t \t");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -58,7 +58,7 @@ public class ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps exten
   @Test
   @Order(2)
   @Named("Then they should execute successfully")
-  public void thenTheyShouldExecuteSuccessfully() {
+  public void _thenTheyShouldExecuteSuccessfully() {
     this.behaviorExecutor.executesSuccessfully(this.jnarioFile);
     this.behaviorExecutor.executesSuccessfully(this.jnarioFile2);
   }

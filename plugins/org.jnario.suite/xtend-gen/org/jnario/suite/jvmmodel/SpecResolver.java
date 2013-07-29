@@ -31,6 +31,7 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.jnario.Specification;
@@ -93,6 +94,8 @@ public class SpecResolver {
           }
         };
       Iterable<IEObjectDescription> specs = IterableExtensions.<IEObjectDescription>filter(_allElements, _function);
+      String _plus = ("Scoped: " + specs);
+      InputOutput.<String>println(_plus);
       String _pattern_1 = specRef.getPattern();
       final Pattern pattern = Pattern.compile(_pattern_1);
       final Function1<IEObjectDescription,Boolean> _function_1 = new Function1<IEObjectDescription,Boolean>() {

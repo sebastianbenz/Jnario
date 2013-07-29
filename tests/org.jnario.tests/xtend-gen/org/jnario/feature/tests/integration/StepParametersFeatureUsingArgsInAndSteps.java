@@ -26,7 +26,7 @@ public class StepParametersFeatureUsingArgsInAndSteps extends StepParametersFeat
   @Test
   @Order(0)
   @Named("When I have a scenario with \\\'and\\\' step arguments")
-  public void whenIHaveAScenarioWithAndStepArguments() {
+  public void _whenIHaveAScenarioWithAndStepArguments() {
     StepArguments _stepArguments = new StepArguments("Feature: And Arguments\n\nScenario: Using And Arguments\n\nWhen we have some args \"2\"\nAnd other args \"10\"\n\targs.first => \"10\"\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -36,7 +36,7 @@ public class StepParametersFeatureUsingArgsInAndSteps extends StepParametersFeat
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

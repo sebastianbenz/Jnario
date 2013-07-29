@@ -33,7 +33,7 @@ public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword exten
   @Test
   @Order(0)
   @Named("When I have a scenario with reused steps with different keywords that throw an exception")
-  public void whenIHaveAScenarioWithReusedStepsWithDifferentKeywordsThatThrowAnException() {
+  public void _whenIHaveAScenarioWithReusedStepsWithDifferentKeywordsThatThrowAnException() {
     StepArguments _stepArguments = new StepArguments("package bootstrap\nFeature: Test\n\tScenario: TestScenario 1\n\t\tGiven step\n\t\t\tthrow new RuntimeException()\n\t\t\n\tScenario: TestScenario 2\n\t\tWhen step\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -43,7 +43,7 @@ public class ReferencesForStepsFeatureReferencingStepsWithDifferentKeyword exten
   @Test
   @Order(1)
   @Named("Then the number of failures should be \\\"2\\\"")
-  public void thenTheNumberOfFailuresShouldBe2() {
+  public void _thenTheNumberOfFailuresShouldBe2() {
     StepArguments _stepArguments = new StepArguments("2");
     final StepArguments args = _stepArguments;
     Result _run = FeatureExecutor.run(this.jnarioFile);

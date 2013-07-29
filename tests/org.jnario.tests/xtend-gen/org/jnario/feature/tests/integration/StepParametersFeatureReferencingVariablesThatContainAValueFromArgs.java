@@ -26,7 +26,7 @@ public class StepParametersFeatureReferencingVariablesThatContainAValueFromArgs 
   @Test
   @Order(0)
   @Named("When I have a scenario that references a step with arguments")
-  public void whenIHaveAScenarioThatReferencesAStepWithArguments() {
+  public void _whenIHaveAScenarioThatReferencesAStepWithArguments() {
     StepArguments _stepArguments = new StepArguments("package bootstrap \nFeature: Test feature\n\tScenario: using fields in step definitions\n\t\tString x\n\t\tString y \n\t\tGiven the value \"hello\"\n\t\t\tx = args.first\n\t\tWhen I add \" world\"\n\t\t\ty = x + args.first\n\t\tThen it should be \"hello world\"\n\t\t\ty should be args.first\n\t\t\t\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -36,7 +36,7 @@ public class StepParametersFeatureReferencingVariablesThatContainAValueFromArgs 
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

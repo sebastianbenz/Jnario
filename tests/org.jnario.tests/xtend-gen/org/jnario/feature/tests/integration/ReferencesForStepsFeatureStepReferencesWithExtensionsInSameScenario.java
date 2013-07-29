@@ -39,7 +39,7 @@ public class ReferencesForStepsFeatureStepReferencesWithExtensionsInSameScenario
   @Test
   @Order(0)
   @Named("Given a feature")
-  public void givenAFeature() {
+  public void _givenAFeature() {
     StepArguments _stepArguments = new StepArguments("import org.jnario.feature.tests.integration.ExampleExtension\nFeature: Step references with extensions in same step\n\t\t\tScenario: Greetings\n\t\t\t\textension static ExampleExtension = new ExampleExtension\n\t\t\tWhen greeting \"Sebastian\" is \"Hello Sebastian\"\n\t\t\t\targs.first.greet => args.second\n\t\t\tBut greeting \"World\" is \"Hello World\"\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -49,7 +49,7 @@ public class ReferencesForStepsFeatureStepReferencesWithExtensionsInSameScenario
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

@@ -39,7 +39,7 @@ public class ReferencesForStepsFeatureOrderingInStepReferences extends Reference
   @Test
   @Order(0)
   @Named("Given a feature")
-  public void givenAFeature() {
+  public void _givenAFeature() {
     StepArguments _stepArguments = new StepArguments("Feature: Ordering of step references\n \nScenario: First\n\tCharSequence jnarioFile\n\tThen it should execute successfully\n\t\tjnarioFile = \"\"\n\t\t\nScenario: Second\n\tWhen I have a scenario with a field\n\t\tjnarioFile = \"\"\n \tThen it should execute successfully\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -49,7 +49,7 @@ public class ReferencesForStepsFeatureOrderingInStepReferences extends Reference
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

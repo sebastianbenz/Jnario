@@ -52,7 +52,7 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpec
   @Test
   @Order(0)
   @Named("Given a specification")
-  public void givenASpecification() {
+  public void _givenASpecification() {
     StepArguments _stepArguments = new StepArguments("package example\ndescribe \"Adding values\"{\n\tfact \"4 + 3 is 7\"{\n\t\t4 + 3 => 7\n\t}\n}\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -66,7 +66,7 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpec
   @Test
   @Order(1)
   @Named("And a test result xml file")
-  public void andATestResultXmlFile() {
+  public void _andATestResultXmlFile() {
     StepArguments _stepArguments = new StepArguments("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<testsuite failures=\"0\" time=\"0.001\" errors=\"0\" skipped=\"0\" tests=\"1\" name=\"example.AddingValuesSpec\">\n  <properties>\n    <property name=\"java.runtime.name\" value=\"Java(TM) SE Runtime Environment\"/>\n  </properties>\n  <testcase time=\"0.001\" classname=\"example.AddingValuesSpec\" name=\"4 + 3 is 7\"/>\n</testsuite>\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -78,7 +78,7 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingSuccessfullSpec
   @Test
   @Order(2)
   @Named("Then the spec execution \\\"passed\\\"")
-  public void thenTheSpecExecutionPassed() {
+  public void _thenTheSpecExecutionPassed() {
     StepArguments _stepArguments = new StepArguments("passed");
     final StepArguments args = _stepArguments;
     final SpecExecution result = this.spec2ResultMapping.getResult(this.specification);

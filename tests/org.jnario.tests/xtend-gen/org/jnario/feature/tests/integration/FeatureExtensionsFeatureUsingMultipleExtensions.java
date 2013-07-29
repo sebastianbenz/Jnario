@@ -33,7 +33,7 @@ public class FeatureExtensionsFeatureUsingMultipleExtensions extends FeatureExte
   @Test
   @Order(0)
   @Named("When sorting the colors \\\"red, green, blue\\\"")
-  public void whenSortingTheColorsRedGreenBlue() {
+  public void _whenSortingTheColorsRedGreenBlue() {
     StepArguments _stepArguments = new StepArguments("red, green, blue");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -52,7 +52,7 @@ public class FeatureExtensionsFeatureUsingMultipleExtensions extends FeatureExte
   @Test
   @Order(1)
   @Named("Then they should be ordered \\\"blue, green, red\\\"")
-  public void thenTheyShouldBeOrderedBlueGreenRed() {
+  public void _thenTheyShouldBeOrderedBlueGreenRed() {
     StepArguments _stepArguments = new StepArguments("blue, green, red");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);

@@ -33,7 +33,7 @@ public class FeatureExtensionsFeatureReferencingMultipleExtensions extends Featu
   @Test
   @Order(0)
   @Named("When sorting the colors \\\"yellow, red\\\"")
-  public void whenSortingTheColorsYellowRed() {
+  public void _whenSortingTheColorsYellowRed() {
     StepArguments _stepArguments = new StepArguments("yellow, red");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -52,7 +52,7 @@ public class FeatureExtensionsFeatureReferencingMultipleExtensions extends Featu
   @Test
   @Order(1)
   @Named("Then they should be ordered \\\"red, yellow\\\"")
-  public void thenTheyShouldBeOrderedRedYellow() {
+  public void _thenTheyShouldBeOrderedRedYellow() {
     StepArguments _stepArguments = new StepArguments("red, yellow");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);

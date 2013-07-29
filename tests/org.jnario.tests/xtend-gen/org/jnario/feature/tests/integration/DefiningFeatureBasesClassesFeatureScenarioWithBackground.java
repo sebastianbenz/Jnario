@@ -21,7 +21,7 @@ public class DefiningFeatureBasesClassesFeatureScenarioWithBackground extends De
   @Test
   @Order(0)
   @Named("Given a scenario")
-  public void givenAScenario() {
+  public void _givenAScenario() {
     StepArguments _stepArguments = new StepArguments("import org.jnario.runner.Extends\nimport junit.framework.TestCase\n\n@Extends(typeof(TestCase)) \nFeature: Extend Annotation\n\tBackground:\n\t\tGiven some background\n\tScenario: My Scenario\n\t\tThen my feature class extends test case\n\t\t\ttypeof(ExtendAnnotationFeature).superclass => typeof(TestCase)\n\t\tAnd my scenario class extends my background class\n\t\t\ttypeof(ExtendAnnotationFeatureMyScenario).superclass => typeof(ExtendAnnotationFeatureBackground)\n\t\tAnd my background class extends my feature class\n\t\t\ttypeof(ExtendAnnotationFeatureBackground).superclass => typeof(ExtendAnnotationFeature)\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -31,7 +31,7 @@ public class DefiningFeatureBasesClassesFeatureScenarioWithBackground extends De
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

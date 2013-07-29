@@ -30,7 +30,7 @@ public class FeatureExtensionsFeatureReferencingStepsWithExtensions extends Feat
   @Test
   @Order(0)
   @Named("Given the number \\\"12\\\" as string")
-  public void givenTheNumber12AsString() {
+  public void _givenTheNumber12AsString() {
     StepArguments _stepArguments = new StepArguments("12");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -40,7 +40,7 @@ public class FeatureExtensionsFeatureReferencingStepsWithExtensions extends Feat
   @Test
   @Order(1)
   @Named("When it is converted to int")
-  public void whenItIsConvertedToInt() {
+  public void _whenItIsConvertedToInt() {
     int _int = StringConversions.toInt(this.numberString);
     this.number = _int;
   }
@@ -48,7 +48,7 @@ public class FeatureExtensionsFeatureReferencingStepsWithExtensions extends Feat
   @Test
   @Order(2)
   @Named("Then it should be \\\"12\\\"")
-  public void thenItShouldBe12() {
+  public void _thenItShouldBe12() {
     StepArguments _stepArguments = new StepArguments("12");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);

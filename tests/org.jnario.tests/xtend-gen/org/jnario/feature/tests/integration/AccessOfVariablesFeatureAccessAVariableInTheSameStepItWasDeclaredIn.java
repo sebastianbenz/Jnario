@@ -26,7 +26,7 @@ public class AccessOfVariablesFeatureAccessAVariableInTheSameStepItWasDeclaredIn
   @Test
   @Order(0)
   @Named("When I have scenario with a reference to a variable")
-  public void whenIHaveScenarioWithAReferenceToAVariable() {
+  public void _whenIHaveScenarioWithAReferenceToAVariable() {
     StepArguments _stepArguments = new StepArguments("package bootstrap1\nFeature: Variable test\n\tScenario: Some scenario\n\t\tGiven a step with a variable\n\t\t\tvar x = 3\n\t\t\tx = 5\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -36,7 +36,7 @@ public class AccessOfVariablesFeatureAccessAVariableInTheSameStepItWasDeclaredIn
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

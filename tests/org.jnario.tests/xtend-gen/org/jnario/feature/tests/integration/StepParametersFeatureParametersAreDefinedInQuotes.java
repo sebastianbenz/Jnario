@@ -26,7 +26,7 @@ public class StepParametersFeatureParametersAreDefinedInQuotes extends StepParam
   @Test
   @Order(0)
   @Named("When I have a feature with parameters")
-  public void whenIHaveAFeatureWithParameters() {
+  public void _whenIHaveAFeatureWithParameters() {
     StepArguments _stepArguments = new StepArguments("package bootstrap\nFeature: Test feature\n\tScenario: using fields in step definitions\n\t\tString x\n\t\tGiven some values \"3\", \"4\"\n\t\t\tx = args.get(0)\n\t\tThen it should be possible to get the value\n\t\t\tx => \"3\"\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -36,7 +36,7 @@ public class StepParametersFeatureParametersAreDefinedInQuotes extends StepParam
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

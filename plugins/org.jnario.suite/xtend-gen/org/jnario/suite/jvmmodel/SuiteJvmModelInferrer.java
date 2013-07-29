@@ -147,8 +147,8 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
             return _type;
           }
         };
-      Iterable<JvmType> _map = IterableExtensions.<String, JvmType>map(types, _function_2);
-      _xblockexpression = (_map);
+      final Iterable<JvmType> result = IterableExtensions.<String, JvmType>map(types, _function_2);
+      _xblockexpression = (result);
     }
     return _xblockexpression;
   }

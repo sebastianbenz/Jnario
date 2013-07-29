@@ -29,7 +29,7 @@ public class ReferencesForStepsFeatureFieldInitialization extends ReferencesForS
   @Test
   @Order(0)
   @Named("When I have a scenario with field initialized in a given step")
-  public void whenIHaveAScenarioWithFieldInitializedInAGivenStep() {
+  public void _whenIHaveAScenarioWithFieldInitializedInAGivenStep() {
     StepArguments _stepArguments = new StepArguments("import java.util.Stack\n\nFeature: Stack\n\n\nScenario: Stack adding elements\n\tStack<String> stack\n\tGiven a stack\n\t\tstack= new Stack<String>()\n\tWhen I add a value \"something\"\n\t\tstack.add(\"something\")\n\tThen the stack should contain \"something\"\n\t\tassert stack.contains(\"something\")\n\nScenario: Stack adding more elements\n\tGiven a stack\n\tWhen I add a value \"something else\"\n\tThen the stack should contain \"something else\"\n\t \t\t");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -39,7 +39,7 @@ public class ReferencesForStepsFeatureFieldInitialization extends ReferencesForS
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

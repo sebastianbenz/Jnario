@@ -29,7 +29,7 @@ public class ParsingSimpleJnarioFilesFeatureAndStuff extends ParsingSimpleJnario
   @Test
   @Order(0)
   @Named("Given two numbers.")
-  public void givenTwoNumbers() {
+  public void _givenTwoNumbers() {
     this.x = 3;
     this.y = 5;
   }
@@ -37,14 +37,14 @@ public class ParsingSimpleJnarioFilesFeatureAndStuff extends ParsingSimpleJnario
   @Test
   @Order(1)
   @Named("And their sum.")
-  public void andTheirSum() {
+  public void _andTheirSum() {
     this.z = 8;
   }
   
   @Test
   @Order(2)
   @Named("Then the adding these should be the result.")
-  public void thenTheAddingTheseShouldBeTheResult() {
+  public void _thenTheAddingTheseShouldBeTheResult() {
     int _plus = (this.x + this.y);
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(this.z));
     Assert.assertTrue("\nExpected (x+y) => z but"

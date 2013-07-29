@@ -29,7 +29,7 @@ public class ReferencesForStepsFeatureUsingClosuresInSteps extends ReferencesFor
   @Test
   @Order(0)
   @Named("When I have a scenario which uses closures")
-  public void whenIHaveAScenarioWhichUsesClosures() {
+  public void _whenIHaveAScenarioWhichUsesClosures() {
     StepArguments _stepArguments = new StepArguments("Feature: Using Closures\n\n\t\t\tScenario: Steps which define closures\n\t\t\t\tvar colors = list(\"green\", \"blue\")\n\t\t\t\tWhen we convert all strings to uppercase\n\t\t\t\t\tcolors = colors.map[toUpperCase]\n\t\t\t\tThen they are uppercase\n\t\t\t\t\tcolors => list(\"GREEN\", \"BLUE\")\n\t\t\n\t\t\tScenario: Steps which reference steps with closures\n\t\t\t\tvar colors = list(\"red\", \"blue\")\n\t\t\t\tWhen we convert all strings to uppercase\n\t\t\t\tThen they are uppercase\n\t\t\t\t\tcolors => list(\"RED\", \"BLUE\")\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -39,7 +39,7 @@ public class ReferencesForStepsFeatureUsingClosuresInSteps extends ReferencesFor
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

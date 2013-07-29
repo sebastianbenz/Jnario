@@ -29,7 +29,7 @@ public class FieldInferenceFeatureInferringFieldsFromOtherScenario extends Field
   @Test
   @Order(0)
   @Named("When I have a feature with two scenarios")
-  public void whenIHaveAFeatureWithTwoScenarios() {
+  public void _whenIHaveAFeatureWithTwoScenarios() {
     StepArguments _stepArguments = new StepArguments("Feature: Feature 1\n\tScenario: My Scenario\n\t\tString myString\n\t\tGiven a string \"value\"\n\t\t\tmyString = args.first\n\tScenario: My Scenario 2\n\t\tGiven a string \"test\"\n\t\tThen my string is \"test\"\n\t\t\tmyString => args.first  \n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -39,7 +39,7 @@ public class FieldInferenceFeatureInferringFieldsFromOtherScenario extends Field
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

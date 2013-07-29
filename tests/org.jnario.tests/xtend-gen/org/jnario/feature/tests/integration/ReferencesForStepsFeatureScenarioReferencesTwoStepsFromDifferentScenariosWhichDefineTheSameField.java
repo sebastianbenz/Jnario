@@ -39,7 +39,7 @@ public class ReferencesForStepsFeatureScenarioReferencesTwoStepsFromDifferentSce
   @Test
   @Order(0)
   @Named("Given a feature")
-  public void givenAFeature() {
+  public void _givenAFeature() {
     StepArguments _stepArguments = new StepArguments("Feature: Field inference\n\t\t\tScenario: Scenario with field colors\n\t\t\t\tval colors = <String>list  \n\t\t\t\tGiven a color red\n\t\t\t\t\tcolors += \"red\"\n\t\t\tScenario: Other scenario with field colors\n\t\t\t\tval colors = <String>list \n\t\t\t\tGiven a color green\n\t\t\t\t\tcolors += \"green\"\n\t\t\tScenario: Two steps reuse same field\n\t\t\t\t\n\t\t\t\tGiven a color green\n\t\t\t\tAnd a color red\n\t\t\t\tThen colors are red & green\n\t\t\t\tcolors => list(\"green\", \"red\")\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -49,7 +49,7 @@ public class ReferencesForStepsFeatureScenarioReferencesTwoStepsFromDifferentSce
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }

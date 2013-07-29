@@ -39,7 +39,7 @@ public class ReferencesForStepsFeatureFieldDependencies extends ReferencesForSte
   @Test
   @Order(0)
   @Named("Given a feature")
-  public void givenAFeature() {
+  public void _givenAFeature() {
     StepArguments _stepArguments = new StepArguments("Feature: Field dependencies\n \t\n  Scenario: First\n  \tval x = \"hello\"\n  \tval y = x\n  When it should execute successfully\n  \tprintln(x + y)\n\n  Scenario: Second\n  \tWhen it should execute successfully\n\t\t");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -49,7 +49,7 @@ public class ReferencesForStepsFeatureFieldDependencies extends ReferencesForSte
   @Test
   @Order(1)
   @Named("Then it should execute successfully")
-  public void thenItShouldExecuteSuccessfully() {
+  public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);
   }
 }
