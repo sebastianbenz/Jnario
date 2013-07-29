@@ -8,8 +8,11 @@
 
 package org.jnario.maven;
 
+import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Lists.transform;
 import static java.util.Arrays.asList;
+import static org.eclipse.xtext.util.Strings.concat;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,16 +25,18 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.core.XtendStandaloneSetup;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
+import org.eclipse.xtend.maven.MavenProjectAdapter;
 import org.eclipse.xtend.maven.MavenProjectResourceSetProvider;
+import org.eclipse.xtend.maven.XtendMavenStandaloneSetup;
 import org.eclipse.xtend.maven.XtendTestCompile;
 import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.resource.BatchLinkableResource;
+import org.eclipse.xtext.xbase.resource.XbaseResource;
 import org.jnario.compiler.JnarioBatchCompiler;
-import org.jnario.feature.FeatureStandaloneSetup;
-import org.jnario.spec.SpecStandaloneSetup;
-import org.jnario.suite.SuiteStandaloneSetup;
 
 import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.inject.Injector;
 import com.google.inject.Provider;
 
@@ -52,15 +57,19 @@ public class JnarioTestCompile extends XtendTestCompile {
 	 * @readonly
 	 */
 	private String propertiesFileLocation;
+	private Provider<ResourceSet> resourceSetProvider;
 
 	@Override
 	protected void internalExecute() throws MojoExecutionException {
 		// the order is important, the suite compiler must be executed last
-		List<Injector> injectors = createInjectors(new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
-		final ResourceSet resourceSet = createResourceSet();
+		new XtendMavenStandaloneSetup().createInjectorAndDoEMFRegistration();
+		List<Injector> injectors = createInjectors(new FeatureMavenStandaloneSetup(), new SpecMavenStandaloneSetup(), new SuiteMavenStandaloneSetup());
+		resourceSetProvider = new MavenProjectResourceSetProvider(project);
 		compileXtendSources();
 		for (Injector injector : injectors) {
-			compile(injector, resourceSet);
+			resourceSetProvider.get().eAdapters().clear();;
+			MavenProjectAdapter.install(resourceSetProvider.get(), project);
+			compile(injector);
 		}
 	}
 
@@ -69,17 +78,22 @@ public class JnarioTestCompile extends XtendTestCompile {
 		super.compileTestSources(xtendCompiler);
 	}
 
-	private void compile(Injector injector, ResourceSet resourceSet)
-			throws MojoExecutionException {
+	private void compile(Injector injector)	throws MojoExecutionException {
 		JnarioBatchCompiler compiler = injector.getInstance(JnarioBatchCompiler.class);
-		execute(resourceSet, compiler);
+		final String defaultValue = project.getBasedir() + "/src/test/generated-sources/xtend";
+		getLog().debug("Output directory '" + testOutputDirectory + "'");
+		getLog().debug("Default directory '" + defaultValue + "'");
+		if (defaultValue.equals(testOutputDirectory)) {
+			determinateOutputDirectory(project.getBuild().getTestSourceDirectory(), new Procedure1<String>() {
+				public void apply(String xtendOutputDir) {
+					testOutputDirectory = xtendOutputDir;
+					getLog().info("Using Xtend output directory '" + testOutputDirectory + "'");
+				}
+			});
+		}
+		compileTestSources(compiler);
 	}
  
-	private ResourceSet createResourceSet() {
-		Provider<ResourceSet> resourceSetProvider = new MavenProjectResourceSetProvider(project);
-		return resourceSetProvider.get();
-	}
-
 	private List<Injector> createInjectors(ISetup... setups) {
 		return transform(asList(setups), new Function<ISetup, Injector>() {
 			public Injector apply(ISetup input) {
@@ -117,20 +131,33 @@ public class JnarioTestCompile extends XtendTestCompile {
 		}
 	}
 
-	private void execute(ResourceSet resourceSet, JnarioBatchCompiler compiler)	throws MojoExecutionException {
-		compiler.setResourceSet(resourceSet);
-		final String defaultValue = project.getBasedir() + "/src/test/generated-sources/xtend";
-		getLog().debug("Output directory '" + testOutputDirectory + "'");
-		getLog().debug("Default directory '" + defaultValue + "'");
-		if (defaultValue.equals(testOutputDirectory)) {
-			determinateOutputDirectory(project.getBuild().getTestSourceDirectory(), new Procedure1<String>() {
-				public void apply(String xtendOutputDir) {
-					testOutputDirectory = xtendOutputDir;
-					getLog().info("Using Xtend output directory '" + testOutputDirectory + "'");
-				}
-			});
+	protected void compile(XtendBatchCompiler xtend2BatchCompiler, String classPath, List<String> sourceDirectories, String outputPath) throws MojoExecutionException {
+		xtend2BatchCompiler.setResourceSetProvider(resourceSetProvider);
+		Iterable<String> filtered = filter(sourceDirectories, FILE_EXISTS);
+		if (Iterables.isEmpty(filtered)) {
+			getLog().info(
+					"skip compiling sources because the configured directory '" + Iterables.toString(sourceDirectories)
+							+ "' does not exists.");
+			return;
 		}
-		compileTestSources(compiler);
+		getLog().debug("Set temp directory: " + getTempDirectory());
+		xtend2BatchCompiler.setTempDirectory(getTempDirectory());
+		getLog().debug("Set DeleteTempDirectory: " + false);
+		xtend2BatchCompiler.setDeleteTempDirectory(false);
+		getLog().debug("Set classpath: " + classPath);
+		xtend2BatchCompiler.setClassPath(classPath);
+		getLog().debug("Set source path: " + concat(File.pathSeparator, newArrayList(filtered)));
+		xtend2BatchCompiler.setSourcePath(concat(File.pathSeparator, newArrayList(filtered)));
+		getLog().debug("Set output path: " + outputPath);
+		xtend2BatchCompiler.setOutputPath(outputPath);
+		getLog().debug("Set encoding: " + encoding);
+		xtend2BatchCompiler.setFileEncoding(encoding);
+		getLog().debug("Set writeTraceFiles: " + writeTraceFiles);
+		xtend2BatchCompiler.setWriteTraceFiles(writeTraceFiles);
+		if (!xtend2BatchCompiler.compile()) {
+			throw new MojoExecutionException("Error compiling xtend sources in '"
+					+ concat(File.pathSeparator, newArrayList(filtered)) + "'.");
+		}
 	}
 	
 

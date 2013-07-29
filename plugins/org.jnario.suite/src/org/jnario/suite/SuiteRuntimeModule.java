@@ -129,11 +129,6 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	public java.lang.Class<? extends IScopeProvider> bindIScopeProvider() {
 		return SuiteScopeProvider.class;
 	}
-
-	@Override
-	public Class<? extends XtextResource> bindXtextResource() {
-		return XbaseResource.class;
-	}
 	
 	public void configureIScopeProviderDelegate(Binder binder) {
 		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))

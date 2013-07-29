@@ -27,6 +27,10 @@ public class JUnit4RuntimeSupport implements TestRuntimeSupport {
   private JvmTypesBuilder _jvmTypesBuilder;
   
   public void addChildren(final Specification context, final JvmGenericType parent, final Collection<JvmGenericType> children) {
+    boolean _isEmpty = children.isEmpty();
+    if (_isEmpty) {
+      return;
+    }
     EList<JvmAnnotationReference> _annotations = parent.getAnnotations();
     JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(context, Contains.class, children);
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);

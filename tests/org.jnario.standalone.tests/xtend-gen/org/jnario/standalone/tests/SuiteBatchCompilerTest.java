@@ -8,10 +8,12 @@
 package org.jnario.standalone.tests;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.List;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.resource.XtextResourceSet;
@@ -89,18 +91,23 @@ public class SuiteBatchCompilerTest {
   
   @Test
   public void testCompileTestData() {
-    XtextResourceSet _resourceSet = this.modelStore.getResourceSet();
-    this.batchCompiler.setResourceSet(_resourceSet);
+    final Provider<ResourceSet> _function = new Provider<ResourceSet>() {
+        public ResourceSet get() {
+          XtextResourceSet _resourceSet = SuiteBatchCompilerTest.this.modelStore.getResourceSet();
+          return ((ResourceSet) _resourceSet);
+        }
+      };
+    this.batchCompiler.setResourceSetProvider(_function);
     this.batchCompiler.compile();
     String _plus = (SuiteBatchCompilerTest.OUTPUT_DIRECTORY + "/test");
     File _file = new File(_plus);
-    final FilenameFilter _function = new FilenameFilter() {
+    final FilenameFilter _function_1 = new FilenameFilter() {
         public boolean accept(final File dir, final String name) {
           boolean _endsWith = name.endsWith(".java");
           return _endsWith;
         }
       };
-    String[] _list = _file.list(_function);
+    String[] _list = _file.list(_function_1);
     int _size = ((List<String>)Conversions.doWrapArray(_list)).size();
     Assert.assertEquals(1, _size);
   }

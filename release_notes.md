@@ -1,5 +1,11 @@
 #Release Notes
 
+##Jnario 0.5.1
+
+* Fix unresolved features in suites when building with maven.
+* Maven report generator has now an explicit parameter **sourceDirectory**.
+* Fix invalid Jnario dependency in maven archetype.
+
 ##Jnario 0.5.0
 
 * Compatible to Xtend 2.4.2.

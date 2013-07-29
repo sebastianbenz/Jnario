@@ -36,7 +36,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension extends S
   @Test
   @Order(0)
   @Named("When I declare an extension field of type **ExampleExtension** in the background")
-  public void whenIDeclareAnExtensionFieldOfTypeExampleExtensionInTheBackground() {
+  public void _whenIDeclareAnExtensionFieldOfTypeExampleExtensionInTheBackground() {
     StepArguments _stepArguments = new StepArguments("import org.jnario.feature.tests.integration.ExampleExtension\n\nFeature: Feature with extensions\n  \n  Background: A common extension to all scenarios\n      extension static ExampleExtension = new ExampleExtension \n    \n  Scenario: Scenario 1\n    Given a step \n      println(\"step 1\")\n    Then we have two steps\n    println(\"step 2\")\n  Scenario: Scenario 2\n    Given a step \n      println(\"step 3\")\n    Then we have two steps\n      println(\"step 4\")\n");
     final StepArguments args = _stepArguments;
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -46,7 +46,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension extends S
   @Test
   @Order(1)
   @Named("And execute the feature")
-  public void andExecuteTheFeature() {
+  public void _andExecuteTheFeature() {
     ConsoleRecorder _start = ConsoleRecorder.start();
     this.recorder = _start;
     FeatureExecutor.isSuccessful(this.feature);
@@ -55,7 +55,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension extends S
   @Test
   @Order(2)
   @Named("Then the execution order is")
-  public void thenTheExecutionOrderIs() {
+  public void _thenTheExecutionOrderIs() {
     StepArguments _stepArguments = new StepArguments("before\nstep 1\nstep 2\nafter\nbefore\nstep 3\nstep 4\nafter\n");
     final StepArguments args = _stepArguments;
     String _stop = this.recorder.stop();

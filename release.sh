@@ -4,7 +4,7 @@ echo "release version:"
 read version
 
 #make the release build
-#mvn clean install -Dmaven.test.skip=true -P release 
+mvn clean install -Dmaven.test.skip=true -P release 
 
 #publish update site
 cd ../jnario-gh-pages

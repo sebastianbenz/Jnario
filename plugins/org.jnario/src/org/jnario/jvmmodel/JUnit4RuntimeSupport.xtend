@@ -22,6 +22,9 @@ class JUnit4RuntimeSupport implements TestRuntimeSupport {
 	@Inject extension JvmTypesBuilder 
 	
 	override addChildren(Specification context, JvmGenericType parent, Collection<JvmGenericType> children) {
+		if(children.empty){
+			return
+		}
 		parent.annotations += context.toAnnotation(typeof(Contains), children);
 	}
 

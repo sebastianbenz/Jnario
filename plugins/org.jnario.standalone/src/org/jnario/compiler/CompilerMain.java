@@ -23,6 +23,7 @@ import org.jnario.spec.SpecStandaloneSetup;
 import org.jnario.suite.SuiteStandaloneSetup;
 
 import com.google.inject.Injector;
+import com.google.inject.Provider;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -92,7 +93,7 @@ public class CompilerMain {
 
 	public int compile() {
 		BasicConfigurator.configure();
-		ResourceSet resourceSet = SETUPS.get(0).createInjectorAndDoEMFRegistration().getInstance(ResourceSet.class);
+		final ResourceSet resourceSet = SETUPS.get(0).createInjectorAndDoEMFRegistration().getInstance(ResourceSet.class);
 		for (ISetup setup : SETUPS) {
 			Injector injector = setup.createInjectorAndDoEMFRegistration();
 			JnarioBatchCompiler jnarioCompiler = injector.getInstance(JnarioBatchCompiler.class);
@@ -101,7 +102,11 @@ public class CompilerMain {
 			jnarioCompiler.setTempDirectory(tempDirectory);
 			jnarioCompiler.setFileEncoding(fileEncoding);
 			jnarioCompiler.setSourcePath(sourcePath);
-			jnarioCompiler.setResourceSet(resourceSet);
+			jnarioCompiler.setResourceSetProvider(new Provider<ResourceSet>() {
+				public ResourceSet get() {
+					return resourceSet;
+				}
+			});
 			if(!jnarioCompiler.compile()){
 				return COMPILATION_ERROR;
 			}

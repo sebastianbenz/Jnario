@@ -8,11 +8,17 @@
 package org.jnario.compiler;
 
 import static com.google.common.collect.Iterables.addAll;
+import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Iterables.toArray;
 import static com.google.common.collect.Lists.newArrayList;
+import static java.util.Arrays.asList;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -25,9 +31,12 @@ import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.access.impl.ClasspathTypeProvider;
+import org.eclipse.xtext.common.types.access.impl.IndexedJvmTypeAccess;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
@@ -35,33 +44,16 @@ import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.compiler.IGeneratorConfigProvider;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 
 /**
  * @author Sebastian - Initial contribution and API
  */
 public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
-
-	/**
-	 * @author sebastian - Initial contribution and API
-	 */
-	public class WrappedResourceSetProvider implements Provider<ResourceSet> {
-
-		private final ResourceSet resourceSet;
-
-		public WrappedResourceSetProvider(ResourceSet resourceSet) {
-			this.resourceSet = resourceSet;
-		}
-
-		public ResourceSet get() {
-			return resourceSet;
-		}
-
-	}
 
 	private final Logger log = Logger.getLogger(getClass());
 	
@@ -74,9 +66,8 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 	@Inject
 	private IXtendJvmAssociations xtendJvmAssociations;
 	
-	public void setResourceSet(ResourceSet resourceSet) {
-		resourceSetProvider = new WrappedResourceSetProvider(resourceSet);
-	}
+	@Inject
+	private IndexedJvmTypeAccess indexedJvmTypeAccess;
 	
 	@Override
 	protected File createStubs(ResourceSet resourceSet) {
@@ -106,7 +97,6 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 		JavaIoFileSystemAccess javaIoFileSystemAccess = javaIoFileSystemAccessProvider.get();
 		javaIoFileSystemAccess.setOutputPath(outputPath);
 		javaIoFileSystemAccess.setWriteTrace(writeTraceFiles);
-		
 		
 		for (Resource resource : jnarioResources(resourceSet)) {
 			XtendFile file = filter(resource.getContents(), XtendFile.class).iterator().next();
@@ -157,9 +147,51 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 		return issues;
 	}
 	
+	/**
+	 * Installs the JvmTypeProvider optionally including index access into the {@link ResourceSet}.
+	 * The lookup classpath is enhanced with the given tmp directory.
+	 */
+	@Override
+	protected void installJvmTypeProvider(ResourceSet resourceSet, File tmpClassDirectory, boolean skipIndexLookup) {
+		if (skipIndexLookup) {
+			internalInstallJvmTypeProvider(resourceSet, tmpClassDirectory, skipIndexLookup);
+		} else {
+			// delegate to the deprecated signature in case it was overridden by clients
+			installJvmTypeProvider(resourceSet, tmpClassDirectory);
+		}
+	}
+	
+	private void internalInstallJvmTypeProvider(ResourceSet resourceSet, File tmpClassDirectory, boolean skipIndexLookup) {
+		Iterable<String> classPathEntries = concat(getClassPathEntries(), getSourcePathDirectories(), asList(tmpClassDirectory.toString()));
+		classPathEntries = filter(classPathEntries, new Predicate<String>() {
+			public boolean apply(String input) {
+				return !Strings.isEmpty(input.trim());
+			}
+		});
+		Iterable<URL> classPathUrls = Iterables.transform(classPathEntries, new Function<String, URL>() {
+			public URL apply(String from) {
+				try {
+					return new File(from).toURI().toURL();
+				} catch (MalformedURLException e) {
+					throw new RuntimeException(e);
+				}
+			}
+		});
+		if (log.isDebugEnabled()) {
+			log.debug("classpath used for Xtend compilation : " + classPathUrls);
+		}
+		
+		ClassLoader parentClassLoader = useCurrentClassLoaderAsParent ? getClass().getClassLoader() : null;
+		if(((XtextResourceSet) resourceSet).getClasspathURIContext() instanceof URLClassLoader){
+			parentClassLoader = (ClassLoader) ((XtextResourceSet) resourceSet).getClasspathURIContext();
+		}
+		URLClassLoader urlClassLoader = new URLClassLoader(toArray(classPathUrls, URL.class), parentClassLoader);
+		new ClasspathTypeProvider(urlClassLoader, resourceSet, skipIndexLookup ? null : indexedJvmTypeAccess);
+		((XtextResourceSet) resourceSet).setClasspathURIContext(urlClassLoader);
+	}
+	
 	protected Iterable<Resource> jnarioResources(ResourceSet resourceSet){
 		return newArrayList(filter(resourceSet.getResources(), new Predicate<Resource>() {
-
 			public boolean apply(Resource resource) {
 				return fileExtensionProvider.isValid(resource.getURI().fileExtension());
 			}

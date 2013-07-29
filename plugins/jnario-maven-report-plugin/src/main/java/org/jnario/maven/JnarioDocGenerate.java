@@ -8,7 +8,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -26,7 +29,9 @@ import org.jnario.spec.SpecStandaloneSetup;
 import org.jnario.suite.SuiteStandaloneSetup;
 
 import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.google.inject.Injector;
 import com.google.inject.Provider;
 
@@ -36,7 +41,7 @@ import com.google.inject.Provider;
  * @author Sebastian Benz - Initial contribution and API
  * @extendsPlugin xtend-maven-plugin
  * @requiresDependencyResolution test
- * @goal generate
+ * @goal generate	
  */
 public class JnarioDocGenerate extends XtendTestCompile {
 
@@ -61,6 +66,13 @@ public class JnarioDocGenerate extends XtendTestCompile {
 	 * @required
 	 */
 	private String reportsDirectory;
+	
+	/**
+	 * Location of the generated JUnit XML reports.
+	 * 
+	 * @parameter 
+	 */
+	private String sourceDirectory;
 
 	@Override
 	protected void internalExecute() throws MojoExecutionException {
@@ -116,10 +128,12 @@ public class JnarioDocGenerate extends XtendTestCompile {
 	}
 
 	protected void compileTestSources(XtendBatchCompiler xtend2BatchCompiler) throws MojoExecutionException {
-		getLog().info("Using source folders: " + project.getTestCompileSourceRoots());
 		List<String> testCompileSourceRoots = Lists.newArrayList(project.getTestCompileSourceRoots());
 		String testClassPath = concat(File.pathSeparator, getTestClassPath());
-		project.addTestCompileSourceRoot(docOutputDirectory);
+		if(sourceDirectory != null){
+			testCompileSourceRoots = Collections.singletonList(sourceDirectory);
+		}
+		getLog().debug("source folders: " + testCompileSourceRoots);
 		compile(xtend2BatchCompiler, testClassPath, testCompileSourceRoots, docOutputDirectory);
 	}
 	
@@ -143,13 +157,4 @@ public class JnarioDocGenerate extends XtendTestCompile {
 		});
 	}
 	
-	@Override
-	protected List<String> getTestClassPath() {
-		List<String> classpath = super.getTestClassPath();
-		if(classpath.isEmpty()){
-			classpath.add(project.getBasedir() + "/src");
-		}
-		return classpath;
-	}
-
 }
