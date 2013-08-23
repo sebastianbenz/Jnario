@@ -46,14 +46,16 @@ public class XtendCompile extends AbstractXtendCompilerMojo {
 		final String defaultValue = project.getBasedir() + "/src/main/generated-sources/xtend";
 		getLog().debug("Output directory '" + outputDirectory + "'");
 		getLog().debug("Default directory '" + defaultValue + "'");
+		// IF output is not explicitly set try to read xtend prefs from eclipse .settings folder
 		if (defaultValue.equals(outputDirectory)) {
-			determinateOutputDirectory(project.getBuild().getSourceDirectory(), new Procedure1<String>() {
+			readXtendEclipseSetting(project.getBuild().getSourceDirectory(), new Procedure1<String>() {
 				public void apply(String xtendOutputDir) {
 					outputDirectory = xtendOutputDir;
 					getLog().info("Using Xtend output directory '" + outputDirectory + "'");
 				}
 			});
 		}
+		outputDirectory = resolveToBaseDir(outputDirectory);
 		compileSources(xtendBatchCompilerProvider.get());
 	}
 
@@ -64,6 +66,7 @@ public class XtendCompile extends AbstractXtendCompilerMojo {
 		compile(xtend2BatchCompiler, classPath, compileSourceRoots, outputDirectory);
 	}
 
+	@SuppressWarnings("deprecation")
 	protected List<String> getClassPath() {
 		Set<String> classPath = Sets.newLinkedHashSet();
 		classPath.add(project.getBuild().getSourceDirectory());

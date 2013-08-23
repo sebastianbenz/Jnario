@@ -4,6 +4,7 @@
 	<artifactId>selenium-example</artifactId>
 	<name>Jnario Selenium Example</name>
 	<properties>
+		<sourceEncoding>UTF-8</sourceEncoding>
 		<project.build.sourceEncoding>${sourceEncoding}</project.build.sourceEncoding>
 		<project.build.resourceEncoding>${sourceEncoding}</project.build.resourceEncoding>
 		<maven.compiler.encoding>${sourceEncoding}</maven.compiler.encoding>

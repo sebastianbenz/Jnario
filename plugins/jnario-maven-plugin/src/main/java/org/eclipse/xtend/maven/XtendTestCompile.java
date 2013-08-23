@@ -21,6 +21,7 @@ import com.google.common.collect.Sets;
  * Goal which compiles Xtend2 test sources.
  * 
  * @author Michael Clay - Initial contribution and API
+ * @requiresDependencyResolution test
  */
 public class XtendTestCompile extends AbstractXtendCompilerMojo {
 	/**
@@ -44,13 +45,14 @@ public class XtendTestCompile extends AbstractXtendCompilerMojo {
 		getLog().debug("Output directory '" + testOutputDirectory + "'");
 		getLog().debug("Default directory '" + defaultValue + "'");
 		if (defaultValue.equals(testOutputDirectory)) {
-			determinateOutputDirectory(project.getBuild().getTestSourceDirectory(), new Procedure1<String>() {
+			readXtendEclipseSetting(project.getBuild().getTestSourceDirectory(), new Procedure1<String>() {
 				public void apply(String xtendOutputDir) {
 					testOutputDirectory = xtendOutputDir;
 					getLog().info("Using Xtend output directory '" + testOutputDirectory + "'");
 				}
 			});
 		}
+		testOutputDirectory = resolveToBaseDir(testOutputDirectory);
 		compileTestSources(xtendBatchCompilerProvider.get());
 	}
 
@@ -61,6 +63,7 @@ public class XtendTestCompile extends AbstractXtendCompilerMojo {
 		compile(xtend2BatchCompiler, testClassPath, testCompileSourceRoots, testOutputDirectory);
 	}
 
+	@SuppressWarnings("deprecation")
 	protected List<String> getTestClassPath() {
 		Set<String> classPath = Sets.newLinkedHashSet();
 		classPath.add(project.getBuild().getTestSourceDirectory());

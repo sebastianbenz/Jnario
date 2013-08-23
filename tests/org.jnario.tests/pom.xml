@@ -22,7 +22,7 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<useUIHarness>false</useUIHarness>
+					<useUIHarness>true</useUIHarness>
 					<argLine>${tycho.test.jvmArgs}</argLine>
 					<includes>
 						<include>**/Test*.java</include>

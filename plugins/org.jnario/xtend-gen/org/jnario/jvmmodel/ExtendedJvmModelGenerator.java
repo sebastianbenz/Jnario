@@ -7,8 +7,8 @@
  */
 package org.jnario.jvmmodel;
 
-import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
+import org.eclipse.xtend.core.compiler.XtendGenerator;
 
 @SuppressWarnings("all")
-public class ExtendedJvmModelGenerator extends JvmModelGenerator {
+public class ExtendedJvmModelGenerator extends XtendGenerator {
 }

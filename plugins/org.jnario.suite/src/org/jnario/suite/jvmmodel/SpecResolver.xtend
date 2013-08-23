@@ -43,7 +43,6 @@ class SpecResolver {
 		var specs = scope.allElements.filter[
 			JnarioPackage$Literals.SPECIFICATION.isSuperTypeOf(EClass)
 		]
-		println("Scoped: " + specs)
 		val pattern = Pattern::compile(specRef.pattern)
 		specs = specs.filter[
 			pattern.matcher(toString(it.qualifiedName)).matches
