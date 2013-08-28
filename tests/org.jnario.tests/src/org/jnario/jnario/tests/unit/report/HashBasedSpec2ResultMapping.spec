@@ -197,8 +197,8 @@ describe HashBasedSpec2ResultMapping {
 		val aResultWithDifferentClassName = passingSpec("example.DifferentSpec", "a fact", anyExecutionTime)
 		val aResultWithDifferentName = passingSpec("example.SomethingSpec", "another fact", anyExecutionTime)
 		val pendingResult = passingSpec("example.SomethingFeatureMyScenario", "Given a pending step [PENDING]", anyExecutionTime)
-		val resultWithUnicodeChars = passingSpec("example.SomethingFeatureMyScenario", '''Given step with uml\u00E4uts''', anyExecutionTime)
-		val resultWithArgs = passingSpec("example.SomethingFeatureMyScenario", '''Given step with \"args\"''', anyExecutionTime)
+		val resultWithUnicodeChars = passingSpec("example.SomethingFeatureMyScenario", '''Given step with umläuts''', anyExecutionTime)
+		val resultWithArgs = passingSpec("example.SomethingFeatureMyScenario", '''Given step with "args"''', anyExecutionTime)
 
 		fact "matches if classname and name are equal"{
 			m.parseScenario(

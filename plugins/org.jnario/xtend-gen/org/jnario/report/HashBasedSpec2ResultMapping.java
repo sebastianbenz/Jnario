@@ -5,7 +5,6 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.resource.XtextResource;
@@ -15,7 +14,6 @@ import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
@@ -57,20 +55,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
         return _notRun;
       }
       Pair<String,String> _asKey = this.asKey(executable);
-      String _plus = ("matching: \'" + _asKey);
-      String _plus_1 = (_plus + "\'");
-      InputOutput.<String>println(_plus_1);
-      Set<Pair<String,String>> _keySet = this.results.keySet();
-      final Function1<Pair<String,String>,String> _function = new Function1<Pair<String,String>,String>() {
-          public String apply(final Pair<String,String> it) {
-            String _string = it.toString();
-            return _string;
-          }
-        };
-      String _join = IterableExtensions.<Pair<String,String>>join(_keySet, "\t\'", "\'\n\t\'", "\'", _function);
-      InputOutput.<String>println(_join);
-      Pair<String,String> _asKey_1 = this.asKey(executable);
-      SpecExecution result = this.results.get(_asKey_1);
+      SpecExecution result = this.results.get(_asKey);
       boolean _notEquals = (!Objects.equal(result, null));
       if (_notEquals) {
         return result;
@@ -197,10 +182,18 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
   private Pair<String,String> asKey(final Executable executable) {
     Pair<String,String> _xblockexpression = null;
     {
+      String _convertFromJavaString = null;
       String _qualifiedJavaClassName = this.nameProvider.toQualifiedJavaClassName(executable);
-      final String expectedClassName = Strings.convertFromJavaString(_qualifiedJavaClassName, true);
+      if (_qualifiedJavaClassName!=null) {
+        _convertFromJavaString=Strings.convertFromJavaString(_qualifiedJavaClassName, true);
+      }
+      final String expectedClassName = _convertFromJavaString;
+      String _convertFromJavaString_1 = null;
       String _describe = this.nameProvider.describe(executable);
-      final String expectedName = Strings.convertFromJavaString(_describe, true);
+      if (_describe!=null) {
+        _convertFromJavaString_1=Strings.convertFromJavaString(_describe, true);
+      }
+      final String expectedName = _convertFromJavaString_1;
       final Pair<String,String> key = Pair.<String, String>of(expectedClassName, expectedName);
       _xblockexpression = (key);
     }

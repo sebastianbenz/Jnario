@@ -39,6 +39,7 @@ public class NameProvider {
 	 * Mostly copied from {@link java.util.Properties#loadConvert}
 	 */
 	private String convertFromJavaString(String javaString, boolean useUnicode) {
+		if(javaString == null) return "";
 		char[] in = javaString.toCharArray();
 		int off = 0;
 		int len = javaString.length();

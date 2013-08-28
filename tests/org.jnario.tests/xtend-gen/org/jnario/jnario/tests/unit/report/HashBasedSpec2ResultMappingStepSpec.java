@@ -50,7 +50,7 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
   final Passed resultWithUnicodeChars = new Function0<Passed>() {
     public Passed apply() {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Given step with uml\\u00E4uts");
+      _builder.append("Given step with uml\u00E4uts");
       Passed _passingSpec = Passed.passingSpec("example.SomethingFeatureMyScenario", _builder.toString(), HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
@@ -59,7 +59,7 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
   final Passed resultWithArgs = new Function0<Passed>() {
     public Passed apply() {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Given step with \\\"args\\\"");
+      _builder.append("Given step with \"args\"");
       Passed _passingSpec = Passed.passingSpec("example.SomethingFeatureMyScenario", _builder.toString(), HashBasedSpec2ResultMappingSpec.anyExecutionTime);
       return _passingSpec;
     }
