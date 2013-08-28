@@ -1,6 +1,6 @@
 #Release Notes
 
-##Jnario 0.6.0
+##Jnario 0.6.0 (not yet released)
 
 * Compatible with Xtend 2.4.3
 * Fix: encoding problems in generated reports
