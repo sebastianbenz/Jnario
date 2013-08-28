@@ -26,7 +26,7 @@ class DocCompilerMain {
 			return;
 		}
 	
-		new DocCompilerMain => [
+		val main = new DocCompilerMain => [
 			val arguments = args.iterator
 			while(arguments.hasNext){
 				val argument = arguments.next.trim
@@ -39,6 +39,7 @@ class DocCompilerMain {
 				}
 			}	
 		]
+		System.exit(main.compile)
 	}
 	
 	@Property String outputPath = "doc-gen";

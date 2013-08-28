@@ -101,7 +101,9 @@ public class DocCompilerMain {
           }
         }
       };
-    ObjectExtensions.<DocCompilerMain>operator_doubleArrow(_docCompilerMain, _function);
+    final DocCompilerMain main = ObjectExtensions.<DocCompilerMain>operator_doubleArrow(_docCompilerMain, _function);
+    int _compile = main.compile();
+    System.exit(_compile);
   }
   
   private String _outputPath = "doc-gen";
