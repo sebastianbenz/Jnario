@@ -87,17 +87,24 @@ describe SpecResultParser{
 		   <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="When I entered \&quot;50\&quot; and \&quot;70\&quot;"/>
 		'''.toXml.parse 
 		
-		verify(acceptor).accept(new Passed(CLASSNAME, 'When I entered \\\"50\\\" and \\\"70\\\"', EXECUTION_TIME))
+		verify(acceptor).accept(new Passed(CLASSNAME, 'When I entered \"50\" and \"70\"', EXECUTION_TIME))
 	}
 	
 	fact "removes '\u002C' from escaped strings" {
 		'''
 		   <testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="cell[-1\u002C 1].plus[cell[3\u002C4]] =&gt; cell[2\u002C5]"/>
-		'''.toXml.parse  2
+		'''.toXml.parse
 		
 		verify(acceptor).accept(new Passed(CLASSNAME, 'cell[-1, 1].plus[cell[3,4]] => cell[2,5]', EXECUTION_TIME))
 	}
 	
+	fact "supports encoding"{
+		'''
+		<testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="L\u00D6sung"/>
+		'''.toXml.parse
+		
+		verify(acceptor).accept(new Passed(CLASSNAME, 'LÖsung', EXECUTION_TIME))
+	}
 	
 	
 	def passingSpec(){

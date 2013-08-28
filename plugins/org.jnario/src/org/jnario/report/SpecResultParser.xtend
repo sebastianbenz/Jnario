@@ -6,6 +6,7 @@ import javax.xml.parsers.SAXParserFactory
 import org.xml.sax.Attributes
 import org.xml.sax.SAXException
 import org.xml.sax.helpers.DefaultHandler
+import org.jnario.util.Strings
 
 class SpecResultParser extends DefaultHandler{
 	double currentExecutionTime
@@ -124,6 +125,6 @@ class SpecResultParser extends DefaultHandler{
 	}
 	
 	def convertValue(Attributes attributes, String key) {
-		attributes.getValue(key).replace("\\u002C", ",")
+		Strings.convertFromJavaString(attributes.getValue(key), true)
 	}
 }

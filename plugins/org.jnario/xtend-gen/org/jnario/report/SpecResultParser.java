@@ -17,6 +17,7 @@ import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecExecutionAcceptor;
 import org.jnario.report.SpecFailure;
 import org.jnario.report.SpecResultTags;
+import org.jnario.util.Strings;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -217,7 +218,7 @@ public class SpecResultParser extends DefaultHandler {
   
   public String convertValue(final Attributes attributes, final String key) {
     String _value = attributes.getValue(key);
-    String _replace = _value.replace("\\u002C", ",");
-    return _replace;
+    String _convertFromJavaString = Strings.convertFromJavaString(_value, true);
+    return _convertFromJavaString;
   }
 }

@@ -241,7 +241,7 @@ public class SpecResultParserSpec {
     CharSequence _xml = this.toXml(_builder);
     this.parse(_xml);
     SpecExecutionAcceptor _verify = Mockito.<SpecExecutionAcceptor>verify(this.acceptor);
-    Passed _passed = new Passed(SpecResultParserSpec.CLASSNAME, "When I entered \\\"50\\\" and \\\"70\\\"", SpecResultParserSpec.EXECUTION_TIME);
+    Passed _passed = new Passed(SpecResultParserSpec.CLASSNAME, "When I entered \"50\" and \"70\"", SpecResultParserSpec.EXECUTION_TIME);
     _verify.accept(_passed);
   }
   
@@ -258,9 +258,26 @@ public class SpecResultParserSpec {
     _builder.newLineIfNotEmpty();
     CharSequence _xml = this.toXml(_builder);
     this.parse(_xml);
-    /* 2 */
     SpecExecutionAcceptor _verify = Mockito.<SpecExecutionAcceptor>verify(this.acceptor);
     Passed _passed = new Passed(SpecResultParserSpec.CLASSNAME, "cell[-1, 1].plus[cell[3,4]] => cell[2,5]", SpecResultParserSpec.EXECUTION_TIME);
+    _verify.accept(_passed);
+  }
+  
+  @Test
+  @Named("supports encoding")
+  @Order(8)
+  public void _supportsEncoding() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<testcase time=\"");
+    _builder.append(SpecResultParserSpec.EXECUTION_TIME, "");
+    _builder.append("\" classname=\"");
+    _builder.append(SpecResultParserSpec.CLASSNAME, "");
+    _builder.append("\" name=\"L\\u00D6sung\"/>");
+    _builder.newLineIfNotEmpty();
+    CharSequence _xml = this.toXml(_builder);
+    this.parse(_xml);
+    SpecExecutionAcceptor _verify = Mockito.<SpecExecutionAcceptor>verify(this.acceptor);
+    Passed _passed = new Passed(SpecResultParserSpec.CLASSNAME, "L\u00D6sung", SpecResultParserSpec.EXECUTION_TIME);
     _verify.accept(_passed);
   }
   

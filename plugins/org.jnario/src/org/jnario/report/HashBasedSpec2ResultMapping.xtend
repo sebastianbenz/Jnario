@@ -7,6 +7,7 @@ import org.eclipse.xtext.xbase.lib.Pair
 import org.jnario.Executable
 import org.jnario.jvmmodel.ExecutableProvider
 import org.jnario.jvmmodel.JnarioNameProvider
+import static extension org.jnario.util.Strings.*
 
 class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2ResultMapping{
 
@@ -21,6 +22,8 @@ class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2R
 		if(executable == null){
 			return new NotRun("", "")
 		}
+		println("matching: '" + executable.asKey + "'")
+		println(results.keySet.join("\t'", "'\n\t'", "'")[toString])
 		var result = results.get(executable.asKey)
 		if(result != null){
 			return result
@@ -76,8 +79,8 @@ class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2R
 	}
 	
 	def private asKey(Executable executable){
-		val expectedClassName = executable.toQualifiedJavaClassName
-		val expectedName = executable.describe
+		val expectedClassName = executable.toQualifiedJavaClassName.convertFromJavaString(true)
+		val expectedName = executable.describe.convertFromJavaString(true)
 		val key = expectedClassName -> expectedName
 		key
 	}
