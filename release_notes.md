@@ -1,5 +1,11 @@
 #Release Notes
 
+##Jnario 0.6.0
+
+* Compatible with Xtend 2.4.3
+* Fix: encoding problems in generated reports
+* Fix: CompilerMain & ReportGeneratorMain return error code if compilation fails.
+
 ##Jnario 0.5.0
 
 * Compatible to Xtend 2.4.2.
