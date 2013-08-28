@@ -5,6 +5,7 @@
 * Compatible with Xtend 2.4.3
 * Fix: encoding problems in generated reports
 * Fix: CompilerMain & ReportGeneratorMain return error code if compilation fails.
+* Fix: remove invalid validation error when two root specs both reference java types.
 
 ##Jnario 0.5.1
 
