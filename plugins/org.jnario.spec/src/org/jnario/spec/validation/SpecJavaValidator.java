@@ -22,8 +22,10 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtend.core.validation.IssueCodes;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
+import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendPackage;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ComposedChecks;
 import org.eclipse.xtext.xbase.XExpression;
@@ -57,6 +59,18 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 			setupModifierValidator.checkModifiers(xtendFunction, exampleNameProvider.toMethodName(xtendFunction));
 		}else{
 			super.checkModifiers(xtendFunction);
+		}
+	}
+	
+	@Check
+	public void checkClasses(XtendFile file) {
+		//TODO this check should not be file local, but instead check for any other sources which might declare a
+		// java type with the same name. Also this then belongs to Xbase and should be defined on JvmDeclaredType
+		Set<String> names = newLinkedHashSet();
+		for (XtendTypeDeclaration clazz : file.getXtendTypes()) {	
+			String name = exampleNameProvider.toJavaClassName(clazz);
+			if (!names.add(name))
+				error("The type "+clazz.getName()+" is already defined.", clazz, XtendPackage.Literals.XTEND_TYPE_DECLARATION__NAME, -1, IssueCodes.DUPLICATE_TYPE_NAME);
 		}
 	}
 
