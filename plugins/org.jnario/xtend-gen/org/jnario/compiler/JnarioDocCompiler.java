@@ -54,6 +54,9 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
   @Inject
   private AbstractDocGenerator docGenerator;
   
+  @Inject
+  private org.eclipse.xtext.parser.IEncodingProvider.Runtime encodingProvider;
+  
   public boolean compile() {
     ResourceSet _loadResources = this.loadResources();
     this.setResourceSet(_loadResources);
@@ -77,10 +80,12 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
         ResourceSet _get = this.resourceSetProvider.get();
         this.setResourceSet(_get);
       }
+      String _fileEncoding = this.getFileEncoding();
+      this.encodingProvider.setDefaultEncoding(_fileEncoding);
       ResourceSet _resourceSet_1 = this.getResourceSet();
       Map<Object,Object> _loadOptions = _resourceSet_1.getLoadOptions();
-      String _fileEncoding = this.getFileEncoding();
-      _loadOptions.put(XtextResource.OPTION_ENCODING, _fileEncoding);
+      String _fileEncoding_1 = this.getFileEncoding();
+      _loadOptions.put(XtextResource.OPTION_ENCODING, _fileEncoding_1);
       NameBasedFilter _nameBasedFilter = new NameBasedFilter();
       final NameBasedFilter nameBasedFilter = _nameBasedFilter;
       String _primaryFileExtension = this.fileExtensionProvider.getPrimaryFileExtension();

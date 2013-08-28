@@ -17,7 +17,7 @@ import org.eclipse.xtext.mwe.PathTraverser
 import org.eclipse.xtext.resource.XtextResource
 import org.jnario.doc.AbstractDocGenerator
 import org.jnario.doc.DocOutputConfigurationProvider
-import org.jnario.report.Executable2ResultMapping
+import org.jnario.report.Executable2ResultMappingimport org.eclipse.xtext.parser.IEncodingProvider
 
 class JnarioDocCompiler extends XtendBatchCompiler{
 	
@@ -25,6 +25,8 @@ class JnarioDocCompiler extends XtendBatchCompiler{
 	Executable2ResultMapping resultMapping
 	@Property String resultFolder
 	@Inject AbstractDocGenerator docGenerator
+	@Inject
+	private IEncodingProvider.Runtime encodingProvider
 	
 	override compile() {
 		resourceSet = loadResources()
@@ -41,6 +43,7 @@ class JnarioDocCompiler extends XtendBatchCompiler{
 		if(resourceSet == null){
 			resourceSet = resourceSetProvider.get
 		}
+		encodingProvider.setDefaultEncoding(getFileEncoding())
 		resourceSet.getLoadOptions().put(XtextResource::OPTION_ENCODING, getFileEncoding());
 		val nameBasedFilter = new NameBasedFilter();
 		nameBasedFilter.setExtension(fileExtensionProvider.getPrimaryFileExtension());
