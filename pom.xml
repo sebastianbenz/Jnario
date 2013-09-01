@@ -28,7 +28,7 @@
     <module>releng/org.jnario.target</module>
     <module>plugins/org.jnario.feature</module>
     <module>plugins/org.jnario</module>
-   <module>plugins/org.jnario.ui</module>
+    <module>plugins/org.jnario.ui</module>
     <module>plugins/org.jnario.lib</module>
     <module>plugins/org.jnario.spec</module>
     <module>plugins/org.jnario.suite</module>
