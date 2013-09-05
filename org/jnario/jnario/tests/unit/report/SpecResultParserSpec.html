@@ -86,14 +86,21 @@ verify(acceptor).accept(pendingSpec)</pre>
    &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;When I entered \&amp;quot;50\&amp;quot; and \&amp;quot;70\&amp;quot;&quot;/&gt;
 '''.toXml.parse 
 
-verify(acceptor).accept(new Passed(CLASSNAME, 'When I entered \\\&quot;50\\\&quot; and \\\&quot;70\\\&quot;', EXECUTION_TIME))</pre>
+verify(acceptor).accept(new Passed(CLASSNAME, 'When I entered \&quot;50\&quot; and \&quot;70\&quot;', EXECUTION_TIME))</pre>
 </li><li><p id="removes_from_escaped_strings" class="example notrun"><strong>removes ',' from escaped strings</strong></p>
 <pre class="prettyprint lang-spec linenums">
 '''
    &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;cell[-1\u002C 1].plus[cell[3\u002C4]] =&amp;gt; cell[2\u002C5]&quot;/&gt;
-'''.toXml.parse  2
+'''.toXml.parse
 
 verify(acceptor).accept(new Passed(CLASSNAME, 'cell[-1, 1].plus[cell[3,4]] =&gt; cell[2,5]', EXECUTION_TIME))</pre>
+</li><li><p id="supports_encoding" class="example notrun"><strong>supports encoding</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+&lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;L\u00D6sung&quot;/&gt;
+'''.toXml.parse
+
+verify(acceptor).accept(new Passed(CLASSNAME, 'L&Ouml;sung', EXECUTION_TIME))</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -189,17 +196,24 @@ describe SpecResultParser{
        &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;When I entered \&amp;quot;50\&amp;quot; and \&amp;quot;70\&amp;quot;&quot;/&gt;
     '''.toXml.parse 
     
-    verify(acceptor).accept(new Passed(CLASSNAME, 'When I entered \\\&quot;50\\\&quot; and \\\&quot;70\\\&quot;', EXECUTION_TIME))
+    verify(acceptor).accept(new Passed(CLASSNAME, 'When I entered \&quot;50\&quot; and \&quot;70\&quot;', EXECUTION_TIME))
   }
   
   fact &quot;removes '\u002C' from escaped strings&quot; {
     '''
        &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;cell[-1\u002C 1].plus[cell[3\u002C4]] =&amp;gt; cell[2\u002C5]&quot;/&gt;
-    '''.toXml.parse  2
+    '''.toXml.parse
     
     verify(acceptor).accept(new Passed(CLASSNAME, 'cell[-1, 1].plus[cell[3,4]] =&gt; cell[2,5]', EXECUTION_TIME))
   }
   
+  fact &quot;supports encoding&quot;{
+    '''
+    &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;L\u00D6sung&quot;/&gt;
+    '''.toXml.parse
+    
+    verify(acceptor).accept(new Passed(CLASSNAME, 'L&Ouml;sung', EXECUTION_TIME))
+  }
   
   
   def passingSpec(){
