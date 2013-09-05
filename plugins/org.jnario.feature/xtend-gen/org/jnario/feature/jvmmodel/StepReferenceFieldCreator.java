@@ -45,16 +45,16 @@ public class StepReferenceFieldCreator {
     EList<Step> _steps = scenario.getSteps();
     Iterable<StepReference> _filter = Iterables.<StepReference>filter(_steps, StepReference.class);
     final Function1<StepReference,Boolean> _function = new Function1<StepReference,Boolean>() {
-        public Boolean apply(final StepReference it) {
-          StepImplementation _reference = it.getReference();
-          XExpression _expression = null;
-          if (_reference!=null) {
-            _expression=_reference.getExpression();
-          }
-          boolean _notEquals = (!Objects.equal(_expression, null));
-          return Boolean.valueOf(_notEquals);
+      public Boolean apply(final StepReference it) {
+        StepImplementation _reference = it.getReference();
+        XExpression _expression = null;
+        if (_reference!=null) {
+          _expression=_reference.getExpression();
         }
-      };
+        boolean _notEquals = (!Objects.equal(_expression, null));
+        return Boolean.valueOf(_notEquals);
+      }
+    };
     final Iterable<StepReference> refs = IterableExtensions.<StepReference>filter(_filter, _function);
     final Set<String> fieldNames = this.getExistingFieldNamesForContainerOfStepReference(scenario);
     for (final StepReference ref : refs) {
@@ -75,18 +75,18 @@ public class StepReferenceFieldCreator {
   private Set<String> getExistingFieldNames(final Iterable<XtendMember> members) {
     Iterable<XtendField> _filter = Iterables.<XtendField>filter(members, XtendField.class);
     final Function1<XtendField,Boolean> _function = new Function1<XtendField,Boolean>() {
-        public Boolean apply(final XtendField it) {
-          boolean _notEquals = (!Objects.equal(it, null));
-          return Boolean.valueOf(_notEquals);
-        }
-      };
+      public Boolean apply(final XtendField it) {
+        boolean _notEquals = (!Objects.equal(it, null));
+        return Boolean.valueOf(_notEquals);
+      }
+    };
     Iterable<XtendField> _filter_1 = IterableExtensions.<XtendField>filter(_filter, _function);
     final Function1<XtendField,String> _function_1 = new Function1<XtendField,String>() {
-        public String apply(final XtendField it) {
-          String _name = it.getName();
-          return _name;
-        }
-      };
+      public String apply(final XtendField it) {
+        String _name = it.getName();
+        return _name;
+      }
+    };
     Iterable<String> _map = IterableExtensions.<XtendField, String>map(_filter_1, _function_1);
     Set<String> _set = IterableExtensions.<String>toSet(_map);
     return _set;

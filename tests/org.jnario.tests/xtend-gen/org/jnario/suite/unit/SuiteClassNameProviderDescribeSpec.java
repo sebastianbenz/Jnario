@@ -81,21 +81,21 @@ public class SuiteClassNameProviderDescribeSpec extends SuiteClassNameProviderSp
   @Order(1)
   public void _examplesForEachSubjectDescribeSuiteNameExpectedClassName() throws Exception {
     final Procedure1<SuiteClassNameProviderDescribeSpecExamples> _function = new Procedure1<SuiteClassNameProviderDescribeSpecExamples>() {
-        public void apply(final SuiteClassNameProviderDescribeSpecExamples it) {
-          String _name = it.getName();
-          Suite _suite = Suites.suite(_name);
-          String _describe = SuiteClassNameProviderDescribeSpec.this.subject.describe(_suite);
-          String _expectedClassName = it.getExpectedClassName();
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_describe, _expectedClassName);
-          Assert.assertTrue("\nExpected subject.^describe(suite(name)) => expectedClassName but"
-           + "\n     subject.^describe(suite(name)) is " + new org.hamcrest.StringDescription().appendValue(_describe).toString()
-           + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(SuiteClassNameProviderDescribeSpec.this.subject).toString()
-           + "\n     suite(name) is " + new org.hamcrest.StringDescription().appendValue(_suite).toString()
-           + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
-           + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final SuiteClassNameProviderDescribeSpecExamples it) {
+        String _name = it.getName();
+        Suite _suite = Suites.suite(_name);
+        String _describe = SuiteClassNameProviderDescribeSpec.this.subject.describe(_suite);
+        String _expectedClassName = it.getExpectedClassName();
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_describe, _expectedClassName);
+        Assert.assertTrue("\nExpected subject.^describe(suite(name)) => expectedClassName but"
+         + "\n     subject.^describe(suite(name)) is " + new org.hamcrest.StringDescription().appendValue(_describe).toString()
+         + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(SuiteClassNameProviderDescribeSpec.this.subject).toString()
+         + "\n     suite(name) is " + new org.hamcrest.StringDescription().appendValue(_suite).toString()
+         + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
+         + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     Each.<SuiteClassNameProviderDescribeSpecExamples>forEach(this.examples, _function);
   }
 }

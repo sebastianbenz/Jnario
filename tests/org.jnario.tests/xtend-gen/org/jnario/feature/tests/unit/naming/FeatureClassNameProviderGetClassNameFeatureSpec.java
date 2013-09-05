@@ -94,20 +94,20 @@ public class FeatureClassNameProviderGetClassNameFeatureSpec extends FeatureClas
   @Order(1)
   public void _examplesWork() throws Exception {
     final Procedure1<FeatureClassNameProviderGetClassNameFeatureSpecExamples> _function = new Procedure1<FeatureClassNameProviderGetClassNameFeatureSpecExamples>() {
-        public void apply(final FeatureClassNameProviderGetClassNameFeatureSpecExamples it) {
-          String _name = it.getName();
-          Feature _feature = Features.feature(_name);
-          String _className = FeatureClassNameProviderGetClassNameFeatureSpec.this.className(_feature);
-          String _expectedClassName = it.getExpectedClassName();
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_className, _expectedClassName);
-          Assert.assertTrue("\nExpected className(feature(name)) => expectedClassName but"
-           + "\n     className(feature(name)) is " + new org.hamcrest.StringDescription().appendValue(_className).toString()
-           + "\n     feature(name) is " + new org.hamcrest.StringDescription().appendValue(_feature).toString()
-           + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
-           + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final FeatureClassNameProviderGetClassNameFeatureSpecExamples it) {
+        String _name = it.getName();
+        Feature _feature = Features.feature(_name);
+        String _className = FeatureClassNameProviderGetClassNameFeatureSpec.this.className(_feature);
+        String _expectedClassName = it.getExpectedClassName();
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_className, _expectedClassName);
+        Assert.assertTrue("\nExpected className(feature(name)) => expectedClassName but"
+         + "\n     className(feature(name)) is " + new org.hamcrest.StringDescription().appendValue(_className).toString()
+         + "\n     feature(name) is " + new org.hamcrest.StringDescription().appendValue(_feature).toString()
+         + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
+         + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     ExampleTableIterators.<FeatureClassNameProviderGetClassNameFeatureSpecExamples>forEach(this.examples, _function);
   }
 }

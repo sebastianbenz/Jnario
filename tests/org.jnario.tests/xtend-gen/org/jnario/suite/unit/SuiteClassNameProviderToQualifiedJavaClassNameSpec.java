@@ -97,19 +97,19 @@ public class SuiteClassNameProviderToQualifiedJavaClassNameSpec extends SuiteCla
   @Order(1)
   public void _examplesForEachValActualNameSubjectToQualifiedJavaClassNameSuiteNamePackageNameActualNameQualifiedName() throws Exception {
     final Procedure1<SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples> _function = new Procedure1<SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples>() {
-        public void apply(final SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples it) {
-          String _name = it.getName();
-          String _packageName = it.getPackageName();
-          Suite _suite = Suites.suite(_name, _packageName);
-          final String actualName = SuiteClassNameProviderToQualifiedJavaClassNameSpec.this.subject.toQualifiedJavaClassName(_suite);
-          String _qualifiedName = it.getQualifiedName();
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(actualName, _qualifiedName);
-          Assert.assertTrue("\nExpected actualName => qualifiedName but"
-           + "\n     actualName is " + new org.hamcrest.StringDescription().appendValue(actualName).toString()
-           + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples it) {
+        String _name = it.getName();
+        String _packageName = it.getPackageName();
+        Suite _suite = Suites.suite(_name, _packageName);
+        final String actualName = SuiteClassNameProviderToQualifiedJavaClassNameSpec.this.subject.toQualifiedJavaClassName(_suite);
+        String _qualifiedName = it.getQualifiedName();
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(actualName, _qualifiedName);
+        Assert.assertTrue("\nExpected actualName => qualifiedName but"
+         + "\n     actualName is " + new org.hamcrest.StringDescription().appendValue(actualName).toString()
+         + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     Each.<SuiteClassNameProviderToQualifiedJavaClassNameSpecExamples>forEach(this.examples, _function);
   }
 }
