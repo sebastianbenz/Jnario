@@ -93,18 +93,18 @@ public class StringsMakeJunitConformSpec extends StringsSpec {
   @Order(1)
   public void _examplesForEachStringMakeJunitConformResult() throws Exception {
     final Procedure1<StringsMakeJunitConformSpecExamples> _function = new Procedure1<StringsMakeJunitConformSpecExamples>() {
-        public void apply(final StringsMakeJunitConformSpecExamples it) {
-          String _string = it.getString();
-          String _makeJunitConform = Strings.makeJunitConform(_string);
-          String _result = it.getResult();
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_makeJunitConform, _result);
-          Assert.assertTrue("\nExpected string.makeJunitConform => result but"
-           + "\n     string.makeJunitConform is " + new org.hamcrest.StringDescription().appendValue(_makeJunitConform).toString()
-           + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
-           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final StringsMakeJunitConformSpecExamples it) {
+        String _string = it.getString();
+        String _makeJunitConform = Strings.makeJunitConform(_string);
+        String _result = it.getResult();
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_makeJunitConform, _result);
+        Assert.assertTrue("\nExpected string.makeJunitConform => result but"
+         + "\n     string.makeJunitConform is " + new org.hamcrest.StringDescription().appendValue(_makeJunitConform).toString()
+         + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
+         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     Each.<StringsMakeJunitConformSpecExamples>forEach(this.examples, _function);
   }
 }

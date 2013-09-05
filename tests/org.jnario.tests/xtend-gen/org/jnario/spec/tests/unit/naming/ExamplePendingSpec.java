@@ -83,18 +83,18 @@ public class ExamplePendingSpec extends ExampleSpec {
   @Order(1)
   public void _examplesForEachPendingStateOfExampleShouldBeExpected() throws Exception {
     final Procedure1<ExamplePendingSpecExamples> _function = new Procedure1<ExamplePendingSpecExamples>() {
-        public void apply(final ExamplePendingSpecExamples it) {
-          String _example = it.getExample();
-          boolean _pendingStateOf = ExamplePendingSpec.this.pendingStateOf(_example);
-          boolean _expected = it.getExpected();
-          boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_pendingStateOf), _expected);
-          Assert.assertTrue("\nExpected pendingStateOf(example) should be expected but"
-           + "\n     pendingStateOf(example) is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_pendingStateOf)).toString()
-           + "\n     example is " + new org.hamcrest.StringDescription().appendValue(_example).toString()
-           + "\n     expected is " + new org.hamcrest.StringDescription().appendValue(_expected).toString() + "\n", _should_be);
-          
-        }
-      };
+      public void apply(final ExamplePendingSpecExamples it) {
+        String _example = it.getExample();
+        boolean _pendingStateOf = ExamplePendingSpec.this.pendingStateOf(_example);
+        boolean _expected = it.getExpected();
+        boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_pendingStateOf), _expected);
+        Assert.assertTrue("\nExpected pendingStateOf(example) should be expected but"
+         + "\n     pendingStateOf(example) is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_pendingStateOf)).toString()
+         + "\n     example is " + new org.hamcrest.StringDescription().appendValue(_example).toString()
+         + "\n     expected is " + new org.hamcrest.StringDescription().appendValue(_expected).toString() + "\n", _should_be);
+        
+      }
+    };
     ExampleTableIterators.<ExamplePendingSpecExamples>forEach(this.examples, _function);
   }
 }

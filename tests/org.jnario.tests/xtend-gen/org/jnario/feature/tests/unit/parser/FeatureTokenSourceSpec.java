@@ -224,38 +224,38 @@ public class FeatureTokenSourceSpec {
      + "\n     expectedTokens is " + new org.hamcrest.StringDescription().appendValue(((List<CommonToken>)Conversions.doWrapArray(expectedTokens))).toString() + "\n", _doubleArrow);
     
     final Procedure2<Token,Integer> _function = new Procedure2<Token,Integer>() {
-        public void apply(final Token e, final Integer i) {
-          final CommonToken expected = expectedTokens[(i).intValue()];
-          final CommonToken actual = ((CommonToken) e);
-          int _type = actual.getType();
-          int _type_1 = expected.getType();
-          boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_type), Integer.valueOf(_type_1));
-          Assert.assertTrue("\nExpected actual.type => expected.type but"
-           + "\n     actual.type is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_type)).toString()
-           + "\n     actual is " + new org.hamcrest.StringDescription().appendValue(actual).toString()
-           + "\n     expected.type is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_type_1)).toString()
-           + "\n     expected is " + new org.hamcrest.StringDescription().appendValue(expected).toString() + "\n", _doubleArrow);
-          
-          String _text = actual.getText();
-          String _text_1 = expected.getText();
-          boolean _doubleArrow_1 = Should.<String>operator_doubleArrow(_text, _text_1);
-          Assert.assertTrue("\nExpected actual.text => expected.text but"
-           + "\n     actual.text is " + new org.hamcrest.StringDescription().appendValue(_text).toString()
-           + "\n     actual is " + new org.hamcrest.StringDescription().appendValue(actual).toString()
-           + "\n     expected.text is " + new org.hamcrest.StringDescription().appendValue(_text_1).toString()
-           + "\n     expected is " + new org.hamcrest.StringDescription().appendValue(expected).toString() + "\n", _doubleArrow_1);
-          
-          int _line = actual.getLine();
-          int _line_1 = expected.getLine();
-          boolean _doubleArrow_2 = Should.<Integer>operator_doubleArrow(Integer.valueOf(_line), Integer.valueOf(_line_1));
-          Assert.assertTrue("\nExpected actual.line => expected.line but"
-           + "\n     actual.line is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_line)).toString()
-           + "\n     actual is " + new org.hamcrest.StringDescription().appendValue(actual).toString()
-           + "\n     expected.line is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_line_1)).toString()
-           + "\n     expected is " + new org.hamcrest.StringDescription().appendValue(expected).toString() + "\n", _doubleArrow_2);
-          
-        }
-      };
+      public void apply(final Token e, final Integer i) {
+        final CommonToken expected = expectedTokens[(i).intValue()];
+        final CommonToken actual = ((CommonToken) e);
+        int _type = actual.getType();
+        int _type_1 = expected.getType();
+        boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_type), Integer.valueOf(_type_1));
+        Assert.assertTrue("\nExpected actual.type => expected.type but"
+         + "\n     actual.type is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_type)).toString()
+         + "\n     actual is " + new org.hamcrest.StringDescription().appendValue(actual).toString()
+         + "\n     expected.type is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_type_1)).toString()
+         + "\n     expected is " + new org.hamcrest.StringDescription().appendValue(expected).toString() + "\n", _doubleArrow);
+        
+        String _text = actual.getText();
+        String _text_1 = expected.getText();
+        boolean _doubleArrow_1 = Should.<String>operator_doubleArrow(_text, _text_1);
+        Assert.assertTrue("\nExpected actual.text => expected.text but"
+         + "\n     actual.text is " + new org.hamcrest.StringDescription().appendValue(_text).toString()
+         + "\n     actual is " + new org.hamcrest.StringDescription().appendValue(actual).toString()
+         + "\n     expected.text is " + new org.hamcrest.StringDescription().appendValue(_text_1).toString()
+         + "\n     expected is " + new org.hamcrest.StringDescription().appendValue(expected).toString() + "\n", _doubleArrow_1);
+        
+        int _line = actual.getLine();
+        int _line_1 = expected.getLine();
+        boolean _doubleArrow_2 = Should.<Integer>operator_doubleArrow(Integer.valueOf(_line), Integer.valueOf(_line_1));
+        Assert.assertTrue("\nExpected actual.line => expected.line but"
+         + "\n     actual.line is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_line)).toString()
+         + "\n     actual is " + new org.hamcrest.StringDescription().appendValue(actual).toString()
+         + "\n     expected.line is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_line_1)).toString()
+         + "\n     expected is " + new org.hamcrest.StringDescription().appendValue(expected).toString() + "\n", _doubleArrow_2);
+        
+      }
+    };
     IterableExtensions.<Token>forEach(actualTokens, _function);
   }
   

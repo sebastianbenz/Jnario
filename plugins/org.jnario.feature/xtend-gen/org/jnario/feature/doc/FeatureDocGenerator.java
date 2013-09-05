@@ -46,24 +46,24 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     }
     final Feature feature = ((Feature) xtendClass);
     final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
-        public void apply(final HtmlFile it) {
-          String _javaClassName = FeatureDocGenerator.this._featureClassNameProvider.toJavaClassName(feature);
-          it.setName(_javaClassName);
-          String _name = feature.getName();
-          it.setTitle(_name);
-          CharSequence _generateContent = FeatureDocGenerator.this.generateContent(feature);
-          it.setContent(_generateContent);
-          String _root = FeatureDocGenerator.this.root(feature);
-          it.setRootFolder(_root);
-          EObject _eContainer = feature.eContainer();
-          CharSequence _pre = FeatureDocGenerator.this.pre(_eContainer, "lang-feature");
-          it.setSourceCode(_pre);
-          String _fileName = FeatureDocGenerator.this.fileName(feature);
-          it.setFileName(_fileName);
-          String _executionStateClass = FeatureDocGenerator.this.executionStateClass(feature);
-          it.setExecutionStatus(_executionStateClass);
-        }
-      };
+      public void apply(final HtmlFile it) {
+        String _javaClassName = FeatureDocGenerator.this._featureClassNameProvider.toJavaClassName(feature);
+        it.setName(_javaClassName);
+        String _name = feature.getName();
+        it.setTitle(_name);
+        CharSequence _generateContent = FeatureDocGenerator.this.generateContent(feature);
+        it.setContent(_generateContent);
+        String _root = FeatureDocGenerator.this.root(feature);
+        it.setRootFolder(_root);
+        EObject _eContainer = feature.eContainer();
+        CharSequence _pre = FeatureDocGenerator.this.pre(_eContainer, "lang-feature");
+        it.setSourceCode(_pre);
+        String _fileName = FeatureDocGenerator.this.fileName(feature);
+        it.setFileName(_fileName);
+        String _executionStateClass = FeatureDocGenerator.this.executionStateClass(feature);
+        it.setExecutionStatus(_executionStateClass);
+      }
+    };
     return HtmlFile.newHtmlFile(_function);
   }
   

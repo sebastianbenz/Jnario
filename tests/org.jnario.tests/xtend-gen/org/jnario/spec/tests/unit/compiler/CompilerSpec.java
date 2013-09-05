@@ -205,7 +205,7 @@ public class CompilerSpec {
   @Named("compiles rich strings")
   @Order(8)
   public void _compilesRichStrings() throws Exception {
-    this._behaviorExecutor.executesSuccessfully("\r\n\t\tdescribe \'Richstrings\'{\r\n\t\t\tfact {\r\n\t\t\t\tval x = \'world\'\r\n\t\t        \'\'\'hello \u00ABx\u00BB\'\'\'.toString => \'hello world\'\r\n\t\t    }\r\n\t\t}\r\n\t\t");
+    this._behaviorExecutor.executesSuccessfully("\r\n\t\tdescribe \'Richstrings\'{\r\n\t\t\tfact {\r\n\t\t\t\tval x = \'world\'\r\n\t\t        \'\'\'hello «x»\'\'\'.toString => \'hello world\'\r\n\t\t    }\r\n\t\t}\r\n\t\t");
   }
   
   @Test

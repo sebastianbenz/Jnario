@@ -82,11 +82,11 @@ public class ExtensionLibraryConvertingStringsSpec extends ExtensionLibrarySpec 
     
     List<String> _list_4 = StringConversions.toList("1, 2, 3");
     final Function1<String,Integer> _function = new Function1<String,Integer>() {
-        public Integer apply(final String it) {
-          int _int = StringConversions.toInt(it);
-          return Integer.valueOf(_int);
-        }
-      };
+      public Integer apply(final String it) {
+        int _int = StringConversions.toInt(it);
+        return Integer.valueOf(_int);
+      }
+    };
     List<Integer> _map = ListExtensions.<String, Integer>map(_list_4, _function);
     List<Integer> _list_5 = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3));
     boolean _doubleArrow_2 = Should.<List<Integer>>operator_doubleArrow(_map, _list_5);

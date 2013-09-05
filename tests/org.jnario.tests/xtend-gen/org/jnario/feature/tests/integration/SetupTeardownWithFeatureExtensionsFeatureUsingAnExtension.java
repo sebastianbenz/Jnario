@@ -64,11 +64,11 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension extends S
     String _trim = _first.trim();
     String[] _split = _trim.split("\n");
     final Function1<String,String> _function = new Function1<String,String>() {
-        public String apply(final String it) {
-          String _trim = it.trim();
-          return _trim;
-        }
-      };
+      public String apply(final String it) {
+        String _trim = it.trim();
+        return _trim;
+      }
+    };
     List<String> _map = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_split)), _function);
     String _newLine = Strings.newLine();
     final String expected = IterableExtensions.join(_map, _newLine);

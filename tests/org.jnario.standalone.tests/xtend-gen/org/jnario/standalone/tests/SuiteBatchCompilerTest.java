@@ -92,22 +92,22 @@ public class SuiteBatchCompilerTest {
   @Test
   public void testCompileTestData() {
     final Provider<ResourceSet> _function = new Provider<ResourceSet>() {
-        public ResourceSet get() {
-          XtextResourceSet _resourceSet = SuiteBatchCompilerTest.this.modelStore.getResourceSet();
-          return ((ResourceSet) _resourceSet);
-        }
-      };
+      public ResourceSet get() {
+        XtextResourceSet _resourceSet = SuiteBatchCompilerTest.this.modelStore.getResourceSet();
+        return ((ResourceSet) _resourceSet);
+      }
+    };
     this.batchCompiler.setResourceSetProvider(_function);
     this.batchCompiler.compile();
     String _plus = (SuiteBatchCompilerTest.OUTPUT_DIRECTORY + "/test");
     File _file = new File(_plus);
     final File outputDir = _file;
     final FilenameFilter _function_1 = new FilenameFilter() {
-        public boolean accept(final File dir, final String name) {
-          boolean _endsWith = name.endsWith(".java");
-          return _endsWith;
-        }
-      };
+      public boolean accept(final File dir, final String name) {
+        boolean _endsWith = name.endsWith(".java");
+        return _endsWith;
+      }
+    };
     String[] _list = outputDir.list(_function_1);
     int _size = ((List<String>)Conversions.doWrapArray(_list)).size();
     Assert.assertEquals(1, _size);

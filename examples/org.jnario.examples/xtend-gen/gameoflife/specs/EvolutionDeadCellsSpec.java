@@ -22,10 +22,10 @@ public class EvolutionDeadCellsSpec extends EvolutionSpec {
   final Rule allDeadLive = new Function0<Rule>() {
     public Rule apply() {
       final Rule _function = new Rule() {
-          public boolean becomesAlive(final int it) {
-            return true;
-          }
-        };
+        public boolean becomesAlive(final int it) {
+          return true;
+        }
+      };
       return _function;
     }
   }.apply();

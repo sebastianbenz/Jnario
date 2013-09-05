@@ -31,10 +31,10 @@ public class SuiteHighlightingCalculator extends XbaseHighlightingCalculator {
   public void searchAndHighlightElements(final XtextResource resource, final IHighlightedPositionAcceptor acceptor) {
     TreeIterator<EObject> _allContents = resource.getAllContents();
     final Procedure1<EObject> _function = new Procedure1<EObject>() {
-        public void apply(final EObject it) {
-          SuiteHighlightingCalculator.this.highlight(it, acceptor);
-        }
-      };
+      public void apply(final EObject it) {
+        SuiteHighlightingCalculator.this.highlight(it, acceptor);
+      }
+    };
     IteratorExtensions.<EObject>forEach(_allContents, _function);
   }
   

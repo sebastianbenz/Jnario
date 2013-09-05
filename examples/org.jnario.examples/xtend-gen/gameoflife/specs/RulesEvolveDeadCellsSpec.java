@@ -63,19 +63,19 @@ public class RulesEvolveDeadCellsSpec extends RulesSpec {
   @Order(1)
   public void _deadcellsForEachSubjectBecomesAliveLiveNeighbourCountResult() throws Exception {
     final Procedure1<RulesEvolveDeadCellsSpecDeadcells> _function = new Procedure1<RulesEvolveDeadCellsSpecDeadcells>() {
-        public void apply(final RulesEvolveDeadCellsSpecDeadcells it) {
-          int _liveNeighbourCount = it.getLiveNeighbourCount();
-          boolean _becomesAlive = RulesEvolveDeadCellsSpec.this.subject.becomesAlive(_liveNeighbourCount);
-          boolean _result = it.getResult();
-          boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_becomesAlive), _result);
-          Assert.assertTrue("\nExpected subject.becomesAlive(liveNeighbourCount) => result but"
-           + "\n     subject.becomesAlive(liveNeighbourCount) is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_becomesAlive)).toString()
-           + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(RulesEvolveDeadCellsSpec.this.subject).toString()
-           + "\n     liveNeighbourCount is " + new org.hamcrest.StringDescription().appendValue(_liveNeighbourCount).toString()
-           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final RulesEvolveDeadCellsSpecDeadcells it) {
+        int _liveNeighbourCount = it.getLiveNeighbourCount();
+        boolean _becomesAlive = RulesEvolveDeadCellsSpec.this.subject.becomesAlive(_liveNeighbourCount);
+        boolean _result = it.getResult();
+        boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_becomesAlive), _result);
+        Assert.assertTrue("\nExpected subject.becomesAlive(liveNeighbourCount) => result but"
+         + "\n     subject.becomesAlive(liveNeighbourCount) is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_becomesAlive)).toString()
+         + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(RulesEvolveDeadCellsSpec.this.subject).toString()
+         + "\n     liveNeighbourCount is " + new org.hamcrest.StringDescription().appendValue(_liveNeighbourCount).toString()
+         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     Each.<RulesEvolveDeadCellsSpecDeadcells>forEach(this.deadcells, _function);
   }
 }

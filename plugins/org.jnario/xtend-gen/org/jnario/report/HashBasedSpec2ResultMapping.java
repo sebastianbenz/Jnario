@@ -73,11 +73,11 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
     {
       final List<? extends Executable> children = this.executables(specification);
       final Function1<Executable,SpecExecution> _function = new Function1<Executable,SpecExecution>() {
-          public SpecExecution apply(final Executable it) {
-            SpecExecution _result = HashBasedSpec2ResultMapping.this.getResult(it);
-            return _result;
-          }
-        };
+        public SpecExecution apply(final Executable it) {
+          SpecExecution _result = HashBasedSpec2ResultMapping.this.getResult(it);
+          return _result;
+        }
+      };
       List<SpecExecution> _map = ListExtensions.map(children, _function);
       final List<SpecExecution> results = IterableExtensions.<SpecExecution>toList(_map);
       SpecExecution _createResult = this.createResult(specification, results);
@@ -96,11 +96,11 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
       }
       final Double executionTime = this.executionTime(children);
       final Function1<SpecExecution,List<SpecFailure>> _function = new Function1<SpecExecution,List<SpecFailure>>() {
-          public List<SpecFailure> apply(final SpecExecution it) {
-            List<SpecFailure> _failures = it.getFailures();
-            return _failures;
-          }
-        };
+        public List<SpecFailure> apply(final SpecExecution it) {
+          List<SpecFailure> _failures = it.getFailures();
+          return _failures;
+        }
+      };
       Iterable<List<SpecFailure>> _map = IterableExtensions.<SpecExecution, List<SpecFailure>>map(children, _function);
       final Iterable<SpecFailure> failures = Iterables.<SpecFailure>concat(_map);
       SpecExecution _xifexpression = null;
@@ -155,12 +155,12 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
   
   private Double executionTime(final Iterable<SpecExecution> results) {
     final Function2<Double,SpecExecution,Double> _function = new Function2<Double,SpecExecution,Double>() {
-        public Double apply(final Double sum, final SpecExecution result) {
-          double _executionTimeInSeconds = result.getExecutionTimeInSeconds();
-          double _plus = ((sum).doubleValue() + _executionTimeInSeconds);
-          return Double.valueOf(_plus);
-        }
-      };
+      public Double apply(final Double sum, final SpecExecution result) {
+        double _executionTimeInSeconds = result.getExecutionTimeInSeconds();
+        double _plus = ((sum).doubleValue() + _executionTimeInSeconds);
+        return Double.valueOf(_plus);
+      }
+    };
     Double _fold = IterableExtensions.<SpecExecution, Double>fold(results, Double.valueOf(0.0), _function);
     return _fold;
   }

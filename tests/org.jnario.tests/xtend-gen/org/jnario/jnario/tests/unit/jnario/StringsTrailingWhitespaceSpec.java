@@ -120,18 +120,18 @@ public class StringsTrailingWhitespaceSpec extends StringsSpec {
   @Order(1)
   public void _returnsWhitespacesAtTheEnd() throws Exception {
     final Procedure1<StringsTrailingWhitespaceSpecExamples> _function = new Procedure1<StringsTrailingWhitespaceSpecExamples>() {
-        public void apply(final StringsTrailingWhitespaceSpecExamples it) {
-          String _string = it.getString();
-          String _trailingWhitespace = Strings.trailingWhitespace(_string);
-          String _result = it.getResult();
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_trailingWhitespace, _result);
-          Assert.assertTrue("\nExpected string.trailingWhitespace => result but"
-           + "\n     string.trailingWhitespace is " + new org.hamcrest.StringDescription().appendValue(_trailingWhitespace).toString()
-           + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
-           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final StringsTrailingWhitespaceSpecExamples it) {
+        String _string = it.getString();
+        String _trailingWhitespace = Strings.trailingWhitespace(_string);
+        String _result = it.getResult();
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_trailingWhitespace, _result);
+        Assert.assertTrue("\nExpected string.trailingWhitespace => result but"
+         + "\n     string.trailingWhitespace is " + new org.hamcrest.StringDescription().appendValue(_trailingWhitespace).toString()
+         + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
+         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     Each.<StringsTrailingWhitespaceSpecExamples>forEach(this.examples, _function);
   }
 }

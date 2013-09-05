@@ -52,11 +52,11 @@ public class CellLocation {
   
   public Set<CellLocation> neighbours() {
     final Function1<CellLocation,CellLocation> _function = new Function1<CellLocation,CellLocation>() {
-        public CellLocation apply(final CellLocation it) {
-          CellLocation _plus = CellLocation.this.plus(it);
-          return _plus;
-        }
-      };
+      public CellLocation apply(final CellLocation it) {
+        CellLocation _plus = CellLocation.this.plus(it);
+        return _plus;
+      }
+    };
     Iterable<CellLocation> _map = IterableExtensions.<CellLocation, CellLocation>map(CellLocation.NEIGHBOUR_OFFSETS, _function);
     Set<CellLocation> _set = IterableExtensions.<CellLocation>toSet(_map);
     return _set;

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.jnario.tests
 Bundle-Vendor: BMW Car IT
-Bundle-Version: 0.6.0.qualifier
+Bundle-Version: 0.6.0.201309052007
 Bundle-SymbolicName: org.jnario.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.core.runtime,
@@ -28,7 +28,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.jnario.suite,
  org.jnario.suite.ui;bundle-version="0.6.0",
  org.mockito;bundle-version="1.8.4",
- org.objenesis;bundle-version="1.0.0",
+ org.objenesis;bundle-version="0.6.0",
  org.jnario.feature.ui;bundle-version="0.6.0",
  org.jnario.spec.ui;bundle-version="0.6.0"
 Import-Package: org.apache.commons.logging,

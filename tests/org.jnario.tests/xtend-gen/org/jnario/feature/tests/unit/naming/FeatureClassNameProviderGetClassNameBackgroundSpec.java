@@ -91,22 +91,22 @@ public class FeatureClassNameProviderGetClassNameBackgroundSpec extends FeatureC
   @Order(1)
   public void _examplesWork() throws Exception {
     final Procedure1<FeatureClassNameProviderGetClassNameBackgroundSpecExamples> _function = new Procedure1<FeatureClassNameProviderGetClassNameBackgroundSpecExamples>() {
-        public void apply(final FeatureClassNameProviderGetClassNameBackgroundSpecExamples it) {
-          String _name = it.getName();
-          String _feature = it.getFeature();
-          Background _background = FeatureClassNameProviderGetClassNameBackgroundSpec.this.background(_name, _feature);
-          String _className = FeatureClassNameProviderGetClassNameBackgroundSpec.this.className(_background);
-          String _expectedClassName = it.getExpectedClassName();
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_className, _expectedClassName);
-          Assert.assertTrue("\nExpected className(background(name, feature)) => expectedClassName but"
-           + "\n     className(background(name, feature)) is " + new org.hamcrest.StringDescription().appendValue(_className).toString()
-           + "\n     background(name, feature) is " + new org.hamcrest.StringDescription().appendValue(_background).toString()
-           + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
-           + "\n     feature is " + new org.hamcrest.StringDescription().appendValue(_feature).toString()
-           + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final FeatureClassNameProviderGetClassNameBackgroundSpecExamples it) {
+        String _name = it.getName();
+        String _feature = it.getFeature();
+        Background _background = FeatureClassNameProviderGetClassNameBackgroundSpec.this.background(_name, _feature);
+        String _className = FeatureClassNameProviderGetClassNameBackgroundSpec.this.className(_background);
+        String _expectedClassName = it.getExpectedClassName();
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_className, _expectedClassName);
+        Assert.assertTrue("\nExpected className(background(name, feature)) => expectedClassName but"
+         + "\n     className(background(name, feature)) is " + new org.hamcrest.StringDescription().appendValue(_className).toString()
+         + "\n     background(name, feature) is " + new org.hamcrest.StringDescription().appendValue(_background).toString()
+         + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
+         + "\n     feature is " + new org.hamcrest.StringDescription().appendValue(_feature).toString()
+         + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     ExampleTableIterators.<FeatureClassNameProviderGetClassNameBackgroundSpecExamples>forEach(this.examples, _function);
   }
 }

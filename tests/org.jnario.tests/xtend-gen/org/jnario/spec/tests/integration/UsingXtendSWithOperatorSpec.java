@@ -35,11 +35,11 @@ public class UsingXtendSWithOperatorSpec {
   public void _initializeFixtures() throws Exception {
     Stack<String> _stack = new Stack<String>();
     final Procedure1<Stack<String>> _function = new Procedure1<Stack<String>>() {
-        public void apply(final Stack<String> it) {
-          it.add("red");
-          it.add("blue");
-        }
-      };
+      public void apply(final Stack<String> it) {
+        it.add("red");
+        it.add("blue");
+      }
+    };
     final Stack<String> stackWithTwoElements = ObjectExtensions.<Stack<String>>operator_doubleArrow(_stack, _function);
     int _size = stackWithTwoElements.size();
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(2));
@@ -54,22 +54,22 @@ public class UsingXtendSWithOperatorSpec {
   @Order(2)
   public void _writeMultipleAssertions() throws Exception {
     final Procedure1<String> _function = new Procedure1<String>() {
-        public void apply(final String it) {
-          int _length = it.length();
-          boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_length), Integer.valueOf(11));
-          Assert.assertTrue("\nExpected length => 11 but"
-           + "\n     length is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_length)).toString() + "\n", _doubleArrow);
-          
-          boolean _should_startWith = Should.should_startWith(it, "hello");
-          Assert.assertTrue("\nExpected it should startWith(\"hello\") but"
-           + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _should_startWith);
-          
-          boolean _should_endWith = Should.should_endWith(it, "world");
-          Assert.assertTrue("\nExpected it should endWith(\"world\") but"
-           + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _should_endWith);
-          
-        }
-      };
+      public void apply(final String it) {
+        int _length = it.length();
+        boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_length), Integer.valueOf(11));
+        Assert.assertTrue("\nExpected length => 11 but"
+         + "\n     length is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_length)).toString() + "\n", _doubleArrow);
+        
+        boolean _should_startWith = Should.should_startWith(it, "hello");
+        Assert.assertTrue("\nExpected it should startWith(\"hello\") but"
+         + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _should_startWith);
+        
+        boolean _should_endWith = Should.should_endWith(it, "world");
+        Assert.assertTrue("\nExpected it should endWith(\"world\") but"
+         + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _should_endWith);
+        
+      }
+    };
     ObjectExtensions.<String>operator_doubleArrow(
       "hello world", _function);
   }

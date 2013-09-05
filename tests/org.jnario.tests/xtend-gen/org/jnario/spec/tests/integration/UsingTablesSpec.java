@@ -431,25 +431,25 @@ public class UsingTablesSpec {
   @Order(7)
   public void _errorMessage() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
-        public void apply(final Boolean it) {
-          final Procedure1<UsingTablesSpecExample> _function = new Procedure1<UsingTablesSpecExample>() {
-              public void apply(final UsingTablesSpecExample it) {
-                int _value1 = it.getValue1();
-                int _value2 = it.getValue2();
-                int _plus = (_value1 + _value2);
-                int _sum = it.getSum();
-                boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(_sum));
-                Assert.assertTrue("\nExpected value1 + value2 => sum but"
-                 + "\n     value1 + value2 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString()
-                 + "\n     value1 is " + new org.hamcrest.StringDescription().appendValue(_value1).toString()
-                 + "\n     value2 is " + new org.hamcrest.StringDescription().appendValue(_value2).toString()
-                 + "\n     sum is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_sum)).toString() + "\n", _doubleArrow);
-                
-              }
-            };
-          ExampleTableIterators.<UsingTablesSpecExample>forEach(UsingTablesSpec.this.example, _function);
-        }
-      };
+      public void apply(final Boolean it) {
+        final Procedure1<UsingTablesSpecExample> _function = new Procedure1<UsingTablesSpecExample>() {
+          public void apply(final UsingTablesSpecExample it) {
+            int _value1 = it.getValue1();
+            int _value2 = it.getValue2();
+            int _plus = (_value1 + _value2);
+            int _sum = it.getSum();
+            boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(_sum));
+            Assert.assertTrue("\nExpected value1 + value2 => sum but"
+             + "\n     value1 + value2 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString()
+             + "\n     value1 is " + new org.hamcrest.StringDescription().appendValue(_value1).toString()
+             + "\n     value2 is " + new org.hamcrest.StringDescription().appendValue(_value2).toString()
+             + "\n     sum is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_sum)).toString() + "\n", _doubleArrow);
+            
+          }
+        };
+        ExampleTableIterators.<UsingTablesSpecExample>forEach(UsingTablesSpec.this.example, _function);
+      }
+    };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("example failed");
@@ -459,16 +459,16 @@ public class UsingTablesSpec {
     _builder.append("| value1     | value2     | sum     |");
     _builder.newLine();
     _builder.append("        ");
-    _builder.append("| 1          | 2          | 3       | \u2713");
+    _builder.append("| 1          | 2          | 3       | ✓");
     _builder.newLine();
     _builder.append("        ");
-    _builder.append("| 4          | 5          | 7       | \u2718     (1)");
+    _builder.append("| 4          | 5          | 7       | ✘     (1)");
     _builder.newLine();
     _builder.append("        ");
-    _builder.append("| 7          | 8          | 14      | \u2718     (2)");
+    _builder.append("| 7          | 8          | 14      | ✘     (2)");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("(1) | 4          | 5          | 7       | \u2718");
+    _builder.append("(1) | 4          | 5          | 7       | ✘");
     _builder.newLine();
     _builder.append("java.lang.AssertionError: ");
     _builder.newLine();
@@ -487,7 +487,7 @@ public class UsingTablesSpec {
     _builder.append("sum is <7>");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("(2) | 7          | 8          | 14      | \u2718");
+    _builder.append("(2) | 7          | 8          | 14      | ✘");
     _builder.newLine();
     _builder.append("java.lang.AssertionError: ");
     _builder.newLine();

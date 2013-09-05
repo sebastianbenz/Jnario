@@ -94,15 +94,15 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
       final PathTraverser pathTraverser = _pathTraverser;
       List<String> _sourcePathDirectories = this.getSourcePathDirectories();
       final Predicate<URI> _function = new Predicate<URI>() {
-          public boolean apply(final URI input) {
-            final boolean matches = nameBasedFilter.matches(input);
-            if (matches) {
-              ResourceSet _resourceSet = JnarioDocCompiler.this.getResourceSet();
-              _resourceSet.getResource(input, true);
-            }
-            return matches;
+        public boolean apply(final URI input) {
+          final boolean matches = nameBasedFilter.matches(input);
+          if (matches) {
+            ResourceSet _resourceSet = JnarioDocCompiler.this.getResourceSet();
+            _resourceSet.getResource(input, true);
           }
-        };
+          return matches;
+        }
+      };
       pathTraverser.resolvePathes(_sourcePathDirectories, _function);
       final File classDirectory = this.createTempDir("classes");
       ResourceSet _resourceSet_2 = this.getResourceSet();

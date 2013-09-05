@@ -69,11 +69,11 @@ public class OperationNameProviderSpec {
     EList<JvmMember> _members = type.getMembers();
     final Iterable<JvmOperation> jvmOperations = Iterables.<JvmOperation>filter(_members, JvmOperation.class);
     final Function1<JvmOperation,String> _function = new Function1<JvmOperation,String>() {
-        public String apply(final JvmOperation it) {
-          String _simpleName = it.getSimpleName();
-          return _simpleName;
-        }
-      };
+      public String apply(final JvmOperation it) {
+        String _simpleName = it.getSimpleName();
+        return _simpleName;
+      }
+    };
     Map<String,JvmOperation> _map = IterableExtensions.<String, JvmOperation>toMap(jvmOperations, _function);
     this.operations = _map;
   }

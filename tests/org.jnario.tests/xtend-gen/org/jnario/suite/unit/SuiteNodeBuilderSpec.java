@@ -56,11 +56,11 @@ public class SuiteNodeBuilderSpec {
   
   public List<Suite> suites(final String... names) {
     final Function1<String,Suite> _function = new Function1<String,Suite>() {
-        public Suite apply(final String it) {
-          Suite _suite = SuiteNodeBuilderSpec.this.suite(it);
-          return _suite;
-        }
-      };
+      public Suite apply(final String it) {
+        Suite _suite = SuiteNodeBuilderSpec.this.suite(it);
+        return _suite;
+      }
+    };
     List<Suite> _map = ListExtensions.<String, Suite>map(((List<String>)Conversions.doWrapArray(names)), _function);
     return _map;
   }

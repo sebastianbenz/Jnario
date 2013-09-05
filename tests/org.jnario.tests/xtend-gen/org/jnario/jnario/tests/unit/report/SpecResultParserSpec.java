@@ -277,7 +277,7 @@ public class SpecResultParserSpec {
     CharSequence _xml = this.toXml(_builder);
     this.parse(_xml);
     SpecExecutionAcceptor _verify = Mockito.<SpecExecutionAcceptor>verify(this.acceptor);
-    Passed _passed = new Passed(SpecResultParserSpec.CLASSNAME, "L\u00D6sung", SpecResultParserSpec.EXECUTION_TIME);
+    Passed _passed = new Passed(SpecResultParserSpec.CLASSNAME, "LÖsung", SpecResultParserSpec.EXECUTION_TIME);
     _verify.accept(_passed);
   }
   

@@ -81,11 +81,11 @@ public class FeatureBatchCompilerTest {
     String _plus = (FeatureBatchCompilerTest.OUTPUT_DIRECTORY + "/test");
     File _file = new File(_plus);
     final FilenameFilter _function = new FilenameFilter() {
-        public boolean accept(final File dir, final String name) {
-          boolean _endsWith = name.endsWith(".java");
-          return _endsWith;
-        }
-      };
+      public boolean accept(final File dir, final String name) {
+        boolean _endsWith = name.endsWith(".java");
+        return _endsWith;
+      }
+    };
     String[] _list = _file.list(_function);
     int _size = ((List<String>)Conversions.doWrapArray(_list)).size();
     Assert.assertEquals(3, _size);

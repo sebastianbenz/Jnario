@@ -19,7 +19,7 @@ public class IconProvider extends ExecutableStateSwitch<String> {
   protected String handleFailed(final Failed result) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append(" ");
-    _builder.append("<strong class=\"icon failed\">\u2718</strong>");
+    _builder.append("<strong class=\"icon failed\">✘</strong>");
     return _builder.toString();
   }
   
@@ -31,7 +31,7 @@ public class IconProvider extends ExecutableStateSwitch<String> {
   protected String handlePassed(final Passed execution) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append(" ");
-    _builder.append("<strong class=\"icon passed\">\u2713</strong>");
+    _builder.append("<strong class=\"icon passed\">✓</strong>");
     return _builder.toString();
   }
   

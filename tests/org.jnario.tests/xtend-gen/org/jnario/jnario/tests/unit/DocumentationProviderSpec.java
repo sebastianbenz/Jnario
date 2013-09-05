@@ -29,10 +29,10 @@ public class DocumentationProviderSpec {
   final DocumentationProvider subject = new Function0<DocumentationProvider>() {
     public DocumentationProvider apply() {
       final IEObjectDocumentationProvider _function = new IEObjectDocumentationProvider() {
-          public String getDocumentation(final EObject it) {
-            return DocumentationProviderSpec.this.comment;
-          }
-        };
+        public String getDocumentation(final EObject it) {
+          return DocumentationProviderSpec.this.comment;
+        }
+      };
       DocumentationProvider _documentationProvider = new DocumentationProvider(_function);
       return _documentationProvider;
     }

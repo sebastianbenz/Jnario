@@ -40,13 +40,13 @@ public class JnarioCodeBuilderFactory extends CodeBuilderFactory {
       TreeIterator<EObject> _allContents = _eResource.getAllContents();
       Iterator<XtendClass> _filter = Iterators.<XtendClass>filter(_allContents, XtendClass.class);
       final Function1<XtendClass,Boolean> _function = new Function1<XtendClass,Boolean>() {
-          public Boolean apply(final XtendClass it) {
-            String _name = it.getName();
-            String _simpleName = type.getSimpleName();
-            boolean _equals = Objects.equal(_name, _simpleName);
-            return Boolean.valueOf(_equals);
-          }
-        };
+        public Boolean apply(final XtendClass it) {
+          String _name = it.getName();
+          String _simpleName = type.getSimpleName();
+          boolean _equals = Objects.equal(_name, _simpleName);
+          return Boolean.valueOf(_equals);
+        }
+      };
       XtendClass _findFirst = IteratorExtensions.<XtendClass>findFirst(_filter, _function);
       _xblockexpression = (_findFirst);
     }

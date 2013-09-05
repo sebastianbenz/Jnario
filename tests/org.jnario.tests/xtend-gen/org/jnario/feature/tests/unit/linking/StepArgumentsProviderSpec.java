@@ -175,18 +175,18 @@ public class StepArgumentsProviderSpec {
   @Order(1)
   public void _extractsArgumentsFromStepDescriptions() throws Exception {
     final Procedure1<StepArgumentsProviderSpecExamples> _function = new Procedure1<StepArgumentsProviderSpecExamples>() {
-        public void apply(final StepArgumentsProviderSpecExamples it) {
-          String _step = it.getStep();
-          Step _create = StepArgumentsProviderSpec.this.create(_step);
-          final List<String> foundArgs = StepArgumentsProviderSpec.this.subject.findStepArguments(_create);
-          List<? extends Object> _expectedArgs = it.getExpectedArgs();
-          boolean _doubleArrow = Should.<List<? extends Object>>operator_doubleArrow(foundArgs, _expectedArgs);
-          Assert.assertTrue("\nExpected foundArgs => expectedArgs but"
-           + "\n     foundArgs is " + new org.hamcrest.StringDescription().appendValue(foundArgs).toString()
-           + "\n     expectedArgs is " + new org.hamcrest.StringDescription().appendValue(_expectedArgs).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final StepArgumentsProviderSpecExamples it) {
+        String _step = it.getStep();
+        Step _create = StepArgumentsProviderSpec.this.create(_step);
+        final List<String> foundArgs = StepArgumentsProviderSpec.this.subject.findStepArguments(_create);
+        List<? extends Object> _expectedArgs = it.getExpectedArgs();
+        boolean _doubleArrow = Should.<List<? extends Object>>operator_doubleArrow(foundArgs, _expectedArgs);
+        Assert.assertTrue("\nExpected foundArgs => expectedArgs but"
+         + "\n     foundArgs is " + new org.hamcrest.StringDescription().appendValue(foundArgs).toString()
+         + "\n     expectedArgs is " + new org.hamcrest.StringDescription().appendValue(_expectedArgs).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     Each.<StepArgumentsProviderSpecExamples>forEach(this.examples, _function);
   }
   

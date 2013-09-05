@@ -39,11 +39,11 @@ public class FeatureExtensionsFeatureReferencingMultipleExtensions extends Featu
     String _first = JnarioIterableExtensions.<String>first(args);
     String[] _split = _first.split(",");
     final Function1<String,String> _function = new Function1<String,String>() {
-        public String apply(final String it) {
-          String _trim = it.trim();
-          return _trim;
-        }
-      };
+      public String apply(final String it) {
+        String _trim = it.trim();
+        return _trim;
+      }
+    };
     List<String> _map = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_split)), _function);
     List<String> _sort = IterableExtensions.<String>sort(_map);
     this.list = _sort;

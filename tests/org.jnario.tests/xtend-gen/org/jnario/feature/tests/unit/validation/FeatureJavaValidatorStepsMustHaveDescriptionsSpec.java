@@ -44,10 +44,10 @@ public class FeatureJavaValidatorStepsMustHaveDescriptionsSpec extends FeatureJa
     _builder.append("\t \t");
     _builder.newLine();
     final Procedure1<AssertableDiagnostics> _function = new Procedure1<AssertableDiagnostics>() {
-        public void apply(final AssertableDiagnostics it) {
-          it.assertErrorContains("description");
-        }
-      };
+      public void apply(final AssertableDiagnostics it) {
+        it.assertErrorContains("description");
+      }
+    };
     this.allOf(_builder, Step.class, _function);
   }
 }

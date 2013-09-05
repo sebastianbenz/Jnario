@@ -42,10 +42,10 @@ public class EvolutionSpec {
   final Rule dontCare = new Function0<Rule>() {
     public Rule apply() {
       final Rule _function = new Rule() {
-          public boolean becomesAlive(final int it) {
-            return false;
-          }
-        };
+        public boolean becomesAlive(final int it) {
+          return false;
+        }
+      };
       return _function;
     }
   }.apply();

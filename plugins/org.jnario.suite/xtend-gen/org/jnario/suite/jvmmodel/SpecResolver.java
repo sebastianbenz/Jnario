@@ -58,11 +58,11 @@ public class SpecResolver {
   protected List<Specification> _resolveSpecs(final Suite suite) {
     EList<Reference> _elements = suite.getElements();
     final Function1<Reference,List<Specification>> _function = new Function1<Reference,List<Specification>>() {
-        public List<Specification> apply(final Reference it) {
-          List<Specification> _resolveSpecs = SpecResolver.this.resolveSpecs(it);
-          return _resolveSpecs;
-        }
-      };
+      public List<Specification> apply(final Reference it) {
+        List<Specification> _resolveSpecs = SpecResolver.this.resolveSpecs(it);
+        return _resolveSpecs;
+      }
+    };
     List<List<Specification>> _map = ListExtensions.<Reference, List<Specification>>map(_elements, _function);
     Iterable<Specification> _flatten = Iterables.<Specification>concat(_map);
     List<Specification> _sort = this.sort(_flatten);
@@ -86,51 +86,51 @@ public class SpecResolver {
       final IScope scope = this.scopeProvider.getScope(specRef, Literals.SPEC_REFERENCE__SPEC);
       Iterable<IEObjectDescription> _allElements = scope.getAllElements();
       final Function1<IEObjectDescription,Boolean> _function = new Function1<IEObjectDescription,Boolean>() {
-          public Boolean apply(final IEObjectDescription it) {
-            EClass _eClass = it.getEClass();
-            boolean _isSuperTypeOf = org.jnario.JnarioPackage.Literals.SPECIFICATION.isSuperTypeOf(_eClass);
-            return Boolean.valueOf(_isSuperTypeOf);
-          }
-        };
+        public Boolean apply(final IEObjectDescription it) {
+          EClass _eClass = it.getEClass();
+          boolean _isSuperTypeOf = org.jnario.JnarioPackage.Literals.SPECIFICATION.isSuperTypeOf(_eClass);
+          return Boolean.valueOf(_isSuperTypeOf);
+        }
+      };
       Iterable<IEObjectDescription> specs = IterableExtensions.<IEObjectDescription>filter(_allElements, _function);
       String _pattern_1 = specRef.getPattern();
       final Pattern pattern = Pattern.compile(_pattern_1);
       final Function1<IEObjectDescription,Boolean> _function_1 = new Function1<IEObjectDescription,Boolean>() {
-          public Boolean apply(final IEObjectDescription it) {
-            QualifiedName _qualifiedName = it.getQualifiedName();
-            String _string = SpecResolver.this._iQualifiedNameConverter.toString(_qualifiedName);
-            Matcher _matcher = pattern.matcher(_string);
-            boolean _matches = _matcher.matches();
-            return Boolean.valueOf(_matches);
-          }
-        };
+        public Boolean apply(final IEObjectDescription it) {
+          QualifiedName _qualifiedName = it.getQualifiedName();
+          String _string = SpecResolver.this._iQualifiedNameConverter.toString(_qualifiedName);
+          Matcher _matcher = pattern.matcher(_string);
+          boolean _matches = _matcher.matches();
+          return Boolean.valueOf(_matches);
+        }
+      };
       Iterable<IEObjectDescription> _filter = IterableExtensions.<IEObjectDescription>filter(specs, _function_1);
       specs = _filter;
       final Resource suiteResource = specRef.eResource();
       final Function1<IEObjectDescription,EObject> _function_2 = new Function1<IEObjectDescription,EObject>() {
-          public EObject apply(final IEObjectDescription it) {
-            EObject _eObjectOrProxy = it.getEObjectOrProxy();
-            EObject _resolve = EcoreUtil.resolve(_eObjectOrProxy, specRef);
-            return _resolve;
-          }
-        };
+        public EObject apply(final IEObjectDescription it) {
+          EObject _eObjectOrProxy = it.getEObjectOrProxy();
+          EObject _resolve = EcoreUtil.resolve(_eObjectOrProxy, specRef);
+          return _resolve;
+        }
+      };
       Iterable<EObject> _map = IterableExtensions.<IEObjectDescription, EObject>map(specs, _function_2);
       Iterable<Specification> _filter_1 = Iterables.<Specification>filter(_map, Specification.class);
       final Iterable<Specification> resolvedSpecs = IterableExtensions.<Specification>filterNull(_filter_1);
       final Function1<Specification,Boolean> _function_3 = new Function1<Specification,Boolean>() {
-          public Boolean apply(final Specification it) {
-            Resource _eResource = it.eResource();
-            boolean _notEquals = (!Objects.equal(_eResource, suiteResource));
-            return Boolean.valueOf(_notEquals);
-          }
-        };
+        public Boolean apply(final Specification it) {
+          Resource _eResource = it.eResource();
+          boolean _notEquals = (!Objects.equal(_eResource, suiteResource));
+          return Boolean.valueOf(_notEquals);
+        }
+      };
       final Iterable<Specification> withoutSuites = IterableExtensions.<Specification>filter(resolvedSpecs, _function_3);
       final Function1<Specification,String> _function_4 = new Function1<Specification,String>() {
-          public String apply(final Specification it) {
-            String _qualifiedJavaClassName = SpecResolver.this._suiteClassNameProvider.toQualifiedJavaClassName(it);
-            return _qualifiedJavaClassName;
-          }
-        };
+        public String apply(final Specification it) {
+          String _qualifiedJavaClassName = SpecResolver.this._suiteClassNameProvider.toQualifiedJavaClassName(it);
+          return _qualifiedJavaClassName;
+        }
+      };
       final Map<String,Specification> classNames = IterableExtensions.<String, Specification>toMap(withoutSuites, _function_4);
       Collection<Specification> _values = classNames.values();
       List<Specification> _sort = this.sort(_values);
@@ -141,35 +141,35 @@ public class SpecResolver {
   
   private List<Specification> sort(final Iterable<Specification> specs) {
     final Function1<Specification,Boolean> _function = new Function1<Specification,Boolean>() {
-        public Boolean apply(final Specification it) {
-          boolean _notEquals = (!Objects.equal(it, null));
-          return Boolean.valueOf(_notEquals);
-        }
-      };
+      public Boolean apply(final Specification it) {
+        boolean _notEquals = (!Objects.equal(it, null));
+        return Boolean.valueOf(_notEquals);
+      }
+    };
     Iterable<Specification> _filter = IterableExtensions.<Specification>filter(specs, _function);
     final Comparator<Specification> _function_1 = new Comparator<Specification>() {
-        public int compare(final Specification left, final Specification right) {
-          int _xblockexpression = (int) 0;
-          {
-            final String leftName = SpecResolver.this._suiteClassNameProvider.describe(left);
-            final String rightName = SpecResolver.this._suiteClassNameProvider.describe(right);
-            boolean _or = false;
-            boolean _equals = Objects.equal(leftName, null);
-            if (_equals) {
-              _or = true;
-            } else {
-              boolean _equals_1 = Objects.equal(rightName, null);
-              _or = (_equals || _equals_1);
-            }
-            if (_or) {
-              return 0;
-            }
-            int _compareToIgnoreCase = leftName.compareToIgnoreCase(rightName);
-            _xblockexpression = (_compareToIgnoreCase);
+      public int compare(final Specification left, final Specification right) {
+        int _xblockexpression = (int) 0;
+        {
+          final String leftName = SpecResolver.this._suiteClassNameProvider.describe(left);
+          final String rightName = SpecResolver.this._suiteClassNameProvider.describe(right);
+          boolean _or = false;
+          boolean _equals = Objects.equal(leftName, null);
+          if (_equals) {
+            _or = true;
+          } else {
+            boolean _equals_1 = Objects.equal(rightName, null);
+            _or = (_equals || _equals_1);
           }
-          return _xblockexpression;
+          if (_or) {
+            return 0;
+          }
+          int _compareToIgnoreCase = leftName.compareToIgnoreCase(rightName);
+          _xblockexpression = (_compareToIgnoreCase);
         }
-      };
+        return _xblockexpression;
+      }
+    };
     List<Specification> _sort = IterableExtensions.<Specification>sort(_filter, _function_1);
     return _sort;
   }

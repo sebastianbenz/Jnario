@@ -263,11 +263,11 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
   
   public void passes(final String... names) {
     final Procedure1<String> _function = new Procedure1<String>() {
-        public void apply(final String it) {
-          Passed _passingSpec = Passed.passingSpec(HashBasedSpec2ResultMappingExampleGroupSpec.CLASSNAME, it, HashBasedSpec2ResultMappingSpec.anyExecutionTime);
-          HashBasedSpec2ResultMappingExampleGroupSpec.this.subject.accept(_passingSpec);
-        }
-      };
+      public void apply(final String it) {
+        Passed _passingSpec = Passed.passingSpec(HashBasedSpec2ResultMappingExampleGroupSpec.CLASSNAME, it, HashBasedSpec2ResultMappingSpec.anyExecutionTime);
+        HashBasedSpec2ResultMappingExampleGroupSpec.this.subject.accept(_passingSpec);
+      }
+    };
     IterableExtensions.<String>forEach(((Iterable<String>)Conversions.doWrapArray(names)), _function);
   }
 }

@@ -142,19 +142,19 @@ public class WhiteSpaceNormalizerSpec {
   @Order(1)
   public void _shouldRemoveTrailingWhitespace() throws Exception {
     final Procedure1<WhiteSpaceNormalizerSpecExamples> _function = new Procedure1<WhiteSpaceNormalizerSpecExamples>() {
-        public void apply(final WhiteSpaceNormalizerSpecExamples it) {
-          String _input = it.getInput();
-          String _normalize = WhiteSpaceNormalizerSpec.this.subject.normalize(_input);
-          String _result = it.getResult();
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_normalize, _result);
-          Assert.assertTrue("\nExpected subject.normalize(input) => result but"
-           + "\n     subject.normalize(input) is " + new org.hamcrest.StringDescription().appendValue(_normalize).toString()
-           + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(WhiteSpaceNormalizerSpec.this.subject).toString()
-           + "\n     input is " + new org.hamcrest.StringDescription().appendValue(_input).toString()
-           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final WhiteSpaceNormalizerSpecExamples it) {
+        String _input = it.getInput();
+        String _normalize = WhiteSpaceNormalizerSpec.this.subject.normalize(_input);
+        String _result = it.getResult();
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_normalize, _result);
+        Assert.assertTrue("\nExpected subject.normalize(input) => result but"
+         + "\n     subject.normalize(input) is " + new org.hamcrest.StringDescription().appendValue(_normalize).toString()
+         + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(WhiteSpaceNormalizerSpec.this.subject).toString()
+         + "\n     input is " + new org.hamcrest.StringDescription().appendValue(_input).toString()
+         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     ExampleTableIterators.<WhiteSpaceNormalizerSpecExamples>forEach(this.examples, _function);
   }
   

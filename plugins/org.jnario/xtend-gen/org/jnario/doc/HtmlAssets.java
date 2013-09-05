@@ -38,11 +38,11 @@ public class HtmlAssets {
         "custom.css", 
         "prettify.css");
       final Function1<String,String> _function = new Function1<String,String>() {
-          public String apply(final String it) {
-            String _plus = ("css/" + it);
-            return _plus;
-          }
-        };
+        public String apply(final String it) {
+          String _plus = ("css/" + it);
+          return _plus;
+        }
+      };
       List<String> _map = ListExtensions.<String, String>map(_newArrayList, _function);
       return _map;
     }
@@ -60,11 +60,11 @@ public class HtmlAssets {
         "jquery.js", 
         "bootstrap-tab.js");
       final Function1<String,String> _function = new Function1<String,String>() {
-          public String apply(final String it) {
-            String _plus = ("js/" + it);
-            return _plus;
-          }
-        };
+        public String apply(final String it) {
+          String _plus = ("js/" + it);
+          return _plus;
+        }
+      };
       List<String> _map = ListExtensions.<String, String>map(_newArrayList, _function);
       return _map;
     }
@@ -83,12 +83,12 @@ public class HtmlAssets {
   
   private void copy(final IFileSystemAccess fsa, final Iterable<String> files) {
     final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
-        public Boolean apply(final String it) {
-          boolean _exists = HtmlAssets.this.exists(fsa, it);
-          boolean _not = (!_exists);
-          return Boolean.valueOf(_not);
-        }
-      };
+      public Boolean apply(final String it) {
+        boolean _exists = HtmlAssets.this.exists(fsa, it);
+        boolean _not = (!_exists);
+        return Boolean.valueOf(_not);
+      }
+    };
     Iterable<String> _filter = IterableExtensions.<String>filter(files, _function);
     for (final String file : _filter) {
       String _load = this.load(file);

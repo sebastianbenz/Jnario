@@ -115,15 +115,15 @@ public class ExampleNameProviderToJavaClassNameExampleGroupSpec extends ExampleN
       "describe \'my\texample\'", 
       "describe \'my_example\'");
     final Procedure1<String> _function = new Procedure1<String>() {
-        public void apply(final String it) {
-          String _firstJavaClassName = ExampleNameProviderToJavaClassNameExampleGroupSpec.this.firstJavaClassName(it);
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstJavaClassName, "MyExampleSpec");
-          Assert.assertTrue("\nExpected firstJavaClassName(it) => \'MyExampleSpec\' but"
-           + "\n     firstJavaClassName(it) is " + new org.hamcrest.StringDescription().appendValue(_firstJavaClassName).toString()
-           + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final String it) {
+        String _firstJavaClassName = ExampleNameProviderToJavaClassNameExampleGroupSpec.this.firstJavaClassName(it);
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstJavaClassName, "MyExampleSpec");
+        Assert.assertTrue("\nExpected firstJavaClassName(it) => \'MyExampleSpec\' but"
+         + "\n     firstJavaClassName(it) is " + new org.hamcrest.StringDescription().appendValue(_firstJavaClassName).toString()
+         + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     IterableExtensions.<String>forEach(_newArrayList, _function);
   }
   

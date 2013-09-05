@@ -81,21 +81,21 @@ public class SuiteClassNameProviderToJavaClassNameSpec extends SuiteClassNamePro
   @Order(1)
   public void _examplesForEachSubjectToJavaClassNameSuiteNameExpectedClassName() throws Exception {
     final Procedure1<SuiteClassNameProviderToJavaClassNameSpecExamples> _function = new Procedure1<SuiteClassNameProviderToJavaClassNameSpecExamples>() {
-        public void apply(final SuiteClassNameProviderToJavaClassNameSpecExamples it) {
-          String _name = it.getName();
-          Suite _suite = Suites.suite(_name);
-          String _javaClassName = SuiteClassNameProviderToJavaClassNameSpec.this.subject.toJavaClassName(_suite);
-          String _expectedClassName = it.getExpectedClassName();
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_javaClassName, _expectedClassName);
-          Assert.assertTrue("\nExpected subject.toJavaClassName(suite(name)) => expectedClassName but"
-           + "\n     subject.toJavaClassName(suite(name)) is " + new org.hamcrest.StringDescription().appendValue(_javaClassName).toString()
-           + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(SuiteClassNameProviderToJavaClassNameSpec.this.subject).toString()
-           + "\n     suite(name) is " + new org.hamcrest.StringDescription().appendValue(_suite).toString()
-           + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
-           + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final SuiteClassNameProviderToJavaClassNameSpecExamples it) {
+        String _name = it.getName();
+        Suite _suite = Suites.suite(_name);
+        String _javaClassName = SuiteClassNameProviderToJavaClassNameSpec.this.subject.toJavaClassName(_suite);
+        String _expectedClassName = it.getExpectedClassName();
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_javaClassName, _expectedClassName);
+        Assert.assertTrue("\nExpected subject.toJavaClassName(suite(name)) => expectedClassName but"
+         + "\n     subject.toJavaClassName(suite(name)) is " + new org.hamcrest.StringDescription().appendValue(_javaClassName).toString()
+         + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(SuiteClassNameProviderToJavaClassNameSpec.this.subject).toString()
+         + "\n     suite(name) is " + new org.hamcrest.StringDescription().appendValue(_suite).toString()
+         + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
+         + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     Each.<SuiteClassNameProviderToJavaClassNameSpecExamples>forEach(this.examples, _function);
   }
 }

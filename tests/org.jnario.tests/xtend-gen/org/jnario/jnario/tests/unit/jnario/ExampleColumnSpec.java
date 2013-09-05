@@ -134,27 +134,27 @@ public class ExampleColumnSpec {
     _builder.newLine();
     this._modelStore.parseSpec(_builder);
     final Procedure1<ExampleColumnSpecExamples> _function = new Procedure1<ExampleColumnSpecExamples>() {
-        public void apply(final ExampleColumnSpecExamples it) {
-          Query _query = ExampleColumnSpec.this._modelStore.query();
-          org.jnario.ExampleTable _first = _query.<org.jnario.ExampleTable>first(org.jnario.ExampleTable.class);
-          final EList<ExampleColumn> columns = _first.getColumns();
-          int _columnIndex = it.getColumnIndex();
-          final ExampleColumn column = columns.get(_columnIndex);
-          EList<ExampleCell> _cells = column.getCells();
-          int _cellIndex = it.getCellIndex();
-          final ExampleCell cell = _cells.get(_cellIndex);
-          String _serialize = ExampleColumnSpec.this._iSerializer.serialize(cell);
-          String _trim = _serialize.trim();
-          String _value = it.getValue();
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_trim, _value);
-          Assert.assertTrue("\nExpected cell.serialize.trim => value but"
-           + "\n     cell.serialize.trim is " + new org.hamcrest.StringDescription().appendValue(_trim).toString()
-           + "\n     cell.serialize is " + new org.hamcrest.StringDescription().appendValue(_serialize).toString()
-           + "\n     cell is " + new org.hamcrest.StringDescription().appendValue(cell).toString()
-           + "\n     value is " + new org.hamcrest.StringDescription().appendValue(_value).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final ExampleColumnSpecExamples it) {
+        Query _query = ExampleColumnSpec.this._modelStore.query();
+        org.jnario.ExampleTable _first = _query.<org.jnario.ExampleTable>first(org.jnario.ExampleTable.class);
+        final EList<ExampleColumn> columns = _first.getColumns();
+        int _columnIndex = it.getColumnIndex();
+        final ExampleColumn column = columns.get(_columnIndex);
+        EList<ExampleCell> _cells = column.getCells();
+        int _cellIndex = it.getCellIndex();
+        final ExampleCell cell = _cells.get(_cellIndex);
+        String _serialize = ExampleColumnSpec.this._iSerializer.serialize(cell);
+        String _trim = _serialize.trim();
+        String _value = it.getValue();
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_trim, _value);
+        Assert.assertTrue("\nExpected cell.serialize.trim => value but"
+         + "\n     cell.serialize.trim is " + new org.hamcrest.StringDescription().appendValue(_trim).toString()
+         + "\n     cell.serialize is " + new org.hamcrest.StringDescription().appendValue(_serialize).toString()
+         + "\n     cell is " + new org.hamcrest.StringDescription().appendValue(cell).toString()
+         + "\n     value is " + new org.hamcrest.StringDescription().appendValue(_value).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     ExampleTableIterators.<ExampleColumnSpecExamples>forEach(this.examples, _function);
   }
 }

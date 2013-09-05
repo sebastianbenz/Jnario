@@ -8,9 +8,7 @@
 package org.jnario.jnario.documentation;
 
 import com.google.common.base.Objects;
-import java.util.Iterator;
 import java.util.List;
-import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.jnario.documentation._20FactsAboutXtendAModernizedJavaSpec;
 import org.jnario.jnario.documentation._20FactsAboutXtendFunctionalProgrammingFTWSpec;
@@ -37,16 +35,6 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @SuppressWarnings("all")
 public class _20FactsAboutXtendSpec {
-  public <T extends Object> Iterable<T> iterable(final T... elements) {
-    final Iterable<T> _function = new Iterable<T>() {
-        public Iterator<T> iterator() {
-          Iterator<T> _iterator = ((List<T>)Conversions.doWrapArray(elements)).iterator();
-          return _iterator;
-        }
-      };
-    return _function;
-  }
-  
   public <T extends Object> boolean operator_doubleArrow(final Iterable<T> actual, final Iterable<T> expected) {
     List<T> _list = IterableExtensions.<T>toList(actual);
     List<T> _list_1 = IterableExtensions.<T>toList(expected);

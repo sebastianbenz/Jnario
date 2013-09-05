@@ -119,20 +119,20 @@ public class StringsStartsWithWordSpec extends StringsSpec {
   @Order(1)
   public void _examplesForEachStringStartsWithWordWordIndex() throws Exception {
     final Procedure1<StringsStartsWithWordSpecExamples> _function = new Procedure1<StringsStartsWithWordSpecExamples>() {
-        public void apply(final StringsStartsWithWordSpecExamples it) {
-          String _string = it.getString();
-          String _word = it.getWord();
-          int _startsWithWord = Strings.startsWithWord(_string, _word);
-          int _index = it.getIndex();
-          boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_startsWithWord), Integer.valueOf(_index));
-          Assert.assertTrue("\nExpected string.startsWithWord(word) => index but"
-           + "\n     string.startsWithWord(word) is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_startsWithWord)).toString()
-           + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
-           + "\n     word is " + new org.hamcrest.StringDescription().appendValue(_word).toString()
-           + "\n     index is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_index)).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final StringsStartsWithWordSpecExamples it) {
+        String _string = it.getString();
+        String _word = it.getWord();
+        int _startsWithWord = Strings.startsWithWord(_string, _word);
+        int _index = it.getIndex();
+        boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_startsWithWord), Integer.valueOf(_index));
+        Assert.assertTrue("\nExpected string.startsWithWord(word) => index but"
+         + "\n     string.startsWithWord(word) is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_startsWithWord)).toString()
+         + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
+         + "\n     word is " + new org.hamcrest.StringDescription().appendValue(_word).toString()
+         + "\n     index is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_index)).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     Each.<StringsStartsWithWordSpecExamples>forEach(this.examples, _function);
   }
 }

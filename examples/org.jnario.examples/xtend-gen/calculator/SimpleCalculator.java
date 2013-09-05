@@ -25,11 +25,11 @@ public class SimpleCalculator {
   
   public int add() {
     final Function2<Integer,Integer,Integer> _function = new Function2<Integer,Integer,Integer>() {
-        public Integer apply(final Integer a, final Integer b) {
-          int _plus = ((a).intValue() + (b).intValue());
-          return Integer.valueOf(_plus);
-        }
-      };
+      public Integer apply(final Integer a, final Integer b) {
+        int _plus = ((a).intValue() + (b).intValue());
+        return Integer.valueOf(_plus);
+      }
+    };
     Integer _fold = IterableExtensions.<Integer, Integer>fold(this.values, Integer.valueOf(0), _function);
     int _result = this.result = (_fold).intValue();
     return _result;

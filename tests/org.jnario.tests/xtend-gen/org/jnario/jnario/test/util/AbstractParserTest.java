@@ -66,28 +66,28 @@ public class AbstractParserTest {
     Class<? extends Object> _context_1 = this.context();
     ClassPathUriProviderBuilder _startingFrom = ClassPathUriProviderBuilder.startingFrom(_context_1);
     final Predicate<URI> _function = new Predicate<URI>() {
-        public boolean apply(final URI it) {
-          boolean _onlySpecFiles = AbstractParserTest.this.onlySpecFiles(it);
-          return _onlySpecFiles;
-        }
-      };
+      public boolean apply(final URI it) {
+        boolean _onlySpecFiles = AbstractParserTest.this.onlySpecFiles(it);
+        return _onlySpecFiles;
+      }
+    };
     IUriProvider _select = _startingFrom.select(_function);
     this._modelStore.load(_select);
     List<Resource> _resources = this._modelStore.resources();
     final Function1<Resource,Boolean> _function_1 = new Function1<Resource,Boolean>() {
-        public Boolean apply(final Resource it) {
-          URI _uRI = it.getURI();
-          boolean _onlySpecFiles = AbstractParserTest.this.onlySpecFiles(_uRI);
-          return Boolean.valueOf(_onlySpecFiles);
-        }
-      };
+      public Boolean apply(final Resource it) {
+        URI _uRI = it.getURI();
+        boolean _onlySpecFiles = AbstractParserTest.this.onlySpecFiles(_uRI);
+        return Boolean.valueOf(_onlySpecFiles);
+      }
+    };
     Iterable<Resource> _filter = IterableExtensions.<Resource>filter(_resources, _function_1);
     final ArrayList<Resource> specs = Lists.<Resource>newArrayList(_filter);
     final Procedure1<Resource> _function_2 = new Procedure1<Resource>() {
-        public void apply(final Resource resource) {
-          Resources.checkForParseErrors(resource);
-        }
-      };
+      public void apply(final Resource resource) {
+        Resources.checkForParseErrors(resource);
+      }
+    };
     IterableExtensions.<Resource>forEach(specs, _function_2);
   }
   

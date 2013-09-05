@@ -55,13 +55,13 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     EList<EObject> _contents = input.getContents();
     Iterable<SuiteFile> _filter = Iterables.<SuiteFile>filter(_contents, SuiteFile.class);
     final Procedure1<SuiteFile> _function = new Procedure1<SuiteFile>() {
-        public void apply(final SuiteFile it) {
-          final HtmlFile htmlFile = SuiteDocGenerator.this.createHtmlFile(it);
-          EList<XtendTypeDeclaration> _xtendTypes = it.getXtendTypes();
-          XtendTypeDeclaration _head = IterableExtensions.<XtendTypeDeclaration>head(_xtendTypes);
-          SuiteDocGenerator.this._htmlFileBuilder.generate(_head, fsa, htmlFile);
-        }
-      };
+      public void apply(final SuiteFile it) {
+        final HtmlFile htmlFile = SuiteDocGenerator.this.createHtmlFile(it);
+        EList<XtendTypeDeclaration> _xtendTypes = it.getXtendTypes();
+        XtendTypeDeclaration _head = IterableExtensions.<XtendTypeDeclaration>head(_xtendTypes);
+        SuiteDocGenerator.this._htmlFileBuilder.generate(_head, fsa, htmlFile);
+      }
+    };
     IterableExtensions.<SuiteFile>forEach(_filter, _function);
   }
   
@@ -76,24 +76,24 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
       }
       final Suite rootSuite = IterableExtensions.<Suite>head(suites);
       final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
-          public void apply(final HtmlFile it) {
-            String _javaClassName = SuiteDocGenerator.this._suiteClassNameProvider.toJavaClassName(rootSuite);
-            it.setName(_javaClassName);
-            String _describe = SuiteDocGenerator.this._suiteClassNameProvider.describe(rootSuite);
-            String _decode = SuiteDocGenerator.this.decode(_describe);
-            it.setTitle(_decode);
-            CharSequence _generateContent = SuiteDocGenerator.this.generateContent(suites);
-            it.setContent(_generateContent);
-            String _root = SuiteDocGenerator.this.root(rootSuite);
-            it.setRootFolder(_root);
-            CharSequence _pre = SuiteDocGenerator.this.pre(file, "lang-suite");
-            it.setSourceCode(_pre);
-            String _fileName = SuiteDocGenerator.this.fileName(file);
-            it.setFileName(_fileName);
-            String _executionStateClass = SuiteDocGenerator.this.executionStateClass(rootSuite);
-            it.setExecutionStatus(_executionStateClass);
-          }
-        };
+        public void apply(final HtmlFile it) {
+          String _javaClassName = SuiteDocGenerator.this._suiteClassNameProvider.toJavaClassName(rootSuite);
+          it.setName(_javaClassName);
+          String _describe = SuiteDocGenerator.this._suiteClassNameProvider.describe(rootSuite);
+          String _decode = SuiteDocGenerator.this.decode(_describe);
+          it.setTitle(_decode);
+          CharSequence _generateContent = SuiteDocGenerator.this.generateContent(suites);
+          it.setContent(_generateContent);
+          String _root = SuiteDocGenerator.this.root(rootSuite);
+          it.setRootFolder(_root);
+          CharSequence _pre = SuiteDocGenerator.this.pre(file, "lang-suite");
+          it.setSourceCode(_pre);
+          String _fileName = SuiteDocGenerator.this.fileName(file);
+          it.setFileName(_fileName);
+          String _executionStateClass = SuiteDocGenerator.this.executionStateClass(rootSuite);
+          it.setExecutionStatus(_executionStateClass);
+        }
+      };
       HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
       _xblockexpression = (_newHtmlFile);
     }
@@ -105,24 +105,24 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     {
       final Suite suite = ((Suite) file);
       final Procedure1<HtmlFile> _function = new Procedure1<HtmlFile>() {
-          public void apply(final HtmlFile it) {
-            String _javaClassName = SuiteDocGenerator.this._suiteClassNameProvider.toJavaClassName(suite);
-            it.setName(_javaClassName);
-            String _describe = SuiteDocGenerator.this._suiteClassNameProvider.describe(suite);
-            String _decode = SuiteDocGenerator.this.decode(_describe);
-            it.setTitle(_decode);
-            CharSequence _generateContent = SuiteDocGenerator.this.generateContent(suite);
-            it.setContent(_generateContent);
-            String _root = SuiteDocGenerator.this.root(suite);
-            it.setRootFolder(_root);
-            CharSequence _pre = SuiteDocGenerator.this.pre(file, "lang-suite");
-            it.setSourceCode(_pre);
-            String _fileName = SuiteDocGenerator.this.fileName(file);
-            it.setFileName(_fileName);
-            String _executionStateClass = SuiteDocGenerator.this.executionStateClass(suite);
-            it.setExecutionStatus(_executionStateClass);
-          }
-        };
+        public void apply(final HtmlFile it) {
+          String _javaClassName = SuiteDocGenerator.this._suiteClassNameProvider.toJavaClassName(suite);
+          it.setName(_javaClassName);
+          String _describe = SuiteDocGenerator.this._suiteClassNameProvider.describe(suite);
+          String _decode = SuiteDocGenerator.this.decode(_describe);
+          it.setTitle(_decode);
+          CharSequence _generateContent = SuiteDocGenerator.this.generateContent(suite);
+          it.setContent(_generateContent);
+          String _root = SuiteDocGenerator.this.root(suite);
+          it.setRootFolder(_root);
+          CharSequence _pre = SuiteDocGenerator.this.pre(file, "lang-suite");
+          it.setSourceCode(_pre);
+          String _fileName = SuiteDocGenerator.this.fileName(file);
+          it.setFileName(_fileName);
+          String _executionStateClass = SuiteDocGenerator.this.executionStateClass(suite);
+          it.setExecutionStatus(_executionStateClass);
+        }
+      };
       HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
       _xblockexpression = (_newHtmlFile);
     }

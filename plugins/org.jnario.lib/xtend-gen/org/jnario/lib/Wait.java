@@ -33,11 +33,11 @@ public class Wait {
     Wait _wait = new Wait(Sleeper.SYSTEM_SLEEPER, Clock.SYSTEM_CLOCK);
     final Wait wait = _wait;
     final Function0<Boolean> _function = new Function0<Boolean>() {
-        public Boolean apply() {
-          Boolean _apply = initializer.apply(wait);
-          return _apply;
-        }
-      };
+      public Boolean apply() {
+        Boolean _apply = initializer.apply(wait);
+        return _apply;
+      }
+    };
     final Function0<Boolean> condition = _function;
     wait.until(condition);
   }

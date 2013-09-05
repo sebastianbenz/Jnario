@@ -75,17 +75,17 @@ public class ReportTask extends Task {
   public void execute() throws BuildException {
     DocCompilerMain _docCompilerMain = new DocCompilerMain();
     final Procedure1<DocCompilerMain> _function = new Procedure1<DocCompilerMain>() {
-        public void apply(final DocCompilerMain it) {
-          String _outputPath = ReportTask.this.getOutputPath();
-          it.setOutputPath(_outputPath);
-          String _fileEncoding = ReportTask.this.getFileEncoding();
-          it.setFileEncoding(_fileEncoding);
-          String _string = ReportTask.this.sourcePath.toString();
-          it.setSourcePath(_string);
-          String _resultFolder = ReportTask.this.getResultFolder();
-          it.setResultFolder(_resultFolder);
-        }
-      };
+      public void apply(final DocCompilerMain it) {
+        String _outputPath = ReportTask.this.getOutputPath();
+        it.setOutputPath(_outputPath);
+        String _fileEncoding = ReportTask.this.getFileEncoding();
+        it.setFileEncoding(_fileEncoding);
+        String _string = ReportTask.this.sourcePath.toString();
+        it.setSourcePath(_string);
+        String _resultFolder = ReportTask.this.getResultFolder();
+        it.setResultFolder(_resultFolder);
+      }
+    };
     final DocCompilerMain compiler = ObjectExtensions.<DocCompilerMain>operator_doubleArrow(_docCompilerMain, _function);
     int _compile = compiler.compile();
     boolean _equals = (_compile == CompilerMain.COMPILATION_ERROR);

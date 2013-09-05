@@ -56,12 +56,12 @@ public class Main {
     EList<EObject> _contents = resource.getContents();
     Iterable<JvmGenericType> _filter = Iterables.<JvmGenericType>filter(_contents, JvmGenericType.class);
     final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
-        public void apply(final JvmGenericType it) {
-          GeneratorConfig _generatorConfig = new GeneratorConfig();
-          CharSequence _generateType = generator.generateType(it, _generatorConfig);
-          InputOutput.<CharSequence>println(_generateType);
-        }
-      };
+      public void apply(final JvmGenericType it) {
+        GeneratorConfig _generatorConfig = new GeneratorConfig();
+        CharSequence _generateType = generator.generateType(it, _generatorConfig);
+        InputOutput.<CharSequence>println(_generateType);
+      }
+    };
     IterableExtensions.<JvmGenericType>forEach(_filter, _function);
   }
 }

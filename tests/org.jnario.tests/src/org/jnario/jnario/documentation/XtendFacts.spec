@@ -293,7 +293,7 @@ describe "20 Facts about Xtend"{
     fact "Simple access to list elements"{
       val colors = list("red", "blue", "green")
       colors.head => "red"
-      colors.tail => iterable("blue", "green")
+      colors.tail => #["blue", "green"]
       colors.last => "green"
       colors.empty => false
     }
@@ -303,7 +303,7 @@ describe "20 Facts about Xtend"{
      * using the `+` operator. 
      */
     fact "'+' concatenates collections"{
-      list(1, 2) + list(3, 4) => iterable(1, 2, 3, 4)
+      list(1, 2) + list(3, 4) => #[1, 2, 3, 4]
     }
     
     /*
@@ -352,7 +352,7 @@ describe "20 Facts about Xtend"{
      * in a subset of a collection. You can filter by type:
      */
     fact "Filter iterables by type"{
-      list("a string", 42, true).filter(typeof(String)) => iterable("a string")
+      list("a string", 42, true).filter(typeof(String)) => #["a string"]
     }
     
     /*
@@ -373,10 +373,6 @@ describe "20 Facts about Xtend"{
       val charCount = strings.map[s|s.length].reduce[sum, size | sum + size]
       charCount => 12
     }
-  }
-  
-  def <T> Iterable<T> iterable(T... elements){
-    [|elements.iterator]
   }
   
   def <T> operator_doubleArrow(Iterable<T> actual, Iterable<T> expected){

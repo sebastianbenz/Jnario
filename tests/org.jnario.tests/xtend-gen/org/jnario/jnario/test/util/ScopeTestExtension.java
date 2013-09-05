@@ -63,11 +63,11 @@ public class ScopeTestExtension implements Iterable {
   public Set<String> scope(final IScope scope) {
     Iterable<IEObjectDescription> _allElements = scope.getAllElements();
     final Function1<IEObjectDescription,String> _function = new Function1<IEObjectDescription,String>() {
-        public String apply(final IEObjectDescription it) {
-          String _string = it.toString();
-          return _string;
-        }
-      };
+      public String apply(final IEObjectDescription it) {
+        String _string = it.toString();
+        return _string;
+      }
+    };
     Iterable<String> _map = IterableExtensions.<IEObjectDescription, String>map(_allElements, _function);
     Set<String> _set = IterableExtensions.<String>toSet(_map);
     return _set;

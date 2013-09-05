@@ -82,19 +82,19 @@ public class CompileTask extends Task {
   public void execute() throws BuildException {
     CompilerMain _compilerMain = new CompilerMain();
     final Procedure1<CompilerMain> _function = new Procedure1<CompilerMain>() {
-        public void apply(final CompilerMain it) {
-          String _outputPath = CompileTask.this.getOutputPath();
-          it.setOutputPath(_outputPath);
-          String _string = CompileTask.this.classPath.toString();
-          it.setClassPath(_string);
-          String _tempDirectory = CompileTask.this.getTempDirectory();
-          it.setTempDirectory(_tempDirectory);
-          String _fileEncoding = CompileTask.this.getFileEncoding();
-          it.setFileEncoding(_fileEncoding);
-          String _string_1 = CompileTask.this.sourcePath.toString();
-          it.setSourcePath(_string_1);
-        }
-      };
+      public void apply(final CompilerMain it) {
+        String _outputPath = CompileTask.this.getOutputPath();
+        it.setOutputPath(_outputPath);
+        String _string = CompileTask.this.classPath.toString();
+        it.setClassPath(_string);
+        String _tempDirectory = CompileTask.this.getTempDirectory();
+        it.setTempDirectory(_tempDirectory);
+        String _fileEncoding = CompileTask.this.getFileEncoding();
+        it.setFileEncoding(_fileEncoding);
+        String _string_1 = CompileTask.this.sourcePath.toString();
+        it.setSourcePath(_string_1);
+      }
+    };
     final CompilerMain compiler = ObjectExtensions.<CompilerMain>operator_doubleArrow(_compilerMain, _function);
     int _compile = compiler.compile();
     boolean _equals = (_compile == CompilerMain.COMPILATION_ERROR);

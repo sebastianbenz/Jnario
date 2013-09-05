@@ -74,16 +74,16 @@ public class ImplicitSubject {
     }
     EList<JvmMember> _members = type.getMembers();
     final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
-        public void apply(final JvmField it) {
-          boolean _doesNotInitializeSubject = ImplicitSubject.this.doesNotInitializeSubject(exampleGroup);
-          if (_doesNotInitializeSubject) {
-            EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-            JvmAnnotationReference _annotation = ImplicitSubject.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, Subject.class);
-            ImplicitSubject.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-          }
-          it.setVisibility(JvmVisibility.PUBLIC);
+      public void apply(final JvmField it) {
+        boolean _doesNotInitializeSubject = ImplicitSubject.this.doesNotInitializeSubject(exampleGroup);
+        if (_doesNotInitializeSubject) {
+          EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+          JvmAnnotationReference _annotation = ImplicitSubject.this._extendedJvmTypesBuilder.toAnnotation(exampleGroup, Subject.class);
+          ImplicitSubject.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
         }
-      };
+        it.setVisibility(JvmVisibility.PUBLIC);
+      }
+    };
     JvmField _field = this._extendedJvmTypesBuilder.toField(exampleGroup, Constants.SUBJECT_FIELD_NAME, targetType, _function);
     _members.add(0, _field);
   }
@@ -113,12 +113,12 @@ public class ImplicitSubject {
     EList<JvmMember> _members = type.getMembers();
     final Iterable<JvmField> fields = Iterables.<JvmField>filter(_members, JvmField.class);
     final Function1<JvmField,Boolean> _function = new Function1<JvmField,Boolean>() {
-        public Boolean apply(final JvmField it) {
-          String _simpleName = it.getSimpleName();
-          boolean _equals = Objects.equal(_simpleName, Constants.SUBJECT_FIELD_NAME);
-          return Boolean.valueOf(_equals);
-        }
-      };
+      public Boolean apply(final JvmField it) {
+        String _simpleName = it.getSimpleName();
+        boolean _equals = Objects.equal(_simpleName, Constants.SUBJECT_FIELD_NAME);
+        return Boolean.valueOf(_equals);
+      }
+    };
     final JvmField subjectField = IterableExtensions.<JvmField>findFirst(fields, _function);
     boolean _notEquals = (!Objects.equal(subjectField, null));
     if (_notEquals) {
@@ -150,12 +150,12 @@ public class ImplicitSubject {
       allFeatureCalls = _concat;
     }
     final Function1<XAbstractFeatureCall,Boolean> _function = new Function1<XAbstractFeatureCall,Boolean>() {
-        public Boolean apply(final XAbstractFeatureCall it) {
-          String _concreteSyntaxFeatureName = it.getConcreteSyntaxFeatureName();
-          boolean _equals = Objects.equal(_concreteSyntaxFeatureName, Constants.SUBJECT_FIELD_NAME);
-          return Boolean.valueOf(_equals);
-        }
-      };
+      public Boolean apply(final XAbstractFeatureCall it) {
+        String _concreteSyntaxFeatureName = it.getConcreteSyntaxFeatureName();
+        boolean _equals = Objects.equal(_concreteSyntaxFeatureName, Constants.SUBJECT_FIELD_NAME);
+        return Boolean.valueOf(_equals);
+      }
+    };
     XAbstractFeatureCall _findFirst = IteratorExtensions.<XAbstractFeatureCall>findFirst(allFeatureCalls, _function);
     return Objects.equal(null, _findFirst);
   }
@@ -173,12 +173,12 @@ public class ImplicitSubject {
       allAssignments = _concat;
     }
     final Function1<XAssignment,Boolean> _function = new Function1<XAssignment,Boolean>() {
-        public Boolean apply(final XAssignment it) {
-          EReference _xAbstractFeatureCall_Feature = XbasePackage.eINSTANCE.getXAbstractFeatureCall_Feature();
-          final String assignable = Nodes.textForFeature(it, _xAbstractFeatureCall_Feature);
-          return Boolean.valueOf(Objects.equal(assignable, Constants.SUBJECT_FIELD_NAME));
-        }
-      };
+      public Boolean apply(final XAssignment it) {
+        EReference _xAbstractFeatureCall_Feature = XbasePackage.eINSTANCE.getXAbstractFeatureCall_Feature();
+        final String assignable = Nodes.textForFeature(it, _xAbstractFeatureCall_Feature);
+        return Boolean.valueOf(Objects.equal(assignable, Constants.SUBJECT_FIELD_NAME));
+      }
+    };
     XAssignment _findFirst = IteratorExtensions.<XAssignment>findFirst(allAssignments, _function);
     return Objects.equal(null, _findFirst);
   }

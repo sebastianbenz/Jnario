@@ -88,18 +88,18 @@ public class JnarioSpecsFactsForJavaSpec {
     final int x = 0;
     final int y = 1;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
-        public void apply(final Boolean it) {
-          boolean _equals = (x == 1);
-          boolean _equals_1 = (y == 0);
-          boolean _and = (_equals && _equals_1);
-          Assert.assertTrue("\nExpected x == 1 && y == 0 but"
-           + "\n     x == 1 is " + new org.hamcrest.StringDescription().appendValue(_equals).toString()
-           + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString()
-           + "\n     y == 0 is " + new org.hamcrest.StringDescription().appendValue(_equals_1).toString()
-           + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", _and);
-          
-        }
-      };
+      public void apply(final Boolean it) {
+        boolean _equals = (x == 1);
+        boolean _equals_1 = (y == 0);
+        boolean _and = (_equals && _equals_1);
+        Assert.assertTrue("\nExpected x == 1 && y == 0 but"
+         + "\n     x == 1 is " + new org.hamcrest.StringDescription().appendValue(_equals).toString()
+         + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString()
+         + "\n     y == 0 is " + new org.hamcrest.StringDescription().appendValue(_equals_1).toString()
+         + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", _and);
+        
+      }
+    };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Expected x == 1 && y == 0 but");

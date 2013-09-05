@@ -80,11 +80,11 @@ public class FeatureJavaValidatorSpec {
     Query _query = Query.query(this.modelStore);
     final Iterator<? extends EObject> steps = _query.allOf(type);
     final Procedure1<EObject> _function = new Procedure1<EObject>() {
-        public void apply(final EObject it) {
-          final AssertableDiagnostics result = RegisteredValidatorTester.validateObj(it);
-          test.apply(result);
-        }
-      };
+      public void apply(final EObject it) {
+        final AssertableDiagnostics result = RegisteredValidatorTester.validateObj(it);
+        test.apply(result);
+      }
+    };
     IteratorExtensions.forEach(steps, _function);
   }
   
