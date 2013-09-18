@@ -10,6 +10,7 @@ package org.jnario.feature.jvmmodel;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
+import java.util.ArrayList;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -17,6 +18,7 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -98,6 +100,7 @@ public class StepReferenceFieldCreator {
       return;
     }
     final XtendClass type = ((XtendClass) objectWithReference);
+    final ArrayList<XtendField> newFields = CollectionLiterals.<XtendField>newArrayList();
     Iterable<XtendField> _filter = Iterables.<XtendField>filter(members, XtendField.class);
     for (final XtendField field : _filter) {
       String _name = field.getName();
@@ -106,11 +109,12 @@ public class StepReferenceFieldCreator {
       if (_not_1) {
         final XtendField copiedMember = this._expressionCopier.<XtendField>cloneWithProxies(field);
         SourceAdapter.adapt(copiedMember, field);
-        EList<XtendMember> _members = type.getMembers();
-        _members.add(((XtendField) copiedMember));
+        newFields.add(((XtendField) copiedMember));
         String _name_1 = field.getName();
         fieldNames.add(_name_1);
       }
     }
+    EList<XtendMember> _members = type.getMembers();
+    _members.addAll(newFields);
   }
 }

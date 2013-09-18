@@ -42,18 +42,20 @@ class StepReferenceFieldCreator {
    		members.filter(typeof(XtendField)).filter[it != null].map[name].toSet
    	}
    	
-   	def private copyFields(EObject objectWithReference, Iterable<XtendMember> members, Set<String> fieldNames){
+   	def private void copyFields(EObject objectWithReference, Iterable<XtendMember> members, Set<String> fieldNames){
    		if(!(objectWithReference instanceof XtendClass)){
    			return
    		}
    		val type = objectWithReference as XtendClass
+   		val newFields = <XtendField>newArrayList
    		for(field: members.filter(typeof(XtendField))){
 			if(!fieldNames.contains(field.name)){
 				val copiedMember = cloneWithProxies(field)
 				SourceAdapter::adapt(copiedMember, field);
-				type.members.add(copiedMember as XtendField)
+				newFields += copiedMember as XtendField
 				fieldNames += field.name
 			}
 		}
+		type.members.addAll(newFields)
    	}
 }
