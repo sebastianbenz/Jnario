@@ -430,6 +430,22 @@ Feature: Static methods with parameters
 </li>
 </ul>
 </div>
+<div><h3 class="scenario notrun"  id="Scenario_Should_not_in_step_references">Scenario: Should not in step references
+</h3>
+<ul>
+<li><span class="step notrun"><p>Given a feature</p><pre>Feature: BoolExample
+
+Scenario: 1
+    Then true differs from false
+        true should not be false
+
+Scenario: 2
+    Then true differs from false</pre></span>
+</li>
+<li><span class="step notrun"><p>Then it should execute successfully</p></span>
+</li>
+</ul>
+</div>
 							</div>
 						    <div class="tab-pane" id="source">
 						    	<h3>References.feature</h3>
@@ -838,6 +854,20 @@ Feature: References for steps
     
       Scenario: Reference step using static method parameters
         Given a step
+    '''
+    Then it should execute successfully
+    
+  Scenario: Should not in step references
+    Given a feature
+    '''
+    Feature: BoolExample
+
+    Scenario: 1
+        Then true differs from false
+            true should not be false
+    
+    Scenario: 2
+        Then true differs from false
     '''
     Then it should execute successfully
 </pre>

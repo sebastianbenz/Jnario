@@ -176,13 +176,13 @@ assert list(&quot;red&quot;).hasOneElement</pre>
 <pre class="prettyprint lang-spec linenums">
 val colors = list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
 colors.head =&gt; &quot;red&quot;
-colors.tail =&gt; iterable(&quot;blue&quot;, &quot;green&quot;)
+colors.tail =&gt; #[&quot;blue&quot;, &quot;green&quot;]
 colors.last =&gt; &quot;green&quot;
 colors.empty =&gt; false</pre>
 </li><li><p id="concatenates_collections" class="example notrun"><strong>'+' concatenates collections</strong></p>
 <p>Here is another useful fact about Xtend, you can concatenate collections using the <code>+</code> operator.</p>
 <pre class="prettyprint lang-spec linenums">
-list(1, 2) + list(3, 4) =&gt; iterable(1, 2, 3, 4)</pre>
+list(1, 2) + list(3, 4) =&gt; #[1, 2, 3, 4]</pre>
 </li><li><p id="Concise_Lambda_Expressions" class="example notrun"><strong>Concise Lambda Expressions</strong></p>
 <p>Xtend has great support for lambda expressions. You can declare an anonymous function by surrounding the lambda expression by square brackets:</p>
 <pre class="prettyprint lang-spec">
@@ -204,7 +204,7 @@ list(11, 17, 19).forEach[assert it &gt; 10]</pre>
 </li><li><p id="Filter_iterables_by_type" class="example notrun"><strong>Filter iterables by type</strong></p>
 <p>The <code>filter</code> extension method is really helpful when you are only interested in a subset of a collection. You can filter by type:</p>
 <pre class="prettyprint lang-spec linenums">
-list(&quot;a string&quot;, 42, true).filter(typeof(String)) =&gt; iterable(&quot;a string&quot;)</pre>
+list(&quot;a string&quot;, 42, true).filter(typeof(String)) =&gt; #[&quot;a string&quot;]</pre>
 </li><li><p id="or_via_a_custom_predicate" class="example notrun"><strong>... or via a custom predicate</strong></p>
 <p>In this case we provide a lambda expressions that returns true for the elements we are interested in:</p>
 <pre class="prettyprint lang-spec linenums">
@@ -516,7 +516,7 @@ describe &quot;20 Facts about Xtend&quot;{
     fact &quot;Simple access to list elements&quot;{
       val colors = list(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
       colors.head =&gt; &quot;red&quot;
-      colors.tail =&gt; iterable(&quot;blue&quot;, &quot;green&quot;)
+      colors.tail =&gt; #[&quot;blue&quot;, &quot;green&quot;]
       colors.last =&gt; &quot;green&quot;
       colors.empty =&gt; false
     }
@@ -526,7 +526,7 @@ describe &quot;20 Facts about Xtend&quot;{
      * using the `+` operator. 
      */
     fact &quot;'+' concatenates collections&quot;{
-      list(1, 2) + list(3, 4) =&gt; iterable(1, 2, 3, 4)
+      list(1, 2) + list(3, 4) =&gt; #[1, 2, 3, 4]
     }
     
     /*
@@ -575,7 +575,7 @@ describe &quot;20 Facts about Xtend&quot;{
      * in a subset of a collection. You can filter by type:
      */
     fact &quot;Filter iterables by type&quot;{
-      list(&quot;a string&quot;, 42, true).filter(typeof(String)) =&gt; iterable(&quot;a string&quot;)
+      list(&quot;a string&quot;, 42, true).filter(typeof(String)) =&gt; #[&quot;a string&quot;]
     }
     
     /*
@@ -596,10 +596,6 @@ describe &quot;20 Facts about Xtend&quot;{
       val charCount = strings.map[s|s.length].reduce[sum, size | sum + size]
       charCount =&gt; 12
     }
-  }
-  
-  def &lt;T&gt; Iterable&lt;T&gt; iterable(T... elements){
-    [|elements.iterator]
   }
   
   def &lt;T&gt; operator_doubleArrow(Iterable&lt;T&gt; actual, Iterable&lt;T&gt; expected){
