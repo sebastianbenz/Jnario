@@ -403,3 +403,17 @@ Feature: References for steps
 		    Given a step
 		'''
 		Then it should execute successfully
+		
+	Scenario: Should not in step references
+		Given a feature
+		'''
+		Feature: BoolExample
+
+		Scenario: 1
+		    Then true differs from false
+		        true should not be false
+		
+		Scenario: 2
+		    Then true differs from false
+		'''
+		Then it should execute successfully

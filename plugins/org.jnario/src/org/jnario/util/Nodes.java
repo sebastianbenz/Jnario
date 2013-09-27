@@ -19,11 +19,23 @@ public class Nodes {
 	
 	public static String textForFeature(EObject eObject, EStructuralFeature feature){
 		List<INode> nodes = findNodesForFeature(eObject, feature);
+		if(nodes.isEmpty()){
+			return textFromSource(eObject, feature);
+		}
 		StringBuilder sb = new StringBuilder();
 		for (INode node : nodes) {
 			sb.append(node.getText());
 		}
 		return sb.toString().trim();
+	}
+
+	public static String textFromSource(EObject eObject,
+			EStructuralFeature feature) {
+		EObject source = SourceAdapter.find(eObject);
+		if(source == null){
+			return "";
+		}
+		return textForFeature(source, feature);
 	}
 
 }
