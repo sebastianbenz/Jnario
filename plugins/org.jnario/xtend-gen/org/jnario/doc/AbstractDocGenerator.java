@@ -96,18 +96,18 @@ public abstract class AbstractDocGenerator implements IGenerator {
     EList<EObject> _contents = input.getContents();
     Iterable<XtendFile> _filter = Iterables.<XtendFile>filter(_contents, XtendFile.class);
     final Procedure1<XtendFile> _function = new Procedure1<XtendFile>() {
-        public void apply(final XtendFile it) {
-          EList<XtendTypeDeclaration> _xtendTypes = it.getXtendTypes();
-          Iterable<XtendClass> _filter = Iterables.<XtendClass>filter(_xtendTypes, XtendClass.class);
-          final Procedure1<XtendClass> _function = new Procedure1<XtendClass>() {
-              public void apply(final XtendClass it) {
-                HtmlFile _createHtmlFile = AbstractDocGenerator.this.createHtmlFile(it);
-                AbstractDocGenerator.this._htmlFileBuilder.generate(it, fsa, _createHtmlFile);
-              }
-            };
-          IterableExtensions.<XtendClass>forEach(_filter, _function);
-        }
-      };
+      public void apply(final XtendFile it) {
+        EList<XtendTypeDeclaration> _xtendTypes = it.getXtendTypes();
+        Iterable<XtendClass> _filter = Iterables.<XtendClass>filter(_xtendTypes, XtendClass.class);
+        final Procedure1<XtendClass> _function = new Procedure1<XtendClass>() {
+          public void apply(final XtendClass it) {
+            HtmlFile _createHtmlFile = AbstractDocGenerator.this.createHtmlFile(it);
+            AbstractDocGenerator.this._htmlFileBuilder.generate(it, fsa, _createHtmlFile);
+          }
+        };
+        IterableExtensions.<XtendClass>forEach(_filter, _function);
+      }
+    };
     IterableExtensions.<XtendFile>forEach(_filter, _function);
   }
   
@@ -240,10 +240,10 @@ public abstract class AbstractDocGenerator implements IGenerator {
     }
     final String[] fragments = packageName.split("\\.");
     final Function1<String,String> _function = new Function1<String,String>() {
-        public String apply(final String s) {
-          return "../";
-        }
-      };
+      public String apply(final String s) {
+        return "../";
+      }
+    };
     final List<String> path = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(fragments)), _function);
     return IterableExtensions.join(path, "");
   }

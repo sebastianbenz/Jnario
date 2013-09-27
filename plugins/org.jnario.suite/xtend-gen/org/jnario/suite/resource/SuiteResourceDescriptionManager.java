@@ -38,11 +38,11 @@ public class SuiteResourceDescriptionManager extends XtendResourceDescriptionMan
       return true;
     }
     final Function1<Delta,Boolean> _function = new Function1<Delta,Boolean>() {
-        public Boolean apply(final Delta it) {
-          boolean _isNewSpec = SuiteResourceDescriptionManager.this.isNewSpec(it);
-          return Boolean.valueOf(_isNewSpec);
-        }
-      };
+      public Boolean apply(final Delta it) {
+        boolean _isNewSpec = SuiteResourceDescriptionManager.this.isNewSpec(it);
+        return Boolean.valueOf(_isNewSpec);
+      }
+    };
     Iterable<Delta> _filter = IterableExtensions.<Delta>filter(deltas, _function);
     boolean _isEmpty = IterableExtensions.isEmpty(_filter);
     return (!_isEmpty);

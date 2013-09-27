@@ -47,60 +47,60 @@ public class DocCompilerMain {
     }
     DocCompilerMain _docCompilerMain = new DocCompilerMain();
     final Procedure1<DocCompilerMain> _function = new Procedure1<DocCompilerMain>() {
-        public void apply(final DocCompilerMain it) {
-          final Iterator<String> arguments = ((List<String>)Conversions.doWrapArray(args)).iterator();
-          boolean _hasNext = arguments.hasNext();
-          boolean _while = _hasNext;
-          while (_while) {
-            {
-              String _next = arguments.next();
-              final String argument = _next.trim();
-              boolean _matched = false;
-              if (!_matched) {
-                boolean _or = false;
-                boolean _equals = Objects.equal(argument, "-cp");
-                if (_equals) {
-                  _or = true;
-                } else {
-                  boolean _equals_1 = Objects.equal(argument, "-classpath");
-                  _or = (_equals || _equals_1);
-                }
-                if (_or) {
-                  _matched=true;
-                  String _next_1 = arguments.next();
-                  it.setClassPath(_next_1);
-                }
+      public void apply(final DocCompilerMain it) {
+        final Iterator<String> arguments = ((List<String>)Conversions.doWrapArray(args)).iterator();
+        boolean _hasNext = arguments.hasNext();
+        boolean _while = _hasNext;
+        while (_while) {
+          {
+            String _next = arguments.next();
+            final String argument = _next.trim();
+            boolean _matched = false;
+            if (!_matched) {
+              boolean _or = false;
+              boolean _equals = Objects.equal(argument, "-cp");
+              if (_equals) {
+                _or = true;
+              } else {
+                boolean _equals_1 = Objects.equal(argument, "-classpath");
+                _or = (_equals || _equals_1);
               }
-              if (!_matched) {
-                if (Objects.equal(argument,"-d")) {
-                  _matched=true;
-                  String _next_2 = arguments.next();
-                  it.setOutputPath(_next_2);
-                }
-              }
-              if (!_matched) {
-                if (Objects.equal(argument,"-results")) {
-                  _matched=true;
-                  String _next_3 = arguments.next();
-                  it.setResultFolder(_next_3);
-                }
-              }
-              if (!_matched) {
-                if (Objects.equal(argument,"-encoding")) {
-                  _matched=true;
-                  String _next_4 = arguments.next();
-                  it.setFileEncoding(_next_4);
-                }
-              }
-              if (!_matched) {
-                it.setSourcePath(argument);
+              if (_or) {
+                _matched=true;
+                String _next_1 = arguments.next();
+                it.setClassPath(_next_1);
               }
             }
-            boolean _hasNext_1 = arguments.hasNext();
-            _while = _hasNext_1;
+            if (!_matched) {
+              if (Objects.equal(argument,"-d")) {
+                _matched=true;
+                String _next_2 = arguments.next();
+                it.setOutputPath(_next_2);
+              }
+            }
+            if (!_matched) {
+              if (Objects.equal(argument,"-results")) {
+                _matched=true;
+                String _next_3 = arguments.next();
+                it.setResultFolder(_next_3);
+              }
+            }
+            if (!_matched) {
+              if (Objects.equal(argument,"-encoding")) {
+                _matched=true;
+                String _next_4 = arguments.next();
+                it.setFileEncoding(_next_4);
+              }
+            }
+            if (!_matched) {
+              it.setSourcePath(argument);
+            }
           }
+          boolean _hasNext_1 = arguments.hasNext();
+          _while = _hasNext_1;
         }
-      };
+      }
+    };
     final DocCompilerMain main = ObjectExtensions.<DocCompilerMain>operator_doubleArrow(_docCompilerMain, _function);
     int _compile = main.compile();
     System.exit(_compile);
@@ -235,12 +235,12 @@ public class DocCompilerMain {
       SpecResultParser _specResultParser = new SpecResultParser();
       final SpecResultParser specResultParser = _specResultParser;
       final FileFilter _function = new FileFilter() {
-          public boolean accept(final File it) {
-            String _name = it.getName();
-            boolean _endsWith = _name.endsWith("xml");
-            return _endsWith;
-          }
-        };
+        public boolean accept(final File it) {
+          String _name = it.getName();
+          boolean _endsWith = _name.endsWith("xml");
+          return _endsWith;
+        }
+      };
       File[] _listFiles = reportFolder.listFiles(_function);
       for (final File file : _listFiles) {
         {

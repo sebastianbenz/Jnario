@@ -36,24 +36,24 @@ public class MatchersSpec {
   
   public Function1<Person,Boolean> olderThan(final Person p) {
     final Function1<Person,Boolean> _function = new Function1<Person,Boolean>() {
-        public Boolean apply(final Person other) {
-          int _age = other.getAge();
-          int _age_1 = p.getAge();
-          boolean _greaterThan = (_age > _age_1);
-          return _greaterThan;
-        }
-      };
+      public Boolean apply(final Person other) {
+        int _age = other.getAge();
+        int _age_1 = p.getAge();
+        boolean _greaterThan = (_age > _age_1);
+        return _greaterThan;
+      }
+    };
     return _function;
   }
   
   public Function1<Person,Boolean> underAge() {
     final Function1<Person,Boolean> _function = new Function1<Person,Boolean>() {
-        public Boolean apply(final Person p) {
-          int _age = p.getAge();
-          boolean _lessThan = (_age < 18);
-          return _lessThan;
-        }
-      };
+      public Boolean apply(final Person p) {
+        int _age = p.getAge();
+        boolean _lessThan = (_age < 18);
+        return _lessThan;
+      }
+    };
     return _function;
   }
   

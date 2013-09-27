@@ -37,7 +37,7 @@ describe "Using Tables"{
     describe "Example Tables"{
       
       def myExamples{
-        |    input      |  result       |  
+        |    String input      |  String result       |  
         | "Hello World" | "HELLO WORLD" | 
         | "Hallo Welt"  | "HALLO WELT"  |
       } 

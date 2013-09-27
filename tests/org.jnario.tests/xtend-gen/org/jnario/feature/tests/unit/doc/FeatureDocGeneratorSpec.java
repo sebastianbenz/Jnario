@@ -179,38 +179,38 @@ public class FeatureDocGeneratorSpec {
   
   public Executable2ResultMapping mappingWithFailures() {
     final Executable2ResultMapping _function = new Executable2ResultMapping() {
-        public SpecExecution getResult(final Executable it) {
-          String _string = FeatureDocGeneratorSpec.this.message.toString();
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("java.lang.StringIndexOutOfBoundsException: String index out of range: -1");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("at java.lang.String.substring(String.java:1937)");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("at java.lang.String.substring(String.java:1904)");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:44)");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:1)");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("at org.jnario.doc.HtmlFile.newHtmlFile(HtmlFile.java:21)");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("at org.jnario.feature.doc.FeatureDocGenerator.createHtmlFile(FeatureDocGenerator.java:57)");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("at org.jnario.doc.AbstractDocGenerator$2$1.apply(AbstractDocGenerator.java:88)");
-          _builder.newLine();
-          String _string_1 = _builder.toString();
-          SpecFailure _specFailure = new SpecFailure(_string, "Exception", _string_1);
-          Failed _failingSpec = Failed.failingSpec("org.jnario.Class", "This Feature", 0.3, _specFailure);
-          return _failingSpec;
-        }
-      };
+      public SpecExecution getResult(final Executable it) {
+        String _string = FeatureDocGeneratorSpec.this.message.toString();
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("java.lang.StringIndexOutOfBoundsException: String index out of range: -1");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("at java.lang.String.substring(String.java:1937)");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("at java.lang.String.substring(String.java:1904)");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:44)");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("at org.jnario.feature.doc.FeatureDocGenerator$1.apply(FeatureDocGenerator.java:1)");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("at org.jnario.doc.HtmlFile.newHtmlFile(HtmlFile.java:21)");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("at org.jnario.feature.doc.FeatureDocGenerator.createHtmlFile(FeatureDocGenerator.java:57)");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("at org.jnario.doc.AbstractDocGenerator$2$1.apply(AbstractDocGenerator.java:88)");
+        _builder.newLine();
+        String _string_1 = _builder.toString();
+        SpecFailure _specFailure = new SpecFailure(_string, "Exception", _string_1);
+        Failed _failingSpec = Failed.failingSpec("org.jnario.Class", "This Feature", 0.3, _specFailure);
+        return _failingSpec;
+      }
+    };
     Executable2ResultMapping _mapping = this.mapping = _function;
     return _mapping;
   }

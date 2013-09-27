@@ -12,11 +12,18 @@ import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Iterables.toArray;
 import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Lists.transform;
 import static java.util.Arrays.asList;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
+import static org.eclipse.xtext.util.Strings.concat;
+import static org.eclipse.xtext.util.Strings.emptyIfNull;
+import static org.eclipse.xtext.util.Strings.isEmpty;
+import static org.eclipse.xtext.util.Strings.split;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -24,21 +31,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jdt.annotation.Nullable;
+import org.eclipse.jdt.core.compiler.batch.BatchCompiler;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.common.types.access.impl.ClasspathTypeProvider;
 import org.eclipse.xtext.common.types.access.impl.IndexedJvmTypeAccess;
+import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
+import org.eclipse.xtext.mwe.NameBasedFilter;
+import org.eclipse.xtext.mwe.PathTraverser;
+import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.parser.IParseResult;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.resource.impl.ResourceSetBasedResourceDescriptions;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
@@ -60,7 +81,7 @@ import com.google.inject.Inject;
  */
 public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 
-	private final Logger log = Logger.getLogger(getClass());
+	private static final Logger log = Logger.getLogger(JnarioBatchCompiler.class);
 
 	@Inject
 	private JvmModelGenerator generator;
@@ -291,17 +312,14 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 			return false;
 		}
 
-		WorkspaceConfig workspaceConfig = new WorkspaceConfig(commonRoot
-				.getParent().toString());
+		WorkspaceConfig workspaceConfig = new WorkspaceConfig(commonRoot.getParent().toString());
 		ProjectConfig projectConfig = new ProjectConfig(commonRoot.getName());
 
 		java.net.URI commonURI = commonRoot.toURI();
-		java.net.URI relativizedTarget = commonURI.relativize(outputFile
-				.toURI());
+		java.net.URI relativizedTarget = commonURI.relativize(outputFile.toURI());
 		if (relativizedTarget.isAbsolute()) {
 			log.error("Target folder '" + outputFile
-					+ "' must be a child of the project folder '" + commonRoot
-					+ "'");
+					+ "' must be a child of the project folder '" + commonRoot + "'");
 			return false;
 		}
 
@@ -309,12 +327,10 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 			java.net.URI relativizedSrc = commonURI.relativize(source.toURI());
 			if (relativizedSrc.isAbsolute()) {
 				log.error("Source folder '" + source
-						+ "' must be a child of the project folder '"
-						+ commonRoot + "'");
+						+ "' must be a child of the project folder '" + commonRoot + "'");
 				return false;
 			}
-			projectConfig.addSourceFolderMapping(relativizedSrc.getPath(),
-					relativizedTarget.getPath());
+			projectConfig.addSourceFolderMapping(relativizedSrc.getPath(), relativizedTarget.getPath());
 		}
 		workspaceConfig.addProjectConfig(projectConfig);
 		workspaceConfigProvider.setWorkspaceConfig(workspaceConfig);
@@ -325,8 +341,7 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 		try {
 			return new File(outputPath).getCanonicalFile();
 		} catch (IOException e) {
-			log.error("Invalid target folder '" + outputPath + "' ("
-					+ e.getMessage() + ")");
+			log.error("Invalid target folder '" + outputPath + "' (" + e.getMessage() + ")");
 			return null;
 		}
 	}
@@ -337,8 +352,7 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 			try {
 				sourceFileList.add(new File(path).getCanonicalFile());
 			} catch (IOException e) {
-				log.error("Invalid source folder '" + path + "' ("
-						+ e.getMessage() + ")");
+				log.error("Invalid source folder '" + path + "' (" + e.getMessage() + ")");
 				return null;
 			}
 		}
@@ -383,12 +397,207 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 	}
 
 	public boolean compile() {
-		if (workspaceConfigProvider.getWorkspaceConfig() == null) {
-			if (!configureWorkspace2()) {
+		try {
+			if (workspaceConfigProvider.getWorkspaceConfig() == null) {
+				if (!configureWorkspace2()) {
+					return false;
+				}
+			}
+			ResourceSet resourceSet = resourceSetProvider.get();
+			File classDirectory = createTempDir("classes");
+				// install a type provider without index lookup for the first phase
+				installJvmTypeProvider(resourceSet, classDirectory, true);
+				loadXtendFiles(resourceSet);
+				File sourceDirectory = createStubs(resourceSet);
+				if (!preCompileStubs(sourceDirectory, classDirectory)) {
+					log.debug("Compilation of stubs and existing Java code had errors. This is expected and usually is not a probblem.");
+				}
+			// install a fresh type provider for the second phase, so we clear all previously cached classes and misses.
+			installJvmTypeProvider(resourceSet, classDirectory, false);
+			EcoreUtil.resolveAll(resourceSet);
+			List<Issue> issues = validate(resourceSet);
+			Iterable<Issue> errors = Iterables.filter(issues, SeverityFilter.ERROR);
+			Iterable<Issue> warnings = Iterables.filter(issues, SeverityFilter.WARNING);
+			reportIssues(Iterables.concat(errors, warnings));
+			if (!Iterables.isEmpty(errors)) {
+				return false;
+			}
+			generateJavaFiles(resourceSet);
+		} finally {
+			if (isDeleteTempDirectory()) {
+				deleteTmpFolders();
+			}
+		}
+		return true;
+	}
+
+	@Deprecated
+	protected ResourceSet loadXtendFiles() {
+		final ResourceSet resourceSet = resourceSetProvider.get();
+		return loadXtendFiles(resourceSet);
+	}
+
+
+	protected boolean preCompileStubs(File tmpSourceDirectory, File classDirectory) {
+		List<String> commandLine = Lists.newArrayList();
+		// todo args
+		if (isVerbose()) {
+			commandLine.add("-verbose");
+		}
+		if (!isEmpty(classPath)) {
+			commandLine.add("-cp \"" + concat(File.pathSeparator, getClassPathEntries())+"\"");
+		}
+		commandLine.add("-d \"" + classDirectory.toString() + "\"");
+		commandLine.add("-" + getComplianceLevel());
+		commandLine.add("-proceedOnError");
+		List<String> sourceDirectories = newArrayList(getSourcePathDirectories());
+		sourceDirectories.add(tmpSourceDirectory.toString());
+		commandLine.add(concat(" ", transform(sourceDirectories, new Function<String, String>() {
+
+			public String apply(String path) {
+				return "\"" + path + "\"";
+			}
+		})));
+		if (log.isDebugEnabled()) {
+			log.debug("invoke batch compiler with '" + concat(" ", commandLine) + "'");
+		}
+		return BatchCompiler.compile(concat(" ", commandLine), new PrintWriter(getOutputWriter()), new PrintWriter(
+				getErrorWriter()), null);
+	}
+
+	
+	/**
+	 * Installs the complete JvmTypeProvider including index access into the {@link ResourceSet}.
+	 * The lookup classpath is enhanced with the given tmp directory.
+	 * @deprecated use the explicit variant {@link #installJvmTypeProvider(ResourceSet, File, boolean)} instead.
+	 */
+	@Deprecated
+	protected void installJvmTypeProvider(ResourceSet resourceSet, File tmpClassDirectory) {
+		internalInstallJvmTypeProvider(resourceSet, tmpClassDirectory, false);
+	}
+	
+
+	protected void reportIssues(Iterable<Issue> issues) {
+		for (Issue issue : issues) {
+			StringBuilder issueBuilder = createIssueMessage(issue);
+			if (Severity.ERROR == issue.getSeverity()) {
+				log.error(issueBuilder.toString());
+			} else if (Severity.WARNING == issue.getSeverity()) {
+				log.warn(issueBuilder.toString());
+			}
+		}
+	}
+
+	private StringBuilder createIssueMessage(Issue issue) {
+		StringBuilder issueBuilder = new StringBuilder("\n");
+		issueBuilder.append(issue.getSeverity()).append(": \t");
+		URI uriToProblem = issue.getUriToProblem();
+		if (uriToProblem != null) {
+			URI resourceUri = uriToProblem.trimFragment();
+			issueBuilder.append(resourceUri.lastSegment()).append(" - ");
+			if (resourceUri.isFile()) {
+				issueBuilder.append(resourceUri.toFileString());
+			}
+		}
+		issueBuilder.append("\n").append(issue.getLineNumber()).append(": ").append(issue.getMessage());
+		return issueBuilder;
+	}
+
+
+	protected ResourceSetBasedResourceDescriptions getResourceDescriptions(ResourceSet resourceSet) {
+		ResourceSetBasedResourceDescriptions resourceDescriptions = resourceSetDescriptionsProvider.get();
+		resourceDescriptions.setContext(resourceSet);
+		resourceDescriptions.setRegistry(IResourceServiceProvider.Registry.INSTANCE);
+		return resourceDescriptions;
+	}
+
+	private String getJavaFileName(QualifiedName typeName) {
+		return Strings.concat("/", typeName.getSegments()) + ".java";
+	}
+
+	@Nullable protected XtendFile getXtendFile(Resource resource) {
+		XtextResource xtextResource = (XtextResource) resource;
+		IParseResult parseResult = xtextResource.getParseResult();
+		if (parseResult != null) {
+			EObject model = parseResult.getRootASTElement();
+			if (model instanceof XtendFile) {
+				XtendFile xtendFile = (XtendFile) model;
+				return xtendFile;
+			}
+		}
+		return null;
+	}
+
+	protected List<String> getClassPathEntries() {
+		return getDirectories(classPath);
+	}
+
+	protected List<String> getSourcePathDirectories() {
+		return getDirectories(sourcePath);
+	}
+
+	protected List<String> getDirectories(String path) {
+		if (Strings.isEmpty(path)) {
+			return Lists.newArrayList();
+		}
+		final List<String> split = split(emptyIfNull(path), File.pathSeparator);
+		return transform(split, new Function<String, String>() {
+			public String apply(String from) {
+				try {
+					return new File(from).getCanonicalPath();
+				} catch (IOException e) {
+					throw new WrappedException(e);
+				}
+			}
+		});
+	}
+
+	protected File createTempDir(String prefix) {
+		File tempDir = new File(getTempDirectory(), prefix + System.nanoTime());
+		cleanFolder(tempDir, ACCEPT_ALL_FILTER, true, true);
+		if (!tempDir.mkdirs()) {
+			throw new RuntimeException("Error creating temp directory '" + tempDir.getAbsolutePath() + "'");
+		}
+		tempFolders.add(tempDir);
+		return tempDir;
+	}
+
+	protected void deleteTmpFolders() {
+		for (File file : tempFolders) {
+			cleanFolder(file, ACCEPT_ALL_FILTER, true, true);
+		}
+	}
+
+	// FIXME: use Files#cleanFolder after the maven distro availability of version 2.2.x
+	protected static boolean cleanFolder(File parentFolder, FileFilter filter, boolean continueOnError,
+			boolean deleteParentFolder) {
+		if (!parentFolder.exists()) {
+			return true;
+		}
+		if (filter == null)
+			filter = ACCEPT_ALL_FILTER;
+		log.debug("Cleaning folder " + parentFolder.toString());
+		final File[] contents = parentFolder.listFiles(filter);
+		for (int j = 0; j < contents.length; j++) {
+			final File file = contents[j];
+			if (file.isDirectory()) {
+				if (!cleanFolder(file, filter, continueOnError, true) && !continueOnError)
+					return false;
+			} else {
+				if (!file.delete()) {
+					log.error("Couldn't delete " + file.getAbsolutePath());
+					if (!continueOnError)
+						return false;
+				}
+			}
+		}
+		if (deleteParentFolder) {
+			if (parentFolder.list().length == 0 && !parentFolder.delete()) {
+				log.error("Couldn't delete " + parentFolder.getAbsolutePath());
 				return false;
 			}
 		}
-		return super.compile();
-	}
+		return true;
+	}	
 
 }

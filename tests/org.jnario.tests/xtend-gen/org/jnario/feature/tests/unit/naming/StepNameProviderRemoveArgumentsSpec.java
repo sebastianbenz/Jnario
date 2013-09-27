@@ -57,26 +57,26 @@ public class StepNameProviderRemoveArgumentsSpec extends StepNameProviderSpec {
   @Order(1)
   public void _examplesDoPass() throws Exception {
     final Procedure1<StepNameProviderRemoveArgumentsSpecExamples> _function = new Procedure1<StepNameProviderRemoveArgumentsSpecExamples>() {
-        public void apply(final StepNameProviderRemoveArgumentsSpecExamples it) {
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("Scenario: scenario");
-          _builder.newLine();
-          String _step = it.getStep();
-          _builder.append(_step, "");
-          _builder.newLineIfNotEmpty();
-          StepNameProviderRemoveArgumentsSpec.this.parseScenario(_builder);
-          String _step_1 = it.getStep();
-          String _removeArguments = StepNameProviderRemoveArgumentsSpec.this.subject.removeArguments(_step_1);
-          String _result = it.getResult();
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_removeArguments, _result);
-          Assert.assertTrue("\nExpected subject.removeArguments(step) => result but"
-           + "\n     subject.removeArguments(step) is " + new org.hamcrest.StringDescription().appendValue(_removeArguments).toString()
-           + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(StepNameProviderRemoveArgumentsSpec.this.subject).toString()
-           + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step_1).toString()
-           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final StepNameProviderRemoveArgumentsSpecExamples it) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("Scenario: scenario");
+        _builder.newLine();
+        String _step = it.getStep();
+        _builder.append(_step, "");
+        _builder.newLineIfNotEmpty();
+        StepNameProviderRemoveArgumentsSpec.this.parseScenario(_builder);
+        String _step_1 = it.getStep();
+        String _removeArguments = StepNameProviderRemoveArgumentsSpec.this.subject.removeArguments(_step_1);
+        String _result = it.getResult();
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_removeArguments, _result);
+        Assert.assertTrue("\nExpected subject.removeArguments(step) => result but"
+         + "\n     subject.removeArguments(step) is " + new org.hamcrest.StringDescription().appendValue(_removeArguments).toString()
+         + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(StepNameProviderRemoveArgumentsSpec.this.subject).toString()
+         + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step_1).toString()
+         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     ExampleTableIterators.<StepNameProviderRemoveArgumentsSpecExamples>forEach(this.examples, _function);
   }
 }

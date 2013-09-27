@@ -79,11 +79,11 @@ public class SuiteNodeBuilder {
   public SuiteNode createNode(final Suite current, final SuiteNode parent) {
     EList<Reference> _elements = current.getElements();
     final Function1<Reference,List<Specification>> _function = new Function1<Reference,List<Specification>>() {
-        public List<Specification> apply(final Reference it) {
-          List<Specification> _resolveSpecs = SuiteNodeBuilder.this._specResolver.resolveSpecs(it);
-          return _resolveSpecs;
-        }
-      };
+      public List<Specification> apply(final Reference it) {
+        List<Specification> _resolveSpecs = SuiteNodeBuilder.this._specResolver.resolveSpecs(it);
+        return _resolveSpecs;
+      }
+    };
     List<List<Specification>> _map = ListExtensions.<Reference, List<Specification>>map(_elements, _function);
     final Iterable<Specification> specs = Iterables.<Specification>concat(_map);
     SuiteNode _suiteNode = new SuiteNode(current, specs);

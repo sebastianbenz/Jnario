@@ -36,18 +36,18 @@ public class FilterExtractor {
   private Map<String,Function1<String,Filter>> filterRegistry = new Function0<Map<String,Function1<String,Filter>>>() {
     public Map<String,Function1<String,Filter>> apply() {
       final Function1<String,Filter> _function = new Function1<String,Filter>() {
-          public Filter apply(final String s) {
-            Filter _create = RegexFilter.create(s);
-            return _create;
-          }
-        };
+        public Filter apply(final String s) {
+          Filter _create = RegexFilter.create(s);
+          return _create;
+        }
+      };
       Pair<String,Function1<String,Filter>> _mappedTo = Pair.<String, Function1<String,Filter>>of("filter", _function);
       final Function1<String,Filter> _function_1 = new Function1<String,Filter>() {
-          public Filter apply(final String s) {
-            Filter _create = LangFilter.create(s);
-            return _create;
-          }
-        };
+        public Filter apply(final String s) {
+          Filter _create = LangFilter.create(s);
+          return _create;
+        }
+      };
       Pair<String,Function1<String,Filter>> _mappedTo_1 = Pair.<String, Function1<String,Filter>>of("lang", _function_1);
       HashMap<String,Function1<String,Filter>> _newHashMap = CollectionLiterals.<String, Function1<String,Filter>>newHashMap(_mappedTo, _mappedTo_1);
       return _newHashMap;

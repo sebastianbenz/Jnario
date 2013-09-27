@@ -163,18 +163,18 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
         final XtendClass current = ((XtendClass) xtendType);
         EList<XAnnotation> _annotations = current.getAnnotations();
         final Predicate<XAnnotation> _function = new Predicate<XAnnotation>() {
-            public boolean apply(final XAnnotation it) {
-              boolean _hasExtendsAnnotation = JnarioJvmModelInferrer.this.hasExtendsAnnotation(it);
-              return _hasExtendsAnnotation;
-            }
-          };
+          public boolean apply(final XAnnotation it) {
+            boolean _hasExtendsAnnotation = JnarioJvmModelInferrer.this.hasExtendsAnnotation(it);
+            return _hasExtendsAnnotation;
+          }
+        };
         Iterable<XAnnotation> _filter = Iterables.<XAnnotation>filter(_annotations, _function);
         final Function1<XAnnotation,XTypeLiteral> _function_1 = new Function1<XAnnotation,XTypeLiteral>() {
-            public XTypeLiteral apply(final XAnnotation it) {
-              XExpression _value = it.getValue();
-              return ((XTypeLiteral) _value);
-            }
-          };
+          public XTypeLiteral apply(final XAnnotation it) {
+            XExpression _value = it.getValue();
+            return ((XTypeLiteral) _value);
+          }
+        };
         Iterable<XTypeLiteral> _map = IterableExtensions.<XAnnotation, XTypeLiteral>map(_filter, _function_1);
         for (final XTypeLiteral extendedType : _map) {
           boolean _and_1 = false;

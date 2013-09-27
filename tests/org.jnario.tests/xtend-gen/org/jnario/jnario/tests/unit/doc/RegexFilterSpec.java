@@ -104,21 +104,21 @@ public class RegexFilterSpec {
   @Order(1)
   public void _removesAllMatchedElements() throws Exception {
     final Procedure1<RegexFilterSpecFilteringExamples> _function = new Procedure1<RegexFilterSpecFilteringExamples>() {
-        public void apply(final RegexFilterSpecFilteringExamples it) {
-          String _regex = it.getRegex();
-          final Filter filter = RegexFilter.create(_regex);
-          String _string = it.getString();
-          String _apply = filter.apply(_string);
-          String _result = it.getResult();
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_apply, _result);
-          Assert.assertTrue("\nExpected filter.apply(string) => result but"
-           + "\n     filter.apply(string) is " + new org.hamcrest.StringDescription().appendValue(_apply).toString()
-           + "\n     filter is " + new org.hamcrest.StringDescription().appendValue(filter).toString()
-           + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
-           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final RegexFilterSpecFilteringExamples it) {
+        String _regex = it.getRegex();
+        final Filter filter = RegexFilter.create(_regex);
+        String _string = it.getString();
+        String _apply = filter.apply(_string);
+        String _result = it.getResult();
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_apply, _result);
+        Assert.assertTrue("\nExpected filter.apply(string) => result but"
+         + "\n     filter.apply(string) is " + new org.hamcrest.StringDescription().appendValue(_apply).toString()
+         + "\n     filter is " + new org.hamcrest.StringDescription().appendValue(filter).toString()
+         + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
+         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     Each.<RegexFilterSpecFilteringExamples>forEach(this.filteringExamples, _function);
   }
 }

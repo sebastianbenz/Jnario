@@ -40,12 +40,12 @@ public class StepContextProviderSpec {
       final Set<String> expected = IterableExtensions.<String>toSet(((Iterable<String>)Conversions.doWrapArray(names)));
       Iterable<XtendField> _filter = Iterables.<XtendField>filter(this.m, XtendField.class);
       final Function1<XtendField,Boolean> _function = new Function1<XtendField,Boolean>() {
-          public Boolean apply(final XtendField it) {
-            String _name = it.getName();
-            boolean _contains = expected.contains(_name);
-            return Boolean.valueOf(_contains);
-          }
-        };
+        public Boolean apply(final XtendField it) {
+          String _name = it.getName();
+          boolean _contains = expected.contains(_name);
+          return Boolean.valueOf(_contains);
+        }
+      };
       Iterable<XtendField> _filter_1 = IterableExtensions.<XtendField>filter(_filter, _function);
       Set<XtendField> _set = IterableExtensions.<XtendField>toSet(_filter_1);
       _xblockexpression = (_set);

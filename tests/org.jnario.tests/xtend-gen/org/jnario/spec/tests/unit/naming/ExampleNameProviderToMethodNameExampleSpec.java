@@ -42,15 +42,15 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
       "\'my\texample\'", 
       "\'my_example\'");
     final Procedure1<String> _function = new Procedure1<String>() {
-        public void apply(final String it) {
-          String _firstMethodName = ExampleNameProviderToMethodNameExampleSpec.this.firstMethodName(it);
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "_myExample");
-          Assert.assertTrue("\nExpected firstMethodName(it) => \'_myExample\' but"
-           + "\n     firstMethodName(it) is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString()
-           + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final String it) {
+        String _firstMethodName = ExampleNameProviderToMethodNameExampleSpec.this.firstMethodName(it);
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "_myExample");
+        Assert.assertTrue("\nExpected firstMethodName(it) => \'_myExample\' but"
+         + "\n     firstMethodName(it) is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString()
+         + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     IterableExtensions.<String>forEach(_newArrayList, _function);
   }
   

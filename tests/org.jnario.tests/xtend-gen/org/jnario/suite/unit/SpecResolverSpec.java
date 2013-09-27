@@ -153,11 +153,11 @@ public class SpecResolverSpec {
   public List<String> resolvedSpecs(final Suite suite) {
     List<Specification> _resolveSpecs = this.subject.resolveSpecs(suite);
     final Function1<Specification,String> _function = new Function1<Specification,String>() {
-        public String apply(final Specification it) {
-          String _javaClassName = SpecResolverSpec.this._suiteClassNameProvider.toJavaClassName(it);
-          return _javaClassName;
-        }
-      };
+      public String apply(final Specification it) {
+        String _javaClassName = SpecResolverSpec.this._suiteClassNameProvider.toJavaClassName(it);
+        return _javaClassName;
+      }
+    };
     List<String> _map = ListExtensions.<Specification, String>map(_resolveSpecs, _function);
     List<String> _list = IterableExtensions.<String>toList(_map);
     return _list;

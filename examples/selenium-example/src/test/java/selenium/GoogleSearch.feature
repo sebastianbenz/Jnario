@@ -22,5 +22,3 @@ Feature: Searching via Google
     When I search for "Xtend Lang"
 
     Then the result should contain "Xtend - Modernized Java"
-
-                         

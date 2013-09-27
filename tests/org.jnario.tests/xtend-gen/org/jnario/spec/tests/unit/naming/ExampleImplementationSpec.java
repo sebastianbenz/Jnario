@@ -61,22 +61,22 @@ public class ExampleImplementationSpec extends ExampleSpec {
   @Order(1)
   public void _examplesForEachExampleParseExpressionShouldBeInstanceOfType() throws Exception {
     final Procedure1<ExampleImplementationSpecExamples> _function = new Procedure1<ExampleImplementationSpecExamples>() {
-        public void apply(final ExampleImplementationSpecExamples it) {
-          String _example = it.getExample();
-          Example _parse = ExampleImplementationSpec.this.parse(_example);
-          XExpression _expression = _parse.getExpression();
-          Class<? extends XExpression> _type = it.getType();
-          Matcher<XExpression> _instanceOf = CoreMatchers.<XExpression>instanceOf(_type);
-          boolean _should_be = org.jnario.lib.Should.<XExpression>should_be(_expression, _instanceOf);
-          Assert.assertTrue("\nExpected example.parse.expression should be instanceOf(type) but"
-           + "\n     example.parse.expression is " + new org.hamcrest.StringDescription().appendValue(_expression).toString()
-           + "\n     example.parse is " + new org.hamcrest.StringDescription().appendValue(_parse).toString()
-           + "\n     example is " + new org.hamcrest.StringDescription().appendValue(_example).toString()
-           + "\n     instanceOf(type) is " + new org.hamcrest.StringDescription().appendValue(_instanceOf).toString()
-           + "\n     type is " + new org.hamcrest.StringDescription().appendValue(_type).toString() + "\n", _should_be);
-          
-        }
-      };
+      public void apply(final ExampleImplementationSpecExamples it) {
+        String _example = it.getExample();
+        Example _parse = ExampleImplementationSpec.this.parse(_example);
+        XExpression _expression = _parse.getExpression();
+        Class<? extends XExpression> _type = it.getType();
+        Matcher<XExpression> _instanceOf = CoreMatchers.<XExpression>instanceOf(_type);
+        boolean _should_be = org.jnario.lib.Should.<XExpression>should_be(_expression, _instanceOf);
+        Assert.assertTrue("\nExpected example.parse.expression should be instanceOf(type) but"
+         + "\n     example.parse.expression is " + new org.hamcrest.StringDescription().appendValue(_expression).toString()
+         + "\n     example.parse is " + new org.hamcrest.StringDescription().appendValue(_parse).toString()
+         + "\n     example is " + new org.hamcrest.StringDescription().appendValue(_example).toString()
+         + "\n     instanceOf(type) is " + new org.hamcrest.StringDescription().appendValue(_instanceOf).toString()
+         + "\n     type is " + new org.hamcrest.StringDescription().appendValue(_type).toString() + "\n", _should_be);
+        
+      }
+    };
     ExampleTableIterators.<ExampleImplementationSpecExamples>forEach(this.examples, _function);
   }
 }

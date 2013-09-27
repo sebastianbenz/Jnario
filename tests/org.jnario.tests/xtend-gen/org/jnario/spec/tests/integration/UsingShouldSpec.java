@@ -96,22 +96,22 @@ public class UsingShouldSpec {
      + "\n     list(\"something\") is " + new org.hamcrest.StringDescription().appendValue(_list_1).toString() + "\n", _should_contain_3);
     
     final Procedure1<String> _function = new Procedure1<String>() {
-        public void apply(final String it) {
-          int _length = it.length();
-          boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_length), Integer.valueOf(11));
-          Assert.assertTrue("\nExpected length => 11 but"
-           + "\n     length is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_length)).toString() + "\n", _doubleArrow);
-          
-          boolean _should_startWith = Should.should_startWith(it, "hello");
-          Assert.assertTrue("\nExpected it should startWith(\"hello\") but"
-           + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _should_startWith);
-          
-          boolean _should_endWith = Should.should_endWith(it, "world");
-          Assert.assertTrue("\nExpected it should endWith(\"world\") but"
-           + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _should_endWith);
-          
-        }
-      };
+      public void apply(final String it) {
+        int _length = it.length();
+        boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_length), Integer.valueOf(11));
+        Assert.assertTrue("\nExpected length => 11 but"
+         + "\n     length is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_length)).toString() + "\n", _doubleArrow);
+        
+        boolean _should_startWith = Should.should_startWith(it, "hello");
+        Assert.assertTrue("\nExpected it should startWith(\"hello\") but"
+         + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _should_startWith);
+        
+        boolean _should_endWith = Should.should_endWith(it, "world");
+        Assert.assertTrue("\nExpected it should endWith(\"world\") but"
+         + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _should_endWith);
+        
+      }
+    };
     final String greeting = ObjectExtensions.<String>operator_doubleArrow("hello world", _function);
     boolean _doubleArrow_3 = Should.operator_doubleArrow(greeting, String.class);
     Assert.assertTrue("\nExpected greeting => typeof(String) but"
@@ -255,14 +255,14 @@ public class UsingShouldSpec {
   @Order(3)
   public void _whyDidItFail() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
-        public void apply(final Boolean it) {
-          int _plus = (1 + 1);
-          boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(1));
-          Assert.assertTrue("\nExpected 1 + 1 => 1 but"
-           + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final Boolean it) {
+        int _plus = (1 + 1);
+        boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(1));
+        Assert.assertTrue("\nExpected 1 + 1 => 1 but"
+         + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Expected 1 + 1 => 1 but");
@@ -272,15 +272,15 @@ public class UsingShouldSpec {
     Helpers.is(_errorMessage, _builder);
     final String x = "hello";
     final Procedure1<Boolean> _function_1 = new Procedure1<Boolean>() {
-        public void apply(final Boolean it) {
-          String _upperCase = x.toUpperCase();
-          boolean _should_be = Should.<String>should_be(_upperCase, "HELLO");
-          Assert.assertFalse("\nExpected x.toUpperCase should not be \"HELLO\" but"
-           + "\n     x.toUpperCase is " + new org.hamcrest.StringDescription().appendValue(_upperCase).toString()
-           + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString() + "\n", _should_be);
-          
-        }
-      };
+      public void apply(final Boolean it) {
+        String _upperCase = x.toUpperCase();
+        boolean _should_be = Should.<String>should_be(_upperCase, "HELLO");
+        Assert.assertFalse("\nExpected x.toUpperCase should not be \"HELLO\" but"
+         + "\n     x.toUpperCase is " + new org.hamcrest.StringDescription().appendValue(_upperCase).toString()
+         + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString() + "\n", _should_be);
+        
+      }
+    };
     String _errorMessage_1 = Helpers.errorMessage(_function_1);
     StringConcatenation _builder_1 = new StringConcatenation();
     _builder_1.append("Expected x.toUpperCase should not be \"HELLO\" but");
@@ -293,14 +293,14 @@ public class UsingShouldSpec {
     Helpers.is(_errorMessage_1, _builder_1);
     final String y = "world";
     final Procedure1<Boolean> _function_2 = new Procedure1<Boolean>() {
-        public void apply(final Boolean it) {
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(x, y);
-          Assert.assertTrue("\nExpected x => y but"
-           + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString()
-           + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final Boolean it) {
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(x, y);
+        Assert.assertTrue("\nExpected x => y but"
+         + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString()
+         + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     String _errorMessage_2 = Helpers.errorMessage(_function_2);
     StringConcatenation _builder_2 = new StringConcatenation();
     _builder_2.append("Expected x => y but");
@@ -323,25 +323,25 @@ public class UsingShouldSpec {
   @Order(4)
   public void _waitForSomething() throws Exception {
     final Function1<Wait,Boolean> _function = new Function1<Wait,Boolean>() {
-        public Boolean apply(final Wait it) {
-          boolean _greaterThan = (1 > 0);
-          return Boolean.valueOf(_greaterThan);
-        }
-      };
+      public Boolean apply(final Wait it) {
+        boolean _greaterThan = (1 > 0);
+        return Boolean.valueOf(_greaterThan);
+      }
+    };
     Wait.waitUntil(_function);
     final Function1<Wait,Boolean> _function_1 = new Function1<Wait,Boolean>() {
-        public Boolean apply(final Wait it) {
-          boolean _xblockexpression = false;
-          {
-            it.setMessage("Custom error message");
-            it.setDuration(100);
-            it.setPollingInterval(10);
-            boolean _greaterThan = (1 > 0);
-            _xblockexpression = (_greaterThan);
-          }
-          return Boolean.valueOf(_xblockexpression);
+      public Boolean apply(final Wait it) {
+        boolean _xblockexpression = false;
+        {
+          it.setMessage("Custom error message");
+          it.setDuration(100);
+          it.setPollingInterval(10);
+          boolean _greaterThan = (1 > 0);
+          _xblockexpression = (_greaterThan);
         }
-      };
+        return Boolean.valueOf(_xblockexpression);
+      }
+    };
     Wait.waitUntil(_function_1);
   }
   

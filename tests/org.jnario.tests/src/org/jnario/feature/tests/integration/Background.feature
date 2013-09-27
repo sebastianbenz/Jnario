@@ -9,7 +9,6 @@ package org.jnario.feature.tests.integration
 
 import static org.jnario.jnario.test.util.ResultMatchers.*
 import static extension org.jnario.jnario.test.util.FeatureExecutor.*
-
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */

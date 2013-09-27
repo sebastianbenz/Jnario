@@ -38,12 +38,12 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
   public void _variableAccess() throws Exception {
     final boolean y = false;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
-        public void apply(final Boolean it) {
-          Assert.assertTrue("\nExpected y but"
-           + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", y);
-          
-        }
-      };
+      public void apply(final Boolean it) {
+        Assert.assertTrue("\nExpected y but"
+         + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", y);
+        
+      }
+    };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Expected y but");
@@ -62,13 +62,13 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
   public void _filtersLiterals() throws Exception {
     final int x = 0;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
-        public void apply(final Boolean it) {
-          boolean _equals = (x == 42);
-          Assert.assertTrue("\nExpected x == 42 but"
-           + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString() + "\n", _equals);
-          
-        }
-      };
+      public void apply(final Boolean it) {
+        boolean _equals = (x == 42);
+        Assert.assertTrue("\nExpected x == 42 but"
+         + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString() + "\n", _equals);
+        
+      }
+    };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Expected x == 42 but");
@@ -87,15 +87,15 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
   public void _notEquals() throws Exception {
     final int x = 42;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
-        public void apply(final Boolean it) {
-          boolean _equals = (x == 42);
-          boolean _not = (!_equals);
-          Assert.assertTrue("\nExpected !(x == 42) but"
-           + "\n     x == 42 is " + new org.hamcrest.StringDescription().appendValue(_equals).toString()
-           + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString() + "\n", _not);
-          
-        }
-      };
+      public void apply(final Boolean it) {
+        boolean _equals = (x == 42);
+        boolean _not = (!_equals);
+        Assert.assertTrue("\nExpected !(x == 42) but"
+         + "\n     x == 42 is " + new org.hamcrest.StringDescription().appendValue(_equals).toString()
+         + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString() + "\n", _not);
+        
+      }
+    };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Expected !(x == 42) but");
@@ -116,14 +116,14 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
   @Order(4)
   public void _functionCalls() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
-        public void apply(final Boolean it) {
-          String _greet = AssertionNoMoreDebuggingSpec.this.greet("World");
-          boolean _equals = Objects.equal(_greet, "Hello World!");
-          Assert.assertTrue("\nExpected greet(\"World\") == \"Hello World!\" but"
-           + "\n     greet(\"World\") is " + new org.hamcrest.StringDescription().appendValue(_greet).toString() + "\n", _equals);
-          
-        }
-      };
+      public void apply(final Boolean it) {
+        String _greet = AssertionNoMoreDebuggingSpec.this.greet("World");
+        boolean _equals = Objects.equal(_greet, "Hello World!");
+        Assert.assertTrue("\nExpected greet(\"World\") == \"Hello World!\" but"
+         + "\n     greet(\"World\") is " + new org.hamcrest.StringDescription().appendValue(_greet).toString() + "\n", _equals);
+        
+      }
+    };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Expected greet(\"World\") == \"Hello World!\" but");
@@ -141,16 +141,16 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
   @Order(5)
   public void _featureCalls() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
-        public void apply(final Boolean it) {
-          String _upperCase = "Hello".toUpperCase();
-          String _lowerCase = _upperCase.toLowerCase();
-          boolean _equals = Objects.equal(_lowerCase, "HELLO");
-          Assert.assertTrue("\nExpected \"Hello\".toUpperCase.toLowerCase == \"HELLO\" but"
-           + "\n     \"Hello\".toUpperCase.toLowerCase is " + new org.hamcrest.StringDescription().appendValue(_lowerCase).toString()
-           + "\n     \"Hello\".toUpperCase is " + new org.hamcrest.StringDescription().appendValue(_upperCase).toString() + "\n", _equals);
-          
-        }
-      };
+      public void apply(final Boolean it) {
+        String _upperCase = "Hello".toUpperCase();
+        String _lowerCase = _upperCase.toLowerCase();
+        boolean _equals = Objects.equal(_lowerCase, "HELLO");
+        Assert.assertTrue("\nExpected \"Hello\".toUpperCase.toLowerCase == \"HELLO\" but"
+         + "\n     \"Hello\".toUpperCase.toLowerCase is " + new org.hamcrest.StringDescription().appendValue(_lowerCase).toString()
+         + "\n     \"Hello\".toUpperCase is " + new org.hamcrest.StringDescription().appendValue(_upperCase).toString() + "\n", _equals);
+        
+      }
+    };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Expected \"Hello\".toUpperCase.toLowerCase == \"HELLO\" but");
@@ -173,18 +173,18 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     final int x = 0;
     final int y = 1;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
-        public void apply(final Boolean it) {
-          boolean _equals = (x == 1);
-          boolean _equals_1 = (y == 0);
-          boolean _and = (_equals && _equals_1);
-          Assert.assertTrue("\nExpected x == 1 && y == 0 but"
-           + "\n     x == 1 is " + new org.hamcrest.StringDescription().appendValue(_equals).toString()
-           + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString()
-           + "\n     y == 0 is " + new org.hamcrest.StringDescription().appendValue(_equals_1).toString()
-           + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", _and);
-          
-        }
-      };
+      public void apply(final Boolean it) {
+        boolean _equals = (x == 1);
+        boolean _equals_1 = (y == 0);
+        boolean _and = (_equals && _equals_1);
+        Assert.assertTrue("\nExpected x == 1 && y == 0 but"
+         + "\n     x == 1 is " + new org.hamcrest.StringDescription().appendValue(_equals).toString()
+         + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString()
+         + "\n     y == 0 is " + new org.hamcrest.StringDescription().appendValue(_equals_1).toString()
+         + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", _and);
+        
+      }
+    };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Expected x == 1 && y == 0 but");
@@ -212,17 +212,17 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
   public void _removesDuplicateFeatureCalls() throws Exception {
     final int x = 0;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
-        public void apply(final Boolean it) {
-          boolean _greaterThan = (x > 0);
-          boolean _lessThan = (x < 10);
-          boolean _and = (_greaterThan && _lessThan);
-          Assert.assertTrue("\nExpected x > 0 && x < 10 but"
-           + "\n     x > 0 is " + new org.hamcrest.StringDescription().appendValue(_greaterThan).toString()
-           + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString()
-           + "\n     x < 10 is " + new org.hamcrest.StringDescription().appendValue(_lessThan).toString() + "\n", _and);
-          
-        }
-      };
+      public void apply(final Boolean it) {
+        boolean _greaterThan = (x > 0);
+        boolean _lessThan = (x < 10);
+        boolean _and = (_greaterThan && _lessThan);
+        Assert.assertTrue("\nExpected x > 0 && x < 10 but"
+         + "\n     x > 0 is " + new org.hamcrest.StringDescription().appendValue(_greaterThan).toString()
+         + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString()
+         + "\n     x < 10 is " + new org.hamcrest.StringDescription().appendValue(_lessThan).toString() + "\n", _and);
+        
+      }
+    };
     String _errorMessage = Helpers.errorMessage(_function);
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Expected x > 0 && x < 10 but");

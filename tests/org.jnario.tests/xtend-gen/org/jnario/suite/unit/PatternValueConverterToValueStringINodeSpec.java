@@ -70,19 +70,19 @@ public class PatternValueConverterToValueStringINodeSpec extends PatternValueCon
   @Order(1)
   public void _examplesForEachSubjectToValueInputNullResult() throws Exception {
     final Procedure1<PatternValueConverterToValueStringINodeSpecExamples> _function = new Procedure1<PatternValueConverterToValueStringINodeSpecExamples>() {
-        public void apply(final PatternValueConverterToValueStringINodeSpecExamples it) {
-          String _input = it.getInput();
-          String _value = PatternValueConverterToValueStringINodeSpec.this.subject.toValue(_input, null);
-          String _result = it.getResult();
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, _result);
-          Assert.assertTrue("\nExpected subject.toValue(input, null) => result but"
-           + "\n     subject.toValue(input, null) is " + new org.hamcrest.StringDescription().appendValue(_value).toString()
-           + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(PatternValueConverterToValueStringINodeSpec.this.subject).toString()
-           + "\n     input is " + new org.hamcrest.StringDescription().appendValue(_input).toString()
-           + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final PatternValueConverterToValueStringINodeSpecExamples it) {
+        String _input = it.getInput();
+        String _value = PatternValueConverterToValueStringINodeSpec.this.subject.toValue(_input, null);
+        String _result = it.getResult();
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, _result);
+        Assert.assertTrue("\nExpected subject.toValue(input, null) => result but"
+         + "\n     subject.toValue(input, null) is " + new org.hamcrest.StringDescription().appendValue(_value).toString()
+         + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(PatternValueConverterToValueStringINodeSpec.this.subject).toString()
+         + "\n     input is " + new org.hamcrest.StringDescription().appendValue(_input).toString()
+         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     Each.<PatternValueConverterToValueStringINodeSpecExamples>forEach(this.examples, _function);
   }
 }

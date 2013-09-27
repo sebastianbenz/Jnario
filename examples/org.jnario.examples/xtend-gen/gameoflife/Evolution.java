@@ -37,21 +37,21 @@ public class Evolution {
   public World evolve(final World world) {
     Set<CellLocation> _livingCells = world.getLivingCells();
     final Function1<CellLocation,Boolean> _function = new Function1<CellLocation,Boolean>() {
-        public Boolean apply(final CellLocation it) {
-          Rule _staysAlive = Evolution.this.getStaysAlive();
-          boolean _apply = Evolution.this.apply(_staysAlive, world, it);
-          return Boolean.valueOf(_apply);
-        }
-      };
+      public Boolean apply(final CellLocation it) {
+        Rule _staysAlive = Evolution.this.getStaysAlive();
+        boolean _apply = Evolution.this.apply(_staysAlive, world, it);
+        return Boolean.valueOf(_apply);
+      }
+    };
     Iterable<CellLocation> _filter = IterableExtensions.<CellLocation>filter(_livingCells, _function);
     Set<CellLocation> _deadCells = world.deadCells();
     final Function1<CellLocation,Boolean> _function_1 = new Function1<CellLocation,Boolean>() {
-        public Boolean apply(final CellLocation it) {
-          Rule _becomesAlive = Evolution.this.getBecomesAlive();
-          boolean _apply = Evolution.this.apply(_becomesAlive, world, it);
-          return Boolean.valueOf(_apply);
-        }
-      };
+      public Boolean apply(final CellLocation it) {
+        Rule _becomesAlive = Evolution.this.getBecomesAlive();
+        boolean _apply = Evolution.this.apply(_becomesAlive, world, it);
+        return Boolean.valueOf(_apply);
+      }
+    };
     Iterable<CellLocation> _filter_1 = IterableExtensions.<CellLocation>filter(_deadCells, _function_1);
     Iterable<CellLocation> _plus = Iterables.<CellLocation>concat(_filter, _filter_1);
     World _worldWith = World.worldWith(_plus);

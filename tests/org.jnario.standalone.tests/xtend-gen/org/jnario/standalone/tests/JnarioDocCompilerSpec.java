@@ -49,16 +49,16 @@ public class JnarioDocCompilerSpec {
   
   public Matcher<? super String> generated() {
     final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
-        public Boolean apply(final String it) {
-          File _root = JnarioDocCompilerSpec.this.folder.getRoot();
-          String _string = _root.toString();
-          String _plus = (_string + "/");
-          String _plus_1 = (_plus + it);
-          File _file = new File(_plus_1);
-          boolean _exists = _file.exists();
-          return Boolean.valueOf(_exists);
-        }
-      };
+      public Boolean apply(final String it) {
+        File _root = JnarioDocCompilerSpec.this.folder.getRoot();
+        String _string = _root.toString();
+        String _plus = (_string + "/");
+        String _plus_1 = (_plus + it);
+        File _file = new File(_plus_1);
+        boolean _exists = _file.exists();
+        return Boolean.valueOf(_exists);
+      }
+    };
     Matcher<? super String> _matches = Should.<String>matches("generated", _function);
     return _matches;
   }

@@ -41,14 +41,14 @@ public class ExampleNameProviderToMethodNameBeforeSpec extends ExampleNameProvid
       "before \'my\texample\'", 
       "before \'my_example\'");
     final Procedure1<String> _function = new Procedure1<String>() {
-        public void apply(final String it) {
-          String _firstMethodName = ExampleNameProviderToMethodNameBeforeSpec.this.firstMethodName(it);
-          boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "_myExample");
-          Assert.assertTrue("\nExpected firstMethodName => \'_myExample\' but"
-           + "\n     firstMethodName is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
-          
-        }
-      };
+      public void apply(final String it) {
+        String _firstMethodName = ExampleNameProviderToMethodNameBeforeSpec.this.firstMethodName(it);
+        boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "_myExample");
+        Assert.assertTrue("\nExpected firstMethodName => \'_myExample\' but"
+         + "\n     firstMethodName is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
+        
+      }
+    };
     IterableExtensions.<String>forEach(_newArrayList, _function);
   }
   

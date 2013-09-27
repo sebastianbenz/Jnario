@@ -67,22 +67,22 @@ public class ExampleNameSpec extends ExampleSpec {
   @Order(1)
   public void _examplesForEachPrintlnExampleParseNameShouldBeName() throws Exception {
     final Procedure1<ExampleNameSpecExamples> _function = new Procedure1<ExampleNameSpecExamples>() {
-        public void apply(final ExampleNameSpecExamples it) {
-          String _example = it.getExample();
-          Example _parse = ExampleNameSpec.this.parse(_example);
-          String _name = _parse.getName();
-          String _println = InputOutput.<String>println(_name);
-          String _name_1 = it.getName();
-          boolean _should_be = Should.<String>should_be(_println, _name_1);
-          Assert.assertTrue("\nExpected println(example.parse.name) should be name but"
-           + "\n     println(example.parse.name) is " + new org.hamcrest.StringDescription().appendValue(_println).toString()
-           + "\n     example.parse.name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
-           + "\n     example.parse is " + new org.hamcrest.StringDescription().appendValue(_parse).toString()
-           + "\n     example is " + new org.hamcrest.StringDescription().appendValue(_example).toString()
-           + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name_1).toString() + "\n", _should_be);
-          
-        }
-      };
+      public void apply(final ExampleNameSpecExamples it) {
+        String _example = it.getExample();
+        Example _parse = ExampleNameSpec.this.parse(_example);
+        String _name = _parse.getName();
+        String _println = InputOutput.<String>println(_name);
+        String _name_1 = it.getName();
+        boolean _should_be = Should.<String>should_be(_println, _name_1);
+        Assert.assertTrue("\nExpected println(example.parse.name) should be name but"
+         + "\n     println(example.parse.name) is " + new org.hamcrest.StringDescription().appendValue(_println).toString()
+         + "\n     example.parse.name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
+         + "\n     example.parse is " + new org.hamcrest.StringDescription().appendValue(_parse).toString()
+         + "\n     example is " + new org.hamcrest.StringDescription().appendValue(_example).toString()
+         + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name_1).toString() + "\n", _should_be);
+        
+      }
+    };
     ExampleTableIterators.<ExampleNameSpecExamples>forEach(this.examples, _function);
   }
 }
