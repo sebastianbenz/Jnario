@@ -149,12 +149,8 @@ public class JnarioCompiler extends XtendCompiler {
 			if(!(should.getFeature() instanceof JvmOperation)){
 				return;
 			}
-			String right = ((JvmOperation)should.getFeature()).getDeclaringType().getSimpleName();
-			String left = ObjectExtensions.class.getSimpleName();
-			if(left.equals(right)){
-				JvmIdentifiableElement operation = getMethod(should, org.jnario.lib.Should.class.getName(), "operator_doubleArrow", "org.hamcrest.Matcher");
-				should.setFeature(operation);
-			}
+			JvmIdentifiableElement operation = getMethod(should, org.jnario.lib.Should.class.getName(), "operator_doubleArrow", "T", "org.hamcrest.Matcher<? super T>");
+			should.setFeature(operation);
 		}
 	}
 
@@ -192,6 +188,7 @@ public class JnarioCompiler extends XtendCompiler {
 			String argumentType = argumentTypes[i];
 			JvmTypeReference actual = getTypeReferences().getTypeForName(argumentType, jvmOperation);
 			JvmTypeReference expected = jvmOperation.getParameters().get(i).getParameterType();
+//			System.out.println(expected.getQualifiedName() + "=>" + actual.getQualifiedName());
 			if(!expected.getQualifiedName().equals(actual.getQualifiedName())){
 				return false;
 			}
