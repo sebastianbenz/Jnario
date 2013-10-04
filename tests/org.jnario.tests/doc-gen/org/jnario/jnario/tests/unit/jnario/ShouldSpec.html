@@ -101,6 +101,20 @@ describe &quot;Test&quot;{
   fact new Stack&lt;String&gt;().pop throws EmptyStackException
 }
 '''.executesSuccessfully</pre>
+</li><li><p id="should_safely_matches_null_values" class="example notrun"><strong>should safely matches null values</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+describe &quot;Test&quot;{
+  fact &quot;hello&quot; should not be null
+}
+'''.executesSuccessfully</pre>
+</li><li><p id="safely_matches_null_values" class="example notrun"><strong>=> safely matches null values</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+describe &quot;Test&quot;{
+  fact null =&gt; null
+}
+'''.executesSuccessfully</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -203,6 +217,21 @@ describe Should{
     '''.executesSuccessfully
   }
   
+  fact &quot;should safely matches null values&quot;{
+    '''
+    describe &quot;Test&quot;{
+      fact &quot;hello&quot; should not be null
+    }
+    '''.executesSuccessfully
+  }
+  
+  fact &quot;=&gt; safely matches null values&quot;{
+    '''
+    describe &quot;Test&quot;{
+      fact null =&gt; null
+    }
+    '''.executesSuccessfully
+  }
 }
 </pre>
 						    </p></div>

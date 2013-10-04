@@ -149,8 +149,10 @@ public class JnarioCompiler extends XtendCompiler {
 			if(!(should.getFeature() instanceof JvmOperation)){
 				return;
 			}
-			if(ObjectExtensions.class.getSimpleName().equals(((JvmOperation)should.getFeature()).getDeclaringType().getSimpleName())){
-				JvmIdentifiableElement operation = getMethod(should, org.jnario.lib.Should.class.getName(), "operator_doubleArrow");
+			String right = ((JvmOperation)should.getFeature()).getDeclaringType().getSimpleName();
+			String left = ObjectExtensions.class.getSimpleName();
+			if(left.equals(right)){
+				JvmIdentifiableElement operation = getMethod(should, org.jnario.lib.Should.class.getName(), "operator_doubleArrow", "org.hamcrest.Matcher");
 				should.setFeature(operation);
 			}
 		}
@@ -167,18 +169,34 @@ public class JnarioCompiler extends XtendCompiler {
 		return getMethod(should, org.jnario.lib.Should.class.getName(), "nullValue");
 	}
 
-	protected JvmIdentifiableElement getMethod(XBinaryOperation should, String type, String methodName) {
+	protected JvmIdentifiableElement getMethod(XBinaryOperation should, String type, String methodName, String...argumentTypes) {
 		JvmGenericType coreMatchersType = (JvmGenericType) jvmType(type, should);
 		if(coreMatchersType == null){
 			return null;
 		}
 		Iterable<JvmOperation> operations = Iterables.filter(coreMatchersType.getMembers(), JvmOperation.class);
 		for (JvmOperation jvmOperation : operations) {
-			if(methodName.equals(jvmOperation.getSimpleName())){
+			if(methodName.equals(jvmOperation.getSimpleName()) && hasArguments(jvmOperation, argumentTypes)){
 				return jvmOperation;
 			}
 		}
 		return null;
+	}
+
+	private boolean hasArguments(JvmOperation jvmOperation,
+			String[] argumentTypes) {
+		if(jvmOperation.getParameters().size() != argumentTypes.length){
+			return false;
+		}
+		for (int i = 0; i < argumentTypes.length; i++) {
+			String argumentType = argumentTypes[i];
+			JvmTypeReference actual = getTypeReferences().getTypeForName(argumentType, jvmOperation);
+			JvmTypeReference expected = jvmOperation.getParameters().get(i).getParameterType();
+			if(!expected.getQualifiedName().equals(actual.getQualifiedName())){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private String javaStringNewLine() {

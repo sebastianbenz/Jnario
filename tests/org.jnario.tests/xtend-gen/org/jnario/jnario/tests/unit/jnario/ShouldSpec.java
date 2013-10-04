@@ -186,4 +186,34 @@ public class ShouldSpec {
     _builder.newLine();
     this._behaviorExecutor.executesSuccessfully(_builder);
   }
+  
+  @Test
+  @Named("should safely matches null values")
+  @Order(9)
+  public void _shouldSafelyMatchesNullValues() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Test\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact \"hello\" should not be null");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
+  }
+  
+  @Test
+  @Named("=> safely matches null values")
+  @Order(10)
+  public void _safelyMatchesNullValues() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Test\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact null => null");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._behaviorExecutor.executesSuccessfully(_builder);
+  }
 }

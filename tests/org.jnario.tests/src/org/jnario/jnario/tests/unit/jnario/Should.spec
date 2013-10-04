@@ -94,4 +94,19 @@ describe Should{
 		'''.executesSuccessfully
 	}
 	
+	fact "should safely matches null values"{
+		'''
+		describe "Test"{
+			fact "hello" should not be null
+		}
+		'''.executesSuccessfully
+	}
+	
+	fact "=> safely matches null values"{
+		'''
+		describe "Test"{
+			fact null => null
+		}
+		'''.executesSuccessfully
+	}
 }
