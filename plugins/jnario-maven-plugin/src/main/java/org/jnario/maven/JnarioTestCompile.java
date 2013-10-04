@@ -113,7 +113,7 @@ public class JnarioTestCompile extends AbstractXtendCompilerMojo {
 		// the order is important, the suite compiler must be executed last
 		new XtendMavenStandaloneSetup().createInjectorAndDoEMFRegistration();
 		List<Injector> injectors = createInjectors(new FeatureMavenStandaloneSetup(), new SpecMavenStandaloneSetup(), new SuiteMavenStandaloneSetup());
-		resourceSetProvider = new MavenProjectResourceSetProvider(project);
+		resourceSetProvider = new JnarioMavenProjectResourceSetProvider(project);
 		final String defaultValue = project.getBasedir() + "/src/test/generated-sources/xtend";
 		getLog().debug("Output directory '" + testOutputDirectory + "'");
 		getLog().debug("Default directory '" + defaultValue + "'");
