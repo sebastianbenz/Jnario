@@ -49,19 +49,19 @@ public class SpecQualifiedNameProviderSpec {
     _builder.append("describe \"\"{}");
     this._modelStore.parseSpec(_builder);
     String _qualifiedName = this.qualifiedName();
-    Matcher<Object> _nullValue = Should.<Object>nullValue();
-    boolean _should_be = Should.<String>should_be(_qualifiedName, _nullValue);
+    Matcher<String> _nullValue = Should.<String>nullValue();
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_qualifiedName, _nullValue);
     Assert.assertTrue("\nExpected qualifiedName should be null but"
-     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _should_be);
+     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
     
     StringConcatenation _builder_1 = new StringConcatenation();
     _builder_1.append("describe \"\"{}");
     this._modelStore.parseSpec(_builder_1);
     String _qualifiedName_1 = this.qualifiedName();
-    Matcher<Object> _nullValue_1 = Should.<Object>nullValue();
-    boolean _should_be_1 = Should.<String>should_be(_qualifiedName_1, _nullValue_1);
+    Matcher<String> _nullValue_1 = Should.<String>nullValue();
+    boolean _doubleArrow_1 = Should.<String>operator_doubleArrow(_qualifiedName_1, _nullValue_1);
     Assert.assertTrue("\nExpected qualifiedName should be null but"
-     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName_1).toString() + "\n", _should_be_1);
+     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName_1).toString() + "\n", _doubleArrow_1);
     
   }
   

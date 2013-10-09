@@ -43,8 +43,8 @@ public class DocumentationProviderSpec {
   @Order(1)
   public void _returnsNullIfNoComment() throws Exception {
     String _documentation = this.documentation(null);
-    Matcher<Object> _nullValue = Should.<Object>nullValue();
-    boolean _doubleArrow = Should.operator_doubleArrow(_documentation, _nullValue);
+    Matcher<String> _nullValue = Should.<String>nullValue();
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_documentation, _nullValue);
     Assert.assertTrue("\nExpected documentation(null) => null but"
      + "\n     documentation(null) is " + new org.hamcrest.StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
     

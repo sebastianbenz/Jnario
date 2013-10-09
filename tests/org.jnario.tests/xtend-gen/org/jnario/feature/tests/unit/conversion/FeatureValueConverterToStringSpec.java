@@ -44,11 +44,11 @@ public class FeatureValueConverterToStringSpec extends FeatureValueConverterSpec
   @Order(2)
   public void _subjectToStringNullShouldBeNull() throws Exception {
     String _string = this.subject.toString(null);
-    Matcher<Object> _nullValue = Should.<Object>nullValue();
-    boolean _should_be = Should.<String>should_be(_string, _nullValue);
+    Matcher<String> _nullValue = Should.<String>nullValue();
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_string, _nullValue);
     Assert.assertTrue("\nExpected subject.toString(null) should be null but"
      + "\n     subject.toString(null) is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
-     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _should_be);
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
     
   }
 }

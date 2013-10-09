@@ -108,10 +108,10 @@ public class SuiteQualifiedNameProviderSpec {
     _builder.newLine();
     this._modelStore.parseSuite(_builder);
     String _qualifiedName = this.qualifiedName();
-    Matcher<Object> _nullValue = Should.<Object>nullValue();
-    boolean _should_be = Should.<String>should_be(_qualifiedName, _nullValue);
+    Matcher<String> _nullValue = Should.<String>nullValue();
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_qualifiedName, _nullValue);
     Assert.assertTrue("\nExpected qualifiedName should be null but"
-     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _should_be);
+     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
     
   }
   

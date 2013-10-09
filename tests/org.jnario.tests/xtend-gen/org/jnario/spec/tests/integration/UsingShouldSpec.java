@@ -55,25 +55,25 @@ public class UsingShouldSpec {
     Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
      + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be_1);
     
-    Matcher<Object> _nullValue = Should.<Object>nullValue();
-    boolean _should_be_2 = Should.<String>should_be(
+    Matcher<String> _nullValue = Should.<String>nullValue();
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(
       "something", _nullValue);
-    Assert.assertFalse("\nExpected \"something\" should not be null but" + " did not." + "\n", _should_be_2);
+    Assert.assertFalse("\nExpected \"something\" should not be null but" + " did not." + "\n", _doubleArrow);
     
     int _plus_1 = (1 + 1);
-    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
+    boolean _doubleArrow_1 = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
     Assert.assertTrue("\nExpected 1 + 1 => 2 but"
-     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus_1)).toString() + "\n", _doubleArrow);
+     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus_1)).toString() + "\n", _doubleArrow_1);
     
-    boolean _doubleArrow_1 = Should.operator_doubleArrow(
+    boolean _doubleArrow_2 = Should.operator_doubleArrow(
       "a string", String.class);
     Assert.assertTrue("\nExpected // types\r\n    \"a string\" => typeof(String) but"
-     + "\n     // types\r\n    \"a string\" => typeof(String) is " + new org.hamcrest.StringDescription().appendValue(_doubleArrow_1).toString() + "\n", _doubleArrow_1);
+     + "\n     // types\r\n    \"a string\" => typeof(String) is " + new org.hamcrest.StringDescription().appendValue(_doubleArrow_2).toString() + "\n", _doubleArrow_2);
     
     Class<? extends String> _class = "a string".getClass();
-    boolean _doubleArrow_2 = Should.operator_doubleArrow(_class, String.class);
+    boolean _doubleArrow_3 = Should.operator_doubleArrow(_class, String.class);
     Assert.assertTrue("\nExpected \"a string\".getClass => typeof(String) but"
-     + "\n     \"a string\".getClass is " + new org.hamcrest.StringDescription().appendValue(_class).toString() + "\n", _doubleArrow_2);
+     + "\n     \"a string\".getClass is " + new org.hamcrest.StringDescription().appendValue(_class).toString() + "\n", _doubleArrow_3);
     
     boolean _should_contain = Should.<Object>should_contain(
       "something", "thing");
@@ -113,9 +113,9 @@ public class UsingShouldSpec {
       }
     };
     final String greeting = ObjectExtensions.<String>operator_doubleArrow("hello world", _function);
-    boolean _doubleArrow_3 = Should.operator_doubleArrow(greeting, String.class);
+    boolean _doubleArrow_4 = Should.operator_doubleArrow(greeting, String.class);
     Assert.assertTrue("\nExpected greeting => typeof(String) but"
-     + "\n     greeting is " + new org.hamcrest.StringDescription().appendValue(greeting).toString() + "\n", _doubleArrow_3);
+     + "\n     greeting is " + new org.hamcrest.StringDescription().appendValue(greeting).toString() + "\n", _doubleArrow_4);
     
     boolean expectedException = false;
     String message = "";
@@ -205,7 +205,7 @@ public class UsingShouldSpec {
     try{
       Object _object = new Object();
       Matcher<Object> _nullValue = Should.<Object>nullValue();
-      boolean _doubleArrow_1 = Should.operator_doubleArrow(_object, _nullValue);
+      boolean _doubleArrow_1 = Should.<Object>operator_doubleArrow(_object, _nullValue);
       Assert.assertTrue("\nExpected new Object => null but"
        + "\n     new Object is " + new org.hamcrest.StringDescription().appendValue(_object).toString() + "\n", _doubleArrow_1);
       
@@ -220,9 +220,9 @@ public class UsingShouldSpec {
     try{
       Object _object_1 = new Object();
       Matcher<Object> _nullValue_1 = Should.<Object>nullValue();
-      boolean _should_be_2 = Should.<Object>should_be(_object_1, _nullValue_1);
+      boolean _doubleArrow_2 = Should.<Object>operator_doubleArrow(_object_1, _nullValue_1);
       Assert.assertTrue("\nExpected new Object should be null but"
-       + "\n     new Object is " + new org.hamcrest.StringDescription().appendValue(_object_1).toString() + "\n", _should_be_2);
+       + "\n     new Object is " + new org.hamcrest.StringDescription().appendValue(_object_1).toString() + "\n", _doubleArrow_2);
       
       message_4 = "Expected " + AssertionError.class.getName() + " for \n     new Object should be null\n with:"
        + "\n     new Object is " + new org.hamcrest.StringDescription().appendValue(_object_1).toString();
