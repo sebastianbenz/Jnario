@@ -16,7 +16,7 @@ package org.jnario.jnario.documentation
 describe "Installing Jnario"{
 
 	/*
-	 * Jnario requires Eclipse 3.5 or higher and a Java SDK 5 or higher. You can install Jnario runtime and tooling
+	 * Jnario requires Eclipse 3.6 or higher and a Java SDK 5 or higher. You can install Jnario runtime and tooling
 	 * via the [Eclipse Marketplace](http://marketplace.eclipse.org/content/jnario)
 	 * or using the following update sites: 
 	 * 
@@ -39,7 +39,7 @@ describe "Installing Jnario"{
 	 *     mvn archetype:generate                                  \
 	 *     -DarchetypeGroupId=org.jnario                           \
 	 *     -DarchetypeArtifactId=jnario-archetype                  \
-	 *     -DarchetypeVersion=0.5.1                                \
+	 *     -DarchetypeVersion=0.6.1                                \
 	 *     -DgroupId=org.example                                   \
 	 *     -DartifactId=myproject
 	 * 
@@ -54,7 +54,7 @@ describe "Installing Jnario"{
 		 *     <dependency>
 		 *       <groupId>org.jnario</groupId>
 		 *       <artifactId>org.jnario.lib.maven</artifactId>
-		 *       <version>0.5.1</version>
+		 *       <version>0.6.1</version>
 		 *       <scope>test</scope>
 		 *     </dependency>
 		 * 
@@ -93,7 +93,7 @@ describe "Installing Jnario"{
 		 *     <plugin>
 		 *       <groupId>org.jnario</groupId>
 		 *       <artifactId>jnario-maven-plugin</artifactId>
-		 *       <version>0.5.1</version>
+		 *       <version>0.6.1</version>
 		 *       <executions>
 		 *         <execution>
 		 *           <goals>

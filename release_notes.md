@@ -1,5 +1,11 @@
 #Release Notes
 
+##Jnario 0.6.1
+
+* Fix: problems when resolving suites in maven builds
+* Fix: invalid xtend dependency in org.jnario.maven.standalone
+* Fix: `should not` returning the wrong value in Feature step references
+
 ##Jnario 0.6.0
 
 * Compatible with Xtend 2.4.3
