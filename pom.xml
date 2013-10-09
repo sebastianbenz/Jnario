@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jnario</groupId>
   <artifactId>jnario</artifactId>
-  <version>0.6.1</version>
+  <version>0.6.1.201310092002</version>
   <packaging>pom</packaging>
   <properties>
     <tycho-version>0.18.0</tycho-version>

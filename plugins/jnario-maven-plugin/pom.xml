@@ -5,7 +5,7 @@
 	<packaging>maven-plugin</packaging>
 	<name>Jnario Maven Plugin</name>
 	<groupId>org.jnario</groupId>
-	<version>0.6.1</version>
+	<version>0.6.1.201310092002</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>

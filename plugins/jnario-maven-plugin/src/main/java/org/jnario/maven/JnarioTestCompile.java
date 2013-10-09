@@ -30,6 +30,7 @@ import org.eclipse.xtend.maven.XtendMavenStandaloneSetup;
 import org.eclipse.xtend.maven.XtendTestCompile;
 import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.jnario.compiler.JnarioBatchCompiler;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
