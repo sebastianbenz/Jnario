@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jnario</groupId>
-	<version>0.6.0</version>
+	<version>0.6.1</version>
 	<artifactId>org.jnario.lib.maven</artifactId>
 	<name>Jnario Runtime Library</name>
 	<description>The runtime library for the Jnario testing language.</description>
@@ -127,7 +127,7 @@
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
-					<version>0.6.0</version>
+					<version>0.6.1</version>
 					<configuration>
 						<lifecycleMappingMetadata>
 							<pluginExecutions>

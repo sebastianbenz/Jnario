@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.jnario.m2e;singleton:=true
-Bundle-Version: 0.6.0.201309052007
+Bundle-Version: 0.6.1.201309052007
 Bundle-Localization: plugin
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.m2e.core;bundle-version="0.6.0";resolution:=optional
+Require-Bundle: org.eclipse.m2e.core;bundle-version="0.6.1";resolution:=optional
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
