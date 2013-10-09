@@ -22,11 +22,11 @@ import org.junit.runner.RunWith;
  *     mvn archetype:generate                                  \
  *     -DarchetypeGroupId=org.jnario                           \
  *     -DarchetypeArtifactId=jnario-archetype                  \
- *     -DarchetypeVersion=0.5.1                                \
+ *     -DarchetypeVersion=0.6.1                                \
  *     -DgroupId=org.example                                   \
  *     -DartifactId=myproject
  * 
- * There is also an [example project](https://github.com/bmwcarit/Jnario/tree/master/examples/org.jnario.maven.example)
+ * There is also an [example project](https://github.com/sebastianbenz/Jnario/tree/master/examples/org.jnario.maven.example)
  * demonstrating the usage of Jnario with Maven.
  */
 @Named("Using Jnario with Maven")
@@ -39,7 +39,7 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    *     <dependency>
    *       <groupId>org.jnario</groupId>
    *       <artifactId>org.jnario.lib.maven</artifactId>
-   *       <version>0.5.1</version>
+   *       <version>0.6.1</version>
    *       <scope>test</scope>
    *     </dependency>
    * 
@@ -85,7 +85,7 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    *     <plugin>
    *       <groupId>org.jnario</groupId>
    *       <artifactId>jnario-maven-plugin</artifactId>
-   *       <version>0.5.1</version>
+   *       <version>0.6.1</version>
    *       <executions>
    *         <execution>
    *           <goals>

@@ -8,7 +8,7 @@
 package org.jnario.jvmmodel;
 
 import org.eclipse.xtext.common.types.JvmField;
-import org.eclipse.xtext.xbase.resource.JvmDeclaredTypeSignatureHashProvider.SignatureHashBuilder;
+import org.eclipse.xtext.common.types.descriptions.JvmDeclaredTypeSignatureHashProvider.SignatureHashBuilder;
 
 public class JnarioSignatureHashBuilder extends SignatureHashBuilder {
 
