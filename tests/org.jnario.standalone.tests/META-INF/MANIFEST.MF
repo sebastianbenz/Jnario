@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Jnario Standalone Tests
 Bundle-SymbolicName: org.jnario.standalone.tests
-Bundle-Version: 0.6.1.201309052007
+Bundle-Version: 0.6.1
 Bundle-Vendor: BMW Car IT
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.jnario.standalone;bundle-version="0.6.1",

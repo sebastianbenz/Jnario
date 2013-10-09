@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: demo
 Bundle-SymbolicName: org.jnario.examples
-Bundle-Version: 0.6.1.201309052007
+Bundle-Version: 0.6.1
 Require-Bundle: org.mockito;bundle-version="1.8.4",
  org.objenesis;bundle-version="1.0.0",
  org.jnario.lib,
