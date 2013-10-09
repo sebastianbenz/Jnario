@@ -222,7 +222,7 @@
 	<issueManagement>
 		<system>Github Issues</system>
 		<url>
-https://github.com/bmwcarit/Jnario/issues
+https://github.com/sebastianbenz/Jnario/issues
 </url>
 	</issueManagement>
 	<organization>
@@ -231,7 +231,7 @@ https://github.com/bmwcarit/Jnario/issues
 	</organization>
 	<scm>
 		<developerConnection>scm:git:git@github.com:bmwcarit/Jnario.git</developerConnection>
-		<url>https://github.com/bmwcarit/Jnario</url>
+		<url>https://github.com/sebastianbenz/Jnario</url>
 		<connection>scm:git:git://github.com/bmwcarit/Jnario.git</connection>
 	</scm>
 	<developers>

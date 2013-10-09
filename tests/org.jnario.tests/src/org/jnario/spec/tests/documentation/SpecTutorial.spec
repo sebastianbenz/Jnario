@@ -336,7 +336,7 @@ describe "Introducing Jnario Specs"{
 		 *
 		 * <p align="center"><a href="/img/tutorial/doc_stack_example.png"><img src="/img/tutorial/doc_stack_example_small.png" alt="Generated documentation for the stack specification"/></a></p>  
 		 * 
-		 * This tutorial has actually been generated from a [specification](https://github.com/bmwcarit/Jnario/blob/master/org.jnario.tests/src/org/jnario/spec/tests/documentation/SpecTutorial.spec).
+		 * This tutorial has actually been generated from a [specification](https://github.com/sebastianbenz/Jnario/blob/master/org.jnario.tests/src/org/jnario/spec/tests/documentation/SpecTutorial.spec).
 		 * 
 		 * @filter('''|.executesSuccessfully) 
 		 */

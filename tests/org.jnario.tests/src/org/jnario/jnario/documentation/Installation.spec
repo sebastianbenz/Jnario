@@ -43,7 +43,7 @@ describe "Installing Jnario"{
 	 *     -DgroupId=org.example                                   \
 	 *     -DartifactId=myproject
 	 * 
-	 * There is also an [example project](https://github.com/bmwcarit/Jnario/tree/master/examples/org.jnario.maven.example) 
+	 * There is also an [example project](https://github.com/sebastianbenz/Jnario/tree/master/examples/org.jnario.maven.example) 
 	 * demonstrating the usage of Jnario with Maven.
 	 */
 	describe "Using Jnario with Maven"{
