@@ -26,14 +26,10 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.core.XtendStandaloneSetup;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.maven.MavenProjectAdapter;
-import org.eclipse.xtend.maven.MavenProjectResourceSetProvider;
 import org.eclipse.xtend.maven.XtendMavenStandaloneSetup;
 import org.eclipse.xtend.maven.XtendTestCompile;
 import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.eclipse.xtext.xbase.resource.BatchLinkableResource;
-import org.eclipse.xtext.xbase.resource.XbaseResource;
-import org.jnario.compiler.JnarioBatchCompiler;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
@@ -64,7 +60,19 @@ public class JnarioTestCompile extends XtendTestCompile {
 		// the order is important, the suite compiler must be executed last
 		new XtendMavenStandaloneSetup().createInjectorAndDoEMFRegistration();
 		List<Injector> injectors = createInjectors(new FeatureMavenStandaloneSetup(), new SpecMavenStandaloneSetup(), new SuiteMavenStandaloneSetup());
-		resourceSetProvider = new MavenProjectResourceSetProvider(project);
+		resourceSetProvider = new JnarioMavenProjectResourceSetProvider(project);
+		final String defaultValue = project.getBasedir() + "/src/test/generated-sources/xtend";
+		getLog().debug("Output directory '" + testOutputDirectory + "'");
+		getLog().debug("Default directory '" + defaultValue + "'");
+		if (defaultValue.equals(testOutputDirectory)) {
+			readXtendEclipseSetting(project.getBuild().getTestSourceDirectory(), new Procedure1<String>() {
+				public void apply(String xtendOutputDir) {
+					testOutputDirectory = xtendOutputDir;
+					getLog().info("Using Xtend output directory '" + testOutputDirectory + "'");
+				}
+			});
+		}
+		testOutputDirectory = resolveToBaseDir(testOutputDirectory);
 		compileXtendSources();
 		for (Injector injector : injectors) {
 			resourceSetProvider.get().eAdapters().clear();;
