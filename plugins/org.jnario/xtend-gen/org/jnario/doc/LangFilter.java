@@ -24,8 +24,7 @@ public class LangFilter implements Filter {
   
   public String apply(final String input) {
     String _plus = ("<pre class=\"prettyprint lang-" + this.language);
-    String _plus_1 = (_plus + "\">");
-    return input.replace("<pre class=\"prettyprint lang-spec\">", _plus_1);
+    return input.replace("<pre class=\"prettyprint lang-spec", _plus);
   }
   
   public String toString() {

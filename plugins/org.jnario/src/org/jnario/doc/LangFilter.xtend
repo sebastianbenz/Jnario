@@ -20,7 +20,7 @@ class LangFilter implements Filter{
 	}
 	
 	override String apply(String input){
-		return input.replace('<pre class="prettyprint lang-spec">', '<pre class="prettyprint lang-' + language + '">')
+		return input.replace('<pre class="prettyprint lang-spec', '<pre class="prettyprint lang-' + language )
 	}
 	
 	override toString(){

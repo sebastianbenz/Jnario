@@ -306,6 +306,46 @@ public class SpecDocGeneratorSpec {
     this.generateDoc(_builder);
   }
   
+  @Test
+  @Named("supports @lang annotation")
+  @Order(9)
+  public void _supportsLangAnnotation() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \'Example\'{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("/*");
+    _builder.newLine();
+    _builder.append("\t ");
+    _builder.append("* @lang(ruby)");
+    _builder.newLine();
+    _builder.append("\t ");
+    _builder.append("*/");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact \"test\" {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("1 + 1 => 2");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("} ");
+    _builder.newLine();
+    this.generateDoc(_builder);
+    final String scenarioDoc = this.generatedFile("ExampleSpec.html");
+    StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append("<pre class=\"prettyprint lang-ruby linenums\">");
+    _builder_1.newLine();
+    _builder_1.append("1 + 1 =&gt; 2</pre>");
+    boolean _should_contain = Should.<Object>should_contain(scenarioDoc, _builder_1);
+    Assert.assertTrue("\nExpected scenarioDoc should contain \'\'\'<pre class=\"prettyprint lang-ruby linenums\">\r\n1 + 1 =&gt; 2</pre>\'\'\' but"
+     + "\n     scenarioDoc is " + new org.hamcrest.StringDescription().appendValue(scenarioDoc).toString()
+     + "\n     \'\'\'<pre class=\"prettyprint lang-ruby linenums\">\r\n1 + 1 =&gt; 2</pre>\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder_1).toString() + "\n", _should_contain);
+    
+  }
+  
   public void generateEmptyExampleDoc() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \'Example\'{");
