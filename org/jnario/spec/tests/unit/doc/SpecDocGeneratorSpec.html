@@ -141,6 +141,21 @@ generateDoc('''
     }
   } 
 ''')</pre>
+</li><li><p id="supports_lang_annotation" class="example notrun"><strong>supports @lang annotation</strong></p>
+<pre class="prettyprint lang-spec linenums">
+generateDoc('''
+  describe 'Example'{
+    /*
+     * @lang(ruby)
+     */
+    fact &quot;test&quot; {
+      1 + 1 =&gt; 2
+    }
+  } 
+''')
+val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
+scenarioDoc should contain '''&lt;pre class=&quot;prettyprint lang-ruby linenums&quot;&gt;
+1 + 1 =&amp;gt; 2&lt;/pre&gt;'''</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -282,6 +297,22 @@ describe SpecDocGenerator {
         }
       } 
     ''')
+  }
+  
+  fact &quot;supports @lang annotation&quot;{
+    generateDoc('''
+      describe 'Example'{
+        /*
+         * @lang(ruby)
+         */
+        fact &quot;test&quot; {
+          1 + 1 =&gt; 2
+        }
+      } 
+    ''')
+    val scenarioDoc = generatedFile(&quot;ExampleSpec.html&quot;)
+    scenarioDoc should contain '''&lt;pre class=&quot;prettyprint lang-ruby linenums&quot;&gt;
+1 + 1 =&amp;gt; 2&lt;/pre&gt;'''
   }
   
   def generateEmptyExampleDoc(){
