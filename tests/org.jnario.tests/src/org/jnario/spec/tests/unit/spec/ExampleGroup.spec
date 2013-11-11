@@ -34,6 +34,21 @@ describe SpecExecutableProvider {
 		'''.parseSpec
 		exampleGroup("Something").executables => list(exampleGroup("exampleGroup 1"), exampleGroup("exampleGroup 2"))
 	}
+
+	fact "returns all facts in sub example groups"{
+		'''
+		describe "Something"{
+			describe "exampleGroup 1"{
+				fact "fact 1"
+			}
+			describe "exampleGroup 2"{
+				fact "fact 2"
+			}
+		}
+		'''.parseSpec
+		exampleGroup("Something").executables.toSet => <Executable>set(exampleGroup("exampleGroup 1"), example("fact 1"), exampleGroup("exampleGroup 2"), example("fact 2"))
+	}
+
 	def executables(Executable spec){
 		subject.getExecutables(spec) 
 	}

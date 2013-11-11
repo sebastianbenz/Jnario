@@ -53,6 +53,19 @@ describe &quot;Something&quot;{
 }
 '''.parseSpec
 exampleGroup(&quot;Something&quot;).executables =&gt; list(exampleGroup(&quot;exampleGroup 1&quot;), exampleGroup(&quot;exampleGroup 2&quot;))</pre>
+</li><li><p id="returns_all_facts_in_sub_example_groups" class="example notrun"><strong>returns all facts in sub example groups</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+describe &quot;Something&quot;{
+  describe &quot;exampleGroup 1&quot;{
+    fact &quot;fact 1&quot;
+  }
+  describe &quot;exampleGroup 2&quot;{
+    fact &quot;fact 2&quot;
+  }
+}
+'''.parseSpec
+exampleGroup(&quot;Something&quot;).executables.toSet =&gt; &lt;Executable&gt;set(exampleGroup(&quot;exampleGroup 1&quot;), example(&quot;fact 1&quot;), exampleGroup(&quot;exampleGroup 2&quot;), example(&quot;fact 2&quot;))</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -95,6 +108,21 @@ describe SpecExecutableProvider {
     '''.parseSpec
     exampleGroup(&quot;Something&quot;).executables =&gt; list(exampleGroup(&quot;exampleGroup 1&quot;), exampleGroup(&quot;exampleGroup 2&quot;))
   }
+
+  fact &quot;returns all facts in sub example groups&quot;{
+    '''
+    describe &quot;Something&quot;{
+      describe &quot;exampleGroup 1&quot;{
+        fact &quot;fact 1&quot;
+      }
+      describe &quot;exampleGroup 2&quot;{
+        fact &quot;fact 2&quot;
+      }
+    }
+    '''.parseSpec
+    exampleGroup(&quot;Something&quot;).executables.toSet =&gt; &lt;Executable&gt;set(exampleGroup(&quot;exampleGroup 1&quot;), example(&quot;fact 1&quot;), exampleGroup(&quot;exampleGroup 2&quot;), example(&quot;fact 2&quot;))
+  }
+
   def executables(Executable spec){
     subject.getExecutables(spec) 
   }

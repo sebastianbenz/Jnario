@@ -2,8 +2,10 @@ package org.jnario.spec.tests.unit.spec;
 
 import com.google.inject.Inject;
 import java.util.List;
+import java.util.Set;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.Executable;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
@@ -93,6 +95,55 @@ public class SpecExecutableProviderSpec {
      + "\n     list(exampleGroup(\"exampleGroup 1\"), exampleGroup(\"exampleGroup 2\")) is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
      + "\n     exampleGroup(\"exampleGroup 1\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup_1).toString()
      + "\n     exampleGroup(\"exampleGroup 2\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup_2).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("returns all facts in sub example groups")
+  @Order(3)
+  public void _returnsAllFactsInSubExampleGroups() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Something\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("describe \"exampleGroup 1\"{");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("fact \"fact 1\"");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("describe \"exampleGroup 2\"{");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("fact \"fact 2\"");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this._modelStore.parseSpec(_builder);
+    ExampleGroup _exampleGroup = this._modelStore.exampleGroup("Something");
+    List<Executable> _executables = this.executables(_exampleGroup);
+    Set<Executable> _set = IterableExtensions.<Executable>toSet(_executables);
+    ExampleGroup _exampleGroup_1 = this._modelStore.exampleGroup("exampleGroup 1");
+    Example _example = this._modelStore.example("fact 1");
+    ExampleGroup _exampleGroup_2 = this._modelStore.exampleGroup("exampleGroup 2");
+    Example _example_1 = this._modelStore.example("fact 2");
+    Set<Executable> _set_1 = JnarioCollectionLiterals.<Executable>set(_exampleGroup_1, _example, _exampleGroup_2, _example_1);
+    boolean _doubleArrow = Should.<Set<Executable>>operator_doubleArrow(_set, _set_1);
+    Assert.assertTrue("\nExpected exampleGroup(\"Something\").executables.toSet => <Executable>set(exampleGroup(\"exampleGroup 1\"), example(\"fact 1\"), exampleGroup(\"exampleGroup 2\"), example(\"fact 2\")) but"
+     + "\n     exampleGroup(\"Something\").executables.toSet is " + new org.hamcrest.StringDescription().appendValue(_set).toString()
+     + "\n     exampleGroup(\"Something\").executables is " + new org.hamcrest.StringDescription().appendValue(_executables).toString()
+     + "\n     exampleGroup(\"Something\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     <Executable>set(exampleGroup(\"exampleGroup 1\"), example(\"fact 1\"), exampleGroup(\"exampleGroup 2\"), example(\"fact 2\")) is " + new org.hamcrest.StringDescription().appendValue(_set_1).toString()
+     + "\n     exampleGroup(\"exampleGroup 1\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup_1).toString()
+     + "\n     example(\"fact 1\") is " + new org.hamcrest.StringDescription().appendValue(_example).toString()
+     + "\n     exampleGroup(\"exampleGroup 2\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup_2).toString()
+     + "\n     example(\"fact 2\") is " + new org.hamcrest.StringDescription().appendValue(_example_1).toString() + "\n", _doubleArrow);
     
   }
   
