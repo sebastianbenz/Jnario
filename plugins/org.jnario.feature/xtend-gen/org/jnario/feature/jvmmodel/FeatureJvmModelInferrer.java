@@ -180,9 +180,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         return null;
       }
       List<JvmGenericType> _emptyList = CollectionLiterals.<JvmGenericType>emptyList();
-      final JvmGenericType inferredJvmType = this.toClass(background, _emptyList, acceptor, doLater, preIndexingPhase);
-      inferredJvmType.setAbstract(true);
-      _xblockexpression = (inferredJvmType);
+      JvmGenericType _class = this.toClass(background, _emptyList, acceptor, doLater, preIndexingPhase);
+      _xblockexpression = (_class);
     }
     return _xblockexpression;
   }

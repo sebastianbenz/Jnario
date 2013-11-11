@@ -109,7 +109,7 @@ public class FeatureFactoryImpl extends EFactoryImpl implements FeatureFactory
 	 */
 	public Background createBackground()
 	{
-		BackgroundImpl background = new BackgroundImpl();
+		BackgroundImplCustom background = new BackgroundImplCustom();
 		return background;
 	}
 

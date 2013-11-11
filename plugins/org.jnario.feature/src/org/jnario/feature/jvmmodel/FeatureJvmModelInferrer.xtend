@@ -113,9 +113,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    
    	def toClass(Background background, IJvmDeclaredTypeAcceptor acceptor, List<Runnable> doLater, boolean preIndexingPhase){
    		if(background == null) return null
-   		val inferredJvmType = background.toClass(emptyList, acceptor, doLater, preIndexingPhase)
-		inferredJvmType.^abstract = true
-		inferredJvmType 
+   		background.toClass(emptyList, acceptor, doLater, preIndexingPhase)
    	}
 
    	def toClass(List<Scenario> scenarios, IJvmDeclaredTypeAcceptor acceptor, JvmGenericType backgroundType, List<Runnable> doLater, boolean preIndexingPhase){
