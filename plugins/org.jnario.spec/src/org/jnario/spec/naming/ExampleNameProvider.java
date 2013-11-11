@@ -50,9 +50,6 @@ public class ExampleNameProvider extends JnarioNameProvider{
 	@Inject(optional=true) 
 	private OperationNameProvider operationNameProvider = new OperationNameProvider();
 	
-	@Inject(optional=true) 
-	private JavaKeywords javaUtils = new JavaKeywords();
-
 	protected String internalToMethodName(EObject eObject){
 		if(eObject == null){
 			return null;

@@ -83,7 +83,7 @@ describe HashBasedSpec2ResultMapping {
 	
 	context "ExampleGroup"{
 		
-		static val CLASSNAME = "RootSpec"
+		static var CLASSNAME = "RootSpec"
 		
 		fact "returns Pending if children are not executed and have no implementation"{
 			m.parseSpec('''
@@ -176,6 +176,32 @@ describe HashBasedSpec2ResultMapping {
 			first => sameInstance(second)
 		}
 		
+		fact "supports nested specs"{
+			m.parseSpec('''
+			describe "Root"{
+				describe "Child"{
+					fact "Example 1"{1 + 1 => 2}
+				}	
+			}
+			''')	
+			CLASSNAME = "RootChildSpec"
+			passes("Example 1")
+			m.exampleGroup("Root").result => typeof(Passed)
+		}
+		
+		fact "supports nested specs referencing methods"{
+			m.parseSpec('''
+			describe String{
+				describe charAt{
+					fact "Example 1"{1 + 1 => 2}
+				}	
+			}
+			''')	
+			CLASSNAME = "RootCharAtSpec"
+			passes("Example 1")
+			m.exampleGroup("String").result => typeof(Passed)
+		}
+
 		def exampleExecutedIn(String name, double time){
 			subject.accept(passingSpec(CLASSNAME, name, time))
 		}

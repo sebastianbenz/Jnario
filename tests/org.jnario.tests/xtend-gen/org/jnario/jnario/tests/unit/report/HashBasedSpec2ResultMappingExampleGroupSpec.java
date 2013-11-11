@@ -25,7 +25,7 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @SuppressWarnings("all")
 public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2ResultMappingSpec {
-  final static String CLASSNAME = "RootSpec";
+  static String CLASSNAME = "RootSpec";
   
   @Test
   @Named("returns Pending if children are not executed and have no implementation")
@@ -248,6 +248,68 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
      + "\n     first is " + new org.hamcrest.StringDescription().appendValue(first).toString()
      + "\n     sameInstance(second) is " + new org.hamcrest.StringDescription().appendValue(_sameInstance).toString()
      + "\n     second is " + new org.hamcrest.StringDescription().appendValue(second).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("supports nested specs")
+  @Order(9)
+  public void _supportsNestedSpecs() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe \"Root\"{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("describe \"Child\"{");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("fact \"Example 1\"{1 + 1 => 2}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}\t");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this.m.parseSpec(_builder);
+    HashBasedSpec2ResultMappingExampleGroupSpec.CLASSNAME = "RootChildSpec";
+    this.passes("Example 1");
+    ExampleGroup _exampleGroup = this.m.exampleGroup("Root");
+    SpecExecution _result = this.result(_exampleGroup);
+    boolean _doubleArrow = Should.operator_doubleArrow(_result, Passed.class);
+    Assert.assertTrue("\nExpected m.exampleGroup(\"Root\").result => typeof(Passed) but"
+     + "\n     m.exampleGroup(\"Root\").result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     m.exampleGroup(\"Root\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     m is " + new org.hamcrest.StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
+    
+  }
+  
+  @Test
+  @Named("supports nested specs referencing methods")
+  @Order(10)
+  public void _supportsNestedSpecsReferencingMethods() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("describe String{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("describe charAt{");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("fact \"Example 1\"{1 + 1 => 2}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}\t");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    this.m.parseSpec(_builder);
+    HashBasedSpec2ResultMappingExampleGroupSpec.CLASSNAME = "RootCharAtSpec";
+    this.passes("Example 1");
+    ExampleGroup _exampleGroup = this.m.exampleGroup("String");
+    SpecExecution _result = this.result(_exampleGroup);
+    boolean _doubleArrow = Should.operator_doubleArrow(_result, Passed.class);
+    Assert.assertTrue("\nExpected m.exampleGroup(\"String\").result => typeof(Passed) but"
+     + "\n     m.exampleGroup(\"String\").result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
+     + "\n     m.exampleGroup(\"String\") is " + new org.hamcrest.StringDescription().appendValue(_exampleGroup).toString()
+     + "\n     m is " + new org.hamcrest.StringDescription().appendValue(this.m).toString() + "\n", _doubleArrow);
     
   }
   

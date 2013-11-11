@@ -154,6 +154,30 @@ val exampleGroup = m.exampleGroup(&quot;Root&quot;)
 val first = exampleGroup.result
 val second = exampleGroup.result
 first =&gt; sameInstance(second)</pre>
+</li><li><p id="supports_nested_specs" class="example notrun"><strong>supports nested specs</strong></p>
+<pre class="prettyprint lang-spec linenums">
+m.parseSpec('''
+describe &quot;Root&quot;{
+  describe &quot;Child&quot;{
+    fact &quot;Example 1&quot;{1 + 1 =&gt; 2}
+  }  
+}
+''')  
+CLASSNAME = &quot;RootChildSpec&quot;
+passes(&quot;Example 1&quot;)
+m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Passed)</pre>
+</li><li><p id="supports_nested_specs_referencing_methods" class="example notrun"><strong>supports nested specs referencing methods</strong></p>
+<pre class="prettyprint lang-spec linenums">
+m.parseSpec('''
+describe String{
+  describe charAt{
+    fact &quot;Example 1&quot;{1 + 1 =&gt; 2}
+  }  
+}
+''')  
+CLASSNAME = &quot;RootCharAtSpec&quot;
+passes(&quot;Example 1&quot;)
+m.exampleGroup(&quot;String&quot;).result =&gt; typeof(Passed)</pre>
 </li></ul>
 <h3 class="exampleGroup notrun"  id="Step">Step</h3>
 <ul><li><p id="matches_if_classname_and_name_are_equal" class="example notrun"><strong>matches if classname and name are equal</strong></p>
@@ -337,7 +361,7 @@ describe HashBasedSpec2ResultMapping {
   
   context &quot;ExampleGroup&quot;{
     
-    static val CLASSNAME = &quot;RootSpec&quot;
+    static var CLASSNAME = &quot;RootSpec&quot;
     
     fact &quot;returns Pending if children are not executed and have no implementation&quot;{
       m.parseSpec('''
@@ -430,6 +454,32 @@ describe HashBasedSpec2ResultMapping {
       first =&gt; sameInstance(second)
     }
     
+    fact &quot;supports nested specs&quot;{
+      m.parseSpec('''
+      describe &quot;Root&quot;{
+        describe &quot;Child&quot;{
+          fact &quot;Example 1&quot;{1 + 1 =&gt; 2}
+        }  
+      }
+      ''')  
+      CLASSNAME = &quot;RootChildSpec&quot;
+      passes(&quot;Example 1&quot;)
+      m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Passed)
+    }
+    
+    fact &quot;supports nested specs referencing methods&quot;{
+      m.parseSpec('''
+      describe String{
+        describe charAt{
+          fact &quot;Example 1&quot;{1 + 1 =&gt; 2}
+        }  
+      }
+      ''')  
+      CLASSNAME = &quot;RootCharAtSpec&quot;
+      passes(&quot;Example 1&quot;)
+      m.exampleGroup(&quot;String&quot;).result =&gt; typeof(Passed)
+    }
+
     def exampleExecutedIn(String name, double time){
       subject.accept(passingSpec(CLASSNAME, name, time))
     }

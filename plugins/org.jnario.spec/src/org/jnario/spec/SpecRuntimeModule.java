@@ -93,6 +93,7 @@ import org.jnario.spec.jvmmodel.SpecSyntheticNameClashResolver;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.naming.SpecQualifiedNameProvider;
 import org.jnario.spec.scoping.SpecBatchScopeProvider;
+import org.jnario.spec.scoping.SpecImportedNamespaceScopeProvider;
 import org.jnario.spec.scoping.SpecResourceDescriptionStrategy;
 import org.jnario.spec.scoping.SpecScopeProvider;
 import org.jnario.typing.JnarioTypeComputer;
@@ -150,7 +151,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	@Override
 	public void configureIScopeProviderDelegate(Binder binder) {
 		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
-		.to(JnarioImportedNamespaceScopeProvider.class);
+		.to(SpecImportedNamespaceScopeProvider.class);
 	}
 
 	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
