@@ -21,16 +21,16 @@ import org.jnario.report.Executable2ResultMappingimport org.eclipse.xtext.parse
 
 class JnarioDocCompiler extends XtendBatchCompiler{
 	
-	@Property ResourceSet resourceSet
-	Executable2ResultMapping resultMapping
-	@Property String resultFolder
-	@Inject AbstractDocGenerator docGenerator
-	@Inject
-	private IEncodingProvider.Runtime encodingProvider
+	private Executable2ResultMapping resultMapping
+	@Property private String resultFolder
+	@Inject private AbstractDocGenerator docGenerator
+	@Inject private IEncodingProvider.Runtime encodingProvider
+	
+	private ResourceSet resourceSet
 	
 	override compile() {
-		resourceSet = loadResources()
-		generateDocumentation(resourceSet, resultMapping);
+		loadResources
+		generateDocumentation(resultMapping);
 		return true
 	}
 	
@@ -40,9 +40,7 @@ class JnarioDocCompiler extends XtendBatchCompiler{
 	}
 	
 	def loadResources(){
-		if(resourceSet == null){
-			resourceSet = resourceSetProvider.get
-		}
+		resourceSet = resourceSetProvider.get
 		encodingProvider.setDefaultEncoding(getFileEncoding())
 		resourceSet.getLoadOptions().put(XtextResource::OPTION_ENCODING, getFileEncoding());
 		val nameBasedFilter = new NameBasedFilter();
@@ -61,10 +59,10 @@ class JnarioDocCompiler extends XtendBatchCompiler{
 		resourceSet
 	}
 	
-	def generateDocumentation(ResourceSet rs, Executable2ResultMapping executable2ResultMapping){
+	def generateDocumentation(Executable2ResultMapping executable2ResultMapping){
 		val javaIoFileSystemAccess = javaIoFileSystemAccessProvider.get()
 		javaIoFileSystemAccess.setOutputPath(DocOutputConfigurationProvider::DOC_OUTPUT, outputPath)
-		for(r : rs.resources){
+		for(r : resourceSet.resources){
 			if(fileExtensionProvider.isValid(r.URI.fileExtension)){
 				docGenerator.doGenerate(r, javaIoFileSystemAccess, executable2ResultMapping);
 			}

@@ -128,8 +128,7 @@ public class JnarioTestCompile extends AbstractXtendCompilerMojo {
 		testOutputDirectory = resolveToBaseDir(testOutputDirectory);
 		compileXtendSources();
 		for (Injector injector : injectors) {
-			resourceSetProvider.get().eAdapters().clear();;
-			MavenProjectAdapter.install(resourceSetProvider.get(), project);
+			resourceSetProvider.get().eAdapters().clear();
 			compile(injector);
 		}
 	}
@@ -201,6 +200,7 @@ public class JnarioTestCompile extends AbstractXtendCompilerMojo {
 
 	protected void compile(XtendBatchCompiler xtend2BatchCompiler, String classPath, List<String> sourceDirectories, String outputPath) throws MojoExecutionException {
 		xtend2BatchCompiler.setResourceSetProvider(resourceSetProvider);
+		MavenProjectAdapter.install(resourceSetProvider.get(), project);
 		Iterable<String> filtered = filter(sourceDirectories, FILE_EXISTS);
 		if (Iterables.isEmpty(filtered)) {
 			getLog().info(

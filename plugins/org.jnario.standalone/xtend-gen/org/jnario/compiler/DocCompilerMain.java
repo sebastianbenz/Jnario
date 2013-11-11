@@ -25,7 +25,6 @@ import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.compiler.CompilerMain;
 import org.jnario.compiler.HtmlAssetsCompiler;
-import org.jnario.compiler.JnarioDocCompiler;
 import org.jnario.report.HashBasedSpec2ResultMapping;
 import org.jnario.report.SpecResultParser;
 
@@ -171,29 +170,8 @@ public class DocCompilerMain {
   }
   
   private int generateDocs(final ResourceSet resourceSet) {
-    for (final ISetup setup : CompilerMain.SETUPS) {
-      {
-        final Injector injector = setup.createInjectorAndDoEMFRegistration();
-        final JnarioDocCompiler jnarioCompiler = injector.<JnarioDocCompiler>getInstance(JnarioDocCompiler.class);
-        String _outputPath = this.getOutputPath();
-        jnarioCompiler.setOutputPath(_outputPath);
-        String _classPath = this.getClassPath();
-        jnarioCompiler.setClassPath(_classPath);
-        String _fileEncoding = this.getFileEncoding();
-        jnarioCompiler.setFileEncoding(_fileEncoding);
-        String _sourcePath = this.getSourcePath();
-        jnarioCompiler.setSourcePath(_sourcePath);
-        jnarioCompiler.setResourceSet(resourceSet);
-        HashBasedSpec2ResultMapping _createSpec2ResultMapping = this.createSpec2ResultMapping();
-        jnarioCompiler.setExecutable2ResultMapping(_createSpec2ResultMapping);
-        boolean _compile = jnarioCompiler.compile();
-        boolean _not = (!_compile);
-        if (_not) {
-          return CompilerMain.COMPILATION_ERROR;
-        }
-      }
-    }
-    return CompilerMain.OK;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method setResourceSet is undefined for the type DocCompilerMain");
   }
   
   private static void printUsage() {

@@ -12,6 +12,7 @@ public class JnarioMavenProjectResourceSetProvider implements Provider<ResourceS
 	private XtextResourceSet rs;
 
 	public JnarioMavenProjectResourceSetProvider(MavenProject project) {
+		super();
 		rs = new XtextResourceSet();
 		MavenProjectAdapter.install(rs, project);
 	}

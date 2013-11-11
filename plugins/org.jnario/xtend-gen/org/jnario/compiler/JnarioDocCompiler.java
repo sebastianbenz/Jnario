@@ -7,7 +7,6 @@
  */
 package org.jnario.compiler;
 
-import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 import java.io.File;
@@ -29,16 +28,6 @@ import org.jnario.report.Executable2ResultMapping;
 
 @SuppressWarnings("all")
 public class JnarioDocCompiler extends XtendBatchCompiler {
-  private ResourceSet _resourceSet;
-  
-  public ResourceSet getResourceSet() {
-    return this._resourceSet;
-  }
-  
-  public void setResourceSet(final ResourceSet resourceSet) {
-    this._resourceSet = resourceSet;
-  }
-  
   private Executable2ResultMapping resultMapping;
   
   private String _resultFolder;
@@ -57,11 +46,11 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
   @Inject
   private org.eclipse.xtext.parser.IEncodingProvider.Runtime encodingProvider;
   
+  private ResourceSet resourceSet;
+  
   public boolean compile() {
-    ResourceSet _loadResources = this.loadResources();
-    this.setResourceSet(_loadResources);
-    ResourceSet _resourceSet = this.getResourceSet();
-    this.generateDocumentation(_resourceSet, this.resultMapping);
+    this.loadResources();
+    this.generateDocumentation(this.resultMapping);
     return true;
   }
   
@@ -74,16 +63,11 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
   public ResourceSet loadResources() {
     ResourceSet _xblockexpression = null;
     {
-      ResourceSet _resourceSet = this.getResourceSet();
-      boolean _equals = Objects.equal(_resourceSet, null);
-      if (_equals) {
-        ResourceSet _get = this.resourceSetProvider.get();
-        this.setResourceSet(_get);
-      }
+      ResourceSet _get = this.resourceSetProvider.get();
+      this.resourceSet = _get;
       String _fileEncoding = this.getFileEncoding();
       this.encodingProvider.setDefaultEncoding(_fileEncoding);
-      ResourceSet _resourceSet_1 = this.getResourceSet();
-      Map<Object,Object> _loadOptions = _resourceSet_1.getLoadOptions();
+      Map<Object,Object> _loadOptions = this.resourceSet.getLoadOptions();
       String _fileEncoding_1 = this.getFileEncoding();
       _loadOptions.put(XtextResource.OPTION_ENCODING, _fileEncoding_1);
       NameBasedFilter _nameBasedFilter = new NameBasedFilter();
@@ -97,28 +81,24 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
         public boolean apply(final URI input) {
           final boolean matches = nameBasedFilter.matches(input);
           if (matches) {
-            ResourceSet _resourceSet = JnarioDocCompiler.this.getResourceSet();
-            _resourceSet.getResource(input, true);
+            JnarioDocCompiler.this.resourceSet.getResource(input, true);
           }
           return matches;
         }
       };
       pathTraverser.resolvePathes(_sourcePathDirectories, _function);
       final File classDirectory = this.createTempDir("classes");
-      ResourceSet _resourceSet_2 = this.getResourceSet();
-      this.installJvmTypeProvider(_resourceSet_2, classDirectory);
-      ResourceSet _resourceSet_3 = this.getResourceSet();
-      EcoreUtil.resolveAll(_resourceSet_3);
-      ResourceSet _resourceSet_4 = this.getResourceSet();
-      _xblockexpression = (_resourceSet_4);
+      this.installJvmTypeProvider(this.resourceSet, classDirectory);
+      EcoreUtil.resolveAll(this.resourceSet);
+      _xblockexpression = (this.resourceSet);
     }
     return _xblockexpression;
   }
   
-  public void generateDocumentation(final ResourceSet rs, final Executable2ResultMapping executable2ResultMapping) {
+  public void generateDocumentation(final Executable2ResultMapping executable2ResultMapping) {
     final JavaIoFileSystemAccess javaIoFileSystemAccess = this.javaIoFileSystemAccessProvider.get();
     javaIoFileSystemAccess.setOutputPath(DocOutputConfigurationProvider.DOC_OUTPUT, this.outputPath);
-    EList<Resource> _resources = rs.getResources();
+    EList<Resource> _resources = this.resourceSet.getResources();
     for (final Resource r : _resources) {
       URI _uRI = r.getURI();
       String _fileExtension = _uRI.fileExtension();
