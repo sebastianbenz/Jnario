@@ -18,6 +18,7 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.spec.ExampleGroup;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -283,7 +284,8 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
   }
   
   @Test
-  @Named("supports nested specs referencing methods")
+  @Ignore
+  @Named("supports nested specs referencing methods [PENDING]")
   @Order(10)
   public void _supportsNestedSpecsReferencingMethods() throws Exception {
     StringConcatenation _builder = new StringConcatenation();

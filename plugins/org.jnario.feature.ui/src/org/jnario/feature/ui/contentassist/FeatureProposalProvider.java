@@ -25,14 +25,12 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
-import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.xtext.ui.TypeMatchFilters;
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
@@ -66,7 +64,6 @@ import org.jnario.feature.naming.StepNameProvider;
 import org.jnario.ui.contentassist.ImportingTypesProposalProvider.FQNImporter;
 
 import com.google.common.base.Strings;
-import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 
 /**

@@ -1,6 +1,5 @@
 package org.jnario.feature.ui.hover;
 
-import com.google.inject.Inject;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
@@ -10,6 +9,8 @@ import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.doc.WhiteSpaceNormalizer;
 import org.jnario.feature.feature.Step;
 import org.jnario.ui.doc.JnarioHoverProvider;
+
+import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 public class FeatureHoverProvider extends JnarioHoverProvider {

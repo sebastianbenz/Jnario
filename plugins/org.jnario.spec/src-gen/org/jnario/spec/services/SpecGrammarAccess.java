@@ -1236,7 +1236,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cXTypeLiteralParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		
 		////	| MockLiteral 
-		//
 		//XLiteral returns xbase::XExpression:
 		//	XCollectionLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
 		public ParserRule getRule() { return rule; }
@@ -1309,11 +1308,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightOperandXOtherOperatorExpressionParserRuleCall_1_3_1_0 = (RuleCall)cRightOperandAssignment_1_3_1.eContents().get(0);
 		
 		////MockLiteral:
-		//
 		////	{MockLiteral} ('mock'|'stub') '(' type=[types::JvmType|QualifiedName] ')'
-		//
 		////;
-		//
 		//XRelationalExpression returns xbase::XExpression:
 		//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) =>
 		//	rightOperand=XOtherOperatorExpression? | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
@@ -1593,11 +1589,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
 		/// **
-		//
 		// * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
-		//
 		// * which makes downstream grammars break on classloading, when a rule is removed.
-		//
 		// * / StaticQualifier:
 		//	(ValidID "::")+;
 		public ParserRule getRule() { return rule; }
@@ -1766,7 +1759,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////	| MockLiteral 
-	//
 	//XLiteral returns xbase::XExpression:
 	//	XCollectionLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
 	public XLiteralElements getXLiteralAccess() {
@@ -1778,11 +1770,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////MockLiteral:
-	//
 	////	{MockLiteral} ('mock'|'stub') '(' type=[types::JvmType|QualifiedName] ')'
-	//
 	////;
-	//
 	//XRelationalExpression returns xbase::XExpression:
 	//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) =>
 	//	rightOperand=XOtherOperatorExpression? | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
@@ -1896,11 +1885,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	/// **
-	//
 	// * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
-	//
 	// * which makes downstream grammars break on classloading, when a rule is removed.
-	//
 	// * / StaticQualifier:
 	//	(ValidID "::")+;
 	public StaticQualifierElements getStaticQualifierAccess() {
@@ -2190,6 +2176,79 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	public ParserRule getRichStringElseIfRule() {
 		return getRichStringElseIfAccess().getRule();
 	}
+
+	//terminal ID:
+	//	"^"? (IDENTIFIER_START | UNICODE_ESCAPE) (IDENTIFIER_PART | UNICODE_ESCAPE)*;
+	public TerminalRule getIDRule() {
+		return gaXtend.getIDRule();
+	} 
+
+	//terminal fragment HEX_DIGIT:
+	//	"0".."9" | "a".."f" | "A".."F";
+	public TerminalRule getHEX_DIGITRule() {
+		return gaXtend.getHEX_DIGITRule();
+	} 
+
+	//terminal fragment UNICODE_ESCAPE:
+	//	"\\" "u" (HEX_DIGIT (HEX_DIGIT (HEX_DIGIT HEX_DIGIT?)?)?)?;
+	public TerminalRule getUNICODE_ESCAPERule() {
+		return gaXtend.getUNICODE_ESCAPERule();
+	} 
+
+	//terminal fragment IDENTIFIER_START:
+	//	"$" | "A".."Z" | "_" | "a".."z" | "¢".."¥" | "ª" | "µ" | "º" | "À".."Ö" | "Ø".."ö" | "ø".."ȶ" | "ɐ".."ˁ" | "ˆ".."ˑ" |
+	//	"ˠ".."ˤ" | "ˮ" | "ͺ" | "Ά" | "Έ".."Ί" | "Ό" | "Ύ".."Ρ" | "Σ".."ώ" | "ϐ".."ϵ" | "Ϸ".."ϻ" | "Ѐ".."ҁ" | "Ҋ".."ӎ" |
+	//	"Ӑ".."ӵ" | "Ӹ".."ӹ" | "Ԁ".."ԏ" | "Ա".."Ֆ" | "ՙ" | "ա".."և" | "א".."ת" | "װ".."ײ" | "ء".."غ" | "ـ".."ي" | "ٮ".."ٯ" |
+	//	"ٱ".."ۓ" | "ە" | "ۥ".."ۦ" | "ۮ".."ۯ" | "ۺ".."ۼ" | "ۿ" | "ܐ" | "ܒ".."ܯ" | "ݍ".."ݏ" | "ހ".."ޥ" | "ޱ" | "ऄ".."ह" | "ऽ" |
+	//	"ॐ" | "क़".."ॡ" | "অ".."ঌ" | "এ".."ঐ" | "ও".."ন" | "প".."র" | "ল" | "শ".."হ" | "ঽ" | "ড়".."ঢ়" | "য়".."ৡ" | "ৰ".."৳" |
+	//	"ਅ".."ਊ" | "ਏ".."ਐ" | "ਓ".."ਨ" | "ਪ".."ਰ" | "ਲ".."ਲ਼" | "ਵ".."ਸ਼" | "ਸ".."ਹ" | "ਖ਼".."ੜ" | "ਫ਼" | "ੲ".."ੴ" | "અ".."ઍ" |
+	//	"એ".."ઑ" | "ઓ".."ન" | "પ".."ર" | "લ".."ળ" | "વ".."હ" | "ઽ" | "ૐ" | "ૠ".."ૡ" | "૱" | "ଅ".."ଌ" | "ଏ".."ଐ" | "ଓ".."ନ" |
+	//	"ପ".."ର" | "ଲ".."ଳ" | "ଵ".."ହ" | "ଽ" | "ଡ଼".."ଢ଼" | "ୟ".."ୡ" | "ୱ" | "ஃ" | "அ".."ஊ" | "எ".."ஐ" | "ஒ".."க" | "ங".."ச" |
+	//	"ஜ" | "ஞ".."ட" | "ண".."த" | "ந".."ப" | "ம".."வ" | "ஷ".."ஹ" | "௹" | "అ".."ఌ" | "ఎ".."ఐ" | "ఒ".."న" | "ప".."ళ" |
+	//	"వ".."హ" | "ౠ".."ౡ" | "ಅ".."ಌ" | "ಎ".."ಐ" | "ಒ".."ನ" | "ಪ".."ಳ" | "ವ".."ಹ" | "ಽ" | "ೞ" | "ೠ".."ೡ" | "അ".."ഌ" |
+	//	"എ".."ഐ" | "ഒ".."ന" | "പ".."ഹ" | "ൠ".."ൡ" | "අ".."ඖ" | "ක".."න" | "ඳ".."ර" | "ල" | "ව".."ෆ" | "ก".."ะ" | "า".."ำ" |
+	//	"฿".."ๆ" | "ກ".."ຂ" | "ຄ" | "ງ".."ຈ" | "ຊ" | "ຍ" | "ດ".."ທ" | "ນ".."ຟ" | "ມ".."ຣ" | "ລ" | "ວ" | "ສ".."ຫ" | "ອ".."ະ" |
+	//	"າ".."ຳ" | "ຽ" | "ເ".."ໄ" | "ໆ" | "ໜ".."ໝ" | "ༀ" | "ཀ".."ཇ" | "ཉ".."ཪ" | "ྈ".."ྋ" | "က".."အ" | "ဣ".."ဧ" | "ဩ".."ဪ" |
+	//	"ၐ".."ၕ" | "Ⴀ".."Ⴥ" | "ა".."ჸ" | "ᄀ".."ᅙ" | "ᅟ".."ᆢ" | "ᆨ".."ᇹ" | "ሀ".."ሆ" | "ለ".."ቆ" | "ቈ" | "ቊ".."ቍ" | "ቐ".."ቖ" |
+	//	"ቘ" | "ቚ".."ቝ" | "በ".."ኆ" | "ኈ" | "ኊ".."ኍ" | "ነ".."ኮ" | "ኰ" | "ኲ".."ኵ" | "ኸ".."ኾ" | "ዀ" | "ዂ".."ዅ" | "ወ".."ዎ" |
+	//	"ዐ".."ዖ" | "ዘ".."ዮ" | "ደ".."ጎ" | "ጐ" | "ጒ".."ጕ" | "ጘ".."ጞ" | "ጠ".."ፆ" | "ፈ".."ፚ" | "Ꭰ".."Ᏼ" | "ᐁ".."ᙬ" | "ᙯ".."ᙶ" |
+	//	"ᚁ".."ᚚ" | "ᚠ".."ᛪ" | "ᛮ".."ᛰ" | "ᜀ".."ᜌ" | "ᜎ".."ᜑ" | "ᜠ".."ᜱ" | "ᝀ".."ᝑ" | "ᝠ".."ᝬ" | "ᝮ".."ᝰ" | "ក".."ឳ" | "ៗ" |
+	//	"៛".."ៜ" | "ᠠ".."ᡷ" | "ᢀ".."ᢨ" | "ᤀ".."ᤜ" | "ᥐ".."ᥭ" | "ᥰ".."ᥴ" | "ᴀ".."ᵫ" | "Ḁ".."ẛ" | "Ạ".."ỹ" | "ἀ".."ἕ" | "Ἐ".."Ἕ"
+	//	| "ἠ".."ὅ" | "Ὀ".."Ὅ" | "ὐ".."ὗ" | "Ὑ" | "Ὓ" | "Ὕ" | "Ὗ".."ώ" | "ᾀ".."ᾴ" | "ᾶ".."ᾼ" | "ι" | "ῂ".."ῄ" | "ῆ".."ῌ" |
+	//	"ῐ".."ΐ" | "ῖ".."Ί" | "ῠ".."Ῥ" | "ῲ".."ῴ" | "ῶ".."ῼ" | "‿".."⁀" | "⁔" | "ⁱ" | "ⁿ" | "₠".."₱" | "ℂ" | "ℇ" | "ℊ".."ℓ" |
+	//	"ℕ" | "ℙ".."ℝ" | "ℤ" | "Ω" | "ℨ" | "K".."ℭ" | "ℯ".."ℱ" | "ℳ".."ℹ" | "ℽ".."ℿ" | "ⅅ".."ⅉ" | "Ⅰ".."Ↄ" | "々".."〇" |
+	//	"〡".."〩" | "〱".."〵" | "〸".."〼" | "ぁ".."ゖ" | "ゝ".."ゟ" | "ァ".."ヿ" | "ㄅ".."ㄬ" | "ㄱ".."ㆎ" | "ㆠ".."ㆷ" | "ㇰ".."ㇿ" | "㐀".."䶵"
+	//	| "一".."龥" | "ꀀ".."ꒌ" | "가".."힣" | "豈".."鶴" | "侮".."頻" | "ﬀ".."ﬆ" | "ﬓ".."ﬗ" | "יִ" | "ײַ".."ﬨ" | "שׁ".."זּ" | "טּ".."לּ" |
+	//	"מּ" | "נּ".."סּ" | "ףּ".."פּ" | "צּ".."ﮱ" | "ﯓ".."ﴽ" | "ﵐ".."ﶏ" | "ﶒ".."ﷇ" | "ﷰ".."﷼" | "︳".."︴" | "﹍".."﹏" | "﹩" |
+	//	"ﹰ".."ﹴ" | "ﹶ".."ﻼ" | "＄" | "Ａ".."Ｚ" | "＿" | "ａ".."ｚ" | "･".."ﾾ" | "ￂ".."ￇ" | "ￊ".."ￏ" | "ￒ".."ￗ" | "ￚ".."ￜ" |
+	//	"￠".."￡" | "￥".."￦";
+	public TerminalRule getIDENTIFIER_STARTRule() {
+		return gaXtend.getIDENTIFIER_STARTRule();
+	} 
+
+	//terminal fragment IDENTIFIER_PART:
+	//	IDENTIFIER_START | IDENTIFIER_PART_IMPL;
+	public TerminalRule getIDENTIFIER_PARTRule() {
+		return gaXtend.getIDENTIFIER_PARTRule();
+	} 
+
+	//terminal fragment IDENTIFIER_PART_IMPL:
+	//	" ".."\b" | "".."" | "0".."9" | "".."" | "­" | "̀".."͗" | "͝".."ͯ" | "҃".."҆" | "֑".."֡" | "֣".."ֹ" | "ֻ".."ֽ" |
+	//	"ֿ" | "ׁ".."ׂ" | "ׄ" | "؀".."؃" | "ؐ".."ؕ" | "ً".."٘" | "٠".."٩" | "ٰ" | "ۖ".."۝" | "۟".."ۤ" | "ۧ".."ۨ" | "۪".."ۭ" |
+	//	"۰".."۹" | "܏" | "ܑ" | "ܰ".."݊" | "ަ".."ް" | "ँ".."ः" | "़" | "ा".."्" | "॑".."॔" | "ॢ".."ॣ" | "०".."९" | "ঁ".."ঃ" |
+	//	"়" | "া".."ৄ" | "ে".."ৈ" | "ো".."্" | "ৗ" | "ৢ".."ৣ" | "০".."৯" | "ਁ".."ਃ" | "਼" | "ਾ".."ੂ" | "ੇ".."ੈ" | "ੋ".."੍" |
+	//	"੦".."ੱ" | "ઁ".."ઃ" | "઼" | "ા".."ૅ" | "ે".."ૉ" | "ો".."્" | "ૢ".."ૣ" | "૦".."૯" | "ଁ".."ଃ" | "଼" | "ା".."ୃ" |
+	//	"େ".."ୈ" | "ୋ".."୍" | "ୖ".."ୗ" | "୦".."୯" | "ஂ" | "ா".."ூ" | "ெ".."ை" | "ொ".."்" | "ௗ" | "௧".."௯" | "ఁ".."ః" |
+	//	"ా".."ౄ" | "ె".."ై" | "ొ".."్" | "ౕ".."ౖ" | "౦".."౯" | "ಂ".."ಃ" | "಼" | "ಾ".."ೄ" | "ೆ".."ೈ" | "ೊ".."್" | "ೕ".."ೖ" |
+	//	"೦".."೯" | "ം".."ഃ" | "ാ".."ൃ" | "െ".."ൈ" | "ൊ".."്" | "ൗ" | "൦".."൯" | "ං".."ඃ" | "්" | "ා".."ු" | "ූ" | "ෘ".."ෟ" |
+	//	"ෲ".."ෳ" | "ั" | "ิ".."ฺ" | "็".."๎" | "๐".."๙" | "ັ" | "ິ".."ູ" | "ົ".."ຼ" | "່".."ໍ" | "໐".."໙" | "༘".."༙" |
+	//	"༠".."༩" | "༵" | "༷" | "༹" | "༾".."༿" | "ཱ".."྄" | "྆".."྇" | "ྐ".."ྗ" | "ྙ".."ྼ" | "࿆" | "ာ".."ဲ" | "ံ".."္" |
+	//	"၀".."၉" | "ၖ".."ၙ" | "፩".."፱" | "ᜒ".."᜔" | "ᜲ".."᜴" | "ᝒ".."ᝓ" | "ᝲ".."ᝳ" | "឴".."៓" | "៝" | "០".."៩" | "᠋".."᠍" |
+	//	"᠐".."᠙" | "ᢩ" | "ᤠ".."ᤫ" | "ᤰ".."᤻" | "᥆".."᥏" | "‌".."‏" | "‪".."‮" | "⁠".."⁣" | "⁪".."⁯" | "⃐".."⃜" | "⃡" |
+	//	"⃥".."⃪" | "〪".."〯" | "゙".."゚" | "ﬞ" | "︀".."️" | "︠".."︣" | "﻿" | "０".."９" | "￹".."￻";
+	public TerminalRule getIDENTIFIER_PART_IMPLRule() {
+		return gaXtend.getIDENTIFIER_PART_IMPLRule();
+	} 
 
 	//XAnnotation:
 	//	{XAnnotation} "@" annotationType=[types::JvmAnnotationType|QualifiedName] ("("
@@ -2919,12 +2978,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	public ParserRule getXImportDeclarationRule() {
 		return getXImportDeclarationAccess().getRule();
 	}
-
-	//terminal ID:
-	//	"^"? ("a".."z" | "A".."Z" | "$" | "_") ("a".."z" | "A".."Z" | "$" | "_" | "0".."9")*;
-	public TerminalRule getIDRule() {
-		return gaXtend.getIDRule();
-	} 
 
 	//terminal STRING:
 	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |

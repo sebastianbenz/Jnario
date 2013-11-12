@@ -16,20 +16,17 @@ public class InternalSuiteLexer extends Lexer {
     public static final int RULE_ID=4;
     public static final int T__29=29;
     public static final int T__28=28;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int RULE_ANY_OTHER=22;
+    public static final int RULE_ANY_OTHER=27;
+    public static final int RULE_IDENTIFIER_PART_IMPL=22;
     public static final int RULE_COMMENT_RICH_TEXT_END=17;
     public static final int EOF=-1;
+    public static final int RULE_IDENTIFIER_START=21;
     public static final int RULE_PATTERN=9;
     public static final int T__93=93;
     public static final int T__94=94;
     public static final int T__91=91;
-    public static final int T__92=92;
     public static final int RULE_HEX=5;
+    public static final int T__92=92;
     public static final int T__90=90;
     public static final int RULE_RICH_TEXT_END=16;
     public static final int RULE_DECIMAL=7;
@@ -42,15 +39,16 @@ public class InternalSuiteLexer extends Lexer {
     public static final int T__81=81;
     public static final int T__82=82;
     public static final int T__83=83;
+    public static final int RULE_HEX_DIGIT=18;
     public static final int RULE_TEXT=11;
     public static final int T__85=85;
     public static final int T__84=84;
     public static final int T__87=87;
     public static final int T__86=86;
-    public static final int RULE_IN_RICH_STRING=18;
+    public static final int RULE_IN_RICH_STRING=20;
     public static final int T__89=89;
     public static final int T__88=88;
-    public static final int RULE_ML_COMMENT=19;
+    public static final int RULE_ML_COMMENT=24;
     public static final int RULE_STRING=10;
     public static final int T__71=71;
     public static final int T__72=72;
@@ -79,6 +77,11 @@ public class InternalSuiteLexer extends Lexer {
     public static final int T__117=117;
     public static final int T__114=114;
     public static final int T__115=115;
+    public static final int T__124=124;
+    public static final int T__123=123;
+    public static final int T__122=122;
+    public static final int T__121=121;
+    public static final int T__120=120;
     public static final int T__61=61;
     public static final int T__60=60;
     public static final int T__55=55;
@@ -99,8 +102,9 @@ public class InternalSuiteLexer extends Lexer {
     public static final int T__106=106;
     public static final int T__111=111;
     public static final int T__110=110;
-    public static final int RULE_INT=6;
     public static final int T__113=113;
+    public static final int RULE_INT=6;
+    public static final int RULE_UNICODE_ESCAPE=19;
     public static final int T__112=112;
     public static final int T__50=50;
     public static final int T__42=42;
@@ -111,12 +115,13 @@ public class InternalSuiteLexer extends Lexer {
     public static final int T__47=47;
     public static final int T__44=44;
     public static final int T__45=45;
+    public static final int RULE_IDENTIFIER_PART=23;
     public static final int T__48=48;
     public static final int T__49=49;
     public static final int T__102=102;
     public static final int T__101=101;
     public static final int T__100=100;
-    public static final int RULE_SL_COMMENT=20;
+    public static final int RULE_SL_COMMENT=25;
     public static final int T__30=30;
     public static final int T__31=31;
     public static final int T__32=32;
@@ -128,7 +133,7 @@ public class InternalSuiteLexer extends Lexer {
     public static final int T__38=38;
     public static final int T__39=39;
     public static final int RULE_RICH_TEXT_INBETWEEN=14;
-    public static final int RULE_WS=21;
+    public static final int RULE_WS=26;
 
     // delegates
     // delegators
@@ -143,119 +148,15 @@ public class InternalSuiteLexer extends Lexer {
     }
     public String getGrammarFileName() { return "../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g"; }
 
-    // $ANTLR start "T__23"
-    public final void mT__23() throws RecognitionException {
-        try {
-            int _type = T__23;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:11:7: ( '=' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:11:9: '='
-            {
-            match('='); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__23"
-
-    // $ANTLR start "T__24"
-    public final void mT__24() throws RecognitionException {
-        try {
-            int _type = T__24;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:12:7: ( '||' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:12:9: '||'
-            {
-            match("||"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__24"
-
-    // $ANTLR start "T__25"
-    public final void mT__25() throws RecognitionException {
-        try {
-            int _type = T__25;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:13:7: ( '&&' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:13:9: '&&'
-            {
-            match("&&"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__25"
-
-    // $ANTLR start "T__26"
-    public final void mT__26() throws RecognitionException {
-        try {
-            int _type = T__26;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:14:7: ( ';' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:14:9: ';'
-            {
-            match(';'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__26"
-
-    // $ANTLR start "T__27"
-    public final void mT__27() throws RecognitionException {
-        try {
-            int _type = T__27;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:15:7: ( 'public' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:15:9: 'public'
-            {
-            match("public"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__27"
-
     // $ANTLR start "T__28"
     public final void mT__28() throws RecognitionException {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:16:7: ( 'private' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:16:9: 'private'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:11:7: ( '=' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:11:9: '='
             {
-            match("private"); 
-
+            match('='); 
 
             }
 
@@ -272,10 +173,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:17:7: ( 'protected' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:17:9: 'protected'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:12:7: ( '||' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:12:9: '||'
             {
-            match("protected"); 
+            match("||"); 
 
 
             }
@@ -293,10 +194,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:18:7: ( 'package' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:18:9: 'package'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:13:7: ( '&&' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:13:9: '&&'
             {
-            match("package"); 
+            match("&&"); 
 
 
             }
@@ -314,11 +215,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:19:7: ( 'abstract' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:19:9: 'abstract'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:14:7: ( ';' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:14:9: ';'
             {
-            match("abstract"); 
-
+            match(';'); 
 
             }
 
@@ -335,10 +235,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:20:7: ( 'static' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:20:9: 'static'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:15:7: ( 'public' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:15:9: 'public'
             {
-            match("static"); 
+            match("public"); 
 
 
             }
@@ -356,10 +256,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:21:7: ( 'dispatch' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:21:9: 'dispatch'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:16:7: ( 'private' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:16:9: 'private'
             {
-            match("dispatch"); 
+            match("private"); 
 
 
             }
@@ -377,10 +277,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:22:7: ( 'final' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:22:9: 'final'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:17:7: ( 'protected' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:17:9: 'protected'
             {
-            match("final"); 
+            match("protected"); 
 
 
             }
@@ -398,10 +298,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:23:7: ( 'val' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:23:9: 'val'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:18:7: ( 'package' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:18:9: 'package'
             {
-            match("val"); 
+            match("package"); 
 
 
             }
@@ -419,10 +319,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:24:7: ( 'var' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:24:9: 'var'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:19:7: ( 'abstract' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:19:9: 'abstract'
             {
-            match("var"); 
+            match("abstract"); 
 
 
             }
@@ -440,10 +340,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25:7: ( 'def' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25:9: 'def'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:20:7: ( 'static' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:20:9: 'static'
             {
-            match("def"); 
+            match("static"); 
 
 
             }
@@ -461,10 +361,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:26:7: ( 'override' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:26:9: 'override'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:21:7: ( 'dispatch' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:21:9: 'dispatch'
             {
-            match("override"); 
+            match("dispatch"); 
 
 
             }
@@ -482,10 +382,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:27:7: ( 'create' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:27:9: 'create'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:22:7: ( 'final' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:22:9: 'final'
             {
-            match("create"); 
+            match("final"); 
 
 
             }
@@ -503,10 +403,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:28:7: ( 'annotation' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:28:9: 'annotation'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:23:7: ( 'val' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:23:9: 'val'
             {
-            match("annotation"); 
+            match("val"); 
 
 
             }
@@ -524,10 +424,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29:7: ( 'class' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29:9: 'class'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:24:7: ( 'var' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:24:9: 'var'
             {
-            match("class"); 
+            match("var"); 
 
 
             }
@@ -545,10 +445,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:30:7: ( 'enum' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:30:9: 'enum'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25:7: ( 'def' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:25:9: 'def'
             {
-            match("enum"); 
+            match("def"); 
 
 
             }
@@ -566,10 +466,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:31:7: ( 'extends' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:31:9: 'extends'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:26:7: ( 'override' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:26:9: 'override'
             {
-            match("extends"); 
+            match("override"); 
 
 
             }
@@ -587,10 +487,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:32:7: ( 'extension' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:32:9: 'extension'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:27:7: ( 'create' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:27:9: 'create'
             {
-            match("extension"); 
+            match("create"); 
 
 
             }
@@ -608,10 +508,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:33:7: ( 'implements' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:33:9: 'implements'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:28:7: ( 'annotation' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:28:9: 'annotation'
             {
-            match("implements"); 
+            match("annotation"); 
 
 
             }
@@ -629,10 +529,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:34:7: ( 'import' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:34:9: 'import'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29:7: ( 'class' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29:9: 'class'
             {
-            match("import"); 
+            match("class"); 
 
 
             }
@@ -650,10 +550,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:35:7: ( 'interface' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:35:9: 'interface'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:30:7: ( 'enum' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:30:9: 'enum'
             {
-            match("interface"); 
+            match("enum"); 
 
 
             }
@@ -671,10 +571,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:36:7: ( 'throws' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:36:9: 'throws'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:31:7: ( 'extends' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:31:9: 'extends'
             {
-            match("throws"); 
+            match("extends"); 
 
 
             }
@@ -692,10 +592,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:37:7: ( '.' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:37:9: '.'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:32:7: ( 'extension' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:32:9: 'extension'
             {
-            match('.'); 
+            match("extension"); 
+
 
             }
 
@@ -712,10 +613,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:38:7: ( '+=' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:38:9: '+='
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:33:7: ( 'implements' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:33:9: 'implements'
             {
-            match("+="); 
+            match("implements"); 
 
 
             }
@@ -733,10 +634,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:39:7: ( '-=' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:39:9: '-='
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:34:7: ( 'import' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:34:9: 'import'
             {
-            match("-="); 
+            match("import"); 
 
 
             }
@@ -754,10 +655,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:40:7: ( '==' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:40:9: '=='
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:35:7: ( 'interface' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:35:9: 'interface'
             {
-            match("=="); 
+            match("interface"); 
 
 
             }
@@ -775,10 +676,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:41:7: ( '!=' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:41:9: '!='
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:36:7: ( 'throws' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:36:9: 'throws'
             {
-            match("!="); 
+            match("throws"); 
 
 
             }
@@ -796,11 +697,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:42:7: ( '===' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:42:9: '==='
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:37:7: ( '.' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:37:9: '.'
             {
-            match("==="); 
-
+            match('.'); 
 
             }
 
@@ -817,10 +717,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:43:7: ( '!==' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:43:9: '!=='
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:38:7: ( '+=' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:38:9: '+='
             {
-            match("!=="); 
+            match("+="); 
 
 
             }
@@ -838,10 +738,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:44:7: ( '>=' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:44:9: '>='
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:39:7: ( '-=' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:39:9: '-='
             {
-            match(">="); 
+            match("-="); 
 
 
             }
@@ -859,10 +759,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:45:7: ( '<=' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:45:9: '<='
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:40:7: ( '==' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:40:9: '=='
             {
-            match("<="); 
+            match("=="); 
 
 
             }
@@ -880,10 +780,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:46:7: ( '>' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:46:9: '>'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:41:7: ( '!=' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:41:9: '!='
             {
-            match('>'); 
+            match("!="); 
+
 
             }
 
@@ -900,10 +801,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:47:7: ( '<' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:47:9: '<'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:42:7: ( '===' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:42:9: '==='
             {
-            match('<'); 
+            match("==="); 
+
 
             }
 
@@ -920,10 +822,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:48:7: ( '->' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:48:9: '->'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:43:7: ( '!==' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:43:9: '!=='
             {
-            match("->"); 
+            match("!=="); 
 
 
             }
@@ -941,10 +843,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:49:7: ( '..<' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:49:9: '..<'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:44:7: ( '>=' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:44:9: '>='
             {
-            match("..<"); 
+            match(">="); 
 
 
             }
@@ -962,10 +864,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:50:7: ( '..' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:50:9: '..'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:45:7: ( '<=' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:45:9: '<='
             {
-            match(".."); 
+            match("<="); 
 
 
             }
@@ -983,11 +885,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:51:7: ( '=>' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:51:9: '=>'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:46:7: ( '>' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:46:9: '>'
             {
-            match("=>"); 
-
+            match('>'); 
 
             }
 
@@ -1004,11 +905,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:52:7: ( '<>' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:52:9: '<>'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:47:7: ( '<' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:47:9: '<'
             {
-            match("<>"); 
-
+            match('<'); 
 
             }
 
@@ -1025,10 +925,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:53:7: ( '?:' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:53:9: '?:'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:48:7: ( '->' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:48:9: '->'
             {
-            match("?:"); 
+            match("->"); 
 
 
             }
@@ -1046,10 +946,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:54:7: ( '<=>' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:54:9: '<=>'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:49:7: ( '..<' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:49:9: '..<'
             {
-            match("<=>"); 
+            match("..<"); 
 
 
             }
@@ -1067,10 +967,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__67;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:55:7: ( '+' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:55:9: '+'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:50:7: ( '..' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:50:9: '..'
             {
-            match('+'); 
+            match(".."); 
+
 
             }
 
@@ -1087,10 +988,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__68;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:56:7: ( '-' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:56:9: '-'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:51:7: ( '=>' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:51:9: '=>'
             {
-            match('-'); 
+            match("=>"); 
+
 
             }
 
@@ -1107,10 +1009,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__69;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:57:7: ( '*' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:57:9: '*'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:52:7: ( '<>' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:52:9: '<>'
             {
-            match('*'); 
+            match("<>"); 
+
 
             }
 
@@ -1127,10 +1030,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__70;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:58:7: ( '**' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:58:9: '**'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:53:7: ( '?:' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:53:9: '?:'
             {
-            match("**"); 
+            match("?:"); 
 
 
             }
@@ -1148,10 +1051,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__71;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:59:7: ( '/' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:59:9: '/'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:54:7: ( '<=>' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:54:9: '<=>'
             {
-            match('/'); 
+            match("<=>"); 
+
 
             }
 
@@ -1168,10 +1072,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__72;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:60:7: ( '%' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:60:9: '%'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:55:7: ( '+' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:55:9: '+'
             {
-            match('%'); 
+            match('+'); 
 
             }
 
@@ -1188,10 +1092,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__73;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:61:7: ( '!' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:61:9: '!'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:56:7: ( '-' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:56:9: '-'
             {
-            match('!'); 
+            match('-'); 
 
             }
 
@@ -1208,11 +1112,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__74;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:62:7: ( 'super' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:62:9: 'super'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:57:7: ( '*' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:57:9: '*'
             {
-            match("super"); 
-
+            match('*'); 
 
             }
 
@@ -1229,10 +1132,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__75;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:63:7: ( 'false' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:63:9: 'false'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:58:7: ( '**' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:58:9: '**'
             {
-            match("false"); 
+            match("**"); 
 
 
             }
@@ -1250,10 +1153,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__76;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:64:7: ( '{' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:64:9: '{'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:59:7: ( '/' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:59:9: '/'
             {
-            match('{'); 
+            match('/'); 
 
             }
 
@@ -1270,10 +1173,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__77;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:65:7: ( '}' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:65:9: '}'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:60:7: ( '%' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:60:9: '%'
             {
-            match('}'); 
+            match('%'); 
 
             }
 
@@ -1290,10 +1193,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__78;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:66:7: ( ',' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:66:9: ','
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:61:7: ( '!' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:61:9: '!'
             {
-            match(','); 
+            match('!'); 
 
             }
 
@@ -1310,10 +1213,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__79;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:67:7: ( ')' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:67:9: ')'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:62:7: ( 'super' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:62:9: 'super'
             {
-            match(')'); 
+            match("super"); 
+
 
             }
 
@@ -1330,10 +1234,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__80;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:68:7: ( '(' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:68:9: '('
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:63:7: ( 'false' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:63:9: 'false'
             {
-            match('('); 
+            match("false"); 
+
 
             }
 
@@ -1350,11 +1255,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__81;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:69:7: ( 'new' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:69:9: 'new'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:64:7: ( '{' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:64:9: '{'
             {
-            match("new"); 
-
+            match('{'); 
 
             }
 
@@ -1371,10 +1275,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__82;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:70:7: ( ':' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:70:9: ':'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:65:7: ( '}' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:65:9: '}'
             {
-            match(':'); 
+            match('}'); 
 
             }
 
@@ -1391,11 +1295,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__83;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:71:7: ( 'FOR' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:71:9: 'FOR'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:66:7: ( ',' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:66:9: ','
             {
-            match("FOR"); 
-
+            match(','); 
 
             }
 
@@ -1412,11 +1315,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__84;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:72:7: ( 'ENDFOR' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:72:9: 'ENDFOR'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:67:7: ( ')' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:67:9: ')'
             {
-            match("ENDFOR"); 
-
+            match(')'); 
 
             }
 
@@ -1433,11 +1335,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__85;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:73:7: ( 'BEFORE' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:73:9: 'BEFORE'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:68:7: ( '(' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:68:9: '('
             {
-            match("BEFORE"); 
-
+            match('('); 
 
             }
 
@@ -1454,10 +1355,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__86;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:74:7: ( 'SEPARATOR' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:74:9: 'SEPARATOR'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:69:7: ( 'new' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:69:9: 'new'
             {
-            match("SEPARATOR"); 
+            match("new"); 
 
 
             }
@@ -1475,11 +1376,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__87;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:75:7: ( 'AFTER' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:75:9: 'AFTER'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:70:7: ( ':' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:70:9: ':'
             {
-            match("AFTER"); 
-
+            match(':'); 
 
             }
 
@@ -1496,10 +1396,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__88;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:76:7: ( 'IF' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:76:9: 'IF'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:71:7: ( 'FOR' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:71:9: 'FOR'
             {
-            match("IF"); 
+            match("FOR"); 
 
 
             }
@@ -1517,10 +1417,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__89;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:77:7: ( 'ENDIF' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:77:9: 'ENDIF'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:72:7: ( 'ENDFOR' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:72:9: 'ENDFOR'
             {
-            match("ENDIF"); 
+            match("ENDFOR"); 
 
 
             }
@@ -1538,10 +1438,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__90;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:78:7: ( 'ELSE' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:78:9: 'ELSE'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:73:7: ( 'BEFORE' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:73:9: 'BEFORE'
             {
-            match("ELSE"); 
+            match("BEFORE"); 
 
 
             }
@@ -1559,10 +1459,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__91;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:79:7: ( 'ELSEIF' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:79:9: 'ELSEIF'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:74:7: ( 'SEPARATOR' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:74:9: 'SEPARATOR'
             {
-            match("ELSEIF"); 
+            match("SEPARATOR"); 
 
 
             }
@@ -1580,10 +1480,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__92;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:80:7: ( '@' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:80:9: '@'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:75:7: ( 'AFTER' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:75:9: 'AFTER'
             {
-            match('@'); 
+            match("AFTER"); 
+
 
             }
 
@@ -1600,10 +1501,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__93;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:81:7: ( 'instanceof' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:81:9: 'instanceof'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:76:7: ( 'IF' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:76:9: 'IF'
             {
-            match("instanceof"); 
+            match("IF"); 
 
 
             }
@@ -1621,10 +1522,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__94;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:82:7: ( 'as' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:82:9: 'as'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:77:7: ( 'ENDIF' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:77:9: 'ENDIF'
             {
-            match("as"); 
+            match("ENDIF"); 
 
 
             }
@@ -1642,10 +1543,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__95;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:83:7: ( '#' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:83:9: '#'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:78:7: ( 'ELSE' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:78:9: 'ELSE'
             {
-            match('#'); 
+            match("ELSE"); 
+
 
             }
 
@@ -1662,10 +1564,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__96;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:84:7: ( '[' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:84:9: '['
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:79:7: ( 'ELSEIF' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:79:9: 'ELSEIF'
             {
-            match('['); 
+            match("ELSEIF"); 
+
 
             }
 
@@ -1682,10 +1585,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__97;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:85:7: ( ']' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:85:9: ']'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:80:7: ( '@' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:80:9: '@'
             {
-            match(']'); 
+            match('@'); 
 
             }
 
@@ -1702,10 +1605,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__98;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:86:7: ( 'if' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:86:9: 'if'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:81:7: ( 'instanceof' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:81:9: 'instanceof'
             {
-            match("if"); 
+            match("instanceof"); 
 
 
             }
@@ -1723,10 +1626,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__99;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:87:7: ( 'else' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:87:9: 'else'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:82:7: ( 'as' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:82:9: 'as'
             {
-            match("else"); 
+            match("as"); 
 
 
             }
@@ -1744,11 +1647,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__100;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:88:8: ( 'switch' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:88:10: 'switch'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:83:8: ( '#' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:83:10: '#'
             {
-            match("switch"); 
-
+            match('#'); 
 
             }
 
@@ -1765,11 +1667,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__101;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:89:8: ( 'default' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:89:10: 'default'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:84:8: ( '[' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:84:10: '['
             {
-            match("default"); 
-
+            match('['); 
 
             }
 
@@ -1786,11 +1687,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__102;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:90:8: ( 'case' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:90:10: 'case'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:85:8: ( ']' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:85:10: ']'
             {
-            match("case"); 
-
+            match(']'); 
 
             }
 
@@ -1807,10 +1707,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__103;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:91:8: ( 'for' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:91:10: 'for'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:86:8: ( 'if' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:86:10: 'if'
             {
-            match("for"); 
+            match("if"); 
 
 
             }
@@ -1828,10 +1728,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__104;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:92:8: ( 'while' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:92:10: 'while'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:87:8: ( 'else' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:87:10: 'else'
             {
-            match("while"); 
+            match("else"); 
 
 
             }
@@ -1849,10 +1749,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__105;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:93:8: ( 'do' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:93:10: 'do'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:88:8: ( 'switch' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:88:10: 'switch'
             {
-            match("do"); 
+            match("switch"); 
 
 
             }
@@ -1870,10 +1770,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__106;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:94:8: ( 'null' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:94:10: 'null'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:89:8: ( 'default' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:89:10: 'default'
             {
-            match("null"); 
+            match("default"); 
 
 
             }
@@ -1891,10 +1791,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__107;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:95:8: ( 'typeof' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:95:10: 'typeof'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:90:8: ( 'case' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:90:10: 'case'
             {
-            match("typeof"); 
+            match("case"); 
 
 
             }
@@ -1912,10 +1812,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__108;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:96:8: ( 'throw' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:96:10: 'throw'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:91:8: ( 'for' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:91:10: 'for'
             {
-            match("throw"); 
+            match("for"); 
 
 
             }
@@ -1933,10 +1833,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__109;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:97:8: ( 'return' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:97:10: 'return'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:92:8: ( 'while' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:92:10: 'while'
             {
-            match("return"); 
+            match("while"); 
 
 
             }
@@ -1954,10 +1854,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__110;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:98:8: ( 'try' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:98:10: 'try'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:93:8: ( 'do' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:93:10: 'do'
             {
-            match("try"); 
+            match("do"); 
 
 
             }
@@ -1975,10 +1875,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__111;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:99:8: ( 'finally' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:99:10: 'finally'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:94:8: ( 'null' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:94:10: 'null'
             {
-            match("finally"); 
+            match("null"); 
 
 
             }
@@ -1996,10 +1896,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__112;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:100:8: ( 'catch' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:100:10: 'catch'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:95:8: ( 'typeof' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:95:10: 'typeof'
             {
-            match("catch"); 
+            match("typeof"); 
 
 
             }
@@ -2017,10 +1917,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__113;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:101:8: ( '?' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:101:10: '?'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:96:8: ( 'throw' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:96:10: 'throw'
             {
-            match('?'); 
+            match("throw"); 
+
 
             }
 
@@ -2037,10 +1938,11 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__114;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:102:8: ( '&' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:102:10: '&'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:97:8: ( 'return' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:97:10: 'return'
             {
-            match('&'); 
+            match("return"); 
+
 
             }
 
@@ -2057,10 +1959,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__115;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:103:8: ( '...' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:103:10: '...'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:98:8: ( 'try' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:98:10: 'try'
             {
-            match("..."); 
+            match("try"); 
 
 
             }
@@ -2078,10 +1980,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__116;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:104:8: ( '::' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:104:10: '::'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:99:8: ( 'finally' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:99:10: 'finally'
             {
-            match("::"); 
+            match("finally"); 
 
 
             }
@@ -2099,10 +2001,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__117;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:105:8: ( '?.' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:105:10: '?.'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:100:8: ( 'catch' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:100:10: 'catch'
             {
-            match("?."); 
+            match("catch"); 
 
 
             }
@@ -2120,10 +2022,10 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__118;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:106:8: ( '|' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:106:10: '|'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:101:8: ( '?' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:101:10: '?'
             {
-            match('|'); 
+            match('?'); 
 
             }
 
@@ -2140,6 +2042,109 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = T__119;
             int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:102:8: ( '&' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:102:10: '&'
+            {
+            match('&'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__119"
+
+    // $ANTLR start "T__120"
+    public final void mT__120() throws RecognitionException {
+        try {
+            int _type = T__120;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:103:8: ( '...' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:103:10: '...'
+            {
+            match("..."); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__120"
+
+    // $ANTLR start "T__121"
+    public final void mT__121() throws RecognitionException {
+        try {
+            int _type = T__121;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:104:8: ( '::' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:104:10: '::'
+            {
+            match("::"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__121"
+
+    // $ANTLR start "T__122"
+    public final void mT__122() throws RecognitionException {
+        try {
+            int _type = T__122;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:105:8: ( '?.' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:105:10: '?.'
+            {
+            match("?."); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__122"
+
+    // $ANTLR start "T__123"
+    public final void mT__123() throws RecognitionException {
+        try {
+            int _type = T__123;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:106:8: ( '|' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:106:10: '|'
+            {
+            match('|'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__123"
+
+    // $ANTLR start "T__124"
+    public final void mT__124() throws RecognitionException {
+        try {
+            int _type = T__124;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
             // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:107:8: ( 'true' )
             // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:107:10: 'true'
             {
@@ -2154,7 +2159,7 @@ public class InternalSuiteLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__119"
+    // $ANTLR end "T__124"
 
     // $ANTLR start "RULE_SUITE_NAME"
     public final void mRULE_SUITE_NAME() throws RecognitionException {
@@ -2519,48 +2524,161 @@ public class InternalSuiteLexer extends Lexer {
     }
     // $ANTLR end "RULE_ID"
 
+    // $ANTLR start "RULE_HEX_DIGIT"
+    public final void mRULE_HEX_DIGIT() throws RecognitionException {
+        try {
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29697:25: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29697:27: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
+            {
+            if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='F')||(input.LA(1)>='a' && input.LA(1)<='f') ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+
+            }
+
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_HEX_DIGIT"
+
+    // $ANTLR start "RULE_UNICODE_ESCAPE"
+    public final void mRULE_UNICODE_ESCAPE() throws RecognitionException {
+        try {
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:30: ( '\\\\' 'u' ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT )? )? )? )? )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:32: '\\\\' 'u' ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT )? )? )? )?
+            {
+            match('\\'); 
+            match('u'); 
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:41: ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT )? )? )? )?
+            int alt11=2;
+            int LA11_0 = input.LA(1);
+
+            if ( ((LA11_0>='0' && LA11_0<='9')||(LA11_0>='A' && LA11_0<='F')||(LA11_0>='a' && LA11_0<='f')) ) {
+                alt11=1;
+            }
+            switch (alt11) {
+                case 1 :
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:42: RULE_HEX_DIGIT ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT )? )? )?
+                    {
+                    mRULE_HEX_DIGIT(); 
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:57: ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT )? )? )?
+                    int alt10=2;
+                    int LA10_0 = input.LA(1);
+
+                    if ( ((LA10_0>='0' && LA10_0<='9')||(LA10_0>='A' && LA10_0<='F')||(LA10_0>='a' && LA10_0<='f')) ) {
+                        alt10=1;
+                    }
+                    switch (alt10) {
+                        case 1 :
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:58: RULE_HEX_DIGIT ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT )? )?
+                            {
+                            mRULE_HEX_DIGIT(); 
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:73: ( RULE_HEX_DIGIT ( RULE_HEX_DIGIT )? )?
+                            int alt9=2;
+                            int LA9_0 = input.LA(1);
+
+                            if ( ((LA9_0>='0' && LA9_0<='9')||(LA9_0>='A' && LA9_0<='F')||(LA9_0>='a' && LA9_0<='f')) ) {
+                                alt9=1;
+                            }
+                            switch (alt9) {
+                                case 1 :
+                                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:74: RULE_HEX_DIGIT ( RULE_HEX_DIGIT )?
+                                    {
+                                    mRULE_HEX_DIGIT(); 
+                                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:89: ( RULE_HEX_DIGIT )?
+                                    int alt8=2;
+                                    int LA8_0 = input.LA(1);
+
+                                    if ( ((LA8_0>='0' && LA8_0<='9')||(LA8_0>='A' && LA8_0<='F')||(LA8_0>='a' && LA8_0<='f')) ) {
+                                        alt8=1;
+                                    }
+                                    switch (alt8) {
+                                        case 1 :
+                                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:89: RULE_HEX_DIGIT
+                                            {
+                                            mRULE_HEX_DIGIT(); 
+
+                                            }
+                                            break;
+
+                                    }
+
+
+                                    }
+                                    break;
+
+                            }
+
+
+                            }
+                            break;
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_UNICODE_ESCAPE"
+
     // $ANTLR start "RULE_RICH_TEXT"
     public final void mRULE_RICH_TEXT() throws RecognitionException {
         try {
             int _type = RULE_RICH_TEXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29697:16: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29697:18: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:16: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:18: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
             {
             match("'''"); 
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29697:27: ( RULE_IN_RICH_STRING )*
-            loop8:
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:27: ( RULE_IN_RICH_STRING )*
+            loop12:
             do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-                if ( (LA8_0=='\'') ) {
-                    int LA8_1 = input.LA(2);
+                if ( (LA12_0=='\'') ) {
+                    int LA12_1 = input.LA(2);
 
-                    if ( (LA8_1=='\'') ) {
-                        int LA8_4 = input.LA(3);
+                    if ( (LA12_1=='\'') ) {
+                        int LA12_4 = input.LA(3);
 
-                        if ( ((LA8_4>='\u0000' && LA8_4<='&')||(LA8_4>='(' && LA8_4<='\uFFFC')||(LA8_4>='\uFFFE' && LA8_4<='\uFFFF')) ) {
-                            alt8=1;
+                        if ( ((LA12_4>='\u0000' && LA12_4<='&')||(LA12_4>='(' && LA12_4<='\uFFFC')||(LA12_4>='\uFFFE' && LA12_4<='\uFFFF')) ) {
+                            alt12=1;
                         }
 
 
                     }
-                    else if ( ((LA8_1>='\u0000' && LA8_1<='&')||(LA8_1>='(' && LA8_1<='\uFFFC')||(LA8_1>='\uFFFE' && LA8_1<='\uFFFF')) ) {
-                        alt8=1;
+                    else if ( ((LA12_1>='\u0000' && LA12_1<='&')||(LA12_1>='(' && LA12_1<='\uFFFC')||(LA12_1>='\uFFFE' && LA12_1<='\uFFFF')) ) {
+                        alt12=1;
                     }
 
 
                 }
-                else if ( ((LA8_0>='\u0000' && LA8_0<='&')||(LA8_0>='(' && LA8_0<='\uFFFC')||(LA8_0>='\uFFFE' && LA8_0<='\uFFFF')) ) {
-                    alt8=1;
+                else if ( ((LA12_0>='\u0000' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='\uFFFC')||(LA12_0>='\uFFFE' && LA12_0<='\uFFFF')) ) {
+                    alt12=1;
                 }
 
 
-                switch (alt8) {
+                switch (alt12) {
             	case 1 :
-            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29697:27: RULE_IN_RICH_STRING
+            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:27: RULE_IN_RICH_STRING
             	    {
             	    mRULE_IN_RICH_STRING(); 
 
@@ -2568,34 +2686,34 @@ public class InternalSuiteLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop8;
+            	    break loop12;
                 }
             } while (true);
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29697:48: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
-            int alt11=2;
-            int LA11_0 = input.LA(1);
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:48: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( (LA11_0=='\'') ) {
-                int LA11_1 = input.LA(2);
+            if ( (LA15_0=='\'') ) {
+                int LA15_1 = input.LA(2);
 
-                if ( (LA11_1=='\'') ) {
-                    int LA11_3 = input.LA(3);
+                if ( (LA15_1=='\'') ) {
+                    int LA15_3 = input.LA(3);
 
-                    if ( (LA11_3=='\'') ) {
-                        alt11=1;
+                    if ( (LA15_3=='\'') ) {
+                        alt15=1;
                     }
                     else {
-                        alt11=2;}
+                        alt15=2;}
                 }
                 else {
-                    alt11=2;}
+                    alt15=2;}
             }
             else {
-                alt11=2;}
-            switch (alt11) {
+                alt15=2;}
+            switch (alt15) {
                 case 1 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29697:49: '\\'\\'\\''
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:49: '\\'\\'\\''
                     {
                     match("'''"); 
 
@@ -2603,30 +2721,30 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29697:58: ( '\\'' ( '\\'' )? )? EOF
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:58: ( '\\'' ( '\\'' )? )? EOF
                     {
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29697:58: ( '\\'' ( '\\'' )? )?
-                    int alt10=2;
-                    int LA10_0 = input.LA(1);
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:58: ( '\\'' ( '\\'' )? )?
+                    int alt14=2;
+                    int LA14_0 = input.LA(1);
 
-                    if ( (LA10_0=='\'') ) {
-                        alt10=1;
+                    if ( (LA14_0=='\'') ) {
+                        alt14=1;
                     }
-                    switch (alt10) {
+                    switch (alt14) {
                         case 1 :
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29697:59: '\\'' ( '\\'' )?
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:59: '\\'' ( '\\'' )?
                             {
                             match('\''); 
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29697:64: ( '\\'' )?
-                            int alt9=2;
-                            int LA9_0 = input.LA(1);
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:64: ( '\\'' )?
+                            int alt13=2;
+                            int LA13_0 = input.LA(1);
 
-                            if ( (LA9_0=='\'') ) {
-                                alt9=1;
+                            if ( (LA13_0=='\'') ) {
+                                alt13=1;
                             }
-                            switch (alt9) {
+                            switch (alt13) {
                                 case 1 :
-                                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29697:64: '\\''
+                                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:64: '\\''
                                     {
                                     match('\''); 
 
@@ -2664,43 +2782,43 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_START;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:22: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:24: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:22: ( '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:24: '\\'\\'\\'' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD'
             {
             match("'''"); 
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:33: ( RULE_IN_RICH_STRING )*
-            loop12:
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:33: ( RULE_IN_RICH_STRING )*
+            loop16:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt16=2;
+                int LA16_0 = input.LA(1);
 
-                if ( (LA12_0=='\'') ) {
-                    int LA12_1 = input.LA(2);
+                if ( (LA16_0=='\'') ) {
+                    int LA16_1 = input.LA(2);
 
-                    if ( (LA12_1=='\'') ) {
-                        int LA12_4 = input.LA(3);
+                    if ( (LA16_1=='\'') ) {
+                        int LA16_4 = input.LA(3);
 
-                        if ( ((LA12_4>='\u0000' && LA12_4<='&')||(LA12_4>='(' && LA12_4<='\uFFFC')||(LA12_4>='\uFFFE' && LA12_4<='\uFFFF')) ) {
-                            alt12=1;
+                        if ( ((LA16_4>='\u0000' && LA16_4<='&')||(LA16_4>='(' && LA16_4<='\uFFFC')||(LA16_4>='\uFFFE' && LA16_4<='\uFFFF')) ) {
+                            alt16=1;
                         }
 
 
                     }
-                    else if ( ((LA12_1>='\u0000' && LA12_1<='&')||(LA12_1>='(' && LA12_1<='\uFFFC')||(LA12_1>='\uFFFE' && LA12_1<='\uFFFF')) ) {
-                        alt12=1;
+                    else if ( ((LA16_1>='\u0000' && LA16_1<='&')||(LA16_1>='(' && LA16_1<='\uFFFC')||(LA16_1>='\uFFFE' && LA16_1<='\uFFFF')) ) {
+                        alt16=1;
                     }
 
 
                 }
-                else if ( ((LA12_0>='\u0000' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='\uFFFC')||(LA12_0>='\uFFFE' && LA12_0<='\uFFFF')) ) {
-                    alt12=1;
+                else if ( ((LA16_0>='\u0000' && LA16_0<='&')||(LA16_0>='(' && LA16_0<='\uFFFC')||(LA16_0>='\uFFFE' && LA16_0<='\uFFFF')) ) {
+                    alt16=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt16) {
             	case 1 :
-            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:33: RULE_IN_RICH_STRING
+            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:33: RULE_IN_RICH_STRING
             	    {
             	    mRULE_IN_RICH_STRING(); 
 
@@ -2708,32 +2826,32 @@ public class InternalSuiteLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop12;
+            	    break loop16;
                 }
             } while (true);
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:54: ( '\\'' ( '\\'' )? )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:54: ( '\\'' ( '\\'' )? )?
+            int alt18=2;
+            int LA18_0 = input.LA(1);
 
-            if ( (LA14_0=='\'') ) {
-                alt14=1;
+            if ( (LA18_0=='\'') ) {
+                alt18=1;
             }
-            switch (alt14) {
+            switch (alt18) {
                 case 1 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:55: '\\'' ( '\\'' )?
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:55: '\\'' ( '\\'' )?
                     {
                     match('\''); 
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:60: ( '\\'' )?
-                    int alt13=2;
-                    int LA13_0 = input.LA(1);
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:60: ( '\\'' )?
+                    int alt17=2;
+                    int LA17_0 = input.LA(1);
 
-                    if ( (LA13_0=='\'') ) {
-                        alt13=1;
+                    if ( (LA17_0=='\'') ) {
+                        alt17=1;
                     }
-                    switch (alt13) {
+                    switch (alt17) {
                         case 1 :
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29699:60: '\\''
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:60: '\\''
                             {
                             match('\''); 
 
@@ -2765,42 +2883,42 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_END;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:20: ( '\\uFFFD' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:22: '\\uFFFD' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:20: ( '\\uFFFD' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:22: '\\uFFFD' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
             {
             match('\uFFFD'); 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:31: ( RULE_IN_RICH_STRING )*
-            loop15:
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:31: ( RULE_IN_RICH_STRING )*
+            loop19:
             do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
+                int alt19=2;
+                int LA19_0 = input.LA(1);
 
-                if ( (LA15_0=='\'') ) {
-                    int LA15_1 = input.LA(2);
+                if ( (LA19_0=='\'') ) {
+                    int LA19_1 = input.LA(2);
 
-                    if ( (LA15_1=='\'') ) {
-                        int LA15_4 = input.LA(3);
+                    if ( (LA19_1=='\'') ) {
+                        int LA19_4 = input.LA(3);
 
-                        if ( ((LA15_4>='\u0000' && LA15_4<='&')||(LA15_4>='(' && LA15_4<='\uFFFC')||(LA15_4>='\uFFFE' && LA15_4<='\uFFFF')) ) {
-                            alt15=1;
+                        if ( ((LA19_4>='\u0000' && LA19_4<='&')||(LA19_4>='(' && LA19_4<='\uFFFC')||(LA19_4>='\uFFFE' && LA19_4<='\uFFFF')) ) {
+                            alt19=1;
                         }
 
 
                     }
-                    else if ( ((LA15_1>='\u0000' && LA15_1<='&')||(LA15_1>='(' && LA15_1<='\uFFFC')||(LA15_1>='\uFFFE' && LA15_1<='\uFFFF')) ) {
-                        alt15=1;
+                    else if ( ((LA19_1>='\u0000' && LA19_1<='&')||(LA19_1>='(' && LA19_1<='\uFFFC')||(LA19_1>='\uFFFE' && LA19_1<='\uFFFF')) ) {
+                        alt19=1;
                     }
 
 
                 }
-                else if ( ((LA15_0>='\u0000' && LA15_0<='&')||(LA15_0>='(' && LA15_0<='\uFFFC')||(LA15_0>='\uFFFE' && LA15_0<='\uFFFF')) ) {
-                    alt15=1;
+                else if ( ((LA19_0>='\u0000' && LA19_0<='&')||(LA19_0>='(' && LA19_0<='\uFFFC')||(LA19_0>='\uFFFE' && LA19_0<='\uFFFF')) ) {
+                    alt19=1;
                 }
 
 
-                switch (alt15) {
+                switch (alt19) {
             	case 1 :
-            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:31: RULE_IN_RICH_STRING
+            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:31: RULE_IN_RICH_STRING
             	    {
             	    mRULE_IN_RICH_STRING(); 
 
@@ -2808,34 +2926,34 @@ public class InternalSuiteLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop15;
+            	    break loop19;
                 }
             } while (true);
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:52: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
-            int alt18=2;
-            int LA18_0 = input.LA(1);
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:52: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+            int alt22=2;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA18_0=='\'') ) {
-                int LA18_1 = input.LA(2);
+            if ( (LA22_0=='\'') ) {
+                int LA22_1 = input.LA(2);
 
-                if ( (LA18_1=='\'') ) {
-                    int LA18_3 = input.LA(3);
+                if ( (LA22_1=='\'') ) {
+                    int LA22_3 = input.LA(3);
 
-                    if ( (LA18_3=='\'') ) {
-                        alt18=1;
+                    if ( (LA22_3=='\'') ) {
+                        alt22=1;
                     }
                     else {
-                        alt18=2;}
+                        alt22=2;}
                 }
                 else {
-                    alt18=2;}
+                    alt22=2;}
             }
             else {
-                alt18=2;}
-            switch (alt18) {
+                alt22=2;}
+            switch (alt22) {
                 case 1 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:53: '\\'\\'\\''
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:53: '\\'\\'\\''
                     {
                     match("'''"); 
 
@@ -2843,30 +2961,30 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:62: ( '\\'' ( '\\'' )? )? EOF
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:62: ( '\\'' ( '\\'' )? )? EOF
                     {
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:62: ( '\\'' ( '\\'' )? )?
-                    int alt17=2;
-                    int LA17_0 = input.LA(1);
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:62: ( '\\'' ( '\\'' )? )?
+                    int alt21=2;
+                    int LA21_0 = input.LA(1);
 
-                    if ( (LA17_0=='\'') ) {
-                        alt17=1;
+                    if ( (LA21_0=='\'') ) {
+                        alt21=1;
                     }
-                    switch (alt17) {
+                    switch (alt21) {
                         case 1 :
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:63: '\\'' ( '\\'' )?
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:63: '\\'' ( '\\'' )?
                             {
                             match('\''); 
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:68: ( '\\'' )?
-                            int alt16=2;
-                            int LA16_0 = input.LA(1);
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:68: ( '\\'' )?
+                            int alt20=2;
+                            int LA20_0 = input.LA(1);
 
-                            if ( (LA16_0=='\'') ) {
-                                alt16=1;
+                            if ( (LA20_0=='\'') ) {
+                                alt20=1;
                             }
-                            switch (alt16) {
+                            switch (alt20) {
                                 case 1 :
-                                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29701:68: '\\''
+                                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:68: '\\''
                                     {
                                     match('\''); 
 
@@ -2904,42 +3022,42 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_RICH_TEXT_INBETWEEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:26: ( '\\uFFFD' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:28: '\\uFFFD' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:26: ( '\\uFFFD' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:28: '\\uFFFD' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD'
             {
             match('\uFFFD'); 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:37: ( RULE_IN_RICH_STRING )*
-            loop19:
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:37: ( RULE_IN_RICH_STRING )*
+            loop23:
             do {
-                int alt19=2;
-                int LA19_0 = input.LA(1);
+                int alt23=2;
+                int LA23_0 = input.LA(1);
 
-                if ( (LA19_0=='\'') ) {
-                    int LA19_1 = input.LA(2);
+                if ( (LA23_0=='\'') ) {
+                    int LA23_1 = input.LA(2);
 
-                    if ( (LA19_1=='\'') ) {
-                        int LA19_4 = input.LA(3);
+                    if ( (LA23_1=='\'') ) {
+                        int LA23_4 = input.LA(3);
 
-                        if ( ((LA19_4>='\u0000' && LA19_4<='&')||(LA19_4>='(' && LA19_4<='\uFFFC')||(LA19_4>='\uFFFE' && LA19_4<='\uFFFF')) ) {
-                            alt19=1;
+                        if ( ((LA23_4>='\u0000' && LA23_4<='&')||(LA23_4>='(' && LA23_4<='\uFFFC')||(LA23_4>='\uFFFE' && LA23_4<='\uFFFF')) ) {
+                            alt23=1;
                         }
 
 
                     }
-                    else if ( ((LA19_1>='\u0000' && LA19_1<='&')||(LA19_1>='(' && LA19_1<='\uFFFC')||(LA19_1>='\uFFFE' && LA19_1<='\uFFFF')) ) {
-                        alt19=1;
+                    else if ( ((LA23_1>='\u0000' && LA23_1<='&')||(LA23_1>='(' && LA23_1<='\uFFFC')||(LA23_1>='\uFFFE' && LA23_1<='\uFFFF')) ) {
+                        alt23=1;
                     }
 
 
                 }
-                else if ( ((LA19_0>='\u0000' && LA19_0<='&')||(LA19_0>='(' && LA19_0<='\uFFFC')||(LA19_0>='\uFFFE' && LA19_0<='\uFFFF')) ) {
-                    alt19=1;
+                else if ( ((LA23_0>='\u0000' && LA23_0<='&')||(LA23_0>='(' && LA23_0<='\uFFFC')||(LA23_0>='\uFFFE' && LA23_0<='\uFFFF')) ) {
+                    alt23=1;
                 }
 
 
-                switch (alt19) {
+                switch (alt23) {
             	case 1 :
-            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:37: RULE_IN_RICH_STRING
+            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:37: RULE_IN_RICH_STRING
             	    {
             	    mRULE_IN_RICH_STRING(); 
 
@@ -2947,32 +3065,32 @@ public class InternalSuiteLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop19;
+            	    break loop23;
                 }
             } while (true);
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:58: ( '\\'' ( '\\'' )? )?
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:58: ( '\\'' ( '\\'' )? )?
+            int alt25=2;
+            int LA25_0 = input.LA(1);
 
-            if ( (LA21_0=='\'') ) {
-                alt21=1;
+            if ( (LA25_0=='\'') ) {
+                alt25=1;
             }
-            switch (alt21) {
+            switch (alt25) {
                 case 1 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:59: '\\'' ( '\\'' )?
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:59: '\\'' ( '\\'' )?
                     {
                     match('\''); 
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:64: ( '\\'' )?
-                    int alt20=2;
-                    int LA20_0 = input.LA(1);
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:64: ( '\\'' )?
+                    int alt24=2;
+                    int LA24_0 = input.LA(1);
 
-                    if ( (LA20_0=='\'') ) {
-                        alt20=1;
+                    if ( (LA24_0=='\'') ) {
+                        alt24=1;
                     }
-                    switch (alt20) {
+                    switch (alt24) {
                         case 1 :
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29703:64: '\\''
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:64: '\\''
                             {
                             match('\''); 
 
@@ -3004,25 +3122,25 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_COMMENT_RICH_TEXT_INBETWEEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:34: ( '\\uFFFD\\uFFFD' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )? )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:36: '\\uFFFD\\uFFFD' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )?
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:34: ( '\\uFFFD\\uFFFD' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )? )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:36: '\\uFFFD\\uFFFD' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )?
             {
             match("\uFFFD\uFFFD"); 
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:51: (~ ( ( '\\n' | '\\r' ) ) )*
-            loop22:
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:51: (~ ( ( '\\n' | '\\r' ) ) )*
+            loop26:
             do {
-                int alt22=2;
-                int LA22_0 = input.LA(1);
+                int alt26=2;
+                int LA26_0 = input.LA(1);
 
-                if ( ((LA22_0>='\u0000' && LA22_0<='\t')||(LA22_0>='\u000B' && LA22_0<='\f')||(LA22_0>='\u000E' && LA22_0<='\uFFFF')) ) {
-                    alt22=1;
+                if ( ((LA26_0>='\u0000' && LA26_0<='\t')||(LA26_0>='\u000B' && LA26_0<='\f')||(LA26_0>='\u000E' && LA26_0<='\uFFFF')) ) {
+                    alt26=1;
                 }
 
 
-                switch (alt22) {
+                switch (alt26) {
             	case 1 :
-            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:51: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:51: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -3038,31 +3156,31 @@ public class InternalSuiteLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop22;
+            	    break loop26;
                 }
             } while (true);
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:67: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )?
-            int alt27=2;
-            int LA27_0 = input.LA(1);
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:67: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD' )?
+            int alt31=2;
+            int LA31_0 = input.LA(1);
 
-            if ( (LA27_0=='\n'||LA27_0=='\r') ) {
-                alt27=1;
+            if ( (LA31_0=='\n'||LA31_0=='\r') ) {
+                alt31=1;
             }
-            switch (alt27) {
+            switch (alt31) {
                 case 1 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:68: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD'
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:68: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'' ( '\\'' )? )? '\\uFFFD'
                     {
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:68: ( '\\r' )?
-                    int alt23=2;
-                    int LA23_0 = input.LA(1);
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:68: ( '\\r' )?
+                    int alt27=2;
+                    int LA27_0 = input.LA(1);
 
-                    if ( (LA23_0=='\r') ) {
-                        alt23=1;
+                    if ( (LA27_0=='\r') ) {
+                        alt27=1;
                     }
-                    switch (alt23) {
+                    switch (alt27) {
                         case 1 :
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:68: '\\r'
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:68: '\\r'
                             {
                             match('\r'); 
 
@@ -3072,38 +3190,38 @@ public class InternalSuiteLexer extends Lexer {
                     }
 
                     match('\n'); 
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:79: ( RULE_IN_RICH_STRING )*
-                    loop24:
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:79: ( RULE_IN_RICH_STRING )*
+                    loop28:
                     do {
-                        int alt24=2;
-                        int LA24_0 = input.LA(1);
+                        int alt28=2;
+                        int LA28_0 = input.LA(1);
 
-                        if ( (LA24_0=='\'') ) {
-                            int LA24_1 = input.LA(2);
+                        if ( (LA28_0=='\'') ) {
+                            int LA28_1 = input.LA(2);
 
-                            if ( (LA24_1=='\'') ) {
-                                int LA24_4 = input.LA(3);
+                            if ( (LA28_1=='\'') ) {
+                                int LA28_4 = input.LA(3);
 
-                                if ( ((LA24_4>='\u0000' && LA24_4<='&')||(LA24_4>='(' && LA24_4<='\uFFFC')||(LA24_4>='\uFFFE' && LA24_4<='\uFFFF')) ) {
-                                    alt24=1;
+                                if ( ((LA28_4>='\u0000' && LA28_4<='&')||(LA28_4>='(' && LA28_4<='\uFFFC')||(LA28_4>='\uFFFE' && LA28_4<='\uFFFF')) ) {
+                                    alt28=1;
                                 }
 
 
                             }
-                            else if ( ((LA24_1>='\u0000' && LA24_1<='&')||(LA24_1>='(' && LA24_1<='\uFFFC')||(LA24_1>='\uFFFE' && LA24_1<='\uFFFF')) ) {
-                                alt24=1;
+                            else if ( ((LA28_1>='\u0000' && LA28_1<='&')||(LA28_1>='(' && LA28_1<='\uFFFC')||(LA28_1>='\uFFFE' && LA28_1<='\uFFFF')) ) {
+                                alt28=1;
                             }
 
 
                         }
-                        else if ( ((LA24_0>='\u0000' && LA24_0<='&')||(LA24_0>='(' && LA24_0<='\uFFFC')||(LA24_0>='\uFFFE' && LA24_0<='\uFFFF')) ) {
-                            alt24=1;
+                        else if ( ((LA28_0>='\u0000' && LA28_0<='&')||(LA28_0>='(' && LA28_0<='\uFFFC')||(LA28_0>='\uFFFE' && LA28_0<='\uFFFF')) ) {
+                            alt28=1;
                         }
 
 
-                        switch (alt24) {
+                        switch (alt28) {
                     	case 1 :
-                    	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:79: RULE_IN_RICH_STRING
+                    	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:79: RULE_IN_RICH_STRING
                     	    {
                     	    mRULE_IN_RICH_STRING(); 
 
@@ -3111,32 +3229,32 @@ public class InternalSuiteLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop24;
+                    	    break loop28;
                         }
                     } while (true);
 
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:100: ( '\\'' ( '\\'' )? )?
-                    int alt26=2;
-                    int LA26_0 = input.LA(1);
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:100: ( '\\'' ( '\\'' )? )?
+                    int alt30=2;
+                    int LA30_0 = input.LA(1);
 
-                    if ( (LA26_0=='\'') ) {
-                        alt26=1;
+                    if ( (LA30_0=='\'') ) {
+                        alt30=1;
                     }
-                    switch (alt26) {
+                    switch (alt30) {
                         case 1 :
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:101: '\\'' ( '\\'' )?
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:101: '\\'' ( '\\'' )?
                             {
                             match('\''); 
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:106: ( '\\'' )?
-                            int alt25=2;
-                            int LA25_0 = input.LA(1);
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:106: ( '\\'' )?
+                            int alt29=2;
+                            int LA29_0 = input.LA(1);
 
-                            if ( (LA25_0=='\'') ) {
-                                alt25=1;
+                            if ( (LA29_0=='\'') ) {
+                                alt29=1;
                             }
-                            switch (alt25) {
+                            switch (alt29) {
                                 case 1 :
-                                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29705:106: '\\''
+                                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:106: '\\''
                                     {
                                     match('\''); 
 
@@ -3174,25 +3292,25 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_COMMENT_RICH_TEXT_END;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:28: ( '\\uFFFD\\uFFFD' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF ) )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:30: '\\uFFFD\\uFFFD' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:28: ( '\\uFFFD\\uFFFD' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF ) )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:30: '\\uFFFD\\uFFFD' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
             {
             match("\uFFFD\uFFFD"); 
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:45: (~ ( ( '\\n' | '\\r' ) ) )*
-            loop28:
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:45: (~ ( ( '\\n' | '\\r' ) ) )*
+            loop32:
             do {
-                int alt28=2;
-                int LA28_0 = input.LA(1);
+                int alt32=2;
+                int LA32_0 = input.LA(1);
 
-                if ( ((LA28_0>='\u0000' && LA28_0<='\t')||(LA28_0>='\u000B' && LA28_0<='\f')||(LA28_0>='\u000E' && LA28_0<='\uFFFF')) ) {
-                    alt28=1;
+                if ( ((LA32_0>='\u0000' && LA32_0<='\t')||(LA32_0>='\u000B' && LA32_0<='\f')||(LA32_0>='\u000E' && LA32_0<='\uFFFF')) ) {
+                    alt32=1;
                 }
 
 
-                switch (alt28) {
+                switch (alt32) {
             	case 1 :
-            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:45: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:45: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -3208,33 +3326,33 @@ public class InternalSuiteLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop28;
+            	    break loop32;
                 }
             } while (true);
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:61: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
-            int alt34=2;
-            int LA34_0 = input.LA(1);
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:61: ( ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF ) | EOF )
+            int alt38=2;
+            int LA38_0 = input.LA(1);
 
-            if ( (LA34_0=='\n'||LA34_0=='\r') ) {
-                alt34=1;
+            if ( (LA38_0=='\n'||LA38_0=='\r') ) {
+                alt38=1;
             }
             else {
-                alt34=2;}
-            switch (alt34) {
+                alt38=2;}
+            switch (alt38) {
                 case 1 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:62: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:62: ( '\\r' )? '\\n' ( RULE_IN_RICH_STRING )* ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
                     {
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:62: ( '\\r' )?
-                    int alt29=2;
-                    int LA29_0 = input.LA(1);
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:62: ( '\\r' )?
+                    int alt33=2;
+                    int LA33_0 = input.LA(1);
 
-                    if ( (LA29_0=='\r') ) {
-                        alt29=1;
+                    if ( (LA33_0=='\r') ) {
+                        alt33=1;
                     }
-                    switch (alt29) {
+                    switch (alt33) {
                         case 1 :
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:62: '\\r'
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:62: '\\r'
                             {
                             match('\r'); 
 
@@ -3244,38 +3362,38 @@ public class InternalSuiteLexer extends Lexer {
                     }
 
                     match('\n'); 
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:73: ( RULE_IN_RICH_STRING )*
-                    loop30:
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:73: ( RULE_IN_RICH_STRING )*
+                    loop34:
                     do {
-                        int alt30=2;
-                        int LA30_0 = input.LA(1);
+                        int alt34=2;
+                        int LA34_0 = input.LA(1);
 
-                        if ( (LA30_0=='\'') ) {
-                            int LA30_1 = input.LA(2);
+                        if ( (LA34_0=='\'') ) {
+                            int LA34_1 = input.LA(2);
 
-                            if ( (LA30_1=='\'') ) {
-                                int LA30_4 = input.LA(3);
+                            if ( (LA34_1=='\'') ) {
+                                int LA34_4 = input.LA(3);
 
-                                if ( ((LA30_4>='\u0000' && LA30_4<='&')||(LA30_4>='(' && LA30_4<='\uFFFC')||(LA30_4>='\uFFFE' && LA30_4<='\uFFFF')) ) {
-                                    alt30=1;
+                                if ( ((LA34_4>='\u0000' && LA34_4<='&')||(LA34_4>='(' && LA34_4<='\uFFFC')||(LA34_4>='\uFFFE' && LA34_4<='\uFFFF')) ) {
+                                    alt34=1;
                                 }
 
 
                             }
-                            else if ( ((LA30_1>='\u0000' && LA30_1<='&')||(LA30_1>='(' && LA30_1<='\uFFFC')||(LA30_1>='\uFFFE' && LA30_1<='\uFFFF')) ) {
-                                alt30=1;
+                            else if ( ((LA34_1>='\u0000' && LA34_1<='&')||(LA34_1>='(' && LA34_1<='\uFFFC')||(LA34_1>='\uFFFE' && LA34_1<='\uFFFF')) ) {
+                                alt34=1;
                             }
 
 
                         }
-                        else if ( ((LA30_0>='\u0000' && LA30_0<='&')||(LA30_0>='(' && LA30_0<='\uFFFC')||(LA30_0>='\uFFFE' && LA30_0<='\uFFFF')) ) {
-                            alt30=1;
+                        else if ( ((LA34_0>='\u0000' && LA34_0<='&')||(LA34_0>='(' && LA34_0<='\uFFFC')||(LA34_0>='\uFFFE' && LA34_0<='\uFFFF')) ) {
+                            alt34=1;
                         }
 
 
-                        switch (alt30) {
+                        switch (alt34) {
                     	case 1 :
-                    	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:73: RULE_IN_RICH_STRING
+                    	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:73: RULE_IN_RICH_STRING
                     	    {
                     	    mRULE_IN_RICH_STRING(); 
 
@@ -3283,34 +3401,34 @@ public class InternalSuiteLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop30;
+                    	    break loop34;
                         }
                     } while (true);
 
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:94: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
-                    int alt33=2;
-                    int LA33_0 = input.LA(1);
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:94: ( '\\'\\'\\'' | ( '\\'' ( '\\'' )? )? EOF )
+                    int alt37=2;
+                    int LA37_0 = input.LA(1);
 
-                    if ( (LA33_0=='\'') ) {
-                        int LA33_1 = input.LA(2);
+                    if ( (LA37_0=='\'') ) {
+                        int LA37_1 = input.LA(2);
 
-                        if ( (LA33_1=='\'') ) {
-                            int LA33_3 = input.LA(3);
+                        if ( (LA37_1=='\'') ) {
+                            int LA37_3 = input.LA(3);
 
-                            if ( (LA33_3=='\'') ) {
-                                alt33=1;
+                            if ( (LA37_3=='\'') ) {
+                                alt37=1;
                             }
                             else {
-                                alt33=2;}
+                                alt37=2;}
                         }
                         else {
-                            alt33=2;}
+                            alt37=2;}
                     }
                     else {
-                        alt33=2;}
-                    switch (alt33) {
+                        alt37=2;}
+                    switch (alt37) {
                         case 1 :
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:95: '\\'\\'\\''
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:95: '\\'\\'\\''
                             {
                             match("'''"); 
 
@@ -3318,30 +3436,30 @@ public class InternalSuiteLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:104: ( '\\'' ( '\\'' )? )? EOF
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:104: ( '\\'' ( '\\'' )? )? EOF
                             {
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:104: ( '\\'' ( '\\'' )? )?
-                            int alt32=2;
-                            int LA32_0 = input.LA(1);
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:104: ( '\\'' ( '\\'' )? )?
+                            int alt36=2;
+                            int LA36_0 = input.LA(1);
 
-                            if ( (LA32_0=='\'') ) {
-                                alt32=1;
+                            if ( (LA36_0=='\'') ) {
+                                alt36=1;
                             }
-                            switch (alt32) {
+                            switch (alt36) {
                                 case 1 :
-                                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:105: '\\'' ( '\\'' )?
+                                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:105: '\\'' ( '\\'' )?
                                     {
                                     match('\''); 
-                                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:110: ( '\\'' )?
-                                    int alt31=2;
-                                    int LA31_0 = input.LA(1);
+                                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:110: ( '\\'' )?
+                                    int alt35=2;
+                                    int LA35_0 = input.LA(1);
 
-                                    if ( (LA31_0=='\'') ) {
-                                        alt31=1;
+                                    if ( (LA35_0=='\'') ) {
+                                        alt35=1;
                                     }
-                                    switch (alt31) {
+                                    switch (alt35) {
                                         case 1 :
-                                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:110: '\\''
+                                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:110: '\\''
                                             {
                                             match('\''); 
 
@@ -3367,7 +3485,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29707:123: EOF
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:123: EOF
                     {
                     match(EOF); 
 
@@ -3390,41 +3508,41 @@ public class InternalSuiteLexer extends Lexer {
     // $ANTLR start "RULE_IN_RICH_STRING"
     public final void mRULE_IN_RICH_STRING() throws RecognitionException {
         try {
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:30: ( ( '\\'\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | '\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | ~ ( ( '\\uFFFD' | '\\'' ) ) ) )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:32: ( '\\'\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | '\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | ~ ( ( '\\uFFFD' | '\\'' ) ) )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29713:30: ( ( '\\'\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | '\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | ~ ( ( '\\uFFFD' | '\\'' ) ) ) )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29713:32: ( '\\'\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | '\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | ~ ( ( '\\uFFFD' | '\\'' ) ) )
             {
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:32: ( '\\'\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | '\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | ~ ( ( '\\uFFFD' | '\\'' ) ) )
-            int alt35=3;
-            int LA35_0 = input.LA(1);
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29713:32: ( '\\'\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | '\\'' ~ ( ( '\\uFFFD' | '\\'' ) ) | ~ ( ( '\\uFFFD' | '\\'' ) ) )
+            int alt39=3;
+            int LA39_0 = input.LA(1);
 
-            if ( (LA35_0=='\'') ) {
-                int LA35_1 = input.LA(2);
+            if ( (LA39_0=='\'') ) {
+                int LA39_1 = input.LA(2);
 
-                if ( (LA35_1=='\'') ) {
-                    alt35=1;
+                if ( (LA39_1=='\'') ) {
+                    alt39=1;
                 }
-                else if ( ((LA35_1>='\u0000' && LA35_1<='&')||(LA35_1>='(' && LA35_1<='\uFFFC')||(LA35_1>='\uFFFE' && LA35_1<='\uFFFF')) ) {
-                    alt35=2;
+                else if ( ((LA39_1>='\u0000' && LA39_1<='&')||(LA39_1>='(' && LA39_1<='\uFFFC')||(LA39_1>='\uFFFE' && LA39_1<='\uFFFF')) ) {
+                    alt39=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 35, 1, input);
+                        new NoViableAltException("", 39, 1, input);
 
                     throw nvae;
                 }
             }
-            else if ( ((LA35_0>='\u0000' && LA35_0<='&')||(LA35_0>='(' && LA35_0<='\uFFFC')||(LA35_0>='\uFFFE' && LA35_0<='\uFFFF')) ) {
-                alt35=3;
+            else if ( ((LA39_0>='\u0000' && LA39_0<='&')||(LA39_0>='(' && LA39_0<='\uFFFC')||(LA39_0>='\uFFFE' && LA39_0<='\uFFFF')) ) {
+                alt39=3;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 35, 0, input);
+                    new NoViableAltException("", 39, 0, input);
 
                 throw nvae;
             }
-            switch (alt35) {
+            switch (alt39) {
                 case 1 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:33: '\\'\\'' ~ ( ( '\\uFFFD' | '\\'' ) )
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29713:33: '\\'\\'' ~ ( ( '\\uFFFD' | '\\'' ) )
                     {
                     match("''"); 
 
@@ -3441,7 +3559,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:59: '\\'' ~ ( ( '\\uFFFD' | '\\'' ) )
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29713:59: '\\'' ~ ( ( '\\uFFFD' | '\\'' ) )
                     {
                     match('\''); 
                     if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\uFFFC')||(input.LA(1)>='\uFFFE' && input.LA(1)<='\uFFFF') ) {
@@ -3457,7 +3575,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29709:83: ~ ( ( '\\uFFFD' | '\\'' ) )
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29713:83: ~ ( ( '\\uFFFD' | '\\'' ) )
                     {
                     if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\uFFFC')||(input.LA(1)>='\uFFFE' && input.LA(1)<='\uFFFF') ) {
                         input.consume();
@@ -3483,43 +3601,115 @@ public class InternalSuiteLexer extends Lexer {
     }
     // $ANTLR end "RULE_IN_RICH_STRING"
 
+    // $ANTLR start "RULE_IDENTIFIER_START"
+    public final void mRULE_IDENTIFIER_START() throws RecognitionException {
+        try {
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29715:32: ( ( '$' | 'A' .. 'Z' | '_' | 'a' .. 'z' | '\\u00A2' .. '\\u00A5' | '\\u00AA' | '\\u00B5' | '\\u00BA' | '\\u00C0' .. '\\u00D6' | '\\u00D8' .. '\\u00F6' | '\\u00F8' .. '\\u0236' | '\\u0250' .. '\\u02C1' | '\\u02C6' .. '\\u02D1' | '\\u02E0' .. '\\u02E4' | '\\u02EE' | '\\u037A' | '\\u0386' | '\\u0388' .. '\\u038A' | '\\u038C' | '\\u038E' .. '\\u03A1' | '\\u03A3' .. '\\u03CE' | '\\u03D0' .. '\\u03F5' | '\\u03F7' .. '\\u03FB' | '\\u0400' .. '\\u0481' | '\\u048A' .. '\\u04CE' | '\\u04D0' .. '\\u04F5' | '\\u04F8' .. '\\u04F9' | '\\u0500' .. '\\u050F' | '\\u0531' .. '\\u0556' | '\\u0559' | '\\u0561' .. '\\u0587' | '\\u05D0' .. '\\u05EA' | '\\u05F0' .. '\\u05F2' | '\\u0621' .. '\\u063A' | '\\u0640' .. '\\u064A' | '\\u066E' .. '\\u066F' | '\\u0671' .. '\\u06D3' | '\\u06D5' | '\\u06E5' .. '\\u06E6' | '\\u06EE' .. '\\u06EF' | '\\u06FA' .. '\\u06FC' | '\\u06FF' | '\\u0710' | '\\u0712' .. '\\u072F' | '\\u074D' .. '\\u074F' | '\\u0780' .. '\\u07A5' | '\\u07B1' | '\\u0904' .. '\\u0939' | '\\u093D' | '\\u0950' | '\\u0958' .. '\\u0961' | '\\u0985' .. '\\u098C' | '\\u098F' .. '\\u0990' | '\\u0993' .. '\\u09A8' | '\\u09AA' .. '\\u09B0' | '\\u09B2' | '\\u09B6' .. '\\u09B9' | '\\u09BD' | '\\u09DC' .. '\\u09DD' | '\\u09DF' .. '\\u09E1' | '\\u09F0' .. '\\u09F3' | '\\u0A05' .. '\\u0A0A' | '\\u0A0F' .. '\\u0A10' | '\\u0A13' .. '\\u0A28' | '\\u0A2A' .. '\\u0A30' | '\\u0A32' .. '\\u0A33' | '\\u0A35' .. '\\u0A36' | '\\u0A38' .. '\\u0A39' | '\\u0A59' .. '\\u0A5C' | '\\u0A5E' | '\\u0A72' .. '\\u0A74' | '\\u0A85' .. '\\u0A8D' | '\\u0A8F' .. '\\u0A91' | '\\u0A93' .. '\\u0AA8' | '\\u0AAA' .. '\\u0AB0' | '\\u0AB2' .. '\\u0AB3' | '\\u0AB5' .. '\\u0AB9' | '\\u0ABD' | '\\u0AD0' | '\\u0AE0' .. '\\u0AE1' | '\\u0AF1' | '\\u0B05' .. '\\u0B0C' | '\\u0B0F' .. '\\u0B10' | '\\u0B13' .. '\\u0B28' | '\\u0B2A' .. '\\u0B30' | '\\u0B32' .. '\\u0B33' | '\\u0B35' .. '\\u0B39' | '\\u0B3D' | '\\u0B5C' .. '\\u0B5D' | '\\u0B5F' .. '\\u0B61' | '\\u0B71' | '\\u0B83' | '\\u0B85' .. '\\u0B8A' | '\\u0B8E' .. '\\u0B90' | '\\u0B92' .. '\\u0B95' | '\\u0B99' .. '\\u0B9A' | '\\u0B9C' | '\\u0B9E' .. '\\u0B9F' | '\\u0BA3' .. '\\u0BA4' | '\\u0BA8' .. '\\u0BAA' | '\\u0BAE' .. '\\u0BB5' | '\\u0BB7' .. '\\u0BB9' | '\\u0BF9' | '\\u0C05' .. '\\u0C0C' | '\\u0C0E' .. '\\u0C10' | '\\u0C12' .. '\\u0C28' | '\\u0C2A' .. '\\u0C33' | '\\u0C35' .. '\\u0C39' | '\\u0C60' .. '\\u0C61' | '\\u0C85' .. '\\u0C8C' | '\\u0C8E' .. '\\u0C90' | '\\u0C92' .. '\\u0CA8' | '\\u0CAA' .. '\\u0CB3' | '\\u0CB5' .. '\\u0CB9' | '\\u0CBD' | '\\u0CDE' | '\\u0CE0' .. '\\u0CE1' | '\\u0D05' .. '\\u0D0C' | '\\u0D0E' .. '\\u0D10' | '\\u0D12' .. '\\u0D28' | '\\u0D2A' .. '\\u0D39' | '\\u0D60' .. '\\u0D61' | '\\u0D85' .. '\\u0D96' | '\\u0D9A' .. '\\u0DB1' | '\\u0DB3' .. '\\u0DBB' | '\\u0DBD' | '\\u0DC0' .. '\\u0DC6' | '\\u0E01' .. '\\u0E30' | '\\u0E32' .. '\\u0E33' | '\\u0E3F' .. '\\u0E46' | '\\u0E81' .. '\\u0E82' | '\\u0E84' | '\\u0E87' .. '\\u0E88' | '\\u0E8A' | '\\u0E8D' | '\\u0E94' .. '\\u0E97' | '\\u0E99' .. '\\u0E9F' | '\\u0EA1' .. '\\u0EA3' | '\\u0EA5' | '\\u0EA7' | '\\u0EAA' .. '\\u0EAB' | '\\u0EAD' .. '\\u0EB0' | '\\u0EB2' .. '\\u0EB3' | '\\u0EBD' | '\\u0EC0' .. '\\u0EC4' | '\\u0EC6' | '\\u0EDC' .. '\\u0EDD' | '\\u0F00' | '\\u0F40' .. '\\u0F47' | '\\u0F49' .. '\\u0F6A' | '\\u0F88' .. '\\u0F8B' | '\\u1000' .. '\\u1021' | '\\u1023' .. '\\u1027' | '\\u1029' .. '\\u102A' | '\\u1050' .. '\\u1055' | '\\u10A0' .. '\\u10C5' | '\\u10D0' .. '\\u10F8' | '\\u1100' .. '\\u1159' | '\\u115F' .. '\\u11A2' | '\\u11A8' .. '\\u11F9' | '\\u1200' .. '\\u1206' | '\\u1208' .. '\\u1246' | '\\u1248' | '\\u124A' .. '\\u124D' | '\\u1250' .. '\\u1256' | '\\u1258' | '\\u125A' .. '\\u125D' | '\\u1260' .. '\\u1286' | '\\u1288' | '\\u128A' .. '\\u128D' | '\\u1290' .. '\\u12AE' | '\\u12B0' | '\\u12B2' .. '\\u12B5' | '\\u12B8' .. '\\u12BE' | '\\u12C0' | '\\u12C2' .. '\\u12C5' | '\\u12C8' .. '\\u12CE' | '\\u12D0' .. '\\u12D6' | '\\u12D8' .. '\\u12EE' | '\\u12F0' .. '\\u130E' | '\\u1310' | '\\u1312' .. '\\u1315' | '\\u1318' .. '\\u131E' | '\\u1320' .. '\\u1346' | '\\u1348' .. '\\u135A' | '\\u13A0' .. '\\u13F4' | '\\u1401' .. '\\u166C' | '\\u166F' .. '\\u1676' | '\\u1681' .. '\\u169A' | '\\u16A0' .. '\\u16EA' | '\\u16EE' .. '\\u16F0' | '\\u1700' .. '\\u170C' | '\\u170E' .. '\\u1711' | '\\u1720' .. '\\u1731' | '\\u1740' .. '\\u1751' | '\\u1760' .. '\\u176C' | '\\u176E' .. '\\u1770' | '\\u1780' .. '\\u17B3' | '\\u17D7' | '\\u17DB' .. '\\u17DC' | '\\u1820' .. '\\u1877' | '\\u1880' .. '\\u18A8' | '\\u1900' .. '\\u191C' | '\\u1950' .. '\\u196D' | '\\u1970' .. '\\u1974' | '\\u1D00' .. '\\u1D6B' | '\\u1E00' .. '\\u1E9B' | '\\u1EA0' .. '\\u1EF9' | '\\u1F00' .. '\\u1F15' | '\\u1F18' .. '\\u1F1D' | '\\u1F20' .. '\\u1F45' | '\\u1F48' .. '\\u1F4D' | '\\u1F50' .. '\\u1F57' | '\\u1F59' | '\\u1F5B' | '\\u1F5D' | '\\u1F5F' .. '\\u1F7D' | '\\u1F80' .. '\\u1FB4' | '\\u1FB6' .. '\\u1FBC' | '\\u1FBE' | '\\u1FC2' .. '\\u1FC4' | '\\u1FC6' .. '\\u1FCC' | '\\u1FD0' .. '\\u1FD3' | '\\u1FD6' .. '\\u1FDB' | '\\u1FE0' .. '\\u1FEC' | '\\u1FF2' .. '\\u1FF4' | '\\u1FF6' .. '\\u1FFC' | '\\u203F' .. '\\u2040' | '\\u2054' | '\\u2071' | '\\u207F' | '\\u20A0' .. '\\u20B1' | '\\u2102' | '\\u2107' | '\\u210A' .. '\\u2113' | '\\u2115' | '\\u2119' .. '\\u211D' | '\\u2124' | '\\u2126' | '\\u2128' | '\\u212A' .. '\\u212D' | '\\u212F' .. '\\u2131' | '\\u2133' .. '\\u2139' | '\\u213D' .. '\\u213F' | '\\u2145' .. '\\u2149' | '\\u2160' .. '\\u2183' | '\\u3005' .. '\\u3007' | '\\u3021' .. '\\u3029' | '\\u3031' .. '\\u3035' | '\\u3038' .. '\\u303C' | '\\u3041' .. '\\u3096' | '\\u309D' .. '\\u309F' | '\\u30A1' .. '\\u30FF' | '\\u3105' .. '\\u312C' | '\\u3131' .. '\\u318E' | '\\u31A0' .. '\\u31B7' | '\\u31F0' .. '\\u31FF' | '\\u3400' .. '\\u4DB5' | '\\u4E00' .. '\\u9FA5' | '\\uA000' .. '\\uA48C' | '\\uAC00' .. '\\uD7A3' | '\\uF900' .. '\\uFA2D' | '\\uFA30' .. '\\uFA6A' | '\\uFB00' .. '\\uFB06' | '\\uFB13' .. '\\uFB17' | '\\uFB1D' | '\\uFB1F' .. '\\uFB28' | '\\uFB2A' .. '\\uFB36' | '\\uFB38' .. '\\uFB3C' | '\\uFB3E' | '\\uFB40' .. '\\uFB41' | '\\uFB43' .. '\\uFB44' | '\\uFB46' .. '\\uFBB1' | '\\uFBD3' .. '\\uFD3D' | '\\uFD50' .. '\\uFD8F' | '\\uFD92' .. '\\uFDC7' | '\\uFDF0' .. '\\uFDFC' | '\\uFE33' .. '\\uFE34' | '\\uFE4D' .. '\\uFE4F' | '\\uFE69' | '\\uFE70' .. '\\uFE74' | '\\uFE76' .. '\\uFEFC' | '\\uFF04' | '\\uFF21' .. '\\uFF3A' | '\\uFF3F' | '\\uFF41' .. '\\uFF5A' | '\\uFF65' .. '\\uFFBE' | '\\uFFC2' .. '\\uFFC7' | '\\uFFCA' .. '\\uFFCF' | '\\uFFD2' .. '\\uFFD7' | '\\uFFDA' .. '\\uFFDC' | '\\uFFE0' .. '\\uFFE1' | '\\uFFE5' .. '\\uFFE6' ) )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29715:34: ( '$' | 'A' .. 'Z' | '_' | 'a' .. 'z' | '\\u00A2' .. '\\u00A5' | '\\u00AA' | '\\u00B5' | '\\u00BA' | '\\u00C0' .. '\\u00D6' | '\\u00D8' .. '\\u00F6' | '\\u00F8' .. '\\u0236' | '\\u0250' .. '\\u02C1' | '\\u02C6' .. '\\u02D1' | '\\u02E0' .. '\\u02E4' | '\\u02EE' | '\\u037A' | '\\u0386' | '\\u0388' .. '\\u038A' | '\\u038C' | '\\u038E' .. '\\u03A1' | '\\u03A3' .. '\\u03CE' | '\\u03D0' .. '\\u03F5' | '\\u03F7' .. '\\u03FB' | '\\u0400' .. '\\u0481' | '\\u048A' .. '\\u04CE' | '\\u04D0' .. '\\u04F5' | '\\u04F8' .. '\\u04F9' | '\\u0500' .. '\\u050F' | '\\u0531' .. '\\u0556' | '\\u0559' | '\\u0561' .. '\\u0587' | '\\u05D0' .. '\\u05EA' | '\\u05F0' .. '\\u05F2' | '\\u0621' .. '\\u063A' | '\\u0640' .. '\\u064A' | '\\u066E' .. '\\u066F' | '\\u0671' .. '\\u06D3' | '\\u06D5' | '\\u06E5' .. '\\u06E6' | '\\u06EE' .. '\\u06EF' | '\\u06FA' .. '\\u06FC' | '\\u06FF' | '\\u0710' | '\\u0712' .. '\\u072F' | '\\u074D' .. '\\u074F' | '\\u0780' .. '\\u07A5' | '\\u07B1' | '\\u0904' .. '\\u0939' | '\\u093D' | '\\u0950' | '\\u0958' .. '\\u0961' | '\\u0985' .. '\\u098C' | '\\u098F' .. '\\u0990' | '\\u0993' .. '\\u09A8' | '\\u09AA' .. '\\u09B0' | '\\u09B2' | '\\u09B6' .. '\\u09B9' | '\\u09BD' | '\\u09DC' .. '\\u09DD' | '\\u09DF' .. '\\u09E1' | '\\u09F0' .. '\\u09F3' | '\\u0A05' .. '\\u0A0A' | '\\u0A0F' .. '\\u0A10' | '\\u0A13' .. '\\u0A28' | '\\u0A2A' .. '\\u0A30' | '\\u0A32' .. '\\u0A33' | '\\u0A35' .. '\\u0A36' | '\\u0A38' .. '\\u0A39' | '\\u0A59' .. '\\u0A5C' | '\\u0A5E' | '\\u0A72' .. '\\u0A74' | '\\u0A85' .. '\\u0A8D' | '\\u0A8F' .. '\\u0A91' | '\\u0A93' .. '\\u0AA8' | '\\u0AAA' .. '\\u0AB0' | '\\u0AB2' .. '\\u0AB3' | '\\u0AB5' .. '\\u0AB9' | '\\u0ABD' | '\\u0AD0' | '\\u0AE0' .. '\\u0AE1' | '\\u0AF1' | '\\u0B05' .. '\\u0B0C' | '\\u0B0F' .. '\\u0B10' | '\\u0B13' .. '\\u0B28' | '\\u0B2A' .. '\\u0B30' | '\\u0B32' .. '\\u0B33' | '\\u0B35' .. '\\u0B39' | '\\u0B3D' | '\\u0B5C' .. '\\u0B5D' | '\\u0B5F' .. '\\u0B61' | '\\u0B71' | '\\u0B83' | '\\u0B85' .. '\\u0B8A' | '\\u0B8E' .. '\\u0B90' | '\\u0B92' .. '\\u0B95' | '\\u0B99' .. '\\u0B9A' | '\\u0B9C' | '\\u0B9E' .. '\\u0B9F' | '\\u0BA3' .. '\\u0BA4' | '\\u0BA8' .. '\\u0BAA' | '\\u0BAE' .. '\\u0BB5' | '\\u0BB7' .. '\\u0BB9' | '\\u0BF9' | '\\u0C05' .. '\\u0C0C' | '\\u0C0E' .. '\\u0C10' | '\\u0C12' .. '\\u0C28' | '\\u0C2A' .. '\\u0C33' | '\\u0C35' .. '\\u0C39' | '\\u0C60' .. '\\u0C61' | '\\u0C85' .. '\\u0C8C' | '\\u0C8E' .. '\\u0C90' | '\\u0C92' .. '\\u0CA8' | '\\u0CAA' .. '\\u0CB3' | '\\u0CB5' .. '\\u0CB9' | '\\u0CBD' | '\\u0CDE' | '\\u0CE0' .. '\\u0CE1' | '\\u0D05' .. '\\u0D0C' | '\\u0D0E' .. '\\u0D10' | '\\u0D12' .. '\\u0D28' | '\\u0D2A' .. '\\u0D39' | '\\u0D60' .. '\\u0D61' | '\\u0D85' .. '\\u0D96' | '\\u0D9A' .. '\\u0DB1' | '\\u0DB3' .. '\\u0DBB' | '\\u0DBD' | '\\u0DC0' .. '\\u0DC6' | '\\u0E01' .. '\\u0E30' | '\\u0E32' .. '\\u0E33' | '\\u0E3F' .. '\\u0E46' | '\\u0E81' .. '\\u0E82' | '\\u0E84' | '\\u0E87' .. '\\u0E88' | '\\u0E8A' | '\\u0E8D' | '\\u0E94' .. '\\u0E97' | '\\u0E99' .. '\\u0E9F' | '\\u0EA1' .. '\\u0EA3' | '\\u0EA5' | '\\u0EA7' | '\\u0EAA' .. '\\u0EAB' | '\\u0EAD' .. '\\u0EB0' | '\\u0EB2' .. '\\u0EB3' | '\\u0EBD' | '\\u0EC0' .. '\\u0EC4' | '\\u0EC6' | '\\u0EDC' .. '\\u0EDD' | '\\u0F00' | '\\u0F40' .. '\\u0F47' | '\\u0F49' .. '\\u0F6A' | '\\u0F88' .. '\\u0F8B' | '\\u1000' .. '\\u1021' | '\\u1023' .. '\\u1027' | '\\u1029' .. '\\u102A' | '\\u1050' .. '\\u1055' | '\\u10A0' .. '\\u10C5' | '\\u10D0' .. '\\u10F8' | '\\u1100' .. '\\u1159' | '\\u115F' .. '\\u11A2' | '\\u11A8' .. '\\u11F9' | '\\u1200' .. '\\u1206' | '\\u1208' .. '\\u1246' | '\\u1248' | '\\u124A' .. '\\u124D' | '\\u1250' .. '\\u1256' | '\\u1258' | '\\u125A' .. '\\u125D' | '\\u1260' .. '\\u1286' | '\\u1288' | '\\u128A' .. '\\u128D' | '\\u1290' .. '\\u12AE' | '\\u12B0' | '\\u12B2' .. '\\u12B5' | '\\u12B8' .. '\\u12BE' | '\\u12C0' | '\\u12C2' .. '\\u12C5' | '\\u12C8' .. '\\u12CE' | '\\u12D0' .. '\\u12D6' | '\\u12D8' .. '\\u12EE' | '\\u12F0' .. '\\u130E' | '\\u1310' | '\\u1312' .. '\\u1315' | '\\u1318' .. '\\u131E' | '\\u1320' .. '\\u1346' | '\\u1348' .. '\\u135A' | '\\u13A0' .. '\\u13F4' | '\\u1401' .. '\\u166C' | '\\u166F' .. '\\u1676' | '\\u1681' .. '\\u169A' | '\\u16A0' .. '\\u16EA' | '\\u16EE' .. '\\u16F0' | '\\u1700' .. '\\u170C' | '\\u170E' .. '\\u1711' | '\\u1720' .. '\\u1731' | '\\u1740' .. '\\u1751' | '\\u1760' .. '\\u176C' | '\\u176E' .. '\\u1770' | '\\u1780' .. '\\u17B3' | '\\u17D7' | '\\u17DB' .. '\\u17DC' | '\\u1820' .. '\\u1877' | '\\u1880' .. '\\u18A8' | '\\u1900' .. '\\u191C' | '\\u1950' .. '\\u196D' | '\\u1970' .. '\\u1974' | '\\u1D00' .. '\\u1D6B' | '\\u1E00' .. '\\u1E9B' | '\\u1EA0' .. '\\u1EF9' | '\\u1F00' .. '\\u1F15' | '\\u1F18' .. '\\u1F1D' | '\\u1F20' .. '\\u1F45' | '\\u1F48' .. '\\u1F4D' | '\\u1F50' .. '\\u1F57' | '\\u1F59' | '\\u1F5B' | '\\u1F5D' | '\\u1F5F' .. '\\u1F7D' | '\\u1F80' .. '\\u1FB4' | '\\u1FB6' .. '\\u1FBC' | '\\u1FBE' | '\\u1FC2' .. '\\u1FC4' | '\\u1FC6' .. '\\u1FCC' | '\\u1FD0' .. '\\u1FD3' | '\\u1FD6' .. '\\u1FDB' | '\\u1FE0' .. '\\u1FEC' | '\\u1FF2' .. '\\u1FF4' | '\\u1FF6' .. '\\u1FFC' | '\\u203F' .. '\\u2040' | '\\u2054' | '\\u2071' | '\\u207F' | '\\u20A0' .. '\\u20B1' | '\\u2102' | '\\u2107' | '\\u210A' .. '\\u2113' | '\\u2115' | '\\u2119' .. '\\u211D' | '\\u2124' | '\\u2126' | '\\u2128' | '\\u212A' .. '\\u212D' | '\\u212F' .. '\\u2131' | '\\u2133' .. '\\u2139' | '\\u213D' .. '\\u213F' | '\\u2145' .. '\\u2149' | '\\u2160' .. '\\u2183' | '\\u3005' .. '\\u3007' | '\\u3021' .. '\\u3029' | '\\u3031' .. '\\u3035' | '\\u3038' .. '\\u303C' | '\\u3041' .. '\\u3096' | '\\u309D' .. '\\u309F' | '\\u30A1' .. '\\u30FF' | '\\u3105' .. '\\u312C' | '\\u3131' .. '\\u318E' | '\\u31A0' .. '\\u31B7' | '\\u31F0' .. '\\u31FF' | '\\u3400' .. '\\u4DB5' | '\\u4E00' .. '\\u9FA5' | '\\uA000' .. '\\uA48C' | '\\uAC00' .. '\\uD7A3' | '\\uF900' .. '\\uFA2D' | '\\uFA30' .. '\\uFA6A' | '\\uFB00' .. '\\uFB06' | '\\uFB13' .. '\\uFB17' | '\\uFB1D' | '\\uFB1F' .. '\\uFB28' | '\\uFB2A' .. '\\uFB36' | '\\uFB38' .. '\\uFB3C' | '\\uFB3E' | '\\uFB40' .. '\\uFB41' | '\\uFB43' .. '\\uFB44' | '\\uFB46' .. '\\uFBB1' | '\\uFBD3' .. '\\uFD3D' | '\\uFD50' .. '\\uFD8F' | '\\uFD92' .. '\\uFDC7' | '\\uFDF0' .. '\\uFDFC' | '\\uFE33' .. '\\uFE34' | '\\uFE4D' .. '\\uFE4F' | '\\uFE69' | '\\uFE70' .. '\\uFE74' | '\\uFE76' .. '\\uFEFC' | '\\uFF04' | '\\uFF21' .. '\\uFF3A' | '\\uFF3F' | '\\uFF41' .. '\\uFF5A' | '\\uFF65' .. '\\uFFBE' | '\\uFFC2' .. '\\uFFC7' | '\\uFFCA' .. '\\uFFCF' | '\\uFFD2' .. '\\uFFD7' | '\\uFFDA' .. '\\uFFDC' | '\\uFFE0' .. '\\uFFE1' | '\\uFFE5' .. '\\uFFE6' )
+            {
+            if ( input.LA(1)=='$'||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z')||(input.LA(1)>='\u00A2' && input.LA(1)<='\u00A5')||input.LA(1)=='\u00AA'||input.LA(1)=='\u00B5'||input.LA(1)=='\u00BA'||(input.LA(1)>='\u00C0' && input.LA(1)<='\u00D6')||(input.LA(1)>='\u00D8' && input.LA(1)<='\u00F6')||(input.LA(1)>='\u00F8' && input.LA(1)<='\u0236')||(input.LA(1)>='\u0250' && input.LA(1)<='\u02C1')||(input.LA(1)>='\u02C6' && input.LA(1)<='\u02D1')||(input.LA(1)>='\u02E0' && input.LA(1)<='\u02E4')||input.LA(1)=='\u02EE'||input.LA(1)=='\u037A'||input.LA(1)=='\u0386'||(input.LA(1)>='\u0388' && input.LA(1)<='\u038A')||input.LA(1)=='\u038C'||(input.LA(1)>='\u038E' && input.LA(1)<='\u03A1')||(input.LA(1)>='\u03A3' && input.LA(1)<='\u03CE')||(input.LA(1)>='\u03D0' && input.LA(1)<='\u03F5')||(input.LA(1)>='\u03F7' && input.LA(1)<='\u03FB')||(input.LA(1)>='\u0400' && input.LA(1)<='\u0481')||(input.LA(1)>='\u048A' && input.LA(1)<='\u04CE')||(input.LA(1)>='\u04D0' && input.LA(1)<='\u04F5')||(input.LA(1)>='\u04F8' && input.LA(1)<='\u04F9')||(input.LA(1)>='\u0500' && input.LA(1)<='\u050F')||(input.LA(1)>='\u0531' && input.LA(1)<='\u0556')||input.LA(1)=='\u0559'||(input.LA(1)>='\u0561' && input.LA(1)<='\u0587')||(input.LA(1)>='\u05D0' && input.LA(1)<='\u05EA')||(input.LA(1)>='\u05F0' && input.LA(1)<='\u05F2')||(input.LA(1)>='\u0621' && input.LA(1)<='\u063A')||(input.LA(1)>='\u0640' && input.LA(1)<='\u064A')||(input.LA(1)>='\u066E' && input.LA(1)<='\u066F')||(input.LA(1)>='\u0671' && input.LA(1)<='\u06D3')||input.LA(1)=='\u06D5'||(input.LA(1)>='\u06E5' && input.LA(1)<='\u06E6')||(input.LA(1)>='\u06EE' && input.LA(1)<='\u06EF')||(input.LA(1)>='\u06FA' && input.LA(1)<='\u06FC')||input.LA(1)=='\u06FF'||input.LA(1)=='\u0710'||(input.LA(1)>='\u0712' && input.LA(1)<='\u072F')||(input.LA(1)>='\u074D' && input.LA(1)<='\u074F')||(input.LA(1)>='\u0780' && input.LA(1)<='\u07A5')||input.LA(1)=='\u07B1'||(input.LA(1)>='\u0904' && input.LA(1)<='\u0939')||input.LA(1)=='\u093D'||input.LA(1)=='\u0950'||(input.LA(1)>='\u0958' && input.LA(1)<='\u0961')||(input.LA(1)>='\u0985' && input.LA(1)<='\u098C')||(input.LA(1)>='\u098F' && input.LA(1)<='\u0990')||(input.LA(1)>='\u0993' && input.LA(1)<='\u09A8')||(input.LA(1)>='\u09AA' && input.LA(1)<='\u09B0')||input.LA(1)=='\u09B2'||(input.LA(1)>='\u09B6' && input.LA(1)<='\u09B9')||input.LA(1)=='\u09BD'||(input.LA(1)>='\u09DC' && input.LA(1)<='\u09DD')||(input.LA(1)>='\u09DF' && input.LA(1)<='\u09E1')||(input.LA(1)>='\u09F0' && input.LA(1)<='\u09F3')||(input.LA(1)>='\u0A05' && input.LA(1)<='\u0A0A')||(input.LA(1)>='\u0A0F' && input.LA(1)<='\u0A10')||(input.LA(1)>='\u0A13' && input.LA(1)<='\u0A28')||(input.LA(1)>='\u0A2A' && input.LA(1)<='\u0A30')||(input.LA(1)>='\u0A32' && input.LA(1)<='\u0A33')||(input.LA(1)>='\u0A35' && input.LA(1)<='\u0A36')||(input.LA(1)>='\u0A38' && input.LA(1)<='\u0A39')||(input.LA(1)>='\u0A59' && input.LA(1)<='\u0A5C')||input.LA(1)=='\u0A5E'||(input.LA(1)>='\u0A72' && input.LA(1)<='\u0A74')||(input.LA(1)>='\u0A85' && input.LA(1)<='\u0A8D')||(input.LA(1)>='\u0A8F' && input.LA(1)<='\u0A91')||(input.LA(1)>='\u0A93' && input.LA(1)<='\u0AA8')||(input.LA(1)>='\u0AAA' && input.LA(1)<='\u0AB0')||(input.LA(1)>='\u0AB2' && input.LA(1)<='\u0AB3')||(input.LA(1)>='\u0AB5' && input.LA(1)<='\u0AB9')||input.LA(1)=='\u0ABD'||input.LA(1)=='\u0AD0'||(input.LA(1)>='\u0AE0' && input.LA(1)<='\u0AE1')||input.LA(1)=='\u0AF1'||(input.LA(1)>='\u0B05' && input.LA(1)<='\u0B0C')||(input.LA(1)>='\u0B0F' && input.LA(1)<='\u0B10')||(input.LA(1)>='\u0B13' && input.LA(1)<='\u0B28')||(input.LA(1)>='\u0B2A' && input.LA(1)<='\u0B30')||(input.LA(1)>='\u0B32' && input.LA(1)<='\u0B33')||(input.LA(1)>='\u0B35' && input.LA(1)<='\u0B39')||input.LA(1)=='\u0B3D'||(input.LA(1)>='\u0B5C' && input.LA(1)<='\u0B5D')||(input.LA(1)>='\u0B5F' && input.LA(1)<='\u0B61')||input.LA(1)=='\u0B71'||input.LA(1)=='\u0B83'||(input.LA(1)>='\u0B85' && input.LA(1)<='\u0B8A')||(input.LA(1)>='\u0B8E' && input.LA(1)<='\u0B90')||(input.LA(1)>='\u0B92' && input.LA(1)<='\u0B95')||(input.LA(1)>='\u0B99' && input.LA(1)<='\u0B9A')||input.LA(1)=='\u0B9C'||(input.LA(1)>='\u0B9E' && input.LA(1)<='\u0B9F')||(input.LA(1)>='\u0BA3' && input.LA(1)<='\u0BA4')||(input.LA(1)>='\u0BA8' && input.LA(1)<='\u0BAA')||(input.LA(1)>='\u0BAE' && input.LA(1)<='\u0BB5')||(input.LA(1)>='\u0BB7' && input.LA(1)<='\u0BB9')||input.LA(1)=='\u0BF9'||(input.LA(1)>='\u0C05' && input.LA(1)<='\u0C0C')||(input.LA(1)>='\u0C0E' && input.LA(1)<='\u0C10')||(input.LA(1)>='\u0C12' && input.LA(1)<='\u0C28')||(input.LA(1)>='\u0C2A' && input.LA(1)<='\u0C33')||(input.LA(1)>='\u0C35' && input.LA(1)<='\u0C39')||(input.LA(1)>='\u0C60' && input.LA(1)<='\u0C61')||(input.LA(1)>='\u0C85' && input.LA(1)<='\u0C8C')||(input.LA(1)>='\u0C8E' && input.LA(1)<='\u0C90')||(input.LA(1)>='\u0C92' && input.LA(1)<='\u0CA8')||(input.LA(1)>='\u0CAA' && input.LA(1)<='\u0CB3')||(input.LA(1)>='\u0CB5' && input.LA(1)<='\u0CB9')||input.LA(1)=='\u0CBD'||input.LA(1)=='\u0CDE'||(input.LA(1)>='\u0CE0' && input.LA(1)<='\u0CE1')||(input.LA(1)>='\u0D05' && input.LA(1)<='\u0D0C')||(input.LA(1)>='\u0D0E' && input.LA(1)<='\u0D10')||(input.LA(1)>='\u0D12' && input.LA(1)<='\u0D28')||(input.LA(1)>='\u0D2A' && input.LA(1)<='\u0D39')||(input.LA(1)>='\u0D60' && input.LA(1)<='\u0D61')||(input.LA(1)>='\u0D85' && input.LA(1)<='\u0D96')||(input.LA(1)>='\u0D9A' && input.LA(1)<='\u0DB1')||(input.LA(1)>='\u0DB3' && input.LA(1)<='\u0DBB')||input.LA(1)=='\u0DBD'||(input.LA(1)>='\u0DC0' && input.LA(1)<='\u0DC6')||(input.LA(1)>='\u0E01' && input.LA(1)<='\u0E30')||(input.LA(1)>='\u0E32' && input.LA(1)<='\u0E33')||(input.LA(1)>='\u0E3F' && input.LA(1)<='\u0E46')||(input.LA(1)>='\u0E81' && input.LA(1)<='\u0E82')||input.LA(1)=='\u0E84'||(input.LA(1)>='\u0E87' && input.LA(1)<='\u0E88')||input.LA(1)=='\u0E8A'||input.LA(1)=='\u0E8D'||(input.LA(1)>='\u0E94' && input.LA(1)<='\u0E97')||(input.LA(1)>='\u0E99' && input.LA(1)<='\u0E9F')||(input.LA(1)>='\u0EA1' && input.LA(1)<='\u0EA3')||input.LA(1)=='\u0EA5'||input.LA(1)=='\u0EA7'||(input.LA(1)>='\u0EAA' && input.LA(1)<='\u0EAB')||(input.LA(1)>='\u0EAD' && input.LA(1)<='\u0EB0')||(input.LA(1)>='\u0EB2' && input.LA(1)<='\u0EB3')||input.LA(1)=='\u0EBD'||(input.LA(1)>='\u0EC0' && input.LA(1)<='\u0EC4')||input.LA(1)=='\u0EC6'||(input.LA(1)>='\u0EDC' && input.LA(1)<='\u0EDD')||input.LA(1)=='\u0F00'||(input.LA(1)>='\u0F40' && input.LA(1)<='\u0F47')||(input.LA(1)>='\u0F49' && input.LA(1)<='\u0F6A')||(input.LA(1)>='\u0F88' && input.LA(1)<='\u0F8B')||(input.LA(1)>='\u1000' && input.LA(1)<='\u1021')||(input.LA(1)>='\u1023' && input.LA(1)<='\u1027')||(input.LA(1)>='\u1029' && input.LA(1)<='\u102A')||(input.LA(1)>='\u1050' && input.LA(1)<='\u1055')||(input.LA(1)>='\u10A0' && input.LA(1)<='\u10C5')||(input.LA(1)>='\u10D0' && input.LA(1)<='\u10F8')||(input.LA(1)>='\u1100' && input.LA(1)<='\u1159')||(input.LA(1)>='\u115F' && input.LA(1)<='\u11A2')||(input.LA(1)>='\u11A8' && input.LA(1)<='\u11F9')||(input.LA(1)>='\u1200' && input.LA(1)<='\u1206')||(input.LA(1)>='\u1208' && input.LA(1)<='\u1246')||input.LA(1)=='\u1248'||(input.LA(1)>='\u124A' && input.LA(1)<='\u124D')||(input.LA(1)>='\u1250' && input.LA(1)<='\u1256')||input.LA(1)=='\u1258'||(input.LA(1)>='\u125A' && input.LA(1)<='\u125D')||(input.LA(1)>='\u1260' && input.LA(1)<='\u1286')||input.LA(1)=='\u1288'||(input.LA(1)>='\u128A' && input.LA(1)<='\u128D')||(input.LA(1)>='\u1290' && input.LA(1)<='\u12AE')||input.LA(1)=='\u12B0'||(input.LA(1)>='\u12B2' && input.LA(1)<='\u12B5')||(input.LA(1)>='\u12B8' && input.LA(1)<='\u12BE')||input.LA(1)=='\u12C0'||(input.LA(1)>='\u12C2' && input.LA(1)<='\u12C5')||(input.LA(1)>='\u12C8' && input.LA(1)<='\u12CE')||(input.LA(1)>='\u12D0' && input.LA(1)<='\u12D6')||(input.LA(1)>='\u12D8' && input.LA(1)<='\u12EE')||(input.LA(1)>='\u12F0' && input.LA(1)<='\u130E')||input.LA(1)=='\u1310'||(input.LA(1)>='\u1312' && input.LA(1)<='\u1315')||(input.LA(1)>='\u1318' && input.LA(1)<='\u131E')||(input.LA(1)>='\u1320' && input.LA(1)<='\u1346')||(input.LA(1)>='\u1348' && input.LA(1)<='\u135A')||(input.LA(1)>='\u13A0' && input.LA(1)<='\u13F4')||(input.LA(1)>='\u1401' && input.LA(1)<='\u166C')||(input.LA(1)>='\u166F' && input.LA(1)<='\u1676')||(input.LA(1)>='\u1681' && input.LA(1)<='\u169A')||(input.LA(1)>='\u16A0' && input.LA(1)<='\u16EA')||(input.LA(1)>='\u16EE' && input.LA(1)<='\u16F0')||(input.LA(1)>='\u1700' && input.LA(1)<='\u170C')||(input.LA(1)>='\u170E' && input.LA(1)<='\u1711')||(input.LA(1)>='\u1720' && input.LA(1)<='\u1731')||(input.LA(1)>='\u1740' && input.LA(1)<='\u1751')||(input.LA(1)>='\u1760' && input.LA(1)<='\u176C')||(input.LA(1)>='\u176E' && input.LA(1)<='\u1770')||(input.LA(1)>='\u1780' && input.LA(1)<='\u17B3')||input.LA(1)=='\u17D7'||(input.LA(1)>='\u17DB' && input.LA(1)<='\u17DC')||(input.LA(1)>='\u1820' && input.LA(1)<='\u1877')||(input.LA(1)>='\u1880' && input.LA(1)<='\u18A8')||(input.LA(1)>='\u1900' && input.LA(1)<='\u191C')||(input.LA(1)>='\u1950' && input.LA(1)<='\u196D')||(input.LA(1)>='\u1970' && input.LA(1)<='\u1974')||(input.LA(1)>='\u1D00' && input.LA(1)<='\u1D6B')||(input.LA(1)>='\u1E00' && input.LA(1)<='\u1E9B')||(input.LA(1)>='\u1EA0' && input.LA(1)<='\u1EF9')||(input.LA(1)>='\u1F00' && input.LA(1)<='\u1F15')||(input.LA(1)>='\u1F18' && input.LA(1)<='\u1F1D')||(input.LA(1)>='\u1F20' && input.LA(1)<='\u1F45')||(input.LA(1)>='\u1F48' && input.LA(1)<='\u1F4D')||(input.LA(1)>='\u1F50' && input.LA(1)<='\u1F57')||input.LA(1)=='\u1F59'||input.LA(1)=='\u1F5B'||input.LA(1)=='\u1F5D'||(input.LA(1)>='\u1F5F' && input.LA(1)<='\u1F7D')||(input.LA(1)>='\u1F80' && input.LA(1)<='\u1FB4')||(input.LA(1)>='\u1FB6' && input.LA(1)<='\u1FBC')||input.LA(1)=='\u1FBE'||(input.LA(1)>='\u1FC2' && input.LA(1)<='\u1FC4')||(input.LA(1)>='\u1FC6' && input.LA(1)<='\u1FCC')||(input.LA(1)>='\u1FD0' && input.LA(1)<='\u1FD3')||(input.LA(1)>='\u1FD6' && input.LA(1)<='\u1FDB')||(input.LA(1)>='\u1FE0' && input.LA(1)<='\u1FEC')||(input.LA(1)>='\u1FF2' && input.LA(1)<='\u1FF4')||(input.LA(1)>='\u1FF6' && input.LA(1)<='\u1FFC')||(input.LA(1)>='\u203F' && input.LA(1)<='\u2040')||input.LA(1)=='\u2054'||input.LA(1)=='\u2071'||input.LA(1)=='\u207F'||(input.LA(1)>='\u20A0' && input.LA(1)<='\u20B1')||input.LA(1)=='\u2102'||input.LA(1)=='\u2107'||(input.LA(1)>='\u210A' && input.LA(1)<='\u2113')||input.LA(1)=='\u2115'||(input.LA(1)>='\u2119' && input.LA(1)<='\u211D')||input.LA(1)=='\u2124'||input.LA(1)=='\u2126'||input.LA(1)=='\u2128'||(input.LA(1)>='\u212A' && input.LA(1)<='\u212D')||(input.LA(1)>='\u212F' && input.LA(1)<='\u2131')||(input.LA(1)>='\u2133' && input.LA(1)<='\u2139')||(input.LA(1)>='\u213D' && input.LA(1)<='\u213F')||(input.LA(1)>='\u2145' && input.LA(1)<='\u2149')||(input.LA(1)>='\u2160' && input.LA(1)<='\u2183')||(input.LA(1)>='\u3005' && input.LA(1)<='\u3007')||(input.LA(1)>='\u3021' && input.LA(1)<='\u3029')||(input.LA(1)>='\u3031' && input.LA(1)<='\u3035')||(input.LA(1)>='\u3038' && input.LA(1)<='\u303C')||(input.LA(1)>='\u3041' && input.LA(1)<='\u3096')||(input.LA(1)>='\u309D' && input.LA(1)<='\u309F')||(input.LA(1)>='\u30A1' && input.LA(1)<='\u30FF')||(input.LA(1)>='\u3105' && input.LA(1)<='\u312C')||(input.LA(1)>='\u3131' && input.LA(1)<='\u318E')||(input.LA(1)>='\u31A0' && input.LA(1)<='\u31B7')||(input.LA(1)>='\u31F0' && input.LA(1)<='\u31FF')||(input.LA(1)>='\u3400' && input.LA(1)<='\u4DB5')||(input.LA(1)>='\u4E00' && input.LA(1)<='\u9FA5')||(input.LA(1)>='\uA000' && input.LA(1)<='\uA48C')||(input.LA(1)>='\uAC00' && input.LA(1)<='\uD7A3')||(input.LA(1)>='\uF900' && input.LA(1)<='\uFA2D')||(input.LA(1)>='\uFA30' && input.LA(1)<='\uFA6A')||(input.LA(1)>='\uFB00' && input.LA(1)<='\uFB06')||(input.LA(1)>='\uFB13' && input.LA(1)<='\uFB17')||input.LA(1)=='\uFB1D'||(input.LA(1)>='\uFB1F' && input.LA(1)<='\uFB28')||(input.LA(1)>='\uFB2A' && input.LA(1)<='\uFB36')||(input.LA(1)>='\uFB38' && input.LA(1)<='\uFB3C')||input.LA(1)=='\uFB3E'||(input.LA(1)>='\uFB40' && input.LA(1)<='\uFB41')||(input.LA(1)>='\uFB43' && input.LA(1)<='\uFB44')||(input.LA(1)>='\uFB46' && input.LA(1)<='\uFBB1')||(input.LA(1)>='\uFBD3' && input.LA(1)<='\uFD3D')||(input.LA(1)>='\uFD50' && input.LA(1)<='\uFD8F')||(input.LA(1)>='\uFD92' && input.LA(1)<='\uFDC7')||(input.LA(1)>='\uFDF0' && input.LA(1)<='\uFDFC')||(input.LA(1)>='\uFE33' && input.LA(1)<='\uFE34')||(input.LA(1)>='\uFE4D' && input.LA(1)<='\uFE4F')||input.LA(1)=='\uFE69'||(input.LA(1)>='\uFE70' && input.LA(1)<='\uFE74')||(input.LA(1)>='\uFE76' && input.LA(1)<='\uFEFC')||input.LA(1)=='\uFF04'||(input.LA(1)>='\uFF21' && input.LA(1)<='\uFF3A')||input.LA(1)=='\uFF3F'||(input.LA(1)>='\uFF41' && input.LA(1)<='\uFF5A')||(input.LA(1)>='\uFF65' && input.LA(1)<='\uFFBE')||(input.LA(1)>='\uFFC2' && input.LA(1)<='\uFFC7')||(input.LA(1)>='\uFFCA' && input.LA(1)<='\uFFCF')||(input.LA(1)>='\uFFD2' && input.LA(1)<='\uFFD7')||(input.LA(1)>='\uFFDA' && input.LA(1)<='\uFFDC')||(input.LA(1)>='\uFFE0' && input.LA(1)<='\uFFE1')||(input.LA(1)>='\uFFE5' && input.LA(1)<='\uFFE6') ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+
+            }
+
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_IDENTIFIER_START"
+
+    // $ANTLR start "RULE_IDENTIFIER_PART"
+    public final void mRULE_IDENTIFIER_PART() throws RecognitionException {
+        try {
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29717:31: ( ( RULE_IDENTIFIER_START | RULE_IDENTIFIER_PART_IMPL ) )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29717:33: ( RULE_IDENTIFIER_START | RULE_IDENTIFIER_PART_IMPL )
+            {
+            if ( (input.LA(1)>='\u0000' && input.LA(1)<='\b')||(input.LA(1)>='\u000E' && input.LA(1)<='\u001B')||input.LA(1)=='$'||(input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z')||(input.LA(1)>='\u007F' && input.LA(1)<='\u009F')||(input.LA(1)>='\u00A2' && input.LA(1)<='\u00A5')||input.LA(1)=='\u00AA'||input.LA(1)=='\u00AD'||input.LA(1)=='\u00B5'||input.LA(1)=='\u00BA'||(input.LA(1)>='\u00C0' && input.LA(1)<='\u00D6')||(input.LA(1)>='\u00D8' && input.LA(1)<='\u00F6')||(input.LA(1)>='\u00F8' && input.LA(1)<='\u0236')||(input.LA(1)>='\u0250' && input.LA(1)<='\u02C1')||(input.LA(1)>='\u02C6' && input.LA(1)<='\u02D1')||(input.LA(1)>='\u02E0' && input.LA(1)<='\u02E4')||input.LA(1)=='\u02EE'||(input.LA(1)>='\u0300' && input.LA(1)<='\u0357')||(input.LA(1)>='\u035D' && input.LA(1)<='\u036F')||input.LA(1)=='\u037A'||input.LA(1)=='\u0386'||(input.LA(1)>='\u0388' && input.LA(1)<='\u038A')||input.LA(1)=='\u038C'||(input.LA(1)>='\u038E' && input.LA(1)<='\u03A1')||(input.LA(1)>='\u03A3' && input.LA(1)<='\u03CE')||(input.LA(1)>='\u03D0' && input.LA(1)<='\u03F5')||(input.LA(1)>='\u03F7' && input.LA(1)<='\u03FB')||(input.LA(1)>='\u0400' && input.LA(1)<='\u0481')||(input.LA(1)>='\u0483' && input.LA(1)<='\u0486')||(input.LA(1)>='\u048A' && input.LA(1)<='\u04CE')||(input.LA(1)>='\u04D0' && input.LA(1)<='\u04F5')||(input.LA(1)>='\u04F8' && input.LA(1)<='\u04F9')||(input.LA(1)>='\u0500' && input.LA(1)<='\u050F')||(input.LA(1)>='\u0531' && input.LA(1)<='\u0556')||input.LA(1)=='\u0559'||(input.LA(1)>='\u0561' && input.LA(1)<='\u0587')||(input.LA(1)>='\u0591' && input.LA(1)<='\u05A1')||(input.LA(1)>='\u05A3' && input.LA(1)<='\u05B9')||(input.LA(1)>='\u05BB' && input.LA(1)<='\u05BD')||input.LA(1)=='\u05BF'||(input.LA(1)>='\u05C1' && input.LA(1)<='\u05C2')||input.LA(1)=='\u05C4'||(input.LA(1)>='\u05D0' && input.LA(1)<='\u05EA')||(input.LA(1)>='\u05F0' && input.LA(1)<='\u05F2')||(input.LA(1)>='\u0600' && input.LA(1)<='\u0603')||(input.LA(1)>='\u0610' && input.LA(1)<='\u0615')||(input.LA(1)>='\u0621' && input.LA(1)<='\u063A')||(input.LA(1)>='\u0640' && input.LA(1)<='\u0658')||(input.LA(1)>='\u0660' && input.LA(1)<='\u0669')||(input.LA(1)>='\u066E' && input.LA(1)<='\u06D3')||(input.LA(1)>='\u06D5' && input.LA(1)<='\u06DD')||(input.LA(1)>='\u06DF' && input.LA(1)<='\u06E8')||(input.LA(1)>='\u06EA' && input.LA(1)<='\u06FC')||input.LA(1)=='\u06FF'||(input.LA(1)>='\u070F' && input.LA(1)<='\u074A')||(input.LA(1)>='\u074D' && input.LA(1)<='\u074F')||(input.LA(1)>='\u0780' && input.LA(1)<='\u07B1')||(input.LA(1)>='\u0901' && input.LA(1)<='\u0939')||(input.LA(1)>='\u093C' && input.LA(1)<='\u094D')||(input.LA(1)>='\u0950' && input.LA(1)<='\u0954')||(input.LA(1)>='\u0958' && input.LA(1)<='\u0963')||(input.LA(1)>='\u0966' && input.LA(1)<='\u096F')||(input.LA(1)>='\u0981' && input.LA(1)<='\u0983')||(input.LA(1)>='\u0985' && input.LA(1)<='\u098C')||(input.LA(1)>='\u098F' && input.LA(1)<='\u0990')||(input.LA(1)>='\u0993' && input.LA(1)<='\u09A8')||(input.LA(1)>='\u09AA' && input.LA(1)<='\u09B0')||input.LA(1)=='\u09B2'||(input.LA(1)>='\u09B6' && input.LA(1)<='\u09B9')||(input.LA(1)>='\u09BC' && input.LA(1)<='\u09C4')||(input.LA(1)>='\u09C7' && input.LA(1)<='\u09C8')||(input.LA(1)>='\u09CB' && input.LA(1)<='\u09CD')||input.LA(1)=='\u09D7'||(input.LA(1)>='\u09DC' && input.LA(1)<='\u09DD')||(input.LA(1)>='\u09DF' && input.LA(1)<='\u09E3')||(input.LA(1)>='\u09E6' && input.LA(1)<='\u09F3')||(input.LA(1)>='\u0A01' && input.LA(1)<='\u0A03')||(input.LA(1)>='\u0A05' && input.LA(1)<='\u0A0A')||(input.LA(1)>='\u0A0F' && input.LA(1)<='\u0A10')||(input.LA(1)>='\u0A13' && input.LA(1)<='\u0A28')||(input.LA(1)>='\u0A2A' && input.LA(1)<='\u0A30')||(input.LA(1)>='\u0A32' && input.LA(1)<='\u0A33')||(input.LA(1)>='\u0A35' && input.LA(1)<='\u0A36')||(input.LA(1)>='\u0A38' && input.LA(1)<='\u0A39')||input.LA(1)=='\u0A3C'||(input.LA(1)>='\u0A3E' && input.LA(1)<='\u0A42')||(input.LA(1)>='\u0A47' && input.LA(1)<='\u0A48')||(input.LA(1)>='\u0A4B' && input.LA(1)<='\u0A4D')||(input.LA(1)>='\u0A59' && input.LA(1)<='\u0A5C')||input.LA(1)=='\u0A5E'||(input.LA(1)>='\u0A66' && input.LA(1)<='\u0A74')||(input.LA(1)>='\u0A81' && input.LA(1)<='\u0A83')||(input.LA(1)>='\u0A85' && input.LA(1)<='\u0A8D')||(input.LA(1)>='\u0A8F' && input.LA(1)<='\u0A91')||(input.LA(1)>='\u0A93' && input.LA(1)<='\u0AA8')||(input.LA(1)>='\u0AAA' && input.LA(1)<='\u0AB0')||(input.LA(1)>='\u0AB2' && input.LA(1)<='\u0AB3')||(input.LA(1)>='\u0AB5' && input.LA(1)<='\u0AB9')||(input.LA(1)>='\u0ABC' && input.LA(1)<='\u0AC5')||(input.LA(1)>='\u0AC7' && input.LA(1)<='\u0AC9')||(input.LA(1)>='\u0ACB' && input.LA(1)<='\u0ACD')||input.LA(1)=='\u0AD0'||(input.LA(1)>='\u0AE0' && input.LA(1)<='\u0AE3')||(input.LA(1)>='\u0AE6' && input.LA(1)<='\u0AEF')||input.LA(1)=='\u0AF1'||(input.LA(1)>='\u0B01' && input.LA(1)<='\u0B03')||(input.LA(1)>='\u0B05' && input.LA(1)<='\u0B0C')||(input.LA(1)>='\u0B0F' && input.LA(1)<='\u0B10')||(input.LA(1)>='\u0B13' && input.LA(1)<='\u0B28')||(input.LA(1)>='\u0B2A' && input.LA(1)<='\u0B30')||(input.LA(1)>='\u0B32' && input.LA(1)<='\u0B33')||(input.LA(1)>='\u0B35' && input.LA(1)<='\u0B39')||(input.LA(1)>='\u0B3C' && input.LA(1)<='\u0B43')||(input.LA(1)>='\u0B47' && input.LA(1)<='\u0B48')||(input.LA(1)>='\u0B4B' && input.LA(1)<='\u0B4D')||(input.LA(1)>='\u0B56' && input.LA(1)<='\u0B57')||(input.LA(1)>='\u0B5C' && input.LA(1)<='\u0B5D')||(input.LA(1)>='\u0B5F' && input.LA(1)<='\u0B61')||(input.LA(1)>='\u0B66' && input.LA(1)<='\u0B6F')||input.LA(1)=='\u0B71'||(input.LA(1)>='\u0B82' && input.LA(1)<='\u0B83')||(input.LA(1)>='\u0B85' && input.LA(1)<='\u0B8A')||(input.LA(1)>='\u0B8E' && input.LA(1)<='\u0B90')||(input.LA(1)>='\u0B92' && input.LA(1)<='\u0B95')||(input.LA(1)>='\u0B99' && input.LA(1)<='\u0B9A')||input.LA(1)=='\u0B9C'||(input.LA(1)>='\u0B9E' && input.LA(1)<='\u0B9F')||(input.LA(1)>='\u0BA3' && input.LA(1)<='\u0BA4')||(input.LA(1)>='\u0BA8' && input.LA(1)<='\u0BAA')||(input.LA(1)>='\u0BAE' && input.LA(1)<='\u0BB5')||(input.LA(1)>='\u0BB7' && input.LA(1)<='\u0BB9')||(input.LA(1)>='\u0BBE' && input.LA(1)<='\u0BC2')||(input.LA(1)>='\u0BC6' && input.LA(1)<='\u0BC8')||(input.LA(1)>='\u0BCA' && input.LA(1)<='\u0BCD')||input.LA(1)=='\u0BD7'||(input.LA(1)>='\u0BE7' && input.LA(1)<='\u0BEF')||input.LA(1)=='\u0BF9'||(input.LA(1)>='\u0C01' && input.LA(1)<='\u0C03')||(input.LA(1)>='\u0C05' && input.LA(1)<='\u0C0C')||(input.LA(1)>='\u0C0E' && input.LA(1)<='\u0C10')||(input.LA(1)>='\u0C12' && input.LA(1)<='\u0C28')||(input.LA(1)>='\u0C2A' && input.LA(1)<='\u0C33')||(input.LA(1)>='\u0C35' && input.LA(1)<='\u0C39')||(input.LA(1)>='\u0C3E' && input.LA(1)<='\u0C44')||(input.LA(1)>='\u0C46' && input.LA(1)<='\u0C48')||(input.LA(1)>='\u0C4A' && input.LA(1)<='\u0C4D')||(input.LA(1)>='\u0C55' && input.LA(1)<='\u0C56')||(input.LA(1)>='\u0C60' && input.LA(1)<='\u0C61')||(input.LA(1)>='\u0C66' && input.LA(1)<='\u0C6F')||(input.LA(1)>='\u0C82' && input.LA(1)<='\u0C83')||(input.LA(1)>='\u0C85' && input.LA(1)<='\u0C8C')||(input.LA(1)>='\u0C8E' && input.LA(1)<='\u0C90')||(input.LA(1)>='\u0C92' && input.LA(1)<='\u0CA8')||(input.LA(1)>='\u0CAA' && input.LA(1)<='\u0CB3')||(input.LA(1)>='\u0CB5' && input.LA(1)<='\u0CB9')||(input.LA(1)>='\u0CBC' && input.LA(1)<='\u0CC4')||(input.LA(1)>='\u0CC6' && input.LA(1)<='\u0CC8')||(input.LA(1)>='\u0CCA' && input.LA(1)<='\u0CCD')||(input.LA(1)>='\u0CD5' && input.LA(1)<='\u0CD6')||input.LA(1)=='\u0CDE'||(input.LA(1)>='\u0CE0' && input.LA(1)<='\u0CE1')||(input.LA(1)>='\u0CE6' && input.LA(1)<='\u0CEF')||(input.LA(1)>='\u0D02' && input.LA(1)<='\u0D03')||(input.LA(1)>='\u0D05' && input.LA(1)<='\u0D0C')||(input.LA(1)>='\u0D0E' && input.LA(1)<='\u0D10')||(input.LA(1)>='\u0D12' && input.LA(1)<='\u0D28')||(input.LA(1)>='\u0D2A' && input.LA(1)<='\u0D39')||(input.LA(1)>='\u0D3E' && input.LA(1)<='\u0D43')||(input.LA(1)>='\u0D46' && input.LA(1)<='\u0D48')||(input.LA(1)>='\u0D4A' && input.LA(1)<='\u0D4D')||input.LA(1)=='\u0D57'||(input.LA(1)>='\u0D60' && input.LA(1)<='\u0D61')||(input.LA(1)>='\u0D66' && input.LA(1)<='\u0D6F')||(input.LA(1)>='\u0D82' && input.LA(1)<='\u0D83')||(input.LA(1)>='\u0D85' && input.LA(1)<='\u0D96')||(input.LA(1)>='\u0D9A' && input.LA(1)<='\u0DB1')||(input.LA(1)>='\u0DB3' && input.LA(1)<='\u0DBB')||input.LA(1)=='\u0DBD'||(input.LA(1)>='\u0DC0' && input.LA(1)<='\u0DC6')||input.LA(1)=='\u0DCA'||(input.LA(1)>='\u0DCF' && input.LA(1)<='\u0DD4')||input.LA(1)=='\u0DD6'||(input.LA(1)>='\u0DD8' && input.LA(1)<='\u0DDF')||(input.LA(1)>='\u0DF2' && input.LA(1)<='\u0DF3')||(input.LA(1)>='\u0E01' && input.LA(1)<='\u0E3A')||(input.LA(1)>='\u0E3F' && input.LA(1)<='\u0E4E')||(input.LA(1)>='\u0E50' && input.LA(1)<='\u0E59')||(input.LA(1)>='\u0E81' && input.LA(1)<='\u0E82')||input.LA(1)=='\u0E84'||(input.LA(1)>='\u0E87' && input.LA(1)<='\u0E88')||input.LA(1)=='\u0E8A'||input.LA(1)=='\u0E8D'||(input.LA(1)>='\u0E94' && input.LA(1)<='\u0E97')||(input.LA(1)>='\u0E99' && input.LA(1)<='\u0E9F')||(input.LA(1)>='\u0EA1' && input.LA(1)<='\u0EA3')||input.LA(1)=='\u0EA5'||input.LA(1)=='\u0EA7'||(input.LA(1)>='\u0EAA' && input.LA(1)<='\u0EAB')||(input.LA(1)>='\u0EAD' && input.LA(1)<='\u0EB9')||(input.LA(1)>='\u0EBB' && input.LA(1)<='\u0EBD')||(input.LA(1)>='\u0EC0' && input.LA(1)<='\u0EC4')||input.LA(1)=='\u0EC6'||(input.LA(1)>='\u0EC8' && input.LA(1)<='\u0ECD')||(input.LA(1)>='\u0ED0' && input.LA(1)<='\u0ED9')||(input.LA(1)>='\u0EDC' && input.LA(1)<='\u0EDD')||input.LA(1)=='\u0F00'||(input.LA(1)>='\u0F18' && input.LA(1)<='\u0F19')||(input.LA(1)>='\u0F20' && input.LA(1)<='\u0F29')||input.LA(1)=='\u0F35'||input.LA(1)=='\u0F37'||input.LA(1)=='\u0F39'||(input.LA(1)>='\u0F3E' && input.LA(1)<='\u0F47')||(input.LA(1)>='\u0F49' && input.LA(1)<='\u0F6A')||(input.LA(1)>='\u0F71' && input.LA(1)<='\u0F84')||(input.LA(1)>='\u0F86' && input.LA(1)<='\u0F8B')||(input.LA(1)>='\u0F90' && input.LA(1)<='\u0F97')||(input.LA(1)>='\u0F99' && input.LA(1)<='\u0FBC')||input.LA(1)=='\u0FC6'||(input.LA(1)>='\u1000' && input.LA(1)<='\u1021')||(input.LA(1)>='\u1023' && input.LA(1)<='\u1027')||(input.LA(1)>='\u1029' && input.LA(1)<='\u102A')||(input.LA(1)>='\u102C' && input.LA(1)<='\u1032')||(input.LA(1)>='\u1036' && input.LA(1)<='\u1039')||(input.LA(1)>='\u1040' && input.LA(1)<='\u1049')||(input.LA(1)>='\u1050' && input.LA(1)<='\u1059')||(input.LA(1)>='\u10A0' && input.LA(1)<='\u10C5')||(input.LA(1)>='\u10D0' && input.LA(1)<='\u10F8')||(input.LA(1)>='\u1100' && input.LA(1)<='\u1159')||(input.LA(1)>='\u115F' && input.LA(1)<='\u11A2')||(input.LA(1)>='\u11A8' && input.LA(1)<='\u11F9')||(input.LA(1)>='\u1200' && input.LA(1)<='\u1206')||(input.LA(1)>='\u1208' && input.LA(1)<='\u1246')||input.LA(1)=='\u1248'||(input.LA(1)>='\u124A' && input.LA(1)<='\u124D')||(input.LA(1)>='\u1250' && input.LA(1)<='\u1256')||input.LA(1)=='\u1258'||(input.LA(1)>='\u125A' && input.LA(1)<='\u125D')||(input.LA(1)>='\u1260' && input.LA(1)<='\u1286')||input.LA(1)=='\u1288'||(input.LA(1)>='\u128A' && input.LA(1)<='\u128D')||(input.LA(1)>='\u1290' && input.LA(1)<='\u12AE')||input.LA(1)=='\u12B0'||(input.LA(1)>='\u12B2' && input.LA(1)<='\u12B5')||(input.LA(1)>='\u12B8' && input.LA(1)<='\u12BE')||input.LA(1)=='\u12C0'||(input.LA(1)>='\u12C2' && input.LA(1)<='\u12C5')||(input.LA(1)>='\u12C8' && input.LA(1)<='\u12CE')||(input.LA(1)>='\u12D0' && input.LA(1)<='\u12D6')||(input.LA(1)>='\u12D8' && input.LA(1)<='\u12EE')||(input.LA(1)>='\u12F0' && input.LA(1)<='\u130E')||input.LA(1)=='\u1310'||(input.LA(1)>='\u1312' && input.LA(1)<='\u1315')||(input.LA(1)>='\u1318' && input.LA(1)<='\u131E')||(input.LA(1)>='\u1320' && input.LA(1)<='\u1346')||(input.LA(1)>='\u1348' && input.LA(1)<='\u135A')||(input.LA(1)>='\u1369' && input.LA(1)<='\u1371')||(input.LA(1)>='\u13A0' && input.LA(1)<='\u13F4')||(input.LA(1)>='\u1401' && input.LA(1)<='\u166C')||(input.LA(1)>='\u166F' && input.LA(1)<='\u1676')||(input.LA(1)>='\u1681' && input.LA(1)<='\u169A')||(input.LA(1)>='\u16A0' && input.LA(1)<='\u16EA')||(input.LA(1)>='\u16EE' && input.LA(1)<='\u16F0')||(input.LA(1)>='\u1700' && input.LA(1)<='\u170C')||(input.LA(1)>='\u170E' && input.LA(1)<='\u1714')||(input.LA(1)>='\u1720' && input.LA(1)<='\u1734')||(input.LA(1)>='\u1740' && input.LA(1)<='\u1753')||(input.LA(1)>='\u1760' && input.LA(1)<='\u176C')||(input.LA(1)>='\u176E' && input.LA(1)<='\u1770')||(input.LA(1)>='\u1772' && input.LA(1)<='\u1773')||(input.LA(1)>='\u1780' && input.LA(1)<='\u17D3')||input.LA(1)=='\u17D7'||(input.LA(1)>='\u17DB' && input.LA(1)<='\u17DD')||(input.LA(1)>='\u17E0' && input.LA(1)<='\u17E9')||(input.LA(1)>='\u180B' && input.LA(1)<='\u180D')||(input.LA(1)>='\u1810' && input.LA(1)<='\u1819')||(input.LA(1)>='\u1820' && input.LA(1)<='\u1877')||(input.LA(1)>='\u1880' && input.LA(1)<='\u18A9')||(input.LA(1)>='\u1900' && input.LA(1)<='\u191C')||(input.LA(1)>='\u1920' && input.LA(1)<='\u192B')||(input.LA(1)>='\u1930' && input.LA(1)<='\u193B')||(input.LA(1)>='\u1946' && input.LA(1)<='\u196D')||(input.LA(1)>='\u1970' && input.LA(1)<='\u1974')||(input.LA(1)>='\u1D00' && input.LA(1)<='\u1D6B')||(input.LA(1)>='\u1E00' && input.LA(1)<='\u1E9B')||(input.LA(1)>='\u1EA0' && input.LA(1)<='\u1EF9')||(input.LA(1)>='\u1F00' && input.LA(1)<='\u1F15')||(input.LA(1)>='\u1F18' && input.LA(1)<='\u1F1D')||(input.LA(1)>='\u1F20' && input.LA(1)<='\u1F45')||(input.LA(1)>='\u1F48' && input.LA(1)<='\u1F4D')||(input.LA(1)>='\u1F50' && input.LA(1)<='\u1F57')||input.LA(1)=='\u1F59'||input.LA(1)=='\u1F5B'||input.LA(1)=='\u1F5D'||(input.LA(1)>='\u1F5F' && input.LA(1)<='\u1F7D')||(input.LA(1)>='\u1F80' && input.LA(1)<='\u1FB4')||(input.LA(1)>='\u1FB6' && input.LA(1)<='\u1FBC')||input.LA(1)=='\u1FBE'||(input.LA(1)>='\u1FC2' && input.LA(1)<='\u1FC4')||(input.LA(1)>='\u1FC6' && input.LA(1)<='\u1FCC')||(input.LA(1)>='\u1FD0' && input.LA(1)<='\u1FD3')||(input.LA(1)>='\u1FD6' && input.LA(1)<='\u1FDB')||(input.LA(1)>='\u1FE0' && input.LA(1)<='\u1FEC')||(input.LA(1)>='\u1FF2' && input.LA(1)<='\u1FF4')||(input.LA(1)>='\u1FF6' && input.LA(1)<='\u1FFC')||(input.LA(1)>='\u200C' && input.LA(1)<='\u200F')||(input.LA(1)>='\u202A' && input.LA(1)<='\u202E')||(input.LA(1)>='\u203F' && input.LA(1)<='\u2040')||input.LA(1)=='\u2054'||(input.LA(1)>='\u2060' && input.LA(1)<='\u2063')||(input.LA(1)>='\u206A' && input.LA(1)<='\u206F')||input.LA(1)=='\u2071'||input.LA(1)=='\u207F'||(input.LA(1)>='\u20A0' && input.LA(1)<='\u20B1')||(input.LA(1)>='\u20D0' && input.LA(1)<='\u20DC')||input.LA(1)=='\u20E1'||(input.LA(1)>='\u20E5' && input.LA(1)<='\u20EA')||input.LA(1)=='\u2102'||input.LA(1)=='\u2107'||(input.LA(1)>='\u210A' && input.LA(1)<='\u2113')||input.LA(1)=='\u2115'||(input.LA(1)>='\u2119' && input.LA(1)<='\u211D')||input.LA(1)=='\u2124'||input.LA(1)=='\u2126'||input.LA(1)=='\u2128'||(input.LA(1)>='\u212A' && input.LA(1)<='\u212D')||(input.LA(1)>='\u212F' && input.LA(1)<='\u2131')||(input.LA(1)>='\u2133' && input.LA(1)<='\u2139')||(input.LA(1)>='\u213D' && input.LA(1)<='\u213F')||(input.LA(1)>='\u2145' && input.LA(1)<='\u2149')||(input.LA(1)>='\u2160' && input.LA(1)<='\u2183')||(input.LA(1)>='\u3005' && input.LA(1)<='\u3007')||(input.LA(1)>='\u3021' && input.LA(1)<='\u302F')||(input.LA(1)>='\u3031' && input.LA(1)<='\u3035')||(input.LA(1)>='\u3038' && input.LA(1)<='\u303C')||(input.LA(1)>='\u3041' && input.LA(1)<='\u3096')||(input.LA(1)>='\u3099' && input.LA(1)<='\u309A')||(input.LA(1)>='\u309D' && input.LA(1)<='\u309F')||(input.LA(1)>='\u30A1' && input.LA(1)<='\u30FF')||(input.LA(1)>='\u3105' && input.LA(1)<='\u312C')||(input.LA(1)>='\u3131' && input.LA(1)<='\u318E')||(input.LA(1)>='\u31A0' && input.LA(1)<='\u31B7')||(input.LA(1)>='\u31F0' && input.LA(1)<='\u31FF')||(input.LA(1)>='\u3400' && input.LA(1)<='\u4DB5')||(input.LA(1)>='\u4E00' && input.LA(1)<='\u9FA5')||(input.LA(1)>='\uA000' && input.LA(1)<='\uA48C')||(input.LA(1)>='\uAC00' && input.LA(1)<='\uD7A3')||(input.LA(1)>='\uF900' && input.LA(1)<='\uFA2D')||(input.LA(1)>='\uFA30' && input.LA(1)<='\uFA6A')||(input.LA(1)>='\uFB00' && input.LA(1)<='\uFB06')||(input.LA(1)>='\uFB13' && input.LA(1)<='\uFB17')||(input.LA(1)>='\uFB1D' && input.LA(1)<='\uFB28')||(input.LA(1)>='\uFB2A' && input.LA(1)<='\uFB36')||(input.LA(1)>='\uFB38' && input.LA(1)<='\uFB3C')||input.LA(1)=='\uFB3E'||(input.LA(1)>='\uFB40' && input.LA(1)<='\uFB41')||(input.LA(1)>='\uFB43' && input.LA(1)<='\uFB44')||(input.LA(1)>='\uFB46' && input.LA(1)<='\uFBB1')||(input.LA(1)>='\uFBD3' && input.LA(1)<='\uFD3D')||(input.LA(1)>='\uFD50' && input.LA(1)<='\uFD8F')||(input.LA(1)>='\uFD92' && input.LA(1)<='\uFDC7')||(input.LA(1)>='\uFDF0' && input.LA(1)<='\uFDFC')||(input.LA(1)>='\uFE00' && input.LA(1)<='\uFE0F')||(input.LA(1)>='\uFE20' && input.LA(1)<='\uFE23')||(input.LA(1)>='\uFE33' && input.LA(1)<='\uFE34')||(input.LA(1)>='\uFE4D' && input.LA(1)<='\uFE4F')||input.LA(1)=='\uFE69'||(input.LA(1)>='\uFE70' && input.LA(1)<='\uFE74')||(input.LA(1)>='\uFE76' && input.LA(1)<='\uFEFC')||input.LA(1)=='\uFEFF'||input.LA(1)=='\uFF04'||(input.LA(1)>='\uFF10' && input.LA(1)<='\uFF19')||(input.LA(1)>='\uFF21' && input.LA(1)<='\uFF3A')||input.LA(1)=='\uFF3F'||(input.LA(1)>='\uFF41' && input.LA(1)<='\uFF5A')||(input.LA(1)>='\uFF65' && input.LA(1)<='\uFFBE')||(input.LA(1)>='\uFFC2' && input.LA(1)<='\uFFC7')||(input.LA(1)>='\uFFCA' && input.LA(1)<='\uFFCF')||(input.LA(1)>='\uFFD2' && input.LA(1)<='\uFFD7')||(input.LA(1)>='\uFFDA' && input.LA(1)<='\uFFDC')||(input.LA(1)>='\uFFE0' && input.LA(1)<='\uFFE1')||(input.LA(1)>='\uFFE5' && input.LA(1)<='\uFFE6')||(input.LA(1)>='\uFFF9' && input.LA(1)<='\uFFFB') ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+
+            }
+
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_IDENTIFIER_PART"
+
+    // $ANTLR start "RULE_IDENTIFIER_PART_IMPL"
+    public final void mRULE_IDENTIFIER_PART_IMPL() throws RecognitionException {
+        try {
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29719:36: ( ( '\\u0000' .. '\\b' | '\\u000E' .. '\\u001B' | '0' .. '9' | '\\u007F' .. '\\u009F' | '\\u00AD' | '\\u0300' .. '\\u0357' | '\\u035D' .. '\\u036F' | '\\u0483' .. '\\u0486' | '\\u0591' .. '\\u05A1' | '\\u05A3' .. '\\u05B9' | '\\u05BB' .. '\\u05BD' | '\\u05BF' | '\\u05C1' .. '\\u05C2' | '\\u05C4' | '\\u0600' .. '\\u0603' | '\\u0610' .. '\\u0615' | '\\u064B' .. '\\u0658' | '\\u0660' .. '\\u0669' | '\\u0670' | '\\u06D6' .. '\\u06DD' | '\\u06DF' .. '\\u06E4' | '\\u06E7' .. '\\u06E8' | '\\u06EA' .. '\\u06ED' | '\\u06F0' .. '\\u06F9' | '\\u070F' | '\\u0711' | '\\u0730' .. '\\u074A' | '\\u07A6' .. '\\u07B0' | '\\u0901' .. '\\u0903' | '\\u093C' | '\\u093E' .. '\\u094D' | '\\u0951' .. '\\u0954' | '\\u0962' .. '\\u0963' | '\\u0966' .. '\\u096F' | '\\u0981' .. '\\u0983' | '\\u09BC' | '\\u09BE' .. '\\u09C4' | '\\u09C7' .. '\\u09C8' | '\\u09CB' .. '\\u09CD' | '\\u09D7' | '\\u09E2' .. '\\u09E3' | '\\u09E6' .. '\\u09EF' | '\\u0A01' .. '\\u0A03' | '\\u0A3C' | '\\u0A3E' .. '\\u0A42' | '\\u0A47' .. '\\u0A48' | '\\u0A4B' .. '\\u0A4D' | '\\u0A66' .. '\\u0A71' | '\\u0A81' .. '\\u0A83' | '\\u0ABC' | '\\u0ABE' .. '\\u0AC5' | '\\u0AC7' .. '\\u0AC9' | '\\u0ACB' .. '\\u0ACD' | '\\u0AE2' .. '\\u0AE3' | '\\u0AE6' .. '\\u0AEF' | '\\u0B01' .. '\\u0B03' | '\\u0B3C' | '\\u0B3E' .. '\\u0B43' | '\\u0B47' .. '\\u0B48' | '\\u0B4B' .. '\\u0B4D' | '\\u0B56' .. '\\u0B57' | '\\u0B66' .. '\\u0B6F' | '\\u0B82' | '\\u0BBE' .. '\\u0BC2' | '\\u0BC6' .. '\\u0BC8' | '\\u0BCA' .. '\\u0BCD' | '\\u0BD7' | '\\u0BE7' .. '\\u0BEF' | '\\u0C01' .. '\\u0C03' | '\\u0C3E' .. '\\u0C44' | '\\u0C46' .. '\\u0C48' | '\\u0C4A' .. '\\u0C4D' | '\\u0C55' .. '\\u0C56' | '\\u0C66' .. '\\u0C6F' | '\\u0C82' .. '\\u0C83' | '\\u0CBC' | '\\u0CBE' .. '\\u0CC4' | '\\u0CC6' .. '\\u0CC8' | '\\u0CCA' .. '\\u0CCD' | '\\u0CD5' .. '\\u0CD6' | '\\u0CE6' .. '\\u0CEF' | '\\u0D02' .. '\\u0D03' | '\\u0D3E' .. '\\u0D43' | '\\u0D46' .. '\\u0D48' | '\\u0D4A' .. '\\u0D4D' | '\\u0D57' | '\\u0D66' .. '\\u0D6F' | '\\u0D82' .. '\\u0D83' | '\\u0DCA' | '\\u0DCF' .. '\\u0DD4' | '\\u0DD6' | '\\u0DD8' .. '\\u0DDF' | '\\u0DF2' .. '\\u0DF3' | '\\u0E31' | '\\u0E34' .. '\\u0E3A' | '\\u0E47' .. '\\u0E4E' | '\\u0E50' .. '\\u0E59' | '\\u0EB1' | '\\u0EB4' .. '\\u0EB9' | '\\u0EBB' .. '\\u0EBC' | '\\u0EC8' .. '\\u0ECD' | '\\u0ED0' .. '\\u0ED9' | '\\u0F18' .. '\\u0F19' | '\\u0F20' .. '\\u0F29' | '\\u0F35' | '\\u0F37' | '\\u0F39' | '\\u0F3E' .. '\\u0F3F' | '\\u0F71' .. '\\u0F84' | '\\u0F86' .. '\\u0F87' | '\\u0F90' .. '\\u0F97' | '\\u0F99' .. '\\u0FBC' | '\\u0FC6' | '\\u102C' .. '\\u1032' | '\\u1036' .. '\\u1039' | '\\u1040' .. '\\u1049' | '\\u1056' .. '\\u1059' | '\\u1369' .. '\\u1371' | '\\u1712' .. '\\u1714' | '\\u1732' .. '\\u1734' | '\\u1752' .. '\\u1753' | '\\u1772' .. '\\u1773' | '\\u17B4' .. '\\u17D3' | '\\u17DD' | '\\u17E0' .. '\\u17E9' | '\\u180B' .. '\\u180D' | '\\u1810' .. '\\u1819' | '\\u18A9' | '\\u1920' .. '\\u192B' | '\\u1930' .. '\\u193B' | '\\u1946' .. '\\u194F' | '\\u200C' .. '\\u200F' | '\\u202A' .. '\\u202E' | '\\u2060' .. '\\u2063' | '\\u206A' .. '\\u206F' | '\\u20D0' .. '\\u20DC' | '\\u20E1' | '\\u20E5' .. '\\u20EA' | '\\u302A' .. '\\u302F' | '\\u3099' .. '\\u309A' | '\\uFB1E' | '\\uFE00' .. '\\uFE0F' | '\\uFE20' .. '\\uFE23' | '\\uFEFF' | '\\uFF10' .. '\\uFF19' | '\\uFFF9' .. '\\uFFFB' ) )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29719:38: ( '\\u0000' .. '\\b' | '\\u000E' .. '\\u001B' | '0' .. '9' | '\\u007F' .. '\\u009F' | '\\u00AD' | '\\u0300' .. '\\u0357' | '\\u035D' .. '\\u036F' | '\\u0483' .. '\\u0486' | '\\u0591' .. '\\u05A1' | '\\u05A3' .. '\\u05B9' | '\\u05BB' .. '\\u05BD' | '\\u05BF' | '\\u05C1' .. '\\u05C2' | '\\u05C4' | '\\u0600' .. '\\u0603' | '\\u0610' .. '\\u0615' | '\\u064B' .. '\\u0658' | '\\u0660' .. '\\u0669' | '\\u0670' | '\\u06D6' .. '\\u06DD' | '\\u06DF' .. '\\u06E4' | '\\u06E7' .. '\\u06E8' | '\\u06EA' .. '\\u06ED' | '\\u06F0' .. '\\u06F9' | '\\u070F' | '\\u0711' | '\\u0730' .. '\\u074A' | '\\u07A6' .. '\\u07B0' | '\\u0901' .. '\\u0903' | '\\u093C' | '\\u093E' .. '\\u094D' | '\\u0951' .. '\\u0954' | '\\u0962' .. '\\u0963' | '\\u0966' .. '\\u096F' | '\\u0981' .. '\\u0983' | '\\u09BC' | '\\u09BE' .. '\\u09C4' | '\\u09C7' .. '\\u09C8' | '\\u09CB' .. '\\u09CD' | '\\u09D7' | '\\u09E2' .. '\\u09E3' | '\\u09E6' .. '\\u09EF' | '\\u0A01' .. '\\u0A03' | '\\u0A3C' | '\\u0A3E' .. '\\u0A42' | '\\u0A47' .. '\\u0A48' | '\\u0A4B' .. '\\u0A4D' | '\\u0A66' .. '\\u0A71' | '\\u0A81' .. '\\u0A83' | '\\u0ABC' | '\\u0ABE' .. '\\u0AC5' | '\\u0AC7' .. '\\u0AC9' | '\\u0ACB' .. '\\u0ACD' | '\\u0AE2' .. '\\u0AE3' | '\\u0AE6' .. '\\u0AEF' | '\\u0B01' .. '\\u0B03' | '\\u0B3C' | '\\u0B3E' .. '\\u0B43' | '\\u0B47' .. '\\u0B48' | '\\u0B4B' .. '\\u0B4D' | '\\u0B56' .. '\\u0B57' | '\\u0B66' .. '\\u0B6F' | '\\u0B82' | '\\u0BBE' .. '\\u0BC2' | '\\u0BC6' .. '\\u0BC8' | '\\u0BCA' .. '\\u0BCD' | '\\u0BD7' | '\\u0BE7' .. '\\u0BEF' | '\\u0C01' .. '\\u0C03' | '\\u0C3E' .. '\\u0C44' | '\\u0C46' .. '\\u0C48' | '\\u0C4A' .. '\\u0C4D' | '\\u0C55' .. '\\u0C56' | '\\u0C66' .. '\\u0C6F' | '\\u0C82' .. '\\u0C83' | '\\u0CBC' | '\\u0CBE' .. '\\u0CC4' | '\\u0CC6' .. '\\u0CC8' | '\\u0CCA' .. '\\u0CCD' | '\\u0CD5' .. '\\u0CD6' | '\\u0CE6' .. '\\u0CEF' | '\\u0D02' .. '\\u0D03' | '\\u0D3E' .. '\\u0D43' | '\\u0D46' .. '\\u0D48' | '\\u0D4A' .. '\\u0D4D' | '\\u0D57' | '\\u0D66' .. '\\u0D6F' | '\\u0D82' .. '\\u0D83' | '\\u0DCA' | '\\u0DCF' .. '\\u0DD4' | '\\u0DD6' | '\\u0DD8' .. '\\u0DDF' | '\\u0DF2' .. '\\u0DF3' | '\\u0E31' | '\\u0E34' .. '\\u0E3A' | '\\u0E47' .. '\\u0E4E' | '\\u0E50' .. '\\u0E59' | '\\u0EB1' | '\\u0EB4' .. '\\u0EB9' | '\\u0EBB' .. '\\u0EBC' | '\\u0EC8' .. '\\u0ECD' | '\\u0ED0' .. '\\u0ED9' | '\\u0F18' .. '\\u0F19' | '\\u0F20' .. '\\u0F29' | '\\u0F35' | '\\u0F37' | '\\u0F39' | '\\u0F3E' .. '\\u0F3F' | '\\u0F71' .. '\\u0F84' | '\\u0F86' .. '\\u0F87' | '\\u0F90' .. '\\u0F97' | '\\u0F99' .. '\\u0FBC' | '\\u0FC6' | '\\u102C' .. '\\u1032' | '\\u1036' .. '\\u1039' | '\\u1040' .. '\\u1049' | '\\u1056' .. '\\u1059' | '\\u1369' .. '\\u1371' | '\\u1712' .. '\\u1714' | '\\u1732' .. '\\u1734' | '\\u1752' .. '\\u1753' | '\\u1772' .. '\\u1773' | '\\u17B4' .. '\\u17D3' | '\\u17DD' | '\\u17E0' .. '\\u17E9' | '\\u180B' .. '\\u180D' | '\\u1810' .. '\\u1819' | '\\u18A9' | '\\u1920' .. '\\u192B' | '\\u1930' .. '\\u193B' | '\\u1946' .. '\\u194F' | '\\u200C' .. '\\u200F' | '\\u202A' .. '\\u202E' | '\\u2060' .. '\\u2063' | '\\u206A' .. '\\u206F' | '\\u20D0' .. '\\u20DC' | '\\u20E1' | '\\u20E5' .. '\\u20EA' | '\\u302A' .. '\\u302F' | '\\u3099' .. '\\u309A' | '\\uFB1E' | '\\uFE00' .. '\\uFE0F' | '\\uFE20' .. '\\uFE23' | '\\uFEFF' | '\\uFF10' .. '\\uFF19' | '\\uFFF9' .. '\\uFFFB' )
+            {
+            if ( (input.LA(1)>='\u0000' && input.LA(1)<='\b')||(input.LA(1)>='\u000E' && input.LA(1)<='\u001B')||(input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='\u007F' && input.LA(1)<='\u009F')||input.LA(1)=='\u00AD'||(input.LA(1)>='\u0300' && input.LA(1)<='\u0357')||(input.LA(1)>='\u035D' && input.LA(1)<='\u036F')||(input.LA(1)>='\u0483' && input.LA(1)<='\u0486')||(input.LA(1)>='\u0591' && input.LA(1)<='\u05A1')||(input.LA(1)>='\u05A3' && input.LA(1)<='\u05B9')||(input.LA(1)>='\u05BB' && input.LA(1)<='\u05BD')||input.LA(1)=='\u05BF'||(input.LA(1)>='\u05C1' && input.LA(1)<='\u05C2')||input.LA(1)=='\u05C4'||(input.LA(1)>='\u0600' && input.LA(1)<='\u0603')||(input.LA(1)>='\u0610' && input.LA(1)<='\u0615')||(input.LA(1)>='\u064B' && input.LA(1)<='\u0658')||(input.LA(1)>='\u0660' && input.LA(1)<='\u0669')||input.LA(1)=='\u0670'||(input.LA(1)>='\u06D6' && input.LA(1)<='\u06DD')||(input.LA(1)>='\u06DF' && input.LA(1)<='\u06E4')||(input.LA(1)>='\u06E7' && input.LA(1)<='\u06E8')||(input.LA(1)>='\u06EA' && input.LA(1)<='\u06ED')||(input.LA(1)>='\u06F0' && input.LA(1)<='\u06F9')||input.LA(1)=='\u070F'||input.LA(1)=='\u0711'||(input.LA(1)>='\u0730' && input.LA(1)<='\u074A')||(input.LA(1)>='\u07A6' && input.LA(1)<='\u07B0')||(input.LA(1)>='\u0901' && input.LA(1)<='\u0903')||input.LA(1)=='\u093C'||(input.LA(1)>='\u093E' && input.LA(1)<='\u094D')||(input.LA(1)>='\u0951' && input.LA(1)<='\u0954')||(input.LA(1)>='\u0962' && input.LA(1)<='\u0963')||(input.LA(1)>='\u0966' && input.LA(1)<='\u096F')||(input.LA(1)>='\u0981' && input.LA(1)<='\u0983')||input.LA(1)=='\u09BC'||(input.LA(1)>='\u09BE' && input.LA(1)<='\u09C4')||(input.LA(1)>='\u09C7' && input.LA(1)<='\u09C8')||(input.LA(1)>='\u09CB' && input.LA(1)<='\u09CD')||input.LA(1)=='\u09D7'||(input.LA(1)>='\u09E2' && input.LA(1)<='\u09E3')||(input.LA(1)>='\u09E6' && input.LA(1)<='\u09EF')||(input.LA(1)>='\u0A01' && input.LA(1)<='\u0A03')||input.LA(1)=='\u0A3C'||(input.LA(1)>='\u0A3E' && input.LA(1)<='\u0A42')||(input.LA(1)>='\u0A47' && input.LA(1)<='\u0A48')||(input.LA(1)>='\u0A4B' && input.LA(1)<='\u0A4D')||(input.LA(1)>='\u0A66' && input.LA(1)<='\u0A71')||(input.LA(1)>='\u0A81' && input.LA(1)<='\u0A83')||input.LA(1)=='\u0ABC'||(input.LA(1)>='\u0ABE' && input.LA(1)<='\u0AC5')||(input.LA(1)>='\u0AC7' && input.LA(1)<='\u0AC9')||(input.LA(1)>='\u0ACB' && input.LA(1)<='\u0ACD')||(input.LA(1)>='\u0AE2' && input.LA(1)<='\u0AE3')||(input.LA(1)>='\u0AE6' && input.LA(1)<='\u0AEF')||(input.LA(1)>='\u0B01' && input.LA(1)<='\u0B03')||input.LA(1)=='\u0B3C'||(input.LA(1)>='\u0B3E' && input.LA(1)<='\u0B43')||(input.LA(1)>='\u0B47' && input.LA(1)<='\u0B48')||(input.LA(1)>='\u0B4B' && input.LA(1)<='\u0B4D')||(input.LA(1)>='\u0B56' && input.LA(1)<='\u0B57')||(input.LA(1)>='\u0B66' && input.LA(1)<='\u0B6F')||input.LA(1)=='\u0B82'||(input.LA(1)>='\u0BBE' && input.LA(1)<='\u0BC2')||(input.LA(1)>='\u0BC6' && input.LA(1)<='\u0BC8')||(input.LA(1)>='\u0BCA' && input.LA(1)<='\u0BCD')||input.LA(1)=='\u0BD7'||(input.LA(1)>='\u0BE7' && input.LA(1)<='\u0BEF')||(input.LA(1)>='\u0C01' && input.LA(1)<='\u0C03')||(input.LA(1)>='\u0C3E' && input.LA(1)<='\u0C44')||(input.LA(1)>='\u0C46' && input.LA(1)<='\u0C48')||(input.LA(1)>='\u0C4A' && input.LA(1)<='\u0C4D')||(input.LA(1)>='\u0C55' && input.LA(1)<='\u0C56')||(input.LA(1)>='\u0C66' && input.LA(1)<='\u0C6F')||(input.LA(1)>='\u0C82' && input.LA(1)<='\u0C83')||input.LA(1)=='\u0CBC'||(input.LA(1)>='\u0CBE' && input.LA(1)<='\u0CC4')||(input.LA(1)>='\u0CC6' && input.LA(1)<='\u0CC8')||(input.LA(1)>='\u0CCA' && input.LA(1)<='\u0CCD')||(input.LA(1)>='\u0CD5' && input.LA(1)<='\u0CD6')||(input.LA(1)>='\u0CE6' && input.LA(1)<='\u0CEF')||(input.LA(1)>='\u0D02' && input.LA(1)<='\u0D03')||(input.LA(1)>='\u0D3E' && input.LA(1)<='\u0D43')||(input.LA(1)>='\u0D46' && input.LA(1)<='\u0D48')||(input.LA(1)>='\u0D4A' && input.LA(1)<='\u0D4D')||input.LA(1)=='\u0D57'||(input.LA(1)>='\u0D66' && input.LA(1)<='\u0D6F')||(input.LA(1)>='\u0D82' && input.LA(1)<='\u0D83')||input.LA(1)=='\u0DCA'||(input.LA(1)>='\u0DCF' && input.LA(1)<='\u0DD4')||input.LA(1)=='\u0DD6'||(input.LA(1)>='\u0DD8' && input.LA(1)<='\u0DDF')||(input.LA(1)>='\u0DF2' && input.LA(1)<='\u0DF3')||input.LA(1)=='\u0E31'||(input.LA(1)>='\u0E34' && input.LA(1)<='\u0E3A')||(input.LA(1)>='\u0E47' && input.LA(1)<='\u0E4E')||(input.LA(1)>='\u0E50' && input.LA(1)<='\u0E59')||input.LA(1)=='\u0EB1'||(input.LA(1)>='\u0EB4' && input.LA(1)<='\u0EB9')||(input.LA(1)>='\u0EBB' && input.LA(1)<='\u0EBC')||(input.LA(1)>='\u0EC8' && input.LA(1)<='\u0ECD')||(input.LA(1)>='\u0ED0' && input.LA(1)<='\u0ED9')||(input.LA(1)>='\u0F18' && input.LA(1)<='\u0F19')||(input.LA(1)>='\u0F20' && input.LA(1)<='\u0F29')||input.LA(1)=='\u0F35'||input.LA(1)=='\u0F37'||input.LA(1)=='\u0F39'||(input.LA(1)>='\u0F3E' && input.LA(1)<='\u0F3F')||(input.LA(1)>='\u0F71' && input.LA(1)<='\u0F84')||(input.LA(1)>='\u0F86' && input.LA(1)<='\u0F87')||(input.LA(1)>='\u0F90' && input.LA(1)<='\u0F97')||(input.LA(1)>='\u0F99' && input.LA(1)<='\u0FBC')||input.LA(1)=='\u0FC6'||(input.LA(1)>='\u102C' && input.LA(1)<='\u1032')||(input.LA(1)>='\u1036' && input.LA(1)<='\u1039')||(input.LA(1)>='\u1040' && input.LA(1)<='\u1049')||(input.LA(1)>='\u1056' && input.LA(1)<='\u1059')||(input.LA(1)>='\u1369' && input.LA(1)<='\u1371')||(input.LA(1)>='\u1712' && input.LA(1)<='\u1714')||(input.LA(1)>='\u1732' && input.LA(1)<='\u1734')||(input.LA(1)>='\u1752' && input.LA(1)<='\u1753')||(input.LA(1)>='\u1772' && input.LA(1)<='\u1773')||(input.LA(1)>='\u17B4' && input.LA(1)<='\u17D3')||input.LA(1)=='\u17DD'||(input.LA(1)>='\u17E0' && input.LA(1)<='\u17E9')||(input.LA(1)>='\u180B' && input.LA(1)<='\u180D')||(input.LA(1)>='\u1810' && input.LA(1)<='\u1819')||input.LA(1)=='\u18A9'||(input.LA(1)>='\u1920' && input.LA(1)<='\u192B')||(input.LA(1)>='\u1930' && input.LA(1)<='\u193B')||(input.LA(1)>='\u1946' && input.LA(1)<='\u194F')||(input.LA(1)>='\u200C' && input.LA(1)<='\u200F')||(input.LA(1)>='\u202A' && input.LA(1)<='\u202E')||(input.LA(1)>='\u2060' && input.LA(1)<='\u2063')||(input.LA(1)>='\u206A' && input.LA(1)<='\u206F')||(input.LA(1)>='\u20D0' && input.LA(1)<='\u20DC')||input.LA(1)=='\u20E1'||(input.LA(1)>='\u20E5' && input.LA(1)<='\u20EA')||(input.LA(1)>='\u302A' && input.LA(1)<='\u302F')||(input.LA(1)>='\u3099' && input.LA(1)<='\u309A')||input.LA(1)=='\uFB1E'||(input.LA(1)>='\uFE00' && input.LA(1)<='\uFE0F')||(input.LA(1)>='\uFE20' && input.LA(1)<='\uFE23')||input.LA(1)=='\uFEFF'||(input.LA(1)>='\uFF10' && input.LA(1)<='\uFF19')||(input.LA(1)>='\uFFF9' && input.LA(1)<='\uFFFB') ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+
+            }
+
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_IDENTIFIER_PART_IMPL"
+
     // $ANTLR start "RULE_HEX"
     public final void mRULE_HEX() throws RecognitionException {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:12: ( '0x' | '0X' )
-            int alt36=2;
-            int LA36_0 = input.LA(1);
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:12: ( '0x' | '0X' )
+            int alt40=2;
+            int LA40_0 = input.LA(1);
 
-            if ( (LA36_0=='0') ) {
-                int LA36_1 = input.LA(2);
+            if ( (LA40_0=='0') ) {
+                int LA40_1 = input.LA(2);
 
-                if ( (LA36_1=='x') ) {
-                    alt36=1;
+                if ( (LA40_1=='x') ) {
+                    alt40=1;
                 }
-                else if ( (LA36_1=='X') ) {
-                    alt36=2;
+                else if ( (LA40_1=='X') ) {
+                    alt40=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 36, 1, input);
+                        new NoViableAltException("", 40, 1, input);
 
                     throw nvae;
                 }
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 36, 0, input);
+                    new NoViableAltException("", 40, 0, input);
 
                 throw nvae;
             }
-            switch (alt36) {
+            switch (alt40) {
                 case 1 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:13: '0x'
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:13: '0x'
                     {
                     match("0x"); 
 
@@ -3527,7 +3717,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:18: '0X'
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:18: '0X'
                     {
                     match("0X"); 
 
@@ -3537,19 +3727,19 @@ public class InternalSuiteLexer extends Lexer {
 
             }
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
-            int cnt37=0;
-            loop37:
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            int cnt41=0;
+            loop41:
             do {
-                int alt37=2;
-                int LA37_0 = input.LA(1);
+                int alt41=2;
+                int LA41_0 = input.LA(1);
 
-                if ( ((LA37_0>='0' && LA37_0<='9')||(LA37_0>='A' && LA37_0<='F')||LA37_0=='_'||(LA37_0>='a' && LA37_0<='f')) ) {
-                    alt37=1;
+                if ( ((LA41_0>='0' && LA41_0<='9')||(LA41_0>='A' && LA41_0<='F')||LA41_0=='_'||(LA41_0>='a' && LA41_0<='f')) ) {
+                    alt41=1;
                 }
 
 
-                switch (alt37) {
+                switch (alt41) {
             	case 1 :
             	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:
             	    {
@@ -3567,45 +3757,45 @@ public class InternalSuiteLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt37 >= 1 ) break loop37;
+            	    if ( cnt41 >= 1 ) break loop41;
                         EarlyExitException eee =
-                            new EarlyExitException(37, input);
+                            new EarlyExitException(41, input);
                         throw eee;
                 }
-                cnt37++;
+                cnt41++;
             } while (true);
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
-            int alt39=2;
-            int LA39_0 = input.LA(1);
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            int alt43=2;
+            int LA43_0 = input.LA(1);
 
-            if ( (LA39_0=='#') ) {
-                alt39=1;
+            if ( (LA43_0=='#') ) {
+                alt43=1;
             }
-            switch (alt39) {
+            switch (alt43) {
                 case 1 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
-                    int alt38=2;
-                    int LA38_0 = input.LA(1);
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    int alt42=2;
+                    int LA42_0 = input.LA(1);
 
-                    if ( (LA38_0=='B'||LA38_0=='b') ) {
-                        alt38=1;
+                    if ( (LA42_0=='B'||LA42_0=='b') ) {
+                        alt42=1;
                     }
-                    else if ( (LA38_0=='L'||LA38_0=='l') ) {
-                        alt38=2;
+                    else if ( (LA42_0=='L'||LA42_0=='l') ) {
+                        alt42=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 38, 0, input);
+                            new NoViableAltException("", 42, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt38) {
+                    switch (alt42) {
                         case 1 :
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -3629,7 +3819,7 @@ public class InternalSuiteLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29711:84: ( 'l' | 'L' )
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -3668,22 +3858,22 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29713:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29713:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29723:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29723:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29713:21: ( '0' .. '9' | '_' )*
-            loop40:
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29723:21: ( '0' .. '9' | '_' )*
+            loop44:
             do {
-                int alt40=2;
-                int LA40_0 = input.LA(1);
+                int alt44=2;
+                int LA44_0 = input.LA(1);
 
-                if ( ((LA40_0>='0' && LA40_0<='9')||LA40_0=='_') ) {
-                    alt40=1;
+                if ( ((LA44_0>='0' && LA44_0<='9')||LA44_0=='_') ) {
+                    alt44=1;
                 }
 
 
-                switch (alt40) {
+                switch (alt44) {
             	case 1 :
             	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:
             	    {
@@ -3701,7 +3891,7 @@ public class InternalSuiteLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop40;
+            	    break loop44;
                 }
             } while (true);
 
@@ -3721,20 +3911,20 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29715:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29715:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29725:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29725:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29715:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
-            int alt42=2;
-            int LA42_0 = input.LA(1);
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29725:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            int alt46=2;
+            int LA46_0 = input.LA(1);
 
-            if ( (LA42_0=='E'||LA42_0=='e') ) {
-                alt42=1;
+            if ( (LA46_0=='E'||LA46_0=='e') ) {
+                alt46=1;
             }
-            switch (alt42) {
+            switch (alt46) {
                 case 1 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29715:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29725:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -3745,14 +3935,14 @@ public class InternalSuiteLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29715:36: ( '+' | '-' )?
-                    int alt41=2;
-                    int LA41_0 = input.LA(1);
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29725:36: ( '+' | '-' )?
+                    int alt45=2;
+                    int LA45_0 = input.LA(1);
 
-                    if ( (LA41_0=='+'||LA41_0=='-') ) {
-                        alt41=1;
+                    if ( (LA45_0=='+'||LA45_0=='-') ) {
+                        alt45=1;
                     }
-                    switch (alt41) {
+                    switch (alt45) {
                         case 1 :
                             // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:
                             {
@@ -3778,19 +3968,19 @@ public class InternalSuiteLexer extends Lexer {
 
             }
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29715:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
-            int alt43=3;
-            int LA43_0 = input.LA(1);
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29725:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            int alt47=3;
+            int LA47_0 = input.LA(1);
 
-            if ( (LA43_0=='B'||LA43_0=='b') ) {
-                alt43=1;
+            if ( (LA47_0=='B'||LA47_0=='b') ) {
+                alt47=1;
             }
-            else if ( (LA43_0=='D'||LA43_0=='F'||LA43_0=='L'||LA43_0=='d'||LA43_0=='f'||LA43_0=='l') ) {
-                alt43=2;
+            else if ( (LA47_0=='D'||LA47_0=='F'||LA47_0=='L'||LA47_0=='d'||LA47_0=='f'||LA47_0=='l') ) {
+                alt47=2;
             }
-            switch (alt43) {
+            switch (alt47) {
                 case 1 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29715:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29725:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -3814,7 +4004,7 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29715:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29725:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -3847,47 +4037,47 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29717:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29717:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29727:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29727:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29717:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
-            int alt46=2;
-            int LA46_0 = input.LA(1);
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29727:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            int alt50=2;
+            int LA50_0 = input.LA(1);
 
-            if ( (LA46_0=='\"') ) {
-                alt46=1;
+            if ( (LA50_0=='\"') ) {
+                alt50=1;
             }
-            else if ( (LA46_0=='\'') ) {
-                alt46=2;
+            else if ( (LA50_0=='\'') ) {
+                alt50=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 46, 0, input);
+                    new NoViableAltException("", 50, 0, input);
 
                 throw nvae;
             }
-            switch (alt46) {
+            switch (alt50) {
                 case 1 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29717:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29727:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29717:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
-                    loop44:
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29727:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    loop48:
                     do {
-                        int alt44=3;
-                        int LA44_0 = input.LA(1);
+                        int alt48=3;
+                        int LA48_0 = input.LA(1);
 
-                        if ( (LA44_0=='\\') ) {
-                            alt44=1;
+                        if ( (LA48_0=='\\') ) {
+                            alt48=1;
                         }
-                        else if ( ((LA44_0>='\u0000' && LA44_0<='!')||(LA44_0>='#' && LA44_0<='[')||(LA44_0>=']' && LA44_0<='\uFFFF')) ) {
-                            alt44=2;
+                        else if ( ((LA48_0>='\u0000' && LA48_0<='!')||(LA48_0>='#' && LA48_0<='[')||(LA48_0>=']' && LA48_0<='\uFFFF')) ) {
+                            alt48=2;
                         }
 
 
-                        switch (alt44) {
+                        switch (alt48) {
                     	case 1 :
-                    	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29717:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29727:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3903,7 +4093,7 @@ public class InternalSuiteLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29717:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29727:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3919,7 +4109,7 @@ public class InternalSuiteLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop44;
+                    	    break loop48;
                         }
                     } while (true);
 
@@ -3928,26 +4118,26 @@ public class InternalSuiteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29717:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29727:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29717:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
-                    loop45:
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29727:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    loop49:
                     do {
-                        int alt45=3;
-                        int LA45_0 = input.LA(1);
+                        int alt49=3;
+                        int LA49_0 = input.LA(1);
 
-                        if ( (LA45_0=='\\') ) {
-                            alt45=1;
+                        if ( (LA49_0=='\\') ) {
+                            alt49=1;
                         }
-                        else if ( ((LA45_0>='\u0000' && LA45_0<='&')||(LA45_0>='(' && LA45_0<='[')||(LA45_0>=']' && LA45_0<='\uFFFF')) ) {
-                            alt45=2;
+                        else if ( ((LA49_0>='\u0000' && LA49_0<='&')||(LA49_0>='(' && LA49_0<='[')||(LA49_0>=']' && LA49_0<='\uFFFF')) ) {
+                            alt49=2;
                         }
 
 
-                        switch (alt45) {
+                        switch (alt49) {
                     	case 1 :
-                    	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29717:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29727:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3963,7 +4153,7 @@ public class InternalSuiteLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29717:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29727:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3979,7 +4169,7 @@ public class InternalSuiteLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop45;
+                    	    break loop49;
                         }
                     } while (true);
 
@@ -4006,37 +4196,37 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29719:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29719:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29729:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29729:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29719:24: ( options {greedy=false; } : . )*
-            loop47:
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29729:24: ( options {greedy=false; } : . )*
+            loop51:
             do {
-                int alt47=2;
-                int LA47_0 = input.LA(1);
+                int alt51=2;
+                int LA51_0 = input.LA(1);
 
-                if ( (LA47_0=='*') ) {
-                    int LA47_1 = input.LA(2);
+                if ( (LA51_0=='*') ) {
+                    int LA51_1 = input.LA(2);
 
-                    if ( (LA47_1=='/') ) {
-                        alt47=2;
+                    if ( (LA51_1=='/') ) {
+                        alt51=2;
                     }
-                    else if ( ((LA47_1>='\u0000' && LA47_1<='.')||(LA47_1>='0' && LA47_1<='\uFFFF')) ) {
-                        alt47=1;
+                    else if ( ((LA51_1>='\u0000' && LA51_1<='.')||(LA51_1>='0' && LA51_1<='\uFFFF')) ) {
+                        alt51=1;
                     }
 
 
                 }
-                else if ( ((LA47_0>='\u0000' && LA47_0<=')')||(LA47_0>='+' && LA47_0<='\uFFFF')) ) {
-                    alt47=1;
+                else if ( ((LA51_0>='\u0000' && LA51_0<=')')||(LA51_0>='+' && LA51_0<='\uFFFF')) ) {
+                    alt51=1;
                 }
 
 
-                switch (alt47) {
+                switch (alt51) {
             	case 1 :
-            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29719:52: .
+            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29729:52: .
             	    {
             	    matchAny(); 
 
@@ -4044,7 +4234,7 @@ public class InternalSuiteLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop47;
+            	    break loop51;
                 }
             } while (true);
 
@@ -4066,25 +4256,25 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29731:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29731:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:24: (~ ( ( '\\n' | '\\r' ) ) )*
-            loop48:
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29731:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            loop52:
             do {
-                int alt48=2;
-                int LA48_0 = input.LA(1);
+                int alt52=2;
+                int LA52_0 = input.LA(1);
 
-                if ( ((LA48_0>='\u0000' && LA48_0<='\t')||(LA48_0>='\u000B' && LA48_0<='\f')||(LA48_0>='\u000E' && LA48_0<='\uFFFF')) ) {
-                    alt48=1;
+                if ( ((LA52_0>='\u0000' && LA52_0<='\t')||(LA52_0>='\u000B' && LA52_0<='\f')||(LA52_0>='\u000E' && LA52_0<='\uFFFF')) ) {
+                    alt52=1;
                 }
 
 
-                switch (alt48) {
+                switch (alt52) {
             	case 1 :
-            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29731:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -4100,31 +4290,31 @@ public class InternalSuiteLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop48;
+            	    break loop52;
                 }
             } while (true);
 
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:40: ( ( '\\r' )? '\\n' )?
-            int alt50=2;
-            int LA50_0 = input.LA(1);
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29731:40: ( ( '\\r' )? '\\n' )?
+            int alt54=2;
+            int LA54_0 = input.LA(1);
 
-            if ( (LA50_0=='\n'||LA50_0=='\r') ) {
-                alt50=1;
+            if ( (LA54_0=='\n'||LA54_0=='\r') ) {
+                alt54=1;
             }
-            switch (alt50) {
+            switch (alt54) {
                 case 1 :
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:41: ( '\\r' )? '\\n'
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29731:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:41: ( '\\r' )?
-                    int alt49=2;
-                    int LA49_0 = input.LA(1);
+                    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29731:41: ( '\\r' )?
+                    int alt53=2;
+                    int LA53_0 = input.LA(1);
 
-                    if ( (LA49_0=='\r') ) {
-                        alt49=1;
+                    if ( (LA53_0=='\r') ) {
+                        alt53=1;
                     }
-                    switch (alt49) {
+                    switch (alt53) {
                         case 1 :
-                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29721:41: '\\r'
+                            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29731:41: '\\r'
                             {
                             match('\r'); 
 
@@ -4156,22 +4346,22 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29723:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29723:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29733:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29733:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29723:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
-            int cnt51=0;
-            loop51:
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29733:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            int cnt55=0;
+            loop55:
             do {
-                int alt51=2;
-                int LA51_0 = input.LA(1);
+                int alt55=2;
+                int LA55_0 = input.LA(1);
 
-                if ( ((LA51_0>='\t' && LA51_0<='\n')||LA51_0=='\r'||LA51_0==' ') ) {
-                    alt51=1;
+                if ( ((LA55_0>='\t' && LA55_0<='\n')||LA55_0=='\r'||LA55_0==' ') ) {
+                    alt55=1;
                 }
 
 
-                switch (alt51) {
+                switch (alt55) {
             	case 1 :
             	    // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:
             	    {
@@ -4189,12 +4379,12 @@ public class InternalSuiteLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt51 >= 1 ) break loop51;
+            	    if ( cnt55 >= 1 ) break loop55;
                         EarlyExitException eee =
-                            new EarlyExitException(51, input);
+                            new EarlyExitException(55, input);
                         throw eee;
                 }
-                cnt51++;
+                cnt55++;
             } while (true);
 
 
@@ -4213,8 +4403,8 @@ public class InternalSuiteLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29725:16: ( . )
-            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29725:18: .
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29735:16: ( . )
+            // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:29735:18: .
             {
             matchAny(); 
 
@@ -4229,810 +4419,810 @@ public class InternalSuiteLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:8: ( T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | RULE_SUITE_NAME | RULE_PATTERN | RULE_TEXT | RULE_ID | RULE_RICH_TEXT | RULE_RICH_TEXT_START | RULE_RICH_TEXT_END | RULE_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_END | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt52=115;
-        alt52 = dfa52.predict(input);
-        switch (alt52) {
+        // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:8: ( T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | T__121 | T__122 | T__123 | T__124 | RULE_SUITE_NAME | RULE_PATTERN | RULE_TEXT | RULE_ID | RULE_RICH_TEXT | RULE_RICH_TEXT_START | RULE_RICH_TEXT_END | RULE_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_END | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt56=115;
+        alt56 = dfa56.predict(input);
+        switch (alt56) {
             case 1 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:10: T__23
-                {
-                mT__23(); 
-
-                }
-                break;
-            case 2 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:16: T__24
-                {
-                mT__24(); 
-
-                }
-                break;
-            case 3 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:22: T__25
-                {
-                mT__25(); 
-
-                }
-                break;
-            case 4 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:28: T__26
-                {
-                mT__26(); 
-
-                }
-                break;
-            case 5 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:34: T__27
-                {
-                mT__27(); 
-
-                }
-                break;
-            case 6 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:40: T__28
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:10: T__28
                 {
                 mT__28(); 
 
                 }
                 break;
-            case 7 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:46: T__29
+            case 2 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:16: T__29
                 {
                 mT__29(); 
 
                 }
                 break;
-            case 8 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:52: T__30
+            case 3 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:22: T__30
                 {
                 mT__30(); 
 
                 }
                 break;
-            case 9 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:58: T__31
+            case 4 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:28: T__31
                 {
                 mT__31(); 
 
                 }
                 break;
-            case 10 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:64: T__32
+            case 5 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:34: T__32
                 {
                 mT__32(); 
 
                 }
                 break;
-            case 11 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:70: T__33
+            case 6 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:40: T__33
                 {
                 mT__33(); 
 
                 }
                 break;
-            case 12 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:76: T__34
+            case 7 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:46: T__34
                 {
                 mT__34(); 
 
                 }
                 break;
-            case 13 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:82: T__35
+            case 8 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:52: T__35
                 {
                 mT__35(); 
 
                 }
                 break;
-            case 14 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:88: T__36
+            case 9 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:58: T__36
                 {
                 mT__36(); 
 
                 }
                 break;
-            case 15 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:94: T__37
+            case 10 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:64: T__37
                 {
                 mT__37(); 
 
                 }
                 break;
-            case 16 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:100: T__38
+            case 11 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:70: T__38
                 {
                 mT__38(); 
 
                 }
                 break;
-            case 17 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:106: T__39
+            case 12 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:76: T__39
                 {
                 mT__39(); 
 
                 }
                 break;
-            case 18 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:112: T__40
+            case 13 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:82: T__40
                 {
                 mT__40(); 
 
                 }
                 break;
-            case 19 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:118: T__41
+            case 14 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:88: T__41
                 {
                 mT__41(); 
 
                 }
                 break;
-            case 20 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:124: T__42
+            case 15 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:94: T__42
                 {
                 mT__42(); 
 
                 }
                 break;
-            case 21 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:130: T__43
+            case 16 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:100: T__43
                 {
                 mT__43(); 
 
                 }
                 break;
-            case 22 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:136: T__44
+            case 17 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:106: T__44
                 {
                 mT__44(); 
 
                 }
                 break;
-            case 23 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:142: T__45
+            case 18 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:112: T__45
                 {
                 mT__45(); 
 
                 }
                 break;
-            case 24 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:148: T__46
+            case 19 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:118: T__46
                 {
                 mT__46(); 
 
                 }
                 break;
-            case 25 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:154: T__47
+            case 20 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:124: T__47
                 {
                 mT__47(); 
 
                 }
                 break;
-            case 26 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:160: T__48
+            case 21 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:130: T__48
                 {
                 mT__48(); 
 
                 }
                 break;
-            case 27 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:166: T__49
+            case 22 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:136: T__49
                 {
                 mT__49(); 
 
                 }
                 break;
-            case 28 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:172: T__50
+            case 23 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:142: T__50
                 {
                 mT__50(); 
 
                 }
                 break;
-            case 29 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:178: T__51
+            case 24 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:148: T__51
                 {
                 mT__51(); 
 
                 }
                 break;
-            case 30 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:184: T__52
+            case 25 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:154: T__52
                 {
                 mT__52(); 
 
                 }
                 break;
-            case 31 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:190: T__53
+            case 26 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:160: T__53
                 {
                 mT__53(); 
 
                 }
                 break;
-            case 32 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:196: T__54
+            case 27 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:166: T__54
                 {
                 mT__54(); 
 
                 }
                 break;
-            case 33 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:202: T__55
+            case 28 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:172: T__55
                 {
                 mT__55(); 
 
                 }
                 break;
-            case 34 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:208: T__56
+            case 29 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:178: T__56
                 {
                 mT__56(); 
 
                 }
                 break;
-            case 35 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:214: T__57
+            case 30 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:184: T__57
                 {
                 mT__57(); 
 
                 }
                 break;
-            case 36 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:220: T__58
+            case 31 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:190: T__58
                 {
                 mT__58(); 
 
                 }
                 break;
-            case 37 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:226: T__59
+            case 32 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:196: T__59
                 {
                 mT__59(); 
 
                 }
                 break;
-            case 38 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:232: T__60
+            case 33 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:202: T__60
                 {
                 mT__60(); 
 
                 }
                 break;
-            case 39 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:238: T__61
+            case 34 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:208: T__61
                 {
                 mT__61(); 
 
                 }
                 break;
-            case 40 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:244: T__62
+            case 35 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:214: T__62
                 {
                 mT__62(); 
 
                 }
                 break;
-            case 41 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:250: T__63
+            case 36 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:220: T__63
                 {
                 mT__63(); 
 
                 }
                 break;
-            case 42 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:256: T__64
+            case 37 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:226: T__64
                 {
                 mT__64(); 
 
                 }
                 break;
-            case 43 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:262: T__65
+            case 38 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:232: T__65
                 {
                 mT__65(); 
 
                 }
                 break;
-            case 44 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:268: T__66
+            case 39 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:238: T__66
                 {
                 mT__66(); 
 
                 }
                 break;
-            case 45 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:274: T__67
+            case 40 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:244: T__67
                 {
                 mT__67(); 
 
                 }
                 break;
-            case 46 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:280: T__68
+            case 41 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:250: T__68
                 {
                 mT__68(); 
 
                 }
                 break;
-            case 47 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:286: T__69
+            case 42 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:256: T__69
                 {
                 mT__69(); 
 
                 }
                 break;
-            case 48 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:292: T__70
+            case 43 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:262: T__70
                 {
                 mT__70(); 
 
                 }
                 break;
-            case 49 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:298: T__71
+            case 44 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:268: T__71
                 {
                 mT__71(); 
 
                 }
                 break;
-            case 50 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:304: T__72
+            case 45 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:274: T__72
                 {
                 mT__72(); 
 
                 }
                 break;
-            case 51 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:310: T__73
+            case 46 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:280: T__73
                 {
                 mT__73(); 
 
                 }
                 break;
-            case 52 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:316: T__74
+            case 47 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:286: T__74
                 {
                 mT__74(); 
 
                 }
                 break;
-            case 53 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:322: T__75
+            case 48 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:292: T__75
                 {
                 mT__75(); 
 
                 }
                 break;
-            case 54 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:328: T__76
+            case 49 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:298: T__76
                 {
                 mT__76(); 
 
                 }
                 break;
-            case 55 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:334: T__77
+            case 50 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:304: T__77
                 {
                 mT__77(); 
 
                 }
                 break;
-            case 56 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:340: T__78
+            case 51 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:310: T__78
                 {
                 mT__78(); 
 
                 }
                 break;
-            case 57 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:346: T__79
+            case 52 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:316: T__79
                 {
                 mT__79(); 
 
                 }
                 break;
-            case 58 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:352: T__80
+            case 53 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:322: T__80
                 {
                 mT__80(); 
 
                 }
                 break;
-            case 59 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:358: T__81
+            case 54 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:328: T__81
                 {
                 mT__81(); 
 
                 }
                 break;
-            case 60 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:364: T__82
+            case 55 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:334: T__82
                 {
                 mT__82(); 
 
                 }
                 break;
-            case 61 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:370: T__83
+            case 56 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:340: T__83
                 {
                 mT__83(); 
 
                 }
                 break;
-            case 62 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:376: T__84
+            case 57 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:346: T__84
                 {
                 mT__84(); 
 
                 }
                 break;
-            case 63 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:382: T__85
+            case 58 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:352: T__85
                 {
                 mT__85(); 
 
                 }
                 break;
-            case 64 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:388: T__86
+            case 59 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:358: T__86
                 {
                 mT__86(); 
 
                 }
                 break;
-            case 65 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:394: T__87
+            case 60 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:364: T__87
                 {
                 mT__87(); 
 
                 }
                 break;
-            case 66 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:400: T__88
+            case 61 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:370: T__88
                 {
                 mT__88(); 
 
                 }
                 break;
-            case 67 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:406: T__89
+            case 62 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:376: T__89
                 {
                 mT__89(); 
 
                 }
                 break;
-            case 68 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:412: T__90
+            case 63 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:382: T__90
                 {
                 mT__90(); 
 
                 }
                 break;
-            case 69 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:418: T__91
+            case 64 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:388: T__91
                 {
                 mT__91(); 
 
                 }
                 break;
-            case 70 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:424: T__92
+            case 65 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:394: T__92
                 {
                 mT__92(); 
 
                 }
                 break;
-            case 71 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:430: T__93
+            case 66 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:400: T__93
                 {
                 mT__93(); 
 
                 }
                 break;
-            case 72 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:436: T__94
+            case 67 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:406: T__94
                 {
                 mT__94(); 
 
                 }
                 break;
-            case 73 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:442: T__95
+            case 68 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:412: T__95
                 {
                 mT__95(); 
 
                 }
                 break;
-            case 74 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:448: T__96
+            case 69 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:418: T__96
                 {
                 mT__96(); 
 
                 }
                 break;
-            case 75 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:454: T__97
+            case 70 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:424: T__97
                 {
                 mT__97(); 
 
                 }
                 break;
-            case 76 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:460: T__98
+            case 71 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:430: T__98
                 {
                 mT__98(); 
 
                 }
                 break;
-            case 77 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:466: T__99
+            case 72 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:436: T__99
                 {
                 mT__99(); 
 
                 }
                 break;
-            case 78 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:472: T__100
+            case 73 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:442: T__100
                 {
                 mT__100(); 
 
                 }
                 break;
-            case 79 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:479: T__101
+            case 74 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:449: T__101
                 {
                 mT__101(); 
 
                 }
                 break;
-            case 80 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:486: T__102
+            case 75 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:456: T__102
                 {
                 mT__102(); 
 
                 }
                 break;
-            case 81 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:493: T__103
+            case 76 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:463: T__103
                 {
                 mT__103(); 
 
                 }
                 break;
-            case 82 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:500: T__104
+            case 77 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:470: T__104
                 {
                 mT__104(); 
 
                 }
                 break;
-            case 83 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:507: T__105
+            case 78 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:477: T__105
                 {
                 mT__105(); 
 
                 }
                 break;
-            case 84 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:514: T__106
+            case 79 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:484: T__106
                 {
                 mT__106(); 
 
                 }
                 break;
-            case 85 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:521: T__107
+            case 80 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:491: T__107
                 {
                 mT__107(); 
 
                 }
                 break;
-            case 86 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:528: T__108
+            case 81 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:498: T__108
                 {
                 mT__108(); 
 
                 }
                 break;
-            case 87 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:535: T__109
+            case 82 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:505: T__109
                 {
                 mT__109(); 
 
                 }
                 break;
-            case 88 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:542: T__110
+            case 83 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:512: T__110
                 {
                 mT__110(); 
 
                 }
                 break;
-            case 89 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:549: T__111
+            case 84 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:519: T__111
                 {
                 mT__111(); 
 
                 }
                 break;
-            case 90 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:556: T__112
+            case 85 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:526: T__112
                 {
                 mT__112(); 
 
                 }
                 break;
-            case 91 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:563: T__113
+            case 86 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:533: T__113
                 {
                 mT__113(); 
 
                 }
                 break;
-            case 92 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:570: T__114
+            case 87 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:540: T__114
                 {
                 mT__114(); 
 
                 }
                 break;
-            case 93 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:577: T__115
+            case 88 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:547: T__115
                 {
                 mT__115(); 
 
                 }
                 break;
-            case 94 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:584: T__116
+            case 89 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:554: T__116
                 {
                 mT__116(); 
 
                 }
                 break;
-            case 95 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:591: T__117
+            case 90 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:561: T__117
                 {
                 mT__117(); 
 
                 }
                 break;
-            case 96 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:598: T__118
+            case 91 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:568: T__118
                 {
                 mT__118(); 
 
                 }
                 break;
-            case 97 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:605: T__119
+            case 92 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:575: T__119
                 {
                 mT__119(); 
 
                 }
                 break;
+            case 93 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:582: T__120
+                {
+                mT__120(); 
+
+                }
+                break;
+            case 94 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:589: T__121
+                {
+                mT__121(); 
+
+                }
+                break;
+            case 95 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:596: T__122
+                {
+                mT__122(); 
+
+                }
+                break;
+            case 96 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:603: T__123
+                {
+                mT__123(); 
+
+                }
+                break;
+            case 97 :
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:610: T__124
+                {
+                mT__124(); 
+
+                }
+                break;
             case 98 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:612: RULE_SUITE_NAME
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:617: RULE_SUITE_NAME
                 {
                 mRULE_SUITE_NAME(); 
 
                 }
                 break;
             case 99 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:628: RULE_PATTERN
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:633: RULE_PATTERN
                 {
                 mRULE_PATTERN(); 
 
                 }
                 break;
             case 100 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:641: RULE_TEXT
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:646: RULE_TEXT
                 {
                 mRULE_TEXT(); 
 
                 }
                 break;
             case 101 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:651: RULE_ID
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:656: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
             case 102 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:659: RULE_RICH_TEXT
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:664: RULE_RICH_TEXT
                 {
                 mRULE_RICH_TEXT(); 
 
                 }
                 break;
             case 103 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:674: RULE_RICH_TEXT_START
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:679: RULE_RICH_TEXT_START
                 {
                 mRULE_RICH_TEXT_START(); 
 
                 }
                 break;
             case 104 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:695: RULE_RICH_TEXT_END
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:700: RULE_RICH_TEXT_END
                 {
                 mRULE_RICH_TEXT_END(); 
 
                 }
                 break;
             case 105 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:714: RULE_RICH_TEXT_INBETWEEN
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:719: RULE_RICH_TEXT_INBETWEEN
                 {
                 mRULE_RICH_TEXT_INBETWEEN(); 
 
                 }
                 break;
             case 106 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:739: RULE_COMMENT_RICH_TEXT_INBETWEEN
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:744: RULE_COMMENT_RICH_TEXT_INBETWEEN
                 {
                 mRULE_COMMENT_RICH_TEXT_INBETWEEN(); 
 
                 }
                 break;
             case 107 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:772: RULE_COMMENT_RICH_TEXT_END
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:777: RULE_COMMENT_RICH_TEXT_END
                 {
                 mRULE_COMMENT_RICH_TEXT_END(); 
 
                 }
                 break;
             case 108 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:799: RULE_HEX
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:804: RULE_HEX
                 {
                 mRULE_HEX(); 
 
                 }
                 break;
             case 109 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:808: RULE_INT
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:813: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
             case 110 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:817: RULE_DECIMAL
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:822: RULE_DECIMAL
                 {
                 mRULE_DECIMAL(); 
 
                 }
                 break;
             case 111 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:830: RULE_STRING
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:835: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
             case 112 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:842: RULE_ML_COMMENT
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:847: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
             case 113 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:858: RULE_SL_COMMENT
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:863: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
             case 114 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:874: RULE_WS
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:879: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
             case 115 :
-                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:882: RULE_ANY_OTHER
+                // ../org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g:1:887: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -5044,35 +5234,35 @@ public class InternalSuiteLexer extends Lexer {
     }
 
 
-    protected DFA52 dfa52 = new DFA52(this);
-    static final String DFA52_eotS =
+    protected DFA56 dfa56 = new DFA56(this);
+    static final String DFA56_eotS =
         "\1\uffff\1\71\1\73\1\75\1\uffff\13\102\1\136\1\140\1\143\1\145\1"+
-        "\147\1\152\1\155\1\157\1\162\6\uffff\1\102\1\175\6\102\1\uffff\1"+
-        "\u0086\2\uffff\2\102\2\66\1\uffff\1\66\1\u0090\2\u0094\1\66\2\uffff"+
+        "\147\1\152\1\155\1\157\1\162\6\uffff\1\102\1\174\6\102\1\uffff\1"+
+        "\u0086\2\uffff\2\102\2\66\1\uffff\1\66\1\u0090\2\u0095\1\66\2\uffff"+
         "\1\u0099\7\uffff\3\102\1\uffff\2\102\1\u00a0\5\102\1\u00a6\15\102"+
         "\1\u00b7\3\102\1\u00be\6\uffff\1\u00c0\3\uffff\1\u00c2\20\uffff"+
         "\2\102\1\u00c5\2\uffff\6\102\1\u00cc\5\uffff\2\102\1\uffff\1\u008e"+
-        "\1\uffff\1\u00d3\1\uffff\2\u0090\2\uffff\1\u0094\4\uffff\6\102\1"+
+        "\1\uffff\1\u00d3\1\uffff\2\u0090\1\uffff\1\u0095\5\uffff\6\102\1"+
         "\uffff\4\102\1\u00e1\1\uffff\2\102\1\u00e4\1\u00e5\1\u00e6\13\102"+
         "\1\uffff\2\102\1\u00f5\1\102\7\uffff\1\u00f7\1\102\1\uffff\1\u00f9"+
-        "\5\102\1\uffff\2\102\1\u0105\1\u0106\1\uffff\1\u0109\1\uffff\2\u0090"+
+        "\5\102\1\uffff\2\102\1\u0104\1\u0106\1\uffff\1\u0109\1\uffff\2\u0090"+
         "\13\102\1\uffff\2\102\3\uffff\3\102\1\u011b\1\102\1\u011d\1\102"+
         "\1\u011f\6\102\1\uffff\1\u0126\1\uffff\1\u0127\1\uffff\2\102\1\u012b"+
-        "\5\102\2\u0105\3\uffff\2\u0109\1\uffff\1\u0090\7\102\1\u013c\3\102"+
+        "\5\102\2\u0104\3\uffff\2\u0109\1\uffff\1\u0090\7\102\1\u013c\3\102"+
         "\1\u0141\1\u0142\2\102\1\u0145\1\uffff\1\u0146\1\uffff\1\102\1\uffff"+
         "\4\102\1\u014e\1\102\2\uffff\1\102\1\u0151\1\102\1\uffff\2\102\1"+
-        "\u0155\1\u0156\1\102\2\u0105\2\u0109\1\u015a\5\102\1\u0160\1\uffff"+
+        "\u0155\1\u0156\1\102\2\u0104\2\u0109\1\u015a\5\102\1\u0160\1\uffff"+
         "\1\u0161\3\102\2\uffff\1\102\1\u0166\2\uffff\3\102\1\u016a\2\102"+
         "\1\u016d\1\uffff\1\u016e\1\u016f\1\uffff\1\u0170\1\u0171\1\102\2"+
-        "\uffff\1\u0173\1\u0105\1\u0109\1\uffff\1\u0174\1\102\1\u0176\2\102"+
+        "\uffff\1\u0173\1\u0104\1\u0109\1\uffff\1\u0174\1\102\1\u0176\2\102"+
         "\2\uffff\1\102\1\u017a\1\u017b\1\102\1\uffff\1\u017d\2\102\1\uffff"+
         "\2\102\5\uffff\1\102\2\uffff\1\102\1\uffff\1\u0184\1\102\1\u0186"+
         "\2\uffff\1\u0187\1\uffff\5\102\1\u018d\1\uffff\1\102\2\uffff\1\u018f"+
         "\1\102\1\u0191\1\102\1\u0193\1\uffff\1\u0194\1\uffff\1\u0195\1\uffff"+
         "\1\u0196\4\uffff";
-    static final String DFA52_eofS =
+    static final String DFA56_eofS =
         "\u0197\uffff";
-    static final String DFA52_minS =
+    static final String DFA56_minS =
         "\1\0\1\75\1\174\1\46\1\uffff\1\141\1\142\1\164\1\145\2\141\1\166"+
         "\1\141\1\154\1\146\1\150\1\56\5\75\1\56\2\52\6\uffff\1\145\1\0\1"+
         "\117\1\114\2\105\2\106\1\uffff\1\0\2\uffff\1\150\1\145\1\0\1\44"+
@@ -5081,7 +5271,7 @@ public class InternalSuiteLexer extends Lexer {
         "\1\162\1\154\2\145\1\141\1\163\1\165\1\164\1\163\1\160\1\163\1\44"+
         "\1\162\1\160\1\165\1\56\6\uffff\1\75\3\uffff\1\76\20\uffff\1\167"+
         "\1\154\1\0\2\uffff\1\122\1\104\1\123\1\106\1\120\1\124\1\44\5\uffff"+
-        "\1\151\1\164\1\uffff\1\47\1\uffff\1\0\1\uffff\2\0\2\uffff\1\60\4"+
+        "\1\151\1\164\1\uffff\1\47\1\uffff\1\0\1\uffff\2\0\1\uffff\1\60\5"+
         "\uffff\1\154\1\166\1\164\1\153\1\164\1\157\1\uffff\1\164\1\145\1"+
         "\164\1\160\1\44\1\uffff\1\141\1\163\3\44\1\162\1\141\1\163\1\145"+
         "\1\143\1\155\2\145\1\154\1\145\1\164\1\uffff\1\157\1\145\1\44\1"+
@@ -5102,7 +5292,7 @@ public class InternalSuiteLexer extends Lexer {
         "\2\uffff\1\144\1\uffff\1\44\1\157\1\44\2\uffff\1\44\1\uffff\1\156"+
         "\1\164\1\145\1\157\1\122\1\44\1\uffff\1\156\2\uffff\1\44\1\163\1"+
         "\44\1\146\1\44\1\uffff\1\44\1\uffff\1\44\1\uffff\1\44\4\uffff";
-    static final String DFA52_maxS =
+    static final String DFA56_maxS =
         "\1\uffff\1\76\1\174\1\46\1\uffff\1\165\1\163\1\167\2\157\1\141\1"+
         "\166\1\162\1\170\1\156\1\171\1\56\1\75\1\76\2\75\1\76\1\72\1\52"+
         "\1\57\6\uffff\1\165\1\uffff\1\117\1\116\2\105\2\106\1\uffff\1\uffff"+
@@ -5112,7 +5302,7 @@ public class InternalSuiteLexer extends Lexer {
         "\1\141\1\164\1\165\1\164\1\163\1\160\1\164\1\172\1\162\1\160\1\171"+
         "\1\74\6\uffff\1\75\3\uffff\1\76\20\uffff\1\167\1\154\1\uffff\2\uffff"+
         "\1\122\1\104\1\123\1\106\1\120\1\124\1\172\5\uffff\1\151\1\164\1"+
-        "\uffff\1\47\1\uffff\1\uffff\1\uffff\2\uffff\2\uffff\1\154\4\uffff"+
+        "\uffff\1\47\1\uffff\1\uffff\1\uffff\2\uffff\1\uffff\1\154\5\uffff"+
         "\1\154\1\166\1\164\1\153\1\164\1\157\1\uffff\1\164\1\145\1\164\1"+
         "\160\1\172\1\uffff\1\141\1\163\3\172\1\162\1\141\1\163\1\145\1\143"+
         "\1\155\2\145\1\157\1\145\1\164\1\uffff\1\157\1\145\1\172\1\145\7"+
@@ -5134,18 +5324,18 @@ public class InternalSuiteLexer extends Lexer {
         "\1\uffff\1\172\1\157\1\172\2\uffff\1\172\1\uffff\1\156\1\164\1\145"+
         "\1\157\1\122\1\172\1\uffff\1\156\2\uffff\1\172\1\163\1\172\1\146"+
         "\1\172\1\uffff\1\172\1\uffff\1\172\1\uffff\1\172\4\uffff";
-    static final String DFA52_acceptS =
+    static final String DFA56_acceptS =
         "\4\uffff\1\4\24\uffff\1\62\1\66\1\67\1\70\1\71\1\72\10\uffff\1\106"+
         "\1\uffff\1\112\1\113\4\uffff\1\145\5\uffff\1\162\1\163\1\uffff\1"+
         "\51\1\1\1\2\1\140\1\3\1\134\1\4\3\uffff\1\145\33\uffff\1\33\1\34"+
         "\1\55\1\35\1\46\1\56\1\uffff\1\63\1\42\1\44\1\uffff\1\52\1\45\1"+
         "\53\1\137\1\133\1\60\1\57\1\160\1\161\1\61\1\62\1\66\1\67\1\70\1"+
-        "\71\1\72\3\uffff\1\144\1\74\7\uffff\1\106\1\111\1\142\1\112\1\113"+
-        "\2\uffff\1\143\1\uffff\1\157\1\uffff\1\150\2\uffff\1\154\1\155\1"+
-        "\uffff\1\156\1\162\1\40\1\36\6\uffff\1\110\5\uffff\1\123\20\uffff"+
+        "\71\1\72\3\uffff\1\74\1\144\7\uffff\1\106\1\111\1\142\1\112\1\113"+
+        "\2\uffff\1\143\1\uffff\1\157\1\uffff\1\150\2\uffff\1\154\1\uffff"+
+        "\1\155\1\156\1\162\1\40\1\36\6\uffff\1\110\5\uffff\1\123\20\uffff"+
         "\1\114\4\uffff\1\47\1\135\1\50\1\41\1\37\1\54\1\43\2\uffff\1\136"+
         "\6\uffff\1\102\6\uffff\1\151\15\uffff\1\17\2\uffff\1\121\1\15\1"+
-        "\16\16\uffff\1\130\1\uffff\1\73\1\uffff\1\75\12\uffff\1\147\1\146"+
+        "\16\16\uffff\1\130\1\uffff\1\73\1\uffff\1\75\12\uffff\1\146\1\147"+
         "\1\152\2\uffff\1\153\21\uffff\1\120\1\uffff\1\24\1\uffff\1\115\6"+
         "\uffff\1\141\1\124\3\uffff\1\104\20\uffff\1\64\4\uffff\1\14\1\65"+
         "\2\uffff\1\23\1\132\7\uffff\1\126\2\uffff\1\103\3\uffff\1\101\1"+
@@ -5154,13 +5344,13 @@ public class InternalSuiteLexer extends Lexer {
         "\3\uffff\1\117\1\131\1\uffff\1\25\6\uffff\1\11\1\uffff\1\13\1\20"+
         "\5\uffff\1\7\1\uffff\1\26\1\uffff\1\31\1\uffff\1\100\1\22\1\27\1"+
         "\107";
-    static final String DFA52_specialS =
-        "\1\32\37\uffff\1\16\7\uffff\1\6\4\uffff\1\31\2\uffff\1\2\1\3\2\uffff"+
-        "\1\0\106\uffff\1\12\23\uffff\1\7\1\uffff\1\27\1\20\74\uffff\1\4"+
-        "\1\26\1\uffff\1\5\1\uffff\1\30\1\22\54\uffff\1\17\1\13\3\uffff\1"+
-        "\10\1\21\1\uffff\1\24\46\uffff\1\11\1\15\1\1\1\23\43\uffff\1\14"+
-        "\1\25\75\uffff}>";
-    static final String[] DFA52_transitionS = {
+    static final String DFA56_specialS =
+        "\1\16\37\uffff\1\2\7\uffff\1\27\4\uffff\1\23\2\uffff\1\21\1\30\2"+
+        "\uffff\1\20\106\uffff\1\4\23\uffff\1\22\1\uffff\1\0\1\11\74\uffff"+
+        "\1\24\1\25\1\uffff\1\32\1\uffff\1\17\1\14\54\uffff\1\31\1\3\3\uffff"+
+        "\1\1\1\10\1\uffff\1\7\46\uffff\1\26\1\12\1\15\1\6\43\uffff\1\13"+
+        "\1\5\75\uffff}>";
+    static final String[] DFA56_transitionS = {
             "\11\66\2\65\2\66\1\65\22\66\1\65\1\23\1\64\1\50\1\57\1\31\1"+
             "\3\1\60\1\36\1\35\1\27\1\21\1\34\1\22\1\20\1\30\1\62\11\63\1"+
             "\40\1\4\1\25\1\1\1\24\1\26\1\47\1\45\1\43\2\57\1\42\1\41\2\57"+
@@ -5199,7 +5389,7 @@ public class InternalSuiteLexer extends Lexer {
             "",
             "",
             "\1\171\17\uffff\1\172",
-            "\43\174\1\uffff\11\174\1\uffff\14\174\1\173\uffc5\174",
+            "\43\175\1\uffff\11\175\1\uffff\14\175\1\173\uffc5\175",
             "\1\176",
             "\1\u0080\1\uffff\1\177",
             "\1\u0081",
@@ -5217,11 +5407,11 @@ public class InternalSuiteLexer extends Lexer {
             "",
             "\47\u008e\1\u008d\uffd8\u008e",
             "\47\u0092\1\u0091\uffd5\u0092\1\u008f\2\u0092",
-            "\12\u0095\10\uffff\1\u0096\1\uffff\3\u0096\5\uffff\1\u0096"+
-            "\13\uffff\1\u0093\6\uffff\1\u0095\2\uffff\1\u0096\1\uffff\3"+
+            "\12\u0094\10\uffff\1\u0096\1\uffff\3\u0096\5\uffff\1\u0096"+
+            "\13\uffff\1\u0093\6\uffff\1\u0094\2\uffff\1\u0096\1\uffff\3"+
             "\u0096\5\uffff\1\u0096\13\uffff\1\u0093",
-            "\12\u0095\10\uffff\1\u0096\1\uffff\3\u0096\5\uffff\1\u0096"+
-            "\22\uffff\1\u0095\2\uffff\1\u0096\1\uffff\3\u0096\5\uffff\1"+
+            "\12\u0094\10\uffff\1\u0096\1\uffff\3\u0096\5\uffff\1\u0096"+
+            "\22\uffff\1\u0094\2\uffff\1\u0096\1\uffff\3\u0096\5\uffff\1"+
             "\u0096",
             "\0\u008e",
             "",
@@ -5297,7 +5487,7 @@ public class InternalSuiteLexer extends Lexer {
             "",
             "\1\u00c3",
             "\1\u00c4",
-            "\43\174\1\uffff\11\174\1\uffff\uffd2\174",
+            "\43\175\1\uffff\11\175\1\uffff\uffd2\175",
             "",
             "",
             "\1\u00c6",
@@ -5323,10 +5513,10 @@ public class InternalSuiteLexer extends Lexer {
             "\47\u00d5\1\u00d4\uffd5\u00d5\1\u00d3\2\u00d5",
             "\47\u0092\1\u0091\uffd5\u0092\1\u00d3\2\u0092",
             "",
-            "",
-            "\12\u0095\10\uffff\1\u0096\1\uffff\3\u0096\5\uffff\1\u0096"+
-            "\22\uffff\1\u0095\2\uffff\1\u0096\1\uffff\3\u0096\5\uffff\1"+
+            "\12\u0094\10\uffff\1\u0096\1\uffff\3\u0096\5\uffff\1\u0096"+
+            "\22\uffff\1\u0094\2\uffff\1\u0096\1\uffff\3\u0096\5\uffff\1"+
             "\u0096",
+            "",
             "",
             "",
             "",
@@ -5391,7 +5581,7 @@ public class InternalSuiteLexer extends Lexer {
             "",
             "\1\u0100",
             "\1\u0101",
-            "\47\u0103\1\u0102\uffd5\u0103\1\u0104\2\u0103",
+            "\47\u0103\1\u0102\uffd5\u0103\1\u0105\2\u0103",
             "\12\u00d0\1\u00d2\2\u00d0\1\u00d1\ufff2\u00d0",
             "\1\u00d2",
             "\47\u0108\1\u0107\uffd5\u0108\1\u0106\2\u0108",
@@ -5448,8 +5638,8 @@ public class InternalSuiteLexer extends Lexer {
             "\1\u012e",
             "\1\u012f",
             "\1\u0130",
-            "\47\u0132\1\u0131\uffd5\u0132\1\u0104\2\u0132",
-            "\47\u0103\1\u0102\uffd5\u0103\1\u0104\2\u0103",
+            "\47\u0132\1\u0131\uffd5\u0132\1\u0105\2\u0132",
+            "\47\u0103\1\u0102\uffd5\u0103\1\u0105\2\u0103",
             "",
             "",
             "",
@@ -5504,8 +5694,8 @@ public class InternalSuiteLexer extends Lexer {
             "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
             "\32\102",
             "\1\u0157",
-            "\47\u0158\1\uffff\uffd5\u0158\1\u0104\2\u0158",
-            "\47\u0103\1\u0102\uffd5\u0103\1\u0104\2\u0103",
+            "\47\u0158\1\uffff\uffd5\u0158\1\u0105\2\u0158",
+            "\47\u0103\1\u0102\uffd5\u0103\1\u0105\2\u0103",
             "\47\u0159\1\uffff\uffd5\u0159\1\u0106\2\u0159",
             "\47\u0108\1\u0107\uffd5\u0108\1\u0106\2\u0108",
             "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
@@ -5554,7 +5744,7 @@ public class InternalSuiteLexer extends Lexer {
             "",
             "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
             "\32\102",
-            "\47\u0103\1\u0102\uffd5\u0103\1\u0104\2\u0103",
+            "\47\u0103\1\u0102\uffd5\u0103\1\u0105\2\u0103",
             "\47\u0108\1\u0107\uffd5\u0108\1\u0106\2\u0108",
             "",
             "\1\102\13\uffff\12\102\7\uffff\32\102\4\uffff\1\102\1\uffff"+
@@ -5634,497 +5824,497 @@ public class InternalSuiteLexer extends Lexer {
             ""
     };
 
-    static final short[] DFA52_eot = DFA.unpackEncodedString(DFA52_eotS);
-    static final short[] DFA52_eof = DFA.unpackEncodedString(DFA52_eofS);
-    static final char[] DFA52_min = DFA.unpackEncodedStringToUnsignedChars(DFA52_minS);
-    static final char[] DFA52_max = DFA.unpackEncodedStringToUnsignedChars(DFA52_maxS);
-    static final short[] DFA52_accept = DFA.unpackEncodedString(DFA52_acceptS);
-    static final short[] DFA52_special = DFA.unpackEncodedString(DFA52_specialS);
-    static final short[][] DFA52_transition;
+    static final short[] DFA56_eot = DFA.unpackEncodedString(DFA56_eotS);
+    static final short[] DFA56_eof = DFA.unpackEncodedString(DFA56_eofS);
+    static final char[] DFA56_min = DFA.unpackEncodedStringToUnsignedChars(DFA56_minS);
+    static final char[] DFA56_max = DFA.unpackEncodedStringToUnsignedChars(DFA56_maxS);
+    static final short[] DFA56_accept = DFA.unpackEncodedString(DFA56_acceptS);
+    static final short[] DFA56_special = DFA.unpackEncodedString(DFA56_specialS);
+    static final short[][] DFA56_transition;
 
     static {
-        int numStates = DFA52_transitionS.length;
-        DFA52_transition = new short[numStates][];
+        int numStates = DFA56_transitionS.length;
+        DFA56_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA52_transition[i] = DFA.unpackEncodedString(DFA52_transitionS[i]);
+            DFA56_transition[i] = DFA.unpackEncodedString(DFA56_transitionS[i]);
         }
     }
 
-    static class DFA52 extends DFA {
+    static class DFA56 extends DFA {
 
-        public DFA52(BaseRecognizer recognizer) {
+        public DFA56(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 52;
-            this.eot = DFA52_eot;
-            this.eof = DFA52_eof;
-            this.min = DFA52_min;
-            this.max = DFA52_max;
-            this.accept = DFA52_accept;
-            this.special = DFA52_special;
-            this.transition = DFA52_transition;
+            this.decisionNumber = 56;
+            this.eot = DFA56_eot;
+            this.eof = DFA56_eof;
+            this.min = DFA56_min;
+            this.max = DFA56_max;
+            this.accept = DFA56_accept;
+            this.special = DFA56_special;
+            this.transition = DFA56_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | RULE_SUITE_NAME | RULE_PATTERN | RULE_TEXT | RULE_ID | RULE_RICH_TEXT | RULE_RICH_TEXT_START | RULE_RICH_TEXT_END | RULE_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_END | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | T__121 | T__122 | T__123 | T__124 | RULE_SUITE_NAME | RULE_PATTERN | RULE_TEXT | RULE_ID | RULE_RICH_TEXT | RULE_RICH_TEXT_START | RULE_RICH_TEXT_END | RULE_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_INBETWEEN | RULE_COMMENT_RICH_TEXT_END | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA52_52 = input.LA(1);
+                        int LA56_145 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA52_52>='\u0000' && LA52_52<='\uFFFF')) ) {s = 142;}
+                        if ( (LA56_145=='\'') ) {s = 212;}
 
-                        else s = 54;
+                        else if ( ((LA56_145>='\u0000' && LA56_145<='&')||(LA56_145>='(' && LA56_145<='\uFFFC')||(LA56_145>='\uFFFE' && LA56_145<='\uFFFF')) ) {s = 213;}
+
+                        else if ( (LA56_145=='\uFFFD') ) {s = 211;}
+
+                        else s = 144;
 
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA52_307 = input.LA(1);
+                        int LA56_263 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA52_307>='\u0000' && LA52_307<='&')||(LA52_307>='(' && LA52_307<='\uFFFC')||(LA52_307>='\uFFFE' && LA52_307<='\uFFFF')) ) {s = 345;}
+                        if ( (LA56_263=='\'') ) {s = 307;}
 
-                        else if ( (LA52_307=='\uFFFD') ) {s = 262;}
+                        else if ( ((LA56_263>='\u0000' && LA56_263<='&')||(LA56_263>='(' && LA56_263<='\uFFFC')||(LA56_263>='\uFFFE' && LA56_263<='\uFFFF')) ) {s = 308;}
+
+                        else if ( (LA56_263=='\uFFFD') ) {s = 262;}
 
                         else s = 265;
 
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA52_48 = input.LA(1);
+                        int LA56_32 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_48=='\'') ) {s = 141;}
+                        if ( (LA56_32==':') ) {s = 123;}
 
-                        else if ( ((LA52_48>='\u0000' && LA52_48<='&')||(LA52_48>='(' && LA52_48<='\uFFFF')) ) {s = 142;}
+                        else if ( ((LA56_32>='\u0000' && LA56_32<='\"')||(LA56_32>='$' && LA56_32<=',')||(LA56_32>='.' && LA56_32<='9')||(LA56_32>=';' && LA56_32<='\uFFFF')) ) {s = 125;}
 
-                        else s = 54;
+                        else s = 124;
 
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
-                        int LA52_49 = input.LA(1);
+                        int LA56_259 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_49=='\uFFFD') ) {s = 143;}
+                        if ( (LA56_259=='\'') ) {s = 258;}
 
-                        else if ( (LA52_49=='\'') ) {s = 145;}
+                        else if ( (LA56_259=='\uFFFD') ) {s = 261;}
 
-                        else if ( ((LA52_49>='\u0000' && LA52_49<='&')||(LA52_49>='(' && LA52_49<='\uFFFC')||(LA52_49>='\uFFFE' && LA52_49<='\uFFFF')) ) {s = 146;}
+                        else if ( ((LA56_259>='\u0000' && LA56_259<='&')||(LA56_259>='(' && LA56_259<='\uFFFC')||(LA56_259>='\uFFFE' && LA56_259<='\uFFFF')) ) {s = 259;}
 
-                        else s = 144;
+                        else s = 260;
 
                         if ( s>=0 ) return s;
                         break;
                     case 4 : 
-                        int LA52_207 = input.LA(1);
+                        int LA56_123 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_207=='\'') ) {s = 258;}
+                        if ( ((LA56_123>='\u0000' && LA56_123<='\"')||(LA56_123>='$' && LA56_123<=',')||(LA56_123>='.' && LA56_123<='\uFFFF')) ) {s = 125;}
 
-                        else if ( ((LA52_207>='\u0000' && LA52_207<='&')||(LA52_207>='(' && LA52_207<='\uFFFC')||(LA52_207>='\uFFFE' && LA52_207<='\uFFFF')) ) {s = 259;}
-
-                        else if ( (LA52_207=='\uFFFD') ) {s = 260;}
-
-                        else s = 261;
+                        else s = 197;
 
                         if ( s>=0 ) return s;
                         break;
                     case 5 : 
-                        int LA52_210 = input.LA(1);
+                        int LA56_345 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_210=='\'') ) {s = 263;}
+                        if ( (LA56_345=='\'') ) {s = 263;}
 
-                        else if ( ((LA52_210>='\u0000' && LA52_210<='&')||(LA52_210>='(' && LA52_210<='\uFFFC')||(LA52_210>='\uFFFE' && LA52_210<='\uFFFF')) ) {s = 264;}
+                        else if ( (LA56_345=='\uFFFD') ) {s = 262;}
 
-                        else if ( (LA52_210=='\uFFFD') ) {s = 262;}
+                        else if ( ((LA56_345>='\u0000' && LA56_345<='&')||(LA56_345>='(' && LA56_345<='\uFFFC')||(LA56_345>='\uFFFE' && LA56_345<='\uFFFF')) ) {s = 264;}
 
                         else s = 265;
 
                         if ( s>=0 ) return s;
                         break;
                     case 6 : 
-                        int LA52_40 = input.LA(1);
+                        int LA56_308 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA52_40>='\u0000' && LA52_40<=',')||(LA52_40>='.' && LA52_40<='\uFFFF')) ) {s = 135;}
+                        if ( (LA56_308=='\'') ) {s = 263;}
 
-                        else s = 134;
+                        else if ( ((LA56_308>='\u0000' && LA56_308<='&')||(LA56_308>='(' && LA56_308<='\uFFFC')||(LA56_308>='\uFFFE' && LA56_308<='\uFFFF')) ) {s = 264;}
+
+                        else if ( (LA56_308=='\uFFFD') ) {s = 262;}
+
+                        else s = 265;
 
                         if ( s>=0 ) return s;
                         break;
                     case 7 : 
-                        int LA52_143 = input.LA(1);
+                        int LA56_266 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA52_143>='\u0000' && LA52_143<='\t')||(LA52_143>='\u000B' && LA52_143<='\f')||(LA52_143>='\u000E' && LA52_143<='\uFFFF')) ) {s = 208;}
+                        if ( (LA56_266=='\'') ) {s = 145;}
 
-                        else if ( (LA52_143=='\r') ) {s = 209;}
+                        else if ( ((LA56_266>='\u0000' && LA56_266<='&')||(LA56_266>='(' && LA56_266<='\uFFFC')||(LA56_266>='\uFFFE' && LA56_266<='\uFFFF')) ) {s = 146;}
 
-                        else if ( (LA52_143=='\n') ) {s = 210;}
+                        else if ( (LA56_266=='\uFFFD') ) {s = 211;}
 
-                        else s = 211;
+                        else s = 144;
 
                         if ( s>=0 ) return s;
                         break;
                     case 8 : 
-                        int LA52_263 = input.LA(1);
+                        int LA56_264 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_263=='\'') ) {s = 307;}
+                        if ( (LA56_264=='\'') ) {s = 263;}
 
-                        else if ( ((LA52_263>='\u0000' && LA52_263<='&')||(LA52_263>='(' && LA52_263<='\uFFFC')||(LA52_263>='\uFFFE' && LA52_263<='\uFFFF')) ) {s = 308;}
+                        else if ( (LA56_264=='\uFFFD') ) {s = 262;}
 
-                        else if ( (LA52_263=='\uFFFD') ) {s = 262;}
+                        else if ( ((LA56_264>='\u0000' && LA56_264<='&')||(LA56_264>='(' && LA56_264<='\uFFFC')||(LA56_264>='\uFFFE' && LA56_264<='\uFFFF')) ) {s = 264;}
 
                         else s = 265;
 
                         if ( s>=0 ) return s;
                         break;
                     case 9 : 
-                        int LA52_305 = input.LA(1);
+                        int LA56_146 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA52_305>='\u0000' && LA52_305<='&')||(LA52_305>='(' && LA52_305<='\uFFFC')||(LA52_305>='\uFFFE' && LA52_305<='\uFFFF')) ) {s = 344;}
+                        if ( (LA56_146=='\'') ) {s = 145;}
 
-                        else if ( (LA52_305=='\uFFFD') ) {s = 260;}
+                        else if ( ((LA56_146>='\u0000' && LA56_146<='&')||(LA56_146>='(' && LA56_146<='\uFFFC')||(LA56_146>='\uFFFE' && LA56_146<='\uFFFF')) ) {s = 146;}
 
-                        else s = 261;
+                        else if ( (LA56_146=='\uFFFD') ) {s = 211;}
+
+                        else s = 144;
 
                         if ( s>=0 ) return s;
                         break;
                     case 10 : 
-                        int LA52_123 = input.LA(1);
+                        int LA56_306 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA52_123>='\u0000' && LA52_123<='\"')||(LA52_123>='$' && LA52_123<=',')||(LA52_123>='.' && LA52_123<='\uFFFF')) ) {s = 124;}
+                        if ( (LA56_306=='\'') ) {s = 258;}
 
-                        else s = 197;
+                        else if ( (LA56_306=='\uFFFD') ) {s = 261;}
+
+                        else if ( ((LA56_306>='\u0000' && LA56_306<='&')||(LA56_306>='(' && LA56_306<='\uFFFC')||(LA56_306>='\uFFFE' && LA56_306<='\uFFFF')) ) {s = 259;}
+
+                        else s = 260;
 
                         if ( s>=0 ) return s;
                         break;
                     case 11 : 
-                        int LA52_259 = input.LA(1);
+                        int LA56_344 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_259=='\'') ) {s = 258;}
+                        if ( (LA56_344=='\'') ) {s = 258;}
 
-                        else if ( ((LA52_259>='\u0000' && LA52_259<='&')||(LA52_259>='(' && LA52_259<='\uFFFC')||(LA52_259>='\uFFFE' && LA52_259<='\uFFFF')) ) {s = 259;}
+                        else if ( (LA56_344=='\uFFFD') ) {s = 261;}
 
-                        else if ( (LA52_259=='\uFFFD') ) {s = 260;}
+                        else if ( ((LA56_344>='\u0000' && LA56_344<='&')||(LA56_344>='(' && LA56_344<='\uFFFC')||(LA56_344>='\uFFFE' && LA56_344<='\uFFFF')) ) {s = 259;}
 
-                        else s = 261;
+                        else s = 260;
 
                         if ( s>=0 ) return s;
                         break;
                     case 12 : 
-                        int LA52_344 = input.LA(1);
+                        int LA56_213 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_344=='\'') ) {s = 258;}
+                        if ( (LA56_213=='\'') ) {s = 145;}
 
-                        else if ( (LA52_344=='\uFFFD') ) {s = 260;}
+                        else if ( (LA56_213=='\uFFFD') ) {s = 211;}
 
-                        else if ( ((LA52_344>='\u0000' && LA52_344<='&')||(LA52_344>='(' && LA52_344<='\uFFFC')||(LA52_344>='\uFFFE' && LA52_344<='\uFFFF')) ) {s = 259;}
+                        else if ( ((LA56_213>='\u0000' && LA56_213<='&')||(LA56_213>='(' && LA56_213<='\uFFFC')||(LA56_213>='\uFFFE' && LA56_213<='\uFFFF')) ) {s = 146;}
 
-                        else s = 261;
+                        else s = 144;
 
                         if ( s>=0 ) return s;
                         break;
                     case 13 : 
-                        int LA52_306 = input.LA(1);
+                        int LA56_307 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_306=='\'') ) {s = 258;}
+                        if ( ((LA56_307>='\u0000' && LA56_307<='&')||(LA56_307>='(' && LA56_307<='\uFFFC')||(LA56_307>='\uFFFE' && LA56_307<='\uFFFF')) ) {s = 345;}
 
-                        else if ( (LA52_306=='\uFFFD') ) {s = 260;}
+                        else if ( (LA56_307=='\uFFFD') ) {s = 262;}
 
-                        else if ( ((LA52_306>='\u0000' && LA52_306<='&')||(LA52_306>='(' && LA52_306<='\uFFFC')||(LA52_306>='\uFFFE' && LA52_306<='\uFFFF')) ) {s = 259;}
-
-                        else s = 261;
+                        else s = 265;
 
                         if ( s>=0 ) return s;
                         break;
                     case 14 : 
-                        int LA52_32 = input.LA(1);
+                        int LA56_0 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_32==':') ) {s = 123;}
+                        if ( (LA56_0=='=') ) {s = 1;}
 
-                        else if ( ((LA52_32>='\u0000' && LA52_32<='\"')||(LA52_32>='$' && LA52_32<=',')||(LA52_32>='.' && LA52_32<='9')||(LA52_32>=';' && LA52_32<='\uFFFF')) ) {s = 124;}
+                        else if ( (LA56_0=='|') ) {s = 2;}
 
-                        else s = 125;
+                        else if ( (LA56_0=='&') ) {s = 3;}
+
+                        else if ( (LA56_0==';') ) {s = 4;}
+
+                        else if ( (LA56_0=='p') ) {s = 5;}
+
+                        else if ( (LA56_0=='a') ) {s = 6;}
+
+                        else if ( (LA56_0=='s') ) {s = 7;}
+
+                        else if ( (LA56_0=='d') ) {s = 8;}
+
+                        else if ( (LA56_0=='f') ) {s = 9;}
+
+                        else if ( (LA56_0=='v') ) {s = 10;}
+
+                        else if ( (LA56_0=='o') ) {s = 11;}
+
+                        else if ( (LA56_0=='c') ) {s = 12;}
+
+                        else if ( (LA56_0=='e') ) {s = 13;}
+
+                        else if ( (LA56_0=='i') ) {s = 14;}
+
+                        else if ( (LA56_0=='t') ) {s = 15;}
+
+                        else if ( (LA56_0=='.') ) {s = 16;}
+
+                        else if ( (LA56_0=='+') ) {s = 17;}
+
+                        else if ( (LA56_0=='-') ) {s = 18;}
+
+                        else if ( (LA56_0=='!') ) {s = 19;}
+
+                        else if ( (LA56_0=='>') ) {s = 20;}
+
+                        else if ( (LA56_0=='<') ) {s = 21;}
+
+                        else if ( (LA56_0=='?') ) {s = 22;}
+
+                        else if ( (LA56_0=='*') ) {s = 23;}
+
+                        else if ( (LA56_0=='/') ) {s = 24;}
+
+                        else if ( (LA56_0=='%') ) {s = 25;}
+
+                        else if ( (LA56_0=='{') ) {s = 26;}
+
+                        else if ( (LA56_0=='}') ) {s = 27;}
+
+                        else if ( (LA56_0==',') ) {s = 28;}
+
+                        else if ( (LA56_0==')') ) {s = 29;}
+
+                        else if ( (LA56_0=='(') ) {s = 30;}
+
+                        else if ( (LA56_0=='n') ) {s = 31;}
+
+                        else if ( (LA56_0==':') ) {s = 32;}
+
+                        else if ( (LA56_0=='F') ) {s = 33;}
+
+                        else if ( (LA56_0=='E') ) {s = 34;}
+
+                        else if ( (LA56_0=='B') ) {s = 35;}
+
+                        else if ( (LA56_0=='S') ) {s = 36;}
+
+                        else if ( (LA56_0=='A') ) {s = 37;}
+
+                        else if ( (LA56_0=='I') ) {s = 38;}
+
+                        else if ( (LA56_0=='@') ) {s = 39;}
+
+                        else if ( (LA56_0=='#') ) {s = 40;}
+
+                        else if ( (LA56_0=='[') ) {s = 41;}
+
+                        else if ( (LA56_0==']') ) {s = 42;}
+
+                        else if ( (LA56_0=='w') ) {s = 43;}
+
+                        else if ( (LA56_0=='r') ) {s = 44;}
+
+                        else if ( (LA56_0=='\\') ) {s = 45;}
+
+                        else if ( (LA56_0=='^') ) {s = 46;}
+
+                        else if ( (LA56_0=='$'||(LA56_0>='C' && LA56_0<='D')||(LA56_0>='G' && LA56_0<='H')||(LA56_0>='J' && LA56_0<='R')||(LA56_0>='T' && LA56_0<='Z')||LA56_0=='_'||LA56_0=='b'||(LA56_0>='g' && LA56_0<='h')||(LA56_0>='j' && LA56_0<='m')||LA56_0=='q'||LA56_0=='u'||(LA56_0>='x' && LA56_0<='z')) ) {s = 47;}
+
+                        else if ( (LA56_0=='\'') ) {s = 48;}
+
+                        else if ( (LA56_0=='\uFFFD') ) {s = 49;}
+
+                        else if ( (LA56_0=='0') ) {s = 50;}
+
+                        else if ( ((LA56_0>='1' && LA56_0<='9')) ) {s = 51;}
+
+                        else if ( (LA56_0=='\"') ) {s = 52;}
+
+                        else if ( ((LA56_0>='\t' && LA56_0<='\n')||LA56_0=='\r'||LA56_0==' ') ) {s = 53;}
+
+                        else if ( ((LA56_0>='\u0000' && LA56_0<='\b')||(LA56_0>='\u000B' && LA56_0<='\f')||(LA56_0>='\u000E' && LA56_0<='\u001F')||LA56_0=='`'||(LA56_0>='~' && LA56_0<='\uFFFC')||(LA56_0>='\uFFFE' && LA56_0<='\uFFFF')) ) {s = 54;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 15 : 
-                        int LA52_258 = input.LA(1);
+                        int LA56_212 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_258=='\'') ) {s = 305;}
+                        if ( ((LA56_212>='\u0000' && LA56_212<='&')||(LA56_212>='(' && LA56_212<='\uFFFC')||(LA56_212>='\uFFFE' && LA56_212<='\uFFFF')) ) {s = 266;}
 
-                        else if ( ((LA52_258>='\u0000' && LA52_258<='&')||(LA52_258>='(' && LA52_258<='\uFFFC')||(LA52_258>='\uFFFE' && LA52_258<='\uFFFF')) ) {s = 306;}
+                        else if ( (LA56_212=='\uFFFD') ) {s = 211;}
 
-                        else if ( (LA52_258=='\uFFFD') ) {s = 260;}
-
-                        else s = 261;
+                        else s = 144;
 
                         if ( s>=0 ) return s;
                         break;
                     case 16 : 
-                        int LA52_146 = input.LA(1);
+                        int LA56_52 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_146=='\'') ) {s = 145;}
+                        if ( ((LA56_52>='\u0000' && LA56_52<='\uFFFF')) ) {s = 142;}
 
-                        else if ( (LA52_146=='\uFFFD') ) {s = 211;}
-
-                        else if ( ((LA52_146>='\u0000' && LA52_146<='&')||(LA52_146>='(' && LA52_146<='\uFFFC')||(LA52_146>='\uFFFE' && LA52_146<='\uFFFF')) ) {s = 146;}
-
-                        else s = 144;
+                        else s = 54;
 
                         if ( s>=0 ) return s;
                         break;
                     case 17 : 
-                        int LA52_264 = input.LA(1);
+                        int LA56_48 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_264=='\'') ) {s = 263;}
+                        if ( (LA56_48=='\'') ) {s = 141;}
 
-                        else if ( ((LA52_264>='\u0000' && LA52_264<='&')||(LA52_264>='(' && LA52_264<='\uFFFC')||(LA52_264>='\uFFFE' && LA52_264<='\uFFFF')) ) {s = 264;}
+                        else if ( ((LA56_48>='\u0000' && LA56_48<='&')||(LA56_48>='(' && LA56_48<='\uFFFF')) ) {s = 142;}
 
-                        else if ( (LA52_264=='\uFFFD') ) {s = 262;}
-
-                        else s = 265;
+                        else s = 54;
 
                         if ( s>=0 ) return s;
                         break;
                     case 18 : 
-                        int LA52_213 = input.LA(1);
+                        int LA56_143 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_213=='\'') ) {s = 145;}
+                        if ( ((LA56_143>='\u0000' && LA56_143<='\t')||(LA56_143>='\u000B' && LA56_143<='\f')||(LA56_143>='\u000E' && LA56_143<='\uFFFF')) ) {s = 208;}
 
-                        else if ( (LA52_213=='\uFFFD') ) {s = 211;}
+                        else if ( (LA56_143=='\r') ) {s = 209;}
 
-                        else if ( ((LA52_213>='\u0000' && LA52_213<='&')||(LA52_213>='(' && LA52_213<='\uFFFC')||(LA52_213>='\uFFFE' && LA52_213<='\uFFFF')) ) {s = 146;}
+                        else if ( (LA56_143=='\n') ) {s = 210;}
 
-                        else s = 144;
+                        else s = 211;
 
                         if ( s>=0 ) return s;
                         break;
                     case 19 : 
-                        int LA52_308 = input.LA(1);
+                        int LA56_45 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_308=='\'') ) {s = 263;}
+                        if ( ((LA56_45>='\u0000' && LA56_45<='\uFFFF')) ) {s = 140;}
 
-                        else if ( (LA52_308=='\uFFFD') ) {s = 262;}
-
-                        else if ( ((LA52_308>='\u0000' && LA52_308<='&')||(LA52_308>='(' && LA52_308<='\uFFFC')||(LA52_308>='\uFFFE' && LA52_308<='\uFFFF')) ) {s = 264;}
-
-                        else s = 265;
+                        else s = 54;
 
                         if ( s>=0 ) return s;
                         break;
                     case 20 : 
-                        int LA52_266 = input.LA(1);
+                        int LA56_207 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_266=='\'') ) {s = 145;}
+                        if ( (LA56_207=='\'') ) {s = 258;}
 
-                        else if ( ((LA52_266>='\u0000' && LA52_266<='&')||(LA52_266>='(' && LA52_266<='\uFFFC')||(LA52_266>='\uFFFE' && LA52_266<='\uFFFF')) ) {s = 146;}
+                        else if ( ((LA56_207>='\u0000' && LA56_207<='&')||(LA56_207>='(' && LA56_207<='\uFFFC')||(LA56_207>='\uFFFE' && LA56_207<='\uFFFF')) ) {s = 259;}
 
-                        else if ( (LA52_266=='\uFFFD') ) {s = 211;}
+                        else if ( (LA56_207=='\uFFFD') ) {s = 261;}
 
-                        else s = 144;
+                        else s = 260;
 
                         if ( s>=0 ) return s;
                         break;
                     case 21 : 
-                        int LA52_345 = input.LA(1);
+                        int LA56_208 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_345=='\'') ) {s = 263;}
+                        if ( (LA56_208=='\r') ) {s = 209;}
 
-                        else if ( ((LA52_345>='\u0000' && LA52_345<='&')||(LA52_345>='(' && LA52_345<='\uFFFC')||(LA52_345>='\uFFFE' && LA52_345<='\uFFFF')) ) {s = 264;}
+                        else if ( (LA56_208=='\n') ) {s = 210;}
 
-                        else if ( (LA52_345=='\uFFFD') ) {s = 262;}
-
-                        else s = 265;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 22 : 
-                        int LA52_208 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA52_208=='\r') ) {s = 209;}
-
-                        else if ( (LA52_208=='\n') ) {s = 210;}
-
-                        else if ( ((LA52_208>='\u0000' && LA52_208<='\t')||(LA52_208>='\u000B' && LA52_208<='\f')||(LA52_208>='\u000E' && LA52_208<='\uFFFF')) ) {s = 208;}
+                        else if ( ((LA56_208>='\u0000' && LA56_208<='\t')||(LA56_208>='\u000B' && LA56_208<='\f')||(LA56_208>='\u000E' && LA56_208<='\uFFFF')) ) {s = 208;}
 
                         else s = 262;
 
                         if ( s>=0 ) return s;
                         break;
-                    case 23 : 
-                        int LA52_145 = input.LA(1);
+                    case 22 : 
+                        int LA56_305 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_145=='\'') ) {s = 212;}
+                        if ( ((LA56_305>='\u0000' && LA56_305<='&')||(LA56_305>='(' && LA56_305<='\uFFFC')||(LA56_305>='\uFFFE' && LA56_305<='\uFFFF')) ) {s = 344;}
 
-                        else if ( ((LA52_145>='\u0000' && LA52_145<='&')||(LA52_145>='(' && LA52_145<='\uFFFC')||(LA52_145>='\uFFFE' && LA52_145<='\uFFFF')) ) {s = 213;}
+                        else if ( (LA56_305=='\uFFFD') ) {s = 261;}
 
-                        else if ( (LA52_145=='\uFFFD') ) {s = 211;}
+                        else s = 260;
 
-                        else s = 144;
+                        if ( s>=0 ) return s;
+                        break;
+                    case 23 : 
+                        int LA56_40 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA56_40>='\u0000' && LA56_40<=',')||(LA56_40>='.' && LA56_40<='\uFFFF')) ) {s = 135;}
+
+                        else s = 134;
 
                         if ( s>=0 ) return s;
                         break;
                     case 24 : 
-                        int LA52_212 = input.LA(1);
+                        int LA56_49 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA52_212>='\u0000' && LA52_212<='&')||(LA52_212>='(' && LA52_212<='\uFFFC')||(LA52_212>='\uFFFE' && LA52_212<='\uFFFF')) ) {s = 266;}
+                        if ( (LA56_49=='\uFFFD') ) {s = 143;}
 
-                        else if ( (LA52_212=='\uFFFD') ) {s = 211;}
+                        else if ( (LA56_49=='\'') ) {s = 145;}
+
+                        else if ( ((LA56_49>='\u0000' && LA56_49<='&')||(LA56_49>='(' && LA56_49<='\uFFFC')||(LA56_49>='\uFFFE' && LA56_49<='\uFFFF')) ) {s = 146;}
 
                         else s = 144;
 
                         if ( s>=0 ) return s;
                         break;
                     case 25 : 
-                        int LA52_45 = input.LA(1);
+                        int LA56_258 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA52_45>='\u0000' && LA52_45<='\uFFFF')) ) {s = 140;}
+                        if ( (LA56_258=='\'') ) {s = 305;}
 
-                        else s = 54;
+                        else if ( ((LA56_258>='\u0000' && LA56_258<='&')||(LA56_258>='(' && LA56_258<='\uFFFC')||(LA56_258>='\uFFFE' && LA56_258<='\uFFFF')) ) {s = 306;}
+
+                        else if ( (LA56_258=='\uFFFD') ) {s = 261;}
+
+                        else s = 260;
 
                         if ( s>=0 ) return s;
                         break;
                     case 26 : 
-                        int LA52_0 = input.LA(1);
+                        int LA56_210 = input.LA(1);
 
                         s = -1;
-                        if ( (LA52_0=='=') ) {s = 1;}
+                        if ( (LA56_210=='\'') ) {s = 263;}
 
-                        else if ( (LA52_0=='|') ) {s = 2;}
+                        else if ( ((LA56_210>='\u0000' && LA56_210<='&')||(LA56_210>='(' && LA56_210<='\uFFFC')||(LA56_210>='\uFFFE' && LA56_210<='\uFFFF')) ) {s = 264;}
 
-                        else if ( (LA52_0=='&') ) {s = 3;}
+                        else if ( (LA56_210=='\uFFFD') ) {s = 262;}
 
-                        else if ( (LA52_0==';') ) {s = 4;}
-
-                        else if ( (LA52_0=='p') ) {s = 5;}
-
-                        else if ( (LA52_0=='a') ) {s = 6;}
-
-                        else if ( (LA52_0=='s') ) {s = 7;}
-
-                        else if ( (LA52_0=='d') ) {s = 8;}
-
-                        else if ( (LA52_0=='f') ) {s = 9;}
-
-                        else if ( (LA52_0=='v') ) {s = 10;}
-
-                        else if ( (LA52_0=='o') ) {s = 11;}
-
-                        else if ( (LA52_0=='c') ) {s = 12;}
-
-                        else if ( (LA52_0=='e') ) {s = 13;}
-
-                        else if ( (LA52_0=='i') ) {s = 14;}
-
-                        else if ( (LA52_0=='t') ) {s = 15;}
-
-                        else if ( (LA52_0=='.') ) {s = 16;}
-
-                        else if ( (LA52_0=='+') ) {s = 17;}
-
-                        else if ( (LA52_0=='-') ) {s = 18;}
-
-                        else if ( (LA52_0=='!') ) {s = 19;}
-
-                        else if ( (LA52_0=='>') ) {s = 20;}
-
-                        else if ( (LA52_0=='<') ) {s = 21;}
-
-                        else if ( (LA52_0=='?') ) {s = 22;}
-
-                        else if ( (LA52_0=='*') ) {s = 23;}
-
-                        else if ( (LA52_0=='/') ) {s = 24;}
-
-                        else if ( (LA52_0=='%') ) {s = 25;}
-
-                        else if ( (LA52_0=='{') ) {s = 26;}
-
-                        else if ( (LA52_0=='}') ) {s = 27;}
-
-                        else if ( (LA52_0==',') ) {s = 28;}
-
-                        else if ( (LA52_0==')') ) {s = 29;}
-
-                        else if ( (LA52_0=='(') ) {s = 30;}
-
-                        else if ( (LA52_0=='n') ) {s = 31;}
-
-                        else if ( (LA52_0==':') ) {s = 32;}
-
-                        else if ( (LA52_0=='F') ) {s = 33;}
-
-                        else if ( (LA52_0=='E') ) {s = 34;}
-
-                        else if ( (LA52_0=='B') ) {s = 35;}
-
-                        else if ( (LA52_0=='S') ) {s = 36;}
-
-                        else if ( (LA52_0=='A') ) {s = 37;}
-
-                        else if ( (LA52_0=='I') ) {s = 38;}
-
-                        else if ( (LA52_0=='@') ) {s = 39;}
-
-                        else if ( (LA52_0=='#') ) {s = 40;}
-
-                        else if ( (LA52_0=='[') ) {s = 41;}
-
-                        else if ( (LA52_0==']') ) {s = 42;}
-
-                        else if ( (LA52_0=='w') ) {s = 43;}
-
-                        else if ( (LA52_0=='r') ) {s = 44;}
-
-                        else if ( (LA52_0=='\\') ) {s = 45;}
-
-                        else if ( (LA52_0=='^') ) {s = 46;}
-
-                        else if ( (LA52_0=='$'||(LA52_0>='C' && LA52_0<='D')||(LA52_0>='G' && LA52_0<='H')||(LA52_0>='J' && LA52_0<='R')||(LA52_0>='T' && LA52_0<='Z')||LA52_0=='_'||LA52_0=='b'||(LA52_0>='g' && LA52_0<='h')||(LA52_0>='j' && LA52_0<='m')||LA52_0=='q'||LA52_0=='u'||(LA52_0>='x' && LA52_0<='z')) ) {s = 47;}
-
-                        else if ( (LA52_0=='\'') ) {s = 48;}
-
-                        else if ( (LA52_0=='\uFFFD') ) {s = 49;}
-
-                        else if ( (LA52_0=='0') ) {s = 50;}
-
-                        else if ( ((LA52_0>='1' && LA52_0<='9')) ) {s = 51;}
-
-                        else if ( (LA52_0=='\"') ) {s = 52;}
-
-                        else if ( ((LA52_0>='\t' && LA52_0<='\n')||LA52_0=='\r'||LA52_0==' ') ) {s = 53;}
-
-                        else if ( ((LA52_0>='\u0000' && LA52_0<='\b')||(LA52_0>='\u000B' && LA52_0<='\f')||(LA52_0>='\u000E' && LA52_0<='\u001F')||LA52_0=='`'||(LA52_0>='~' && LA52_0<='\uFFFC')||(LA52_0>='\uFFFE' && LA52_0<='\uFFFF')) ) {s = 54;}
+                        else s = 265;
 
                         if ( s>=0 ) return s;
                         break;
             }
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 52, _s, input);
+                new NoViableAltException(getDescription(), 56, _s, input);
             error(nvae);
             throw nvae;
         }

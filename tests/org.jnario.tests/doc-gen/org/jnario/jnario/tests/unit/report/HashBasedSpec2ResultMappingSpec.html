@@ -166,18 +166,7 @@ describe &quot;Root&quot;{
 CLASSNAME = &quot;RootChildSpec&quot;
 passes(&quot;Example 1&quot;)
 m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Passed)</pre>
-</li><li><p id="supports_nested_specs_referencing_methods" class="example notrun"><strong>supports nested specs referencing methods</strong></p>
-<pre class="prettyprint lang-spec linenums">
-m.parseSpec('''
-describe String{
-  describe charAt{
-    fact &quot;Example 1&quot;{1 + 1 =&gt; 2}
-  }  
-}
-''')  
-CLASSNAME = &quot;RootCharAtSpec&quot;
-passes(&quot;Example 1&quot;)
-m.exampleGroup(&quot;String&quot;).result =&gt; typeof(Passed)</pre>
+</li><li><p id="supports_nested_specs_referencing_methods" class="example pending"><strong>supports nested specs referencing methods [PENDING]</strong></p>
 </li></ul>
 <h3 class="exampleGroup notrun"  id="Step">Step</h3>
 <ul><li><p id="matches_if_classname_and_name_are_equal" class="example notrun"><strong>matches if classname and name are equal</strong></p>
@@ -467,7 +456,7 @@ describe HashBasedSpec2ResultMapping {
       m.exampleGroup(&quot;Root&quot;).result =&gt; typeof(Passed)
     }
     
-    fact &quot;supports nested specs referencing methods&quot;{
+    pending fact &quot;supports nested specs referencing methods&quot;{
       m.parseSpec('''
       describe String{
         describe charAt{

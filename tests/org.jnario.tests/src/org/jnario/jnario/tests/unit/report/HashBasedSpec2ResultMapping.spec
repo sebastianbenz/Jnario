@@ -189,7 +189,7 @@ describe HashBasedSpec2ResultMapping {
 			m.exampleGroup("Root").result => typeof(Passed)
 		}
 		
-		fact "supports nested specs referencing methods"{
+		pending fact "supports nested specs referencing methods"{
 			m.parseSpec('''
 			describe String{
 				describe charAt{
