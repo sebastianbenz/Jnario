@@ -21,6 +21,7 @@ import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.mwe.NameBasedFilter;
 import org.eclipse.xtext.mwe.PathTraverser;
+import org.eclipse.xtext.parser.IEncodingProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
@@ -44,7 +45,7 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
   private AbstractDocGenerator docGenerator;
   
   @Inject
-  private org.eclipse.xtext.parser.IEncodingProvider.Runtime encodingProvider;
+  private IEncodingProvider.Runtime encodingProvider;
   
   private ResourceSet resourceSet;
   

@@ -12,7 +12,6 @@ import com.google.inject.Inject;
 import java.util.HashMap;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.jvmmodel.StepExpressionProvider;
 
@@ -25,12 +24,7 @@ public class PendingStepsCalculator {
   @Extension
   private StepExpressionProvider _stepExpressionProvider;
   
-  private HashMap<Step,Boolean> steps = new Function0<HashMap<Step,Boolean>>() {
-    public HashMap<Step,Boolean> apply() {
-      HashMap<Step,Boolean> _newHashMap = CollectionLiterals.<Step, Boolean>newHashMap();
-      return _newHashMap;
-    }
-  }.apply();
+  private HashMap<Step,Boolean> steps = CollectionLiterals.<Step, Boolean>newHashMap();
   
   public void setSteps(final Iterable<Step> steps) {
     boolean hasPendingStep = false;

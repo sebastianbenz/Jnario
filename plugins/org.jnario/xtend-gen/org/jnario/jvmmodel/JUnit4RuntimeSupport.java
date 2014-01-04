@@ -9,6 +9,7 @@ import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.Executable;
@@ -26,7 +27,7 @@ public class JUnit4RuntimeSupport implements TestRuntimeSupport {
   @Extension
   private JvmTypesBuilder _jvmTypesBuilder;
   
-  public void addChildren(final Specification context, final JvmGenericType parent, final Collection<JvmGenericType> children) {
+  public void addChildren(final Specification context, final JvmGenericType parent, final Collection<JvmTypeReference> children) {
     boolean _isEmpty = children.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
@@ -78,7 +79,7 @@ public class JUnit4RuntimeSupport implements TestRuntimeSupport {
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
-  public void updateFeature(final XtendClass feature, final JvmGenericType inferredType, final List<JvmGenericType> scenarios) {
+  public void updateFeature(final XtendClass feature, final JvmGenericType inferredType, final List<JvmTypeReference> scenarios) {
     EList<JvmAnnotationReference> _annotations = inferredType.getAnnotations();
     JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(feature, JUnit4RuntimeSupport.RUN_WITH, FeatureRunner.class);
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);

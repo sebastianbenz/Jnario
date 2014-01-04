@@ -72,8 +72,7 @@ public class SpecBatchCompilerTest {
   @Test
   public void testCompileTestData() {
     this.batchCompiler.compile();
-    String _plus = (SpecBatchCompilerTest.OUTPUT_DIRECTORY + "/test");
-    File _file = new File(_plus);
+    File _file = new File((SpecBatchCompilerTest.OUTPUT_DIRECTORY + "/test"));
     final FilenameFilter _function = new FilenameFilter() {
       public boolean accept(final File dir, final String name) {
         boolean _endsWith = name.endsWith(".java");

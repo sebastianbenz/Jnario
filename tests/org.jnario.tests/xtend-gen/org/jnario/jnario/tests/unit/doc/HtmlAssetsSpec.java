@@ -79,8 +79,7 @@ public class HtmlAssetsSpec {
   
   public String generatedFile(final String name) {
     Map<String,CharSequence> _files = this.fsa.getFiles();
-    String _plus = (DocOutputConfigurationProvider.ASSET_OUTPUT + name);
-    CharSequence _get = _files.get(_plus);
+    CharSequence _get = _files.get((DocOutputConfigurationProvider.ASSET_OUTPUT + name));
     String _string = null;
     if (_get!=null) {
       _string=_get.toString();

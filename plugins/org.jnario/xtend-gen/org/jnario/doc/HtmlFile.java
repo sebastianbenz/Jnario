@@ -184,13 +184,13 @@ public class HtmlFile {
     _builder.append("\t\t\t\t");
     _builder.append("<div class=\"page-header ");
     String _executionStatus = this.getExecutionStatus();
-    _builder.append(_executionStatus, "				");
+    _builder.append(_executionStatus, "\t\t\t\t");
     _builder.append("\">");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t\t");
     _builder.append("<h1>");
     CharSequence _title_1 = this.getTitle();
-    _builder.append(_title_1, "					");
+    _builder.append(_title_1, "\t\t\t\t\t");
     _builder.append("</h1>");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t\t  ");
@@ -232,7 +232,7 @@ public class HtmlFile {
     _builder.append("\t\t\t\t\t\t    \t");
     _builder.append("<h3>");
     CharSequence _fileName = this.getFileName();
-    _builder.append(_fileName, "						    	");
+    _builder.append(_fileName, "\t\t\t\t\t\t    \t");
     _builder.append("</h3>");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t\t\t    \t");

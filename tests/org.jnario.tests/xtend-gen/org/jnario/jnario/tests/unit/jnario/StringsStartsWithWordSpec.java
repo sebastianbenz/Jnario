@@ -49,8 +49,7 @@ public class StringsStartsWithWordSpec extends StringsSpec {
   }
   
   public int _initStringsStartsWithWordSpecExamplesCell2() {
-    int _minus = (-1);
-    return _minus;
+    return (-1);
   }
   
   public String _initStringsStartsWithWordSpecExamplesCell3() {
@@ -110,8 +109,7 @@ public class StringsStartsWithWordSpec extends StringsSpec {
   }
   
   public int _initStringsStartsWithWordSpecExamplesCell17() {
-    int _minus = (-1);
-    return _minus;
+    return (-1);
   }
   
   @Test

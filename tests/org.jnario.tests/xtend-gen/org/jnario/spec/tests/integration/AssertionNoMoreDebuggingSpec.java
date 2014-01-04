@@ -63,9 +63,8 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     final int x = 0;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
       public void apply(final Boolean it) {
-        boolean _equals = (x == 42);
         Assert.assertTrue("\nExpected x == 42 but"
-         + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString() + "\n", _equals);
+         + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString() + "\n", (x == 42));
         
       }
     };
@@ -88,11 +87,9 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     final int x = 42;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
       public void apply(final Boolean it) {
-        boolean _equals = (x == 42);
-        boolean _not = (!_equals);
         Assert.assertTrue("\nExpected !(x == 42) but"
-         + "\n     x == 42 is " + new org.hamcrest.StringDescription().appendValue(_equals).toString()
-         + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString() + "\n", _not);
+         + "\n     x == 42 is " + new org.hamcrest.StringDescription().appendValue((x == 42)).toString()
+         + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString() + "\n", (!(x == 42)));
         
       }
     };
@@ -174,14 +171,11 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     final int y = 1;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
       public void apply(final Boolean it) {
-        boolean _equals = (x == 1);
-        boolean _equals_1 = (y == 0);
-        boolean _and = (_equals && _equals_1);
         Assert.assertTrue("\nExpected x == 1 && y == 0 but"
-         + "\n     x == 1 is " + new org.hamcrest.StringDescription().appendValue(_equals).toString()
+         + "\n     x == 1 is " + new org.hamcrest.StringDescription().appendValue((x == 1)).toString()
          + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString()
-         + "\n     y == 0 is " + new org.hamcrest.StringDescription().appendValue(_equals_1).toString()
-         + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", _and);
+         + "\n     y == 0 is " + new org.hamcrest.StringDescription().appendValue((y == 0)).toString()
+         + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", ((x == 1) && (y == 0)));
         
       }
     };
@@ -213,13 +207,10 @@ public class AssertionNoMoreDebuggingSpec extends AssertionSpec {
     final int x = 0;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
       public void apply(final Boolean it) {
-        boolean _greaterThan = (x > 0);
-        boolean _lessThan = (x < 10);
-        boolean _and = (_greaterThan && _lessThan);
         Assert.assertTrue("\nExpected x > 0 && x < 10 but"
-         + "\n     x > 0 is " + new org.hamcrest.StringDescription().appendValue(_greaterThan).toString()
+         + "\n     x > 0 is " + new org.hamcrest.StringDescription().appendValue((x > 0)).toString()
          + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString()
-         + "\n     x < 10 is " + new org.hamcrest.StringDescription().appendValue(_lessThan).toString() + "\n", _and);
+         + "\n     x < 10 is " + new org.hamcrest.StringDescription().appendValue((x < 10)).toString() + "\n", ((x > 0) && (x < 10)));
         
       }
     };

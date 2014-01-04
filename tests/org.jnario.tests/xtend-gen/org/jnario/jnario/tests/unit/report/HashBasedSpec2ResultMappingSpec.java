@@ -57,12 +57,7 @@ public class HashBasedSpec2ResultMappingSpec {
   
   final static double anyExecutionTime = 0.0;
   
-  final Example anyExecutable = new Function0<Example>() {
-    public Example apply() {
-      Example _example = Specs.example("");
-      return _example;
-    }
-  }.apply();
+  final Example anyExecutable = Specs.example("");
   
   final SpecFailure anyFailure = new Function0<SpecFailure>() {
     public SpecFailure apply() {

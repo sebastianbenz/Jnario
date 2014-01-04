@@ -7,7 +7,6 @@
  */
 package org.jnario.feature.tests.unit.conversion;
 
-import org.hamcrest.Matcher;
 import org.jnario.feature.tests.unit.conversion.FeatureValueConverterSpec;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
@@ -38,11 +37,7 @@ public class FeatureValueConverterToValueSpec extends FeatureValueConverterSpec 
   @Order(2)
   public void _subjectToValueNullNullShouldBeNull() throws Exception {
     String _value = this.subject.toValue(null, null);
-    Matcher<String> _nullValue = Should.<String>nullValue();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, _nullValue);
-    Assert.assertTrue("\nExpected subject.toValue(null, null) should be null but"
-     + "\n     subject.toValue(null, null) is " + new org.hamcrest.StringDescription().appendValue(_value).toString()
-     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+    Assert.assertNull("\nExpected subject.toValue(null, null) should be null\n     but is " + new org.hamcrest.StringDescription().appendValue(_value).toString() + "\n", _value);
     
   }
   

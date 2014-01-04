@@ -7,7 +7,6 @@
  *******************************************************************************/
 package org.jnario.jvmmodel;
 
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XExpression;
@@ -29,8 +28,7 @@ public class DoubleArrowSupport {
 		if (!(expr instanceof XBinaryOperation)) {
 			return false;
 		}
-		JvmIdentifiableElement feature = expr.getFeature();
-		return feature != null && "operator_doubleArrow".equals(feature.getSimpleName());
+		return "=>".equals(((XBinaryOperation)expr).getConcreteSyntaxFeatureName());
 	}
 
 }

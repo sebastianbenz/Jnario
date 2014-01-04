@@ -27,6 +27,7 @@ import org.eclipse.xtend.ide.builder.JavaProjectPreferencesInitializer;
 import org.eclipse.xtend.ide.builder.XtendResourceDescriptionsProvider;
 import org.eclipse.xtend.ide.codebuilder.CodeBuilderFactory;
 import org.eclipse.xtend.ide.contentassist.EscapeSequenceAwarePrefixMatcher;
+import org.eclipse.xtend.ide.contentassist.OperatorAwareComparator;
 import org.eclipse.xtend.ide.contentassist.TemplateProposalProvider;
 import org.eclipse.xtend.ide.contentassist.XtendContentAssistFactory;
 import org.eclipse.xtend.ide.editor.OccurrenceComputer;
@@ -49,6 +50,7 @@ import org.eclipse.xtend.ide.outline.XtendOutlineNodeComparator;
 import org.eclipse.xtend.ide.outline.XtendOutlinePage;
 import org.eclipse.xtend.ide.outline.XtendQuickOutlineFilterAndSorter;
 import org.eclipse.xtend.ide.quickfix.CreateXtendTypeQuickfixes;
+import org.eclipse.xtend.ide.quickfix.TypeLiteralAwareJavaTypeQuickfixes;
 import org.eclipse.xtend.ide.refactoring.XtendDependentElementsCalculator;
 import org.eclipse.xtend.ide.refactoring.XtendJdtRenameParticipantProcessor;
 import org.eclipse.xtend.ide.refactoring.XtendRefactoringPreferences;
@@ -56,6 +58,7 @@ import org.eclipse.xtend.ide.refactoring.XtendRenameContextFactory;
 import org.eclipse.xtend.ide.refactoring.XtendRenameElementProcessor;
 import org.eclipse.xtend.ide.refactoring.XtendRenameStrategy;
 import org.eclipse.xtend.ide.refactoring.XtendRenameStrategyProvider;
+import org.eclipse.xtend.lib.macro.file.MutableFileSystemSupport;
 import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2;
 import org.eclipse.xtext.builder.IXtextBuilderParticipant;
 import org.eclipse.xtext.builder.trace.TraceForStorageProvider;
@@ -75,10 +78,13 @@ import org.eclipse.xtext.ui.editor.XtextSourceViewerConfiguration;
 import org.eclipse.xtext.ui.editor.actions.IActionContributor;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategy;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
 import org.eclipse.xtext.ui.editor.contentassist.IContentAssistantFactory;
+import org.eclipse.xtext.ui.editor.contentassist.IContentProposalPriorities;
 import org.eclipse.xtext.ui.editor.contentassist.IContextInformationProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher;
+import org.eclipse.xtext.ui.editor.copyqualifiedname.CopyQualifiedNameService;
 import org.eclipse.xtext.ui.editor.doubleClicking.DoubleClickStrategyProvider;
 import org.eclipse.xtext.ui.editor.embedded.IEditedResourceProvider;
 import org.eclipse.xtext.ui.editor.findrefs.IReferenceFinder;
@@ -105,14 +111,20 @@ import org.eclipse.xtext.ui.refactoring.impl.RenameElementProcessor;
 import org.eclipse.xtext.ui.refactoring.ui.IRenameContextFactory;
 import org.eclipse.xtext.ui.resource.IResourceUIServiceProvider;
 import org.eclipse.xtext.validation.IssueSeveritiesProvider;
+import org.eclipse.xtext.xbase.file.AbstractFileSystemSupport;
+import org.eclipse.xtext.xbase.file.WorkspaceConfig;
 import org.eclipse.xtext.xbase.formatting.IFormattingPreferenceValuesProvider;
 import org.eclipse.xtext.xbase.ui.contentassist.ImportingTypesProposalProvider;
 import org.eclipse.xtext.xbase.ui.contentassist.ParameterContextInformationProvider;
+import org.eclipse.xtext.xbase.ui.contentassist.XbaseContentProposalPriorities;
 import org.eclipse.xtext.xbase.ui.editor.XbaseResourceForEditorInputFactory;
+import org.eclipse.xtext.xbase.ui.file.EclipseFileSystemSupportImpl;
+import org.eclipse.xtext.xbase.ui.file.EclipseWorkspaceConfigProvider;
 import org.eclipse.xtext.xbase.ui.hover.XbaseDeclarativeHoverSignatureProvider;
 import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.xbase.ui.jvmmodel.refactoring.jdt.JdtRenameRefactoringParticipantProcessor;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
+import org.eclipse.xtext.xbase.ui.quickfix.JavaTypeQuickfixes;
 import org.eclipse.xtext.xbase.ui.validation.XbaseIssueSeveritiesProvider;
 import org.jnario.feature.ui.hover.FeatureHoverSignatureProvider;
 import org.jnario.suite.generator.SuiteGenerator;
@@ -126,6 +138,7 @@ import org.jnario.suite.ui.launching.SuiteJavaElementDelegate;
 import org.jnario.suite.ui.quickfix.SuiteQuickfixProvider;
 import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
+import org.jnario.ui.editor.XtendCopyQualifiedNameService;
 import org.jnario.ui.quickfix.CreateJnarioTypeQuickfixes;
 import org.jnario.ui.quickfix.JnarioCodeBuilderFactory;
 import org.jnario.ui.validator.JnarioUIValidator;
@@ -438,6 +451,36 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 	
 	public Class<? extends IReferenceFinder> bindIReferenceFinder() {
 		return org.jnario.ui.findrefs.XtendReferenceFinder.class;
+	}
+	
+	
+	public Class<? extends JavaTypeQuickfixes> bindJavaTypeQuickfixes() {
+		return TypeLiteralAwareJavaTypeQuickfixes.class;
+	}
+	
+	public Class<? extends ICompletionProposalComparator> bindICompletionProposalComparator() {
+		return OperatorAwareComparator.class;
+	}
+	
+	public Class<? extends MutableFileSystemSupport> bindFileSystemSupport() {
+		return AbstractFileSystemSupport.class;
+	}
+	
+	public Class<? extends AbstractFileSystemSupport> bindAbstractFileSystemSupport() {
+		return EclipseFileSystemSupportImpl.class;
+	}
+	
+	public void configureWorkspaceConfigContribution(Binder binder) {
+		binder.bind(WorkspaceConfig.class).toProvider(EclipseWorkspaceConfigProvider.class);
+	}
+	
+	@Override
+	public Class<? extends CopyQualifiedNameService> bindCopyQualifiedNameService() {
+		return XtendCopyQualifiedNameService.class;
+	}
+	
+	public Class<? extends IContentProposalPriorities> bindIContentProposalPriorities() {
+		return XbaseContentProposalPriorities.class;
 	}
 	
 }

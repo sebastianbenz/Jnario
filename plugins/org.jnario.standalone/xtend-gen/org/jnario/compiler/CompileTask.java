@@ -6,7 +6,6 @@ import org.apache.tools.ant.Project;
 import org.apache.tools.ant.Task;
 import org.apache.tools.ant.types.Path;
 import org.apache.tools.ant.types.Reference;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.compiler.CompilerMain;
@@ -37,12 +36,7 @@ public class CompileTask extends Task {
   /**
    * Set the temporary folder to use. Default is a temporary folder obtained via System::getProperty("java.io.tmpdir").
    */
-  private String _tempDirectory = new Function0<String>() {
-    public String apply() {
-      String _property = System.getProperty("java.io.tmpdir");
-      return _property;
-    }
-  }.apply();
+  private String _tempDirectory = System.getProperty("java.io.tmpdir");
   
   /**
    * Set the temporary folder to use. Default is a temporary folder obtained via System::getProperty("java.io.tmpdir").

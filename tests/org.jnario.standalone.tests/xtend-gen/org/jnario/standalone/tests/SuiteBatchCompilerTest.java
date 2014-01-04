@@ -7,6 +7,7 @@
  */
 package org.jnario.standalone.tests;
 
+import com.google.common.base.Charsets;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import java.io.File;
@@ -62,11 +63,9 @@ public class SuiteBatchCompilerTest {
       Files.cleanFolder(_file_1, null, true, false);
       SpecStandaloneSetup.doSetup();
       FeatureStandaloneSetup.doSetup();
-      String _plus = (SuiteBatchCompilerTest.XTEND_SRC_DIRECTORY + "/test/Example.feature");
-      URI _createURI = URI.createURI(_plus);
+      URI _createURI = URI.createURI((SuiteBatchCompilerTest.XTEND_SRC_DIRECTORY + "/test/Example.feature"));
       this.modelStore.load(_createURI);
-      String _plus_1 = (SuiteBatchCompilerTest.XTEND_SRC_DIRECTORY + "/test/Example.spec");
-      URI _createURI_1 = URI.createURI(_plus_1);
+      URI _createURI_1 = URI.createURI((SuiteBatchCompilerTest.XTEND_SRC_DIRECTORY + "/test/Example.spec"));
       this.modelStore.load(_createURI_1);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -91,25 +90,32 @@ public class SuiteBatchCompilerTest {
   
   @Test
   public void testCompileTestData() {
-    final Provider<ResourceSet> _function = new Provider<ResourceSet>() {
-      public ResourceSet get() {
-        XtextResourceSet _resourceSet = SuiteBatchCompilerTest.this.modelStore.getResourceSet();
-        return ((ResourceSet) _resourceSet);
-      }
-    };
-    this.batchCompiler.setResourceSetProvider(_function);
-    this.batchCompiler.compile();
-    String _plus = (SuiteBatchCompilerTest.OUTPUT_DIRECTORY + "/test");
-    File _file = new File(_plus);
-    final File outputDir = _file;
-    final FilenameFilter _function_1 = new FilenameFilter() {
-      public boolean accept(final File dir, final String name) {
-        boolean _endsWith = name.endsWith(".java");
-        return _endsWith;
-      }
-    };
-    String[] _list = outputDir.list(_function_1);
-    int _size = ((List<String>)Conversions.doWrapArray(_list)).size();
-    Assert.assertEquals(1, _size);
+    try {
+      final Provider<ResourceSet> _function = new Provider<ResourceSet>() {
+        public ResourceSet get() {
+          XtextResourceSet _resourceSet = SuiteBatchCompilerTest.this.modelStore.getResourceSet();
+          return ((ResourceSet) _resourceSet);
+        }
+      };
+      this.batchCompiler.setResourceSetProvider(_function);
+      this.batchCompiler.compile();
+      File _file = new File((SuiteBatchCompilerTest.OUTPUT_DIRECTORY + "/test"));
+      final File outputDir = _file;
+      final FilenameFilter _function_1 = new FilenameFilter() {
+        public boolean accept(final File dir, final String name) {
+          boolean _endsWith = name.endsWith(".java");
+          return _endsWith;
+        }
+      };
+      String[] _list = outputDir.list(_function_1);
+      int _size = ((List<String>)Conversions.doWrapArray(_list)).size();
+      Assert.assertEquals(1, _size);
+      File _file_1 = new File(outputDir, "ExampleSuite.java");
+      final String fileContent = com.google.common.io.Files.toString(_file_1, Charsets.UTF_8);
+      boolean _contains = fileContent.contains("@Contains");
+      Assert.assertTrue(("Expected to be to contain others specs, but was: \n\n" + fileContent), _contains);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 }

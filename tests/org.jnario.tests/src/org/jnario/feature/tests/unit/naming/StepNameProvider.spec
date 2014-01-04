@@ -128,16 +128,16 @@ describe StepNameProvider{
 		subject.^describe(scen)
 	}
 	
-	def step(){
+	def firstStep(){
 		query(modelStore).first(typeof(Step))
 	}
 	
 	def stepName(){
-		return subject.nameOf(step)
+		return subject.nameOf(firstStep)
 	}
 	
 	def String describeStep(){
-		return subject.^describe(step)
+		return subject.^describe(firstStep)
 	}
 	
 	def emptyStep(){

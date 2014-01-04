@@ -7,7 +7,6 @@
  */
 package org.jnario.feature.tests.unit.conversion;
 
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.feature.conversion.FeatureValueConverter;
 import org.jnario.feature.tests.unit.conversion.FeatureValueConverterToStringSpec;
 import org.jnario.feature.tests.unit.conversion.FeatureValueConverterToValueSpec;
@@ -21,10 +20,5 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @SuppressWarnings("all")
 public class FeatureValueConverterSpec {
-  FeatureValueConverter subject = new Function0<FeatureValueConverter>() {
-    public FeatureValueConverter apply() {
-      FeatureValueConverter _create = FeatureValueConverter.create("Prefix:");
-      return _create;
-    }
-  }.apply();
+  FeatureValueConverter subject = FeatureValueConverter.create("Prefix:");
 }

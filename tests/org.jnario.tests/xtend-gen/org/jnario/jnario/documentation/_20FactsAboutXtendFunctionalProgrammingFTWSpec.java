@@ -148,9 +148,8 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
     List<Integer> _list = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(11), Integer.valueOf(17), Integer.valueOf(19));
     final Procedure1<Integer> _function = new Procedure1<Integer>() {
       public void apply(final Integer it) {
-        boolean _greaterThan = ((it).intValue() > 10);
         Assert.assertTrue("\nExpected it > 10 but"
-         + "\n     it is " + new org.hamcrest.StringDescription().appendValue((it).intValue()).toString() + "\n", _greaterThan);
+         + "\n     it is " + new org.hamcrest.StringDescription().appendValue((it).intValue()).toString() + "\n", ((it).intValue() > 10));
         
       }
     };
@@ -219,8 +218,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
     List<Integer> _map = ListExtensions.<String, Integer>map(strings, _function);
     final Function2<Integer,Integer,Integer> _function_1 = new Function2<Integer,Integer,Integer>() {
       public Integer apply(final Integer sum, final Integer size) {
-        int _plus = ((sum).intValue() + (size).intValue());
-        return Integer.valueOf(_plus);
+        return Integer.valueOf(((sum).intValue() + (size).intValue()));
       }
     };
     final Integer charCount = IterableExtensions.<Integer>reduce(_map, _function_1);

@@ -6,7 +6,6 @@ import java.util.NoSuchElementException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeReferences;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.jvmmodel.JUnit3RuntimeSupport;
 import org.jnario.jvmmodel.JUnit4RuntimeSupport;
@@ -37,26 +36,11 @@ public class TestRuntimeProviderSpec {
   @Inject
   Provider<JUnit4RuntimeSupport> junit4Support;
   
-  final JvmTypeReference resultingType = new Function0<JvmTypeReference>() {
-    public JvmTypeReference apply() {
-      JvmTypeReference _mock = Mockito.<JvmTypeReference>mock(JvmTypeReference.class);
-      return _mock;
-    }
-  }.apply();
+  final JvmTypeReference resultingType = Mockito.<JvmTypeReference>mock(JvmTypeReference.class);
   
-  final TypeReferences typeReferences = new Function0<TypeReferences>() {
-    public TypeReferences apply() {
-      TypeReferences _mock = Mockito.<TypeReferences>mock(TypeReferences.class);
-      return _mock;
-    }
-  }.apply();
+  final TypeReferences typeReferences = Mockito.<TypeReferences>mock(TypeReferences.class);
   
-  final EObject anyNotifier = new Function0<EObject>() {
-    public EObject apply() {
-      EObject _mock = Mockito.<EObject>mock(EObject.class);
-      return _mock;
-    }
-  }.apply();
+  final EObject anyNotifier = Mockito.<EObject>mock(EObject.class);
   
   @Before
   public void before() throws Exception {

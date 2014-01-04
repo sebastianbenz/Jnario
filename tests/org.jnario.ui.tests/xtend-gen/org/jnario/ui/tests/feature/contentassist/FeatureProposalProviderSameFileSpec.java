@@ -5,7 +5,7 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.ui.tests.feature.contentassist.FeatureProposalProviderSpec;
-import org.jnario.ui.tests.util.AbstractContentAssistProcessorTest2.ContentAssistProcessorTestBuilder2;
+import org.jnario.ui.tests.util.AbstractContentAssistProcessorTest2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -17,7 +17,7 @@ public class FeatureProposalProviderSameFileSpec extends FeatureProposalProvider
   @Named("proposes implemented steps")
   @Order(1)
   public void _proposesImplementedSteps() throws Exception {
-    ContentAssistProcessorTestBuilder2 _newBuilder = this.newBuilder();
+    AbstractContentAssistProcessorTest2.ContentAssistProcessorTestBuilder2 _newBuilder = this.newBuilder();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: My Feature");
     _builder.newLine();
@@ -32,7 +32,7 @@ public class FeatureProposalProviderSameFileSpec extends FeatureProposalProvider
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
-    final ContentAssistProcessorTestBuilder2 builder = _newBuilder.append(_builder.toString());
+    final AbstractContentAssistProcessorTest2.ContentAssistProcessorTestBuilder2 builder = _newBuilder.append(_builder.toString());
     builder.assertProposal("features.And an implemented step");
     builder.assertProposal("features.But an implemented step");
   }
@@ -41,7 +41,7 @@ public class FeatureProposalProviderSameFileSpec extends FeatureProposalProvider
   @Named("proposes unimplemented steps")
   @Order(2)
   public void _proposesUnimplementedSteps() throws Exception {
-    ContentAssistProcessorTestBuilder2 _newBuilder = this.newBuilder();
+    AbstractContentAssistProcessorTest2.ContentAssistProcessorTestBuilder2 _newBuilder = this.newBuilder();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: My Feature");
     _builder.newLine();
@@ -53,7 +53,7 @@ public class FeatureProposalProviderSameFileSpec extends FeatureProposalProvider
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
-    final ContentAssistProcessorTestBuilder2 builder = _newBuilder.append(_builder.toString());
+    final AbstractContentAssistProcessorTest2.ContentAssistProcessorTestBuilder2 builder = _newBuilder.append(_builder.toString());
     builder.assertProposal("features.And a pending step");
     builder.assertProposal("features.But a pending step");
   }
@@ -62,7 +62,7 @@ public class FeatureProposalProviderSameFileSpec extends FeatureProposalProvider
   @Named("does not provide given for then")
   @Order(3)
   public void _doesNotProvideGivenForThen() throws Exception {
-    ContentAssistProcessorTestBuilder2 _newBuilder = this.newBuilder();
+    AbstractContentAssistProcessorTest2.ContentAssistProcessorTestBuilder2 _newBuilder = this.newBuilder();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Feature: My Feature");
     _builder.newLine();
@@ -77,7 +77,7 @@ public class FeatureProposalProviderSameFileSpec extends FeatureProposalProvider
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
-    final ContentAssistProcessorTestBuilder2 builder = _newBuilder.append(_builder.toString());
+    final AbstractContentAssistProcessorTest2.ContentAssistProcessorTestBuilder2 builder = _newBuilder.append(_builder.toString());
     builder.assertProposalsContainNot("And a step");
     builder.assertProposal("features.And another step");
     builder.assertProposal("features.But another step");

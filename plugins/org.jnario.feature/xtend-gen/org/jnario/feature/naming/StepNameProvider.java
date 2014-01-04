@@ -100,13 +100,10 @@ public class StepNameProvider {
       return "";
     }
     int index = name.indexOf(" ");
-    int _minus = (-1);
-    boolean _equals = (index == _minus);
-    if (_equals) {
+    if ((index == (-1))) {
       return "";
     }
-    int _plus = (index + 1);
-    return name.substring(_plus);
+    return name.substring((index + 1));
   }
   
   public String removeArguments(final String text) {

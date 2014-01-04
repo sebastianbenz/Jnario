@@ -62,18 +62,18 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
   public void markAsPending(final Executable element, final JvmOperation operation) {
   }
   
-  public void addChildren(final Specification context, final JvmGenericType parent, final Collection<JvmGenericType> children) {
+  public void addChildren(final Specification context, final JvmGenericType parent, final Collection<JvmTypeReference> children) {
     EClass _eClass = context.eClass();
     String _name = _eClass.getName();
     boolean _equals = Objects.equal(_name, "Suite");
     if (_equals) {
-      final Function1<JvmGenericType,String> _function = new Function1<JvmGenericType,String>() {
-        public String apply(final JvmGenericType it) {
+      final Function1<JvmTypeReference,String> _function = new Function1<JvmTypeReference,String>() {
+        public String apply(final JvmTypeReference it) {
           String _simpleName = it.getSimpleName();
           return _simpleName;
         }
       };
-      Iterable<String> _map = IterableExtensions.<JvmGenericType, String>map(children, _function);
+      Iterable<String> _map = IterableExtensions.<JvmTypeReference, String>map(children, _function);
       List<Executable> _emptyList = CollectionLiterals.<Executable>emptyList();
       this.addSuite(parent, context, _map, _emptyList);
     }
@@ -302,8 +302,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
     Iterable<Executable> _filter = Iterables.<Executable>filter(_members, Executable.class);
     final Function1<Executable,Boolean> _function = new Function1<Executable,Boolean>() {
       public Boolean apply(final Executable it) {
-        boolean _not = (!(it instanceof Specification));
-        return Boolean.valueOf(_not);
+        return Boolean.valueOf((!(it instanceof Specification)));
       }
     };
     Iterable<Executable> _filter_1 = IterableExtensions.<Executable>filter(_filter, _function);
@@ -321,15 +320,15 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
     return _plus;
   }
   
-  public void updateFeature(final XtendClass feature, final JvmGenericType inferredType, final List<JvmGenericType> scenarios) {
+  public void updateFeature(final XtendClass feature, final JvmGenericType inferredType, final List<JvmTypeReference> scenarios) {
     this.addTestCase(inferredType, feature);
-    final Function1<JvmGenericType,String> _function = new Function1<JvmGenericType,String>() {
-      public String apply(final JvmGenericType it) {
+    final Function1<JvmTypeReference,String> _function = new Function1<JvmTypeReference,String>() {
+      public String apply(final JvmTypeReference it) {
         String _simpleName = it.getSimpleName();
         return _simpleName;
       }
     };
-    List<String> _map = ListExtensions.<JvmGenericType, String>map(scenarios, _function);
+    List<String> _map = ListExtensions.<JvmTypeReference, String>map(scenarios, _function);
     List<Executable> _emptyList = CollectionLiterals.<Executable>emptyList();
     this.addSuite(inferredType, feature, _map, _emptyList);
   }
@@ -460,7 +459,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
             _builder.newLine();
             _builder.append("\t");
             _builder.append("super.");
-            _builder.append("tearDown", "	");
+            _builder.append("tearDown", "\t");
             _builder.append("();");
             _builder.newLineIfNotEmpty();
             _builder.append("}else{");

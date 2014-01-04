@@ -325,7 +325,7 @@ describe &quot;Helper Methods &amp; Fields&quot;{
 <p>The <code>assert</code> statement fails if the following expression does not evaluate to <code>true</code>.</p>
 <pre class="prettyprint lang-spec linenums">
 assert true
-assert new Stack().empty
+assert new Stack().empty()
 assert &quot;Hello&quot;.startsWith(&quot;H&quot;)</pre>
 </li><li><p id="should_and" class="example notrun"><strong>'should' and `=>`</strong></p>
 <p>If you want to express how an object should behave, you can use <code>should</code>. It passes if the result of the left expression is equal to the result of the right expression. You can also use <code>not</code> to assert that both expressions have different results. You have already seen the short cut <code>=&gt;</code> which has the same effect as <code>should be</code>.</p>
@@ -367,9 +367,7 @@ errorMessage[greeting.toUpperCase should not be &quot;HELLO&quot;].is('''
 package org.jnario.spec.tests.documentation
 
 import static extension org.jnario.jnario.test.util.Helpers.*
-import static extension org.jnario.lib.Each.*
 import static extension org.jnario.lib.Should.*
-import static extension org.jnario.jnario.test.util.SpecExecutor.*
 import java.util.Stack
 import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SpecTestCreator
@@ -876,7 +874,7 @@ describe &quot;Introducing Jnario Specs&quot;{
      */
     fact &quot;'assert'&quot;{
       assert true
-      assert new Stack().empty
+      assert new Stack().empty()
       assert &quot;Hello&quot;.startsWith(&quot;H&quot;)
     }
 

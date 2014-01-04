@@ -10,11 +10,16 @@
  */
 package org.jnario.feature;
 
+import org.eclipse.xtend.core.compiler.UnicodeAwarePostProcessor;
+import org.eclipse.xtend.core.compiler.XtendGenerator;
 import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
+import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.core.conversion.JavaIDValueConverter;
 import org.eclipse.xtend.core.formatting.XtendFormatter;
 import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
+import org.eclipse.xtend.core.linking.LinkingProxyAwareResource;
+import org.eclipse.xtend.core.linking.URIEncoder;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
 import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
@@ -26,6 +31,7 @@ import org.eclipse.xtend.lib.macro.file.MutableFileSystemSupport;
 import org.eclipse.xtext.common.types.descriptions.JvmDeclaredTypeSignatureHashProvider.SignatureHashBuilder;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.conversion.impl.IDValueConverter;
+import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.eclipse.xtext.generator.IFilePostProcessor;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
@@ -33,12 +39,14 @@ import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinker;
 import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.linking.ILinkingService;
+import org.eclipse.xtext.linking.lazy.LazyURIEncoder;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.IResourceDescription.Manager;
 import org.eclipse.xtext.resource.IResourceDescriptions;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.containers.IAllContainersState.Provider;
 import org.eclipse.xtext.resource.impl.EagerResourceSetBasedResourceDescriptions;
 import org.eclipse.xtext.scoping.IScopeProvider;
@@ -47,11 +55,11 @@ import org.eclipse.xtext.validation.CompositeEValidator;
 import org.eclipse.xtext.validation.ConfigurableIssueCodesProvider;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.NamesAreUniqueValidationHelper;
-import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.compiler.output.TraceAwarePostProcessor;
 import org.eclipse.xtext.xbase.featurecalls.IdentifiableSimpleNameProvider;
+import org.eclipse.xtext.xbase.file.AbstractFileSystemSupport;
 import org.eclipse.xtext.xbase.file.FileLocationsImpl;
 import org.eclipse.xtext.xbase.file.JavaIOFileSystemSupport;
 import org.eclipse.xtext.xbase.file.RuntimeWorkspaceConfigProvider;
@@ -72,6 +80,7 @@ import org.jnario.compiler.JnarioBatchCompiler;
 import org.jnario.compiler.JnarioExpressionHelper;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
+import org.jnario.documentation.XtendDocumentationProvider;
 import org.jnario.feature.compiler.FeatureBatchCompiler;
 import org.jnario.feature.conversion.FeatureValueConverterService;
 import org.jnario.feature.doc.FeatureDocGenerator;
@@ -108,44 +117,40 @@ import com.google.inject.name.Names;
 /**
  * @author Birgit Engelmann - Initial contribution and API
  */
-public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRuntimeModule {
-	
+public class FeatureRuntimeModule extends
+		org.jnario.feature.AbstractFeatureRuntimeModule {
+
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
 		binder.bind(AbstractDocGenerator.class).to(FeatureDocGenerator.class);
-		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
-		binder.bind(JnarioNameProvider.class).to(FeatureClassNameProvider.class);
-		binder.bind(ExecutableProvider.class).to(FeatureExecutableProvider.class);
-		binder.bind(Executable2ResultMapping.class).to(HashBasedSpec2ResultMapping.class);
-		binder.bind(ImplicitlyImportedTypes.class).to(JnarioImplicitlyImportedTypes.class);
-		binder.bind(ScopeProviderAccess.class).to(FeatureScopeProviderAccess.class);
-		binder.bind(NamesAreUniqueValidationHelper.class).to(FeatureNamesAreUniqueValidationHelper.class);
-		binder.bind(boolean.class).annotatedWith(
-				Names.named(CompositeEValidator.USE_EOBJECT_VALIDATOR)).toInstance(false);
+		binder.bind(SignatureHashBuilder.class).to(
+				JnarioSignatureHashBuilder.class);
+		binder.bind(JnarioNameProvider.class)
+				.to(FeatureClassNameProvider.class);
+		binder.bind(ExecutableProvider.class).to(
+				FeatureExecutableProvider.class);
+		binder.bind(Executable2ResultMapping.class).to(
+				HashBasedSpec2ResultMapping.class);
+		binder.bind(ImplicitlyImportedTypes.class).to(
+				JnarioImplicitlyImportedTypes.class);
+		binder.bind(ScopeProviderAccess.class).to(
+				FeatureScopeProviderAccess.class);
+		binder.bind(NamesAreUniqueValidationHelper.class).to(
+				FeatureNamesAreUniqueValidationHelper.class);
+		binder.bind(boolean.class)
+				.annotatedWith(
+						Names.named(CompositeEValidator.USE_EOBJECT_VALIDATOR))
+				.toInstance(false);
+		binder.bind(XtendBatchCompiler.class).to(FeatureBatchCompiler.class);
 	}
-	
-	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
-		return FeatureLinkingDiagnosticMessageProvider.class;
-	}
-	
-	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder(){
+
+	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder() {
 		return ExtendedJvmTypesBuilder.class;
 	}
-	
-	public Class<? extends JvmModelGenerator> bindJvmModelGenerator(){
+
+	public Class<? extends JvmModelGenerator> bindJvmModelGenerator() {
 		return FeatureJvmModelGenerator.class;
-	}
-	
-	@Override
-	public java.lang.Class<? extends IScopeProvider> bindIScopeProvider() {
-		return FeatureScopeProvider.class;
-	}
-	
-	@Override
-	public void configureIScopeProviderDelegate(Binder binder) {
-		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
-		.to(FeatureImportedNamespaceScopeProvider.class);
 	}
 
 	@Override
@@ -153,10 +158,46 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 		return FeatureIdentifiableSimpleNameProvider.class;
 	}
 
-	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
-		return FeatureJvmModelInferrer.class;
+	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {
+		return DocOutputConfigurationProvider.class;
 	}
 
+	public Class<? extends IFilePostProcessor> bindPostProcessor() {
+		return TraceAwarePostProcessor.class;
+	}
+
+	@Override
+	public Class<? extends ILinkingService> bindILinkingService() {
+		return FeatureLinkingService.class;
+	}
+
+	public Class<? extends JnarioBatchCompiler> bindJnarioBatchCompiler() {
+		return FeatureBatchCompiler.class;
+	}
+
+	/**********************************************************************************/
+	
+	public Class<? extends XExpressionHelper> bindXExpressionHelper() {
+		return JnarioExpressionHelper.class;
+	}
+	
+	@Override
+	public Class<? extends IValueConverterService> bindIValueConverterService() {
+		return FeatureValueConverterService.class;
+	}
+	
+	@Override
+	public void configureIScopeProviderDelegate(Binder binder) {
+		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
+			.to(FeatureImportedNamespaceScopeProvider.class);
+	}
+
+	@Override
+	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return FeatureQualifiedNameProvider.class;
+	}
+	
+	@Override
 	public Class <? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
 		return JnarioResourceDescriptionStrategy.class;
 	}
@@ -169,69 +210,23 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 		return XtendEarlyExitValidator.class;
 	}
 	
-	public Class<? extends XbaseCompiler> bindXbaseCompiler() {
-		return FeatureCompiler.class; 
-	}	
-
-	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {
-		return DocOutputConfigurationProvider.class;
-	}
-	
-	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider(){
-		return FeatureQualifiedNameProvider.class;
-	}
-	
-	
-	@Override
-	public Class<? extends IGenerator> bindIGenerator() {
-		return FeatureJvmModelGenerator.class;
-	}
-	
-	
-	public Class<? extends IFilePostProcessor> bindPostProcessor() {
-		return TraceAwarePostProcessor.class;
-	}
-	
-	@Override
-	public Class<? extends ILinker> bindILinker() {
-		return FeatureLazyLinker.class;
-	}
-	
-	@Override
-	public Class<? extends ILinkingService> bindILinkingService() {
-		return FeatureLinkingService.class;
-	}
-	
-	@Override
-	public Class<? extends IValueConverterService> bindIValueConverterService() {
-		return FeatureValueConverterService.class;
-	}
-	
-	
-	@Override
-	public Class<? extends IParser> bindIParser() {
-		return CustomFeatureParser.class;
-	}
-	
-	@Override
-	public Class<? extends ILocationInFileProvider> bindILocationInFileProvider() {
-		return FeatureLocationInFileProvider.class;
-	}
-	
-	public Class<? extends JnarioBatchCompiler> bindJnarioBatchCompiler(){
-		return FeatureBatchCompiler.class;
-	}
-	
-	public Class<? extends XExpressionHelper> bindXExpressionHelper() {
-		return JnarioExpressionHelper.class;
-	}
-	
 	public Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
 		return XtendOutputConfigurationProvider.class;
 	}
 	
-	public XbaseFactory bindXbaseFactory() {
-		return XbaseFactory.eINSTANCE;
+	@Override
+	public Class<? extends IScopeProvider> bindIScopeProvider() {
+		return FeatureScopeProvider.class;
+	}
+
+	@Override
+	public Class<? extends ILocationInFileProvider> bindILocationInFileProvider() {
+		return FeatureLocationInFileProvider.class;
+	}
+
+	@Override
+	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
+		return FeatureLinkingDiagnosticMessageProvider.class;
 	}
 	
 	public Class<? extends IBasicFormatter> bindIBasicFormatter() {
@@ -261,14 +256,26 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 		return DispatchAndExtensionAwareReentrantTypeResolver.class;
 	}
 	
-	@Override
-	public Class<? extends Manager> bindIResourceDescription$Manager() {
-		return XtendResourceDescriptionManager.class;
+	public Class<? extends XbaseCompiler> bindXbaseCompiler() {
+		return FeatureCompiler.class;
 	}
 	
+	public Class<? extends TraceAwarePostProcessor> bindTraceAwarePostProcessor() {
+		return UnicodeAwarePostProcessor.class;
+	}
+
 	@Override
 	public Class<? extends ITypeComputer> bindITypeComputer() {
 		return JnarioTypeComputer.class;
+	}
+
+	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
+		return FeatureJvmModelInferrer.class;
+	}
+	
+	@Override
+	public Class<? extends Manager> bindIResourceDescription$Manager() {
+		return XtendResourceDescriptionManager.class;
 	}
 	
 	@Override
@@ -277,17 +284,38 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	}
 	
 	@Override
-	public Class<? extends Provider> bindIAllContainersState$Provider() {
-		return EagerResourceSetBasedAllContainersStateProvider.class;
+	public Class<? extends ILinker> bindILinker() {
+		return FeatureLazyLinker.class;
 	}
 	
+	@Override
+	public Class<? extends XtextResource> bindXtextResource() {
+		return LinkingProxyAwareResource.class;
+	}
+	
+	public Class<? extends LazyURIEncoder> bindLazyURIEncoder() {
+		return URIEncoder.class;
+	}
+	
+	/**
+	 * @since 2.4.2
+	 */
 	@Override
 	public void configureIResourceDescriptions(com.google.inject.Binder binder) {
 		binder.bind(IResourceDescriptions.class).to(EagerResourceSetBasedResourceDescriptions.class);
 	}
 	
 	public Class<? extends MutableFileSystemSupport> bindFileHandleFactory() {
+		return AbstractFileSystemSupport.class;
+	}
+	
+	public Class<? extends AbstractFileSystemSupport> bindAbstractFileSystemSupport() {
 		return JavaIOFileSystemSupport.class;
+	}
+	
+	@Override
+	public Class<? extends IGenerator> bindIGenerator() {
+		return XtendGenerator.class;
 	}
 	
 	public void configureWorkspaceConfigContribution(Binder binder) {
@@ -300,6 +328,15 @@ public class FeatureRuntimeModule extends org.jnario.feature.AbstractFeatureRunt
 	
 	public Class<? extends IDValueConverter> bindIDValueConverter() {
 		return JavaIDValueConverter.class;
+	}
+	
+	public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProvider() {
+		return XtendDocumentationProvider.class;
+	}
+	
+	@Override
+	public Class<? extends IParser> bindIParser() {
+		return CustomFeatureParser.class;
 	}
 
 }

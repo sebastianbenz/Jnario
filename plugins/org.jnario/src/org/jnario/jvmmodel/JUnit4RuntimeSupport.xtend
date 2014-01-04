@@ -13,7 +13,7 @@ import org.jnario.runner.ExampleGroupRunner
 import org.eclipse.xtend.core.xtend.XtendClass
 import org.jnario.runner.FeatureRunner
 import java.util.Collection
-import java.util.List
+import java.util.Listimport org.eclipse.xtext.common.types.JvmTypeReference
 
 class JUnit4RuntimeSupport implements TestRuntimeSupport {
 	
@@ -21,7 +21,7 @@ class JUnit4RuntimeSupport implements TestRuntimeSupport {
 	 
 	@Inject extension JvmTypesBuilder 
 	
-	override addChildren(Specification context, JvmGenericType parent, Collection<JvmGenericType> children) {
+	override addChildren(Specification context, JvmGenericType parent, Collection<JvmTypeReference> children) {
 		if(!children.empty){
 			parent.annotations += context.toAnnotation(typeof(Contains), children);
 		}
@@ -55,7 +55,7 @@ class JUnit4RuntimeSupport implements TestRuntimeSupport {
 		operation.annotations += element.toAnnotation("org.junit.Test")
 	}
 	
-	override updateFeature(XtendClass feature, JvmGenericType inferredType, List<JvmGenericType> scenarios) {
+	override updateFeature(XtendClass feature, JvmGenericType inferredType, List<JvmTypeReference> scenarios) {
 		inferredType.annotations += feature.toAnnotation(RUN_WITH, typeof(FeatureRunner));
 	}
 	

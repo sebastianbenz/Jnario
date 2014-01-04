@@ -53,7 +53,7 @@ public class SuiteHoverProvider extends JnarioHoverProvider {
         _builder.append("\t");
         _builder.append("<li>");
         String _describe = this._suiteClassNameProvider.describe(spec);
-        _builder.append(_describe, "	");
+        _builder.append(_describe, "\t");
         _builder.append("</li>");
         _builder.newLineIfNotEmpty();
       }

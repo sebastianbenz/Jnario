@@ -59,20 +59,20 @@ public class StepNameProviderSpec {
     return _describe;
   }
   
-  public Step step() {
+  public Step firstStep() {
     Query _query = Query.query(this.modelStore);
     Step _first = _query.<Step>first(Step.class);
     return _first;
   }
   
   public String stepName() {
-    Step _step = this.step();
-    return this.subject.nameOf(_step);
+    Step _firstStep = this.firstStep();
+    return this.subject.nameOf(_firstStep);
   }
   
   public String describeStep() {
-    Step _step = this.step();
-    return this.subject.describe(_step);
+    Step _firstStep = this.firstStep();
+    return this.subject.describe(_firstStep);
   }
   
   public Given emptyStep() {

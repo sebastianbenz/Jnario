@@ -34,7 +34,7 @@ public class ExampleSpec {
     _builder.append("describe \"test\"{");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append(content, "	");
+    _builder.append(content, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();

@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.common.types.JvmField;
@@ -51,7 +51,7 @@ public class StepContextProvider {
             Iterator<JvmField> _iterator = _filter.iterator();
             final JvmField field = _iterator.next();
             ArrayList<XExpression> _newArrayList = CollectionLiterals.<XExpression>newArrayList(expr);
-            final Collection<Setting> usages = XbaseUsageCrossReferencer.find(field, _newArrayList);
+            final Collection<EStructuralFeature.Setting> usages = XbaseUsageCrossReferencer.find(field, _newArrayList);
             boolean _isEmpty = usages.isEmpty();
             boolean _not = (!_isEmpty);
             _xblockexpression = (_not);

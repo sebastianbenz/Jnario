@@ -17,7 +17,6 @@ import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource.Factory.Registry;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.resource.FileExtensionProvider;
 import org.eclipse.xtext.validation.Issue;
@@ -49,11 +48,10 @@ public class AbstractParserTest {
     }
     Set<String> _fileExtensions = this.fileExtensionProvider.getFileExtensions();
     final String fileExtension = IterableExtensions.<String>head(_fileExtensions);
-    Map<String,Object> _extensionToFactoryMap = Registry.INSTANCE.getExtensionToFactoryMap();
+    Map<String,Object> _extensionToFactoryMap = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap();
     final Object factory = _extensionToFactoryMap.get(fileExtension);
-    Map<String,Object> _extensionToFactoryMap_1 = Registry.INSTANCE.getExtensionToFactoryMap();
-    String _plus = (fileExtension + "_");
-    _extensionToFactoryMap_1.put(_plus, factory);
+    Map<String,Object> _extensionToFactoryMap_1 = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap();
+    _extensionToFactoryMap_1.put((fileExtension + "_"), factory);
   }
   
   @Test

@@ -75,8 +75,7 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
       String result = "";
       IntegerRange _upTo = new IntegerRange(0, i);
       for (final Integer j : _upTo) {
-        String _plus = (result + "a");
-        result = _plus;
+        result = (result + "a");
       }
       _xblockexpression = (result);
     }
@@ -86,8 +85,7 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
   public String firstMethodName(final String content) {
     String _xblockexpression = null;
     {
-      String _plus = ("describe \'Context\'{ fact " + content);
-      final String contentWithContext = (_plus + "}");
+      final String contentWithContext = (("describe \'Context\'{ fact " + content) + "}");
       Query _parse = this.parse(contentWithContext);
       Example _first = _parse.<Example>first(Example.class);
       String _methodName = this.subject.toMethodName(_first);

@@ -39,7 +39,7 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
     
     Stack<Object> _stack = new Stack<Object>();
     boolean _empty = _stack.empty();
-    Assert.assertTrue("\nExpected new Stack().empty but"
+    Assert.assertTrue("\nExpected new Stack().empty() but"
      + "\n     new Stack() is " + new org.hamcrest.StringDescription().appendValue(_stack).toString() + "\n", _empty);
     
     boolean _startsWith = "Hello".startsWith("H");
@@ -69,15 +69,15 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
     Assert.assertTrue("\nExpected false => false but"
      + "\n     false => false is " + new org.hamcrest.StringDescription().appendValue(_doubleArrow).toString() + "\n", _doubleArrow);
     
-    int _plus = (1 + 1);
-    boolean _should_be_1 = Should.<Integer>should_be(Integer.valueOf(_plus), Integer.valueOf(1));
+    boolean _should_be_1 = Should.<Integer>should_be(
+      Integer.valueOf((1 + 1)), Integer.valueOf(1));
     Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
-     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be_1);
+     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString() + "\n", _should_be_1);
     
-    int _plus_1 = (1 + 1);
-    boolean _doubleArrow_1 = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
+    boolean _doubleArrow_1 = Should.<Integer>operator_doubleArrow(
+      Integer.valueOf((1 + 1)), Integer.valueOf(2));
     Assert.assertTrue("\nExpected 1 + 1 => 2 but"
-     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus_1)).toString() + "\n", _doubleArrow_1);
+     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString() + "\n", _doubleArrow_1);
     
   }
   
@@ -96,14 +96,11 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
     final int y = 1;
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
       public void apply(final Boolean it) {
-        boolean _equals = (x == 1);
-        boolean _equals_1 = (y == 0);
-        boolean _and = (_equals && _equals_1);
         Assert.assertTrue("\nExpected x == 1 && y == 0 but"
-         + "\n     x == 1 is " + new org.hamcrest.StringDescription().appendValue(_equals).toString()
+         + "\n     x == 1 is " + new org.hamcrest.StringDescription().appendValue((x == 1)).toString()
          + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString()
-         + "\n     y == 0 is " + new org.hamcrest.StringDescription().appendValue(_equals_1).toString()
-         + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", _and);
+         + "\n     y == 0 is " + new org.hamcrest.StringDescription().appendValue((y == 0)).toString()
+         + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", ((x == 1) && (y == 0)));
         
       }
     };

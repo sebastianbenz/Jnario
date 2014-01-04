@@ -40,8 +40,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   private StepNameProvider _stepNameProvider;
   
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {
-    boolean _not = (!(xtendClass instanceof Feature));
-    if (_not) {
+    if ((!(xtendClass instanceof Feature))) {
       return HtmlFile.EMPTY_FILE;
     }
     final Feature feature = ((Feature) xtendClass);
@@ -177,8 +176,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   }
   
   private String highlightArguments(final String s) {
-    String _plus = (" " + s);
-    Matcher _matcher = StepArgumentsProvider.ARG_PATTERN.matcher(_plus);
+    Matcher _matcher = StepArgumentsProvider.ARG_PATTERN.matcher((" " + s));
     String _replaceAll = _matcher.replaceAll("<code>$0</code>");
     return _replaceAll;
   }
@@ -190,9 +188,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   private String addCodeBlock(final Step step) {
     final String text = this._stepNameProvider.nameOf(step);
     final int multiLineStart = text.indexOf("\n");
-    int _minus = (-1);
-    boolean _equals = (multiLineStart == _minus);
-    if (_equals) {
+    if ((multiLineStart == (-1))) {
       return "";
     }
     String _substring = text.substring(multiLineStart);
@@ -200,8 +196,8 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     int _length = StepArgumentsProvider.MULTILINE_STRING.length();
     int _length_1 = codeBlock.length();
     int _length_2 = StepArgumentsProvider.MULTILINE_STRING.length();
-    int _minus_1 = (_length_1 - _length_2);
-    String _substring_1 = codeBlock.substring(_length, _minus_1);
+    int _minus = (_length_1 - _length_2);
+    String _substring_1 = codeBlock.substring(_length, _minus);
     codeBlock = _substring_1;
     String _codeToHtml = this.codeToHtml(codeBlock);
     codeBlock = _codeToHtml;

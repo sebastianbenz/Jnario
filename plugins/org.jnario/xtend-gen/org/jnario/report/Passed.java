@@ -1,8 +1,6 @@
 package org.jnario.report;
 
-import java.util.List;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.report.SpecExecution;
 import org.jnario.report.SpecFailure;
 
@@ -14,11 +12,6 @@ public class Passed extends SpecExecution {
   }
   
   public Passed(final String className, final String name, final double executionTimeInSeconds) {
-    super(className, name, executionTimeInSeconds, new Function0<List<SpecFailure>>() {
-      public List<SpecFailure> apply() {
-        List<SpecFailure> _emptyList = CollectionLiterals.<SpecFailure>emptyList();
-        return _emptyList;
-      }
-    }.apply());
+    super(className, name, executionTimeInSeconds, CollectionLiterals.<SpecFailure>emptyList());
   }
 }

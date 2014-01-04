@@ -23,7 +23,7 @@ import org.jnario.Specification;
  *
  * @generated NOT
  */
-public abstract class SpecificationImpl extends XtendClassImplCustom implements Specification {
+public class SpecificationImpl extends XtendClassImplCustom implements Specification {
 	private EList<Executable> children;
 
 	/**

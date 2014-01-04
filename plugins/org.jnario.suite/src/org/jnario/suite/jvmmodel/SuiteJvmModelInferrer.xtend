@@ -19,6 +19,10 @@ import org.jnario.suite.suite.Suite
 import org.jnario.suite.suite.SuiteFile
 import org.eclipse.xtext.common.types.JvmGenericTypeimport org.eclipse.xtext.linking.impl.ImportedNamesAdapter
 import org.eclipse.xtext.naming.IQualifiedNameConverter
+import org.eclipse.xtext.xtype.XtypeFactory
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.xtype.XComputedTypeReference
+import java.util.List
 
 class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 
@@ -28,38 +32,55 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject extension TypeReferences
 	@Inject extension SuiteNodeBuilder
 	
+	@Inject(optional = true)
+	private XtypeFactory xtypesFactory = XtypeFactory.eINSTANCE;
+	
 	override doInfer(EObject e, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		if (!(e instanceof SuiteFile)){
 			return
 		}
 		val suiteFile = e as SuiteFile
 		val nodes = suiteFile.buildNodeModel
+		val doLater = <Runnable>newArrayList
 		nodes.forEach[
-			infer(it, acceptor)
+			infer(it, acceptor, doLater)
 		]
+		if(preIndexingPhase) return;
+		doLater.forEach[run]
 	}
 
-   	def JvmGenericType infer(SuiteNode node, IJvmDeclaredTypeAcceptor acceptor) {
+   	def JvmGenericType infer(SuiteNode node, IJvmDeclaredTypeAcceptor acceptor, List<Runnable> doLater) {
    		val suite = node.suite
    		val suiteClass = suite.toClass(suite.toQualifiedJavaClassName)
-		val subSuites = node.children.map[infer(acceptor)].toSet
-   		acceptor.accept(suiteClass).initializeLater([
-				it.annotations += suite.toAnnotation(typeof(Named), suite.describe)
+   		if(suiteClass == null) return null;
+		val subSuites = node.children.map[infer(acceptor, doLater)].filterNull.toSet.map[createTypeRef]
+   		acceptor.accept(suiteClass)
+   		doLater.add([|
+				suiteClass.annotations += suite.toAnnotation(typeof(Named), suite.describe)
 				val children = suite.children + subSuites
 				if(!children.empty){
-					testRuntime.addChildren(suite, it, children.filter(typeof(JvmGenericType)).toSet)
+					testRuntime.addChildren(suite, suiteClass, children.toSet)
 				}
-   				suite.initialize(it)
-   				testRuntime.updateSuite(suite, it)
+   				suite.initialize(suiteClass)
+   				testRuntime.updateSuite(suite, suiteClass)
    			])
    		suiteClass
    	}
 
-   	def Iterable<JvmType> children(Suite suite){ 
+   	def Iterable<JvmTypeReference> children(Suite suite){ 
    		val specs = suite.resolveSpecs.filter[it.toJavaClassName != null]
    		val types = specs.map[it.toQualifiedJavaClassName]
-   		val result = types.map[getTypeForName(it, suite)?.type]
-   		result 
+		println("Resolved specs: " + types)
+
+   		types.map[inferredType(suite)]
    	}
+   	
+   	def JvmTypeReference inferredType(String name, EObject context) {
+		val result = xtypesFactory.createXComputedTypeReference();
+		result.setTypeProvider([
+			getTypeForName(name, context)
+		]);
+		return result;
+	}
 }
 

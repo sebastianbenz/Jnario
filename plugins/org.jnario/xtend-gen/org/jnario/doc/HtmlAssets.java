@@ -39,8 +39,7 @@ public class HtmlAssets {
         "prettify.css");
       final Function1<String,String> _function = new Function1<String,String>() {
         public String apply(final String it) {
-          String _plus = ("css/" + it);
-          return _plus;
+          return ("css/" + it);
         }
       };
       List<String> _map = ListExtensions.<String, String>map(_newArrayList, _function);
@@ -61,8 +60,7 @@ public class HtmlAssets {
         "bootstrap-tab.js");
       final Function1<String,String> _function = new Function1<String,String>() {
         public String apply(final String it) {
-          String _plus = ("js/" + it);
-          return _plus;
+          return ("js/" + it);
         }
       };
       List<String> _map = ListExtensions.<String, String>map(_newArrayList, _function);
@@ -97,8 +95,7 @@ public class HtmlAssets {
   }
   
   private boolean exists(final IFileSystemAccess fsa, final String file) {
-    boolean _not = (!(fsa instanceof IFileSystemAccessExtension2));
-    if (_not) {
+    if ((!(fsa instanceof IFileSystemAccessExtension2))) {
       return false;
     }
     final IFileSystemAccessExtension2 fsa2 = ((IFileSystemAccessExtension2) fsa);

@@ -7,6 +7,7 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.jnario.Executable;
 import org.jnario.Specification;
 
@@ -14,9 +15,9 @@ public interface TestRuntimeSupport {
 	
 	void updateExampleGroup(XtendClass exampleGroup, JvmGenericType inferredType);
 	void updateSuite(XtendClass suite, JvmGenericType inferredType);
-	void updateFeature(XtendClass feature, JvmGenericType inferredType, List<JvmGenericType> scenarios);
+	void updateFeature(XtendClass feature, JvmGenericType inferredType, List<JvmTypeReference> scenarios);
 	void updateScenario(XtendClass scenario, JvmGenericType inferredType);
-	void addChildren(Specification context, JvmGenericType parent, Collection<JvmGenericType> children);
+	void addChildren(Specification context, JvmGenericType parent, Collection<JvmTypeReference> children);
 
 	void markAsTestMethod(Executable element, JvmOperation operation);
 	void markAsPending(Executable element, JvmOperation operation);

@@ -16,10 +16,9 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IReferenceDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.IResourceDescriptions;
-import org.eclipse.xtext.resource.IResourceServiceProvider.Registry;
+import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.ui.editor.findrefs.DefaultReferenceFinder;
 import org.eclipse.xtext.ui.editor.findrefs.IReferenceFinder;
-import org.eclipse.xtext.ui.editor.findrefs.IReferenceFinder.ILocalResourceAccess;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -31,12 +30,12 @@ public class XtendReferenceFinder extends DefaultReferenceFinder implements IRef
   private IQualifiedNameConverter nameConverter;
   
   @Inject
-  public XtendReferenceFinder(final IResourceDescriptions indexData, final Registry serviceProviderRegistry, final IQualifiedNameConverter nameConverter) {
+  public XtendReferenceFinder(final IResourceDescriptions indexData, final IResourceServiceProvider.Registry serviceProviderRegistry, final IQualifiedNameConverter nameConverter) {
     super(indexData, serviceProviderRegistry);
     this.nameConverter = nameConverter;
   }
   
-  public void findReferences(final Set<URI> targetURIs, final IResourceDescription resourceDescription, final IAcceptor<IReferenceDescription> acceptor, final IProgressMonitor monitor, final ILocalResourceAccess localResourceAccess) {
+  public void findReferences(final Set<URI> targetURIs, final IResourceDescription resourceDescription, final IAcceptor<IReferenceDescription> acceptor, final IProgressMonitor monitor, final IReferenceFinder.ILocalResourceAccess localResourceAccess) {
     final Function1<URI,URI> _function = new Function1<URI,URI>() {
       public URI apply(final URI it) {
         URI _trimFragment = it.trimFragment();
@@ -59,22 +58,22 @@ public class XtendReferenceFinder extends DefaultReferenceFinder implements IRef
     for (final URI uri : targetURIs) {
       final IUnitOfWork<Boolean,ResourceSet> _function_2 = new IUnitOfWork<Boolean,ResourceSet>() {
         public Boolean exec(final ResourceSet it) throws Exception {
-          Boolean _xblockexpression = null;
+          boolean _xblockexpression = false;
           {
             EObject _eObject = it.getEObject(uri, true);
             final JvmType obj = EcoreUtil2.<JvmType>getContainerOfType(_eObject, JvmType.class);
-            Boolean _xifexpression = null;
+            boolean _xifexpression = false;
             boolean _notEquals = (!Objects.equal(obj, null));
             if (_notEquals) {
               String _identifier = obj.getIdentifier();
               String _lowerCase = _identifier.toLowerCase();
               QualifiedName _qualifiedName = XtendReferenceFinder.this.nameConverter.toQualifiedName(_lowerCase);
               boolean _add = names.add(_qualifiedName);
-              _xifexpression = Boolean.valueOf(_add);
+              _xifexpression = _add;
             }
             _xblockexpression = (_xifexpression);
           }
-          return _xblockexpression;
+          return Boolean.valueOf(_xblockexpression);
         }
       };
       localResourceAccess.<Boolean>readOnly(uri, _function_2);

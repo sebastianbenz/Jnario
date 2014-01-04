@@ -35,7 +35,6 @@ import org.eclipse.xtext.xbase.XNullLiteral;
 import org.eclipse.xtext.xbase.XSwitchExpression;
 import org.eclipse.xtext.xbase.XbaseFactory;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.jnario.Assertion;
 import org.jnario.MockLiteral;
 import org.jnario.Should;
@@ -127,7 +126,15 @@ public class JnarioCompiler extends XtendCompiler {
 
 	private void _toShouldExpression(XBinaryOperation should,
 			ITreeAppendable b, boolean isNot) {
-		handleNullOnRightHandSide(should);
+		if(should.getRightOperand() instanceof XNullLiteral){
+			_toShouldBeNullExpression(should, b, isNot);
+		}else{
+			toShouldBeExpression(should, b, isNot);
+		}
+	}
+
+	private void toShouldBeExpression(XBinaryOperation should,
+			ITreeAppendable b, boolean isNot) {
 		super._toJavaStatement(should, b, true);
 		b.newLine().append(assertType(should));
 		if (isNot) {
@@ -141,18 +148,21 @@ public class JnarioCompiler extends XtendCompiler {
 		b.append(");").newLine();
 	}
 
-	protected void handleNullOnRightHandSide(XBinaryOperation should) {
-		if(should.getRightOperand() instanceof XNullLiteral){
-			JvmIdentifiableElement nullValueMatcher = getNullValueMatcher(should);
-			XFeatureCall featureCall = createFeatureCall(nullValueMatcher);
-			should.setRightOperand(featureCall);
-			if(!(should.getFeature() instanceof JvmOperation)){
-				return;
-			}
-			JvmIdentifiableElement operation = getMethod(should, org.jnario.lib.Should.class.getName(), "operator_doubleArrow", "T", "org.hamcrest.Matcher<? super T>");
-			should.setFeature(operation);
+	private void _toShouldBeNullExpression(XBinaryOperation should,
+			ITreeAppendable b, boolean isNot) {
+		super.toJavaStatement(should.getLeftOperand(), b, true);
+		b.newLine().append(assertType(should));
+		if (isNot) {
+			b.append(".assertNotNull(");
+		} else {
+			b.append(".assertNull(");
 		}
+		generateNullMessageFor(should, b);
+		b.append(" + \"" + javaStringNewLine() + "\", ");
+		super.toJavaExpression(should.getLeftOperand(), b);
+		b.append(");").newLine();
 	}
+
 
 	protected XFeatureCall createFeatureCall(
 			JvmIdentifiableElement nullValueMatcher) {
@@ -283,6 +293,13 @@ public class JnarioCompiler extends XtendCompiler {
 		}
 	}
 
+	private void generateNullMessageFor(XBinaryOperation should, ITreeAppendable b) {
+		b.append("\"\\nExpected ");
+		b.append(serialize(should));
+		b.append("\\n     but is \"");
+		toValue(should.getLeftOperand(), b);
+	}
+
 	private void generateMessageFor(XExpression expression, ITreeAppendable b) {
 		b.append("\"\\nExpected ");
 		b.append(serialize(expression));
@@ -381,6 +398,11 @@ public class JnarioCompiler extends XtendCompiler {
 		if(isClosure(expression)){
 			return;
 		}
+		toValue(expression, b, valueMappings);
+	}
+
+	private void toValue(XExpression expression, ITreeAppendable b,
+			Set<String> valueMappings) {
 		String expr = serialize(expression);
 		if (expr.isEmpty() || valueMappings.contains(expr)) {
 			return;
@@ -389,6 +411,10 @@ public class JnarioCompiler extends XtendCompiler {
 		b.append("\n + \"\\n     ");
 		b.append(expr);
 		b.append(" is \"");
+		toValue(expression, b);
+	}
+
+	private void toValue(XExpression expression, ITreeAppendable b) {
 		b.append(" + new ");
 		b.append("org.hamcrest.StringDescription");
 		b.append("().appendValue(");

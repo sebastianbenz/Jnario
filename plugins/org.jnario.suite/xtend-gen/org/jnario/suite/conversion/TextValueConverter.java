@@ -10,7 +10,6 @@ package org.jnario.suite.conversion;
 import com.google.common.base.Objects;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.suite.conversion.SuiteValueConverter;
 
 @SuppressWarnings("all")
@@ -20,12 +19,7 @@ public class TextValueConverter extends SuiteValueConverter {
   private final String postfix;
   
   public TextValueConverter(final String prefix, final String postfix) {
-    super(new Function0<Character>() {
-      public Character apply() {
-        char _charAt = ":".charAt(0);
-        return _charAt;
-      }
-    }.apply());
+    super(":".charAt(0));
     this.prefix = prefix;
     this.postfix = postfix;
   }

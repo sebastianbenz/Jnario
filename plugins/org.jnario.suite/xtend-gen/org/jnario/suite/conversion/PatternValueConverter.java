@@ -26,11 +26,9 @@ public class PatternValueConverter implements IValueConverter<String> {
       if (_equals) {
         result = "";
       }
-      String _plus = ("\\" + result);
-      String _plus_1 = (_plus + "\\");
       String _newLine = Strings.newLine();
-      String _plus_2 = (_plus_1 + _newLine);
-      _xblockexpression = (_plus_2);
+      String _plus = ((("\\" + result) + "\\") + _newLine);
+      _xblockexpression = (_plus);
     }
     return _xblockexpression;
   }
@@ -43,8 +41,7 @@ public class PatternValueConverter implements IValueConverter<String> {
       }
       int begin = string.indexOf("\\");
       int end = string.lastIndexOf("\\");
-      int _plus = (begin + 1);
-      final String result = string.substring(_plus, end);
+      final String result = string.substring((begin + 1), end);
       Pattern.compile(result);
       return result;
     } catch (final Throwable _t) {

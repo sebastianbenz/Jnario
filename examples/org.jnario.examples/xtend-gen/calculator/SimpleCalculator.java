@@ -2,18 +2,12 @@ package calculator;
 
 import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class SimpleCalculator {
-  private final ArrayList<Integer> values = new Function0<ArrayList<Integer>>() {
-    public ArrayList<Integer> apply() {
-      ArrayList<Integer> _newArrayList = CollectionLiterals.<Integer>newArrayList();
-      return _newArrayList;
-    }
-  }.apply();
+  private final ArrayList<Integer> values = CollectionLiterals.<Integer>newArrayList();
   
   private int result = 0;
   
@@ -26,8 +20,7 @@ public class SimpleCalculator {
   public int add() {
     final Function2<Integer,Integer,Integer> _function = new Function2<Integer,Integer,Integer>() {
       public Integer apply(final Integer a, final Integer b) {
-        int _plus = ((a).intValue() + (b).intValue());
-        return Integer.valueOf(_plus);
+        return Integer.valueOf(((a).intValue() + (b).intValue()));
       }
     };
     Integer _fold = IterableExtensions.<Integer, Integer>fold(this.values, Integer.valueOf(0), _function);

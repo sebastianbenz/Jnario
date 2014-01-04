@@ -66,20 +66,9 @@ public class SpecResultParserSpec {
     }
   }.apply();
   
-  final static String XML_STACKTRACE = new Function0<String>() {
-    public String apply() {
-      String _plus = (SpecResultParserSpec.FAILURE_MESSAGE + "\n");
-      String _plus_1 = (_plus + SpecResultParserSpec.STACKTRACE);
-      return _plus_1;
-    }
-  }.apply();
+  final static String XML_STACKTRACE = ((SpecResultParserSpec.FAILURE_MESSAGE + "\n") + SpecResultParserSpec.STACKTRACE);
   
-  final SpecExecutionAcceptor acceptor = new Function0<SpecExecutionAcceptor>() {
-    public SpecExecutionAcceptor apply() {
-      SpecExecutionAcceptor _mock = Mockito.<SpecExecutionAcceptor>mock(SpecExecutionAcceptor.class);
-      return _mock;
-    }
-  }.apply();
+  final SpecExecutionAcceptor acceptor = Mockito.<SpecExecutionAcceptor>mock(SpecExecutionAcceptor.class);
   
   @Test
   @Named("parses successfull specs from xml")
@@ -305,7 +294,7 @@ public class SpecResultParserSpec {
     _builder.append("<testsuite failures=\"1\" time=\"0.017\" errors=\"0\" skipped=\"0\" tests=\"1\" name=\"example.AddingValuesSpec\">");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append(content, "	");
+    _builder.append(content, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("</testsuite>\t");
     _builder.newLine();

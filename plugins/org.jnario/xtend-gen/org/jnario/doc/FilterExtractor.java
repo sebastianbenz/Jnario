@@ -26,12 +26,7 @@ import org.jnario.doc.RegexFilter;
 public class FilterExtractor {
   private static String TAG = "(^|\\W)@(\\w+)(\\((.*?)\\))";
   
-  private static Pattern TAG_PATTERN = new Function0<Pattern>() {
-    public Pattern apply() {
-      Pattern _compile = Pattern.compile(FilterExtractor.TAG, Pattern.DOTALL);
-      return _compile;
-    }
-  }.apply();
+  private static Pattern TAG_PATTERN = Pattern.compile(FilterExtractor.TAG, Pattern.DOTALL);
   
   private Map<String,Function1<String,Filter>> filterRegistry = new Function0<Map<String,Function1<String,Filter>>>() {
     public Map<String,Function1<String,Filter>> apply() {

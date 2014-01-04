@@ -81,6 +81,15 @@ public interface JnarioFactory extends EFactory {
 	ShouldThrow createShouldThrow();
 
 	/**
+	 * Returns a new object of class '<em>Specification</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Specification</em>'.
+	 * @generated
+	 */
+	Specification createSpecification();
+
+	/**
 	 * Returns a new object of class '<em>Mock Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

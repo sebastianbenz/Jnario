@@ -38,7 +38,7 @@
         eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Specification" abstract="true" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendClass #//Executable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Specification" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendClass #//Executable"/>
   <eClassifiers xsi:type="ecore:EClass" name="Executable" abstract="true" interface="true">
     <eOperations name="isPending" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>

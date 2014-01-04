@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -32,12 +31,7 @@ import org.jnario.suite.suite.SuiteFile;
 
 @SuppressWarnings("all")
 public class SuiteNodeBuilder {
-  private final static char PREFIX = new Function0<Character>() {
-    public Character apply() {
-      char _charAt = "#".charAt(0);
-      return _charAt;
-    }
-  }.apply();
+  private final static char PREFIX = "#".charAt(0);
   
   @Inject
   @Extension
@@ -93,14 +87,12 @@ public class SuiteNodeBuilder {
   }
   
   public Suite parent(final List<Suite> suites, final int i) {
-    boolean _equals = (i == 0);
-    if (_equals) {
+    if ((i == 0)) {
       return null;
     }
     Suite _get = suites.get(i);
     final int current = this.level(_get);
-    int _minus = (i - 1);
-    IntegerRange _upTo = new IntegerRange(_minus, 0);
+    IntegerRange _upTo = new IntegerRange((i - 1), 0);
     for (final Integer j : _upTo) {
       {
         final Suite candidate = suites.get((j).intValue());
@@ -127,8 +119,7 @@ public class SuiteNodeBuilder {
         if (_notEquals) {
           return i;
         }
-        int _plus = (i + 1);
-        i = _plus;
+        i = (i + 1);
       }
       int _length_1 = name.length();
       boolean _lessThan_1 = (i < _length_1);

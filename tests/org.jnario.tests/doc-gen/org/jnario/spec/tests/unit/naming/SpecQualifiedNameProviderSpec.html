@@ -40,11 +40,11 @@
 parseSpec('''
   package test
   describe &quot;&quot;{}''')
-qualifiedName should be null
+qualifiedName should be nullValue
 
 parseSpec('''
   describe &quot;&quot;{}''')
-qualifiedName should be null</pre>
+qualifiedName should be nullValue</pre>
 </li><li><p id="uses_spec_description" class="example notrun"><strong>uses spec description</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseSpec('''
@@ -101,11 +101,11 @@ describe SpecQualifiedNameProvider {
     parseSpec('''
       package test
       describe &quot;&quot;{}''')
-    qualifiedName should be null
+    qualifiedName should be nullValue
     
     parseSpec('''
       describe &quot;&quot;{}''')
-    qualifiedName should be null
+    qualifiedName should be nullValue
   }
 
   fact &quot;uses spec description&quot;{

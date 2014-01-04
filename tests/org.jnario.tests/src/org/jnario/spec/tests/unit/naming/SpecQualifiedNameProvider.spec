@@ -22,11 +22,11 @@ describe SpecQualifiedNameProvider {
 		parseSpec('''
 			package test
 			describe ""{}''')
-		qualifiedName should be null
+		qualifiedName should be nullValue
 		
 		parseSpec('''
 			describe ""{}''')
-		qualifiedName should be null
+		qualifiedName should be nullValue
 	}
 
 	fact "uses spec description"{

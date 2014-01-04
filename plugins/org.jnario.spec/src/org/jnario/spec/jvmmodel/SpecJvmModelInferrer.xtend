@@ -104,7 +104,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			children += infer(acceptor, child, javaType, doLater, preIndexingPhase) 
 		]
 		if(!children.empty){
-			testRuntime.addChildren(exampleGroup, javaType, children)
+			testRuntime.addChildren(exampleGroup, javaType, children.map[createTypeRef])
 		}
 		return javaType
 	}

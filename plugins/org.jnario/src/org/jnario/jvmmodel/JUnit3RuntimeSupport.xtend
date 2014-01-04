@@ -11,7 +11,7 @@ import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.jnario.Executable
-import org.jnario.Specification
+import org.jnario.Specificationimport org.eclipse.xtext.common.types.JvmTypeReference
 
 class JUnit3RuntimeSupport implements TestRuntimeSupport {
 	
@@ -39,7 +39,7 @@ class JUnit3RuntimeSupport implements TestRuntimeSupport {
 		// implement me
 	}
 	
-	override addChildren(Specification context, JvmGenericType parent, Collection<JvmGenericType> children) {
+	override addChildren(Specification context, JvmGenericType parent, Collection<JvmTypeReference> children) {
 		if(context.eClass.name == "Suite"){
 			parent.addSuite(context, children.map[simpleName], emptyList)
 		}
@@ -142,7 +142,7 @@ class JUnit3RuntimeSupport implements TestRuntimeSupport {
 		"test" + toMethodName(e)
 	}
 	
-	override updateFeature(XtendClass feature, JvmGenericType inferredType, List<JvmGenericType> scenarios) {
+	override updateFeature(XtendClass feature, JvmGenericType inferredType, List<JvmTypeReference> scenarios) {
 		inferredType.addTestCase(feature)
 		inferredType.addSuite(feature, scenarios.map[simpleName], emptyList)
 	}

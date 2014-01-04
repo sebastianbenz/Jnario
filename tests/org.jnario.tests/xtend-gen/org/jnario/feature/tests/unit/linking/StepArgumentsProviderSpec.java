@@ -220,7 +220,7 @@ public class StepArgumentsProviderSpec {
       _builder.append("Scenario: dummy ");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append(step, "		");
+      _builder.append(step, "\t\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
       _builder.newLine();

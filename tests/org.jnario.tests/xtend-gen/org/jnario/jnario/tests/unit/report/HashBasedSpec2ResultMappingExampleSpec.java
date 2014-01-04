@@ -1,7 +1,6 @@
 package org.jnario.jnario.tests.unit.report;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec;
 import org.jnario.lib.Assert;
 import org.jnario.report.Passed;
@@ -16,26 +15,11 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @SuppressWarnings("all")
 public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2ResultMappingSpec {
-  final Passed aResult = new Function0<Passed>() {
-    public Passed apply() {
-      Passed _passingSpec = Passed.passingSpec("example.SomethingSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
-      return _passingSpec;
-    }
-  }.apply();
+  final Passed aResult = Passed.passingSpec("example.SomethingSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
   
-  final Passed aResultWithDifferentClassName = new Function0<Passed>() {
-    public Passed apply() {
-      Passed _passingSpec = Passed.passingSpec("example.DifferentSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
-      return _passingSpec;
-    }
-  }.apply();
+  final Passed aResultWithDifferentClassName = Passed.passingSpec("example.DifferentSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
   
-  final Passed aResultWithDifferentName = new Function0<Passed>() {
-    public Passed apply() {
-      Passed _passingSpec = Passed.passingSpec("example.SomethingSpec", "another fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
-      return _passingSpec;
-    }
-  }.apply();
+  final Passed aResultWithDifferentName = Passed.passingSpec("example.SomethingSpec", "another fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
   
   @Test
   @Named("matches if classname and name are equal")

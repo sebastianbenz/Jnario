@@ -13,7 +13,6 @@ import org.jnario.Executable;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SpecTestCreator;
 import org.jnario.jnario.tests.integration.ParsingSpecResultsFromJUnitXMLReportsFeature;
-import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.JnarioIteratorExtensions;
 import org.jnario.lib.Should;
@@ -85,15 +84,9 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingFailedSpecRuns 
     String _first = JnarioIterableExtensions.<String>first(args);
     boolean _equals = Objects.equal(_first, "passed");
     if (_equals) {
-      boolean _doubleArrow = Should.operator_doubleArrow(result, Passed.class);
-      Assert.assertTrue("\nExpected result => typeof(Passed) but"
-       + "\n     result is " + new org.hamcrest.StringDescription().appendValue(result).toString() + "\n", _doubleArrow);
-      
+      Should.operator_doubleArrow(result, Passed.class);
     } else {
-      boolean _doubleArrow_1 = Should.operator_doubleArrow(result, Failed.class);
-      Assert.assertTrue("\nExpected result => typeof(Failed) but"
-       + "\n     result is " + new org.hamcrest.StringDescription().appendValue(result).toString() + "\n", _doubleArrow_1);
-      
+      Should.operator_doubleArrow(result, Failed.class);
     }
   }
 }

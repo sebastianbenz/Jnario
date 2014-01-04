@@ -8,8 +8,6 @@
 package org.jnario.jvmmodel;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -162,13 +160,13 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
       {
         final XtendClass current = ((XtendClass) xtendType);
         EList<XAnnotation> _annotations = current.getAnnotations();
-        final Predicate<XAnnotation> _function = new Predicate<XAnnotation>() {
-          public boolean apply(final XAnnotation it) {
+        final Function1<XAnnotation,Boolean> _function = new Function1<XAnnotation,Boolean>() {
+          public Boolean apply(final XAnnotation it) {
             boolean _hasExtendsAnnotation = JnarioJvmModelInferrer.this.hasExtendsAnnotation(it);
-            return _hasExtendsAnnotation;
+            return Boolean.valueOf(_hasExtendsAnnotation);
           }
         };
-        Iterable<XAnnotation> _filter = Iterables.<XAnnotation>filter(_annotations, _function);
+        Iterable<XAnnotation> _filter = IterableExtensions.<XAnnotation>filter(_annotations, _function);
         final Function1<XAnnotation,XTypeLiteral> _function_1 = new Function1<XAnnotation,XTypeLiteral>() {
           public XTypeLiteral apply(final XAnnotation it) {
             XExpression _value = it.getValue();

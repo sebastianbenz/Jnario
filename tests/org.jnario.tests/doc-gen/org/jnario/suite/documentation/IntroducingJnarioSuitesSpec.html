@@ -44,7 +44,7 @@
 <p>First of all you need a running installation of Jnario. If you haven't installed Jnario yet, follow the <a href="../../jnario/documentation/InstallingJnarioSpec.html">install guide</a>. To get started first create a new Java project and a new Jnario suite using the suite wizard (<strong>File</strong> -&gt; <strong>New</strong> -&gt; <strong>Other</strong> -&gt; <strong>Jnario</strong> -&gt; <strong>Suite</strong>).</p><p><img width="500px" src="/img/tutorial/suite_wizard.png" alt="New Suite Wizard"/></p><p>Name the suite file "MySuite" and as description use "My Jnario Suite". The created suite will look like:</p><p><span class="label label-info">Tip</span> If the editor shows a validation error, because of the missing jnario libraries, add them to the classpath using the quickfix (CMD/Ctrl + 1).</p><p><img width="600px" src="/img/tutorial/suite_buildpath.png" alt="New Suite Error"/></p>
 <ul><li><p id="A_simple_Suite" class="example notrun"><strong>A simple Suite</strong></p>
 <p>A suite consists of a title and a list of references to other specifications, where a specification is either a feature definition, a spec or another suite. The suite title is defined by '<strong>#</strong>' followed by the title. In our example suite it is: <code>#My Suite</code>. Referenced specifications are listed after '<strong>-</strong>' by their name in quotes.</p><p><span class="label label-info">Info</span> In order to reference specifications defined in different packages it is necessary to add corresponding import statements. The best thing is to use the code-completion as it will automatically add the required imports.</p>
-<pre class="prettyprint lang-spec linenums">
+<pre class="prettyprint lang-none linenums">
 package demo
 
 #My Suite
@@ -77,7 +77,7 @@ describe "My Spec"{
 ###Subsection 2.1
 ###Subsection 2.2
 </code></pre><p>Each subsection can separately list specifications. The specifications will be executed in the same hierarchy:</p><p><img width="400px" src="/img/tutorial/suite_execution.png" alt="Running a suite"/></p><p>Each section can have additional text written in <a href="http://daringfireball.net/projects/markdown/syntax">Markdown Syntax</a>. This text will be generated into the HTML reports. Referenced specs can also have a text description after a colon. The next example shows the previous suite separated by features and specs with additional descriptions.</p><p><span class="label label-info">Important</span> The characters '#' and '-' are keywords in Jnario suites. They must be escaped like this '\#' and '\-' if they are used in normal text (this will be fixed in the near future).</p>
-<pre class="prettyprint lang-spec linenums">
+<pre class="prettyprint lang-none linenums">
 package demo
 
 #My Suite
@@ -102,7 +102,7 @@ Here we list all our features...
 <p>When you want to run all specifications in your project you probably don't want to list every single spec by hand. In Jnario suites you can define regular expressions to select specific sets of specifications by matching the fully qualified name of a specification. The generated HTML documentation will still list all matched specifications. A pattern is defined by after a dash between two "&quot;:</p>
 <pre class="prettyprint">- \.*\
 </code></pre><p><span class="label label-info">Tip</span> When hovering the cursor of a regex pattern, the Eclipse editor will show all resolved specs.</p>
-<pre class="prettyprint lang-spec linenums">
+<pre class="prettyprint lang-none linenums">
 package demo
 
 #My Suite

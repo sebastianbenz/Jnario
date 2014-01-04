@@ -52,9 +52,7 @@ public class SuiteHighlightingCalculator extends XbaseHighlightingCalculator {
     final ICompositeNode node = NodeModelUtils.getNode(suite);
     String _name = suite.getName();
     int lineEnd = Strings.indexOfNewLine(_name);
-    int _minus = (-1);
-    boolean _equals = (lineEnd == _minus);
-    if (_equals) {
+    if ((lineEnd == (-1))) {
       String _name_1 = suite.getName();
       int _length = _name_1.length();
       lineEnd = _length;

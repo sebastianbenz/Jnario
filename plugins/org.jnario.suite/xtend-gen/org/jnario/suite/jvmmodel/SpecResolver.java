@@ -31,15 +31,17 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.jnario.JnarioPackage;
 import org.jnario.Specification;
 import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.suite.PatternReference;
 import org.jnario.suite.suite.Reference;
 import org.jnario.suite.suite.SpecReference;
 import org.jnario.suite.suite.Suite;
-import org.jnario.suite.suite.SuitePackage.Literals;
+import org.jnario.suite.suite.SuitePackage;
 
 @SuppressWarnings("all")
 public class SpecResolver {
@@ -83,16 +85,20 @@ public class SpecResolver {
       if (_isNullOrEmpty) {
         return Collections.<Specification>emptyList();
       }
-      final IScope scope = this.scopeProvider.getScope(specRef, Literals.SPEC_REFERENCE__SPEC);
+      final IScope scope = this.scopeProvider.getScope(specRef, SuitePackage.Literals.SPEC_REFERENCE__SPEC);
       Iterable<IEObjectDescription> _allElements = scope.getAllElements();
+      String _join = IterableExtensions.join(_allElements, ", ");
+      String _plus = ("Suite Scope:" + _join);
+      InputOutput.<String>println(_plus);
+      Iterable<IEObjectDescription> _allElements_1 = scope.getAllElements();
       final Function1<IEObjectDescription,Boolean> _function = new Function1<IEObjectDescription,Boolean>() {
         public Boolean apply(final IEObjectDescription it) {
           EClass _eClass = it.getEClass();
-          boolean _isSuperTypeOf = org.jnario.JnarioPackage.Literals.SPECIFICATION.isSuperTypeOf(_eClass);
+          boolean _isSuperTypeOf = JnarioPackage.Literals.SPECIFICATION.isSuperTypeOf(_eClass);
           return Boolean.valueOf(_isSuperTypeOf);
         }
       };
-      Iterable<IEObjectDescription> specs = IterableExtensions.<IEObjectDescription>filter(_allElements, _function);
+      Iterable<IEObjectDescription> specs = IterableExtensions.<IEObjectDescription>filter(_allElements_1, _function);
       String _pattern_1 = specRef.getPattern();
       final Pattern pattern = Pattern.compile(_pattern_1);
       final Function1<IEObjectDescription,Boolean> _function_1 = new Function1<IEObjectDescription,Boolean>() {

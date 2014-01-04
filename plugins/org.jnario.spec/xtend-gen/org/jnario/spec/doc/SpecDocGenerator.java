@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
-import org.eclipse.xtend.core.xtend.XtendPackage.Literals;
+import org.eclipse.xtend.core.xtend.XtendPackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -46,8 +46,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {
     HtmlFile _xblockexpression = null;
     {
-      boolean _not = (!(xtendClass instanceof ExampleGroup));
-      if (_not) {
+      if ((!(xtendClass instanceof ExampleGroup))) {
         return HtmlFile.EMPTY_FILE;
       }
       final ExampleGroup exampleGroup = ((ExampleGroup) xtendClass);
@@ -95,16 +94,10 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     final Function1<XtendMember,Boolean> _function = new Function1<XtendMember,Boolean>() {
       public Boolean apply(final XtendMember it) {
         boolean _or = false;
-        boolean _or_1 = false;
-        if ((it instanceof Example)) {
-          _or_1 = true;
-        } else {
-          _or_1 = ((it instanceof Example) || (it instanceof ExampleGroup));
-        }
-        if (_or_1) {
+        if (((it instanceof Example) || (it instanceof ExampleGroup))) {
           _or = true;
         } else {
-          _or = (_or_1 || (it instanceof ExampleTable));
+          _or = (((it instanceof Example) || (it instanceof ExampleGroup)) || (it instanceof ExampleTable));
         }
         return Boolean.valueOf(_or);
       }
@@ -117,8 +110,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
         if (!inList) {
           _and = false;
         } else {
-          boolean _not = (!isExampleGroup);
-          _and = (inList && _not);
+          _and = (inList && (!isExampleGroup));
         }
         if (_and) {
           result.append("<li>");
@@ -127,12 +119,10 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           result.append("</li>");
         } else {
           boolean _and_1 = false;
-          boolean _not_1 = (!inList);
-          if (!_not_1) {
+          if (!(!inList)) {
             _and_1 = false;
           } else {
-            boolean _not_2 = (!isExampleGroup);
-            _and_1 = (_not_1 && _not_2);
+            _and_1 = ((!inList) && (!isExampleGroup));
           }
           if (_and_1) {
             result.append("<ul>");
@@ -155,11 +145,10 @@ public class SpecDocGenerator extends AbstractDocGenerator {
               inList = false;
             } else {
               boolean _and_3 = false;
-              boolean _not_3 = (!inList);
-              if (!_not_3) {
+              if (!(!inList)) {
                 _and_3 = false;
               } else {
-                _and_3 = (_not_3 && isExampleGroup);
+                _and_3 = ((!inList) && isExampleGroup);
               }
               if (_and_3) {
                 CharSequence _generate_3 = this.generate(member, level);
@@ -240,7 +229,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
         if (!_not) {
           _and = false;
         } else {
-          boolean _eIsSet = example.eIsSet(Literals.XTEND_FUNCTION__EXPRESSION);
+          boolean _eIsSet = example.eIsSet(XtendPackage.Literals.XTEND_FUNCTION__EXPRESSION);
           _and = (_not && _eIsSet);
         }
         if (_and) {
@@ -304,8 +293,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   protected CharSequence _generate(final ExampleGroup exampleGroup, final int level) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      boolean _greaterThan = (level > 1);
-      if (_greaterThan) {
+      if ((level > 1)) {
         _builder.append("<div class=\"level\">");
         _builder.newLine();
       }
@@ -331,13 +319,11 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     CharSequence _generateDoc = this.generateDoc(exampleGroup);
     _builder.append(_generateDoc, "");
     _builder.newLineIfNotEmpty();
-    int _plus = (level + 1);
-    StringConcatenation _generateMembers = this.generateMembers(exampleGroup, _plus);
+    StringConcatenation _generateMembers = this.generateMembers(exampleGroup, (level + 1));
     _builder.append(_generateMembers, "");
     _builder.newLineIfNotEmpty();
     {
-      boolean _greaterThan_1 = (level > 1);
-      if (_greaterThan_1) {
+      if ((level > 1)) {
         _builder.append("</div>");
         _builder.newLine();
       }
@@ -347,13 +333,11 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   
   private String header(final ExampleGroup exampleGroup, final int level) {
     String _xifexpression = null;
-    boolean _lessEqualsThan = (level <= 1);
-    if (_lessEqualsThan) {
+    if ((level <= 1)) {
       _xifexpression = "3";
     } else {
       String _xifexpression_1 = null;
-      boolean _equals = (level == 2);
-      if (_equals) {
+      if ((level == 2)) {
         _xifexpression_1 = "4";
       } else {
         _xifexpression_1 = "5";

@@ -45,10 +45,9 @@ public class ParsingSimpleJnarioFilesFeatureAndStuff extends ParsingSimpleJnario
   @Order(2)
   @Named("Then the adding these should be the result.")
   public void _thenTheAddingTheseShouldBeTheResult() {
-    int _plus = (this.x + this.y);
-    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(this.z));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf((this.x + this.y)), Integer.valueOf(this.z));
     Assert.assertTrue("\nExpected (x+y) => z but"
-     + "\n     x+y is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString()
+     + "\n     x+y is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((this.x + this.y))).toString()
      + "\n     x is " + new org.hamcrest.StringDescription().appendValue(this.x).toString()
      + "\n     y is " + new org.hamcrest.StringDescription().appendValue(this.y).toString()
      + "\n     z is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(this.z)).toString() + "\n", _doubleArrow);

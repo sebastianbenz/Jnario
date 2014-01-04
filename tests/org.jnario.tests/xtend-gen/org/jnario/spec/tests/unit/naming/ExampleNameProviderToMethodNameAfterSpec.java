@@ -124,8 +124,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   public String firstMethodName(final String content) {
     String _xblockexpression = null;
     {
-      String _plus = ("describe \'Context\'{" + content);
-      final String contentWithContext = (_plus + "}");
+      final String contentWithContext = (("describe \'Context\'{" + content) + "}");
       Query _parse = this.parse(contentWithContext);
       After _first = _parse.<After>first(After.class);
       String _methodName = this.subject.toMethodName(_first);
@@ -137,8 +136,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   public String secondMethodName(final String content) {
     String _xblockexpression = null;
     {
-      String _plus = ("describe \'Context\'{" + content);
-      final String contentWithContext = (_plus + "}");
+      final String contentWithContext = (("describe \'Context\'{" + content) + "}");
       Query _parse = this.parse(contentWithContext);
       After _second = _parse.<After>second(After.class);
       String _methodName = this.subject.toMethodName(_second);

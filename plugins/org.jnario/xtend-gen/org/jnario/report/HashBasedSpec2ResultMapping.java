@@ -11,7 +11,6 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -31,12 +30,7 @@ import org.jnario.report.SpecFailure;
 
 @SuppressWarnings("all")
 public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2ResultMapping {
-  private final HashMap<Pair<String,String>,SpecExecution> results = new Function0<HashMap<Pair<String,String>,SpecExecution>>() {
-    public HashMap<Pair<String,String>,SpecExecution> apply() {
-      HashMap<Pair<String,String>,SpecExecution> _newHashMap = CollectionLiterals.<Pair<String,String>, SpecExecution>newHashMap();
-      return _newHashMap;
-    }
-  }.apply();
+  private final HashMap<Pair<String,String>,SpecExecution> results = CollectionLiterals.<Pair<String,String>, SpecExecution>newHashMap();
   
   @Extension
   private JnarioNameProvider nameProvider;

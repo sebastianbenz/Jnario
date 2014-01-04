@@ -67,8 +67,8 @@ class SuiteBatchCompilerTest {
 		batchCompiler.compile()
 		val outputDir = new File(OUTPUT_DIRECTORY+"/test")
 		assertEquals(1, outputDir.list[dir, name | name.endsWith(".java")].size)
-//		val fileContent = Files.toString(new File(outputDir, "ExampleSuite.java"), Charsets::UTF_8)
-//		assertTrue("Expected to be to contain others specs, but was: \n\n" + fileContent, fileContent.contains("@Contains"))
+		val fileContent = Files.toString(new File(outputDir, "ExampleSuite.java"), Charsets::UTF_8)
+		assertTrue("Expected to be to contain others specs, but was: \n\n" + fileContent, fileContent.contains("@Contains"))
 	}
 
 }

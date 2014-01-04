@@ -32,9 +32,8 @@ public class AssertionIntroductionSpec extends AssertionSpec {
   public void _toPass() throws Exception {
     Assert.assertTrue("\nExpected true but" + " did not." + "\n", true);
     
-    boolean _equals = (1 == 1);
     Assert.assertTrue("\nExpected 1 == 1 but"
-     + "\n     1 == 1 is " + new org.hamcrest.StringDescription().appendValue(_equals).toString() + "\n", _equals);
+     + "\n     1 == 1 is " + new org.hamcrest.StringDescription().appendValue((1 == 1)).toString() + "\n", (1 == 1));
     
   }
   

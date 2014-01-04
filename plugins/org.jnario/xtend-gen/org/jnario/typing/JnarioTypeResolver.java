@@ -94,8 +94,7 @@ public class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeRe
         final Function1<ExampleCell,Boolean> _function = new Function1<ExampleCell,Boolean>() {
           public Boolean apply(final ExampleCell it) {
             XExpression _expression = it.getExpression();
-            boolean _not = (!(_expression instanceof XNullLiteral));
-            return Boolean.valueOf(_not);
+            return Boolean.valueOf((!(_expression instanceof XNullLiteral)));
           }
         };
         Iterable<ExampleCell> _filter = IterableExtensions.<ExampleCell>filter(_cells, _function);

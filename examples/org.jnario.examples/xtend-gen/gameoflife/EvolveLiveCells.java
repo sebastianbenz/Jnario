@@ -19,12 +19,10 @@ public class EvolveLiveCells implements Rule {
   }
   
   public boolean underPopulated(final int neighbourCount) {
-    boolean _lessThan = (neighbourCount < 2);
-    return _lessThan;
+    return (neighbourCount < 2);
   }
   
   public boolean overPopulated(final int neighbourCount) {
-    boolean _greaterThan = (neighbourCount > 3);
-    return _greaterThan;
+    return (neighbourCount > 3);
   }
 }

@@ -8,9 +8,7 @@
 package org.jnario.spec.tests.documentation
 
 import static extension org.jnario.jnario.test.util.Helpers.*
-import static extension org.jnario.lib.Each.*
 import static extension org.jnario.lib.Should.*
-import static extension org.jnario.jnario.test.util.SpecExecutor.*
 import java.util.Stack
 import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SpecTestCreator
@@ -517,7 +515,7 @@ describe "Introducing Jnario Specs"{
 		 */
 		fact "'assert'"{
 			assert true
-			assert new Stack().empty
+			assert new Stack().empty()
 			assert "Hello".startsWith("H")
 		}
 

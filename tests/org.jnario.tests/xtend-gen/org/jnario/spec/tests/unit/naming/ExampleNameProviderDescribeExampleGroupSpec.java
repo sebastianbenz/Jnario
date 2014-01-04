@@ -136,8 +136,7 @@ public class ExampleNameProviderDescribeExampleGroupSpec extends ExampleNameProv
   }
   
   public String describeFirst(final String content) {
-    String _plus = (content + "{}");
-    Query _parse = this.parse(_plus);
+    Query _parse = this.parse((content + "{}"));
     ExampleGroup _first = _parse.<ExampleGroup>first(ExampleGroup.class);
     String _describe = this.subject.describe(_first);
     return _describe;

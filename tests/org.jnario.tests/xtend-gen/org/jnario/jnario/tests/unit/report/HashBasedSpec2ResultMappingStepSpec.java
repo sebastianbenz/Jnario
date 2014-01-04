@@ -19,33 +19,13 @@ import org.junit.runner.RunWith;
 @CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMappingSpec {
-  final Passed aResult = new Function0<Passed>() {
-    public Passed apply() {
-      Passed _passingSpec = Passed.passingSpec("example.SomethingFeatureMyScenario", "Given a step", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
-      return _passingSpec;
-    }
-  }.apply();
+  final Passed aResult = Passed.passingSpec("example.SomethingFeatureMyScenario", "Given a step", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
   
-  final Passed aResultWithDifferentClassName = new Function0<Passed>() {
-    public Passed apply() {
-      Passed _passingSpec = Passed.passingSpec("example.DifferentSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
-      return _passingSpec;
-    }
-  }.apply();
+  final Passed aResultWithDifferentClassName = Passed.passingSpec("example.DifferentSpec", "a fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
   
-  final Passed aResultWithDifferentName = new Function0<Passed>() {
-    public Passed apply() {
-      Passed _passingSpec = Passed.passingSpec("example.SomethingSpec", "another fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
-      return _passingSpec;
-    }
-  }.apply();
+  final Passed aResultWithDifferentName = Passed.passingSpec("example.SomethingSpec", "another fact", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
   
-  final Passed pendingResult = new Function0<Passed>() {
-    public Passed apply() {
-      Passed _passingSpec = Passed.passingSpec("example.SomethingFeatureMyScenario", "Given a pending step [PENDING]", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
-      return _passingSpec;
-    }
-  }.apply();
+  final Passed pendingResult = Passed.passingSpec("example.SomethingFeatureMyScenario", "Given a pending step [PENDING]", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
   
   final Passed resultWithUnicodeChars = new Function0<Passed>() {
     public Passed apply() {

@@ -73,6 +73,7 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory {
 			case JnarioPackage.EXAMPLE_COLUMN: return createExampleColumn();
 			case JnarioPackage.SHOULD: return createShould();
 			case JnarioPackage.SHOULD_THROW: return createShouldThrow();
+			case JnarioPackage.SPECIFICATION: return createSpecification();
 			case JnarioPackage.MOCK_LITERAL: return createMockLiteral();
 			case JnarioPackage.EXAMPLE_CELL: return createExampleCell();
 			default:
@@ -138,6 +139,16 @@ public class JnarioFactoryImpl extends EFactoryImpl implements JnarioFactory {
 	public ShouldThrow createShouldThrow() {
 		ShouldThrowImpl shouldThrow = new ShouldThrowImpl();
 		return shouldThrow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Specification createSpecification() {
+		SpecificationImpl specification = new SpecificationImpl();
+		return specification;
 	}
 
 	/**

@@ -117,8 +117,7 @@ public class WhiteSpaceNormalizer {
         if (_notEquals) {
           return input;
         }
-        int _plus = (i + 1);
-        i = _plus;
+        i = (i + 1);
       }
       int _length_3 = toReplace.length();
       boolean _lessThan_2 = (i < _length_3);

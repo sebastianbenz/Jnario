@@ -3,7 +3,6 @@ package gameoflife.features;
 import gameoflife.Evolution;
 import gameoflife.World;
 import gameoflife.features.PlayingGameOfLifeFeature;
-import org.jnario.lib.Assert;
 import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
 import org.jnario.lib.StepArguments;
@@ -41,12 +40,6 @@ public class PlayingGameOfLifeFeatureBlinker1 extends PlayingGameOfLifeFeature {
     this.world = _evolve;
     String _first = JnarioIterableExtensions.<String>first(args);
     World _parseWorld = World.parseWorld(_first);
-    boolean _doubleArrow = Should.<World>operator_doubleArrow(this.world, _parseWorld);
-    Assert.assertTrue("\nExpected world => parseWorld(args.first) but"
-     + "\n     world is " + new org.hamcrest.StringDescription().appendValue(this.world).toString()
-     + "\n     parseWorld(args.first) is " + new org.hamcrest.StringDescription().appendValue(_parseWorld).toString()
-     + "\n     args.first is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
-     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
-    
+    Should.<World>operator_doubleArrow(this.world, _parseWorld);
   }
 }

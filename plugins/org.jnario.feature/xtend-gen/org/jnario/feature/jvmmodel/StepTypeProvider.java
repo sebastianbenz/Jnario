@@ -7,7 +7,6 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Given;
 import org.jnario.feature.feature.GivenReference;
@@ -20,39 +19,13 @@ import org.jnario.feature.feature.WhenReference;
 
 @SuppressWarnings("all")
 public class StepTypeProvider {
-  public final static Set<EClass> ANDS = new Function0<Set<EClass>>() {
-    public Set<EClass> apply() {
-      EClass _but = FeaturePackage.eINSTANCE.getBut();
-      EClass _butReference = FeaturePackage.eINSTANCE.getButReference();
-      EClass _and = FeaturePackage.eINSTANCE.getAnd();
-      EClass _andReference = FeaturePackage.eINSTANCE.getAndReference();
-      return Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(_but, _butReference, _and, _andReference));
-    }
-  }.apply();
+  public final static Set<EClass> ANDS = Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(FeaturePackage.eINSTANCE.getBut(), FeaturePackage.eINSTANCE.getButReference(), FeaturePackage.eINSTANCE.getAnd(), FeaturePackage.eINSTANCE.getAndReference()));
   
-  public final static Set<EClass> GIVEN = new Function0<Set<EClass>>() {
-    public Set<EClass> apply() {
-      EClass _given = FeaturePackage.eINSTANCE.getGiven();
-      EClass _givenReference = FeaturePackage.eINSTANCE.getGivenReference();
-      return Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(_given, _givenReference));
-    }
-  }.apply();
+  public final static Set<EClass> GIVEN = Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(FeaturePackage.eINSTANCE.getGiven(), FeaturePackage.eINSTANCE.getGivenReference()));
   
-  public final static Set<EClass> WHEN = new Function0<Set<EClass>>() {
-    public Set<EClass> apply() {
-      EClass _when = FeaturePackage.eINSTANCE.getWhen();
-      EClass _whenReference = FeaturePackage.eINSTANCE.getWhenReference();
-      return Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(_when, _whenReference));
-    }
-  }.apply();
+  public final static Set<EClass> WHEN = Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(FeaturePackage.eINSTANCE.getWhen(), FeaturePackage.eINSTANCE.getWhenReference()));
   
-  public final static Set<EClass> THEN = new Function0<Set<EClass>>() {
-    public Set<EClass> apply() {
-      EClass _then = FeaturePackage.eINSTANCE.getThen();
-      EClass _thenReference = FeaturePackage.eINSTANCE.getThenReference();
-      return Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(_then, _thenReference));
-    }
-  }.apply();
+  public final static Set<EClass> THEN = Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(FeaturePackage.eINSTANCE.getThen(), FeaturePackage.eINSTANCE.getThenReference()));
   
   protected Set<EClass> _getExpectedTypes(final Given step) {
     return StepTypeProvider.GIVEN;
@@ -98,8 +71,7 @@ public class StepTypeProvider {
       EList<Step> _steps = container.getSteps();
       final int index = _steps.indexOf(step);
       int i = index;
-      boolean _greaterEqualsThan = (i >= 0);
-      boolean _while = _greaterEqualsThan;
+      boolean _while = (i >= 0);
       while (_while) {
         {
           EList<Step> _steps_1 = container.getSteps();
@@ -110,11 +82,9 @@ public class StepTypeProvider {
           if (_not) {
             return candidate;
           }
-          int _minus = (i - 1);
-          i = _minus;
+          i = (i - 1);
         }
-        boolean _greaterEqualsThan_1 = (i >= 0);
-        _while = _greaterEqualsThan_1;
+        _while = (i >= 0);
       }
       _xblockexpression = (step);
     }

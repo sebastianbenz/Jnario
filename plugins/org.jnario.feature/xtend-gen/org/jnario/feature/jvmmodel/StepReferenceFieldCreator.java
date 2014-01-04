@@ -95,8 +95,7 @@ public class StepReferenceFieldCreator {
   }
   
   private void copyFields(final EObject objectWithReference, final Iterable<XtendMember> members, final Set<String> fieldNames) {
-    boolean _not = (!(objectWithReference instanceof XtendClass));
-    if (_not) {
+    if ((!(objectWithReference instanceof XtendClass))) {
       return;
     }
     final XtendClass type = ((XtendClass) objectWithReference);
@@ -105,8 +104,8 @@ public class StepReferenceFieldCreator {
     for (final XtendField field : _filter) {
       String _name = field.getName();
       boolean _contains = fieldNames.contains(_name);
-      boolean _not_1 = (!_contains);
-      if (_not_1) {
+      boolean _not = (!_contains);
+      if (_not) {
         final XtendField copiedMember = this._expressionCopier.<XtendField>cloneWithProxies(field);
         SourceAdapter.adapt(copiedMember, field);
         newFields.add(((XtendField) copiedMember));

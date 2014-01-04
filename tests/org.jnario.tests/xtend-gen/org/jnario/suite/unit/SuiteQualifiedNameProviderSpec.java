@@ -11,7 +11,6 @@ import com.google.inject.Inject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.hamcrest.Matcher;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.SuiteTestCreator;
 import org.jnario.lib.Assert;
@@ -108,10 +107,7 @@ public class SuiteQualifiedNameProviderSpec {
     _builder.newLine();
     this._modelStore.parseSuite(_builder);
     String _qualifiedName = this.qualifiedName();
-    Matcher<String> _nullValue = Should.<String>nullValue();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_qualifiedName, _nullValue);
-    Assert.assertTrue("\nExpected qualifiedName should be null but"
-     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+    Assert.assertNull("\nExpected qualifiedName should be null\n     but is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _qualifiedName);
     
   }
   

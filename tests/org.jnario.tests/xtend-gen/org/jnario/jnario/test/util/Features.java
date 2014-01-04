@@ -92,8 +92,7 @@ public class Features {
   
   public static Scenario scenario(final String name, final String featureName) {
     final Scenario scenario = Features.factory.createScenario();
-    String _plus = ("Scenario: " + name);
-    scenario.setName(_plus);
+    scenario.setName(("Scenario: " + name));
     final Feature feature = Features.feature(featureName);
     EList<Scenario> _scenarios = feature.getScenarios();
     _scenarios.add(scenario);

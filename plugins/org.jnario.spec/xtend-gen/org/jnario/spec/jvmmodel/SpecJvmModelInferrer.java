@@ -113,8 +113,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   private int index = 0;
   
   public void doInfer(final EObject object, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
-    boolean _not = (!(object instanceof XtendFile));
-    if (_not) {
+    if ((!(object instanceof XtendFile))) {
       return;
     }
     final XtendFile xtendFile = ((XtendFile) object);
@@ -125,8 +124,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       this.infer(acceptor, declaration, null, doLater, preIndexingPhase);
     }
     this.exampleIndex = 0;
-    boolean _not_1 = (!preIndexingPhase);
-    if (_not_1) {
+    if ((!preIndexingPhase)) {
       for (final Runnable runnable : doLater) {
         runnable.run();
       }
@@ -145,8 +143,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     XtendFile _xtendFile = this.xtendFile(exampleGroup);
     this.setNameAndAssociate(_xtendFile, exampleGroup, javaType);
     acceptor.<JvmGenericType>accept(javaType);
-    boolean _not = (!preIndexingPhase);
-    if (_not) {
+    if ((!preIndexingPhase)) {
       final Runnable _function = new Runnable() {
         public void run() {
           SpecJvmModelInferrer.this.initialize(exampleGroup, javaType);
@@ -165,10 +162,17 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     };
     IterableExtensions.<ExampleGroup>forEach(_filter, _function_1);
     boolean _isEmpty = children.isEmpty();
-    boolean _not_1 = (!_isEmpty);
-    if (_not_1) {
+    boolean _not = (!_isEmpty);
+    if (_not) {
       TestRuntimeSupport _testRuntime = this.getTestRuntime();
-      _testRuntime.addChildren(exampleGroup, javaType, children);
+      final Function1<JvmGenericType,JvmTypeReference> _function_2 = new Function1<JvmGenericType,JvmTypeReference>() {
+        public JvmTypeReference apply(final JvmGenericType it) {
+          JvmParameterizedTypeReference _createTypeRef = SpecJvmModelInferrer.this._typeReferences.createTypeRef(it);
+          return _createTypeRef;
+        }
+      };
+      List<JvmTypeReference> _map = ListExtensions.<JvmGenericType, JvmTypeReference>map(children, _function_2);
+      _testRuntime.addChildren(exampleGroup, javaType, _map);
     }
     return javaType;
   }
@@ -240,55 +244,48 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     boolean _matched = false;
     if (!_matched) {
       if (sourceMember instanceof Example) {
-        final Example _example = (Example)sourceMember;
         _matched=true;
-        this.transform(((Example) _example), container);
+        this.transform(((Example) sourceMember), container);
       }
     }
     if (!_matched) {
       if (sourceMember instanceof Before) {
-        final Before _before = (Before)sourceMember;
         _matched=true;
-        this.transform(((Before) _before), container);
+        this.transform(((Before) sourceMember), container);
       }
     }
     if (!_matched) {
       if (sourceMember instanceof After) {
-        final After _after = (After)sourceMember;
         _matched=true;
-        this.transform(((After) _after), container);
+        this.transform(((After) sourceMember), container);
       }
     }
     if (!_matched) {
       if (sourceMember instanceof ExampleTable) {
-        final ExampleTable _exampleTable = (ExampleTable)sourceMember;
         _matched=true;
-        this.transform(((ExampleTable) _exampleTable), container);
+        this.transform(((ExampleTable) sourceMember), container);
       }
     }
     if (!_matched) {
       if (sourceMember instanceof XtendFunction) {
-        final XtendFunction _xtendFunction = (XtendFunction)sourceMember;
-        String _name = _xtendFunction.getName();
+        String _name = ((XtendFunction)sourceMember).getName();
         boolean _notEquals = (!Objects.equal(_name, null));
         if (_notEquals) {
           _matched=true;
-          this.transform(((XtendFunction) _xtendFunction), container, false);
+          this.transform(((XtendFunction) sourceMember), container, false);
         }
       }
     }
     if (!_matched) {
       if (sourceMember instanceof XtendField) {
-        final XtendField _xtendField = (XtendField)sourceMember;
         _matched=true;
-        this.transform(((XtendField) _xtendField), container);
+        this.transform(((XtendField) sourceMember), container);
       }
     }
     if (!_matched) {
       if (sourceMember instanceof XtendConstructor) {
-        final XtendConstructor _xtendConstructor = (XtendConstructor)sourceMember;
         _matched=true;
-        this.transform(((XtendConstructor) _xtendConstructor), container);
+        this.transform(((XtendConstructor) sourceMember), container);
       }
     }
   }
@@ -296,8 +293,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   public boolean transform(final Example element, final JvmGenericType container) {
     boolean _xblockexpression = false;
     {
-      int _plus = (this.exampleIndex + 1);
-      this.exampleIndex = _plus;
+      this.exampleIndex = (this.exampleIndex + 1);
       XExpression _expression = element.getExpression();
       boolean _equals = Objects.equal(_expression, null);
       if (_equals) {
@@ -518,8 +514,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
                 public void apply(final ExampleCell it) {
                   String _initMethodName = SpecJvmModelInferrer.this.initMethodName(table, SpecJvmModelInferrer.this.index);
                   SpecJvmModelInferrer.this.generateCellInitializerMethod(specType, _initMethodName, it);
-                  int _plus = (SpecJvmModelInferrer.this.index + 1);
-                  SpecJvmModelInferrer.this.index = _plus;
+                  SpecJvmModelInferrer.this.index = (SpecJvmModelInferrer.this.index + 1);
                 }
               };
               IterableExtensions.<ExampleCell>forEach(_cells, _function);
@@ -597,8 +592,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
               String _plus_5 = (_initMethodName + "()");
               appendable.append(_plus_5);
             }
-            int _plus_6 = (this.index + 1);
-            this.index = _plus_6;
+            this.index = (this.index + 1);
             EList<ExampleCell> _cells_2 = row.getCells();
             ExampleCell _last = IterableExtensions.<ExampleCell>last(_cells_2);
             boolean _notEquals = (!Objects.equal(_last, cell));

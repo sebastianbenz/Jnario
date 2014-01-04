@@ -78,27 +78,24 @@ public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAbout
     boolean _matched = false;
     if (!_matched) {
       if (x instanceof String) {
-        final String _string = (String)x;
-        int _length = _string.length();
+        int _length = ((String)x).length();
         boolean _greaterThan = (_length > 0);
         if (_greaterThan) {
           _matched=true;
-          int _length_1 = _string.length();
+          int _length_1 = ((String)x).length();
           _switchResult = _length_1;
         }
       }
     }
     if (!_matched) {
       if (x instanceof List) {
-        final List<?> _list_1 = (List<?>)x;
         _matched=true;
-        int _size = _list_1.size();
+        int _size = ((List<? extends Object>)x).size();
         _switchResult = _size;
       }
     }
     if (!_matched) {
-      int _minus = (-1);
-      _switchResult = _minus;
+      _switchResult = (-1);
     }
     boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_switchResult), Integer.valueOf(3));
     Assert.assertTrue("\nExpected switch x {\r\n        String case x.length > 0 : x.length // length from String \r\n        List<?>                  : x.size    // size from List\r\n        default : -1\r\n      } \r\n      \r\n      => 3 but"

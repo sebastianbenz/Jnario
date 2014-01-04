@@ -30,7 +30,6 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.jnario.runner.Extends
 import org.jnario.runner.Extension
 
-import static extension com.google.common.collect.Iterables.*
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 
 /**

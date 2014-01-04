@@ -9,8 +9,9 @@ import org.eclipse.xtext.diagnostics.IDiagnosticProducer
 import org.eclipse.xtext.nodemodel.INode
 import org.jnario.spec.spec.ExampleGroup
 import com.google.inject.Inject
+import org.eclipse.xtend.core.linking.Linker
 
-class SpecLazyLinker extends XbaseLazyLinker {
+class SpecLazyLinker extends Linker {
 	
 	@Inject extension ImplicitSubject
 	

@@ -50,30 +50,27 @@ public class UsingShouldSpec {
     Assert.assertTrue("\nExpected // equality\r\n    true should be true but"
      + "\n     // equality\r\n    true should be true is " + new org.hamcrest.StringDescription().appendValue(true).toString() + "\n", _should_be);
     
-    int _plus = (1 + 1);
-    boolean _should_be_1 = Should.<Integer>should_be(Integer.valueOf(_plus), Integer.valueOf(1));
+    boolean _should_be_1 = Should.<Integer>should_be(
+      Integer.valueOf((1 + 1)), Integer.valueOf(1));
     Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
-     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be_1);
+     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString() + "\n", _should_be_1);
     
-    Matcher<String> _nullValue = Should.<String>nullValue();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(
-      "something", _nullValue);
-    Assert.assertFalse("\nExpected \"something\" should not be null but" + " did not." + "\n", _doubleArrow);
+    Assert.assertNotNull("\nExpected \"something\" should not be null\n     but is " + new org.hamcrest.StringDescription().appendValue("something").toString() + "\n", "something");
     
-    int _plus_1 = (1 + 1);
-    boolean _doubleArrow_1 = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus_1), Integer.valueOf(2));
+    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(
+      Integer.valueOf((1 + 1)), Integer.valueOf(2));
     Assert.assertTrue("\nExpected 1 + 1 => 2 but"
-     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus_1)).toString() + "\n", _doubleArrow_1);
+     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString() + "\n", _doubleArrow);
     
-    boolean _doubleArrow_2 = Should.operator_doubleArrow(
+    boolean _doubleArrow_1 = Should.operator_doubleArrow(
       "a string", String.class);
     Assert.assertTrue("\nExpected // types\r\n    \"a string\" => typeof(String) but"
-     + "\n     // types\r\n    \"a string\" => typeof(String) is " + new org.hamcrest.StringDescription().appendValue(_doubleArrow_2).toString() + "\n", _doubleArrow_2);
+     + "\n     // types\r\n    \"a string\" => typeof(String) is " + new org.hamcrest.StringDescription().appendValue(_doubleArrow_1).toString() + "\n", _doubleArrow_1);
     
     Class<? extends String> _class = "a string".getClass();
-    boolean _doubleArrow_3 = Should.operator_doubleArrow(_class, String.class);
+    boolean _doubleArrow_2 = Should.operator_doubleArrow(_class, String.class);
     Assert.assertTrue("\nExpected \"a string\".getClass => typeof(String) but"
-     + "\n     \"a string\".getClass is " + new org.hamcrest.StringDescription().appendValue(_class).toString() + "\n", _doubleArrow_3);
+     + "\n     \"a string\".getClass is " + new org.hamcrest.StringDescription().appendValue(_class).toString() + "\n", _doubleArrow_2);
     
     boolean _should_contain = Should.<Object>should_contain(
       "something", "thing");
@@ -113,9 +110,9 @@ public class UsingShouldSpec {
       }
     };
     final String greeting = ObjectExtensions.<String>operator_doubleArrow("hello world", _function);
-    boolean _doubleArrow_4 = Should.operator_doubleArrow(greeting, String.class);
+    boolean _doubleArrow_3 = Should.operator_doubleArrow(greeting, String.class);
     Assert.assertTrue("\nExpected greeting => typeof(String) but"
-     + "\n     greeting is " + new org.hamcrest.StringDescription().appendValue(greeting).toString() + "\n", _doubleArrow_4);
+     + "\n     greeting is " + new org.hamcrest.StringDescription().appendValue(greeting).toString() + "\n", _doubleArrow_3);
     
     boolean expectedException = false;
     String message = "";
@@ -161,13 +158,13 @@ public class UsingShouldSpec {
     boolean expectedException = false;
     String message = "";
     try{
-      int _plus = (1 + 1);
-      boolean _should_be = Should.<Integer>should_be(Integer.valueOf(_plus), Integer.valueOf(1));
+      boolean _should_be = Should.<Integer>should_be(
+        Integer.valueOf((1 + 1)), Integer.valueOf(1));
       Assert.assertTrue("\nExpected 1 + 1 should be 1 but"
-       + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _should_be);
+       + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString() + "\n", _should_be);
       
       message = "Expected " + AssertionError.class.getName() + " for \n     1 + 1 should be 1\n with:"
-       + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString();
+       + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString();
     }catch(AssertionError e){
       expectedException = true;
     }
@@ -175,13 +172,13 @@ public class UsingShouldSpec {
     boolean expectedException_1 = false;
     String message_1 = "";
     try{
-      int _plus_1 = (1 + 1);
-      boolean _should_be_1 = Should.<Integer>should_be(Integer.valueOf(_plus_1), Integer.valueOf(2));
+      boolean _should_be_1 = Should.<Integer>should_be(
+        Integer.valueOf((1 + 1)), Integer.valueOf(2));
       Assert.assertFalse("\nExpected 1 + 1 should not be 2 but"
-       + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus_1)).toString() + "\n", _should_be_1);
+       + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString() + "\n", _should_be_1);
       
       message_1 = "Expected " + AssertionError.class.getName() + " for \n     1 + 1 should not be 2\n with:"
-       + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus_1)).toString();
+       + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString();
     }catch(AssertionError e){
       expectedException_1 = true;
     }
@@ -189,13 +186,13 @@ public class UsingShouldSpec {
     boolean expectedException_2 = false;
     String message_2 = "";
     try{
-      int _plus_2 = (1 + 1);
-      boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus_2), Integer.valueOf(1));
+      boolean _doubleArrow = Should.<Integer>operator_doubleArrow(
+        Integer.valueOf((1 + 1)), Integer.valueOf(1));
       Assert.assertTrue("\nExpected 1 + 1 => 1 but"
-       + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus_2)).toString() + "\n", _doubleArrow);
+       + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString() + "\n", _doubleArrow);
       
       message_2 = "Expected " + AssertionError.class.getName() + " for \n     1 + 1 => 1\n with:"
-       + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus_2)).toString();
+       + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString();
     }catch(AssertionError e){
       expectedException_2 = true;
     }
@@ -204,10 +201,7 @@ public class UsingShouldSpec {
     String message_3 = "";
     try{
       Object _object = new Object();
-      Matcher<Object> _nullValue = Should.<Object>nullValue();
-      boolean _doubleArrow_1 = Should.<Object>operator_doubleArrow(_object, _nullValue);
-      Assert.assertTrue("\nExpected new Object => null but"
-       + "\n     new Object is " + new org.hamcrest.StringDescription().appendValue(_object).toString() + "\n", _doubleArrow_1);
+      Assert.assertNull("\nExpected new Object => null\n     but is " + new org.hamcrest.StringDescription().appendValue(_object).toString() + "\n", _object);
       
       message_3 = "Expected " + AssertionError.class.getName() + " for \n     new Object => null\n with:"
        + "\n     new Object is " + new org.hamcrest.StringDescription().appendValue(_object).toString();
@@ -219,10 +213,7 @@ public class UsingShouldSpec {
     String message_4 = "";
     try{
       Object _object_1 = new Object();
-      Matcher<Object> _nullValue_1 = Should.<Object>nullValue();
-      boolean _doubleArrow_2 = Should.<Object>operator_doubleArrow(_object_1, _nullValue_1);
-      Assert.assertTrue("\nExpected new Object should be null but"
-       + "\n     new Object is " + new org.hamcrest.StringDescription().appendValue(_object_1).toString() + "\n", _doubleArrow_2);
+      Assert.assertNull("\nExpected new Object should be null\n     but is " + new org.hamcrest.StringDescription().appendValue(_object_1).toString() + "\n", _object_1);
       
       message_4 = "Expected " + AssertionError.class.getName() + " for \n     new Object should be null\n with:"
        + "\n     new Object is " + new org.hamcrest.StringDescription().appendValue(_object_1).toString();
@@ -256,10 +247,9 @@ public class UsingShouldSpec {
   public void _whyDidItFail() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
       public void apply(final Boolean it) {
-        int _plus = (1 + 1);
-        boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(1));
+        boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf((1 + 1)), Integer.valueOf(1));
         Assert.assertTrue("\nExpected 1 + 1 => 1 but"
-         + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString() + "\n", _doubleArrow);
+         + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString() + "\n", _doubleArrow);
         
       }
     };
@@ -324,8 +314,7 @@ public class UsingShouldSpec {
   public void _waitForSomething() throws Exception {
     final Function1<Wait,Boolean> _function = new Function1<Wait,Boolean>() {
       public Boolean apply(final Wait it) {
-        boolean _greaterThan = (1 > 0);
-        return Boolean.valueOf(_greaterThan);
+        return Boolean.valueOf((1 > 0));
       }
     };
     Wait.waitUntil(_function);
@@ -336,8 +325,7 @@ public class UsingShouldSpec {
           it.setMessage("Custom error message");
           it.setDuration(100);
           it.setPollingInterval(10);
-          boolean _greaterThan = (1 > 0);
-          _xblockexpression = (_greaterThan);
+          _xblockexpression = ((1 > 0));
         }
         return Boolean.valueOf(_xblockexpression);
       }

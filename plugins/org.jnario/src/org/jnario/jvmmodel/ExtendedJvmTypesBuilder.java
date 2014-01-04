@@ -19,6 +19,7 @@ import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmStringAnnotationValue;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeAnnotationValue;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
@@ -68,6 +69,11 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 				if(type != null){
 					((JvmTypeAnnotationValue)annotationValue).getValues().add(references.createTypeRef(type));
 				}
+			}else if(object instanceof JvmTypeReference){
+				if(annotationValue == null){
+					annotationValue = TypesFactory.eINSTANCE.createJvmTypeAnnotationValue();
+				}
+				((JvmTypeAnnotationValue)annotationValue).getValues().add((JvmTypeReference)object);
 			}else if(object instanceof JvmGenericType){
 				if(annotationValue == null){
 					annotationValue = TypesFactory.eINSTANCE.createJvmTypeAnnotationValue();

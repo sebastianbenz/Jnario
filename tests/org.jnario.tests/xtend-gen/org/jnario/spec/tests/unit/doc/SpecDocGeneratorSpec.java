@@ -364,8 +364,7 @@ public class SpecDocGeneratorSpec {
   
   public String generatedFile(final String name) {
     Map<String,CharSequence> _files = this.fsa.getFiles();
-    String _plus = ("DOC_OUTPUT/" + name);
-    CharSequence _get = _files.get(_plus);
+    CharSequence _get = _files.get(("DOC_OUTPUT/" + name));
     String _string = null;
     if (_get!=null) {
       _string=_get.toString();

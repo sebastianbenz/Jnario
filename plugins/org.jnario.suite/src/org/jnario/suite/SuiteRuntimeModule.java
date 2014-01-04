@@ -10,12 +10,17 @@
  */
 package org.jnario.suite;
 
+import org.eclipse.xtend.core.compiler.UnicodeAwarePostProcessor;
 import org.eclipse.xtend.core.compiler.XtendCompiler;
 import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
+import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.core.conversion.JavaIDValueConverter;
 import org.eclipse.xtend.core.formatting.XtendFormatter;
 import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
+import org.eclipse.xtend.core.linking.Linker;
+import org.eclipse.xtend.core.linking.LinkingProxyAwareResource;
+import org.eclipse.xtend.core.linking.URIEncoder;
 import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
 import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
 import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
@@ -30,26 +35,32 @@ import org.eclipse.xtend.lib.macro.file.MutableFileSystemSupport;
 import org.eclipse.xtext.common.types.descriptions.JvmDeclaredTypeSignatureHashProvider.SignatureHashBuilder;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.conversion.impl.IDValueConverter;
+import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.eclipse.xtext.generator.IFilePostProcessor;
+import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
+import org.eclipse.xtext.linking.ILinker;
 import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
+import org.eclipse.xtext.linking.lazy.LazyURIEncoder;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
-import org.eclipse.xtext.resource.IResourceDescription;
+import org.eclipse.xtext.resource.IResourceDescription.Manager;
 import org.eclipse.xtext.resource.IResourceDescriptions;
-import org.eclipse.xtext.resource.containers.IAllContainersState.Provider;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.impl.EagerResourceSetBasedResourceDescriptions;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.validation.CompositeEValidator;
 import org.eclipse.xtext.validation.ConfigurableIssueCodesProvider;
-import org.eclipse.xtext.xbase.XbaseFactory;
+import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.compiler.output.TraceAwarePostProcessor;
+import org.eclipse.xtext.xbase.file.AbstractFileSystemSupport;
 import org.eclipse.xtext.xbase.file.FileLocationsImpl;
 import org.eclipse.xtext.xbase.file.JavaIOFileSystemSupport;
 import org.eclipse.xtext.xbase.file.RuntimeWorkspaceConfigProvider;
@@ -66,6 +77,7 @@ import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
+import org.jnario.documentation.XtendDocumentationProvider;
 import org.jnario.generator.JnarioJavaIoFileSystemAccess;
 import org.jnario.jvmmodel.ExecutableProvider;
 import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
@@ -74,7 +86,6 @@ import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.HashBasedSpec2ResultMapping;
-import org.jnario.scoping.EagerResourceSetBasedAllContainersStateProvider;
 import org.jnario.scoping.JnarioResourceDescriptionStrategy;
 import org.jnario.suite.compiler.SuiteBatchCompiler;
 import org.jnario.suite.conversion.SuiteValueConverterService;
@@ -107,23 +118,12 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 		binder.bind(Executable2ResultMapping.class).to(HashBasedSpec2ResultMapping.class);
 		binder.bind(boolean.class).annotatedWith(
 				Names.named(CompositeEValidator.USE_EOBJECT_VALIDATOR)).toInstance(false);
+		binder.bind(XtendBatchCompiler.class).to(SuiteBatchCompiler.class);
 	}
 	
-	@Override
-	public Class<? extends IValueConverterService> bindIValueConverterService() {
-		return SuiteValueConverterService.class;
-	}
 	
-	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
-		return SuiteGenerator.class;
-	}
-
 	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {
 		return DocOutputConfigurationProvider.class;
-	}
-	
-	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
-		return XtendLinkingDiagnosticMessageProvider.class;
 	}
 	
 	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder(){
@@ -133,17 +133,41 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	public Class<? extends JvmModelGenerator> bindJvmModelGenerator(){
 		return ExtendedJvmModelGenerator.class;
 	}
+
+	public Class<? extends IFilePostProcessor> bindPostProcessor() {
+		return TraceAwarePostProcessor.class;
+	}
+	
+	public Class<? extends JavaIoFileSystemAccess> bindJavaIoFileSystemAccess() {
+		return JnarioJavaIoFileSystemAccess.class;
+	}
+	
+
+	public Class<? extends org.jnario.compiler.JnarioBatchCompiler> bindJnarioBatchCompiler(){
+		return SuiteBatchCompiler.class;
+	}
+	
+	public Class<? extends XExpressionHelper> bindXExpressionHelper() {
+		return XtendExpressionHelper.class;
+	}
 	
 	@Override
-	public java.lang.Class<? extends IScopeProvider> bindIScopeProvider() {
-		return SuiteScopeProvider.class;
+	public Class<? extends IValueConverterService> bindIValueConverterService() {
+		return SuiteValueConverterService.class;
 	}
-
+	
+	@Override
 	public void configureIScopeProviderDelegate(Binder binder) {
 		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
 		.to(SuiteImportedNamespaceScopeProvider.class);
 	}
 
+	@Override
+	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return SuiteQualifiedNameProvider.class;
+	}
+	
+	@Override
 	public Class <? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
 		return JnarioResourceDescriptionStrategy.class;
 	}
@@ -156,49 +180,25 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 		return XtendEarlyExitValidator.class;
 	}
 	
-	public Class<? extends IFilePostProcessor> bindPostProcessor() {
-		return TraceAwarePostProcessor.class;
-	}
-	
-	public Class<? extends JavaIoFileSystemAccess> bindJavaIoFileSystemAccess() {
-		return JnarioJavaIoFileSystemAccess.class;
-	}
-	
-	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
-		return SuiteJvmModelInferrer.class;
-	}
-	
-	@Override
-	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
-		return SuiteQualifiedNameProvider.class;
-	}
-
-	@Override
-	public Class<? extends IResourceDescription.Manager> bindIResourceDescription$Manager() {
-		return SuiteResourceDescriptionManager.class;
-	}
-	
-	public Class<? extends org.jnario.compiler.JnarioBatchCompiler> bindJnarioBatchCompiler(){
-		return SuiteBatchCompiler.class;
-	}
-	
-	public XbaseFactory bindXbaseFactory() {
-		return XbaseFactory.eINSTANCE;
-	}
-	
-	public Class<? extends XExpressionHelper> bindXExpressionHelper() {
-		return XtendExpressionHelper.class;
-	}
-	
 	public Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
 		return XtendOutputConfigurationProvider.class;
 	}
 	
 	@Override
+	public Class<? extends IScopeProvider> bindIScopeProvider() {
+		return SuiteScopeProvider.class;
+	}
+
+	@Override
 	public Class<? extends ILocationInFileProvider> bindILocationInFileProvider() {
 		return XtendLocationInFileProvider.class;
 	}
 
+	@Override
+	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
+		return XtendLinkingDiagnosticMessageProvider.class;
+	}
+	
 	public Class<? extends IBasicFormatter> bindIBasicFormatter() {
 		return XtendFormatter.class;
 	}
@@ -230,23 +230,62 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 		return XtendCompiler.class;
 	}
 	
+	public Class<? extends TraceAwarePostProcessor> bindTraceAwarePostProcessor() {
+		return UnicodeAwarePostProcessor.class;
+	}
+
 	@Override
 	public Class<? extends ITypeComputer> bindITypeComputer() {
 		return XtendTypeComputer.class;
 	}
-	
-	@Override
-	public Class<? extends Provider> bindIAllContainersState$Provider() {
-		return EagerResourceSetBasedAllContainersStateProvider.class;
+
+	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
+		return SuiteJvmModelInferrer.class;
 	}
 	
+	@Override
+	public Class<? extends Manager> bindIResourceDescription$Manager() {
+		return SuiteResourceDescriptionManager.class;
+	}
+	
+	@Override
+	public Class<? extends IResourceValidator> bindIResourceValidator() {
+		return org.eclipse.xtend.core.validation.CachingResourceValidatorImpl.class;
+	}
+	
+	@Override
+	public Class<? extends ILinker> bindILinker() {
+		return Linker.class;
+	}
+	
+	@Override
+	public Class<? extends XtextResource> bindXtextResource() {
+		return LinkingProxyAwareResource.class;
+	}
+	
+	public Class<? extends LazyURIEncoder> bindLazyURIEncoder() {
+		return URIEncoder.class;
+	}
+	
+	/**
+	 * @since 2.4.2
+	 */
 	@Override
 	public void configureIResourceDescriptions(com.google.inject.Binder binder) {
 		binder.bind(IResourceDescriptions.class).to(EagerResourceSetBasedResourceDescriptions.class);
 	}
 	
 	public Class<? extends MutableFileSystemSupport> bindFileHandleFactory() {
+		return AbstractFileSystemSupport.class;
+	}
+	
+	public Class<? extends AbstractFileSystemSupport> bindAbstractFileSystemSupport() {
 		return JavaIOFileSystemSupport.class;
+	}
+	
+	@Override
+	public Class<? extends IGenerator> bindIGenerator() {
+		return SuiteGenerator.class;
 	}
 	
 	public void configureWorkspaceConfigContribution(Binder binder) {
@@ -259,5 +298,14 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	
 	public Class<? extends IDValueConverter> bindIDValueConverter() {
 		return JavaIDValueConverter.class;
+	}
+	
+	public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProvider() {
+		return XtendDocumentationProvider.class;
+	}
+	
+	@Override
+	public Class<? extends IParser> bindIParser() {
+		return SuiteParserWithoutPartialParsing.class;
 	}
 }

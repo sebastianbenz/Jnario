@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
@@ -12,26 +11,8 @@ import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 @Data
 @SuppressWarnings("all")
 public class CellLocation {
-  private static HashSet<CellLocation> NEIGHBOUR_OFFSETS = new Function0<HashSet<CellLocation>>() {
-    public HashSet<CellLocation> apply() {
-      CellLocation _cell = CellLocation.cell(1, 0);
-      CellLocation _cell_1 = CellLocation.cell(1, 1);
-      CellLocation _cell_2 = CellLocation.cell(0, 1);
-      int _minus = (-1);
-      int _minus_1 = (-1);
-      CellLocation _cell_3 = CellLocation.cell(_minus, _minus_1);
-      int _minus_2 = (-1);
-      CellLocation _cell_4 = CellLocation.cell(_minus_2, 0);
-      int _minus_3 = (-1);
-      CellLocation _cell_5 = CellLocation.cell(_minus_3, 1);
-      int _minus_4 = (-1);
-      CellLocation _cell_6 = CellLocation.cell(0, _minus_4);
-      int _minus_5 = (-1);
-      CellLocation _cell_7 = CellLocation.cell(1, _minus_5);
-      HashSet<CellLocation> _newHashSet = CollectionLiterals.<CellLocation>newHashSet(_cell, _cell_1, _cell_2, _cell_3, _cell_4, _cell_5, _cell_6, _cell_7);
-      return _newHashSet;
-    }
-  }.apply();
+  private static HashSet<CellLocation> NEIGHBOUR_OFFSETS = CollectionLiterals.<CellLocation>newHashSet(
+    CellLocation.cell(1, 0), CellLocation.cell(1, 1), CellLocation.cell(0, 1), CellLocation.cell((-1), (-1)), CellLocation.cell((-1), 0), CellLocation.cell((-1), 1), CellLocation.cell(0, (-1)), CellLocation.cell(1, (-1)));
   
   public static CellLocation cell(final int x, final int y) {
     CellLocation _cellLocation = new CellLocation(x, y);

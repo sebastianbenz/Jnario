@@ -78,8 +78,7 @@ public class FeatureBatchCompilerTest {
   @Test
   public void testCompileTestData() {
     this.batchCompiler.compile();
-    String _plus = (FeatureBatchCompilerTest.OUTPUT_DIRECTORY + "/test");
-    File _file = new File(_plus);
+    File _file = new File((FeatureBatchCompilerTest.OUTPUT_DIRECTORY + "/test"));
     final FilenameFilter _function = new FilenameFilter() {
       public boolean accept(final File dir, final String name) {
         boolean _endsWith = name.endsWith(".java");

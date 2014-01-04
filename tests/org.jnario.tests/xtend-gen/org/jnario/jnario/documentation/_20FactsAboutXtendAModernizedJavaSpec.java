@@ -105,8 +105,7 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
   final String greeting = "Hello ";
   
   public String sayHello(final String name) {
-    String _plus = (this.greeting + name);
-    return _plus;
+    return (this.greeting + name);
   }
   
   /**
@@ -141,11 +140,10 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
   @Order(5)
   public void _fieldsMethodsWorkAlmostLikeInJava() throws Exception {
     String _sayHello = this.sayHello("Sebastian");
-    String _plus = (this.greeting + "Sebastian");
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_sayHello, _plus);
+    boolean _doubleArrow = Should.<String>operator_doubleArrow(_sayHello, (this.greeting + "Sebastian"));
     Assert.assertTrue("\nExpected sayHello(\"Sebastian\") => greeting + \"Sebastian\" but"
      + "\n     sayHello(\"Sebastian\") is " + new org.hamcrest.StringDescription().appendValue(_sayHello).toString()
-     + "\n     greeting + \"Sebastian\" is " + new org.hamcrest.StringDescription().appendValue(_plus).toString()
+     + "\n     greeting + \"Sebastian\" is " + new org.hamcrest.StringDescription().appendValue((this.greeting + "Sebastian")).toString()
      + "\n     greeting is " + new org.hamcrest.StringDescription().appendValue(this.greeting).toString() + "\n", _doubleArrow);
     
     String _string = Integer.valueOf(42).toString();

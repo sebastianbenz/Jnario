@@ -149,11 +149,8 @@ public class SpecResultParser extends DefaultHandler {
       final int end = messageAndStacktrace.indexOf("\tat ");
       String message = "";
       String stacktrace = "";
-      int _minus = (-1);
-      boolean _greaterThan = (end > _minus);
-      if (_greaterThan) {
-        int _minus_1 = (end - 1);
-        String _substring = messageAndStacktrace.substring(0, _minus_1);
+      if ((end > (-1))) {
+        String _substring = messageAndStacktrace.substring(0, (end - 1));
         message = _substring;
         int _length = messageAndStacktrace.length();
         String _substring_1 = messageAndStacktrace.substring(end, _length);

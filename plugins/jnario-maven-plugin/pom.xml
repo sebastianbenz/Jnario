@@ -10,7 +10,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-		<xtend.version>2.5.0-SNAPSHOT</xtend.version>
+		<xtend.version>2.5.0</xtend.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -46,8 +46,8 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.xtend</groupId>
-			<artifactId>org.eclipse.xtend.standalone</artifactId>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.dependencies</artifactId>
 			<version>${xtend.version}</version>
 		</dependency>
 		<dependency>

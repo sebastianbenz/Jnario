@@ -194,7 +194,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
           for(final Reference spec : _elements_1) {
             _builder.append("\t");
             CharSequence _generate = this.generate(spec);
-            _builder.append(_generate, "	");
+            _builder.append(_generate, "\t");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -260,8 +260,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
     boolean _matched = false;
     if (!_matched) {
       if (ref instanceof SpecReference) {
-        final SpecReference _specReference = (SpecReference)ref;
-        String _text = _specReference.getText();
+        String _text = ((SpecReference)ref).getText();
         String _trim = null;
         if (_text!=null) {
           _trim=_text.trim();
@@ -270,7 +269,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
         boolean _not = (!_isNullOrEmpty);
         if (_not) {
           _matched=true;
-          String _text_1 = _specReference.getText();
+          String _text_1 = ((SpecReference)ref).getText();
           String result = this.markdown2Html(_text_1);
           int _length = result.length();
           int _minus = (_length - 4);

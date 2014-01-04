@@ -10,7 +10,6 @@ package org.jnario.jnario.tests.unit;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.hamcrest.Matcher;
 import org.jnario.doc.DocumentationProvider;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
@@ -43,10 +42,7 @@ public class DocumentationProviderSpec {
   @Order(1)
   public void _returnsNullIfNoComment() throws Exception {
     String _documentation = this.documentation(null);
-    Matcher<String> _nullValue = Should.<String>nullValue();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_documentation, _nullValue);
-    Assert.assertTrue("\nExpected documentation(null) => null but"
-     + "\n     documentation(null) is " + new org.hamcrest.StringDescription().appendValue(_documentation).toString() + "\n", _doubleArrow);
+    Assert.assertNull("\nExpected documentation(null) => null\n     but is " + new org.hamcrest.StringDescription().appendValue(_documentation).toString() + "\n", _documentation);
     
   }
   

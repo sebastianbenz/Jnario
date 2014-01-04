@@ -34,7 +34,6 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -58,12 +57,7 @@ import org.pegdown.PegDownProcessor;
 
 @SuppressWarnings("all")
 public abstract class AbstractDocGenerator implements IGenerator {
-  private final static Logger LOG = new Function0<Logger>() {
-    public Logger apply() {
-      Logger _logger = Logger.getLogger(AbstractDocGenerator.class);
-      return _logger;
-    }
-  }.apply();
+  private final static Logger LOG = Logger.getLogger(AbstractDocGenerator.class);
   
   private final static String SEP = "_";
   
@@ -264,7 +258,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
         _builder.append("\t\t");
         _builder.append("<th>");
         String _name = headingCell.getName();
-        _builder.append(_name, "		");
+        _builder.append(_name, "\t\t");
         _builder.append("</th>");
         _builder.newLineIfNotEmpty();
       }
@@ -293,7 +287,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
             XExpression _expression = cell.getExpression();
             List<Filter> _emptyList = CollectionLiterals.<Filter>emptyList();
             String _serialize = this.serialize(_expression, _emptyList);
-            _builder.append(_serialize, "		");
+            _builder.append(_serialize, "\t\t");
             _builder.append("</td>");
             _builder.newLineIfNotEmpty();
           }

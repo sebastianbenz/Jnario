@@ -41,8 +41,7 @@ public class FeatureClassNameProviderSpec {
   
   public Background background(final String backgroundName, final String featureName) {
     final Background result = FeatureClassNameProviderSpec.factory.createBackground();
-    String _plus = ("Background: " + backgroundName);
-    result.setName(_plus);
+    result.setName(("Background: " + backgroundName));
     final Feature feature = Features.feature(featureName);
     feature.setBackground(result);
     return result;

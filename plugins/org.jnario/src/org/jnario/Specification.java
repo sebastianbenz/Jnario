@@ -15,7 +15,7 @@ import org.eclipse.xtend.core.xtend.XtendClass;
  *
  *
  * @see org.jnario.JnarioPackage#getSpecification()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface Specification extends XtendClass, Executable {

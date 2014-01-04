@@ -17,6 +17,21 @@ import org.jnario.report.HashBasedSpec2ResultMapping
 import org.jnario.report.SpecResultParser
 
 import static org.jnario.compiler.CompilerMain.*
+import com.google.inject.Provider
+
+class StandaloneResourceProvider implements Provider<ResourceSet> {
+	
+	ResourceSet resourceSet
+	
+	new(ResourceSet resourceSet){
+		this.resourceSet = resourceSet
+	}
+	
+	override get() {
+		resourceSet
+	}
+	
+}
 
 class DocCompilerMain {
 	
@@ -54,10 +69,10 @@ class DocCompilerMain {
 		val resourceSet = anyInjector.getInstance(typeof(ResourceSet));
 		
 		anyInjector.generateCssAndJsFiles
-		generateDocs(resourceSet)
+		generateDocs(new StandaloneResourceProvider(resourceSet))
 	}
 	
-	def private generateDocs(ResourceSet resourceSet){
+	def private generateDocs(Provider<ResourceSet> resourceSet){
 		for (setup : SETUPS) {
 			val injector = setup.createInjectorAndDoEMFRegistration();
 			val jnarioCompiler = injector.getInstance(typeof(JnarioDocCompiler));
@@ -65,7 +80,7 @@ class DocCompilerMain {
 			jnarioCompiler.setClassPath(classPath);
 			jnarioCompiler.setFileEncoding(fileEncoding);
 			jnarioCompiler.setSourcePath(sourcePath);
-			jnarioCompiler.setResourceSet(resourceSet);
+			jnarioCompiler.setResourceSetProvider(resourceSet);
 			jnarioCompiler.setExecutable2ResultMapping(createSpec2ResultMapping)
 			if(!jnarioCompiler.compile()){
 				return COMPILATION_ERROR;

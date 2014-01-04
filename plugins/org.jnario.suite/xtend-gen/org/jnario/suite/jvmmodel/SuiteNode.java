@@ -8,11 +8,9 @@
 package org.jnario.suite.jvmmodel;
 
 import com.google.common.base.Objects;
-import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 import org.jnario.Specification;
 import org.jnario.suite.suite.Suite;
@@ -26,12 +24,7 @@ public class SuiteNode {
     return this._suite;
   }
   
-  private final List<SuiteNode> _children = new Function0<List<SuiteNode>>() {
-    public List<SuiteNode> apply() {
-      ArrayList<SuiteNode> _newArrayList = CollectionLiterals.<SuiteNode>newArrayList();
-      return _newArrayList;
-    }
-  }.apply();
+  private final List<SuiteNode> _children = CollectionLiterals.<SuiteNode>newArrayList();
   
   public List<SuiteNode> getChildren() {
     return this._children;

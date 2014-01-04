@@ -83,8 +83,7 @@ public class Wait {
   
   public boolean timeOut(final long start) {
     long _currentTime = this.clock.currentTime();
-    long _plus = (start + this.duration);
-    boolean _greaterThan = (_currentTime > _plus);
+    boolean _greaterThan = (_currentTime > (start + this.duration));
     return _greaterThan;
   }
   
