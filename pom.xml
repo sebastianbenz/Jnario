@@ -3,10 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jnario</groupId>
   <artifactId>jnario</artifactId>
-  <version>0.7.0</version>
+  <version>0.7.0.201401092313</version>
   <packaging>pom</packaging>
   <properties>
-    <tycho-version>0.18.0</tycho-version>
+    <tycho-version>0.19.0</tycho-version>
     <tycho-groupid>org.eclipse.tycho</tycho-groupid>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
@@ -89,6 +89,11 @@
         <artifactId>tycho-maven-plugin</artifactId>
         <version>${tycho-version}</version>
         <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-versions-plugin</artifactId>
+        <version>0.19.0</version>
       </plugin>
       <plugin>
         <groupId>${tycho-groupid}</groupId>

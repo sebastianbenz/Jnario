@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.7.0.201401092313
 Bundle-SymbolicName: org.jnario.spec; singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
@@ -26,18 +26,9 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.5.0,2.6.0)";visibility:=ree
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.jnario.spec,
- org.jnario.spec.compiler,
- org.jnario.spec.doc,
- org.jnario.spec.formatting,
- org.jnario.spec.jvmmodel,
- org.jnario.spec.naming,
- org.jnario.spec.parser.antlr,
- org.jnario.spec.parser.antlr.internal,
- org.jnario.spec.scoping,
- org.jnario.spec.serializer,
- org.jnario.spec.services,
- org.jnario.spec.spec,
- org.jnario.spec.spec.impl,
- org.jnario.spec.spec.util,
- org.jnario.spec.validation
+Export-Package: org.jnario.spec,org.jnario.spec.compiler,org.jnario.sp
+ ec.doc,org.jnario.spec.formatting,org.jnario.spec.jvmmodel,org.jnario
+ .spec.naming,org.jnario.spec.parser.antlr,org.jnario.spec.parser.antl
+ r.internal,org.jnario.spec.scoping,org.jnario.spec.serializer,org.jna
+ rio.spec.services,org.jnario.spec.spec,org.jnario.spec.spec.impl,org.
+ jnario.spec.spec.util,org.jnario.spec.validation

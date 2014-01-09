@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.jnario;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.7.0.201401092313
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
@@ -21,21 +21,11 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.5.0,2.6.0)",
  org.objectweb.asm;bundle-version="3.2.0",
  org.apache.commons.lang,
  org.eclipse.xtend2.lib;bundle-version="2.5.0"
-Export-Package: org.jnario,
- org.jnario.compiler,
- org.jnario.conversion,
- org.jnario.doc,
- org.jnario.generator,
- org.jnario.documentation,
- org.jnario.impl,
- org.jnario.jvmmodel,
- org.jnario.linking,
- org.jnario.report,
- org.jnario.scoping,
- org.jnario.typing,
- org.jnario.util,
- org.jnario.validation,
- org.pegdown
+Export-Package: org.jnario,org.jnario.compiler,org.jnario.conversion,o
+ rg.jnario.doc,org.jnario.generator,org.jnario.documentation,org.jnari
+ o.impl,org.jnario.jvmmodel,org.jnario.linking,org.jnario.report,org.j
+ nario.scoping,org.jnario.typing,org.jnario.util,org.jnario.validation
+ ,org.pegdown
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: lib/parboiled-core-1.0.2.jar,
  lib/parboiled-java-1.0.2.jar,

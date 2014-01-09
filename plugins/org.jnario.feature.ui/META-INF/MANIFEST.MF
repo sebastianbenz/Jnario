@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.jnario.feature.ui
 Bundle-Vendor: BMW Car IT
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.7.0.201401092313
 Bundle-SymbolicName: org.jnario.feature.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
@@ -36,10 +36,8 @@ Import-Package: org.apache.commons.logging,
  org.eclipse.xtend.core.validation,
  org.eclipse.xtend.core.xtend
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.jnario.feature.ui.contentassist,
- org.jnario.feature.ui.contentassist.antlr,
- org.jnario.feature.ui.internal,
- org.jnario.feature.ui.hover,
- org.jnario.feature.ui.wizards,
- org.jnario.feature.ui.quickfix
+Export-Package: org.jnario.feature.ui.contentassist,org.jnario.feature
+ .ui.contentassist.antlr,org.jnario.feature.ui.internal,org.jnario.fea
+ ture.ui.hover,org.jnario.feature.ui.wizards,org.jnario.feature.ui.qui
+ ckfix
 Bundle-Activator: org.jnario.feature.ui.internal.FeatureActivatorImpl

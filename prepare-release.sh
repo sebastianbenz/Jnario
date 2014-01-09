@@ -5,17 +5,6 @@ echo "release version:"
 read version
 echo "Releasing $version"
 
-#prepare update site
-cd ../jnario-gh-pages
-git pull origin gh-pages
-cd ../jnario
-
-#run all tests
-mvn clean verify
-
-#create release branch
-git branch rb-$version
-
 #checkout the release branch
 git checkout rb-$version
 
@@ -25,6 +14,5 @@ mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -Dnew
 #commit and tag your changes
 git commit -s -a -m "new release $version"
 git tag v$version
-git push --tags  origin master
 
 exit 1

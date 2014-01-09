@@ -1,5 +1,10 @@
 #Release Notes
 
+##Jnario 0.7.0
+
+* Compatible with Xtend 2.5.0
+* Fix: problems with maven source folders under windows
+
 ##Jnario 0.6.1
 
 * Fix: problems when resolving suites in maven builds
