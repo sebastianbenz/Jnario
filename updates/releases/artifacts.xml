@@ -2,7 +2,7 @@
 <?artifactRepository version='1.1.0'?>
 <repository name='' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1.0.0'>
   <properties size='2'>
-    <property name='p2.timestamp' value='1381342632274'/>
+    <property name='p2.timestamp' value='1389306279273'/>
     <property name='publishPackFilesAsSiblings' value='true'/>
   </properties>
   <mappings size='5'>
@@ -12,7 +12,7 @@
     <rule filter='(&amp; (classifier=org.eclipse.update.feature) (format=packed))' output='${repoUrl}/features/${id}_${version}.jar.pack.gz'/>
     <rule filter='(&amp; (classifier=org.eclipse.update.feature))' output='${repoUrl}/features/${id}_${version}.jar'/>
   </mappings>
-  <artifacts size='271'>
+  <artifacts size='294'>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario.ui' version='0.6.0.201309052007'>
       <properties size='6'>
         <property name='artifact.size' value='8033'/>
@@ -122,14 +122,13 @@
         <property name='maven-version' value='0.4.0.201304281503'/>
       </properties>
     </artifact>
-    <artifact classifier='org.eclipse.update.feature' id='org.jnario.ui' version='0.3.0.201212291326'>
-      <properties size='6'>
-        <property name='artifact.size' value='8045'/>
-        <property name='download.size' value='8045'/>
-        <property name='maven-groupId' value='org.jnario.features'/>
-        <property name='maven-artifactId' value='org.jnario.ui'/>
-        <property name='maven-version' value='0.3.0.201212291326'/>
-        <property name='download.contentType' value='application/zip'/>
+    <artifact classifier='osgi.bundle' id='org.jnario.standalone' version='0.7.0.201401092313'>
+      <properties size='5'>
+        <property name='artifact.size' value='33069'/>
+        <property name='download.size' value='33069'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.standalone'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.feature.ui' version='0.5.0.201307172323'>
@@ -141,14 +140,14 @@
         <property name='maven-version' value='0.5.0.201307172323'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.lib.source' version='0.3.0.201212291326'>
+    <artifact classifier='org.eclipse.update.feature' id='org.jnario.ui' version='0.3.0.201212291326'>
       <properties size='6'>
-        <property name='artifact.size' value='46853'/>
-        <property name='download.size' value='46853'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.lib'/>
+        <property name='artifact.size' value='8045'/>
+        <property name='download.size' value='8045'/>
+        <property name='maven-groupId' value='org.jnario.features'/>
+        <property name='maven-artifactId' value='org.jnario.ui'/>
         <property name='maven-version' value='0.3.0.201212291326'/>
-        <property name='maven-classifier' value='sources'/>
+        <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario.m2e' version='0.4.2.201305131752'>
@@ -161,6 +160,16 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.lib.source' version='0.3.0.201212291326'>
+      <properties size='6'>
+        <property name='artifact.size' value='46853'/>
+        <property name='download.size' value='46853'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.lib'/>
+        <property name='maven-version' value='0.3.0.201212291326'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.feature.source' version='0.1.0.20120713-2229'>
       <properties size='6'>
         <property name='artifact.size' value='289852'/>
@@ -169,6 +178,15 @@
         <property name='maven-artifactId' value='org.jnario.feature'/>
         <property name='maven-version' value='0.1.0.20120713-2229'/>
         <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.suite.ui' version='0.7.0.201401092313'>
+      <properties size='5'>
+        <property name='artifact.size' value='546092'/>
+        <property name='download.size' value='546092'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.suite.ui'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.lib' version='0.6.1.201310092002'>
@@ -180,15 +198,6 @@
         <property name='maven-version' value='0.6.1.201310092002'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.standalone' version='0.2.0.201209110000'>
-      <properties size='5'>
-        <property name='artifact.size' value='8899'/>
-        <property name='download.size' value='8899'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.standalone'/>
-        <property name='maven-version' value='0.2.0.201209110000'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.source' version='0.6.0.201309052007'>
       <properties size='6'>
         <property name='artifact.size' value='265150'/>
@@ -197,6 +206,15 @@
         <property name='maven-artifactId' value='org.jnario'/>
         <property name='maven-version' value='0.6.0.201309052007'/>
         <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.standalone' version='0.2.0.201209110000'>
+      <properties size='5'>
+        <property name='artifact.size' value='8899'/>
+        <property name='download.size' value='8899'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.standalone'/>
+        <property name='maven-version' value='0.2.0.201209110000'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.ui.source' version='0.4.3.201305262254'>
@@ -219,14 +237,13 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
-    <artifact classifier='org.eclipse.update.feature' id='org.jnario.ui' version='0.4.2.201305131752'>
-      <properties size='6'>
-        <property name='artifact.size' value='8037'/>
-        <property name='download.size' value='8037'/>
-        <property name='maven-groupId' value='org.jnario.features'/>
-        <property name='maven-artifactId' value='org.jnario.ui'/>
-        <property name='maven-version' value='0.4.2.201305131752'/>
-        <property name='download.contentType' value='application/zip'/>
+    <artifact classifier='osgi.bundle' id='org.jnario.lib' version='0.1.0.20120713-2229'>
+      <properties size='5'>
+        <property name='artifact.size' value='46359'/>
+        <property name='download.size' value='46359'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.lib'/>
+        <property name='maven-version' value='0.1.0.20120713-2229'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.suite' version='0.3.0.201212291326'>
@@ -238,13 +255,14 @@
         <property name='maven-version' value='0.3.0.201212291326'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.lib' version='0.1.0.20120713-2229'>
-      <properties size='5'>
-        <property name='artifact.size' value='46359'/>
-        <property name='download.size' value='46359'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.lib'/>
-        <property name='maven-version' value='0.1.0.20120713-2229'/>
+    <artifact classifier='org.eclipse.update.feature' id='org.jnario.ui' version='0.4.2.201305131752'>
+      <properties size='6'>
+        <property name='artifact.size' value='8037'/>
+        <property name='download.size' value='8037'/>
+        <property name='maven-groupId' value='org.jnario.features'/>
+        <property name='maven-artifactId' value='org.jnario.ui'/>
+        <property name='maven-version' value='0.4.2.201305131752'/>
+        <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.standalone' version='0.5.0.201307172323'>
@@ -532,6 +550,15 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.feature' version='0.2.1.201209181003'>
+      <properties size='5'>
+        <property name='artifact.size' value='502144'/>
+        <property name='download.size' value='502144'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.feature'/>
+        <property name='maven-version' value='0.2.1.201209181003'/>
+      </properties>
+    </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario' version='0.4.3.201305262254'>
       <properties size='6'>
         <property name='artifact.size' value='8132'/>
@@ -540,15 +567,6 @@
         <property name='maven-artifactId' value='org.jnario'/>
         <property name='maven-version' value='0.4.3.201305262254'/>
         <property name='download.contentType' value='application/zip'/>
-      </properties>
-    </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.feature' version='0.2.1.201209181003'>
-      <properties size='5'>
-        <property name='artifact.size' value='502144'/>
-        <property name='download.size' value='502144'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.feature'/>
-        <property name='maven-version' value='0.2.1.201209181003'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.suite.ui' version='0.5.0.201307172323'>
@@ -560,6 +578,15 @@
         <property name='maven-version' value='0.5.0.201307172323'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.lib' version='0.7.0.201401092313'>
+      <properties size='5'>
+        <property name='artifact.size' value='66891'/>
+        <property name='download.size' value='66891'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.lib'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario' version='0.6.0.201309052007'>
       <properties size='5'>
         <property name='artifact.size' value='686713'/>
@@ -567,6 +594,15 @@
         <property name='maven-groupId' value='org.jnario'/>
         <property name='maven-artifactId' value='org.jnario'/>
         <property name='maven-version' value='0.6.0.201309052007'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.suite' version='0.7.0.201401092313'>
+      <properties size='5'>
+        <property name='artifact.size' value='445555'/>
+        <property name='download.size' value='445555'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.suite'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.feature.ui' version='0.2.0.201209110000'>
@@ -598,16 +634,6 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.spec.source' version='0.4.1.201305130006'>
-      <properties size='6'>
-        <property name='artifact.size' value='319341'/>
-        <property name='download.size' value='319341'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.spec'/>
-        <property name='maven-version' value='0.4.1.201305130006'/>
-        <property name='maven-classifier' value='sources'/>
-      </properties>
-    </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario' version='0.4.2.201305131752'>
       <properties size='6'>
         <property name='artifact.size' value='8131'/>
@@ -618,6 +644,16 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.spec.source' version='0.4.1.201305130006'>
+      <properties size='6'>
+        <property name='artifact.size' value='319341'/>
+        <property name='download.size' value='319341'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.spec'/>
+        <property name='maven-version' value='0.4.1.201305130006'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.spec.ui' version='0.4.0.201304281503'>
       <properties size='5'>
         <property name='artifact.size' value='620950'/>
@@ -625,15 +661,6 @@
         <property name='maven-groupId' value='org.jnario'/>
         <property name='maven-artifactId' value='org.jnario.spec.ui'/>
         <property name='maven-version' value='0.4.0.201304281503'/>
-      </properties>
-    </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.suite.ui' version='0.3.0.201212291326'>
-      <properties size='5'>
-        <property name='artifact.size' value='458471'/>
-        <property name='download.size' value='458471'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.suite.ui'/>
-        <property name='maven-version' value='0.3.0.201212291326'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario.sdk' version='0.4.3.201305262254'>
@@ -646,6 +673,15 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.suite.ui' version='0.3.0.201212291326'>
+      <properties size='5'>
+        <property name='artifact.size' value='458471'/>
+        <property name='download.size' value='458471'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.suite.ui'/>
+        <property name='maven-version' value='0.3.0.201212291326'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.lib' version='0.2.1.201209181003'>
       <properties size='5'>
         <property name='artifact.size' value='46630'/>
@@ -653,6 +689,16 @@
         <property name='maven-groupId' value='org.jnario'/>
         <property name='maven-artifactId' value='org.jnario.lib'/>
         <property name='maven-version' value='0.2.1.201209181003'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.ui.source' version='0.7.0.201401092313'>
+      <properties size='6'>
+        <property name='artifact.size' value='41676'/>
+        <property name='download.size' value='41676'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.ui'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+        <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.spec.ui.source' version='0.4.2.201305131752'>
@@ -674,15 +720,6 @@
         <property name='maven-version' value='0.4.1.201305130006'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.m2e' version='0.4.2.201305131752'>
-      <properties size='5'>
-        <property name='artifact.size' value='2465'/>
-        <property name='download.size' value='2465'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.m2e'/>
-        <property name='maven-version' value='0.4.2.201305131752'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.spec.ui.source' version='0.2.1.201209181003'>
       <properties size='6'>
         <property name='artifact.size' value='309439'/>
@@ -693,14 +730,13 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.standalone.source' version='0.5.1.201307292301'>
-      <properties size='6'>
-        <property name='artifact.size' value='22314'/>
-        <property name='download.size' value='22314'/>
+    <artifact classifier='osgi.bundle' id='org.jnario.m2e' version='0.4.2.201305131752'>
+      <properties size='5'>
+        <property name='artifact.size' value='2465'/>
+        <property name='download.size' value='2465'/>
         <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.standalone'/>
-        <property name='maven-version' value='0.5.1.201307292301'/>
-        <property name='maven-classifier' value='sources'/>
+        <property name='maven-artifactId' value='org.jnario.m2e'/>
+        <property name='maven-version' value='0.4.2.201305131752'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario.sdk' version='0.6.0.201309052007'>
@@ -711,6 +747,16 @@
         <property name='maven-artifactId' value='org.jnario.sdk'/>
         <property name='maven-version' value='0.6.0.201309052007'/>
         <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.standalone.source' version='0.5.1.201307292301'>
+      <properties size='6'>
+        <property name='artifact.size' value='22314'/>
+        <property name='download.size' value='22314'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.standalone'/>
+        <property name='maven-version' value='0.5.1.201307292301'/>
+        <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.lib.source' version='0.4.2.201305131752'>
@@ -750,13 +796,14 @@
         <property name='maven-version' value='0.4.3.201305262254'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.lib' version='0.3.0.201212291326'>
-      <properties size='5'>
-        <property name='artifact.size' value='69366'/>
-        <property name='download.size' value='69366'/>
+    <artifact classifier='osgi.bundle' id='org.jnario.standalone.source' version='0.4.1.201305130006'>
+      <properties size='6'>
+        <property name='artifact.size' value='22273'/>
+        <property name='download.size' value='22273'/>
         <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.lib'/>
-        <property name='maven-version' value='0.3.0.201212291326'/>
+        <property name='maven-artifactId' value='org.jnario.standalone'/>
+        <property name='maven-version' value='0.4.1.201305130006'/>
+        <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.feature.source' version='0.3.0.201212291326'>
@@ -769,14 +816,13 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.standalone.source' version='0.4.1.201305130006'>
-      <properties size='6'>
-        <property name='artifact.size' value='22273'/>
-        <property name='download.size' value='22273'/>
+    <artifact classifier='osgi.bundle' id='org.jnario.lib' version='0.3.0.201212291326'>
+      <properties size='5'>
+        <property name='artifact.size' value='69366'/>
+        <property name='download.size' value='69366'/>
         <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.standalone'/>
-        <property name='maven-version' value='0.4.1.201305130006'/>
-        <property name='maven-classifier' value='sources'/>
+        <property name='maven-artifactId' value='org.jnario.lib'/>
+        <property name='maven-version' value='0.3.0.201212291326'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario.m2e' version='0.4.1.201305130006'>
@@ -798,12 +844,31 @@
         <property name='maven-version' value='0.6.0.201309052007'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.spec' version='0.5.0.201307172323'>
+    <artifact classifier='osgi.bundle' id='org.jnario.feature.source' version='0.7.0.201401092313'>
+      <properties size='6'>
+        <property name='artifact.size' value='392474'/>
+        <property name='download.size' value='392474'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.feature'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.spec' version='0.7.0.201401092313'>
       <properties size='5'>
-        <property name='artifact.size' value='503387'/>
-        <property name='download.size' value='503387'/>
+        <property name='artifact.size' value='531875'/>
+        <property name='download.size' value='531875'/>
         <property name='maven-groupId' value='org.jnario'/>
         <property name='maven-artifactId' value='org.jnario.spec'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.feature' version='0.5.0.201307172323'>
+      <properties size='5'>
+        <property name='artifact.size' value='551953'/>
+        <property name='download.size' value='551953'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.feature'/>
         <property name='maven-version' value='0.5.0.201307172323'/>
       </properties>
     </artifact>
@@ -817,13 +882,23 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.feature' version='0.5.0.201307172323'>
+    <artifact classifier='osgi.bundle' id='org.jnario.spec' version='0.5.0.201307172323'>
       <properties size='5'>
-        <property name='artifact.size' value='551953'/>
-        <property name='download.size' value='551953'/>
+        <property name='artifact.size' value='503387'/>
+        <property name='download.size' value='503387'/>
         <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.feature'/>
+        <property name='maven-artifactId' value='org.jnario.spec'/>
         <property name='maven-version' value='0.5.0.201307172323'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.feature.ui.source' version='0.7.0.201401092313'>
+      <properties size='6'>
+        <property name='artifact.size' value='367633'/>
+        <property name='download.size' value='367633'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.feature.ui'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+        <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario' version='0.6.0.201309052007'>
@@ -1081,6 +1156,16 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='org.jnario.m2e' version='0.7.0.201401092313'>
+      <properties size='6'>
+        <property name='artifact.size' value='7884'/>
+        <property name='download.size' value='7884'/>
+        <property name='maven-groupId' value='org.jnario.features'/>
+        <property name='maven-artifactId' value='org.jnario.m2e'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.feature.ui.source' version='0.2.0.201209110000'>
       <properties size='6'>
         <property name='artifact.size' value='295406'/>
@@ -1244,6 +1329,15 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.feature' version='0.7.0.201401092313'>
+      <properties size='5'>
+        <property name='artifact.size' value='575796'/>
+        <property name='download.size' value='575796'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.feature'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.suite' version='0.5.1.201307292301'>
       <properties size='5'>
         <property name='artifact.size' value='429758'/>
@@ -1260,6 +1354,15 @@
         <property name='maven-groupId' value='org.jnario'/>
         <property name='maven-artifactId' value='org.jnario.m2e'/>
         <property name='maven-version' value='0.5.1.201307292301'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.spec.ui' version='0.7.0.201401092313'>
+      <properties size='5'>
+        <property name='artifact.size' value='646811'/>
+        <property name='download.size' value='646811'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.spec.ui'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario.m2e' version='0.4.3.201305262254'>
@@ -1303,6 +1406,16 @@
         <property name='maven-groupId' value='org.jnario'/>
         <property name='maven-artifactId' value='org.jnario.suite'/>
         <property name='maven-version' value='0.4.2.201305131752'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.source' version='0.7.0.201401092313'>
+      <properties size='6'>
+        <property name='artifact.size' value='267505'/>
+        <property name='download.size' value='267505'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+        <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.ui.source' version='0.5.1.201307292301'>
@@ -1549,6 +1662,15 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.ui' version='0.7.0.201401092313'>
+      <properties size='5'>
+        <property name='artifact.size' value='66078'/>
+        <property name='download.size' value='66078'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.ui'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.feature.ui.source' version='0.6.1.201310092002'>
       <properties size='6'>
         <property name='artifact.size' value='343416'/>
@@ -1624,6 +1746,16 @@
         <property name='maven-groupId' value='org.jnario'/>
         <property name='maven-artifactId' value='org.jnario.standalone'/>
         <property name='maven-version' value='0.3.0.201212291326'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.standalone.source' version='0.7.0.201401092313'>
+      <properties size='6'>
+        <property name='artifact.size' value='23752'/>
+        <property name='download.size' value='23752'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.standalone'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
@@ -1805,6 +1937,16 @@
         <property name='maven-version' value='0.4.2.201305131752'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.spec.source' version='0.7.0.201401092313'>
+      <properties size='6'>
+        <property name='artifact.size' value='358983'/>
+        <property name='download.size' value='358983'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.spec'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario' version='0.2.1.201209181003'>
       <properties size='6'>
         <property name='artifact.size' value='8074'/>
@@ -1844,6 +1986,15 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.spec.ui' version='0.4.2.201305131752'>
+      <properties size='5'>
+        <property name='artifact.size' value='620988'/>
+        <property name='download.size' value='620988'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.spec.ui'/>
+        <property name='maven-version' value='0.4.2.201305131752'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.source' version='0.4.2.201305131752'>
       <properties size='6'>
         <property name='artifact.size' value='261609'/>
@@ -1854,22 +2005,13 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.spec.ui' version='0.4.2.201305131752'>
+    <artifact classifier='osgi.bundle' id='org.jnario.ui' version='0.5.0.201307172323'>
       <properties size='5'>
-        <property name='artifact.size' value='620988'/>
-        <property name='download.size' value='620988'/>
+        <property name='artifact.size' value='62276'/>
+        <property name='download.size' value='62276'/>
         <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.spec.ui'/>
-        <property name='maven-version' value='0.4.2.201305131752'/>
-      </properties>
-    </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.suite' version='0.6.0.201309052007'>
-      <properties size='5'>
-        <property name='artifact.size' value='430217'/>
-        <property name='download.size' value='430217'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.suite'/>
-        <property name='maven-version' value='0.6.0.201309052007'/>
+        <property name='maven-artifactId' value='org.jnario.ui'/>
+        <property name='maven-version' value='0.5.0.201307172323'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.feature' version='0.4.0.201304281503'>
@@ -1881,13 +2023,13 @@
         <property name='maven-version' value='0.4.0.201304281503'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.ui' version='0.5.0.201307172323'>
+    <artifact classifier='osgi.bundle' id='org.jnario.suite' version='0.6.0.201309052007'>
       <properties size='5'>
-        <property name='artifact.size' value='62276'/>
-        <property name='download.size' value='62276'/>
+        <property name='artifact.size' value='430217'/>
+        <property name='download.size' value='430217'/>
         <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.ui'/>
-        <property name='maven-version' value='0.5.0.201307172323'/>
+        <property name='maven-artifactId' value='org.jnario.suite'/>
+        <property name='maven-version' value='0.6.0.201309052007'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.feature.source' version='0.4.2.201305131752'>
@@ -1938,6 +2080,15 @@
         <property name='maven-version' value='0.6.0.201309052007'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.ui' version='0.3.0.201212291326'>
+      <properties size='5'>
+        <property name='artifact.size' value='109254'/>
+        <property name='download.size' value='109254'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.ui'/>
+        <property name='maven-version' value='0.3.0.201212291326'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.feature.source' version='0.4.0.201304281503'>
       <properties size='6'>
         <property name='artifact.size' value='346893'/>
@@ -1946,15 +2097,6 @@
         <property name='maven-artifactId' value='org.jnario.feature'/>
         <property name='maven-version' value='0.4.0.201304281503'/>
         <property name='maven-classifier' value='sources'/>
-      </properties>
-    </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.ui' version='0.3.0.201212291326'>
-      <properties size='5'>
-        <property name='artifact.size' value='109254'/>
-        <property name='download.size' value='109254'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.ui'/>
-        <property name='maven-version' value='0.3.0.201212291326'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario' version='0.5.0.201307172323'>
@@ -1994,6 +2136,15 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario' version='0.7.0.201401092313'>
+      <properties size='5'>
+        <property name='artifact.size' value='684966'/>
+        <property name='download.size' value='684966'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.source' version='0.2.1.201209181003'>
       <properties size='6'>
         <property name='artifact.size' value='164293'/>
@@ -2013,6 +2164,16 @@
         <property name='maven-version' value='0.2.1.201209181003'/>
       </properties>
     </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='org.jnario.ui' version='0.7.0.201401092313'>
+      <properties size='6'>
+        <property name='artifact.size' value='8031'/>
+        <property name='download.size' value='8031'/>
+        <property name='maven-groupId' value='org.jnario.features'/>
+        <property name='maven-artifactId' value='org.jnario.ui'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.standalone.source' version='0.5.0.201307172323'>
       <properties size='6'>
         <property name='artifact.size' value='22274'/>
@@ -2020,16 +2181,6 @@
         <property name='maven-groupId' value='org.jnario'/>
         <property name='maven-artifactId' value='org.jnario.standalone'/>
         <property name='maven-version' value='0.5.0.201307172323'/>
-        <property name='maven-classifier' value='sources'/>
-      </properties>
-    </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.spec.ui.source' version='0.2.0.201209110000'>
-      <properties size='6'>
-        <property name='artifact.size' value='309439'/>
-        <property name='download.size' value='309439'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.spec.ui'/>
-        <property name='maven-version' value='0.2.0.201209110000'/>
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
@@ -2042,6 +2193,16 @@
         <property name='maven-version' value='0.5.1.201307292301'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.spec.ui.source' version='0.2.0.201209110000'>
+      <properties size='6'>
+        <property name='artifact.size' value='309439'/>
+        <property name='download.size' value='309439'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.spec.ui'/>
+        <property name='maven-version' value='0.2.0.201209110000'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.suite.ui' version='0.2.0.201209110000'>
       <properties size='5'>
         <property name='artifact.size' value='453721'/>
@@ -2049,6 +2210,15 @@
         <property name='maven-groupId' value='org.jnario'/>
         <property name='maven-artifactId' value='org.jnario.suite.ui'/>
         <property name='maven-version' value='0.2.0.201209110000'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.suite' version='0.1.0.20120713-2229'>
+      <properties size='5'>
+        <property name='artifact.size' value='373893'/>
+        <property name='download.size' value='373893'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.suite'/>
+        <property name='maven-version' value='0.1.0.20120713-2229'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.feature.source' version='0.6.1.201310092002'>
@@ -2061,15 +2231,6 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.suite' version='0.1.0.20120713-2229'>
-      <properties size='5'>
-        <property name='artifact.size' value='373893'/>
-        <property name='download.size' value='373893'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.suite'/>
-        <property name='maven-version' value='0.1.0.20120713-2229'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.source' version='0.5.0.201307172323'>
       <properties size='6'>
         <property name='artifact.size' value='263310'/>
@@ -2080,13 +2241,14 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.spec' version='0.4.1.201305130006'>
-      <properties size='5'>
-        <property name='artifact.size' value='501932'/>
-        <property name='download.size' value='501932'/>
+    <artifact classifier='osgi.bundle' id='org.jnario.lib.source' version='0.7.0.201401092313'>
+      <properties size='6'>
+        <property name='artifact.size' value='44087'/>
+        <property name='download.size' value='44087'/>
         <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.spec'/>
-        <property name='maven-version' value='0.4.1.201305130006'/>
+        <property name='maven-artifactId' value='org.jnario.lib'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+        <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.spec.ui.source' version='0.5.1.201307292301'>
@@ -2097,6 +2259,15 @@
         <property name='maven-artifactId' value='org.jnario.spec.ui'/>
         <property name='maven-version' value='0.5.1.201307292301'/>
         <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.spec' version='0.4.1.201305130006'>
+      <properties size='5'>
+        <property name='artifact.size' value='501932'/>
+        <property name='download.size' value='501932'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.spec'/>
+        <property name='maven-version' value='0.4.1.201305130006'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario.ui' version='0.2.1.201209181003'>
@@ -2174,15 +2345,6 @@
         <property name='maven-version' value='0.5.0.201307172323'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.feature' version='0.4.1.201305130006'>
-      <properties size='5'>
-        <property name='artifact.size' value='536743'/>
-        <property name='download.size' value='536743'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.feature'/>
-        <property name='maven-version' value='0.4.1.201305130006'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.feature.ui.source' version='0.3.0.201212291326'>
       <properties size='6'>
         <property name='artifact.size' value='298155'/>
@@ -2191,6 +2353,15 @@
         <property name='maven-artifactId' value='org.jnario.feature.ui'/>
         <property name='maven-version' value='0.3.0.201212291326'/>
         <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.feature' version='0.4.1.201305130006'>
+      <properties size='5'>
+        <property name='artifact.size' value='536743'/>
+        <property name='download.size' value='536743'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.feature'/>
+        <property name='maven-version' value='0.4.1.201305130006'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario' version='0.2.1.201209181003'>
@@ -2230,16 +2401,6 @@
         <property name='maven-version' value='0.5.1.201307292301'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.ui.source' version='0.2.1.201209181003'>
-      <properties size='6'>
-        <property name='artifact.size' value='72155'/>
-        <property name='download.size' value='72155'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.ui'/>
-        <property name='maven-version' value='0.2.1.201209181003'/>
-        <property name='maven-classifier' value='sources'/>
-      </properties>
-    </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario.sdk' version='0.4.0.201304281503'>
       <properties size='6'>
         <property name='artifact.size' value='7977'/>
@@ -2248,6 +2409,16 @@
         <property name='maven-artifactId' value='org.jnario.sdk'/>
         <property name='maven-version' value='0.4.0.201304281503'/>
         <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.ui.source' version='0.2.1.201209181003'>
+      <properties size='6'>
+        <property name='artifact.size' value='72155'/>
+        <property name='download.size' value='72155'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.ui'/>
+        <property name='maven-version' value='0.2.1.201209181003'/>
+        <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.spec.ui.source' version='0.6.1.201310092002'>
@@ -2319,6 +2490,16 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.spec.ui.source' version='0.7.0.201401092313'>
+      <properties size='6'>
+        <property name='artifact.size' value='376752'/>
+        <property name='download.size' value='376752'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.spec.ui'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario.sdk' version='0.4.2.201305131752'>
       <properties size='6'>
         <property name='artifact.size' value='7976'/>
@@ -2348,14 +2529,13 @@
         <property name='maven-version' value='0.4.2.201305131752'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.ui.source' version='0.2.0.201209110000'>
-      <properties size='6'>
-        <property name='artifact.size' value='72154'/>
-        <property name='download.size' value='72154'/>
+    <artifact classifier='osgi.bundle' id='org.jnario.feature.ui' version='0.7.0.201401092313'>
+      <properties size='5'>
+        <property name='artifact.size' value='600704'/>
+        <property name='download.size' value='600704'/>
         <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.ui'/>
-        <property name='maven-version' value='0.2.0.201209110000'/>
-        <property name='maven-classifier' value='sources'/>
+        <property name='maven-artifactId' value='org.jnario.feature.ui'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.ui.source' version='0.5.0.201307172323'>
@@ -2365,6 +2545,16 @@
         <property name='maven-groupId' value='org.jnario'/>
         <property name='maven-artifactId' value='org.jnario.ui'/>
         <property name='maven-version' value='0.5.0.201307172323'/>
+        <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.ui.source' version='0.2.0.201209110000'>
+      <properties size='6'>
+        <property name='artifact.size' value='72154'/>
+        <property name='download.size' value='72154'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.ui'/>
+        <property name='maven-version' value='0.2.0.201209110000'/>
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
@@ -2388,15 +2578,6 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.standalone' version='0.4.3.201305262254'>
-      <properties size='5'>
-        <property name='artifact.size' value='31374'/>
-        <property name='download.size' value='31374'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.standalone'/>
-        <property name='maven-version' value='0.4.3.201305262254'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.suite' version='0.4.1.201305130006'>
       <properties size='5'>
         <property name='artifact.size' value='423536'/>
@@ -2404,6 +2585,15 @@
         <property name='maven-groupId' value='org.jnario'/>
         <property name='maven-artifactId' value='org.jnario.suite'/>
         <property name='maven-version' value='0.4.1.201305130006'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.standalone' version='0.4.3.201305262254'>
+      <properties size='5'>
+        <property name='artifact.size' value='31374'/>
+        <property name='download.size' value='31374'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.standalone'/>
+        <property name='maven-version' value='0.4.3.201305262254'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario.ui' version='0.6.1.201310092002'>
@@ -2416,6 +2606,15 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.suite' version='0.4.0.201304281503'>
+      <properties size='5'>
+        <property name='artifact.size' value='423539'/>
+        <property name='download.size' value='423539'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.suite'/>
+        <property name='maven-version' value='0.4.0.201304281503'/>
+      </properties>
+    </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario' version='0.4.0.201304281503'>
       <properties size='6'>
         <property name='artifact.size' value='8128'/>
@@ -2426,15 +2625,6 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.suite' version='0.4.0.201304281503'>
-      <properties size='5'>
-        <property name='artifact.size' value='423539'/>
-        <property name='download.size' value='423539'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.suite'/>
-        <property name='maven-version' value='0.4.0.201304281503'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.standalone.source' version='0.2.1.201209181003'>
       <properties size='6'>
         <property name='artifact.size' value='10961'/>
@@ -2443,6 +2633,16 @@
         <property name='maven-artifactId' value='org.jnario.standalone'/>
         <property name='maven-version' value='0.2.1.201209181003'/>
         <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='org.jnario' version='0.7.0.201401092313'>
+      <properties size='6'>
+        <property name='artifact.size' value='8136'/>
+        <property name='download.size' value='8136'/>
+        <property name='maven-groupId' value='org.jnario.features'/>
+        <property name='maven-artifactId' value='org.jnario'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+        <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.feature.ui.source' version='0.4.0.201304281503'>
@@ -2464,6 +2664,16 @@
         <property name='maven-version' value='0.4.3.201305262254'/>
       </properties>
     </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='org.jnario.sdk' version='0.7.0.201401092313'>
+      <properties size='6'>
+        <property name='artifact.size' value='7977'/>
+        <property name='download.size' value='7977'/>
+        <property name='maven-groupId' value='org.jnario.features'/>
+        <property name='maven-artifactId' value='org.jnario.sdk'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.spec.source' version='0.3.0.201212291326'>
       <properties size='6'>
         <property name='artifact.size' value='336622'/>
@@ -2472,6 +2682,15 @@
         <property name='maven-artifactId' value='org.jnario.spec'/>
         <property name='maven-version' value='0.3.0.201212291326'/>
         <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.spec.ui' version='0.2.1.201209181003'>
+      <properties size='5'>
+        <property name='artifact.size' value='492535'/>
+        <property name='download.size' value='492535'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.spec.ui'/>
+        <property name='maven-version' value='0.2.1.201209181003'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario' version='0.5.1.201307292301'>
@@ -2484,13 +2703,14 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.spec.ui' version='0.2.1.201209181003'>
-      <properties size='5'>
-        <property name='artifact.size' value='492535'/>
-        <property name='download.size' value='492535'/>
+    <artifact classifier='osgi.bundle' id='org.jnario.standalone.source' version='0.6.0.201309052007'>
+      <properties size='6'>
+        <property name='artifact.size' value='22480'/>
+        <property name='download.size' value='22480'/>
         <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.spec.ui'/>
-        <property name='maven-version' value='0.2.1.201209181003'/>
+        <property name='maven-artifactId' value='org.jnario.standalone'/>
+        <property name='maven-version' value='0.6.0.201309052007'/>
+        <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario' version='0.2.0.201209110000'>
@@ -2502,16 +2722,6 @@
         <property name='maven-version' value='0.2.0.201209110000'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.standalone.source' version='0.6.0.201309052007'>
-      <properties size='6'>
-        <property name='artifact.size' value='22480'/>
-        <property name='download.size' value='22480'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.standalone'/>
-        <property name='maven-version' value='0.6.0.201309052007'/>
-        <property name='maven-classifier' value='sources'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.ui.source' version='0.6.1.201310092002'>
       <properties size='6'>
         <property name='artifact.size' value='38594'/>
@@ -2520,6 +2730,15 @@
         <property name='maven-artifactId' value='org.jnario.ui'/>
         <property name='maven-version' value='0.6.1.201310092002'/>
         <property name='maven-classifier' value='sources'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.m2e' version='0.7.0.201401092313'>
+      <properties size='5'>
+        <property name='artifact.size' value='2462'/>
+        <property name='download.size' value='2462'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.m2e'/>
+        <property name='maven-version' value='0.7.0.201401092313'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.jnario.sdk' version='0.3.0.201212291326'>
@@ -2541,16 +2760,6 @@
         <property name='maven-version' value='0.4.0.201304281503'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.standalone.source' version='0.1.0.20120713-2229'>
-      <properties size='6'>
-        <property name='artifact.size' value='10869'/>
-        <property name='download.size' value='10869'/>
-        <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.standalone'/>
-        <property name='maven-version' value='0.1.0.20120713-2229'/>
-        <property name='maven-classifier' value='sources'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.jnario.spec.source' version='0.2.1.201209181003'>
       <properties size='6'>
         <property name='artifact.size' value='331010'/>
@@ -2561,13 +2770,13 @@
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.jnario.lib.source' version='0.6.1.201310092002'>
+    <artifact classifier='osgi.bundle' id='org.jnario.standalone.source' version='0.1.0.20120713-2229'>
       <properties size='6'>
-        <property name='artifact.size' value='43980'/>
-        <property name='download.size' value='43980'/>
+        <property name='artifact.size' value='10869'/>
+        <property name='download.size' value='10869'/>
         <property name='maven-groupId' value='org.jnario'/>
-        <property name='maven-artifactId' value='org.jnario.lib'/>
-        <property name='maven-version' value='0.6.1.201310092002'/>
+        <property name='maven-artifactId' value='org.jnario.standalone'/>
+        <property name='maven-version' value='0.1.0.20120713-2229'/>
         <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
@@ -2578,6 +2787,16 @@
         <property name='maven-groupId' value='org.jnario'/>
         <property name='maven-artifactId' value='org.jnario.feature.ui'/>
         <property name='maven-version' value='0.4.0.201304281503'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.jnario.lib.source' version='0.6.1.201310092002'>
+      <properties size='6'>
+        <property name='artifact.size' value='43980'/>
+        <property name='download.size' value='43980'/>
+        <property name='maven-groupId' value='org.jnario'/>
+        <property name='maven-artifactId' value='org.jnario.lib'/>
+        <property name='maven-version' value='0.6.1.201310092002'/>
+        <property name='maven-classifier' value='sources'/>
       </properties>
     </artifact>
   </artifacts>
