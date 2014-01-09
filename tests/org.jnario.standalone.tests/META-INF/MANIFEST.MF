@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Jnario Standalone Tests
 Bundle-SymbolicName: org.jnario.standalone.tests
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: BMW Car IT
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Require-Bundle: org.jnario.standalone;bundle-version="1.0.0",
- org.jnario.spec;bundle-version="1.0.0",
+Require-Bundle: org.jnario.standalone;bundle-version="0.7.0",
+ org.jnario.spec;bundle-version="0.7.0",
  org.hamcrest;bundle-version="1.1.0",
  org.junit,
  org.eclipse.xtext.junit4;bundle-version="[2.5.0,2.6.0)",
@@ -15,8 +15,8 @@ Require-Bundle: org.jnario.standalone;bundle-version="1.0.0",
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.core;bundle-version="[2.5.0,2.6.0)",
  org.eclipse.jdt.core,
- org.jnario.tests;bundle-version="1.0.0",
- org.jnario.lib;bundle-version="1.0.0",
- org.jnario.suite;bundle-version="1.0.0",
- org.jnario.feature;bundle-version="1.0.0"
+ org.jnario.tests;bundle-version="0.7.0",
+ org.jnario.lib;bundle-version="0.7.0",
+ org.jnario.suite;bundle-version="0.7.0",
+ org.jnario.feature;bundle-version="0.7.0"
 
