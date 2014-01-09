@@ -23,6 +23,7 @@ import javax.inject.Singleton;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.common.util.WrappedException;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.maven.AbstractXtendCompilerMojo;
@@ -123,8 +124,7 @@ public class JnarioTestCompile extends AbstractXtendCompilerMojo {
 		for (ISetup setup : setups) {
 			Injector injector = setup.createInjectorAndDoEMFRegistration();
 			compile(injector);
-			System.out.println("########\n" + Joiner.on("\n").join(Iterables.filter(resourceSet.getResources(), XtextResource.class)));
-//			resourceSet.eAdapters().clear();
+			resourceSet.eAdapters().clear();
 			MavenProjectAdapter.install(resourceSet, project);
 		}
 	}

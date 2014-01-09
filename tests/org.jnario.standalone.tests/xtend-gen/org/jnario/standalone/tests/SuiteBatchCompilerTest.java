@@ -8,13 +8,17 @@
 package org.jnario.standalone.tests;
 
 import com.google.common.base.Charsets;
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
+import com.google.inject.Injector;
 import com.google.inject.Provider;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.Collections;
 import java.util.List;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
+import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.resource.XtextResourceSet;
@@ -22,12 +26,13 @@ import org.eclipse.xtext.util.Files;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.feature.FeatureStandaloneSetup;
 import org.jnario.jnario.test.util.ExtendedSuiteInjectorProvider;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.spec.SpecStandaloneSetup;
-import org.jnario.suite.compiler.SuiteBatchCompiler;
-import org.junit.After;
+import org.jnario.suite.SuiteStandaloneSetup;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,67 +43,60 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 public class SuiteBatchCompilerTest {
   @Inject
-  private SuiteBatchCompiler batchCompiler;
-  
-  @Inject
   @Extension
   private ModelStore modelStore;
   
-  private static String OUTPUT_DIRECTORY = "./test-result";
+  private static String OUTPUT_DIRECTORY = "test-result";
   
-  private static String XTEND_SRC_DIRECTORY = "./testdata";
+  private static String XTEND_SRC_DIRECTORY = "testdata";
   
-  private static String TEMP_DIRECTORY = "./test-temp-dir";
+  private static String TEMP_DIRECTORY = "test-temp-dir";
   
   @Before
   public void onSetup() {
     try {
-      this.batchCompiler.setSourcePath(SuiteBatchCompilerTest.XTEND_SRC_DIRECTORY);
-      this.batchCompiler.setOutputPath(SuiteBatchCompilerTest.OUTPUT_DIRECTORY);
-      this.batchCompiler.setDeleteTempDirectory(true);
-      this.batchCompiler.setUseCurrentClassLoaderAsParent(true);
       File _file = new File(SuiteBatchCompilerTest.OUTPUT_DIRECTORY);
-      _file.mkdir();
+      final File dir = _file;
+      boolean _exists = dir.exists();
+      if (_exists) {
+        Files.cleanFolder(dir, null, true, false);
+      }
       File _file_1 = new File(SuiteBatchCompilerTest.OUTPUT_DIRECTORY);
-      Files.cleanFolder(_file_1, null, true, false);
-      SpecStandaloneSetup.doSetup();
-      FeatureStandaloneSetup.doSetup();
-      URI _createURI = URI.createURI((SuiteBatchCompilerTest.XTEND_SRC_DIRECTORY + "/test/Example.feature"));
-      this.modelStore.load(_createURI);
-      URI _createURI_1 = URI.createURI((SuiteBatchCompilerTest.XTEND_SRC_DIRECTORY + "/test/Example.spec"));
-      this.modelStore.load(_createURI_1);
+      _file_1.mkdir();
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
   
-  @After
-  public void onTearDown() {
-    try {
-      File _file = new File(SuiteBatchCompilerTest.OUTPUT_DIRECTORY);
-      Files.cleanFolder(_file, null, true, true);
-      File _file_1 = new File(SuiteBatchCompilerTest.TEMP_DIRECTORY);
-      boolean _exists = _file_1.exists();
-      if (_exists) {
-        File _file_2 = new File(SuiteBatchCompilerTest.TEMP_DIRECTORY);
-        Files.cleanFolder(_file_2, null, true, true);
+  public void compile(final XtendBatchCompiler batchCompiler) {
+    batchCompiler.setSourcePath(SuiteBatchCompilerTest.XTEND_SRC_DIRECTORY);
+    batchCompiler.setOutputPath(SuiteBatchCompilerTest.OUTPUT_DIRECTORY);
+    batchCompiler.setDeleteTempDirectory(true);
+    batchCompiler.setUseCurrentClassLoaderAsParent(true);
+    final Provider<ResourceSet> _function = new Provider<ResourceSet>() {
+      public ResourceSet get() {
+        XtextResourceSet _resourceSet = SuiteBatchCompilerTest.this.modelStore.getResourceSet();
+        return ((ResourceSet) _resourceSet);
       }
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+    };
+    batchCompiler.setResourceSetProvider(_function);
+    batchCompiler.compile();
   }
   
   @Test
   public void testCompileTestData() {
     try {
-      final Provider<ResourceSet> _function = new Provider<ResourceSet>() {
-        public ResourceSet get() {
-          XtextResourceSet _resourceSet = SuiteBatchCompilerTest.this.modelStore.getResourceSet();
-          return ((ResourceSet) _resourceSet);
+      FeatureStandaloneSetup _featureStandaloneSetup = new FeatureStandaloneSetup();
+      SpecStandaloneSetup _specStandaloneSetup = new SpecStandaloneSetup();
+      SuiteStandaloneSetup _suiteStandaloneSetup = new SuiteStandaloneSetup();
+      final Procedure1<ISetup> _function = new Procedure1<ISetup>() {
+        public void apply(final ISetup it) {
+          Injector _createInjectorAndDoEMFRegistration = it.createInjectorAndDoEMFRegistration();
+          final XtendBatchCompiler compiler = _createInjectorAndDoEMFRegistration.<XtendBatchCompiler>getInstance(XtendBatchCompiler.class);
+          SuiteBatchCompilerTest.this.compile(compiler);
         }
       };
-      this.batchCompiler.setResourceSetProvider(_function);
-      this.batchCompiler.compile();
+      IterableExtensions.forEach(Collections.<ISetup>unmodifiableList(Lists.<ISetup>newArrayList(_featureStandaloneSetup, _specStandaloneSetup, _suiteStandaloneSetup)), _function);
       File _file = new File((SuiteBatchCompilerTest.OUTPUT_DIRECTORY + "/test"));
       final File outputDir = _file;
       final FilenameFilter _function_1 = new FilenameFilter() {
@@ -109,7 +107,7 @@ public class SuiteBatchCompilerTest {
       };
       String[] _list = outputDir.list(_function_1);
       int _size = ((List<String>)Conversions.doWrapArray(_list)).size();
-      Assert.assertEquals(1, _size);
+      Assert.assertEquals(7, _size);
       File _file_1 = new File(outputDir, "ExampleSuite.java");
       final String fileContent = com.google.common.io.Files.toString(_file_1, Charsets.UTF_8);
       boolean _contains = fileContent.contains("@Contains");

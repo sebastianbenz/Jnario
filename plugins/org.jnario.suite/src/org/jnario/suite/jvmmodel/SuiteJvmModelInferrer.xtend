@@ -43,34 +43,37 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 		val nodes = suiteFile.buildNodeModel
 		val doLater = <Runnable>newArrayList
 		nodes.forEach[
-			infer(it, acceptor, doLater)
+			infer(it, acceptor, doLater, preIndexingPhase)
 		]
 		if(preIndexingPhase) return;
 		doLater.forEach[run]
 	}
 
-   	def JvmGenericType infer(SuiteNode node, IJvmDeclaredTypeAcceptor acceptor, List<Runnable> doLater) {
+   	def JvmGenericType infer(SuiteNode node, IJvmDeclaredTypeAcceptor acceptor, List<Runnable> doLater, boolean preIndexingPhase) {
    		val suite = node.suite
    		val suiteClass = suite.toClass(suite.toQualifiedJavaClassName)
    		if(suiteClass == null) return null;
-		val subSuites = node.children.map[infer(acceptor, doLater)].filterNull.toSet.map[createTypeRef]
    		acceptor.accept(suiteClass)
-   		doLater.add([|
+        val subSuites = node.children.map[infer(acceptor, doLater, preIndexingPhase) ].filterNull.toSet
+   		if (!preIndexingPhase) {
+ 	 		val subSuiteReferences = subSuites.map[createTypeRef as JvmTypeReference]
+	   		doLater.add([|
 				suiteClass.annotations += suite.toAnnotation(typeof(Named), suite.describe)
-				val children = suite.children + subSuites
+				val children = suite.children + subSuiteReferences
 				if(!children.empty){
 					testRuntime.addChildren(suite, suiteClass, children.toSet)
 				}
    				suite.initialize(suiteClass)
    				testRuntime.updateSuite(suite, suiteClass)
    			])
+   		}
    		suiteClass
    	}
 
    	def Iterable<JvmTypeReference> children(Suite suite){ 
    		val specs = suite.resolveSpecs.filter[it.toJavaClassName != null]
    		val types = specs.map[it.toQualifiedJavaClassName]
-		println("Resolved specs: " + types)
+//		println("Resolved specs: " + types)
 
    		types.map[inferredType(suite)]
    	}

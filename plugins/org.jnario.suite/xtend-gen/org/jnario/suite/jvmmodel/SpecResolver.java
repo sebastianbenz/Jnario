@@ -31,7 +31,6 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.jnario.JnarioPackage;
@@ -87,10 +86,6 @@ public class SpecResolver {
       }
       final IScope scope = this.scopeProvider.getScope(specRef, SuitePackage.Literals.SPEC_REFERENCE__SPEC);
       Iterable<IEObjectDescription> _allElements = scope.getAllElements();
-      String _join = IterableExtensions.join(_allElements, ", ");
-      String _plus = ("Suite Scope:" + _join);
-      InputOutput.<String>println(_plus);
-      Iterable<IEObjectDescription> _allElements_1 = scope.getAllElements();
       final Function1<IEObjectDescription,Boolean> _function = new Function1<IEObjectDescription,Boolean>() {
         public Boolean apply(final IEObjectDescription it) {
           EClass _eClass = it.getEClass();
@@ -98,7 +93,7 @@ public class SpecResolver {
           return Boolean.valueOf(_isSuperTypeOf);
         }
       };
-      Iterable<IEObjectDescription> specs = IterableExtensions.<IEObjectDescription>filter(_allElements_1, _function);
+      Iterable<IEObjectDescription> specs = IterableExtensions.<IEObjectDescription>filter(_allElements, _function);
       String _pattern_1 = specRef.getPattern();
       final Pattern pattern = Pattern.compile(_pattern_1);
       final Function1<IEObjectDescription,Boolean> _function_1 = new Function1<IEObjectDescription,Boolean>() {

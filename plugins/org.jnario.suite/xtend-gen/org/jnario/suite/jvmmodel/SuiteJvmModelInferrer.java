@@ -24,7 +24,6 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -78,7 +77,7 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
     final ArrayList<Runnable> doLater = CollectionLiterals.<Runnable>newArrayList();
     final Procedure1<SuiteNode> _function = new Procedure1<SuiteNode>() {
       public void apply(final SuiteNode it) {
-        SuiteJvmModelInferrer.this.infer(it, acceptor, doLater);
+        SuiteJvmModelInferrer.this.infer(it, acceptor, doLater, preIndexingPhase);
       }
     };
     IterableExtensions.<SuiteNode>forEach(nodes, _function);
@@ -93,7 +92,7 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
     IterableExtensions.<Runnable>forEach(doLater, _function_1);
   }
   
-  public JvmGenericType infer(final SuiteNode node, final IJvmDeclaredTypeAcceptor acceptor, final List<Runnable> doLater) {
+  public JvmGenericType infer(final SuiteNode node, final IJvmDeclaredTypeAcceptor acceptor, final List<Runnable> doLater, final boolean preIndexingPhase) {
     JvmGenericType _xblockexpression = null;
     {
       final Suite suite = node.getSuite();
@@ -103,45 +102,47 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
       if (_equals) {
         return null;
       }
+      acceptor.<JvmGenericType>accept(suiteClass);
       List<SuiteNode> _children = node.getChildren();
       final Function1<SuiteNode,JvmGenericType> _function = new Function1<SuiteNode,JvmGenericType>() {
         public JvmGenericType apply(final SuiteNode it) {
-          JvmGenericType _infer = SuiteJvmModelInferrer.this.infer(it, acceptor, doLater);
+          JvmGenericType _infer = SuiteJvmModelInferrer.this.infer(it, acceptor, doLater, preIndexingPhase);
           return _infer;
         }
       };
       List<JvmGenericType> _map = ListExtensions.<SuiteNode, JvmGenericType>map(_children, _function);
       Iterable<JvmGenericType> _filterNull = IterableExtensions.<JvmGenericType>filterNull(_map);
-      Set<JvmGenericType> _set = IterableExtensions.<JvmGenericType>toSet(_filterNull);
-      final Function1<JvmGenericType,JvmParameterizedTypeReference> _function_1 = new Function1<JvmGenericType,JvmParameterizedTypeReference>() {
-        public JvmParameterizedTypeReference apply(final JvmGenericType it) {
-          JvmParameterizedTypeReference _createTypeRef = SuiteJvmModelInferrer.this._typeReferences.createTypeRef(it);
-          return _createTypeRef;
-        }
-      };
-      final Iterable<JvmParameterizedTypeReference> subSuites = IterableExtensions.<JvmGenericType, JvmParameterizedTypeReference>map(_set, _function_1);
-      acceptor.<JvmGenericType>accept(suiteClass);
-      final Runnable _function_2 = new Runnable() {
-        public void run() {
-          EList<JvmAnnotationReference> _annotations = suiteClass.getAnnotations();
-          String _describe = SuiteJvmModelInferrer.this._suiteClassNameProvider.describe(suite);
-          JvmAnnotationReference _annotation = SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(suite, Named.class, _describe);
-          SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
-          Iterable<JvmTypeReference> _children = SuiteJvmModelInferrer.this.children(suite);
-          final Iterable<JvmTypeReference> children = Iterables.<JvmTypeReference>concat(_children, subSuites);
-          boolean _isEmpty = IterableExtensions.isEmpty(children);
-          boolean _not = (!_isEmpty);
-          if (_not) {
-            TestRuntimeSupport _testRuntime = SuiteJvmModelInferrer.this.getTestRuntime();
-            Set<JvmTypeReference> _set = IterableExtensions.<JvmTypeReference>toSet(children);
-            _testRuntime.addChildren(suite, suiteClass, _set);
+      final Set<JvmGenericType> subSuites = IterableExtensions.<JvmGenericType>toSet(_filterNull);
+      if ((!preIndexingPhase)) {
+        final Function1<JvmGenericType,JvmTypeReference> _function_1 = new Function1<JvmGenericType,JvmTypeReference>() {
+          public JvmTypeReference apply(final JvmGenericType it) {
+            JvmParameterizedTypeReference _createTypeRef = SuiteJvmModelInferrer.this._typeReferences.createTypeRef(it);
+            return ((JvmTypeReference) _createTypeRef);
           }
-          SuiteJvmModelInferrer.this.initialize(suite, suiteClass);
-          TestRuntimeSupport _testRuntime_1 = SuiteJvmModelInferrer.this.getTestRuntime();
-          _testRuntime_1.updateSuite(suite, suiteClass);
-        }
-      };
-      doLater.add(_function_2);
+        };
+        final Iterable<JvmTypeReference> subSuiteReferences = IterableExtensions.<JvmGenericType, JvmTypeReference>map(subSuites, _function_1);
+        final Runnable _function_2 = new Runnable() {
+          public void run() {
+            EList<JvmAnnotationReference> _annotations = suiteClass.getAnnotations();
+            String _describe = SuiteJvmModelInferrer.this._suiteClassNameProvider.describe(suite);
+            JvmAnnotationReference _annotation = SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(suite, Named.class, _describe);
+            SuiteJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+            Iterable<JvmTypeReference> _children = SuiteJvmModelInferrer.this.children(suite);
+            final Iterable<JvmTypeReference> children = Iterables.<JvmTypeReference>concat(_children, subSuiteReferences);
+            boolean _isEmpty = IterableExtensions.isEmpty(children);
+            boolean _not = (!_isEmpty);
+            if (_not) {
+              TestRuntimeSupport _testRuntime = SuiteJvmModelInferrer.this.getTestRuntime();
+              Set<JvmTypeReference> _set = IterableExtensions.<JvmTypeReference>toSet(children);
+              _testRuntime.addChildren(suite, suiteClass, _set);
+            }
+            SuiteJvmModelInferrer.this.initialize(suite, suiteClass);
+            TestRuntimeSupport _testRuntime_1 = SuiteJvmModelInferrer.this.getTestRuntime();
+            _testRuntime_1.updateSuite(suite, suiteClass);
+          }
+        };
+        doLater.add(_function_2);
+      }
       _xblockexpression = (suiteClass);
     }
     return _xblockexpression;
@@ -166,7 +167,6 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
         }
       };
       final Iterable<String> types = IterableExtensions.<Specification, String>map(specs, _function_1);
-      InputOutput.<String>println(("Resolved specs: " + types));
       final Function1<String,JvmTypeReference> _function_2 = new Function1<String,JvmTypeReference>() {
         public JvmTypeReference apply(final String it) {
           JvmTypeReference _inferredType = SuiteJvmModelInferrer.this.inferredType(it, suite);

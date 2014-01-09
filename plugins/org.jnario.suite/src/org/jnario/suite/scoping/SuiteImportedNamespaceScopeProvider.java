@@ -6,6 +6,8 @@ import org.eclipse.xtext.scoping.IScope;
 import org.jnario.scoping.JnarioImportedNamespaceScopeProvider;
 import org.jnario.suite.suite.SuitePackage;
 
+import com.google.common.base.Joiner;
+
 public class SuiteImportedNamespaceScopeProvider extends
 		JnarioImportedNamespaceScopeProvider {
 

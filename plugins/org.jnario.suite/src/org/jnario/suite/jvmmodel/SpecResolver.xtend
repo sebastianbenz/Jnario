@@ -40,7 +40,6 @@ class SpecResolver {
 	def dispatch List<Specification> resolveSpecs(PatternReference specRef){
 		if(specRef.pattern.isNullOrEmpty) return emptyList
 		val scope = getScope(specRef, SPEC_REFERENCE__SPEC)
-		println("Suite Scope:" + scope.allElements.join(", "))
 		var specs = scope.allElements.filter[
 			JnarioPackage$Literals.SPECIFICATION.isSuperTypeOf(EClass)
 		]

@@ -53,6 +53,7 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.mwe.NameBasedFilter;
 import org.eclipse.xtext.mwe.PathTraverser;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.parser.IEncodingProvider;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
@@ -71,15 +72,20 @@ import org.eclipse.xtext.xbase.file.RuntimeWorkspaceConfigProvider;
 import org.eclipse.xtext.xbase.file.WorkspaceConfig;
 
 import com.google.common.base.Function;
+import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
 import com.google.inject.Inject;
 
 /**
  * @author Sebastian - Initial contribution and API
  */
 public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
+	
+	@Inject
+	private IEncodingProvider.Runtime encodingProvider;
 
 	private final Logger log = Logger.getLogger(getClass());
 
@@ -92,9 +98,6 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 	@Inject
 	private IXtendJvmAssociations xtendJvmAssociations;
 
-	@Inject
-	private IndexedJvmTypeAccess indexedJvmTypeAccess;
-	
 	@Override
 	protected File createStubs(ResourceSet resourceSet) {
 		File outputDirectory = createTempDir("stubs");
@@ -233,4 +236,28 @@ public abstract class JnarioBatchCompiler extends XtendBatchCompiler {
 			List<EObject> result);
 
 
+	protected ResourceSet loadXtendFiles(final ResourceSet resourceSet) {
+		encodingProvider.setDefaultEncoding(getFileEncoding());
+		final NameBasedFilter nameBasedFilter = new NameBasedFilter();
+		nameBasedFilter.setExtension(fileExtensionProvider.getPrimaryFileExtension());
+		PathTraverser pathTraverser = new PathTraverser();
+		List<String> sourcePathDirectories = getSourcePathDirectories(); 
+		Multimap<String, URI> pathes = pathTraverser.resolvePathes(sourcePathDirectories, new Predicate<URI>() {
+			public boolean apply(URI input) {
+				boolean matches = nameBasedFilter.matches(input);
+				return matches;
+			}
+		});
+		for (String src : pathes.keySet()) {
+			URI baseDir = URI.createFileURI(src+"/");
+			String identifier = Joiner.on("_").join(baseDir.segments());
+			for (URI uri :  pathes.get(src)) {
+				if (log.isDebugEnabled()) {
+					log.debug("load xtend file '" + uri + "'");
+				}
+				resourceSet.getResource(uri, true);
+			}
+		}
+		return resourceSet;
+	}
 }
