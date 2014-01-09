@@ -12,15 +12,10 @@ import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
 import org.jnario.lib.StepArguments;
 import org.jnario.lib.StringConversions;
-import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import test.ExamplesFeatureSomeMoreInfo;
 
-@RunWith(FeatureRunner.class)
 @Named("Scenario: Example tables.")
 @SuppressWarnings("all")
 public class ExamplesFeatureExampleTables extends ExamplesFeatureSomeMoreInfo {
@@ -30,17 +25,13 @@ public class ExamplesFeatureExampleTables extends ExamplesFeatureSomeMoreInfo {
   
   int result = 0;
   
-  @Ignore
-  @Test
   @Order(0)
   @Named("Given I have entered \\\"333\\\" into the calculator [PENDING]")
   public void _givenIHaveEntered333IntoTheCalculator() {
     super._givenIHaveEntered333IntoTheCalculator();
   }
   
-  @Test
   @Order(1)
-  @Ignore
   @Named("Given some two numbers \\\"10\\\" and \\\"20\\\"")
   public void _givenSomeTwoNumbers10And20() {
     StepArguments _stepArguments = new StepArguments("10", "20");
@@ -53,17 +44,13 @@ public class ExamplesFeatureExampleTables extends ExamplesFeatureSomeMoreInfo {
     this.b = _int_1;
   }
   
-  @Test
   @Order(2)
-  @Ignore
   @Named("When I add them")
   public void _whenIAddThem() {
     this.result = (this.a + this.b);
   }
   
-  @Test
   @Order(3)
-  @Ignore
   @Named("Then the result should be \\\"30\\\"")
   public void _thenTheResultShouldBe30() {
     StepArguments _stepArguments = new StepArguments("30");

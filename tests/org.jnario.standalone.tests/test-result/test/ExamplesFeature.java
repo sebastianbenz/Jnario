@@ -8,9 +8,7 @@
 package test;
 
 import org.jnario.runner.Contains;
-import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
-import org.junit.runner.RunWith;
 import test.ExamplesFeatureExampleTables;
 
 /**
@@ -18,7 +16,6 @@ import test.ExamplesFeatureExampleTables;
  */
 @Contains(ExamplesFeatureExampleTables.class)
 @Named("Examples.")
-@RunWith(FeatureRunner.class)
 @SuppressWarnings("all")
 public class ExamplesFeature {
 }

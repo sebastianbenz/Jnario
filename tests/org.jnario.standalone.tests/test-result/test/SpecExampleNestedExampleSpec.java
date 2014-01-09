@@ -9,18 +9,13 @@ package test;
 
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
-import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import test.SpecExampleSpec;
 
 @Named("Nested Example")
-@RunWith(ExampleGroupRunner.class)
 @SuppressWarnings("all")
 public class SpecExampleNestedExampleSpec extends SpecExampleSpec {
-  @Test
   @Named("should pass aswell")
   @Order(1)
   public void _shouldPassAswell() throws Exception {

@@ -18,7 +18,7 @@ jnario:
 	lessc ${BOOTSTRAP_RESPONSIVE_LESS} > css/bootstrap-responsive.css
 	lessc --compress ${BOOTSTRAP_RESPONSIVE_LESS} > css/bootstrap-responsive.min.css
 	cat js/prettify.js ${LANG_JNARIO} bootstrap/js/bootstrap-transition.js bootstrap/js/bootstrap-alert.js bootstrap/js/bootstrap-button.js bootstrap/js/bootstrap-carousel.js bootstrap/js/bootstrap-collapse.js bootstrap/js/bootstrap-dropdown.js bootstrap/js/bootstrap-modal.js bootstrap/js/bootstrap-tooltip.js bootstrap/js/bootstrap-popover.js bootstrap/js/bootstrap-scrollspy.js bootstrap/js/bootstrap-tab.js bootstrap/js/bootstrap-typeahead.js > js/jnario.js
-	uglifyjs -nc js/jnario.js > js/jnario.min.js
+	uglifyjs js/jnario.js > js/jnario.min.js
 	cp ${LANG_JNARIO} js
 	cp ${CUSTOM_CSS} css
 

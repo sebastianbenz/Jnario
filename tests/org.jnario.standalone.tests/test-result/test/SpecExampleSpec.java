@@ -12,17 +12,13 @@ import org.jnario.lib.Assert;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.Contains;
-import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import test.SpecExampleNestedExampleSpec;
 import test.SpecExampleSpecATable;
 
 @Contains(SpecExampleNestedExampleSpec.class)
 @Named("Spec Example")
-@RunWith(ExampleGroupRunner.class)
 @SuppressWarnings("all")
 public class SpecExampleSpec {
   public ExampleTable<SpecExampleSpecATable> _initSpecExampleSpecATable() {
@@ -42,7 +38,6 @@ public class SpecExampleSpec {
     return 0;
   }
   
-  @Test
   @Named("should pass")
   @Order(1)
   public void _shouldPass() throws Exception {
