@@ -63,7 +63,12 @@ public class JnarioTypeComputer extends XtendTypeComputer {
 			if(candidates.isEmpty()){
 				return;
 			}
-			candidates.get(0).applyToComputationState();
+			for (IFeatureLinkingCandidate candidate : candidates) {
+				if(candidate.getTypeArguments().isEmpty()){
+					candidate.applyToComputationState();
+					return;
+				}
+			}
 		} else {
 			super._computeTypes(featureCall, state);
 		}
