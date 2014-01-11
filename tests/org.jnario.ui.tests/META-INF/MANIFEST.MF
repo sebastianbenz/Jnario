@@ -2,19 +2,19 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Jnario UI Tests
 Bundle-SymbolicName: org.jnario.ui.tests
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.7.1.qualifier
 Bundle-Vendor: Sebastian Benz
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Require-Bundle: org.jnario;bundle-version="1.0.0",
- org.jnario.feature;bundle-version="1.0.0",
- org.jnario.feature.ui;bundle-version="1.0.0",
- org.jnario.lib;bundle-version="1.0.0",
- org.jnario.spec;bundle-version="1.0.0",
- org.jnario.spec.ui;bundle-version="1.0.0",
- org.jnario.suite;bundle-version="1.0.0",
- org.jnario.suite.ui;bundle-version="1.0.0",
- org.jnario.tests;bundle-version="1.0.0",
- org.jnario.ui;bundle-version="1.0.0",
+Require-Bundle: org.jnario;bundle-version="0.7.1",
+ org.jnario.feature;bundle-version="0.7.1",
+ org.jnario.feature.ui;bundle-version="0.7.1",
+ org.jnario.lib;bundle-version="0.7.1",
+ org.jnario.spec;bundle-version="0.7.1",
+ org.jnario.spec.ui;bundle-version="0.7.1",
+ org.jnario.suite;bundle-version="0.7.1",
+ org.jnario.suite.ui;bundle-version="0.7.1",
+ org.jnario.tests;bundle-version="0.7.1",
+ org.jnario.ui;bundle-version="0.7.1",
  org.eclipse.xtext.common.types.ui;bundle-version="[2.5.0,2.6.0)",
  org.eclipse.core.runtime,
  org.eclipse.core.resources,

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.jnario.ui
 Bundle-SymbolicName: org.jnario.ui;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.7.1.qualifier
 Bundle-Vendor: BWM Car IT
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.core.resources,
@@ -10,12 +10,12 @@ Require-Bundle: org.eclipse.core.resources,
  org.eclipse.jdt.core,
  org.eclipse.core.runtime,
  org.eclipse.xtext.ui;bundle-version="[2.5.0,2.6.0)",
- org.jnario;bundle-version="1.0.0",
+ org.jnario;bundle-version="0.7.1",
  org.eclipse.xtend.ide;bundle-version="[2.5.0,2.6.0)",
  org.eclipse.xtext.common.types.ui;bundle-version="[2.5.0,2.6.0)",
  org.eclipse.jdt.ui,
  org.eclipse.xtext.xbase.ui;bundle-version="[2.5.0,2.6.0)",
- org.jnario.lib;bundle-version="1.0.0",
+ org.jnario.lib;bundle-version="0.7.1",
  org.eclipse.ui,
  org.eclipse.jdt.junit,
  org.eclipse.xtext.ui.shared;bundle-version="[2.5.0,2.6.0)"

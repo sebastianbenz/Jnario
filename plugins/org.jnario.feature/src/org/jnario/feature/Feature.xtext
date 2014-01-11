@@ -25,8 +25,7 @@ FeatureFile returns xtend::XtendFile:
 	{FeatureFile}
 	('package' package=QualifiedName)?
 	importSection=XImportSection?
-	xtendTypes+=Feature?
-;
+	xtendTypes+=Feature?;
 
 Feature returns xtend::XtendClass:
 	{Feature}
