@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.jnario.spec.ui
 Bundle-Vendor: BMW Car IT
-Bundle-Version: 0.7.1.qualifier
+Bundle-Version: 0.7.1.201401122026
 Bundle-SymbolicName: org.jnario.spec.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
@@ -31,9 +31,7 @@ Require-Bundle: org.jnario.spec;visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.jnario.spec.ui.contentassist,
- org.jnario.spec.ui.contentassist.antlr,
- org.jnario.spec.ui.internal,
- org.jnario.spec.ui.wizards,
- org.jnario.spec.ui.quickfix
+Export-Package: org.jnario.spec.ui.contentassist,org.jnario.spec.ui.co
+ ntentassist.antlr,org.jnario.spec.ui.internal,org.jnario.spec.ui.wiza
+ rds,org.jnario.spec.ui.quickfix
 Bundle-Activator: org.jnario.spec.ui.internal.SpecActivatorImpl

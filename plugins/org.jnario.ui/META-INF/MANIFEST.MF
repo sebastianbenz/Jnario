@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.jnario.ui
 Bundle-SymbolicName: org.jnario.ui;singleton:=true
-Bundle-Version: 0.7.1.qualifier
+Bundle-Version: 0.7.1.201401122026
 Bundle-Vendor: BWM Car IT
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.core.resources,
@@ -20,17 +20,10 @@ Require-Bundle: org.eclipse.core.resources,
  org.eclipse.jdt.junit,
  org.eclipse.xtext.ui.shared;bundle-version="[2.5.0,2.6.0)"
 Bundle-ActivationPolicy: lazy
-Export-Package: org.jnario.ui,
- org.jnario.ui.builder,
- org.jnario.ui.buildpath,
- org.jnario.ui.contentassist,
- org.jnario.ui.editor,
- org.jnario.ui.doc,
- org.jnario.ui.highlighting,
- org.jnario.ui.preferences,
- org.jnario.ui.quickfix,
- org.jnario.ui.validator,
- org.jnario.ui.findrefs,
- org.jnario.ui.wizards
+Export-Package: org.jnario.ui,org.jnario.ui.builder,org.jnario.ui.buil
+ dpath,org.jnario.ui.contentassist,org.jnario.ui.editor,org.jnario.ui.
+ doc,org.jnario.ui.highlighting,org.jnario.ui.preferences,org.jnario.u
+ i.quickfix,org.jnario.ui.validator,org.jnario.ui.findrefs,org.jnario.
+ ui.wizards
 Import-Package: org.apache.log4j;version="1.2.15"
 Bundle-Activator: org.jnario.ui.internal.JnarioActivator

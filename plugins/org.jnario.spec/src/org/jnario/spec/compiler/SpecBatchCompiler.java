@@ -7,15 +7,12 @@
  *******************************************************************************/
 package org.jnario.spec.compiler;
 
-import static com.google.common.collect.Lists.*;
-
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.jnario.ExampleTable;
 import org.jnario.compiler.JnarioBatchCompiler;
 import org.jnario.spec.naming.ExampleNameProvider;
