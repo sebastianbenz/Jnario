@@ -11,15 +11,44 @@ SpecFile:
 {SpecFile}
 ('package' package=QualifiedName)? 
 	importSection=XImportSection?
-	(xtendTypes+=ExampleGroup)*
+	(xtendTypes+=(Type))*
 ;
 
-ExampleGroup:  
-	{ExampleGroup}
-	annotations+=XAnnotation* 
-	preamble='describe' targetType=JvmTypeReference? name=STRING? '{'
+Type returns xtend::XtendTypeDeclaration :
+	{xtend::XtendTypeDeclaration} annotations+=XAnnotation*   
+	(
+		{xtend::XtendClass.annotationInfo = current}
+		modifiers+=CommonModifier*
+	  	'class' name=ValidID ('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?  
+	   	("extends" extends=JvmParameterizedTypeReference)? 
+	   	('implements' implements+=JvmParameterizedTypeReference (',' implements+=JvmParameterizedTypeReference)*)?'{'
+		   (members+=Member)*
+	   	'}'
+	 |
+		{xtend::XtendInterface.annotationInfo = current}
+		modifiers+=CommonModifier*
+	  	'interface' name=ValidID ('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?  
+	   	('extends' extends+=JvmParameterizedTypeReference (',' extends+=JvmParameterizedTypeReference)*)?'{'
+		   (members+=Member)*
+	   	'}'
+	 |
+		{xtend::XtendEnum.annotationInfo = current}
+		modifiers+=CommonModifier*
+	  	'enum' name=ValidID '{'   
+		   (members+=XtendEnumLiteral (',' members+=XtendEnumLiteral)*)? ';'?
+	   	'}'
+	 |
+	 	{xtend::XtendAnnotationType.annotationInfo = current}
+	 	modifiers+=CommonModifier*
+		'annotation' name=ValidID '{'
+		   (members+=AnnotationField)*
+	   	'}'
+	 |
+	 	{ExampleGroup.annotationInfo = current}
+    	preamble='describe' targetType=JvmTypeReference? name=STRING? '{'
        (members+=Member*)
 	'}'
+	)
 ;
 
 Method:

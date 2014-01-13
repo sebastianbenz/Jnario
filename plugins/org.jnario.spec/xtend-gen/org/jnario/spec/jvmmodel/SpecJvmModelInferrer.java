@@ -69,6 +69,7 @@ import org.jnario.lib.ExampleTableRow;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.jvmmodel.ImplicitSubject;
+import org.jnario.spec.jvmmodel.SpecIgnoringXtendJvmModelInferrer;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.After;
 import org.jnario.spec.spec.Before;
@@ -110,6 +111,9 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   @Extension
   private IJvmModelAssociations _iJvmModelAssociations;
   
+  @Inject
+  private SpecIgnoringXtendJvmModelInferrer xtendJvmModelInferrer;
+  
   private int index = 0;
   
   public void doInfer(final EObject object, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
@@ -117,6 +121,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       return;
     }
     final XtendFile xtendFile = ((XtendFile) object);
+    this.xtendJvmModelInferrer.infer(object, acceptor, preIndexingPhase);
     final ArrayList<Runnable> doLater = CollectionLiterals.<Runnable>newArrayList();
     EList<XtendTypeDeclaration> _xtendTypes = xtendFile.getXtendTypes();
     Iterable<ExampleGroup> _filter = Iterables.<ExampleGroup>filter(_xtendTypes, ExampleGroup.class);

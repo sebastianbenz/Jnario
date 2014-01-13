@@ -47,6 +47,7 @@ import org.jnario.spec.spec.TestFunction
 
 import static extension org.eclipse.xtext.util.Strings.*
 import org.jnario.ExampleCellimport org.eclipse.xtext.xbase.XNullLiteral
+import org.eclipse.xtend.core.jvmmodel.XtendJvmModelInferrer
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -68,12 +69,15 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	@Inject extension IJvmModelAssociations
 	
+	@Inject SpecIgnoringXtendJvmModelInferrer xtendJvmModelInferrer
+	
 	var index = 0
 	
 	override doInfer(EObject object, IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		if (!(object instanceof XtendFile))
 			return;
 		val xtendFile = object as XtendFile
+		xtendJvmModelInferrer.infer(object, acceptor, preIndexingPhase)
 		val doLater = <Runnable>newArrayList()
 		
 		for (declaration: xtendFile.getXtendTypes().filter(typeof(ExampleGroup))) {

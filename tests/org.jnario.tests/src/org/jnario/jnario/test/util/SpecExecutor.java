@@ -12,6 +12,11 @@ import static org.junit.Assert.assertFalse;
 import java.net.MalformedURLException;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.compiler.XtendGenerator;
+import org.eclipse.xtend.core.macro.declaration.XtendNamedElementImpl;
+import org.eclipse.xtend.core.naming.XtendQualifiedNameProvider;
+import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecFile;
@@ -23,6 +28,8 @@ import com.google.inject.Inject;
 public class SpecExecutor extends BehaviorExecutor{
 	
 	@Inject private ExampleNameProvider nameProvider;
+	@Inject private XtendQualifiedNameProvider xtendQualifiedNameProvider;
+	@Inject private XtendGenerator xtendGenerator;
 
 	public SpecExecutor() {
 		super();
@@ -32,9 +39,16 @@ public class SpecExecutor extends BehaviorExecutor{
 	protected Result runExamples(EObject object) throws MalformedURLException, ClassNotFoundException {
 		SpecFile spec = (SpecFile) object;
 		CompositeResult result = new CompositeResult();
+		String packageName = spec.getPackage();
+		for (XtendTypeDeclaration type : spec.getXtendTypes()) {
+			if (!(type instanceof ExampleGroup)) {
+				String className = type.getName();
+				compileJavaFile(packageName, className);
+				loadGeneratedClass(packageName, className);
+			}
+		}
 		for (ExampleGroup exampleGroup : Iterables.filter(spec.getXtendTypes(), ExampleGroup.class)) {
 			String specClassName = nameProvider.toJavaClassName(exampleGroup);
-			String packageName = spec.getPackage();
 			result.add(runTestsInClass(specClassName, packageName));
 		}
 		return result;

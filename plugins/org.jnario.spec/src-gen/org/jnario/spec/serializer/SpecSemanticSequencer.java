@@ -253,12 +253,12 @@ public class SpecSemanticSequencer extends XtendSemanticSequencer {
 				}
 				else break;
 			case SpecPackage.EXAMPLE_GROUP:
-				if(context == grammarAccess.getExampleGroupRule()) {
-					sequence_ExampleGroup(context, (ExampleGroup) semanticObject); 
+				if(context == grammarAccess.getMemberRule()) {
+					sequence_Member(context, (ExampleGroup) semanticObject); 
 					return; 
 				}
-				else if(context == grammarAccess.getMemberRule()) {
-					sequence_Member(context, (ExampleGroup) semanticObject); 
+				else if(context == grammarAccess.getTypeRule()) {
+					sequence_Type(context, (ExampleGroup) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1457,11 +1457,12 @@ public class SpecSemanticSequencer extends XtendSemanticSequencer {
 				}
 				else break;
 			case XtendPackage.XTEND_TYPE_DECLARATION:
-				if(context == grammarAccess.getTypeAccess().getXtendAnnotationTypeAnnotationInfoAction_2_3_0() ||
+				if(context == grammarAccess.getTypeAccess().getExampleGroupAnnotationInfoAction_2_4_0() ||
+				   context == grammarAccess.getTypeAccess().getXtendAnnotationTypeAnnotationInfoAction_2_3_0() ||
 				   context == grammarAccess.getTypeAccess().getXtendClassAnnotationInfoAction_2_0_0() ||
 				   context == grammarAccess.getTypeAccess().getXtendEnumAnnotationInfoAction_2_2_0() ||
 				   context == grammarAccess.getTypeAccess().getXtendInterfaceAnnotationInfoAction_2_1_0()) {
-					sequence_Type_XtendAnnotationType_2_3_0_XtendClass_2_0_0_XtendEnum_2_2_0_XtendInterface_2_1_0(context, (XtendTypeDeclaration) semanticObject); 
+					sequence_Type_ExampleGroup_2_4_0_XtendAnnotationType_2_3_0_XtendClass_2_0_0_XtendEnum_2_2_0_XtendInterface_2_1_0(context, (XtendTypeDeclaration) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1529,15 +1530,6 @@ public class SpecSemanticSequencer extends XtendSemanticSequencer {
 	 *     (type=JvmTypeReference? name=ValidID)
 	 */
 	protected void sequence_ExampleColumn(EObject context, ExampleColumn semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (annotations+=XAnnotation* preamble='describe' targetType=JvmTypeReference? name=STRING? members+=Member*)
-	 */
-	protected void sequence_ExampleGroup(EObject context, ExampleGroup semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1681,9 +1673,83 @@ public class SpecSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (package=QualifiedName? importSection=XImportSection? xtendTypes+=ExampleGroup*)
+	 *     (package=QualifiedName? importSection=XImportSection? xtendTypes+=Type*)
 	 */
 	protected void sequence_SpecFile(EObject context, SpecFile semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (annotationInfo=Type_ExampleGroup_2_4_0 preamble='describe' targetType=JvmTypeReference? name=STRING? members+=Member*)
+	 */
+	protected void sequence_Type(EObject context, ExampleGroup semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     annotations+=XAnnotation+
+	 */
+	protected void sequence_Type_ExampleGroup_2_4_0_XtendAnnotationType_2_3_0_XtendClass_2_0_0_XtendEnum_2_2_0_XtendInterface_2_1_0(EObject context, XtendTypeDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         (
+	 *             (annotationInfo=Type_XtendAnnotationType_2_3_0 modifiers+=CommonModifier* name=ValidID) | 
+	 *             (annotationInfo=Type_XtendAnnotationType_2_3_0 name=ValidID)
+	 *         ) 
+	 *         members+=AnnotationField*
+	 *     )
+	 */
+	protected void sequence_Type(EObject context, XtendAnnotationType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         ((annotationInfo=Type_XtendClass_2_0_0 modifiers+=CommonModifier* name=ValidID) | (annotationInfo=Type_XtendClass_2_0_0 name=ValidID)) 
+	 *         (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
+	 *         extends=JvmParameterizedTypeReference? 
+	 *         (implements+=JvmParameterizedTypeReference implements+=JvmParameterizedTypeReference*)? 
+	 *         members+=Member*
+	 *     )
+	 */
+	protected void sequence_Type(EObject context, XtendClass semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         ((annotationInfo=Type_XtendEnum_2_2_0 modifiers+=CommonModifier* name=ValidID) | (annotationInfo=Type_XtendEnum_2_2_0 name=ValidID)) 
+	 *         (members+=XtendEnumLiteral members+=XtendEnumLiteral*)?
+	 *     )
+	 */
+	protected void sequence_Type(EObject context, XtendEnum semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         ((annotationInfo=Type_XtendInterface_2_1_0 modifiers+=CommonModifier* name=ValidID) | (annotationInfo=Type_XtendInterface_2_1_0 name=ValidID)) 
+	 *         (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
+	 *         (extends+=JvmParameterizedTypeReference extends+=JvmParameterizedTypeReference*)? 
+	 *         members+=Member*
+	 *     )
+	 */
+	protected void sequence_Type(EObject context, XtendInterface semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

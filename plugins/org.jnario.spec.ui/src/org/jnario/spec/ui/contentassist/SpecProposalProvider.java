@@ -44,9 +44,8 @@ public class SpecProposalProvider extends AbstractSpecProposalProvider {
 //	}
 	
 	@Override
-	public void completeExampleGroup_TargetType(EObject model,
-			Assignment assignment, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
+	public void completeType_TargetType(EObject model, Assignment assignment,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeJavaTypes(context, SpecPackage.Literals.EXAMPLE_GROUP__TARGET_TYPE, true, getQualifiedNameValueConverter(), new TypeMatchFilters.All(IJavaSearchConstants.TYPE), acceptor);
 	}
 	

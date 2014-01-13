@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.core.xtend.XtendPackage;
+import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.Constants;
 import org.eclipse.xtext.common.types.JvmOperation;
@@ -240,7 +241,7 @@ public abstract class BehaviorExecutor {
 
 	@Inject private IResourceValidator validator;
 	protected boolean validate = true;
-	private FeatureJavaCompiler javaCompiler = FeatureJavaCompiler.getInstance();
+	protected FeatureJavaCompiler javaCompiler = FeatureJavaCompiler.getInstance();
 
 	@Inject
 	@com.google.inject.name.Named(Constants.FILE_EXTENSIONS)
@@ -287,6 +288,7 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(getClass());
 		javaCompiler.addClassPathOfClass(StringExtensions.class);
 		javaCompiler.addClassPathOfClass(Notifier.class);
+		javaCompiler.addClassPathOfClass(Data.class);
 		javaCompiler.addClassPathOfClass(EcorePackage.class);
 		javaCompiler.addClassPathOfClass(XbasePackage.class);
 		javaCompiler.addClassPathOfClass(XtendPackage.class);
