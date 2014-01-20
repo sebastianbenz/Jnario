@@ -229,7 +229,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
         if (!_not) {
           _and = false;
         } else {
-          boolean _eIsSet = example.eIsSet(XtendPackage.Literals.XTEND_FUNCTION__EXPRESSION);
+          boolean _eIsSet = example.eIsSet(XtendPackage.Literals.XTEND_EXECUTABLE__EXPRESSION);
           _and = (_not && _eIsSet);
         }
         if (_and) {
@@ -359,29 +359,29 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     return _title;
   }
   
-  public CharSequence generate(final XtendMember exampleGroup, final int level) {
-    if (exampleGroup instanceof ExampleGroup) {
-      return _generate((ExampleGroup)exampleGroup, level);
-    } else if (exampleGroup instanceof Example) {
-      return _generate((Example)exampleGroup, level);
-    } else if (exampleGroup instanceof ExampleTable) {
-      return _generate((ExampleTable)exampleGroup, level);
-    } else if (exampleGroup != null) {
-      return _generate(exampleGroup, level);
+  public CharSequence generate(final XtendMember example, final int level) {
+    if (example instanceof Example) {
+      return _generate((Example)example, level);
+    } else if (example instanceof ExampleGroup) {
+      return _generate((ExampleGroup)example, level);
+    } else if (example instanceof ExampleTable) {
+      return _generate((ExampleTable)example, level);
+    } else if (example != null) {
+      return _generate(example, level);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(exampleGroup, level).toString());
+        Arrays.<Object>asList(example, level).toString());
     }
   }
   
-  public String asTitle(final EObject exampleGroup) {
-    if (exampleGroup instanceof ExampleGroup) {
-      return _asTitle((ExampleGroup)exampleGroup);
-    } else if (exampleGroup instanceof Example) {
-      return _asTitle((Example)exampleGroup);
+  public String asTitle(final EObject example) {
+    if (example instanceof Example) {
+      return _asTitle((Example)example);
+    } else if (example instanceof ExampleGroup) {
+      return _asTitle((ExampleGroup)example);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(exampleGroup).toString());
+        Arrays.<Object>asList(example).toString());
     }
   }
 }

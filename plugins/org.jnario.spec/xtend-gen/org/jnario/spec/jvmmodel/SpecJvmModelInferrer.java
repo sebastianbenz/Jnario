@@ -26,8 +26,6 @@ import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
-import org.eclipse.xtext.common.types.JvmAnnotationType;
-import org.eclipse.xtext.common.types.JvmAnnotationValue;
 import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
@@ -35,9 +33,7 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
-import org.eclipse.xtext.common.types.JvmStringAnnotationValue;
 import org.eclipse.xtext.common.types.JvmType;
-import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.common.types.TypesFactory;
@@ -184,20 +180,8 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   
   public void initialize(final XtendClass source, final JvmGenericType inferredJvmType) {
     inferredJvmType.setVisibility(JvmVisibility.PUBLIC);
-    JvmType _findDeclaredType = this._typeReferences.findDeclaredType(SuppressWarnings.class, source);
-    final JvmAnnotationType annotation = ((JvmAnnotationType) _findDeclaredType);
-    boolean _notEquals = (!Objects.equal(annotation, null));
-    if (_notEquals) {
-      final JvmAnnotationReference suppressWarnings = this.typesFactory.createJvmAnnotationReference();
-      suppressWarnings.setAnnotation(annotation);
-      final JvmStringAnnotationValue annotationValue = this.typesFactory.createJvmStringAnnotationValue();
-      EList<String> _values = annotationValue.getValues();
-      this._extendedJvmTypesBuilder.<String>operator_add(_values, "all");
-      EList<JvmAnnotationValue> _values_1 = suppressWarnings.getValues();
-      _values_1.add(annotationValue);
-      EList<JvmAnnotationReference> _annotations = inferredJvmType.getAnnotations();
-      _annotations.add(suppressWarnings);
-    }
+    EList<XAnnotation> _annotations = source.getAnnotations();
+    this.translateAnnotationsTo(_annotations, inferredJvmType);
     EList<JvmAnnotationReference> _annotations_1 = inferredJvmType.getAnnotations();
     String _describe = this._exampleNameProvider.describe(source);
     JvmAnnotationReference _annotation = this._extendedJvmTypesBuilder.toAnnotation(source, Named.class, _describe);
@@ -207,8 +191,8 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     boolean _equals = Objects.equal(_extends, null);
     if (_equals) {
       final JvmTypeReference typeRefToObject = this._typeReferences.getTypeForName(Object.class, source);
-      boolean _notEquals_1 = (!Objects.equal(typeRefToObject, null));
-      if (_notEquals_1) {
+      boolean _notEquals = (!Objects.equal(typeRefToObject, null));
+      if (_notEquals) {
         EList<JvmTypeReference> _superTypes = inferredJvmType.getSuperTypes();
         _superTypes.add(typeRefToObject);
       }
@@ -226,8 +210,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       JvmTypeReference _cloneWithProxies_1 = this._extendedJvmTypesBuilder.cloneWithProxies(intf);
       _superTypes_2.add(_cloneWithProxies_1);
     }
-    EList<JvmTypeParameter> _typeParameters = source.getTypeParameters();
-    this.copyAndFixTypeParameters(_typeParameters, inferredJvmType);
+    this.fixTypeParameters(inferredJvmType);
     this.exampleIndex = 0;
     EList<XtendMember> _members = source.getMembers();
     for (final XtendMember member : _members) {
@@ -235,10 +218,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     }
     this._implicitSubject.addImplicitSubject(inferredJvmType, ((ExampleGroup) source));
     this.appendSyntheticDispatchMethods(source, inferredJvmType);
-    EList<XAnnotation> _annotations_2 = source.getAnnotations();
-    this.translateAnnotationsTo(_annotations_2, inferredJvmType);
-    String _documentation = this._extendedJvmTypesBuilder.getDocumentation(source);
-    this._extendedJvmTypesBuilder.setDocumentation(inferredJvmType, _documentation);
+    this._extendedJvmTypesBuilder.copyDocumentationTo(source, inferredJvmType);
     this._syntheticNameClashResolver.resolveNameClashes(inferredJvmType);
   }
   

@@ -2342,7 +2342,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CommonModifier:
-	//	"public" | "private" | "protected" | "package" | "abstract" | "static" | "dispatch" | "final";
+	//	"public" | "private" | "protected" | "package" | "abstract" | "static" | "dispatch" | "final" | "strictfp" | "native"
+	//	| "volatile" | "synchronized" | "transient";
 	public XtendGrammarAccess.CommonModifierElements getCommonModifierAccess() {
 		return gaXtend.getCommonModifierAccess();
 	}
@@ -2391,16 +2392,27 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getValidIDAccess().getRule();
 	}
 
+	//// For feature calls we add 'extension' since there are method such as 'isExtension' or 'getExtension' out there.
 	//FeatureCallID:
-	//	ID | "abstract" | "annotation" | "class" | "create" | "def" | "dispatch" | "enum" | "extends" | "extension" | "final"
-	//	| "implements" | "import" | "interface" | "override" | "package" | "public" | "private" | "protected" | "static" |
-	//	"throws";
+	//	InnerVarID | "extension";
 	public XtendGrammarAccess.FeatureCallIDElements getFeatureCallIDAccess() {
 		return gaXtend.getFeatureCallIDAccess();
 	}
 	
 	public ParserRule getFeatureCallIDRule() {
 		return getFeatureCallIDAccess().getRule();
+	}
+
+	//InnerVarID:
+	//	ID | "abstract" | "annotation" | "class" | "create" | "def" | "dispatch" | "enum" | "extends" | "final" | "implements"
+	//	| "import" | "interface" | "override" | "package" | "public" | "private" | "protected" | "static" | "throws" |
+	//	"strictfp" | "native" | "volatile" | "synchronized" | "transient";
+	public XtendGrammarAccess.InnerVarIDElements getInnerVarIDAccess() {
+		return gaXtend.getInnerVarIDAccess();
+	}
+	
+	public ParserRule getInnerVarIDRule() {
+		return getInnerVarIDAccess().getRule();
 	}
 
 	//Parameter returns XtendParameter:
@@ -2416,7 +2428,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 
 	//XVariableDeclaration returns xbase::XExpression:
 	//	=> ({XtendVariableDeclaration} ((writeable?="var" | "val") extension?="extension"? | extension?="extension"
-	//	(writeable?="var" | "val"))) (=> (type=JvmTypeReference name=ValidID) | name=ValidID) ("=" right=XExpression)?;
+	//	(writeable?="var" | "val"))) (=> (type=JvmTypeReference name=InnerVarID) | name=InnerVarID) ("=" right=XExpression)?;
 	public XtendGrammarAccess.XVariableDeclarationElements getXVariableDeclarationAccess() {
 		return gaXtend.getXVariableDeclarationAccess();
 	}
@@ -2426,7 +2438,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmFormalParameter returns XtendFormalParameter:
-	//	extension?="extension"? parameterType=JvmTypeReference? name=ValidID;
+	//	extension?="extension"? parameterType=JvmTypeReference? name=InnerVarID;
 	public XtendGrammarAccess.JvmFormalParameterElements getJvmFormalParameterAccess() {
 		return gaXtend.getJvmFormalParameterAccess();
 	}
@@ -2436,7 +2448,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FullJvmFormalParameter returns XtendFormalParameter:
-	//	extension?="extension"? parameterType=JvmTypeReference name=ValidID;
+	//	extension?="extension"? parameterType=JvmTypeReference name=InnerVarID;
 	public XtendGrammarAccess.FullJvmFormalParameterElements getFullJvmFormalParameterAccess() {
 		return gaXtend.getFullJvmFormalParameterAccess();
 	}

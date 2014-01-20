@@ -172,7 +172,7 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'fact' | 'facts'
+	 *     'facts' | 'fact'
 	 */
 	protected void emit_Member_FactKeyword_2_0_1_1_0_or_FactsKeyword_2_0_1_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -276,7 +276,7 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'throws' | ('should' 'throw')
+	 *     ('should' 'throw') | 'throws'
 	 */
 	protected void emit_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or___ShouldKeyword_1_1_0_0_1_0_0_ThrowKeyword_1_1_0_0_1_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

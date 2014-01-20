@@ -116,15 +116,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	override initialize(XtendClass source, JvmGenericType inferredJvmType) {
 		inferredJvmType.setVisibility(JvmVisibility::PUBLIC);
-		val annotation = findDeclaredType(typeof(SuppressWarnings), source) as JvmAnnotationType
-		if (annotation != null) {
-			val suppressWarnings = typesFactory.createJvmAnnotationReference();
-			suppressWarnings.setAnnotation(annotation);
-			val annotationValue = typesFactory.createJvmStringAnnotationValue();
-			annotationValue.getValues() += "all"
-			suppressWarnings.getValues().add(annotationValue);
-			inferredJvmType.getAnnotations().add(suppressWarnings);
-		}
+		translateAnnotationsTo(source.getAnnotations(), inferredJvmType);
 		inferredJvmType.annotations += source.toAnnotation(typeof(Named), source.describe)
 		addDefaultConstructor(source, inferredJvmType);
 		if (source.getExtends() == null) {
@@ -138,15 +130,15 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		for (intf : source.getImplements()) {
 			inferredJvmType.getSuperTypes().add(cloneWithProxies(intf));
 		}
-		copyAndFixTypeParameters(source.getTypeParameters(), inferredJvmType);
+		fixTypeParameters(inferredJvmType);
 		exampleIndex = 0
 		for (member : source.getMembers()) {
 			transformExamples(member, inferredJvmType);
 		}
 		inferredJvmType.addImplicitSubject(source as ExampleGroup)
 		appendSyntheticDispatchMethods(source, inferredJvmType);
-		translateAnnotationsTo(source.getAnnotations(), inferredJvmType);
-		setDocumentation(inferredJvmType, getDocumentation(source));
+		copyDocumentationTo(source, inferredJvmType);
+		
 		resolveNameClashes(inferredJvmType);
 	}
 	 
