@@ -34,8 +34,7 @@ public class ExamplesFeatureExampleTables extends ExamplesFeatureSomeMoreInfo {
   @Order(1)
   @Named("Given some two numbers \\\"10\\\" and \\\"20\\\"")
   public void _givenSomeTwoNumbers10And20() {
-    StepArguments _stepArguments = new StepArguments("10", "20");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("10", "20");
     String _first = JnarioIterableExtensions.<String>first(args);
     int _int = StringConversions.toInt(_first);
     this.a = _int;
@@ -53,16 +52,14 @@ public class ExamplesFeatureExampleTables extends ExamplesFeatureSomeMoreInfo {
   @Order(3)
   @Named("Then the result should be \\\"30\\\"")
   public void _thenTheResultShouldBe30() {
-    StepArguments _stepArguments = new StepArguments("30");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("30");
     String _first = JnarioIterableExtensions.<String>first(args);
     int _int = StringConversions.toInt(_first);
-    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(this.result), Integer.valueOf(_int));
     Assert.assertTrue("\nExpected result => args.first.toInt but"
      + "\n     result is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(this.result)).toString()
      + "\n     args.first.toInt is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_int)).toString()
      + "\n     args.first is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
-     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", Should.<Integer>operator_doubleArrow(Integer.valueOf(this.result), Integer.valueOf(_int)));
     
   }
 }
