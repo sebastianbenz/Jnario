@@ -30,8 +30,7 @@ public class ReferencesForStepsFeatureAccessingExtensionFieldMethods extends Ref
   @Order(0)
   @Named("When I access extension field methods from referenced steps")
   public void _whenIAccessExtensionFieldMethodsFromReferencedSteps() {
-    StepArguments _stepArguments = new StepArguments("Feature: Sharing extension field\n\n\t\t  Scenario: Accessing extension field methods\n\t\t    extension String = \"hello\"\n\t\t   \n\t\t    Given an extension field access\n\t\t      concat(\" world\") should be \"hello world\"\n\t\t\n\t\t  Scenario: Accessing extension field methods in referenced steps\n\t\t  \t\n\t\t  \tGiven an extension field access\n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("Feature: Sharing extension field\n\n\t\t  Scenario: Accessing extension field methods\n\t\t    extension String = \"hello\"\n\t\t   \n\t\t    Given an extension field access\n\t\t      concat(\" world\") should be \"hello world\"\n\t\t\n\t\t  Scenario: Accessing extension field methods in referenced steps\n\t\t  \t\n\t\t  \tGiven an extension field access\n");
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;
   }

@@ -43,7 +43,6 @@ public class TestRuntimeProvider {
     if (_notEquals_1) {
       return this.junit3Support.get();
     }
-    NoSuchElementException _noSuchElementException = new NoSuchElementException("Mandatory test library bundle \'org.junit\' 3.8.x or 4.8.x not found on the classpath.");
-    throw _noSuchElementException;
+    throw new NoSuchElementException("Mandatory test library bundle \'org.junit\' 3.8.x or 4.8.x not found on the classpath.");
   }
 }

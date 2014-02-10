@@ -107,12 +107,11 @@ public class StringsTrimSpec extends StringsSpec {
         char _charAt = "_".charAt(0);
         String _trim = Strings.trim(_string, _charAt);
         String _result = it.getResult();
-        boolean _doubleArrow = Should.<String>operator_doubleArrow(_trim, _result);
         Assert.assertTrue("\nExpected string.trim(\'_\'.charAt(0)) => result but"
          + "\n     string.trim(\'_\'.charAt(0)) is " + new org.hamcrest.StringDescription().appendValue(_trim).toString()
          + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
          + "\n     \'_\'.charAt(0) is " + new org.hamcrest.StringDescription().appendValue(_charAt).toString()
-         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", Should.<String>operator_doubleArrow(_trim, _result));
         
       }
     };

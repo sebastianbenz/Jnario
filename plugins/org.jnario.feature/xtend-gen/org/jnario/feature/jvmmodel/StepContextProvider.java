@@ -53,15 +53,13 @@ public class StepContextProvider {
             ArrayList<XExpression> _newArrayList = CollectionLiterals.<XExpression>newArrayList(expr);
             final Collection<EStructuralFeature.Setting> usages = XbaseUsageCrossReferencer.find(field, _newArrayList);
             boolean _isEmpty = usages.isEmpty();
-            boolean _not = (!_isEmpty);
-            _xblockexpression = (_not);
+            _xblockexpression = ((!_isEmpty));
           }
           return Boolean.valueOf(_xblockexpression);
         }
       };
       Iterable<XtendField> _filter_1 = IterableExtensions.<XtendField>filter(_filter, _function);
-      Set<XtendField> _set = IterableExtensions.<XtendField>toSet(_filter_1);
-      _xblockexpression = (_set);
+      _xblockexpression = (IterableExtensions.<XtendField>toSet(_filter_1));
     }
     return _xblockexpression;
   }

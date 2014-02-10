@@ -27,8 +27,7 @@ public class StepParametersFeatureUsingArgsInAndSteps extends StepParametersFeat
   @Order(0)
   @Named("When I have a scenario with \\\'and\\\' step arguments")
   public void _whenIHaveAScenarioWithAndStepArguments() {
-    StepArguments _stepArguments = new StepArguments("Feature: And Arguments\n\nScenario: Using And Arguments\n\nWhen we have some args \"2\"\nAnd other args \"10\"\n\targs.first => \"10\"\n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("Feature: And Arguments\n\nScenario: Using And Arguments\n\nWhen we have some args \"2\"\nAnd other args \"10\"\n\targs.first => \"10\"\n");
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;
   }

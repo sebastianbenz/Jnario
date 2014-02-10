@@ -35,8 +35,7 @@ public class Features {
   }
   
   public static Given stepWithoutImplementation() {
-    Given _step = Features.step("Given a pending step");
-    return _step;
+    return Features.step("Given a pending step");
   }
   
   public static Given implementedStep() {
@@ -63,8 +62,7 @@ public class Features {
   }
   
   public static Scenario scenarioWith(final Step... steps) {
-    Scenario _scenarioWith = Features.scenarioWith("Scenario: with steps", steps);
-    return _scenarioWith;
+    return Features.scenarioWith("Scenario: with steps", steps);
   }
   
   public static Scenario scenarioWith(final String name, final Step... steps) {
@@ -110,8 +108,7 @@ public class Features {
   }
   
   public static Scenario scenarioWithoutSteps() {
-    Scenario _scenario = Features.scenario("Scenario: pending");
-    return _scenario;
+    return Features.scenario("Scenario: pending");
   }
   
   public static Feature feature(final String name) {

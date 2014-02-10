@@ -8,7 +8,6 @@
 package org.jnario.suite.unit;
 
 import org.eclipse.xtext.conversion.IValueConverter;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
@@ -22,11 +21,5 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @SuppressWarnings("all")
 public class SuiteValueConverterSpec {
-  final IValueConverter<String> subject = new Function0<IValueConverter<String>>() {
-    public IValueConverter<String> apply() {
-      SuiteValueConverterService _suiteValueConverterService = new SuiteValueConverterService();
-      IValueConverter<String> _suiteValueConverter = _suiteValueConverterService.getSuiteValueConverter();
-      return _suiteValueConverter;
-    }
-  }.apply();
+  final IValueConverter<String> subject = new SuiteValueConverterService().getSuiteValueConverter();
 }

@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Jnario Library
 Bundle-SymbolicName: org.jnario.lib;singleton:=true
-Bundle-Version: 0.7.0.201401092313
+Bundle-Version: 0.7.2.201402102059
 Bundle-Vendor: BMW Car IT
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.jnario.junit3,org.jnario.lib,org.jnario.lib.intern
  al;x-friends:="org.jnario.lib.tests",org.jnario.runner,org.jnario.run
  ner.internal;x-friends:="org.jnario.lib.tests"
-Require-Bundle: org.eclipse.xtext.xbase.lib;bundle-version="[2.5.0,2.6.0)";visibility:=reexport,
- org.eclipse.xtend.lib;bundle-version="[2.5.0,2.6.0)";resolution:=optional
+Require-Bundle: org.eclipse.xtext.xbase.lib;bundle-version="[2.5.1,2.6.0)";visibility:=reexport,
+ org.eclipse.xtend.lib;bundle-version="[2.5.1,2.6.0)";resolution:=optional
 Import-Package: junit.extensions,
  junit.framework,
  junit.runner,

@@ -146,12 +146,11 @@ public class WhiteSpaceNormalizerSpec {
         String _input = it.getInput();
         String _normalize = WhiteSpaceNormalizerSpec.this.subject.normalize(_input);
         String _result = it.getResult();
-        boolean _doubleArrow = Should.<String>operator_doubleArrow(_normalize, _result);
         Assert.assertTrue("\nExpected subject.normalize(input) => result but"
          + "\n     subject.normalize(input) is " + new org.hamcrest.StringDescription().appendValue(_normalize).toString()
          + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(WhiteSpaceNormalizerSpec.this.subject).toString()
          + "\n     input is " + new org.hamcrest.StringDescription().appendValue(_input).toString()
-         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", Should.<String>operator_doubleArrow(_normalize, _result));
         
       }
     };
@@ -168,11 +167,10 @@ public class WhiteSpaceNormalizerSpec {
     _builder.append("world");
     _builder.newLine();
     String _normalize = this.subject.normalize(_builder);
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_normalize, "hello\nworld\n");
     Assert.assertTrue("\nExpected subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\r\n\t\t\'\'\') => \"hello\\nworld\\n\" but"
      + "\n     subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\r\n\t\t\'\'\') is " + new org.hamcrest.StringDescription().appendValue(_normalize).toString()
      + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
-     + "\n     \'\'\'\r\n\t\thello\r\n\t\tworld\r\n\t\t\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+     + "\n     \'\'\'\r\n\t\thello\r\n\t\tworld\r\n\t\t\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", Should.<String>operator_doubleArrow(_normalize, "hello\nworld\n"));
     
   }
   
@@ -181,10 +179,9 @@ public class WhiteSpaceNormalizerSpec {
   @Order(3)
   public void _linebreakAtTheEndWithTrailingTabs() throws Exception {
     String _normalize = this.subject.normalize("\n\t\t\t\t\t hello\n\t\t\t\t\t world\n\t\t\t\t\t");
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_normalize, "hello\nworld\n");
     Assert.assertTrue("\nExpected subject.normalize(\"\\n\\t\\t\\t\\t\\t hello\\n\\t\\t\\t\\t\\t world\\n\\t\\t\\t\\t\\t\") => \"hello\\nworld\\n\" but"
      + "\n     subject.normalize(\"\\n\\t\\t\\t\\t\\t hello\\n\\t\\t\\t\\t\\t world\\n\\t\\t\\t\\t\\t\") is " + new org.hamcrest.StringDescription().appendValue(_normalize).toString()
-     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", Should.<String>operator_doubleArrow(_normalize, "hello\nworld\n"));
     
   }
   
@@ -197,11 +194,10 @@ public class WhiteSpaceNormalizerSpec {
     _builder.newLine();
     _builder.append("world");
     String _normalize = this.subject.normalize(_builder);
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_normalize, "hello\nworld");
     Assert.assertTrue("\nExpected subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\'\'\') => \"hello\\nworld\" but"
      + "\n     subject.normalize(\r\n\t\t\'\'\'\r\n\t\thello\r\n\t\tworld\'\'\') is " + new org.hamcrest.StringDescription().appendValue(_normalize).toString()
      + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
-     + "\n     \'\'\'\r\n\t\thello\r\n\t\tworld\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+     + "\n     \'\'\'\r\n\t\thello\r\n\t\tworld\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", Should.<String>operator_doubleArrow(_normalize, "hello\nworld"));
     
   }
 }

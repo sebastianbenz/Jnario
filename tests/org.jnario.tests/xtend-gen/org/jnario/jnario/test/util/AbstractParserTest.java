@@ -65,8 +65,7 @@ public class AbstractParserTest {
     ClassPathUriProviderBuilder _startingFrom = ClassPathUriProviderBuilder.startingFrom(_context_1);
     final Predicate<URI> _function = new Predicate<URI>() {
       public boolean apply(final URI it) {
-        boolean _onlySpecFiles = AbstractParserTest.this.onlySpecFiles(it);
-        return _onlySpecFiles;
+        return AbstractParserTest.this.onlySpecFiles(it);
       }
     };
     IUriProvider _select = _startingFrom.select(_function);
@@ -75,8 +74,7 @@ public class AbstractParserTest {
     final Function1<Resource,Boolean> _function_1 = new Function1<Resource,Boolean>() {
       public Boolean apply(final Resource it) {
         URI _uRI = it.getURI();
-        boolean _onlySpecFiles = AbstractParserTest.this.onlySpecFiles(_uRI);
-        return Boolean.valueOf(_onlySpecFiles);
+        return Boolean.valueOf(AbstractParserTest.this.onlySpecFiles(_uRI));
       }
     };
     Iterable<Resource> _filter = IterableExtensions.<Resource>filter(_resources, _function_1);
@@ -112,15 +110,13 @@ public class AbstractParserTest {
       }
       int _length = fileExtension.length();
       int _minus = (_length - 1);
-      String _substring = fileExtension.substring(0, _minus);
-      _xblockexpression = (_substring);
+      _xblockexpression = (fileExtension.substring(0, _minus));
     }
     return _xblockexpression;
   }
   
   public String errorMessage(final Iterable<Issue> issues) {
-    StringBuilder _stringBuilder = new StringBuilder();
-    final StringBuilder result = _stringBuilder;
+    final StringBuilder result = new StringBuilder();
     for (final Issue issue : issues) {
       {
         final StringBuilder issueBuilder = this.createIssueMessage(issue);
@@ -133,8 +129,7 @@ public class AbstractParserTest {
   public StringBuilder createIssueMessage(final Issue issue) {
     URI _uriToProblem = issue.getUriToProblem();
     final URI resourceUri = _uriToProblem.trimFragment();
-    StringBuilder _stringBuilder = new StringBuilder("\n");
-    final StringBuilder issueBuilder = _stringBuilder;
+    final StringBuilder issueBuilder = new StringBuilder("\n");
     Severity _severity = issue.getSeverity();
     StringBuilder _append = issueBuilder.append(_severity);
     _append.append(": \t");

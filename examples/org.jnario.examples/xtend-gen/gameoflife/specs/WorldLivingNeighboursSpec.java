@@ -18,11 +18,10 @@ public class WorldLivingNeighboursSpec extends WorldSpec {
   @Order(1)
   public void _returnsNumberOfLiveNeighbours() throws Exception {
     int _livingNeighbours = this.worldWithTwoLiveNeighbours.livingNeighbours(this.liveCell);
-    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_livingNeighbours), Integer.valueOf(1));
     Assert.assertTrue("\nExpected worldWithTwoLiveNeighbours.livingNeighbours(liveCell) => 1 but"
      + "\n     worldWithTwoLiveNeighbours.livingNeighbours(liveCell) is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_livingNeighbours)).toString()
      + "\n     worldWithTwoLiveNeighbours is " + new org.hamcrest.StringDescription().appendValue(this.worldWithTwoLiveNeighbours).toString()
-     + "\n     liveCell is " + new org.hamcrest.StringDescription().appendValue(this.liveCell).toString() + "\n", _doubleArrow);
+     + "\n     liveCell is " + new org.hamcrest.StringDescription().appendValue(this.liveCell).toString() + "\n", Should.<Integer>operator_doubleArrow(Integer.valueOf(_livingNeighbours), Integer.valueOf(1)));
     
   }
 }

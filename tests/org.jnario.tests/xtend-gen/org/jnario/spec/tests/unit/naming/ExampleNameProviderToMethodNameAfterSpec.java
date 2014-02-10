@@ -43,9 +43,8 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
     final Procedure1<String> _function = new Procedure1<String>() {
       public void apply(final String it) {
         String _firstMethodName = ExampleNameProviderToMethodNameAfterSpec.this.firstMethodName(it);
-        boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "_myExample");
         Assert.assertTrue("\nExpected firstMethodName => \'_myExample\' but"
-         + "\n     firstMethodName is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
+         + "\n     firstMethodName is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString() + "\n", Should.<String>operator_doubleArrow(_firstMethodName, "_myExample"));
         
       }
     };
@@ -57,9 +56,8 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   @Order(2)
   public void _shouldUseAfterAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("after{}");
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "after");
     Assert.assertTrue("\nExpected firstMethodName(\"after{}\") => \"after\" but"
-     + "\n     firstMethodName(\"after{}\") is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
+     + "\n     firstMethodName(\"after{}\") is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString() + "\n", Should.<String>operator_doubleArrow(_firstMethodName, "after"));
     
   }
   
@@ -68,9 +66,8 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   @Order(3)
   public void _shouldUseAfterAllAsDefaultName() throws Exception {
     String _firstMethodName = this.firstMethodName("after all{}");
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "afterAll");
     Assert.assertTrue("\nExpected firstMethodName(\"after all{}\") => \"afterAll\" but"
-     + "\n     firstMethodName(\"after all{}\") is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString() + "\n", _doubleArrow);
+     + "\n     firstMethodName(\"after all{}\") is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString() + "\n", Should.<String>operator_doubleArrow(_firstMethodName, "afterAll"));
     
   }
   
@@ -79,9 +76,8 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   @Order(4)
   public void _shouldEnumerateAfterWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName("after{}\r\n                 after{}");
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_secondMethodName, "after2");
     Assert.assertTrue("\nExpected secondMethodName(\"after{}\r\n                 after{}\") => \"after2\" but"
-     + "\n     secondMethodName(\"after{}\r\n                 after{}\") is " + new org.hamcrest.StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+     + "\n     secondMethodName(\"after{}\r\n                 after{}\") is " + new org.hamcrest.StringDescription().appendValue(_secondMethodName).toString() + "\n", Should.<String>operator_doubleArrow(_secondMethodName, "after2"));
     
   }
   
@@ -91,9 +87,8 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   public void _shouldEnumerateNestedAfterWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName(
       "after{}\r\n                 context{\r\n                   after{}\r\n                 }");
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_secondMethodName, "after2");
     Assert.assertTrue("\nExpected secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after{}\r\n                 }\") => \"after2\" but"
-     + "\n     secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after{}\r\n                 }\") is " + new org.hamcrest.StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+     + "\n     secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after{}\r\n                 }\") is " + new org.hamcrest.StringDescription().appendValue(_secondMethodName).toString() + "\n", Should.<String>operator_doubleArrow(_secondMethodName, "after2"));
     
   }
   
@@ -103,9 +98,8 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   public void _shouldEnumerateNestedAfterAllWithoutDescription() throws Exception {
     String _secondMethodName = this.secondMethodName(
       "after all{}\r\n                 context{\r\n                   after all{}\r\n                 }");
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_secondMethodName, "afterAll2");
     Assert.assertTrue("\nExpected secondMethodName(\r\n                \"after all{}\r\n                 context{\r\n                   after all{}\r\n                 }\") => \"afterAll2\" but"
-     + "\n     secondMethodName(\r\n                \"after all{}\r\n                 context{\r\n                   after all{}\r\n                 }\") is " + new org.hamcrest.StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+     + "\n     secondMethodName(\r\n                \"after all{}\r\n                 context{\r\n                   after all{}\r\n                 }\") is " + new org.hamcrest.StringDescription().appendValue(_secondMethodName).toString() + "\n", Should.<String>operator_doubleArrow(_secondMethodName, "afterAll2"));
     
   }
   
@@ -115,9 +109,8 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
   public void _nestedAfterAndAfterAllKeepTheirDefaultName() throws Exception {
     String _secondMethodName = this.secondMethodName(
       "after{}\r\n                 context{\r\n                   after all{}\r\n                 }");
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_secondMethodName, "afterAll");
     Assert.assertTrue("\nExpected secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after all{}\r\n                 }\") => \"afterAll\" but"
-     + "\n     secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after all{}\r\n                 }\") is " + new org.hamcrest.StringDescription().appendValue(_secondMethodName).toString() + "\n", _doubleArrow);
+     + "\n     secondMethodName(\r\n                \"after{}\r\n                 context{\r\n                   after all{}\r\n                 }\") is " + new org.hamcrest.StringDescription().appendValue(_secondMethodName).toString() + "\n", Should.<String>operator_doubleArrow(_secondMethodName, "afterAll"));
     
   }
   
@@ -127,8 +120,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
       final String contentWithContext = (("describe \'Context\'{" + content) + "}");
       Query _parse = this.parse(contentWithContext);
       After _first = _parse.<After>first(After.class);
-      String _methodName = this.subject.toMethodName(_first);
-      _xblockexpression = (_methodName);
+      _xblockexpression = (this.subject.toMethodName(_first));
     }
     return _xblockexpression;
   }
@@ -139,8 +131,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
       final String contentWithContext = (("describe \'Context\'{" + content) + "}");
       Query _parse = this.parse(contentWithContext);
       After _second = _parse.<After>second(After.class);
-      String _methodName = this.subject.toMethodName(_second);
-      _xblockexpression = (_methodName);
+      _xblockexpression = (this.subject.toMethodName(_second));
     }
     return _xblockexpression;
   }

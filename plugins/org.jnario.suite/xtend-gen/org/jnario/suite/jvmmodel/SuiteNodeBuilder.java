@@ -74,14 +74,12 @@ public class SuiteNodeBuilder {
     EList<Reference> _elements = current.getElements();
     final Function1<Reference,List<Specification>> _function = new Function1<Reference,List<Specification>>() {
       public List<Specification> apply(final Reference it) {
-        List<Specification> _resolveSpecs = SuiteNodeBuilder.this._specResolver.resolveSpecs(it);
-        return _resolveSpecs;
+        return SuiteNodeBuilder.this._specResolver.resolveSpecs(it);
       }
     };
     List<List<Specification>> _map = ListExtensions.<Reference, List<Specification>>map(_elements, _function);
     final Iterable<Specification> specs = Iterables.<Specification>concat(_map);
-    SuiteNode _suiteNode = new SuiteNode(current, specs);
-    final SuiteNode node = _suiteNode;
+    final SuiteNode node = new SuiteNode(current, specs);
     node.setParent(parent);
     return node;
   }

@@ -78,10 +78,9 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
      + "\n     aResultWithDifferentClassName is " + new org.hamcrest.StringDescription().appendValue(this.aResultWithDifferentClassName).toString() + "\n", _should_match_1);
     
     Step _step_2 = this.step();
-    boolean _should_match_2 = this.should_match(_step_2, this.aResultWithDifferentName);
     Assert.assertFalse("\nExpected step should not match aResultWithDifferentName but"
      + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step_2).toString()
-     + "\n     aResultWithDifferentName is " + new org.hamcrest.StringDescription().appendValue(this.aResultWithDifferentName).toString() + "\n", _should_match_2);
+     + "\n     aResultWithDifferentName is " + new org.hamcrest.StringDescription().appendValue(this.aResultWithDifferentName).toString() + "\n", this.should_match(_step_2, this.aResultWithDifferentName));
     
   }
   
@@ -103,10 +102,9 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
     this.m.parseScenario(_builder);
     this.subject.accept(this.pendingResult);
     Step _step = this.step();
-    boolean _should_match = this.should_match(_step, this.pendingResult);
     Assert.assertTrue("\nExpected step should match pendingResult but"
      + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step).toString()
-     + "\n     pendingResult is " + new org.hamcrest.StringDescription().appendValue(this.pendingResult).toString() + "\n", _should_match);
+     + "\n     pendingResult is " + new org.hamcrest.StringDescription().appendValue(this.pendingResult).toString() + "\n", this.should_match(_step, this.pendingResult));
     
   }
   
@@ -131,10 +129,9 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
     this.m.parseScenario(_builder);
     this.subject.accept(this.resultWithUnicodeChars);
     Step _step = this.step();
-    boolean _should_match = this.should_match(_step, this.resultWithUnicodeChars);
     Assert.assertTrue("\nExpected step should match resultWithUnicodeChars but"
      + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step).toString()
-     + "\n     resultWithUnicodeChars is " + new org.hamcrest.StringDescription().appendValue(this.resultWithUnicodeChars).toString() + "\n", _should_match);
+     + "\n     resultWithUnicodeChars is " + new org.hamcrest.StringDescription().appendValue(this.resultWithUnicodeChars).toString() + "\n", this.should_match(_step, this.resultWithUnicodeChars));
     
   }
   
@@ -159,10 +156,9 @@ public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMap
     this.m.parseScenario(_builder);
     this.subject.accept(this.resultWithArgs);
     Step _step = this.step();
-    boolean _should_match = this.should_match(_step, this.resultWithArgs);
     Assert.assertTrue("\nExpected step should match resultWithArgs but"
      + "\n     step is " + new org.hamcrest.StringDescription().appendValue(_step).toString()
-     + "\n     resultWithArgs is " + new org.hamcrest.StringDescription().appendValue(this.resultWithArgs).toString() + "\n", _should_match);
+     + "\n     resultWithArgs is " + new org.hamcrest.StringDescription().appendValue(this.resultWithArgs).toString() + "\n", this.should_match(_step, this.resultWithArgs));
     
   }
 }

@@ -14,7 +14,6 @@ import org.antlr.runtime.Token;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.parser.antlr.TokenAcceptor;
 import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
@@ -36,12 +35,7 @@ public class FeatureTokenSourceSpec {
   @Subject
   public FeatureTokenSource subject;
   
-  TokenAcceptor tokenAcceptor = new Function0<TokenAcceptor>() {
-    public TokenAcceptor apply() {
-      TokenAcceptor _tokenAcceptor = new TokenAcceptor();
-      return _tokenAcceptor;
-    }
-  }.apply();
+  TokenAcceptor tokenAcceptor = new TokenAcceptor();
   
   static String prefix = "package test\n";
   
@@ -247,12 +241,11 @@ public class FeatureTokenSourceSpec {
         
         int _line = actual.getLine();
         int _line_1 = expected.getLine();
-        boolean _doubleArrow_2 = Should.<Integer>operator_doubleArrow(Integer.valueOf(_line), Integer.valueOf(_line_1));
         Assert.assertTrue("\nExpected actual.line => expected.line but"
          + "\n     actual.line is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_line)).toString()
          + "\n     actual is " + new org.hamcrest.StringDescription().appendValue(actual).toString()
          + "\n     expected.line is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_line_1)).toString()
-         + "\n     expected is " + new org.hamcrest.StringDescription().appendValue(expected).toString() + "\n", _doubleArrow_2);
+         + "\n     expected is " + new org.hamcrest.StringDescription().appendValue(expected).toString() + "\n", Should.<Integer>operator_doubleArrow(Integer.valueOf(_line), Integer.valueOf(_line_1)));
         
       }
     };
@@ -260,8 +253,7 @@ public class FeatureTokenSourceSpec {
   }
   
   public CommonToken token(final int type, final String text, final int line) {
-    CommonToken _commonToken = new CommonToken(type, text);
-    final CommonToken result = _commonToken;
+    final CommonToken result = new CommonToken(type, text);
     result.setLine(line);
     return result;
   }
@@ -270,14 +262,12 @@ public class FeatureTokenSourceSpec {
     CommonToken _xblockexpression = null;
     {
       String _string = text.toString();
-      ANTLRStringStream _aNTLRStringStream = new ANTLRStringStream(_string);
-      final ANTLRStringStream input = _aNTLRStringStream;
+      final ANTLRStringStream input = new ANTLRStringStream(_string);
       final int start = FeatureTokenSourceSpec.prefix.length();
       String _string_1 = text.toString();
       int _length = _string_1.length();
       final int stop = (_length - 1);
-      CommonToken _commonToken = new CommonToken(input, (-1), (-1), start, stop);
-      _xblockexpression = (_commonToken);
+      _xblockexpression = (new CommonToken(input, (-1), (-1), start, stop));
     }
     return _xblockexpression;
   }
@@ -286,8 +276,7 @@ public class FeatureTokenSourceSpec {
     String _string = input.toString();
     String _replace = _string.replace("\r", "");
     String _plus = (FeatureTokenSourceSpec.prefix + _replace);
-    CharSequence _input = this.input = _plus;
-    return _input;
+    return this.input = _plus;
   }
   
   public void split(final Token token) {

@@ -37,14 +37,13 @@ public class StepNameProvider {
       } else {
         String _name = step.getName();
         boolean _equals_1 = Objects.equal(_name, null);
-        _or = (_equals || _equals_1);
+        _or = _equals_1;
       }
       if (_or) {
         return null;
       }
       EAttribute _xtendTypeDeclaration_Name = XtendPackage.eINSTANCE.getXtendTypeDeclaration_Name();
-      String _textForFeature = Nodes.textForFeature(step, _xtendTypeDeclaration_Name);
-      _xblockexpression = (_textForFeature);
+      _xblockexpression = (Nodes.textForFeature(step, _xtendTypeDeclaration_Name));
     }
     return _xblockexpression;
   }
@@ -56,8 +55,7 @@ public class StepNameProvider {
       _xifexpression = null;
     } else {
       EReference _stepReference_Reference = FeaturePackage.eINSTANCE.getStepReference_Reference();
-      String _textForFeature = Nodes.textForFeature(ref, _stepReference_Reference);
-      _xifexpression = _textForFeature;
+      _xifexpression = Nodes.textForFeature(ref, _stepReference_Reference);
     }
     return _xifexpression;
   }
@@ -71,20 +69,17 @@ public class StepNameProvider {
   
   public String describe(final Feature feature) {
     String _name = feature.getName();
-    String _makeJunitConform = Strings.makeJunitConform(_name);
-    return _makeJunitConform;
+    return Strings.makeJunitConform(_name);
   }
   
   public String describe(final Scenario scenario) {
     String _name = scenario.getName();
-    String _makeJunitConform = Strings.makeJunitConform(_name);
-    return _makeJunitConform;
+    return Strings.makeJunitConform(_name);
   }
   
   public String describe(final Step step) {
     String _nameOf = this.nameOf(step);
-    StringBuilder _stringBuilder = new StringBuilder(_nameOf);
-    StringBuilder name = _stringBuilder;
+    StringBuilder name = new StringBuilder(_nameOf);
     boolean _isPending = step.isPending();
     if (_isPending) {
       Strings.markAsPending(name);
@@ -111,8 +106,7 @@ public class StepNameProvider {
     {
       String name = Strings.firstLine(text);
       String _removeArgumentValues = ArgumentsHelper.removeArgumentValues(name);
-      String _trim = _removeArgumentValues.trim();
-      _xblockexpression = (_trim);
+      _xblockexpression = (_removeArgumentValues.trim());
     }
     return _xblockexpression;
   }

@@ -18,9 +18,8 @@ public class FeatureQualifiedNameProviderPackageNameSpec extends FeatureQualifie
   @Order(1)
   public void _packageNameIsPrepended() throws Exception {
     String _stepName = this.stepName("Given a step", "myPackage");
-    boolean _should_startWith = Should.should_startWith(_stepName, "myPackage.");
     Assert.assertTrue("\nExpected stepName(\"Given a step\", \"myPackage\") should startWith(\"myPackage.\") but"
-     + "\n     stepName(\"Given a step\", \"myPackage\") is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", _should_startWith);
+     + "\n     stepName(\"Given a step\", \"myPackage\") is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", Should.should_startWith(_stepName, "myPackage."));
     
   }
   
@@ -29,9 +28,8 @@ public class FeatureQualifiedNameProviderPackageNameSpec extends FeatureQualifie
   @Order(2)
   public void _packageNameIsSeparatedBy() throws Exception {
     String _stepName = this.stepName("Given a step", "myPackage.subpackage");
-    boolean _should_startWith = Should.should_startWith(_stepName, "myPackage.subpackage.");
     Assert.assertTrue("\nExpected stepName(\"Given a step\", \"myPackage.subpackage\") should startWith(\"myPackage.subpackage.\") but"
-     + "\n     stepName(\"Given a step\", \"myPackage.subpackage\") is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", _should_startWith);
+     + "\n     stepName(\"Given a step\", \"myPackage.subpackage\") is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", Should.should_startWith(_stepName, "myPackage.subpackage."));
     
   }
   
@@ -40,9 +38,8 @@ public class FeatureQualifiedNameProviderPackageNameSpec extends FeatureQualifie
   @Order(3)
   public void _defaultPackageNameIsFeatures() throws Exception {
     String _stepName = this.stepName("Given a step", null);
-    boolean _should_startWith = Should.should_startWith(_stepName, "features.");
     Assert.assertTrue("\nExpected stepName(\"Given a step\", null) should startWith(\"features.\") but"
-     + "\n     stepName(\"Given a step\", null) is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", _should_startWith);
+     + "\n     stepName(\"Given a step\", null) is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", Should.should_startWith(_stepName, "features."));
     
   }
 }

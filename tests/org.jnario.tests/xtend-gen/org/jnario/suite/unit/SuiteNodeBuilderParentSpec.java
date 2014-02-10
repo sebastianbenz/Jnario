@@ -113,13 +113,12 @@ public class SuiteNodeBuilderParentSpec extends SuiteNodeBuilderSpec {
           _name=_parent.getName();
         }
         String _parent_1 = it.getParent();
-        boolean _should_be = Should.<String>should_be(_name, _parent_1);
         Assert.assertTrue("\nExpected parent(suites, position)?.name should be parent but"
          + "\n     parent(suites, position)?.name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
          + "\n     parent(suites, position) is " + new org.hamcrest.StringDescription().appendValue(_parent).toString()
          + "\n     suites is " + new org.hamcrest.StringDescription().appendValue(_suites).toString()
          + "\n     position is " + new org.hamcrest.StringDescription().appendValue(_position).toString()
-         + "\n     parent is " + new org.hamcrest.StringDescription().appendValue(_parent_1).toString() + "\n", _should_be);
+         + "\n     parent is " + new org.hamcrest.StringDescription().appendValue(_parent_1).toString() + "\n", Should.<String>should_be(_name, _parent_1));
         
       }
     };

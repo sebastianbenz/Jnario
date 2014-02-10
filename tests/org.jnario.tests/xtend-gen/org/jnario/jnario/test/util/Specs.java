@@ -58,13 +58,11 @@ public class Specs {
   
   public static ExampleGroup pendingExampleGroup() {
     Example _pendingExample = Specs.pendingExample();
-    ExampleGroup _exampleGroupWith = Specs.exampleGroupWith(_pendingExample);
-    return _exampleGroupWith;
+    return Specs.exampleGroupWith(_pendingExample);
   }
   
   public static ExampleGroup exampleGroupWith(final XtendMember... examples) {
-    ExampleGroup _exampleGroup = Specs.exampleGroup("with examples", examples);
-    return _exampleGroup;
+    return Specs.exampleGroup("with examples", examples);
   }
   
   public static ExampleGroup exampleGroup(final String name, final XtendMember... examples) {

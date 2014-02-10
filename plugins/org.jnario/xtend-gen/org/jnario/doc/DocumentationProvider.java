@@ -30,8 +30,7 @@ public class DocumentationProvider {
         return null;
       }
       String _replaceAll = doc.replaceAll("\\\\/\\*", "/*");
-      String _replaceAll_1 = _replaceAll.replaceAll("\\\\\\*/", "*/");
-      _xblockexpression = (_replaceAll_1);
+      _xblockexpression = (_replaceAll.replaceAll("\\\\\\*/", "*/"));
     }
     return _xblockexpression;
   }

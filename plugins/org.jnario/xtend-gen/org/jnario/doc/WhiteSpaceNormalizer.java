@@ -25,7 +25,7 @@ public class WhiteSpaceNormalizer {
       } else {
         int _length = input.length();
         boolean _equals_1 = (_length == 0);
-        _or = (_equals || _equals_1);
+        _or = _equals_1;
       }
       if (_or) {
         return "";
@@ -66,8 +66,7 @@ public class WhiteSpaceNormalizer {
       }
       final Function1<String,String> _function = new Function1<String,String>() {
         public String apply(final String it) {
-          String _remove = WhiteSpaceNormalizer.this.remove(it, whitespace);
-          return _remove;
+          return WhiteSpaceNormalizer.this.remove(it, whitespace);
         }
       };
       Iterable<String> _map = IterableExtensions.<String, String>map(lines, _function);
@@ -79,8 +78,7 @@ public class WhiteSpaceNormalizer {
   }
   
   public String whitespaceAtBeginning(final String string) {
-    StringBuilder _stringBuilder = new StringBuilder();
-    final StringBuilder whitespace = _stringBuilder;
+    final StringBuilder whitespace = new StringBuilder();
     char[] _charArray = string.toCharArray();
     for (final char c : _charArray) {
       boolean _isWhitespace = Character.isWhitespace(c);

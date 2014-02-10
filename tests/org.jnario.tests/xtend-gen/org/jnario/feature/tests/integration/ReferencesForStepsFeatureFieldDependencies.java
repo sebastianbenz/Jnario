@@ -40,8 +40,7 @@ public class ReferencesForStepsFeatureFieldDependencies extends ReferencesForSte
   @Order(0)
   @Named("Given a feature")
   public void _givenAFeature() {
-    StepArguments _stepArguments = new StepArguments("Feature: Field dependencies\n \t\n  Scenario: First\n  \tval x = \"hello\"\n  \tval y = x\n  When it should execute successfully\n  \tprintln(x + y)\n\n  Scenario: Second\n  \tWhen it should execute successfully\n\t\t");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("Feature: Field dependencies\n \t\n  Scenario: First\n  \tval x = \"hello\"\n  \tval y = x\n  When it should execute successfully\n  \tprintln(x + y)\n\n  Scenario: Second\n  \tWhen it should execute successfully\n\t\t");
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;
   }

@@ -19,7 +19,6 @@ import org.eclipse.xtext.common.types.access.ClasspathTypeProviderFactory;
 import org.eclipse.xtext.common.types.access.impl.ClasspathTypeProvider;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.jnario.test.util.ModelStore;
@@ -44,14 +43,7 @@ public class OperationNameProviderSpec {
   OperationNameProvider subject;
   
   @Inject
-  ClasspathTypeProviderFactory typeProviderFactory = new Function0<ClasspathTypeProviderFactory>() {
-    public ClasspathTypeProviderFactory apply() {
-      Class<? extends OperationNameProviderSpec> _class = OperationNameProviderSpec.this.getClass();
-      ClassLoader _classLoader = _class.getClassLoader();
-      ClasspathTypeProviderFactory _classpathTypeProviderFactory = new ClasspathTypeProviderFactory(_classLoader);
-      return _classpathTypeProviderFactory;
-    }
-  }.apply();
+  ClasspathTypeProviderFactory typeProviderFactory = new ClasspathTypeProviderFactory(this.getClass().getClassLoader());
   
   Map<String,JvmOperation> operations;
   
@@ -70,8 +62,7 @@ public class OperationNameProviderSpec {
     final Iterable<JvmOperation> jvmOperations = Iterables.<JvmOperation>filter(_members, JvmOperation.class);
     final Function1<JvmOperation,String> _function = new Function1<JvmOperation,String>() {
       public String apply(final JvmOperation it) {
-        String _simpleName = it.getSimpleName();
-        return _simpleName;
+        return it.getSimpleName();
       }
     };
     Map<String,JvmOperation> _map = IterableExtensions.<String, JvmOperation>toMap(jvmOperations, _function);
@@ -83,8 +74,7 @@ public class OperationNameProviderSpec {
     {
       final JvmOperation op = this.operations.get(operationName);
       QualifiedName _apply = this.subject.apply(op);
-      String _string = _apply.toString();
-      _xblockexpression = (_string);
+      _xblockexpression = (_apply.toString());
     }
     return _xblockexpression;
   }

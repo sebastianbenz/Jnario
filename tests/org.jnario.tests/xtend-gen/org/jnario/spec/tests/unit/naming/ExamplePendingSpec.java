@@ -87,11 +87,10 @@ public class ExamplePendingSpec extends ExampleSpec {
         String _example = it.getExample();
         boolean _pendingStateOf = ExamplePendingSpec.this.pendingStateOf(_example);
         boolean _expected = it.getExpected();
-        boolean _should_be = Should.<Boolean>should_be(Boolean.valueOf(_pendingStateOf), _expected);
         Assert.assertTrue("\nExpected pendingStateOf(example) should be expected but"
          + "\n     pendingStateOf(example) is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_pendingStateOf)).toString()
          + "\n     example is " + new org.hamcrest.StringDescription().appendValue(_example).toString()
-         + "\n     expected is " + new org.hamcrest.StringDescription().appendValue(_expected).toString() + "\n", _should_be);
+         + "\n     expected is " + new org.hamcrest.StringDescription().appendValue(_expected).toString() + "\n", Should.<Boolean>should_be(Boolean.valueOf(_pendingStateOf), _expected));
         
       }
     };

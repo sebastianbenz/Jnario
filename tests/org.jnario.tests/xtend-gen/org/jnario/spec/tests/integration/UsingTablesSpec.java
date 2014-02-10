@@ -438,12 +438,11 @@ public class UsingTablesSpec {
             int _value2 = it.getValue2();
             int _plus = (_value1 + _value2);
             int _sum = it.getSum();
-            boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(_sum));
             Assert.assertTrue("\nExpected value1 + value2 => sum but"
              + "\n     value1 + value2 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString()
              + "\n     value1 is " + new org.hamcrest.StringDescription().appendValue(_value1).toString()
              + "\n     value2 is " + new org.hamcrest.StringDescription().appendValue(_value2).toString()
-             + "\n     sum is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_sum)).toString() + "\n", _doubleArrow);
+             + "\n     sum is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_sum)).toString() + "\n", Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(_sum)));
             
           }
         };

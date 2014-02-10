@@ -50,19 +50,16 @@ public class StepNameProviderSpec {
   public ModelStore modelStore;
   
   public String desc(final Feature feature) {
-    String _describe = this.subject.describe(feature);
-    return _describe;
+    return this.subject.describe(feature);
   }
   
   public String desc(final Scenario scen) {
-    String _describe = this.subject.describe(scen);
-    return _describe;
+    return this.subject.describe(scen);
   }
   
   public Step firstStep() {
     Query _query = Query.query(this.modelStore);
-    Step _first = _query.<Step>first(Step.class);
-    return _first;
+    return _query.<Step>first(Step.class);
   }
   
   public String stepName() {
@@ -92,8 +89,7 @@ public class StepNameProviderSpec {
       _builder.append(s, "");
       _builder.newLineIfNotEmpty();
       final String input = _builder.toString();
-      Resource _parseScenario = this.modelStore.parseScenario(input);
-      _xblockexpression = (_parseScenario);
+      _xblockexpression = (this.modelStore.parseScenario(input));
     }
     return _xblockexpression;
   }

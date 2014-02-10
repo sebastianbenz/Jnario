@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.jnario.feature.ui
 Bundle-Vendor: BMW Car IT
-Bundle-Version: 0.7.0.201401092313
+Bundle-Version: 0.7.2.201402102059
 Bundle-SymbolicName: org.jnario.feature.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.5.0,2.6.0)",
+Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.5.1,2.6.0)",
  org.eclipse.ui.editors,
  org.eclipse.ui.ide,
  org.eclipse.xtext.ui.shared,
@@ -19,17 +19,17 @@ Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.5.0,2.6.0)",
  org.eclipse.xtext.xbase.ui,
  org.eclipse.jdt.junit,
  org.eclipse.pde.ui,
- org.jnario;bundle-version="0.7.0",
- org.jnario.ui;bundle-version="0.7.0",
+ org.jnario;bundle-version="0.7.2",
+ org.jnario.ui;bundle-version="0.7.2",
  org.eclipse.debug.core,
  org.eclipse.debug.ui,
- org.jnario.feature;bundle-version="0.7.0",
- org.eclipse.xtext.xbase.lib;bundle-version="[2.5.0,2.6.0)",
+ org.jnario.feature;bundle-version="0.7.2",
+ org.eclipse.xtext.xbase.lib;bundle-version="[2.5.1,2.6.0)",
  org.eclipse.jdt.annotation;bundle-version="1.0.0";resolution:=optional,
  org.eclipse.jdt.ui,
  org.eclipse.jdt.core,
  org.eclipse.xtend.ide;bundle-version="2.3.1",
- org.jnario.lib;bundle-version="0.7.0"
+ org.jnario.lib;bundle-version="0.7.2"
 Import-Package: org.apache.commons.logging,
  org.apache.log4j,
  org.eclipse.jdt.core,

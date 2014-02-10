@@ -23,8 +23,7 @@ public class PlayingGameOfLifeFeatureBox extends PlayingGameOfLifeFeature {
   @Order(0)
   @Named("Given a world")
   public void _givenAWorld() {
-    StepArguments _stepArguments = new StepArguments("------\n--XX--\n--XX--\n------ \n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("------\n--XX--\n--XX--\n------ \n");
     String _first = JnarioIterableExtensions.<String>first(args);
     World _parseWorld = World.parseWorld(_first);
     this.world = _parseWorld;
@@ -34,20 +33,18 @@ public class PlayingGameOfLifeFeatureBox extends PlayingGameOfLifeFeature {
   @Order(1)
   @Named("Then the world evolves into")
   public void _thenTheWorldEvolvesInto() {
-    StepArguments _stepArguments = new StepArguments("------\n--XX--\n--XX--\n------\n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("------\n--XX--\n--XX--\n------\n");
     Evolution _gameOfLife = Evolution.gameOfLife();
     World _evolve = _gameOfLife.evolve(this.world);
     this.world = _evolve;
     String _first = JnarioIterableExtensions.<String>first(args);
     World _parseWorld = World.parseWorld(_first);
-    boolean _doubleArrow = Should.<World>operator_doubleArrow(
-      this.world, _parseWorld);
     Assert.assertTrue("\nExpected world => parseWorld(args.first) but"
      + "\n     world is " + new org.hamcrest.StringDescription().appendValue(this.world).toString()
      + "\n     parseWorld(args.first) is " + new org.hamcrest.StringDescription().appendValue(_parseWorld).toString()
      + "\n     args.first is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
-     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", Should.<World>operator_doubleArrow(
+      this.world, _parseWorld));
     
   }
 }

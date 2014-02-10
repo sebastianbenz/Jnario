@@ -64,10 +64,9 @@ public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20F
     final List<String> colors = JnarioCollectionLiterals.<String>list("red", "blue", "green");
     Collections.<String>sort(colors);
     List<String> _list = JnarioCollectionLiterals.<String>list("blue", "green", "red");
-    boolean _doubleArrow = this.<String>operator_doubleArrow(colors, _list);
     Assert.assertTrue("\nExpected // sort is implemented by Collections#sort(List<T>)\r\n      colors => list(\"blue\", \"green\", \"red\") but"
      + "\n     // sort is implemented by Collections#sort(List<T>)\r\n      colors is " + new org.hamcrest.StringDescription().appendValue(colors).toString()
-     + "\n     list(\"blue\", \"green\", \"red\") is " + new org.hamcrest.StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
+     + "\n     list(\"blue\", \"green\", \"red\") is " + new org.hamcrest.StringDescription().appendValue(_list).toString() + "\n", this.<String>operator_doubleArrow(colors, _list));
     
   }
   
@@ -97,8 +96,7 @@ public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20F
   
   public boolean hasOneElement(final List<? extends Object> list) {
     int _size = list.size();
-    boolean _equals = (_size == 1);
-    return _equals;
+    return (_size == 1);
   }
   
   /**

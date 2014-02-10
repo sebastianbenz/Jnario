@@ -6,7 +6,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.jnario.feature.feature.FeatureFactory;
 import org.jnario.feature.feature.FeaturePackage;
@@ -41,12 +40,7 @@ public class StepTypeProviderSpec {
   
   @Extension
   @org.jnario.runner.Extension
-  public StepTypeProvider _stepTypeProvider = new Function0<StepTypeProvider>() {
-    public StepTypeProvider apply() {
-      StepTypeProvider _stepTypeProvider = new StepTypeProvider();
-      return _stepTypeProvider;
-    }
-  }.apply();
+  public StepTypeProvider _stepTypeProvider = new StepTypeProvider();
   
   @Extension
   @org.jnario.runner.Extension
@@ -188,11 +182,10 @@ public class StepTypeProviderSpec {
     _builder.newLine();
     EClass _actualType = this.actualType(_builder);
     EClass _givenReference = this.pack.getGivenReference();
-    boolean _doubleArrow = Should.<EClass>operator_doubleArrow(_actualType, _givenReference);
     Assert.assertTrue("\nExpected \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tBut something else\n\t\t\tAnd something else\n\t\'\'\'.actualType =>  givenReference but"
      + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tBut something else\n\t\t\tAnd something else\n\t\'\'\'.actualType is " + new org.hamcrest.StringDescription().appendValue(_actualType).toString()
      + "\n     \'\'\'\n\t\tFeature: something\n\t\tScenario: scenario\n\t\t\tGiven something\n\t\t\tBut something else\n\t\t\tAnd something else\n\t\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString()
-     + "\n     givenReference is " + new org.hamcrest.StringDescription().appendValue(_givenReference).toString() + "\n", _doubleArrow);
+     + "\n     givenReference is " + new org.hamcrest.StringDescription().appendValue(_givenReference).toString() + "\n", Should.<EClass>operator_doubleArrow(_actualType, _givenReference));
     
   }
   
@@ -203,8 +196,7 @@ public class StepTypeProviderSpec {
       Scenario _firstScenario = this._modelStore.firstScenario();
       EList<Step> _steps = _firstScenario.getSteps();
       Step _last = IterableExtensions.<Step>last(_steps);
-      EClass _actualType = this._stepTypeProvider.getActualType(_last);
-      _xblockexpression = (_actualType);
+      _xblockexpression = (this._stepTypeProvider.getActualType(_last));
     }
     return _xblockexpression;
   }
@@ -216,8 +208,7 @@ public class StepTypeProviderSpec {
       Scenario _firstScenario = this._modelStore.firstScenario();
       EList<Step> _steps = _firstScenario.getSteps();
       Step _last = IterableExtensions.<Step>last(_steps);
-      Set<EClass> _expectedTypes = this._stepTypeProvider.getExpectedTypes(_last);
-      _xblockexpression = (_expectedTypes);
+      _xblockexpression = (this._stepTypeProvider.getExpectedTypes(_last));
     }
     return _xblockexpression;
   }

@@ -3,7 +3,6 @@ package org.jnario.jnario.tests.unit.report;
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.Executable;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
@@ -59,23 +58,17 @@ public class HashBasedSpec2ResultMappingSpec {
   
   final Example anyExecutable = Specs.example("");
   
-  final SpecFailure anyFailure = new Function0<SpecFailure>() {
-    public SpecFailure apply() {
-      SpecFailure _specFailure = new SpecFailure("", "", "");
-      return _specFailure;
-    }
-  }.apply();
+  final SpecFailure anyFailure = new SpecFailure("", "", "");
   
   @Test
   @Named("returns empty execution if no matching spec exists")
   @Order(1)
   public void _returnsEmptyExecutionIfNoMatchingSpecExists() throws Exception {
     SpecExecution _result = this.subject.getResult(this.anyExecutable);
-    boolean _doubleArrow = Should.operator_doubleArrow(_result, NotRun.class);
     Assert.assertTrue("\nExpected subject.getResult(anyExecutable) => typeof(NotRun) but"
      + "\n     subject.getResult(anyExecutable) is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
      + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
-     + "\n     anyExecutable is " + new org.hamcrest.StringDescription().appendValue(this.anyExecutable).toString() + "\n", _doubleArrow);
+     + "\n     anyExecutable is " + new org.hamcrest.StringDescription().appendValue(this.anyExecutable).toString() + "\n", Should.operator_doubleArrow(_result, NotRun.class));
     
   }
   
@@ -84,47 +77,39 @@ public class HashBasedSpec2ResultMappingSpec {
   @Order(2)
   public void _returnsEmptyExecutionIfExecutableIsNull() throws Exception {
     SpecExecution _result = this.subject.getResult(null);
-    boolean _doubleArrow = Should.operator_doubleArrow(_result, NotRun.class);
     Assert.assertTrue("\nExpected subject.getResult(null) => typeof(NotRun) but"
      + "\n     subject.getResult(null) is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
-     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", Should.operator_doubleArrow(_result, NotRun.class));
     
   }
   
   public boolean should_match(final Executable example, final SpecExecution execution) {
     SpecExecution _result = this.subject.getResult(example);
-    boolean _equals = Objects.equal(_result, execution);
-    return _equals;
+    return Objects.equal(_result, execution);
   }
   
   public Example example() {
-    Example _first = this.m.<Example>first(Example.class);
-    return _first;
+    return this.m.<Example>first(Example.class);
   }
   
   public Step step() {
-    Step _first = this.m.<Step>first(Step.class);
-    return _first;
+    return this.m.<Step>first(Step.class);
   }
   
   public Feature feature() {
-    Feature _first = this.m.<Feature>first(Feature.class);
-    return _first;
+    return this.m.<Feature>first(Feature.class);
   }
   
   public Background background() {
-    Background _first = this.m.<Background>first(Background.class);
-    return _first;
+    return this.m.<Background>first(Background.class);
   }
   
   public Scenario scenario() {
-    Scenario _first = this.m.<Scenario>first(Scenario.class);
-    return _first;
+    return this.m.<Scenario>first(Scenario.class);
   }
   
   public SpecExecution result(final Executable executable) {
-    SpecExecution _result = this.subject.getResult(executable);
-    return _result;
+    return this.subject.getResult(executable);
   }
   
   public void passedStep(final String name) {

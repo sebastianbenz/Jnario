@@ -180,10 +180,9 @@ public class StepArgumentsProviderSpec {
         Step _create = StepArgumentsProviderSpec.this.create(_step);
         final List<String> foundArgs = StepArgumentsProviderSpec.this.subject.findStepArguments(_create);
         List<? extends Object> _expectedArgs = it.getExpectedArgs();
-        boolean _doubleArrow = Should.<List<? extends Object>>operator_doubleArrow(foundArgs, _expectedArgs);
         Assert.assertTrue("\nExpected foundArgs => expectedArgs but"
          + "\n     foundArgs is " + new org.hamcrest.StringDescription().appendValue(foundArgs).toString()
-         + "\n     expectedArgs is " + new org.hamcrest.StringDescription().appendValue(_expectedArgs).toString() + "\n", _doubleArrow);
+         + "\n     expectedArgs is " + new org.hamcrest.StringDescription().appendValue(_expectedArgs).toString() + "\n", Should.<List<? extends Object>>operator_doubleArrow(foundArgs, _expectedArgs));
         
       }
     };
@@ -197,12 +196,11 @@ public class StepArgumentsProviderSpec {
     Given _step = Features.step(null);
     List<String> _findStepArguments = this.subject.findStepArguments(_step);
     List<String> _list = JnarioCollectionLiterals.<String>list();
-    boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(_findStepArguments, _list);
     Assert.assertTrue("\nExpected subject.findStepArguments(step(null)) => list() but"
      + "\n     subject.findStepArguments(step(null)) is " + new org.hamcrest.StringDescription().appendValue(_findStepArguments).toString()
      + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
      + "\n     step(null) is " + new org.hamcrest.StringDescription().appendValue(_step).toString()
-     + "\n     list() is " + new org.hamcrest.StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
+     + "\n     list() is " + new org.hamcrest.StringDescription().appendValue(_list).toString() + "\n", Should.<List<String>>operator_doubleArrow(_findStepArguments, _list));
     
   }
   
@@ -234,8 +232,7 @@ public class StepArgumentsProviderSpec {
       TreeIterator<EObject> _eAllContents = _rootASTElement.eAllContents();
       List<EObject> _list = IteratorExtensions.<EObject>toList(_eAllContents);
       Query _query = Query.query(_list);
-      Step _first = _query.<Step>first(Step.class);
-      _xblockexpression = (_first);
+      _xblockexpression = (_query.<Step>first(Step.class));
     }
     return _xblockexpression;
   }

@@ -146,12 +146,11 @@ public class ExampleColumnSpec {
         String _serialize = ExampleColumnSpec.this._iSerializer.serialize(cell);
         String _trim = _serialize.trim();
         String _value = it.getValue();
-        boolean _doubleArrow = Should.<String>operator_doubleArrow(_trim, _value);
         Assert.assertTrue("\nExpected cell.serialize.trim => value but"
          + "\n     cell.serialize.trim is " + new org.hamcrest.StringDescription().appendValue(_trim).toString()
          + "\n     cell.serialize is " + new org.hamcrest.StringDescription().appendValue(_serialize).toString()
          + "\n     cell is " + new org.hamcrest.StringDescription().appendValue(cell).toString()
-         + "\n     value is " + new org.hamcrest.StringDescription().appendValue(_value).toString() + "\n", _doubleArrow);
+         + "\n     value is " + new org.hamcrest.StringDescription().appendValue(_value).toString() + "\n", Should.<String>operator_doubleArrow(_trim, _value));
         
       }
     };

@@ -106,8 +106,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
   }
   
   protected Executable2ResultMapping initResultMapping(final Executable2ResultMapping spec2ResultMapping) {
-    Executable2ResultMapping _spec2ResultMapping = this.spec2ResultMapping = spec2ResultMapping;
-    return _spec2ResultMapping;
+    return this.spec2ResultMapping = spec2ResultMapping;
   }
   
   public HtmlFile createHtmlFile(final XtendClass xtendClass) {
@@ -116,8 +115,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
   
   protected String toTitle(final String string) {
     String _decode = this.decode(string);
-    String _firstUpper = Strings.toFirstUpper(_decode);
-    return _firstUpper;
+    return Strings.toFirstUpper(_decode);
   }
   
   protected String decode(final String string) {
@@ -150,8 +148,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
       final String normalized = (_normalize + "\n");
       String _markdownToHtml = this._pegDownProcessor.markdownToHtml(normalized);
       String _replaceAll = _markdownToHtml.replaceAll("<pre><code>", "<pre class=\"prettyprint\">");
-      String _replaceAll_1 = _replaceAll.replaceAll("</pre></code>", "</pre>");
-      _xblockexpression = (_replaceAll_1);
+      _xblockexpression = (_replaceAll.replaceAll("</pre></code>", "</pre>"));
     }
     return _xblockexpression;
   }
@@ -184,13 +181,11 @@ public abstract class AbstractDocGenerator implements IGenerator {
     CharSequence _trimWhitespaceAtEnd = org.jnario.util.Strings.trimWhitespaceAtEnd(_normalize);
     String _string = _trimWhitespaceAtEnd.toString();
     String _html = this.toHtml(_string);
-    String _replace = _html.replace("\t", "  ");
-    return _replace;
+    return _html.replace("\t", "  ");
   }
   
   protected String toHtml(final String input) {
-    String _escapeHtml = StringEscapeUtils.escapeHtml(input);
-    return _escapeHtml;
+    return StringEscapeUtils.escapeHtml(input);
   }
   
   protected String serialize(final EObject obj) {
@@ -203,11 +198,11 @@ public abstract class AbstractDocGenerator implements IGenerator {
   }
   
   protected String id(final String id) {
-    String _trim = null;
     String _replaceAll = null;
     if (id!=null) {
       _replaceAll=id.replaceAll("\\W+", AbstractDocGenerator.SEP);
     }
+    String _trim = null;
     if (_replaceAll!=null) {
       char _charAt = AbstractDocGenerator.SEP.charAt(0);
       _trim=org.jnario.util.Strings.trim(_replaceAll, _charAt);
@@ -306,20 +301,17 @@ public abstract class AbstractDocGenerator implements IGenerator {
   }
   
   protected String htmlFileName(final String name) {
-    String _htmlFileName = this._htmlFileBuilder.toHtmlFileName(name);
-    return _htmlFileName;
+    return this._htmlFileBuilder.toHtmlFileName(name);
   }
   
   protected String documentation(final EObject obj) {
-    String _documentation = this.documentationProvider.getDocumentation(obj);
-    return _documentation;
+    return this.documentationProvider.getDocumentation(obj);
   }
   
   protected String fileName(final EObject eObject) {
     Resource _eResource = eObject.eResource();
     URI _uRI = _eResource.getURI();
-    String _lastSegment = _uRI.lastSegment();
-    return _lastSegment;
+    return _uRI.lastSegment();
   }
   
   protected CharSequence pre(final EObject eObject, final String lang) {
@@ -342,8 +334,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
     {
       final SpecExecution result = this.spec2ResultMapping.getResult(executable);
       IconProvider _iconProvider = new IconProvider();
-      String _doSwitch = _iconProvider.doSwitch(result);
-      _xblockexpression = (_doSwitch);
+      _xblockexpression = (_iconProvider.doSwitch(result));
     }
     return _xblockexpression;
   }
@@ -351,15 +342,13 @@ public abstract class AbstractDocGenerator implements IGenerator {
   protected String executionStateClass(final Executable executable) {
     CssClassProvider _cssClassProvider = new CssClassProvider();
     SpecExecution _result = this.spec2ResultMapping.getResult(executable);
-    String _doSwitch = _cssClassProvider.doSwitch(_result);
-    return _doSwitch;
+    return _cssClassProvider.doSwitch(_result);
   }
   
   protected String errorMessage(final Executable executable) {
     ErrorMessageProvider _errorMessageProvider = new ErrorMessageProvider();
     SpecExecution _result = this.spec2ResultMapping.getResult(executable);
-    String _doSwitch = _errorMessageProvider.doSwitch(_result);
-    return _doSwitch;
+    return _errorMessageProvider.doSwitch(_result);
   }
   
   protected String serialize(final XExpression expr, final List<Filter> filters) {

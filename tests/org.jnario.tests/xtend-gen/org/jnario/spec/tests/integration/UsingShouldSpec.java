@@ -103,9 +103,8 @@ public class UsingShouldSpec {
         Assert.assertTrue("\nExpected it should startWith(\"hello\") but"
          + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _should_startWith);
         
-        boolean _should_endWith = Should.should_endWith(it, "world");
         Assert.assertTrue("\nExpected it should endWith(\"world\") but"
-         + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _should_endWith);
+         + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", Should.should_endWith(it, "world"));
         
       }
     };
@@ -233,8 +232,7 @@ public class UsingShouldSpec {
   }
   
   public void method() {
-    IllegalArgumentException _illegalArgumentException = new IllegalArgumentException();
-    throw _illegalArgumentException;
+    throw new IllegalArgumentException();
   }
   
   /**
@@ -247,9 +245,8 @@ public class UsingShouldSpec {
   public void _whyDidItFail() throws Exception {
     final Procedure1<Boolean> _function = new Procedure1<Boolean>() {
       public void apply(final Boolean it) {
-        boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf((1 + 1)), Integer.valueOf(1));
         Assert.assertTrue("\nExpected 1 + 1 => 1 but"
-         + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString() + "\n", _doubleArrow);
+         + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString() + "\n", Should.<Integer>operator_doubleArrow(Integer.valueOf((1 + 1)), Integer.valueOf(1)));
         
       }
     };
@@ -264,10 +261,9 @@ public class UsingShouldSpec {
     final Procedure1<Boolean> _function_1 = new Procedure1<Boolean>() {
       public void apply(final Boolean it) {
         String _upperCase = x.toUpperCase();
-        boolean _should_be = Should.<String>should_be(_upperCase, "HELLO");
         Assert.assertFalse("\nExpected x.toUpperCase should not be \"HELLO\" but"
          + "\n     x.toUpperCase is " + new org.hamcrest.StringDescription().appendValue(_upperCase).toString()
-         + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString() + "\n", _should_be);
+         + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString() + "\n", Should.<String>should_be(_upperCase, "HELLO"));
         
       }
     };
@@ -284,10 +280,9 @@ public class UsingShouldSpec {
     final String y = "world";
     final Procedure1<Boolean> _function_2 = new Procedure1<Boolean>() {
       public void apply(final Boolean it) {
-        boolean _doubleArrow = Should.<String>operator_doubleArrow(x, y);
         Assert.assertTrue("\nExpected x => y but"
          + "\n     x is " + new org.hamcrest.StringDescription().appendValue(x).toString()
-         + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", _doubleArrow);
+         + "\n     y is " + new org.hamcrest.StringDescription().appendValue(y).toString() + "\n", Should.<String>operator_doubleArrow(x, y));
         
       }
     };
@@ -375,7 +370,7 @@ public class UsingShouldSpec {
       _and = false;
     } else {
       boolean _equals_1 = Objects.equal(food, "Banana");
-      _and = (_equals && _equals_1);
+      _and = _equals_1;
     }
     return _and;
   }
@@ -409,10 +404,9 @@ public class UsingShouldSpec {
      + "\n     hasItem(\"red\") is " + new org.hamcrest.StringDescription().appendValue(_hasItem).toString() + "\n", _doubleArrow_1);
     
     Matcher<Integer> _greaterThan = Matchers.<Integer>greaterThan(Integer.valueOf(5));
-    boolean _should_be = Should.<Integer>should_be(
-      Integer.valueOf(9), _greaterThan);
     Assert.assertTrue("\nExpected 9 should be greaterThan(5) but"
-     + "\n     greaterThan(5) is " + new org.hamcrest.StringDescription().appendValue(_greaterThan).toString() + "\n", _should_be);
+     + "\n     greaterThan(5) is " + new org.hamcrest.StringDescription().appendValue(_greaterThan).toString() + "\n", Should.<Integer>should_be(
+      Integer.valueOf(9), _greaterThan));
     
   }
   

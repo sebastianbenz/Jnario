@@ -41,9 +41,8 @@ public class StepNameProviderDescribeFeatureSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _describeStep = this.describeStep();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_describeStep, "Given a step with multiline parameter");
     Assert.assertTrue("\nExpected describeStep => \'Given a step with multiline parameter\' but"
-     + "\n     describeStep is " + new org.hamcrest.StringDescription().appendValue(_describeStep).toString() + "\n", _doubleArrow);
+     + "\n     describeStep is " + new org.hamcrest.StringDescription().appendValue(_describeStep).toString() + "\n", Should.<String>operator_doubleArrow(_describeStep, "Given a step with multiline parameter"));
     
   }
   

@@ -67,12 +67,11 @@ public class RulesEvolveDeadCellsSpec extends RulesSpec {
         int _liveNeighbourCount = it.getLiveNeighbourCount();
         boolean _becomesAlive = RulesEvolveDeadCellsSpec.this.subject.becomesAlive(_liveNeighbourCount);
         boolean _result = it.getResult();
-        boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_becomesAlive), _result);
         Assert.assertTrue("\nExpected subject.becomesAlive(liveNeighbourCount) => result but"
          + "\n     subject.becomesAlive(liveNeighbourCount) is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_becomesAlive)).toString()
          + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(RulesEvolveDeadCellsSpec.this.subject).toString()
          + "\n     liveNeighbourCount is " + new org.hamcrest.StringDescription().appendValue(_liveNeighbourCount).toString()
-         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_becomesAlive), _result));
         
       }
     };

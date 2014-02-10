@@ -91,10 +91,9 @@ public class ExtensionLibraryIterableIteratorHelpersSpec extends ExtensionLibrar
      + "\n     objects is " + new org.hamcrest.StringDescription().appendValue(objects).toString() + "\n", _doubleArrow_7);
     
     String _second_1 = JnarioIterableExtensions.<String>second(objects, String.class);
-    boolean _doubleArrow_8 = Should.<String>operator_doubleArrow(_second_1, "other string");
     Assert.assertTrue("\nExpected objects.second(typeof(String)) => \"other string\" but"
      + "\n     objects.second(typeof(String)) is " + new org.hamcrest.StringDescription().appendValue(_second_1).toString()
-     + "\n     objects is " + new org.hamcrest.StringDescription().appendValue(objects).toString() + "\n", _doubleArrow_8);
+     + "\n     objects is " + new org.hamcrest.StringDescription().appendValue(objects).toString() + "\n", Should.<String>operator_doubleArrow(_second_1, "other string"));
     
   }
   
@@ -175,11 +174,10 @@ public class ExtensionLibraryIterableIteratorHelpersSpec extends ExtensionLibrar
     
     Iterator<Object> _iterator_8 = objects.iterator();
     String _second_1 = JnarioIteratorExtensions.<String>second(_iterator_8, String.class);
-    boolean _doubleArrow_8 = Should.<String>operator_doubleArrow(_second_1, "other string");
     Assert.assertTrue("\nExpected objects.iterator.second(typeof(String)) => \"other string\" but"
      + "\n     objects.iterator.second(typeof(String)) is " + new org.hamcrest.StringDescription().appendValue(_second_1).toString()
      + "\n     objects.iterator is " + new org.hamcrest.StringDescription().appendValue(_iterator_8).toString()
-     + "\n     objects is " + new org.hamcrest.StringDescription().appendValue(objects).toString() + "\n", _doubleArrow_8);
+     + "\n     objects is " + new org.hamcrest.StringDescription().appendValue(objects).toString() + "\n", Should.<String>operator_doubleArrow(_second_1, "other string"));
     
   }
 }

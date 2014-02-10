@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
-Bundle-Version: 0.7.0.201401092313
+Bundle-Version: 0.7.2.201402102059
 Bundle-SymbolicName: org.jnario.suite; singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
@@ -13,18 +13,18 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.codegen.ecore;resolution:=optional,
  org.eclipse.emf.mwe.utils;resolution:=optional,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
- org.jnario.feature;bundle-version="0.7.0",
- org.jnario.spec;bundle-version="0.7.0",
- org.eclipse.xtend.core;bundle-version="[2.5.0,2.6.0)",
+ org.jnario.feature;bundle-version="0.7.2",
+ org.jnario.spec;bundle-version="0.7.2",
+ org.eclipse.xtend.core;bundle-version="[2.5.1,2.6.0)",
  org.eclipse.xtext.util,
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
  org.antlr.runtime,
  org.eclipse.xtext.common.types,
  org.eclipse.xtext.xbase.lib,
- org.jnario;bundle-version="0.7.0",
- org.jnario.lib;bundle-version="0.7.0",
- org.eclipse.xtext.xbase.ui;bundle-version="2.5.0"
+ org.jnario;bundle-version="0.7.2",
+ org.jnario.lib;bundle-version="0.7.2",
+ org.eclipse.xtext.xbase.ui;bundle-version="2.5.1"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

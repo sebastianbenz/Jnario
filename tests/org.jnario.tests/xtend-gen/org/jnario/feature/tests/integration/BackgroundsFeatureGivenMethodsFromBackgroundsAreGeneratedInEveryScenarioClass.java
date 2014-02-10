@@ -30,8 +30,7 @@ public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEverySce
   @Order(0)
   @Named("When I have a feature with a background")
   public void _whenIHaveAFeatureWithABackground() {
-    StepArguments _stepArguments = new StepArguments("package bootstrap\nFeature: Some feature\n\tBackground:\n\t\tGiven a user name\n\t\t\tthrow new RuntimeException()\n\tScenario: Scenario 1\n\tScenario: Scenario 2\n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("package bootstrap\nFeature: Some feature\n\tBackground:\n\t\tGiven a user name\n\t\t\tthrow new RuntimeException()\n\tScenario: Scenario 1\n\tScenario: Scenario 2\n");
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;
   }
@@ -42,11 +41,10 @@ public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEverySce
   public void _thenEveryClassShouldHaveAMethodThatThrowsARuntimeExeception() {
     Result _run = FeatureExecutor.run(this.jnarioFile);
     int _failureCount = _run.getFailureCount();
-    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2));
     Assert.assertTrue("\nExpected jnarioFile.run.failureCount => 2 but"
      + "\n     jnarioFile.run.failureCount is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_failureCount)).toString()
      + "\n     jnarioFile.run is " + new org.hamcrest.StringDescription().appendValue(_run).toString()
-     + "\n     jnarioFile is " + new org.hamcrest.StringDescription().appendValue(this.jnarioFile).toString() + "\n", _doubleArrow);
+     + "\n     jnarioFile is " + new org.hamcrest.StringDescription().appendValue(this.jnarioFile).toString() + "\n", Should.<Integer>operator_doubleArrow(Integer.valueOf(_failureCount), Integer.valueOf(2)));
     
   }
 }

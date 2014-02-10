@@ -13,7 +13,7 @@ public class EvolveLiveCells implements Rule {
     } else {
       boolean _overPopulated = this.overPopulated(neighbourCount);
       boolean _not_1 = (!_overPopulated);
-      _and = (_not && _not_1);
+      _and = _not_1;
     }
     return _and;
   }

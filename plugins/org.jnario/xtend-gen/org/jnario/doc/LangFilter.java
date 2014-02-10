@@ -12,8 +12,7 @@ import org.jnario.doc.Filter;
 @SuppressWarnings("all")
 public class LangFilter implements Filter {
   public static Filter create(final String regex) {
-    LangFilter _langFilter = new LangFilter(regex);
-    return _langFilter;
+    return new LangFilter(regex);
   }
   
   private String language;

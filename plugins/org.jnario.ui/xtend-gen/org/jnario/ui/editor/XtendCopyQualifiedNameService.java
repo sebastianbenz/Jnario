@@ -14,13 +14,11 @@ import org.eclipse.xtext.xbase.ui.editor.copyqualifiedname.XbaseCopyQualifiedNam
 @SuppressWarnings("all")
 public class XtendCopyQualifiedNameService extends XbaseCopyQualifiedNameService {
   protected String _getQualifiedName(final XtendFunction it, final EObject context) {
-    String _qualifiedName = this.toQualifiedName(it);
-    return _qualifiedName;
+    return this.toQualifiedName(it);
   }
   
   protected String _getQualifiedName(final XtendFunction it, final Void context) {
-    String _qualifiedName = this.toQualifiedName(it);
-    return _qualifiedName;
+    return this.toQualifiedName(it);
   }
   
   protected String toQualifiedName(final XtendFunction it) {
@@ -30,13 +28,11 @@ public class XtendCopyQualifiedNameService extends XbaseCopyQualifiedNameService
   }
   
   protected String _getQualifiedName(final XtendConstructor it, final EObject context) {
-    String _qualifiedName = this.toQualifiedName(it);
-    return _qualifiedName;
+    return this.toQualifiedName(it);
   }
   
   protected String _getQualifiedName(final XtendConstructor it, final Void context) {
-    String _qualifiedName = this.toQualifiedName(it);
-    return _qualifiedName;
+    return this.toQualifiedName(it);
   }
   
   protected String toQualifiedName(final XtendConstructor it) {

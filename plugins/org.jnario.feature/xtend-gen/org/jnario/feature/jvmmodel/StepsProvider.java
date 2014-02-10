@@ -33,8 +33,7 @@ public class StepsProvider {
       final Iterable<FeatureFile> featureFiles = Iterables.<FeatureFile>filter(_contents, FeatureFile.class);
       final Function1<FeatureFile,EList<XtendTypeDeclaration>> _function = new Function1<FeatureFile,EList<XtendTypeDeclaration>>() {
         public EList<XtendTypeDeclaration> apply(final FeatureFile it) {
-          EList<XtendTypeDeclaration> _xtendTypes = it.getXtendTypes();
-          return _xtendTypes;
+          return it.getXtendTypes();
         }
       };
       Iterable<EList<XtendTypeDeclaration>> _map = IterableExtensions.<FeatureFile, EList<XtendTypeDeclaration>>map(featureFiles, _function);
@@ -51,8 +50,7 @@ public class StepsProvider {
             }
             EList<Scenario> _scenarios = it.getScenarios();
             Background _background_1 = it.getBackground();
-            Iterable<Scenario> _plus = Iterables.<Scenario>concat(_scenarios, Collections.<Background>unmodifiableList(Lists.<Background>newArrayList(_background_1)));
-            _xblockexpression = (_plus);
+            _xblockexpression = (Iterables.<Scenario>concat(_scenarios, Collections.<Background>unmodifiableList(Lists.<Background>newArrayList(_background_1))));
           }
           return _xblockexpression;
         }
@@ -62,14 +60,12 @@ public class StepsProvider {
       final Iterable<Scenario> scenarios = IterableExtensions.<Scenario>filterNull(_flatten_1);
       final Function1<Scenario,EList<Step>> _function_2 = new Function1<Scenario,EList<Step>>() {
         public EList<Step> apply(final Scenario it) {
-          EList<Step> _steps = it.getSteps();
-          return _steps;
+          return it.getSteps();
         }
       };
       Iterable<EList<Step>> _map_2 = IterableExtensions.<Scenario, EList<Step>>map(scenarios, _function_2);
       Iterable<Step> _flatten_2 = Iterables.<Step>concat(_map_2);
-      Iterable<StepImplementation> _filter = Iterables.<StepImplementation>filter(_flatten_2, StepImplementation.class);
-      _xblockexpression = (_filter);
+      _xblockexpression = (Iterables.<StepImplementation>filter(_flatten_2, StepImplementation.class));
     }
     return _xblockexpression;
   }

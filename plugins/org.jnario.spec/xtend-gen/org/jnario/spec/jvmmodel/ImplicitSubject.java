@@ -59,7 +59,7 @@ public class ImplicitSubject {
       _or = true;
     } else {
       boolean _eIsProxy = targetType.eIsProxy();
-      _or = (_equals || _eIsProxy);
+      _or = _eIsProxy;
     }
     if (_or) {
       return;
@@ -105,8 +105,7 @@ public class ImplicitSubject {
   
   public ExampleGroup parent(final ExampleGroup exampleGroup) {
     EObject _eContainer = exampleGroup.eContainer();
-    ExampleGroup _containerOfType = EcoreUtil2.<ExampleGroup>getContainerOfType(_eContainer, ExampleGroup.class);
-    return _containerOfType;
+    return EcoreUtil2.<ExampleGroup>getContainerOfType(_eContainer, ExampleGroup.class);
   }
   
   public boolean hasSubject(final JvmGenericType type) {
@@ -115,8 +114,7 @@ public class ImplicitSubject {
     final Function1<JvmField,Boolean> _function = new Function1<JvmField,Boolean>() {
       public Boolean apply(final JvmField it) {
         String _simpleName = it.getSimpleName();
-        boolean _equals = Objects.equal(_simpleName, Constants.SUBJECT_FIELD_NAME);
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(Objects.equal(_simpleName, Constants.SUBJECT_FIELD_NAME));
       }
     };
     final JvmField subjectField = IterableExtensions.<JvmField>findFirst(fields, _function);
@@ -152,8 +150,7 @@ public class ImplicitSubject {
     final Function1<XAbstractFeatureCall,Boolean> _function = new Function1<XAbstractFeatureCall,Boolean>() {
       public Boolean apply(final XAbstractFeatureCall it) {
         String _concreteSyntaxFeatureName = it.getConcreteSyntaxFeatureName();
-        boolean _equals = Objects.equal(_concreteSyntaxFeatureName, Constants.SUBJECT_FIELD_NAME);
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(Objects.equal(_concreteSyntaxFeatureName, Constants.SUBJECT_FIELD_NAME));
       }
     };
     XAbstractFeatureCall _findFirst = IteratorExtensions.<XAbstractFeatureCall>findFirst(allFeatureCalls, _function);

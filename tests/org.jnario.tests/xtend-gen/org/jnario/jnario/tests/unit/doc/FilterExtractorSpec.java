@@ -156,11 +156,10 @@ public class FilterExtractorSpec {
         String _input = it.getInput();
         String _stringAfterExtract = FilterExtractorSpec.this.stringAfterExtract(_input);
         String _resultString = it.getResultString();
-        boolean _doubleArrow = Should.<String>operator_doubleArrow(_stringAfterExtract, _resultString);
         Assert.assertTrue("\nExpected stringAfterExtract(input) => resultString but"
          + "\n     stringAfterExtract(input) is " + new org.hamcrest.StringDescription().appendValue(_stringAfterExtract).toString()
          + "\n     input is " + new org.hamcrest.StringDescription().appendValue(_input).toString()
-         + "\n     resultString is " + new org.hamcrest.StringDescription().appendValue(_resultString).toString() + "\n", _doubleArrow);
+         + "\n     resultString is " + new org.hamcrest.StringDescription().appendValue(_resultString).toString() + "\n", Should.<String>operator_doubleArrow(_stringAfterExtract, _resultString));
         
       }
     };
@@ -176,11 +175,10 @@ public class FilterExtractorSpec {
         String _input = it.getInput();
         List<String> _extractedFilters = FilterExtractorSpec.this.extractedFilters(_input);
         List<String> _resultingFilters = it.getResultingFilters();
-        boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(_extractedFilters, _resultingFilters);
         Assert.assertTrue("\nExpected extractedFilters(input) => resultingFilters but"
          + "\n     extractedFilters(input) is " + new org.hamcrest.StringDescription().appendValue(_extractedFilters).toString()
          + "\n     input is " + new org.hamcrest.StringDescription().appendValue(_input).toString()
-         + "\n     resultingFilters is " + new org.hamcrest.StringDescription().appendValue(_resultingFilters).toString() + "\n", _doubleArrow);
+         + "\n     resultingFilters is " + new org.hamcrest.StringDescription().appendValue(_resultingFilters).toString() + "\n", Should.<List<String>>operator_doubleArrow(_extractedFilters, _resultingFilters));
         
       }
     };
@@ -189,8 +187,7 @@ public class FilterExtractorSpec {
   
   public String stringAfterExtract(final String input) {
     FilteringResult _apply = this.subject.apply(input);
-    String _string = _apply.getString();
-    return _string;
+    return _apply.getString();
   }
   
   public List<String> extractedFilters(final String input) {
@@ -198,11 +195,9 @@ public class FilterExtractorSpec {
     List<Filter> _filters = _apply.getFilters();
     final Function1<Filter,String> _function = new Function1<Filter,String>() {
       public String apply(final Filter it) {
-        String _string = it.toString();
-        return _string;
+        return it.toString();
       }
     };
-    List<String> _map = ListExtensions.<Filter, String>map(_filters, _function);
-    return _map;
+    return ListExtensions.<Filter, String>map(_filters, _function);
   }
 }

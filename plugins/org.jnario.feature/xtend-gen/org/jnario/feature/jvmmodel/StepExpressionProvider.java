@@ -66,7 +66,7 @@ public class StepExpressionProvider {
       _or = true;
     } else {
       boolean _eIsProxy = step.eIsProxy();
-      _or = (_equals || _eIsProxy);
+      _or = _eIsProxy;
     }
     if (_or) {
       return null;
@@ -93,7 +93,7 @@ public class StepExpressionProvider {
       } else {
         boolean _eIsProxy = refStep.eIsProxy();
         boolean _not = (!_eIsProxy);
-        _and = (_notEquals_1 && _not);
+        _and = _not;
       }
       if (_and) {
         return true;

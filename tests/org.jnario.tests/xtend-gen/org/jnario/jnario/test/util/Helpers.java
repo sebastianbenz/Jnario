@@ -23,8 +23,7 @@ public class Helpers {
   public static String errorMessage(final Procedure1<Boolean> proc) {
     try {
       proc.apply(null);
-      AssertionError _assertionError = new AssertionError("expected AssertionError");
-      throw _assertionError;
+      throw new AssertionError("expected AssertionError");
     } catch (final Throwable _t) {
       if (_t instanceof AssertionError) {
         final AssertionError e = (AssertionError)_t;

@@ -23,13 +23,11 @@ public class FeatureHoverProvider extends JnarioHoverProvider {
     if (!_matched) {
       if (o instanceof Step) {
         _matched=true;
-        String _documentation = this.getDocumentation(((Step)o));
-        _switchResult = _documentation;
+        _switchResult = this.getDocumentation(((Step)o));
       }
     }
     if (!_matched) {
-      String _documentation = super.getDocumentation(o);
-      _switchResult = _documentation;
+      _switchResult = super.getDocumentation(o);
     }
     return _switchResult;
   }
@@ -47,8 +45,7 @@ public class FeatureHoverProvider extends JnarioHoverProvider {
       _builder.append(_normalize, "");
       _builder.newLineIfNotEmpty();
       _builder.append("</pre>");
-      String _string = _builder.toString();
-      _xblockexpression = (_string);
+      _xblockexpression = (_builder.toString());
     }
     return _xblockexpression;
   }

@@ -57,8 +57,7 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
   
   @Inject
   public Executable2ResultMapping setExecutable2ResultMapping(final Executable2ResultMapping resultMapping) {
-    Executable2ResultMapping _resultMapping = this.resultMapping = resultMapping;
-    return _resultMapping;
+    return this.resultMapping = resultMapping;
   }
   
   public ResourceSet loadResources() {
@@ -71,12 +70,10 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
       Map<Object,Object> _loadOptions = this.resourceSet.getLoadOptions();
       String _fileEncoding_1 = this.getFileEncoding();
       _loadOptions.put(XtextResource.OPTION_ENCODING, _fileEncoding_1);
-      NameBasedFilter _nameBasedFilter = new NameBasedFilter();
-      final NameBasedFilter nameBasedFilter = _nameBasedFilter;
+      final NameBasedFilter nameBasedFilter = new NameBasedFilter();
       String _primaryFileExtension = this.fileExtensionProvider.getPrimaryFileExtension();
       nameBasedFilter.setExtension(_primaryFileExtension);
-      PathTraverser _pathTraverser = new PathTraverser();
-      final PathTraverser pathTraverser = _pathTraverser;
+      final PathTraverser pathTraverser = new PathTraverser();
       List<String> _sourcePathDirectories = this.getSourcePathDirectories();
       final Predicate<URI> _function = new Predicate<URI>() {
         public boolean apply(final URI input) {

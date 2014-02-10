@@ -97,11 +97,10 @@ public class StringsMakeJunitConformSpec extends StringsSpec {
         String _string = it.getString();
         String _makeJunitConform = Strings.makeJunitConform(_string);
         String _result = it.getResult();
-        boolean _doubleArrow = Should.<String>operator_doubleArrow(_makeJunitConform, _result);
         Assert.assertTrue("\nExpected string.makeJunitConform => result but"
          + "\n     string.makeJunitConform is " + new org.hamcrest.StringDescription().appendValue(_makeJunitConform).toString()
          + "\n     string is " + new org.hamcrest.StringDescription().appendValue(_string).toString()
-         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", _doubleArrow);
+         + "\n     result is " + new org.hamcrest.StringDescription().appendValue(_result).toString() + "\n", Should.<String>operator_doubleArrow(_makeJunitConform, _result));
         
       }
     };

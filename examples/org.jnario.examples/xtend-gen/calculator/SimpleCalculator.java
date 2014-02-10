@@ -13,8 +13,7 @@ public class SimpleCalculator {
   
   public boolean enter(final String string) {
     Integer _valueOf = Integer.valueOf(string);
-    boolean _add = this.values.add(_valueOf);
-    return _add;
+    return this.values.add(_valueOf);
   }
   
   public int add() {
@@ -24,13 +23,11 @@ public class SimpleCalculator {
       }
     };
     Integer _fold = IterableExtensions.<Integer, Integer>fold(this.values, Integer.valueOf(0), _function);
-    int _result = this.result = (_fold).intValue();
-    return _result;
+    return this.result = (_fold).intValue();
   }
   
   public String result() {
-    String _string = Integer.valueOf(this.result).toString();
-    return _string;
+    return Integer.valueOf(this.result).toString();
   }
   
   public String toString() {

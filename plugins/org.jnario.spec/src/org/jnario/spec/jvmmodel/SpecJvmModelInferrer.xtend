@@ -118,7 +118,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			suppressWarnings.setAnnotation(annotation);
 			val annotationValue = typesFactory.createJvmStringAnnotationValue();
 			annotationValue.getValues() += "all"
-			suppressWarnings.getValues().add(annotationValue);
+			suppressWarnings.getExplicitValues().add(annotationValue);
 			inferredJvmType.getAnnotations().add(suppressWarnings);
 		}
 		inferredJvmType.annotations += source.toAnnotation(typeof(Named), source.describe)

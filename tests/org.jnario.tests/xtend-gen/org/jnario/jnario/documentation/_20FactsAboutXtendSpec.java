@@ -38,7 +38,6 @@ public class _20FactsAboutXtendSpec {
   public <T extends Object> boolean operator_doubleArrow(final Iterable<T> actual, final Iterable<T> expected) {
     List<T> _list = IterableExtensions.<T>toList(actual);
     List<T> _list_1 = IterableExtensions.<T>toList(expected);
-    boolean _equals = Objects.equal(_list, _list_1);
-    return _equals;
+    return Objects.equal(_list, _list_1);
   }
 }

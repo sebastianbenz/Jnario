@@ -90,7 +90,7 @@ public class ExtendedJvmTypesBuilder extends JvmTypesBuilder {
 			return result;
 		}
 		setAnnotationValueName(valueName, jvmType, annotationValue);
-		result.getValues().add(annotationValue);
+		result.getExplicitValues().add(annotationValue);
 		return result;
 	}
 

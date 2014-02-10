@@ -8,13 +8,11 @@
 package org.jnario.doc;
 
 import com.google.common.base.Objects;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.jnario.doc.Filter;
@@ -28,34 +26,24 @@ public class FilterExtractor {
   
   private static Pattern TAG_PATTERN = Pattern.compile(FilterExtractor.TAG, Pattern.DOTALL);
   
-  private Map<String,Function1<String,Filter>> filterRegistry = new Function0<Map<String,Function1<String,Filter>>>() {
-    public Map<String,Function1<String,Filter>> apply() {
-      final Function1<String,Filter> _function = new Function1<String,Filter>() {
-        public Filter apply(final String s) {
-          Filter _create = RegexFilter.create(s);
-          return _create;
-        }
-      };
-      Pair<String,Function1<String,Filter>> _mappedTo = Pair.<String, Function1<String,Filter>>of("filter", _function);
-      final Function1<String,Filter> _function_1 = new Function1<String,Filter>() {
-        public Filter apply(final String s) {
-          Filter _create = LangFilter.create(s);
-          return _create;
-        }
-      };
-      Pair<String,Function1<String,Filter>> _mappedTo_1 = Pair.<String, Function1<String,Filter>>of("lang", _function_1);
-      HashMap<String,Function1<String,Filter>> _newHashMap = CollectionLiterals.<String, Function1<String,Filter>>newHashMap(_mappedTo, _mappedTo_1);
-      return _newHashMap;
-    }
-  }.apply();
+  private Map<String,Function1<String,Filter>> filterRegistry = CollectionLiterals.<String, Function1<String,Filter>>newHashMap(
+    Pair.<String, Function1<String,Filter>>of("filter", new Function1<String,Filter>() {
+      public Filter apply(final String s) {
+        return RegexFilter.create(s);
+      }
+    }), 
+    Pair.<String, Function1<String,Filter>>of("lang", new Function1<String,Filter>() {
+      public Filter apply(final String s) {
+        return LangFilter.create(s);
+      }
+    }));
   
   public FilteringResult apply(final String input) {
     boolean _equals = Objects.equal(input, null);
     if (_equals) {
       return FilteringResult.EMPTY_RESULT;
     }
-    StringBuilder _stringBuilder = new StringBuilder();
-    final StringBuilder resultString = _stringBuilder;
+    final StringBuilder resultString = new StringBuilder();
     final List<Filter> filters = CollectionLiterals.<Filter>newArrayList();
     final Matcher matcher = FilterExtractor.TAG_PATTERN.matcher(input);
     int offset = 0;
@@ -83,7 +71,6 @@ public class FilterExtractor {
     String _substring = input.substring(offset);
     resultString.append(_substring);
     String _string = resultString.toString();
-    FilteringResult _filteringResult = new FilteringResult(_string, filters);
-    return _filteringResult;
+    return new FilteringResult(_string, filters);
   }
 }

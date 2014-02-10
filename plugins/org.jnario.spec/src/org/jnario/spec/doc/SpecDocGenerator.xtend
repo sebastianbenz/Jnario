@@ -104,7 +104,7 @@ class SpecDocGenerator extends AbstractDocGenerator {
 			<p«id(example.name)» class="example «example.executionStateClass»"><strong>«example.describe.decode»</strong></p>
 			«ENDIF»
 			«docString»
-			«IF !example.pending && example.eIsSet(XTEND_FUNCTION__EXPRESSION)»
+			«IF !example.pending && example.eIsSet(XTEND_EXECUTABLE__EXPRESSION)»
 			«example.toCodeBlock(filters)»
 			«ENDIF»
 			«example.errorMessage»

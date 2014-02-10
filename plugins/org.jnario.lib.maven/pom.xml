@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jnario</groupId>
-	<version>0.7.0</version>
+	<version>0.7.2</version>
 	<artifactId>org.jnario.lib.maven</artifactId>
 	<name>Jnario Runtime Library</name>
 	<description>The runtime library for the Jnario testing language.</description>
@@ -10,7 +10,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-		<xtend.version>2.5.0</xtend.version>
+		<xtend.version>2.5.1</xtend.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -122,12 +122,23 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>1.4</version>
+					<goals>
+						<goal>sign-and-deploy-file</goal>
+					</goals>
+					<configuration>
+						<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+						<repositoryId>sonatype-nexus-staging</repositoryId>
+					</configuration>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
-					<version>0.7.0</version>
+					<version>1.0.0</version>
 					<configuration>
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
@@ -152,18 +163,6 @@
 								</pluginExecution>
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-gpg-plugin</artifactId>
-					<version>1.4</version>
-					<goals>
-						<goal>sign-and-deploy-file</goal>
-					</goals>
-					<configuration>
-						<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-						<repositoryId>sonatype-nexus-staging</repositoryId>
 					</configuration>
 				</plugin>
 			</plugins>

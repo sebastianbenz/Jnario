@@ -34,14 +34,12 @@ public class FeatureExtensionsFeatureUsingMultipleExtensions extends FeatureExte
   @Order(0)
   @Named("When sorting the colors \\\"red, green, blue\\\"")
   public void _whenSortingTheColorsRedGreenBlue() {
-    StepArguments _stepArguments = new StepArguments("red, green, blue");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("red, green, blue");
     String _first = JnarioIterableExtensions.<String>first(args);
     String[] _split = _first.split(",");
     final Function1<String,String> _function = new Function1<String,String>() {
       public String apply(final String it) {
-        String _trim = it.trim();
-        return _trim;
+        return it.trim();
       }
     };
     List<String> _map = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_split)), _function);
@@ -53,16 +51,14 @@ public class FeatureExtensionsFeatureUsingMultipleExtensions extends FeatureExte
   @Order(1)
   @Named("Then they should be ordered \\\"blue, green, red\\\"")
   public void _thenTheyShouldBeOrderedBlueGreenRed() {
-    StepArguments _stepArguments = new StepArguments("blue, green, red");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("blue, green, red");
     String _first = JnarioIterableExtensions.<String>first(args);
     List<String> _list = StringConversions.toList(_first);
-    boolean _doubleArrow = Should.<List<String>>operator_doubleArrow(this.list, _list);
     Assert.assertTrue("\nExpected list => args.first.toList but"
      + "\n     list is " + new org.hamcrest.StringDescription().appendValue(this.list).toString()
      + "\n     args.first.toList is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
      + "\n     args.first is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
-     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", Should.<List<String>>operator_doubleArrow(this.list, _list));
     
   }
 }

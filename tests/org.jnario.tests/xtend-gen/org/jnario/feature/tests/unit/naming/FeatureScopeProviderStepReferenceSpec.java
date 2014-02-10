@@ -45,9 +45,8 @@ public class FeatureScopeProviderStepReferenceSpec extends FeatureScopeProviderS
      + "\n     targetOperationScope is " + new org.hamcrest.StringDescription().appendValue(_targetOperationScope).toString() + "\n", _should_contain);
     
     Set<String> _targetOperationScope_1 = this.targetOperationScope();
-    boolean _should_contain_1 = Should.<String>should_contain(_targetOperationScope_1, "myPackage.another step");
     Assert.assertFalse("\nExpected targetOperationScope should not contain \"myPackage.another step\" but"
-     + "\n     targetOperationScope is " + new org.hamcrest.StringDescription().appendValue(_targetOperationScope_1).toString() + "\n", _should_contain_1);
+     + "\n     targetOperationScope is " + new org.hamcrest.StringDescription().appendValue(_targetOperationScope_1).toString() + "\n", Should.<String>should_contain(_targetOperationScope_1, "myPackage.another step"));
     
   }
 }

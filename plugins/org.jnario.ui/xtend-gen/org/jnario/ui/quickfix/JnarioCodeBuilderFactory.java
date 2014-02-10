@@ -23,8 +23,7 @@ public class JnarioCodeBuilderFactory extends CodeBuilderFactory {
       if (_notEquals) {
         return xtendClass;
       }
-      Object _source = super.getSource(element);
-      _xblockexpression = (_source);
+      _xblockexpression = (super.getSource(element));
     }
     return _xblockexpression;
   }
@@ -43,12 +42,10 @@ public class JnarioCodeBuilderFactory extends CodeBuilderFactory {
         public Boolean apply(final XtendClass it) {
           String _name = it.getName();
           String _simpleName = type.getSimpleName();
-          boolean _equals = Objects.equal(_name, _simpleName);
-          return Boolean.valueOf(_equals);
+          return Boolean.valueOf(Objects.equal(_name, _simpleName));
         }
       };
-      XtendClass _findFirst = IteratorExtensions.<XtendClass>findFirst(_filter, _function);
-      _xblockexpression = (_findFirst);
+      _xblockexpression = (IteratorExtensions.<XtendClass>findFirst(_filter, _function));
     }
     return _xblockexpression;
   }

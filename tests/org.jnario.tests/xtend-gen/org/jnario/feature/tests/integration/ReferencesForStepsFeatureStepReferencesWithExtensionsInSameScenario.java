@@ -40,8 +40,7 @@ public class ReferencesForStepsFeatureStepReferencesWithExtensionsInSameScenario
   @Order(0)
   @Named("Given a feature")
   public void _givenAFeature() {
-    StepArguments _stepArguments = new StepArguments("import org.jnario.feature.tests.integration.ExampleExtension\nFeature: Step references with extensions in same step\n\t\t\tScenario: Greetings\n\t\t\t\textension static ExampleExtension = new ExampleExtension\n\t\t\tWhen greeting \"Sebastian\" is \"Hello Sebastian\"\n\t\t\t\targs.first.greet => args.second\n\t\t\tBut greeting \"World\" is \"Hello World\"\n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("import org.jnario.feature.tests.integration.ExampleExtension\nFeature: Step references with extensions in same step\n\t\t\tScenario: Greetings\n\t\t\t\textension static ExampleExtension = new ExampleExtension\n\t\t\tWhen greeting \"Sebastian\" is \"Hello Sebastian\"\n\t\t\t\targs.first.greet => args.second\n\t\t\tBut greeting \"World\" is \"Hello World\"\n");
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;
   }

@@ -31,8 +31,7 @@ public class FeatureExtensionsFeatureDefiningOwnExtensions extends FeatureExtens
   @Order(0)
   @Named("Given the value \\\"12.5\\\"")
   public void _givenTheValue125() {
-    StepArguments _stepArguments = new StepArguments("12.5");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("12.5");
     String _first = JnarioIterableExtensions.<String>first(args);
     double _double = StringConversions.toDouble(_first);
     this.value = _double;
@@ -50,16 +49,14 @@ public class FeatureExtensionsFeatureDefiningOwnExtensions extends FeatureExtens
   @Order(2)
   @Named("Then the value should be \\\"12.0\\\"")
   public void _thenTheValueShouldBe120() {
-    StepArguments _stepArguments = new StepArguments("12.0");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("12.0");
     String _first = JnarioIterableExtensions.<String>first(args);
     double _double = StringConversions.toDouble(_first);
-    boolean _doubleArrow = Should.<Double>operator_doubleArrow(Double.valueOf(this.flooredValue), Double.valueOf(_double));
     Assert.assertTrue("\nExpected flooredValue => args.first.toDouble but"
      + "\n     flooredValue is " + new org.hamcrest.StringDescription().appendValue(Double.valueOf(this.flooredValue)).toString()
      + "\n     args.first.toDouble is " + new org.hamcrest.StringDescription().appendValue(Double.valueOf(_double)).toString()
      + "\n     args.first is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
-     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", _doubleArrow);
+     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", Should.<Double>operator_doubleArrow(Double.valueOf(this.flooredValue), Double.valueOf(_double)));
     
   }
 }

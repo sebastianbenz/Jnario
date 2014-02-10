@@ -33,14 +33,12 @@ public class FeatureExtensionsFeatureReferencingMultipleExtensions extends Featu
   @Order(0)
   @Named("When sorting the colors \\\"yellow, red\\\"")
   public void _whenSortingTheColorsYellowRed() {
-    StepArguments _stepArguments = new StepArguments("yellow, red");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("yellow, red");
     String _first = JnarioIterableExtensions.<String>first(args);
     String[] _split = _first.split(",");
     final Function1<String,String> _function = new Function1<String,String>() {
       public String apply(final String it) {
-        String _trim = it.trim();
-        return _trim;
+        return it.trim();
       }
     };
     List<String> _map = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_split)), _function);
@@ -52,8 +50,7 @@ public class FeatureExtensionsFeatureReferencingMultipleExtensions extends Featu
   @Order(1)
   @Named("Then they should be ordered \\\"red, yellow\\\"")
   public void _thenTheyShouldBeOrderedRedYellow() {
-    StepArguments _stepArguments = new StepArguments("red, yellow");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("red, yellow");
     String _first = JnarioIterableExtensions.<String>first(args);
     List<String> _list = StringConversions.toList(_first);
     Should.<List<String>>operator_doubleArrow(this.list, _list);

@@ -74,10 +74,9 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
     Assert.assertFalse("\nExpected 1 + 1 should not be 1 but"
      + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString() + "\n", _should_be_1);
     
-    boolean _doubleArrow_1 = Should.<Integer>operator_doubleArrow(
-      Integer.valueOf((1 + 1)), Integer.valueOf(2));
     Assert.assertTrue("\nExpected 1 + 1 => 2 but"
-     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString() + "\n", _doubleArrow_1);
+     + "\n     1 + 1 is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf((1 + 1))).toString() + "\n", Should.<Integer>operator_doubleArrow(
+      Integer.valueOf((1 + 1)), Integer.valueOf(2)));
     
   }
   
@@ -124,10 +123,9 @@ public class IntroducingJnarioSpecsWritingAssertionsSpec extends IntroducingJnar
     final Procedure1<Boolean> _function_1 = new Procedure1<Boolean>() {
       public void apply(final Boolean it) {
         String _upperCase = greeting.toUpperCase();
-        boolean _should_be = Should.<String>should_be(_upperCase, "HELLO");
         Assert.assertFalse("\nExpected greeting.toUpperCase should not be \"HELLO\" but"
          + "\n     greeting.toUpperCase is " + new org.hamcrest.StringDescription().appendValue(_upperCase).toString()
-         + "\n     greeting is " + new org.hamcrest.StringDescription().appendValue(greeting).toString() + "\n", _should_be);
+         + "\n     greeting is " + new org.hamcrest.StringDescription().appendValue(greeting).toString() + "\n", Should.<String>should_be(_upperCase, "HELLO"));
         
       }
     };

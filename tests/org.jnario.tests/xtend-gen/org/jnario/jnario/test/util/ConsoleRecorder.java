@@ -18,8 +18,7 @@ public class ConsoleRecorder {
   
   public static ConsoleRecorder start() {
     ConsoleRecorder _consoleRecorder = new ConsoleRecorder();
-    ConsoleRecorder _startRecording = _consoleRecorder.startRecording();
-    return _startRecording;
+    return _consoleRecorder.startRecording();
   }
   
   public ConsoleRecorder startRecording() {
@@ -35,8 +34,7 @@ public class ConsoleRecorder {
     String _xblockexpression = null;
     {
       System.setOut(this.old);
-      String _string = this.pipeOut.toString();
-      _xblockexpression = (_string);
+      _xblockexpression = (this.pipeOut.toString());
     }
     return _xblockexpression;
   }

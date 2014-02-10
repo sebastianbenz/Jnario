@@ -27,8 +27,7 @@ public class PatternValueConverter implements IValueConverter<String> {
         result = "";
       }
       String _newLine = Strings.newLine();
-      String _plus = ((("\\" + result) + "\\") + _newLine);
-      _xblockexpression = (_plus);
+      _xblockexpression = (((("\\" + result) + "\\") + _newLine));
     }
     return _xblockexpression;
   }
@@ -48,8 +47,7 @@ public class PatternValueConverter implements IValueConverter<String> {
       if (_t instanceof PatternSyntaxException) {
         final PatternSyntaxException e = (PatternSyntaxException)_t;
         String _message = e.getMessage();
-        ValueConverterException _valueConverterException = new ValueConverterException(_message, node, e);
-        throw _valueConverterException;
+        throw new ValueConverterException(_message, node, e);
       } else {
         throw Exceptions.sneakyThrow(_t);
       }

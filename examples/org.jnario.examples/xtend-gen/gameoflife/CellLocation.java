@@ -15,8 +15,7 @@ public class CellLocation {
     CellLocation.cell(1, 0), CellLocation.cell(1, 1), CellLocation.cell(0, 1), CellLocation.cell((-1), (-1)), CellLocation.cell((-1), 0), CellLocation.cell((-1), 1), CellLocation.cell(0, (-1)), CellLocation.cell(1, (-1)));
   
   public static CellLocation cell(final int x, final int y) {
-    CellLocation _cellLocation = new CellLocation(x, y);
-    return _cellLocation;
+    return new CellLocation(x, y);
   }
   
   private final int _x;
@@ -34,13 +33,11 @@ public class CellLocation {
   public Set<CellLocation> neighbours() {
     final Function1<CellLocation,CellLocation> _function = new Function1<CellLocation,CellLocation>() {
       public CellLocation apply(final CellLocation it) {
-        CellLocation _plus = CellLocation.this.plus(it);
-        return _plus;
+        return CellLocation.this.plus(it);
       }
     };
     Iterable<CellLocation> _map = IterableExtensions.<CellLocation, CellLocation>map(CellLocation.NEIGHBOUR_OFFSETS, _function);
-    Set<CellLocation> _set = IterableExtensions.<CellLocation>toSet(_map);
-    return _set;
+    return IterableExtensions.<CellLocation>toSet(_map);
   }
   
   public CellLocation plus(final CellLocation other) {
@@ -50,8 +47,7 @@ public class CellLocation {
     int _y = this.getY();
     int _y_1 = other.getY();
     int _plus_1 = (_y + _y_1);
-    CellLocation _cell = CellLocation.cell(_plus, _plus_1);
-    return _cell;
+    return CellLocation.cell(_plus, _plus_1);
   }
   
   public CellLocation(final int x, final int y) {

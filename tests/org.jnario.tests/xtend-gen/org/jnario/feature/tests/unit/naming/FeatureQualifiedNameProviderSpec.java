@@ -42,13 +42,11 @@ public class FeatureQualifiedNameProviderSpec {
     _builder.newLineIfNotEmpty();
     _builder.append("val x = \"\"");
     _builder.newLine();
-    String _stepName = this.stepName(_builder);
-    return _stepName;
+    return this.stepName(_builder);
   }
   
   public String stepName(final CharSequence s) {
-    String _stepName = this.stepName(s, "myPackage");
-    return _stepName;
+    return this.stepName(s, "myPackage");
   }
   
   public String stepName(final CharSequence s, final String packageName) {
@@ -73,8 +71,7 @@ public class FeatureQualifiedNameProviderSpec {
       this._modelStore.parseScenario(input);
       Step _first = this._modelStore.<Step>first(Step.class);
       QualifiedName _fullyQualifiedName = this.subject.getFullyQualifiedName(_first);
-      String _string = this.converter.toString(_fullyQualifiedName);
-      _xblockexpression = (_string);
+      _xblockexpression = (this.converter.toString(_fullyQualifiedName));
     }
     return _xblockexpression;
   }

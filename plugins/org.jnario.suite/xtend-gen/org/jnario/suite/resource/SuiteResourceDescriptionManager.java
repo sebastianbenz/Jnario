@@ -32,8 +32,7 @@ public class SuiteResourceDescriptionManager extends XtendResourceDescriptionMan
     }
     final Function1<IResourceDescription.Delta,Boolean> _function = new Function1<IResourceDescription.Delta,Boolean>() {
       public Boolean apply(final IResourceDescription.Delta it) {
-        boolean _isNewSpec = SuiteResourceDescriptionManager.this.isNewSpec(it);
-        return Boolean.valueOf(_isNewSpec);
+        return Boolean.valueOf(SuiteResourceDescriptionManager.this.isNewSpec(it));
       }
     };
     Iterable<IResourceDescription.Delta> _filter = IterableExtensions.<IResourceDescription.Delta>filter(deltas, _function);
@@ -51,7 +50,7 @@ public class SuiteResourceDescriptionManager extends XtendResourceDescriptionMan
       URI _uri = delta.getUri();
       String _fileExtension = _uri.fileExtension();
       boolean _contains = SuiteResourceDescriptionManager.FILE_EXTENSIONS.contains(_fileExtension);
-      _and = (_notEquals && _contains);
+      _and = _contains;
     }
     return _and;
   }

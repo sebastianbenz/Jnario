@@ -68,8 +68,8 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   
   public CharSequence generateContent(final Feature feature) {
     StringConcatenation _builder = new StringConcatenation();
-    String _markdown2Html = null;
     String _description = feature.getDescription();
+    String _markdown2Html = null;
     if (_description!=null) {
       _markdown2Html=this.markdown2Html(_description);
     }
@@ -177,8 +177,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
   
   private String highlightArguments(final String s) {
     Matcher _matcher = StepArgumentsProvider.ARG_PATTERN.matcher((" " + s));
-    String _replaceAll = _matcher.replaceAll("<code>$0</code>");
-    return _replaceAll;
+    return _matcher.replaceAll("<code>$0</code>");
   }
   
   private String highlighFirstWord(final String s) {

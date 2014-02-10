@@ -37,8 +37,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension extends S
   @Order(0)
   @Named("When I declare an extension field of type **ExampleExtension** in the background")
   public void _whenIDeclareAnExtensionFieldOfTypeExampleExtensionInTheBackground() {
-    StepArguments _stepArguments = new StepArguments("import org.jnario.feature.tests.integration.ExampleExtension\n\nFeature: Feature with extensions\n  \n  Background: A common extension to all scenarios\n      extension static ExampleExtension = new ExampleExtension \n    \n  Scenario: Scenario 1\n    Given a step \n      println(\"step 1\")\n    Then we have two steps\n    println(\"step 2\")\n  Scenario: Scenario 2\n    Given a step \n      println(\"step 3\")\n    Then we have two steps\n      println(\"step 4\")\n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("import org.jnario.feature.tests.integration.ExampleExtension\n\nFeature: Feature with extensions\n  \n  Background: A common extension to all scenarios\n      extension static ExampleExtension = new ExampleExtension \n    \n  Scenario: Scenario 1\n    Given a step \n      println(\"step 1\")\n    Then we have two steps\n    println(\"step 2\")\n  Scenario: Scenario 2\n    Given a step \n      println(\"step 3\")\n    Then we have two steps\n      println(\"step 4\")\n");
     String _first = JnarioIterableExtensions.<String>first(args);
     this.feature = _first;
   }
@@ -56,8 +55,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension extends S
   @Order(2)
   @Named("Then the execution order is")
   public void _thenTheExecutionOrderIs() {
-    StepArguments _stepArguments = new StepArguments("before\nstep 1\nstep 2\nafter\nbefore\nstep 3\nstep 4\nafter\n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("before\nstep 1\nstep 2\nafter\nbefore\nstep 3\nstep 4\nafter\n");
     String _stop = this.recorder.stop();
     final String actual = _stop.trim();
     String _first = JnarioIterableExtensions.<String>first(args);
@@ -65,8 +63,7 @@ public class SetupTeardownWithFeatureExtensionsFeatureUsingAnExtension extends S
     String[] _split = _trim.split("\n");
     final Function1<String,String> _function = new Function1<String,String>() {
       public String apply(final String it) {
-        String _trim = it.trim();
-        return _trim;
+        return it.trim();
       }
     };
     List<String> _map = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_split)), _function);

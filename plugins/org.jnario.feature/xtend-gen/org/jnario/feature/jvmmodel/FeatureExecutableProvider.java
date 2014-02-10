@@ -10,24 +10,20 @@ import org.jnario.Executable;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
-import org.jnario.feature.feature.Step;
 import org.jnario.jvmmodel.ExecutableProvider;
 
 @SuppressWarnings("all")
 public class FeatureExecutableProvider implements ExecutableProvider {
   public List<? extends Executable> getExecutables(final Executable specification) {
-    List<? extends Executable> _doGetExecutables = this.doGetExecutables(specification);
-    return _doGetExecutables;
+    return this.doGetExecutables(specification);
   }
   
   protected List<? extends Executable> _doGetExecutables(final Scenario scenario) {
-    EList<Step> _steps = scenario.getSteps();
-    return _steps;
+    return scenario.getSteps();
   }
   
   protected List<? extends Executable> _doGetExecutables(final Executable e) {
-    List<Executable> _emptyList = CollectionLiterals.<Executable>emptyList();
-    return _emptyList;
+    return CollectionLiterals.<Executable>emptyList();
   }
   
   protected List<? extends Executable> _doGetExecutables(final Feature feature) {

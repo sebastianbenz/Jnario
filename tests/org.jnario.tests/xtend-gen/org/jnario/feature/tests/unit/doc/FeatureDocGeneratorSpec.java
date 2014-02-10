@@ -149,10 +149,9 @@ public class FeatureDocGeneratorSpec {
     _builder.append("\"\"       ");
     _builder.newLine();
     CharSequence _generateDocWithErrors = this.generateDocWithErrors(_builder);
-    boolean _should_contain = Should.<Object>should_contain(_generateDocWithErrors, "failed");
     org.jnario.lib.Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tFeature: Example\r\n\t\t\t\r\n\t\t\tScenario: A failing Scenario\r\n\t\t\t\r\n\t\t\tGiven something\r\n\t\t\tWhen something happens \r\n\t\t\tThen there is an error\r\n\t\t\t\r\n\t\t\tScenario: Another scnario\r\n\t\t\tGiven something\r\n\t\t\t\t1 + 1 => 2\r\n\t\t\tThen something else\r\n\t\t\t\t\"\"       \r\n\t\t\'\'\'.generateDocWithErrors should contain \"failed\" but"
      + "\n     \'\'\'\r\n\t\t\tFeature: Example\r\n\t\t\t\r\n\t\t\tScenario: A failing Scenario\r\n\t\t\t\r\n\t\t\tGiven something\r\n\t\t\tWhen something happens \r\n\t\t\tThen there is an error\r\n\t\t\t\r\n\t\t\tScenario: Another scnario\r\n\t\t\tGiven something\r\n\t\t\t\t1 + 1 => 2\r\n\t\t\tThen something else\r\n\t\t\t\t\"\"       \r\n\t\t\'\'\'.generateDocWithErrors is " + new org.hamcrest.StringDescription().appendValue(_generateDocWithErrors).toString()
-     + "\n     \'\'\'\r\n\t\t\tFeature: Example\r\n\t\t\t\r\n\t\t\tScenario: A failing Scenario\r\n\t\t\t\r\n\t\t\tGiven something\r\n\t\t\tWhen something happens \r\n\t\t\tThen there is an error\r\n\t\t\t\r\n\t\t\tScenario: Another scnario\r\n\t\t\tGiven something\r\n\t\t\t\t1 + 1 => 2\r\n\t\t\tThen something else\r\n\t\t\t\t\"\"       \r\n\t\t\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", _should_contain);
+     + "\n     \'\'\'\r\n\t\t\tFeature: Example\r\n\t\t\t\r\n\t\t\tScenario: A failing Scenario\r\n\t\t\t\r\n\t\t\tGiven something\r\n\t\t\tWhen something happens \r\n\t\t\tThen there is an error\r\n\t\t\t\r\n\t\t\tScenario: Another scnario\r\n\t\t\tGiven something\r\n\t\t\t\t1 + 1 => 2\r\n\t\t\tThen something else\r\n\t\t\t\t\"\"       \r\n\t\t\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", Should.<Object>should_contain(_generateDocWithErrors, "failed"));
     
   }
   
@@ -207,12 +206,10 @@ public class FeatureDocGeneratorSpec {
         _builder.newLine();
         String _string_1 = _builder.toString();
         SpecFailure _specFailure = new SpecFailure(_string, "Exception", _string_1);
-        Failed _failingSpec = Failed.failingSpec("org.jnario.Class", "This Feature", 0.3, _specFailure);
-        return _failingSpec;
+        return Failed.failingSpec("org.jnario.Class", "This Feature", 0.3, _specFailure);
       }
     };
-    Executable2ResultMapping _mapping = this.mapping = _function;
-    return _mapping;
+    return this.mapping = _function;
   }
   
   public CharSequence generateDocWithErrors(final CharSequence input) {
@@ -223,8 +220,7 @@ public class FeatureDocGeneratorSpec {
       this.subject.doGenerate(resource, this.fsa, _mappingWithFailures);
       Map<String,CharSequence> _files = this.fsa.getFiles();
       Collection<CharSequence> _values = _files.values();
-      CharSequence _first = JnarioIterableExtensions.<CharSequence>first(_values);
-      _xblockexpression = (_first);
+      _xblockexpression = (JnarioIterableExtensions.<CharSequence>first(_values));
     }
     return _xblockexpression;
   }

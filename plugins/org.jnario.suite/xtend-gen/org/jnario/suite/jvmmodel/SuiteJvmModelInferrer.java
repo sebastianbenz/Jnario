@@ -106,8 +106,7 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
       List<SuiteNode> _children = node.getChildren();
       final Function1<SuiteNode,JvmGenericType> _function = new Function1<SuiteNode,JvmGenericType>() {
         public JvmGenericType apply(final SuiteNode it) {
-          JvmGenericType _infer = SuiteJvmModelInferrer.this.infer(it, acceptor, doLater, preIndexingPhase);
-          return _infer;
+          return SuiteJvmModelInferrer.this.infer(it, acceptor, doLater, preIndexingPhase);
         }
       };
       List<JvmGenericType> _map = ListExtensions.<SuiteNode, JvmGenericType>map(_children, _function);
@@ -155,26 +154,22 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
       final Function1<Specification,Boolean> _function = new Function1<Specification,Boolean>() {
         public Boolean apply(final Specification it) {
           String _javaClassName = SuiteJvmModelInferrer.this._suiteClassNameProvider.toJavaClassName(it);
-          boolean _notEquals = (!Objects.equal(_javaClassName, null));
-          return Boolean.valueOf(_notEquals);
+          return Boolean.valueOf((!Objects.equal(_javaClassName, null)));
         }
       };
       final Iterable<Specification> specs = IterableExtensions.<Specification>filter(_resolveSpecs, _function);
       final Function1<Specification,String> _function_1 = new Function1<Specification,String>() {
         public String apply(final Specification it) {
-          String _qualifiedJavaClassName = SuiteJvmModelInferrer.this._suiteClassNameProvider.toQualifiedJavaClassName(it);
-          return _qualifiedJavaClassName;
+          return SuiteJvmModelInferrer.this._suiteClassNameProvider.toQualifiedJavaClassName(it);
         }
       };
       final Iterable<String> types = IterableExtensions.<Specification, String>map(specs, _function_1);
       final Function1<String,JvmTypeReference> _function_2 = new Function1<String,JvmTypeReference>() {
         public JvmTypeReference apply(final String it) {
-          JvmTypeReference _inferredType = SuiteJvmModelInferrer.this.inferredType(it, suite);
-          return _inferredType;
+          return SuiteJvmModelInferrer.this.inferredType(it, suite);
         }
       };
-      Iterable<JvmTypeReference> _map = IterableExtensions.<String, JvmTypeReference>map(types, _function_2);
-      _xblockexpression = (_map);
+      _xblockexpression = (IterableExtensions.<String, JvmTypeReference>map(types, _function_2));
     }
     return _xblockexpression;
   }
@@ -183,8 +178,7 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
     final XComputedTypeReference result = this.xtypesFactory.createXComputedTypeReference();
     final IJvmTypeReferenceProvider _function = new IJvmTypeReferenceProvider() {
       public JvmTypeReference getTypeReference(final XComputedTypeReferenceImplCustom it) {
-        JvmTypeReference _typeForName = SuiteJvmModelInferrer.this._typeReferences.getTypeForName(name, context);
-        return _typeForName;
+        return SuiteJvmModelInferrer.this._typeReferences.getTypeForName(name, context);
       }
     };
     result.setTypeProvider(_function);

@@ -86,13 +86,12 @@ public class SuiteClassNameProviderDescribeSpec extends SuiteClassNameProviderSp
         Suite _suite = Suites.suite(_name);
         String _describe = SuiteClassNameProviderDescribeSpec.this.subject.describe(_suite);
         String _expectedClassName = it.getExpectedClassName();
-        boolean _doubleArrow = Should.<String>operator_doubleArrow(_describe, _expectedClassName);
         Assert.assertTrue("\nExpected subject.^describe(suite(name)) => expectedClassName but"
          + "\n     subject.^describe(suite(name)) is " + new org.hamcrest.StringDescription().appendValue(_describe).toString()
          + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(SuiteClassNameProviderDescribeSpec.this.subject).toString()
          + "\n     suite(name) is " + new org.hamcrest.StringDescription().appendValue(_suite).toString()
          + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
-         + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
+         + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", Should.<String>operator_doubleArrow(_describe, _expectedClassName));
         
       }
     };

@@ -9,32 +9,20 @@ package org.jnario.doc;
 
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.doc.HtmlAssets;
 
 @SuppressWarnings("all")
 public class HtmlFile {
-  public static HtmlFile EMPTY_FILE = new Function0<HtmlFile>() {
-    public HtmlFile apply() {
-      HtmlFile _htmlFile = new HtmlFile();
-      return _htmlFile;
-    }
-  }.apply();
+  public static HtmlFile EMPTY_FILE = new HtmlFile();
   
   public static HtmlFile newHtmlFile(final Procedure1<HtmlFile> initializer) {
-    HtmlFile _htmlFile = new HtmlFile();
-    final HtmlFile htmlFile = _htmlFile;
+    final HtmlFile htmlFile = new HtmlFile();
     initializer.apply(htmlFile);
     return htmlFile;
   }
   
-  private HtmlAssets _assets = new Function0<HtmlAssets>() {
-    public HtmlAssets apply() {
-      HtmlAssets _htmlAssets = new HtmlAssets();
-      return _htmlAssets;
-    }
-  }.apply();
+  private HtmlAssets _assets = new HtmlAssets();
   
   public HtmlAssets getAssets() {
     return this._assets;

@@ -30,12 +30,10 @@ public class Wait {
    * Wait until the provided function evaluates to true.
    */
   public static void waitUntil(final Function1<Wait,Boolean> initializer) {
-    Wait _wait = new Wait(Sleeper.SYSTEM_SLEEPER, Clock.SYSTEM_CLOCK);
-    final Wait wait = _wait;
+    final Wait wait = new Wait(Sleeper.SYSTEM_SLEEPER, Clock.SYSTEM_CLOCK);
     final Function0<Boolean> _function = new Function0<Boolean>() {
       public Boolean apply() {
-        Boolean _apply = initializer.apply(wait);
-        return _apply;
+        return initializer.apply(wait);
       }
     };
     final Function0<Boolean> condition = _function;
@@ -67,8 +65,7 @@ public class Wait {
         {
           boolean _timeOut = this.timeOut(start);
           if (_timeOut) {
-            TimeoutError _timeoutError = new TimeoutError(this.message);
-            throw _timeoutError;
+            throw new TimeoutError(this.message);
           }
           this.sleeper.sleep(this.pollingInterval);
         }
@@ -83,22 +80,18 @@ public class Wait {
   
   public boolean timeOut(final long start) {
     long _currentTime = this.clock.currentTime();
-    boolean _greaterThan = (_currentTime > (start + this.duration));
-    return _greaterThan;
+    return (_currentTime > (start + this.duration));
   }
   
   public String setMessage(final String message) {
-    String _message = this.message = message;
-    return _message;
+    return this.message = message;
   }
   
   public long setDuration(final long duration) {
-    long _duration = this.duration = duration;
-    return _duration;
+    return this.duration = duration;
   }
   
   public long setPollingInterval(final long pollingInterval) {
-    long _pollingInterval = this.pollingInterval = pollingInterval;
-    return _pollingInterval;
+    return this.pollingInterval = pollingInterval;
   }
 }

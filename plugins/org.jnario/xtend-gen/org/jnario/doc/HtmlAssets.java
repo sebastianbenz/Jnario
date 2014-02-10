@@ -9,7 +9,6 @@ package org.jnario.doc;
 
 import com.google.inject.Singleton;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.eclipse.emf.common.util.URI;
@@ -18,7 +17,6 @@ import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IFileSystemAccessExtension2;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -30,43 +28,29 @@ import org.jnario.util.Strings;
 @Singleton
 @SuppressWarnings("all")
 public class HtmlAssets {
-  private final List<String> _cssFiles = new Function0<List<String>>() {
-    public List<String> apply() {
-      ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
-        "bootstrap.min.css", 
-        "bootstrap-responsive.min.css", 
-        "custom.css", 
-        "prettify.css");
-      final Function1<String,String> _function = new Function1<String,String>() {
-        public String apply(final String it) {
-          return ("css/" + it);
-        }
-      };
-      List<String> _map = ListExtensions.<String, String>map(_newArrayList, _function);
-      return _map;
+  private final List<String> _cssFiles = ListExtensions.<String, String>map(CollectionLiterals.<String>newArrayList(
+    "bootstrap.min.css", 
+    "bootstrap-responsive.min.css", 
+    "custom.css", 
+    "prettify.css"), new Function1<String,String>() {
+    public String apply(final String it) {
+      return ("css/" + it);
     }
-  }.apply();
+  });
   
   public List<String> getCssFiles() {
     return this._cssFiles;
   }
   
-  private final List<String> _jsFiles = new Function0<List<String>>() {
-    public List<String> apply() {
-      ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList(
-        "prettify.js", 
-        "lang-jnario.js", 
-        "jquery.js", 
-        "bootstrap-tab.js");
-      final Function1<String,String> _function = new Function1<String,String>() {
-        public String apply(final String it) {
-          return ("js/" + it);
-        }
-      };
-      List<String> _map = ListExtensions.<String, String>map(_newArrayList, _function);
-      return _map;
+  private final List<String> _jsFiles = ListExtensions.<String, String>map(CollectionLiterals.<String>newArrayList(
+    "prettify.js", 
+    "lang-jnario.js", 
+    "jquery.js", 
+    "bootstrap-tab.js"), new Function1<String,String>() {
+    public String apply(final String it) {
+      return ("js/" + it);
     }
-  }.apply();
+  });
   
   public List<String> getJsFiles() {
     return this._jsFiles;
@@ -83,8 +67,7 @@ public class HtmlAssets {
     final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
       public Boolean apply(final String it) {
         boolean _exists = HtmlAssets.this.exists(fsa, it);
-        boolean _not = (!_exists);
-        return Boolean.valueOf(_not);
+        return Boolean.valueOf((!_exists));
       }
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(files, _function);

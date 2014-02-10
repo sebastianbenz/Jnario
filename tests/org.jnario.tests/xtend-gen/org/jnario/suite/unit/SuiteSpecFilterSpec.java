@@ -58,12 +58,11 @@ public class SuiteSpecFilterSpec {
     EClass _suite = this._suitePackage.getSuite();
     IEObjectDescription _desc = this.desc(_suite);
     boolean _apply = this.subject.apply(_desc);
-    boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_apply), true);
     Assert.assertTrue("\nExpected subject.apply(desc(suite)) => true but"
      + "\n     subject.apply(desc(suite)) is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_apply)).toString()
      + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
      + "\n     desc(suite) is " + new org.hamcrest.StringDescription().appendValue(_desc).toString()
-     + "\n     suite is " + new org.hamcrest.StringDescription().appendValue(_suite).toString() + "\n", _doubleArrow);
+     + "\n     suite is " + new org.hamcrest.StringDescription().appendValue(_suite).toString() + "\n", Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_apply), true));
     
   }
   
@@ -74,12 +73,11 @@ public class SuiteSpecFilterSpec {
     EClass _feature = this._featurePackage.getFeature();
     IEObjectDescription _desc = this.desc(_feature);
     boolean _apply = this.subject.apply(_desc);
-    boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_apply), true);
     Assert.assertTrue("\nExpected subject.apply(desc(feature)) => true but"
      + "\n     subject.apply(desc(feature)) is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_apply)).toString()
      + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
      + "\n     desc(feature) is " + new org.hamcrest.StringDescription().appendValue(_desc).toString()
-     + "\n     feature is " + new org.hamcrest.StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
+     + "\n     feature is " + new org.hamcrest.StringDescription().appendValue(_feature).toString() + "\n", Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_apply), true));
     
   }
   
@@ -89,11 +87,10 @@ public class SuiteSpecFilterSpec {
   public void _rootSpecsPass() throws Exception {
     IEObjectDescription _rootSpec = this.rootSpec();
     boolean _apply = this.subject.apply(_rootSpec);
-    boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_apply), true);
     Assert.assertTrue("\nExpected subject.apply(rootSpec) => true but"
      + "\n     subject.apply(rootSpec) is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_apply)).toString()
      + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
-     + "\n     rootSpec is " + new org.hamcrest.StringDescription().appendValue(_rootSpec).toString() + "\n", _doubleArrow);
+     + "\n     rootSpec is " + new org.hamcrest.StringDescription().appendValue(_rootSpec).toString() + "\n", Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_apply), true));
     
   }
   
@@ -103,28 +100,24 @@ public class SuiteSpecFilterSpec {
   public void _childSpecsFail() throws Exception {
     IEObjectDescription _childSpec = this.childSpec();
     boolean _apply = this.subject.apply(_childSpec);
-    boolean _doubleArrow = Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_apply), false);
     Assert.assertTrue("\nExpected subject.apply(childSpec) => false but"
      + "\n     subject.apply(childSpec) is " + new org.hamcrest.StringDescription().appendValue(Boolean.valueOf(_apply)).toString()
      + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
-     + "\n     childSpec is " + new org.hamcrest.StringDescription().appendValue(_childSpec).toString() + "\n", _doubleArrow);
+     + "\n     childSpec is " + new org.hamcrest.StringDescription().appendValue(_childSpec).toString() + "\n", Should.<Boolean>operator_doubleArrow(Boolean.valueOf(_apply), false));
     
   }
   
   public IEObjectDescription desc(final EClass type) {
     Suite _suite = Suites.suite("mySuite");
-    IEObjectDescription _create = EObjectDescription.create("name", _suite);
-    return _create;
+    return EObjectDescription.create("name", _suite);
   }
   
   public IEObjectDescription rootSpec() {
-    IEObjectDescription _spec = this.spec(SpecResourceDescriptionStrategy.TRUE);
-    return _spec;
+    return this.spec(SpecResourceDescriptionStrategy.TRUE);
   }
   
   public IEObjectDescription childSpec() {
-    IEObjectDescription _spec = this.spec(SpecResourceDescriptionStrategy.FALSE);
-    return _spec;
+    return this.spec(SpecResourceDescriptionStrategy.FALSE);
   }
   
   public IEObjectDescription spec(final String value) {
@@ -133,8 +126,7 @@ public class SuiteSpecFilterSpec {
       final ExampleGroup spec = Specs.exampleGroup("name");
       Pair<String,String> _mappedTo = Pair.<String, String>of(SpecResourceDescriptionStrategy.ROOT_SPEC, value);
       Map<String,String> _map = JnarioCollectionLiterals.<String, String>map(_mappedTo);
-      IEObjectDescription _create = EObjectDescription.create("name", spec, _map);
-      _xblockexpression = (_create);
+      _xblockexpression = (EObjectDescription.create("name", spec, _map));
     }
     return _xblockexpression;
   }

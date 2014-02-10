@@ -52,8 +52,7 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingFailedSpecRuns 
   @Order(0)
   @Named("Given a specification")
   public void _givenASpecification() {
-    StepArguments _stepArguments = new StepArguments("package example\n\ndescribe \"Adding values\"{\n\tfact \"4 + 3 is 8\"{\n\t\t4 + 3 => 8\n\t}\n}\n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("package example\n\ndescribe \"Adding values\"{\n\tfact \"4 + 3 is 8\"{\n\t\t4 + 3 => 8\n\t}\n}\n");
     String _first = JnarioIterableExtensions.<String>first(args);
     Resource _parseSpec = this._modelStore.parseSpec(_first);
     TreeIterator<EObject> _allContents = _parseSpec.getAllContents();
@@ -66,8 +65,7 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingFailedSpecRuns 
   @Order(1)
   @Named("And a test result xml file")
   public void _andATestResultXmlFile() {
-    StepArguments _stepArguments = new StepArguments("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<testsuite failures=\"1\" time=\"0.017\" errors=\"0\" skipped=\"0\" tests=\"1\" name=\"example.AddingValuesSpec\">\n  <properties>\n    <property name=\"java.runtime.name\" value=\"Java(TM) SE Runtime Environment\"/>\n  </properties>\n  <testcase time=\"0.017\" classname=\"example.AddingValuesSpec\" name=\"4 + 3 is 8\">\n    <failure message=\"\nExpected 4 + 3 =&gt; 8 but\n     4 + 3 is &lt;7&gt;\n\" type=\"java.lang.AssertionError\">java.lang.AssertionError: \nExpected 4 + 3 =&gt; 8 but\n     4 + 3 is &lt;7&gt;\n\tat org.junit.Assert.fail(Assert.java:93)\n\tat org.junit.Assert.assertTrue(Assert.java:43)\n\tat example.AddingValuesSpec.__43Is8(AddingValuesSpec.java:22)\n</failure>\n  </testcase>\n</testsuite>\t\n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<testsuite failures=\"1\" time=\"0.017\" errors=\"0\" skipped=\"0\" tests=\"1\" name=\"example.AddingValuesSpec\">\n  <properties>\n    <property name=\"java.runtime.name\" value=\"Java(TM) SE Runtime Environment\"/>\n  </properties>\n  <testcase time=\"0.017\" classname=\"example.AddingValuesSpec\" name=\"4 + 3 is 8\">\n    <failure message=\"\nExpected 4 + 3 =&gt; 8 but\n     4 + 3 is &lt;7&gt;\n\" type=\"java.lang.AssertionError\">java.lang.AssertionError: \nExpected 4 + 3 =&gt; 8 but\n     4 + 3 is &lt;7&gt;\n\tat org.junit.Assert.fail(Assert.java:93)\n\tat org.junit.Assert.assertTrue(Assert.java:43)\n\tat example.AddingValuesSpec.__43Is8(AddingValuesSpec.java:22)\n</failure>\n  </testcase>\n</testsuite>\t\n");
     String _first = JnarioIterableExtensions.<String>first(args);
     String _trim = _first.trim();
     StringInputStream _stringInputStream = new StringInputStream(_trim);
@@ -78,8 +76,7 @@ public class ParsingSpecResultsFromJUnitXMLReportsFeatureMatchingFailedSpecRuns 
   @Order(2)
   @Named("Then the spec execution \\\"failed\\\"")
   public void _thenTheSpecExecutionFailed() {
-    StepArguments _stepArguments = new StepArguments("failed");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("failed");
     final SpecExecution result = this.spec2ResultMapping.getResult(this.specification);
     String _first = JnarioIterableExtensions.<String>first(args);
     boolean _equals = Objects.equal(_first, "passed");

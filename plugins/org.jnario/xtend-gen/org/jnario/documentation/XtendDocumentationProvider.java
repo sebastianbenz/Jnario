@@ -20,8 +20,7 @@ public class XtendDocumentationProvider extends MultiLineCommentDocumentationPro
       if (_not) {
         return null;
       }
-      String _documentation = super.getDocumentation(o);
-      _xblockexpression = (_documentation);
+      _xblockexpression = (super.getDocumentation(o));
     }
     return _xblockexpression;
   }
@@ -34,8 +33,7 @@ public class XtendDocumentationProvider extends MultiLineCommentDocumentationPro
       if (_not) {
         return CollectionLiterals.<INode>emptyList();
       }
-      List<INode> _documentationNodes = super.getDocumentationNodes(o);
-      _xblockexpression = (_documentationNodes);
+      _xblockexpression = (super.getDocumentationNodes(o));
     }
     return _xblockexpression;
   }
@@ -50,9 +48,8 @@ public class XtendDocumentationProvider extends MultiLineCommentDocumentationPro
     } else {
       EStructuralFeature _eContainingFeature = o.eContainingFeature();
       boolean _equals = Objects.equal(_eContainingFeature, XtendPackage.Literals.XTEND_MEMBER__ANNOTATION_INFO);
-      _and = ((o instanceof XtendAnnotationTarget) && _equals);
+      _and = _equals;
     }
-    boolean _not = (!_and);
-    return _not;
+    return (!_and);
   }
 }

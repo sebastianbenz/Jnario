@@ -55,14 +55,13 @@ public class FeatureExecutableProviderSpec {
     Scenario _scenario_1 = this._modelStore.scenario("Scenario: My first Scenario");
     Scenario _scenario_2 = this._modelStore.scenario("Scenario: My second Scenario");
     List<Scenario> _list = JnarioCollectionLiterals.<Scenario>list(_scenario, _scenario_1, _scenario_2);
-    boolean _doubleArrow = Should.<List<? extends Executable>>operator_doubleArrow(_executables, _list);
     Assert.assertTrue("\nExpected feature().executables => list(scenario(\"Background: My Background\"), scenario(\"Scenario: My first Scenario\"), scenario(\"Scenario: My second Scenario\")) but"
      + "\n     feature().executables is " + new org.hamcrest.StringDescription().appendValue(_executables).toString()
      + "\n     feature() is " + new org.hamcrest.StringDescription().appendValue(_feature).toString()
      + "\n     list(scenario(\"Background: My Background\"), scenario(\"Scenario: My first Scenario\"), scenario(\"Scenario: My second Scenario\")) is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
      + "\n     scenario(\"Background: My Background\") is " + new org.hamcrest.StringDescription().appendValue(_scenario).toString()
      + "\n     scenario(\"Scenario: My first Scenario\") is " + new org.hamcrest.StringDescription().appendValue(_scenario_1).toString()
-     + "\n     scenario(\"Scenario: My second Scenario\") is " + new org.hamcrest.StringDescription().appendValue(_scenario_2).toString() + "\n", _doubleArrow);
+     + "\n     scenario(\"Scenario: My second Scenario\") is " + new org.hamcrest.StringDescription().appendValue(_scenario_2).toString() + "\n", Should.<List<? extends Executable>>operator_doubleArrow(_executables, _list));
     
   }
   
@@ -83,12 +82,11 @@ public class FeatureExecutableProviderSpec {
     List<? extends Executable> _executables = this.executables(_scenario);
     Step _step = this._modelStore.step("Given something");
     List<Step> _list = JnarioCollectionLiterals.<Step>list(_step);
-    boolean _doubleArrow = Should.<List<? extends Executable>>operator_doubleArrow(_executables, _list);
     Assert.assertTrue("\nExpected scenario(\"Scenario: My first Scenario\").executables => list(step(\"Given something\")) but"
      + "\n     scenario(\"Scenario: My first Scenario\").executables is " + new org.hamcrest.StringDescription().appendValue(_executables).toString()
      + "\n     scenario(\"Scenario: My first Scenario\") is " + new org.hamcrest.StringDescription().appendValue(_scenario).toString()
      + "\n     list(step(\"Given something\")) is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
-     + "\n     step(\"Given something\") is " + new org.hamcrest.StringDescription().appendValue(_step).toString() + "\n", _doubleArrow);
+     + "\n     step(\"Given something\") is " + new org.hamcrest.StringDescription().appendValue(_step).toString() + "\n", Should.<List<? extends Executable>>operator_doubleArrow(_executables, _list));
     
   }
   
@@ -113,18 +111,16 @@ public class FeatureExecutableProviderSpec {
     Step _step = this._modelStore.step("Given something");
     Step _step_1 = this._modelStore.step("And something else");
     List<Step> _list = JnarioCollectionLiterals.<Step>list(_step, _step_1);
-    boolean _doubleArrow = Should.<List<? extends Executable>>operator_doubleArrow(_executables, _list);
     Assert.assertTrue("\nExpected scenario(\"Scenario: My first Scenario\").executables => list(step(\"Given something\"), step(\"And something else\")) but"
      + "\n     scenario(\"Scenario: My first Scenario\").executables is " + new org.hamcrest.StringDescription().appendValue(_executables).toString()
      + "\n     scenario(\"Scenario: My first Scenario\") is " + new org.hamcrest.StringDescription().appendValue(_scenario).toString()
      + "\n     list(step(\"Given something\"), step(\"And something else\")) is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
      + "\n     step(\"Given something\") is " + new org.hamcrest.StringDescription().appendValue(_step).toString()
-     + "\n     step(\"And something else\") is " + new org.hamcrest.StringDescription().appendValue(_step_1).toString() + "\n", _doubleArrow);
+     + "\n     step(\"And something else\") is " + new org.hamcrest.StringDescription().appendValue(_step_1).toString() + "\n", Should.<List<? extends Executable>>operator_doubleArrow(_executables, _list));
     
   }
   
   public List<? extends Executable> executables(final Executable spec) {
-    List<? extends Executable> _executables = this.subject.getExecutables(spec);
-    return _executables;
+    return this.subject.getExecutables(spec);
   }
 }
