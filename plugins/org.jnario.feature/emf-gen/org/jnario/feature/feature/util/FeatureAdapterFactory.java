@@ -9,22 +9,35 @@ package org.jnario.feature.feature.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendExecutable;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
-
 import org.jnario.Executable;
 import org.jnario.Specification;
-
-import org.jnario.feature.feature.*;
+import org.jnario.feature.feature.And;
+import org.jnario.feature.feature.AndReference;
+import org.jnario.feature.feature.Background;
+import org.jnario.feature.feature.But;
+import org.jnario.feature.feature.ButReference;
+import org.jnario.feature.feature.Feature;
+import org.jnario.feature.feature.FeatureFile;
+import org.jnario.feature.feature.FeaturePackage;
+import org.jnario.feature.feature.Given;
+import org.jnario.feature.feature.GivenReference;
+import org.jnario.feature.feature.Scenario;
+import org.jnario.feature.feature.Step;
+import org.jnario.feature.feature.StepImplementation;
+import org.jnario.feature.feature.StepReference;
+import org.jnario.feature.feature.Then;
+import org.jnario.feature.feature.ThenReference;
+import org.jnario.feature.feature.When;
+import org.jnario.feature.feature.WhenReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -203,6 +216,11 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 			public Adapter caseSpecification(Specification object)
 			{
 				return createSpecificationAdapter();
+			}
+			@Override
+			public Adapter caseXtendExecutable(XtendExecutable object)
+			{
+				return createXtendExecutableAdapter();
 			}
 			@Override
 			public Adapter caseXtendFunction(XtendFunction object)
@@ -577,6 +595,21 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createSpecificationAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendExecutable <em>Executable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtend.core.xtend.XtendExecutable
+	 * @generated
+	 */
+	public Adapter createXtendExecutableAdapter()
 	{
 		return null;
 	}

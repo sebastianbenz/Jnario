@@ -72,7 +72,7 @@ class SuiteBatchCompilerTest {
 	@Test
 	def void testCompileTestData() {
 		#[new FeatureStandaloneSetup, new SpecStandaloneSetup, new SuiteStandaloneSetup].forEach[
-			val compiler = createInjectorAndDoEMFRegistration.getInstance(XtendBatchCompiler)
+			val compiler = it.createInjectorAndDoEMFRegistration.getInstance(XtendBatchCompiler)
 			compile(compiler)
 		]
 

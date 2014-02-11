@@ -19,6 +19,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtend.core.formatting.FormatterPreferenceValuesProvider;
+import org.eclipse.xtend.core.linking.Linker;
+import org.eclipse.xtend.ide.EclipseBuilderAwareLinker;
 import org.eclipse.xtend.ide.XtendPreferenceStoreInitializer;
 import org.eclipse.xtend.ide.XtendResourceUiServiceProvider;
 import org.eclipse.xtend.ide.autoedit.AutoEditStrategyProvider;
@@ -441,10 +443,6 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 		return XtendSourceViewerConfiguration.class;
 	}
 
-	public Class<? extends DocumentTokenSource> bindDocumentTokenSource(){
-		return XtendDocumentTokenSource.class;
-	}
-	
 	public Class<? extends ResourceDescriptionsProvider> bindResourceDescriptionsProvider() {
 		return XtendResourceDescriptionsProvider.class;
 	}
@@ -481,6 +479,10 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 	
 	public Class<? extends IContentProposalPriorities> bindIContentProposalPriorities() {
 		return XbaseContentProposalPriorities.class;
+	}
+	
+	public Class<? extends Linker> bindLinker() {
+		return EclipseBuilderAwareLinker.class;
 	}
 	
 }

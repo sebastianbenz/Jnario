@@ -19,6 +19,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtend.core.formatting.FormatterPreferenceValuesProvider;
+import org.eclipse.xtend.core.linking.Linker;
+import org.eclipse.xtend.ide.EclipseBuilderAwareLinker;
 import org.eclipse.xtend.ide.XtendPreferenceStoreInitializer;
 import org.eclipse.xtend.ide.XtendResourceUiServiceProvider;
 import org.eclipse.xtend.ide.autoedit.AutoEditStrategyProvider;
@@ -40,7 +42,6 @@ import org.eclipse.xtend.ide.editor.SingleLineCommentHelper;
 import org.eclipse.xtend.ide.editor.XtendDoubleClickStrategyProvider;
 import org.eclipse.xtend.ide.editor.XtendNatureAddingEditorCallback;
 import org.eclipse.xtend.ide.editor.XtendSourceViewerConfiguration;
-import org.eclipse.xtend.ide.editor.model.XtendDocumentTokenSource;
 import org.eclipse.xtend.ide.formatting.FormatterFactory;
 import org.eclipse.xtend.ide.formatting.preferences.FormatterResourceProvider;
 import org.eclipse.xtend.ide.highlighting.RichStringAwareTokenScanner;
@@ -88,8 +89,10 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
 import org.eclipse.xtext.ui.editor.contentassist.IContentAssistantFactory;
 import org.eclipse.xtext.ui.editor.contentassist.IContentProposalPriorities;
 import org.eclipse.xtext.ui.editor.contentassist.IContextInformationProvider;
+import org.eclipse.xtext.ui.editor.contentassist.IProposalConflictHelper;
 import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher;
+import org.eclipse.xtext.ui.editor.contentassist.antlr.AntlrProposalConflictHelper;
 import org.eclipse.xtext.ui.editor.copyqualifiedname.CopyQualifiedNameService;
 import org.eclipse.xtext.ui.editor.doubleClicking.DoubleClickStrategyProvider;
 import org.eclipse.xtext.ui.editor.embedded.IEditedResourceProvider;
@@ -100,7 +103,6 @@ import org.eclipse.xtext.ui.editor.formatting.IContentFormatterFactory;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.hover.html.IEObjectHoverDocumentationProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper;
-import org.eclipse.xtext.ui.editor.model.DocumentTokenSource;
 import org.eclipse.xtext.ui.editor.model.IResourceForEditorInputFactory;
 import org.eclipse.xtext.ui.editor.model.ITokenTypeToPartitionTypeMapper;
 import org.eclipse.xtext.ui.editor.model.TerminalsTokenTypeToPartitionMapper;
@@ -436,10 +438,6 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 		return XtendSourceViewerConfiguration.class;
 	}
 
-	public Class<? extends DocumentTokenSource> bindDocumentTokenSource(){
-		return XtendDocumentTokenSource.class;
-	}
-
 	@Override
 	public Class<? extends IContentAssistantFactory> bindIContentAssistantFactory() {
 		return XtendContentAssistFactory.class;
@@ -496,6 +494,16 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 	
 	public Class<? extends IContentProposalPriorities> bindIContentProposalPriorities() {
 		return XbaseContentProposalPriorities.class;
+	}
+	
+
+	@Override
+	public Class<? extends IProposalConflictHelper> bindIProposalConflictHelper() {
+		return AntlrProposalConflictHelper.class;
+	}
+	
+	public Class<? extends Linker> bindLinker() {
+		return EclipseBuilderAwareLinker.class;
 	}
 	
 	

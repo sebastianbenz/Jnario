@@ -285,49 +285,13 @@ public interface SpecPackage extends EPackage
 	int TEST_FUNCTION__DECLARING_TYPE = XtendPackage.XTEND_FUNCTION__DECLARING_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_FUNCTION__NAME = XtendPackage.XTEND_FUNCTION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_FUNCTION__EXPRESSION = XtendPackage.XTEND_FUNCTION__EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_FUNCTION__RETURN_TYPE = XtendPackage.XTEND_FUNCTION__RETURN_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_FUNCTION__PARAMETERS = XtendPackage.XTEND_FUNCTION__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_FUNCTION__CREATE_EXTENSION_INFO = XtendPackage.XTEND_FUNCTION__CREATE_EXTENSION_INFO;
+	int TEST_FUNCTION__EXCEPTIONS = XtendPackage.XTEND_FUNCTION__EXCEPTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
@@ -339,13 +303,49 @@ public interface SpecPackage extends EPackage
 	int TEST_FUNCTION__TYPE_PARAMETERS = XtendPackage.XTEND_FUNCTION__TYPE_PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_FUNCTION__EXCEPTIONS = XtendPackage.XTEND_FUNCTION__EXCEPTIONS;
+	int TEST_FUNCTION__EXPRESSION = XtendPackage.XTEND_FUNCTION__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__PARAMETERS = XtendPackage.XTEND_FUNCTION__PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__NAME = XtendPackage.XTEND_FUNCTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__RETURN_TYPE = XtendPackage.XTEND_FUNCTION__RETURN_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_FUNCTION__CREATE_EXTENSION_INFO = XtendPackage.XTEND_FUNCTION__CREATE_EXTENSION_INFO;
 
 	/**
 	 * The number of structural features of the '<em>Test Function</em>' class.
@@ -403,49 +403,13 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE__DECLARING_TYPE = TEST_FUNCTION__DECLARING_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE__NAME = TEST_FUNCTION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE__EXPRESSION = TEST_FUNCTION__EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE__RETURN_TYPE = TEST_FUNCTION__RETURN_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE__PARAMETERS = TEST_FUNCTION__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE__CREATE_EXTENSION_INFO = TEST_FUNCTION__CREATE_EXTENSION_INFO;
+	int EXAMPLE__EXCEPTIONS = TEST_FUNCTION__EXCEPTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
@@ -457,13 +421,49 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE__TYPE_PARAMETERS = TEST_FUNCTION__TYPE_PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE__EXCEPTIONS = TEST_FUNCTION__EXCEPTIONS;
+	int EXAMPLE__EXPRESSION = TEST_FUNCTION__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__PARAMETERS = TEST_FUNCTION__PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__NAME = TEST_FUNCTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__RETURN_TYPE = TEST_FUNCTION__RETURN_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__CREATE_EXTENSION_INFO = TEST_FUNCTION__CREATE_EXTENSION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -539,49 +539,13 @@ public interface SpecPackage extends EPackage
 	int BEFORE__DECLARING_TYPE = TEST_FUNCTION__DECLARING_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BEFORE__NAME = TEST_FUNCTION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEFORE__EXPRESSION = TEST_FUNCTION__EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEFORE__RETURN_TYPE = TEST_FUNCTION__RETURN_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEFORE__PARAMETERS = TEST_FUNCTION__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEFORE__CREATE_EXTENSION_INFO = TEST_FUNCTION__CREATE_EXTENSION_INFO;
+	int BEFORE__EXCEPTIONS = TEST_FUNCTION__EXCEPTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
@@ -593,13 +557,49 @@ public interface SpecPackage extends EPackage
 	int BEFORE__TYPE_PARAMETERS = TEST_FUNCTION__TYPE_PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BEFORE__EXCEPTIONS = TEST_FUNCTION__EXCEPTIONS;
+	int BEFORE__EXPRESSION = TEST_FUNCTION__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__PARAMETERS = TEST_FUNCTION__PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__NAME = TEST_FUNCTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__RETURN_TYPE = TEST_FUNCTION__RETURN_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEFORE__CREATE_EXTENSION_INFO = TEST_FUNCTION__CREATE_EXTENSION_INFO;
 
 	/**
 	 * The number of structural features of the '<em>Before</em>' class.
@@ -657,49 +657,13 @@ public interface SpecPackage extends EPackage
 	int AFTER__DECLARING_TYPE = TEST_FUNCTION__DECLARING_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AFTER__NAME = TEST_FUNCTION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AFTER__EXPRESSION = TEST_FUNCTION__EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AFTER__RETURN_TYPE = TEST_FUNCTION__RETURN_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AFTER__PARAMETERS = TEST_FUNCTION__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AFTER__CREATE_EXTENSION_INFO = TEST_FUNCTION__CREATE_EXTENSION_INFO;
+	int AFTER__EXCEPTIONS = TEST_FUNCTION__EXCEPTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
@@ -711,13 +675,49 @@ public interface SpecPackage extends EPackage
 	int AFTER__TYPE_PARAMETERS = TEST_FUNCTION__TYPE_PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AFTER__EXCEPTIONS = TEST_FUNCTION__EXCEPTIONS;
+	int AFTER__EXPRESSION = TEST_FUNCTION__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__PARAMETERS = TEST_FUNCTION__PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__NAME = TEST_FUNCTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__RETURN_TYPE = TEST_FUNCTION__RETURN_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Create Extension Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFTER__CREATE_EXTENSION_INFO = TEST_FUNCTION__CREATE_EXTENSION_INFO;
 
 	/**
 	 * The number of structural features of the '<em>After</em>' class.
