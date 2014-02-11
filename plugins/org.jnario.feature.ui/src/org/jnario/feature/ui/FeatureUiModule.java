@@ -20,6 +20,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtend.core.formatting.FormatterPreferenceValuesProvider;
+import org.eclipse.xtend.core.linking.Linker;
+import org.eclipse.xtend.ide.EclipseBuilderAwareLinker;
 import org.eclipse.xtend.ide.XtendPreferenceStoreInitializer;
 import org.eclipse.xtend.ide.XtendResourceUiServiceProvider;
 import org.eclipse.xtend.ide.autoedit.TokenTypeToPartitionMapper;
@@ -38,7 +40,6 @@ import org.eclipse.xtend.ide.editor.RichStringAwareToggleCommentAction;
 import org.eclipse.xtend.ide.editor.SingleLineCommentHelper;
 import org.eclipse.xtend.ide.editor.XtendNatureAddingEditorCallback;
 import org.eclipse.xtend.ide.editor.XtendSourceViewerConfiguration;
-import org.eclipse.xtend.ide.editor.model.XtendDocumentTokenSource;
 import org.eclipse.xtend.ide.formatting.preferences.FormatterResourceProvider;
 import org.eclipse.xtend.ide.highlighting.RichStringAwareTokenScanner;
 import org.eclipse.xtend.ide.highlighting.ShowWhitespaceCharactersActionContributor;
@@ -95,7 +96,6 @@ import org.eclipse.xtext.ui.editor.formatting.IContentFormatterFactory;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.hover.html.IEObjectHoverDocumentationProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper;
-import org.eclipse.xtext.ui.editor.model.DocumentTokenSource;
 import org.eclipse.xtext.ui.editor.model.IResourceForEditorInputFactory;
 import org.eclipse.xtext.ui.editor.model.ITokenTypeToPartitionTypeMapper;
 import org.eclipse.xtext.ui.editor.model.TerminalsTokenTypeToPartitionMapper;
@@ -230,7 +230,6 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
-		binder.bind(XtextEditor.class).to(FeatureEditor.class);
 		binder.bind(DefaultIndentLineAutoEditStrategy.class).to(FeatureIndentLineAutoEditStrategy.class);
 		binder.bind(CreateXtendTypeQuickfixes.class).to(CreateJnarioTypeQuickfixes.class);
 		binder.bind(CreateMemberQuickfixes.class).to(FeatureCreateMemberQuickfixes.class);
@@ -480,15 +479,10 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 		return XtendSourceViewerConfiguration.class;
 	}
 
-	public Class<? extends DocumentTokenSource> bindDocumentTokenSource(){
-		return XtendDocumentTokenSource.class;
-	}
-	
 	@Override
 	public Class<? extends ILabelProvider> bindILabelProvider() {
 		return FeatureLabelProvider.class;
 	}
-	
 
 	public Class<? extends ResourceDescriptionsProvider> bindResourceDescriptionsProvider() {
 		return XtendResourceDescriptionsProvider.class;
@@ -523,8 +517,13 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	public Class<? extends CopyQualifiedNameService> bindCopyQualifiedNameService() {
 		return XtendCopyQualifiedNameService.class;
 	}
-	
+
 	public Class<? extends IContentProposalPriorities> bindIContentProposalPriorities() {
 		return XbaseContentProposalPriorities.class;
+	}
+	
+	
+	public Class<? extends Linker> bindLinker() {
+		return EclipseBuilderAwareLinker.class;
 	}
 }
