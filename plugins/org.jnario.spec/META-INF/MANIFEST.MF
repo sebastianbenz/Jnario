@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
-Bundle-Version: 0.7.2.201402102059
+Bundle-Version: 0.7.2.201402112245
 Bundle-SymbolicName: org.jnario.spec; singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

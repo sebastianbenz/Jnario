@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.jnario.spec.ui
 Bundle-Vendor: BMW Car IT
-Bundle-Version: 0.7.2.201402102059
+Bundle-Version: 0.7.2.201402112245
 Bundle-SymbolicName: org.jnario.spec.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
