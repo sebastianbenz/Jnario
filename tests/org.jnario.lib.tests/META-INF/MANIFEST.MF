@@ -9,6 +9,6 @@ Require-Bundle: org.junit;bundle-version="4.8.2",
  org.jnario.lib;bundle-version="0.7.2",
  org.jnario;bundle-version="0.7.2",
  org.jnario.tests;bundle-version="0.7.2",
- org.eclipse.xtext.util;bundle-version="[2.5.1,2.6.0)",
+ org.eclipse.xtext.util;bundle-version="[2.5.1,2.5.2)",
  org.mockito;bundle-version="1.8.4",
  org.objenesis;bundle-version="0.7.2"
