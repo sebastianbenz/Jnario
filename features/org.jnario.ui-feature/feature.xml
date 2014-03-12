@@ -2,7 +2,7 @@
 <feature
       id="org.jnario.ui"
       label="%featureName"
-      version="0.7.2.201402112245"
+      version="0.7.3.201403122245"
       provider-name="%providerName">
 
    <description>
@@ -22,24 +22,24 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
    </license>
 
    <requires>
-      <import plugin="org.eclipse.xtext.ui" version="2.5.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.ui" version="2.5.3" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.editors"/>
       <import plugin="org.eclipse.ui.ide"/>
       <import plugin="org.eclipse.xtext.ui.shared"/>
       <import plugin="org.eclipse.ui"/>
-      <import plugin="org.eclipse.xtext.builder" version="2.5.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.builder" version="2.5.3" match="greaterOrEqual"/>
       <import plugin="org.antlr.runtime"/>
-      <import plugin="org.eclipse.xtext.common.types.ui" version="2.5.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.common.types.ui" version="2.5.3" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.ui.codetemplates.ui"/>
       <import plugin="org.eclipse.compare"/>
-      <import plugin="org.eclipse.xtext.xbase.ui" version="2.5.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase.ui" version="2.5.3" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.junit"/>
       <import plugin="org.eclipse.pde.ui"/>
-      <import plugin="org.jnario" version="0.7.2" match="greaterOrEqual"/>
+      <import plugin="org.jnario" version="0.7.3" match="greaterOrEqual"/>
       <import plugin="org.eclipse.debug.core" match="greaterOrEqual"/>
       <import plugin="org.eclipse.debug.ui" match="greaterOrEqual"/>
-      <import plugin="org.jnario.feature" version="0.7.2" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.xbase.lib" version="2.5.1" match="greaterOrEqual"/>
+      <import plugin="org.jnario.feature" version="0.7.3" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.5.3" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.ui"/>
       <import plugin="org.eclipse.jdt.core"/>
       <import plugin="org.apache.commons.logging"/>
@@ -48,11 +48,11 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
       <import plugin="org.jnario.spec"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtend.ide" version="2.5.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend.ide" version="2.5.3" match="greaterOrEqual"/>
       <import plugin="com.ibm.icu"/>
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.jnario.lib" version="0.7.2" match="greaterOrEqual"/>
+      <import plugin="org.jnario.lib" version="0.7.3" match="greaterOrEqual"/>
       <import plugin="org.jnario.suite"/>
       <import plugin="com.google.guava"/>
    </requires>

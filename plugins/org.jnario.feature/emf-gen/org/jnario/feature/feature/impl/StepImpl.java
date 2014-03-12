@@ -8,9 +8,8 @@
 package org.jnario.feature.feature.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
+import org.eclipse.xtend.core.xtend.impl.XtendFunctionImpl;
 import org.eclipse.xtend.core.xtend.impl.XtendFunctionImplCustom;
-
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Step;
 
@@ -21,7 +20,7 @@ import org.jnario.feature.feature.Step;
  * <p>
  * </p>
  *
- * @generated
+ * @generated NOT
  */
 public class StepImpl extends XtendFunctionImplCustom implements Step
 {
