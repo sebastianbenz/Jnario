@@ -61,9 +61,32 @@
 			<version>${xtend.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.eclipse.xtend</groupId>
+			<artifactId>org.eclipse.xtend.core</artifactId>
+			<version>${xtend.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext.dependencies</artifactId>
 			<version>${xtend.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.pegdown</groupId>
+			<artifactId>pegdown</artifactId>
+			<version>1.1.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>asm</artifactId>
+					<groupId>org.ow2.asm</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm-all</artifactId>
+			<version>3.3.1</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
