@@ -22,7 +22,7 @@ import org.jnario.feature.feature.Step;
  * <p>
  * </p>
  *
- * @generated
+ * @generated NOT
  */
 public class ScenarioImpl extends XtendClassImplCustom implements Scenario
 {
