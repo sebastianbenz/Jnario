@@ -132,7 +132,7 @@ public class SuiteDocGeneratorSpec {
       EObject _head = IterableExtensions.<EObject>head(_contents);
       HtmlFile _createHtmlFile = this.subject.createHtmlFile(((SuiteFile) _head));
       CharSequence _content = _createHtmlFile.getContent();
-      _xblockexpression = (_content.toString());
+      _xblockexpression = _content.toString();
     }
     return _xblockexpression;
   }

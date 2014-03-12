@@ -267,7 +267,7 @@ public class FeatureTokenSourceSpec {
       String _string_1 = text.toString();
       int _length = _string_1.length();
       final int stop = (_length - 1);
-      _xblockexpression = (new CommonToken(input, (-1), (-1), start, stop));
+      _xblockexpression = new CommonToken(input, (-1), (-1), start, stop);
     }
     return _xblockexpression;
   }

@@ -91,7 +91,7 @@ public class HtmlAssetsCompilerSpec {
       File _root = this._temporaryFolder.getRoot();
       String _absolutePath = _root.getAbsolutePath();
       this.subject.setOutputPath(_absolutePath);
-      _xblockexpression = (this.subject.compile());
+      _xblockexpression = this.subject.compile();
     }
     return _xblockexpression;
   }

@@ -35,4 +35,3 @@ Feature: Calculator
 			'''	
 			jnarioFile = args.first	
 		Then it should execute successfully
-	 	

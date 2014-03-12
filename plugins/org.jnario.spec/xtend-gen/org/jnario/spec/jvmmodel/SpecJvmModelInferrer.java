@@ -315,7 +315,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(element, Order.class, Integer.valueOf(this.exampleIndex));
       this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
       EList<JvmMember> _members = container.getMembers();
-      _xblockexpression = (this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, method));
+      _xblockexpression = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, method);
     }
     return _xblockexpression;
   }
@@ -363,7 +363,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
         around.apply(element, afterMethod);
       }
       EList<JvmMember> _members = container.getMembers();
-      _xblockexpression = (this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, afterMethod));
+      _xblockexpression = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, afterMethod);
     }
     return _xblockexpression;
   }
@@ -382,7 +382,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       EList<JvmTypeReference> _exceptions = result.getExceptions();
       JvmTypeReference _typeForName_1 = this._typeReferences.getTypeForName(Exception.class, element);
       this._extendedJvmTypesBuilder.<JvmTypeReference>operator_add(_exceptions, _typeForName_1);
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }
@@ -528,7 +528,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
           SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(constructor, _function_5);
         }
       };
-      _xblockexpression = (this._extendedJvmTypesBuilder.toClass(_xtendFile, _javaClassName, _function));
+      _xblockexpression = this._extendedJvmTypesBuilder.toClass(_xtendFile, _javaClassName, _function);
     }
     return _xblockexpression;
   }

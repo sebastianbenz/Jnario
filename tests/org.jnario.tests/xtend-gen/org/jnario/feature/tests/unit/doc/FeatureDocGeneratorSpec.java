@@ -220,7 +220,7 @@ public class FeatureDocGeneratorSpec {
       this.subject.doGenerate(resource, this.fsa, _mappingWithFailures);
       Map<String,CharSequence> _files = this.fsa.getFiles();
       Collection<CharSequence> _values = _files.values();
-      _xblockexpression = (JnarioIterableExtensions.<CharSequence>first(_values));
+      _xblockexpression = JnarioIterableExtensions.<CharSequence>first(_values);
     }
     return _xblockexpression;
   }

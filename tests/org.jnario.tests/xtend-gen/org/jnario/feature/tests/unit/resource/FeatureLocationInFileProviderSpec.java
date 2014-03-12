@@ -98,7 +98,7 @@ public class FeatureLocationInFileProviderSpec {
     Resource _xblockexpression = null;
     {
       this.content = s;
-      _xblockexpression = (this._modelStore.parseScenario(s));
+      _xblockexpression = this._modelStore.parseScenario(s);
     }
     return _xblockexpression;
   }

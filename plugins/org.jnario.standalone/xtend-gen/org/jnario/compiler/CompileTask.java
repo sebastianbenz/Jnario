@@ -146,7 +146,7 @@ public class CompileTask extends Task {
         Path _path = new Path(_project);
         this.classPath = _path;
       }
-      _xblockexpression = (this.classPath);
+      _xblockexpression = this.classPath;
     }
     return _xblockexpression;
   }
@@ -160,7 +160,7 @@ public class CompileTask extends Task {
         Path _path = new Path(_project);
         this.sourcePath = _path;
       }
-      _xblockexpression = (this.sourcePath);
+      _xblockexpression = this.sourcePath;
     }
     return _xblockexpression;
   }

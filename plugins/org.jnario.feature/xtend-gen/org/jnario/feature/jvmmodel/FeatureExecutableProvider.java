@@ -38,7 +38,7 @@ public class FeatureExecutableProvider implements ExecutableProvider {
       final ArrayList<Scenario> result = CollectionLiterals.<Scenario>newArrayList(_background_1);
       EList<Scenario> _scenarios = feature.getScenarios();
       result.addAll(_scenarios);
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }

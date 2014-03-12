@@ -94,7 +94,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
           it.setExecutionStatus(_executionStateClass);
         }
       };
-      _xblockexpression = (HtmlFile.newHtmlFile(_function));
+      _xblockexpression = HtmlFile.newHtmlFile(_function);
     }
     return _xblockexpression;
   }
@@ -122,7 +122,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
           it.setExecutionStatus(_executionStateClass);
         }
       };
-      _xblockexpression = (HtmlFile.newHtmlFile(_function));
+      _xblockexpression = HtmlFile.newHtmlFile(_function);
     }
     return _xblockexpression;
   }
@@ -246,7 +246,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
       String _plus_1 = (_plus + "/");
       String _javaClassName = this._suiteClassNameProvider.toJavaClassName(spec);
       String _htmlFileName = this.htmlFileName(_javaClassName);
-      _xblockexpression = ((_plus_1 + _htmlFileName));
+      _xblockexpression = (_plus_1 + _htmlFileName);
     }
     return _xblockexpression;
   }

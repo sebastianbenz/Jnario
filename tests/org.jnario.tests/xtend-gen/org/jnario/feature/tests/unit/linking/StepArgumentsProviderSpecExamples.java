@@ -5,7 +5,7 @@ import org.jnario.lib.ExampleTableRow;
 
 @SuppressWarnings("all")
 public class StepArgumentsProviderSpecExamples extends ExampleTableRow {
-  public StepArgumentsProviderSpecExamples(final List<String> cellNames, final String step, final List<? extends Object> expectedArgs) {
+  public StepArgumentsProviderSpecExamples(final List<String> cellNames, final String step, final List<?> expectedArgs) {
     super(cellNames);
     this.step = step;
     this.expectedArgs = expectedArgs;
@@ -18,9 +18,9 @@ public class StepArgumentsProviderSpecExamples extends ExampleTableRow {
     return this.step;
   }
   
-  private List<? extends Object> expectedArgs;
+  private List<?> expectedArgs;
   
-  public List<? extends Object> getExpectedArgs() {
+  public List<?> getExpectedArgs() {
     return this.expectedArgs;
   }
 }

@@ -72,7 +72,7 @@ public class WorldDeadCellsSpec extends WorldSpec {
       final Set<CellLocation> allNonLivingNeighbours = IterableExtensions.<CellLocation>toSet(_plus);
       allNonLivingNeighbours.remove(this.anotherLivingCell);
       allNonLivingNeighbours.remove(this.liveCell);
-      _xblockexpression = (allNonLivingNeighbours);
+      _xblockexpression = allNonLivingNeighbours;
     }
     return _xblockexpression;
   }

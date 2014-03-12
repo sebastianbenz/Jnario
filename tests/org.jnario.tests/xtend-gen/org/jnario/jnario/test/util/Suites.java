@@ -34,7 +34,7 @@ public class Suites {
       final Suite suite = Suites.suite(name);
       EList<Reference> _elements = suite.getElements();
       CollectionExtensions.<SpecReference>addAll(_elements, references);
-      _xblockexpression = (suite);
+      _xblockexpression = suite;
     }
     return _xblockexpression;
   }
@@ -44,7 +44,7 @@ public class Suites {
     {
       final Suite suite = Suites.factory.createSuite();
       suite.setName(name);
-      _xblockexpression = (suite);
+      _xblockexpression = suite;
     }
     return _xblockexpression;
   }
@@ -58,7 +58,7 @@ public class Suites {
       file.setPackage(packageName);
       EList<XtendTypeDeclaration> _xtendTypes = file.getXtendTypes();
       _xtendTypes.add(suite);
-      _xblockexpression = (suite);
+      _xblockexpression = suite;
     }
     return _xblockexpression;
   }
@@ -68,7 +68,7 @@ public class Suites {
     {
       final SpecReference result = Suites.factory.createSpecReference();
       result.setSpec(spec);
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }

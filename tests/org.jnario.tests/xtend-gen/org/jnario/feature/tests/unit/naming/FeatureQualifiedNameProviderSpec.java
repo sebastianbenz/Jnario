@@ -71,7 +71,7 @@ public class FeatureQualifiedNameProviderSpec {
       this._modelStore.parseScenario(input);
       Step _first = this._modelStore.<Step>first(Step.class);
       QualifiedName _fullyQualifiedName = this.subject.getFullyQualifiedName(_first);
-      _xblockexpression = (this.converter.toString(_fullyQualifiedName));
+      _xblockexpression = this.converter.toString(_fullyQualifiedName);
     }
     return _xblockexpression;
   }

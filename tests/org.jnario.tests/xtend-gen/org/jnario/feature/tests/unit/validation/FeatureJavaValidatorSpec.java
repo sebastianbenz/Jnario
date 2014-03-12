@@ -69,7 +69,7 @@ public class FeatureJavaValidatorSpec {
     AssertableDiagnostics _xblockexpression = null;
     {
       this.modelStore.parseScenario(input);
-      _xblockexpression = (this.validate(type));
+      _xblockexpression = this.validate(type);
     }
     return _xblockexpression;
   }

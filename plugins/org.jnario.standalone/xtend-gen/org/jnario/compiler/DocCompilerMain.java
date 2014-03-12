@@ -167,7 +167,7 @@ public class DocCompilerMain {
       final ResourceSet resourceSet = anyInjector.<ResourceSet>getInstance(ResourceSet.class);
       this.generateCssAndJsFiles(anyInjector);
       StandaloneResourceProvider _standaloneResourceProvider = new StandaloneResourceProvider(resourceSet);
-      _xblockexpression = (this.generateDocs(_standaloneResourceProvider));
+      _xblockexpression = this.generateDocs(_standaloneResourceProvider);
     }
     return _xblockexpression;
   }
@@ -225,7 +225,7 @@ public class DocCompilerMain {
       final HtmlAssetsCompiler assetsCompiler = injector.<HtmlAssetsCompiler>getInstance(HtmlAssetsCompiler.class);
       String _outputPath = this.getOutputPath();
       assetsCompiler.setOutputPath(_outputPath);
-      _xblockexpression = (assetsCompiler.compile());
+      _xblockexpression = assetsCompiler.compile();
     }
     return _xblockexpression;
   }

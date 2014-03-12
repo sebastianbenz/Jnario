@@ -51,7 +51,7 @@ public class ScopeTestExtension implements Iterable {
       XtextResourceSet _resourceSet = this.store.getResourceSet();
       Resources.addContainerStateAdapter(_resourceSet);
       IScope _scope = this._iScopeProvider.getScope(context, ref);
-      _xblockexpression = (this.scope(_scope));
+      _xblockexpression = this.scope(_scope);
     }
     return _xblockexpression;
   }

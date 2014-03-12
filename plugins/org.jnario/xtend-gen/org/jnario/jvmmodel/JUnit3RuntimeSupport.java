@@ -123,7 +123,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
         }
       };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(exampleGroup, methodName, voidType, _function);
-      _xblockexpression = (this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method));
+      _xblockexpression = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
     }
     return _xblockexpression;
   }
@@ -199,7 +199,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
         }
       };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(context, "suite", testType, _function);
-      _xblockexpression = (this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method));
+      _xblockexpression = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
     }
     return _xblockexpression;
   }
@@ -245,7 +245,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
         }
       };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(exampleGroup, "getName", stringType, _function_1);
-      _xblockexpression = (this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members_2, _method));
+      _xblockexpression = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members_2, _method);
     }
     return _xblockexpression;
   }

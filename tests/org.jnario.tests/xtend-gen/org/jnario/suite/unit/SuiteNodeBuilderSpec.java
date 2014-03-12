@@ -48,7 +48,7 @@ public class SuiteNodeBuilderSpec {
       _builder.append(s, "");
       _builder.newLineIfNotEmpty();
       final String input = _builder.toString();
-      _xblockexpression = (this.m.parseSuite(input));
+      _xblockexpression = this.m.parseSuite(input);
     }
     return _xblockexpression;
   }
@@ -67,7 +67,7 @@ public class SuiteNodeBuilderSpec {
     {
       final Suite suite = SuiteFactory.eINSTANCE.createSuite();
       suite.setName(name);
-      _xblockexpression = (suite);
+      _xblockexpression = suite;
     }
     return _xblockexpression;
   }

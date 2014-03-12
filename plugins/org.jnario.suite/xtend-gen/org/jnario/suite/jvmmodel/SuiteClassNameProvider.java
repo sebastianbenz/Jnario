@@ -55,7 +55,7 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
       } else {
         _xifexpression = name;
       }
-      _xblockexpression = (_xifexpression);
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }
@@ -69,7 +69,7 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
         return null;
       }
       String _className = Strings.toClassName(name);
-      _xblockexpression = ((_className + SuiteClassNameProvider.POSTFIX));
+      _xblockexpression = (_className + SuiteClassNameProvider.POSTFIX);
     }
     return _xblockexpression;
   }
@@ -115,7 +115,7 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
         return null;
       }
       final IResourceServiceProvider resourceServiceProvider = resource.getResourceServiceProvider();
-      _xblockexpression = (resourceServiceProvider.<JnarioNameProvider>get(JnarioNameProvider.class));
+      _xblockexpression = resourceServiceProvider.<JnarioNameProvider>get(JnarioNameProvider.class);
     }
     return _xblockexpression;
   }

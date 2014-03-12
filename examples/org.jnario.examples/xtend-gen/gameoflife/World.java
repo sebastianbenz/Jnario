@@ -45,7 +45,7 @@ public class World {
         }
       };
       IterableExtensions.<String>forEach(((Iterable<String>)Conversions.doWrapArray(_split)), _function);
-      _xblockexpression = (World.worldWith(cells));
+      _xblockexpression = World.worldWith(cells);
     }
     return _xblockexpression;
   }

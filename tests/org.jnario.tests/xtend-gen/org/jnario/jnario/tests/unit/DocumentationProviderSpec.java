@@ -93,7 +93,7 @@ public class DocumentationProviderSpec {
     String _xblockexpression = null;
     {
       this.comment = doc;
-      _xblockexpression = (this.subject.getDocumentation(null));
+      _xblockexpression = this.subject.getDocumentation(null);
     }
     return _xblockexpression;
   }

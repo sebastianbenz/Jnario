@@ -126,7 +126,7 @@ public class SpecResolver {
       };
       final Map<String,Specification> classNames = IterableExtensions.<String, Specification>toMap(withoutSuites, _function_4);
       Collection<Specification> _values = classNames.values();
-      _xblockexpression = (this.sort(_values));
+      _xblockexpression = this.sort(_values);
     }
     return _xblockexpression;
   }
@@ -155,7 +155,7 @@ public class SpecResolver {
           if (_or) {
             return 0;
           }
-          _xblockexpression = (leftName.compareToIgnoreCase(rightName));
+          _xblockexpression = leftName.compareToIgnoreCase(rightName);
         }
         return _xblockexpression;
       }

@@ -130,7 +130,7 @@ public class SpecResultParser extends DefaultHandler {
       this.failures.add(_specFailure);
       this.currentFailureType = null;
       StringBuilder _stringBuilder = new StringBuilder();
-      _xblockexpression = (this.currentFailureStacktrace = _stringBuilder);
+      _xblockexpression = this.currentFailureStacktrace = _stringBuilder;
     }
     return _xblockexpression;
   }
@@ -152,7 +152,7 @@ public class SpecResultParser extends DefaultHandler {
       String _cleanUp = this.cleanUp(_trim);
       message = _cleanUp;
       String _cleanUp_1 = this.cleanUp(stacktrace);
-      _xblockexpression = (Pair.<String, String>of(message, _cleanUp_1));
+      _xblockexpression = Pair.<String, String>of(message, _cleanUp_1);
     }
     return _xblockexpression;
   }

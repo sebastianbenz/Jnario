@@ -196,7 +196,7 @@ public class StepTypeProviderSpec {
       Scenario _firstScenario = this._modelStore.firstScenario();
       EList<Step> _steps = _firstScenario.getSteps();
       Step _last = IterableExtensions.<Step>last(_steps);
-      _xblockexpression = (this._stepTypeProvider.getActualType(_last));
+      _xblockexpression = this._stepTypeProvider.getActualType(_last);
     }
     return _xblockexpression;
   }
@@ -208,7 +208,7 @@ public class StepTypeProviderSpec {
       Scenario _firstScenario = this._modelStore.firstScenario();
       EList<Step> _steps = _firstScenario.getSteps();
       Step _last = IterableExtensions.<Step>last(_steps);
-      _xblockexpression = (this._stepTypeProvider.getExpectedTypes(_last));
+      _xblockexpression = this._stepTypeProvider.getExpectedTypes(_last);
     }
     return _xblockexpression;
   }

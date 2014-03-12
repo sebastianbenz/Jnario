@@ -77,7 +77,7 @@ public class ExampleNameProviderToJavaClassNameExampleTableSpec extends ExampleN
     {
       Query _parse = this.parse(s);
       final ExampleTable exampleTable = _parse.<ExampleTable>first(ExampleTable.class);
-      _xblockexpression = (this.subject.toJavaClassName(exampleTable));
+      _xblockexpression = this.subject.toJavaClassName(exampleTable);
     }
     return _xblockexpression;
   }

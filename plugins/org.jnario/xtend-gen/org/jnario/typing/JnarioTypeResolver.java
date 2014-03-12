@@ -106,7 +106,7 @@ public class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeRe
               EObject _head = IterableExtensions.<EObject>head(_jvmElements);
               final JvmIdentifiableElement operation = ((JvmIdentifiableElement) _head);
               final LightweightTypeReference type = resolvedTypes.getActualType(operation);
-              _xblockexpression = (type);
+              _xblockexpression = type;
             }
             return _xblockexpression;
           }

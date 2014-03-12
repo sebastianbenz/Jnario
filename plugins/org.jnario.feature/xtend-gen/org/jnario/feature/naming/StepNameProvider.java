@@ -43,7 +43,7 @@ public class StepNameProvider {
         return null;
       }
       EAttribute _xtendTypeDeclaration_Name = XtendPackage.eINSTANCE.getXtendTypeDeclaration_Name();
-      _xblockexpression = (Nodes.textForFeature(step, _xtendTypeDeclaration_Name));
+      _xblockexpression = Nodes.textForFeature(step, _xtendTypeDeclaration_Name);
     }
     return _xblockexpression;
   }
@@ -106,7 +106,7 @@ public class StepNameProvider {
     {
       String name = Strings.firstLine(text);
       String _removeArgumentValues = ArgumentsHelper.removeArgumentValues(name);
-      _xblockexpression = (_removeArgumentValues.trim());
+      _xblockexpression = _removeArgumentValues.trim();
     }
     return _xblockexpression;
   }

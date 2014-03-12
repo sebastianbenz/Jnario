@@ -33,7 +33,7 @@ public class SuiteValueConverter implements IValueConverter<String> {
       String _substring = value.substring(begin);
       String _replace = _substring.replace("-", "\\-");
       String _replace_1 = _replace.replace("#", "\\#");
-      _xblockexpression = ((prefix + _replace_1));
+      _xblockexpression = (prefix + _replace_1);
     }
     return _xblockexpression;
   }
@@ -50,7 +50,7 @@ public class SuiteValueConverter implements IValueConverter<String> {
       String _substring = string.substring(begin);
       String _replace = _substring.replace("\\-", "-");
       String _replace_1 = _replace.replace("\\#", "#");
-      _xblockexpression = ((prefix + _replace_1));
+      _xblockexpression = (prefix + _replace_1);
     }
     return _xblockexpression;
   }

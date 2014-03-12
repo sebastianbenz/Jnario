@@ -45,7 +45,7 @@ public class FeatureHoverProvider extends JnarioHoverProvider {
       _builder.append(_normalize, "");
       _builder.newLineIfNotEmpty();
       _builder.append("</pre>");
-      _xblockexpression = (_builder.toString());
+      _xblockexpression = _builder.toString();
     }
     return _xblockexpression;
   }
