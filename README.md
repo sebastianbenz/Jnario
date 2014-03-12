@@ -4,7 +4,7 @@
 
 Jnario is a framework for writing executable specifications for Java. It provides all the goodness of Xtend while being specifically tailored to writing acceptance and unit tests. It is easy to integrate as Jnario specifications are compiled to plain Java Junit tests. Head over to [Jnario.org](http://www.jnario.org) for more information.
 
-The curren version is 0.6.0 ([Release notes](release_notes.md)).
+See the [release notes](release_notes.md) for the current version.
 
 #Dependencies & Installation
 

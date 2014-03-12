@@ -1,5 +1,17 @@
 #Release Notes
 
+##Jnario 0.7.3
+
+* Compatible with Xtend 2.5.3
+
+##Jnario 0.7.2
+
+* Compatible with Xtend 2.5.1
+
+##Jnario 0.7.1
+
+* Fix: change how null matcher works due to changes in Xtend
+
 ##Jnario 0.7.0
 
 * Compatible with Xtend 2.5.0
