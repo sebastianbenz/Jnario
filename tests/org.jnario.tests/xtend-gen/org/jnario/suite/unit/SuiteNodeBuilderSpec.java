@@ -48,8 +48,7 @@ public class SuiteNodeBuilderSpec {
       _builder.append(s, "");
       _builder.newLineIfNotEmpty();
       final String input = _builder.toString();
-      Resource _parseSuite = this.m.parseSuite(input);
-      _xblockexpression = (_parseSuite);
+      _xblockexpression = (this.m.parseSuite(input));
     }
     return _xblockexpression;
   }
@@ -57,12 +56,10 @@ public class SuiteNodeBuilderSpec {
   public List<Suite> suites(final String... names) {
     final Function1<String,Suite> _function = new Function1<String,Suite>() {
       public Suite apply(final String it) {
-        Suite _suite = SuiteNodeBuilderSpec.this.suite(it);
-        return _suite;
+        return SuiteNodeBuilderSpec.this.suite(it);
       }
     };
-    List<Suite> _map = ListExtensions.<String, Suite>map(((List<String>)Conversions.doWrapArray(names)), _function);
-    return _map;
+    return ListExtensions.<String, Suite>map(((List<String>)Conversions.doWrapArray(names)), _function);
   }
   
   public Suite suite(final String name) {

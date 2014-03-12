@@ -39,8 +39,7 @@ public class ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps exten
   @Order(0)
   @Named("Given a feature")
   public void _givenAFeature() {
-    StepArguments _stepArguments = new StepArguments("Feature: Feature 1\nBackground:\nString testString\nGiven something\ntestString = \"test\"\nAnd it is upper case\ntestString.toUpperCase\nScenario: Scenario 1\n\t \t");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("Feature: Feature 1\nBackground:\nString testString\nGiven something\ntestString = \"test\"\nAnd it is upper case\ntestString.toUpperCase\nScenario: Scenario 1\n\t \t");
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;
   }
@@ -49,8 +48,7 @@ public class ReferencesForStepsFeatureBackgroundStepsReferencingOtherSteps exten
   @Order(1)
   @Named("When referencing the backround steps from another background")
   public void _whenReferencingTheBackroundStepsFromAnotherBackground() {
-    StepArguments _stepArguments = new StepArguments("Feature: Feature 2\nBackground:\nGiven something\nScenario: Scenario 2\nGiven it is upper case\n\t \t");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("Feature: Feature 2\nBackground:\nGiven something\nScenario: Scenario 2\nGiven it is upper case\n\t \t");
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile2 = _first;
   }

@@ -30,8 +30,7 @@ public class ReferencesForStepsFeatureStepsWithShortNames extends ReferencesForS
   @Order(0)
   @Named("When I have a scenario with references and short step names [1 word]")
   public void _whenIHaveAScenarioWithReferencesAndShortStepNames1Word() {
-    StepArguments _stepArguments = new StepArguments("package bootstrap\nimport java.util.*\nFeature: Test\n\tScenario: TestScenario1\n\t\tint x\n\t\tGiven step\n\t\t\tx = 3\n\tScenario: TestScenario2\n\t\tGiven step\n\t\tThen step\n\t\t\tx => 3\n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("package bootstrap\nimport java.util.*\nFeature: Test\n\tScenario: TestScenario1\n\t\tint x\n\t\tGiven step\n\t\t\tx = 3\n\tScenario: TestScenario2\n\t\tGiven step\n\t\tThen step\n\t\t\tx => 3\n");
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;
   }

@@ -122,12 +122,11 @@ public class SpecResolverSpec {
     List<String> _resolvedSpecs = this.resolvedSpecs(_firstSuite);
     Set<String> _set = IterableExtensions.<String>toSet(_resolvedSpecs);
     Set<String> _set_1 = JnarioCollectionLiterals.<String>set("MySpecSpec", "MyFeatureFeature");
-    boolean _doubleArrow = Should.<Set<String>>operator_doubleArrow(_set, _set_1);
     Assert.assertTrue("\nExpected resolvedSpecs(firstSuite).toSet => set(\"MySpecSpec\", \"MyFeatureFeature\") but"
      + "\n     resolvedSpecs(firstSuite).toSet is " + new org.hamcrest.StringDescription().appendValue(_set).toString()
      + "\n     resolvedSpecs(firstSuite) is " + new org.hamcrest.StringDescription().appendValue(_resolvedSpecs).toString()
      + "\n     firstSuite is " + new org.hamcrest.StringDescription().appendValue(_firstSuite).toString()
-     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + new org.hamcrest.StringDescription().appendValue(_set_1).toString() + "\n", _doubleArrow);
+     + "\n     set(\"MySpecSpec\", \"MyFeatureFeature\") is " + new org.hamcrest.StringDescription().appendValue(_set_1).toString() + "\n", Should.<Set<String>>operator_doubleArrow(_set, _set_1));
     
   }
   
@@ -140,13 +139,12 @@ public class SpecResolverSpec {
     final Suite suite = Suites.suiteWith("A Suite", _specReference);
     List<Specification> _resolveSpecs = this.subject.resolveSpecs(suite);
     List<ExampleGroup> _list = JnarioCollectionLiterals.<ExampleGroup>list(specWithoutName);
-    boolean _doubleArrow = Should.<List<? extends Specification>>operator_doubleArrow(_resolveSpecs, _list);
     Assert.assertTrue("\nExpected subject.resolveSpecs(suite) => list(specWithoutName) but"
      + "\n     subject.resolveSpecs(suite) is " + new org.hamcrest.StringDescription().appendValue(_resolveSpecs).toString()
      + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
      + "\n     suite is " + new org.hamcrest.StringDescription().appendValue(suite).toString()
      + "\n     list(specWithoutName) is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
-     + "\n     specWithoutName is " + new org.hamcrest.StringDescription().appendValue(specWithoutName).toString() + "\n", _doubleArrow);
+     + "\n     specWithoutName is " + new org.hamcrest.StringDescription().appendValue(specWithoutName).toString() + "\n", Should.<List<? extends Specification>>operator_doubleArrow(_resolveSpecs, _list));
     
   }
   
@@ -154,12 +152,10 @@ public class SpecResolverSpec {
     List<Specification> _resolveSpecs = this.subject.resolveSpecs(suite);
     final Function1<Specification,String> _function = new Function1<Specification,String>() {
       public String apply(final Specification it) {
-        String _javaClassName = SpecResolverSpec.this._suiteClassNameProvider.toJavaClassName(it);
-        return _javaClassName;
+        return SpecResolverSpec.this._suiteClassNameProvider.toJavaClassName(it);
       }
     };
     List<String> _map = ListExtensions.<Specification, String>map(_resolveSpecs, _function);
-    List<String> _list = IterableExtensions.<String>toList(_map);
-    return _list;
+    return IterableExtensions.<String>toList(_map);
   }
 }

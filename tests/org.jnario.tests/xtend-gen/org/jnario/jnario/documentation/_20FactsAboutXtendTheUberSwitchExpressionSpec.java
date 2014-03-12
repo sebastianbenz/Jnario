@@ -57,9 +57,8 @@ public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAbout
     if (!_matched) {
       _switchResult = "It\'s another short string.";
     }
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_switchResult, "It\'s another short string.");
     Assert.assertTrue("\nExpected switch myString {\r\n        case myString.length > 5 : \"a long string.\"\r\n        case \'some\'              : \"It\'s some string.\"\r\n        default                  : \"It\'s another short string.\"\r\n      } \r\n      \r\n      =>  \"It\'s another short string.\" but"
-     + "\n     switch myString {\r\n        case myString.length > 5 : \"a long string.\"\r\n        case \'some\'              : \"It\'s some string.\"\r\n        default                  : \"It\'s another short string.\"\r\n      } is " + new org.hamcrest.StringDescription().appendValue(_switchResult).toString() + "\n", _doubleArrow);
+     + "\n     switch myString {\r\n        case myString.length > 5 : \"a long string.\"\r\n        case \'some\'              : \"It\'s some string.\"\r\n        default                  : \"It\'s another short string.\"\r\n      } is " + new org.hamcrest.StringDescription().appendValue(_switchResult).toString() + "\n", Should.<String>operator_doubleArrow(_switchResult, "It\'s another short string."));
     
   }
   
@@ -82,24 +81,21 @@ public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAbout
         boolean _greaterThan = (_length > 0);
         if (_greaterThan) {
           _matched=true;
-          int _length_1 = ((String)x).length();
-          _switchResult = _length_1;
+          _switchResult = ((String)x).length();
         }
       }
     }
     if (!_matched) {
       if (x instanceof List) {
         _matched=true;
-        int _size = ((List<? extends Object>)x).size();
-        _switchResult = _size;
+        _switchResult = ((List<? extends Object>)x).size();
       }
     }
     if (!_matched) {
       _switchResult = (-1);
     }
-    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_switchResult), Integer.valueOf(3));
     Assert.assertTrue("\nExpected switch x {\r\n        String case x.length > 0 : x.length // length from String \r\n        List<?>                  : x.size    // size from List\r\n        default : -1\r\n      } \r\n      \r\n      => 3 but"
-     + "\n     switch x {\r\n        String case x.length > 0 : x.length // length from String \r\n        List<?>                  : x.size    // size from List\r\n        default : -1\r\n      } is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_switchResult)).toString() + "\n", _doubleArrow);
+     + "\n     switch x {\r\n        String case x.length > 0 : x.length // length from String \r\n        List<?>                  : x.size    // size from List\r\n        default : -1\r\n      } is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_switchResult)).toString() + "\n", Should.<Integer>operator_doubleArrow(Integer.valueOf(_switchResult), Integer.valueOf(3)));
     
   }
 }

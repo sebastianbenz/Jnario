@@ -72,7 +72,6 @@ public class SuiteNodeBuilderLevelSpec extends SuiteNodeBuilderSpec {
   
   public int level(final String name) {
     Suite _suite = this.suite(name);
-    int _level = this.subject.level(_suite);
-    return _level;
+    return this.subject.level(_suite);
   }
 }

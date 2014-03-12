@@ -55,11 +55,9 @@ public class JnarioDocCompilerSpec {
         String _plus = (_string + "/");
         String _plus_1 = (_plus + it);
         File _file = new File(_plus_1);
-        boolean _exists = _file.exists();
-        return Boolean.valueOf(_exists);
+        return Boolean.valueOf(_file.exists());
       }
     };
-    Matcher<? super String> _matches = Should.<String>matches("generated", _function);
-    return _matches;
+    return Should.<String>matches("generated", _function);
   }
 }

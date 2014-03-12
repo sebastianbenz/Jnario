@@ -72,11 +72,10 @@ public class ReferencingOtherStepsSpec {
     GivenReference _first = this.m.<GivenReference>first(GivenReference.class);
     StepImplementation _reference = _first.getReference();
     StepImplementation _first_1 = this.m.<StepImplementation>first(Given.class);
-    boolean _doubleArrow = Should.<StepImplementation>operator_doubleArrow(_reference, _first_1);
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
      + "\n     first(typeof(GivenReference)).reference is " + new org.hamcrest.StringDescription().appendValue(_reference).toString()
      + "\n     first(typeof(GivenReference)) is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
-     + "\n     first(typeof(Given)) is " + new org.hamcrest.StringDescription().appendValue(_first_1).toString() + "\n", _doubleArrow);
+     + "\n     first(typeof(Given)) is " + new org.hamcrest.StringDescription().appendValue(_first_1).toString() + "\n", Should.<StepImplementation>operator_doubleArrow(_reference, _first_1));
     
   }
   
@@ -116,11 +115,10 @@ public class ReferencingOtherStepsSpec {
     GivenReference _first = this.m.<GivenReference>first(GivenReference.class);
     StepImplementation _reference = _first.getReference();
     StepImplementation _first_1 = this.m.<StepImplementation>first(Given.class);
-    boolean _doubleArrow = Should.<StepImplementation>operator_doubleArrow(_reference, _first_1);
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
      + "\n     first(typeof(GivenReference)).reference is " + new org.hamcrest.StringDescription().appendValue(_reference).toString()
      + "\n     first(typeof(GivenReference)) is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
-     + "\n     first(typeof(Given)) is " + new org.hamcrest.StringDescription().appendValue(_first_1).toString() + "\n", _doubleArrow);
+     + "\n     first(typeof(Given)) is " + new org.hamcrest.StringDescription().appendValue(_first_1).toString() + "\n", Should.<StepImplementation>operator_doubleArrow(_reference, _first_1));
     
   }
   
@@ -163,11 +161,10 @@ public class ReferencingOtherStepsSpec {
     GivenReference _first = this.m.<GivenReference>first(GivenReference.class);
     StepImplementation _reference = _first.getReference();
     StepImplementation _first_1 = this.m.<StepImplementation>first(Given.class);
-    boolean _doubleArrow = Should.<StepImplementation>operator_doubleArrow(_reference, _first_1);
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
      + "\n     first(typeof(GivenReference)).reference is " + new org.hamcrest.StringDescription().appendValue(_reference).toString()
      + "\n     first(typeof(GivenReference)) is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
-     + "\n     first(typeof(Given)) is " + new org.hamcrest.StringDescription().appendValue(_first_1).toString() + "\n", _doubleArrow);
+     + "\n     first(typeof(Given)) is " + new org.hamcrest.StringDescription().appendValue(_first_1).toString() + "\n", Should.<StepImplementation>operator_doubleArrow(_reference, _first_1));
     
   }
   
@@ -211,11 +208,10 @@ public class ReferencingOtherStepsSpec {
     GivenReference _first = this.m.<GivenReference>first(GivenReference.class);
     StepImplementation _reference = _first.getReference();
     StepImplementation _first_1 = this.m.<StepImplementation>first(Given.class);
-    boolean _doubleArrow = Should.<StepImplementation>operator_doubleArrow(_reference, _first_1);
     Assert.assertTrue("\nExpected first(typeof(GivenReference)).reference => first(typeof(Given)) but"
      + "\n     first(typeof(GivenReference)).reference is " + new org.hamcrest.StringDescription().appendValue(_reference).toString()
      + "\n     first(typeof(GivenReference)) is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
-     + "\n     first(typeof(Given)) is " + new org.hamcrest.StringDescription().appendValue(_first_1).toString() + "\n", _doubleArrow);
+     + "\n     first(typeof(Given)) is " + new org.hamcrest.StringDescription().appendValue(_first_1).toString() + "\n", Should.<StepImplementation>operator_doubleArrow(_reference, _first_1));
     
   }
 }

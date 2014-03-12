@@ -35,7 +35,7 @@ public class PendingStepsCalculator {
       } else {
         boolean _hasExpression = this._stepExpressionProvider.hasExpression(step);
         boolean _not = (!_hasExpression);
-        _or = (hasPendingStep || _not);
+        _or = _not;
       }
       if (_or) {
         this.steps.put(step, Boolean.valueOf(true));
@@ -53,11 +53,11 @@ public class PendingStepsCalculator {
       _and = false;
     } else {
       boolean _containsKey = this.steps.containsKey(step);
-      _and = (_notEquals && _containsKey);
+      _and = _containsKey;
     }
     if (_and) {
       return this.steps.get(step);
     }
-    return false;
+    return Boolean.valueOf(false);
   }
 }

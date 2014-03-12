@@ -15,14 +15,12 @@ import org.junit.Before;
 public class ExampleExtension {
   @Before
   public String before() {
-    String _println = InputOutput.<String>println("before");
-    return _println;
+    return InputOutput.<String>println("before");
   }
   
   @After
   public String after() {
-    String _println = InputOutput.<String>println("after");
-    return _println;
+    return InputOutput.<String>println("after");
   }
   
   public String greet(final String s) {

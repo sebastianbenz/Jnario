@@ -66,17 +66,15 @@ public class HtmlAssetsCompilerSpec {
     Files.writeStringIntoFile(file, "Hello World");
     this.doCompile();
     String _readFileIntoString = Files.readFileIntoString(file);
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_readFileIntoString, "Hello World");
     Assert.assertTrue("\nExpected readFileIntoString(file) => \"Hello World\" but"
      + "\n     readFileIntoString(file) is " + new org.hamcrest.StringDescription().appendValue(_readFileIntoString).toString()
-     + "\n     file is " + new org.hamcrest.StringDescription().appendValue(file).toString() + "\n", _doubleArrow);
+     + "\n     file is " + new org.hamcrest.StringDescription().appendValue(file).toString() + "\n", Should.<String>operator_doubleArrow(_readFileIntoString, "Hello World"));
     
   }
   
   public boolean mkdir(final String name) {
     File _file = this.file(name);
-    boolean _mkdir = _file.mkdir();
-    return _mkdir;
+    return _file.mkdir();
   }
   
   public File file(final String path) {
@@ -84,8 +82,7 @@ public class HtmlAssetsCompilerSpec {
     String _absolutePath = _root.getAbsolutePath();
     String _plus = (_absolutePath + "/");
     String _plus_1 = (_plus + path);
-    File _file = new File(_plus_1);
-    return _file;
+    return new File(_plus_1);
   }
   
   public boolean doCompile() {
@@ -94,8 +91,7 @@ public class HtmlAssetsCompilerSpec {
       File _root = this._temporaryFolder.getRoot();
       String _absolutePath = _root.getAbsolutePath();
       this.subject.setOutputPath(_absolutePath);
-      boolean _compile = this.subject.compile();
-      _xblockexpression = (_compile);
+      _xblockexpression = (this.subject.compile());
     }
     return _xblockexpression;
   }

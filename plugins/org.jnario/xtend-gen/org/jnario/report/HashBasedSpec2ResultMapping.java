@@ -45,8 +45,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
     {
       boolean _equals = Objects.equal(executable, null);
       if (_equals) {
-        NotRun _notRun = new NotRun("", "");
-        return _notRun;
+        return new NotRun("", "");
       }
       Pair<String,String> _asKey = this.asKey(executable);
       SpecExecution result = this.results.get(_asKey);
@@ -68,14 +67,12 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
       final List<? extends Executable> children = this.executables(specification);
       final Function1<Executable,SpecExecution> _function = new Function1<Executable,SpecExecution>() {
         public SpecExecution apply(final Executable it) {
-          SpecExecution _result = HashBasedSpec2ResultMapping.this.getResult(it);
-          return _result;
+          return HashBasedSpec2ResultMapping.this.getResult(it);
         }
       };
       List<SpecExecution> _map = ListExtensions.map(children, _function);
       final List<SpecExecution> results = IterableExtensions.<SpecExecution>toList(_map);
-      SpecExecution _createResult = this.createResult(specification, results);
-      _xblockexpression = (_createResult);
+      _xblockexpression = (this.createResult(specification, results));
     }
     return _xblockexpression;
   }
@@ -91,8 +88,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
       final Double executionTime = this.executionTime(children);
       final Function1<SpecExecution,List<SpecFailure>> _function = new Function1<SpecExecution,List<SpecFailure>>() {
         public List<SpecFailure> apply(final SpecExecution it) {
-          List<SpecFailure> _failures = it.getFailures();
-          return _failures;
+          return it.getFailures();
         }
       };
       Iterable<List<SpecFailure>> _map = IterableExtensions.<SpecExecution, List<SpecFailure>>map(children, _function);
@@ -100,13 +96,11 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
       SpecExecution _xifexpression = null;
       boolean _isEmpty = IterableExtensions.isEmpty(failures);
       if (_isEmpty) {
-        SpecExecution _passedOrPending = this.passedOrPending(specification, specId, (executionTime).doubleValue());
-        _xifexpression = _passedOrPending;
+        _xifexpression = this.passedOrPending(specification, specId, (executionTime).doubleValue());
       } else {
         String _key = specId.getKey();
         String _value = specId.getValue();
-        Failed _failed = new Failed(_key, _value, (executionTime).doubleValue(), failures);
-        _xifexpression = _failed;
+        _xifexpression = new Failed(_key, _value, (executionTime).doubleValue(), failures);
       }
       _xblockexpression = (_xifexpression);
     }
@@ -119,13 +113,11 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
     if (_isPending) {
       String _key = specId.getKey();
       String _value = specId.getValue();
-      Pending _pending = new Pending(_key, _value, 0.0);
-      _xifexpression = _pending;
+      _xifexpression = new Pending(_key, _value, 0.0);
     } else {
       String _key_1 = specId.getKey();
       String _value_1 = specId.getValue();
-      NotRun _notRun = new NotRun(_key_1, _value_1);
-      _xifexpression = _notRun;
+      _xifexpression = new NotRun(_key_1, _value_1);
     }
     return _xifexpression;
   }
@@ -136,13 +128,11 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
     if (_isPending) {
       String _key = specId.getKey();
       String _value = specId.getValue();
-      Pending _pending = new Pending(_key, _value, executionTime);
-      _xifexpression = _pending;
+      _xifexpression = new Pending(_key, _value, executionTime);
     } else {
       String _key_1 = specId.getKey();
       String _value_1 = specId.getValue();
-      Passed _passed = new Passed(_key_1, _value_1, executionTime);
-      _xifexpression = _passed;
+      _xifexpression = new Passed(_key_1, _value_1, executionTime);
     }
     return _xifexpression;
   }
@@ -151,12 +141,10 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
     final Function2<Double,SpecExecution,Double> _function = new Function2<Double,SpecExecution,Double>() {
       public Double apply(final Double sum, final SpecExecution result) {
         double _executionTimeInSeconds = result.getExecutionTimeInSeconds();
-        double _plus = ((sum).doubleValue() + _executionTimeInSeconds);
-        return Double.valueOf(_plus);
+        return Double.valueOf(((sum).doubleValue() + _executionTimeInSeconds));
       }
     };
-    Double _fold = IterableExtensions.<SpecExecution, Double>fold(results, Double.valueOf(0.0), _function);
-    return _fold;
+    return IterableExtensions.<SpecExecution, Double>fold(results, Double.valueOf(0.0), _function);
   }
   
   private boolean areNotExecuted(final Iterable<SpecExecution> executions) {
@@ -168,7 +156,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
       Iterable<NotRun> _filter = Iterables.<NotRun>filter(executions, NotRun.class);
       boolean _isEmpty_1 = IterableExtensions.isEmpty(_filter);
       boolean _not = (!_isEmpty_1);
-      _or = (_isEmpty || _not);
+      _or = _not;
     }
     return _or;
   }
@@ -176,14 +164,14 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
   private Pair<String,String> asKey(final Executable executable) {
     Pair<String,String> _xblockexpression = null;
     {
-      String _convertFromJavaString = null;
       String _qualifiedJavaClassName = this.nameProvider.toQualifiedJavaClassName(executable);
+      String _convertFromJavaString = null;
       if (_qualifiedJavaClassName!=null) {
         _convertFromJavaString=Strings.convertFromJavaString(_qualifiedJavaClassName, true);
       }
       final String expectedClassName = _convertFromJavaString;
-      String _convertFromJavaString_1 = null;
       String _describe = this.nameProvider.describe(executable);
+      String _convertFromJavaString_1 = null;
       if (_describe!=null) {
         _convertFromJavaString_1=Strings.convertFromJavaString(_describe, true);
       }
@@ -205,8 +193,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
       }
       final IResourceServiceProvider resourceServiceProvider = resource.getResourceServiceProvider();
       ExecutableProvider _get = resourceServiceProvider.<ExecutableProvider>get(ExecutableProvider.class);
-      List<? extends Executable> _executables = _get.getExecutables(element);
-      _xblockexpression = (_executables);
+      _xblockexpression = (_get.getExecutables(element));
     }
     return _xblockexpression;
   }

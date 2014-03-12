@@ -97,13 +97,12 @@ public class FeatureClassNameProviderGetClassNameBackgroundSpec extends FeatureC
         Background _background = FeatureClassNameProviderGetClassNameBackgroundSpec.this.background(_name, _feature);
         String _className = FeatureClassNameProviderGetClassNameBackgroundSpec.this.className(_background);
         String _expectedClassName = it.getExpectedClassName();
-        boolean _doubleArrow = Should.<String>operator_doubleArrow(_className, _expectedClassName);
         Assert.assertTrue("\nExpected className(background(name, feature)) => expectedClassName but"
          + "\n     className(background(name, feature)) is " + new org.hamcrest.StringDescription().appendValue(_className).toString()
          + "\n     background(name, feature) is " + new org.hamcrest.StringDescription().appendValue(_background).toString()
          + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
          + "\n     feature is " + new org.hamcrest.StringDescription().appendValue(_feature).toString()
-         + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
+         + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", Should.<String>operator_doubleArrow(_className, _expectedClassName));
         
       }
     };

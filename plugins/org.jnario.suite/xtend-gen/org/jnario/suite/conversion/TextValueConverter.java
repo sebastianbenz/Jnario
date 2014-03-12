@@ -27,8 +27,7 @@ public class TextValueConverter extends SuiteValueConverter {
   public String toString(final String value) throws ValueConverterException {
     String _string = super.toString(value);
     String _plus = (this.prefix + _string);
-    String _plus_1 = (_plus + this.postfix);
-    return _plus_1;
+    return (_plus + this.postfix);
   }
   
   public String toValue(final String input, final INode node) throws ValueConverterException {

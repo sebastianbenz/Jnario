@@ -97,9 +97,8 @@ public class SuiteScopeProviderSpec {
      + "\n     specScope is " + new org.hamcrest.StringDescription().appendValue(_specScope).toString() + "\n", _should_contain);
     
     Set<String> _specScope_1 = this.specScope();
-    boolean _should_contain_1 = Should.<String>should_contain(_specScope_1, "SubSpec 1");
     Assert.assertFalse("\nExpected specScope should not contain  \"SubSpec 1\" but"
-     + "\n     specScope is " + new org.hamcrest.StringDescription().appendValue(_specScope_1).toString() + "\n", _should_contain_1);
+     + "\n     specScope is " + new org.hamcrest.StringDescription().appendValue(_specScope_1).toString() + "\n", Should.<String>should_contain(_specScope_1, "SubSpec 1"));
     
   }
   

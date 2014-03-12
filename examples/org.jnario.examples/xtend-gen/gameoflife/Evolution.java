@@ -18,8 +18,7 @@ public class Evolution {
   public static Evolution gameOfLife() {
     EvolveLiveCells _evolveLiveCells = new EvolveLiveCells();
     EvolveDeadCells _evolveDeadCells = new EvolveDeadCells();
-    Evolution _evolution = new Evolution(_evolveLiveCells, _evolveDeadCells);
-    return _evolution;
+    return new Evolution(_evolveLiveCells, _evolveDeadCells);
   }
   
   private final Rule _staysAlive;
@@ -39,8 +38,7 @@ public class Evolution {
     final Function1<CellLocation,Boolean> _function = new Function1<CellLocation,Boolean>() {
       public Boolean apply(final CellLocation it) {
         Rule _staysAlive = Evolution.this.getStaysAlive();
-        boolean _apply = Evolution.this.apply(_staysAlive, world, it);
-        return Boolean.valueOf(_apply);
+        return Boolean.valueOf(Evolution.this.apply(_staysAlive, world, it));
       }
     };
     Iterable<CellLocation> _filter = IterableExtensions.<CellLocation>filter(_livingCells, _function);
@@ -48,20 +46,17 @@ public class Evolution {
     final Function1<CellLocation,Boolean> _function_1 = new Function1<CellLocation,Boolean>() {
       public Boolean apply(final CellLocation it) {
         Rule _becomesAlive = Evolution.this.getBecomesAlive();
-        boolean _apply = Evolution.this.apply(_becomesAlive, world, it);
-        return Boolean.valueOf(_apply);
+        return Boolean.valueOf(Evolution.this.apply(_becomesAlive, world, it));
       }
     };
     Iterable<CellLocation> _filter_1 = IterableExtensions.<CellLocation>filter(_deadCells, _function_1);
     Iterable<CellLocation> _plus = Iterables.<CellLocation>concat(_filter, _filter_1);
-    World _worldWith = World.worldWith(_plus);
-    return _worldWith;
+    return World.worldWith(_plus);
   }
   
   private boolean apply(final Rule rule, final World world, final CellLocation cell) {
     int _livingNeighbours = world.livingNeighbours(cell);
-    boolean _becomesAlive = rule.becomesAlive(_livingNeighbours);
-    return _becomesAlive;
+    return rule.becomesAlive(_livingNeighbours);
   }
   
   public Evolution(final Rule staysAlive, final Rule becomesAlive) {

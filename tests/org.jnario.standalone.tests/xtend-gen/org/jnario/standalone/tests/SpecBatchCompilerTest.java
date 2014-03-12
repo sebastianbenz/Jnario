@@ -75,8 +75,7 @@ public class SpecBatchCompilerTest {
     File _file = new File((SpecBatchCompilerTest.OUTPUT_DIRECTORY + "/test"));
     final FilenameFilter _function = new FilenameFilter() {
       public boolean accept(final File dir, final String name) {
-        boolean _endsWith = name.endsWith(".java");
-        return _endsWith;
+        return name.endsWith(".java");
       }
     };
     String[] _list = _file.list(_function);

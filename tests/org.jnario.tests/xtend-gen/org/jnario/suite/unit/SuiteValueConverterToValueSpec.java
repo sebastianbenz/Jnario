@@ -25,10 +25,9 @@ public class SuiteValueConverterToValueSpec extends SuiteValueConverterSpec {
   @Order(1)
   public void _removesEscapeCharacterForDashes() throws Exception {
     String _value = this.subject.toValue("##suite \\- with dash", null);
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, "##suite - with dash");
     Assert.assertTrue("\nExpected subject.toValue(\"##suite \\\\- with dash\", null) => \"##suite - with dash\" but"
      + "\n     subject.toValue(\"##suite \\\\- with dash\", null) is " + new org.hamcrest.StringDescription().appendValue(_value).toString()
-     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", Should.<String>operator_doubleArrow(_value, "##suite - with dash"));
     
   }
   
@@ -37,10 +36,9 @@ public class SuiteValueConverterToValueSpec extends SuiteValueConverterSpec {
   @Order(2)
   public void _removesEscapeCharacterForHashs() throws Exception {
     String _value = this.subject.toValue("##suite \\# with hash", null);
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, "##suite # with hash");
     Assert.assertTrue("\nExpected subject.toValue(\"##suite \\\\# with hash\", null) => \"##suite # with hash\" but"
      + "\n     subject.toValue(\"##suite \\\\# with hash\", null) is " + new org.hamcrest.StringDescription().appendValue(_value).toString()
-     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", Should.<String>operator_doubleArrow(_value, "##suite # with hash"));
     
   }
 }

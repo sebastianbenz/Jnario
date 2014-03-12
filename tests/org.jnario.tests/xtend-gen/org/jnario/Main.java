@@ -18,8 +18,7 @@ import org.jnario.spec.SpecStandaloneSetup;
 @SuppressWarnings("all")
 public class Main {
   public static void main(final String[] args) {
-    SpecStandaloneSetup _specStandaloneSetup = new SpecStandaloneSetup();
-    final SpecStandaloneSetup setup = _specStandaloneSetup;
+    final SpecStandaloneSetup setup = new SpecStandaloneSetup();
     final Injector injector = setup.createInjectorAndDoEMFRegistration();
     final ModelStore modelStore = injector.<ModelStore>getInstance(ModelStore.class);
     StringConcatenation _builder = new StringConcatenation();

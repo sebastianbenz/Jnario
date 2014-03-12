@@ -56,11 +56,10 @@ public class TestRuntimeProviderSpec {
     OngoingStubbing<JvmTypeReference> _when = Mockito.<JvmTypeReference>when(_typeForName);
     _when.thenReturn(this.resultingType);
     TestRuntimeSupport _get = this.subject.get(this.anyNotifier);
-    boolean _doubleArrow = Should.operator_doubleArrow(_get, JUnit3RuntimeSupport.class);
     Assert.assertTrue("\nExpected subject.get(anyNotifier) => typeof(JUnit3RuntimeSupport) but"
      + "\n     subject.get(anyNotifier) is " + new org.hamcrest.StringDescription().appendValue(_get).toString()
      + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
-     + "\n     anyNotifier is " + new org.hamcrest.StringDescription().appendValue(this.anyNotifier).toString() + "\n", _doubleArrow);
+     + "\n     anyNotifier is " + new org.hamcrest.StringDescription().appendValue(this.anyNotifier).toString() + "\n", Should.operator_doubleArrow(_get, JUnit3RuntimeSupport.class));
     
   }
   
@@ -72,11 +71,10 @@ public class TestRuntimeProviderSpec {
     OngoingStubbing<JvmTypeReference> _when = Mockito.<JvmTypeReference>when(_typeForName);
     _when.thenReturn(this.resultingType);
     TestRuntimeSupport _get = this.subject.get(this.anyNotifier);
-    boolean _doubleArrow = Should.operator_doubleArrow(_get, JUnit4RuntimeSupport.class);
     Assert.assertTrue("\nExpected subject.get(anyNotifier) => typeof(JUnit4RuntimeSupport) but"
      + "\n     subject.get(anyNotifier) is " + new org.hamcrest.StringDescription().appendValue(_get).toString()
      + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString()
-     + "\n     anyNotifier is " + new org.hamcrest.StringDescription().appendValue(this.anyNotifier).toString() + "\n", _doubleArrow);
+     + "\n     anyNotifier is " + new org.hamcrest.StringDescription().appendValue(this.anyNotifier).toString() + "\n", Should.operator_doubleArrow(_get, JUnit4RuntimeSupport.class));
     
   }
   

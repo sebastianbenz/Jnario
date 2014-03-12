@@ -30,8 +30,7 @@ public class FeatureExtensionsFeatureReferencingStepsWithImportedExtensions exte
   @Order(0)
   @Named("Given the value \\\"13.9\\\"")
   public void _givenTheValue139() {
-    StepArguments _stepArguments = new StepArguments("13.9");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("13.9");
     String _first = JnarioIterableExtensions.<String>first(args);
     double _double = StringConversions.toDouble(_first);
     this.value = _double;
@@ -49,8 +48,7 @@ public class FeatureExtensionsFeatureReferencingStepsWithImportedExtensions exte
   @Order(2)
   @Named("Then the value should be \\\"13.0\\\"")
   public void _thenTheValueShouldBe130() {
-    StepArguments _stepArguments = new StepArguments("13.0");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("13.0");
     String _first = JnarioIterableExtensions.<String>first(args);
     double _double = StringConversions.toDouble(_first);
     Should.<Double>operator_doubleArrow(Double.valueOf(this.flooredValue), Double.valueOf(_double));

@@ -8,11 +8,9 @@
 package org.jnario.feature.feature.impl;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
+import org.eclipse.xtend.core.xtend.impl.XtendClassImpl;
 import org.eclipse.xtend.core.xtend.impl.XtendClassImplCustom;
-
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;

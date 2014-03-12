@@ -55,14 +55,13 @@ public class SuiteBatchCompilerTest {
   @Before
   public void onSetup() {
     try {
-      File _file = new File(SuiteBatchCompilerTest.OUTPUT_DIRECTORY);
-      final File dir = _file;
+      final File dir = new File(SuiteBatchCompilerTest.OUTPUT_DIRECTORY);
       boolean _exists = dir.exists();
       if (_exists) {
         Files.cleanFolder(dir, null, true, false);
       }
-      File _file_1 = new File(SuiteBatchCompilerTest.OUTPUT_DIRECTORY);
-      _file_1.mkdir();
+      File _file = new File(SuiteBatchCompilerTest.OUTPUT_DIRECTORY);
+      _file.mkdir();
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -97,19 +96,17 @@ public class SuiteBatchCompilerTest {
         }
       };
       IterableExtensions.forEach(Collections.<ISetup>unmodifiableList(Lists.<ISetup>newArrayList(_featureStandaloneSetup, _specStandaloneSetup, _suiteStandaloneSetup)), _function);
-      File _file = new File((SuiteBatchCompilerTest.OUTPUT_DIRECTORY + "/test"));
-      final File outputDir = _file;
+      final File outputDir = new File((SuiteBatchCompilerTest.OUTPUT_DIRECTORY + "/test"));
       final FilenameFilter _function_1 = new FilenameFilter() {
         public boolean accept(final File dir, final String name) {
-          boolean _endsWith = name.endsWith(".java");
-          return _endsWith;
+          return name.endsWith(".java");
         }
       };
       String[] _list = outputDir.list(_function_1);
       int _size = ((List<String>)Conversions.doWrapArray(_list)).size();
       Assert.assertEquals(7, _size);
-      File _file_1 = new File(outputDir, "ExampleSuite.java");
-      final String fileContent = com.google.common.io.Files.toString(_file_1, Charsets.UTF_8);
+      File _file = new File(outputDir, "ExampleSuite.java");
+      final String fileContent = com.google.common.io.Files.toString(_file, Charsets.UTF_8);
       boolean _contains = fileContent.contains("@Contains");
       Assert.assertTrue(("Expected to be to contain others specs, but was: \n\n" + fileContent), _contains);
     } catch (Throwable _e) {

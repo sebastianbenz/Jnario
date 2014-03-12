@@ -45,24 +45,21 @@ public class World {
         }
       };
       IterableExtensions.<String>forEach(((Iterable<String>)Conversions.doWrapArray(_split)), _function);
-      World _worldWith = World.worldWith(cells);
-      _xblockexpression = (_worldWith);
+      _xblockexpression = (World.worldWith(cells));
     }
     return _xblockexpression;
   }
   
   public static World worldWith(final Iterable<CellLocation> cells) {
     Set<CellLocation> _set = IterableExtensions.<CellLocation>toSet(cells);
-    World _world = new World(_set);
-    return _world;
+    return new World(_set);
   }
   
   public Set<CellLocation> deadCells() {
     Set<CellLocation> _livingCells = this.getLivingCells();
     final Function1<CellLocation,Set<CellLocation>> _function = new Function1<CellLocation,Set<CellLocation>>() {
       public Set<CellLocation> apply(final CellLocation it) {
-        Set<CellLocation> _neighbours = it.neighbours();
-        return _neighbours;
+        return it.neighbours();
       }
     };
     Iterable<Set<CellLocation>> _map = IterableExtensions.<CellLocation, Set<CellLocation>>map(_livingCells, _function);
@@ -71,13 +68,11 @@ public class World {
       public Boolean apply(final CellLocation it) {
         Set<CellLocation> _livingCells = World.this.getLivingCells();
         boolean _contains = _livingCells.contains(it);
-        boolean _not = (!_contains);
-        return Boolean.valueOf(_not);
+        return Boolean.valueOf((!_contains));
       }
     };
     Iterable<CellLocation> _filter = IterableExtensions.<CellLocation>filter(_flatten, _function_1);
-    Set<CellLocation> _set = IterableExtensions.<CellLocation>toSet(_filter);
-    return _set;
+    return IterableExtensions.<CellLocation>toSet(_filter);
   }
   
   public int livingNeighbours(final CellLocation cell) {
@@ -85,13 +80,11 @@ public class World {
     final Function1<CellLocation,Boolean> _function = new Function1<CellLocation,Boolean>() {
       public Boolean apply(final CellLocation it) {
         Set<CellLocation> _livingCells = World.this.getLivingCells();
-        boolean _contains = _livingCells.contains(it);
-        return Boolean.valueOf(_contains);
+        return Boolean.valueOf(_livingCells.contains(it));
       }
     };
     Iterable<CellLocation> _filter = IterableExtensions.<CellLocation>filter(_neighbours, _function);
-    int _size = IterableExtensions.size(_filter);
-    return _size;
+    return IterableExtensions.size(_filter);
   }
   
   public World(final Set<CellLocation> livingCells) {

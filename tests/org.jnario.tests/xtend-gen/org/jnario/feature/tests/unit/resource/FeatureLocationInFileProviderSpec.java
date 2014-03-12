@@ -98,8 +98,7 @@ public class FeatureLocationInFileProviderSpec {
     Resource _xblockexpression = null;
     {
       this.content = s;
-      Resource _parseScenario = this._modelStore.parseScenario(s);
-      _xblockexpression = (_parseScenario);
+      _xblockexpression = (this._modelStore.parseScenario(s));
     }
     return _xblockexpression;
   }
@@ -107,15 +106,13 @@ public class FeatureLocationInFileProviderSpec {
   public CharSequence siginificantRegion(final EObject object) {
     Scenario _firstScenario = this._modelStore.firstScenario();
     ITextRegion _significantTextRegion = this.subject.getSignificantTextRegion(_firstScenario);
-    CharSequence _text = this.toText(_significantTextRegion);
-    return _text;
+    return this.toText(_significantTextRegion);
   }
   
   public CharSequence region(final EObject object) {
     Scenario _firstScenario = this._modelStore.firstScenario();
     ITextRegion _fullTextRegion = this.subject.getFullTextRegion(_firstScenario);
-    CharSequence _text = this.toText(_fullTextRegion);
-    return _text;
+    return this.toText(_fullTextRegion);
   }
   
   public CharSequence toText(final ITextRegion region) {
@@ -123,7 +120,6 @@ public class FeatureLocationInFileProviderSpec {
     int _offset_1 = region.getOffset();
     int _length = region.getLength();
     int _plus = (_offset_1 + _length);
-    CharSequence _subSequence = this.content.subSequence(_offset, _plus);
-    return _subSequence;
+    return this.content.subSequence(_offset, _plus);
   }
 }

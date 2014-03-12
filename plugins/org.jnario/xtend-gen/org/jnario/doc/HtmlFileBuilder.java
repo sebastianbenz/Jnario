@@ -39,8 +39,8 @@ public class HtmlFileBuilder {
   }
   
   private String filePath(final XtendTypeDeclaration xtendClass, final HtmlFile htmlFile) {
-    String _htmlFileName = null;
     CharSequence _name = htmlFile.getName();
+    String _htmlFileName = null;
     if (_name!=null) {
       _htmlFileName=this.toHtmlFileName(_name);
     }

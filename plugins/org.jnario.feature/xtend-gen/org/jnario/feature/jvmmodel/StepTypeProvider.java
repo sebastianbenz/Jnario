@@ -53,14 +53,12 @@ public class StepTypeProvider {
   
   protected Set<EClass> _getExpectedTypes(final Step step) {
     Step _definingStep = this.getDefiningStep(step);
-    Set<EClass> _expectedTypes = this.getExpectedTypes(_definingStep);
-    return _expectedTypes;
+    return this.getExpectedTypes(_definingStep);
   }
   
   public EClass getActualType(final Step step) {
     Step _definingStep = this.getDefiningStep(step);
-    EClass _eClass = _definingStep.eClass();
-    return _eClass;
+    return _definingStep.eClass();
   }
   
   private Step getDefiningStep(final Step step) {

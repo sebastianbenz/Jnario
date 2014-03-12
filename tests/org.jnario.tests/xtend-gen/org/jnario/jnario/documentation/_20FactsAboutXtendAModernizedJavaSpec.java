@@ -72,9 +72,8 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
     Pair<String,String> _mappedTo = Pair.<String, String>of("german", "Hallo");
     Pair<String,String> _mappedTo_1 = Pair.<String, String>of("english", "Hello");
     final HashMap<String,String> greetings = CollectionLiterals.<String, String>newHashMap(_mappedTo, _mappedTo_1);
-    boolean _doubleArrow_1 = Should.operator_doubleArrow(greetings, HashMap.class);
     Assert.assertTrue("\nExpected greetings => typeof(HashMap) but"
-     + "\n     greetings is " + new org.hamcrest.StringDescription().appendValue(greetings).toString() + "\n", _doubleArrow_1);
+     + "\n     greetings is " + new org.hamcrest.StringDescription().appendValue(greetings).toString() + "\n", Should.operator_doubleArrow(greetings, HashMap.class));
     
   }
   
@@ -95,10 +94,9 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
      + "\n     pair is " + new org.hamcrest.StringDescription().appendValue(pair).toString() + "\n", _doubleArrow);
     
     String _value = pair.getValue();
-    boolean _doubleArrow_1 = Should.<String>operator_doubleArrow(_value, "italy");
     Assert.assertTrue("\nExpected pair.value => \"italy\" but"
      + "\n     pair.value is " + new org.hamcrest.StringDescription().appendValue(_value).toString()
-     + "\n     pair is " + new org.hamcrest.StringDescription().appendValue(pair).toString() + "\n", _doubleArrow_1);
+     + "\n     pair is " + new org.hamcrest.StringDescription().appendValue(pair).toString() + "\n", Should.<String>operator_doubleArrow(_value, "italy"));
     
   }
   
@@ -147,9 +145,8 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
      + "\n     greeting is " + new org.hamcrest.StringDescription().appendValue(this.greeting).toString() + "\n", _doubleArrow);
     
     String _string = Integer.valueOf(42).toString();
-    boolean _doubleArrow_1 = Should.<String>operator_doubleArrow(_string, "42");
     Assert.assertTrue("\nExpected 42.toString => \"42\" but"
-     + "\n     42.toString is " + new org.hamcrest.StringDescription().appendValue(_string).toString() + "\n", _doubleArrow_1);
+     + "\n     42.toString is " + new org.hamcrest.StringDescription().appendValue(_string).toString() + "\n", Should.<String>operator_doubleArrow(_string, "42"));
     
   }
 }

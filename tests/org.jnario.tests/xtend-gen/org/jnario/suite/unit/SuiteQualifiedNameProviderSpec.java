@@ -46,9 +46,8 @@ public class SuiteQualifiedNameProviderSpec {
     _builder.append("#My Suite");
     this._modelStore.parseSuite(_builder);
     String _qualifiedName = this.qualifiedName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_qualifiedName, "My Suite");
     Assert.assertTrue("\nExpected qualifiedName => \"My Suite\" but"
-     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", Should.<String>operator_doubleArrow(_qualifiedName, "My Suite"));
     
   }
   
@@ -62,9 +61,8 @@ public class SuiteQualifiedNameProviderSpec {
     _builder.append("with description");
     this._modelStore.parseSuite(_builder);
     String _qualifiedName = this.qualifiedName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_qualifiedName, "My Suite");
     Assert.assertTrue("\nExpected qualifiedName => \"My Suite\" but"
-     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", Should.<String>operator_doubleArrow(_qualifiedName, "My Suite"));
     
   }
   
@@ -78,9 +76,8 @@ public class SuiteQualifiedNameProviderSpec {
     _builder.append("#My Suite");
     this._modelStore.parseSuite(_builder);
     String _qualifiedName = this.qualifiedName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_qualifiedName, "test.My Suite");
     Assert.assertTrue("\nExpected qualifiedName => \"test.My Suite\" but"
-     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", Should.<String>operator_doubleArrow(_qualifiedName, "test.My Suite"));
     
   }
   
@@ -92,9 +89,8 @@ public class SuiteQualifiedNameProviderSpec {
     _builder.append("#My Suite");
     this._modelStore.parseSuite(_builder);
     String _qualifiedName = this.qualifiedName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_qualifiedName, "My Suite");
     Assert.assertTrue("\nExpected qualifiedName => \"My Suite\" but"
-     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", Should.<String>operator_doubleArrow(_qualifiedName, "My Suite"));
     
   }
   

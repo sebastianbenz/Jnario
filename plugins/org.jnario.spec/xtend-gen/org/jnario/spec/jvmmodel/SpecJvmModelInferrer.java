@@ -168,8 +168,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       TestRuntimeSupport _testRuntime = this.getTestRuntime();
       final Function1<JvmGenericType,JvmTypeReference> _function_2 = new Function1<JvmGenericType,JvmTypeReference>() {
         public JvmTypeReference apply(final JvmGenericType it) {
-          JvmParameterizedTypeReference _createTypeRef = SpecJvmModelInferrer.this._typeReferences.createTypeRef(it);
-          return _createTypeRef;
+          return SpecJvmModelInferrer.this._typeReferences.createTypeRef(it);
         }
       };
       List<JvmTypeReference> _map = ListExtensions.<JvmGenericType, JvmTypeReference>map(children, _function_2);
@@ -301,8 +300,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       JvmAnnotationReference _annotation_1 = this._extendedJvmTypesBuilder.toAnnotation(element, Order.class, Integer.valueOf(this.exampleIndex));
       this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
       EList<JvmMember> _members = container.getMembers();
-      boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, method);
-      _xblockexpression = (_add);
+      _xblockexpression = (this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, method));
     }
     return _xblockexpression;
   }
@@ -320,8 +318,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
         _testRuntime.beforeAllMethod(e, m);
       }
     };
-    boolean _transformAround = this.transformAround(element, container, _function, _function_1);
-    return _transformAround;
+    return this.transformAround(element, container, _function, _function_1);
   }
   
   public boolean transform(final After element, final JvmGenericType container) {
@@ -337,8 +334,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
         _testRuntime.afterAllMethod(e, m);
       }
     };
-    boolean _transformAround = this.transformAround(element, container, _function, _function_1);
-    return _transformAround;
+    return this.transformAround(element, container, _function, _function_1);
   }
   
   public boolean transformAround(final TestFunction element, final JvmGenericType container, final Procedure2<XtendMember,JvmOperation> around, final Procedure2<XtendMember,JvmOperation> aroundAll) {
@@ -352,8 +348,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
         around.apply(element, afterMethod);
       }
       EList<JvmMember> _members = container.getMembers();
-      boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, afterMethod);
-      _xblockexpression = (_add);
+      _xblockexpression = (this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, afterMethod));
     }
     return _xblockexpression;
   }
@@ -459,11 +454,9 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
               JvmTypeReference _type = column.getType();
               boolean _notEquals = (!Objects.equal(_type, null));
               if (_notEquals) {
-                JvmTypeReference _type_1 = column.getType();
-                _xifexpression = _type_1;
+                _xifexpression = column.getType();
               } else {
-                JvmTypeReference _inferredType = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.inferredType();
-                _xifexpression = _inferredType;
+                _xifexpression = SpecJvmModelInferrer.this._extendedJvmTypesBuilder.inferredType();
               }
               final JvmTypeReference columnType = _xifexpression;
               EList<JvmMember> _members = exampleTableType.getMembers();
@@ -520,8 +513,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
           SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(constructor, _function_5);
         }
       };
-      JvmGenericType _class = this._extendedJvmTypesBuilder.toClass(_xtendFile, _javaClassName, _function);
-      _xblockexpression = (_class);
+      _xblockexpression = (this._extendedJvmTypesBuilder.toClass(_xtendFile, _javaClassName, _function));
     }
     return _xblockexpression;
   }
@@ -557,8 +549,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
           public String apply(final ExampleCell it) {
             String _serialize = SpecJvmModelInferrer.this.serialize(it);
             String _trim = _serialize.trim();
-            String _convertToJavaString = Strings.convertToJavaString(_trim);
-            return _convertToJavaString;
+            return Strings.convertToJavaString(_trim);
           }
         };
         List<String> _map = ListExtensions.<ExampleCell, String>map(_cells, _function);
@@ -610,8 +601,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     String _javaClassName = this._exampleNameProvider.toJavaClassName(exampleTable);
     String _plus = ("_init" + _javaClassName);
     String _plus_1 = (_plus + "Cell");
-    String _plus_2 = (_plus_1 + Integer.valueOf(i));
-    return _plus_2;
+    return (_plus_1 + Integer.valueOf(i));
   }
   
   public boolean generateCellInitializerMethod(final JvmGenericType specType, final String name, final ExampleCell cell) {
@@ -624,8 +614,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
       }
     };
     JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(cell, name, _inferredType, _function);
-    boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
-    return _add;
+    return this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
   }
   
   public List<String> columnNames(final ExampleTable exampleTable) {
@@ -639,7 +628,6 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
         return _name;
       }
     };
-    List<String> _map = ListExtensions.<ExampleColumn, String>map(_columns, _function);
-    return _map;
+    return ListExtensions.<ExampleColumn, String>map(_columns, _function);
   }
 }

@@ -22,8 +22,7 @@ public class Person {
     String _plus = (_name + "(");
     int _age = this.getAge();
     String _plus_1 = (_plus + Integer.valueOf(_age));
-    String _plus_2 = (_plus_1 + ")");
-    return _plus_2;
+    return (_plus_1 + ")");
   }
   
   public Person(final String name, final int age) {

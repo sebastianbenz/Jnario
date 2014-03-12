@@ -93,8 +93,7 @@ public class CompileTask extends Task {
     int _compile = compiler.compile();
     boolean _equals = (_compile == CompilerMain.COMPILATION_ERROR);
     if (_equals) {
-      BuildException _buildException = new BuildException("Error when compiling Jnario specs");
-      throw _buildException;
+      throw new BuildException("Error when compiling Jnario specs");
     }
   }
   

@@ -5,7 +5,6 @@ import gameoflife.Rule;
 import gameoflife.World;
 import gameoflife.specs.EvolutionDeadCellsSpec;
 import gameoflife.specs.EvolutionLiveCellsSpec;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
@@ -27,14 +26,9 @@ public class EvolutionSpec {
   
   final World worldWithLiveCell = World.worldWith(JnarioCollectionLiterals.<CellLocation>list(this.livingCell));
   
-  final Rule dontCare = new Function0<Rule>() {
-    public Rule apply() {
-      final Rule _function = new Rule() {
-        public boolean becomesAlive(final int it) {
-          return false;
-        }
-      };
-      return _function;
+  final Rule dontCare = new Rule() {
+    public boolean becomesAlive(final int it) {
+      return false;
     }
-  }.apply();
+  };
 }

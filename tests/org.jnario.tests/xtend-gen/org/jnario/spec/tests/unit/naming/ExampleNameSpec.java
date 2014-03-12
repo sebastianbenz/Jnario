@@ -73,13 +73,12 @@ public class ExampleNameSpec extends ExampleSpec {
         String _name = _parse.getName();
         String _println = InputOutput.<String>println(_name);
         String _name_1 = it.getName();
-        boolean _should_be = Should.<String>should_be(_println, _name_1);
         Assert.assertTrue("\nExpected println(example.parse.name) should be name but"
          + "\n     println(example.parse.name) is " + new org.hamcrest.StringDescription().appendValue(_println).toString()
          + "\n     example.parse.name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
          + "\n     example.parse is " + new org.hamcrest.StringDescription().appendValue(_parse).toString()
          + "\n     example is " + new org.hamcrest.StringDescription().appendValue(_example).toString()
-         + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name_1).toString() + "\n", _should_be);
+         + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name_1).toString() + "\n", Should.<String>should_be(_println, _name_1));
         
       }
     };

@@ -142,7 +142,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     } else {
       String _name = feature.getName();
       boolean _isNullOrEmpty = Strings.isNullOrEmpty(_name);
-      _or = (_equals || _isNullOrEmpty);
+      _or = _isNullOrEmpty;
     }
     if (_or) {
       return;
@@ -179,8 +179,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         return null;
       }
       List<JvmGenericType> _emptyList = CollectionLiterals.<JvmGenericType>emptyList();
-      JvmGenericType _class = this.toClass(background, _emptyList, acceptor, doLater, preIndexingPhase);
-      _xblockexpression = (_class);
+      _xblockexpression = (this.toClass(background, _emptyList, acceptor, doLater, preIndexingPhase));
     }
     return _xblockexpression;
   }
@@ -234,8 +233,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           FeatureJvmModelInferrer.this.init(source, inferredJvmType, scenarios);
         }
       };
-      boolean _add = doLater.add(_function);
-      _xifexpression = _add;
+      _xifexpression = doLater.add(_function);
     }
     return _xifexpression;
   }
@@ -268,8 +266,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       TestRuntimeSupport _testRuntime = this.getTestRuntime();
       final Function1<JvmGenericType,JvmTypeReference> _function = new Function1<JvmGenericType,JvmTypeReference>() {
         public JvmTypeReference apply(final JvmGenericType it) {
-          JvmParameterizedTypeReference _createTypeRef = FeatureJvmModelInferrer.this._typeReferences.createTypeRef(it);
-          return _createTypeRef;
+          return FeatureJvmModelInferrer.this._typeReferences.createTypeRef(it);
         }
       };
       List<JvmTypeReference> _map = ListExtensions.<JvmGenericType, JvmTypeReference>map(scenarios, _function);
@@ -282,8 +279,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     TestRuntimeSupport _testRuntime_1 = this.getTestRuntime();
     final Function1<JvmGenericType,JvmTypeReference> _function_1 = new Function1<JvmGenericType,JvmTypeReference>() {
       public JvmTypeReference apply(final JvmGenericType it) {
-        JvmParameterizedTypeReference _createTypeRef = FeatureJvmModelInferrer.this._typeReferences.createTypeRef(it);
-        return _createTypeRef;
+        return FeatureJvmModelInferrer.this._typeReferences.createTypeRef(it);
       }
     };
     List<JvmTypeReference> _map_1 = ListExtensions.<JvmGenericType, JvmTypeReference>map(scenarios, _function_1);
@@ -325,7 +321,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       _and = false;
     } else {
       boolean _notEquals_1 = (!Objects.equal(background, null));
-      _and = ((!(scenario instanceof Background)) && _notEquals_1);
+      _and = _notEquals_1;
     }
     if (_and) {
       EList<Step> _steps_2 = background.getSteps();
@@ -360,8 +356,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     final Function1<XtendField,Boolean> _function_2 = new Function1<XtendField,Boolean>() {
       public Boolean apply(final XtendField it) {
         XExpression _initialValue = it.getInitialValue();
-        boolean _notEquals = (!Objects.equal(_initialValue, null));
-        return Boolean.valueOf(_notEquals);
+        return Boolean.valueOf((!Objects.equal(_initialValue, null)));
       }
     };
     Iterable<XtendField> _filter_3 = IterableExtensions.<XtendField>filter(_filter_2, _function_2);
@@ -386,8 +381,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     final Function1<JvmGenericType,Boolean> _function = new Function1<JvmGenericType,Boolean>() {
       public Boolean apply(final JvmGenericType it) {
         EObject _primarySourceElement = FeatureJvmModelInferrer.this._iJvmModelAssociations.getPrimarySourceElement(it);
-        boolean _equals = Objects.equal(_primarySourceElement, original);
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(Objects.equal(_primarySourceElement, original));
       }
     };
     final JvmGenericType originalType = IterableExtensions.<JvmGenericType>findFirst(_filter, _function);
@@ -415,7 +409,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         _and = false;
       } else {
         boolean _notEquals = (!Objects.equal(source, null));
-        _and = (_equals && _notEquals);
+        _and = _notEquals;
       }
       boolean _while = _and;
       while (_while) {
@@ -428,12 +422,11 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           _and_1 = false;
         } else {
           boolean _notEquals_1 = (!Objects.equal(source, null));
-          _and_1 = (_equals_1 && _notEquals_1);
+          _and_1 = _notEquals_1;
         }
         _while = _and_1;
       }
-      String _computeFieldName = super.computeFieldName(((XtendField) source));
-      _xblockexpression = (_computeFieldName);
+      _xblockexpression = (super.computeFieldName(((XtendField) source)));
     }
     return _xblockexpression;
   }
@@ -447,7 +440,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       _or = true;
     } else {
       boolean _equals = Objects.equal(stepExpression, null);
-      _or = (_isEmpty || _equals);
+      _or = _equals;
     }
     if (_or) {
       return;
@@ -457,8 +450,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     final Function1<XVariableDeclaration,Boolean> _function = new Function1<XVariableDeclaration,Boolean>() {
       public Boolean apply(final XVariableDeclaration it) {
         String _name = it.getName();
-        boolean _equals = Objects.equal(_name, FeatureJvmModelInferrer.STEP_VALUES);
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(Objects.equal(_name, FeatureJvmModelInferrer.STEP_VALUES));
       }
     };
     Iterator<XVariableDeclaration> decs = IteratorExtensions.<XVariableDeclaration>filter(_filter, _function);
@@ -495,7 +487,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       _or = true;
     } else {
       boolean _eIsProxy = typeRef.eIsProxy();
-      _or = (_equals || _eIsProxy);
+      _or = _eIsProxy;
     }
     if (_or) {
       return;
@@ -509,7 +501,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       _or_1 = true;
     } else {
       boolean _eIsProxy_1 = type.eIsProxy();
-      _or_1 = (_equals_1 || _eIsProxy_1);
+      _or_1 = _eIsProxy_1;
     }
     if (_or_1) {
       return;
@@ -613,8 +605,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   public Feature feature(final EObject context) {
-    Feature _containerOfType = EcoreUtil2.<Feature>getContainerOfType(context, Feature.class);
-    return _containerOfType;
+    return EcoreUtil2.<Feature>getContainerOfType(context, Feature.class);
   }
   
   public void markAsPending(final JvmOperation operation, final Step step) {

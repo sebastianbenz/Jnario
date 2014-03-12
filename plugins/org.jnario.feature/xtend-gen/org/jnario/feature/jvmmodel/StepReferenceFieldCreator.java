@@ -53,8 +53,7 @@ public class StepReferenceFieldCreator {
         if (_reference!=null) {
           _expression=_reference.getExpression();
         }
-        boolean _notEquals = (!Objects.equal(_expression, null));
-        return Boolean.valueOf(_notEquals);
+        return Boolean.valueOf((!Objects.equal(_expression, null)));
       }
     };
     final Iterable<StepReference> refs = IterableExtensions.<StepReference>filter(_filter, _function);
@@ -70,28 +69,24 @@ public class StepReferenceFieldCreator {
   
   private Set<String> getExistingFieldNamesForContainerOfStepReference(final Scenario scenario) {
     Iterable<XtendMember> _allVisibleMembers = this._visibleMembersCalculator.allVisibleMembers(scenario);
-    Set<String> _existingFieldNames = this.getExistingFieldNames(_allVisibleMembers);
-    return _existingFieldNames;
+    return this.getExistingFieldNames(_allVisibleMembers);
   }
   
   private Set<String> getExistingFieldNames(final Iterable<XtendMember> members) {
     Iterable<XtendField> _filter = Iterables.<XtendField>filter(members, XtendField.class);
     final Function1<XtendField,Boolean> _function = new Function1<XtendField,Boolean>() {
       public Boolean apply(final XtendField it) {
-        boolean _notEquals = (!Objects.equal(it, null));
-        return Boolean.valueOf(_notEquals);
+        return Boolean.valueOf((!Objects.equal(it, null)));
       }
     };
     Iterable<XtendField> _filter_1 = IterableExtensions.<XtendField>filter(_filter, _function);
     final Function1<XtendField,String> _function_1 = new Function1<XtendField,String>() {
       public String apply(final XtendField it) {
-        String _name = it.getName();
-        return _name;
+        return it.getName();
       }
     };
     Iterable<String> _map = IterableExtensions.<XtendField, String>map(_filter_1, _function_1);
-    Set<String> _set = IterableExtensions.<String>toSet(_map);
-    return _set;
+    return IterableExtensions.<String>toSet(_map);
   }
   
   private void copyFields(final EObject objectWithReference, final Iterable<XtendMember> members, final Set<String> fieldNames) {

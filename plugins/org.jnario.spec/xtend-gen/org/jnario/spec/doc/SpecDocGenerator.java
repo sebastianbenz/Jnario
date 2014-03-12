@@ -69,8 +69,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           it.setExecutionStatus(_executionStateClass);
         }
       };
-      HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
-      _xblockexpression = (_newHtmlFile);
+      _xblockexpression = (HtmlFile.newHtmlFile(_function));
     }
     return _xblockexpression;
   }
@@ -87,8 +86,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   }
   
   private StringConcatenation generateMembers(final ExampleGroup exampleGroup, final int level) {
-    StringConcatenation _stringConcatenation = new StringConcatenation();
-    final StringConcatenation result = _stringConcatenation;
+    final StringConcatenation result = new StringConcatenation();
     boolean inList = false;
     EList<XtendMember> _members = exampleGroup.getMembers();
     final Function1<XtendMember,Boolean> _function = new Function1<XtendMember,Boolean>() {
@@ -97,7 +95,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
         if (((it instanceof Example) || (it instanceof ExampleGroup))) {
           _or = true;
         } else {
-          _or = (((it instanceof Example) || (it instanceof ExampleGroup)) || (it instanceof ExampleTable));
+          _or = (it instanceof ExampleTable);
         }
         return Boolean.valueOf(_or);
       }
@@ -106,25 +104,13 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     for (final XtendMember member : members) {
       {
         final boolean isExampleGroup = (member instanceof ExampleGroup);
-        boolean _and = false;
-        if (!inList) {
-          _and = false;
-        } else {
-          _and = (inList && (!isExampleGroup));
-        }
-        if (_and) {
+        if ((inList && (!isExampleGroup))) {
           result.append("<li>");
           CharSequence _generate = this.generate(member, level);
           result.append(_generate);
           result.append("</li>");
         } else {
-          boolean _and_1 = false;
-          if (!(!inList)) {
-            _and_1 = false;
-          } else {
-            _and_1 = ((!inList) && (!isExampleGroup));
-          }
-          if (_and_1) {
+          if (((!inList) && (!isExampleGroup))) {
             result.append("<ul>");
             result.append("<li>");
             CharSequence _generate_1 = this.generate(member, level);
@@ -132,25 +118,25 @@ public class SpecDocGenerator extends AbstractDocGenerator {
             result.append("</li>");
             inList = true;
           } else {
-            boolean _and_2 = false;
+            boolean _and = false;
             if (!inList) {
-              _and_2 = false;
+              _and = false;
             } else {
-              _and_2 = (inList && isExampleGroup);
+              _and = isExampleGroup;
             }
-            if (_and_2) {
+            if (_and) {
               result.append("</ul>");
               CharSequence _generate_2 = this.generate(member, level);
               result.append(_generate_2);
               inList = false;
             } else {
-              boolean _and_3 = false;
+              boolean _and_1 = false;
               if (!(!inList)) {
-                _and_3 = false;
+                _and_1 = false;
               } else {
-                _and_3 = ((!inList) && isExampleGroup);
+                _and_1 = isExampleGroup;
               }
-              if (_and_3) {
+              if (_and_1) {
                 CharSequence _generate_3 = this.generate(member, level);
                 result.append(_generate_3);
               }
@@ -230,7 +216,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           _and = false;
         } else {
           boolean _eIsSet = example.eIsSet(XtendPackage.Literals.XTEND_EXECUTABLE__EXPRESSION);
-          _and = (_not && _eIsSet);
+          _and = _eIsSet;
         }
         if (_and) {
           CharSequence _codeBlock = this.toCodeBlock(example, filters);
@@ -349,14 +335,12 @@ public class SpecDocGenerator extends AbstractDocGenerator {
   
   protected String _asTitle(final ExampleGroup exampleGroup) {
     String _describe = this._exampleNameProvider.describe(exampleGroup);
-    String _title = this.toTitle(_describe);
-    return _title;
+    return this.toTitle(_describe);
   }
   
   protected String _asTitle(final Example example) {
     String _describe = this._exampleNameProvider.describe(example);
-    String _title = this.toTitle(_describe);
-    return _title;
+    return this.toTitle(_describe);
   }
   
   public CharSequence generate(final XtendMember example, final int level) {

@@ -99,12 +99,11 @@ public class FeatureClassNameProviderGetClassNameFeatureSpec extends FeatureClas
         Feature _feature = Features.feature(_name);
         String _className = FeatureClassNameProviderGetClassNameFeatureSpec.this.className(_feature);
         String _expectedClassName = it.getExpectedClassName();
-        boolean _doubleArrow = Should.<String>operator_doubleArrow(_className, _expectedClassName);
         Assert.assertTrue("\nExpected className(feature(name)) => expectedClassName but"
          + "\n     className(feature(name)) is " + new org.hamcrest.StringDescription().appendValue(_className).toString()
          + "\n     feature(name) is " + new org.hamcrest.StringDescription().appendValue(_feature).toString()
          + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
-         + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
+         + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", Should.<String>operator_doubleArrow(_className, _expectedClassName));
         
       }
     };

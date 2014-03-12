@@ -19,7 +19,6 @@ public class FeatureProposalProviderSpec extends AbstractContentAssistProcessorT
   AbstractContentAssistProcessorTest2.ContentAssistProcessorTestBuilder2 builder;
   
   protected ISetup doGetSetup() {
-    FeatureUiStandaloneSetup _featureUiStandaloneSetup = new FeatureUiStandaloneSetup();
-    return _featureUiStandaloneSetup;
+    return new FeatureUiStandaloneSetup();
   }
 }

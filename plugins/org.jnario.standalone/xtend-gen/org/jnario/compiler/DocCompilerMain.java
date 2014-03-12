@@ -41,7 +41,7 @@ public class DocCompilerMain {
     } else {
       int _size = ((List<String>)Conversions.doWrapArray(args)).size();
       boolean _equals_1 = (_size == 0);
-      _or = (_equals || _equals_1);
+      _or = _equals_1;
     }
     if (_or) {
       DocCompilerMain.printUsage();
@@ -65,7 +65,7 @@ public class DocCompilerMain {
                 _or = true;
               } else {
                 boolean _equals_1 = Objects.equal(argument, "-classpath");
-                _or = (_equals || _equals_1);
+                _or = _equals_1;
               }
               if (_or) {
                 _matched=true;
@@ -167,8 +167,7 @@ public class DocCompilerMain {
       final ResourceSet resourceSet = anyInjector.<ResourceSet>getInstance(ResourceSet.class);
       this.generateCssAndJsFiles(anyInjector);
       StandaloneResourceProvider _standaloneResourceProvider = new StandaloneResourceProvider(resourceSet);
-      int _generateDocs = this.generateDocs(_standaloneResourceProvider);
-      _xblockexpression = (_generateDocs);
+      _xblockexpression = (this.generateDocs(_standaloneResourceProvider));
     }
     return _xblockexpression;
   }
@@ -212,8 +211,7 @@ public class DocCompilerMain {
     Injector _createInjectorAndDoEMFRegistration = _get.createInjectorAndDoEMFRegistration();
     final HashBasedSpec2ResultMapping resultMapping = _createInjectorAndDoEMFRegistration.<HashBasedSpec2ResultMapping>getInstance(HashBasedSpec2ResultMapping.class);
     String _resultFolder = this.getResultFolder();
-    File _file = new File(_resultFolder);
-    final File reportFolder = _file;
+    final File reportFolder = new File(_resultFolder);
     boolean _exists = reportFolder.exists();
     if (_exists) {
       this.addExecutionResults(resultMapping, reportFolder);
@@ -227,21 +225,18 @@ public class DocCompilerMain {
       final HtmlAssetsCompiler assetsCompiler = injector.<HtmlAssetsCompiler>getInstance(HtmlAssetsCompiler.class);
       String _outputPath = this.getOutputPath();
       assetsCompiler.setOutputPath(_outputPath);
-      boolean _compile = assetsCompiler.compile();
-      _xblockexpression = (_compile);
+      _xblockexpression = (assetsCompiler.compile());
     }
     return _xblockexpression;
   }
   
   public void addExecutionResults(final HashBasedSpec2ResultMapping resultMapping, final File reportFolder) {
     try {
-      SpecResultParser _specResultParser = new SpecResultParser();
-      final SpecResultParser specResultParser = _specResultParser;
+      final SpecResultParser specResultParser = new SpecResultParser();
       final FileFilter _function = new FileFilter() {
         public boolean accept(final File it) {
           String _name = it.getName();
-          boolean _endsWith = _name.endsWith("xml");
-          return _endsWith;
+          return _name.endsWith("xml");
         }
       };
       File[] _listFiles = reportFolder.listFiles(_function);

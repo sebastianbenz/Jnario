@@ -42,13 +42,11 @@ public class StepContextProviderSpec {
       final Function1<XtendField,Boolean> _function = new Function1<XtendField,Boolean>() {
         public Boolean apply(final XtendField it) {
           String _name = it.getName();
-          boolean _contains = expected.contains(_name);
-          return Boolean.valueOf(_contains);
+          return Boolean.valueOf(expected.contains(_name));
         }
       };
       Iterable<XtendField> _filter_1 = IterableExtensions.<XtendField>filter(_filter, _function);
-      Set<XtendField> _set = IterableExtensions.<XtendField>toSet(_filter_1);
-      _xblockexpression = (_set);
+      _xblockexpression = (IterableExtensions.<XtendField>toSet(_filter_1));
     }
     return _xblockexpression;
   }
@@ -58,8 +56,7 @@ public class StepContextProviderSpec {
     {
       this.m.parseScenario(content);
       final StepImplementation step = this.m.<StepImplementation>first(StepImplementation.class);
-      Set<XtendField> _usedFields = this.subject.usedFields(step);
-      _xblockexpression = (_usedFields);
+      _xblockexpression = (this.subject.usedFields(step));
     }
     return _xblockexpression;
   }

@@ -53,9 +53,8 @@ public class ExtensionLibraryConvertingStringsSpec extends ExtensionLibrarySpec 
      + "\n     \"5.5\".toDouble is " + new org.hamcrest.StringDescription().appendValue(Double.valueOf(_double)).toString() + "\n", _doubleArrow_2);
     
     long _long = StringConversions.toLong("5");
-    boolean _doubleArrow_3 = Should.<Long>operator_doubleArrow(Long.valueOf(_long), Long.valueOf(5l));
     Assert.assertTrue("\nExpected \"5\".toLong     => 5l but"
-     + "\n     \"5\".toLong is " + new org.hamcrest.StringDescription().appendValue(Long.valueOf(_long)).toString() + "\n", _doubleArrow_3);
+     + "\n     \"5\".toLong is " + new org.hamcrest.StringDescription().appendValue(Long.valueOf(_long)).toString() + "\n", Should.<Long>operator_doubleArrow(Long.valueOf(_long), Long.valueOf(5l)));
     
   }
   
@@ -83,17 +82,15 @@ public class ExtensionLibraryConvertingStringsSpec extends ExtensionLibrarySpec 
     List<String> _list_4 = StringConversions.toList("1, 2, 3");
     final Function1<String,Integer> _function = new Function1<String,Integer>() {
       public Integer apply(final String it) {
-        int _int = StringConversions.toInt(it);
-        return Integer.valueOf(_int);
+        return Integer.valueOf(StringConversions.toInt(it));
       }
     };
     List<Integer> _map = ListExtensions.<String, Integer>map(_list_4, _function);
     List<Integer> _list_5 = JnarioCollectionLiterals.<Integer>list(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3));
-    boolean _doubleArrow_2 = Should.<List<Integer>>operator_doubleArrow(_map, _list_5);
     Assert.assertTrue("\nExpected \"1, 2, 3\".toList.map[toInt] => list(1, 2, 3) but"
      + "\n     \"1, 2, 3\".toList.map[toInt] is " + new org.hamcrest.StringDescription().appendValue(_map).toString()
      + "\n     \"1, 2, 3\".toList is " + new org.hamcrest.StringDescription().appendValue(_list_4).toString()
-     + "\n     list(1, 2, 3) is " + new org.hamcrest.StringDescription().appendValue(_list_5).toString() + "\n", _doubleArrow_2);
+     + "\n     list(1, 2, 3) is " + new org.hamcrest.StringDescription().appendValue(_list_5).toString() + "\n", Should.<List<Integer>>operator_doubleArrow(_map, _list_5));
     
   }
 }

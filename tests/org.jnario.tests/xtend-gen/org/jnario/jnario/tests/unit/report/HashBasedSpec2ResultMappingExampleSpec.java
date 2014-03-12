@@ -50,10 +50,9 @@ public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2Result
      + "\n     aResultWithDifferentClassName is " + new org.hamcrest.StringDescription().appendValue(this.aResultWithDifferentClassName).toString() + "\n", _should_match_1);
     
     Example _example_2 = this.example();
-    boolean _should_match_2 = this.should_match(_example_2, this.aResultWithDifferentName);
     Assert.assertFalse("\nExpected example should not match aResultWithDifferentName but"
      + "\n     example is " + new org.hamcrest.StringDescription().appendValue(_example_2).toString()
-     + "\n     aResultWithDifferentName is " + new org.hamcrest.StringDescription().appendValue(this.aResultWithDifferentName).toString() + "\n", _should_match_2);
+     + "\n     aResultWithDifferentName is " + new org.hamcrest.StringDescription().appendValue(this.aResultWithDifferentName).toString() + "\n", this.should_match(_example_2, this.aResultWithDifferentName));
     
   }
   
@@ -75,10 +74,9 @@ public class HashBasedSpec2ResultMappingExampleSpec extends HashBasedSpec2Result
     final Passed pendingResult = Passed.passingSpec("example.SomethingSpec", "a fact [PENDING]", HashBasedSpec2ResultMappingSpec.anyExecutionTime);
     this.subject.accept(pendingResult);
     Example _example = this.example();
-    boolean _should_match = this.should_match(_example, pendingResult);
     Assert.assertTrue("\nExpected example should match pendingResult but"
      + "\n     example is " + new org.hamcrest.StringDescription().appendValue(_example).toString()
-     + "\n     pendingResult is " + new org.hamcrest.StringDescription().appendValue(pendingResult).toString() + "\n", _should_match);
+     + "\n     pendingResult is " + new org.hamcrest.StringDescription().appendValue(pendingResult).toString() + "\n", this.should_match(_example, pendingResult));
     
   }
 }

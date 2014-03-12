@@ -69,8 +69,7 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
         return null;
       }
       String _className = Strings.toClassName(name);
-      String _plus = (_className + SuiteClassNameProvider.POSTFIX);
-      _xblockexpression = (_plus);
+      _xblockexpression = ((_className + SuiteClassNameProvider.POSTFIX));
     }
     return _xblockexpression;
   }
@@ -85,13 +84,12 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
   }
   
   protected String internalDescribe(final EObject eObject) {
-    String _doDescribe = this.doDescribe(eObject);
-    return _doDescribe;
+    return this.doDescribe(eObject);
   }
   
   protected String _doDescribe(final Suite suite) {
-    String _convertToJavaString = null;
     String _removePrefix = this.removePrefix(suite);
+    String _convertToJavaString = null;
     if (_removePrefix!=null) {
       _convertToJavaString=org.eclipse.xtext.util.Strings.convertToJavaString(_removePrefix, true);
     }
@@ -117,25 +115,21 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
         return null;
       }
       final IResourceServiceProvider resourceServiceProvider = resource.getResourceServiceProvider();
-      JnarioNameProvider _get = resourceServiceProvider.<JnarioNameProvider>get(JnarioNameProvider.class);
-      _xblockexpression = (_get);
+      _xblockexpression = (resourceServiceProvider.<JnarioNameProvider>get(JnarioNameProvider.class));
     }
     return _xblockexpression;
   }
   
   protected String internalToJavaClassName(final EObject eObject) {
-    String _internalGetClassName = this.internalGetClassName(eObject);
-    return _internalGetClassName;
+    return this.internalGetClassName(eObject);
   }
   
   protected String internalToFieldName(final EObject eObject) {
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
-    throw _unsupportedOperationException;
+    throw new UnsupportedOperationException("Auto-generated function stub");
   }
   
   protected String internalToMethodName(final EObject eObject) {
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
-    throw _unsupportedOperationException;
+    throw new UnsupportedOperationException("Auto-generated function stub");
   }
   
   protected String internalGetClassName(final EObject suite) {

@@ -14,8 +14,7 @@ import org.jnario.doc.Filter;
 @SuppressWarnings("all")
 public class RegexFilter implements Filter {
   public static Filter create(final String regex) {
-    RegexFilter _regexFilter = new RegexFilter(regex);
-    return _regexFilter;
+    return new RegexFilter(regex);
   }
   
   private String regex;

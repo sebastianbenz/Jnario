@@ -32,8 +32,7 @@ public class FeatureScopeProviderSpec {
     {
       final EObject source = this.e.first(StepReference.class);
       EReference _stepReference_Reference = FeaturePackage.eINSTANCE.getStepReference_Reference();
-      Set<String> _scope = this.e.scope(source, _stepReference_Reference);
-      _xblockexpression = (_scope);
+      _xblockexpression = (this.e.scope(source, _stepReference_Reference));
     }
     return _xblockexpression;
   }

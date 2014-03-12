@@ -44,10 +44,9 @@ public class ExampleNameProviderToJavaClassNameExampleTableSpec extends ExampleN
     _builder.append("}");
     _builder.newLine();
     String _exampleTableClassName = this.exampleTableClassName(_builder);
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_exampleTableClassName, "MyContextSpecMyExample");
     Assert.assertTrue("\nExpected exampleTableClassName(\'\'\'\r\n        describe \'My Context\'{\r\n          def MyExample{\r\n          }\r\n        }\r\n        \'\'\') => \"MyContextSpecMyExample\" but"
      + "\n     exampleTableClassName(\'\'\'\r\n        describe \'My Context\'{\r\n          def MyExample{\r\n          }\r\n        }\r\n        \'\'\') is " + new org.hamcrest.StringDescription().appendValue(_exampleTableClassName).toString()
-     + "\n     \'\'\'\r\n        describe \'My Context\'{\r\n          def MyExample{\r\n          }\r\n        }\r\n        \'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+     + "\n     \'\'\'\r\n        describe \'My Context\'{\r\n          def MyExample{\r\n          }\r\n        }\r\n        \'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", Should.<String>operator_doubleArrow(_exampleTableClassName, "MyContextSpecMyExample"));
     
   }
   
@@ -67,10 +66,9 @@ public class ExampleNameProviderToJavaClassNameExampleTableSpec extends ExampleN
     _builder.append("}");
     _builder.newLine();
     String _exampleTableClassName = this.exampleTableClassName(_builder);
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_exampleTableClassName, "MyContextSpecMyExample");
     Assert.assertTrue("\nExpected exampleTableClassName(\'\'\'\r\n        describe \'My Context\'{\r\n          def myExample{\r\n          } \r\n        }\r\n        \'\'\') => \"MyContextSpecMyExample\" but"
      + "\n     exampleTableClassName(\'\'\'\r\n        describe \'My Context\'{\r\n          def myExample{\r\n          } \r\n        }\r\n        \'\'\') is " + new org.hamcrest.StringDescription().appendValue(_exampleTableClassName).toString()
-     + "\n     \'\'\'\r\n        describe \'My Context\'{\r\n          def myExample{\r\n          } \r\n        }\r\n        \'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+     + "\n     \'\'\'\r\n        describe \'My Context\'{\r\n          def myExample{\r\n          } \r\n        }\r\n        \'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", Should.<String>operator_doubleArrow(_exampleTableClassName, "MyContextSpecMyExample"));
     
   }
   
@@ -79,8 +77,7 @@ public class ExampleNameProviderToJavaClassNameExampleTableSpec extends ExampleN
     {
       Query _parse = this.parse(s);
       final ExampleTable exampleTable = _parse.<ExampleTable>first(ExampleTable.class);
-      String _javaClassName = this.subject.toJavaClassName(exampleTable);
-      _xblockexpression = (_javaClassName);
+      _xblockexpression = (this.subject.toJavaClassName(exampleTable));
     }
     return _xblockexpression;
   }

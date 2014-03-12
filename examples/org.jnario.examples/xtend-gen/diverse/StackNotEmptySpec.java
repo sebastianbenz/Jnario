@@ -18,14 +18,12 @@ public class StackNotEmptySpec extends StackSpec {
   @Named("pop removes last element")
   @Order(1)
   public void _popRemovesLastElement() throws Exception {
-    Stack<String> _stack = new Stack<String>();
-    final Stack<String> stack = _stack;
+    final Stack<String> stack = new Stack<String>();
     stack.add("something");
     String _pop = stack.pop();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_pop, "something");
     Assert.assertTrue("\nExpected stack.pop => \"something\" but"
      + "\n     stack.pop is " + new org.hamcrest.StringDescription().appendValue(_pop).toString()
-     + "\n     stack is " + new org.hamcrest.StringDescription().appendValue(stack).toString() + "\n", _doubleArrow);
+     + "\n     stack is " + new org.hamcrest.StringDescription().appendValue(stack).toString() + "\n", Should.<String>operator_doubleArrow(_pop, "something"));
     
   }
 }

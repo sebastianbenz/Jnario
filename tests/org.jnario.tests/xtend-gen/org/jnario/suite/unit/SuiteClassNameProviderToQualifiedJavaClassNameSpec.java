@@ -103,10 +103,9 @@ public class SuiteClassNameProviderToQualifiedJavaClassNameSpec extends SuiteCla
         Suite _suite = Suites.suite(_name, _packageName);
         final String actualName = SuiteClassNameProviderToQualifiedJavaClassNameSpec.this.subject.toQualifiedJavaClassName(_suite);
         String _qualifiedName = it.getQualifiedName();
-        boolean _doubleArrow = Should.<String>operator_doubleArrow(actualName, _qualifiedName);
         Assert.assertTrue("\nExpected actualName => qualifiedName but"
          + "\n     actualName is " + new org.hamcrest.StringDescription().appendValue(actualName).toString()
-         + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+         + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", Should.<String>operator_doubleArrow(actualName, _qualifiedName));
         
       }
     };

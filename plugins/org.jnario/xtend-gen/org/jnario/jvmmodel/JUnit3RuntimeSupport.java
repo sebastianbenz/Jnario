@@ -69,8 +69,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
     if (_equals) {
       final Function1<JvmTypeReference,String> _function = new Function1<JvmTypeReference,String>() {
         public String apply(final JvmTypeReference it) {
-          String _simpleName = it.getSimpleName();
-          return _simpleName;
+          return it.getSimpleName();
         }
       };
       Iterable<String> _map = IterableExtensions.<JvmTypeReference, String>map(children, _function);
@@ -124,8 +123,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
         }
       };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(exampleGroup, methodName, voidType, _function);
-      boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
-      _xblockexpression = (_add);
+      _xblockexpression = (this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method));
     }
     return _xblockexpression;
   }
@@ -137,12 +135,10 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
       public Boolean apply(final XtendFunction it) {
         EClass _eClass = it.eClass();
         String _name = _eClass.getName();
-        boolean _equals = Objects.equal(_name, "Before");
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(Objects.equal(_name, "Before"));
       }
     };
-    Iterable<XtendFunction> _filter_1 = IterableExtensions.<XtendFunction>filter(_filter, _function);
-    return _filter_1;
+    return IterableExtensions.<XtendFunction>filter(_filter, _function);
   }
   
   private Iterable<XtendFunction> afters(final XtendClass exampleGroup) {
@@ -152,12 +148,10 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
       public Boolean apply(final XtendFunction it) {
         EClass _eClass = it.eClass();
         String _name = _eClass.getName();
-        boolean _equals = Objects.equal(_name, "After");
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(Objects.equal(_name, "After"));
       }
     };
-    Iterable<XtendFunction> _filter_1 = IterableExtensions.<XtendFunction>filter(_filter, _function);
-    return _filter_1;
+    return IterableExtensions.<XtendFunction>filter(_filter, _function);
   }
   
   private boolean addSuite(final JvmGenericType it, final XtendClass context, final Iterable<String> children, final Iterable<Executable> tests) {
@@ -205,8 +199,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
         }
       };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(context, "suite", testType, _function);
-      boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
-      _xblockexpression = (_add);
+      _xblockexpression = (this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method));
     }
     return _xblockexpression;
   }
@@ -252,8 +245,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
         }
       };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(exampleGroup, "getName", stringType, _function_1);
-      boolean _add = this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members_2, _method);
-      _xblockexpression = (_add);
+      _xblockexpression = (this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members_2, _method));
     }
     return _xblockexpression;
   }
@@ -265,8 +257,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
     if (_isEmpty) {
       EList<JvmTypeReference> _superTypes_1 = inferredType.getSuperTypes();
       JvmTypeReference _typeForName = this._typeReferences.getTypeForName("junit.framework.TestCase", context);
-      boolean _add = this._extendedJvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes_1, _typeForName);
-      _xifexpression = Boolean.valueOf(_add);
+      _xifexpression = Boolean.valueOf(this._extendedJvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes_1, _typeForName));
     } else {
       JvmTypeReference _xifexpression_1 = null;
       EList<JvmTypeReference> _superTypes_2 = inferredType.getSuperTypes();
@@ -276,8 +267,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
       if (_equals) {
         EList<JvmTypeReference> _superTypes_3 = inferredType.getSuperTypes();
         JvmTypeReference _typeForName_1 = this._typeReferences.getTypeForName("junit.framework.TestCase", context);
-        JvmTypeReference _set = _superTypes_3.set(0, _typeForName_1);
-        _xifexpression_1 = _set;
+        _xifexpression_1 = _superTypes_3.set(0, _typeForName_1);
       }
       _xifexpression = _xifexpression_1;
     }
@@ -289,12 +279,10 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
     Iterable<Specification> _filter = Iterables.<Specification>filter(_members, Specification.class);
     final Function1<Specification,String> _function = new Function1<Specification,String>() {
       public String apply(final Specification it) {
-        String _javaClassName = JUnit3RuntimeSupport.this._jnarioNameProvider.toJavaClassName(it);
-        return _javaClassName;
+        return JUnit3RuntimeSupport.this._jnarioNameProvider.toJavaClassName(it);
       }
     };
-    Iterable<String> _map = IterableExtensions.<Specification, String>map(_filter, _function);
-    return _map;
+    return IterableExtensions.<Specification, String>map(_filter, _function);
   }
   
   private Iterable<Executable> examples(final XtendClass exampleGroup) {
@@ -305,8 +293,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
         return Boolean.valueOf((!(it instanceof Specification)));
       }
     };
-    Iterable<Executable> _filter_1 = IterableExtensions.<Executable>filter(_filter, _function);
-    return _filter_1;
+    return IterableExtensions.<Executable>filter(_filter, _function);
   }
   
   public void markAsTestMethod(final Executable element, final JvmOperation operation) {
@@ -316,16 +303,14 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
   
   private String testName(final Executable e) {
     String _methodName = this._jnarioNameProvider.toMethodName(e);
-    String _plus = ("test" + _methodName);
-    return _plus;
+    return ("test" + _methodName);
   }
   
   public void updateFeature(final XtendClass feature, final JvmGenericType inferredType, final List<JvmTypeReference> scenarios) {
     this.addTestCase(inferredType, feature);
     final Function1<JvmTypeReference,String> _function = new Function1<JvmTypeReference,String>() {
       public String apply(final JvmTypeReference it) {
-        String _simpleName = it.getSimpleName();
-        return _simpleName;
+        return it.getSimpleName();
       }
     };
     List<String> _map = ListExtensions.<JvmTypeReference, String>map(scenarios, _function);

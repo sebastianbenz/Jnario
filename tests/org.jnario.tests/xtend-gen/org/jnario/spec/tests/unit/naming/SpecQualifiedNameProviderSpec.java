@@ -60,10 +60,9 @@ public class SpecQualifiedNameProviderSpec {
     this._modelStore.parseSpec(_builder_1);
     String _qualifiedName_1 = this.qualifiedName();
     Matcher<String> _nullValue_1 = Should.<String>nullValue();
-    boolean _should_be_1 = Should.<String>should_be(_qualifiedName_1, _nullValue_1);
     Assert.assertTrue("\nExpected qualifiedName should be nullValue but"
      + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName_1).toString()
-     + "\n     nullValue is " + new org.hamcrest.StringDescription().appendValue(_nullValue_1).toString() + "\n", _should_be_1);
+     + "\n     nullValue is " + new org.hamcrest.StringDescription().appendValue(_nullValue_1).toString() + "\n", Should.<String>should_be(_qualifiedName_1, _nullValue_1));
     
   }
   
@@ -75,9 +74,8 @@ public class SpecQualifiedNameProviderSpec {
     _builder.append("describe \"My Spec\"{}");
     this._modelStore.parseSpec(_builder);
     String _qualifiedName = this.qualifiedName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_qualifiedName, "My Spec");
     Assert.assertTrue("\nExpected qualifiedName => \"My Spec\" but"
-     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", Should.<String>operator_doubleArrow(_qualifiedName, "My Spec"));
     
   }
   
@@ -89,9 +87,8 @@ public class SpecQualifiedNameProviderSpec {
     _builder.append("describe \"My Spec  \"{}");
     this._modelStore.parseSpec(_builder);
     String _qualifiedName = this.qualifiedName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_qualifiedName, "My Spec");
     Assert.assertTrue("\nExpected qualifiedName => \"My Spec\" but"
-     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", Should.<String>operator_doubleArrow(_qualifiedName, "My Spec"));
     
   }
   
@@ -103,9 +100,8 @@ public class SpecQualifiedNameProviderSpec {
     _builder.append("describe org.junit.Assert{}");
     this._modelStore.parseSpec(_builder);
     String _qualifiedName = this.qualifiedName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_qualifiedName, "Assert");
     Assert.assertTrue("\nExpected qualifiedName => \"Assert\" but"
-     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", Should.<String>operator_doubleArrow(_qualifiedName, "Assert"));
     
   }
   
@@ -117,9 +113,8 @@ public class SpecQualifiedNameProviderSpec {
     _builder.append("describe org.junit.Assert \"My Spec\"{}");
     this._modelStore.parseSpec(_builder);
     String _qualifiedName = this.qualifiedName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_qualifiedName, "Assert My Spec");
     Assert.assertTrue("\nExpected qualifiedName => \"Assert My Spec\" but"
-     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", Should.<String>operator_doubleArrow(_qualifiedName, "Assert My Spec"));
     
   }
   
@@ -133,9 +128,8 @@ public class SpecQualifiedNameProviderSpec {
     _builder.append("describe \"My Spec\"{}");
     this._modelStore.parseSpec(_builder);
     String _qualifiedName = this.qualifiedName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_qualifiedName, "test.My Spec");
     Assert.assertTrue("\nExpected qualifiedName => \"test.My Spec\" but"
-     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", _doubleArrow);
+     + "\n     qualifiedName is " + new org.hamcrest.StringDescription().appendValue(_qualifiedName).toString() + "\n", Should.<String>operator_doubleArrow(_qualifiedName, "test.My Spec"));
     
   }
   

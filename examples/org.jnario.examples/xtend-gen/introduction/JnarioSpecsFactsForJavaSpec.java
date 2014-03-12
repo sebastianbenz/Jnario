@@ -69,10 +69,9 @@ public class JnarioSpecsFactsForJavaSpec {
     Assert.assertFalse("\nExpected true should not be false but"
      + "\n     true should not be false is " + new org.hamcrest.StringDescription().appendValue(true).toString() + "\n", _should_be_1);
     
-    boolean _should_be_2 = Should.should_be(
-      "hello", String.class);
     Assert.assertTrue("\nExpected \"hello\" should be typeof(String) but"
-     + "\n     \"hello\" should be typeof(String) is " + new org.hamcrest.StringDescription().appendValue(true).toString() + "\n", _should_be_2);
+     + "\n     \"hello\" should be typeof(String) is " + new org.hamcrest.StringDescription().appendValue(true).toString() + "\n", Should.should_be(
+      "hello", String.class));
     
   }
   

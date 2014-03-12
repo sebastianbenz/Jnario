@@ -90,8 +90,7 @@ public class ReportTask extends Task {
     int _compile = compiler.compile();
     boolean _equals = (_compile == CompilerMain.COMPILATION_ERROR);
     if (_equals) {
-      BuildException _buildException = new BuildException("Error when generating Jnario report");
-      throw _buildException;
+      throw new BuildException("Error when generating Jnario report");
     }
   }
   

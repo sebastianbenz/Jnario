@@ -94,8 +94,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
           it.setExecutionStatus(_executionStateClass);
         }
       };
-      HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
-      _xblockexpression = (_newHtmlFile);
+      _xblockexpression = (HtmlFile.newHtmlFile(_function));
     }
     return _xblockexpression;
   }
@@ -123,8 +122,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
           it.setExecutionStatus(_executionStateClass);
         }
       };
-      HtmlFile _newHtmlFile = HtmlFile.newHtmlFile(_function);
-      _xblockexpression = (_newHtmlFile);
+      _xblockexpression = (HtmlFile.newHtmlFile(_function));
     }
     return _xblockexpression;
   }
@@ -173,8 +171,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
   public String desc(final Suite suite) {
     String _name = suite.getName();
     String _trimFirstLine = Strings.trimFirstLine(_name);
-    String _markdown2Html = this.markdown2Html(_trimFirstLine);
-    return _markdown2Html;
+    return this.markdown2Html(_trimFirstLine);
   }
   
   public CharSequence generateContent(final Suite suite) {
@@ -241,8 +238,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
         _xifexpression = "";
       } else {
         String _packageName_1 = XtendTypes.packageName(spec);
-        String _replace = _packageName_1.replace(".", "/");
-        _xifexpression = _replace;
+        _xifexpression = _packageName_1.replace(".", "/");
       }
       final String path = _xifexpression;
       String _root = this.root(context);
@@ -250,8 +246,7 @@ public class SuiteDocGenerator extends AbstractDocGenerator {
       String _plus_1 = (_plus + "/");
       String _javaClassName = this._suiteClassNameProvider.toJavaClassName(spec);
       String _htmlFileName = this.htmlFileName(_javaClassName);
-      String _plus_2 = (_plus_1 + _htmlFileName);
-      _xblockexpression = (_plus_2);
+      _xblockexpression = ((_plus_1 + _htmlFileName));
     }
     return _xblockexpression;
   }

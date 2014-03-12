@@ -28,8 +28,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 public class ExampleSpec {
   public Example parse(final String content) {
-    ModelStore _modelStore = new ModelStore();
-    final ModelStore modelStore = _modelStore;
+    final ModelStore modelStore = new ModelStore();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"test\"{");
     _builder.newLine();

@@ -38,16 +38,14 @@ public class XtendReferenceFinder extends DefaultReferenceFinder implements IRef
   public void findReferences(final Set<URI> targetURIs, final IResourceDescription resourceDescription, final IAcceptor<IReferenceDescription> acceptor, final IProgressMonitor monitor, final IReferenceFinder.ILocalResourceAccess localResourceAccess) {
     final Function1<URI,URI> _function = new Function1<URI,URI>() {
       public URI apply(final URI it) {
-        URI _trimFragment = it.trimFragment();
-        return _trimFragment;
+        return it.trimFragment();
       }
     };
     Iterable<URI> _map = IterableExtensions.<URI, URI>map(targetURIs, _function);
     final Function1<URI,Boolean> _function_1 = new Function1<URI,Boolean>() {
       public Boolean apply(final URI it) {
         URI _uRI = resourceDescription.getURI();
-        boolean _equals = Objects.equal(it, _uRI);
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(Objects.equal(it, _uRI));
       }
     };
     boolean _exists = IterableExtensions.<URI>exists(_map, _function_1);
@@ -68,8 +66,7 @@ public class XtendReferenceFinder extends DefaultReferenceFinder implements IRef
               String _identifier = obj.getIdentifier();
               String _lowerCase = _identifier.toLowerCase();
               QualifiedName _qualifiedName = XtendReferenceFinder.this.nameConverter.toQualifiedName(_lowerCase);
-              boolean _add = names.add(_qualifiedName);
-              _xifexpression = _add;
+              _xifexpression = names.add(_qualifiedName);
             }
             _xblockexpression = (_xifexpression);
           }
@@ -81,16 +78,14 @@ public class XtendReferenceFinder extends DefaultReferenceFinder implements IRef
     Iterable<QualifiedName> _importedNames = resourceDescription.getImportedNames();
     final Function1<QualifiedName,QualifiedName> _function_3 = new Function1<QualifiedName,QualifiedName>() {
       public QualifiedName apply(final QualifiedName it) {
-        QualifiedName _lowerCase = it.toLowerCase();
-        return _lowerCase;
+        return it.toLowerCase();
       }
     };
     Iterable<QualifiedName> _map_1 = IterableExtensions.<QualifiedName, QualifiedName>map(_importedNames, _function_3);
     final Set<QualifiedName> importedNames = IterableExtensions.<QualifiedName>toSet(_map_1);
     final Function1<QualifiedName,Boolean> _function_4 = new Function1<QualifiedName,Boolean>() {
       public Boolean apply(final QualifiedName it) {
-        boolean _contains = importedNames.contains(it);
-        return Boolean.valueOf(_contains);
+        return Boolean.valueOf(importedNames.contains(it));
       }
     };
     boolean _exists_1 = IterableExtensions.<QualifiedName>exists(names, _function_4);

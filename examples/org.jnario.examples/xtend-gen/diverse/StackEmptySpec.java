@@ -3,7 +3,6 @@ package diverse;
 import diverse.StackSpec;
 import java.util.EmptyStackException;
 import java.util.Stack;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.jnario.lib.Assert;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -16,12 +15,7 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @SuppressWarnings("all")
 public class StackEmptySpec extends StackSpec {
-  final Stack<String> emptyStack = new Function0<Stack<String>>() {
-    public Stack<String> apply() {
-      Stack<String> _stack = new Stack<String>();
-      return _stack;
-    }
-  }.apply();
+  final Stack<String> emptyStack = new Stack<String>();
   
   @Test
   @Named("emptyStack.size should be 0")

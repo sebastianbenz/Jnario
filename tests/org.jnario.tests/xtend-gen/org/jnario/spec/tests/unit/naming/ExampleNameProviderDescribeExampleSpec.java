@@ -32,9 +32,8 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
   @Order(1)
   public void _shouldUseTheDescription() throws Exception {
     String _describeFirst = this.describeFirst("\'should do stuff\' {true}");
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_describeFirst, "should do stuff");
     Assert.assertTrue("\nExpected describeFirst(\"\'should do stuff\' {true}\") => \"should do stuff\" but"
-     + "\n     describeFirst(\"\'should do stuff\' {true}\") is " + new org.hamcrest.StringDescription().appendValue(_describeFirst).toString() + "\n", _doubleArrow);
+     + "\n     describeFirst(\"\'should do stuff\' {true}\") is " + new org.hamcrest.StringDescription().appendValue(_describeFirst).toString() + "\n", Should.<String>operator_doubleArrow(_describeFirst, "should do stuff"));
     
   }
   
@@ -48,9 +47,8 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
      + "\n     describeFirst(\"\'should do stuff\'\") is " + new org.hamcrest.StringDescription().appendValue(_describeFirst).toString() + "\n", _doubleArrow);
     
     String _describeFirst_1 = this.describeFirst("\'should do stuff\'{}");
-    boolean _doubleArrow_1 = Should.<String>operator_doubleArrow(_describeFirst_1, "should do stuff [PENDING]");
     Assert.assertTrue("\nExpected describeFirst(\"\'should do stuff\'{}\") => \"should do stuff [PENDING]\" but"
-     + "\n     describeFirst(\"\'should do stuff\'{}\") is " + new org.hamcrest.StringDescription().appendValue(_describeFirst_1).toString() + "\n", _doubleArrow_1);
+     + "\n     describeFirst(\"\'should do stuff\'{}\") is " + new org.hamcrest.StringDescription().appendValue(_describeFirst_1).toString() + "\n", Should.<String>operator_doubleArrow(_describeFirst_1, "should do stuff [PENDING]"));
     
   }
   
@@ -60,8 +58,7 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
       final String contentWithExampleGroup = (("describe \'Example\'{ fact " + content) + "}");
       Query _parse = this.parse(contentWithExampleGroup);
       Example _first = _parse.<Example>first(Example.class);
-      String _describe = this.subject.describe(_first);
-      _xblockexpression = (_describe);
+      _xblockexpression = (this.subject.describe(_first));
     }
     return _xblockexpression;
   }

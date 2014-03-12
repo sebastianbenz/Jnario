@@ -35,8 +35,7 @@ public class FeatureClassNameProviderSpec {
   static FeatureFactory factory = FeatureFactory.eINSTANCE;
   
   public String className(final EObject obj) {
-    String _javaClassName = this.subject.toJavaClassName(obj);
-    return _javaClassName;
+    return this.subject.toJavaClassName(obj);
   }
   
   public Background background(final String backgroundName, final String featureName) {

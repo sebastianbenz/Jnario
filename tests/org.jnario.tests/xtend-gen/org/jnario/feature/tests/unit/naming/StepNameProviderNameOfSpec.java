@@ -52,9 +52,8 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_stepName, "Given a step with an implementation");
     Assert.assertTrue("\nExpected stepName => \"Given a step with an implementation\" but"
-     + "\n     stepName is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
+     + "\n     stepName is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", Should.<String>operator_doubleArrow(_stepName, "Given a step with an implementation"));
     
   }
   
@@ -78,9 +77,8 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_stepName, "Given a step with a resolved reference");
     Assert.assertTrue("\nExpected stepName => \"Given a step with a resolved reference\" but"
-     + "\n     stepName is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
+     + "\n     stepName is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", Should.<String>operator_doubleArrow(_stepName, "Given a step with a resolved reference"));
     
   }
   
@@ -96,9 +94,8 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_stepName, "Given a step with an unresolved reference");
     Assert.assertTrue("\nExpected stepName => \"Given a step with an unresolved reference\" but"
-     + "\n     stepName is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
+     + "\n     stepName is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", Should.<String>operator_doubleArrow(_stepName, "Given a step with an unresolved reference"));
     
   }
   
@@ -117,9 +114,8 @@ public class StepNameProviderNameOfSpec extends StepNameProviderSpec {
     _builder.newLine();
     this.parseScenario(_builder);
     String _stepName = this.stepName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_stepName, "Given a step with two values \"a\" and \"b\"");
     Assert.assertTrue("\nExpected stepName => \'Given a step with two values \"a\" and \"b\"\' but"
-     + "\n     stepName is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", _doubleArrow);
+     + "\n     stepName is " + new org.hamcrest.StringDescription().appendValue(_stepName).toString() + "\n", Should.<String>operator_doubleArrow(_stepName, "Given a step with two values \"a\" and \"b\""));
     
   }
 }

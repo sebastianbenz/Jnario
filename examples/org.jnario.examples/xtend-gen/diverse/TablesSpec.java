@@ -87,12 +87,11 @@ public class TablesSpec {
         int _b = it.getB();
         int _plus = (_a + _b);
         int _sum = it.getSum();
-        boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(_sum));
         Assert.assertTrue("\nExpected a + b => sum but"
          + "\n     a + b is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_plus)).toString()
          + "\n     a is " + new org.hamcrest.StringDescription().appendValue(_a).toString()
          + "\n     b is " + new org.hamcrest.StringDescription().appendValue(_b).toString()
-         + "\n     sum is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_sum)).toString() + "\n", _doubleArrow);
+         + "\n     sum is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_sum)).toString() + "\n", Should.<Integer>operator_doubleArrow(Integer.valueOf(_plus), Integer.valueOf(_sum)));
         
       }
     };

@@ -34,18 +34,15 @@ public class ScopeTestExtension implements Iterable {
   private IScopeProvider _iScopeProvider;
   
   public Resource parseSpec(final CharSequence content) {
-    Resource _parseSpec = this.store.parseSpec(content);
-    return _parseSpec;
+    return this.store.parseSpec(content);
   }
   
   public Resource parseSuite(final CharSequence content) {
-    Resource _parseSuite = this.store.parseSuite(content);
-    return _parseSuite;
+    return this.store.parseSuite(content);
   }
   
   public Resource parseFeature(final CharSequence content) {
-    Resource _parseScenario = this.store.parseScenario(content);
-    return _parseScenario;
+    return this.store.parseScenario(content);
   }
   
   public Set<String> scope(final EObject context, final EReference ref) {
@@ -54,8 +51,7 @@ public class ScopeTestExtension implements Iterable {
       XtextResourceSet _resourceSet = this.store.getResourceSet();
       Resources.addContainerStateAdapter(_resourceSet);
       IScope _scope = this._iScopeProvider.getScope(context, ref);
-      Set<String> _scope_1 = this.scope(_scope);
-      _xblockexpression = (_scope_1);
+      _xblockexpression = (this.scope(_scope));
     }
     return _xblockexpression;
   }
@@ -64,18 +60,15 @@ public class ScopeTestExtension implements Iterable {
     Iterable<IEObjectDescription> _allElements = scope.getAllElements();
     final Function1<IEObjectDescription,String> _function = new Function1<IEObjectDescription,String>() {
       public String apply(final IEObjectDescription it) {
-        String _string = it.toString();
-        return _string;
+        return it.toString();
       }
     };
     Iterable<String> _map = IterableExtensions.<IEObjectDescription, String>map(_allElements, _function);
-    Set<String> _set = IterableExtensions.<String>toSet(_map);
-    return _set;
+    return IterableExtensions.<String>toSet(_map);
   }
   
   public Iterator iterator() {
-    Iterator<EObject> _iterator = this.store.iterator();
-    return _iterator;
+    return this.store.iterator();
   }
   
   public EObject first(final Class<? extends EObject> type) {

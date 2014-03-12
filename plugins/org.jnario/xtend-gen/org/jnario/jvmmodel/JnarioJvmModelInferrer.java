@@ -92,8 +92,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   }
   
   public void doInfer(final EObject e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException();
-    throw _unsupportedOperationException;
+    throw new UnsupportedOperationException();
   }
   
   protected void transform(final XtendField source, final JvmGenericType container) {
@@ -129,8 +128,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   }
   
   public XtendFile xtendFile(final EObject obj) {
-    XtendFile _containerOfType = EcoreUtil2.<XtendFile>getContainerOfType(obj, XtendFile.class);
-    return _containerOfType;
+    return EcoreUtil2.<XtendFile>getContainerOfType(obj, XtendFile.class);
   }
   
   public String packageName(final EObject obj) {
@@ -153,7 +151,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
     if (!_notEquals) {
       _and = false;
     } else {
-      _and = (_notEquals && (xtendType instanceof XtendClass));
+      _and = (xtendType instanceof XtendClass);
     }
     boolean _while = _and;
     while (_while) {
@@ -162,8 +160,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
         EList<XAnnotation> _annotations = current.getAnnotations();
         final Function1<XAnnotation,Boolean> _function = new Function1<XAnnotation,Boolean>() {
           public Boolean apply(final XAnnotation it) {
-            boolean _hasExtendsAnnotation = JnarioJvmModelInferrer.this.hasExtendsAnnotation(it);
-            return Boolean.valueOf(_hasExtendsAnnotation);
+            return Boolean.valueOf(JnarioJvmModelInferrer.this.hasExtendsAnnotation(it));
           }
         };
         Iterable<XAnnotation> _filter = IterableExtensions.<XAnnotation>filter(_annotations, _function);
@@ -183,7 +180,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
           } else {
             JvmType _type = extendedType.getType();
             boolean _notEquals_1 = (!Objects.equal(_type, null));
-            _and_1 = (_isEmpty && _notEquals_1);
+            _and_1 = _notEquals_1;
           }
           if (_and_1) {
             JvmType _type_1 = extendedType.getType();
@@ -200,7 +197,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
       if (!_notEquals_1) {
         _and_1 = false;
       } else {
-        _and_1 = (_notEquals_1 && (xtendType instanceof XtendClass));
+        _and_1 = (xtendType instanceof XtendClass);
       }
       _while = _and_1;
     }
@@ -219,7 +216,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
       _and = false;
     } else {
       XExpression _value = annotation.getValue();
-      _and = (_equals && (_value instanceof XTypeLiteral));
+      _and = (_value instanceof XTypeLiteral);
     }
     return _and;
   }

@@ -36,10 +36,9 @@ public class _20FactsAboutXtendSomeImportantDifferencesSpec extends _20FactsAbou
     final List<String> colors = JnarioCollectionLiterals.<String>list("red", "blue", "green");
     Collections.<String>sort(colors);
     List<String> _list = JnarioCollectionLiterals.<String>list("blue", "green", "red");
-    boolean _doubleArrow = this.<String>operator_doubleArrow(colors, _list);
     Assert.assertTrue("\nExpected colors => list(\"blue\", \"green\", \"red\") but"
      + "\n     colors is " + new org.hamcrest.StringDescription().appendValue(colors).toString()
-     + "\n     list(\"blue\", \"green\", \"red\") is " + new org.hamcrest.StringDescription().appendValue(_list).toString() + "\n", _doubleArrow);
+     + "\n     list(\"blue\", \"green\", \"red\") is " + new org.hamcrest.StringDescription().appendValue(_list).toString() + "\n", this.<String>operator_doubleArrow(colors, _list));
     
   }
   
@@ -55,9 +54,8 @@ public class _20FactsAboutXtendSomeImportantDifferencesSpec extends _20FactsAbou
   @Order(2)
   public void _asWellAsAccessingTypes() throws Exception {
     String _name = String.class.getName();
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_name, "java.lang.String");
     Assert.assertTrue("\nExpected typeof(String).name => \"java.lang.String\" but"
-     + "\n     typeof(String).name is " + new org.hamcrest.StringDescription().appendValue(_name).toString() + "\n", _doubleArrow);
+     + "\n     typeof(String).name is " + new org.hamcrest.StringDescription().appendValue(_name).toString() + "\n", Should.<String>operator_doubleArrow(_name, "java.lang.String"));
     
   }
   

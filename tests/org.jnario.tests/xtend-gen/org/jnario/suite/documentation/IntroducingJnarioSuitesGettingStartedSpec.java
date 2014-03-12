@@ -80,11 +80,10 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
     _builder.newLine();
     Resource _parseSuite = this._modelStore.parseSuite(_builder);
     int _nrOfParseAndLinkingErrors = Resources.nrOfParseAndLinkingErrors(_parseSuite);
-    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_nrOfParseAndLinkingErrors), Integer.valueOf(2));
     Assert.assertTrue("\nExpected \'\'\'\r\n\t\t\tpackage demo\r\n\t\t\t\r\n\t\t\t#My Suite\r\n\t\t\t\r\n\t\t\t- \"My Feature\"\r\n\t\t\t- \"My Spec\"\r\n\t\t\t\'\'\'.parseSuite.nrOfParseAndLinkingErrors => 2 but"
      + "\n     \'\'\'\r\n\t\t\tpackage demo\r\n\t\t\t\r\n\t\t\t#My Suite\r\n\t\t\t\r\n\t\t\t- \"My Feature\"\r\n\t\t\t- \"My Spec\"\r\n\t\t\t\'\'\'.parseSuite.nrOfParseAndLinkingErrors is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_nrOfParseAndLinkingErrors)).toString()
      + "\n     \'\'\'\r\n\t\t\tpackage demo\r\n\t\t\t\r\n\t\t\t#My Suite\r\n\t\t\t\r\n\t\t\t- \"My Feature\"\r\n\t\t\t- \"My Spec\"\r\n\t\t\t\'\'\'.parseSuite is " + new org.hamcrest.StringDescription().appendValue(_parseSuite).toString()
-     + "\n     \'\'\'\r\n\t\t\tpackage demo\r\n\t\t\t\r\n\t\t\t#My Suite\r\n\t\t\t\r\n\t\t\t- \"My Feature\"\r\n\t\t\t- \"My Spec\"\r\n\t\t\t\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", _doubleArrow);
+     + "\n     \'\'\'\r\n\t\t\tpackage demo\r\n\t\t\t\r\n\t\t\t#My Suite\r\n\t\t\t\r\n\t\t\t- \"My Feature\"\r\n\t\t\t- \"My Spec\"\r\n\t\t\t\'\'\' is " + new org.hamcrest.StringDescription().appendValue(_builder).toString() + "\n", Should.<Integer>operator_doubleArrow(Integer.valueOf(_nrOfParseAndLinkingErrors), Integer.valueOf(2)));
     
   }
   
@@ -168,8 +167,7 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
       _builder_1.newLine();
       _builder_1.append("}");
       _builder_1.newLine();
-      Resource _parseSpec = this._modelStore.parseSpec(_builder_1);
-      _xblockexpression = (_parseSpec);
+      _xblockexpression = (this._modelStore.parseSpec(_builder_1));
     }
     return _xblockexpression;
   }

@@ -44,10 +44,9 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
     final Procedure1<String> _function = new Procedure1<String>() {
       public void apply(final String it) {
         String _firstMethodName = ExampleNameProviderToMethodNameExampleSpec.this.firstMethodName(it);
-        boolean _doubleArrow = Should.<String>operator_doubleArrow(_firstMethodName, "_myExample");
         Assert.assertTrue("\nExpected firstMethodName(it) => \'_myExample\' but"
          + "\n     firstMethodName(it) is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString()
-         + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", _doubleArrow);
+         + "\n     it is " + new org.hamcrest.StringDescription().appendValue(it).toString() + "\n", Should.<String>operator_doubleArrow(_firstMethodName, "_myExample"));
         
       }
     };
@@ -61,11 +60,10 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
     String _nameOfLength = this.nameOfLength(251);
     String _firstMethodName = this.firstMethodName(_nameOfLength);
     int _length = _firstMethodName.length();
-    boolean _doubleArrow = Should.<Integer>operator_doubleArrow(Integer.valueOf(_length), Integer.valueOf(250));
     Assert.assertTrue("\nExpected firstMethodName(nameOfLength(251)).length => 250 but"
      + "\n     firstMethodName(nameOfLength(251)).length is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_length)).toString()
      + "\n     firstMethodName(nameOfLength(251)) is " + new org.hamcrest.StringDescription().appendValue(_firstMethodName).toString()
-     + "\n     nameOfLength(251) is " + new org.hamcrest.StringDescription().appendValue(_nameOfLength).toString() + "\n", _doubleArrow);
+     + "\n     nameOfLength(251) is " + new org.hamcrest.StringDescription().appendValue(_nameOfLength).toString() + "\n", Should.<Integer>operator_doubleArrow(Integer.valueOf(_length), Integer.valueOf(250)));
     
   }
   
@@ -88,8 +86,7 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
       final String contentWithContext = (("describe \'Context\'{ fact " + content) + "}");
       Query _parse = this.parse(contentWithContext);
       Example _first = _parse.<Example>first(Example.class);
-      String _methodName = this.subject.toMethodName(_first);
-      _xblockexpression = (_methodName);
+      _xblockexpression = (this.subject.toMethodName(_first));
     }
     return _xblockexpression;
   }

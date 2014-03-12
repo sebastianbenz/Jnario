@@ -31,11 +31,10 @@ public class CellLocationCellNeighboursSpec extends CellLocationSpec {
     CellLocation _cell_7 = CellLocation.cell(6, 4);
     final Set<CellLocation> expectedNeighbours = JnarioCollectionLiterals.<CellLocation>set(_cell, _cell_1, _cell_2, _cell_3, _cell_4, _cell_5, _cell_6, _cell_7);
     Set<CellLocation> _neighbours = cell.neighbours();
-    boolean _doubleArrow = Should.<Set<CellLocation>>operator_doubleArrow(_neighbours, expectedNeighbours);
     Assert.assertTrue("\nExpected cell.neighbours => expectedNeighbours but"
      + "\n     cell.neighbours is " + new org.hamcrest.StringDescription().appendValue(_neighbours).toString()
      + "\n     cell is " + new org.hamcrest.StringDescription().appendValue(cell).toString()
-     + "\n     expectedNeighbours is " + new org.hamcrest.StringDescription().appendValue(expectedNeighbours).toString() + "\n", _doubleArrow);
+     + "\n     expectedNeighbours is " + new org.hamcrest.StringDescription().appendValue(expectedNeighbours).toString() + "\n", Should.<Set<CellLocation>>operator_doubleArrow(_neighbours, expectedNeighbours));
     
   }
 }

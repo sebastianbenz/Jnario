@@ -56,10 +56,9 @@ public class HashBasedSpec2ResultMappingBackgroundSpec extends HashBasedSpec2Res
     this.passedStep("Given another step");
     Background _background = this.background();
     SpecExecution _result = this.result(_background);
-    boolean _doubleArrow = Should.operator_doubleArrow(_result, Passed.class);
     Assert.assertTrue("\nExpected background.result => typeof(Passed) but"
      + "\n     background.result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
-     + "\n     background is " + new org.hamcrest.StringDescription().appendValue(_background).toString() + "\n", _doubleArrow);
+     + "\n     background is " + new org.hamcrest.StringDescription().appendValue(_background).toString() + "\n", Should.operator_doubleArrow(_result, Passed.class));
     
   }
   
@@ -70,10 +69,9 @@ public class HashBasedSpec2ResultMappingBackgroundSpec extends HashBasedSpec2Res
     this.failedStep("Given a step");
     Background _background = this.background();
     SpecExecution _result = this.result(_background);
-    boolean _doubleArrow = Should.operator_doubleArrow(_result, Failed.class);
     Assert.assertTrue("\nExpected background.result => typeof(Failed) but"
      + "\n     background.result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
-     + "\n     background is " + new org.hamcrest.StringDescription().appendValue(_background).toString() + "\n", _doubleArrow);
+     + "\n     background is " + new org.hamcrest.StringDescription().appendValue(_background).toString() + "\n", Should.operator_doubleArrow(_result, Failed.class));
     
   }
 }

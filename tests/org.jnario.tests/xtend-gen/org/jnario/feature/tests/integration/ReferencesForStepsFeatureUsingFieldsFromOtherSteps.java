@@ -30,8 +30,7 @@ public class ReferencesForStepsFeatureUsingFieldsFromOtherSteps extends Referenc
   @Order(0)
   @Named("When I have a scenario with a field")
   public void _whenIHaveAScenarioWithAField() {
-    StepArguments _stepArguments = new StepArguments("package bootstrap\nimport java.util.*\nFeature: Test\n\tScenario: TestScenario 1\n\t\tList<String> values = new ArrayList()\n\t\tGiven a list\n\t\t\tvalues += \"hello\"\n\t\t\n\tScenario: TestScenario 2\n\t\tGiven a list\n\t\tThen it should have contents\n\t\t\tvalues.size => 1\n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("package bootstrap\nimport java.util.*\nFeature: Test\n\tScenario: TestScenario 1\n\t\tList<String> values = new ArrayList()\n\t\tGiven a list\n\t\t\tvalues += \"hello\"\n\t\t\n\tScenario: TestScenario 2\n\t\tGiven a list\n\t\tThen it should have contents\n\t\t\tvalues.size => 1\n");
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;
   }

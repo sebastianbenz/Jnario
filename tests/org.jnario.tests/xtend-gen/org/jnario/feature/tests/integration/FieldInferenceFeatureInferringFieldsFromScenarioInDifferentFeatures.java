@@ -41,8 +41,7 @@ public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures
   @Order(0)
   @Named("When I have a feature")
   public void _whenIHaveAFeature() {
-    StepArguments _stepArguments = new StepArguments("Feature: Feature 1\n\tScenario: My Scenario\n\t\tString myString\n\t\tGiven a string \"value\"\n\t\t\tmyString = args.first\n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("Feature: Feature 1\n\tScenario: My Scenario\n\t\tString myString\n\t\tGiven a string \"value\"\n\t\t\tmyString = args.first\n");
     String _first = JnarioIterableExtensions.<String>first(args);
     this.feature1 = _first;
   }
@@ -51,8 +50,7 @@ public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures
   @Order(1)
   @Named("And another feature")
   public void _andAnotherFeature() {
-    StepArguments _stepArguments = new StepArguments("Feature: Feature 2\n\tScenario: My Scenario 2\n\t\tGiven a string \"test\"\n\t\tThen my string is \"test\"\n\t\t\tmyString => args.first   \n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("Feature: Feature 2\n\tScenario: My Scenario 2\n\t\tGiven a string \"test\"\n\t\tThen my string is \"test\"\n\t\t\tmyString => args.first   \n");
     String _first = JnarioIterableExtensions.<String>first(args);
     this.feature2 = _first;
   }
@@ -72,12 +70,11 @@ public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures
     
     Result _execute_1 = this.runner.execute(this.feature2);
     Matcher<Result> _isSuccessful_1 = ResultMatchers.isSuccessful();
-    boolean _doubleArrow_1 = Should.<Result>operator_doubleArrow(_execute_1, _isSuccessful_1);
     Assert.assertTrue("\nExpected runner.execute(feature2) => isSuccessful but"
      + "\n     runner.execute(feature2) is " + new org.hamcrest.StringDescription().appendValue(_execute_1).toString()
      + "\n     runner is " + new org.hamcrest.StringDescription().appendValue(this.runner).toString()
      + "\n     feature2 is " + new org.hamcrest.StringDescription().appendValue(this.feature2).toString()
-     + "\n     isSuccessful is " + new org.hamcrest.StringDescription().appendValue(_isSuccessful_1).toString() + "\n", _doubleArrow_1);
+     + "\n     isSuccessful is " + new org.hamcrest.StringDescription().appendValue(_isSuccessful_1).toString() + "\n", Should.<Result>operator_doubleArrow(_execute_1, _isSuccessful_1));
     
   }
 }

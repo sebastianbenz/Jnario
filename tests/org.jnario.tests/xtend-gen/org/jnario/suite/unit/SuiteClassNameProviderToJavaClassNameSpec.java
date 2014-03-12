@@ -86,13 +86,12 @@ public class SuiteClassNameProviderToJavaClassNameSpec extends SuiteClassNamePro
         Suite _suite = Suites.suite(_name);
         String _javaClassName = SuiteClassNameProviderToJavaClassNameSpec.this.subject.toJavaClassName(_suite);
         String _expectedClassName = it.getExpectedClassName();
-        boolean _doubleArrow = Should.<String>operator_doubleArrow(_javaClassName, _expectedClassName);
         Assert.assertTrue("\nExpected subject.toJavaClassName(suite(name)) => expectedClassName but"
          + "\n     subject.toJavaClassName(suite(name)) is " + new org.hamcrest.StringDescription().appendValue(_javaClassName).toString()
          + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(SuiteClassNameProviderToJavaClassNameSpec.this.subject).toString()
          + "\n     suite(name) is " + new org.hamcrest.StringDescription().appendValue(_suite).toString()
          + "\n     name is " + new org.hamcrest.StringDescription().appendValue(_name).toString()
-         + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", _doubleArrow);
+         + "\n     expectedClassName is " + new org.hamcrest.StringDescription().appendValue(_expectedClassName).toString() + "\n", Should.<String>operator_doubleArrow(_javaClassName, _expectedClassName));
         
       }
     };

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.xtend.core.xtend.XtendAnnotationTarget;
 import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtend.core.xtend.XtendExecutable;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendMember;
@@ -203,6 +204,11 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 			public Adapter caseSpecification(Specification object)
 			{
 				return createSpecificationAdapter();
+			}
+			@Override
+			public Adapter caseXtendExecutable(XtendExecutable object)
+			{
+				return createXtendExecutableAdapter();
 			}
 			@Override
 			public Adapter caseXtendFunction(XtendFunction object)
@@ -577,6 +583,21 @@ public class FeatureAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createSpecificationAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtend.core.xtend.XtendExecutable <em>Executable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtend.core.xtend.XtendExecutable
+	 * @generated
+	 */
+	public Adapter createXtendExecutableAdapter()
 	{
 		return null;
 	}

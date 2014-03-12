@@ -40,8 +40,7 @@ public class ReferencesForStepsFeatureScenarioReferencesTwoStepsFromDifferentSce
   @Order(0)
   @Named("Given a feature")
   public void _givenAFeature() {
-    StepArguments _stepArguments = new StepArguments("Feature: Field inference\n\t\t\tScenario: Scenario with field colors\n\t\t\t\tval colors = <String>list  \n\t\t\t\tGiven a color red\n\t\t\t\t\tcolors += \"red\"\n\t\t\tScenario: Other scenario with field colors\n\t\t\t\tval colors = <String>list \n\t\t\t\tGiven a color green\n\t\t\t\t\tcolors += \"green\"\n\t\t\tScenario: Two steps reuse same field\n\t\t\t\t\n\t\t\t\tGiven a color green\n\t\t\t\tAnd a color red\n\t\t\t\tThen colors are red & green\n\t\t\t\tcolors => list(\"green\", \"red\")\n");
-    final StepArguments args = _stepArguments;
+    final StepArguments args = new StepArguments("Feature: Field inference\n\t\t\tScenario: Scenario with field colors\n\t\t\t\tval colors = <String>list  \n\t\t\t\tGiven a color red\n\t\t\t\t\tcolors += \"red\"\n\t\t\tScenario: Other scenario with field colors\n\t\t\t\tval colors = <String>list \n\t\t\t\tGiven a color green\n\t\t\t\t\tcolors += \"green\"\n\t\t\tScenario: Two steps reuse same field\n\t\t\t\t\n\t\t\t\tGiven a color green\n\t\t\t\tAnd a color red\n\t\t\t\tThen colors are red & green\n\t\t\t\tcolors => list(\"green\", \"red\")\n");
     String _first = JnarioIterableExtensions.<String>first(args);
     this.jnarioFile = _first;
   }

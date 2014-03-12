@@ -25,10 +25,9 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Order(1)
   public void _removesColon() throws Exception {
     String _value = this.subject.toValue(":suite", null);
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, "suite");
     Assert.assertTrue("\nExpected subject.toValue(\":suite\", null) => \"suite\" but"
      + "\n     subject.toValue(\":suite\", null) is " + new org.hamcrest.StringDescription().appendValue(_value).toString()
-     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", Should.<String>operator_doubleArrow(_value, "suite"));
     
   }
   
@@ -37,10 +36,9 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Order(2)
   public void _removesWhitespaceAfterColon() throws Exception {
     String _value = this.subject.toValue(": suite", null);
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, "suite");
     Assert.assertTrue("\nExpected subject.toValue(\": suite\", null) => \"suite\" but"
      + "\n     subject.toValue(\": suite\", null) is " + new org.hamcrest.StringDescription().appendValue(_value).toString()
-     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", Should.<String>operator_doubleArrow(_value, "suite"));
     
   }
   
@@ -49,10 +47,9 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Order(3)
   public void _removesEscapeCharacterForDashes() throws Exception {
     String _value = this.subject.toValue(":suite \\- with dash", null);
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, "suite - with dash");
     Assert.assertTrue("\nExpected subject.toValue(\":suite \\\\- with dash\", null) => \"suite - with dash\" but"
      + "\n     subject.toValue(\":suite \\\\- with dash\", null) is " + new org.hamcrest.StringDescription().appendValue(_value).toString()
-     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", Should.<String>operator_doubleArrow(_value, "suite - with dash"));
     
   }
   
@@ -61,10 +58,9 @@ public class TextValueConverterToValueSpec extends TextValueConverterSpec {
   @Order(4)
   public void _removesEscapeCharacterForHashs() throws Exception {
     String _value = this.subject.toValue(":suite \\# with hash", null);
-    boolean _doubleArrow = Should.<String>operator_doubleArrow(_value, "suite # with hash");
     Assert.assertTrue("\nExpected subject.toValue(\":suite \\\\# with hash\", null) => \"suite # with hash\" but"
      + "\n     subject.toValue(\":suite \\\\# with hash\", null) is " + new org.hamcrest.StringDescription().appendValue(_value).toString()
-     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", _doubleArrow);
+     + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString() + "\n", Should.<String>operator_doubleArrow(_value, "suite # with hash"));
     
   }
 }

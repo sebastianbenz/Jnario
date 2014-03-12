@@ -54,10 +54,9 @@ public class HashBasedSpec2ResultMappingFeatureSpec extends HashBasedSpec2Result
     this.passedStep(HashBasedSpec2ResultMappingSpec.OTHER_SCENARIO_CLASSNAME, "Given another step");
     Feature _feature = this.feature();
     SpecExecution _result = this.result(_feature);
-    boolean _doubleArrow = Should.operator_doubleArrow(_result, Passed.class);
     Assert.assertTrue("\nExpected feature.result => typeof(Passed) but"
      + "\n     feature.result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
-     + "\n     feature is " + new org.hamcrest.StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
+     + "\n     feature is " + new org.hamcrest.StringDescription().appendValue(_feature).toString() + "\n", Should.operator_doubleArrow(_result, Passed.class));
     
   }
   
@@ -69,10 +68,9 @@ public class HashBasedSpec2ResultMappingFeatureSpec extends HashBasedSpec2Result
     this.failedStep(HashBasedSpec2ResultMappingSpec.OTHER_SCENARIO_CLASSNAME, "Given another step");
     Feature _feature = this.feature();
     SpecExecution _result = this.result(_feature);
-    boolean _doubleArrow = Should.operator_doubleArrow(_result, Failed.class);
     Assert.assertTrue("\nExpected feature.result => typeof(Failed) but"
      + "\n     feature.result is " + new org.hamcrest.StringDescription().appendValue(_result).toString()
-     + "\n     feature is " + new org.hamcrest.StringDescription().appendValue(_feature).toString() + "\n", _doubleArrow);
+     + "\n     feature is " + new org.hamcrest.StringDescription().appendValue(_feature).toString() + "\n", Should.operator_doubleArrow(_result, Failed.class));
     
   }
 }
