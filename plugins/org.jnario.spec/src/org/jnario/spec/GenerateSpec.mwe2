@@ -122,13 +122,9 @@ Workflow {
 
 			// content assist API
 			fragment = contentAssist.JavaBasedContentAssistFragment {}
-
-			// generates a more lightweight Antlr parser and lexer tailored for content assist
-			fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
-				options = auto-inject {}
-				antlrParam = "-Xconversiontimeout"
-				antlrParam = "10000"
-				options = {
+			fragment = parser.antlr.ex.ca.ContentAssistParserGeneratorFragment {
+				antlrParam = "-Xconversiontimeout" antlrParam = "10000"
+				options = auto-inject {
 					classSplitting = true
 				}
 			}
