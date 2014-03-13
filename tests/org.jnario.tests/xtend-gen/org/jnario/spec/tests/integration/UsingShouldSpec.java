@@ -320,7 +320,7 @@ public class UsingShouldSpec {
           it.setMessage("Custom error message");
           it.setDuration(100);
           it.setPollingInterval(10);
-          _xblockexpression = ((1 > 0));
+          _xblockexpression = (1 > 0);
         }
         return Boolean.valueOf(_xblockexpression);
       }

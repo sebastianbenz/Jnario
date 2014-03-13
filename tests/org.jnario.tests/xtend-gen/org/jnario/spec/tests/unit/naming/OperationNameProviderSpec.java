@@ -74,7 +74,7 @@ public class OperationNameProviderSpec {
     {
       final JvmOperation op = this.operations.get(operationName);
       QualifiedName _apply = this.subject.apply(op);
-      _xblockexpression = (_apply.toString());
+      _xblockexpression = _apply.toString();
     }
     return _xblockexpression;
   }

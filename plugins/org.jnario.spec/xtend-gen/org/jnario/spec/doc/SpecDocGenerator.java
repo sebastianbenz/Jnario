@@ -69,7 +69,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
           it.setExecutionStatus(_executionStateClass);
         }
       };
-      _xblockexpression = (HtmlFile.newHtmlFile(_function));
+      _xblockexpression = HtmlFile.newHtmlFile(_function);
     }
     return _xblockexpression;
   }
@@ -227,7 +227,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
       String _errorMessage = this.errorMessage(example);
       _builder.append(_errorMessage, "");
       _builder.newLineIfNotEmpty();
-      _xblockexpression = (_builder);
+      _xblockexpression = _builder;
     }
     return _xblockexpression;
   }
@@ -250,7 +250,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
       _builder.newLineIfNotEmpty();
       _builder.append(code, "");
       _builder.append("</pre>");
-      _xblockexpression = (_builder);
+      _xblockexpression = _builder;
     }
     return _xblockexpression;
   }

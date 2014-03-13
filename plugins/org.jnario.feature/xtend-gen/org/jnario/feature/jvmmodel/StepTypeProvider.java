@@ -84,7 +84,7 @@ public class StepTypeProvider {
         }
         _while = (i >= 0);
       }
-      _xblockexpression = (step);
+      _xblockexpression = step;
     }
     return _xblockexpression;
   }

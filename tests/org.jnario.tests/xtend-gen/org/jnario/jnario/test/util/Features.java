@@ -29,7 +29,7 @@ public class Features {
     {
       final Given step = Features.factory.createGiven();
       step.setName(name);
-      _xblockexpression = (step);
+      _xblockexpression = step;
     }
     return _xblockexpression;
   }
@@ -44,7 +44,7 @@ public class Features {
       final Given step = Features.step("Given a step with implementation");
       XBlockExpression _implementation = Features.implementation();
       step.setExpression(_implementation);
-      _xblockexpression = (step);
+      _xblockexpression = step;
     }
     return _xblockexpression;
   }
@@ -56,7 +56,7 @@ public class Features {
       EList<XExpression> _expressions = blockExpression.getExpressions();
       XFeatureCall _createXFeatureCall = XbaseFactory.eINSTANCE.createXFeatureCall();
       _expressions.add(_createXFeatureCall);
-      _xblockexpression = (blockExpression);
+      _xblockexpression = blockExpression;
     }
     return _xblockexpression;
   }
@@ -71,7 +71,7 @@ public class Features {
       final Scenario scenario = Features.scenario(name);
       EList<Step> _steps = scenario.getSteps();
       CollectionExtensions.<Step>addAll(_steps, steps);
-      _xblockexpression = (scenario);
+      _xblockexpression = scenario;
     }
     return _xblockexpression;
   }
@@ -102,7 +102,7 @@ public class Features {
     {
       Given _implementedStep = Features.implementedStep();
       final Scenario scenario = Features.scenarioWith(_implementedStep);
-      _xblockexpression = (scenario);
+      _xblockexpression = scenario;
     }
     return _xblockexpression;
   }
@@ -122,7 +122,7 @@ public class Features {
     {
       final Feature feature = Features.featureWith(scenarios);
       feature.setBackground(background);
-      _xblockexpression = (feature);
+      _xblockexpression = feature;
     }
     return _xblockexpression;
   }
@@ -133,7 +133,7 @@ public class Features {
       final Feature feature = Features.feature("Feature: with scenarios");
       EList<Scenario> _scenarios = feature.getScenarios();
       CollectionExtensions.<Scenario>addAll(_scenarios, scenarios);
-      _xblockexpression = (feature);
+      _xblockexpression = feature;
     }
     return _xblockexpression;
   }
@@ -145,7 +145,7 @@ public class Features {
       EList<Step> _steps = bg.getSteps();
       Given _implementedStep = Features.implementedStep();
       _steps.add(_implementedStep);
-      _xblockexpression = (bg);
+      _xblockexpression = bg;
     }
     return _xblockexpression;
   }
@@ -154,7 +154,7 @@ public class Features {
     Background _xblockexpression = null;
     {
       final Background bg = Features.background("Background: without steps");
-      _xblockexpression = (bg);
+      _xblockexpression = bg;
     }
     return _xblockexpression;
   }
@@ -164,7 +164,7 @@ public class Features {
     {
       final Feature feature = Features.feature("Feature: with background");
       feature.setBackground(scenario);
-      _xblockexpression = (feature);
+      _xblockexpression = feature;
     }
     return _xblockexpression;
   }

@@ -179,10 +179,10 @@ public class StepArgumentsProviderSpec {
         String _step = it.getStep();
         Step _create = StepArgumentsProviderSpec.this.create(_step);
         final List<String> foundArgs = StepArgumentsProviderSpec.this.subject.findStepArguments(_create);
-        List<? extends Object> _expectedArgs = it.getExpectedArgs();
+        List<?> _expectedArgs = it.getExpectedArgs();
         Assert.assertTrue("\nExpected foundArgs => expectedArgs but"
          + "\n     foundArgs is " + new org.hamcrest.StringDescription().appendValue(foundArgs).toString()
-         + "\n     expectedArgs is " + new org.hamcrest.StringDescription().appendValue(_expectedArgs).toString() + "\n", Should.<List<? extends Object>>operator_doubleArrow(foundArgs, _expectedArgs));
+         + "\n     expectedArgs is " + new org.hamcrest.StringDescription().appendValue(_expectedArgs).toString() + "\n", Should.<List<?>>operator_doubleArrow(foundArgs, _expectedArgs));
         
       }
     };
@@ -232,7 +232,7 @@ public class StepArgumentsProviderSpec {
       TreeIterator<EObject> _eAllContents = _rootASTElement.eAllContents();
       List<EObject> _list = IteratorExtensions.<EObject>toList(_eAllContents);
       Query _query = Query.query(_list);
-      _xblockexpression = (_query.<Step>first(Step.class));
+      _xblockexpression = _query.<Step>first(Step.class);
     }
     return _xblockexpression;
   }

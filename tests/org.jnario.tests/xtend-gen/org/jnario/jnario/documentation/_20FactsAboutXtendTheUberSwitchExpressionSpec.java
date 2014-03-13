@@ -88,7 +88,7 @@ public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAbout
     if (!_matched) {
       if (x instanceof List) {
         _matched=true;
-        _switchResult = ((List<? extends Object>)x).size();
+        _switchResult = ((List<?>)x).size();
       }
     }
     if (!_matched) {

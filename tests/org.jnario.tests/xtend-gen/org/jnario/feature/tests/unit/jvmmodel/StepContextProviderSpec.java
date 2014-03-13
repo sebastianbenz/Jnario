@@ -46,7 +46,7 @@ public class StepContextProviderSpec {
         }
       };
       Iterable<XtendField> _filter_1 = IterableExtensions.<XtendField>filter(_filter, _function);
-      _xblockexpression = (IterableExtensions.<XtendField>toSet(_filter_1));
+      _xblockexpression = IterableExtensions.<XtendField>toSet(_filter_1);
     }
     return _xblockexpression;
   }
@@ -56,7 +56,7 @@ public class StepContextProviderSpec {
     {
       this.m.parseScenario(content);
       final StepImplementation step = this.m.<StepImplementation>first(StepImplementation.class);
-      _xblockexpression = (this.subject.usedFields(step));
+      _xblockexpression = this.subject.usedFields(step);
     }
     return _xblockexpression;
   }

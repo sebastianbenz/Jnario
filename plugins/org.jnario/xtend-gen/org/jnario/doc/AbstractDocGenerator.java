@@ -148,7 +148,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
       final String normalized = (_normalize + "\n");
       String _markdownToHtml = this._pegDownProcessor.markdownToHtml(normalized);
       String _replaceAll = _markdownToHtml.replaceAll("<pre><code>", "<pre class=\"prettyprint\">");
-      _xblockexpression = (_replaceAll.replaceAll("</pre></code>", "</pre>"));
+      _xblockexpression = _replaceAll.replaceAll("</pre></code>", "</pre>");
     }
     return _xblockexpression;
   }
@@ -334,7 +334,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
     {
       final SpecExecution result = this.spec2ResultMapping.getResult(executable);
       IconProvider _iconProvider = new IconProvider();
-      _xblockexpression = (_iconProvider.doSwitch(result));
+      _xblockexpression = _iconProvider.doSwitch(result);
     }
     return _xblockexpression;
   }

@@ -167,7 +167,7 @@ public class IntroducingJnarioSuitesGettingStartedSpec extends IntroducingJnario
       _builder_1.newLine();
       _builder_1.append("}");
       _builder_1.newLine();
-      _xblockexpression = (this._modelStore.parseSpec(_builder_1));
+      _xblockexpression = this._modelStore.parseSpec(_builder_1);
     }
     return _xblockexpression;
   }

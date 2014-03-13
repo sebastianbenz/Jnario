@@ -120,7 +120,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
       final String contentWithContext = (("describe \'Context\'{" + content) + "}");
       Query _parse = this.parse(contentWithContext);
       After _first = _parse.<After>first(After.class);
-      _xblockexpression = (this.subject.toMethodName(_first));
+      _xblockexpression = this.subject.toMethodName(_first);
     }
     return _xblockexpression;
   }
@@ -131,7 +131,7 @@ public class ExampleNameProviderToMethodNameAfterSpec extends ExampleNameProvide
       final String contentWithContext = (("describe \'Context\'{" + content) + "}");
       Query _parse = this.parse(contentWithContext);
       After _second = _parse.<After>second(After.class);
-      _xblockexpression = (this.subject.toMethodName(_second));
+      _xblockexpression = this.subject.toMethodName(_second);
     }
     return _xblockexpression;
   }

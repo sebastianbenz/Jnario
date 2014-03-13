@@ -88,7 +88,7 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
       final File classDirectory = this.createTempDir("classes");
       this.installJvmTypeProvider(this.resourceSet, classDirectory);
       EcoreUtil.resolveAll(this.resourceSet);
-      _xblockexpression = (this.resourceSet);
+      _xblockexpression = this.resourceSet;
     }
     return _xblockexpression;
   }

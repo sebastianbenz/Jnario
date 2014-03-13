@@ -123,7 +123,7 @@ public class ReportTask extends Task {
         Path _path = new Path(_project);
         this.sourcePath = _path;
       }
-      _xblockexpression = (this.sourcePath);
+      _xblockexpression = this.sourcePath;
     }
     return _xblockexpression;
   }

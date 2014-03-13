@@ -78,7 +78,7 @@ public class ExecutableIsPendingSuiteSpec extends ExecutableIsPendingSpec {
       final Suite result = Suites.suiteWith(name, references);
       EList<EObject> _contents = this.resource.getContents();
       _contents.add(result);
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }

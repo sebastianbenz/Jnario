@@ -34,7 +34,7 @@ public class ConsoleRecorder {
     String _xblockexpression = null;
     {
       System.setOut(this.old);
-      _xblockexpression = (this.pipeOut.toString());
+      _xblockexpression = this.pipeOut.toString();
     }
     return _xblockexpression;
   }

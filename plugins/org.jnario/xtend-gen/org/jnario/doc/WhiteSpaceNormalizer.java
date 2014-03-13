@@ -72,7 +72,7 @@ public class WhiteSpaceNormalizer {
       Iterable<String> _map = IterableExtensions.<String, String>map(lines, _function);
       String _join = IterableExtensions.join(_map, "\n");
       String result = (_join + ending);
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }

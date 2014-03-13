@@ -27,7 +27,7 @@ public class PatternValueConverter implements IValueConverter<String> {
         result = "";
       }
       String _newLine = Strings.newLine();
-      _xblockexpression = (((("\\" + result) + "\\") + _newLine));
+      _xblockexpression = ((("\\" + result) + "\\") + _newLine);
     }
     return _xblockexpression;
   }

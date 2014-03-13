@@ -23,7 +23,7 @@ public class JnarioCodeBuilderFactory extends CodeBuilderFactory {
       if (_notEquals) {
         return xtendClass;
       }
-      _xblockexpression = (super.getSource(element));
+      _xblockexpression = super.getSource(element);
     }
     return _xblockexpression;
   }
@@ -45,7 +45,7 @@ public class JnarioCodeBuilderFactory extends CodeBuilderFactory {
           return Boolean.valueOf(Objects.equal(_name, _simpleName));
         }
       };
-      _xblockexpression = (IteratorExtensions.<XtendClass>findFirst(_filter, _function));
+      _xblockexpression = IteratorExtensions.<XtendClass>findFirst(_filter, _function);
     }
     return _xblockexpression;
   }

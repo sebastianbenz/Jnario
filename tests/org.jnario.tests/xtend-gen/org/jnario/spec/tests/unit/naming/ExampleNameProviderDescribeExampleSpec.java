@@ -58,7 +58,7 @@ public class ExampleNameProviderDescribeExampleSpec extends ExampleNameProviderS
       final String contentWithExampleGroup = (("describe \'Example\'{ fact " + content) + "}");
       Query _parse = this.parse(contentWithExampleGroup);
       Example _first = _parse.<Example>first(Example.class);
-      _xblockexpression = (this.subject.describe(_first));
+      _xblockexpression = this.subject.describe(_first);
     }
     return _xblockexpression;
   }

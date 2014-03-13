@@ -142,7 +142,7 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
         };
         doLater.add(_function_2);
       }
-      _xblockexpression = (suiteClass);
+      _xblockexpression = suiteClass;
     }
     return _xblockexpression;
   }
@@ -169,7 +169,7 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
           return SuiteJvmModelInferrer.this.inferredType(it, suite);
         }
       };
-      _xblockexpression = (IterableExtensions.<String, JvmTypeReference>map(types, _function_2));
+      _xblockexpression = IterableExtensions.<String, JvmTypeReference>map(types, _function_2);
     }
     return _xblockexpression;
   }

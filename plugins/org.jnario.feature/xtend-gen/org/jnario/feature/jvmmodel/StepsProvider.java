@@ -50,7 +50,7 @@ public class StepsProvider {
             }
             EList<Scenario> _scenarios = it.getScenarios();
             Background _background_1 = it.getBackground();
-            _xblockexpression = (Iterables.<Scenario>concat(_scenarios, Collections.<Background>unmodifiableList(Lists.<Background>newArrayList(_background_1))));
+            _xblockexpression = Iterables.<Scenario>concat(_scenarios, Collections.<Background>unmodifiableList(Lists.<Background>newArrayList(_background_1)));
           }
           return _xblockexpression;
         }
@@ -65,7 +65,7 @@ public class StepsProvider {
       };
       Iterable<EList<Step>> _map_2 = IterableExtensions.<Scenario, EList<Step>>map(scenarios, _function_2);
       Iterable<Step> _flatten_2 = Iterables.<Step>concat(_map_2);
-      _xblockexpression = (Iterables.<StepImplementation>filter(_flatten_2, StepImplementation.class));
+      _xblockexpression = Iterables.<StepImplementation>filter(_flatten_2, StepImplementation.class);
     }
     return _xblockexpression;
   }

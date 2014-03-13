@@ -75,7 +75,7 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
       for (final Integer j : _upTo) {
         result = (result + "a");
       }
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }
@@ -86,7 +86,7 @@ public class ExampleNameProviderToMethodNameExampleSpec extends ExampleNameProvi
       final String contentWithContext = (("describe \'Context\'{ fact " + content) + "}");
       Query _parse = this.parse(contentWithContext);
       Example _first = _parse.<Example>first(Example.class);
-      _xblockexpression = (this.subject.toMethodName(_first));
+      _xblockexpression = this.subject.toMethodName(_first);
     }
     return _xblockexpression;
   }

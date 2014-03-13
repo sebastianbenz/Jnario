@@ -27,7 +27,7 @@ public class Specs {
     {
       final Example example = Specs.example("pending");
       example.setPending(true);
-      _xblockexpression = (example);
+      _xblockexpression = example;
     }
     return _xblockexpression;
   }
@@ -38,7 +38,7 @@ public class Specs {
       final Example example = Specs.example("with implementation");
       XBlockExpression _implementation = Features.implementation();
       example.setExpr(_implementation);
-      _xblockexpression = (example);
+      _xblockexpression = example;
     }
     return _xblockexpression;
   }
@@ -51,7 +51,7 @@ public class Specs {
       example.setPending(false);
       XBooleanLiteral _createXBooleanLiteral = XbaseFactory.eINSTANCE.createXBooleanLiteral();
       example.setExpr(_createXBooleanLiteral);
-      _xblockexpression = (example);
+      _xblockexpression = example;
     }
     return _xblockexpression;
   }
@@ -71,7 +71,7 @@ public class Specs {
       final ExampleGroup group = Specs.exampleGroup(name);
       EList<XtendMember> _members = group.getMembers();
       CollectionExtensions.<XtendMember>addAll(_members, examples);
-      _xblockexpression = (group);
+      _xblockexpression = group;
     }
     return _xblockexpression;
   }
@@ -81,7 +81,7 @@ public class Specs {
     {
       final ExampleGroup group = Specs.factory.createExampleGroup();
       group.setName(name);
-      _xblockexpression = (group);
+      _xblockexpression = group;
     }
     return _xblockexpression;
   }

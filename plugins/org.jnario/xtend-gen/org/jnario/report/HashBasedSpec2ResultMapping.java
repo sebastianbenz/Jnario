@@ -56,7 +56,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
       SpecExecution _calculateResult = this.calculateResult(executable);
       result = _calculateResult;
       this.accept(result);
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }
@@ -72,7 +72,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
       };
       List<SpecExecution> _map = ListExtensions.map(children, _function);
       final List<SpecExecution> results = IterableExtensions.<SpecExecution>toList(_map);
-      _xblockexpression = (this.createResult(specification, results));
+      _xblockexpression = this.createResult(specification, results);
     }
     return _xblockexpression;
   }
@@ -102,7 +102,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
         String _value = specId.getValue();
         _xifexpression = new Failed(_key, _value, (executionTime).doubleValue(), failures);
       }
-      _xblockexpression = (_xifexpression);
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }
@@ -177,7 +177,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
       }
       final String expectedName = _convertFromJavaString_1;
       final Pair<String,String> key = Pair.<String, String>of(expectedClassName, expectedName);
-      _xblockexpression = (key);
+      _xblockexpression = key;
     }
     return _xblockexpression;
   }
@@ -193,7 +193,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
       }
       final IResourceServiceProvider resourceServiceProvider = resource.getResourceServiceProvider();
       ExecutableProvider _get = resourceServiceProvider.<ExecutableProvider>get(ExecutableProvider.class);
-      _xblockexpression = (_get.getExecutables(element));
+      _xblockexpression = _get.getExecutables(element);
     }
     return _xblockexpression;
   }

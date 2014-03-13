@@ -179,7 +179,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         return null;
       }
       List<JvmGenericType> _emptyList = CollectionLiterals.<JvmGenericType>emptyList();
-      _xblockexpression = (this.toClass(background, _emptyList, acceptor, doLater, preIndexingPhase));
+      _xblockexpression = this.toClass(background, _emptyList, acceptor, doLater, preIndexingPhase);
     }
     return _xblockexpression;
   }
@@ -253,7 +253,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         };
         doLater.add(_function);
       }
-      _xblockexpression = (javaType);
+      _xblockexpression = javaType;
     }
     return _xblockexpression;
   }
@@ -426,7 +426,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         }
         _while = _and_1;
       }
-      _xblockexpression = (super.computeFieldName(((XtendField) source)));
+      _xblockexpression = super.computeFieldName(((XtendField) source));
     }
     return _xblockexpression;
   }
@@ -523,7 +523,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
         int _transformCalls = this.transformCalls(step, inferredJvmType, order);
         order = _transformCalls;
       }
-      _xblockexpression = (order);
+      _xblockexpression = order;
     }
     return _xblockexpression;
   }
@@ -558,7 +558,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, methodName, _typeForName, _function);
       this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
-      _xblockexpression = ((order + 1));
+      _xblockexpression = (order + 1);
     }
     return _xblockexpression;
   }
@@ -599,7 +599,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       };
       JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(step, _methodName, _typeForName, _function);
       this._extendedJvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
-      _xblockexpression = ((order + 1));
+      _xblockexpression = (order + 1);
     }
     return _xblockexpression;
   }

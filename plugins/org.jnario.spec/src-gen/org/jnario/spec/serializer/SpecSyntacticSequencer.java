@@ -172,7 +172,7 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'fact' | 'facts'
+	 *     'facts' | 'fact'
 	 */
 	protected void emit_Member_FactKeyword_2_0_1_1_0_or_FactsKeyword_2_0_1_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

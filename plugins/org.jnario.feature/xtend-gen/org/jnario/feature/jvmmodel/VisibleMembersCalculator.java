@@ -21,7 +21,7 @@ public class VisibleMembersCalculator {
       if (_equals) {
         return CollectionLiterals.<XtendMember>emptyList();
       }
-      _xblockexpression = (this.allVisibleMembers(scenario));
+      _xblockexpression = this.allVisibleMembers(scenario);
     }
     return _xblockexpression;
   }

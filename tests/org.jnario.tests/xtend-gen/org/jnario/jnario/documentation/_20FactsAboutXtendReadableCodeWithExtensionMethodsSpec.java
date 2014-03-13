@@ -94,7 +94,7 @@ public class _20FactsAboutXtendReadableCodeWithExtensionMethodsSpec extends _20F
     
   }
   
-  public boolean hasOneElement(final List<? extends Object> list) {
+  public boolean hasOneElement(final List<?> list) {
     int _size = list.size();
     return (_size == 1);
   }

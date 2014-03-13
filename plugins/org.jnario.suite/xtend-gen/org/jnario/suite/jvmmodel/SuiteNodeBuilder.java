@@ -65,7 +65,7 @@ public class SuiteNodeBuilder {
           }
         }
       }
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }

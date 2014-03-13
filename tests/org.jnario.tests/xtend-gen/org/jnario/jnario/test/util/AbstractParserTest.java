@@ -56,12 +56,12 @@ public class AbstractParserTest {
   
   @Test
   public void shouldParseAllFilesWithoutParseError() {
-    Class<? extends Object> _context = this.context();
+    Class<?> _context = this.context();
     boolean _equals = Objects.equal(_context, null);
     if (_equals) {
       return;
     }
-    Class<? extends Object> _context_1 = this.context();
+    Class<?> _context_1 = this.context();
     ClassPathUriProviderBuilder _startingFrom = ClassPathUriProviderBuilder.startingFrom(_context_1);
     final Predicate<URI> _function = new Predicate<URI>() {
       public boolean apply(final URI it) {
@@ -87,7 +87,7 @@ public class AbstractParserTest {
     IterableExtensions.<Resource>forEach(specs, _function_2);
   }
   
-  public Class<? extends Object> context() {
+  public Class<?> context() {
     return null;
   }
   
@@ -110,7 +110,7 @@ public class AbstractParserTest {
       }
       int _length = fileExtension.length();
       int _minus = (_length - 1);
-      _xblockexpression = (fileExtension.substring(0, _minus));
+      _xblockexpression = fileExtension.substring(0, _minus);
     }
     return _xblockexpression;
   }

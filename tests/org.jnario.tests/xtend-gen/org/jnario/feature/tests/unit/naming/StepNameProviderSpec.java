@@ -89,7 +89,7 @@ public class StepNameProviderSpec {
       _builder.append(s, "");
       _builder.newLineIfNotEmpty();
       final String input = _builder.toString();
-      _xblockexpression = (this.modelStore.parseScenario(input));
+      _xblockexpression = this.modelStore.parseScenario(input);
     }
     return _xblockexpression;
   }
