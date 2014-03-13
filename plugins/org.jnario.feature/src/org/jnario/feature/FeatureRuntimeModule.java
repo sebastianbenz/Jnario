@@ -20,6 +20,7 @@ import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.linking.LinkingProxyAwareResource;
 import org.eclipse.xtend.core.linking.URIEncoder;
+import org.eclipse.xtend.core.parser.FlexTokenRegionProvider;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
 import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
@@ -42,6 +43,7 @@ import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.linking.lazy.LazyURIEncoder;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.parser.IParser;
+import org.eclipse.xtext.parser.impl.TokenRegionProvider;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.IResourceDescription.Manager;
@@ -78,6 +80,7 @@ import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.jnario.compiler.JnarioBatchCompiler;
 import org.jnario.compiler.JnarioExpressionHelper;
+import org.jnario.conversion.JnarioJavaIDValueConverter;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.documentation.XtendDocumentationProvider;
@@ -327,7 +330,7 @@ public class FeatureRuntimeModule extends
 	}
 	
 	public Class<? extends IDValueConverter> bindIDValueConverter() {
-		return JavaIDValueConverter.class;
+		return JnarioJavaIDValueConverter.class;
 	}
 	
 	public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProvider() {
@@ -337,6 +340,10 @@ public class FeatureRuntimeModule extends
 	@Override
 	public Class<? extends IParser> bindIParser() {
 		return CustomFeatureParser.class;
+	}
+	
+	public Class<? extends TokenRegionProvider> bindTokenRegionProvider() {
+		return TokenRegionProvider.class;
 	}
 
 }

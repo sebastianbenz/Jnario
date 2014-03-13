@@ -46,6 +46,7 @@ import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.linking.lazy.LazyURIEncoder;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.parser.IParser;
+import org.eclipse.xtext.parser.impl.TokenRegionProvider;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.IResourceDescription.Manager;
@@ -302,10 +303,6 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 		return FileLocationsImpl.class;
 	}
 	
-	public Class<? extends IDValueConverter> bindIDValueConverter() {
-		return JavaIDValueConverter.class;
-	}
-	
 	public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProvider() {
 		return XtendDocumentationProvider.class;
 	}
@@ -313,5 +310,9 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	@Override
 	public Class<? extends IParser> bindIParser() {
 		return SuiteParserWithoutPartialParsing.class;
+	}
+	
+	public Class<? extends TokenRegionProvider> bindTokenRegionProvider() {
+		return TokenRegionProvider.class;
 	}
 }

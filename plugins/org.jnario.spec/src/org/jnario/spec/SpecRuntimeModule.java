@@ -82,6 +82,7 @@ import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.eclipse.xtext.xbase.validation.EarlyExitValidator;
 import org.jnario.compiler.JnarioCompiler;
 import org.jnario.compiler.JnarioExpressionHelper;
+import org.jnario.conversion.JnarioJavaIDValueConverter;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.documentation.XtendDocumentationProvider;
@@ -326,7 +327,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	}
 	
 	public Class<? extends IDValueConverter> bindIDValueConverter() {
-		return JavaIDValueConverter.class;
+		return JnarioJavaIDValueConverter.class;
 	}
 	
 	public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProvider() {
