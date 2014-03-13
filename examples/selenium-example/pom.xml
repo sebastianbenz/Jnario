@@ -9,7 +9,7 @@
 		<project.build.resourceEncoding>${sourceEncoding}</project.build.resourceEncoding>
 		<maven.compiler.encoding>${sourceEncoding}</maven.compiler.encoding>
 		<xtend.version>2.5.3</xtend.version>
-		<jnario.version>0.7.3</jnario.version>
+		<jnario.version>0.7.4</jnario.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -106,5 +106,5 @@
 	</build>
 	<url>http://www.jnario.org</url>
 	<groupId>org.jnario</groupId>
-	<version>0.7.3</version>
+	<version>0.7.4</version>
 </project>

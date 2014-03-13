@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Jnario Lib Tests
 Bundle-SymbolicName: org.jnario.lib.tests
-Bundle-Version: 0.7.3.201403122245
+Bundle-Version: 0.7.4.201403132253
 Bundle-Vendor: BMW
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.junit;bundle-version="4.8.2",
- org.jnario.lib;bundle-version="0.7.3",
- org.jnario;bundle-version="0.7.3",
- org.jnario.tests;bundle-version="0.7.3",
+ org.jnario.lib;bundle-version="0.7.4",
+ org.jnario;bundle-version="0.7.4",
+ org.jnario.tests;bundle-version="0.7.4",
  org.eclipse.xtext.util;bundle-version="[2.5.3,2.6.0)",
  org.mockito;bundle-version="1.8.4",
- org.objenesis;bundle-version="0.7.3"
+ org.objenesis;bundle-version="0.7.4"
