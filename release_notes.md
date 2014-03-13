@@ -1,5 +1,14 @@
 #Release Notes
 
+##Jnario 0.7.4
+
+* Fix code completion bug
+
+##Jnario 0.7.3
+
+* Compatible with Xtend 2.5.3
+* Fix maven dependencies for org.jnario.standalone.maven
+
 ##Jnario 0.7.2
 
 * Compatible with Xtend 2.5.1
