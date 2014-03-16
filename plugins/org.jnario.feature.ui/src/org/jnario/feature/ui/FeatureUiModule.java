@@ -526,4 +526,5 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	public Class<? extends Linker> bindLinker() {
 		return EclipseBuilderAwareLinker.class;
 	}
+	
 }
