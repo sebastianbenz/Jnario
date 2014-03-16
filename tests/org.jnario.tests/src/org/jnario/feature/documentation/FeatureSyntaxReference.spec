@@ -7,9 +7,6 @@
  *******************************************************************************/
 package org.jnario.feature.documentation
 
-import static extension org.jnario.jnario.test.util.Helpers.*
-import static extension org.jnario.lib.Each.*
-import static extension org.jnario.lib.Should.*
 import static extension org.jnario.jnario.test.util.FeatureExecutor.*
 
 /*
@@ -32,7 +29,7 @@ describe "Given, When, Then..."{
 		    When I trigger something
 		    Then happens something
 		      But not more
-		'''.isSuccessful
+		'''.successful
 	}
 
 }

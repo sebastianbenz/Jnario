@@ -45,7 +45,8 @@ Scenario: Multiple Givens
     And yet another thing
   When I trigger something
   Then happens something
-    But not more</pre>
+    But not more
+    .successful</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -61,9 +62,6 @@ Scenario: Multiple Givens
  *******************************************************************************/
 package org.jnario.feature.documentation
 
-import static extension org.jnario.jnario.test.util.Helpers.*
-import static extension org.jnario.lib.Each.*
-import static extension org.jnario.lib.Should.*
 import static extension org.jnario.jnario.test.util.FeatureExecutor.*
 
 /*
@@ -86,7 +84,7 @@ describe &quot;Given, When, Then...&quot;{
         When I trigger something
         Then happens something
           But not more
-    '''.isSuccessful
+    '''.successful
   }
 
 }
