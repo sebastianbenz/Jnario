@@ -49,16 +49,6 @@ public class SpecProposalProvider extends AbstractSpecProposalProvider {
 	private JdtVariableCompletions completions;
 	
 	@Override
-	public void completeRuleCall(RuleCall ruleCall, ContentAssistContext contentAssistContext,
-			ICompletionProposalAcceptor acceptor) {
-		AbstractRule calledRule = ruleCall.getRule();
-		String methodName = "complete_" + calledRule.getName();
-		System.out.println(methodName);
-		super.completeRuleCall(ruleCall, contentAssistContext, acceptor);
-	}
-	
-	
-	@Override
 	public void completeXAnnotation_AnnotationType(EObject model, Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		completeJavaTypes(context, XAnnotationsPackage.Literals.XANNOTATION__ANNOTATION_TYPE, 
