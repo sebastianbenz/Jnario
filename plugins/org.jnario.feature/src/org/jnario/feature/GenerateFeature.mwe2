@@ -92,13 +92,12 @@ Workflow {
                 fileExtensions = file.extensions
             }
 
-			fragment = org.eclipse.xtend.core.parser.ParserGenerator {
-				options = auto-inject {
-					classSplitting = true
-				}
-			}
-			fragment = parser.antlr.DebugAntlrGeneratorFragment {
-				options = auto-inject {
+		// The antlr parser generator fragment.
+			fragment = parser.antlr.XtextAntlrGeneratorFragment {
+				options = auto-inject {}
+				antlrParam = "-Xconversiontimeout"
+				antlrParam = "10000"
+				options = {
 					classSplitting = true
 				}
 			}
@@ -139,14 +138,14 @@ Workflow {
             // content assist API
             fragment = contentAssist.JavaBasedContentAssistFragment {}
 
-  			fragment = org.eclipse.xtend.core.parser.ContentAssistParserGenerator {
-				removeBacktrackingGuards = true
-				lookaheadThreshold = '5'
-				antlrParam = "-Xconversiontimeout" antlrParam = "10000"
-				options = auto-inject {
-					classSplitting = true
-				}
-			}
+              // generates a more lightweight Antlr parser and lexer tailored for content assist
+            fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
+            	options = auto-inject {}
+            	antlrParam = "-Xconversiontimeout" antlrParam = "10000"
+            	options = {
+			  		classSplitting = true
+     			}
+            }
 
             // generates junit test support classes into Generator#pathTestProject
             fragment = junit.Junit4Fragment {}

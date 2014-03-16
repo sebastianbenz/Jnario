@@ -1,13 +1,20 @@
+/**
+ * Copyright (c) 2012 BMW Car IT and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package diverse;
 
 import diverse.StackSpec;
 import java.util.EmptyStackException;
 import java.util.Stack;
 import org.jnario.lib.Assert;
-import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.jnario.runner.Subject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -15,30 +22,27 @@ import org.junit.runner.RunWith;
 @RunWith(ExampleGroupRunner.class)
 @SuppressWarnings("all")
 public class StackEmptySpec extends StackSpec {
-  final Stack<String> emptyStack = new Stack<String>();
+  @Subject
+  public Stack subject;
   
   @Test
-  @Named("emptyStack.size should be 0")
+  @Named("subject.empty should be true")
   @Order(1)
-  public void _emptyStackSizeShouldBe0() throws Exception {
-    int _size = this.emptyStack.size();
-    boolean _should_be = Should.<Integer>should_be(Integer.valueOf(_size), Integer.valueOf(0));
-    Assert.assertTrue("\nExpected emptyStack.size should be 0 but"
-     + "\n     emptyStack.size is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_size)).toString()
-     + "\n     emptyStack is " + new org.hamcrest.StringDescription().appendValue(this.emptyStack).toString() + "\n", _should_be);
-    
+  public void _subjectEmptyShouldBeTrue() throws Exception {
+    throw new Error("Unresolved compilation problems:"
+      + "\nAmbiguous feature call.\nThe methods\n\tempty() in Stack and\n\tisEmpty() in Vector\nboth match.");
   }
   
   @Test
-  @Named("emptyStack.pop throws EmptyStackException")
+  @Named("subject.pop[] throws EmptyStackException")
   @Order(2)
-  public void _emptyStackPopThrowsEmptyStackException() throws Exception {
+  public void _subjectPopThrowsEmptyStackException() throws Exception {
     boolean expectedException = false;
     String message = "";
     try{
-      this.emptyStack.pop();
-      message = "Expected " + EmptyStackException.class.getName() + " for \n     emptyStack.pop\n with:"
-       + "\n     emptyStack is " + new org.hamcrest.StringDescription().appendValue(this.emptyStack).toString();
+      this.subject.pop();
+      message = "Expected " + EmptyStackException.class.getName() + " for \n     subject.pop()\n with:"
+       + "\n     subject is " + new org.hamcrest.StringDescription().appendValue(this.subject).toString();
     }catch(EmptyStackException e){
       expectedException = true;
     }
