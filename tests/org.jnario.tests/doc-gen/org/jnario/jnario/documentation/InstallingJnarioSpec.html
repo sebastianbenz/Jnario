@@ -44,6 +44,7 @@
 -DarchetypeGroupId=org.jnario                           \
 -DarchetypeArtifactId=jnario-archetype                  \
 -DarchetypeVersion=0.6.1                                \
+-DarchetypeVersion=0.7.5                                \
 -DgroupId=org.example                                   \
 -DartifactId=myproject
 </code></pre><p>There is also an <a href="https://github.com/sebastianbenz/Jnario/tree/master/examples/org.jnario.maven.example">example project</a> demonstrating the usage of Jnario with Maven.</p>
@@ -52,7 +53,7 @@
 <pre class="prettyprint">&lt;dependency&gt;
   &lt;groupId&gt;org.jnario&lt;/groupId&gt;
   &lt;artifactId&gt;org.jnario.lib.maven&lt;/artifactId&gt;
-  &lt;version&gt;0.6.1&lt;/version&gt;
+  &lt;version&gt;0.7.5&lt;/version&gt;
   &lt;scope&gt;test&lt;/scope&gt;
 &lt;/dependency&gt;
 </code></pre>
@@ -78,17 +79,23 @@
 <pre class="prettyprint">&lt;plugin&gt;
   &lt;groupId&gt;org.jnario&lt;/groupId&gt;
   &lt;artifactId&gt;jnario-maven-plugin&lt;/artifactId&gt;
-  &lt;version&gt;0.6.1&lt;/version&gt;
-  &lt;executions&gt;
-    &lt;execution&gt;
-      &lt;goals&gt;
-        &lt;goal&gt;testCompile&lt;/goal&gt;
-        &lt;goal&gt;xtend-test-install-debug-info&lt;/goal&gt;
-      &lt;/goals&gt;
-    &lt;/execution&gt;
-  &lt;/executions&gt;
-&lt;/plugin&gt;
-</code></pre><p><span class="label label-important">Important</span> For performance reasons, the Jnario compiler also includes the Xtend compiler. Make sure not register the Xtend compiler for the <em>testCompile</em> phase, as this would execute the Xtend compiler twice.</p>
+</code></pre><p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<pre class="prettyprint">  &lt;version&gt;0.6.1&lt;/version&gt;
+</code></pre><p>=======  <version>0.7.5</version></p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote><p>update release notes for version 0.7.5  <executions>  <execution>  <goals>  <goal>testCompile</goal>  <goal>xtend-test-install-debug-info</goal>  </goals>  </execution>  </executions>  </plugin></p>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote><p><span class="label label-important">Important</span> For performance reasons, the Jnario compiler also includes the Xtend compiler. Make sure not register the Xtend compiler for the <em>testCompile</em> phase, as this would execute the Xtend compiler twice.</p>
 </li><li><p id="Configuring_Eclipse" class="example notrun"><strong>Configuring Eclipse</strong></p>
 <p>The outputDirectory can be specified to match the default of the Eclipse plug-in (xtend-gen). You can also change the configuration in Eclipse to match the Maven default (generated-sources). To do so right-click on the project and select Properties or if you prefer a global setting choose <strong>Eclipse-&gt;Preferences</strong>. In the category <strong>Jnario/Compiler</strong> enter  the directory name (see screenshot). It is interpreted as a relative path to the parent of the source folder, which includes the to-be-compiled Xtend file.</p>
 <p align="center"><img width="500px" src="/img/tutorial/project_compiler_settings.png" alt="Configuring project specific compiler settings."/></p>
@@ -140,6 +147,7 @@ describe &quot;Installing Jnario&quot;{
    *     -DarchetypeGroupId=org.jnario                           \
    *     -DarchetypeArtifactId=jnario-archetype                  \
    *     -DarchetypeVersion=0.6.1                                \
+   *     -DarchetypeVersion=0.7.5                                \
    *     -DgroupId=org.example                                   \
    *     -DartifactId=myproject
    * 
@@ -154,7 +162,7 @@ describe &quot;Installing Jnario&quot;{
      *     &lt;dependency&gt;
      *       &lt;groupId&gt;org.jnario&lt;/groupId&gt;
      *       &lt;artifactId&gt;org.jnario.lib.maven&lt;/artifactId&gt;
-     *       &lt;version&gt;0.6.1&lt;/version&gt;
+     *       &lt;version&gt;0.7.5&lt;/version&gt;
      *       &lt;scope&gt;test&lt;/scope&gt;
      *     &lt;/dependency&gt;
      * 
@@ -193,7 +201,11 @@ describe &quot;Installing Jnario&quot;{
      *     &lt;plugin&gt;
      *       &lt;groupId&gt;org.jnario&lt;/groupId&gt;
      *       &lt;artifactId&gt;jnario-maven-plugin&lt;/artifactId&gt;
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
      *       &lt;version&gt;0.6.1&lt;/version&gt;
+=======
+     *       &lt;version&gt;0.7.5&lt;/version&gt;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; update release notes for version 0.7.5
      *       &lt;executions&gt;
      *         &lt;execution&gt;
      *           &lt;goals&gt;
