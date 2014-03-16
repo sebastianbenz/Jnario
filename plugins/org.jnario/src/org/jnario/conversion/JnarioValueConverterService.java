@@ -21,5 +21,53 @@ public class JnarioValueConverterService extends XtendValueConverterService {
 	public IValueConverter<String> getShouldValueConverter() {
 		return shouldValueConverter;
 	}
+	
+	@Inject
+	private JnarioRichTextEndValueConverter richTextEndValueConverter;
+
+	@ValueConverter(rule = "RICH_TEXT_END")
+	public IValueConverter<String> getRichTextEndValueConverter() {
+		return richTextEndValueConverter;
+	}
+
+	@Inject
+	private JnarioRichTextStartValueConverter richTextStartValueConverter;
+	
+	@ValueConverter(rule = "RICH_TEXT_START")
+	public IValueConverter<String> getRichTextStartValueConverter() {
+		return richTextStartValueConverter;
+	}
+
+	@Inject
+	private JnarioRichTextInBetweenValueConverter richTextInbetweenValueConverter;
+	
+	@ValueConverter(rule = "RICH_TEXT_INBETWEEN")
+	public IValueConverter<String> getRichTextInbetweenValueConverter() {
+		return richTextInbetweenValueConverter;
+	}
+	
+	@Inject
+	private JnarioRichTextValueConverter richTextValueConverter;
+	
+	@ValueConverter(rule = "RICH_TEXT")
+	public IValueConverter<String> getRichTextValueConverter() {
+		return richTextValueConverter;
+	}
+	
+	@Inject
+	private JnarioCommentRichTextInBetweenValueConverter commentRichTextInBetweenValueConverter;
+
+	@ValueConverter(rule = "COMMENT_RICH_TEXT_INBETWEEN")
+	public IValueConverter<String> getCommentRichTextInBetweenValueConverter() {
+		return commentRichTextInBetweenValueConverter;
+	}
+	
+	@Inject
+	private JnarioCommentRichTextEndValueConverter commentRichTextEndValueConverter;
+
+	@ValueConverter(rule = "COMMENT_RICH_TEXT_END")
+	public IValueConverter<String> getCommentRichTextEndValueConverter() {
+		return commentRichTextEndValueConverter;
+	}
 
 }

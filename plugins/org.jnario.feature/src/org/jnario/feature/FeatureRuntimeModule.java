@@ -14,13 +14,11 @@ import org.eclipse.xtend.core.compiler.UnicodeAwarePostProcessor;
 import org.eclipse.xtend.core.compiler.XtendGenerator;
 import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
-import org.eclipse.xtend.core.conversion.JavaIDValueConverter;
 import org.eclipse.xtend.core.formatting.XtendFormatter;
 import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.linking.LinkingProxyAwareResource;
 import org.eclipse.xtend.core.linking.URIEncoder;
-import org.eclipse.xtend.core.parser.FlexTokenRegionProvider;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
 import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
@@ -49,7 +47,6 @@ import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.IResourceDescription.Manager;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.resource.containers.IAllContainersState.Provider;
 import org.eclipse.xtext.resource.impl.EagerResourceSetBasedResourceDescriptions;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
@@ -67,6 +64,7 @@ import org.eclipse.xtext.xbase.file.JavaIOFileSystemSupport;
 import org.eclipse.xtext.xbase.file.RuntimeWorkspaceConfigProvider;
 import org.eclipse.xtext.xbase.file.WorkspaceConfig;
 import org.eclipse.xtext.xbase.formatting.IBasicFormatter;
+import org.eclipse.xtext.xbase.formatting.NodeModelAccess;
 import org.eclipse.xtext.xbase.imports.IImportsConfiguration;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
@@ -87,6 +85,7 @@ import org.jnario.documentation.XtendDocumentationProvider;
 import org.jnario.feature.compiler.FeatureBatchCompiler;
 import org.jnario.feature.conversion.FeatureValueConverterService;
 import org.jnario.feature.doc.FeatureDocGenerator;
+import org.jnario.feature.formatting.FeatureFormatter;
 import org.jnario.feature.generator.FeatureCompiler;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
 import org.jnario.feature.jvmmodel.FeatureExecutableProvider;
@@ -103,13 +102,13 @@ import org.jnario.feature.scoping.FeatureImportedNamespaceScopeProvider;
 import org.jnario.feature.scoping.FeatureScopeProvider;
 import org.jnario.feature.scoping.FeatureScopeProviderAccess;
 import org.jnario.feature.validation.FeatureNamesAreUniqueValidationHelper;
+import org.jnario.formatter.JnarioNodeModelAccess;
 import org.jnario.jvmmodel.ExecutableProvider;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.HashBasedSpec2ResultMapping;
-import org.jnario.scoping.EagerResourceSetBasedAllContainersStateProvider;
 import org.jnario.scoping.JnarioImplicitlyImportedTypes;
 import org.jnario.scoping.JnarioResourceDescriptionStrategy;
 import org.jnario.typing.JnarioTypeComputer;
@@ -232,10 +231,6 @@ public class FeatureRuntimeModule extends
 		return FeatureLinkingDiagnosticMessageProvider.class;
 	}
 	
-	public Class<? extends IBasicFormatter> bindIBasicFormatter() {
-		return XtendFormatter.class;
-	}
-
 	public Class<? extends IImportsConfiguration> bindIImportsConfiguration() {
 		return XtendImportsConfiguration.class;
 	}
@@ -329,10 +324,6 @@ public class FeatureRuntimeModule extends
 		return FileLocationsImpl.class;
 	}
 	
-	public Class<? extends IDValueConverter> bindIDValueConverter() {
-		return JnarioJavaIDValueConverter.class;
-	}
-	
 	public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProvider() {
 		return XtendDocumentationProvider.class;
 	}
@@ -344,6 +335,18 @@ public class FeatureRuntimeModule extends
 	
 	public Class<? extends TokenRegionProvider> bindTokenRegionProvider() {
 		return TokenRegionProvider.class;
+	}
+
+	public Class<? extends IDValueConverter> bindIDValueConverter() {
+		return JnarioJavaIDValueConverter.class;
+	}
+	
+	public Class<? extends NodeModelAccess> bindNodeModelAccess(){
+		return JnarioNodeModelAccess.class;
+	}
+	
+	public Class<? extends IBasicFormatter> bindIBasicFormatter() {
+		return FeatureFormatter.class;
 	}
 
 }
