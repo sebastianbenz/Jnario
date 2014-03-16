@@ -8,6 +8,7 @@
 package org.jnario.feature.naming;
 
 import com.google.common.base.Objects;
+import java.util.Arrays;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtend.core.xtend.XtendPackage;
@@ -110,9 +111,14 @@ public class StepNameProvider {
     return _xblockexpression;
   }
   
-  public String nameOf(final Step step) {
-    {
-      return _nameOf(step);
+  public String nameOf(final Step ref) {
+    if (ref instanceof StepReference) {
+      return _nameOf((StepReference)ref);
+    } else if (ref != null) {
+      return _nameOf(ref);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(ref).toString());
     }
   }
 }

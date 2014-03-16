@@ -6,7 +6,6 @@ package org.jnario.feature;
 import java.util.Properties;
 
 import org.eclipse.xtext.Constants;
-import org.eclipse.xtext.formatting.impl.NullFormatter;
 import org.eclipse.xtext.service.DefaultRuntimeModule;
 
 import com.google.inject.Binder;
@@ -122,7 +121,7 @@ public abstract class AbstractFeatureRuntimeModule extends DefaultRuntimeModule 
 
 	// contributed by org.eclipse.xtext.generator.formatting.FormatterFragment
 	public Class<? extends org.eclipse.xtext.formatting.IFormatter> bindIFormatter() {
-		return NullFormatter.class;
+		return org.jnario.feature.formatting.FeatureFormatter.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.types.TypesGeneratorFragment

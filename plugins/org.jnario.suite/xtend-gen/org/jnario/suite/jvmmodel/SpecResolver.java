@@ -166,6 +166,10 @@ public class SpecResolver {
   public List<Specification> resolveSpecs(final EObject suite) {
     if (suite instanceof Suite) {
       return _resolveSpecs((Suite)suite);
+    } else if (suite instanceof PatternReference) {
+      return _resolveSpecs((PatternReference)suite);
+    } else if (suite instanceof SpecReference) {
+      return _resolveSpecs((SpecReference)suite);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(suite).toString());

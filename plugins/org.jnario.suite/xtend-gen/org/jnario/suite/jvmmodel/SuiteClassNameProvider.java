@@ -132,25 +132,25 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
     throw new UnsupportedOperationException("Auto-generated function stub");
   }
   
-  protected String internalGetClassName(final EObject element) {
-    if (element instanceof Suite) {
-      return _internalGetClassName((Suite)element);
-    } else if (element != null) {
-      return _internalGetClassName(element);
+  protected String internalGetClassName(final EObject suite) {
+    if (suite instanceof Suite) {
+      return _internalGetClassName((Suite)suite);
+    } else if (suite != null) {
+      return _internalGetClassName(suite);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(element).toString());
+        Arrays.<Object>asList(suite).toString());
     }
   }
   
-  protected String doDescribe(final EObject element) {
-    if (element instanceof Suite) {
-      return _doDescribe((Suite)element);
-    } else if (element != null) {
-      return _doDescribe(element);
+  protected String doDescribe(final EObject suite) {
+    if (suite instanceof Suite) {
+      return _doDescribe((Suite)suite);
+    } else if (suite != null) {
+      return _doDescribe(suite);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(element).toString());
+        Arrays.<Object>asList(suite).toString());
     }
   }
 }
