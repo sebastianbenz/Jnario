@@ -624,8 +624,78 @@
             parentId="org.eclipse.xtext.ui.XtextEditorScope">
       </context>
    </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.eclipse.xtend.ide.edit.InsertStringHandler$LeftGuillemet"
+            commandId="org.eclipse.xtend.ide.insertLeftGuillemet">
+            <activeWhen>
+				<reference
+					definitionId="org.jnario.feature.Feature.Editor.opened">
+				</reference>
+			</activeWhen>
+      </handler>
+      <handler
+            class="org.eclipse.xtend.ide.edit.InsertStringHandler$RightGuillemet"
+            commandId="org.eclipse.xtend.ide.insertRightGuillemet">
+           	<activeWhen>
+				<reference
+					definitionId="org.jnario.feature.Feature.Editor.opened">
+				</reference>
+			</activeWhen>
+      </handler>
+   </extension>   
    
-   
+   <extension point="org.eclipse.ui.commands">
+   	  <command
+            description="Inserts an opening french quote"
+            id="org.eclipse.xtend.ide.insertLeftGuillemet"
+            name="Insert left guillemet"/>
+   	  <command
+            description="Inserts an closing french quote"
+            id="org.eclipse.xtend.ide.insertRightGuillemet"
+            name="Insert right guillemet"/>
+   	  <command
+            description="Organize Imports"
+            id="org.eclipse.xtext.xbase.ui.organizeImports"
+            name="Organize Imports"/>
+      <command
+            name="%JavaApplicationShortcut.description.debug"
+            description="%JavaApplicationShortcut.description.debug"
+            categoryId="org.eclipse.debug.ui.category.run"
+            id="org.eclipse.xtend.ide.launching.localJavaShortcut.debug">
+      </command>
+      <command
+            name="%JavaApplicationShortcut.description.run"
+            description="%JavaApplicationShortcut.description.run"
+            categoryId="org.eclipse.debug.ui.category.run"
+            id="org.eclipse.xtend.ide.launching.localJavaShortcut.run">
+      </command>
+      <command
+            name="%JUnitShortcut.description.run"
+            description="%JUnitShortcut.description.run"
+            categoryId="org.eclipse.debug.ui.category.run"
+            id="org.eclipse.xtend.ide.launching.junitShortcut.run">
+      </command>
+      <command
+            name="%JUnitShortcut.description.debug"
+            description="%JUnitShortcut.description.debug"
+            categoryId="org.eclipse.debug.ui.category.run"
+            id="org.eclipse.xtend.ide.launching.junitShortcut.debug">
+      </command>
+      <command
+            name="%JUnitApplicationShortcut.description.run"
+            description="%JUnitApplicationShortcut.description.run"
+            categoryId="org.eclipse.debug.ui.category.run"
+            id="org.eclipse.xtend.ide.launching.junitPdeShortcut.run">
+      </command>
+      <command
+            name="%JUnitApplicationShortcut.description.debug"
+            description="%JUnitApplicationShortcut.description.debug"
+            categoryId="org.eclipse.debug.ui.category.run"
+            id="org.eclipse.xtend.ide.launching.junitPdeShortcut.debug">
+      </command>
+   </extension>
    <extension
          point="org.eclipse.ui.bindings">
       <key
