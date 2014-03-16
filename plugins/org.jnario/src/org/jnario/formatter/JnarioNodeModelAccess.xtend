@@ -1,4 +1,4 @@
-package org.jnario.spec.formatting
+package org.jnario.formatter 
 
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.Keyword

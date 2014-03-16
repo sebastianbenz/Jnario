@@ -1,4 +1,4 @@
-package org.jnario.spec.formatting;
+package org.jnario.formatter;
 
 import com.google.common.base.Objects;
 import org.eclipse.emf.ecore.EObject;
