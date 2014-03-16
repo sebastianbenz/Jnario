@@ -5,6 +5,9 @@
 * Fixed completion not working after '.' in feature files
 * `CTRL + >` and `CTRL + SHIFT + <` work now in feature files for inserting
     Guillemets
+* Fixed code completion based automatic insertion of Guillemets
+ in rich strings
+* Fixed NPE in spec auto formatter 
 
 ##Jnario 0.7.4
 

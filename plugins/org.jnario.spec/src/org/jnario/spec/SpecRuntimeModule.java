@@ -15,7 +15,6 @@ import org.eclipse.xtend.core.compiler.UnicodeAwarePostProcessor;
 import org.eclipse.xtend.core.compiler.XtendGenerator;
 import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
-import org.eclipse.xtend.core.conversion.JavaIDValueConverter;
 import org.eclipse.xtend.core.formatting.XtendFormatter;
 import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
@@ -25,7 +24,6 @@ import org.eclipse.xtend.core.linking.URIEncoder;
 import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
 import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
-import org.eclipse.xtend.core.resource.XtendResourceDescriptionStrategy;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
 import org.eclipse.xtend.core.validation.XtendConfigurableIssueCodes;
 import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
@@ -52,7 +50,6 @@ import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.IResourceDescription.Manager;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.resource.containers.IAllContainersState.Provider;
 import org.eclipse.xtext.resource.impl.EagerResourceSetBasedResourceDescriptions;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
@@ -69,6 +66,7 @@ import org.eclipse.xtext.xbase.file.JavaIOFileSystemSupport;
 import org.eclipse.xtext.xbase.file.RuntimeWorkspaceConfigProvider;
 import org.eclipse.xtext.xbase.file.WorkspaceConfig;
 import org.eclipse.xtext.xbase.formatting.IBasicFormatter;
+import org.eclipse.xtext.xbase.formatting.NodeModelAccess;
 import org.eclipse.xtext.xbase.imports.IImportsConfiguration;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
@@ -94,11 +92,11 @@ import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.linking.JnarioLinkingService;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.HashBasedSpec2ResultMapping;
-import org.jnario.scoping.EagerResourceSetBasedAllContainersStateProvider;
 import org.jnario.scoping.JnarioImplicitlyImportedTypes;
 import org.jnario.spec.compiler.SpecBatchCompiler;
 import org.jnario.spec.conversion.SpecValueConverterService;
 import org.jnario.spec.doc.SpecDocGenerator;
+import org.jnario.spec.formatting.JnarioNodeModelAccess;
 import org.jnario.spec.jvmmodel.SpecExecutableProvider;
 import org.jnario.spec.jvmmodel.SpecJvmModelGenerator;
 import org.jnario.spec.jvmmodel.SpecJvmModelInferrer;
@@ -326,10 +324,6 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 		return FileLocationsImpl.class;
 	}
 	
-	public Class<? extends IDValueConverter> bindIDValueConverter() {
-		return JnarioJavaIDValueConverter.class;
-	}
-	
 	public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProvider() {
 		return XtendDocumentationProvider.class;
 	}
@@ -338,4 +332,13 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	public Class<? extends IParser> bindIParser() {
 		return SpecParserWithoutPartialParsing.class;
 	}
+	
+	public Class<? extends IDValueConverter> bindIDValueConverter() {
+		return JnarioJavaIDValueConverter.class;
+	}
+	
+	public Class<? extends NodeModelAccess> bindNodeModelAccess(){
+		return JnarioNodeModelAccess.class;
+	}
+	
 }

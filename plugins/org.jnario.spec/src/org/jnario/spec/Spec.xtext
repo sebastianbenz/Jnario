@@ -132,20 +132,6 @@ XPrimaryExpression returns xbase::XExpression:
 	XParenthesizedExpression |
 	Assertion;
 
-XLiteral returns xbase::XExpression:
-	XCollectionLiteral | 
-	XClosure |
-	XBooleanLiteral |
-	XNumberLiteral |
-	XNullLiteral |
-	XStringLiteral |
-	XTypeLiteral 
-//	| MockLiteral 
-;
-
-//MockLiteral:
-//	{MockLiteral} ('mock'|'stub') '(' type=[types::JvmType|QualifiedName] ')'
-//;
 
 XRelationalExpression returns xbase::XExpression:
 	XOtherOperatorExpression
@@ -190,10 +176,3 @@ terminal fragment IN_RICH_STRING :
 	| "'" !('«'|"'")
 	| !('«'|"'");
 
-	/**
- * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
- * which makes downstream grammars break on classloading, when a rule is removed.
- */
-StaticQualifier:
-	(ValidID '::')+
-;
