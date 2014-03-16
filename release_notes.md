@@ -1,5 +1,11 @@
 #Release Notes
 
+##Jnario 0.7.5
+
+* Fixed completion not working after '.' in feature files
+* `CTRL + >` and `CTRL + SHIFT + <` work now in feature files for inserting
+    Guillemets
+
 ##Jnario 0.7.4
 
 * Fix code completion bug
