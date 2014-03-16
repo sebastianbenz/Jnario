@@ -12,6 +12,8 @@ package org.jnario.feature.ui.contentassist;
 
 import static com.google.common.collect.Iterables.addAll;
 import static com.google.common.collect.Lists.newArrayList;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.emptySet;
 import static org.eclipse.emf.ecore.util.EcoreUtil.resolve;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 import static org.jnario.feature.jvmmodel.StepTypeProvider.GIVEN;
@@ -266,6 +268,9 @@ public class FeatureProposalProvider extends AbstractFeatureProposalProvider {
 	public Set<EClass> getExpectedTypes(ContentAssistContext context) {
 		EObject model = context.getLastCompleteNode().getSemanticElement();
 		model = getContainerOfType(model, Step.class);
+		if(model == null){
+			return emptySet();
+		}
 		return stepTypeProvider.getExpectedTypes((Step) model);
 	}
 	
