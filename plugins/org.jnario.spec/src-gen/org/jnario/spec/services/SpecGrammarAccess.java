@@ -1224,47 +1224,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getAssertionParserRuleCall_13() { return cAssertionParserRuleCall_13; }
 	}
 
-	public class XLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XLiteral");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cXCollectionLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cXClosureParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cXBooleanLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cXNumberLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cXNullLiteralParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cXStringLiteralParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cXTypeLiteralParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		
-		////	| MockLiteral 
-		//XLiteral returns xbase::XExpression:
-		//	XCollectionLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
-		public ParserRule getRule() { return rule; }
-
-		//XCollectionLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//XCollectionLiteral
-		public RuleCall getXCollectionLiteralParserRuleCall_0() { return cXCollectionLiteralParserRuleCall_0; }
-
-		//XClosure
-		public RuleCall getXClosureParserRuleCall_1() { return cXClosureParserRuleCall_1; }
-
-		//XBooleanLiteral
-		public RuleCall getXBooleanLiteralParserRuleCall_2() { return cXBooleanLiteralParserRuleCall_2; }
-
-		//XNumberLiteral
-		public RuleCall getXNumberLiteralParserRuleCall_3() { return cXNumberLiteralParserRuleCall_3; }
-
-		//XNullLiteral
-		public RuleCall getXNullLiteralParserRuleCall_4() { return cXNullLiteralParserRuleCall_4; }
-
-		//XStringLiteral
-		public RuleCall getXStringLiteralParserRuleCall_5() { return cXStringLiteralParserRuleCall_5; }
-
-		//XTypeLiteral
-		public RuleCall getXTypeLiteralParserRuleCall_6() { return cXTypeLiteralParserRuleCall_6; }
-	}
-
 	public class XRelationalExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XRelationalExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1307,9 +1266,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightOperandAssignment_1_3_1 = (Assignment)cGroup_1_3.eContents().get(1);
 		private final RuleCall cRightOperandXOtherOperatorExpressionParserRuleCall_1_3_1_0 = (RuleCall)cRightOperandAssignment_1_3_1.eContents().get(0);
 		
-		////MockLiteral:
-		////	{MockLiteral} ('mock'|'stub') '(' type=[types::JvmType|QualifiedName] ')'
-		////;
 		//XRelationalExpression returns xbase::XExpression:
 		//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) =>
 		//	rightOperand=XOtherOperatorExpression? | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
@@ -1581,29 +1537,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//XExpression
 		public RuleCall getExpressionXExpressionParserRuleCall_0() { return cExpressionXExpressionParserRuleCall_0; }
 	}
-
-	public class StaticQualifierElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StaticQualifier");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cValidIDParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Keyword cColonColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		
-		/// **
-		// * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
-		// * which makes downstream grammars break on classloading, when a rule is removed.
-		// * / StaticQualifier:
-		//	(ValidID "::")+;
-		public ParserRule getRule() { return rule; }
-
-		//(ValidID "::")+
-		public Group getGroup() { return cGroup; }
-
-		//ValidID
-		public RuleCall getValidIDParserRuleCall_0() { return cValidIDParserRuleCall_0; }
-
-		//"::"
-		public Keyword getColonColonKeyword_1() { return cColonColonKeyword_1; }
-	}
 	
 	
 	private SpecFileElements pSpecFile;
@@ -1613,7 +1546,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private TypeRefElements pTypeRef;
 	private MemberElements pMember;
 	private XPrimaryExpressionElements pXPrimaryExpression;
-	private XLiteralElements pXLiteral;
 	private XRelationalExpressionElements pXRelationalExpression;
 	private ShouldElements pShould;
 	private AssertionElements pAssertion;
@@ -1628,7 +1560,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private TerminalRule tCOMMENT_RICH_TEXT_INBETWEEN;
 	private TerminalRule tCOMMENT_RICH_TEXT_END;
 	private TerminalRule tIN_RICH_STRING;
-	private StaticQualifierElements pStaticQualifier;
 	
 	private final Grammar grammar;
 
@@ -1758,20 +1689,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getXPrimaryExpressionAccess().getRule();
 	}
 
-	////	| MockLiteral 
-	//XLiteral returns xbase::XExpression:
-	//	XCollectionLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
-	public XLiteralElements getXLiteralAccess() {
-		return (pXLiteral != null) ? pXLiteral : (pXLiteral = new XLiteralElements());
-	}
-	
-	public ParserRule getXLiteralRule() {
-		return getXLiteralAccess().getRule();
-	}
-
-	////MockLiteral:
-	////	{MockLiteral} ('mock'|'stub') '(' type=[types::JvmType|QualifiedName] ')'
-	////;
 	//XRelationalExpression returns xbase::XExpression:
 	//	XOtherOperatorExpression (=> ({Should.leftOperand=current} feature=[types::JvmIdentifiableElement|Should]) =>
 	//	rightOperand=XOtherOperatorExpression? | => ({ShouldThrow.expression=current} ("should" "throw" | "throws"))
@@ -1883,19 +1800,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	public TerminalRule getIN_RICH_STRINGRule() {
 		return (tIN_RICH_STRING != null) ? tIN_RICH_STRING : (tIN_RICH_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IN_RICH_STRING"));
 	} 
-
-	/// **
-	// * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
-	// * which makes downstream grammars break on classloading, when a rule is removed.
-	// * / StaticQualifier:
-	//	(ValidID "::")+;
-	public StaticQualifierElements getStaticQualifierAccess() {
-		return (pStaticQualifier != null) ? pStaticQualifier : (pStaticQualifier = new StaticQualifierElements());
-	}
-	
-	public ParserRule getStaticQualifierRule() {
-		return getStaticQualifierAccess().getRule();
-	}
 
 	//File returns XtendFile:
 	//	("package" package=QualifiedName ";"?)? importSection=XImportSection? xtendTypes+=Type*;
@@ -2518,6 +2422,16 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getXMemberFeatureCallAccess().getRule();
 	}
 
+	//XLiteral returns XExpression:
+	//	XCollectionLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
+	public XbaseGrammarAccess.XLiteralElements getXLiteralAccess() {
+		return gaXtend.getXLiteralAccess();
+	}
+	
+	public ParserRule getXLiteralRule() {
+		return getXLiteralAccess().getRule();
+	}
+
 	//XCollectionLiteral:
 	//	XSetLiteral | XListLiteral;
 	public XbaseGrammarAccess.XCollectionLiteralElements getXCollectionLiteralAccess() {
@@ -2805,6 +2719,19 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getNumberRule() {
 		return getNumberAccess().getRule();
+	}
+
+	/// **
+	// * Dummy rule, for "better" downwards compatibility, since GrammarAccess generates non-static inner classes, 
+	// * which makes downstream grammars break on classloading, when a rule is removed.
+	// * / StaticQualifier:
+	//	(ValidID "::")+;
+	public XbaseGrammarAccess.StaticQualifierElements getStaticQualifierAccess() {
+		return gaXtend.getStaticQualifierAccess();
+	}
+	
+	public ParserRule getStaticQualifierRule() {
+		return getStaticQualifierAccess().getRule();
 	}
 
 	//terminal HEX:

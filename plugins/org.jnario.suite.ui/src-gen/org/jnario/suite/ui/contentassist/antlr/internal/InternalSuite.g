@@ -115,6 +115,7 @@ finally {
 
 
 
+<<<<<<< HEAD:plugins/org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g
 // Entry rule entryRulePatternReference
 entryRulePatternReference 
 :
@@ -145,6 +146,10 @@ finally {
 
 // Entry rule entryRuleReference
 entryRuleReference 
+=======
+// Entry rule entryRuleXRelationalExpression
+entryRuleXRelationalExpression 
+>>>>>>> Fixed NPE in spec auto formatter:plugins/org.jnario.spec.ui/src-gen/org/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g
 :
 { before(grammarAccess.getReferenceRule()); }
 	 ruleReference
@@ -287,8 +292,15 @@ finally {
 
 
 
+<<<<<<< HEAD:plugins/org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g
 // Entry rule entryRuleMember
 entryRuleMember 
+=======
+
+
+// Entry rule entryRuleAnnotationField
+entryRuleAnnotationField 
+>>>>>>> Fixed NPE in spec auto formatter:plugins/org.jnario.spec.ui/src-gen/org/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g
 :
 { before(grammarAccess.getMemberRule()); }
 	 ruleMember
@@ -1693,8 +1705,41 @@ finally {
 
 
 
+<<<<<<< HEAD:plugins/org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g
 // Entry rule entryRuleXPrimaryExpression
 entryRuleXPrimaryExpression 
+=======
+// Entry rule entryRuleXLiteral
+entryRuleXLiteral 
+:
+{ before(grammarAccess.getXLiteralRule()); }
+	 ruleXLiteral
+{ after(grammarAccess.getXLiteralRule()); } 
+	 EOF 
+;
+
+// Rule XLiteral
+ruleXLiteral
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getXLiteralAccess().getAlternatives()); }
+(rule__XLiteral__Alternatives)
+{ after(grammarAccess.getXLiteralAccess().getAlternatives()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+// Entry rule entryRuleXCollectionLiteral
+entryRuleXCollectionLiteral 
+>>>>>>> Fixed NPE in spec auto formatter:plugins/org.jnario.spec.ui/src-gen/org/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g
 :
 { before(grammarAccess.getXPrimaryExpressionRule()); }
 	 ruleXPrimaryExpression
@@ -2513,6 +2558,8 @@ finally {
 
 
 
+
+
 // Entry rule entryRuleJvmTypeReference
 entryRuleJvmTypeReference 
 :
@@ -3300,6 +3347,7 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+<<<<<<< HEAD:plugins/org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g
 rule__ValidID__Alternatives
     @init {
 		int stackSize = keepStackSize();
@@ -3333,6 +3381,9 @@ finally {
 }
 
 rule__FeatureCallID__Alternatives
+=======
+rule__XRelationalExpression__Alternatives_1
+>>>>>>> Fixed NPE in spec auto formatter:plugins/org.jnario.spec.ui/src-gen/org/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g
     @init {
 		int stackSize = keepStackSize();
     }
@@ -4330,6 +4381,7 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+<<<<<<< HEAD:plugins/org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g
 rule__XPrimaryExpression__Alternatives
     @init {
 		int stackSize = keepStackSize();
@@ -4418,6 +4470,8 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+=======
+>>>>>>> Fixed NPE in spec auto formatter:plugins/org.jnario.spec.ui/src-gen/org/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g
 rule__XLiteral__Alternatives
     @init {
 		int stackSize = keepStackSize();
@@ -10279,7 +10333,17 @@ finally {
 }
 
 
+<<<<<<< HEAD:plugins/org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g
 rule__Member__Group_2_2_3__1
+=======
+
+
+
+
+
+
+rule__AnnotationField__Group__0
+>>>>>>> Fixed NPE in spec auto formatter:plugins/org.jnario.spec.ui/src-gen/org/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g
     @init {
 		int stackSize = keepStackSize();
     }
@@ -23452,7 +23516,12 @@ finally {
 
 
 
+<<<<<<< HEAD:plugins/org.jnario.suite.ui/src-gen/org/jnario/suite/ui/contentassist/antlr/internal/InternalSuite.g
 rule__XCatchClause__Group__0
+=======
+
+rule__JvmTypeReference__Group_0__0
+>>>>>>> Fixed NPE in spec auto formatter:plugins/org.jnario.spec.ui/src-gen/org/jnario/spec/ui/contentassist/antlr/internal/InternalSpec.g
     @init {
 		int stackSize = keepStackSize();
     }
