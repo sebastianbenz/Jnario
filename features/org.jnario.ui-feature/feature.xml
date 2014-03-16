@@ -2,7 +2,7 @@
 <feature
       id="org.jnario.ui"
       label="%featureName"
-      version="0.7.4.201403132253"
+      version="0.7.5.201403162338"
       provider-name="%providerName">
 
    <description>
@@ -35,10 +35,10 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
       <import plugin="org.eclipse.xtext.xbase.ui" version="2.5.3" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.junit"/>
       <import plugin="org.eclipse.pde.ui"/>
-      <import plugin="org.jnario" version="0.7.4" match="greaterOrEqual"/>
+      <import plugin="org.jnario" version="0.7.5" match="greaterOrEqual"/>
       <import plugin="org.eclipse.debug.core" match="greaterOrEqual"/>
       <import plugin="org.eclipse.debug.ui" match="greaterOrEqual"/>
-      <import plugin="org.jnario.feature" version="0.7.4" match="greaterOrEqual"/>
+      <import plugin="org.jnario.feature" version="0.7.5" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.5.3" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.ui"/>
       <import plugin="org.eclipse.jdt.core"/>
@@ -52,7 +52,7 @@ http://www.eclipse.org/legal/epl-v10.html Description here.
       <import plugin="com.ibm.icu"/>
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.jnario.lib" version="0.7.4" match="greaterOrEqual"/>
+      <import plugin="org.jnario.lib" version="0.7.5" match="greaterOrEqual"/>
       <import plugin="org.jnario.suite"/>
       <import plugin="com.google.guava"/>
    </requires>

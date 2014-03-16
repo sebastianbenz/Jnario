@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
-Bundle-Version: 0.7.4.201403132253
+Bundle-Version: 0.7.5.201403162338
 Bundle-SymbolicName: org.jnario.suite.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
@@ -23,13 +23,13 @@ Require-Bundle: org.jnario.suite;visibility:=reexport,
  org.eclipse.xtend.lib,
  com.google.guava,
  org.eclipse.xtext.xbase.lib,
- org.jnario;bundle-version="0.7.4",
- org.jnario.ui;bundle-version="0.7.4",
+ org.jnario;bundle-version="0.7.5",
+ org.jnario.ui;bundle-version="0.7.5",
  org.eclipse.jdt.ui,
  org.eclipse.jdt.junit,
  org.eclipse.pde.ui,
- org.jnario.feature.ui;bundle-version="0.7.4",
- org.jnario.spec.ui;bundle-version="0.7.4"
+ org.jnario.feature.ui;bundle-version="0.7.5",
+ org.jnario.spec.ui;bundle-version="0.7.5"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.jnario.suite.ui.contentassist,org.jnario.suite.ui.
