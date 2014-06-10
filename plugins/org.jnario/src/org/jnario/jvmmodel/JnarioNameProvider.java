@@ -1,31 +1,29 @@
 package org.jnario.jvmmodel;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
-import static com.google.common.collect.Maps.newHashMap;
 import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
-import java.util.Map;
-
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.xtend.XtendClass;
+import org.eclipse.xtext.resource.IResourceServiceProvider;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.util.IResourceScopeCache;
 import org.jnario.util.XtendTypes;
 
-import com.google.common.collect.MapMaker;
 import com.google.inject.Provider;
 public abstract class JnarioNameProvider {
-	
-	private static class Cache{
-		private Map<EObject, String> map = new MapMaker().weakKeys().makeMap();
 		
+	private static class Cache{
 		public String get(EObject key,	Provider<String> provider) {
-			String result = map.get(key);
-			if(result == null){
-				result = provider.get();
-				if(result != null){
-					map.put(key, result); 
-				}
+			Resource resource = key.eResource();
+			if (resource instanceof XtextResource) {
+				IResourceServiceProvider serviceProvider = ((XtextResource) resource).getResourceServiceProvider();
+				IResourceScopeCache cache = serviceProvider.get(IResourceScopeCache.class);
+				String result = cache.get(new Object[]{key, this}, resource, provider);
+				return result;
 			}
-			return result;
+			return provider.get();
 		}
 	}
 	
@@ -64,18 +62,9 @@ public abstract class JnarioNameProvider {
 		return packageName;
 	}
 	
-	private static Map<EObject, Integer> counter = newHashMap();
-	
 	public final String toJavaClassName(final EObject eObject){
 		return classNameCache.get(eObject, new Provider<String>() {
 			public String get() {
-				Integer count = counter.get(eObject);
-				if(count == null){
-					count = 1;
-				}else{
-					count++;
-				}
-				counter.put(eObject, count);
 				return internalToJavaClassName(eObject);
 			}
 		});
