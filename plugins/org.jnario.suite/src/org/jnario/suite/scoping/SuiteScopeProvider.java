@@ -12,15 +12,15 @@ package org.jnario.suite.scoping;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.xtend.core.scoping.XtendScopeProvider;
 import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.scoping.impl.FilteringScope;
 import org.jnario.suite.suite.SuitePackage;
 
 import com.google.inject.Inject;
 
 @SuppressWarnings("restriction")
-public class SuiteScopeProvider extends XtendScopeProvider {
+public class SuiteScopeProvider extends AbstractDeclarativeScopeProvider {
 
 	@Inject SuiteSpecFilter specFilter;
 	

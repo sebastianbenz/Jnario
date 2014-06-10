@@ -41,7 +41,7 @@ class SuiteHighlightingCalculator extends XbaseHighlightingCalculator{
 		acceptor.addPosition(node.offset, lineEnd, SuiteHighlightingConfiguration::SUITE_ID)
 	}
 
-	def dispatch void highlight(EObject ref, IHighlightedPositionAcceptor acceptor){
+	def dispatch Void highlight(EObject ref, IHighlightedPositionAcceptor acceptor){
 	}
 
 }

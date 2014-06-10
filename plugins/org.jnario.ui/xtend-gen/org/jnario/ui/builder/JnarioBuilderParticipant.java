@@ -39,7 +39,7 @@ public class JnarioBuilderParticipant extends XtendBuilderParticipant {
     final EclipseResourceFileSystemAccess2 fsa = this.fileSystemAccessProvider.get();
     final IProject builtProject = context.getBuiltProject();
     fsa.setProject(builtProject);
-    Map<String,OutputConfiguration> _outputConfigurations = this.getOutputConfigurations(context);
+    Map<String, OutputConfiguration> _outputConfigurations = this.getOutputConfigurations(context);
     fsa.setOutputConfigurations(_outputConfigurations);
     NullProgressMonitor _nullProgressMonitor = new NullProgressMonitor();
     fsa.setMonitor(_nullProgressMonitor);

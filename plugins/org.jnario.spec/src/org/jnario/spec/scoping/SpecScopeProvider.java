@@ -22,7 +22,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.IScope;
-import org.jnario.scoping.JnarioScopeProvider;
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.jnario.spec.naming.OperationNameProvider;
 import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecPackage;
@@ -35,7 +35,7 @@ import com.google.inject.Singleton;
  */
 @SuppressWarnings("restriction")
 @Singleton
-public class SpecScopeProvider extends JnarioScopeProvider {
+public class SpecScopeProvider extends AbstractDeclarativeScopeProvider {
 	
 	@Inject
 	private IXtendJvmAssociations xtendjvmAssociations;

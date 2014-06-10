@@ -55,7 +55,7 @@ public class SpecIgnoringXtendJvmModelInferrer extends XtendJvmModelInferrer {
 	
 	@Inject
 	private CompilerPhases compilerPhases;
-	public void infer(@Nullable EObject object, final @NonNull IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
+	public void infer(EObject object, final IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
 		if (!(object instanceof XtendFile))
 			return;
 		XtendFile xtendFile = (XtendFile) object;

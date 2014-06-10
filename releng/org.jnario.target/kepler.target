@@ -44,11 +44,11 @@
 <repository location="http://download.eclipse.org/releases/kepler/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.xtext.xbase.feature.group" version="2.5.3.v201402240820"/>
-<unit id="org.eclipse.xtext.runtime.feature.group" version="2.5.3.v201402240820"/>
-<unit id="org.eclipse.xtext.ui.feature.group" version="2.5.3.v201402240820"/>
-<unit id="org.eclipse.xtend.sdk.feature.group" version="2.5.3.v201402240820"/>
-<unit id="org.eclipse.xtext.redist.feature.group" version="2.5.3.v201402240820"/>
+<unit id="org.eclipse.xtext.xbase.feature.group" version="2.6.0"/>
+<unit id="org.eclipse.xtext.runtime.feature.group" version="2.6.0"/>
+<unit id="org.eclipse.xtext.ui.feature.group" version="2.6.0"/>
+<unit id="org.eclipse.xtend.sdk.feature.group" version="2.6.0"/>
+<unit id="org.eclipse.xtext.redist.feature.group" version="2.6.0"/>
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
 </location>
 </locations>

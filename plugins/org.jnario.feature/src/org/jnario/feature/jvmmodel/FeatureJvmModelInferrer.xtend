@@ -307,10 +307,11 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
 	def transform(Step step, JvmGenericType inferredJvmType, int order, Scenario scenario) {
 		inferredJvmType.members += step.toMethod(step.methodName, getTypeForName(Void::TYPE, step))[
+			declaringType = inferredJvmType
 			val stepExpression = expressionOf(step)
 			associatePrimary(step, it);
-			body = stepExpression
 			step.generateStepValues
+			body = stepExpression
 			testRuntime.markAsTestMethod(step, it)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.describe

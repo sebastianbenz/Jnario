@@ -2,7 +2,7 @@ package org.jnario.scoping;
 
 import java.util.List;
 
-import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedTypes;
+import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures;
 import org.jnario.lib.Each;
 import org.jnario.lib.JnarioCollectionLiterals;
 import org.jnario.lib.JnarioIterableExtensions;
@@ -12,7 +12,7 @@ import org.jnario.lib.StepArguments;
 import org.jnario.lib.StringConversions;
 import org.jnario.lib.Wait;
 
-public class JnarioImplicitlyImportedTypes extends ImplicitlyImportedTypes {
+public class JnarioImplicitlyImportedFeatures extends ImplicitlyImportedFeatures {
 
 	@Override
 	protected List<Class<?>> getExtensionClasses() {

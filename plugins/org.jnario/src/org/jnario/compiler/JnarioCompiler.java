@@ -196,7 +196,7 @@ public class JnarioCompiler extends XtendCompiler {
 		}
 		for (int i = 0; i < argumentTypes.length; i++) {
 			String argumentType = argumentTypes[i];
-			JvmTypeReference actual = getTypeReferences().getTypeForName(argumentType, jvmOperation);
+			JvmTypeReference actual = getTypeComputationServices().getTypeReferences().getTypeForName(argumentType, jvmOperation);
 			JvmTypeReference expected = jvmOperation.getParameters().get(i).getParameterType();
 //			System.out.println(expected.getQualifiedName() + "=>" + actual.getQualifiedName());
 			if(!expected.getQualifiedName().equals(actual.getQualifiedName())){
@@ -211,7 +211,7 @@ public class JnarioCompiler extends XtendCompiler {
 	}
 
 	public void _toJavaExpression(MockLiteral expr, ITreeAppendable b) {
-		JvmType mockito = getTypeReferences().findDeclaredType(MockingSupport.CLASS_NAME, expr);
+		JvmType mockito = getTypeComputationServices().getTypeReferences().findDeclaredType(MockingSupport.CLASS_NAME, expr);
 		b.append(mockito).append(".mock(");
 		b.append(expr.getType()).append(".class");
 		b.append(")");
@@ -258,8 +258,8 @@ public class JnarioCompiler extends XtendCompiler {
 	}
 
 	private boolean isVoid(XExpression expr) {
-		JvmTypeReference type = getTypeProvider().getType(expr);
-		return getTypeReferences().is(type, Void.TYPE);
+		JvmTypeReference type = getType(expr);
+		return getTypeComputationServices().getTypeReferences().is(type, Void.TYPE);
 	}
 	
 	private JvmType jvmType(Class<?> type, EObject context) {
@@ -267,7 +267,7 @@ public class JnarioCompiler extends XtendCompiler {
 	}
 
 	private JvmType jvmType(String type, EObject context) {
-		JvmTypeReference jvmTypeReference = getTypeReferences().getTypeForName(type, context);
+		JvmTypeReference jvmTypeReference = getTypeComputationServices().getTypeReferences().getTypeForName(type, context);
 		if(jvmTypeReference == null){
 			return null;
 		}

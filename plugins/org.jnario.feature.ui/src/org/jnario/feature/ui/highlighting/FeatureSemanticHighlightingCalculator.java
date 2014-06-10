@@ -67,7 +67,9 @@ public class FeatureSemanticHighlightingCalculator extends JnarioHighlightingCal
 //					XExpression initializer = field.getInitialValue();
 //					highlightRichStrings(initializer, acceptor);
 				}
-				highlightDeprecatedXtendAnnotationTarget(acceptor, member);
+				for (XAnnotation annotation : member.getAnnotations()) {
+					highlightDeprecatedXtendAnnotationTarget(acceptor, member, annotation);
+				}
 			}
 			return highlightXtendClassName(scenario, SCENARIO_ID);
 		}

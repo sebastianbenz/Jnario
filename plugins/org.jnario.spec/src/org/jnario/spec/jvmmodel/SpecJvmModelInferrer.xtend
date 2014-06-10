@@ -237,6 +237,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 			
 			specType.members += table.toMethod(initMethodName, type)[
 				setBody[ITreeAppendable a |
+					declaringType = specType
 					generateInitializationMethod(table, a)	
 				]
 			]
@@ -331,6 +332,7 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	def generateCellInitializerMethod(JvmGenericType specType, String name, ExampleCell cell){
 		specType.members += cell.toMethod(name, inferredType)[
+			declaringType = specType
 			setBody(cell.expression)
 		] 
 	}

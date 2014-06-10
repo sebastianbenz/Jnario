@@ -71,6 +71,7 @@ import org.eclipse.xtext.xbase.imports.IImportsConfiguration;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures;
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedTypes;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputer;
@@ -93,7 +94,7 @@ import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.linking.JnarioLinkingService;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.HashBasedSpec2ResultMapping;
-import org.jnario.scoping.JnarioImplicitlyImportedTypes;
+import org.jnario.scoping.JnarioImplicitlyImportedFeatures;
 import org.jnario.spec.compiler.SpecBatchCompiler;
 import org.jnario.spec.conversion.SpecValueConverterService;
 import org.jnario.spec.doc.SpecDocGenerator;
@@ -129,7 +130,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 		binder.bind(JnarioNameProvider.class).to(ExampleNameProvider.class);
 		binder.bind(ExecutableProvider.class).to(SpecExecutableProvider.class);
 		binder.bind(Executable2ResultMapping.class).to(HashBasedSpec2ResultMapping.class);
-		binder.bind(ImplicitlyImportedTypes.class).to(JnarioImplicitlyImportedTypes.class);
+		binder.bind(ImplicitlyImportedFeatures.class).to(JnarioImplicitlyImportedFeatures.class);
 		binder.bind(boolean.class).annotatedWith(
 				Names.named(CompositeEValidator.USE_EOBJECT_VALIDATOR)).toInstance(false);
 		binder.bind(XtendBatchCompiler.class).to(SpecBatchCompiler.class);
@@ -212,11 +213,6 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 		return XtendOutputConfigurationProvider.class;
 	}
 	
-	@Override
-	public Class<? extends IScopeProvider> bindIScopeProvider() {
-		return SpecScopeProvider.class;
-	}
-
 	@Override
 	public Class<? extends ILocationInFileProvider> bindILocationInFileProvider() {
 		return XtendLocationInFileProvider.class;

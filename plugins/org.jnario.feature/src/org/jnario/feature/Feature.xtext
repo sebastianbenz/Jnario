@@ -124,7 +124,7 @@ But:
  */
 
 BlockExpression returns xbase::XBlockExpression:
-	(expressions+=XExpressionInsideBlock ';'?)+;
+	(expressions+=XExpressionOrVarDeclaration ';'?)+;
 
 //ExampleTable:
 //	name=EXAMPLE_TEXT

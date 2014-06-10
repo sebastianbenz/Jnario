@@ -14,7 +14,6 @@ import org.eclipse.xtend.core.compiler.UnicodeAwarePostProcessor;
 import org.eclipse.xtend.core.compiler.XtendCompiler;
 import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
-import org.eclipse.xtend.core.conversion.JavaIDValueConverter;
 import org.eclipse.xtend.core.formatting.XtendFormatter;
 import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
@@ -23,8 +22,8 @@ import org.eclipse.xtend.core.linking.LinkingProxyAwareResource;
 import org.eclipse.xtend.core.linking.URIEncoder;
 import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
 import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
-import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
+import org.eclipse.xtend.core.typesystem.XtendReentrantTypeResolver;
 import org.eclipse.xtend.core.typesystem.XtendTypeComputer;
 import org.eclipse.xtend.core.typing.XtendExpressionHelper;
 import org.eclipse.xtend.core.validation.XtendConfigurableIssueCodes;
@@ -230,7 +229,7 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 
 	@Override
 	public Class<? extends DefaultReentrantTypeResolver> bindDefaultReentrantTypeResolver() {
-		return DispatchAndExtensionAwareReentrantTypeResolver.class;
+		return XtendReentrantTypeResolver.class;
 	}
 	
 	public Class<? extends XbaseCompiler> bindXbaseCompiler() {

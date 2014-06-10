@@ -9,8 +9,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.annotation.NonNullByDefault;
-import org.eclipse.jdt.annotation.Nullable;
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.linking.impl.IllegalNodeException;
 import org.eclipse.xtext.linking.impl.LinkingHelper;
 import org.eclipse.xtext.linking.lazy.LazyURIEncoder;
@@ -21,7 +19,6 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XFeatureCall;
@@ -31,11 +28,9 @@ import org.eclipse.xtext.xbase.scoping.batch.IFeatureScopeSession;
 import org.eclipse.xtext.xbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.xbase.typesystem.computation.IFeatureLinkingCandidate;
 import org.eclipse.xtext.xbase.typesystem.internal.AbstractTypeComputationState;
-import org.eclipse.xtext.xbase.typesystem.internal.AppliedFeatureLinkingCandidate;
 import org.eclipse.xtext.xbase.typesystem.internal.NullFeatureLinkingCandidate;
 import org.eclipse.xtext.xbase.typesystem.internal.ResolvedTypes;
 import org.eclipse.xtext.xbase.typesystem.internal.ScopeProviderAccess;
-import org.eclipse.xtext.xbase.typesystem.internal.ScopeProviderAccess.ErrorDescription;
 import org.jnario.util.SourceAdapter;
 
 import com.google.common.collect.Iterables;
@@ -54,7 +49,6 @@ public class FeatureScopeProviderAccess extends ScopeProviderAccess {
 	private LazyURIEncoder encoder;
 	
 	@NonNullByDefault
-	@Nullable
 	protected IFeatureLinkingCandidate getKnownFeature(XAbstractFeatureCall featureCall, AbstractTypeComputationState state, ResolvedTypes resolvedTypes) {
 		IFeatureLinkingCandidate result = super.getKnownFeature(featureCall, state, resolvedTypes);
 		if(result instanceof NullFeatureLinkingCandidate){
@@ -67,7 +61,7 @@ public class FeatureScopeProviderAccess extends ScopeProviderAccess {
 		return result;
 	}
 
-	public Iterable<IEObjectDescription> getCandidateDescriptions(XExpression expression, EReference reference, @Nullable EObject toBeLinked,
+	public Iterable<IEObjectDescription> getCandidateDescriptions(XExpression expression, EReference reference, EObject toBeLinked,
 			IFeatureScopeSession session, IResolvedTypes types) throws IllegalNodeException {
 		if (toBeLinked == null) {
 			return Collections.emptyList();
@@ -135,7 +129,6 @@ public class FeatureScopeProviderAccess extends ScopeProviderAccess {
 		return node;
 	}
 	
-	@Nullable
 	private XMemberFeatureCall getLongestTypeLiteralCandidate(XMemberFeatureCall current, boolean mustBeStatic) {
 		if (current.eContainingFeature() == XbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
 			XMemberFeatureCall container = (XMemberFeatureCall) current.eContainer();

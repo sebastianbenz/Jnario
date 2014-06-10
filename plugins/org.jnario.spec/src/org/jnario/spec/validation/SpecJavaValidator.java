@@ -52,6 +52,16 @@ public class SpecJavaValidator extends AbstractSpecJavaValidator {
 	
 	private SpecModifierValidator setupModifierValidator = new SpecModifierValidator(newArrayList("all"), this);
 	
+
+	@Override
+	@Check
+	protected void checkModifiers(XtendClass xtendClass) {
+		EObject eContainer = xtendClass.eContainer();
+		if (!(eContainer instanceof ExampleGroup)) {
+			super.checkModifiers(xtendClass);
+		}
+	}
+	
 	@Override
 	@Check
 	protected void checkModifiers(XtendFunction xtendFunction) {
