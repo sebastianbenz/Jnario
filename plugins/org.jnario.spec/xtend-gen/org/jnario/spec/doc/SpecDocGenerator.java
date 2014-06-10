@@ -89,7 +89,7 @@ public class SpecDocGenerator extends AbstractDocGenerator {
     final StringConcatenation result = new StringConcatenation();
     boolean inList = false;
     EList<XtendMember> _members = exampleGroup.getMembers();
-    final Function1<XtendMember,Boolean> _function = new Function1<XtendMember,Boolean>() {
+    final Function1<XtendMember, Boolean> _function = new Function1<XtendMember, Boolean>() {
       public Boolean apply(final XtendMember it) {
         boolean _or = false;
         if (((it instanceof Example) || (it instanceof ExampleGroup))) {

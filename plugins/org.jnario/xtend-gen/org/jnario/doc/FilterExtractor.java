@@ -26,13 +26,13 @@ public class FilterExtractor {
   
   private static Pattern TAG_PATTERN = Pattern.compile(FilterExtractor.TAG, Pattern.DOTALL);
   
-  private Map<String,Function1<String,Filter>> filterRegistry = CollectionLiterals.<String, Function1<String,Filter>>newHashMap(
-    Pair.<String, Function1<String,Filter>>of("filter", new Function1<String,Filter>() {
+  private Map<String, Function1<String, Filter>> filterRegistry = CollectionLiterals.<String, Function1<String, Filter>>newHashMap(
+    Pair.<String, Function1<String, Filter>>of("filter", new Function1<String, Filter>() {
       public Filter apply(final String s) {
         return RegexFilter.create(s);
       }
     }), 
-    Pair.<String, Function1<String,Filter>>of("lang", new Function1<String,Filter>() {
+    Pair.<String, Function1<String, Filter>>of("lang", new Function1<String, Filter>() {
       public Filter apply(final String s) {
         return LangFilter.create(s);
       }
@@ -52,7 +52,7 @@ public class FilterExtractor {
     while (_while) {
       {
         final String key = matcher.group(2);
-        final Function1<String,Filter> candidate = this.filterRegistry.get(key);
+        final Function1<String, Filter> candidate = this.filterRegistry.get(key);
         boolean _notEquals = (!Objects.equal(candidate, null));
         if (_notEquals) {
           String _group = matcher.group(4);

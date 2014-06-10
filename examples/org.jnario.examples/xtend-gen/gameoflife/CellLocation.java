@@ -31,7 +31,7 @@ public class CellLocation {
   }
   
   public Set<CellLocation> neighbours() {
-    final Function1<CellLocation,CellLocation> _function = new Function1<CellLocation,CellLocation>() {
+    final Function1<CellLocation, CellLocation> _function = new Function1<CellLocation, CellLocation>() {
       public CellLocation apply(final CellLocation it) {
         return CellLocation.this.plus(it);
       }
@@ -60,8 +60,8 @@ public class CellLocation {
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + _x;
-    result = prime * result + _y;
+    result = prime * result + this._x;
+    result = prime * result + this._y;
     return result;
   }
   
@@ -74,9 +74,9 @@ public class CellLocation {
     if (getClass() != obj.getClass())
       return false;
     CellLocation other = (CellLocation) obj;
-    if (other._x != _x)
+    if (other._x != this._x)
       return false;
-    if (other._y != _y)
+    if (other._y != this._y)
       return false;
     return true;
   }

@@ -38,17 +38,19 @@ public class SuiteHighlightingCalculator extends XbaseHighlightingCalculator {
     IteratorExtensions.<EObject>forEach(_allContents, _function);
   }
   
-  protected void _highlight(final SpecReference ref, final IHighlightedPositionAcceptor acceptor) {
+  protected Void _highlight(final SpecReference ref, final IHighlightedPositionAcceptor acceptor) {
     EReference _specReference_Spec = SuitePackage.eINSTANCE.getSpecReference_Spec();
     this.highlightObjectAtFeature(acceptor, ref, _specReference_Spec, SuiteHighlightingConfiguration.LINK_ID);
+    return null;
   }
   
-  protected void _highlight(final PatternReference ref, final IHighlightedPositionAcceptor acceptor) {
+  protected Void _highlight(final PatternReference ref, final IHighlightedPositionAcceptor acceptor) {
     EAttribute _patternReference_Pattern = SuitePackage.eINSTANCE.getPatternReference_Pattern();
     this.highlightObjectAtFeature(acceptor, ref, _patternReference_Pattern, SuiteHighlightingConfiguration.PATTERN_ID);
+    return null;
   }
   
-  protected void _highlight(final Suite suite, final IHighlightedPositionAcceptor acceptor) {
+  protected Void _highlight(final Suite suite, final IHighlightedPositionAcceptor acceptor) {
     final ICompositeNode node = NodeModelUtils.getNode(suite);
     String _name = suite.getName();
     int lineEnd = Strings.indexOfNewLine(_name);
@@ -59,24 +61,22 @@ public class SuiteHighlightingCalculator extends XbaseHighlightingCalculator {
     }
     int _offset = node.getOffset();
     acceptor.addPosition(_offset, lineEnd, SuiteHighlightingConfiguration.SUITE_ID);
+    return null;
   }
   
-  protected void _highlight(final EObject ref, final IHighlightedPositionAcceptor acceptor) {
+  protected Void _highlight(final EObject ref, final IHighlightedPositionAcceptor acceptor) {
+    return null;
   }
   
-  public void highlight(final EObject suite, final IHighlightedPositionAcceptor acceptor) {
+  public Void highlight(final EObject suite, final IHighlightedPositionAcceptor acceptor) {
     if (suite instanceof Suite) {
-      _highlight((Suite)suite, acceptor);
-      return;
+      return _highlight((Suite)suite, acceptor);
     } else if (suite instanceof PatternReference) {
-      _highlight((PatternReference)suite, acceptor);
-      return;
+      return _highlight((PatternReference)suite, acceptor);
     } else if (suite instanceof SpecReference) {
-      _highlight((SpecReference)suite, acceptor);
-      return;
+      return _highlight((SpecReference)suite, acceptor);
     } else if (suite != null) {
-      _highlight(suite, acceptor);
-      return;
+      return _highlight(suite, acceptor);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(suite, acceptor).toString());

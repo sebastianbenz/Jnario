@@ -111,7 +111,7 @@ public class ImplicitSubject {
   public boolean hasSubject(final JvmGenericType type) {
     EList<JvmMember> _members = type.getMembers();
     final Iterable<JvmField> fields = Iterables.<JvmField>filter(_members, JvmField.class);
-    final Function1<JvmField,Boolean> _function = new Function1<JvmField,Boolean>() {
+    final Function1<JvmField, Boolean> _function = new Function1<JvmField, Boolean>() {
       public Boolean apply(final JvmField it) {
         String _simpleName = it.getSimpleName();
         return Boolean.valueOf(Objects.equal(_simpleName, Constants.SUBJECT_FIELD_NAME));
@@ -147,7 +147,7 @@ public class ImplicitSubject {
       Iterator<XAbstractFeatureCall> _concat = Iterators.<XAbstractFeatureCall>concat(allFeatureCalls, _filter_2);
       allFeatureCalls = _concat;
     }
-    final Function1<XAbstractFeatureCall,Boolean> _function = new Function1<XAbstractFeatureCall,Boolean>() {
+    final Function1<XAbstractFeatureCall, Boolean> _function = new Function1<XAbstractFeatureCall, Boolean>() {
       public Boolean apply(final XAbstractFeatureCall it) {
         String _concreteSyntaxFeatureName = it.getConcreteSyntaxFeatureName();
         return Boolean.valueOf(Objects.equal(_concreteSyntaxFeatureName, Constants.SUBJECT_FIELD_NAME));
@@ -169,7 +169,7 @@ public class ImplicitSubject {
       Iterator<XAssignment> _concat = Iterators.<XAssignment>concat(allAssignments, _filter_2);
       allAssignments = _concat;
     }
-    final Function1<XAssignment,Boolean> _function = new Function1<XAssignment,Boolean>() {
+    final Function1<XAssignment, Boolean> _function = new Function1<XAssignment, Boolean>() {
       public Boolean apply(final XAssignment it) {
         EReference _xAbstractFeatureCall_Feature = XbasePackage.eINSTANCE.getXAbstractFeatureCall_Feature();
         final String assignable = Nodes.textForFeature(it, _xAbstractFeatureCall_Feature);

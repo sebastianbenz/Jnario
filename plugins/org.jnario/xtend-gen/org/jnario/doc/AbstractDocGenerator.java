@@ -228,7 +228,7 @@ public abstract class AbstractDocGenerator implements IGenerator {
       return "";
     }
     final String[] fragments = packageName.split("\\.");
-    final Function1<String,String> _function = new Function1<String,String>() {
+    final Function1<String, String> _function = new Function1<String, String>() {
       public String apply(final String s) {
         return "../";
       }

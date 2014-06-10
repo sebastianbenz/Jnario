@@ -48,9 +48,9 @@ public class AbstractParserTest {
     }
     Set<String> _fileExtensions = this.fileExtensionProvider.getFileExtensions();
     final String fileExtension = IterableExtensions.<String>head(_fileExtensions);
-    Map<String,Object> _extensionToFactoryMap = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap();
+    Map<String, Object> _extensionToFactoryMap = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap();
     final Object factory = _extensionToFactoryMap.get(fileExtension);
-    Map<String,Object> _extensionToFactoryMap_1 = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap();
+    Map<String, Object> _extensionToFactoryMap_1 = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap();
     _extensionToFactoryMap_1.put((fileExtension + "_"), factory);
   }
   
@@ -71,7 +71,7 @@ public class AbstractParserTest {
     IUriProvider _select = _startingFrom.select(_function);
     this._modelStore.load(_select);
     List<Resource> _resources = this._modelStore.resources();
-    final Function1<Resource,Boolean> _function_1 = new Function1<Resource,Boolean>() {
+    final Function1<Resource, Boolean> _function_1 = new Function1<Resource, Boolean>() {
       public Boolean apply(final Resource it) {
         URI _uRI = it.getURI();
         return Boolean.valueOf(AbstractParserTest.this.onlySpecFiles(_uRI));

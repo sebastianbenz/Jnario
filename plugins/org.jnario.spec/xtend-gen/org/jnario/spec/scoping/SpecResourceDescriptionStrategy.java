@@ -20,7 +20,7 @@ public class SpecResourceDescriptionStrategy extends JnarioResourceDescriptionSt
   
   public final static String FALSE = "0";
   
-  public void createUserData(final EObject eObject, final ImmutableMap.Builder<String,String> userData) {
+  public void createUserData(final EObject eObject, final ImmutableMap.Builder<String, String> userData) {
     super.createUserData(eObject, userData);
     if ((eObject instanceof ExampleGroup)) {
       final ExampleGroup exampleGroup = ((ExampleGroup) eObject);

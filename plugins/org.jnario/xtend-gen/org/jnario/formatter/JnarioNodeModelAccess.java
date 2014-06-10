@@ -1,6 +1,9 @@
 package org.jnario.formatter;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.nodemodel.BidiTreeIterable;
@@ -14,8 +17,8 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class JnarioNodeModelAccess extends NodeModelAccess {
-  public ILeafNode nodeForKeyword(final EObject obj, final String kw) {
-    ILeafNode _xblockexpression = null;
+  public Iterable<ILeafNode> nodesForKeyword(final EObject obj, final String kw) {
+    List<ILeafNode> _xblockexpression = null;
     {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(obj);
       boolean _equals = Objects.equal(node, null);
@@ -23,7 +26,7 @@ public class JnarioNodeModelAccess extends NodeModelAccess {
         return null;
       }
       BidiTreeIterable<INode> _asTreeIterable = node.getAsTreeIterable();
-      final Function1<INode,Boolean> _function = new Function1<INode,Boolean>() {
+      final Function1<INode, Boolean> _function = new Function1<INode, Boolean>() {
         public Boolean apply(final INode it) {
           boolean _and = false;
           boolean _and_1 = false;
@@ -46,7 +49,7 @@ public class JnarioNodeModelAccess extends NodeModelAccess {
         }
       };
       INode _findFirst = IterableExtensions.<INode>findFirst(_asTreeIterable, _function);
-      _xblockexpression = ((ILeafNode) _findFirst);
+      _xblockexpression = Collections.<ILeafNode>unmodifiableList(Lists.<ILeafNode>newArrayList(((ILeafNode) _findFirst)));
     }
     return _xblockexpression;
   }

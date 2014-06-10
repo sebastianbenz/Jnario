@@ -38,7 +38,7 @@ public class JnarioCodeBuilderFactory extends CodeBuilderFactory {
       Resource _eResource = type.eResource();
       TreeIterator<EObject> _allContents = _eResource.getAllContents();
       Iterator<XtendClass> _filter = Iterators.<XtendClass>filter(_allContents, XtendClass.class);
-      final Function1<XtendClass,Boolean> _function = new Function1<XtendClass,Boolean>() {
+      final Function1<XtendClass, Boolean> _function = new Function1<XtendClass, Boolean>() {
         public Boolean apply(final XtendClass it) {
           String _name = it.getName();
           String _simpleName = type.getSimpleName();

@@ -53,7 +53,7 @@ public class SpecResultParser extends DefaultHandler {
   public void startElement(final String uri, final String localName, final String qName, final Attributes attributes) throws SAXException {
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(qName,SpecResultTags.NODE_TESTCASE)) {
+      if (Objects.equal(qName, SpecResultTags.NODE_TESTCASE)) {
         _matched=true;
         String _convertValue = this.convertValue(attributes, SpecResultTags.ATTR_CLASSNAME);
         this.currentClassName = _convertValue;
@@ -66,13 +66,13 @@ public class SpecResultParser extends DefaultHandler {
       }
     }
     if (!_matched) {
-      if (Objects.equal(qName,SpecResultTags.NODE_ERROR)) {
+      if (Objects.equal(qName, SpecResultTags.NODE_ERROR)) {
         _matched=true;
         this.saveFailureAttributes(attributes);
       }
     }
     if (!_matched) {
-      if (Objects.equal(qName,SpecResultTags.NODE_FAILURE)) {
+      if (Objects.equal(qName, SpecResultTags.NODE_FAILURE)) {
         _matched=true;
         this.saveFailureAttributes(attributes);
         StringBuilder _stringBuilder = new StringBuilder();
@@ -80,7 +80,7 @@ public class SpecResultParser extends DefaultHandler {
       }
     }
     if (!_matched) {
-      if (Objects.equal(qName,SpecResultTags.NODE_SKIPPED)) {
+      if (Objects.equal(qName, SpecResultTags.NODE_SKIPPED)) {
         _matched=true;
         this.isPending = true;
       }
@@ -95,7 +95,7 @@ public class SpecResultParser extends DefaultHandler {
   public void endElement(final String uri, final String localName, final String qName) throws SAXException {
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(qName,SpecResultTags.NODE_TESTCASE)) {
+      if (Objects.equal(qName, SpecResultTags.NODE_TESTCASE)) {
         _matched=true;
         SpecExecution _newSpecExecution = this.newSpecExecution();
         this.acceptor.accept(_newSpecExecution);
@@ -105,13 +105,13 @@ public class SpecResultParser extends DefaultHandler {
       }
     }
     if (!_matched) {
-      if (Objects.equal(qName,SpecResultTags.NODE_ERROR)) {
+      if (Objects.equal(qName, SpecResultTags.NODE_ERROR)) {
         _matched=true;
         this.addFailure();
       }
     }
     if (!_matched) {
-      if (Objects.equal(qName,SpecResultTags.NODE_FAILURE)) {
+      if (Objects.equal(qName, SpecResultTags.NODE_FAILURE)) {
         _matched=true;
         this.addFailure();
       }
@@ -122,7 +122,7 @@ public class SpecResultParser extends DefaultHandler {
     StringBuilder _xblockexpression = null;
     {
       final String stacktrace = this.currentFailureStacktrace.toString();
-      final Pair<String,String> errorMessage = this.extractMessage(stacktrace);
+      final Pair<String, String> errorMessage = this.extractMessage(stacktrace);
       String _key = errorMessage.getKey();
       String _value = errorMessage.getValue();
       SpecFailure _specFailure = new SpecFailure(_key, 
@@ -135,8 +135,8 @@ public class SpecResultParser extends DefaultHandler {
     return _xblockexpression;
   }
   
-  private Pair<String,String> extractMessage(final String messageAndStacktrace) {
-    Pair<String,String> _xblockexpression = null;
+  private Pair<String, String> extractMessage(final String messageAndStacktrace) {
+    Pair<String, String> _xblockexpression = null;
     {
       final int end = messageAndStacktrace.indexOf("\tat ");
       String message = "";

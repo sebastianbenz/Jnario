@@ -48,7 +48,7 @@ public class SuiteNodeBuilder {
       if (_isEmpty) {
         return result;
       }
-      final HashMap<EObject,SuiteNode> mapping = CollectionLiterals.<EObject, SuiteNode>newHashMap();
+      final HashMap<EObject, SuiteNode> mapping = CollectionLiterals.<EObject, SuiteNode>newHashMap();
       int _size = suites.size();
       int _minus = (_size - 1);
       IntegerRange _upTo = new IntegerRange(0, _minus);
@@ -72,7 +72,7 @@ public class SuiteNodeBuilder {
   
   public SuiteNode createNode(final Suite current, final SuiteNode parent) {
     EList<Reference> _elements = current.getElements();
-    final Function1<Reference,List<Specification>> _function = new Function1<Reference,List<Specification>>() {
+    final Function1<Reference, List<Specification>> _function = new Function1<Reference, List<Specification>>() {
       public List<Specification> apply(final Reference it) {
         return SuiteNodeBuilder.this._specResolver.resolveSpecs(it);
       }

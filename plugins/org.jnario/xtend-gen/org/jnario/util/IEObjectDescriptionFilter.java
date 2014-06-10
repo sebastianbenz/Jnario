@@ -30,7 +30,7 @@ public class IEObjectDescriptionFilter implements Predicate<IEObjectDescription>
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((_type== null) ? 0 : _type.hashCode());
+    result = prime * result + ((this._type== null) ? 0 : this._type.hashCode());
     return result;
   }
   
@@ -43,10 +43,10 @@ public class IEObjectDescriptionFilter implements Predicate<IEObjectDescription>
     if (getClass() != obj.getClass())
       return false;
     IEObjectDescriptionFilter other = (IEObjectDescriptionFilter) obj;
-    if (_type == null) {
+    if (this._type == null) {
       if (other._type != null)
         return false;
-    } else if (!_type.equals(other._type))
+    } else if (!this._type.equals(other._type))
       return false;
     return true;
   }

@@ -166,7 +166,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     boolean _not = (!_isEmpty);
     if (_not) {
       TestRuntimeSupport _testRuntime = this.getTestRuntime();
-      final Function1<JvmGenericType,JvmTypeReference> _function_2 = new Function1<JvmGenericType,JvmTypeReference>() {
+      final Function1<JvmGenericType, JvmTypeReference> _function_2 = new Function1<JvmGenericType, JvmTypeReference>() {
         public JvmTypeReference apply(final JvmGenericType it) {
           return SpecJvmModelInferrer.this._typeReferences.createTypeRef(it);
         }
@@ -306,13 +306,13 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   public boolean transform(final Before element, final JvmGenericType container) {
-    final Procedure2<XtendMember,JvmOperation> _function = new Procedure2<XtendMember,JvmOperation>() {
+    final Procedure2<XtendMember, JvmOperation> _function = new Procedure2<XtendMember, JvmOperation>() {
       public void apply(final XtendMember e, final JvmOperation m) {
         TestRuntimeSupport _testRuntime = SpecJvmModelInferrer.this.getTestRuntime();
         _testRuntime.beforeMethod(e, m);
       }
     };
-    final Procedure2<XtendMember,JvmOperation> _function_1 = new Procedure2<XtendMember,JvmOperation>() {
+    final Procedure2<XtendMember, JvmOperation> _function_1 = new Procedure2<XtendMember, JvmOperation>() {
       public void apply(final XtendMember e, final JvmOperation m) {
         TestRuntimeSupport _testRuntime = SpecJvmModelInferrer.this.getTestRuntime();
         _testRuntime.beforeAllMethod(e, m);
@@ -322,13 +322,13 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   public boolean transform(final After element, final JvmGenericType container) {
-    final Procedure2<XtendMember,JvmOperation> _function = new Procedure2<XtendMember,JvmOperation>() {
+    final Procedure2<XtendMember, JvmOperation> _function = new Procedure2<XtendMember, JvmOperation>() {
       public void apply(final XtendMember e, final JvmOperation m) {
         TestRuntimeSupport _testRuntime = SpecJvmModelInferrer.this.getTestRuntime();
         _testRuntime.afterMethod(e, m);
       }
     };
-    final Procedure2<XtendMember,JvmOperation> _function_1 = new Procedure2<XtendMember,JvmOperation>() {
+    final Procedure2<XtendMember, JvmOperation> _function_1 = new Procedure2<XtendMember, JvmOperation>() {
       public void apply(final XtendMember e, final JvmOperation m) {
         TestRuntimeSupport _testRuntime = SpecJvmModelInferrer.this.getTestRuntime();
         _testRuntime.afterAllMethod(e, m);
@@ -337,7 +337,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     return this.transformAround(element, container, _function, _function_1);
   }
   
-  public boolean transformAround(final TestFunction element, final JvmGenericType container, final Procedure2<XtendMember,JvmOperation> around, final Procedure2<XtendMember,JvmOperation> aroundAll) {
+  public boolean transformAround(final TestFunction element, final JvmGenericType container, final Procedure2<XtendMember, JvmOperation> around, final Procedure2<XtendMember, JvmOperation> aroundAll) {
     boolean _xblockexpression = false;
     {
       final JvmOperation afterMethod = this.toMethod(element, container);
@@ -404,6 +404,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
             public void apply(final JvmOperation it) {
               final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
                 public void apply(final ITreeAppendable a) {
+                  it.setDeclaringType(specType);
                   SpecJvmModelInferrer.this.generateInitializationMethod(table, a);
                 }
               };
@@ -545,7 +546,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
         ITreeAppendable _append_5 = appendable.append("  ");
         ITreeAppendable _append_6 = _append_5.append(arraysType);
         EList<ExampleCell> _cells = row.getCells();
-        final Function1<ExampleCell,String> _function = new Function1<ExampleCell,String>() {
+        final Function1<ExampleCell, String> _function = new Function1<ExampleCell, String>() {
           public String apply(final ExampleCell it) {
             String _serialize = SpecJvmModelInferrer.this.serialize(it);
             String _trim = _serialize.trim();
@@ -609,8 +610,9 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
     JvmTypeReference _inferredType = this._extendedJvmTypesBuilder.inferredType();
     final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
       public void apply(final JvmOperation it) {
+        it.setDeclaringType(specType);
         XExpression _expression = cell.getExpression();
-        SpecJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _expression);
+        SpecJvmModelInferrer.this.setBody(it, _expression);
       }
     };
     JvmOperation _method = this._extendedJvmTypesBuilder.toMethod(cell, name, _inferredType, _function);
@@ -619,7 +621,7 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   
   public List<String> columnNames(final ExampleTable exampleTable) {
     EList<ExampleColumn> _columns = exampleTable.getColumns();
-    final Function1<ExampleColumn,String> _function = new Function1<ExampleColumn,String>() {
+    final Function1<ExampleColumn, String> _function = new Function1<ExampleColumn, String>() {
       public String apply(final ExampleColumn it) {
         String _name = null;
         if (it!=null) {
