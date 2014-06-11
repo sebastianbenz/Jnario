@@ -7,12 +7,16 @@
  *******************************************************************************/
 package org.jnario.ui;
 
+import static com.google.inject.name.Names.named;
+
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.Constants;
+import org.eclipse.xtext.builder.preferences.BuilderPreferenceAccess;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.service.AbstractGenericModule;
+import org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreInitializer;
 import org.jnario.doc.DocOutputConfigurationProvider;
 
 import com.google.inject.Binder;
@@ -32,6 +36,8 @@ public class JnarioUiModule extends AbstractGenericModule{
 		binder.bind(AbstractUIPlugin.class).toInstance(plugin);
 		binder.bind(IDialogSettings.class).toInstance(plugin.getDialogSettings());
 		binder.bind(String.class).annotatedWith(Names.named(Constants.LANGUAGE_NAME)).toInstance("org.jnario.Jnario");
+		binder.bind(IPreferenceStoreInitializer.class)
+		.annotatedWith(named("builderPreferenceInitializer")).to(BuilderPreferenceAccess.Initializer.class);
 	}
 	
 	public IPreferenceStore bindIPreferenceStore() {
