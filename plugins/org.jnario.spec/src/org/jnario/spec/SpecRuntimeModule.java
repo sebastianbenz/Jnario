@@ -22,6 +22,7 @@ import org.eclipse.xtend.core.jvmmodel.SyntheticNameClashResolver;
 import org.eclipse.xtend.core.linking.LinkingProxyAwareResource;
 import org.eclipse.xtend.core.linking.URIEncoder;
 import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
+import org.eclipse.xtend.core.parser.antlr.internal.FlexerFactory;
 import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
@@ -72,7 +73,6 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures;
-import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedTypes;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputer;
 import org.eclipse.xtext.xbase.typesystem.internal.DefaultBatchTypeResolver;
@@ -108,11 +108,11 @@ import org.jnario.spec.naming.SpecQualifiedNameProvider;
 import org.jnario.spec.scoping.SpecBatchScopeProvider;
 import org.jnario.spec.scoping.SpecImportedNamespaceScopeProvider;
 import org.jnario.spec.scoping.SpecResourceDescriptionStrategy;
-import org.jnario.spec.scoping.SpecScopeProvider;
 import org.jnario.typing.JnarioTypeComputer;
 import org.jnario.typing.JnarioTypeResolver;
 
 import com.google.inject.Binder;
+import com.google.inject.Scopes;
 import com.google.inject.name.Names;
 
 /**
@@ -124,6 +124,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
+		binder.bind(FlexerFactory.class).in(Scopes.SINGLETON);
 		binder.bind(AbstractDocGenerator.class).to(SpecDocGenerator.class);
 		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
 		binder.bind(SyntheticNameClashResolver.class).to(SpecSyntheticNameClashResolver.class);

@@ -18,6 +18,7 @@ import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.linking.LinkingProxyAwareResource;
 import org.eclipse.xtend.core.linking.URIEncoder;
+import org.eclipse.xtend.core.parser.antlr.internal.FlexerFactory;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
 import org.eclipse.xtend.core.typesystem.XtendReentrantTypeResolver;
@@ -112,6 +113,7 @@ import org.jnario.scoping.JnarioResourceDescriptionStrategy;
 import org.jnario.typing.JnarioTypeComputer;
 
 import com.google.inject.Binder;
+import com.google.inject.Scopes;
 import com.google.inject.name.Names;
 
 /**
@@ -123,6 +125,7 @@ public class FeatureRuntimeModule extends
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
+		binder.bind(FlexerFactory.class).in(Scopes.SINGLETON);
 		binder.bind(AbstractDocGenerator.class).to(FeatureDocGenerator.class);
 		binder.bind(SignatureHashBuilder.class).to(
 				JnarioSignatureHashBuilder.class);

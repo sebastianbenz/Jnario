@@ -12,9 +12,12 @@ import org.eclipse.xtext.conversion.ValueConverterWithValueException;
 import org.eclipse.xtext.conversion.impl.IDValueConverter;
 import org.eclipse.xtext.nodemodel.INode;
 
+import com.google.inject.Singleton;
+
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
  */
+@Singleton
 public class JnarioJavaIDValueConverter extends IDValueConverter {
 	
 	@Override

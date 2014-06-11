@@ -21,6 +21,7 @@ import org.eclipse.xtend.core.linking.Linker;
 import org.eclipse.xtend.core.linking.LinkingProxyAwareResource;
 import org.eclipse.xtend.core.linking.URIEncoder;
 import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
+import org.eclipse.xtend.core.parser.antlr.internal.FlexerFactory;
 import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
 import org.eclipse.xtend.core.typesystem.XtendReentrantTypeResolver;
@@ -103,6 +104,7 @@ import org.jnario.suite.scoping.SuiteImportedNamespaceScopeProvider;
 import org.jnario.suite.scoping.SuiteScopeProvider;
 
 import com.google.inject.Binder;
+import com.google.inject.Scopes;
 import com.google.inject.name.Names;
 
 /**
@@ -114,6 +116,7 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
+		binder.bind(FlexerFactory.class).in(Scopes.SINGLETON);
 		binder.bind(AbstractDocGenerator.class).to(SuiteDocGenerator.class);
 		binder.bind(SignatureHashBuilder.class).to(JnarioSignatureHashBuilder.class);
 		binder.bind(JnarioNameProvider.class).to(SuiteClassNameProvider.class);

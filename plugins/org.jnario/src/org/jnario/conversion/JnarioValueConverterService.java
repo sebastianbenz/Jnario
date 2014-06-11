@@ -12,7 +12,8 @@ import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
 
 import com.google.inject.Inject;
-
+import com.google.inject.Singleton;
+@Singleton
 public class JnarioValueConverterService extends XtendValueConverterService {
 	
 	@Inject ShouldValueConverter shouldValueConverter;
