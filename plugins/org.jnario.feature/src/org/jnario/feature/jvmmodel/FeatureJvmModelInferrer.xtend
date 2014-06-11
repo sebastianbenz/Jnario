@@ -48,6 +48,7 @@ import static com.google.common.collect.Iterators.*
 
 import static extension com.google.common.base.Strings.*
 import static extension org.eclipse.xtext.EcoreUtil2.*
+import com.google.inject.Provider
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -57,7 +58,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
 	public static val STEP_VALUES = "args"
 	
-	@Inject extension PendingStepsCalculator pendingStepsCalculator
+	@Inject extension Provider<PendingStepsCalculator> pendingStepsCalculators
 
 	@Inject extension ExtendedJvmTypesBuilder
 	
@@ -182,12 +183,13 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    			allSteps.addAll(background.steps)
    		}
    		allSteps.addAll(scenario.steps)
+   		val pendingStepsCalculator = pendingStepsCalculators.get
    		pendingStepsCalculator.setSteps(allSteps)
    		
 		if(!(scenario instanceof Background) && background != null){
-			start = background.steps.generateBackgroundStepCalls(inferredJvmType)
+			start = background.steps.generateBackgroundStepCalls(inferredJvmType, pendingStepsCalculator)
 		}
-		scenario.steps.generateSteps(inferredJvmType, start, scenario)
+		scenario.steps.generateSteps(inferredJvmType, start, scenario, pendingStepsCalculator)
    		super.initialize(scenario, inferredJvmType)
    		scenario.steps.filter(typeof(StepReference)).forEach[
    			if(it.reference == null){
@@ -275,21 +277,21 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	}
 
 
-   	def generateBackgroundStepCalls(Iterable<Step> steps, JvmGenericType inferredJvmType){
+   	def generateBackgroundStepCalls(Iterable<Step> steps, JvmGenericType inferredJvmType, PendingStepsCalculator pendingCalc){
    		var order = 0
 		for (step : steps) {
-			order = transformCalls(step, inferredJvmType, order)
+			order = transformCalls(step, inferredJvmType, order, pendingCalc)
 		}
 		order 
    	}
 
-   	def transformCalls(Step step, JvmGenericType inferredJvmType, int order){
+   	def transformCalls(Step step, JvmGenericType inferredJvmType, int order, PendingStepsCalculator pendingCalc){
    		val methodName = step.methodName
    		inferredJvmType.members += step.toMethod(methodName, getTypeForName(Void::TYPE, step))[
 			body = [ITreeAppendable a |
 						a.append("super." + methodName + "();")
 			]
-			markAsPending(step)
+			markAsPending(step, pendingCalc)
 			associatePrimary(step, it)
 			testRuntime.markAsTestMethod(step, it)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
@@ -298,14 +300,14 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		order + 1
    	}
    	
-   	def generateSteps(Iterable<Step> steps, JvmGenericType inferredJvmType, int start, Scenario scenario){
+   	def generateSteps(Iterable<Step> steps, JvmGenericType inferredJvmType, int start, Scenario scenario, PendingStepsCalculator pendingCalc){
 		var order = start
 		for (step : steps) {
-			order = transform(step, inferredJvmType, order, scenario)
+			order = transform(step, inferredJvmType, order, scenario, pendingCalc)
 		}
    	}
 
-	def transform(Step step, JvmGenericType inferredJvmType, int order, Scenario scenario) {
+	def transform(Step step, JvmGenericType inferredJvmType, int order, Scenario scenario, PendingStepsCalculator pendingCalc) {
 		inferredJvmType.members += step.toMethod(step.methodName, getTypeForName(Void::TYPE, step))[
 			declaringType = inferredJvmType
 			val stepExpression = expressionOf(step)
@@ -316,7 +318,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.describe
 			associatePrimary(step, it)
-			markAsPending(step)
+			markAsPending(step, pendingCalc)
 			annotations += step.toAnnotation(typeof(Named), name)
 		]	
 		order + 1
@@ -326,7 +328,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		getContainerOfType(context, typeof(Feature))
    	}
    	
-   	def markAsPending(JvmOperation operation, Step step){
+   	def markAsPending(JvmOperation operation, Step step, extension PendingStepsCalculator pendingCalc){
    		if(step.pendingOrAPreviousStepIsPending){
 			testRuntime.markAsPending(step, operation)
 		}

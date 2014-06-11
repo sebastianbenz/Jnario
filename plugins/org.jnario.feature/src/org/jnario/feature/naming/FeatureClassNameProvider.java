@@ -22,18 +22,20 @@ import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.util.Strings;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
  * @author Sebastian Benz
  */
+@Singleton
 public class FeatureClassNameProvider extends JnarioNameProvider{
 	
 	private static final String FEATURE_KEYWORD = "Feature";
 	private StepNameProvider stepNameProvider;
 	
 	@Inject
-	public FeatureClassNameProvider(StepNameProvider stepNameProvider) {
+	FeatureClassNameProvider(StepNameProvider stepNameProvider) {
 		this.stepNameProvider = stepNameProvider;
 	}
 

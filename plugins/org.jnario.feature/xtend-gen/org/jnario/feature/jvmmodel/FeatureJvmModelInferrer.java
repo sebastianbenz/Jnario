@@ -13,6 +13,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -88,7 +89,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   
   @Inject
   @Extension
-  private PendingStepsCalculator pendingStepsCalculator;
+  private Provider<PendingStepsCalculator> pendingStepsCalculators;
   
   @Inject
   @Extension
@@ -315,7 +316,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     }
     EList<Step> _steps_1 = scenario.getSteps();
     allSteps.addAll(_steps_1);
-    this.pendingStepsCalculator.setSteps(allSteps);
+    final PendingStepsCalculator pendingStepsCalculator = this.pendingStepsCalculators.get();
+    pendingStepsCalculator.setSteps(allSteps);
     boolean _and = false;
     if (!(!(scenario instanceof Background))) {
       _and = false;
@@ -325,11 +327,11 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     }
     if (_and) {
       EList<Step> _steps_2 = background.getSteps();
-      int _generateBackgroundStepCalls = this.generateBackgroundStepCalls(_steps_2, inferredJvmType);
+      int _generateBackgroundStepCalls = this.generateBackgroundStepCalls(_steps_2, inferredJvmType, pendingStepsCalculator);
       start = _generateBackgroundStepCalls;
     }
     EList<Step> _steps_3 = scenario.getSteps();
-    this.generateSteps(_steps_3, inferredJvmType, start, scenario);
+    this.generateSteps(_steps_3, inferredJvmType, start, scenario, pendingStepsCalculator);
     super.initialize(scenario, inferredJvmType);
     EList<Step> _steps_4 = scenario.getSteps();
     Iterable<StepReference> _filter_1 = Iterables.<StepReference>filter(_steps_4, StepReference.class);
@@ -515,12 +517,12 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     constructor.setConstructor(_next);
   }
   
-  public int generateBackgroundStepCalls(final Iterable<Step> steps, final JvmGenericType inferredJvmType) {
+  public int generateBackgroundStepCalls(final Iterable<Step> steps, final JvmGenericType inferredJvmType, final PendingStepsCalculator pendingCalc) {
     int _xblockexpression = (int) 0;
     {
       int order = 0;
       for (final Step step : steps) {
-        int _transformCalls = this.transformCalls(step, inferredJvmType, order);
+        int _transformCalls = this.transformCalls(step, inferredJvmType, order, pendingCalc);
         order = _transformCalls;
       }
       _xblockexpression = order;
@@ -528,7 +530,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     return _xblockexpression;
   }
   
-  public int transformCalls(final Step step, final JvmGenericType inferredJvmType, final int order) {
+  public int transformCalls(final Step step, final JvmGenericType inferredJvmType, final int order, final PendingStepsCalculator pendingCalc) {
     int _xblockexpression = (int) 0;
     {
       final String methodName = this._stepNameProvider.getMethodName(step);
@@ -542,7 +544,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
             }
           };
           FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.setBody(it, _function);
-          FeatureJvmModelInferrer.this.markAsPending(it, step);
+          FeatureJvmModelInferrer.this.markAsPending(it, step, pendingCalc);
           FeatureJvmModelInferrer.this._iJvmModelAssociator.associatePrimary(step, it);
           TestRuntimeSupport _testRuntime = FeatureJvmModelInferrer.this.getTestRuntime();
           _testRuntime.markAsTestMethod(step, it);
@@ -563,15 +565,15 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     return _xblockexpression;
   }
   
-  public void generateSteps(final Iterable<Step> steps, final JvmGenericType inferredJvmType, final int start, final Scenario scenario) {
+  public void generateSteps(final Iterable<Step> steps, final JvmGenericType inferredJvmType, final int start, final Scenario scenario, final PendingStepsCalculator pendingCalc) {
     int order = start;
     for (final Step step : steps) {
-      int _transform = this.transform(step, inferredJvmType, order, scenario);
+      int _transform = this.transform(step, inferredJvmType, order, scenario, pendingCalc);
       order = _transform;
     }
   }
   
-  public int transform(final Step step, final JvmGenericType inferredJvmType, final int order, final Scenario scenario) {
+  public int transform(final Step step, final JvmGenericType inferredJvmType, final int order, final Scenario scenario, final PendingStepsCalculator pendingCalc) {
     int _xblockexpression = (int) 0;
     {
       EList<JvmMember> _members = inferredJvmType.getMembers();
@@ -592,7 +594,7 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
           FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
           String name = FeatureJvmModelInferrer.this._stepNameProvider.describe(step);
           FeatureJvmModelInferrer.this._iJvmModelAssociator.associatePrimary(step, it);
-          FeatureJvmModelInferrer.this.markAsPending(it, step);
+          FeatureJvmModelInferrer.this.markAsPending(it, step, pendingCalc);
           EList<JvmAnnotationReference> _annotations_1 = it.getAnnotations();
           JvmAnnotationReference _annotation_1 = FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.toAnnotation(step, Named.class, name);
           FeatureJvmModelInferrer.this._extendedJvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations_1, _annotation_1);
@@ -609,8 +611,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     return EcoreUtil2.<Feature>getContainerOfType(context, Feature.class);
   }
   
-  public void markAsPending(final JvmOperation operation, final Step step) {
-    Boolean _isPendingOrAPreviousStepIsPending = this.pendingStepsCalculator.isPendingOrAPreviousStepIsPending(step);
+  public void markAsPending(final JvmOperation operation, final Step step, @Extension final PendingStepsCalculator pendingCalc) {
+    Boolean _isPendingOrAPreviousStepIsPending = pendingCalc.isPendingOrAPreviousStepIsPending(step);
     if ((_isPendingOrAPreviousStepIsPending).booleanValue()) {
       TestRuntimeSupport _testRuntime = this.getTestRuntime();
       _testRuntime.markAsPending(step, operation);

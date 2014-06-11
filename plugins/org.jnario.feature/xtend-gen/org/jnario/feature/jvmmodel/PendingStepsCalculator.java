@@ -27,8 +27,6 @@ public class PendingStepsCalculator {
   private HashMap<Step, Boolean> steps = CollectionLiterals.<Step, Boolean>newHashMap();
   
   public void setSteps(final Iterable<Step> steps) {
-    HashMap<Step, Boolean> _newHashMap = CollectionLiterals.<Step, Boolean>newHashMap();
-    this.steps = _newHashMap;
     boolean hasPendingStep = false;
     for (final Step step : steps) {
       boolean _or = false;

@@ -7,27 +7,27 @@
  *******************************************************************************/
 package org.jnario.suite.jvmmodel
 
-import static org.eclipse.xtext.util.Strings.*
 import com.google.inject.Inject
+import com.google.inject.Singleton
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.resource.XtextResource
 import org.jnario.feature.naming.FeatureClassNameProvider
+import org.jnario.jvmmodel.JnarioNameProvider
 import org.jnario.spec.naming.ExampleNameProvider
 import org.jnario.suite.suite.Suite
 
-import static org.jnario.suite.jvmmodel.SuiteClassNameProvider.*
-
 import static extension com.google.common.base.Strings.*
+import static extension org.eclipse.xtext.util.Strings.*
 import static extension org.jnario.util.Strings.*
-import org.jnario.jvmmodel.JnarioNameProvider
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.resource.XtextResource
 
+@Singleton
 class SuiteClassNameProvider extends JnarioNameProvider{
 	
 	ExampleNameProvider exampleNameProvider
 	FeatureClassNameProvider featureNameProvider
 	
 	@Inject
-	new(ExampleNameProvider exampleNameProvider, FeatureClassNameProvider featureNameProvider){
+	package new(ExampleNameProvider exampleNameProvider, FeatureClassNameProvider featureNameProvider){
 		this.exampleNameProvider = exampleNameProvider
 		this.featureNameProvider = featureNameProvider
 	}

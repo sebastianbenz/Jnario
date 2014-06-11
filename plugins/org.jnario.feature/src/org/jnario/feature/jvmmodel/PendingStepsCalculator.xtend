@@ -21,7 +21,6 @@ class PendingStepsCalculator {
 	HashMap<Step, Boolean> steps = newHashMap()
 	
 	def setSteps(Iterable<Step> steps){
-		steps = newHashMap()
 		var hasPendingStep = false
 		for(step: steps){
 			if(hasPendingStep || !step.hasExpression){

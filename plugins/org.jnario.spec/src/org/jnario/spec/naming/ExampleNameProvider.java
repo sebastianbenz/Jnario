@@ -27,7 +27,6 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.xbase.compiler.JavaKeywords;
 import org.jnario.ExampleTable;
 import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.spec.spec.After;
@@ -39,16 +38,21 @@ import org.jnario.spec.spec.TestFunction;
 import org.jnario.util.Strings;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
+@Singleton
 public class ExampleNameProvider extends JnarioNameProvider{
 
 	private static final String SPEC_POSTFIX = "Spec";
+	
+	ExampleNameProvider() {
+	}
 
-	@Inject(optional=true) 
-	private OperationNameProvider operationNameProvider = new OperationNameProvider();
+	@Inject 
+	private OperationNameProvider operationNameProvider;
 	
 	protected String internalToMethodName(EObject eObject){
 		if(eObject == null){

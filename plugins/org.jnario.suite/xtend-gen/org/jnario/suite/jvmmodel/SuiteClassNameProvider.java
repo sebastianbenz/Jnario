@@ -9,6 +9,7 @@ package org.jnario.suite.jvmmodel;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import java.util.Arrays;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -20,6 +21,7 @@ import org.jnario.spec.naming.ExampleNameProvider;
 import org.jnario.suite.suite.Suite;
 import org.jnario.util.Strings;
 
+@Singleton
 @SuppressWarnings("all")
 public class SuiteClassNameProvider extends JnarioNameProvider {
   private ExampleNameProvider exampleNameProvider;
@@ -27,7 +29,7 @@ public class SuiteClassNameProvider extends JnarioNameProvider {
   private FeatureClassNameProvider featureNameProvider;
   
   @Inject
-  public SuiteClassNameProvider(final ExampleNameProvider exampleNameProvider, final FeatureClassNameProvider featureNameProvider) {
+  SuiteClassNameProvider(final ExampleNameProvider exampleNameProvider, final FeatureClassNameProvider featureNameProvider) {
     this.exampleNameProvider = exampleNameProvider;
     this.featureNameProvider = featureNameProvider;
   }

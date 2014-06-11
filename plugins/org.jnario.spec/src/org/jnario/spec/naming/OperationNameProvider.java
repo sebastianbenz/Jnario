@@ -18,9 +18,11 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.naming.QualifiedName;
 
 import com.google.common.base.Function;
+import com.google.inject.Singleton;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
+@Singleton
 public class OperationNameProvider implements Function<JvmOperation, QualifiedName>{
 
 	private final class Param2Name implements

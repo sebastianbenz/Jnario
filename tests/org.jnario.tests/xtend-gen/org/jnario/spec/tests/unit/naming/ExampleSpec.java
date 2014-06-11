@@ -7,7 +7,9 @@
  */
 package org.jnario.spec.tests.unit.naming;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.jnario.test.util.SpecTestCreator;
@@ -21,14 +23,20 @@ import org.jnario.spec.tests.unit.naming.ExampleNameSpec;
 import org.jnario.spec.tests.unit.naming.ExamplePendingSpec;
 import org.junit.runner.RunWith;
 
+import com.google.inject.Inject;
+
 @Contains({ ExampleNameSpec.class, ExampleImplementationSpec.class, ExamplePendingSpec.class })
 @Named("Example")
 @RunWith(ExampleGroupRunner.class)
 @CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class ExampleSpec {
+  
+	@Inject
+	  @Extension
+	  @org.jnario.runner.Extension
+	  public ModelStore modelStore;
   public Example parse(final String content) {
-    final ModelStore modelStore = new ModelStore();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("describe \"test\"{");
     _builder.newLine();
@@ -37,8 +45,8 @@ public class ExampleSpec {
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
-    modelStore.parseSpec(_builder);
-    Query _query = Query.query(modelStore);
+    Resource spec = modelStore.parseSpec(_builder);
+    Query _query = Query.query(spec.getAllContents());
     return _query.<Example>first(Example.class);
   }
   

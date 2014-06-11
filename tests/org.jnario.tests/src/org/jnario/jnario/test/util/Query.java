@@ -28,6 +28,14 @@ public class Query {
 	public static Query query(Iterable<EObject> content) {
 		return new Query(content);
 	}
+	
+	public static Query query(final Iterator<EObject> content) {
+		return new Query(new Iterable<EObject>() {
+			public Iterator<EObject> iterator() {
+				return content;
+			}
+		});
+	}
 
 	public <T extends EObject> T find(String name, Class<T> type) {
 		return Iterables.find(all(type), Predicates2.nameIs(name));
