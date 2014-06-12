@@ -33,4 +33,12 @@ public interface Scenario extends XtendClass, Executable
 	 */
 	EList<Step> getSteps();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<Step> getPendingSteps();
+
 } // Scenario

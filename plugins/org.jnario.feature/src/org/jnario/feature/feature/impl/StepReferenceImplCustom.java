@@ -32,4 +32,13 @@ public class StepReferenceImplCustom extends StepReferenceImpl {
 		}
 		return reference;
 	}
+	
+	@Override
+	public boolean isPending() {
+		if (reference == null || reference.eIsProxy()) {
+			return true;
+		} else {
+			return getReference().isPending();
+		}
+	}
 }

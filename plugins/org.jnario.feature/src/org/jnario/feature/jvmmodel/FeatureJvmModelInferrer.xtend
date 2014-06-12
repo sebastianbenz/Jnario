@@ -8,7 +8,6 @@
 package org.jnario.feature.jvmmodel
 
 import com.google.inject.Inject
-import java.util.ArrayList
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtend.core.xtend.XtendClass
@@ -48,7 +47,6 @@ import static com.google.common.collect.Iterators.*
 
 import static extension com.google.common.base.Strings.*
 import static extension org.eclipse.xtext.EcoreUtil2.*
-import com.google.inject.Provider
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -58,8 +56,6 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 
 	public static val STEP_VALUES = "args"
 	
-	@Inject extension Provider<PendingStepsCalculator> pendingStepsCalculators
-
 	@Inject extension ExtendedJvmTypesBuilder
 	
 	@Inject	extension TypeReferences
@@ -178,18 +174,10 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		
    		val background = feature.background
    		
-   		var ArrayList<Step> allSteps = newArrayList()
-   		if(background != null){
-   			allSteps.addAll(background.steps)
-   		}
-   		allSteps.addAll(scenario.steps)
-   		val pendingStepsCalculator = pendingStepsCalculators.get
-   		pendingStepsCalculator.setSteps(allSteps)
-   		
 		if(!(scenario instanceof Background) && background != null){
-			start = background.steps.generateBackgroundStepCalls(inferredJvmType, pendingStepsCalculator)
+			start = background.steps.generateBackgroundStepCalls(inferredJvmType, scenario)
 		}
-		scenario.steps.generateSteps(inferredJvmType, start, scenario, pendingStepsCalculator)
+		scenario.steps.generateSteps(inferredJvmType, start, scenario)
    		super.initialize(scenario, inferredJvmType)
    		scenario.steps.filter(typeof(StepReference)).forEach[
    			if(it.reference == null){
@@ -277,21 +265,21 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	}
 
 
-   	def generateBackgroundStepCalls(Iterable<Step> steps, JvmGenericType inferredJvmType, PendingStepsCalculator pendingCalc){
+   	def generateBackgroundStepCalls(Iterable<Step> steps, JvmGenericType inferredJvmType, Scenario scenario){
    		var order = 0
 		for (step : steps) {
-			order = transformCalls(step, inferredJvmType, order, pendingCalc)
+			order = transformCalls(step, inferredJvmType, order, scenario)
 		}
 		order 
    	}
 
-   	def transformCalls(Step step, JvmGenericType inferredJvmType, int order, PendingStepsCalculator pendingCalc){
+   	def transformCalls(Step step, JvmGenericType inferredJvmType, int order, Scenario scenario){
    		val methodName = step.methodName
    		inferredJvmType.members += step.toMethod(methodName, getTypeForName(Void::TYPE, step))[
 			body = [ITreeAppendable a |
 						a.append("super." + methodName + "();")
 			]
-			markAsPending(step, pendingCalc)
+			markAsPending(step, scenario)
 			associatePrimary(step, it)
 			testRuntime.markAsTestMethod(step, it)
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
@@ -300,14 +288,14 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 		order + 1
    	}
    	
-   	def generateSteps(Iterable<Step> steps, JvmGenericType inferredJvmType, int start, Scenario scenario, PendingStepsCalculator pendingCalc){
+   	def generateSteps(Iterable<Step> steps, JvmGenericType inferredJvmType, int start, Scenario scenario){
 		var order = start
 		for (step : steps) {
-			order = transform(step, inferredJvmType, order, scenario, pendingCalc)
+			order = transform(step, inferredJvmType, order, scenario)
 		}
    	}
 
-	def transform(Step step, JvmGenericType inferredJvmType, int order, Scenario scenario, PendingStepsCalculator pendingCalc) {
+	def transform(Step step, JvmGenericType inferredJvmType, int order, Scenario scenario) {
 		inferredJvmType.members += step.toMethod(step.methodName, getTypeForName(Void::TYPE, step))[
 			declaringType = inferredJvmType
 			val stepExpression = expressionOf(step)
@@ -318,7 +306,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 			annotations += step.toAnnotation(typeof(Order), order.intValue)
 			var name = step.describe
 			associatePrimary(step, it)
-			markAsPending(step, pendingCalc)
+			markAsPending(step, scenario)
 			annotations += step.toAnnotation(typeof(Named), name)
 		]	
 		order + 1
@@ -328,8 +316,8 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    		getContainerOfType(context, typeof(Feature))
    	}
    	
-   	def markAsPending(JvmOperation operation, Step step, extension PendingStepsCalculator pendingCalc){
-   		if(step.pendingOrAPreviousStepIsPending){
+   	def markAsPending(JvmOperation operation, Step step, Scenario scenario){
+   		if(scenario.pendingSteps.contains(step)) {
 			testRuntime.markAsPending(step, operation)
 		}
    	}

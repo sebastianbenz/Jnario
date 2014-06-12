@@ -9,17 +9,20 @@ package org.jnario.feature.feature.impl;
 
 import static com.google.common.collect.Iterables.addAll;
 import static com.google.common.collect.Iterables.filter;
-import static org.eclipse.xtext.EcoreUtil2.getContainerOfType;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.EcoreUtil2;
+import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Step;
+
+import com.google.common.collect.Iterables;
 
 public class ScenarioImplCustom extends ScenarioImpl {
 
 	private EList<Step> steps;
-
+	private EList<Step> pendingSteps;
 	
 	@Override
 	public EList<Step> getSteps() {
@@ -28,6 +31,29 @@ public class ScenarioImplCustom extends ScenarioImpl {
 			addAll(steps, filter(getMembers(), Step.class));
 		}
 		return steps;
+	}
+	
+	@Override
+	public EList<Step> getPendingSteps() {
+		if (pendingSteps == null) {
+			pendingSteps = new BasicEList<Step>();
+			Feature feature = EcoreUtil2.getContainerOfType(this, Feature.class);
+			Background background = feature.getBackground();
+			boolean pendingSeen = false;
+			Iterable<Step> allSteps;
+			if (background == null) {
+				allSteps = getSteps();
+			} else {
+				allSteps = Iterables.concat(background.getSteps(), getSteps());
+			}
+			for (Step step : allSteps) {
+				if (pendingSeen || step.isPending()) {
+					pendingSeen = true;
+					pendingSteps.add(step);
+				}
+			}
+		}
+		return pendingSteps;
 	}
 	
 	@Override
