@@ -55,9 +55,9 @@ public class SuiteNode {
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((this._suite== null) ? 0 : this._suite.hashCode());
-    result = prime * result + ((this._children== null) ? 0 : this._children.hashCode());
-    result = prime * result + ((this._specs== null) ? 0 : this._specs.hashCode());
+    result = prime * result + ((_suite== null) ? 0 : _suite.hashCode());
+    result = prime * result + ((_children== null) ? 0 : _children.hashCode());
+    result = prime * result + ((_specs== null) ? 0 : _specs.hashCode());
     return result;
   }
   
@@ -70,20 +70,20 @@ public class SuiteNode {
     if (getClass() != obj.getClass())
       return false;
     SuiteNode other = (SuiteNode) obj;
-    if (this._suite == null) {
+    if (_suite == null) {
       if (other._suite != null)
         return false;
-    } else if (!this._suite.equals(other._suite))
+    } else if (!_suite.equals(other._suite))
       return false;
-    if (this._children == null) {
+    if (_children == null) {
       if (other._children != null)
         return false;
-    } else if (!this._children.equals(other._children))
+    } else if (!_children.equals(other._children))
       return false;
-    if (this._specs == null) {
+    if (_specs == null) {
       if (other._specs != null)
         return false;
-    } else if (!this._specs.equals(other._specs))
+    } else if (!_specs.equals(other._specs))
       return false;
     return true;
   }
