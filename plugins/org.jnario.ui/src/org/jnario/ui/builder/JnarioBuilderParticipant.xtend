@@ -9,33 +9,44 @@ package org.jnario.ui.builder
 
 import com.google.inject.Inject
 import com.google.inject.Provider
+import org.eclipse.core.resources.IContainer
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IProgressMonitor
+import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.xtend.ide.builder.XtendBuilderParticipant
 import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2
-import org.eclipse.xtext.builder.IXtextBuilderParticipant$IBuildContext
+import org.eclipse.xtext.builder.EclipseSourceFolderProvider
 import org.jnario.doc.HtmlAssets
-import static org.jnario.doc.DocOutputConfigurationProvider.*
-import org.eclipse.core.runtime.NullProgressMonitor
 
 class JnarioBuilderParticipant extends XtendBuilderParticipant {
-	
+
 	@Inject Provider<EclipseResourceFileSystemAccess2> fileSystemAccessProvider
 	@Inject HtmlAssets htmlAssets
-	
+	@Inject EclipseSourceFolderProvider sourceFolders
+
 	override build(IBuildContext context, IProgressMonitor monitor) throws CoreException {
 		super.build(context, monitor)
-		htmlAssets.generate(createFsa(context))
+		sourceFolders.getSourceFolders(context.builtProject).forEach [ source |
+			if (context.relevantDeltas.exists[uri.toString.contains(source.makeProjectRelative)]) {
+				htmlAssets.generate(createFsa(context, source))
+			}
+		]
 	}
-	
-	def private createFsa(IBuildContext context){
+
+	def private createFsa(IBuildContext context, IContainer source) {
 		val fsa = fileSystemAccessProvider.get();
 		val builtProject = context.getBuiltProject();
 		fsa.setProject(builtProject);
 		fsa.setOutputConfigurations(getOutputConfigurations(context))
 		fsa.setMonitor(new NullProgressMonitor)
 		fsa.setPostProcessor(new NullFileCallBack)
+		fsa.currentSource = source.makeProjectRelative
 		return fsa
 	}
-	
+
+	def private makeProjectRelative(IContainer source) {
+		source.fullPath.makeRelativeTo(source.project.fullPath).toString
+
+	}
+
 }

@@ -13,6 +13,8 @@ import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.Constants;
+import org.eclipse.xtext.builder.EclipseSourceFolderProvider;
+import org.eclipse.xtext.builder.JDTAwareSourceFolderProvider;
 import org.eclipse.xtext.builder.preferences.BuilderPreferenceAccess;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.service.AbstractGenericModule;
@@ -38,6 +40,7 @@ public class JnarioUiModule extends AbstractGenericModule{
 		binder.bind(String.class).annotatedWith(Names.named(Constants.LANGUAGE_NAME)).toInstance("org.jnario.Jnario");
 		binder.bind(IPreferenceStoreInitializer.class)
 		.annotatedWith(named("builderPreferenceInitializer")).to(BuilderPreferenceAccess.Initializer.class);
+		binder.bind(EclipseSourceFolderProvider.class).to(JDTAwareSourceFolderProvider.class);
 	}
 	
 	public IPreferenceStore bindIPreferenceStore() {
