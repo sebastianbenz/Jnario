@@ -14,9 +14,9 @@ import org.jnario.runner.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(FeatureTestCreator.class)
 @Named("Step")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class HashBasedSpec2ResultMappingStepSpec extends HashBasedSpec2ResultMappingSpec {
   final Passed aResult = Passed.passingSpec("example.SomethingFeatureMyScenario", "Given a step", HashBasedSpec2ResultMappingSpec.anyExecutionTime);

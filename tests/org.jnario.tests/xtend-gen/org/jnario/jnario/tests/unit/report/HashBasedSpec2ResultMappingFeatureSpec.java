@@ -17,9 +17,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(FeatureTestCreator.class)
 @Named("Feature")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class HashBasedSpec2ResultMappingFeatureSpec extends HashBasedSpec2ResultMappingSpec {
   @Before

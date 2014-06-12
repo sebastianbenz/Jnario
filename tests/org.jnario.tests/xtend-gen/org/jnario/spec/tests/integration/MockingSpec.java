@@ -6,9 +6,9 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
+@CreateWith(SpecTestCreator.class)
 @Named("Mocking")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class MockingSpec {
 }

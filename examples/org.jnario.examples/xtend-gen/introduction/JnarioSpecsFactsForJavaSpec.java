@@ -38,9 +38,9 @@ import org.junit.runner.RunWith;
  * For example, this document is actually generated from a [spec](https://gist.github.com/1762405) written
  * with *Jnario Specs*.
  */
+@CreateWith(SpecTestCreator.class)
 @Named("Jnario Specs - facts for Java")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class JnarioSpecsFactsForJavaSpec {
   @Inject

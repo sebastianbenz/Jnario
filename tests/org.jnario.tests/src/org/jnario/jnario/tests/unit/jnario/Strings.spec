@@ -18,7 +18,7 @@ describe Strings{
 			| ""			| "hello"	| -1	 |
 			| "hello hi"	| "hello"	|  0	 |
 			| " hello"		| "hello"	|  1	 |
-			| "\thello"		| "hello"	|  1	 |
+			| "\thello"		| "hello"	|  1 	 |
 			| "\t hello"	| "hello"	|  2	 |
 			| "\t hell o"	| "hello"	| -1	 |
 		}

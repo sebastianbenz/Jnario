@@ -34,9 +34,9 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 
 @Contains(OperationNameProviderShouldNameMethodsSimilarToJavaDocLinksSpec.class)
+@CreateWith(SpecTestCreator.class)
 @Named("OperationNameProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class OperationNameProviderSpec {
   @Inject
@@ -45,7 +45,7 @@ public class OperationNameProviderSpec {
   @Inject
   ClasspathTypeProviderFactory typeProviderFactory = new ClasspathTypeProviderFactory(this.getClass().getClassLoader());
   
-  Map<String,JvmOperation> operations;
+  Map<String, JvmOperation> operations;
   
   @Inject
   @Extension
@@ -60,12 +60,12 @@ public class OperationNameProviderSpec {
     final JvmGenericType type = ((JvmGenericType) _findTypeByName);
     EList<JvmMember> _members = type.getMembers();
     final Iterable<JvmOperation> jvmOperations = Iterables.<JvmOperation>filter(_members, JvmOperation.class);
-    final Function1<JvmOperation,String> _function = new Function1<JvmOperation,String>() {
+    final Function1<JvmOperation, String> _function = new Function1<JvmOperation, String>() {
       public String apply(final JvmOperation it) {
         return it.getSimpleName();
       }
     };
-    Map<String,JvmOperation> _map = IterableExtensions.<String, JvmOperation>toMap(jvmOperations, _function);
+    Map<String, JvmOperation> _map = IterableExtensions.<String, JvmOperation>toMap(jvmOperations, _function);
     this.operations = _map;
   }
   

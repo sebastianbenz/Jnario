@@ -107,7 +107,7 @@ public class ExampleNameProvider extends JnarioNameProvider{
 			result.append(" ");
 		}
 		if(hasTargetOperation(exampleGroup)){
-			result.append(getOperationName(exampleGroup));
+			result.append(getOperationName(exampleGroup, true));
 			result.append(" ");
 		}
 		if(exampleGroup.getName() != null){
@@ -116,9 +116,9 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		return makeJunitConform(result);
 	}
 
-	private QualifiedName getOperationName(ExampleGroup exampleGroup) {
+	private QualifiedName getOperationName(ExampleGroup exampleGroup, boolean withParameters) {
 		EObject operation = (EObject) exampleGroup.eGet(SpecPackage.Literals.EXAMPLE_GROUP__TARGET_OPERATION, false);
-		if(operation.eIsProxy()){
+		if(!withParameters || operation.eIsProxy()){
 			String name = textForFeature(exampleGroup, SpecPackage.Literals.EXAMPLE_GROUP__TARGET_OPERATION);
 			return QualifiedName.create(name);
 		}
@@ -229,7 +229,7 @@ public class ExampleNameProvider extends JnarioNameProvider{
 			result.append(getTargetTypeName(exampleGroup));
 		}
 		if(hasTargetOperation(exampleGroup)){
-			String operationName = getOperationName(exampleGroup).toString();
+			String operationName = getOperationName(exampleGroup, false).toString();
 			result.append(toFirstUpper(operationName));
 		}
 		if(exampleGroup.getName() != null){

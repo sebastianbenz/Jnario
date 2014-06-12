@@ -3,17 +3,12 @@ package org.jnario.feature.tests.unit.naming
 import com.google.inject.Inject
 import org.jnario.feature.feature.FeaturePackage
 import org.jnario.feature.feature.StepReference
-import org.jnario.feature.scoping.FeatureScopeProvider
 import org.jnario.jnario.test.util.FeatureTestCreator
 import org.jnario.jnario.test.util.ScopeTestExtension
 import org.jnario.runner.CreateWith
 
-import static org.jnario.lib.JnarioCollectionLiterals.*
-
-import static extension org.jnario.lib.Should.*
-
 @CreateWith(typeof(FeatureTestCreator))
-describe FeatureScopeProvider {
+describe "FeatureScopeProvider" {
 	@Inject extension ScopeTestExtension e
 	
 	context "StepReference"{

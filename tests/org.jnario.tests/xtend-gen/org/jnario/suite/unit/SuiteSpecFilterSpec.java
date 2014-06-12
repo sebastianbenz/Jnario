@@ -124,8 +124,8 @@ public class SuiteSpecFilterSpec {
     IEObjectDescription _xblockexpression = null;
     {
       final ExampleGroup spec = Specs.exampleGroup("name");
-      Pair<String,String> _mappedTo = Pair.<String, String>of(SpecResourceDescriptionStrategy.ROOT_SPEC, value);
-      Map<String,String> _map = JnarioCollectionLiterals.<String, String>map(_mappedTo);
+      Pair<String, String> _mappedTo = Pair.<String, String>of(SpecResourceDescriptionStrategy.ROOT_SPEC, value);
+      Map<String, String> _map = JnarioCollectionLiterals.<String, String>map(_mappedTo);
       _xblockexpression = EObjectDescription.create("name", spec, _map);
     }
     return _xblockexpression;

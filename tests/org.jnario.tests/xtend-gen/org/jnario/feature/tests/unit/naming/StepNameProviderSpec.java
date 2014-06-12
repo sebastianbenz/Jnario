@@ -36,9 +36,9 @@ import org.junit.runner.RunWith;
  * @author Sebastian Benz - Initial contribution and API
  */
 @Contains({ StepNameProviderNameOfSpec.class, StepNameProviderDescribeFeatureSpec.class, StepNameProviderRemoveArgumentsSpec.class, StepNameProviderDescribeScenarioSpec.class })
+@CreateWith(FeatureTestCreator.class)
 @Named("StepNameProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class StepNameProviderSpec {
   @Subject

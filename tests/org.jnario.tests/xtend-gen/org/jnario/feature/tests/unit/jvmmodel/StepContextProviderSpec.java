@@ -21,9 +21,9 @@ import org.jnario.runner.Subject;
 import org.junit.runner.RunWith;
 
 @Contains(StepContextProviderUsedFieldsSpec.class)
+@CreateWith(FeatureTestCreator.class)
 @Named("StepContextProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class StepContextProviderSpec {
   @Subject
@@ -39,7 +39,7 @@ public class StepContextProviderSpec {
     {
       final Set<String> expected = IterableExtensions.<String>toSet(((Iterable<String>)Conversions.doWrapArray(names)));
       Iterable<XtendField> _filter = Iterables.<XtendField>filter(this.m, XtendField.class);
-      final Function1<XtendField,Boolean> _function = new Function1<XtendField,Boolean>() {
+      final Function1<XtendField, Boolean> _function = new Function1<XtendField, Boolean>() {
         public Boolean apply(final XtendField it) {
           String _name = it.getName();
           return Boolean.valueOf(expected.contains(_name));

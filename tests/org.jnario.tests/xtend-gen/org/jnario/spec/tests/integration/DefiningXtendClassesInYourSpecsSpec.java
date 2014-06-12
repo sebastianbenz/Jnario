@@ -15,9 +15,9 @@ import org.junit.runner.RunWith;
 /**
  * You can define xtend helper classes in your specs.
  */
+@CreateWith(SpecTestCreator.class)
 @Named("Defining Xtend classes in your specs")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class DefiningXtendClassesInYourSpecsSpec {
   @Inject

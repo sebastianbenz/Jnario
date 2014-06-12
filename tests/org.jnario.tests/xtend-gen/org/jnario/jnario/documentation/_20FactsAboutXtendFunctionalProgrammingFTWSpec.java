@@ -118,12 +118,12 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
   @Named("Concise Lambda Expressions")
   @Order(3)
   public void _conciseLambdaExpressions() throws Exception {
-    final Function1<String,Integer> _function = new Function1<String,Integer>() {
+    final Function1<String, Integer> _function = new Function1<String, Integer>() {
       public Integer apply(final String it) {
         return Integer.valueOf(it.length());
       }
     };
-    Function1<? super String,? extends Integer> lambda = _function;
+    Function1<? super String, ? extends Integer> lambda = _function;
     Integer _apply = lambda.apply("hello");
     Assert.assertTrue("\nExpected lambda.apply(\"hello\") => 5 but"
      + "\n     lambda.apply(\"hello\") is " + new org.hamcrest.StringDescription().appendValue(_apply).toString()
@@ -178,7 +178,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
   @Order(6)
   public void _orViaACustomPredicate() throws Exception {
     List<String> _list = JnarioCollectionLiterals.<String>list("red", "blue", "green");
-    final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
+    final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
       public Boolean apply(final String it) {
         return Boolean.valueOf(it.startsWith("b"));
       }
@@ -202,13 +202,13 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
   @Order(7)
   public void _mapReduceMadeEasy() throws Exception {
     final List<String> strings = JnarioCollectionLiterals.<String>list("red", "blue", "green");
-    final Function1<String,Integer> _function = new Function1<String,Integer>() {
+    final Function1<String, Integer> _function = new Function1<String, Integer>() {
       public Integer apply(final String s) {
         return Integer.valueOf(s.length());
       }
     };
     List<Integer> _map = ListExtensions.<String, Integer>map(strings, _function);
-    final Function2<Integer,Integer,Integer> _function_1 = new Function2<Integer,Integer,Integer>() {
+    final Function2<Integer, Integer, Integer> _function_1 = new Function2<Integer, Integer, Integer>() {
       public Integer apply(final Integer sum, final Integer size) {
         return Integer.valueOf(((sum).intValue() + (size).intValue()));
       }

@@ -25,9 +25,9 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 
+@CreateWith(SpecTestCreator.class)
 @Named("HtmlAssetsCompiler")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class HtmlAssetsCompilerSpec {
   @Subject

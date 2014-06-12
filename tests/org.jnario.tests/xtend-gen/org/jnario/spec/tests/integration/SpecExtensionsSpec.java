@@ -54,9 +54,9 @@ import org.junit.runner.RunWith;
  * and tear down methods will be executed before/after
  * each fact/spec, respectively:
  */
+@CreateWith(SpecTestCreator.class)
 @Named("Spec Extensions")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class SpecExtensionsSpec {
   @Inject

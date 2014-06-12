@@ -42,9 +42,9 @@ import org.junit.runner.RunWith;
  * [Here](https://gist.github.com/2869959) is another example that demonstrates
  * how to create a custom **SpecCreator** for [Mockito](http://code.google.com/p/mockito/).
  */
+@CreateWith(SpecTestCreator.class)
 @Named("Customizing the Spec Creation")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class CustomizingTheSpecCreationSpec {
   @Inject

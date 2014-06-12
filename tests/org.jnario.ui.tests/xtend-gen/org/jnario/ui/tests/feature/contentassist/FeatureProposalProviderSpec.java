@@ -11,9 +11,9 @@ import org.jnario.ui.tests.util.AbstractContentAssistProcessorTest2;
 import org.junit.runner.RunWith;
 
 @Contains(FeatureProposalProviderSameFileSpec.class)
+@Extends(AbstractContentAssistProcessorTest2.class)
 @Named("FeatureProposalProvider")
 @RunWith(ExampleGroupRunner.class)
-@Extends(AbstractContentAssistProcessorTest2.class)
 @SuppressWarnings("all")
 public class FeatureProposalProviderSpec extends AbstractContentAssistProcessorTest2 {
   AbstractContentAssistProcessorTest2.ContentAssistProcessorTestBuilder2 builder;

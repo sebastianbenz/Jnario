@@ -23,9 +23,9 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.stubbing.OngoingStubbing;
 
+@CreateWith(SpecTestCreator.class)
 @Named("TestRuntimeProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class TestRuntimeProviderSpec {
   public TestRuntimeProvider subject;

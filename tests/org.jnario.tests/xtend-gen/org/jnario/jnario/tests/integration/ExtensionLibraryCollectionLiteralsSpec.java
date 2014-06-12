@@ -90,20 +90,20 @@ public class ExtensionLibraryCollectionLiteralsSpec extends ExtensionLibrarySpec
   @Named("Map Literal")
   @Order(3)
   public void _mapLiteral() throws Exception {
-    Pair<String,String> _mappedTo = Pair.<String, String>of("green", "apple");
-    Pair<String,String> _mappedTo_1 = Pair.<String, String>of("yellow", "banana");
-    Pair<String,String> _mappedTo_2 = Pair.<String, String>of("red", "tomato");
-    Map<String,String> _map = JnarioCollectionLiterals.<String, String>map(_mappedTo, _mappedTo_1, _mappedTo_2);
-    Pair<String,String> _mappedTo_3 = Pair.<String, String>of("green", "apple");
-    Pair<String,String> _mappedTo_4 = Pair.<String, String>of("yellow", "banana");
-    Pair<String,String> _mappedTo_5 = Pair.<String, String>of("red", "tomato");
-    HashMap<String,String> _newHashMap = CollectionLiterals.<String, String>newHashMap(_mappedTo_3, _mappedTo_4, _mappedTo_5);
+    Pair<String, String> _mappedTo = Pair.<String, String>of("green", "apple");
+    Pair<String, String> _mappedTo_1 = Pair.<String, String>of("yellow", "banana");
+    Pair<String, String> _mappedTo_2 = Pair.<String, String>of("red", "tomato");
+    Map<String, String> _map = JnarioCollectionLiterals.<String, String>map(_mappedTo, _mappedTo_1, _mappedTo_2);
+    Pair<String, String> _mappedTo_3 = Pair.<String, String>of("green", "apple");
+    Pair<String, String> _mappedTo_4 = Pair.<String, String>of("yellow", "banana");
+    Pair<String, String> _mappedTo_5 = Pair.<String, String>of("red", "tomato");
+    HashMap<String, String> _newHashMap = CollectionLiterals.<String, String>newHashMap(_mappedTo_3, _mappedTo_4, _mappedTo_5);
     Assert.assertTrue("\nExpected map(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) => newHashMap(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) but"
      + "\n     map(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) is " + new org.hamcrest.StringDescription().appendValue(_map).toString()
      + "\n     \"green\"  -> \"apple\" is " + new org.hamcrest.StringDescription().appendValue(_mappedTo).toString()
      + "\n     \"yellow\" -> \"banana\" is " + new org.hamcrest.StringDescription().appendValue(_mappedTo_1).toString()
      + "\n     \"red\"    -> \"tomato\" is " + new org.hamcrest.StringDescription().appendValue(_mappedTo_2).toString()
-     + "\n     newHashMap(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) is " + new org.hamcrest.StringDescription().appendValue(_newHashMap).toString() + "\n", Should.<Map<String,String>>operator_doubleArrow(_map, _newHashMap));
+     + "\n     newHashMap(\r\n\t\t    \"green\"  -> \"apple\",\r\n\t\t    \"yellow\" -> \"banana\",\r\n\t\t    \"red\"    -> \"tomato\"\r\n\t\t  ) is " + new org.hamcrest.StringDescription().appendValue(_newHashMap).toString() + "\n", Should.<Map<String, String>>operator_doubleArrow(_map, _newHashMap));
     
   }
 }

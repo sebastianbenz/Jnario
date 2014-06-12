@@ -48,7 +48,7 @@ public class JnarioDocCompilerSpec {
   }
   
   public Matcher<? super String> generated() {
-    final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
+    final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
       public Boolean apply(final String it) {
         File _root = JnarioDocCompilerSpec.this.folder.getRoot();
         String _string = _root.toString();
