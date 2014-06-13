@@ -8,6 +8,8 @@
 package org.jnario.spec.tests.integration;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Stack;
@@ -396,11 +398,11 @@ public class UsingShouldSpec {
     Assert.assertTrue("\nExpected \"hello\" => startsWith(\"h\") but"
      + "\n     startsWith(\"h\") is " + new org.hamcrest.StringDescription().appendValue(_startsWith).toString() + "\n", _doubleArrow);
     
-    List<String> _list = JnarioCollectionLiterals.<String>list("red", "green");
     Matcher<Iterable<String>> _hasItem = Matchers.<String>hasItem("red");
-    boolean _doubleArrow_1 = Should.<List<String>>operator_doubleArrow(_list, _hasItem);
-    Assert.assertTrue("\nExpected list(\"red\", \"green\") => hasItem(\"red\") but"
-     + "\n     list(\"red\", \"green\") is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
+    boolean _doubleArrow_1 = Should.<List<String>>operator_doubleArrow(
+      Collections.<String>unmodifiableList(Lists.<String>newArrayList("red", "green")), _hasItem);
+    Assert.assertTrue("\nExpected #[\"red\", \"green\"] => hasItem(\"red\") but"
+     + "\n     #[\"red\", \"green\"] is " + new org.hamcrest.StringDescription().appendValue(Collections.<String>unmodifiableList(Lists.<String>newArrayList("red", "green"))).toString()
      + "\n     hasItem(\"red\") is " + new org.hamcrest.StringDescription().appendValue(_hasItem).toString() + "\n", _doubleArrow_1);
     
     Matcher<Integer> _greaterThan = Matchers.<Integer>greaterThan(Integer.valueOf(5));

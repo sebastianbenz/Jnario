@@ -127,7 +127,7 @@ import static org.hamcrest.Matchers.hasItem
 </code></pre><p>If the right-hand side of a should expression is a matcher, the matcher will be evaluated instead of testing for equality:</p>
 <pre class="prettyprint lang-spec linenums">
 &quot;hello&quot; =&gt; startsWith(&quot;h&quot;)
-list(&quot;red&quot;, &quot;green&quot;) =&gt; hasItem(&quot;red&quot;)
+#[&quot;red&quot;, &quot;green&quot;] =&gt; hasItem(&quot;red&quot;)
 9 should be greaterThan(5)</pre>
 </li><li><p id="Short_Circuit_Invocation" class="example notrun"><strong>Short Circuit Invocation</strong></p>
 <p>In order to be able to print the value of all subexpressions when an assertion failed, we disabled the short circuit semantics of '&amp;&amp;' and '||' within assertions.</p>
@@ -299,7 +299,7 @@ describe &quot;Using Should&quot;{
    */ 
   fact &quot;Combining hamcrest and should&quot;{
     &quot;hello&quot; =&gt; startsWith(&quot;h&quot;)
-    list(&quot;red&quot;, &quot;green&quot;) =&gt; hasItem(&quot;red&quot;)
+    #[&quot;red&quot;, &quot;green&quot;] =&gt; hasItem(&quot;red&quot;)
     9 should be greaterThan(5) 
   }
   

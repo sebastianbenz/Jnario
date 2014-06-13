@@ -157,7 +157,7 @@ describe "Using Should"{
    */ 
   fact "Combining hamcrest and should"{
     "hello" => startsWith("h")
-    list("red", "green") => hasItem("red")
+    #["red", "green"] => hasItem("red")
     9 should be greaterThan(5) 
   }
   
