@@ -27,7 +27,6 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.xbase.compiler.JavaKeywords;
 import org.jnario.ExampleTable;
 import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.spec.spec.After;
@@ -39,16 +38,21 @@ import org.jnario.spec.spec.TestFunction;
 import org.jnario.util.Strings;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
 @SuppressWarnings("restriction")
+@Singleton
 public class ExampleNameProvider extends JnarioNameProvider{
 
 	private static final String SPEC_POSTFIX = "Spec";
+	
+	ExampleNameProvider() {
+	}
 
-	@Inject(optional=true) 
-	private OperationNameProvider operationNameProvider = new OperationNameProvider();
+	@Inject 
+	private OperationNameProvider operationNameProvider;
 	
 	protected String internalToMethodName(EObject eObject){
 		if(eObject == null){
@@ -103,7 +107,7 @@ public class ExampleNameProvider extends JnarioNameProvider{
 			result.append(" ");
 		}
 		if(hasTargetOperation(exampleGroup)){
-			result.append(getOperationName(exampleGroup));
+			result.append(getOperationName(exampleGroup, true));
 			result.append(" ");
 		}
 		if(exampleGroup.getName() != null){
@@ -112,9 +116,9 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		return makeJunitConform(result);
 	}
 
-	private QualifiedName getOperationName(ExampleGroup exampleGroup) {
+	private QualifiedName getOperationName(ExampleGroup exampleGroup, boolean withParameters) {
 		EObject operation = (EObject) exampleGroup.eGet(SpecPackage.Literals.EXAMPLE_GROUP__TARGET_OPERATION, false);
-		if(operation.eIsProxy()){
+		if(!withParameters || operation.eIsProxy()){
 			String name = textForFeature(exampleGroup, SpecPackage.Literals.EXAMPLE_GROUP__TARGET_OPERATION);
 			return QualifiedName.create(name);
 		}
@@ -225,7 +229,7 @@ public class ExampleNameProvider extends JnarioNameProvider{
 			result.append(getTargetTypeName(exampleGroup));
 		}
 		if(hasTargetOperation(exampleGroup)){
-			String operationName = getOperationName(exampleGroup).toString();
+			String operationName = getOperationName(exampleGroup, false).toString();
 			result.append(toFirstUpper(operationName));
 		}
 		if(exampleGroup.getName() != null){

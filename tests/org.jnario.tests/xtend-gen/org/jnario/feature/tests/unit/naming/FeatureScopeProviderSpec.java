@@ -17,9 +17,9 @@ import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
 @Contains(FeatureScopeProviderStepReferenceSpec.class)
+@CreateWith(FeatureTestCreator.class)
 @Named("FeatureScopeProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class FeatureScopeProviderSpec {
   @Inject

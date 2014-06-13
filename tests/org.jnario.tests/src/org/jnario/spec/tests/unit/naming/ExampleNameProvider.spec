@@ -20,10 +20,11 @@ import org.jnario.spec.spec.ExampleGroup
 import static org.hamcrest.Matchers.*
 import static org.jnario.jnario.test.util.Query.*
 
-import static extension org.jnario.lib.Should.*
+import com.google.inject.Inject
 
 @CreateWith(typeof(SpecTestCreator))
 describe ExampleNameProvider {
+	@Inject extension ModelStore modelStore
 
   context "toJavaClassName(ExampleGroup)"{ 
     
@@ -387,9 +388,8 @@ describe ExampleNameProvider {
   
   def parse(CharSequence content){
     val contentWithPackage = "package test\n" + content
-    val modelStore = ModelStore::create
-    modelStore.parseSpec(contentWithPackage)
-    return query(modelStore)
+    val spec = modelStore.parseSpec(contentWithPackage)
+    return query(spec.allContents)
   }
 }  
   

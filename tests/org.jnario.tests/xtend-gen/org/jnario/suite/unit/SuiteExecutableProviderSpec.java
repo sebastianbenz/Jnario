@@ -26,9 +26,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(SuiteTestCreator.class)
 @Named("SuiteExecutableProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SuiteTestCreator.class)
 @SuppressWarnings("all")
 public class SuiteExecutableProviderSpec {
   @Subject

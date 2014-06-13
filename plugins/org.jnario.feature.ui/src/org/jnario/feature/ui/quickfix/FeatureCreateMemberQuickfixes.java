@@ -14,7 +14,7 @@ public class FeatureCreateMemberQuickfixes extends CreateMemberQuickfixes{
 
 	@Override
 	protected void newMethodQuickfix(JvmDeclaredType containerType,
-			String name, @Nullable LightweightTypeReference returnType,
+			String name, LightweightTypeReference returnType,
 			List<LightweightTypeReference> parameterTypes, boolean isStatic,
 			boolean isAbstract, boolean isExtension, boolean isLocal,
 			XAbstractFeatureCall call, Issue issue,

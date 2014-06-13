@@ -193,7 +193,7 @@ public class FilterExtractorSpec {
   public List<String> extractedFilters(final String input) {
     FilteringResult _apply = this.subject.apply(input);
     List<Filter> _filters = _apply.getFilters();
-    final Function1<Filter,String> _function = new Function1<Filter,String>() {
+    final Function1<Filter, String> _function = new Function1<Filter, String>() {
       public String apply(final Filter it) {
         return it.toString();
       }

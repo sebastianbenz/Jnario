@@ -41,9 +41,9 @@ import org.jnario.runner.Subject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(FeatureTestCreator.class)
 @Named("StepArgumentsProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class StepArgumentsProviderSpec {
   @Subject

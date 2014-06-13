@@ -35,7 +35,7 @@ public class Evolution {
   
   public World evolve(final World world) {
     Set<CellLocation> _livingCells = world.getLivingCells();
-    final Function1<CellLocation,Boolean> _function = new Function1<CellLocation,Boolean>() {
+    final Function1<CellLocation, Boolean> _function = new Function1<CellLocation, Boolean>() {
       public Boolean apply(final CellLocation it) {
         Rule _staysAlive = Evolution.this.getStaysAlive();
         return Boolean.valueOf(Evolution.this.apply(_staysAlive, world, it));
@@ -43,7 +43,7 @@ public class Evolution {
     };
     Iterable<CellLocation> _filter = IterableExtensions.<CellLocation>filter(_livingCells, _function);
     Set<CellLocation> _deadCells = world.deadCells();
-    final Function1<CellLocation,Boolean> _function_1 = new Function1<CellLocation,Boolean>() {
+    final Function1<CellLocation, Boolean> _function_1 = new Function1<CellLocation, Boolean>() {
       public Boolean apply(final CellLocation it) {
         Rule _becomesAlive = Evolution.this.getBecomesAlive();
         return Boolean.valueOf(Evolution.this.apply(_becomesAlive, world, it));

@@ -49,7 +49,7 @@ public class _20FactsAboutXtendTheUberSwitchExpressionSpec extends _20FactsAbout
       }
     }
     if (!_matched) {
-      if (Objects.equal(myString,"some")) {
+      if (Objects.equal(myString, "some")) {
         _matched=true;
         _switchResult = "It\'s some string.";
       }

@@ -18,9 +18,12 @@ import org.jnario.spec.spec.ExampleGroup;
 import org.jnario.spec.spec.SpecPackage;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
+
 import static org.jnario.util.XtendTypes.*;
 
 @SuppressWarnings("restriction")
+@Singleton
 public class SpecQualifiedNameProvider extends XtendQualifiedNameProvider {
 
 	@Inject

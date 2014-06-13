@@ -23,9 +23,9 @@ import org.jnario.spec.spec.ExampleGroup;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(SpecTestCreator.class)
 @Named("SpecExecutableProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class SpecExecutableProviderSpec {
   @Subject

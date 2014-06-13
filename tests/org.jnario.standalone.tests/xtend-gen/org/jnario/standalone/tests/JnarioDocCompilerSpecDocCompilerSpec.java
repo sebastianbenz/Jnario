@@ -19,9 +19,9 @@ import org.jnario.standalone.tests.JnarioDocCompilerSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(SpecTestCreator.class)
 @Named("SpecDocCompiler")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class JnarioDocCompilerSpecDocCompilerSpec extends JnarioDocCompilerSpec {
   @Test

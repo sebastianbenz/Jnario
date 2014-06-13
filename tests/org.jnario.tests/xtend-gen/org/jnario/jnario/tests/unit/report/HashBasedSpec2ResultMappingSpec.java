@@ -37,9 +37,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @Contains({ HashBasedSpec2ResultMappingExampleSpec.class, HashBasedSpec2ResultMappingExampleGroupSpec.class, HashBasedSpec2ResultMappingStepSpec.class, HashBasedSpec2ResultMappingScenarioSpec.class, HashBasedSpec2ResultMappingFeatureSpec.class, HashBasedSpec2ResultMappingBackgroundSpec.class, HashBasedSpec2ResultMappingSuiteSpec.class })
+@CreateWith(SpecTestCreator.class)
 @Named("HashBasedSpec2ResultMapping")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class HashBasedSpec2ResultMappingSpec {
   @Subject

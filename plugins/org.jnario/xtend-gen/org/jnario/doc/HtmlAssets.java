@@ -32,7 +32,7 @@ public class HtmlAssets {
     "bootstrap.min.css", 
     "bootstrap-responsive.min.css", 
     "custom.css", 
-    "prettify.css"), new Function1<String,String>() {
+    "prettify.css"), new Function1<String, String>() {
     public String apply(final String it) {
       return ("css/" + it);
     }
@@ -46,7 +46,7 @@ public class HtmlAssets {
     "prettify.js", 
     "lang-jnario.js", 
     "jquery.js", 
-    "bootstrap-tab.js"), new Function1<String,String>() {
+    "bootstrap-tab.js"), new Function1<String, String>() {
     public String apply(final String it) {
       return ("js/" + it);
     }
@@ -64,7 +64,7 @@ public class HtmlAssets {
   }
   
   private void copy(final IFileSystemAccess fsa, final Iterable<String> files) {
-    final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
+    final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
       public Boolean apply(final String it) {
         boolean _exists = HtmlAssets.this.exists(fsa, it);
         return Boolean.valueOf((!_exists));
@@ -83,7 +83,7 @@ public class HtmlAssets {
     }
     final IFileSystemAccessExtension2 fsa2 = ((IFileSystemAccessExtension2) fsa);
     final URI uri = fsa2.getURI(file, DocOutputConfigurationProvider.ASSET_OUTPUT);
-    Map<Object,Object> _emptyMap = CollectionLiterals.<Object, Object>emptyMap();
+    Map<Object, Object> _emptyMap = CollectionLiterals.<Object, Object>emptyMap();
     return URIConverter.INSTANCE.exists(uri, _emptyMap);
   }
   

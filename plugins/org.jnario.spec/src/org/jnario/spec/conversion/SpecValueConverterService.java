@@ -12,9 +12,11 @@ import org.eclipse.xtext.conversion.ValueConverter;
 import org.jnario.conversion.JnarioValueConverterService;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
+@Singleton
 public class SpecValueConverterService extends JnarioValueConverterService {
 
 	@Inject

@@ -11,6 +11,9 @@ import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
 import org.jnario.conversion.JnarioValueConverterService;
 
+import com.google.inject.Singleton;
+
+@Singleton
 public class FeatureValueConverterService extends JnarioValueConverterService {
 	
 	private static final String GIVEN_RULE = "GIVEN_TEXT";

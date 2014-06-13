@@ -1,5 +1,9 @@
 #Release Notes
 
+##Jnario 0.7.6
+
+* Compatible with Xtend 2.6.0
+
 ##Jnario 0.7.5
 
 * Fixed completion not working after '.' in feature files. 

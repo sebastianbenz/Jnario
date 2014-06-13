@@ -37,7 +37,7 @@ public class FeatureExtensionsFeatureUsingMultipleExtensions extends FeatureExte
     final StepArguments args = new StepArguments("red, green, blue");
     String _first = JnarioIterableExtensions.<String>first(args);
     String[] _split = _first.split(",");
-    final Function1<String,String> _function = new Function1<String,String>() {
+    final Function1<String, String> _function = new Function1<String, String>() {
       public String apply(final String it) {
         return it.trim();
       }

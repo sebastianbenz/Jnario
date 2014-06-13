@@ -31,9 +31,9 @@ import org.junit.runner.RunWith;
  *    is a good example for this.
  */
 @Contains(IntroducingJnarioSuitesGettingStartedSpec.class)
+@CreateWith(SuiteTestCreator.class)
 @Named("Introducing Jnario Suites")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SuiteTestCreator.class)
 @SuppressWarnings("all")
 public class IntroducingJnarioSuitesSpec {
 }

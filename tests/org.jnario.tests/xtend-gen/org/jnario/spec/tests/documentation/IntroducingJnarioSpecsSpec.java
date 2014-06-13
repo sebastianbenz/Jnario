@@ -23,9 +23,9 @@ import org.junit.runner.RunWith;
  * because Jnario's expressions, fields, methods and extensions work exactly as in Xtend.
  */
 @Contains({ IntroducingJnarioSpecsHowToWriteASpecificationSpec.class, IntroducingJnarioSpecsWritingAssertionsSpec.class })
+@CreateWith(SpecTestCreator.class)
 @Named("Introducing Jnario Specs")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class IntroducingJnarioSpecsSpec {
 }

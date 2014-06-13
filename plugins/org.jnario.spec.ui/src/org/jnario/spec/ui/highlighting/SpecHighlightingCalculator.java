@@ -21,6 +21,7 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.jnario.ExampleTable;
 import org.jnario.JnarioPackage;
 import org.jnario.spec.spec.Example;
@@ -46,7 +47,9 @@ public class SpecHighlightingCalculator extends JnarioHighlightingCalculator {
 		}
 		SpecFile file = (SpecFile) root;
 		for (ExampleGroup exampleGroup : Iterables.filter(file.getXtendTypes(), ExampleGroup.class)) {
-			highlightDeprecatedXtendAnnotationTarget(acceptor, exampleGroup);
+			for (XAnnotation annotation : exampleGroup.getAnnotations()) {
+				highlightDeprecatedXtendAnnotationTarget(acceptor, exampleGroup, annotation);
+			}
 			provideHighlightingFor(exampleGroup, acceptor);
 		}
 		super.doProvideHighlightingFor(resource, acceptor);
@@ -77,7 +80,9 @@ public class SpecHighlightingCalculator extends JnarioHighlightingCalculator {
 					TestFunction function = (TestFunction) member;
 					highlightRichStrings(function.getExpression() ,acceptor);
 				}
-				highlightDeprecatedXtendAnnotationTarget(acceptor, member);
+				for (XAnnotation annotation : member.getAnnotations()) {
+					highlightDeprecatedXtendAnnotationTarget(acceptor, member, annotation);
+				}
 			}
 		}
 	}

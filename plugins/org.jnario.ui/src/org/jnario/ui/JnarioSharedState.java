@@ -6,12 +6,9 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
 package org.jnario.ui;
-import static com.google.inject.name.Names.named;
-
 import org.eclipse.xtend.ide.XtendPreferenceStoreInitializer;
 import org.eclipse.xtend.ide.refactoring.XtendRefactoringPreferences;
 import org.eclipse.xtext.builder.EclipseOutputConfigurationProvider;
-import org.eclipse.xtext.builder.preferences.BuilderPreferenceAccess;
 import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
 import org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreAccess;
 import org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreInitializer;
@@ -34,9 +31,6 @@ public class JnarioSharedState implements Module {
 		binder.bind(IPreferenceStoreInitializer.class)
 				.annotatedWith(Names.named("RefactoringPreferences"))
 				.to(XtendRefactoringPreferences.Initializer.class);
-		binder.bind(IPreferenceStoreInitializer.class)
-				.annotatedWith(named("builderPreferenceInitializer")).toInstance(
-						injector().getInstance(BuilderPreferenceAccess.Initializer.class));
 		binder.bind(IPreferenceStoreInitializer.class).annotatedWith(Names.named("smartCaretPreferenceInitializer")) //$NON-NLS-1$
 		.to(XtendPreferenceStoreInitializer.class);
 		binder.bind(IPreferenceStoreInitializer.class).annotatedWith(Names.named("bracketMatcherPrefernceInitializer")) //$NON-NLS-1$

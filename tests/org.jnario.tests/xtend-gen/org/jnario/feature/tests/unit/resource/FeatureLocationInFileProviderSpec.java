@@ -19,9 +19,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(FeatureTestCreator.class)
 @Named("FeatureLocationInFileProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class FeatureLocationInFileProviderSpec {
   @Subject

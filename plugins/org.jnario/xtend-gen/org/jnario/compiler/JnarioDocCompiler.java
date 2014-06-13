@@ -67,7 +67,7 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
       this.resourceSet = _get;
       String _fileEncoding = this.getFileEncoding();
       this.encodingProvider.setDefaultEncoding(_fileEncoding);
-      Map<Object,Object> _loadOptions = this.resourceSet.getLoadOptions();
+      Map<Object, Object> _loadOptions = this.resourceSet.getLoadOptions();
       String _fileEncoding_1 = this.getFileEncoding();
       _loadOptions.put(XtextResource.OPTION_ENCODING, _fileEncoding_1);
       final NameBasedFilter nameBasedFilter = new NameBasedFilter();

@@ -9,10 +9,7 @@ package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
-import java.util.List;
-import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepImplementation;
@@ -27,20 +24,6 @@ public class StepExpressionProvider {
   @Inject
   @Extension
   private ExpressionCopier _expressionCopier;
-  
-  public List<XExpression> getExpressions(final Step step) {
-    boolean _equals = Objects.equal(step, null);
-    if (_equals) {
-      return CollectionLiterals.<XExpression>emptyList();
-    }
-    final XExpression stepExpression = step.getExpression();
-    final XBlockExpression blockExpression = ((XBlockExpression) stepExpression);
-    boolean _equals_1 = Objects.equal(blockExpression, null);
-    if (_equals_1) {
-      return CollectionLiterals.<XExpression>emptyList();
-    }
-    return blockExpression.getExpressions();
-  }
   
   public XExpression expressionOf(final Step step) {
     if ((step instanceof StepReference)) {
@@ -76,29 +59,5 @@ public class StepExpressionProvider {
     final XExpression expr = ((XExpression) _cloneWithProxies);
     ref.setExpression(expr);
     return expr;
-  }
-  
-  public boolean hasExpression(final Step step) {
-    XExpression _expression = step.getExpression();
-    boolean _notEquals = (!Objects.equal(_expression, null));
-    if (_notEquals) {
-      return true;
-    }
-    if ((step instanceof StepReference)) {
-      final StepImplementation refStep = ((StepReference) step).getReference();
-      boolean _and = false;
-      boolean _notEquals_1 = (!Objects.equal(refStep, null));
-      if (!_notEquals_1) {
-        _and = false;
-      } else {
-        boolean _eIsProxy = refStep.eIsProxy();
-        boolean _not = (!_eIsProxy);
-        _and = _not;
-      }
-      if (_and) {
-        return true;
-      }
-    }
-    return false;
   }
 }

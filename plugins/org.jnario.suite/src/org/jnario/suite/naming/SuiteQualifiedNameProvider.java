@@ -8,7 +8,6 @@
 package org.jnario.suite.naming;
 
 import static org.jnario.util.XtendTypes.*;
-
 import static org.eclipse.xtext.util.Strings.isEmpty;
 import static org.jnario.util.Strings.lastIndexOfPrefix;
 
@@ -20,8 +19,10 @@ import org.jnario.suite.suite.Suite;
 import org.jnario.util.Strings;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 @SuppressWarnings("restriction")
+@Singleton
 public class SuiteQualifiedNameProvider extends XtendQualifiedNameProvider {
 	
 	@Inject

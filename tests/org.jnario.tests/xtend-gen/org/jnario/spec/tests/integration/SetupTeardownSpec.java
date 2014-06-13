@@ -25,9 +25,9 @@ import org.junit.Assert;
 import org.junit.runner.RunWith;
 
 @Contains({ SetupTeardownBeforeAllSpec.class, SetupTeardownBeforeSpec.class, SetupTeardownAfterAllSpec.class, SetupTeardownAfterSpec.class, SetupTeardownNestingBeforeAfterSpec.class })
+@CreateWith(SpecTestCreator.class)
 @Named("Setup & Teardown")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class SetupTeardownSpec {
   @Inject

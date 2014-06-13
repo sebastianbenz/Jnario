@@ -33,6 +33,7 @@ import org.junit.Assert;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Iterators;
+import com.google.inject.Inject;
 
 
 /**
@@ -40,10 +41,11 @@ import com.google.common.collect.Iterators;
  */
 public class ModelStore implements Iterable<EObject> {
 
-	
+	@Inject private SuiteClassNameProvider suiteClassNameProvider;
+	@Inject private ExampleNameProvider exampleNameProvider;
 	private XtextResourceSet resourceSet = new XtextResourceSet();
 
-	public ModelStore() {
+	ModelStore() {
 		resourceSet.setClasspathURIContext(getClass());
 	}
 	
@@ -101,10 +103,6 @@ public class ModelStore implements Iterable<EObject> {
 		return resourceSet.getResources();
 	}
 	
-	public static ModelStore create() {
-		return new ModelStore();
-	}
-
 	public Resource parseScenario(String...strings) {
 		return parse("Scenario" + resourceCount() + ".feature", strings);
 	}
@@ -151,9 +149,8 @@ public class ModelStore implements Iterable<EObject> {
 	
 	public ExampleGroup exampleGroup(String name){
 		Iterable<ExampleGroup> exampleGroups = query().all(ExampleGroup.class);
-		ExampleNameProvider nameProvider = new ExampleNameProvider();
 		for (ExampleGroup exampleGroup : exampleGroups) {
-			if(name.equals(nameProvider.describe(exampleGroup))){
+			if(name.equals(exampleNameProvider.describe(exampleGroup))){
 				return exampleGroup;
 			}
 		}
@@ -198,9 +195,8 @@ public class ModelStore implements Iterable<EObject> {
 	
 	public Suite suite(String name){
 		Iterable<Suite> suites = query().all(Suite.class);
-		SuiteClassNameProvider nameProvider = new SuiteClassNameProvider(null, null);
 		for (Suite suite : suites) {
-			if(name.equals(nameProvider.describe(suite))){
+			if(name.equals(suiteClassNameProvider.describe(suite))){
 				return suite;
 			}
 		}

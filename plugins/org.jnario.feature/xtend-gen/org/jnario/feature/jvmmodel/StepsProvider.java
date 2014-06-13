@@ -31,7 +31,7 @@ public class StepsProvider {
       Resource _eResource_1 = context.eResource();
       EList<EObject> _contents = _eResource_1.getContents();
       final Iterable<FeatureFile> featureFiles = Iterables.<FeatureFile>filter(_contents, FeatureFile.class);
-      final Function1<FeatureFile,EList<XtendTypeDeclaration>> _function = new Function1<FeatureFile,EList<XtendTypeDeclaration>>() {
+      final Function1<FeatureFile, EList<XtendTypeDeclaration>> _function = new Function1<FeatureFile, EList<XtendTypeDeclaration>>() {
         public EList<XtendTypeDeclaration> apply(final FeatureFile it) {
           return it.getXtendTypes();
         }
@@ -39,7 +39,7 @@ public class StepsProvider {
       Iterable<EList<XtendTypeDeclaration>> _map = IterableExtensions.<FeatureFile, EList<XtendTypeDeclaration>>map(featureFiles, _function);
       Iterable<XtendTypeDeclaration> _flatten = Iterables.<XtendTypeDeclaration>concat(_map);
       final Iterable<Feature> features = Iterables.<Feature>filter(_flatten, Feature.class);
-      final Function1<Feature,Iterable<Scenario>> _function_1 = new Function1<Feature,Iterable<Scenario>>() {
+      final Function1<Feature, Iterable<Scenario>> _function_1 = new Function1<Feature, Iterable<Scenario>>() {
         public Iterable<Scenario> apply(final Feature it) {
           Iterable<Scenario> _xblockexpression = null;
           {
@@ -58,7 +58,7 @@ public class StepsProvider {
       Iterable<Iterable<Scenario>> _map_1 = IterableExtensions.<Feature, Iterable<Scenario>>map(features, _function_1);
       Iterable<Scenario> _flatten_1 = Iterables.<Scenario>concat(_map_1);
       final Iterable<Scenario> scenarios = IterableExtensions.<Scenario>filterNull(_flatten_1);
-      final Function1<Scenario,EList<Step>> _function_2 = new Function1<Scenario,EList<Step>>() {
+      final Function1<Scenario, EList<Step>> _function_2 = new Function1<Scenario, EList<Step>>() {
         public EList<Step> apply(final Scenario it) {
           return it.getSteps();
         }

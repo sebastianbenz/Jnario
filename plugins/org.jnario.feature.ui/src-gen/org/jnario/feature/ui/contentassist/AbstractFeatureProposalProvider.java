@@ -4,7 +4,6 @@
 package org.jnario.feature.ui.contentassist;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend.ide.contentassist.XtendProposalProvider;
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
@@ -15,7 +14,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
  * with a more concrete subtype. 
  */
 @SuppressWarnings("all")
-public class AbstractFeatureProposalProvider extends XtendProposalProvider {
+public class AbstractFeatureProposalProvider extends org.eclipse.xtend.ide.contentassist.XtendProposalProvider {
 		
 	public void completeFeatureFile_Package(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);

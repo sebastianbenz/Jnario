@@ -18,9 +18,9 @@ import org.jnario.suite.unit.SuiteClassNameProviderToQualifiedJavaClassNameSpec;
 import org.junit.runner.RunWith;
 
 @Contains({ SuiteClassNameProviderToJavaClassNameSpec.class, SuiteClassNameProviderDescribeSpec.class, SuiteClassNameProviderToQualifiedJavaClassNameSpec.class })
+@CreateWith(SuiteTestCreator.class)
 @Named("SuiteClassNameProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SuiteTestCreator.class)
 @SuppressWarnings("all")
 public class SuiteClassNameProviderSpec {
 }

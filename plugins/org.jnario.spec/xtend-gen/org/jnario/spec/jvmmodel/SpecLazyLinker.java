@@ -16,7 +16,7 @@ public class SpecLazyLinker extends Linker {
   @Extension
   private ImplicitSubject _implicitSubject;
   
-  protected void installProxies(final EObject obj, final IDiagnosticProducer producer, final Multimap<EStructuralFeature.Setting,INode> settingsToLink) {
+  protected void installProxies(final EObject obj, final IDiagnosticProducer producer, final Multimap<EStructuralFeature.Setting, INode> settingsToLink) {
     super.installProxies(obj, producer, settingsToLink);
   }
 }

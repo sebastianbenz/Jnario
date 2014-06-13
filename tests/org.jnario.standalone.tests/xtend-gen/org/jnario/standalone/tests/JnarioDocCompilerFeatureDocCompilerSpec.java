@@ -19,9 +19,9 @@ import org.jnario.standalone.tests.JnarioDocCompilerSpec;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(FeatureTestCreator.class)
 @Named("FeatureDocCompiler")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class JnarioDocCompilerFeatureDocCompilerSpec extends JnarioDocCompilerSpec {
   @Test

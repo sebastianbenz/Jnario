@@ -26,9 +26,9 @@ import org.jnario.spec.spec.ExampleGroup;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(SpecTestCreator.class)
 @Named("SpecQualifiedNameProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class SpecQualifiedNameProviderSpec {
   @Subject

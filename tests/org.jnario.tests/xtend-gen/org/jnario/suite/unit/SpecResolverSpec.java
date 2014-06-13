@@ -40,9 +40,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @Contains(SpecResolverEvaluatesRegularExpressionsSpec.class)
+@CreateWith(SuiteTestCreator.class)
 @Named("SpecResolver")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SuiteTestCreator.class)
 @SuppressWarnings("all")
 public class SpecResolverSpec {
   @Subject
@@ -150,7 +150,7 @@ public class SpecResolverSpec {
   
   public List<String> resolvedSpecs(final Suite suite) {
     List<Specification> _resolveSpecs = this.subject.resolveSpecs(suite);
-    final Function1<Specification,String> _function = new Function1<Specification,String>() {
+    final Function1<Specification, String> _function = new Function1<Specification, String>() {
       public String apply(final Specification it) {
         return SpecResolverSpec.this._suiteClassNameProvider.toJavaClassName(it);
       }

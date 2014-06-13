@@ -20,9 +20,9 @@ import org.jnario.runner.Subject;
 import org.junit.runner.RunWith;
 
 @Contains({ FeatureQualifiedNameProviderPackageNameSpec.class, FeatureQualifiedNameProviderStepNameSpec.class })
+@CreateWith(FeatureTestCreator.class)
 @Named("FeatureQualifiedNameProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class FeatureQualifiedNameProviderSpec {
   @Subject

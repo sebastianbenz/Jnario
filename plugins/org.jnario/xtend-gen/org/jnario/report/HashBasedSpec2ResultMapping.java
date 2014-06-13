@@ -30,7 +30,7 @@ import org.jnario.report.SpecFailure;
 
 @SuppressWarnings("all")
 public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Executable2ResultMapping {
-  private final HashMap<Pair<String,String>,SpecExecution> results = CollectionLiterals.<Pair<String,String>, SpecExecution>newHashMap();
+  private final HashMap<Pair<String, String>, SpecExecution> results = CollectionLiterals.<Pair<String, String>, SpecExecution>newHashMap();
   
   @Extension
   private JnarioNameProvider nameProvider;
@@ -47,7 +47,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
       if (_equals) {
         return new NotRun("", "");
       }
-      Pair<String,String> _asKey = this.asKey(executable);
+      Pair<String, String> _asKey = this.asKey(executable);
       SpecExecution result = this.results.get(_asKey);
       boolean _notEquals = (!Objects.equal(result, null));
       if (_notEquals) {
@@ -65,7 +65,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
     SpecExecution _xblockexpression = null;
     {
       final List<? extends Executable> children = this.executables(specification);
-      final Function1<Executable,SpecExecution> _function = new Function1<Executable,SpecExecution>() {
+      final Function1<Executable, SpecExecution> _function = new Function1<Executable, SpecExecution>() {
         public SpecExecution apply(final Executable it) {
           return HashBasedSpec2ResultMapping.this.getResult(it);
         }
@@ -80,13 +80,13 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
   private SpecExecution createResult(final Executable specification, final Iterable<SpecExecution> children) {
     SpecExecution _xblockexpression = null;
     {
-      final Pair<String,String> specId = this.asKey(specification);
+      final Pair<String, String> specId = this.asKey(specification);
       boolean _areNotExecuted = this.areNotExecuted(children);
       if (_areNotExecuted) {
         return this.notRunOrPending(specification, specId);
       }
       final Double executionTime = this.executionTime(children);
-      final Function1<SpecExecution,List<SpecFailure>> _function = new Function1<SpecExecution,List<SpecFailure>>() {
+      final Function1<SpecExecution, List<SpecFailure>> _function = new Function1<SpecExecution, List<SpecFailure>>() {
         public List<SpecFailure> apply(final SpecExecution it) {
           return it.getFailures();
         }
@@ -107,7 +107,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
     return _xblockexpression;
   }
   
-  private SpecExecution notRunOrPending(final Executable executable, final Pair<String,String> specId) {
+  private SpecExecution notRunOrPending(final Executable executable, final Pair<String, String> specId) {
     SpecExecution _xifexpression = null;
     boolean _isPending = executable.isPending();
     if (_isPending) {
@@ -122,7 +122,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
     return _xifexpression;
   }
   
-  private SpecExecution passedOrPending(final Executable executable, final Pair<String,String> specId, final double executionTime) {
+  private SpecExecution passedOrPending(final Executable executable, final Pair<String, String> specId, final double executionTime) {
     SpecExecution _xifexpression = null;
     boolean _isPending = executable.isPending();
     if (_isPending) {
@@ -138,7 +138,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
   }
   
   private Double executionTime(final Iterable<SpecExecution> results) {
-    final Function2<Double,SpecExecution,Double> _function = new Function2<Double,SpecExecution,Double>() {
+    final Function2<Double, SpecExecution, Double> _function = new Function2<Double, SpecExecution, Double>() {
       public Double apply(final Double sum, final SpecExecution result) {
         double _executionTimeInSeconds = result.getExecutionTimeInSeconds();
         return Double.valueOf(((sum).doubleValue() + _executionTimeInSeconds));
@@ -161,8 +161,8 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
     return _or;
   }
   
-  private Pair<String,String> asKey(final Executable executable) {
-    Pair<String,String> _xblockexpression = null;
+  private Pair<String, String> asKey(final Executable executable) {
+    Pair<String, String> _xblockexpression = null;
     {
       String _qualifiedJavaClassName = this.nameProvider.toQualifiedJavaClassName(executable);
       String _convertFromJavaString = null;
@@ -176,7 +176,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
         _convertFromJavaString_1=Strings.convertFromJavaString(_describe, true);
       }
       final String expectedName = _convertFromJavaString_1;
-      final Pair<String,String> key = Pair.<String, String>of(expectedClassName, expectedName);
+      final Pair<String, String> key = Pair.<String, String>of(expectedClassName, expectedName);
       _xblockexpression = key;
     }
     return _xblockexpression;
@@ -201,7 +201,7 @@ public class HashBasedSpec2ResultMapping implements SpecExecutionAcceptor, Execu
   public void accept(final SpecExecution result) {
     String _className = result.getClassName();
     String _name = result.getName();
-    final Pair<String,String> key = Pair.<String, String>of(_className, _name);
+    final Pair<String, String> key = Pair.<String, String>of(_className, _name);
     this.results.put(key, result);
   }
 }

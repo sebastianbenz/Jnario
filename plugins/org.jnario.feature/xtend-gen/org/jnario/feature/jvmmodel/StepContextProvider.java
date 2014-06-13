@@ -42,7 +42,7 @@ public class StepContextProvider {
       final XExpression expr = this._stepExpressionProvider.expressionOf(step);
       Iterable<XtendMember> _allVisibleMembers = this._visibleMembersCalculator.allVisibleMembers(step);
       Iterable<XtendField> _filter = Iterables.<XtendField>filter(_allVisibleMembers, XtendField.class);
-      final Function1<XtendField,Boolean> _function = new Function1<XtendField,Boolean>() {
+      final Function1<XtendField, Boolean> _function = new Function1<XtendField, Boolean>() {
         public Boolean apply(final XtendField it) {
           boolean _xblockexpression = false;
           {

@@ -67,7 +67,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
     String _name = _eClass.getName();
     boolean _equals = Objects.equal(_name, "Suite");
     if (_equals) {
-      final Function1<JvmTypeReference,String> _function = new Function1<JvmTypeReference,String>() {
+      final Function1<JvmTypeReference, String> _function = new Function1<JvmTypeReference, String>() {
         public String apply(final JvmTypeReference it) {
           return it.getSimpleName();
         }
@@ -131,7 +131,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
   private Iterable<XtendFunction> befores(final XtendClass exampleGroup) {
     EList<XtendMember> _members = exampleGroup.getMembers();
     Iterable<XtendFunction> _filter = Iterables.<XtendFunction>filter(_members, XtendFunction.class);
-    final Function1<XtendFunction,Boolean> _function = new Function1<XtendFunction,Boolean>() {
+    final Function1<XtendFunction, Boolean> _function = new Function1<XtendFunction, Boolean>() {
       public Boolean apply(final XtendFunction it) {
         EClass _eClass = it.eClass();
         String _name = _eClass.getName();
@@ -144,7 +144,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
   private Iterable<XtendFunction> afters(final XtendClass exampleGroup) {
     EList<XtendMember> _members = exampleGroup.getMembers();
     Iterable<XtendFunction> _filter = Iterables.<XtendFunction>filter(_members, XtendFunction.class);
-    final Function1<XtendFunction,Boolean> _function = new Function1<XtendFunction,Boolean>() {
+    final Function1<XtendFunction, Boolean> _function = new Function1<XtendFunction, Boolean>() {
       public Boolean apply(final XtendFunction it) {
         EClass _eClass = it.eClass();
         String _name = _eClass.getName();
@@ -277,7 +277,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
   private Iterable<String> children(final XtendClass exampleGroup) {
     EList<XtendMember> _members = exampleGroup.getMembers();
     Iterable<Specification> _filter = Iterables.<Specification>filter(_members, Specification.class);
-    final Function1<Specification,String> _function = new Function1<Specification,String>() {
+    final Function1<Specification, String> _function = new Function1<Specification, String>() {
       public String apply(final Specification it) {
         return JUnit3RuntimeSupport.this._jnarioNameProvider.toJavaClassName(it);
       }
@@ -288,7 +288,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
   private Iterable<Executable> examples(final XtendClass exampleGroup) {
     EList<XtendMember> _members = exampleGroup.getMembers();
     Iterable<Executable> _filter = Iterables.<Executable>filter(_members, Executable.class);
-    final Function1<Executable,Boolean> _function = new Function1<Executable,Boolean>() {
+    final Function1<Executable, Boolean> _function = new Function1<Executable, Boolean>() {
       public Boolean apply(final Executable it) {
         return Boolean.valueOf((!(it instanceof Specification)));
       }
@@ -308,7 +308,7 @@ public class JUnit3RuntimeSupport implements TestRuntimeSupport {
   
   public void updateFeature(final XtendClass feature, final JvmGenericType inferredType, final List<JvmTypeReference> scenarios) {
     this.addTestCase(inferredType, feature);
-    final Function1<JvmTypeReference,String> _function = new Function1<JvmTypeReference,String>() {
+    final Function1<JvmTypeReference, String> _function = new Function1<JvmTypeReference, String>() {
       public String apply(final JvmTypeReference it) {
         return it.getSimpleName();
       }

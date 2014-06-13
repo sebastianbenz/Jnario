@@ -589,6 +589,8 @@ public class FeaturePackageImpl extends EPackageImpl implements FeaturePackage
 
 		addEOperation(scenarioEClass, this.getStep(), "getSteps", 0, -1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(scenarioEClass, this.getStep(), "getPendingSteps", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(givenEClass, Given.class, "Given", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

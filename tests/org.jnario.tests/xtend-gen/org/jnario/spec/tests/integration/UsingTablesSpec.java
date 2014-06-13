@@ -30,9 +30,9 @@ import org.junit.runner.RunWith;
 /**
  * Example tables are a great way to structure input and expected output data.
  */
+@CreateWith(SpecTestCreator.class)
 @Named("Using Tables")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class UsingTablesSpec {
   @Inject

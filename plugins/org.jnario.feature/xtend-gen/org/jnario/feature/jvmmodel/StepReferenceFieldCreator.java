@@ -46,7 +46,7 @@ public class StepReferenceFieldCreator {
   public void copyXtendMemberForReferences(final Scenario scenario) {
     EList<Step> _steps = scenario.getSteps();
     Iterable<StepReference> _filter = Iterables.<StepReference>filter(_steps, StepReference.class);
-    final Function1<StepReference,Boolean> _function = new Function1<StepReference,Boolean>() {
+    final Function1<StepReference, Boolean> _function = new Function1<StepReference, Boolean>() {
       public Boolean apply(final StepReference it) {
         StepImplementation _reference = it.getReference();
         XExpression _expression = null;
@@ -74,13 +74,13 @@ public class StepReferenceFieldCreator {
   
   private Set<String> getExistingFieldNames(final Iterable<XtendMember> members) {
     Iterable<XtendField> _filter = Iterables.<XtendField>filter(members, XtendField.class);
-    final Function1<XtendField,Boolean> _function = new Function1<XtendField,Boolean>() {
+    final Function1<XtendField, Boolean> _function = new Function1<XtendField, Boolean>() {
       public Boolean apply(final XtendField it) {
         return Boolean.valueOf((!Objects.equal(it, null)));
       }
     };
     Iterable<XtendField> _filter_1 = IterableExtensions.<XtendField>filter(_filter, _function);
-    final Function1<XtendField,String> _function_1 = new Function1<XtendField,String>() {
+    final Function1<XtendField, String> _function_1 = new Function1<XtendField, String>() {
       public String apply(final XtendField it) {
         return it.getName();
       }

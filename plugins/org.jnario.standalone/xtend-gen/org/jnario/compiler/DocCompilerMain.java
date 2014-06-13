@@ -74,21 +74,21 @@ public class DocCompilerMain {
               }
             }
             if (!_matched) {
-              if (Objects.equal(argument,"-d")) {
+              if (Objects.equal(argument, "-d")) {
                 _matched=true;
                 String _next_2 = arguments.next();
                 it.setOutputPath(_next_2);
               }
             }
             if (!_matched) {
-              if (Objects.equal(argument,"-results")) {
+              if (Objects.equal(argument, "-results")) {
                 _matched=true;
                 String _next_3 = arguments.next();
                 it.setResultFolder(_next_3);
               }
             }
             if (!_matched) {
-              if (Objects.equal(argument,"-encoding")) {
+              if (Objects.equal(argument, "-encoding")) {
                 _matched=true;
                 String _next_4 = arguments.next();
                 it.setFileEncoding(_next_4);

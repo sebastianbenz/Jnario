@@ -80,7 +80,7 @@ public class ExtensionLibraryConvertingStringsSpec extends ExtensionLibrarySpec 
      + "\n     list(\"1\", \"2\", \"3\") is " + new org.hamcrest.StringDescription().appendValue(_list_3).toString() + "\n", _doubleArrow_1);
     
     List<String> _list_4 = StringConversions.toList("1, 2, 3");
-    final Function1<String,Integer> _function = new Function1<String,Integer>() {
+    final Function1<String, Integer> _function = new Function1<String, Integer>() {
       public Integer apply(final String it) {
         return Integer.valueOf(StringConversions.toInt(it));
       }

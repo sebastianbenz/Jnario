@@ -30,7 +30,7 @@ public class SuiteResourceDescriptionManager extends XtendResourceDescriptionMan
     if (_isAffected) {
       return true;
     }
-    final Function1<IResourceDescription.Delta,Boolean> _function = new Function1<IResourceDescription.Delta,Boolean>() {
+    final Function1<IResourceDescription.Delta, Boolean> _function = new Function1<IResourceDescription.Delta, Boolean>() {
       public Boolean apply(final IResourceDescription.Delta it) {
         return Boolean.valueOf(SuiteResourceDescriptionManager.this.isNewSpec(it));
       }

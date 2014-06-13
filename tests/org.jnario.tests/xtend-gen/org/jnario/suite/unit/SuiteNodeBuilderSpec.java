@@ -28,9 +28,9 @@ import org.jnario.suite.unit.SuiteNodeBuilderParentSpec;
 import org.junit.runner.RunWith;
 
 @Contains({ SuiteNodeBuilderParentSpec.class, SuiteNodeBuilderLevelSpec.class })
+@CreateWith(SuiteTestCreator.class)
 @Named("SuiteNodeBuilder")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SuiteTestCreator.class)
 @SuppressWarnings("all")
 public class SuiteNodeBuilderSpec {
   @Inject
@@ -54,7 +54,7 @@ public class SuiteNodeBuilderSpec {
   }
   
   public List<Suite> suites(final String... names) {
-    final Function1<String,Suite> _function = new Function1<String,Suite>() {
+    final Function1<String, Suite> _function = new Function1<String, Suite>() {
       public Suite apply(final String it) {
         return SuiteNodeBuilderSpec.this.suite(it);
       }

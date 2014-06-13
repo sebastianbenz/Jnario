@@ -19,9 +19,9 @@ import org.mockito.Mockito;
 import org.mockito.stubbing.OngoingStubbing;
 import org.mockito.verification.VerificationMode;
 
+@CreateWith(MockInjector.class)
 @Named("Wait")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(MockInjector.class)
 @SuppressWarnings("all")
 public class WaitSpec {
   public Wait subject;

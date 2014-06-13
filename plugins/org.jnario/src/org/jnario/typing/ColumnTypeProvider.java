@@ -1,6 +1,5 @@
 package org.jnario.typing;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.typesystem.util.AbstractReentrantTypeReferenceProvider;
@@ -16,7 +15,7 @@ public class ColumnTypeProvider extends AbstractReentrantTypeReferenceProvider {
 	}
 
 	@Override
-	protected JvmTypeReference doGetTypeReference(@NonNull XComputedTypeReferenceImplCustom context) {
+	protected JvmTypeReference doGetTypeReference(XComputedTypeReferenceImplCustom context) {
 		return function.apply(context);
 	}
 

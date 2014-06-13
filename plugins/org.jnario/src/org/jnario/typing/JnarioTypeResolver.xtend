@@ -2,7 +2,6 @@ package org.jnario.typing
 
 import com.google.inject.Inject
 import java.util.Map
-import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver
 import org.eclipse.xtext.common.types.JvmConstructor
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmIdentifiableElement
@@ -17,8 +16,9 @@ import org.eclipse.xtext.xbase.typesystem.internal.ResolvedTypes
 import org.eclipse.xtext.xtype.XComputedTypeReference
 import org.jnario.ExampleColumn
 import org.jnario.ExampleTable
+import org.eclipse.xtend.core.typesystem.XtendReentrantTypeResolver
 
-class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeResolver {
+class JnarioTypeResolver extends XtendReentrantTypeResolver {
 	
 	@Inject extension IJvmModelAssociations
 	

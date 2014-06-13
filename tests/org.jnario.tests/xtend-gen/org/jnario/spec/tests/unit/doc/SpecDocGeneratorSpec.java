@@ -27,9 +27,9 @@ import org.jnario.spec.doc.SpecDocGenerator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(SpecTestCreator.class)
 @Named("SpecDocGenerator")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class SpecDocGeneratorSpec {
   @Subject
@@ -361,7 +361,7 @@ public class SpecDocGeneratorSpec {
   }
   
   public String generatedFile(final String name) {
-    Map<String,CharSequence> _files = this.fsa.getFiles();
+    Map<String, CharSequence> _files = this.fsa.getFiles();
     CharSequence _get = _files.get(("DOC_OUTPUT/" + name));
     String _string = null;
     if (_get!=null) {

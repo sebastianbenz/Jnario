@@ -40,9 +40,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(FeatureTestCreator.class)
 @Named("FeatureDocGenerator")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class FeatureDocGeneratorSpec {
   @Subject
@@ -218,7 +218,7 @@ public class FeatureDocGeneratorSpec {
       final Resource resource = this._modelStore.parseScenario(input);
       Executable2ResultMapping _mappingWithFailures = this.mappingWithFailures();
       this.subject.doGenerate(resource, this.fsa, _mappingWithFailures);
-      Map<String,CharSequence> _files = this.fsa.getFiles();
+      Map<String, CharSequence> _files = this.fsa.getFiles();
       Collection<CharSequence> _values = _files.values();
       _xblockexpression = JnarioIterableExtensions.<CharSequence>first(_values);
     }

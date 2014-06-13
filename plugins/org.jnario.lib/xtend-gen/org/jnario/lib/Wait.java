@@ -29,7 +29,7 @@ public class Wait {
   /**
    * Wait until the provided function evaluates to true.
    */
-  public static void waitUntil(final Function1<Wait,Boolean> initializer) {
+  public static void waitUntil(final Function1<Wait, Boolean> initializer) {
     final Wait wait = new Wait(Sleeper.SYSTEM_SLEEPER, Clock.SYSTEM_CLOCK);
     final Function0<Boolean> _function = new Function0<Boolean>() {
       public Boolean apply() {

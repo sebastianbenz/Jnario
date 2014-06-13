@@ -8,11 +8,13 @@ import org.eclipse.xtext.xbase.formatting.NodeModelAccess
 
 class JnarioNodeModelAccess extends NodeModelAccess{
 	
-	override ILeafNode nodeForKeyword(EObject obj, String kw) {
+	override nodesForKeyword(EObject obj, String kw) {
 		val node = NodeModelUtils.findActualNodeFor(obj)
 		if(node == null){
-			return null
+			return #[]
 		}
-		node.asTreeIterable.findFirst[semanticElement == obj && grammarElement instanceof Keyword && text == kw] as ILeafNode
+		val leafNode = node.asTreeIterable.findFirst[semanticElement == obj && grammarElement instanceof Keyword && text == kw] as ILeafNode
+		if (leafNode === null) #[] else #[leafNode] 
 	}
+	
 }

@@ -31,7 +31,7 @@ public class CellLocation {
   }
   
   public Set<CellLocation> neighbours() {
-    final Function1<CellLocation,CellLocation> _function = new Function1<CellLocation,CellLocation>() {
+    final Function1<CellLocation, CellLocation> _function = new Function1<CellLocation, CellLocation>() {
       public CellLocation apply(final CellLocation it) {
         return CellLocation.this.plus(it);
       }

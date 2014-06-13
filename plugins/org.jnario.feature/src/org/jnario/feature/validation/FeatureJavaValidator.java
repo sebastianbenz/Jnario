@@ -17,6 +17,7 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendFunction;
 import org.eclipse.xtend.core.xtend.XtendPackage;
@@ -51,6 +52,13 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 	@Inject StepNameProvider nameProvider;
 	@Inject FeatureClassNameProvider classNameProvider;
 
+	@Check
+	protected void checkModifiers(XtendClass xtendClass) {
+		if (!(xtendClass instanceof Scenario)) {
+			super.checkModifiers(xtendClass);
+		}
+	}
+	
 	@Check(CheckType.FAST)
 	public void checkFeaturesHaveAName(Feature feature){
 		if(isNullOrEmpty(feature.getName())){

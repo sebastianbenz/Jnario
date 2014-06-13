@@ -217,7 +217,7 @@ public class FeatureTokenSourceSpec {
      + "\n     expectedTokens.size is " + new org.hamcrest.StringDescription().appendValue(Integer.valueOf(_size_1)).toString()
      + "\n     expectedTokens is " + new org.hamcrest.StringDescription().appendValue(((List<CommonToken>)Conversions.doWrapArray(expectedTokens))).toString() + "\n", _doubleArrow);
     
-    final Procedure2<Token,Integer> _function = new Procedure2<Token,Integer>() {
+    final Procedure2<Token, Integer> _function = new Procedure2<Token, Integer>() {
       public void apply(final Token e, final Integer i) {
         final CommonToken expected = expectedTokens[(i).intValue()];
         final CommonToken actual = ((CommonToken) e);

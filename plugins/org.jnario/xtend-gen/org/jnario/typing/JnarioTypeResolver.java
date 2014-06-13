@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
+import org.eclipse.xtend.core.typesystem.XtendReentrantTypeResolver;
 import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
@@ -38,12 +38,12 @@ import org.jnario.ExampleTable;
 import org.jnario.typing.ColumnTypeProvider;
 
 @SuppressWarnings("all")
-public class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeResolver {
+public class JnarioTypeResolver extends XtendReentrantTypeResolver {
   @Inject
   @Extension
   private IJvmModelAssociations _iJvmModelAssociations;
   
-  protected void _doPrepare(final ResolvedTypes resolvedTypes, final IFeatureScopeSession session, final JvmConstructor constructor, final Map<JvmIdentifiableElement,ResolvedTypes> resolvedTypesByContext) {
+  protected void _doPrepare(final ResolvedTypes resolvedTypes, final IFeatureScopeSession session, final JvmConstructor constructor, final Map<JvmIdentifiableElement, ResolvedTypes> resolvedTypesByContext) {
     super._doPrepare(resolvedTypes, session, constructor, resolvedTypesByContext);
     final EObject source = this._iJvmModelAssociations.getPrimarySourceElement(constructor);
     if ((source instanceof ExampleTable)) {
@@ -60,7 +60,7 @@ public class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeRe
     }
   }
   
-  protected void _doPrepare(final ResolvedTypes resolvedTypes, final IFeatureScopeSession session, final JvmField field, final Map<JvmIdentifiableElement,ResolvedTypes> resolvedTypesByContext) {
+  protected void _doPrepare(final ResolvedTypes resolvedTypes, final IFeatureScopeSession session, final JvmField field, final Map<JvmIdentifiableElement, ResolvedTypes> resolvedTypesByContext) {
     super._doPrepare(resolvedTypes, session, field, resolvedTypesByContext);
     final EObject source = this._iJvmModelAssociations.getPrimarySourceElement(field);
     if ((source instanceof ExampleColumn)) {
@@ -69,7 +69,7 @@ public class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeRe
     }
   }
   
-  protected void _doPrepare(final ResolvedTypes resolvedTypes, final IFeatureScopeSession session, final JvmOperation operation, final Map<JvmIdentifiableElement,ResolvedTypes> resolvedTypesByContext) {
+  protected void _doPrepare(final ResolvedTypes resolvedTypes, final IFeatureScopeSession session, final JvmOperation operation, final Map<JvmIdentifiableElement, ResolvedTypes> resolvedTypesByContext) {
     super._doPrepare(resolvedTypes, session, operation, resolvedTypesByContext);
     final EObject source = this._iJvmModelAssociations.getPrimarySourceElement(operation);
     if ((source instanceof ExampleColumn)) {
@@ -78,7 +78,7 @@ public class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeRe
     }
   }
   
-  public void setColumnTypeProvider(final JvmTypeReference typeRef, final JvmMember member, final ResolvedTypes resolvedTypes, final IFeatureScopeSession session, final ExampleColumn column, final Map<JvmIdentifiableElement,ResolvedTypes> resolvedTypesByContext) {
+  public void setColumnTypeProvider(final JvmTypeReference typeRef, final JvmMember member, final ResolvedTypes resolvedTypes, final IFeatureScopeSession session, final ExampleColumn column, final Map<JvmIdentifiableElement, ResolvedTypes> resolvedTypesByContext) {
     boolean _isInferred = InferredTypeIndicator.isInferred(typeRef);
     boolean _not = (!_isInferred);
     if (_not) {
@@ -88,17 +88,17 @@ public class JnarioTypeResolver extends DispatchAndExtensionAwareReentrantTypeRe
     CommonTypeComputationServices _services = this.getServices();
     XtypeFactory _xtypeFactory = _services.getXtypeFactory();
     final XComputedTypeReference resultRef = _xtypeFactory.createXComputedTypeReference();
-    final Function1<XComputedTypeReference,JvmTypeReference> _function = new Function1<XComputedTypeReference,JvmTypeReference>() {
+    final Function1<XComputedTypeReference, JvmTypeReference> _function = new Function1<XComputedTypeReference, JvmTypeReference>() {
       public JvmTypeReference apply(final XComputedTypeReference it) {
         EList<ExampleCell> _cells = column.getCells();
-        final Function1<ExampleCell,Boolean> _function = new Function1<ExampleCell,Boolean>() {
+        final Function1<ExampleCell, Boolean> _function = new Function1<ExampleCell, Boolean>() {
           public Boolean apply(final ExampleCell it) {
             XExpression _expression = it.getExpression();
             return Boolean.valueOf((!(_expression instanceof XNullLiteral)));
           }
         };
         Iterable<ExampleCell> _filter = IterableExtensions.<ExampleCell>filter(_cells, _function);
-        final Function1<ExampleCell,LightweightTypeReference> _function_1 = new Function1<ExampleCell,LightweightTypeReference>() {
+        final Function1<ExampleCell, LightweightTypeReference> _function_1 = new Function1<ExampleCell, LightweightTypeReference>() {
           public LightweightTypeReference apply(final ExampleCell it) {
             LightweightTypeReference _xblockexpression = null;
             {

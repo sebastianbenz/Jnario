@@ -7,6 +7,11 @@
  */
 package org.jnario.spec.tests.unit.naming;
 
+import com.google.inject.Inject;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.jnario.test.util.Query;
 import org.jnario.jnario.test.util.SpecTestCreator;
@@ -25,15 +30,20 @@ import org.jnario.spec.tests.unit.naming.ExampleNameProviderToMethodNameExampleS
 import org.junit.runner.RunWith;
 
 @Contains({ ExampleNameProviderToJavaClassNameExampleGroupSpec.class, ExampleNameProviderToJavaClassNameExampleTableSpec.class, ExampleNameProviderToMethodNameExampleSpec.class, ExampleNameProviderToMethodNameBeforeSpec.class, ExampleNameProviderToMethodNameAfterSpec.class, ExampleNameProviderToFieldNameExampleTableSpec.class, ExampleNameProviderDescribeExampleGroupSpec.class, ExampleNameProviderDescribeExampleSpec.class })
+@CreateWith(SpecTestCreator.class)
 @Named("ExampleNameProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class ExampleNameProviderSpec {
+  @Inject
+  @Extension
+  @org.jnario.runner.Extension
+  public ModelStore modelStore;
+  
   public Query parse(final CharSequence content) {
     final String contentWithPackage = ("package test\n" + content);
-    final ModelStore modelStore = ModelStore.create();
-    modelStore.parseSpec(contentWithPackage);
-    return Query.query(modelStore);
+    final Resource spec = this.modelStore.parseSpec(contentWithPackage);
+    TreeIterator<EObject> _allContents = spec.getAllContents();
+    return Query.query(_allContents);
   }
 }

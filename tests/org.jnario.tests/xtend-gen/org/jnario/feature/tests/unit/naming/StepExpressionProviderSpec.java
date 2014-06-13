@@ -31,9 +31,9 @@ import org.junit.runner.RunWith;
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
+@CreateWith(FeatureTestCreator.class)
 @Named("StepExpressionProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class StepExpressionProviderSpec {
   @Subject

@@ -307,13 +307,13 @@ public class UsingShouldSpec {
   @Named("Wait for something")
   @Order(4)
   public void _waitForSomething() throws Exception {
-    final Function1<Wait,Boolean> _function = new Function1<Wait,Boolean>() {
+    final Function1<Wait, Boolean> _function = new Function1<Wait, Boolean>() {
       public Boolean apply(final Wait it) {
         return Boolean.valueOf((1 > 0));
       }
     };
     Wait.waitUntil(_function);
-    final Function1<Wait,Boolean> _function_1 = new Function1<Wait,Boolean>() {
+    final Function1<Wait, Boolean> _function_1 = new Function1<Wait, Boolean>() {
       public Boolean apply(final Wait it) {
         boolean _xblockexpression = false;
         {
@@ -397,7 +397,7 @@ public class UsingShouldSpec {
      + "\n     startsWith(\"h\") is " + new org.hamcrest.StringDescription().appendValue(_startsWith).toString() + "\n", _doubleArrow);
     
     List<String> _list = JnarioCollectionLiterals.<String>list("red", "green");
-    Matcher<Iterable<String>> _hasItem = Matchers.<String>hasItem("red");
+    Matcher<Iterable<? super String>> _hasItem = Matchers.<String>hasItem("red");
     boolean _doubleArrow_1 = Should.<List<String>>operator_doubleArrow(_list, _hasItem);
     Assert.assertTrue("\nExpected list(\"red\", \"green\") => hasItem(\"red\") but"
      + "\n     list(\"red\", \"green\") is " + new org.hamcrest.StringDescription().appendValue(_list).toString()

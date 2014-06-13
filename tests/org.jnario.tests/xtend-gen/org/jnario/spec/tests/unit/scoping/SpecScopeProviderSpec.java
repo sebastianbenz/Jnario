@@ -25,9 +25,9 @@ import org.jnario.spec.spec.SpecPackage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(SpecTestCreator.class)
 @Named("SpecScopeProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class SpecScopeProviderSpec {
   @Inject

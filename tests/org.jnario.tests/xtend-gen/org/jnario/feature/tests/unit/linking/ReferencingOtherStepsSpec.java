@@ -30,9 +30,9 @@ import org.junit.runner.RunWith;
  * to reference a step in a different package you need to add a corresponding import statement
  * (see last example).
  */
+@CreateWith(FeatureTestCreator.class)
 @Named("Referencing other Steps")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class ReferencingOtherStepsSpec {
   @Inject

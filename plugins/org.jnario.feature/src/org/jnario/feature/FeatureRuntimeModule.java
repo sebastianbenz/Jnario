@@ -14,14 +14,14 @@ import org.eclipse.xtend.core.compiler.UnicodeAwarePostProcessor;
 import org.eclipse.xtend.core.compiler.XtendGenerator;
 import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
-import org.eclipse.xtend.core.formatting.XtendFormatter;
 import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.linking.LinkingProxyAwareResource;
 import org.eclipse.xtend.core.linking.URIEncoder;
+import org.eclipse.xtend.core.parser.antlr.internal.FlexerFactory;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
-import org.eclipse.xtend.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
+import org.eclipse.xtend.core.typesystem.XtendReentrantTypeResolver;
 import org.eclipse.xtend.core.validation.XtendConfigurableIssueCodes;
 import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtend.core.xtend.XtendFactory;
@@ -69,7 +69,7 @@ import org.eclipse.xtext.xbase.imports.IImportsConfiguration;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
-import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedTypes;
+import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures;
 import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputer;
 import org.eclipse.xtext.xbase.typesystem.internal.DefaultBatchTypeResolver;
 import org.eclipse.xtext.xbase.typesystem.internal.DefaultReentrantTypeResolver;
@@ -85,7 +85,6 @@ import org.jnario.documentation.XtendDocumentationProvider;
 import org.jnario.feature.compiler.FeatureBatchCompiler;
 import org.jnario.feature.conversion.FeatureValueConverterService;
 import org.jnario.feature.doc.FeatureDocGenerator;
-import org.jnario.feature.formatting.FeatureFormatter;
 import org.jnario.feature.formatting.FeatureFormatter2;
 import org.jnario.feature.generator.FeatureCompiler;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
@@ -100,7 +99,6 @@ import org.jnario.feature.naming.FeatureQualifiedNameProvider;
 import org.jnario.feature.parser.CustomFeatureParser;
 import org.jnario.feature.resource.FeatureLocationInFileProvider;
 import org.jnario.feature.scoping.FeatureImportedNamespaceScopeProvider;
-import org.jnario.feature.scoping.FeatureScopeProvider;
 import org.jnario.feature.scoping.FeatureScopeProviderAccess;
 import org.jnario.feature.validation.FeatureNamesAreUniqueValidationHelper;
 import org.jnario.formatter.JnarioNodeModelAccess;
@@ -110,11 +108,12 @@ import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.HashBasedSpec2ResultMapping;
-import org.jnario.scoping.JnarioImplicitlyImportedTypes;
+import org.jnario.scoping.JnarioImplicitlyImportedFeatures;
 import org.jnario.scoping.JnarioResourceDescriptionStrategy;
 import org.jnario.typing.JnarioTypeComputer;
 
 import com.google.inject.Binder;
+import com.google.inject.Scopes;
 import com.google.inject.name.Names;
 
 /**
@@ -126,6 +125,7 @@ public class FeatureRuntimeModule extends
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
+		binder.bind(FlexerFactory.class).in(Scopes.SINGLETON);
 		binder.bind(AbstractDocGenerator.class).to(FeatureDocGenerator.class);
 		binder.bind(SignatureHashBuilder.class).to(
 				JnarioSignatureHashBuilder.class);
@@ -135,8 +135,8 @@ public class FeatureRuntimeModule extends
 				FeatureExecutableProvider.class);
 		binder.bind(Executable2ResultMapping.class).to(
 				HashBasedSpec2ResultMapping.class);
-		binder.bind(ImplicitlyImportedTypes.class).to(
-				JnarioImplicitlyImportedTypes.class);
+		binder.bind(ImplicitlyImportedFeatures.class).to(
+				JnarioImplicitlyImportedFeatures.class);
 		binder.bind(ScopeProviderAccess.class).to(
 				FeatureScopeProviderAccess.class);
 		binder.bind(NamesAreUniqueValidationHelper.class).to(
@@ -218,11 +218,6 @@ public class FeatureRuntimeModule extends
 	}
 	
 	@Override
-	public Class<? extends IScopeProvider> bindIScopeProvider() {
-		return FeatureScopeProvider.class;
-	}
-
-	@Override
 	public Class<? extends ILocationInFileProvider> bindILocationInFileProvider() {
 		return FeatureLocationInFileProvider.class;
 	}
@@ -250,9 +245,8 @@ public class FeatureRuntimeModule extends
 		return TypeDeclarationAwareBatchTypeResolver.class;
 	}
 
-	@Override
 	public Class<? extends DefaultReentrantTypeResolver> bindDefaultReentrantTypeResolver() {
-		return DispatchAndExtensionAwareReentrantTypeResolver.class;
+		return XtendReentrantTypeResolver.class;
 	}
 	
 	public Class<? extends XbaseCompiler> bindXbaseCompiler() {
@@ -349,5 +343,4 @@ public class FeatureRuntimeModule extends
 	public Class<? extends IBasicFormatter> bindIBasicFormatter() {
 		return FeatureFormatter2.class;
 	}
-
 }

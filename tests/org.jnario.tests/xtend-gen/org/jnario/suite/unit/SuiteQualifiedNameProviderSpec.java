@@ -25,9 +25,9 @@ import org.jnario.suite.suite.Suite;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(SuiteTestCreator.class)
 @Named("SuiteQualifiedNameProvider")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SuiteTestCreator.class)
 @SuppressWarnings("all")
 public class SuiteQualifiedNameProviderSpec {
   @Subject

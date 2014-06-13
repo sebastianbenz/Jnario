@@ -24,9 +24,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@CreateWith(SpecTestCreator.class)
 @Named("HtmlAssets")
 @RunWith(ExampleGroupRunner.class)
-@CreateWith(SpecTestCreator.class)
 @SuppressWarnings("all")
 public class HtmlAssetsSpec {
   @Subject
@@ -78,7 +78,7 @@ public class HtmlAssetsSpec {
   }
   
   public String generatedFile(final String name) {
-    Map<String,CharSequence> _files = this.fsa.getFiles();
+    Map<String, CharSequence> _files = this.fsa.getFiles();
     CharSequence _get = _files.get((DocOutputConfigurationProvider.ASSET_OUTPUT + name));
     String _string = null;
     if (_get!=null) {

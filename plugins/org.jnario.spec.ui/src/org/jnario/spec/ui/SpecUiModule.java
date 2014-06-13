@@ -67,7 +67,9 @@ import org.eclipse.xtend.ide.refactoring.XtendRenameStrategy;
 import org.eclipse.xtend.ide.refactoring.XtendRenameStrategyProvider;
 import org.eclipse.xtend.lib.macro.file.MutableFileSystemSupport;
 import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2;
+import org.eclipse.xtext.builder.EclipseSourceFolderProvider;
 import org.eclipse.xtext.builder.IXtextBuilderParticipant;
+import org.eclipse.xtext.builder.JDTAwareSourceFolderProvider;
 import org.eclipse.xtext.builder.trace.TraceForStorageProvider;
 import org.eclipse.xtext.common.types.ui.navigation.IDerivedMemberAwareEditorOpener;
 import org.eclipse.xtext.common.types.ui.refactoring.participant.JvmMemberRenameStrategy;
@@ -165,6 +167,7 @@ public class SpecUiModule extends org.jnario.spec.ui.AbstractSpecUiModule {
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
+		binder.bind(EclipseSourceFolderProvider.class).to(JDTAwareSourceFolderProvider.class);
 		binder.bind(CreateXtendTypeQuickfixes.class).to(CreateJnarioTypeQuickfixes.class);
 		binder.bind(CodeBuilderFactory.class).to(JnarioCodeBuilderFactory.class);
 	}

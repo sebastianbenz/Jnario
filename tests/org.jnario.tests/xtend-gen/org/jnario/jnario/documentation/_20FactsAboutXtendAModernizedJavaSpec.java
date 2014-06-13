@@ -69,9 +69,9 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
     Assert.assertTrue("\nExpected greeting => typeof(String) but"
      + "\n     greeting is " + new org.hamcrest.StringDescription().appendValue(greeting).toString() + "\n", _doubleArrow);
     
-    Pair<String,String> _mappedTo = Pair.<String, String>of("german", "Hallo");
-    Pair<String,String> _mappedTo_1 = Pair.<String, String>of("english", "Hello");
-    final HashMap<String,String> greetings = CollectionLiterals.<String, String>newHashMap(_mappedTo, _mappedTo_1);
+    Pair<String, String> _mappedTo = Pair.<String, String>of("german", "Hallo");
+    Pair<String, String> _mappedTo_1 = Pair.<String, String>of("english", "Hello");
+    final HashMap<String, String> greetings = CollectionLiterals.<String, String>newHashMap(_mappedTo, _mappedTo_1);
     Assert.assertTrue("\nExpected greetings => typeof(HashMap) but"
      + "\n     greetings is " + new org.hamcrest.StringDescription().appendValue(greetings).toString() + "\n", Should.operator_doubleArrow(greetings, HashMap.class));
     
@@ -86,7 +86,7 @@ public class _20FactsAboutXtendAModernizedJavaSpec extends _20FactsAboutXtendSpe
   @Named("Syntactic sugar: Pairs")
   @Order(4)
   public void _syntacticSugarPairs() throws Exception {
-    final Pair<String,String> pair = Pair.<String, String>of("spain", "italy");
+    final Pair<String, String> pair = Pair.<String, String>of("spain", "italy");
     String _key = pair.getKey();
     boolean _doubleArrow = Should.<String>operator_doubleArrow(_key, "spain");
     Assert.assertTrue("\nExpected pair.key   => \"spain\" but"

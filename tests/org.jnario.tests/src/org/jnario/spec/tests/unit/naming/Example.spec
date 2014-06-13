@@ -7,21 +7,22 @@
  *******************************************************************************/
  package org.jnario.spec.tests.unit.naming
 
+import com.google.inject.Inject
 import org.eclipse.xtext.xbase.XBlockExpression
 import org.jnario.Should
 import org.jnario.jnario.test.util.ModelStore
-import org.jnario.spec.spec.Example
-import org.jnario.runner.CreateWith
 import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.runner.CreateWith
+import org.jnario.spec.spec.Example
 
 import static org.hamcrest.CoreMatchers.*
 import static org.jnario.jnario.test.util.Query.*
 
 import static extension org.jnario.lib.ExampleTableIterators.*
-import static extension org.jnario.lib.Should.*
 
 @CreateWith(typeof(SpecTestCreator))
 describe Example {
+	@Inject extension ModelStore modelStore
 	 
 	describe "name"{
 		def examples{
@@ -60,13 +61,12 @@ describe Example {
 	}
 	
 	def parse(String content){
-		val modelStore = new ModelStore()
-		modelStore.parseSpec('''
+		val spec = modelStore.parseSpec('''
 			describe "test"{
 				«content»
 			}
 		''')
-		return query(modelStore).first(typeof(Example))
+		return query(spec.allContents).first(typeof(Example))
 	}
 	
 	def pendingStateOf(String string){
