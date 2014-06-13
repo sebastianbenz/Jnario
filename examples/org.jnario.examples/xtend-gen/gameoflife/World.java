@@ -96,7 +96,7 @@ public class World {
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((this._livingCells== null) ? 0 : this._livingCells.hashCode());
+    result = prime * result + ((_livingCells== null) ? 0 : _livingCells.hashCode());
     return result;
   }
   
@@ -109,10 +109,10 @@ public class World {
     if (getClass() != obj.getClass())
       return false;
     World other = (World) obj;
-    if (this._livingCells == null) {
+    if (_livingCells == null) {
       if (other._livingCells != null)
         return false;
-    } else if (!this._livingCells.equals(other._livingCells))
+    } else if (!_livingCells.equals(other._livingCells))
       return false;
     return true;
   }

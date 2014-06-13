@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
 
-<target name="kepler" sequenceNumber="30">
+<target name="kepler" sequenceNumber="31">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
@@ -17,7 +17,9 @@
 <unit id="org.aopalliance" version="0.0.0"/>
 <unit id="org.antlr.runtime" version="0.0.0"/>
 <unit id="javax.inject" version="0.0.0"/>
-<unit id="org.objectweb.asm" version="0.0.0"/>
+<unit id="org.objectweb.asm" version="5.0.1.v201404251740"/>
+<unit id="org.objectweb.asm.tree" version="5.0.1.v201404251740"/>
+<unit id="org.objectweb.asm.analysis" version="5.0.1.v201404251740"/>
 <unit id="javax.inject" version="0.0.0"/>
 <unit id="org.hamcrest.core" version="0.0.0"/>
 <unit id="org.hamcrest.core.source" version="0.0.0"/>
@@ -36,7 +38,7 @@
 <unit id="org.mockito.source" version="0.0.0"/>
 <unit id="org.junit" version="0.0.0"/>
 <unit id="org.junit.source" version="0.0.0"/>
-<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.m2e.feature.feature.group" version="1.4.0.20130601-0317"/>
@@ -44,11 +46,11 @@
 <repository location="http://download.eclipse.org/releases/kepler/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.xtext.xbase.feature.group" version="2.6.0"/>
-<unit id="org.eclipse.xtext.runtime.feature.group" version="2.6.0"/>
-<unit id="org.eclipse.xtext.ui.feature.group" version="2.6.0"/>
-<unit id="org.eclipse.xtend.sdk.feature.group" version="2.6.0"/>
-<unit id="org.eclipse.xtext.redist.feature.group" version="2.6.0"/>
+<unit id="org.eclipse.xtext.xbase.feature.group" version="2.6.0.v201405210727"/>
+<unit id="org.eclipse.xtext.runtime.feature.group" version="2.6.0.v201405210727"/>
+<unit id="org.eclipse.xtext.ui.feature.group" version="2.6.0.v201405210727"/>
+<unit id="org.eclipse.xtend.sdk.feature.group" version="2.6.0.v201405210727"/>
+<unit id="org.eclipse.xtext.redist.feature.group" version="2.6.0.v201405210727"/>
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
 </location>
 </locations>
