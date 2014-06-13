@@ -49,7 +49,15 @@ public class JnarioNodeModelAccess extends NodeModelAccess {
         }
       };
       INode _findFirst = IterableExtensions.<INode>findFirst(_asTreeIterable, _function);
-      _xblockexpression = Collections.<ILeafNode>unmodifiableList(Lists.<ILeafNode>newArrayList(((ILeafNode) _findFirst)));
+      final ILeafNode leafNode = ((ILeafNode) _findFirst);
+      List<ILeafNode> _xifexpression = null;
+      boolean _tripleEquals = (leafNode == null);
+      if (_tripleEquals) {
+        _xifexpression = Collections.<ILeafNode>unmodifiableList(Lists.<ILeafNode>newArrayList());
+      } else {
+        _xifexpression = Collections.<ILeafNode>unmodifiableList(Lists.<ILeafNode>newArrayList(leafNode));
+      }
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }

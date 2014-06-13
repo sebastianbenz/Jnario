@@ -13,7 +13,8 @@ class JnarioNodeModelAccess extends NodeModelAccess{
 		if(node == null){
 			return #[]
 		}
-		#[node.asTreeIterable.findFirst[semanticElement == obj && grammarElement instanceof Keyword && text == kw] as ILeafNode]
+		val leafNode = node.asTreeIterable.findFirst[semanticElement == obj && grammarElement instanceof Keyword && text == kw] as ILeafNode
+		if (leafNode === null) #[] else #[leafNode] 
 	}
 	
 }
