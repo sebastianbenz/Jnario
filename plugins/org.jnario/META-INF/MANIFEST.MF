@@ -41,5 +41,5 @@ Export-Package: org.jnario,
  org.pegdown
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
- lib/pegdown-1.4.2.jar,
- lib/grappa-1.0.0-beta.9.jar
+ lib/grappa-1.0.0-beta.9.jar,
+ lib/pegdown-1.1.0.jar
