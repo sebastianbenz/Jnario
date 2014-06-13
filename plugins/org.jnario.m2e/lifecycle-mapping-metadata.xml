@@ -12,7 +12,9 @@
 				</goals>
 			</pluginExecutionFilter>
 			<action>
-				<ignore />
+				<configurator>
+					<id>org.jnario.m2e.jnarioConfigurator</id>
+				</configurator>
 			</action>
 		</pluginExecution>
 		<pluginExecution>
@@ -25,7 +27,9 @@
 				</goals>
 			</pluginExecutionFilter>
 			<action>
-				<ignore />
+				<configurator>
+					<id>org.jnario.m2e.jnarioConfigurator</id>
+				</configurator>
 			</action>
 		</pluginExecution>
 	</pluginExecutions>
