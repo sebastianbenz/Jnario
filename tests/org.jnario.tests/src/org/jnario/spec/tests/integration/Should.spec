@@ -150,14 +150,12 @@ describe "Using Should"{
    *  
    *     import static org.hamcrest.CoreMatchers.startsWith
    *     import static org.hamcrest.CoreMatchers.equalTo
-   *     import static org.hamcrest.Matchers.hasItem
    * 
    * If the right-hand side of a should expression is a matcher, the matcher will be evaluated instead
    * of testing for equality:
    */ 
   fact "Combining hamcrest and should"{
     "hello" => startsWith("h")
-    #["red", "green"] => hasItem("red")
     9 should be greaterThan(5) 
   }
   

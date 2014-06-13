@@ -12,6 +12,9 @@
 	<artifactId>org.jnario.tests</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>eclipse-test-plugin</packaging>
+	<properties>
+		<os-jvm-flags /> <!-- for the default case -->
+	</properties>
 
 	<build>
 		<sourceDirectory>src2</sourceDirectory>
@@ -55,33 +58,30 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>true</useUIThread>
+					<argLine>-Xms40m -Xmx1G -XX:MaxPermSize=256m ${os-jvm-flags}</argLine>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<profiles>
 		<profile>
-			<id>sun-jvm</id>
+			<id>macosx-jvm-flags</id>
 			<activation>
-				<property>
-					<name>java.vendor.url</name>
-					<value>http://java.sun.com/</value>
-				</property>
+				<os>
+					<family>mac</family>
+				</os>
 			</activation>
 			<properties>
-				<tycho.test.jvmArgs>-Xms512m -Xmx1440m -XX:MaxPermSize=256M</tycho.test.jvmArgs>
-			</properties>
-		</profile>
-		<profile>
-			<id>osx</id>
-			<activation>
-				<property>
-					<name>java.vendor.url</name>
-					<value>http://www.apple.com/</value>
-				</property>
-			</activation>
-			<properties>
-				<tycho.test.jvmArgs>-Xms512m -Xmx1440m -XX:MaxPermSize=256m -XstartOnFirstThread</tycho.test.jvmArgs>
-				<osgi.ws>cocoa</osgi.ws>
+				<os-jvm-flags>-XstartOnFirstThread</os-jvm-flags>
 			</properties>
 		</profile>
 	</profiles>
+
 </project>
