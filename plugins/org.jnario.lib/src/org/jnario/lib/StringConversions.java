@@ -29,8 +29,7 @@ public class StringConversions {
      * the first character may be an ASCII minus sign <code>'-'</code> 
      * (<code>'&#92;u002D'</code>) to indicate a negative value. The resulting 
      * integer value is returned, exactly as if the argument and the radix 
-     * 10 were given as arguments to the 
-     * {@link #parseInt(java.lang.String, int)} method.
+     * 10 were given as arguments to the {@link Integer#parseInt(java.lang.String, int)} method.
      *
      * @param s	   a <code>String</code> containing the <code>int</code>
      *             representation to be parsed
@@ -51,7 +50,7 @@ public class StringConversions {
      * indicate a negative value. The resulting <code>long</code>
      * value is returned, exactly as if the argument and the radix
      * <code>10</code> were given as arguments to the {@link
-     * #parseLong(java.lang.String, int)} method.
+     * Long#parseLong(java.lang.String, int)} method.
      * <p>
      * Note that neither the character <code>L</code>
      * (<code>'&#92;u004C'</code>) nor <code>l</code>

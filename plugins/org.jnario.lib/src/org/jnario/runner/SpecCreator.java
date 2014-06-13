@@ -23,9 +23,9 @@ public interface SpecCreator {
 	 * Creates a spec or feature instance. For example, given the following spec:
 	 * 
 	 * <pre>
-	 * {@code
+	 * &#64;code
 	 * describe Greeter{
-	 *   fact subject.sayHello() => "Hello World"
+	 *   fact subject.sayHello() =&#62; "Hello World"
 	 * }
 	 * </pre>
 	 * 
@@ -42,9 +42,9 @@ public interface SpecCreator {
 	 * Creates the subject of a spec. For example, given the following spec:
 	 * 
 	 * <pre>
-	 * {@code
+	 * &#64;code
 	 * describe Greeter{
-	 *   fact subject.sayHello() => "Hello World"
+	 *   fact subject.sayHello() =&#62; "Hello World"
 	 * }
 	 * </pre>
 	 * 
