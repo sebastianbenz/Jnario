@@ -3,7 +3,7 @@ package org.jnario.feature.jvmmodel;
 import static com.google.common.base.Objects.equal;
 import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Iterables.filter;
-import static org.eclipse.emf.ecore.util.EcoreUtil.replace;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -35,7 +35,7 @@ public class JvmFieldReferenceUpdater {
 				return updateFieldReference(eObject, eReference, (JvmField)crossReferencedEObject);
 			}
 			if(crossReferencedEObject == originalType){
-				replace(eObject, eReference, originalType, newType);
+				EcoreUtil.replace(eObject, eReference, originalType, newType);
 			}
 			return false;
 		}
@@ -49,7 +49,7 @@ public class JvmFieldReferenceUpdater {
 				return false;
 			}
 			JvmField newField = findMatchingField(sourceField);
-			replace(eObject, eReference, sourceField, newField);
+			EcoreUtil.replace(eObject, eReference, sourceField, newField);
 			return true;
 		}
 		
