@@ -8,6 +8,7 @@ import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtext.util.IResourceScopeCache;
 import org.jnario.util.XtendTypes;
 
+import com.google.common.collect.ImmutableList;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
@@ -19,7 +20,7 @@ public abstract class JnarioNameProvider {
 	private class Cache {
 		public String get(EObject key, Provider<String> provider) {
 			if (key.eResource() != null) {
-				return cache.get(new Object[] { key, this }, key.eResource(), provider);
+				return cache.get(ImmutableList.of(key, this), key.eResource(), provider);
 			}
 			return provider.get();
 		}

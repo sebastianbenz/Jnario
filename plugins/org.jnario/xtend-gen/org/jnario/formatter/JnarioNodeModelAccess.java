@@ -23,7 +23,7 @@ public class JnarioNodeModelAccess extends NodeModelAccess {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(obj);
       boolean _equals = Objects.equal(node, null);
       if (_equals) {
-        return null;
+        return Collections.<ILeafNode>unmodifiableList(Lists.<ILeafNode>newArrayList());
       }
       BidiTreeIterable<INode> _asTreeIterable = node.getAsTreeIterable();
       final Function1<INode, Boolean> _function = new Function1<INode, Boolean>() {

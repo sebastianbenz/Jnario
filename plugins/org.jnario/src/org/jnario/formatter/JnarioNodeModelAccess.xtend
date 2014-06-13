@@ -11,7 +11,7 @@ class JnarioNodeModelAccess extends NodeModelAccess{
 	override nodesForKeyword(EObject obj, String kw) {
 		val node = NodeModelUtils.findActualNodeFor(obj)
 		if(node == null){
-			return null
+			return #[]
 		}
 		#[node.asTreeIterable.findFirst[semanticElement == obj && grammarElement instanceof Keyword && text == kw] as ILeafNode]
 	}
