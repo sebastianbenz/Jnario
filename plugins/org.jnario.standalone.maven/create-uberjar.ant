@@ -6,6 +6,7 @@
 	 3. Where to put output = output.folder
 	-->
 	<property name="jnarioPluginFolder" value="../../releng/org.jnario.updatesite/target/repository/plugins" />
+	<property name="pegdownFolder" value="../org.jnario/lib" />
 	<property name="output.folder" value="target" />
 	<echo>${maven.version}</echo>
 
@@ -46,6 +47,12 @@
 		<mkdir dir="${output.folder}" />
 		<mkdir dir="${binJarTemp}/" />
 		<mkdir dir="${sourceJarTemp}" />
+		
+	  <!-- Pegdown bundles -->
+	  <fileset dir="${pegdownFolder}" id="pegdownJars">
+	    <include name="*.jar" />
+	  </fileset>
+		
 		<!-- Jnario bundles -->
 		<fileset dir="${jnarioPluginFolder}" id="binJnarioJars">
 			<include name="org.jnario_*.jar" />
@@ -58,6 +65,7 @@
 
 		<unzip dest="${binJarTemp}">
 			<fileset refid="binJnarioJars" />
+			<fileset refid="pegdownJars" />
 		</unzip>
 
 		<antcall target="cleanUpContent">

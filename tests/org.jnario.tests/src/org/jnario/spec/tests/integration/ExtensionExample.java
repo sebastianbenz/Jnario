@@ -7,7 +7,6 @@
  *******************************************************************************/
 package org.jnario.spec.tests.integration;
 
-import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.After;
@@ -38,4 +37,5 @@ public class ExtensionExample {
 		
 		Matcher<Integer> x = Matchers.greaterThan(4);
 	}
+
 }

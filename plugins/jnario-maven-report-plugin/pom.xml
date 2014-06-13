@@ -15,10 +15,6 @@
 	</properties>
 	<repositories>
 		<repository>
-			<id>scala.tools</id>
-			<url>https://oss.sonatype.org/content/groups/scala-tools/</url>
-		</repository>
-		<repository>
 			<id>xtend.snapshots</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
 			<releases>
