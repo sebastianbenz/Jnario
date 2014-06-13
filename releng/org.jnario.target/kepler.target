@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?>
-
-<target name="kepler" sequenceNumber="31">
+<?pde version="3.8"?><target name="kepler" sequenceNumber="33">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
@@ -46,11 +44,7 @@
 <repository location="http://download.eclipse.org/releases/kepler/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.xtext.xbase.feature.group" version="2.6.0.v201405210727"/>
-<unit id="org.eclipse.xtext.runtime.feature.group" version="2.6.0.v201405210727"/>
-<unit id="org.eclipse.xtext.ui.feature.group" version="2.6.0.v201405210727"/>
-<unit id="org.eclipse.xtend.sdk.feature.group" version="2.6.0.v201405210727"/>
-<unit id="org.eclipse.xtext.redist.feature.group" version="2.6.0.v201405210727"/>
+<unit id="org.eclipse.xtend.sdk.feature.group" version="2.6.1.v201406120726"/>
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
 </location>
 </locations>

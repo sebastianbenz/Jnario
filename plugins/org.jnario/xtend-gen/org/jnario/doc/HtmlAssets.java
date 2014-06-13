@@ -101,8 +101,8 @@ public class HtmlAssets {
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((_cssFiles== null) ? 0 : _cssFiles.hashCode());
-    result = prime * result + ((_jsFiles== null) ? 0 : _jsFiles.hashCode());
+    result = prime * result + ((this._cssFiles== null) ? 0 : this._cssFiles.hashCode());
+    result = prime * result + ((this._jsFiles== null) ? 0 : this._jsFiles.hashCode());
     return result;
   }
   
@@ -115,15 +115,15 @@ public class HtmlAssets {
     if (getClass() != obj.getClass())
       return false;
     HtmlAssets other = (HtmlAssets) obj;
-    if (_cssFiles == null) {
+    if (this._cssFiles == null) {
       if (other._cssFiles != null)
         return false;
-    } else if (!_cssFiles.equals(other._cssFiles))
+    } else if (!this._cssFiles.equals(other._cssFiles))
       return false;
-    if (_jsFiles == null) {
+    if (this._jsFiles == null) {
       if (other._jsFiles != null)
         return false;
-    } else if (!_jsFiles.equals(other._jsFiles))
+    } else if (!this._jsFiles.equals(other._jsFiles))
       return false;
     return true;
   }

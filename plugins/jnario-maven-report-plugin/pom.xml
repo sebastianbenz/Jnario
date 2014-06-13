@@ -11,7 +11,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-		<xtend.version>2.6.0</xtend.version>
+		<xtend.version>2.6.1</xtend.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -83,7 +83,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-plugin-plugin</artifactId>
-				<version>2.3</version>
+				<version>2.7</version>
 				<configuration>
 				</configuration>
 			</plugin>
@@ -104,7 +104,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9</version>
+				<version>2.9.1</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -117,7 +117,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>2.5</version>
 				<configuration>
 					<arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
 				</configuration>
@@ -125,7 +125,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
-				<version>2.4</version>
+				<version>2.7</version>
 				<configuration>
 					<skip>false</skip>
 				</configuration>
@@ -145,12 +145,28 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>3.0</version>
 				<configuration>
 					<source>1.5</source>
 					<target>1.5</target>
 				</configuration>
 			</plugin>
+			     <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-javadoc-plugin</artifactId>
+    <version>2.9.1</version>
+    <executions>
+        <execution>
+            <id>attach-javadocs</id>
+            <goals>
+                <goal>jar</goal>
+            </goals>
+            <configuration>
+                <additionalparam>-Xdoclint:none</additionalparam>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
 		</plugins>
 	</build>
 	<licenses>

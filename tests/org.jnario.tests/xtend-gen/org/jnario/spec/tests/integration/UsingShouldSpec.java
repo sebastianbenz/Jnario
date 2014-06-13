@@ -397,7 +397,7 @@ public class UsingShouldSpec {
      + "\n     startsWith(\"h\") is " + new org.hamcrest.StringDescription().appendValue(_startsWith).toString() + "\n", _doubleArrow);
     
     List<String> _list = JnarioCollectionLiterals.<String>list("red", "green");
-    Matcher<Iterable<? super String>> _hasItem = Matchers.<String>hasItem("red");
+    Matcher<Iterable<String>> _hasItem = Matchers.<String>hasItem("red");
     boolean _doubleArrow_1 = Should.<List<String>>operator_doubleArrow(_list, _hasItem);
     Assert.assertTrue("\nExpected list(\"red\", \"green\") => hasItem(\"red\") but"
      + "\n     list(\"red\", \"green\") is " + new org.hamcrest.StringDescription().appendValue(_list).toString()

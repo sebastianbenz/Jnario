@@ -35,8 +35,8 @@ public class Person {
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((_name== null) ? 0 : _name.hashCode());
-    result = prime * result + _age;
+    result = prime * result + ((this._name== null) ? 0 : this._name.hashCode());
+    result = prime * result + this._age;
     return result;
   }
   
@@ -49,12 +49,12 @@ public class Person {
     if (getClass() != obj.getClass())
       return false;
     Person other = (Person) obj;
-    if (_name == null) {
+    if (this._name == null) {
       if (other._name != null)
         return false;
-    } else if (!_name.equals(other._name))
+    } else if (!this._name.equals(other._name))
       return false;
-    if (other._age != _age)
+    if (other._age != this._age)
       return false;
     return true;
   }

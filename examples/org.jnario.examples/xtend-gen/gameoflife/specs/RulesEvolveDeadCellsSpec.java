@@ -4,9 +4,8 @@ import gameoflife.EvolveDeadCells;
 import gameoflife.specs.RulesEvolveDeadCellsSpecDeadcells;
 import gameoflife.specs.RulesSpec;
 import java.util.Arrays;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import java.util.function.Consumer;
 import org.jnario.lib.Assert;
-import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -62,8 +61,8 @@ public class RulesEvolveDeadCellsSpec extends RulesSpec {
   @Named("deadcells.forEach[ subject.becomesAlive[liveNeighbourCount] => result ]")
   @Order(1)
   public void _deadcellsForEachSubjectBecomesAliveLiveNeighbourCountResult() throws Exception {
-    final Procedure1<RulesEvolveDeadCellsSpecDeadcells> _function = new Procedure1<RulesEvolveDeadCellsSpecDeadcells>() {
-      public void apply(final RulesEvolveDeadCellsSpecDeadcells it) {
+    final Consumer<RulesEvolveDeadCellsSpecDeadcells> _function = new Consumer<RulesEvolveDeadCellsSpecDeadcells>() {
+      public void accept(final RulesEvolveDeadCellsSpecDeadcells it) {
         int _liveNeighbourCount = it.getLiveNeighbourCount();
         boolean _becomesAlive = RulesEvolveDeadCellsSpec.this.subject.becomesAlive(_liveNeighbourCount);
         boolean _result = it.getResult();
@@ -75,6 +74,6 @@ public class RulesEvolveDeadCellsSpec extends RulesSpec {
         
       }
     };
-    Each.<RulesEvolveDeadCellsSpecDeadcells>forEach(this.deadcells, _function);
+    this.deadcells.forEach(_function);
   }
 }

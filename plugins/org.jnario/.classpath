@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry exported="true" kind="lib" path="lib/pegdown-1.1.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/grappa-1.0.0-beta.9.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="xtend-gen"/>
+	<classpathentry kind="lib" path="lib/parboiled-core-1.1.6_ASM-5.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/parboiled-java-1.1.6_ASM-5.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

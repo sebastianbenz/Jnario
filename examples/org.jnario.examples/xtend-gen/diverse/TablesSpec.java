@@ -2,9 +2,8 @@ package diverse;
 
 import diverse.TablesSpecAdditions;
 import java.util.Arrays;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import java.util.function.Consumer;
 import org.jnario.lib.Assert;
-import org.jnario.lib.Each;
 import org.jnario.lib.ExampleTable;
 import org.jnario.lib.Should;
 import org.jnario.runner.ExampleGroupRunner;
@@ -81,8 +80,8 @@ public class TablesSpec {
   @Named("additions.forEach[ a + b => sum ]")
   @Order(1)
   public void _additionsForEachABSum() throws Exception {
-    final Procedure1<TablesSpecAdditions> _function = new Procedure1<TablesSpecAdditions>() {
-      public void apply(final TablesSpecAdditions it) {
+    final Consumer<TablesSpecAdditions> _function = new Consumer<TablesSpecAdditions>() {
+      public void accept(final TablesSpecAdditions it) {
         int _a = it.getA();
         int _b = it.getB();
         int _plus = (_a + _b);
@@ -95,6 +94,6 @@ public class TablesSpec {
         
       }
     };
-    Each.<TablesSpecAdditions>forEach(this.additions, _function);
+    this.additions.forEach(_function);
   }
 }

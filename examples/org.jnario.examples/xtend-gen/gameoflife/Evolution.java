@@ -69,8 +69,8 @@ public class Evolution {
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((_staysAlive== null) ? 0 : _staysAlive.hashCode());
-    result = prime * result + ((_becomesAlive== null) ? 0 : _becomesAlive.hashCode());
+    result = prime * result + ((this._staysAlive== null) ? 0 : this._staysAlive.hashCode());
+    result = prime * result + ((this._becomesAlive== null) ? 0 : this._becomesAlive.hashCode());
     return result;
   }
   
@@ -83,15 +83,15 @@ public class Evolution {
     if (getClass() != obj.getClass())
       return false;
     Evolution other = (Evolution) obj;
-    if (_staysAlive == null) {
+    if (this._staysAlive == null) {
       if (other._staysAlive != null)
         return false;
-    } else if (!_staysAlive.equals(other._staysAlive))
+    } else if (!this._staysAlive.equals(other._staysAlive))
       return false;
-    if (_becomesAlive == null) {
+    if (this._becomesAlive == null) {
       if (other._becomesAlive != null)
         return false;
-    } else if (!_becomesAlive.equals(other._becomesAlive))
+    } else if (!this._becomesAlive.equals(other._becomesAlive))
       return false;
     return true;
   }
