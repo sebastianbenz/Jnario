@@ -147,22 +147,6 @@
 					<target>1.5</target>
 				</configuration>
 			</plugin>
-			     <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-javadoc-plugin</artifactId>
-    <version>2.9.1</version>
-    <executions>
-        <execution>
-            <id>attach-javadocs</id>
-            <goals>
-                <goal>jar</goal>
-            </goals>
-            <configuration>
-                <additionalparam>-Xdoclint:none</additionalparam>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
 		</plugins>
 	</build>
 	<licenses>
@@ -223,4 +207,25 @@ https://github.com/sebastianbenz/Jnario/issues
 		</repository>
 	</distributionManagement>
 	<description>The report generator for the Jnario testing language.</description>
+	<profiles>
+		<profile>
+			<id>doclint-java8-disable</id>
+			<activation>
+				<jdk>[1.8,</jdk>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.9.1</version>
+						<configuration>
+							<additionalparam>-Xdoclint:none</additionalparam>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
