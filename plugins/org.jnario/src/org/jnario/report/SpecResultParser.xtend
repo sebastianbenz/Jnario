@@ -3,10 +3,10 @@ package org.jnario.report
 import java.io.InputStream
 import java.util.List
 import javax.xml.parsers.SAXParserFactory
+import org.jnario.util.Strings
 import org.xml.sax.Attributes
 import org.xml.sax.SAXException
 import org.xml.sax.helpers.DefaultHandler
-import org.jnario.util.Strings
 
 class SpecResultParser extends DefaultHandler{
 	double currentExecutionTime
@@ -125,6 +125,7 @@ class SpecResultParser extends DefaultHandler{
 	}
 	
 	def convertValue(Attributes attributes, String key) {
-		Strings.convertFromJavaString(attributes.getValue(key), true)
+		val value = attributes.getValue(key).replace("\\/", "/")
+    Strings.convertFromJavaString(value, true)
 	}
 }

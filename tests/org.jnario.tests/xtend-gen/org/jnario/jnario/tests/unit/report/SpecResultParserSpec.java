@@ -270,6 +270,24 @@ public class SpecResultParserSpec {
     _verify.accept(_passed);
   }
   
+  @Test
+  @Named("supports escaped chars")
+  @Order(9)
+  public void _supportsEscapedChars() throws Exception {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<testcase time=\"");
+    _builder.append(SpecResultParserSpec.EXECUTION_TIME, "");
+    _builder.append("\" classname=\"");
+    _builder.append(SpecResultParserSpec.CLASSNAME, "");
+    _builder.append("\" name=\"\\&quot;http:\\/\\/www.google.de\\&quot;\"/>");
+    _builder.newLineIfNotEmpty();
+    CharSequence _xml = this.toXml(_builder);
+    this.parse(_xml);
+    SpecExecutionAcceptor _verify = Mockito.<SpecExecutionAcceptor>verify(this.acceptor);
+    Passed _passed = new Passed(SpecResultParserSpec.CLASSNAME, "\"http://www.google.de\"", SpecResultParserSpec.EXECUTION_TIME);
+    _verify.accept(_passed);
+  }
+  
   public Passed passingSpec() {
     return new Passed(SpecResultParserSpec.CLASSNAME, SpecResultParserSpec.NAME, SpecResultParserSpec.EXECUTION_TIME);
   }

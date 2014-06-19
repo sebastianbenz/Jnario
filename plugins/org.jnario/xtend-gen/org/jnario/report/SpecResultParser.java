@@ -201,7 +201,12 @@ public class SpecResultParser extends DefaultHandler {
   }
   
   public String convertValue(final Attributes attributes, final String key) {
-    String _value = attributes.getValue(key);
-    return Strings.convertFromJavaString(_value, true);
+    String _xblockexpression = null;
+    {
+      String _value = attributes.getValue(key);
+      final String value = _value.replace("\\/", "/");
+      _xblockexpression = Strings.convertFromJavaString(value, true);
+    }
+    return _xblockexpression;
   }
 }

@@ -106,6 +106,14 @@ describe SpecResultParser{
 		verify(acceptor).accept(new Passed(CLASSNAME, 'LÖsung', EXECUTION_TIME))
 	}
 	
+	fact "supports escaped chars"{
+		'''
+		<testcase time="«EXECUTION_TIME»" classname="«CLASSNAME»" name="\&quot;http:\/\/www.google.de\&quot;"/>
+		'''.toXml.parse
+		
+		verify(acceptor).accept(new Passed(CLASSNAME, '"http://www.google.de"', EXECUTION_TIME))
+	}
+	
 	
 	def passingSpec(){
 		new Passed(CLASSNAME, NAME, EXECUTION_TIME)

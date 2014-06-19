@@ -101,6 +101,13 @@ verify(acceptor).accept(new Passed(CLASSNAME, 'cell[-1, 1].plus[cell[3,4]] =&gt;
 '''.toXml.parse
 
 verify(acceptor).accept(new Passed(CLASSNAME, 'L&Ouml;sung', EXECUTION_TIME))</pre>
+</li><li><p id="supports_escaped_chars" class="example notrun"><strong>supports escaped chars</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+&lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;\&amp;quot;http:\/\/www.google.de\&amp;quot;&quot;/&gt;
+'''.toXml.parse
+
+verify(acceptor).accept(new Passed(CLASSNAME, '&quot;http://www.google.de&quot;', EXECUTION_TIME))</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -213,6 +220,14 @@ describe SpecResultParser{
     '''.toXml.parse
     
     verify(acceptor).accept(new Passed(CLASSNAME, 'L&Ouml;sung', EXECUTION_TIME))
+  }
+  
+  fact &quot;supports escaped chars&quot;{
+    '''
+    &lt;testcase time=&quot;&laquo;EXECUTION_TIME&raquo;&quot; classname=&quot;&laquo;CLASSNAME&raquo;&quot; name=&quot;\&amp;quot;http:\/\/www.google.de\&amp;quot;&quot;/&gt;
+    '''.toXml.parse
+    
+    verify(acceptor).accept(new Passed(CLASSNAME, '&quot;http://www.google.de&quot;', EXECUTION_TIME))
   }
   
   
