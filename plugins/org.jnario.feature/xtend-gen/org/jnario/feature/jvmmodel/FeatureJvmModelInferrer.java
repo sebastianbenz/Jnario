@@ -21,6 +21,7 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.AnonymousClass;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendField;
 import org.eclipse.xtend.core.xtend.XtendFile;
@@ -375,6 +376,10 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   protected void transform(final XtendField source, final JvmGenericType container) {
+    EObject _eContainer = source.eContainer();
+    if ((_eContainer instanceof AnonymousClass)) {
+      super.transform(source, container);
+    }
   }
   
   protected void transform2(final XtendField source, final JvmGenericType container) {
@@ -382,6 +387,10 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   protected void transform(final XtendFunction source, final JvmGenericType container, final boolean allowDispatch) {
+    EObject _eContainer = source.eContainer();
+    if ((_eContainer instanceof AnonymousClass)) {
+      super.transform(source, container, allowDispatch);
+    }
   }
   
   protected String computeFieldName(final XtendField field) {

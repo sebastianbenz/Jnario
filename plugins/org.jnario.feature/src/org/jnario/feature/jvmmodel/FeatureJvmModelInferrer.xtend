@@ -47,6 +47,7 @@ import static com.google.common.collect.Iterators.*
 
 import static extension com.google.common.base.Strings.*
 import static extension org.eclipse.xtext.EcoreUtil2.*
+import org.eclipse.xtend.core.xtend.AnonymousClass
 
 /**
  * @author Birgit Engelmann - Initial contribution and API
@@ -208,14 +209,20 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
 	}
    	
 	override protected transform(XtendField source, JvmGenericType container) {
+	  if(source.eContainer instanceof AnonymousClass){
+      super.transform(source, container)
+    }
 	}
 	
 	def protected transform2(XtendField source, JvmGenericType container) {
 		super.transform(source, container)
 	}
 	
-		
+	
 	override protected transform(XtendFunction source, JvmGenericType container, boolean allowDispatch) {
+	  if(source.eContainer instanceof AnonymousClass){
+      super.transform(source, container, allowDispatch)
+    }
 	}
 	
    	

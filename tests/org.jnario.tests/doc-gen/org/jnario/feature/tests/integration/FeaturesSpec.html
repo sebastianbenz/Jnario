@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Anonymous classes</title>
+<title>Features</title>
 <meta name="description" content="">
 <meta name="author" content="Jnario">
 
@@ -25,7 +25,7 @@
 		<div class="tabbable">
 			<div class="content">
 				<div class="page-header notrun">
-					<h1>Anonymous classes</h1>
+					<h1>Features</h1>
 					  <ul class="nav nav-tabs pull-right">
 					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
 						<li><a href="#source" data-toggle="tab">Source</a></li>
@@ -35,25 +35,30 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<ul><li><p id="supports_anonymous_class_declaration" class="example notrun"><strong>supports anonymous class declaration</strong></p>
+<ul><li><p id="support_anonymous_class_declaration" class="example notrun"><strong>support anonymous class declaration</strong></p>
 <pre class="prettyprint lang-spec linenums">
 val spec = '''
-  package bootstrap
-  
-  import java.util.HashMap
+package bootstrap
 
-      describe 'Anonymous classes' {
-        fact {
-          val test = new HashMap(){
+import java.util.HashMap
+
+Feature: Test
+Something
+
+Scenario: Something
+    When a
+    val test = new HashMap(){
       
-              override get(Object key) {
-                &quot;Hello World&quot;
-              }
-              
-            }
-            test.get(null) =&gt; &quot;Hello World&quot;
-        }
-      }
+    override get(Object key) {
+      &quot;Hello World&quot;
+    }
+    
+  }
+  test.get(null) =&gt; &quot;Hello World&quot;
+Scenario: Something Els
+    Given an empty string
+    When a
+ 
 '''
 assertThat(execute(spec), successful)</pre>
 </li></ul>
@@ -69,38 +74,43 @@ assertThat(execute(spec), successful)</pre>
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.jnario.spec.tests.integration
+package org.jnario.feature.tests.integration
 
 import com.google.inject.Inject
 import org.jnario.jnario.test.util.BehaviorExecutor
-import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.jnario.test.util.FeatureTestCreator
 import org.jnario.runner.CreateWith
 
 import static org.jnario.jnario.test.util.ResultMatchers.*
 import static org.junit.Assert.*
 
-@CreateWith(typeof(SpecTestCreator))
-describe &quot;Anonymous classes&quot; {
+@CreateWith(typeof(FeatureTestCreator))
+describe &quot;Features&quot; {
 
   @Inject extension BehaviorExecutor
-  fact &quot;supports anonymous class declaration&quot;{
+  fact &quot;support anonymous class declaration&quot;{
     val spec = '''
-      package bootstrap
-      
-      import java.util.HashMap
+package bootstrap
 
-      describe 'Anonymous classes' {
-        fact {
-          val test = new HashMap(){
+import java.util.HashMap
+
+Feature: Test
+Something
+
+Scenario: Something
+    When a
+    val test = new HashMap(){
       
-              override get(Object key) {
-                &quot;Hello World&quot;
-              }
-              
-            }
-            test.get(null) =&gt; &quot;Hello World&quot;
-        }
-      }
+    override get(Object key) {
+      &quot;Hello World&quot;
+    }
+    
+  }
+  test.get(null) =&gt; &quot;Hello World&quot;
+Scenario: Something Els
+    Given an empty string
+    When a
+ 
     '''
     assertThat(execute(spec), successful)
   } 
