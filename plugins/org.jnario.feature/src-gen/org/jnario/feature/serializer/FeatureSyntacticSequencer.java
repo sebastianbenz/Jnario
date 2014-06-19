@@ -21,6 +21,8 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected FeatureGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_AnnotationField_SemicolonKeyword_2_0_2_q;
 	protected AbstractElementAlias match_AnnotationField_SemicolonKeyword_2_3_6_q;
+	protected AbstractElementAlias match_AnonymousMember_SemicolonKeyword_2_0_4_q;
+	protected AbstractElementAlias match_AnonymousMember_SemicolonKeyword_2_1_9_2_q;
 	protected AbstractElementAlias match_BlockExpression_SemicolonKeyword_1_q;
 	protected AbstractElementAlias match_File_SemicolonKeyword_0_2_q;
 	protected AbstractElementAlias match_Member_SemicolonKeyword_2_4_q;
@@ -39,6 +41,8 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 		grammarAccess = (FeatureGrammarAccess) access;
 		match_AnnotationField_SemicolonKeyword_2_0_2_q = new TokenAlias(false, true, grammarAccess.getAnnotationFieldAccess().getSemicolonKeyword_2_0_2());
 		match_AnnotationField_SemicolonKeyword_2_3_6_q = new TokenAlias(false, true, grammarAccess.getAnnotationFieldAccess().getSemicolonKeyword_2_3_6());
+		match_AnonymousMember_SemicolonKeyword_2_0_4_q = new TokenAlias(false, true, grammarAccess.getAnonymousMemberAccess().getSemicolonKeyword_2_0_4());
+		match_AnonymousMember_SemicolonKeyword_2_1_9_2_q = new TokenAlias(false, true, grammarAccess.getAnonymousMemberAccess().getSemicolonKeyword_2_1_9_2());
 		match_BlockExpression_SemicolonKeyword_1_q = new TokenAlias(false, true, grammarAccess.getBlockExpressionAccess().getSemicolonKeyword_1());
 		match_File_SemicolonKeyword_0_2_q = new TokenAlias(false, true, grammarAccess.getFileAccess().getSemicolonKeyword_0_2());
 		match_Member_SemicolonKeyword_2_4_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getSemicolonKeyword_2_4());
@@ -94,6 +98,10 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_AnnotationField_SemicolonKeyword_2_0_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_AnnotationField_SemicolonKeyword_2_3_6_q.equals(syntax))
 				emit_AnnotationField_SemicolonKeyword_2_3_6_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_AnonymousMember_SemicolonKeyword_2_0_4_q.equals(syntax))
+				emit_AnonymousMember_SemicolonKeyword_2_0_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_AnonymousMember_SemicolonKeyword_2_1_9_2_q.equals(syntax))
+				emit_AnonymousMember_SemicolonKeyword_2_1_9_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_BlockExpression_SemicolonKeyword_1_q.equals(syntax))
 				emit_BlockExpression_SemicolonKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_File_SemicolonKeyword_0_2_q.equals(syntax))
@@ -135,6 +143,22 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ';'?
 	 */
 	protected void emit_AnnotationField_SemicolonKeyword_2_3_6_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ';'?
+	 */
+	protected void emit_AnonymousMember_SemicolonKeyword_2_0_4_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ';'?
+	 */
+	protected void emit_AnonymousMember_SemicolonKeyword_2_1_9_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -228,7 +252,7 @@ public class FeatureSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('should' 'throw') | 'throws'
+	 *     'throws' | ('should' 'throw')
 	 */
 	protected void emit_XRelationalExpression_ThrowsKeyword_1_1_0_0_1_1_or___ShouldKeyword_1_1_0_0_1_0_0_ThrowKeyword_1_1_0_0_1_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

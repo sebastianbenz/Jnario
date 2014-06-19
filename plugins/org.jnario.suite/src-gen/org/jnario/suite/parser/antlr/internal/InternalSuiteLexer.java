@@ -5468,8 +5468,8 @@ public class InternalSuiteLexer extends Lexer {
 
     protected DFA56 dfa56 = new DFA56(this);
     static final String DFA56_eotS =
-        "\1\uffff\1\72\1\uffff\1\77\1\101\1\72\1\106\1\uffff\1\111\2\72"+
-        "\2\uffff\1\72\1\127\2\uffff\7\72\1\157\6\72\1\uffff\1\170\2\uffff"+
+        "\1\uffff\1\72\1\uffff\1\77\1\101\1\72\1\106\1\uffff\1\111\2\72\2"+
+        "\uffff\1\72\1\127\2\uffff\7\72\1\157\6\72\1\uffff\1\170\2\uffff"+
         "\1\176\1\u0081\1\u0085\1\u0087\1\u0089\1\u008b\1\u008d\1\u0090\2"+
         "\72\2\66\1\uffff\1\66\1\u0097\2\u009b\1\66\2\uffff\3\72\6\uffff"+
         "\1\u00a5\1\uffff\3\72\5\uffff\5\72\1\u00b0\2\uffff\2\72\1\u00b3"+
@@ -5533,10 +5533,10 @@ public class InternalSuiteLexer extends Lexer {
         "\3\uffff\1\44\2\uffff\1\44\1\uffff\2\44\1\uffff\1\145\4\uffff\1"+
         "\144\1\44\1\uffff";
     static final String DFA56_maxS =
-        "\1\uffff\1\165\1\uffff\1\76\1\56\1\162\1\76\1\uffff\1\75\1\170"+
-        "\1\156\2\uffff\1\163\1\76\2\uffff\1\171\1\165\1\171\3\157\1\166"+
-        "\1\uffff\1\106\2\105\1\117\1\116\1\106\1\uffff\1\uffff\2\uffff\4"+
-        "\75\1\174\1\46\1\75\1\72\1\150\1\145\1\uffff\1\172\1\uffff\2\uffff"+
+        "\1\uffff\1\165\1\uffff\1\76\1\56\1\162\1\76\1\uffff\1\75\1\170\1"+
+        "\156\2\uffff\1\163\1\76\2\uffff\1\171\1\165\1\171\3\157\1\166\1"+
+        "\uffff\1\106\2\105\1\117\1\116\1\106\1\uffff\1\uffff\2\uffff\4\75"+
+        "\1\174\1\46\1\75\1\72\1\150\1\145\1\uffff\1\172\1\uffff\2\uffff"+
         "\1\170\1\154\1\uffff\2\uffff\1\143\1\142\1\157\6\uffff\1\74\1\uffff"+
         "\1\141\1\145\1\164\5\uffff\1\164\1\165\1\163\1\160\1\164\1\172\2"+
         "\uffff\1\156\1\163\1\172\1\75\4\uffff\1\162\1\171\1\160\1\167\1"+
@@ -5810,8 +5810,8 @@ public class InternalSuiteLexer extends Lexer {
             "\1\u00fc",
             "\1\u00fd",
             "\1\u00fe",
-            "\1\72\13\uffff\12\72\7\uffff\32\72\4\uffff\1\72\1\uffff\1"+
-            "\u00ff\31\72",
+            "\1\72\13\uffff\12\72\7\uffff\32\72\4\uffff\1\72\1\uffff\1\u00ff"+
+            "\31\72",
             "",
             "\1\u0101",
             "\1\72\13\uffff\12\72\7\uffff\32\72\4\uffff\1\72\1\uffff\32"+

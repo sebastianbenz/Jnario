@@ -48,6 +48,7 @@ import org.jnario.spec.spec.TestFunction
 import static extension org.eclipse.xtext.util.Strings.*
 import org.jnario.ExampleCellimport org.eclipse.xtext.xbase.XNullLiteral
 import org.eclipse.xtend.core.jvmmodel.XtendJvmModelInferrer
+import org.eclipse.xtend.core.xtend.AnonymousClass
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -145,7 +146,11 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 	
 	
 	override protected transform(XtendMember sourceMember, JvmGenericType container, boolean allowDispatch) {
-		// we use transformExamples instead
+	  if(sourceMember.eContainer instanceof AnonymousClass){
+	    super.transform(sourceMember, container, allowDispatch)
+	  }else{
+		  // we use transformExamples instead
+	  }
 	}
 	
 	def void transformExamples(XtendMember sourceMember, JvmGenericType container) {

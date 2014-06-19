@@ -139,20 +139,23 @@ BlockExpression returns xbase::XBlockExpression:
 //	((PIPE | PIPE_SPACES) cells+=XExpression)+ EXAMPLE_ROW_END;
 	
 XPrimaryExpression returns xbase::XExpression:
-	XConstructorCall |
-	XBlockExpression |
-	XSwitchExpression |
-	XFeatureCall |
-	XLiteral |
-	XIfExpression |
-	XForLoopExpression |
-	XWhileExpression |
-	XDoWhileExpression |
-	XThrowExpression |
-	XReturnExpression |
-	XTryCatchFinallyExpression |
-	XParenthesizedExpression |
-	Assertion;
+  XConstructorCall |
+  XBlockExpression |
+  XSwitchExpression |
+  XSynchronizedExpression |
+  XFeatureCall |
+  XLiteral |
+  XIfExpression |
+  XForLoopExpression |
+  XBasicForLoopExpression |
+  XWhileExpression |
+  XDoWhileExpression |
+  XThrowExpression |
+  XReturnExpression |
+  XTryCatchFinallyExpression |
+  XParenthesizedExpression |
+  Assertion;
+
 
 XRelationalExpression returns xbase::XExpression:
 	XOtherOperatorExpression
@@ -167,24 +170,51 @@ Should:
 	'should' 'not'? ID
 ;
 
-XLiteral returns xbase::XExpression:
-	XCollectionLiteral |
-	XClosure |
-	XBooleanLiteral |
-	XNumberLiteral |
-	XNullLiteral |
-	XStringLiteral |
-	XTypeLiteral 
-//	| MockLiteral 
-;
-
-//MockLiteral:
-//	{MockLiteral} ('mock'|'stub') '(' type=[types::JvmType|QualifiedName] ')'
-//;
-
 Assertion: 
 	{Assertion}
 	'assert' expression=XExpression;
+
+XConstructorCall returns xbase::XExpression:
+  XbaseConstructorCall (=>({xtend::AnonymousClass.constructorCall=current} '{') members+=AnonymousMember* '}')?
+;
+	
+AnonymousMember returns xtend::XtendMember:
+  {xtend::XtendMember} annotations+=XAnnotation*
+  (
+    ( 
+      {xtend::XtendField.annotationInfo = current} modifiers+=CommonModifier*
+      (
+        modifiers+=FieldModifier modifiers+=CommonModifier* 
+        type=JvmTypeReference? name=ValidID 
+      |
+        modifiers+='extension' (modifiers+=FieldModifier | modifiers+=CommonModifier)* 
+        type=JvmTypeReference name=ValidID?
+      | 
+        modifiers+=FieldModifier (modifiers+=CommonModifier)* modifiers+='extension' (modifiers+=CommonModifier)*  
+        type=JvmTypeReference name=ValidID?
+      |  
+        type=JvmTypeReference name=ValidID
+      ) ('=' initialValue=XExpression)? ';'?
+
+    ) | (
+      {xtend::XtendFunction.annotationInfo = current} modifiers+=CommonModifier*
+      modifiers+=MethodModifier (modifiers+=CommonModifier | modifiers+=MethodModifier)* 
+      ('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
+      ( 
+        =>(returnType=JvmTypeReference createExtensionInfo=CreateExtensionInfo name=ValidID '(')
+        | =>(returnType=JvmTypeReference name=FunctionID '(')
+        | =>(returnType=TypeReferenceNoTypeArgs name=FunctionID '(')
+        | =>(createExtensionInfo=CreateExtensionInfo name=ValidID '(')
+        | name=FunctionID '('
+      )
+      (parameters+=Parameter (',' parameters+=Parameter)*)? ')'
+      ('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
+      (expression=XBlockExpression | expression=RichString | ';')?
+
+      )
+      
+  )
+;
  
 terminal BACKGROUND_TEXT: "Background:" MNL;
 terminal SCENARIO_TEXT: "Scenario:" MNL;

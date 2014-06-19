@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend.core.jvmmodel.SyntheticNameClashResolver;
+import org.eclipse.xtend.core.xtend.AnonymousClass;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendConstructor;
 import org.eclipse.xtend.core.xtend.XtendField;
@@ -222,6 +223,11 @@ public class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
   }
   
   protected void transform(final XtendMember sourceMember, final JvmGenericType container, final boolean allowDispatch) {
+    EObject _eContainer = sourceMember.eContainer();
+    if ((_eContainer instanceof AnonymousClass)) {
+      super.transform(sourceMember, container, allowDispatch);
+    } else {
+    }
   }
   
   public void transformExamples(final XtendMember sourceMember, final JvmGenericType container) {

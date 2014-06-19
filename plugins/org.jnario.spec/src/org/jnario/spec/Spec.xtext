@@ -117,19 +117,21 @@ Member returns xtend::XtendMember:
 
 
 XPrimaryExpression returns xbase::XExpression:
-	XConstructorCall |
-	XBlockExpression |
-	XSwitchExpression |
-	XFeatureCall |
-	XLiteral |
-	XIfExpression |
-	XForLoopExpression |
-	XWhileExpression |
-	XDoWhileExpression |
-	XThrowExpression |
-	XReturnExpression |
-	XTryCatchFinallyExpression |
-	XParenthesizedExpression |
+  XConstructorCall |
+  XBlockExpression |
+  XSwitchExpression |
+  XSynchronizedExpression |
+  XFeatureCall |
+  XLiteral |
+  XIfExpression |
+  XForLoopExpression |
+  XBasicForLoopExpression |
+  XWhileExpression |
+  XDoWhileExpression |
+  XThrowExpression |
+  XReturnExpression |
+  XTryCatchFinallyExpression |
+  XParenthesizedExpression |
 	Assertion;
 
 

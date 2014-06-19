@@ -54,6 +54,7 @@ import org.eclipse.xtend.ide.quickfix.CreateMemberQuickfixes;
 import org.eclipse.xtend.ide.quickfix.CreateXtendTypeQuickfixes;
 import org.eclipse.xtend.ide.quickfix.TypeLiteralAwareJavaTypeQuickfixes;
 import org.eclipse.xtend.ide.refactoring.XtendDependentElementsCalculator;
+import org.eclipse.xtend.ide.refactoring.XtendExpressionUtil;
 import org.eclipse.xtend.ide.refactoring.XtendJdtRenameParticipantProcessor;
 import org.eclipse.xtend.ide.refactoring.XtendRefactoringPreferences;
 import org.eclipse.xtend.ide.refactoring.XtendRenameContextFactory;
@@ -133,6 +134,7 @@ import org.eclipse.xtext.xbase.ui.jvmmodel.navigation.DerivedMemberAwareEditorOp
 import org.eclipse.xtext.xbase.ui.jvmmodel.refactoring.jdt.JdtRenameRefactoringParticipantProcessor;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
 import org.eclipse.xtext.xbase.ui.quickfix.JavaTypeQuickfixes;
+import org.eclipse.xtext.xbase.ui.refactoring.ExpressionUtil;
 import org.eclipse.xtext.xbase.ui.validation.XbaseIssueSeveritiesProvider;
 import org.jnario.feature.ui.autoedit.FeatureAutoEditStrategyProvider;
 import org.jnario.feature.ui.autoedit.FeatureIndentLineAutoEditStrategy;
@@ -528,6 +530,10 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	
 	public Class<? extends Linker> bindLinker() {
 		return EclipseBuilderAwareLinker.class;
+	}
+	
+	public Class<? extends ExpressionUtil> bindExpressionUtil() {
+		return XtendExpressionUtil.class;
 	}
 	
 }

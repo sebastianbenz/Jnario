@@ -7,9 +7,13 @@
  */
 package org.jnario.suite.suite.impl;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.xtend.core.xtend.impl.XtendFileImpl;
+
+import org.eclipse.xtext.xtype.XImportSection;
 
 import org.jnario.suite.suite.SuiteFile;
 import org.jnario.suite.suite.SuitePackage;
@@ -44,6 +48,18 @@ public class SuiteFileImpl extends XtendFileImpl implements SuiteFile
 	protected EClass eStaticClass()
 	{
 		return SuitePackage.Literals.SUITE_FILE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * This is specialized for the more specific type known in this context.
+	 * @generated
+	 */
+	@Override
+	public NotificationChain basicSetImportSection(XImportSection newImportSection, NotificationChain msgs)
+	{
+		return super.basicSetImportSection(newImportSection, msgs);
 	}
 
 } //SuiteFileImpl
