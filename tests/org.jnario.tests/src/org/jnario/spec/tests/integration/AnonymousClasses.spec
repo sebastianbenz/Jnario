@@ -23,16 +23,18 @@ describe "Anonymous classes" {
 		val spec = '''
 			package bootstrap
 			
-			import org.eclipse.text.xbase.lib.Functions.Function0
+			import java.util.HashMap
 
       describe 'Anonymous classes' {
         fact {
-          val example = new Function0<String>(){
-            override apply() {
-              "Hello World"
+          val test = new HashMap(){
+      
+              override get(Object key) {
+                "Hello World"
+              }
+              
             }
-          }
-          example.apply => "Hello World"
+            test.get(null) => "Hello World"
         }
       }
 		'''

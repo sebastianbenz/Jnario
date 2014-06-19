@@ -59,7 +59,7 @@ import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Functions;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.hamcrest.Matcher;
 import org.jnario.Assertion;
@@ -317,7 +317,6 @@ public abstract class BehaviorExecutor {
 		javaCompiler.addClassPathOfClass(Mockito.class);
 		javaCompiler.addClassPathOfClass(Maps.class);
 		javaCompiler.addClassPathOfClass(org.jnario.feature.tests.integration.Calculator.class);
-		javaCompiler.addClassPathOfClass(Functions.class);
 	}
 
 	public Result run(EObject object) {

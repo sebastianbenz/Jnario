@@ -26,6 +26,7 @@ import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
 import org.eclipse.xtend.core.parser.antlr.internal.FlexerFactory;
 import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
+import org.eclipse.xtend.core.scoping.AnonymousClassConstructorScopes;
 import org.eclipse.xtend.core.typesystem.LocalClassAwareTypeNames;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
 import org.eclipse.xtend.core.validation.XtendConfigurableIssueCodes;
@@ -76,6 +77,7 @@ import org.eclipse.xtext.xbase.imports.IImportsConfiguration;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.scoping.batch.ConstructorScopes;
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputer;
@@ -356,6 +358,10 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	
 	public Class<? extends HumanReadableTypeNames> bindHumanReadableTypeNames() {
 		return LocalClassAwareTypeNames.class;
+	}
+	
+	public Class<? extends ConstructorScopes> bindConstructorScopes() {
+		return AnonymousClassConstructorScopes.class;
 	}
 	
 }

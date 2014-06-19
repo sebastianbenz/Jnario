@@ -21,6 +21,7 @@ import org.eclipse.xtend.core.linking.URIEncoder;
 import org.eclipse.xtend.core.linking.XtendEObjectAtOffsetHelper;
 import org.eclipse.xtend.core.parser.antlr.internal.FlexerFactory;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
+import org.eclipse.xtend.core.scoping.AnonymousClassConstructorScopes;
 import org.eclipse.xtend.core.typesystem.LocalClassAwareTypeNames;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
 import org.eclipse.xtend.core.typesystem.XtendReentrantTypeResolver;
@@ -73,6 +74,7 @@ import org.eclipse.xtext.xbase.imports.IImportsConfiguration;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.scoping.batch.ConstructorScopes;
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures;
 import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputer;
 import org.eclipse.xtext.xbase.typesystem.internal.DefaultBatchTypeResolver;
@@ -361,6 +363,10 @@ public class FeatureRuntimeModule extends
 	
 	public Class<? extends HumanReadableTypeNames> bindHumanReadableTypeNames() {
 		return LocalClassAwareTypeNames.class;
+	}
+	
+	public Class<? extends ConstructorScopes> bindConstructorScopes() {
+		return AnonymousClassConstructorScopes.class;
 	}
 	
 }
