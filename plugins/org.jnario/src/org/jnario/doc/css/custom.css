@@ -3,6 +3,10 @@ html,body {
   background-color: #eee;
 }
 
+p { 
+  display: inline; 
+}
+
 .container>footer p {
   text-align: center; /* center align it with the container */
 }
