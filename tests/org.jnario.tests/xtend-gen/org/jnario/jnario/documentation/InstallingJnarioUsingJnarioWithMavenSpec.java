@@ -22,7 +22,7 @@ import org.junit.runner.RunWith;
  *     mvn archetype:generate                                  \
  *     -DarchetypeGroupId=org.jnario                           \
  *     -DarchetypeArtifactId=jnario-archetype                  \
- *     -DarchetypeVersion=0.7.5                                \
+ *     -DarchetypeVersion=1.0.0                                \
  *     -DgroupId=org.example                                   \
  *     -DartifactId=myproject
  * 
@@ -39,7 +39,7 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    *     <dependency>
    *       <groupId>org.jnario</groupId>
    *       <artifactId>org.jnario.lib.maven</artifactId>
-   *       <version>0.7.5</version>
+   *       <version>1.0.0</version>
    *       <scope>test</scope>
    *     </dependency>
    * 
@@ -85,7 +85,7 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    *     <plugin>
    *       <groupId>org.jnario</groupId>
    *       <artifactId>jnario-maven-plugin</artifactId>
-   *       <version>0.7.5</version>
+   *       <version>1.0.0</version>
    *       <executions>
    *         <execution>
    *           <goals>

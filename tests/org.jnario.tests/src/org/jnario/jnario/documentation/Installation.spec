@@ -39,7 +39,7 @@ describe "Installing Jnario"{
 	 *     mvn archetype:generate                                  \
 	 *     -DarchetypeGroupId=org.jnario                           \
 	 *     -DarchetypeArtifactId=jnario-archetype                  \
-	 *     -DarchetypeVersion=0.7.5                                \
+	 *     -DarchetypeVersion=1.0.0                                \
 	 *     -DgroupId=org.example                                   \
 	 *     -DartifactId=myproject
 	 * 
@@ -54,7 +54,7 @@ describe "Installing Jnario"{
 		 *     <dependency>
 		 *       <groupId>org.jnario</groupId>
 		 *       <artifactId>org.jnario.lib.maven</artifactId>
-		 *       <version>0.7.5</version>
+		 *       <version>1.0.0</version>
 		 *       <scope>test</scope>
 		 *     </dependency>
 		 * 
@@ -93,7 +93,7 @@ describe "Installing Jnario"{
 		 *     <plugin>
 		 *       <groupId>org.jnario</groupId>
 		 *       <artifactId>jnario-maven-plugin</artifactId>
-		 *       <version>0.7.5</version>
+		 *       <version>1.0.0</version>
 		 *       <executions>
 		 *         <execution>
 		 *           <goals>
