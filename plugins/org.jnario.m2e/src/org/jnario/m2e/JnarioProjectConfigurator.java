@@ -27,6 +27,7 @@ import org.eclipse.xtext.util.RuntimeIOException;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.osgi.service.prefs.BackingStoreException;
 
+import com.google.common.base.CharMatcher;
 import com.google.common.base.Strings;
 
 public class JnarioProjectConfigurator extends AbstractProjectConfigurator {
@@ -49,15 +50,18 @@ public class JnarioProjectConfigurator extends AbstractProjectConfigurator {
 				}
 			}
 		}
-		
+
 		writePreferences(configurations, request.getProject());
 	}
 
-	private void writePreferences(Set<OutputConfiguration> configurations, IProject project) {
+	private void writePreferences(Set<OutputConfiguration> configurations,
+			IProject project) {
 		ProjectScope projectPreferences = new ProjectScope(project);
-		IEclipsePreferences languagePreferences = projectPreferences.getNode("org.jnario.Jnario");
+		IEclipsePreferences languagePreferences = projectPreferences
+				.getNode("org.jnario.Jnario");
 		for (OutputConfiguration configuration : configurations) {
-			languagePreferences.putBoolean(OptionsConfigurationBlock.IS_PROJECT_SPECIFIC, true);
+			languagePreferences.putBoolean(
+					OptionsConfigurationBlock.IS_PROJECT_SPECIFIC, true);
 			if (isJavaOutput(configuration)) {
 				languagePreferences.putBoolean(
 						getKey(configuration, INSTALL_DSL_AS_PRIMARY_SOURCE),
@@ -67,12 +71,13 @@ public class JnarioProjectConfigurator extends AbstractProjectConfigurator {
 						configuration.isHideSyntheticLocalVariables());
 			}
 			languagePreferences.putBoolean(
-					getKey(configuration, USE_OUTPUT_PER_SOURCE_FOLDER),
-					true);
-			for (SourceMapping sourceMapping : configuration.getSourceMappings()) {
+					getKey(configuration, USE_OUTPUT_PER_SOURCE_FOLDER), true);
+			for (SourceMapping sourceMapping : configuration
+					.getSourceMappings()) {
 				languagePreferences.put(
-						getOutputForSourceFolderKey(configuration, sourceMapping.getSourceFolder()),
-						sourceMapping.getOutputDirectory());
+						getOutputForSourceFolderKey(configuration,
+								sourceMapping.getSourceFolder()), sourceMapping
+								.getOutputDirectory());
 			}
 			try {
 				languagePreferences.flush();
@@ -83,30 +88,36 @@ public class JnarioProjectConfigurator extends AbstractProjectConfigurator {
 	}
 
 	private void readDocGenerateSettings(OutputConfiguration config,
-			ProjectConfigurationRequest request, MojoExecution execution) throws CoreException {
+			ProjectConfigurationRequest request, MojoExecution execution)
+			throws CoreException {
 		if (!isJavaOutput(config)) {
-			for (String source : request.getMavenProject().getTestCompileSourceRoots()) {
-				SourceMapping mapping = new SourceMapping(makeProjectRelative(source, request));
+			for (String source : request.getMavenProject()
+					.getTestCompileSourceRoots()) {
+				SourceMapping mapping = new SourceMapping(makeProjectRelative(
+						source, request));
 				String docOutputDirectory = getParameterValue(
 						"docOutputDirectory", String.class,
 						request.getMavenSession(), execution);
-				mapping.setOutputDirectory(makeProjectRelative(docOutputDirectory, request));
+				mapping.setOutputDirectory(makeProjectRelative(
+						docOutputDirectory, request));
 				config.getSourceMappings().add(mapping);
 			}
 		}
 	}
 
-
 	private void readCompileSettings(OutputConfiguration config,
 			ProjectConfigurationRequest request, MojoExecution execution)
 			throws CoreException {
 		if (isJavaOutput(config)) {
-			for (String source : request.getMavenProject().getTestCompileSourceRoots()) {
-				SourceMapping mapping = new SourceMapping(makeProjectRelative(source, request));
+			for (String source : request.getMavenProject()
+					.getTestCompileSourceRoots()) {
+				SourceMapping mapping = new SourceMapping(makeProjectRelative(
+						source, request));
 				String testOutputDirectory = getParameterValue(
 						"testOutputDirectory", String.class,
 						request.getMavenSession(), execution);
-				mapping.setOutputDirectory(makeProjectRelative(testOutputDirectory, request));
+				mapping.setOutputDirectory(makeProjectRelative(
+						testOutputDirectory, request));
 				config.getSourceMappings().add(mapping);
 			}
 		}
@@ -124,7 +135,6 @@ public class JnarioProjectConfigurator extends AbstractProjectConfigurator {
 					request.getMavenSession(), execution));
 		}
 	}
-	
 
 	private boolean isJavaOutput(OutputConfiguration config) {
 		return config.getName().equals(IFileSystemAccess.DEFAULT_OUTPUT);
@@ -132,21 +142,16 @@ public class JnarioProjectConfigurator extends AbstractProjectConfigurator {
 
 	private String makeProjectRelative(String fileName,
 			ProjectConfigurationRequest request) {
-		try {
-			String baseDir = request.getMavenProject().getBasedir()
-					.getCanonicalPath();
-			File file = new File(fileName);
-			String relativePath;
-			if (file.isAbsolute()) {
-				relativePath = StringUtils.prechomp(file.getCanonicalPath(),
-						baseDir);
-			} else {
-				relativePath = file.getPath();
-			}
-			String unixDelimited = relativePath.replaceAll("\\\\", "/");
-			return StringUtils.prechomp(unixDelimited, "/");
-		} catch (IOException e) {
-			throw new RuntimeIOException(e);
+		File baseDir = request.getMavenProject().getBasedir();
+		File file = new File(fileName);
+		String relativePath;
+		if (file.isAbsolute()) {
+			relativePath = baseDir.toURI().relativize(file.toURI()).getPath();
+		} else {
+			relativePath = file.getPath();
 		}
+		String unixDelimited = relativePath.replaceAll("\\\\", "/");
+		return CharMatcher.is('/').trimFrom(unixDelimited);
 	}
+
 }
