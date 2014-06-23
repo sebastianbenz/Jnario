@@ -93,7 +93,6 @@ import org.jnario.documentation.XtendDocumentationProvider;
 import org.jnario.feature.compiler.FeatureBatchCompiler;
 import org.jnario.feature.conversion.FeatureValueConverterService;
 import org.jnario.feature.doc.FeatureDocGenerator;
-import org.jnario.feature.formatting.FeatureFormatter2;
 import org.jnario.feature.generator.FeatureCompiler;
 import org.jnario.feature.generator.FeatureJvmModelGenerator;
 import org.jnario.feature.jvmmodel.FeatureExecutableProvider;
@@ -109,6 +108,7 @@ import org.jnario.feature.resource.FeatureLocationInFileProvider;
 import org.jnario.feature.scoping.FeatureImportedNamespaceScopeProvider;
 import org.jnario.feature.scoping.FeatureScopeProviderAccess;
 import org.jnario.feature.validation.FeatureNamesAreUniqueValidationHelper;
+import org.jnario.formatter.JnarioFormatter;
 import org.jnario.formatter.JnarioNodeModelAccess;
 import org.jnario.jvmmodel.ExecutableProvider;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
@@ -349,7 +349,7 @@ public class FeatureRuntimeModule extends
 	}
 	
 	public Class<? extends IBasicFormatter> bindIBasicFormatter() {
-		return FeatureFormatter2.class;
+		return JnarioFormatter.class;
 	}
 	
 	@Override

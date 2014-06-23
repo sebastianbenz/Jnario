@@ -1,4 +1,4 @@
-package org.jnario.spec.tests.unit.formatting;
+package org.jnario.jnario.test.util;
 
 import com.google.inject.Inject
 import org.eclipse.xtext.preferences.MapBasedPreferenceValues

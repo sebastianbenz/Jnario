@@ -2,6 +2,7 @@ package org.jnario.spec.tests.unit.formatting
 
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
+import org.jnario.jnario.test.util.AbstractXbaseFormatterTest
 import org.jnario.spec.SpecInjectorProvider
 import org.junit.Test
 import org.junit.runner.RunWith
