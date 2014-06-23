@@ -10,16 +10,21 @@ package org.jnario.spec.ui.outline;
 import static com.google.common.collect.Iterables.filter;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtend.ide.outline.XtendFeatureNode;
+import org.eclipse.xtend.ide.outline.XtendOutlineNodeFactory;
 import org.eclipse.xtend.ide.outline.XtendOutlineTreeProvider;
 import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmFeature;
+import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.EObjectNode;
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypeExtensions;
 import org.jnario.ExampleCell;
+import org.jnario.ExampleRow;
 import org.jnario.ExampleTable;
 import org.jnario.spec.spec.ExampleGroup;
 
@@ -33,6 +38,12 @@ public class SpecOutlineTreeProvider extends XtendOutlineTreeProvider {
 
 	@Inject
 	private IXtendJvmAssociations associations;
+	
+	@Inject
+	private JvmTypeExtensions typeExtensions;
+	
+	@Inject
+	private XtendOutlineNodeFactory factory;
 	
 	@Override
 	protected void createFeatureNodes(IOutlineNode parentNode,
@@ -55,16 +66,25 @@ public class SpecOutlineTreeProvider extends XtendOutlineTreeProvider {
 			return null;
 		}
 		EObject sourceElement = associations.getPrimarySourceElement(jvmFeature);
+		if(sourceElement instanceof ExampleTable && jvmFeature instanceof JvmOperation){
+			return null;
+		}
 		if(sourceElement instanceof ExampleCell){
 			return null;
 		}
-		if(sourceElement instanceof ExampleTable){
+		if(sourceElement instanceof ExampleRow){
 			return null;
 		}
-		return super.createNodeForFeature(parentNode, inferredType, jvmFeature,
-				semanticFeature, inheritanceDepth);
+		final boolean synthetic = typeExtensions.isSynthetic(jvmFeature);
+		Object text = getText(synthetic ? jvmFeature : semanticFeature);
+		ImageDescriptor image = getImageDescriptor(synthetic ? jvmFeature : semanticFeature);
+	   return factory.createXtendFeatureNode(parentNode, semanticFeature, image, text, true, synthetic, inheritanceDepth);
 	}
 	
+	protected boolean _isLeaf(ExampleTable element) {
+		return true;
+	}
+
 	protected boolean _isLeaf(ExampleGroup element) {
 		return element.getMembers().isEmpty();
 	}

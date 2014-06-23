@@ -51,31 +51,45 @@ public class SpecLabelProvider extends XtendLabelProvider {
 	@Inject
 	private IXtendJvmAssociations associations;
 	
-	public ImageDescriptor _imageDescriptor(ExampleTable element) {
+	  protected ImageDescriptor imageDescriptor(final Object operation) {
+		if (operation instanceof ExampleTable) {
+		  return _imageDescriptor((ExampleTable)operation);
+		}
+		if (operation instanceof ExampleGroup) {
+		  return _imageDescriptor((ExampleGroup)operation);
+		}
+		if (operation instanceof TestFunction) {
+		  return _imageDescriptor((TestFunction)operation);
+		}
+   	    return super.imageDescriptor(operation);
+	  }
+
+	
+	protected ImageDescriptor _imageDescriptor(ExampleTable element) {
 		return images.forField(JvmVisibility.PROTECTED, adornments.get((JvmIdentifiableElement) associations.getJvmElements(element).iterator().next()));
 	}
 	
-	public ImageDescriptor _imageDescriptor(ExampleGroup element) {
+	protected ImageDescriptor _imageDescriptor(ExampleGroup element) {
 		return images.forClass(JvmVisibility.PUBLIC, adornments.get(associations.getInferredType(element)));
 	}
 	
-	public ImageDescriptor _imageDescriptor(TestFunction element) {
+	protected ImageDescriptor _imageDescriptor(TestFunction element) {
 		return images.forOperation(JvmVisibility.PUBLIC, adornments.get(associations.getDirectlyInferredOperation(element)));
 	}
 
-	public String text(ExampleGroup element) {
+	protected String text(ExampleGroup element) {
 		return convertFromJavaString(exampleNameProvider.describe(element), true);
 	}
 	
-	public String text(Example element) {
+	protected String text(Example element) {
 		return convertFromJavaString(exampleNameProvider.describe(element), true);
 	}
 	
-	public String text(ExampleTable element) {
+	protected String text(ExampleTable element) {
 		return exampleNameProvider.toFieldName(element);
 	}
 	
-	public String text(TestFunction element) {
+	protected String text(TestFunction element) {
 		return exampleNameProvider.toMethodName(element);
 	}
 	

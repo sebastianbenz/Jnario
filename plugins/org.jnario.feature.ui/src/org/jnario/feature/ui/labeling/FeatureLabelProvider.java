@@ -50,6 +50,26 @@ public class FeatureLabelProvider extends XtendLabelProvider {
 	@Inject
 	private IXtendJvmAssociations associations;
 	
+    protected ImageDescriptor imageDescriptor(final Object operation) {
+		if (operation instanceof Background) {
+		  return _imageDescriptor((Background)operation);
+		}
+		if (operation instanceof ExampleTable) {
+		  return _imageDescriptor((ExampleTable)operation);
+		}
+		if (operation instanceof Step) {
+		  return _imageDescriptor((Step)operation);
+		}
+		if (operation instanceof Scenario) {
+		  return _imageDescriptor((Scenario)operation);
+		}
+		if (operation instanceof Feature) {
+		  return _imageDescriptor((Feature)operation);
+		}
+   	    return super.imageDescriptor(operation);
+	}
+
+	
 	public ImageDescriptor _imageDescriptor(Background element) {
 		return images.forClass(JvmVisibility.PUBLIC, adornments.get(associations.getInferredType(element)));
 	}

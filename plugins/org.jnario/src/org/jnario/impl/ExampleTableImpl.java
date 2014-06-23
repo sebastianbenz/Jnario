@@ -287,5 +287,16 @@ public class ExampleTableImpl extends XtendMemberImpl implements ExampleTable {
 		result.append(')');
 		return result.toString();
 	}
+	
+	@Override
+	public boolean isStatic() {
+		return false;
+	}
+	
+	@Override
+	public boolean isFinal() {
+		return true;
+	}
+	
 
 } //ExampleTableImpl

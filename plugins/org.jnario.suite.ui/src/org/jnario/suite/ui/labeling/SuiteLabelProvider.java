@@ -44,6 +44,14 @@ public class SuiteLabelProvider extends XtendLabelProvider {
 	@Inject
 	private IXtendJvmAssociations associations;
 	
+	@Override
+	protected ImageDescriptor imageDescriptor(Object operation) {
+		if (operation instanceof Suite) {
+		  return _imageDescriptor((Suite)operation);
+		}
+		return super.imageDescriptor(operation);
+	}
+	
 	public ImageDescriptor _imageDescriptor(Suite element) {
 		return images.forClass(JvmVisibility.PUBLIC, adornments.get(associations.getInferredType(element)));
 	}
