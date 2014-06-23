@@ -106,6 +106,7 @@ import org.jnario.scoping.JnarioImplicitlyImportedFeatures;
 import org.jnario.spec.compiler.SpecBatchCompiler;
 import org.jnario.spec.conversion.SpecValueConverterService;
 import org.jnario.spec.doc.SpecDocGenerator;
+import org.jnario.spec.formatting.SpecFormatter;
 import org.jnario.spec.jvmmodel.SpecExecutableProvider;
 import org.jnario.spec.jvmmodel.SpecJvmModelGenerator;
 import org.jnario.spec.jvmmodel.SpecJvmModelInferrer;
@@ -233,7 +234,7 @@ public class SpecRuntimeModule extends org.jnario.spec.AbstractSpecRuntimeModule
 	}
 	
 	public Class<? extends IBasicFormatter> bindIBasicFormatter() {
-		return XtendFormatter.class;
+		return SpecFormatter.class;
 	}
 
 	public Class<? extends IImportsConfiguration> bindIImportsConfiguration() {
