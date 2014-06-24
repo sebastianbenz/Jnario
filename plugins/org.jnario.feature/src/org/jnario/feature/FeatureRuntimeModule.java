@@ -109,6 +109,7 @@ import org.jnario.feature.resource.FeatureLocationInFileProvider;
 import org.jnario.feature.scoping.FeatureImportedNamespaceScopeProvider;
 import org.jnario.feature.scoping.FeatureScopeProviderAccess;
 import org.jnario.feature.validation.FeatureNamesAreUniqueValidationHelper;
+import org.jnario.formatter.JnarioFormatter;
 import org.jnario.formatter.JnarioNodeModelAccess;
 import org.jnario.jvmmodel.ExecutableProvider;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
