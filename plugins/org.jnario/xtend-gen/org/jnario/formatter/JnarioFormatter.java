@@ -24,8 +24,10 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeConstraint;
 import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.common.types.JvmWildcardTypeReference;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBasicForLoopExpression;
 import org.eclipse.xtext.xbase.XBinaryOperation;
@@ -266,6 +268,17 @@ public class JnarioFormatter extends XtendFormatter {
     this.formatRows(_rows, format);
     EList<ExampleColumn> _columns = table.getColumns();
     this.formatColumns(_columns, format);
+  }
+  
+  /**
+   * Hack: No node for type Void - prevent NullPointerException
+   */
+  protected void _format(final JvmParameterizedTypeReference type, final FormattableDocument format) {
+    ICompositeNode _findActualNodeFor = NodeModelUtils.findActualNodeFor(type);
+    boolean _notEquals = (!Objects.equal(_findActualNodeFor, null));
+    if (_notEquals) {
+      super.format(type, format);
+    }
   }
   
   protected void format(final EObject table, final FormattableDocument format) {

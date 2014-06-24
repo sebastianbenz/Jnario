@@ -170,6 +170,69 @@ public class TableFormatterTest extends AbstractXbaseFormatterTest {
   }
   
   @Test
+  public void testFormatMultilineCells2() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package test");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("describe \"Test\" {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("def tab {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("| int  a    | b    | ccc |");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("| 1+  1     | 2    | 3   |");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("| Math.max(");
+    _builder.newLine();
+    _builder.append("\t           ");
+    _builder.append("1,2)      | 1234 | 7   |");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("| 3+1       | 4    | 5   |");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append("package test");
+    _builder_1.newLine();
+    _builder_1.newLine();
+    _builder_1.append("describe \"Test\" {");
+    _builder_1.newLine();
+    _builder_1.append("\t                     ");
+    _builder_1.append("def tab {");
+    _builder_1.newLine();
+    _builder_1.append("\t\t");
+    _builder_1.append("| int  a| b|ccc |");
+    _builder_1.newLine();
+    _builder_1.append("\t\t");
+    _builder_1.append("| 1+  1|2 |3|");
+    _builder_1.newLine();
+    _builder_1.append("\t\t");
+    _builder_1.append("|                Math.max(");
+    _builder_1.newLine();
+    _builder_1.append("\t           ");
+    _builder_1.append("1,2)                     | 1234 |7  |");
+    _builder_1.newLine();
+    _builder_1.append("\t\t");
+    _builder_1.append("|3+1| 4| 5|");
+    _builder_1.newLine();
+    _builder_1.append("\t");
+    _builder_1.append("}");
+    _builder_1.newLine();
+    _builder_1.append("}");
+    _builder_1.newLine();
+    this.assertFormatted(_builder, _builder_1);
+  }
+  
+  @Test
   public void testFormatMultilineWithClosures() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package test");
@@ -225,6 +288,49 @@ public class TableFormatterTest extends AbstractXbaseFormatterTest {
     _builder_1.append("| s.toLowerCase] | \"b\"            |");
     _builder_1.newLine();
     _builder_1.append("    ");
+    _builder_1.append("}");
+    _builder_1.newLine();
+    _builder_1.append("}");
+    _builder_1.newLine();
+    this.assertFormatted(_builder, _builder_1);
+  }
+  
+  @Test
+  public void testFormatNoTables() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package test");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("describe \"Test\" {");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact true => true");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fact \"Test\" {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append("package test");
+    _builder_1.newLine();
+    _builder_1.newLine();
+    _builder_1.append("describe \"Test\" {");
+    _builder_1.newLine();
+    _builder_1.newLine();
+    _builder_1.append("\t");
+    _builder_1.append("fact true => true");
+    _builder_1.newLine();
+    _builder_1.newLine();
+    _builder_1.append("\t");
+    _builder_1.append("fact \"Test\" {");
+    _builder_1.newLine();
+    _builder_1.append("\t");
     _builder_1.append("}");
     _builder_1.newLine();
     _builder_1.append("}");

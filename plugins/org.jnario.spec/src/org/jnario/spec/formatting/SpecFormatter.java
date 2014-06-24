@@ -10,13 +10,11 @@
  */
 package org.jnario.spec.formatting;
 
-import org.eclipse.xtend.core.formatting.XtendFormatter;
-import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter;
-import org.eclipse.xtext.formatting.impl.FormattingConfig;
+import org.jnario.formatter.JnarioFormatter;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
  */
-public class SpecFormatter extends XtendFormatter {
+public class SpecFormatter extends JnarioFormatter {
 	
 }
