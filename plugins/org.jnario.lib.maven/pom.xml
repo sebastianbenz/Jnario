@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jnario</groupId>
 	<version>1.0.0-SNAPSHOT</version>
-	<artifactId>org.jnario.lib.maven</artifactId>
+	<artifactId>org.jnario.lib</artifactId>
 	<name>Jnario Runtime Library</name>
 	<description>The runtime library for the Jnario testing language.</description>
 	<properties>
