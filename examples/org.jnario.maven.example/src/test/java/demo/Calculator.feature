@@ -20,3 +20,4 @@ Feature: Addition
     		result = calculator.add(args.first.toInt, args.second.toInt)
     Then the result should be "120" 
 	     result => args.first.toInt
+    And is pending
