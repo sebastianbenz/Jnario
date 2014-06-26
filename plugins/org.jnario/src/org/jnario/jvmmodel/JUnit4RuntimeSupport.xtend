@@ -14,12 +14,15 @@ import org.eclipse.xtend.core.xtend.XtendClass
 import org.jnario.runner.FeatureRunner
 import java.util.Collection
 import java.util.Listimport org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.common.types.util.TypeReferences
+import org.eclipse.emf.common.notify.Notifier
 
 class JUnit4RuntimeSupport implements TestRuntimeSupport {
 	
 	val static RUN_WITH = "org.junit.runner.RunWith"
 	 
 	@Inject extension JvmTypesBuilder 
+	@Inject TypeReferences typeReferences
 	
 	override addChildren(Specification context, JvmGenericType parent, Collection<JvmTypeReference> children) {
 		if(!children.empty){
@@ -48,23 +51,31 @@ class JUnit4RuntimeSupport implements TestRuntimeSupport {
 	}
 
 	override updateExampleGroup(XtendClass exampleGroup, JvmGenericType inferredType) {
-		inferredType.annotations += exampleGroup.toAnnotation(RUN_WITH, typeof(ExampleGroupRunner));
+		inferredType.annotations += exampleGroup.toAnnotation(RUN_WITH, getTypeForName(ExampleGroupRunner, exampleGroup));
 	}
-
+	
 	override markAsTestMethod(Executable element, JvmOperation operation) {
 		operation.annotations += element.toAnnotation("org.junit.Test")
 	}
 	
 	override updateFeature(XtendClass feature, JvmGenericType inferredType, List<JvmTypeReference> scenarios) {
-		inferredType.annotations += feature.toAnnotation(RUN_WITH, typeof(FeatureRunner));
+		inferredType.annotations += feature.toAnnotation(RUN_WITH, getTypeForName(FeatureRunner, feature));
 	}
 	
 	override updateScenario(XtendClass scenario, JvmGenericType inferredType) {
-		inferredType.annotations += scenario.toAnnotation(RUN_WITH, typeof(FeatureRunner));
+		inferredType.annotations += scenario.toAnnotation(RUN_WITH, getTypeForName(FeatureRunner, scenario));
 	}
 
 	override updateSuite(XtendClass exampleGroup, JvmGenericType inferredType) {
-		inferredType.annotations += exampleGroup.toAnnotation(RUN_WITH, typeof(ExampleGroupRunner));
+		inferredType.annotations += exampleGroup.toAnnotation(RUN_WITH, getTypeForName(ExampleGroupRunner, exampleGroup));
 	}
-	
+
+	def getTypeForName(Class<?> type, Notifier context) {
+		val result = typeReferences.getTypeForName(type, context)
+		if(result == null){
+			throw new IllegalStateException("Jnario runtime could not be resolved: " + type.name)
+		}
+		result
+	}
+
 }

@@ -1,8 +1,10 @@
 package org.jnario.jvmmodel;
 
+import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.util.Collection;
 import java.util.List;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendMember;
@@ -10,6 +12,7 @@ import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.Executable;
@@ -26,6 +29,9 @@ public class JUnit4RuntimeSupport implements TestRuntimeSupport {
   @Inject
   @Extension
   private JvmTypesBuilder _jvmTypesBuilder;
+  
+  @Inject
+  private TypeReferences typeReferences;
   
   public void addChildren(final Specification context, final JvmGenericType parent, final Collection<JvmTypeReference> children) {
     boolean _isEmpty = children.isEmpty();
@@ -69,7 +75,8 @@ public class JUnit4RuntimeSupport implements TestRuntimeSupport {
   
   public void updateExampleGroup(final XtendClass exampleGroup, final JvmGenericType inferredType) {
     EList<JvmAnnotationReference> _annotations = inferredType.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(exampleGroup, JUnit4RuntimeSupport.RUN_WITH, ExampleGroupRunner.class);
+    JvmTypeReference _typeForName = this.getTypeForName(ExampleGroupRunner.class, exampleGroup);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(exampleGroup, JUnit4RuntimeSupport.RUN_WITH, _typeForName);
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
@@ -81,19 +88,37 @@ public class JUnit4RuntimeSupport implements TestRuntimeSupport {
   
   public void updateFeature(final XtendClass feature, final JvmGenericType inferredType, final List<JvmTypeReference> scenarios) {
     EList<JvmAnnotationReference> _annotations = inferredType.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(feature, JUnit4RuntimeSupport.RUN_WITH, FeatureRunner.class);
+    JvmTypeReference _typeForName = this.getTypeForName(FeatureRunner.class, feature);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(feature, JUnit4RuntimeSupport.RUN_WITH, _typeForName);
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
   public void updateScenario(final XtendClass scenario, final JvmGenericType inferredType) {
     EList<JvmAnnotationReference> _annotations = inferredType.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(scenario, JUnit4RuntimeSupport.RUN_WITH, FeatureRunner.class);
+    JvmTypeReference _typeForName = this.getTypeForName(FeatureRunner.class, scenario);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(scenario, JUnit4RuntimeSupport.RUN_WITH, _typeForName);
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
   }
   
   public void updateSuite(final XtendClass exampleGroup, final JvmGenericType inferredType) {
     EList<JvmAnnotationReference> _annotations = inferredType.getAnnotations();
-    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(exampleGroup, JUnit4RuntimeSupport.RUN_WITH, ExampleGroupRunner.class);
+    JvmTypeReference _typeForName = this.getTypeForName(ExampleGroupRunner.class, exampleGroup);
+    JvmAnnotationReference _annotation = this._jvmTypesBuilder.toAnnotation(exampleGroup, JUnit4RuntimeSupport.RUN_WITH, _typeForName);
     this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotation);
+  }
+  
+  public JvmTypeReference getTypeForName(final Class<?> type, final Notifier context) {
+    JvmTypeReference _xblockexpression = null;
+    {
+      final JvmTypeReference result = this.typeReferences.getTypeForName(type, context);
+      boolean _equals = Objects.equal(result, null);
+      if (_equals) {
+        String _name = type.getName();
+        String _plus = ("Jnario runtime could not be resolved: " + _name);
+        throw new IllegalStateException(_plus);
+      }
+      _xblockexpression = result;
+    }
+    return _xblockexpression;
   }
 }
