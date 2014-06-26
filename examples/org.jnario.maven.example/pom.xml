@@ -54,7 +54,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jnario</groupId>
-			<artifactId>org.jnario.lib.maven</artifactId>
+			<artifactId>org.jnario.lib</artifactId>
 			<version>${jnario.version}</version>
 			<scope>test</scope>
 		</dependency>
@@ -69,6 +69,7 @@
 					<execution>
 						<goals>
 							<goal>compile</goal>
+							<goal>testCompile</goal>
 							<goal>xtend-install-debug-info</goal>
 						</goals>
 					</execution>
@@ -83,18 +84,6 @@
 						<goals>
 							<goal>testCompile</goal>
 							<goal>xtend-test-install-debug-info</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.jnario</groupId>
-				<artifactId>report</artifactId>
-				<version>${jnario.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
 						</goals>
 					</execution>
 				</executions>

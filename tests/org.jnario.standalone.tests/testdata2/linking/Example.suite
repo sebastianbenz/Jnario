@@ -1,0 +1,8 @@
+package linking
+import linking.*
+
+#Example Suite
+
+- "Example"
+- \.*Examples\
+
