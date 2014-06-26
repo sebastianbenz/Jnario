@@ -8,30 +8,40 @@
 package org.jnario.compiler
 
 import com.google.common.base.Joiner
+import com.google.common.base.Strings
+import com.google.common.collect.Lists
 import com.google.inject.Inject
 import com.google.inject.Injector
+import java.io.File
+import java.util.HashMap
 import java.util.List
+import java.util.Map
 import org.apache.log4j.Logger
 import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl
 import org.eclipse.xtend.core.XtendStandaloneSetup
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler
 import org.eclipse.xtext.ISetup
+import org.eclipse.xtext.common.types.JvmDeclaredType
+import org.eclipse.xtext.common.types.TypesPackage
+import org.eclipse.xtext.common.types.descriptions.IStubGenerator
+import org.eclipse.xtext.common.types.descriptions.JvmTypesResourceDescriptionStrategy
 import org.eclipse.xtext.mwe.NameBasedFilter
 import org.eclipse.xtext.mwe.PathTraverser
+import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.xtext.parser.IEncodingProvider
 import org.eclipse.xtext.resource.FileExtensionProvider
+import org.eclipse.xtext.resource.IResourceDescription
+import org.eclipse.xtext.resource.IResourceDescription.Manager
+import org.eclipse.xtext.resource.containers.FlatResourceSetBasedAllContainersState
+import org.eclipse.xtext.xbase.compiler.JvmModelGenerator
 import org.jnario.feature.FeatureStandaloneSetup
 import org.jnario.spec.SpecStandaloneSetup
 import org.jnario.suite.SuiteStandaloneSetup
-import com.google.common.collect.Lists
-import org.eclipse.xtext.common.types.descriptions.IStubGenerator
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.resource.IResourceDescription
-import java.util.HashMap
-import org.eclipse.xtext.resource.IResourceDescription.Manager
-import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl
-import org.eclipse.xtext.resource.containers.FlatResourceSetBasedAllContainersState
+import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.xtext.xbase.compiler.IGeneratorConfigProvider
 
 class JnarioStandaloneCompiler extends XtendBatchCompiler {
 	
@@ -44,7 +54,7 @@ class JnarioStandaloneCompiler extends XtendBatchCompiler {
 	
 	List<Injector> injectors
 	
-	HashMap<String, Manager> resourceDesciptionManagers
+	Map<String, Injector> injectorMap
 	
     def static JnarioStandaloneCompiler create(){
 		val setups = #[new XtendStandaloneSetup(), new FeatureStandaloneSetup(), new SpecStandaloneSetup(), new SuiteStandaloneSetup()]
@@ -54,9 +64,9 @@ class JnarioStandaloneCompiler extends XtendBatchCompiler {
 	new(List<? extends ISetup> setups){
 		injectors = setups.map[createInjectorAndDoEMFRegistration]
 		injectors.head.injectMembers(this)
-		resourceDesciptionManagers = newHashMap(injectors.map[
+		injectorMap = newHashMap(injectors.map[
 			val fileExtension = getInstance(FileExtensionProvider).primaryFileExtension
-			fileExtension -> getInstance(IResourceDescription.Manager)
+			fileExtension -> it
 		])
 	}
 	
@@ -116,7 +126,45 @@ class JnarioStandaloneCompiler extends XtendBatchCompiler {
 	}
 	
 	def findResourceDescriptionManager(Resource resource) {
-  	  resourceDesciptionManagers.get(resource.URI.fileExtension.toLowerCase)
+	  getInstance(resource, IResourceDescription.Manager)
+	}
+	
+	def <T> T getInstance(Resource resource, Class<T> type) {
+	  injectorMap.get(resource.URI.fileExtension.toLowerCase).getInstance(type)
+	}
+
+	override generateJavaFiles(ResourceSet resourceSet) {
+		val javaIoFileSystemAccess = javaIoFileSystemAccessProvider.get();
+		javaIoFileSystemAccess.setOutputPath(outputPath);
+		javaIoFileSystemAccess.setWriteTrace(writeTraceFiles);
+		val resourceDescriptions = getResourceDescriptions(resourceSet);
+		val exportedObjectsByType = resourceDescriptions
+				.getExportedObjectsByType(TypesPackage.Literals.JVM_DECLARED_TYPE);
+		if (log.isInfoEnabled()) {
+			val size = exportedObjectsByType.size
+			if (size == 0) {
+				log.info("No sources to compile in '" + sourcePath + "'");
+			} else {
+				log.info("Compiling " + size + " source " + (if(size == 1)  "file" else "files") + " to " + outputPath);
+			}
+		}
+		exportedObjectsByType.filter[getUserData(JvmTypesResourceDescriptionStrategy.IS_NESTED_TYPE) == null].forEach[eObjectDescription|
+			val jvmGenericType = eObjectDescription.getEObjectOrProxy() as JvmDeclaredType;
+//			JvmDeclaredType jvmGenericType = xtendJvmAssociations.getInferredType(xtendType);
+			val generator = getInstance(jvmGenericType.eResource, JvmModelGenerator)
+			val generatorConfig = getInstance(jvmGenericType.eResource, IGeneratorConfigProvider)
+			val nameProvider = getInstance(jvmGenericType.eResource, IQualifiedNameProvider)
+			val generatedType = (generator).generateType(jvmGenericType, generatorConfig.get(jvmGenericType));
+			val qualifiedName = nameProvider.getFullyQualifiedName(jvmGenericType);
+			if (log.isDebugEnabled()) {
+				log.debug("write '" + outputPath + File.separator + getJavaFileName(qualifiedName) + "'");
+			}
+			javaIoFileSystemAccess.generateFile(getJavaFileName(qualifiedName), generatedType);
+		]
+	}
+
+	def String getJavaFileName(QualifiedName typeName) {
+		return org.eclipse.xtext.util.Strings.concat("/", typeName.getSegments()) + ".java";
 	}
 	
 }

@@ -25,7 +25,6 @@ import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.compiler.JnarioStandaloneCompiler;
 import org.jnario.jnario.test.util.ExtendedSuiteInjectorProvider;
 import org.jnario.jnario.test.util.ModelStore;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -73,16 +72,6 @@ public class JnarioStandaloneCompilerTest {
     batchCompiler.compile();
   }
   
-  @After
-  public void onTearDown() {
-    try {
-      File _file = new File(JnarioStandaloneCompilerTest.OUTPUT_DIRECTORY);
-      Files.cleanFolder(_file, null, true, true);
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
   @Test
   public void testCompileTestData() {
     try {
@@ -96,10 +85,10 @@ public class JnarioStandaloneCompilerTest {
       };
       String[] _list = outputDir.list(_function);
       int _size = ((List<String>)Conversions.doWrapArray(_list)).size();
-      Assert.assertEquals(6, _size);
+      Assert.assertEquals(8, _size);
       File _file = new File(outputDir, "ExampleSuiteSuite.java");
       final String fileContent = com.google.common.io.Files.toString(_file, Charsets.UTF_8);
-      boolean _contains = fileContent.contains("@Contains({ ExampleSpec.class, ExamplesFeature.class })");
+      boolean _contains = fileContent.contains("@Contains(");
       Assert.assertTrue(("Expected to be to contain others specs, but was: \n\n" + fileContent), _contains);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);

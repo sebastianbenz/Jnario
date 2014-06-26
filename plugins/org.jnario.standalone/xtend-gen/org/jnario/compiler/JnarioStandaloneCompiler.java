@@ -8,6 +8,7 @@
 package org.jnario.compiler;
 
 import com.google.common.base.Joiner;
+import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
@@ -25,20 +26,32 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.xtend.core.XtendStandaloneSetup;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtext.ISetup;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.common.types.descriptions.IStubGenerator;
+import org.eclipse.xtext.common.types.descriptions.JvmTypesResourceDescriptionStrategy;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.mwe.NameBasedFilter;
 import org.eclipse.xtext.mwe.PathTraverser;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.parser.IEncodingProvider;
 import org.eclipse.xtext.resource.FileExtensionProvider;
+import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.containers.FlatResourceSetBasedAllContainersState;
+import org.eclipse.xtext.resource.impl.ResourceSetBasedResourceDescriptions;
+import org.eclipse.xtext.util.Strings;
+import org.eclipse.xtext.xbase.compiler.GeneratorConfig;
+import org.eclipse.xtext.xbase.compiler.IGeneratorConfigProvider;
+import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -62,7 +75,7 @@ public class JnarioStandaloneCompiler extends XtendBatchCompiler {
   
   private List<Injector> injectors;
   
-  private HashMap<String, IResourceDescription.Manager> resourceDesciptionManagers;
+  private Map<String, Injector> injectorMap;
   
   public static JnarioStandaloneCompiler create() {
     XtendStandaloneSetup _xtendStandaloneSetup = new XtendStandaloneSetup();
@@ -83,21 +96,20 @@ public class JnarioStandaloneCompiler extends XtendBatchCompiler {
     this.injectors = _map;
     Injector _head = IterableExtensions.<Injector>head(this.injectors);
     _head.injectMembers(this);
-    final Function1<Injector, Pair<String, IResourceDescription.Manager>> _function_1 = new Function1<Injector, Pair<String, IResourceDescription.Manager>>() {
-      public Pair<String, IResourceDescription.Manager> apply(final Injector it) {
-        Pair<String, IResourceDescription.Manager> _xblockexpression = null;
+    final Function1<Injector, Pair<String, Injector>> _function_1 = new Function1<Injector, Pair<String, Injector>>() {
+      public Pair<String, Injector> apply(final Injector it) {
+        Pair<String, Injector> _xblockexpression = null;
         {
           FileExtensionProvider _instance = it.<FileExtensionProvider>getInstance(FileExtensionProvider.class);
           final String fileExtension = _instance.getPrimaryFileExtension();
-          IResourceDescription.Manager _instance_1 = it.<IResourceDescription.Manager>getInstance(IResourceDescription.Manager.class);
-          _xblockexpression = Pair.<String, IResourceDescription.Manager>of(fileExtension, _instance_1);
+          _xblockexpression = Pair.<String, Injector>of(fileExtension, it);
         }
         return _xblockexpression;
       }
     };
-    List<Pair<String, IResourceDescription.Manager>> _map_1 = ListExtensions.<Injector, Pair<String, IResourceDescription.Manager>>map(this.injectors, _function_1);
-    HashMap<String, IResourceDescription.Manager> _newHashMap = CollectionLiterals.<String, IResourceDescription.Manager>newHashMap(((Pair<? extends String, ? extends IResourceDescription.Manager>[])Conversions.unwrapArray(_map_1, Pair.class)));
-    this.resourceDesciptionManagers = _newHashMap;
+    List<Pair<String, Injector>> _map_1 = ListExtensions.<Injector, Pair<String, Injector>>map(this.injectors, _function_1);
+    HashMap<String, Injector> _newHashMap = CollectionLiterals.<String, Injector>newHashMap(((Pair<? extends String, ? extends Injector>[])Conversions.unwrapArray(_map_1, Pair.class)));
+    this.injectorMap = _newHashMap;
   }
   
   protected ResourceSet loadXtendFiles(final ResourceSet resourceSet) {
@@ -196,9 +208,78 @@ public class JnarioStandaloneCompiler extends XtendBatchCompiler {
   }
   
   public IResourceDescription.Manager findResourceDescriptionManager(final Resource resource) {
+    return this.<IResourceDescription.Manager>getInstance(resource, IResourceDescription.Manager.class);
+  }
+  
+  public <T extends Object> T getInstance(final Resource resource, final Class<T> type) {
     URI _uRI = resource.getURI();
     String _fileExtension = _uRI.fileExtension();
     String _lowerCase = _fileExtension.toLowerCase();
-    return this.resourceDesciptionManagers.get(_lowerCase);
+    Injector _get = this.injectorMap.get(_lowerCase);
+    return _get.<T>getInstance(type);
+  }
+  
+  public void generateJavaFiles(final ResourceSet resourceSet) {
+    final JavaIoFileSystemAccess javaIoFileSystemAccess = this.javaIoFileSystemAccessProvider.get();
+    javaIoFileSystemAccess.setOutputPath(this.outputPath);
+    javaIoFileSystemAccess.setWriteTrace(this.writeTraceFiles);
+    final ResourceSetBasedResourceDescriptions resourceDescriptions = this.getResourceDescriptions(resourceSet);
+    final Iterable<IEObjectDescription> exportedObjectsByType = resourceDescriptions.getExportedObjectsByType(TypesPackage.Literals.JVM_DECLARED_TYPE);
+    boolean _isInfoEnabled = JnarioStandaloneCompiler.log.isInfoEnabled();
+    if (_isInfoEnabled) {
+      final int size = IterableExtensions.size(exportedObjectsByType);
+      if ((size == 0)) {
+        JnarioStandaloneCompiler.log.info((("No sources to compile in \'" + this.sourcePath) + "\'"));
+      } else {
+        String _xifexpression = null;
+        if ((size == 1)) {
+          _xifexpression = "file";
+        } else {
+          _xifexpression = "files";
+        }
+        String _plus = ((("Compiling " + Integer.valueOf(size)) + " source ") + _xifexpression);
+        String _plus_1 = (_plus + " to ");
+        String _plus_2 = (_plus_1 + this.outputPath);
+        JnarioStandaloneCompiler.log.info(_plus_2);
+      }
+    }
+    final Function1<IEObjectDescription, Boolean> _function = new Function1<IEObjectDescription, Boolean>() {
+      public Boolean apply(final IEObjectDescription it) {
+        String _userData = it.getUserData(JvmTypesResourceDescriptionStrategy.IS_NESTED_TYPE);
+        return Boolean.valueOf(Objects.equal(_userData, null));
+      }
+    };
+    Iterable<IEObjectDescription> _filter = IterableExtensions.<IEObjectDescription>filter(exportedObjectsByType, _function);
+    final Procedure1<IEObjectDescription> _function_1 = new Procedure1<IEObjectDescription>() {
+      public void apply(final IEObjectDescription eObjectDescription) {
+        EObject _eObjectOrProxy = eObjectDescription.getEObjectOrProxy();
+        final JvmDeclaredType jvmGenericType = ((JvmDeclaredType) _eObjectOrProxy);
+        Resource _eResource = jvmGenericType.eResource();
+        final JvmModelGenerator generator = JnarioStandaloneCompiler.this.<JvmModelGenerator>getInstance(_eResource, JvmModelGenerator.class);
+        Resource _eResource_1 = jvmGenericType.eResource();
+        final IGeneratorConfigProvider generatorConfig = JnarioStandaloneCompiler.this.<IGeneratorConfigProvider>getInstance(_eResource_1, IGeneratorConfigProvider.class);
+        Resource _eResource_2 = jvmGenericType.eResource();
+        final IQualifiedNameProvider nameProvider = JnarioStandaloneCompiler.this.<IQualifiedNameProvider>getInstance(_eResource_2, IQualifiedNameProvider.class);
+        GeneratorConfig _get = generatorConfig.get(jvmGenericType);
+        final CharSequence generatedType = generator.generateType(jvmGenericType, _get);
+        final QualifiedName qualifiedName = nameProvider.getFullyQualifiedName(jvmGenericType);
+        boolean _isDebugEnabled = JnarioStandaloneCompiler.log.isDebugEnabled();
+        if (_isDebugEnabled) {
+          String _javaFileName = JnarioStandaloneCompiler.this.getJavaFileName(qualifiedName);
+          String _plus = ((("write \'" + JnarioStandaloneCompiler.this.outputPath) + File.separator) + _javaFileName);
+          String _plus_1 = (_plus + "\'");
+          JnarioStandaloneCompiler.log.debug(_plus_1);
+        }
+        String _javaFileName_1 = JnarioStandaloneCompiler.this.getJavaFileName(qualifiedName);
+        javaIoFileSystemAccess.generateFile(_javaFileName_1, generatedType);
+      }
+    };
+    IterableExtensions.<IEObjectDescription>forEach(_filter, _function_1);
+  }
+  
+  public String getJavaFileName(final QualifiedName typeName) {
+    List<String> _segments = typeName.getSegments();
+    String _concat = Strings.concat("/", _segments);
+    return (_concat + ".java");
   }
 }
