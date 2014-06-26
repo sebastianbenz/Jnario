@@ -8,20 +8,16 @@
 package org.jnario.compiler
 
 import com.google.common.base.Joiner
-import com.google.common.base.Strings
 import com.google.common.collect.Lists
 import com.google.inject.Inject
 import com.google.inject.Injector
 import java.io.File
-import java.util.HashMap
 import java.util.List
 import java.util.Map
 import org.apache.log4j.Logger
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl
-import org.eclipse.xtend.core.XtendStandaloneSetup
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler
 import org.eclipse.xtext.ISetup
 import org.eclipse.xtext.common.types.JvmDeclaredType
@@ -30,18 +26,20 @@ import org.eclipse.xtext.common.types.descriptions.IStubGenerator
 import org.eclipse.xtext.common.types.descriptions.JvmTypesResourceDescriptionStrategy
 import org.eclipse.xtext.mwe.NameBasedFilter
 import org.eclipse.xtext.mwe.PathTraverser
+import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.xtext.parser.IEncodingProvider
 import org.eclipse.xtext.resource.FileExtensionProvider
 import org.eclipse.xtext.resource.IResourceDescription
-import org.eclipse.xtext.resource.IResourceDescription.Manager
 import org.eclipse.xtext.resource.containers.FlatResourceSetBasedAllContainersState
+import org.eclipse.xtext.util.Strings
+import org.eclipse.xtext.xbase.compiler.IGeneratorConfigProvider
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator
 import org.jnario.feature.FeatureStandaloneSetup
 import org.jnario.spec.SpecStandaloneSetup
 import org.jnario.suite.SuiteStandaloneSetup
-import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.eclipse.xtext.xbase.compiler.IGeneratorConfigProvider
+
+import static org.jnario.compiler.JnarioStandaloneCompiler.*
 
 class JnarioStandaloneCompiler extends XtendBatchCompiler {
 	
@@ -57,7 +55,7 @@ class JnarioStandaloneCompiler extends XtendBatchCompiler {
 	Map<String, Injector> injectorMap
 	
     def static JnarioStandaloneCompiler create(){
-		val setups = #[new XtendStandaloneSetup(), new FeatureStandaloneSetup(), new SpecStandaloneSetup(), new SuiteStandaloneSetup()]
+		val setups = #[new FeatureStandaloneSetup(), new SpecStandaloneSetup(), new SuiteStandaloneSetup()]
 		return new JnarioStandaloneCompiler(setups)
 	}
 	
@@ -164,7 +162,7 @@ class JnarioStandaloneCompiler extends XtendBatchCompiler {
 	}
 
 	def String getJavaFileName(QualifiedName typeName) {
-		return org.eclipse.xtext.util.Strings.concat("/", typeName.getSegments()) + ".java";
+		return Strings.concat("/", typeName.getSegments()) + ".java";
 	}
 	
 }

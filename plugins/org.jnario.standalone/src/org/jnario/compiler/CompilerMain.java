@@ -9,21 +9,10 @@
 
 package org.jnario.compiler;
 
-import static com.google.common.collect.Lists.*;
-
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 
 import org.apache.log4j.BasicConfigurator;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.xtext.ISetup;
-import org.jnario.feature.FeatureStandaloneSetup;
-import org.jnario.spec.SpecStandaloneSetup;
-import org.jnario.suite.SuiteStandaloneSetup;
-
-import com.google.inject.Injector;
-import com.google.inject.Provider;
 
 /**
  * @author Sebastian Benz - Initial contribution and API
@@ -93,27 +82,16 @@ public class CompilerMain {
 
 	public int compile() {
 		BasicConfigurator.configure();
-		final ResourceSet resourceSet = SETUPS.get(0).createInjectorAndDoEMFRegistration().getInstance(ResourceSet.class);
-		for (ISetup setup : SETUPS) {
-			Injector injector = setup.createInjectorAndDoEMFRegistration();
-			JnarioBatchCompiler jnarioCompiler = injector.getInstance(JnarioBatchCompiler.class);
-			jnarioCompiler.setOutputPath(outputPath);
-			jnarioCompiler.setClassPath(classPath);
-			jnarioCompiler.setTempDirectory(tempDirectory);
-			jnarioCompiler.setFileEncoding(fileEncoding);
-			jnarioCompiler.setSourcePath(sourcePath);
-			jnarioCompiler.setResourceSetProvider(new Provider<ResourceSet>() {
-				public ResourceSet get() {
-					return resourceSet;
-				}
-			});
-			if(!jnarioCompiler.compile()){
-				return COMPILATION_ERROR;
-			}
+		JnarioStandaloneCompiler jnarioCompiler = JnarioStandaloneCompiler.create();
+		jnarioCompiler.setOutputPath(outputPath);
+		jnarioCompiler.setClassPath(classPath);
+		jnarioCompiler.setTempDirectory(tempDirectory);
+		jnarioCompiler.setFileEncoding(fileEncoding);
+		jnarioCompiler.setSourcePath(sourcePath);
+		if(!jnarioCompiler.compile()){
+			return COMPILATION_ERROR;
 		}
 		return OK;
 	}
-
-	public static final List<ISetup> SETUPS =  newArrayList(new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
 
 }

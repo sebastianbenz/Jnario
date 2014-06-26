@@ -9,15 +9,20 @@ package org.jnario.compiler
 
 import com.google.common.io.Closeables
 import com.google.inject.Injector
+import com.google.inject.Provider
 import java.io.File
 import java.io.FileInputStream
+import java.util.List
 import org.apache.log4j.BasicConfigurator
 import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.xtext.ISetup
+import org.jnario.feature.FeatureStandaloneSetup
 import org.jnario.report.HashBasedSpec2ResultMapping
 import org.jnario.report.SpecResultParser
+import org.jnario.spec.SpecStandaloneSetup
+import org.jnario.suite.SuiteStandaloneSetup
 
 import static org.jnario.compiler.CompilerMain.*
-import com.google.inject.Provider
 
 class StandaloneResourceProvider implements Provider<ResourceSet> {
 	
@@ -125,4 +130,6 @@ class DocCompilerMain {
 			
 		}
 	}
+
+	public static final List<ISetup> SETUPS =  newArrayList(new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
 }

@@ -19,6 +19,7 @@ import java.util.List;
 import org.apache.log4j.BasicConfigurator;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.ISetup;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
@@ -28,8 +29,11 @@ import org.jnario.compiler.CompilerMain;
 import org.jnario.compiler.HtmlAssetsCompiler;
 import org.jnario.compiler.JnarioDocCompiler;
 import org.jnario.compiler.StandaloneResourceProvider;
+import org.jnario.feature.FeatureStandaloneSetup;
 import org.jnario.report.HashBasedSpec2ResultMapping;
 import org.jnario.report.SpecResultParser;
+import org.jnario.spec.SpecStandaloneSetup;
+import org.jnario.suite.SuiteStandaloneSetup;
 
 @SuppressWarnings("all")
 public class DocCompilerMain {
@@ -162,7 +166,7 @@ public class DocCompilerMain {
     int _xblockexpression = (int) 0;
     {
       BasicConfigurator.configure();
-      ISetup _get = CompilerMain.SETUPS.get(0);
+      ISetup _get = DocCompilerMain.SETUPS.get(0);
       final Injector anyInjector = _get.createInjectorAndDoEMFRegistration();
       final ResourceSet resourceSet = anyInjector.<ResourceSet>getInstance(ResourceSet.class);
       this.generateCssAndJsFiles(anyInjector);
@@ -173,7 +177,7 @@ public class DocCompilerMain {
   }
   
   private int generateDocs(final Provider<ResourceSet> resourceSet) {
-    for (final ISetup setup : CompilerMain.SETUPS) {
+    for (final ISetup setup : DocCompilerMain.SETUPS) {
       {
         final Injector injector = setup.createInjectorAndDoEMFRegistration();
         final JnarioDocCompiler jnarioCompiler = injector.<JnarioDocCompiler>getInstance(JnarioDocCompiler.class);
@@ -207,7 +211,7 @@ public class DocCompilerMain {
   }
   
   public HashBasedSpec2ResultMapping createSpec2ResultMapping() {
-    ISetup _get = CompilerMain.SETUPS.get(2);
+    ISetup _get = DocCompilerMain.SETUPS.get(2);
     Injector _createInjectorAndDoEMFRegistration = _get.createInjectorAndDoEMFRegistration();
     final HashBasedSpec2ResultMapping resultMapping = _createInjectorAndDoEMFRegistration.<HashBasedSpec2ResultMapping>getInstance(HashBasedSpec2ResultMapping.class);
     String _resultFolder = this.getResultFolder();
@@ -256,4 +260,6 @@ public class DocCompilerMain {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  public final static List<ISetup> SETUPS = CollectionLiterals.<ISetup>newArrayList(new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
 }

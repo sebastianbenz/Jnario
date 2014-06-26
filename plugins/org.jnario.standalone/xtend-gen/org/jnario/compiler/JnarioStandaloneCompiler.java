@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
-import org.eclipse.xtend.core.XtendStandaloneSetup;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
@@ -78,11 +77,10 @@ public class JnarioStandaloneCompiler extends XtendBatchCompiler {
   private Map<String, Injector> injectorMap;
   
   public static JnarioStandaloneCompiler create() {
-    XtendStandaloneSetup _xtendStandaloneSetup = new XtendStandaloneSetup();
     FeatureStandaloneSetup _featureStandaloneSetup = new FeatureStandaloneSetup();
     SpecStandaloneSetup _specStandaloneSetup = new SpecStandaloneSetup();
     SuiteStandaloneSetup _suiteStandaloneSetup = new SuiteStandaloneSetup();
-    final List<? extends ISetup> setups = Collections.<ISetup>unmodifiableList(Lists.<ISetup>newArrayList(_xtendStandaloneSetup, _featureStandaloneSetup, _specStandaloneSetup, _suiteStandaloneSetup));
+    final List<? extends ISetup> setups = Collections.<ISetup>unmodifiableList(Lists.<ISetup>newArrayList(_featureStandaloneSetup, _specStandaloneSetup, _suiteStandaloneSetup));
     return new JnarioStandaloneCompiler(setups);
   }
   

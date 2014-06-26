@@ -68,18 +68,18 @@ class JnarioStandaloneCompilerTest {
 		batchCompiler.compile()
 	}
 	
-//	@After 
-//	def void onTearDown() {
-//       cleanFolder(new File(OUTPUT_DIRECTORY), null, true, true)
-//	}
-// 
+	@After 
+	def void onTearDown() {
+       cleanFolder(new File(OUTPUT_DIRECTORY), null, true, true)
+	}
+ 
 	@Test
 	def void testCompileTestData() {
 		val compiler = JnarioStandaloneCompiler.create
 		compile(compiler)
 
 		val outputDir = new File(OUTPUT_DIRECTORY+"/linking")
-		assertEquals(8, outputDir.list[dir, name | name.endsWith(".java")].size)
+		assertEquals(7, outputDir.list[dir, name | name.endsWith(".java")].size)
 		val fileContent = Files.toString(new File(outputDir, "ExampleSuiteSuite.java"), Charsets::UTF_8)
 		assertTrue("Expected to be to contain others specs, but was: \n\n" + fileContent, fileContent.contains("@Contains("))
 	}
