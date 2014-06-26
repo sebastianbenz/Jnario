@@ -12,7 +12,6 @@ package org.jnario.suite;
 
 import org.eclipse.xtend.core.compiler.UnicodeAwarePostProcessor;
 import org.eclipse.xtend.core.compiler.XtendCompiler;
-import org.eclipse.xtend.core.compiler.XtendGenerator;
 import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.core.formatting.XtendFormatter;
@@ -37,6 +36,7 @@ import org.eclipse.xtend.core.xtend.XtendFactory;
 import org.eclipse.xtend.lib.macro.file.FileLocations;
 import org.eclipse.xtend.lib.macro.file.MutableFileSystemSupport;
 import org.eclipse.xtext.common.types.descriptions.JvmDeclaredTypeSignatureHashProvider.SignatureHashBuilder;
+import org.eclipse.xtext.common.types.xtext.TypesAwareDefaultGlobalScopeProvider;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.conversion.impl.IDValueConverter;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
@@ -61,7 +61,6 @@ import org.eclipse.xtext.resource.impl.EagerResourceSetBasedResourceDescriptions
 import org.eclipse.xtext.scoping.IGlobalScopeProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
-import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider;
 import org.eclipse.xtext.validation.CompositeEValidator;
 import org.eclipse.xtext.validation.ConfigurableIssueCodesProvider;
 import org.eclipse.xtext.validation.IResourceValidator;
@@ -136,7 +135,7 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	
 	@Override
 	public Class<? extends IGlobalScopeProvider> bindIGlobalScopeProvider() {
-		return DefaultGlobalScopeProvider.class;
+		return TypesAwareDefaultGlobalScopeProvider.class;
 	}
 	
 	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {

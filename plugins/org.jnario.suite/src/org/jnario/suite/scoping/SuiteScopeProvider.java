@@ -19,7 +19,6 @@ import org.jnario.suite.suite.SuitePackage;
 
 import com.google.inject.Inject;
 
-@SuppressWarnings("restriction")
 public class SuiteScopeProvider extends AbstractDeclarativeScopeProvider {
 
 	@Inject SuiteSpecFilter specFilter;
