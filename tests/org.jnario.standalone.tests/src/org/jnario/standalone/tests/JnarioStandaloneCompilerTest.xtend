@@ -15,11 +15,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.jnario.feature.FeatureStandaloneSetup
+import org.jnario.compiler.JnarioStandaloneCompiler
 import org.jnario.jnario.test.util.ExtendedSuiteInjectorProvider
 import org.jnario.jnario.test.util.ModelStore
-import org.jnario.spec.SpecStandaloneSetup
-import org.jnario.suite.SuiteStandaloneSetup
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -28,14 +26,29 @@ import org.junit.runner.RunWith
 import static org.eclipse.xtext.util.Files.*
 import static org.junit.Assert.*
 
+import com.google.inject.Inject
+import java.io.File
+import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.junit4.XtextRunner
+import org.jnario.jnario.test.util.ExtendedSpecInjectorProvider
+import org.jnario.spec.compiler.SpecBatchCompiler
+import org.junit.After
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
+
+import static org.eclipse.xtext.util.Files.*
+import static org.jnario.standalone.tests.SpecBatchCompilerTest.*
+import static org.junit.Assert.*
+
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ExtendedSuiteInjectorProvider))
-class SuiteBatchCompilerTest {
+class JnarioStandaloneCompilerTest {
 
 	@Inject extension ModelStore modelStore
 	
     static String OUTPUT_DIRECTORY = "test-result"
-    static String XTEND_SRC_DIRECTORY = "testdata"
+    static String XTEND_SRC_DIRECTORY = "testdata2"
 
 	@Before
 	def void onSetup() { 
@@ -60,18 +73,15 @@ class SuiteBatchCompilerTest {
        cleanFolder(new File(OUTPUT_DIRECTORY), null, true, true)
 	}
  
- 
 	@Test
 	def void testCompileTestData() {
-		#[new FeatureStandaloneSetup, new SpecStandaloneSetup, new SuiteStandaloneSetup].forEach[
-			val compiler = it.createInjectorAndDoEMFRegistration.getInstance(XtendBatchCompiler)
-			compile(compiler)
-		]
+		val compiler = JnarioStandaloneCompiler.create
+		compile(compiler)
 
-		val outputDir = new File(OUTPUT_DIRECTORY+"/test")
-		assertEquals(7, outputDir.list[dir, name | name.endsWith(".java")].size)
-		val fileContent = Files.toString(new File(outputDir, "ExampleSuite.java"), Charsets::UTF_8)
-		assertTrue("Expected to be to contain others specs, but was: \n\n" + fileContent, fileContent.contains("@Contains"))
+		val outputDir = new File(OUTPUT_DIRECTORY+"/linking")
+		assertEquals(6, outputDir.list[dir, name | name.endsWith(".java")].size)
+		val fileContent = Files.toString(new File(outputDir, "ExampleSuiteSuite.java"), Charsets::UTF_8)
+		assertTrue("Expected to be to contain others specs, but was: \n\n" + fileContent, fileContent.contains("@Contains({ ExampleSpec.class, ExamplesFeature.class })"))
 	}
 
 }

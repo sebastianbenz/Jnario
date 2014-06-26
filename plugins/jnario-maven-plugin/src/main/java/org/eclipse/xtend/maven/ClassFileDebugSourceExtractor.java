@@ -22,7 +22,7 @@ public class ClassFileDebugSourceExtractor {
 		public void visitSource(String arg0, String arg1) {
 			this.source = arg0;
 		}
-}
+	}
 
 	public String getDebugSourceFileName(File classFile) throws IOException {
 		ClassReader cr = new ClassReader(Files.toByteArray(classFile));

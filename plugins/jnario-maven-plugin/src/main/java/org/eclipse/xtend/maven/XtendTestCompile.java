@@ -2,6 +2,7 @@ package org.eclipse.xtend.maven;
 
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Lists.newArrayList;
+import static java.util.Arrays.asList;
 import static org.eclipse.xtext.util.Strings.concat;
 
 import java.io.File;
@@ -13,6 +14,10 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.jnario.compiler.JnarioStandaloneCompiler;
+import org.jnario.maven.FeatureMavenStandaloneSetup;
+import org.jnario.maven.SpecMavenStandaloneSetup;
+import org.jnario.maven.SuiteMavenStandaloneSetup;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -21,6 +26,9 @@ import com.google.common.collect.Sets;
  * Goal which compiles Xtend2 test sources.
  * 
  * @author Michael Clay - Initial contribution and API
+ * @goal testCompile
+ * @phase generate-test-sources
+ * @requiresDependencyResolution test
  */
 public class XtendTestCompile extends AbstractXtendCompilerMojo {
 	/**
@@ -52,7 +60,7 @@ public class XtendTestCompile extends AbstractXtendCompilerMojo {
 			});
 		}
 		testOutputDirectory = resolveToBaseDir(testOutputDirectory);
-		compileTestSources(xtendBatchCompilerProvider.get());
+		compileTestSources(createXtendBatchCompiler());
 	}
 
 	protected void compileTestSources(XtendBatchCompiler xtend2BatchCompiler) throws MojoExecutionException {
@@ -72,12 +80,18 @@ public class XtendTestCompile extends AbstractXtendCompilerMojo {
 			throw new WrappedException(e);
 		}
 		addDependencies(classPath, project.getTestArtifacts());
+		classPath.remove(project.getBuild().getTestOutputDirectory());
 		return newArrayList(filter(classPath, FILE_EXISTS));
 	}
 
 	@Override
 	protected String getTempDirectory() {
 		return testTempDirectory;
+	}
+	
+	@Override
+	protected XtendBatchCompiler createXtendBatchCompiler() {
+		return new JnarioStandaloneCompiler(asList(new FeatureMavenStandaloneSetup(), new SpecMavenStandaloneSetup(), new SuiteMavenStandaloneSetup()));
 	}
 
 }

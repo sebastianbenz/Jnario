@@ -33,6 +33,7 @@ import org.jnario.jnario.test.util.ExtendedSuiteInjectorProvider;
 import org.jnario.jnario.test.util.ModelStore;
 import org.jnario.spec.SpecStandaloneSetup;
 import org.jnario.suite.SuiteStandaloneSetup;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -49,8 +50,6 @@ public class SuiteBatchCompilerTest {
   private static String OUTPUT_DIRECTORY = "test-result";
   
   private static String XTEND_SRC_DIRECTORY = "testdata";
-  
-  private static String TEMP_DIRECTORY = "test-temp-dir";
   
   @Before
   public void onSetup() {
@@ -80,6 +79,16 @@ public class SuiteBatchCompilerTest {
     };
     batchCompiler.setResourceSetProvider(_function);
     batchCompiler.compile();
+  }
+  
+  @After
+  public void onTearDown() {
+    try {
+      File _file = new File(SuiteBatchCompilerTest.OUTPUT_DIRECTORY);
+      Files.cleanFolder(_file, null, true, true);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   @Test

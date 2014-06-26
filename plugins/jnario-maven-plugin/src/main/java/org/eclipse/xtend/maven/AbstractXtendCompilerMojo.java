@@ -112,7 +112,7 @@ public abstract class AbstractXtendCompilerMojo extends AbstractXtendMojo {
 		}
 	}
 
-	protected void configureWorkspace(List<String> sourceDirectories, String outputPath) throws MojoExecutionException {
+	private void configureWorkspace(List<String> sourceDirectories, String outputPath) throws MojoExecutionException {
 		WorkspaceConfig workspaceConfig = new WorkspaceConfig(project.getBasedir().getParentFile().getAbsolutePath());
 		ProjectConfig projectConfig = new ProjectConfig(project.getBasedir().getName());
 		URI absoluteRootPath = project.getBasedir().getAbsoluteFile().toURI();
