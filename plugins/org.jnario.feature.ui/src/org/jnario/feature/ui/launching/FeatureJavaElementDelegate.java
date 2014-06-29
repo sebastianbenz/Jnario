@@ -8,10 +8,14 @@
 package org.jnario.feature.ui.launching;
 
 
-import static com.google.common.collect.Iterables.filter;
+import java.util.Iterator;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.IAnnotation;
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -19,14 +23,22 @@ import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
-import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.util.jdt.IJavaElementFinder;
+import org.eclipse.xtext.generator.IDerivedResourceMarkers;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.parser.IParseResult;
+import org.eclipse.xtext.parsetree.reconstr.impl.NodeIterator;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegateJunitLaunch;
+import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFile;
+import org.jnario.feature.feature.Scenario;
 
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 /**
@@ -39,6 +51,9 @@ public class FeatureJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 	
 	@Inject
 	private IJavaElementFinder elementFinder;
+
+	@Inject
+	private IDerivedResourceMarkers derivedResourceMarkers;
 
 	@Override
 	protected boolean containsElementsSearchedFor(IFile file) {
@@ -59,33 +74,91 @@ public class FeatureJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 		return super.containsElementsSearchedFor(file);
 	}
 	
-	@Override
-	protected IJavaElement findJavaElement(XtextResource resource, int offset) {
-		IJavaElement result = super.findJavaElement(resource, offset);
-		if(result != null){
-			return result;
-		}
-		for (FeatureFile featureFile : filter(resource.getContents(), FeatureFile.class)) {
-			JvmIdentifiableElement jvmElement = findAssociatedJvmElement(featureFile);
-			if (jvmElement != null){
-				result = elementFinder.findElementFor(jvmElement);
-				break;
-			}
-		}
-		return result;
-	}
 	
 	@Override
 	protected JvmIdentifiableElement findAssociatedJvmElement(EObject element) {
-		if (element == null)
-			return null;
-		element = EcoreUtil2.getContainerOfType(element, FeatureFile.class);
-		if(element == null){
+		if (element == null){
 			return null;
 		}
-		for (XtendTypeDeclaration xtendClass : ((FeatureFile)element).getXtendTypes()) {
-			return super.findAssociatedJvmElement(xtendClass);
+		EObject toExecute = EcoreUtil2.getContainerOfType(element, Scenario.class);
+		if(toExecute == null){
+		    toExecute = EcoreUtil2.getContainerOfType(element, Feature.class);
+		}
+		if(toExecute == null){
+		    FeatureFile featureFile = EcoreUtil2.getContainerOfType(element, FeatureFile.class);
+		    Iterable<Feature> features = Iterables.filter(featureFile.getXtendTypes(), Feature.class);
+		    Iterator<Feature> iterator = features.iterator();
+			if(iterator.hasNext()){
+		    	toExecute = iterator.next();
+		    }
+		}
+		if(toExecute == null){
+			return null;
+		}
+		return super.findAssociatedJvmElement(toExecute);
+	}
+	
+	protected IJavaElement findJavaElement(XtextResource resource, int offset) {
+		IParseResult parseResult = resource.getParseResult();
+		if (parseResult == null)
+			return null;
+		INode root = parseResult.getRootNode();
+		INode node = NodeModelUtils.findLeafNodeAtOffset(root, offset);
+		if (node == null)
+			return null;
+		INode previousSementic = null, nextSemantic = null;
+		NodeIterator backwards = new NodeIterator(node);
+		while (backwards.hasPrevious()) {
+			INode n = backwards.previous();
+			if (n instanceof ILeafNode && !((ILeafNode) n).isHidden()) {
+				previousSementic = n;
+				break;
+			}
+		}
+		NodeIterator forward = new NodeIterator(node);
+		while (forward.hasNext()) {
+			INode n = forward.next();
+			if (n instanceof ILeafNode && !((ILeafNode) n).isHidden()) {
+				nextSemantic = n;
+				break;
+			}
+		}
+		EObject element;
+		if (previousSementic != null && nextSemantic == null){
+			element = NodeModelUtils.findActualSemanticObjectFor(previousSementic);
+		}else if (nextSemantic != null && previousSementic == null){
+			element = NodeModelUtils.findActualSemanticObjectFor(nextSemantic);
+		}else{
+		EObject prevObj = NodeModelUtils.findActualSemanticObjectFor(previousSementic);
+		EObject nextObj = NodeModelUtils.findActualSemanticObjectFor(nextSemantic);
+		if (prevObj == null || nextObj == null)
+			return null;
+		 element = findCommonContainer(prevObj, nextObj);
+			
+		}
+		JvmIdentifiableElement jvmElement = findAssociatedJvmElement(element);
+		if (jvmElement == null)
+			return null;
+		IJavaElement javaElement = elementFinder.findElementFor(jvmElement);
+		return javaElement;
+	}
+
+	
+	protected IJavaElement getJavaElementForResource(IResource resource) {
+		try {
+			final String getSourcePath = URI.createPlatformResourceURI(resource.getFullPath().toString(), true).toString();
+			List<IFile> resources = derivedResourceMarkers.findDerivedResources(resource.getProject(), getSourcePath);
+			for (IFile file : resources) {
+				if (file.getName().endsWith("Feature.java")){
+					return JavaCore.create(file);
+				}
+			}
+		} catch (CoreException e) {
+			if (log.isDebugEnabled()) {
+				log.debug(e.getMessage(), e);
+			}
 		}
 		return null;
 	}
+
 }
