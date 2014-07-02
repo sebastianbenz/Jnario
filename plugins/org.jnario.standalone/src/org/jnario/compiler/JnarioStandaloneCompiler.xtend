@@ -40,6 +40,7 @@ import org.jnario.spec.SpecStandaloneSetup
 import org.jnario.suite.SuiteStandaloneSetup
 
 import static org.jnario.compiler.JnarioStandaloneCompiler.*
+import java.util.ArrayList
 
 class JnarioStandaloneCompiler extends XtendBatchCompiler {
 	
@@ -60,7 +61,7 @@ class JnarioStandaloneCompiler extends XtendBatchCompiler {
 	}
 	
 	new(List<? extends ISetup> setups){
-		injectors = setups.map[createInjectorAndDoEMFRegistration]
+		injectors = setups.eagerMap[createInjectorAndDoEMFRegistration].toList
 		injectors.head.injectMembers(this)
 		injectorMap = newHashMap(injectors.map[
 			val fileExtension = getInstance(FileExtensionProvider).primaryFileExtension
@@ -104,7 +105,7 @@ class JnarioStandaloneCompiler extends XtendBatchCompiler {
 	}
 	
 	def getNameBasedFilters() {
-		injectors.map[
+		injectors.eagerMap[
 			val filter = new NameBasedFilter
 			filter.extension = getInstance(FileExtensionProvider).primaryFileExtension
 			filter
@@ -165,4 +166,11 @@ class JnarioStandaloneCompiler extends XtendBatchCompiler {
 		return Strings.concat("/", typeName.getSegments()) + ".java";
 	}
 	
+	def static <T, R> List<R> eagerMap(List<T> list, Functions.Function1<? super T, ? extends R> transformation) {
+		val result = new ArrayList(list.size())
+		for (T t : list) {
+			result.addAll(transformation.apply(t));
+		}
+		result
+	}
 }
