@@ -51,6 +51,7 @@ import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.compiler.GeneratorConfig;
 import org.eclipse.xtext.xbase.compiler.IGeneratorConfigProvider;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
+import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -90,8 +91,9 @@ public class JnarioStandaloneCompiler extends XtendBatchCompiler {
         return it.createInjectorAndDoEMFRegistration();
       }
     };
-    List<Injector> _map = ListExtensions.map(setups, _function);
-    this.injectors = _map;
+    List<Injector> _eagerMap = JnarioStandaloneCompiler.eagerMap(setups, _function);
+    List<Injector> _list = IterableExtensions.<Injector>toList(_eagerMap);
+    this.injectors = _list;
     Injector _head = IterableExtensions.<Injector>head(this.injectors);
     _head.injectMembers(this);
     final Function1<Injector, Pair<String, Injector>> _function_1 = new Function1<Injector, Pair<String, Injector>>() {
@@ -105,8 +107,8 @@ public class JnarioStandaloneCompiler extends XtendBatchCompiler {
         return _xblockexpression;
       }
     };
-    List<Pair<String, Injector>> _map_1 = ListExtensions.<Injector, Pair<String, Injector>>map(this.injectors, _function_1);
-    HashMap<String, Injector> _newHashMap = CollectionLiterals.<String, Injector>newHashMap(((Pair<? extends String, ? extends Injector>[])Conversions.unwrapArray(_map_1, Pair.class)));
+    List<Pair<String, Injector>> _map = ListExtensions.<Injector, Pair<String, Injector>>map(this.injectors, _function_1);
+    HashMap<String, Injector> _newHashMap = CollectionLiterals.<String, Injector>newHashMap(((Pair<? extends String, ? extends Injector>[])Conversions.unwrapArray(_map, Pair.class)));
     this.injectorMap = _newHashMap;
   }
   
@@ -184,7 +186,7 @@ public class JnarioStandaloneCompiler extends XtendBatchCompiler {
         return _xblockexpression;
       }
     };
-    return ListExtensions.<Injector, NameBasedFilter>map(this.injectors, _function);
+    return JnarioStandaloneCompiler.<Injector, NameBasedFilter>eagerMap(this.injectors, _function);
   }
   
   public File createStubs(final ResourceSet resourceSet) {
@@ -279,5 +281,19 @@ public class JnarioStandaloneCompiler extends XtendBatchCompiler {
     List<String> _segments = typeName.getSegments();
     String _concat = Strings.concat("/", _segments);
     return (_concat + ".java");
+  }
+  
+  public static <T extends Object, R extends Object> List<R> eagerMap(final List<T> list, final Function1<? super T, ? extends R> transformation) {
+    ArrayList<R> _xblockexpression = null;
+    {
+      int _size = list.size();
+      final ArrayList<R> result = new ArrayList<R>(_size);
+      for (final T t : list) {
+        R _apply = transformation.apply(t);
+        CollectionExtensions.<R>addAll(result, _apply);
+      }
+      _xblockexpression = result;
+    }
+    return _xblockexpression;
   }
 }
