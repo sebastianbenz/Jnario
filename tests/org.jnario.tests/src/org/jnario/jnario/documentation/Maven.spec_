@@ -74,7 +74,7 @@ describe "Maven"{
 	    <dependencies>
 	      <dependency>
 	        <groupId>org.jnario</groupId>
-	        <artifactId>org.jnario.lib.maven</artifactId>
+	        <artifactId>org.jnario.maven</artifactId>
 	        <version>0.1.0-SNAPSHOT</version>
 	        <scope>test</scope>
 	      </dependency>

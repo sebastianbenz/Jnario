@@ -38,7 +38,7 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    * 
    *     <dependency>
    *       <groupId>org.jnario</groupId>
-   *       <artifactId>org.jnario.lib.maven</artifactId>
+   *       <artifactId>org.jnario.lib</artifactId>
    *       <version>1.0.0</version>
    *       <scope>test</scope>
    *     </dependency>

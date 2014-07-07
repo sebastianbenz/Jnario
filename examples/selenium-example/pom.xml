@@ -20,7 +20,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jnario</groupId>
-			<artifactId>org.jnario.lib.maven</artifactId>
+			<artifactId>org.jnario.lib</artifactId>
 			<version>${jnario.version}</version>
 			<scope>test</scope>
 		</dependency>
@@ -36,7 +36,7 @@
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
+			<dependency
 				<groupId>com.opera</groupId>
 				<artifactId>operadriver</artifactId>
 				<version>0.18</version>
