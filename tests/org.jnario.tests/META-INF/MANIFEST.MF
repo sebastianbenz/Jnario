@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.jnario.tests
 Bundle-Vendor: BMW Car IT
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0.201407142310
 Bundle-SymbolicName: org.jnario.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.core.runtime,
@@ -40,16 +40,10 @@ Import-Package: org.apache.commons.logging,
  org.junit.runners.model;version="4.5.0",
  org.hamcrest.core
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.jnario,
- org.jnario.jnario.test.util,
- org.jnario.spec,
- org.jnario.feature,
- org.jnario.spec.tests.integration,
- org.jnario.spec.tests.unit.naming,
- org.jnario.spec.tests.unit.scoping,
- org.jnario.spec.tests.unit.validation,
- org.jnario.feature.tests.integration,
- org.jnario.feature.tests.unit.naming,
- org.jnario.feature.tests.unit.validation,
+Export-Package: org.jnario,org.jnario.jnario.test.util,org.jnario.spec
+ ,org.jnario.feature,org.jnario.spec.tests.integration,org.jnario.spec
+ .tests.unit.naming,org.jnario.spec.tests.unit.scoping,org.jnario.spec
+ .tests.unit.validation,org.jnario.feature.tests.integration,org.jnari
+ o.feature.tests.unit.naming,org.jnario.feature.tests.unit.validation,
  org.jnario.suite
 Bundle-Activator: org.jnario.Activator

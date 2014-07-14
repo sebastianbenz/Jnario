@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.jnario;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0.201407142310
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
@@ -23,22 +23,11 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.6.2,2.7.0)",
  org.apache.commons.lang,
  org.eclipse.xtend2.lib;bundle-version="[2.6.2,2.7.0)",
  org.objectweb.asm.analysis;bundle-version="[5.0.1,6.0.0)"
-Export-Package: org.jnario,
- org.jnario.compiler,
- org.jnario.conversion,
- org.jnario.doc,
- org.jnario.documentation,
- org.jnario.formatter,
- org.jnario.generator,
- org.jnario.impl,
- org.jnario.jvmmodel,
- org.jnario.linking,
- org.jnario.report,
- org.jnario.scoping,
- org.jnario.typing,
- org.jnario.util,
- org.jnario.validation,
- org.pegdown
+Export-Package: org.jnario,org.jnario.compiler,org.jnario.conversion,o
+ rg.jnario.doc,org.jnario.documentation,org.jnario.formatter,org.jnari
+ o.generator,org.jnario.impl,org.jnario.jvmmodel,org.jnario.linking,or
+ g.jnario.report,org.jnario.scoping,org.jnario.typing,org.jnario.util,
+ org.jnario.validation,org.pegdown
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  lib/pegdown-1.1.0.jar,

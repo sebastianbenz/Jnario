@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0.201407142310
 Bundle-SymbolicName: org.jnario.suite; singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
@@ -28,21 +28,11 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.jnario.suite,
- org.jnario.suite.compiler,
- org.jnario.suite.conversion,
- org.jnario.suite.doc,
- org.jnario.suite.formatting,
- org.jnario.suite.generator,
- org.jnario.suite.jvmmodel,
- org.jnario.suite.naming,
- org.jnario.suite.parser.antlr,
- org.jnario.suite.parser.antlr.internal,
- org.jnario.suite.scoping,
- org.jnario.suite.serializer,
- org.jnario.suite.services,
- org.jnario.suite.suite,
- org.jnario.suite.suite.impl,
- org.jnario.suite.suite.util,
- org.jnario.suite.validation
+Export-Package: org.jnario.suite,org.jnario.suite.compiler,org.jnario.
+ suite.conversion,org.jnario.suite.doc,org.jnario.suite.formatting,org
+ .jnario.suite.generator,org.jnario.suite.jvmmodel,org.jnario.suite.na
+ ming,org.jnario.suite.parser.antlr,org.jnario.suite.parser.antlr.inte
+ rnal,org.jnario.suite.scoping,org.jnario.suite.serializer,org.jnario.
+ suite.services,org.jnario.suite.suite,org.jnario.suite.suite.impl,org
+ .jnario.suite.suite.util,org.jnario.suite.validation
 

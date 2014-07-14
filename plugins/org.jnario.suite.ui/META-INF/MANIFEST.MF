@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0.201407142310
 Bundle-SymbolicName: org.jnario.suite.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
@@ -32,8 +32,7 @@ Require-Bundle: org.jnario.suite;visibility:=reexport,
  org.jnario.spec.ui;bundle-version="1.0.0"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.jnario.suite.ui.contentassist,
- org.jnario.suite.ui.contentassist.antlr,
- org.jnario.suite.ui.internal,
- org.jnario.suite.ui.quickfix
+Export-Package: org.jnario.suite.ui.contentassist,org.jnario.suite.ui.
+ contentassist.antlr,org.jnario.suite.ui.internal,org.jnario.suite.ui.
+ quickfix
 Bundle-Activator: org.jnario.suite.ui.internal.SuiteActivatorImpl
