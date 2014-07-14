@@ -12,7 +12,7 @@
 		<project.build.resourceEncoding>${sourceEncoding}</project.build.resourceEncoding>
 		<maven.compiler.encoding>${sourceEncoding}</maven.compiler.encoding>
 		<xtend.version>2.6.2</xtend.version>
-		<jnario.version>1.0.0-SNAPSHOT</jnario.version>
+		<jnario.version>1.0.0</jnario.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -69,6 +69,7 @@
 					<execution>
 						<goals>
 							<goal>compile</goal>
+							<goal>testCompile</goal>
 							<goal>xtend-install-debug-info</goal>
 						</goals>
 					</execution>
@@ -83,18 +84,6 @@
 						<goals>
 							<goal>testCompile</goal>
 							<goal>xtend-test-install-debug-info</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.jnario</groupId>
-				<artifactId>report</artifactId>
-				<version>${jnario.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
 						</goals>
 					</execution>
 				</executions>
