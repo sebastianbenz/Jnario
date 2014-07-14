@@ -19,8 +19,8 @@
 				<expandproperties />
 			</filterchain>
 		</loadfile>
-		<echo file="${output.folder}/org.jnario.standalone.maven-${maven.version}.pom">${modifiedPomXml}</echo>
-		<echo>Pom stored: ${output.folder}/org.jnario.standalone.maven-${maven.version}.pom</echo> -->
+		<echo file="${output.folder}/org.jnario.standalone-${maven.version}.pom">${modifiedPomXml}</echo>
+		<echo>Pom stored: ${output.folder}/org.jnario.standalone-${maven.version}.pom</echo> -->
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -75,7 +75,7 @@
 		<!-- EMF logs error if this property is not found -->
 		<echo file="${binJarTemp}/plugin.properties">_UI_DiagnosticRoot_diagnostic=_UI_DiagnosticRoot_diagnostic</echo>
 		<!-- Jar uber jar -->
-		<jar destfile="${output.folder}/org.jnario.standalone.maven-${maven.project.version}.jar" basedir="${binJarTemp}" />
+		<jar destfile="${output.folder}/org.jnario.standalone-${maven.project.version}.jar" basedir="${binJarTemp}" />
 	</target>
 
 
@@ -107,11 +107,11 @@
 		</antcall>
 
 		<!-- Jar uber jar -->
-		<jar destfile="${output.folder}/org.jnario.standalone.maven-${maven.project.version}-sources.jar" basedir="${sourceJarTemp}">
+		<jar destfile="${output.folder}/org.jnario.standalone-${maven.project.version}-sources.jar" basedir="${sourceJarTemp}">
 			<exclude name="META-INF/*" />
 		</jar>
 		
-		<jar destfile="${output.folder}/org.jnario.standalone.maven-${maven.project.version}-javadoc.jar">
+		<jar destfile="${output.folder}/org.jnario.standalone-${maven.project.version}-javadoc.jar">
 			<fileset file="README"/>
 		</jar>
 	</target>

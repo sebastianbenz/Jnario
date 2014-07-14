@@ -33,7 +33,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jnario</groupId>
-			<artifactId>org.jnario.standalone.maven</artifactId>
+			<artifactId>org.jnario.standalone</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
