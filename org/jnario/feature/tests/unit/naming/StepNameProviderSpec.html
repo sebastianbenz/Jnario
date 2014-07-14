@@ -36,7 +36,7 @@
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
 <p>@author Sebastian Benz - Initial contribution and API</p>
-<h3 class="exampleGroup notrun"  id="nameOf">NameOf</h3>
+<h3 class="exampleGroup notrun"  id="nameOf_Step">NameOf[Step]</h3>
 <ul><li><p id="returns_null_if_the_step_has_no_name" class="example notrun"><strong>returns null if the step has no name</strong></p>
 <pre class="prettyprint lang-spec linenums">
 assert subject.nameOf(emptyStep) == null</pre>
@@ -78,7 +78,7 @@ parseScenario('''
 
 stepName =&gt; 'Given a step with two values &quot;a&quot; and &quot;b&quot;'</pre>
 </li></ul>
-<h3 class="exampleGroup notrun"  id="describe_Feature">^describe[Feature]</h3>
+<h3 class="exampleGroup notrun"  id="describe_Feature">Describe[Feature]</h3>
 <ul><li><p id="removes_multilines_parameters" class="example notrun"><strong>removes multilines parameters</strong></p>
 <pre class="prettyprint lang-spec linenums">
 parseScenario('''
@@ -92,7 +92,7 @@ describeStep =&gt; 'Given a step with multiline parameter'</pre>
 </li><li><p id="feature_With_whitespace_desc_With_whitespace" class="example notrun"><strong>feature[" With whitespace "].desc =>  "With whitespace"</strong></p>
 </li><li><p id="feature_With_parentheses_desc_With_parentheses" class="example notrun"><strong>feature["With [parentheses]"].desc =>  "With [parentheses]"</strong></p>
 </li></ul>
-<h3 class="exampleGroup notrun"  id="removeArguments">RemoveArguments</h3>
+<h3 class="exampleGroup notrun"  id="removeArguments_String">RemoveArguments[String]</h3>
 <ul><li><p id="examples"><strong>Examples</strong></p>
 <table class="table table-striped table-bordered table-condensed">
 	<thead>
@@ -122,7 +122,7 @@ examples.forEach[
   subject.removeArguments(step) =&gt; result
 ]</pre>
 </li></ul>
-<h3 class="exampleGroup notrun"  id="describe_Scenario">^describe[Scenario]</h3>
+<h3 class="exampleGroup notrun"  id="describe_Scenario">Describe[Scenario]</h3>
 <ul><li><p id="Features_scenario_With_whitespace_desc_With_whitespace" class="example notrun"><strong>Features::scenario[" With whitespace "].desc =>  "With whitespace"</strong></p>
 </li><li><p id="Features_scenario_With_parentheses_desc_With_parentheses" class="example notrun"><strong>Features::scenario["With [parentheses]"].desc =>  "With [parentheses]"</strong></p>
 </li></ul>
