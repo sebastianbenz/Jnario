@@ -51,6 +51,6 @@ mvn -Dtycho.mode=maven org.eclipse.tycho:tycho-versions-plugin:set-version -Dnew
 #commit and tag your changes
 git commit -s -a -m "new release $version"
 git tag v$version
-git push --tags  origin master
+#git push --tags  origin master
 
 exit 1
