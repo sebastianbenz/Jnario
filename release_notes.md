@@ -1,8 +1,22 @@
 #Release Notes
 
-##Jnario 0.7.6
+##Jnario 1.0.0
 
-* Compatible with Xtend 2.6.0
+* Compatible with Xtend 2.6.2
+* Add support for anonymous classes in specs and features 
+* Easier project setup: Jnario uses now Xtend's compiler configuration
+* Eclipse m2e integration: automatically configure Jnario from the POM
+* Code formatting for Specs (including tables)
+* Execute specific scenarios from within the feature editor #114
+* Reimplemented & optimized Jnario standalone compiler
+* Improved maven compiler performance #132
+* Rename maven artifacts:
+  * org.jnario.lib.maven -> org.jnario.lib
+  * org.jnario.standalone.maven -> org.jnario.standalone
+* Several IDE performance improvements
+* Fixed two severe memory leaks
+* Fixed no longer existing maven depencencies
+* Fixed multiple rendering bugs in jnario reports #112, #108
 
 ##Jnario 0.7.5
 
