@@ -96,11 +96,6 @@ public class InstallingJnarioUsingJnarioWithMavenSpec extends InstallingJnarioSp
    *       </executions>
    *     </plugin>
    * 
-   * <span class="label label-important">Important</span> For
-   * performance reasons, the Jnario compiler also includes the Xtend compiler. Make sure
-   * not register the Xtend compiler for the *testCompile* phase, as this would execute the
-   * Xtend compiler twice.
-   * 
    * @filter(.*)
    */
   @Test

@@ -88,7 +88,7 @@
     &lt;/execution&gt;
   &lt;/executions&gt;
 &lt;/plugin&gt;
-</code></pre><p><span class="label label-important">Important</span> For performance reasons, the Jnario compiler also includes the Xtend compiler. Make sure not register the Xtend compiler for the <em>testCompile</em> phase, as this would execute the Xtend compiler twice.</p>
+</code></pre>
 </li><li><p id="Configuring_Eclipse" class="example notrun"><strong>Configuring Eclipse</strong></p>
 <p>The outputDirectory can be specified to match the default of the Eclipse plug-in (xtend-gen). You can also change the configuration in Eclipse to match the Maven default (generated-sources). To do so right-click on the project and select Properties or if you prefer a global setting choose <strong>Eclipse-&gt;Preferences</strong>. In the category <strong>Jnario/Compiler</strong> enter  the directory name (see screenshot). It is interpreted as a relative path to the parent of the source folder, which includes the to-be-compiled Xtend file.</p>
 <p align="center"><img width="500px" src="/img/tutorial/project_compiler_settings.png" alt="Configuring project specific compiler settings."/></p>
@@ -204,11 +204,6 @@ describe &quot;Installing Jnario&quot;{
      *       &lt;/executions&gt;
      *     &lt;/plugin&gt;
      *  
-     * &lt;span class=&quot;label label-important&quot;&gt;Important&lt;/span&gt; For 
-     * performance reasons, the Jnario compiler also includes the Xtend compiler. Make sure 
-     * not register the Xtend compiler for the *testCompile* phase, as this would execute the
-     * Xtend compiler twice.
-     * 
      * @filter(.*)
      * 
      */
