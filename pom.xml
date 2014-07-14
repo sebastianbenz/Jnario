@@ -31,18 +31,18 @@
     <module>plugins/org.jnario.ui</module>
     <module>plugins/org.jnario.lib</module>
     <module>plugins/org.jnario.spec</module>
+    <module>plugins/org.jnario.feature.ui</module>
+    <module>plugins/org.jnario.spec.ui</module>
     <module>plugins/org.jnario.suite</module>
     <module>plugins/org.jnario.suite.ui</module>
-    <module>releng/org.jnario.updatesite</module>
     <module>plugins/org.jnario.standalone</module>
-    <module>tests/org.jnario.standalone.tests</module>
+    <module>features/org.jnario.ui-feature</module>
     <module>features/org.jnario-feature</module>
+    <module>releng/org.jnario.updatesite</module>
+    <module>tests/org.jnario.standalone.tests</module>
     <module>tests/org.jnario.tests</module>
     <module>tests/org.jnario.lib.tests</module>
     <module>tests/org.jnario.ui.tests</module>
-    <module>plugins/org.jnario.feature.ui</module>
-    <module>plugins/org.jnario.spec.ui</module>
-    <module>features/org.jnario.ui-feature</module>
     <module>features/org.jnario.sdk</module>
     <module>plugins/org.jnario.lib.maven</module>
     <module>plugins/org.jnario.standalone.maven</module>
