@@ -5,7 +5,7 @@
 	<packaging>maven-plugin</packaging>
 	<name>Jnario Maven Report Plugin</name>
 	<groupId>org.jnario</groupId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,8 +34,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jnario</groupId>
-			<artifactId>org.jnario.standalone.maven</artifactId>
-			<version>${project.version}</version>
+			<artifactId>org.jnario.standalone</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 		
 		<dependency>
@@ -77,12 +77,6 @@
 	</dependencies>
 	<build>
 		<plugins>
-			<plugin>
-				<artifactId>maven-plugin-plugin</artifactId>
-				<version>2.7</version>
-				<configuration>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
