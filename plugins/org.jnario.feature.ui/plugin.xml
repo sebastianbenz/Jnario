@@ -1063,4 +1063,11 @@
           sequence="M1+M2+F">
     </key>
  </extension>
+   <extension
+         point="org.eclipse.jdt.junit.runners.junitRunnerUI">
+      <junitRunnerUIHandler
+            handlerClass="org.jnario.feature.ui.handler.FeatureRunnerUIHandler"
+            runnerClass="org.jnario.runner.FeatureRunner">
+      </junitRunnerUIHandler>
+   </extension>
 </plugin>

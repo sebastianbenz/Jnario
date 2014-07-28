@@ -27,13 +27,16 @@ Require-Bundle: org.jnario.spec;visibility:=reexport,
  org.eclipse.jdt.ui,
  com.ibm.icu,
  org.jnario.ui;bundle-version="1.0.0",
- org.eclipse.xtext.xbase.lib;bundle-version="[2.6.2,2.7.0)"
+ org.eclipse.xtext.xbase.lib;bundle-version="[2.6.2,2.7.0)",
+ org.jnario.lib;bundle-version="1.0.0",
+ org.eclipse.jdt.junit.runners;bundle-version="0.1.0";resolution:=optional
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.jnario.spec.ui.contentassist,
  org.jnario.spec.ui.contentassist.antlr,
+ org.jnario.spec.ui.handler,
  org.jnario.spec.ui.internal,
- org.jnario.spec.ui.wizards,
- org.jnario.spec.ui.quickfix
+ org.jnario.spec.ui.quickfix,
+ org.jnario.spec.ui.wizards
 Bundle-Activator: org.jnario.spec.ui.internal.SpecActivatorImpl

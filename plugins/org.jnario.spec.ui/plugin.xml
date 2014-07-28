@@ -1036,4 +1036,11 @@
 	         </enablement>
       </consolePatternMatchListener>
    </extension>
+   <extension
+         point="org.eclipse.jdt.junit.runners.junitRunnerUI">
+      <junitRunnerUIHandler
+            handlerClass="org.jnario.spec.ui.handler.ExampleGroupRunnerUIHandler"
+            runnerClass="org.jnario.runner.ExampleGroupRunner">
+      </junitRunnerUIHandler>
+   </extension>
 </plugin>
