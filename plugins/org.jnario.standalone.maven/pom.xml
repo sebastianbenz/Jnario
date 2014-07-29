@@ -134,17 +134,17 @@
             <configuration>
               <artifacts>
                 <artifact>
-                  <file>target/org.jnario.standalone.maven-${project.version}.jar</file>
+                  <file>target/org.jnario.standalone-${project.version}.jar</file>
                   <type>jar</type>
                   <classifier></classifier>
                 </artifact>
                 <artifact>
-                  <file>target/org.jnario.standalone.maven-${project.version}-sources.jar</file>
+                  <file>target/org.jnario.standalone-${project.version}-sources.jar</file>
                   <type>jar</type>
                   <classifier>sources</classifier>
                 </artifact>
                 <artifact>
-                  <file>target/org.jnario.standalone.maven-${project.version}-javadoc.jar</file>
+                  <file>target/org.jnario.standalone-${project.version}-javadoc.jar</file>
                   <type>jar</type>
                   <classifier>javadoc</classifier>
                 </artifact>
