@@ -28,6 +28,8 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
  */
 public class Strings extends org.eclipse.xtext.util.Strings{
 	
+	public static final String PENDING_FLAG = " [PENDING]";
+
 	public static int countWhitespaceAtEnd(CharSequence s){
 		int count = 0;
 		for(int j = s.length()-1; j >= 0 && isWhitespace(s.charAt(j)); j--){
@@ -239,7 +241,7 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 	}
 	
 	public static StringBuilder markAsPending(StringBuilder sb){
-		return sb.append(" [PENDING]");
+		return sb.append(PENDING_FLAG);
 	}
 
 	public static String toString(Resource resource) {
