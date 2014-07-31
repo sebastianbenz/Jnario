@@ -69,9 +69,8 @@ public class JnarioTypeComputer extends XtendTypeComputer {
 					}
 				}
 			}
-		} else {
-			super._computeTypes(featureCall, state);
 		}
+		super._computeTypes(featureCall, state);
 	}
 
 	private boolean canHandleNullArg(JvmOperation operation) {

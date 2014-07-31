@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Linker validation</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header notrun">
+					<h1>Linker validation</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<ul><li><p id="No_validation_errors" class="example notrun"><strong>No validation errors</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  package bootstrap
+
+  describe &quot;something&quot;{
+    fact &quot;x&quot; {
+      1 should not be 2
+    }
+  }
+'''.parse.validate.assertNoIssues</pre>
+</li><li><p id="Unknown_variable" class="example notrun"><strong>Unknown variable</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  package bootstrap
+
+  describe &quot;something&quot;{
+    fact &quot;x&quot; {
+      println(abc)
+    }
+  }
+'''.parse.validate.assertIssues(
+  &quot;The method or field abc is undefined&quot;
+)</pre>
+</li><li><p id="Unknown_variable_within_should_be_0" class="example notrun"><strong>Unknown variable within should_be_0</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  package bootstrap
+
+  describe &quot;something&quot;{
+    fact &quot;x&quot; {
+      abc should be 0
+    }
+  }
+'''.parse.validate.assertIssues(
+  &quot;The method or field abc is undefined&quot;
+)</pre>
+</li><li><p id="Unknown_variable_within_should_be_null_Bug_137" class="example notrun"><strong>Unknown variable within should_be_null [Bug -137]</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  package bootstrap
+
+  describe &quot;something&quot;{
+    fact &quot;x&quot; {
+      abc should be null
+    }
+  }
+'''.parse.validate.assertIssues(
+  &quot;The method or field abc is undefined&quot;
+)</pre>
+</li><li><p id="Unknown_variable_within_null" class="example notrun"><strong>Unknown variable within => null</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  package bootstrap
+
+  describe &quot;something&quot;{
+    fact &quot;x&quot; {
+      abc =&gt; null
+    }
+  }
+'''.parse.validate.assertIssues(
+  &quot;The method or field abc is undefined&quot;
+)</pre>
+</li><li><p id="Method_call_with_should_be_null" class="example notrun"><strong>Method call with should be null</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  package bootstrap
+
+  describe &quot;something&quot;{
+    fact &quot;x&quot; {
+      string =&gt; null
+    }
+    def getString() {&quot;&quot;}
+  }
+'''.parse.validate.assertNoIssues</pre>
+</li><li><p id="Null_variable_with_should_be_null" class="example notrun"><strong>Null variable with should be null</strong></p>
+<pre class="prettyprint lang-spec linenums">
+'''
+  package bootstrap
+
+  describe &quot;something&quot;{
+    fact &quot;x&quot; {
+      val withoutType = null
+      withoutType =&gt; null
+    }
+  }
+'''.parse.validate.assertNoIssues</pre>
+</li></ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>SpecLinkerValidation.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+package org.jnario.spec.tests.unit.validation
+
+import com.google.inject.Inject
+import java.util.List
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.junit4.util.ParseHelper
+import org.eclipse.xtext.junit4.validation.ValidationTestHelper
+import org.eclipse.xtext.validation.Issue
+import org.jnario.jnario.test.util.SpecTestCreator
+import org.jnario.runner.CreateWith
+import org.junit.Assert
+
+@CreateWith(typeof(SpecTestCreator))
+describe &quot;Linker validation&quot;{
+  @Inject extension ParseHelper&lt; EObject &gt; parseHelper
+  @Inject extension ValidationTestHelper validationTestHelper
+
+  fact &quot;No validation errors&quot;{
+    '''
+      package bootstrap
+
+      describe &quot;something&quot;{
+        fact &quot;x&quot; {
+          1 should not be 2
+        }
+      }
+    '''.parse.validate.assertNoIssues
+  }
+
+  fact &quot;Unknown variable&quot;{
+    '''
+      package bootstrap
+
+      describe &quot;something&quot;{
+        fact &quot;x&quot; {
+          println(abc)
+        }
+      }
+    '''.parse.validate.assertIssues(
+      &quot;The method or field abc is undefined&quot;
+    )
+  }
+
+  fact &quot;Unknown variable within should_be_0&quot;{
+    '''
+      package bootstrap
+
+      describe &quot;something&quot;{
+        fact &quot;x&quot; {
+          abc should be 0
+        }
+      }
+    '''.parse.validate.assertIssues(
+      &quot;The method or field abc is undefined&quot;
+    )
+  }
+
+  fact &quot;Unknown variable within should_be_null (Bug #137)&quot;{
+    '''
+      package bootstrap
+
+      describe &quot;something&quot;{
+        fact &quot;x&quot; {
+          abc should be null
+        }
+      }
+    '''.parse.validate.assertIssues(
+      &quot;The method or field abc is undefined&quot;
+    )
+  }
+
+  fact &quot;Unknown variable within =&gt; null&quot;{
+    '''
+      package bootstrap
+
+      describe &quot;something&quot;{
+        fact &quot;x&quot; {
+          abc =&gt; null
+        }
+      }
+    '''.parse.validate.assertIssues(
+      &quot;The method or field abc is undefined&quot;
+    )
+  }
+
+  fact &quot;Method call with should be null&quot;{
+    '''
+      package bootstrap
+
+      describe &quot;something&quot;{
+        fact &quot;x&quot; {
+          string =&gt; null
+        }
+        def getString() {&quot;&quot;}
+      }
+    '''.parse.validate.assertNoIssues
+  }
+
+  fact &quot;Null variable with should be null&quot;{
+    '''
+      package bootstrap
+
+      describe &quot;something&quot;{
+        fact &quot;x&quot; {
+          val withoutType = null
+          withoutType =&gt; null
+        }
+      }
+    '''.parse.validate.assertNoIssues
+  }
+
+  def assertNoIssues(List&lt;Issue&gt; issues) {
+    issues.size =&gt; 0
+  }
+
+  def assertIssues(List&lt;Issue&gt; issues, String ... parts) {
+    val sb = new StringBuilder
+  for (issue : issues.filter[!parts.exists[part| message.contains(part)]]) {
+    sb.append(&quot;- unmatched actual issue: &quot;)
+    sb.append(issue)
+    sb.append(System.getProperty(&quot;line.separator&quot;))
+  }
+  for (part : parts.filter[part | !issues.exists[message.contains(part)]]) {
+    sb.append(&quot;- unmatched expected issue part: &quot;)
+    sb.append(part)
+    sb.append(System.getProperty(&quot;line.separator&quot;))
+  }
+  if (sb.length &gt; 0) {
+    Assert.fail('''
+      Issue mismatch
+      &laquo;sb.toString&raquo;
+    ''');
+  }
+  }
+
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- /container -->
+
+</body>
+</html>
