@@ -28,33 +28,34 @@ import org.jnario.feature.feature.Scenario;
  */
 public class FeatureOutlineTreeProvider extends XtendOutlineTreeProvider {
 	
-	@Override
-	protected void createFeatureNodes(IOutlineNode parentNode, XtendTypeDeclaration xtendClass) {
-		super.createFeatureNodes(parentNode, xtendClass);
-		if (xtendClass instanceof Feature) {
-			Feature feature = (Feature) xtendClass;
-			Background background = feature.getBackground();
-			if (background != null) {
-				EObjectNode classNode = createNode(parentNode, background);
-				createFeatureNodes(classNode, background);
-			}
-			for (Scenario member : feature.getScenarios()){
-				EObjectNode classNode = createNode(parentNode, member);
-				createFeatureNodes(classNode, member);
-			}
-		}
-		
-	}
-	
-	protected XtendFeatureNode createNodeForFeature(IOutlineNode parentNode,
-			JvmDeclaredType inferredType, JvmFeature jvmFeature,
-			EObject semanticFeature, int inheritanceDepth) {
-		if(jvmFeature instanceof JvmConstructor){
-			return null;
-		}
-		return super.createNodeForFeature(parentNode, inferredType, jvmFeature,
-				semanticFeature, inheritanceDepth);
-	}
+//	
+//	@Override
+//	public void createChildren(IOutlineNode parentNode, EObject modelElement) {
+//		super.createChildren(parentNode, modelElement);
+//		if (modelElement instanceof Feature) {
+//			Feature feature = (Feature) modelElement;
+//			Background background = feature.getBackground();
+//			if (background != null) {
+//				EObjectNode classNode = createNode(parentNode, background);
+//				createFeatureNodes(classNode, background);
+//			}
+//			for (Scenario member : feature.getScenarios()){
+//				EObjectNode classNode = createNode(parentNode, member);
+//				createFeatureNodes(classNode, member);
+//			}
+//		}
+//		
+//	}
+//	
+//	protected XtendFeatureNode createNodeForFeature(IOutlineNode parentNode,
+//			JvmDeclaredType inferredType, JvmFeature jvmFeature,
+//			EObject semanticFeature, int inheritanceDepth) {
+//		if(jvmFeature instanceof JvmConstructor){
+//			return null;
+//		}
+//		return super.createNodeForFeature(parentNode, inferredType, jvmFeature,
+//				semanticFeature, inheritanceDepth);
+//	}
 	
 	protected boolean _isLeaf(Scenario element) {
 		return element.getMembers().isEmpty() && element.getSteps().isEmpty();

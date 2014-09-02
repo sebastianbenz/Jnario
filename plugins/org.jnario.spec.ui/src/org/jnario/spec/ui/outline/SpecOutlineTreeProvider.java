@@ -40,30 +40,30 @@ public class SpecOutlineTreeProvider extends XtendOutlineTreeProvider {
 	
 	@Inject
 	private XtendOutlineNodeFactory factory;
-	
-	@Override
-	protected XtendFeatureNode createNodeForFeature(IOutlineNode parentNode,
-			JvmDeclaredType inferredType, JvmFeature jvmFeature,
-			EObject semanticFeature, int inheritanceDepth) {
-		if(jvmFeature instanceof JvmConstructor){
-			return null;
-		}
-		EObject sourceElement = associations.getPrimarySourceElement(jvmFeature);
-		if(sourceElement instanceof ExampleTable && jvmFeature instanceof JvmOperation){
-			return null;
-		}
-		if(sourceElement instanceof ExampleCell){
-			return null;
-		}
-		if(sourceElement instanceof ExampleRow){
-			return null;
-		}
-		final boolean synthetic = typeExtensions.isSynthetic(jvmFeature);
-		Object text = getText(synthetic ? jvmFeature : semanticFeature);
-		ImageDescriptor image = getImageDescriptor(synthetic ? jvmFeature : semanticFeature);
-	   return factory.createXtendFeatureNode(parentNode, semanticFeature, image, text, true, synthetic, inheritanceDepth);
-	}
-	
+//	
+//	@Override
+//	protected XtendFeatureNode createNodeForFeature(IOutlineNode parentNode,
+//			JvmDeclaredType inferredType, JvmFeature jvmFeature,
+//			EObject semanticFeature, int inheritanceDepth) {
+//		if(jvmFeature instanceof JvmConstructor){
+//			return null;
+//		}
+//		EObject sourceElement = associations.getPrimarySourceElement(jvmFeature);
+//		if(sourceElement instanceof ExampleTable && jvmFeature instanceof JvmOperation){
+//			return null;
+//		}
+//		if(sourceElement instanceof ExampleCell){
+//			return null;
+//		}
+//		if(sourceElement instanceof ExampleRow){
+//			return null;
+//		}
+//		final boolean synthetic = typeExtensions.isSynthetic(jvmFeature);
+//		Object text = getText(synthetic ? jvmFeature : semanticFeature);
+//		ImageDescriptor image = getImageDescriptor(synthetic ? jvmFeature : semanticFeature);
+//	   return factory.createXtendFeatureNode(parentNode, semanticFeature, image, text, true, synthetic, inheritanceDepth);
+//	}
+//	
 	protected boolean _isLeaf(ExampleTable element) {
 		return true;
 	}

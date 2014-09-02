@@ -289,28 +289,40 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private SuiteFileElements pSuiteFile;
-	private ImportElements pImport;
-	private SuiteElements pSuite;
-	private PatternReferenceElements pPatternReference;
-	private ReferenceElements pReference;
-	private SpecReferenceElements pSpecReference;
-	private QualifiedNameElements pQualifiedName;
-	private TerminalRule tSUITE_NAME;
-	private TerminalRule tPATTERN;
-	private TerminalRule tTEXT;
-	private TerminalRule tID;
-	private StaticQualifierElements pStaticQualifier;
+	private final SuiteFileElements pSuiteFile;
+	private final ImportElements pImport;
+	private final SuiteElements pSuite;
+	private final PatternReferenceElements pPatternReference;
+	private final ReferenceElements pReference;
+	private final SpecReferenceElements pSpecReference;
+	private final QualifiedNameElements pQualifiedName;
+	private final TerminalRule tSUITE_NAME;
+	private final TerminalRule tPATTERN;
+	private final TerminalRule tTEXT;
+	private final TerminalRule tID;
+	private final StaticQualifierElements pStaticQualifier;
 	
 	private final Grammar grammar;
 
-	private XtendGrammarAccess gaXtend;
+	private final XtendGrammarAccess gaXtend;
 
 	@Inject
 	public SuiteGrammarAccess(GrammarProvider grammarProvider,
 		XtendGrammarAccess gaXtend) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaXtend = gaXtend;
+		this.pSuiteFile = new SuiteFileElements();
+		this.pImport = new ImportElements();
+		this.pSuite = new SuiteElements();
+		this.pPatternReference = new PatternReferenceElements();
+		this.pReference = new ReferenceElements();
+		this.pSpecReference = new SpecReferenceElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.tSUITE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SUITE_NAME");
+		this.tPATTERN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "PATTERN");
+		this.tTEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "TEXT");
+		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID");
+		this.pStaticQualifier = new StaticQualifierElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -343,7 +355,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	//SuiteFile returns xtend::XtendFile:
 	//	{SuiteFile} ("package" package=QualifiedName ";"?)? importSection=XImportSection? xtendTypes+=Suite*;
 	public SuiteFileElements getSuiteFileAccess() {
-		return (pSuiteFile != null) ? pSuiteFile : (pSuiteFile = new SuiteFileElements());
+		return pSuiteFile;
 	}
 	
 	public ParserRule getSuiteFileRule() {
@@ -353,7 +365,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	//Import returns xtype::XImportDeclaration:
 	//	"import" (importedType=[types::JvmDeclaredType|QualifiedName] | importedNamespace=QualifiedNameWithWildcard) ";"?;
 	public ImportElements getImportAccess() {
-		return (pImport != null) ? pImport : (pImport = new ImportElements());
+		return pImport;
 	}
 	
 	public ParserRule getImportRule() {
@@ -363,7 +375,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	//Suite:
 	//	{Suite} annotations+=XAnnotation* name=SUITE_NAME elements+=Reference*;
 	public SuiteElements getSuiteAccess() {
-		return (pSuite != null) ? pSuite : (pSuite = new SuiteElements());
+		return pSuite;
 	}
 	
 	public ParserRule getSuiteRule() {
@@ -373,7 +385,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	//PatternReference:
 	//	"-" pattern=PATTERN;
 	public PatternReferenceElements getPatternReferenceAccess() {
-		return (pPatternReference != null) ? pPatternReference : (pPatternReference = new PatternReferenceElements());
+		return pPatternReference;
 	}
 	
 	public ParserRule getPatternReferenceRule() {
@@ -383,7 +395,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	//Reference:
 	//	SpecReference | PatternReference;
 	public ReferenceElements getReferenceAccess() {
-		return (pReference != null) ? pReference : (pReference = new ReferenceElements());
+		return pReference;
 	}
 	
 	public ParserRule getReferenceRule() {
@@ -393,7 +405,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	//SpecReference:
 	//	"-" spec=[jnario::Specification|STRING] text=TEXT?;
 	public SpecReferenceElements getSpecReferenceAccess() {
-		return (pSpecReference != null) ? pSpecReference : (pSpecReference = new SpecReferenceElements());
+		return pSpecReference;
 	}
 	
 	public ParserRule getSpecReferenceRule() {
@@ -403,7 +415,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedName:
 	//	ValidID ("." ValidID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
@@ -413,25 +425,25 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal SUITE_NAME:
 	//	"#"+ !"-" ("\\" ("#" | "-") | !("-" | "#"))*;
 	public TerminalRule getSUITE_NAMERule() {
-		return (tSUITE_NAME != null) ? tSUITE_NAME : (tSUITE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SUITE_NAME"));
+		return tSUITE_NAME;
 	} 
 
 	//terminal PATTERN:
 	//	"\\" !("\r" | "\n")* "\r"? "\n";
 	public TerminalRule getPATTERNRule() {
-		return (tPATTERN != null) ? tPATTERN : (tPATTERN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "PATTERN"));
+		return tPATTERN;
 	} 
 
 	//terminal TEXT:
 	//	":" ("\\" ("#" | "-") | !("-" | "#"))*;
 	public TerminalRule getTEXTRule() {
-		return (tTEXT != null) ? tTEXT : (tTEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "TEXT"));
+		return tTEXT;
 	} 
 
 	//terminal ID:
 	//	"^"? ("a".."z" | "A".."Z" | "$" | "_") ("a".."z" | "A".."Z" | "$" | "_" | "0".."9")*;
 	public TerminalRule getIDRule() {
-		return (tID != null) ? tID : (tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID"));
+		return tID;
 	} 
 
 	/// **
@@ -440,7 +452,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	// * / StaticQualifier:
 	//	(ValidID "::")+;
 	public StaticQualifierElements getStaticQualifierAccess() {
-		return (pStaticQualifier != null) ? pStaticQualifier : (pStaticQualifier = new StaticQualifierElements());
+		return pStaticQualifier;
 	}
 	
 	public ParserRule getStaticQualifierRule() {
@@ -460,11 +472,11 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	//Type returns XtendTypeDeclaration:
 	//	{XtendTypeDeclaration} annotations+=XAnnotation* ({XtendClass.annotationInfo=current} modifiers+=CommonModifier*
 	//	"class" name=ValidID ("<" typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? ("extends"
-	//	extends=JvmParameterizedTypeReference)? ("implements" implements+=JvmParameterizedTypeReference (","
-	//	implements+=JvmParameterizedTypeReference)*)? "{" members+=Member* "}" | {XtendInterface.annotationInfo=current}
+	//	extends=JvmParameterizedTypeReference)? ("implements" implements+=JvmSuperTypeReference (","
+	//	implements+=JvmSuperTypeReference)*)? "{" members+=Member* "}" | {XtendInterface.annotationInfo=current}
 	//	modifiers+=CommonModifier* "interface" name=ValidID ("<" typeParameters+=JvmTypeParameter (","
-	//	typeParameters+=JvmTypeParameter)* ">")? ("extends" extends+=JvmParameterizedTypeReference (","
-	//	extends+=JvmParameterizedTypeReference)*)? "{" members+=Member* "}" | {XtendEnum.annotationInfo=current}
+	//	typeParameters+=JvmTypeParameter)* ">")? ("extends" extends+=JvmSuperTypeReference (","
+	//	extends+=JvmSuperTypeReference)*)? "{" members+=Member* "}" | {XtendEnum.annotationInfo=current}
 	//	modifiers+=CommonModifier* "enum" name=ValidID "{" (members+=XtendEnumLiteral ("," members+=XtendEnumLiteral)*)? ";"?
 	//	"}" | {XtendAnnotationType.annotationInfo=current} modifiers+=CommonModifier* "annotation" name=ValidID "{"
 	//	members+=AnnotationField* "}");
@@ -474,6 +486,27 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getTypeRule() {
 		return getTypeAccess().getRule();
+	}
+
+	//JvmSuperTypeReference returns types::JvmTypeReference:
+	//	JvmParameterizedTypeReference | XFunctionSuperTypeRef;
+	public XtendGrammarAccess.JvmSuperTypeReferenceElements getJvmSuperTypeReferenceAccess() {
+		return gaXtend.getJvmSuperTypeReferenceAccess();
+	}
+	
+	public ParserRule getJvmSuperTypeReferenceRule() {
+		return getJvmSuperTypeReferenceAccess().getRule();
+	}
+
+	//XFunctionSuperTypeRef returns xtype::XFunctionTypeRef:
+	//	(instanceContext?="(" (paramTypes+=JvmTypeReference ("," paramTypes+=JvmTypeReference)*)? ")")? "=>"
+	//	returnType=JvmTypeReference;
+	public XtendGrammarAccess.XFunctionSuperTypeRefElements getXFunctionSuperTypeRefAccess() {
+		return gaXtend.getXFunctionSuperTypeRefAccess();
+	}
+	
+	public ParserRule getXFunctionSuperTypeRefRule() {
+		return getXFunctionSuperTypeRefAccess().getRule();
 	}
 
 	//AnnotationField returns XtendMember:
@@ -506,9 +539,9 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	//	type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? ";"? | {XtendFunction.annotationInfo=current}
 	//	modifiers+=CommonModifier* modifiers+=MethodModifier (modifiers+=CommonModifier | modifiers+=MethodModifier)* ("<"
 	//	typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
-	//	createExtensionInfo=CreateExtensionInfo name=ValidID "(") | => (returnType=JvmTypeReference name=FunctionID "(") | =>
-	//	(returnType=TypeReferenceNoTypeArgs name=FunctionID "(") | => (createExtensionInfo=CreateExtensionInfo name=ValidID
-	//	"(") | name=FunctionID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws"
+	//	createExtensionInfo=CreateExtensionInfo name=ValidID "(") | => (returnType=TypeReferenceWithTypeArgs name=FunctionID
+	//	"(") | => (returnType=TypeReferenceNoTypeArgs name=FunctionID "(") | => (createExtensionInfo=CreateExtensionInfo
+	//	name=ValidID "(") | name=FunctionID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws"
 	//	exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression |
 	//	expression=RichString | ";")? | {XtendConstructor.annotationInfo=current} modifiers+=CommonModifier* "new" ("<"
 	//	typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? "(" (parameters+=Parameter (","
@@ -541,7 +574,40 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 		return getTypeReferenceNoTypeArgsAccess().getRule();
 	}
 
-	//FunctionID:
+	/// *** The following two rules are a workaround for a limitation in serialization logic
+	// *
+	// * Apparently we choose the shortest possible path to create the sequence of unassigned
+	// * tokens between two assigned values. This doesn't work well with Antlr predicates which
+	// * may have lead to another decision path - not necessarily the shortest one in the sense
+	// * of the serializer. That's why we make the type arguments mandatory here so that we
+	// * do no longer have two equally short path's from method identifier to block expression
+	// ************************************************************************************** / TypeReferenceWithTypeArgs
+	//returns types::JvmTypeReference:
+	//	ParameterizedTypeReferenceWithTypeArgs => ({types::JvmGenericArrayTypeReference.componentType=current} ArrayBrackets)*
+	//	| TypeReferenceNoTypeArgs => ({types::JvmGenericArrayTypeReference.componentType=current} ArrayBrackets)+ |
+	//	XFunctionTypeRef;
+	public XtendGrammarAccess.TypeReferenceWithTypeArgsElements getTypeReferenceWithTypeArgsAccess() {
+		return gaXtend.getTypeReferenceWithTypeArgsAccess();
+	}
+	
+	public ParserRule getTypeReferenceWithTypeArgsRule() {
+		return getTypeReferenceWithTypeArgsAccess().getRule();
+	}
+
+	//ParameterizedTypeReferenceWithTypeArgs returns types::JvmParameterizedTypeReference:
+	//	type=[types::JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference (","
+	//	arguments+=JvmArgumentTypeReference)* ">" (=> ({types::JvmInnerTypeReference.outer=current} ".")
+	//	type=[types::JvmType|ValidID] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)*
+	//	">")?)*);
+	public XtendGrammarAccess.ParameterizedTypeReferenceWithTypeArgsElements getParameterizedTypeReferenceWithTypeArgsAccess() {
+		return gaXtend.getParameterizedTypeReferenceWithTypeArgsAccess();
+	}
+	
+	public ParserRule getParameterizedTypeReferenceWithTypeArgsRule() {
+		return getParameterizedTypeReferenceWithTypeArgsAccess().getRule();
+	}
+
+	/// *** The following two rules are a workaround for a limitation in serialiation logic * / FunctionID:
 	//	ValidID | Operators;
 	public XtendGrammarAccess.FunctionIDElements getFunctionIDAccess() {
 		return gaXtend.getFunctionIDAccess();
@@ -1381,7 +1447,7 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XCasePart:
-	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | ",");
+	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | fallThrough?=",");
 	public XbaseGrammarAccess.XCasePartElements getXCasePartAccess() {
 		return gaXtend.getXCasePartAccess();
 	}
@@ -1626,8 +1692,9 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmParameterizedTypeReference:
-	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)*
-	//	">")?;
+	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)* ">"
+	//	(=> ({JvmInnerTypeReference.outer=current} ".") type=[JvmType|ValidID] ("<" arguments+=JvmArgumentTypeReference (","
+	//	arguments+=JvmArgumentTypeReference)* ">")?)*)?;
 	public XtypeGrammarAccess.JvmParameterizedTypeReferenceElements getJvmParameterizedTypeReferenceAccess() {
 		return gaXtend.getJvmParameterizedTypeReferenceAccess();
 	}
@@ -1647,7 +1714,8 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmWildcardTypeReference:
-	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound | constraints+=JvmLowerBound)?;
+	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound constraints+=JvmUpperBoundAnded* |
+	//	constraints+=JvmLowerBound constraints+=JvmLowerBoundAnded*)?;
 	public XtypeGrammarAccess.JvmWildcardTypeReferenceElements getJvmWildcardTypeReferenceAccess() {
 		return gaXtend.getJvmWildcardTypeReferenceAccess();
 	}
@@ -1684,6 +1752,16 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getJvmLowerBoundRule() {
 		return getJvmLowerBoundAccess().getRule();
+	}
+
+	//JvmLowerBoundAnded returns JvmLowerBound:
+	//	"&" typeReference=JvmTypeReference;
+	public XtypeGrammarAccess.JvmLowerBoundAndedElements getJvmLowerBoundAndedAccess() {
+		return gaXtend.getJvmLowerBoundAndedAccess();
+	}
+	
+	public ParserRule getJvmLowerBoundAndedRule() {
+		return getJvmLowerBoundAndedAccess().getRule();
 	}
 
 	//JvmTypeParameter:
@@ -1739,8 +1817,8 @@ public class SuiteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\""))* "\""? | "\'" ("\\" .
+	//	/ * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\'"))* "\'"?;
 	public TerminalRule getSTRINGRule() {
 		return gaXtend.getSTRINGRule();
 	} 

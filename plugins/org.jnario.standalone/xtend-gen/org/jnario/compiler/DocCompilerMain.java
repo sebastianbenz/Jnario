@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 import org.apache.log4j.BasicConfigurator;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -25,6 +26,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.Pure;
 import org.jnario.compiler.CompilerMain;
 import org.jnario.compiler.HtmlAssetsCompiler;
 import org.jnario.compiler.JnarioDocCompiler;
@@ -55,9 +57,7 @@ public class DocCompilerMain {
     final Procedure1<DocCompilerMain> _function = new Procedure1<DocCompilerMain>() {
       public void apply(final DocCompilerMain it) {
         final Iterator<String> arguments = ((List<String>)Conversions.doWrapArray(args)).iterator();
-        boolean _hasNext = arguments.hasNext();
-        boolean _while = _hasNext;
-        while (_while) {
+        while (arguments.hasNext()) {
           {
             String _next = arguments.next();
             final String argument = _next.trim();
@@ -102,8 +102,6 @@ public class DocCompilerMain {
               it.setSourcePath(argument);
             }
           }
-          boolean _hasNext_1 = arguments.hasNext();
-          _while = _hasNext_1;
         }
       }
     };
@@ -112,55 +110,20 @@ public class DocCompilerMain {
     System.exit(_compile);
   }
   
+  @Property
   private String _outputPath = "doc-gen";
   
-  public String getOutputPath() {
-    return this._outputPath;
-  }
-  
-  public void setOutputPath(final String outputPath) {
-    this._outputPath = outputPath;
-  }
-  
+  @Property
   private String _classPath = "";
   
-  public String getClassPath() {
-    return this._classPath;
-  }
-  
-  public void setClassPath(final String classPath) {
-    this._classPath = classPath;
-  }
-  
+  @Property
   private String _resultFolder = "";
   
-  public String getResultFolder() {
-    return this._resultFolder;
-  }
-  
-  public void setResultFolder(final String resultFolder) {
-    this._resultFolder = resultFolder;
-  }
-  
+  @Property
   private String _fileEncoding = "UTF-8";
   
-  public String getFileEncoding() {
-    return this._fileEncoding;
-  }
-  
-  public void setFileEncoding(final String fileEncoding) {
-    this._fileEncoding = fileEncoding;
-  }
-  
+  @Property
   private String _sourcePath = ".";
-  
-  public String getSourcePath() {
-    return this._sourcePath;
-  }
-  
-  public void setSourcePath(final String sourcePath) {
-    this._sourcePath = sourcePath;
-  }
   
   public int compile() {
     int _xblockexpression = (int) 0;
@@ -262,4 +225,49 @@ public class DocCompilerMain {
   }
   
   public final static List<ISetup> SETUPS = CollectionLiterals.<ISetup>newArrayList(new SpecStandaloneSetup(), new FeatureStandaloneSetup(), new SuiteStandaloneSetup());
+  
+  @Pure
+  public String getOutputPath() {
+    return this._outputPath;
+  }
+  
+  public void setOutputPath(final String outputPath) {
+    this._outputPath = outputPath;
+  }
+  
+  @Pure
+  public String getClassPath() {
+    return this._classPath;
+  }
+  
+  public void setClassPath(final String classPath) {
+    this._classPath = classPath;
+  }
+  
+  @Pure
+  public String getResultFolder() {
+    return this._resultFolder;
+  }
+  
+  public void setResultFolder(final String resultFolder) {
+    this._resultFolder = resultFolder;
+  }
+  
+  @Pure
+  public String getFileEncoding() {
+    return this._fileEncoding;
+  }
+  
+  public void setFileEncoding(final String fileEncoding) {
+    this._fileEncoding = fileEncoding;
+  }
+  
+  @Pure
+  public String getSourcePath() {
+    return this._sourcePath;
+  }
+  
+  public void setSourcePath(final String sourcePath) {
+    this._sourcePath = sourcePath;
+  }
 }

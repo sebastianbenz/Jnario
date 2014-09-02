@@ -9,12 +9,10 @@ package org.jnario.feature.tests.integration;
 
 import org.jnario.feature.tests.integration.PendingStepsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
-import org.jnario.lib.JnarioIterableExtensions;
-import org.jnario.lib.StepArguments;
-import org.jnario.lib.StringConversions;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -28,9 +26,8 @@ public class PendingStepsFeatureWhenAnAndStepIsPendingTheFollowingStepsShouldBeP
   @Order(0)
   @Named("Given a scenario")
   public void _givenAScenario() {
-    final StepArguments args = new StepArguments("Feature: With pending steps\n\tScenario: Scenario with pending steps\n\t\tint x\n\t\tGiven does something\n\t\t\tx = 3\n\t\tAnd a not implemented step\n\t\tWhen is implemented with\n\t\t\tx = x + 5\n\t\tThen does also something\n\t\t\tx => 8\n");
-    String _first = JnarioIterableExtensions.<String>first(args);
-    this.jnarioFile = _first;
+    throw new Error("Unresolved compilation problems:"
+      + "\nInvalid number of arguments. The method ignoreCountIs(int) is not applicable without arguments");
   }
   
   @Test
@@ -42,11 +39,9 @@ public class PendingStepsFeatureWhenAnAndStepIsPendingTheFollowingStepsShouldBeP
   
   @Test
   @Order(2)
-  @Named("And the expected number of ignored steps is \\\"3\\\"")
+  @Ignore
+  @Named("And the expected number of ignored steps is \\\"3\\\" [PENDING]")
   public void _andTheExpectedNumberOfIgnoredStepsIs3() {
-    final StepArguments args = new StepArguments("3");
-    String _first = JnarioIterableExtensions.<String>first(args);
-    int _int = StringConversions.toInt(_first);
-    FeatureExecutor.ignoreCountIs(this.jnarioFile, _int);
+    
   }
 }

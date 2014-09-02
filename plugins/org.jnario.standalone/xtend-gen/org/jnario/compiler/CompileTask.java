@@ -6,8 +6,10 @@ import org.apache.tools.ant.Project;
 import org.apache.tools.ant.Task;
 import org.apache.tools.ant.types.Path;
 import org.apache.tools.ant.types.Reference;
+import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.Pure;
 import org.jnario.compiler.CompilerMain;
 
 @SuppressWarnings("all")
@@ -15,61 +17,22 @@ public class CompileTask extends Task {
   /**
    * Set target for the generated Java source. Default is "xtend-gen".
    */
+  @Property
   private String _outputPath = "xtend-gen";
-  
-  /**
-   * Set target for the generated Java source. Default is "xtend-gen".
-   */
-  public String getOutputPath() {
-    return this._outputPath;
-  }
-  
-  /**
-   * Set target for the generated Java source. Default is "xtend-gen".
-   */
-  public void setOutputPath(final String outputPath) {
-    this._outputPath = outputPath;
-  }
   
   private Path classPath = null;
   
   /**
    * Set the temporary folder to use. Default is a temporary folder obtained via System::getProperty("java.io.tmpdir").
    */
+  @Property
   private String _tempDirectory = System.getProperty("java.io.tmpdir");
   
   /**
-   * Set the temporary folder to use. Default is a temporary folder obtained via System::getProperty("java.io.tmpdir").
-   */
-  public String getTempDirectory() {
-    return this._tempDirectory;
-  }
-  
-  /**
-   * Set the temporary folder to use. Default is a temporary folder obtained via System::getProperty("java.io.tmpdir").
-   */
-  public void setTempDirectory(final String tempDirectory) {
-    this._tempDirectory = tempDirectory;
-  }
-  
-  /**
    * The spec encoding. Default is UTF-8.
    */
+  @Property
   private String _fileEncoding = "UTF-8";
-  
-  /**
-   * The spec encoding. Default is UTF-8.
-   */
-  public String getFileEncoding() {
-    return this._fileEncoding;
-  }
-  
-  /**
-   * The spec encoding. Default is UTF-8.
-   */
-  public void setFileEncoding(final String fileEncoding) {
-    this._fileEncoding = fileEncoding;
-  }
   
   private Path sourcePath = null;
   
@@ -163,5 +126,32 @@ public class CompileTask extends Task {
       _xblockexpression = this.sourcePath;
     }
     return _xblockexpression;
+  }
+  
+  @Pure
+  public String getOutputPath() {
+    return this._outputPath;
+  }
+  
+  public void setOutputPath(final String outputPath) {
+    this._outputPath = outputPath;
+  }
+  
+  @Pure
+  public String getTempDirectory() {
+    return this._tempDirectory;
+  }
+  
+  public void setTempDirectory(final String tempDirectory) {
+    this._tempDirectory = tempDirectory;
+  }
+  
+  @Pure
+  public String getFileEncoding() {
+    return this._fileEncoding;
+  }
+  
+  public void setFileEncoding(final String fileEncoding) {
+    this._fileEncoding = fileEncoding;
   }
 }

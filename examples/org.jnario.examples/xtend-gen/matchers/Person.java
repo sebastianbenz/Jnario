@@ -1,21 +1,14 @@
 package matchers;
 
 import org.eclipse.xtend.lib.Data;
+import org.eclipse.xtext.xbase.lib.Pure;
 
 @Data
 @SuppressWarnings("all")
 public class Person {
   private final String _name;
   
-  public String getName() {
-    return this._name;
-  }
-  
   private final int _age;
-  
-  public int getAge() {
-    return this._age;
-  }
   
   public String toString() {
     String _name = this.getName();
@@ -32,6 +25,7 @@ public class Person {
   }
   
   @Override
+  @Pure
   public int hashCode() {
     final int prime = 31;
     int result = 1;
@@ -41,6 +35,7 @@ public class Person {
   }
   
   @Override
+  @Pure
   public boolean equals(final Object obj) {
     if (this == obj)
       return true;
@@ -57,5 +52,15 @@ public class Person {
     if (other._age != this._age)
       return false;
     return true;
+  }
+  
+  @Pure
+  public String getName() {
+    return this._name;
+  }
+  
+  @Pure
+  public int getAge() {
+    return this._age;
   }
 }

@@ -160,7 +160,7 @@ public class SpecResolver {
         return _xblockexpression;
       }
     };
-    return IterableExtensions.<Specification>sort(_filter, _function_1);
+    return IterableExtensions.<Specification>sortWith(_filter, _function_1);
   }
   
   public List<Specification> resolveSpecs(final EObject suite) {

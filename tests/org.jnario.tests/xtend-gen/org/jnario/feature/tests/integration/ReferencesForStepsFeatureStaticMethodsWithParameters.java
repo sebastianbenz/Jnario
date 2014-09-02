@@ -7,18 +7,14 @@
  */
 package org.jnario.feature.tests.integration;
 
-import com.google.inject.Inject;
-import org.eclipse.xtext.xbase.lib.Extension;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
-import org.jnario.jnario.test.util.BehaviorExecutor;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
-import org.jnario.lib.JnarioIterableExtensions;
-import org.jnario.lib.StepArguments;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -27,26 +23,19 @@ import org.junit.runner.RunWith;
 @CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class ReferencesForStepsFeatureStaticMethodsWithParameters extends ReferencesForStepsFeature {
-  @Inject
-  @Extension
-  @org.jnario.runner.Extension
-  public BehaviorExecutor behaviorExecutor;
-  
   CharSequence jnarioFile;
-  
-  CharSequence jnarioFile2;
   
   @Test
   @Order(0)
+  @Ignore
   @Named("Given a feature")
   public void _givenAFeature() {
-    final StepArguments args = new StepArguments("import com.google.common.collect.Maps\n\nFeature: Static methods with parameters\n\t\n  Scenario: Define step using static method parameters\n\n    Given a step\n      val y = Maps.newHashMapWithExpectedSize(3)\n\n  Scenario: Reference step using static method parameters\n    Given a step\n");
-    String _first = JnarioIterableExtensions.<String>first(args);
-    this.jnarioFile = _first;
+    
   }
   
   @Test
   @Order(1)
+  @Ignore
   @Named("Then it should execute successfully")
   public void _thenItShouldExecuteSuccessfully() {
     FeatureExecutor.isSuccessful(this.jnarioFile);

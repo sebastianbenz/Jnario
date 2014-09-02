@@ -20,6 +20,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Pure;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.util.Strings;
@@ -38,10 +39,6 @@ public class HtmlAssets {
     }
   });
   
-  public List<String> getCssFiles() {
-    return this._cssFiles;
-  }
-  
   private final List<String> _jsFiles = ListExtensions.<String, String>map(CollectionLiterals.<String>newArrayList(
     "prettify.js", 
     "lang-jnario.js", 
@@ -51,10 +48,6 @@ public class HtmlAssets {
       return ("js/" + it);
     }
   });
-  
-  public List<String> getJsFiles() {
-    return this._jsFiles;
-  }
   
   public void generate(final IFileSystemAccess fsa) {
     List<String> _cssFiles = this.getCssFiles();
@@ -93,11 +86,8 @@ public class HtmlAssets {
     return Strings.convertStreamToString(inputStream);
   }
   
-  public HtmlAssets() {
-    super();
-  }
-  
   @Override
+  @Pure
   public int hashCode() {
     final int prime = 31;
     int result = 1;
@@ -107,6 +97,7 @@ public class HtmlAssets {
   }
   
   @Override
+  @Pure
   public boolean equals(final Object obj) {
     if (this == obj)
       return true;
@@ -129,8 +120,19 @@ public class HtmlAssets {
   }
   
   @Override
+  @Pure
   public String toString() {
     String result = new ToStringHelper().toString(this);
     return result;
+  }
+  
+  @Pure
+  public List<String> getCssFiles() {
+    return this._cssFiles;
+  }
+  
+  @Pure
+  public List<String> getJsFiles() {
+    return this._jsFiles;
   }
 }

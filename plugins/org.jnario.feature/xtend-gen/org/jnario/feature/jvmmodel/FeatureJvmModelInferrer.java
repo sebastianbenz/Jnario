@@ -39,7 +39,6 @@ import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.util.TypeReferences;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.xbase.XConstructorCall;
 import org.eclipse.xtext.xbase.XExpression;
@@ -397,29 +396,9 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     String _xblockexpression = null;
     {
       XtendField source = field;
-      boolean _and = false;
-      ICompositeNode _node = NodeModelUtils.getNode(source);
-      boolean _equals = Objects.equal(_node, null);
-      if (!_equals) {
-        _and = false;
-      } else {
-        boolean _notEquals = (!Objects.equal(source, null));
-        _and = _notEquals;
-      }
-      boolean _while = _and;
-      while (_while) {
+      while ((Objects.equal(NodeModelUtils.getNode(source), null) && (!Objects.equal(source, null)))) {
         EObject _find = SourceAdapter.find(source);
         source = ((XtendField) _find);
-        boolean _and_1 = false;
-        ICompositeNode _node_1 = NodeModelUtils.getNode(source);
-        boolean _equals_1 = Objects.equal(_node_1, null);
-        if (!_equals_1) {
-          _and_1 = false;
-        } else {
-          boolean _notEquals_1 = (!Objects.equal(source, null));
-          _and_1 = _notEquals_1;
-        }
-        _while = _and_1;
       }
       _xblockexpression = super.computeFieldName(((XtendField) source));
     }

@@ -8,9 +8,9 @@
 package org.jnario.jnario.documentation;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import java.util.Collections;
 import java.util.List;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -51,11 +51,11 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
      + "\n     colors is " + new org.hamcrest.StringDescription().appendValue(colors).toString() + "\n", _doubleArrow);
     
     Iterable<String> _tail = IterableExtensions.<String>tail(colors);
-    boolean _doubleArrow_1 = this.<String>operator_doubleArrow(_tail, Collections.<String>unmodifiableList(Lists.<String>newArrayList("blue", "green")));
+    boolean _doubleArrow_1 = this.<String>operator_doubleArrow(_tail, Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("blue", "green")));
     Assert.assertTrue("\nExpected colors.tail => #[\"blue\", \"green\"] but"
      + "\n     colors.tail is " + new org.hamcrest.StringDescription().appendValue(_tail).toString()
      + "\n     colors is " + new org.hamcrest.StringDescription().appendValue(colors).toString()
-     + "\n     #[\"blue\", \"green\"] is " + new org.hamcrest.StringDescription().appendValue(Collections.<String>unmodifiableList(Lists.<String>newArrayList("blue", "green"))).toString() + "\n", _doubleArrow_1);
+     + "\n     #[\"blue\", \"green\"] is " + new org.hamcrest.StringDescription().appendValue(Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("blue", "green"))).toString() + "\n", _doubleArrow_1);
     
     String _last = IterableExtensions.<String>last(colors);
     boolean _doubleArrow_2 = Should.<String>operator_doubleArrow(_last, "green");
@@ -85,7 +85,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
      + "\n     list(1, 2) + list(3, 4) is " + new org.hamcrest.StringDescription().appendValue(_plus).toString()
      + "\n     list(1, 2) is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
      + "\n     list(3, 4) is " + new org.hamcrest.StringDescription().appendValue(_list_1).toString()
-     + "\n     #[1, 2, 3, 4] is " + new org.hamcrest.StringDescription().appendValue(Collections.<Integer>unmodifiableList(Lists.<Integer>newArrayList(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4)))).toString() + "\n", this.<Integer>operator_doubleArrow(_plus, Collections.<Integer>unmodifiableList(Lists.<Integer>newArrayList(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4)))));
+     + "\n     #[1, 2, 3, 4] is " + new org.hamcrest.StringDescription().appendValue(Collections.<Integer>unmodifiableList(CollectionLiterals.<Integer>newArrayList(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4)))).toString() + "\n", this.<Integer>operator_doubleArrow(_plus, Collections.<Integer>unmodifiableList(CollectionLiterals.<Integer>newArrayList(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4)))));
     
   }
   
@@ -165,7 +165,7 @@ public class _20FactsAboutXtendFunctionalProgrammingFTWSpec extends _20FactsAbou
     Assert.assertTrue("\nExpected list(\"a string\", 42, true).filter(typeof(String)) => #[\"a string\"] but"
      + "\n     list(\"a string\", 42, true).filter(typeof(String)) is " + new org.hamcrest.StringDescription().appendValue(_filter).toString()
      + "\n     list(\"a string\", 42, true) is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
-     + "\n     #[\"a string\"] is " + new org.hamcrest.StringDescription().appendValue(Collections.<String>unmodifiableList(Lists.<String>newArrayList("a string"))).toString() + "\n", this.<String>operator_doubleArrow(_filter, Collections.<String>unmodifiableList(Lists.<String>newArrayList("a string"))));
+     + "\n     #[\"a string\"] is " + new org.hamcrest.StringDescription().appendValue(Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("a string"))).toString() + "\n", this.<String>operator_doubleArrow(_filter, Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("a string"))));
     
   }
   

@@ -7,8 +7,6 @@
  *******************************************************************************/
 package org.jnario.feature.linking;
 
-import static org.eclipse.xtext.util.Strings.isEmpty;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -23,7 +21,6 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.jnario.feature.feature.FeaturePackage;
-import org.jnario.feature.feature.Step;
 import org.jnario.feature.feature.StepReference;
 import org.jnario.feature.naming.StepNameProvider;
 

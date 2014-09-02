@@ -36,7 +36,7 @@ public class MatchersSpec {
       public Boolean apply(final Person other) {
         int _age = other.getAge();
         int _age_1 = p.getAge();
-        return (_age > _age_1);
+        return Boolean.valueOf((_age > _age_1));
       }
     };
     return _function;
@@ -46,7 +46,7 @@ public class MatchersSpec {
     final Function1<Person, Boolean> _function = new Function1<Person, Boolean>() {
       public Boolean apply(final Person p) {
         int _age = p.getAge();
-        return (_age < 18);
+        return Boolean.valueOf((_age < 18));
       }
     };
     return _function;

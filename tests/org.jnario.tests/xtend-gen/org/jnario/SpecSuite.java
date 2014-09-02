@@ -30,11 +30,12 @@ import org.jnario.spec.tests.unit.naming.OperationNameProviderSpec;
 import org.jnario.spec.tests.unit.naming.SpecQualifiedNameProviderSpec;
 import org.jnario.spec.tests.unit.scoping.SpecScopeProviderSpec;
 import org.jnario.spec.tests.unit.spec.SpecExecutableProviderSpec;
+import org.jnario.spec.tests.unit.validation.LinkerValidationSpec;
 import org.jnario.spec.tests.unit.validation.SpecJavaValidatorSpec;
 import org.junit.runner.RunWith;
 
 @Named("Spec")
-@Contains({ AnnotationsSpec.class, AssertionSpec.class, CompilerSpec.class, CustomizingTheSpecCreationSpec.class, DefiningSpecBaseClassesSpec.class, DefiningXtendClassesInYourSpecsSpec.class, ExampleSpec.class, ExampleGroupSpec.class, ExampleNameProviderSpec.class, ImplicitSubjectSpec.class, IntroducingJnarioSpecsSpec.class, MockingSpec.class, OperationNameProviderSpec.class, PendingSpec.class, SetupTeardownSpec.class, SpecExtensionsSpec.class, SpecDocGeneratorSpec.class, SpecExecutableProviderSpec.class, SpecJavaValidatorSpec.class, SpecQualifiedNameProviderSpec.class, SpecsSpec.class, SpecScopeProviderSpec.class, StaticImportsSpec.class, ThrowsSpec.class, UsingJUnitRulesInSpecsSpec.class, UsingShouldSpec.class, UsingTablesSpec.class, UsingXtendSWithOperatorSpec.class })
+@Contains({ AnnotationsSpec.class, AssertionSpec.class, CompilerSpec.class, CustomizingTheSpecCreationSpec.class, DefiningSpecBaseClassesSpec.class, DefiningXtendClassesInYourSpecsSpec.class, ExampleSpec.class, ExampleGroupSpec.class, ExampleNameProviderSpec.class, ImplicitSubjectSpec.class, IntroducingJnarioSpecsSpec.class, LinkerValidationSpec.class, MockingSpec.class, OperationNameProviderSpec.class, PendingSpec.class, SetupTeardownSpec.class, SpecExtensionsSpec.class, SpecDocGeneratorSpec.class, SpecExecutableProviderSpec.class, SpecJavaValidatorSpec.class, SpecQualifiedNameProviderSpec.class, SpecsSpec.class, SpecScopeProviderSpec.class, StaticImportsSpec.class, ThrowsSpec.class, UsingJUnitRulesInSpecsSpec.class, UsingShouldSpec.class, UsingTablesSpec.class, UsingXtendSWithOperatorSpec.class })
 @RunWith(ExampleGroupRunner.class)
 @SuppressWarnings("all")
 public class SpecSuite {

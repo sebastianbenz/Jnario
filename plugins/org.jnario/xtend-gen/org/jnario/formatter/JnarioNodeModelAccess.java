@@ -1,7 +1,6 @@
 package org.jnario.formatter;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Lists;
 import java.util.Collections;
 import java.util.List;
 import org.eclipse.emf.ecore.EObject;
@@ -12,6 +11,7 @@ import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.xbase.formatting.NodeModelAccess;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
@@ -23,7 +23,7 @@ public class JnarioNodeModelAccess extends NodeModelAccess {
       final ICompositeNode node = NodeModelUtils.findActualNodeFor(obj);
       boolean _equals = Objects.equal(node, null);
       if (_equals) {
-        return Collections.<ILeafNode>unmodifiableList(Lists.<ILeafNode>newArrayList());
+        return Collections.<ILeafNode>unmodifiableList(CollectionLiterals.<ILeafNode>newArrayList());
       }
       BidiTreeIterable<INode> _asTreeIterable = node.getAsTreeIterable();
       final Function1<INode, Boolean> _function = new Function1<INode, Boolean>() {
@@ -53,9 +53,9 @@ public class JnarioNodeModelAccess extends NodeModelAccess {
       List<ILeafNode> _xifexpression = null;
       boolean _tripleEquals = (leafNode == null);
       if (_tripleEquals) {
-        _xifexpression = Collections.<ILeafNode>unmodifiableList(Lists.<ILeafNode>newArrayList());
+        _xifexpression = Collections.<ILeafNode>unmodifiableList(CollectionLiterals.<ILeafNode>newArrayList());
       } else {
-        _xifexpression = Collections.<ILeafNode>unmodifiableList(Lists.<ILeafNode>newArrayList(leafNode));
+        _xifexpression = Collections.<ILeafNode>unmodifiableList(CollectionLiterals.<ILeafNode>newArrayList(leafNode));
       }
       _xblockexpression = _xifexpression;
     }

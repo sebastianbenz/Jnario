@@ -11,6 +11,7 @@ import com.google.common.base.Objects;
 import java.util.List;
 import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Pure;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 import org.jnario.Specification;
 import org.jnario.suite.suite.Suite;
@@ -20,21 +21,9 @@ import org.jnario.suite.suite.Suite;
 public class SuiteNode {
   private final Suite _suite;
   
-  public Suite getSuite() {
-    return this._suite;
-  }
-  
   private final List<SuiteNode> _children = CollectionLiterals.<SuiteNode>newArrayList();
   
-  public List<SuiteNode> getChildren() {
-    return this._children;
-  }
-  
   private final Iterable<Specification> _specs;
-  
-  public Iterable<Specification> getSpecs() {
-    return this._specs;
-  }
   
   public void setParent(final SuiteNode parent) {
     boolean _equals = Objects.equal(parent, null);
@@ -52,6 +41,7 @@ public class SuiteNode {
   }
   
   @Override
+  @Pure
   public int hashCode() {
     final int prime = 31;
     int result = 1;
@@ -62,6 +52,7 @@ public class SuiteNode {
   }
   
   @Override
+  @Pure
   public boolean equals(final Object obj) {
     if (this == obj)
       return true;
@@ -89,8 +80,24 @@ public class SuiteNode {
   }
   
   @Override
+  @Pure
   public String toString() {
     String result = new ToStringHelper().toString(this);
     return result;
+  }
+  
+  @Pure
+  public Suite getSuite() {
+    return this._suite;
+  }
+  
+  @Pure
+  public List<SuiteNode> getChildren() {
+    return this._children;
+  }
+  
+  @Pure
+  public Iterable<Specification> getSpecs() {
+    return this._specs;
   }
 }

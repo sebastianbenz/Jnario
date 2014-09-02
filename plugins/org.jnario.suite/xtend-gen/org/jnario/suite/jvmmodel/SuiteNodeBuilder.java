@@ -107,10 +107,7 @@ public class SuiteNodeBuilder {
   public int level(final Suite suite) {
     final String name = suite.getName();
     int i = 0;
-    int _length = name.length();
-    boolean _lessThan = (i < _length);
-    boolean _while = _lessThan;
-    while (_while) {
+    while ((i < name.length())) {
       {
         char _charAt = name.charAt(i);
         boolean _notEquals = (_charAt != SuiteNodeBuilder.PREFIX);
@@ -119,9 +116,6 @@ public class SuiteNodeBuilder {
         }
         i = (i + 1);
       }
-      int _length_1 = name.length();
-      boolean _lessThan_1 = (i < _length_1);
-      _while = _lessThan_1;
     }
     return i;
   }

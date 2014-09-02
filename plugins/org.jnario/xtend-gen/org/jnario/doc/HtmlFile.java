@@ -8,8 +8,10 @@
 package org.jnario.doc;
 
 import java.util.List;
+import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.Pure;
 import org.jnario.doc.HtmlAssets;
 
 @SuppressWarnings("all")
@@ -22,85 +24,29 @@ public class HtmlFile {
     return htmlFile;
   }
   
+  @Property
   private HtmlAssets _assets = new HtmlAssets();
   
-  public HtmlAssets getAssets() {
-    return this._assets;
-  }
-  
-  public void setAssets(final HtmlAssets assets) {
-    this._assets = assets;
-  }
-  
+  @Property
   private CharSequence _name = "";
   
-  public CharSequence getName() {
-    return this._name;
-  }
-  
-  public void setName(final CharSequence name) {
-    this._name = name;
-  }
-  
+  @Property
   private CharSequence _title = "";
   
-  public CharSequence getTitle() {
-    return this._title;
-  }
-  
-  public void setTitle(final CharSequence title) {
-    this._title = title;
-  }
-  
+  @Property
   private CharSequence _content = "";
   
-  public CharSequence getContent() {
-    return this._content;
-  }
-  
-  public void setContent(final CharSequence content) {
-    this._content = content;
-  }
-  
+  @Property
   private String _rootFolder = "";
   
-  public String getRootFolder() {
-    return this._rootFolder;
-  }
-  
-  public void setRootFolder(final String rootFolder) {
-    this._rootFolder = rootFolder;
-  }
-  
+  @Property
   private CharSequence _sourceCode = "";
   
-  public CharSequence getSourceCode() {
-    return this._sourceCode;
-  }
-  
-  public void setSourceCode(final CharSequence sourceCode) {
-    this._sourceCode = sourceCode;
-  }
-  
+  @Property
   private CharSequence _fileName = "";
   
-  public CharSequence getFileName() {
-    return this._fileName;
-  }
-  
-  public void setFileName(final CharSequence fileName) {
-    this._fileName = fileName;
-  }
-  
+  @Property
   private String _executionStatus = "";
-  
-  public String getExecutionStatus() {
-    return this._executionStatus;
-  }
-  
-  public void setExecutionStatus(final String executionStatus) {
-    this._executionStatus = executionStatus;
-  }
   
   public CharSequence toText() {
     StringConcatenation _builder = new StringConcatenation();
@@ -265,5 +211,77 @@ public class HtmlFile {
     _builder.append("</html>");
     _builder.newLine();
     return _builder;
+  }
+  
+  @Pure
+  public HtmlAssets getAssets() {
+    return this._assets;
+  }
+  
+  public void setAssets(final HtmlAssets assets) {
+    this._assets = assets;
+  }
+  
+  @Pure
+  public CharSequence getName() {
+    return this._name;
+  }
+  
+  public void setName(final CharSequence name) {
+    this._name = name;
+  }
+  
+  @Pure
+  public CharSequence getTitle() {
+    return this._title;
+  }
+  
+  public void setTitle(final CharSequence title) {
+    this._title = title;
+  }
+  
+  @Pure
+  public CharSequence getContent() {
+    return this._content;
+  }
+  
+  public void setContent(final CharSequence content) {
+    this._content = content;
+  }
+  
+  @Pure
+  public String getRootFolder() {
+    return this._rootFolder;
+  }
+  
+  public void setRootFolder(final String rootFolder) {
+    this._rootFolder = rootFolder;
+  }
+  
+  @Pure
+  public CharSequence getSourceCode() {
+    return this._sourceCode;
+  }
+  
+  public void setSourceCode(final CharSequence sourceCode) {
+    this._sourceCode = sourceCode;
+  }
+  
+  @Pure
+  public CharSequence getFileName() {
+    return this._fileName;
+  }
+  
+  public void setFileName(final CharSequence fileName) {
+    this._fileName = fileName;
+  }
+  
+  @Pure
+  public String getExecutionStatus() {
+    return this._executionStatus;
+  }
+  
+  public void setExecutionStatus(final String executionStatus) {
+    this._executionStatus = executionStatus;
   }
 }

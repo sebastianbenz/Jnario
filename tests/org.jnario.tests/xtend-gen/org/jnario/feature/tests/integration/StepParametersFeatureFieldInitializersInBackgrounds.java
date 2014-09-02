@@ -9,8 +9,6 @@ package org.jnario.feature.tests.integration;
 
 import org.jnario.feature.tests.integration.StepParametersFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
-import org.jnario.lib.JnarioIterableExtensions;
-import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -27,9 +25,9 @@ public class StepParametersFeatureFieldInitializersInBackgrounds extends StepPar
   @Order(0)
   @Named("When I have a scenario with a background and a field initializer")
   public void _whenIHaveAScenarioWithABackgroundAndAFieldInitializer() {
-    final StepArguments args = new StepArguments("Feature: Field initializers in Backgrounds\nBackground:\n  String greeting = \"Hello \"\n  Given a name \"Sebastian\"\n    greeting = greeting + args.first\nScenario: Greeting someone\n  Then the greeting should be \"Hello Sebastian\" \n\tgreeting => args.first\n");
-    String _first = JnarioIterableExtensions.<String>first(args);
-    this.jnarioFile = _first;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field args is undefined for the type Scenario: Field initializers in Backgrounds\r\n"
+      + "\nfirst cannot be resolved");
   }
   
   @Test

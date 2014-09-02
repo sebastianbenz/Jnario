@@ -16,9 +16,9 @@ import org.eclipse.xtend.core.compiler.XtendOutputConfigurationProvider;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
-import org.eclipse.xtend.core.linking.LinkingProxyAwareResource;
-import org.eclipse.xtend.core.linking.URIEncoder;
 import org.eclipse.xtend.core.linking.XtendEObjectAtOffsetHelper;
+import org.eclipse.xtend.core.macro.declaration.NopResourceChangeRegistry;
+import org.eclipse.xtend.core.macro.declaration.ResourceChangeRegistry;
 import org.eclipse.xtend.core.parser.antlr.internal.FlexerFactory;
 import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
 import org.eclipse.xtend.core.scoping.AnonymousClassConstructorScopes;
@@ -30,7 +30,6 @@ import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtend.core.validation.XtendImplicitReturnFinder;
 import org.eclipse.xtend.core.xtend.XtendFactory;
 import org.eclipse.xtend.lib.macro.file.FileLocations;
-import org.eclipse.xtend.lib.macro.file.MutableFileSystemSupport;
 import org.eclipse.xtext.common.types.descriptions.JvmDeclaredTypeSignatureHashProvider.SignatureHashBuilder;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.conversion.impl.IDValueConverter;
@@ -42,7 +41,6 @@ import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinker;
 import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.linking.ILinkingService;
-import org.eclipse.xtext.linking.lazy.LazyURIEncoder;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.parser.impl.TokenRegionProvider;
@@ -51,7 +49,6 @@ import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.IResourceDescription.Manager;
 import org.eclipse.xtext.resource.IResourceDescriptions;
-import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.impl.EagerResourceSetBasedResourceDescriptions;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
@@ -109,7 +106,6 @@ import org.jnario.feature.resource.FeatureLocationInFileProvider;
 import org.jnario.feature.scoping.FeatureImportedNamespaceScopeProvider;
 import org.jnario.feature.scoping.FeatureScopeProviderAccess;
 import org.jnario.feature.validation.FeatureNamesAreUniqueValidationHelper;
-import org.jnario.formatter.JnarioFormatter;
 import org.jnario.formatter.JnarioNodeModelAccess;
 import org.jnario.jvmmodel.ExecutableProvider;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
@@ -290,15 +286,6 @@ public class FeatureRuntimeModule extends
 		return FeatureLazyLinker.class;
 	}
 	
-	@Override
-	public Class<? extends XtextResource> bindXtextResource() {
-		return LinkingProxyAwareResource.class;
-	}
-	
-	public Class<? extends LazyURIEncoder> bindLazyURIEncoder() {
-		return URIEncoder.class;
-	}
-	
 	/**
 	 * @since 2.4.2
 	 */
@@ -307,9 +294,6 @@ public class FeatureRuntimeModule extends
 		binder.bind(IResourceDescriptions.class).to(EagerResourceSetBasedResourceDescriptions.class);
 	}
 	
-	public Class<? extends MutableFileSystemSupport> bindFileHandleFactory() {
-		return AbstractFileSystemSupport.class;
-	}
 	
 	public Class<? extends AbstractFileSystemSupport> bindAbstractFileSystemSupport() {
 		return JavaIOFileSystemSupport.class;
@@ -368,6 +352,11 @@ public class FeatureRuntimeModule extends
 	
 	public Class<? extends ConstructorScopes> bindConstructorScopes() {
 		return AnonymousClassConstructorScopes.class;
+	}
+	
+	
+	public Class<? extends ResourceChangeRegistry> bindResourceChangeRegistry() {
+		return NopResourceChangeRegistry.class;
 	}
 	
 }

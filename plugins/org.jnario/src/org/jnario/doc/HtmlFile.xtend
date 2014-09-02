@@ -7,7 +7,6 @@
  *******************************************************************************/
 package org.jnario.doc
 
-import org.eclipse.xtend.lib.Property
 import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
 
 class HtmlFile {

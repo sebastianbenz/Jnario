@@ -58,10 +58,7 @@ public class Wait {
   public void until(final Function0<Boolean> condition) {
     try {
       final long start = this.clock.currentTime();
-      Boolean _apply = condition.apply();
-      boolean _not = (!(_apply).booleanValue());
-      boolean _while = _not;
-      while (_while) {
+      while ((!(condition.apply()).booleanValue())) {
         {
           boolean _timeOut = this.timeOut(start);
           if (_timeOut) {
@@ -69,9 +66,6 @@ public class Wait {
           }
           this.sleeper.sleep(this.pollingInterval);
         }
-        Boolean _apply_1 = condition.apply();
-        boolean _not_1 = (!(_apply_1).booleanValue());
-        _while = _not_1;
       }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);

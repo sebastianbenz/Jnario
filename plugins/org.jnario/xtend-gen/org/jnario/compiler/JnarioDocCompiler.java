@@ -18,11 +18,13 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
+import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.mwe.NameBasedFilter;
 import org.eclipse.xtext.mwe.PathTraverser;
 import org.eclipse.xtext.parser.IEncodingProvider;
 import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.xbase.lib.Pure;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.DocOutputConfigurationProvider;
 import org.jnario.report.Executable2ResultMapping;
@@ -31,15 +33,8 @@ import org.jnario.report.Executable2ResultMapping;
 public class JnarioDocCompiler extends XtendBatchCompiler {
   private Executable2ResultMapping resultMapping;
   
+  @Property
   private String _resultFolder;
-  
-  public String getResultFolder() {
-    return this._resultFolder;
-  }
-  
-  public void setResultFolder(final String resultFolder) {
-    this._resultFolder = resultFolder;
-  }
   
   @Inject
   private AbstractDocGenerator docGenerator;
@@ -105,5 +100,14 @@ public class JnarioDocCompiler extends XtendBatchCompiler {
         this.docGenerator.doGenerate(r, javaIoFileSystemAccess, executable2ResultMapping);
       }
     }
+  }
+  
+  @Pure
+  public String getResultFolder() {
+    return this._resultFolder;
+  }
+  
+  public void setResultFolder(final String resultFolder) {
+    this._resultFolder = resultFolder;
   }
 }

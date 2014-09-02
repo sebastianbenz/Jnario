@@ -128,28 +128,7 @@ public class JnarioSpecsFactsForJavaSpec {
   @Named("Implicit subject creation")
   @Order(3)
   public void _implicitSubjectCreation() throws Exception {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package bootstrap");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("import java.util.ArrayList");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("describe ArrayList{");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("fact \"should automatically create an instance of ArrayList called subject\"{");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("subject should be typeof(ArrayList)");
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("}");
-    _builder.newLine();
-    this._specExecutor.executesSuccessfully(_builder);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method executesSuccessfully is undefined for the type Jnario Specs - facts for Java");
   }
 }

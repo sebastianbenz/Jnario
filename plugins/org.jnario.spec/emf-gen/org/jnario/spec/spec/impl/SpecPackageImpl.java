@@ -205,6 +205,16 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getExampleGroup_Contract()
+	{
+		return (EReference)exampleGroupEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getExample()
 	{
 		return exampleEClass;
@@ -296,6 +306,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		createEAttribute(exampleGroupEClass, EXAMPLE_GROUP__PREAMBLE);
 		createEReference(exampleGroupEClass, EXAMPLE_GROUP__TARGET_TYPE);
 		createEReference(exampleGroupEClass, EXAMPLE_GROUP__TARGET_OPERATION);
+		createEReference(exampleGroupEClass, EXAMPLE_GROUP__CONTRACT);
 
 		exampleEClass = createEClass(EXAMPLE);
 		createEReference(exampleEClass, EXAMPLE__EXPR);
@@ -359,6 +370,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 		initEAttribute(getExampleGroup_Preamble(), ecorePackage.getEString(), "preamble", null, 0, 1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExampleGroup_TargetType(), theTypesPackage.getJvmTypeReference(), null, "targetType", null, 0, 1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExampleGroup_TargetOperation(), theTypesPackage.getJvmOperation(), null, "targetOperation", null, 0, 1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExampleGroup_Contract(), this.getExampleGroup(), null, "contract", null, 0, 1, ExampleGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(exampleEClass, Example.class, "Example", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExample_Expr(), theXbasePackage.getXExpression(), null, "expr", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -25,6 +25,7 @@ import org.jnario.Specification;
  *   <li>{@link org.jnario.spec.spec.ExampleGroup#getPreamble <em>Preamble</em>}</li>
  *   <li>{@link org.jnario.spec.spec.ExampleGroup#getTargetType <em>Target Type</em>}</li>
  *   <li>{@link org.jnario.spec.spec.ExampleGroup#getTargetOperation <em>Target Operation</em>}</li>
+ *   <li>{@link org.jnario.spec.spec.ExampleGroup#getContract <em>Contract</em>}</li>
  * </ul>
  * </p>
  *
@@ -111,5 +112,31 @@ public interface ExampleGroup extends Specification, XtendMember
 	 * @generated
 	 */
 	void setTargetOperation(JvmOperation value);
+
+	/**
+	 * Returns the value of the '<em><b>Contract</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Contract</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Contract</em>' reference.
+	 * @see #setContract(ExampleGroup)
+	 * @see org.jnario.spec.spec.SpecPackage#getExampleGroup_Contract()
+	 * @model
+	 * @generated
+	 */
+	ExampleGroup getContract();
+
+	/**
+	 * Sets the value of the '{@link org.jnario.spec.spec.ExampleGroup#getContract <em>Contract</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Contract</em>' reference.
+	 * @see #getContract()
+	 * @generated
+	 */
+	void setContract(ExampleGroup value);
 
 } // ExampleGroup

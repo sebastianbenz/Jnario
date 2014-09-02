@@ -10,6 +10,7 @@ import java.util.Set;
 import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Pure;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 
 @Data
@@ -23,15 +24,7 @@ public class Evolution {
   
   private final Rule _staysAlive;
   
-  public Rule getStaysAlive() {
-    return this._staysAlive;
-  }
-  
   private final Rule _becomesAlive;
-  
-  public Rule getBecomesAlive() {
-    return this._becomesAlive;
-  }
   
   public World evolve(final World world) {
     Set<CellLocation> _livingCells = world.getLivingCells();
@@ -66,6 +59,7 @@ public class Evolution {
   }
   
   @Override
+  @Pure
   public int hashCode() {
     final int prime = 31;
     int result = 1;
@@ -75,6 +69,7 @@ public class Evolution {
   }
   
   @Override
+  @Pure
   public boolean equals(final Object obj) {
     if (this == obj)
       return true;
@@ -97,8 +92,19 @@ public class Evolution {
   }
   
   @Override
+  @Pure
   public String toString() {
     String result = new ToStringHelper().toString(this);
     return result;
+  }
+  
+  @Pure
+  public Rule getStaysAlive() {
+    return this._staysAlive;
+  }
+  
+  @Pure
+  public Rule getBecomesAlive() {
+    return this._becomesAlive;
   }
 }

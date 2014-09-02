@@ -7,21 +7,14 @@
  */
 package org.jnario.feature.tests.integration;
 
-import com.google.inject.Inject;
-import org.hamcrest.Matcher;
 import org.jnario.feature.tests.integration.FieldInferenceFeature;
-import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
-import org.jnario.jnario.test.util.ResultMatchers;
-import org.jnario.lib.JnarioIterableExtensions;
-import org.jnario.lib.Should;
-import org.jnario.lib.StepArguments;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.Result;
 import org.junit.runner.RunWith;
 
 @RunWith(FeatureRunner.class)
@@ -29,40 +22,30 @@ import org.junit.runner.RunWith;
 @CreateWith(FeatureTestCreator.class)
 @SuppressWarnings("all")
 public class FieldInferenceFeatureInferringFieldsFromBackgroundInDifferentFeature extends FieldInferenceFeature {
-  @Inject
-  FeatureExecutor runner;
-  
-  CharSequence feature1;
-  
-  CharSequence feature2;
-  
   @Test
   @Order(0)
+  @Ignore
   @Named("When I have a feature")
   public void _whenIHaveAFeature() {
-    final StepArguments args = new StepArguments("Feature: Feature 1\n\tBackground:\n\t\tString myString\n\t\n\tScenario: My Scenario\n\t\tGiven a string \"value\"\n\t\t\tmyString = args.first\n");
-    String _first = JnarioIterableExtensions.<String>first(args);
-    this.feature1 = _first;
+    
   }
   
   @Test
   @Order(1)
+  @Ignore
   @Named("And another feature")
   public void _andAnotherFeature() {
-    final StepArguments args = new StepArguments("Feature: Feature 2\n\tScenario: My Scenario 2\n\t\tGiven a string \"test\"\n\t\tThen my string is \"test\"\n\t\t\tmyString => args.first   \n");
-    String _first = JnarioIterableExtensions.<String>first(args);
-    this.feature2 = _first;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field feature2 is undefined for the type Scenario: Inferring Fields from Background in different Feature\r\n"
+      + "\nThe method or field args is undefined for the type Scenario: Inferring Fields from Background in different Feature\r\n"
+      + "\nfirst cannot be resolved");
   }
   
   @Test
   @Order(2)
-  @Named("Then both should execute successfully")
+  @Ignore
+  @Named("Then both should execute successfully [PENDING]")
   public void _thenBothShouldExecuteSuccessfully() {
-    Result _execute = this.runner.execute(this.feature1);
-    Matcher<Result> _isSuccessful = ResultMatchers.isSuccessful();
-    Should.<Result>operator_doubleArrow(_execute, _isSuccessful);
-    Result _execute_1 = this.runner.execute(this.feature2);
-    Matcher<Result> _isSuccessful_1 = ResultMatchers.isSuccessful();
-    Should.<Result>operator_doubleArrow(_execute_1, _isSuccessful_1);
+    
   }
 }

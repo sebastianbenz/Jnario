@@ -8,7 +8,6 @@
 package org.jnario.standalone.tests;
 
 import com.google.common.base.Charsets;
-import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Provider;
@@ -23,6 +22,7 @@ import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.Files;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
@@ -104,7 +104,7 @@ public class SuiteBatchCompilerTest {
           SuiteBatchCompilerTest.this.compile(compiler);
         }
       };
-      IterableExtensions.forEach(Collections.<ISetup>unmodifiableList(Lists.<ISetup>newArrayList(_featureStandaloneSetup, _specStandaloneSetup, _suiteStandaloneSetup)), _function);
+      IterableExtensions.forEach(Collections.<ISetup>unmodifiableList(CollectionLiterals.<ISetup>newArrayList(_featureStandaloneSetup, _specStandaloneSetup, _suiteStandaloneSetup)), _function);
       final File outputDir = new File((SuiteBatchCompilerTest.OUTPUT_DIRECTORY + "/test"));
       final FilenameFilter _function_1 = new FilenameFilter() {
         public boolean accept(final File dir, final String name) {

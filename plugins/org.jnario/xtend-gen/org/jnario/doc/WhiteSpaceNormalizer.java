@@ -38,25 +38,17 @@ public class WhiteSpaceNormalizer {
         return "";
       }
       String firstLine = IterableExtensions.<String>head(lines);
-      String _trim = firstLine.trim();
-      int _length_1 = _trim.length();
-      boolean _equals_2 = (_length_1 == 0);
-      boolean _while = _equals_2;
-      while (_while) {
+      while ((firstLine.trim().length() == 0)) {
         {
           Iterable<String> _drop = IterableExtensions.<String>drop(lines, 1);
           lines = _drop;
           String _head = IterableExtensions.<String>head(lines);
           firstLine = _head;
-          boolean _equals_3 = Objects.equal(firstLine, null);
-          if (_equals_3) {
+          boolean _equals_2 = Objects.equal(firstLine, null);
+          if (_equals_2) {
             return "";
           }
         }
-        String _trim_1 = firstLine.trim();
-        int _length_2 = _trim_1.length();
-        boolean _equals_3 = (_length_2 == 0);
-        _while = _equals_3;
       }
       final String whitespace = this.whitespaceAtBeginning(firstLine);
       String ending = "";
@@ -104,10 +96,7 @@ public class WhiteSpaceNormalizer {
       }
     }
     int i = 0;
-    int _length_2 = toReplace.length();
-    boolean _lessThan_1 = (i < _length_2);
-    boolean _while = _lessThan_1;
-    while (_while) {
+    while ((i < toReplace.length())) {
       {
         char _charAt = input.charAt(i);
         char _charAt_1 = toReplace.charAt(i);
@@ -117,11 +106,8 @@ public class WhiteSpaceNormalizer {
         }
         i = (i + 1);
       }
-      int _length_3 = toReplace.length();
-      boolean _lessThan_2 = (i < _length_3);
-      _while = _lessThan_2;
     }
-    int _length_3 = toReplace.length();
-    return input.substring(_length_3);
+    int _length_2 = toReplace.length();
+    return input.substring(_length_2);
   }
 }

@@ -33,6 +33,7 @@ import org.jnario.spec.spec.SpecPackage;
  *   <li>{@link org.jnario.spec.spec.impl.ExampleGroupImpl#getPreamble <em>Preamble</em>}</li>
  *   <li>{@link org.jnario.spec.spec.impl.ExampleGroupImpl#getTargetType <em>Target Type</em>}</li>
  *   <li>{@link org.jnario.spec.spec.impl.ExampleGroupImpl#getTargetOperation <em>Target Operation</em>}</li>
+ *   <li>{@link org.jnario.spec.spec.impl.ExampleGroupImpl#getContract <em>Contract</em>}</li>
  * </ul>
  * </p>
  *
@@ -79,6 +80,16 @@ public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 	 * @ordered
 	 */
 	protected JvmOperation targetOperation;
+
+	/**
+	 * The cached value of the '{@link #getContract() <em>Contract</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContract()
+	 * @generated
+	 * @ordered
+	 */
+	protected ExampleGroup contract;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -220,6 +231,49 @@ public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ExampleGroup getContract()
+	{
+		if (contract != null && contract.eIsProxy())
+		{
+			InternalEObject oldContract = (InternalEObject)contract;
+			contract = (ExampleGroup)eResolveProxy(oldContract);
+			if (contract != oldContract)
+			{
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.EXAMPLE_GROUP__CONTRACT, oldContract, contract));
+			}
+		}
+		return contract;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExampleGroup basicGetContract()
+	{
+		return contract;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setContract(ExampleGroup newContract)
+	{
+		ExampleGroup oldContract = contract;
+		contract = newContract;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.EXAMPLE_GROUP__CONTRACT, oldContract, contract));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
@@ -248,6 +302,9 @@ public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 			case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
 				if (resolve) return getTargetOperation();
 				return basicGetTargetOperation();
+			case SpecPackage.EXAMPLE_GROUP__CONTRACT:
+				if (resolve) return getContract();
+				return basicGetContract();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -270,6 +327,9 @@ public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 				return;
 			case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
 				setTargetOperation((JvmOperation)newValue);
+				return;
+			case SpecPackage.EXAMPLE_GROUP__CONTRACT:
+				setContract((ExampleGroup)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -294,6 +354,9 @@ public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 			case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
 				setTargetOperation((JvmOperation)null);
 				return;
+			case SpecPackage.EXAMPLE_GROUP__CONTRACT:
+				setContract((ExampleGroup)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -314,6 +377,8 @@ public class ExampleGroupImpl extends SpecificationImpl implements ExampleGroup
 				return targetType != null;
 			case SpecPackage.EXAMPLE_GROUP__TARGET_OPERATION:
 				return targetOperation != null;
+			case SpecPackage.EXAMPLE_GROUP__CONTRACT:
+				return contract != null;
 		}
 		return super.eIsSet(featureID);
 	}

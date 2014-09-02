@@ -18,10 +18,10 @@ import org.eclipse.xtend.core.formatting.XtendFormatter;
 import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.linking.Linker;
-import org.eclipse.xtend.core.linking.LinkingProxyAwareResource;
-import org.eclipse.xtend.core.linking.URIEncoder;
 import org.eclipse.xtend.core.linking.XtendEObjectAtOffsetHelper;
 import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
+import org.eclipse.xtend.core.macro.declaration.NopResourceChangeRegistry;
+import org.eclipse.xtend.core.macro.declaration.ResourceChangeRegistry;
 import org.eclipse.xtend.core.parser.antlr.internal.FlexerFactory;
 import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
 import org.eclipse.xtend.core.typesystem.LocalClassAwareTypeNames;
@@ -47,7 +47,6 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.linking.ILinker;
 import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
-import org.eclipse.xtext.linking.lazy.LazyURIEncoder;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.parser.impl.TokenRegionProvider;
@@ -56,7 +55,6 @@ import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.IResourceDescription.Manager;
 import org.eclipse.xtext.resource.IResourceDescriptions;
-import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.impl.EagerResourceSetBasedResourceDescriptions;
 import org.eclipse.xtext.scoping.IGlobalScopeProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
@@ -273,25 +271,12 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 		return Linker.class;
 	}
 	
-	@Override
-	public Class<? extends XtextResource> bindXtextResource() {
-		return LinkingProxyAwareResource.class;
-	}
-	
-	public Class<? extends LazyURIEncoder> bindLazyURIEncoder() {
-		return URIEncoder.class;
-	}
-	
 	/**
 	 * @since 2.4.2
 	 */
 	@Override
 	public void configureIResourceDescriptions(com.google.inject.Binder binder) {
 		binder.bind(IResourceDescriptions.class).to(EagerResourceSetBasedResourceDescriptions.class);
-	}
-	
-	public Class<? extends MutableFileSystemSupport> bindFileHandleFactory() {
-		return JavaIOFileSystemSupport.class;
 	}
 	
 	public Class<? extends AbstractFileSystemSupport> bindAbstractFileSystemSupport() {
@@ -339,6 +324,11 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	
 	public Class<? extends HumanReadableTypeNames> bindHumanReadableTypeNames() {
 		return LocalClassAwareTypeNames.class;
+	}
+	
+	
+	public Class<? extends ResourceChangeRegistry> bindResourceChangeRegistry() {
+		return NopResourceChangeRegistry.class;
 	}
 	
 }

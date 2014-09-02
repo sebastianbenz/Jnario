@@ -10,8 +10,6 @@ package org.jnario.feature.tests.integration;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
-import org.jnario.lib.JnarioIterableExtensions;
-import org.jnario.lib.StepArguments;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -30,9 +28,9 @@ public class ReferencesForStepsFeatureUsingFieldsFromOtherSteps extends Referenc
   @Order(0)
   @Named("When I have a scenario with a field")
   public void _whenIHaveAScenarioWithAField() {
-    final StepArguments args = new StepArguments("package bootstrap\nimport java.util.*\nFeature: Test\n\tScenario: TestScenario 1\n\t\tList<String> values = new ArrayList()\n\t\tGiven a list\n\t\t\tvalues += \"hello\"\n\t\t\n\tScenario: TestScenario 2\n\t\tGiven a list\n\t\tThen it should have contents\n\t\t\tvalues.size => 1\n");
-    String _first = JnarioIterableExtensions.<String>first(args);
-    this.jnarioFile = _first;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field args is undefined for the type Scenario: Using fields from other steps\r\n"
+      + "\nfirst cannot be resolved");
   }
   
   @Test

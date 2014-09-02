@@ -1949,37 +1949,58 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private SpecFileElements pSpecFile;
-	private TypeElements pType;
-	private MethodElements pMethod;
-	private TypeNameElements pTypeName;
-	private TypeRefElements pTypeRef;
-	private MemberElements pMember;
-	private XPrimaryExpressionElements pXPrimaryExpression;
-	private XRelationalExpressionElements pXRelationalExpression;
-	private ShouldElements pShould;
-	private AssertionElements pAssertion;
-	private ExampleColumnElements pExampleColumn;
-	private ExampleRowElements pExampleRow;
-	private ExampleCellElements pExampleCell;
-	private TerminalRule tML_COMMENT;
-	private TerminalRule tRICH_TEXT;
-	private TerminalRule tRICH_TEXT_START;
-	private TerminalRule tRICH_TEXT_END;
-	private TerminalRule tRICH_TEXT_INBETWEEN;
-	private TerminalRule tCOMMENT_RICH_TEXT_INBETWEEN;
-	private TerminalRule tCOMMENT_RICH_TEXT_END;
-	private TerminalRule tIN_RICH_STRING;
+	private final SpecFileElements pSpecFile;
+	private final TypeElements pType;
+	private final MethodElements pMethod;
+	private final TypeNameElements pTypeName;
+	private final TypeRefElements pTypeRef;
+	private final MemberElements pMember;
+	private final XPrimaryExpressionElements pXPrimaryExpression;
+	private final XRelationalExpressionElements pXRelationalExpression;
+	private final ShouldElements pShould;
+	private final AssertionElements pAssertion;
+	private final ExampleColumnElements pExampleColumn;
+	private final ExampleRowElements pExampleRow;
+	private final ExampleCellElements pExampleCell;
+	private final TerminalRule tML_COMMENT;
+	private final TerminalRule tRICH_TEXT;
+	private final TerminalRule tRICH_TEXT_START;
+	private final TerminalRule tRICH_TEXT_END;
+	private final TerminalRule tRICH_TEXT_INBETWEEN;
+	private final TerminalRule tCOMMENT_RICH_TEXT_INBETWEEN;
+	private final TerminalRule tCOMMENT_RICH_TEXT_END;
+	private final TerminalRule tIN_RICH_STRING;
 	
 	private final Grammar grammar;
 
-	private XtendGrammarAccess gaXtend;
+	private final XtendGrammarAccess gaXtend;
 
 	@Inject
 	public SpecGrammarAccess(GrammarProvider grammarProvider,
 		XtendGrammarAccess gaXtend) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaXtend = gaXtend;
+		this.pSpecFile = new SpecFileElements();
+		this.pType = new TypeElements();
+		this.pMethod = new MethodElements();
+		this.pTypeName = new TypeNameElements();
+		this.pTypeRef = new TypeRefElements();
+		this.pMember = new MemberElements();
+		this.pXPrimaryExpression = new XPrimaryExpressionElements();
+		this.pXRelationalExpression = new XRelationalExpressionElements();
+		this.pShould = new ShouldElements();
+		this.pAssertion = new AssertionElements();
+		this.pExampleColumn = new ExampleColumnElements();
+		this.pExampleRow = new ExampleRowElements();
+		this.pExampleCell = new ExampleCellElements();
+		this.tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ML_COMMENT");
+		this.tRICH_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT");
+		this.tRICH_TEXT_START = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_START");
+		this.tRICH_TEXT_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_END");
+		this.tRICH_TEXT_INBETWEEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_INBETWEEN");
+		this.tCOMMENT_RICH_TEXT_INBETWEEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COMMENT_RICH_TEXT_INBETWEEN");
+		this.tCOMMENT_RICH_TEXT_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COMMENT_RICH_TEXT_END");
+		this.tIN_RICH_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IN_RICH_STRING");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -2012,7 +2033,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//SpecFile:
 	//	{SpecFile} ("package" package=QualifiedName)? importSection=XImportSection? xtendTypes+=Type*;
 	public SpecFileElements getSpecFileAccess() {
-		return (pSpecFile != null) ? pSpecFile : (pSpecFile = new SpecFileElements());
+		return pSpecFile;
 	}
 	
 	public ParserRule getSpecFileRule() {
@@ -2033,7 +2054,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	members+=AnnotationField* "}" | {ExampleGroup.annotationInfo=current} preamble="describe" targetType=JvmTypeReference?
 	//	name=STRING? "{" members+=Member* "}");
 	public TypeElements getTypeAccess() {
-		return (pType != null) ? pType : (pType = new TypeElements());
+		return pType;
 	}
 	
 	public ParserRule getTypeRule() {
@@ -2043,7 +2064,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//Method:
 	//	ID ("(" (TypeName ("," TypeName)*)? ")")?;
 	public MethodElements getMethodAccess() {
-		return (pMethod != null) ? pMethod : (pMethod = new MethodElements());
+		return pMethod;
 	}
 	
 	public ParserRule getMethodRule() {
@@ -2053,7 +2074,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//TypeName:
 	//	ID ("<" TypeRef ("," TypeRef)* ">")? ("[" "]")?;
 	public TypeNameElements getTypeNameAccess() {
-		return (pTypeName != null) ? pTypeName : (pTypeName = new TypeNameElements());
+		return pTypeName;
 	}
 	
 	public ParserRule getTypeNameRule() {
@@ -2063,7 +2084,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//TypeRef:
 	//	"?"? ("extends" | "super")? TypeName;
 	public TypeRefElements getTypeRefAccess() {
-		return (pTypeRef != null) ? pTypeRef : (pTypeRef = new TypeRefElements());
+		return pTypeRef;
 	}
 	
 	public ParserRule getTypeRefRule() {
@@ -2090,7 +2111,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	parameters+=Parameter)*)? ")" ("throws" exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)?
 	//	(expression=XBlockExpression | expression=RichString | ";")?);
 	public MemberElements getMemberAccess() {
-		return (pMember != null) ? pMember : (pMember = new MemberElements());
+		return pMember;
 	}
 	
 	public ParserRule getMemberRule() {
@@ -2102,7 +2123,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	XIfExpression | XForLoopExpression | XBasicForLoopExpression | XWhileExpression | XDoWhileExpression |
 	//	XThrowExpression | XReturnExpression | XTryCatchFinallyExpression | XParenthesizedExpression | Assertion;
 	public XPrimaryExpressionElements getXPrimaryExpressionAccess() {
-		return (pXPrimaryExpression != null) ? pXPrimaryExpression : (pXPrimaryExpression = new XPrimaryExpressionElements());
+		return pXPrimaryExpression;
 	}
 	
 	public ParserRule getXPrimaryExpressionRule() {
@@ -2116,7 +2137,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 	//	rightOperand=XOtherOperatorExpression)*;
 	public XRelationalExpressionElements getXRelationalExpressionAccess() {
-		return (pXRelationalExpression != null) ? pXRelationalExpression : (pXRelationalExpression = new XRelationalExpressionElements());
+		return pXRelationalExpression;
 	}
 	
 	public ParserRule getXRelationalExpressionRule() {
@@ -2126,7 +2147,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//Should:
 	//	"should" "not"? ID;
 	public ShouldElements getShouldAccess() {
-		return (pShould != null) ? pShould : (pShould = new ShouldElements());
+		return pShould;
 	}
 	
 	public ParserRule getShouldRule() {
@@ -2136,7 +2157,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//Assertion returns xbase::XExpression:
 	//	{Assertion} "assert" expression=XExpression;
 	public AssertionElements getAssertionAccess() {
-		return (pAssertion != null) ? pAssertion : (pAssertion = new AssertionElements());
+		return pAssertion;
 	}
 	
 	public ParserRule getAssertionRule() {
@@ -2146,7 +2167,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//ExampleColumn:
 	//	type=JvmTypeReference? name=ValidID "|";
 	public ExampleColumnElements getExampleColumnAccess() {
-		return (pExampleColumn != null) ? pExampleColumn : (pExampleColumn = new ExampleColumnElements());
+		return pExampleColumn;
 	}
 	
 	public ParserRule getExampleColumnRule() {
@@ -2156,7 +2177,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//ExampleRow:
 	//	"|" {ExampleRow} (cells+=ExampleCell "|")*;
 	public ExampleRowElements getExampleRowAccess() {
-		return (pExampleRow != null) ? pExampleRow : (pExampleRow = new ExampleRowElements());
+		return pExampleRow;
 	}
 	
 	public ParserRule getExampleRowRule() {
@@ -2166,7 +2187,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//ExampleCell:
 	//	expression=XExpression;
 	public ExampleCellElements getExampleCellAccess() {
-		return (pExampleCell != null) ? pExampleCell : (pExampleCell = new ExampleCellElements());
+		return pExampleCell;
 	}
 	
 	public ParserRule getExampleCellRule() {
@@ -2176,49 +2197,49 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal ML_COMMENT:
 	//	"/ *"->(!"\\" "* /");
 	public TerminalRule getML_COMMENTRule() {
-		return (tML_COMMENT != null) ? tML_COMMENT : (tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ML_COMMENT"));
+		return tML_COMMENT;
 	} 
 
 	//terminal RICH_TEXT:
 	//	"\'\'\'" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
 	public TerminalRule getRICH_TEXTRule() {
-		return (tRICH_TEXT != null) ? tRICH_TEXT : (tRICH_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT"));
+		return tRICH_TEXT;
 	} 
 
 	//terminal RICH_TEXT_START:
 	//	"\'\'\'" IN_RICH_STRING* ("\'" "\'"?)? "«";
 	public TerminalRule getRICH_TEXT_STARTRule() {
-		return (tRICH_TEXT_START != null) ? tRICH_TEXT_START : (tRICH_TEXT_START = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_START"));
+		return tRICH_TEXT_START;
 	} 
 
 	//terminal RICH_TEXT_END:
 	//	"»" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
 	public TerminalRule getRICH_TEXT_ENDRule() {
-		return (tRICH_TEXT_END != null) ? tRICH_TEXT_END : (tRICH_TEXT_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_END"));
+		return tRICH_TEXT_END;
 	} 
 
 	//terminal RICH_TEXT_INBETWEEN:
 	//	"»" IN_RICH_STRING* ("\'" "\'"?)? "«";
 	public TerminalRule getRICH_TEXT_INBETWEENRule() {
-		return (tRICH_TEXT_INBETWEEN != null) ? tRICH_TEXT_INBETWEEN : (tRICH_TEXT_INBETWEEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_INBETWEEN"));
+		return tRICH_TEXT_INBETWEEN;
 	} 
 
 	//terminal COMMENT_RICH_TEXT_INBETWEEN:
 	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'" "\'"?)? "«")?;
 	public TerminalRule getCOMMENT_RICH_TEXT_INBETWEENRule() {
-		return (tCOMMENT_RICH_TEXT_INBETWEEN != null) ? tCOMMENT_RICH_TEXT_INBETWEEN : (tCOMMENT_RICH_TEXT_INBETWEEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COMMENT_RICH_TEXT_INBETWEEN"));
+		return tCOMMENT_RICH_TEXT_INBETWEEN;
 	} 
 
 	//terminal COMMENT_RICH_TEXT_END:
 	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF) | EOF);
 	public TerminalRule getCOMMENT_RICH_TEXT_ENDRule() {
-		return (tCOMMENT_RICH_TEXT_END != null) ? tCOMMENT_RICH_TEXT_END : (tCOMMENT_RICH_TEXT_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COMMENT_RICH_TEXT_END"));
+		return tCOMMENT_RICH_TEXT_END;
 	} 
 
 	//terminal fragment IN_RICH_STRING:
 	//	"\'\'" !("«" | "\'") | "\'" !("«" | "\'") | !("«" | "\'");
 	public TerminalRule getIN_RICH_STRINGRule() {
-		return (tIN_RICH_STRING != null) ? tIN_RICH_STRING : (tIN_RICH_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IN_RICH_STRING"));
+		return tIN_RICH_STRING;
 	} 
 
 	//File returns XtendFile:
@@ -2229,6 +2250,27 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getFileRule() {
 		return getFileAccess().getRule();
+	}
+
+	//JvmSuperTypeReference returns types::JvmTypeReference:
+	//	JvmParameterizedTypeReference | XFunctionSuperTypeRef;
+	public XtendGrammarAccess.JvmSuperTypeReferenceElements getJvmSuperTypeReferenceAccess() {
+		return gaXtend.getJvmSuperTypeReferenceAccess();
+	}
+	
+	public ParserRule getJvmSuperTypeReferenceRule() {
+		return getJvmSuperTypeReferenceAccess().getRule();
+	}
+
+	//XFunctionSuperTypeRef returns xtype::XFunctionTypeRef:
+	//	(instanceContext?="(" (paramTypes+=JvmTypeReference ("," paramTypes+=JvmTypeReference)*)? ")")? "=>"
+	//	returnType=JvmTypeReference;
+	public XtendGrammarAccess.XFunctionSuperTypeRefElements getXFunctionSuperTypeRefAccess() {
+		return gaXtend.getXFunctionSuperTypeRefAccess();
+	}
+	
+	public ParserRule getXFunctionSuperTypeRefRule() {
+		return getXFunctionSuperTypeRefAccess().getRule();
 	}
 
 	//AnnotationField returns XtendMember:
@@ -2263,7 +2305,40 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getTypeReferenceNoTypeArgsAccess().getRule();
 	}
 
-	//FunctionID:
+	/// *** The following two rules are a workaround for a limitation in serialization logic
+	// *
+	// * Apparently we choose the shortest possible path to create the sequence of unassigned
+	// * tokens between two assigned values. This doesn't work well with Antlr predicates which
+	// * may have lead to another decision path - not necessarily the shortest one in the sense
+	// * of the serializer. That's why we make the type arguments mandatory here so that we
+	// * do no longer have two equally short path's from method identifier to block expression
+	// ************************************************************************************** / TypeReferenceWithTypeArgs
+	//returns types::JvmTypeReference:
+	//	ParameterizedTypeReferenceWithTypeArgs => ({types::JvmGenericArrayTypeReference.componentType=current} ArrayBrackets)*
+	//	| TypeReferenceNoTypeArgs => ({types::JvmGenericArrayTypeReference.componentType=current} ArrayBrackets)+ |
+	//	XFunctionTypeRef;
+	public XtendGrammarAccess.TypeReferenceWithTypeArgsElements getTypeReferenceWithTypeArgsAccess() {
+		return gaXtend.getTypeReferenceWithTypeArgsAccess();
+	}
+	
+	public ParserRule getTypeReferenceWithTypeArgsRule() {
+		return getTypeReferenceWithTypeArgsAccess().getRule();
+	}
+
+	//ParameterizedTypeReferenceWithTypeArgs returns types::JvmParameterizedTypeReference:
+	//	type=[types::JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference (","
+	//	arguments+=JvmArgumentTypeReference)* ">" (=> ({types::JvmInnerTypeReference.outer=current} ".")
+	//	type=[types::JvmType|ValidID] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)*
+	//	">")?)*);
+	public XtendGrammarAccess.ParameterizedTypeReferenceWithTypeArgsElements getParameterizedTypeReferenceWithTypeArgsAccess() {
+		return gaXtend.getParameterizedTypeReferenceWithTypeArgsAccess();
+	}
+	
+	public ParserRule getParameterizedTypeReferenceWithTypeArgsRule() {
+		return getParameterizedTypeReferenceWithTypeArgsAccess().getRule();
+	}
+
+	/// *** The following two rules are a workaround for a limitation in serialiation logic * / FunctionID:
 	//	ValidID | Operators;
 	public XtendGrammarAccess.FunctionIDElements getFunctionIDAccess() {
 		return gaXtend.getFunctionIDAccess();
@@ -3043,7 +3118,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XCasePart:
-	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | ",");
+	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | fallThrough?=",");
 	public XbaseGrammarAccess.XCasePartElements getXCasePartAccess() {
 		return gaXtend.getXCasePartAccess();
 	}
@@ -3311,8 +3386,9 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmParameterizedTypeReference:
-	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)*
-	//	">")?;
+	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)* ">"
+	//	(=> ({JvmInnerTypeReference.outer=current} ".") type=[JvmType|ValidID] ("<" arguments+=JvmArgumentTypeReference (","
+	//	arguments+=JvmArgumentTypeReference)* ">")?)*)?;
 	public XtypeGrammarAccess.JvmParameterizedTypeReferenceElements getJvmParameterizedTypeReferenceAccess() {
 		return gaXtend.getJvmParameterizedTypeReferenceAccess();
 	}
@@ -3332,7 +3408,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmWildcardTypeReference:
-	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound | constraints+=JvmLowerBound)?;
+	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound constraints+=JvmUpperBoundAnded* |
+	//	constraints+=JvmLowerBound constraints+=JvmLowerBoundAnded*)?;
 	public XtypeGrammarAccess.JvmWildcardTypeReferenceElements getJvmWildcardTypeReferenceAccess() {
 		return gaXtend.getJvmWildcardTypeReferenceAccess();
 	}
@@ -3369,6 +3446,16 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getJvmLowerBoundRule() {
 		return getJvmLowerBoundAccess().getRule();
+	}
+
+	//JvmLowerBoundAnded returns JvmLowerBound:
+	//	"&" typeReference=JvmTypeReference;
+	public XtypeGrammarAccess.JvmLowerBoundAndedElements getJvmLowerBoundAndedAccess() {
+		return gaXtend.getJvmLowerBoundAndedAccess();
+	}
+	
+	public ParserRule getJvmLowerBoundAndedRule() {
+		return getJvmLowerBoundAndedAccess().getRule();
 	}
 
 	//JvmTypeParameter:
@@ -3424,8 +3511,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\""))* "\""? | "\'" ("\\" .
+	//	/ * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\'"))* "\'"?;
 	public TerminalRule getSTRINGRule() {
 		return gaXtend.getSTRINGRule();
 	} 

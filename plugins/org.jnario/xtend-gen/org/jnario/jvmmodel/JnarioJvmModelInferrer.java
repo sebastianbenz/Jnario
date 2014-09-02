@@ -146,15 +146,7 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
   
   protected void addSuperClass(final XtendClass xtendClass) {
     EObject xtendType = xtendClass;
-    boolean _and = false;
-    boolean _notEquals = (!Objects.equal(xtendType, null));
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      _and = (xtendType instanceof XtendClass);
-    }
-    boolean _while = _and;
-    while (_while) {
+    while (((!Objects.equal(xtendType, null)) && (xtendType instanceof XtendClass))) {
       {
         final XtendClass current = ((XtendClass) xtendType);
         EList<XAnnotation> _annotations = current.getAnnotations();
@@ -172,17 +164,17 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
         };
         Iterable<XTypeLiteral> _map = IterableExtensions.<XAnnotation, XTypeLiteral>map(_filter, _function_1);
         for (final XTypeLiteral extendedType : _map) {
-          boolean _and_1 = false;
+          boolean _and = false;
           EList<JvmTypeReference> _implements = current.getImplements();
           boolean _isEmpty = _implements.isEmpty();
           if (!_isEmpty) {
-            _and_1 = false;
+            _and = false;
           } else {
             JvmType _type = extendedType.getType();
-            boolean _notEquals_1 = (!Objects.equal(_type, null));
-            _and_1 = _notEquals_1;
+            boolean _notEquals = (!Objects.equal(_type, null));
+            _and = _notEquals;
           }
-          if (_and_1) {
+          if (_and) {
             JvmType _type_1 = extendedType.getType();
             JvmParameterizedTypeReference _createTypeRef = this._typeReferences.createTypeRef(_type_1);
             xtendClass.setExtends(_createTypeRef);
@@ -192,14 +184,6 @@ public class JnarioJvmModelInferrer extends XtendJvmModelInferrer {
         EObject _eContainer = xtendType.eContainer();
         xtendType = _eContainer;
       }
-      boolean _and_1 = false;
-      boolean _notEquals_1 = (!Objects.equal(xtendType, null));
-      if (!_notEquals_1) {
-        _and_1 = false;
-      } else {
-        _and_1 = (xtendType instanceof XtendClass);
-      }
-      _while = _and_1;
     }
   }
   

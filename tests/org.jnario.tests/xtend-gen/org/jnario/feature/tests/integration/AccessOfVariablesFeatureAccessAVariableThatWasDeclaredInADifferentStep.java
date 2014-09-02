@@ -9,8 +9,6 @@ package org.jnario.feature.tests.integration;
 
 import org.jnario.feature.tests.integration.AccessOfVariablesFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
-import org.jnario.lib.JnarioIterableExtensions;
-import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -27,9 +25,9 @@ public class AccessOfVariablesFeatureAccessAVariableThatWasDeclaredInADifferentS
   @Order(0)
   @Named("When I use a variable in different steps")
   public void _whenIUseAVariableInDifferentSteps() {
-    final StepArguments args = new StepArguments("package bootstrap2\nFeature: Variable test\n\tScenario: Some scenario\n\t\tint x\n\t\tGiven a step with a variable\n\t\t\tx = 3\n\t\tWhen I assign it a different value\n\t\t\tx = 5\n");
-    String _first = JnarioIterableExtensions.<String>first(args);
-    this.jnarioFile = _first;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field args is undefined for the type Scenario: Access a variable that was declared in a different step\r\n"
+      + "\nfirst cannot be resolved");
   }
   
   @Test

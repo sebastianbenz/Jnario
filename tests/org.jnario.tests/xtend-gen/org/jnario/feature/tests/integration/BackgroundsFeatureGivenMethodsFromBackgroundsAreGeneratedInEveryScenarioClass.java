@@ -10,12 +10,11 @@ package org.jnario.feature.tests.integration;
 import org.jnario.feature.tests.integration.BackgroundsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.lib.Assert;
-import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
-import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
@@ -28,15 +27,15 @@ public class BackgroundsFeatureGivenMethodsFromBackgroundsAreGeneratedInEverySce
   
   @Test
   @Order(0)
+  @Ignore
   @Named("When I have a feature with a background")
   public void _whenIHaveAFeatureWithABackground() {
-    final StepArguments args = new StepArguments("package bootstrap\nFeature: Some feature\n\tBackground:\n\t\tGiven a user name\n\t\t\tthrow new RuntimeException()\n\tScenario: Scenario 1\n\tScenario: Scenario 2\n");
-    String _first = JnarioIterableExtensions.<String>first(args);
-    this.jnarioFile = _first;
+    
   }
   
   @Test
   @Order(1)
+  @Ignore
   @Named("Then every class should have a method that throws a RuntimeExeception")
   public void _thenEveryClassShouldHaveAMethodThatThrowsARuntimeExeception() {
     Result _run = FeatureExecutor.run(this.jnarioFile);

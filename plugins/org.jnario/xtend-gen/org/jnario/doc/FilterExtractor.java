@@ -47,9 +47,7 @@ public class FilterExtractor {
     final List<Filter> filters = CollectionLiterals.<Filter>newArrayList();
     final Matcher matcher = FilterExtractor.TAG_PATTERN.matcher(input);
     int offset = 0;
-    boolean _find = matcher.find();
-    boolean _while = _find;
-    while (_while) {
+    while (matcher.find()) {
       {
         final String key = matcher.group(2);
         final Function1<String, Filter> candidate = this.filterRegistry.get(key);
@@ -65,8 +63,6 @@ public class FilterExtractor {
         int _end = matcher.end();
         offset = _end;
       }
-      boolean _find_1 = matcher.find();
-      _while = _find_1;
     }
     String _substring = input.substring(offset);
     resultString.append(_substring);

@@ -2,7 +2,6 @@ package org.jnario.feature.jvmmodel;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import java.util.Collections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -50,7 +49,7 @@ public class StepsProvider {
             }
             EList<Scenario> _scenarios = it.getScenarios();
             Background _background_1 = it.getBackground();
-            _xblockexpression = Iterables.<Scenario>concat(_scenarios, Collections.<Background>unmodifiableList(Lists.<Background>newArrayList(_background_1)));
+            _xblockexpression = Iterables.<Scenario>concat(_scenarios, Collections.<Background>unmodifiableList(CollectionLiterals.<Background>newArrayList(_background_1)));
           }
           return _xblockexpression;
         }

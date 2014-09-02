@@ -230,13 +230,22 @@ public interface SpecPackage extends EPackage
 	int EXAMPLE_GROUP__TARGET_OPERATION = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Contract</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_GROUP__CONTRACT = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Example Group</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_GROUP_FEATURE_COUNT = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 3;
+	int EXAMPLE_GROUP_FEATURE_COUNT = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.jnario.spec.spec.impl.TestFunctionImpl <em>Test Function</em>}' class.
@@ -783,6 +792,17 @@ public interface SpecPackage extends EPackage
 	EReference getExampleGroup_TargetOperation();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.jnario.spec.spec.ExampleGroup#getContract <em>Contract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Contract</em>'.
+	 * @see org.jnario.spec.spec.ExampleGroup#getContract()
+	 * @see #getExampleGroup()
+	 * @generated
+	 */
+	EReference getExampleGroup_Contract();
+
+	/**
 	 * Returns the meta object for class '{@link org.jnario.spec.spec.Example <em>Example</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -910,6 +930,14 @@ public interface SpecPackage extends EPackage
 		 * @generated
 		 */
 		EReference EXAMPLE_GROUP__TARGET_OPERATION = eINSTANCE.getExampleGroup_TargetOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Contract</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXAMPLE_GROUP__CONTRACT = eINSTANCE.getExampleGroup_Contract();
 
 		/**
 		 * The meta object literal for the '{@link org.jnario.spec.spec.impl.ExampleImpl <em>Example</em>}' class.

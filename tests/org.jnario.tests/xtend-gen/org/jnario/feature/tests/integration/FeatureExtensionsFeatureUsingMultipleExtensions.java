@@ -8,16 +8,7 @@
 package org.jnario.feature.tests.integration;
 
 import java.util.List;
-import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.jnario.feature.tests.integration.FeatureExtensionsFeature;
-import org.jnario.lib.Assert;
-import org.jnario.lib.JnarioIterableExtensions;
-import org.jnario.lib.Should;
-import org.jnario.lib.StepArguments;
-import org.jnario.lib.StringConversions;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -34,31 +25,22 @@ public class FeatureExtensionsFeatureUsingMultipleExtensions extends FeatureExte
   @Order(0)
   @Named("When sorting the colors \\\"red, green, blue\\\"")
   public void _whenSortingTheColorsRedGreenBlue() {
-    final StepArguments args = new StepArguments("red, green, blue");
-    String _first = JnarioIterableExtensions.<String>first(args);
-    String[] _split = _first.split(",");
-    final Function1<String, String> _function = new Function1<String, String>() {
-      public String apply(final String it) {
-        return it.trim();
-      }
-    };
-    List<String> _map = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_split)), _function);
-    List<String> _sort = IterableExtensions.<String>sort(_map);
-    this.list = _sort;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field args is undefined for the type Scenario: Using Multiple extensions\r\n"
+      + "\nThe method trim is undefined for the type Scenario: Using Multiple extensions\r\n"
+      + "\nfirst cannot be resolved"
+      + "\nsplit cannot be resolved"
+      + "\nmap cannot be resolved"
+      + "\nsort cannot be resolved");
   }
   
   @Test
   @Order(1)
   @Named("Then they should be ordered \\\"blue, green, red\\\"")
   public void _thenTheyShouldBeOrderedBlueGreenRed() {
-    final StepArguments args = new StepArguments("blue, green, red");
-    String _first = JnarioIterableExtensions.<String>first(args);
-    List<String> _list = StringConversions.toList(_first);
-    Assert.assertTrue("\nExpected list => args.first.toList but"
-     + "\n     list is " + new org.hamcrest.StringDescription().appendValue(this.list).toString()
-     + "\n     args.first.toList is " + new org.hamcrest.StringDescription().appendValue(_list).toString()
-     + "\n     args.first is " + new org.hamcrest.StringDescription().appendValue(_first).toString()
-     + "\n     args is " + new org.hamcrest.StringDescription().appendValue(args).toString() + "\n", Should.<List<String>>operator_doubleArrow(this.list, _list));
-    
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field args is undefined for the type Scenario: Using Multiple extensions\r\n"
+      + "\nfirst cannot be resolved"
+      + "\ntoList cannot be resolved");
   }
 }

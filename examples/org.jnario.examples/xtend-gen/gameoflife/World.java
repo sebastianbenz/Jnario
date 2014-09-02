@@ -11,16 +11,13 @@ import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
+import org.eclipse.xtext.xbase.lib.Pure;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 
 @Data
 @SuppressWarnings("all")
 public class World {
   private final Set<CellLocation> _livingCells;
-  
-  public Set<CellLocation> getLivingCells() {
-    return this._livingCells;
-  }
   
   public static World parseWorld(final CharSequence grid) {
     World _xblockexpression = null;
@@ -93,6 +90,7 @@ public class World {
   }
   
   @Override
+  @Pure
   public int hashCode() {
     final int prime = 31;
     int result = 1;
@@ -101,6 +99,7 @@ public class World {
   }
   
   @Override
+  @Pure
   public boolean equals(final Object obj) {
     if (this == obj)
       return true;
@@ -118,8 +117,14 @@ public class World {
   }
   
   @Override
+  @Pure
   public String toString() {
     String result = new ToStringHelper().toString(this);
     return result;
+  }
+  
+  @Pure
+  public Set<CellLocation> getLivingCells() {
+    return this._livingCells;
   }
 }

@@ -1,0 +1,356 @@
+/* Override some defaults */
+html,body {
+  background-color: #eee;
+}
+
+p { 
+  display: inline; 
+}
+
+.container>footer p {
+  text-align: center; /* center align it with the container */
+}
+
+.level {
+  margin-left: 1em;
+}
+
+.row{
+  margin-top: 30px; 
+}
+
+.nav-tabs > li > a{
+  color: black;
+}
+
+.passed > .nav-tabs > li > a{
+  color: white;
+}
+
+.failed > .nav-tabs > li > a{
+  color: white;
+}
+
+.passed > .nav-tabs > .active > a, .nav-tabs > .active{
+  color: black;
+}
+
+.failed > .nav-tabs > .active > a, .nav-tabs > .active{
+  color: black;
+}
+
+div .page-header{
+  margin-top: 12px;
+}
+
+/* Test result */
+.page-header.failed{
+  background: #d30202; /* Old browsers */
+  background: -moz-linear-gradient(45deg,  #d30202 0%, #b80000 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#d30202), color-stop(100%,#b80000)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg,  #d30202 0%,#b80000 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg,  #d30202 0%,#b80000 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg,  #d30202 0%,#b80000 100%); /* IE10+ */
+  background: linear-gradient(45deg,  #d30202 0%,#b80000 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d30202', endColorstr='#b80000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+   color: white;
+}
+
+.scenario{
+  font-family: Helvetica, Arial, sans-serif; 
+  /*text-shadow: rgba(0, 0, 0, 0.199219) 0px 1px 0px;*/
+}
+
+.scenario.pending, .step.pending, .example.pending, .exampleGroup.pending, .icon.pending{
+  color: #777;
+}
+
+.scenario.passed, .icon.passed{
+  color: #77cd00;
+}
+
+.suite.failed, .scenario.failed, .step.failed, .example.failed, .exampleGroup.failed, .icon.failed{
+  color: #d30202;
+}
+
+.errormessage{
+  background-color: rgb(242, 222, 222);
+  border-bottom-color:rgb(238, 211, 215);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: rgb(238, 211, 215);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: rgb(238, 211, 215);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: rgb(238, 211, 215);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  color: rgb(185, 74, 72);
+  margin-bottom: 19px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  padding-bottom: 8px;
+  padding-left: 14px;
+  padding-right: 35px;
+  padding-top: 8px;
+  text-align: -webkit-auto;
+  text-shadow: rgba(255, 255, 255, 0.496094) 0px 1px 0px;
+}
+
+.page-header.passed{
+  background: #77cd00; /* Old browsers */
+  background: -moz-linear-gradient(45deg,  #77cd00 0%, #4db800 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#77cd00), color-stop(100%,#4db800)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg,  #77cd00 0%,#4db800 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg,  #77cd00 0%,#4db800 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg,  #77cd00 0%,#4db800 100%); /* IE10+ */
+  background: linear-gradient(45deg,  #77cd00 0%,#4db800 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77cd00', endColorstr='#4db800',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  box-shadow: 0 1px 0 rgba(255,255,255,0.4),0 0 10px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #cacaca;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* The white background content wrapper */
+.content {
+  background-color: #fff;
+  padding: 20px;
+  margin: 0 -20px;
+  /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+}
+
+/* Page header tweaks */
+.page-header {
+  background-color: #f5f5f5;
+  padding: 20px 20px 36px 20px;
+  margin: -20px -20px 0px -20px;
+  text-shadow: rgba(0, 0, 0, 0.199219) 0px 1px 0px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.4),0 0 10px rgba(0,0,0,0.1);
+  border-bottom: 1px solid #cacaca;
+}
+
+.page-header > ul {
+  padding-right: 20px;
+  padding-top: -50px;
+}
+
+img{
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  -ms-border-radius: 0.3em;
+  -o-border-radius: 0.3em;
+  border-radius: 0.3em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0 1px 4px;
+  -moz-box-shadow: rgba(0,0,0,0.15) 0 1px 4px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 1px 4px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: white 0.5em solid;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+@media (min-width: 1200px) {
+  .row {
+    margin-left: -30px;
+    *zoom: 1;
+  }
+  .row:before, .row:after {
+    display: table;
+    content: "";
+  }
+  .row:after {
+    clear: both;
+  }
+  [class*="span"] {
+    float: left;
+    margin-left: 30px;
+  }
+  .span1 {
+    width: 70px;
+  }
+  .span2 {
+    width: 170px;
+  }
+  .span3 {
+    width: 270px;
+  }
+  .span4 {
+    width: 370px;
+  }
+  .span5 {
+    width: 470px;
+  }
+  .span6 {
+    width: 570px;
+  }
+  .span7 {
+    width: 670px;
+  }
+  .span8 {
+    width: 770px;
+  }
+  .span9 {
+    width: 870px;
+  }
+  .span10 {
+    width: 970px;
+  }
+  .span11 {
+    width: 1070px;
+  }
+  .span12 {
+    width: 700px  ;
+  }
+  .container{
+    width: 700px;
+  }
+
+  .offset1 {
+    margin-left: 130px;
+  }
+  .offset2 {
+    margin-left: 230px;
+  }
+  .offset3 {
+    margin-left: 330px;
+  }
+  .offset4 {
+    margin-left: 430px;
+  }
+  .offset5 {
+    margin-left: 530px;
+  }
+  .offset6 {
+    margin-left: 630px;
+  }
+  .offset7 {
+    margin-left: 730px;
+  }
+  .offset8 {
+    margin-left: 830px;
+  }
+  .offset9 {
+    margin-left: 930px;
+  }
+  .offset10 {
+    margin-left: 1030px;
+  }
+  .offset11 {
+    margin-left: 1130px;
+  }
+  .row-fluid {
+    width: 100%;
+    *zoom: 1;
+  }
+  .row-fluid:before, .row-fluid:after {
+    display: table;
+    content: "";
+  }
+  .row-fluid:after {
+    clear: both;
+  }
+  .row-fluid > [class*="span"] {
+    float: left;
+    margin-left: 2.564102564%;
+  }
+  .row-fluid > [class*="span"]:first-child {
+    margin-left: 0;
+  }
+  .row-fluid .span1 {
+    width: 5.982905983%;
+  }
+  .row-fluid .span2 {
+    width: 14.529914530000001%;
+  }
+  .row-fluid .span3 {
+    width: 23.076923077%;
+  }
+  .row-fluid .span4 {
+    width: 31.623931624%;
+  }
+  .row-fluid .span5 {
+    width: 40.170940171000005%;
+  }
+  .row-fluid .span6 {
+    width: 48.717948718%;
+  }
+  .row-fluid .span7 {
+    width: 57.264957265%;
+  }
+  .row-fluid .span8 {
+    width: 65.81196581200001%;
+  }
+  .row-fluid .span9 {
+    width: 74.358974359%;
+  }
+  .row-fluid .span10 {
+    width: 82.905982906%;
+  }
+  .row-fluid .span11 {
+    width: 91.45299145300001%;
+  }
+  .row-fluid .span12 {
+    width: 100%;
+  }
+  input.span1, textarea.span1, .uneditable-input.span1 {
+    width: 60px;
+  }
+  input.span2, textarea.span2, .uneditable-input.span2 {
+    width: 160px;
+  }
+  input.span3, textarea.span3, .uneditable-input.span3 {
+    width: 260px;
+  }
+  input.span4, textarea.span4, .uneditable-input.span4 {
+    width: 360px;
+  }
+  input.span5, textarea.span5, .uneditable-input.span5 {
+    width: 460px;
+  }
+  input.span6, textarea.span6, .uneditable-input.span6 {
+    width: 560px;
+  }
+  input.span7, textarea.span7, .uneditable-input.span7 {
+    width: 660px;
+  }
+  input.span8, textarea.span8, .uneditable-input.span8 {
+    width: 760px;
+  }
+  input.span9, textarea.span9, .uneditable-input.span9 {
+    width: 860px;
+  }
+  input.span10, textarea.span10, .uneditable-input.span10 {
+    width: 960px;
+  }
+  input.span11, textarea.span11, .uneditable-input.span11 {
+    width: 1060px;
+  }
+  input.span12, textarea.span12, .uneditable-input.span12 {
+    width: 1160px;
+  }
+  .thumbnails {
+    margin-left: -30px;
+  }
+  .thumbnails > li {
+    margin-left: 30px;
+  }
+}

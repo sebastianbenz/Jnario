@@ -7,13 +7,9 @@
  */
 package org.jnario.feature.feature.impl;
 
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.xtend.core.xtend.impl.XtendFileImpl;
-
-import org.eclipse.xtext.xtype.XImportSection;
 
 import org.jnario.feature.feature.FeatureFile;
 import org.jnario.feature.feature.FeaturePackage;
@@ -48,18 +44,6 @@ public class FeatureFileImpl extends XtendFileImpl implements FeatureFile
 	protected EClass eStaticClass()
 	{
 		return FeaturePackage.Literals.FEATURE_FILE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * This is specialized for the more specific type known in this context.
-	 * @generated
-	 */
-	@Override
-	public NotificationChain basicSetImportSection(XImportSection newImportSection, NotificationChain msgs)
-	{
-		return super.basicSetImportSection(newImportSection, msgs);
 	}
 
 } //FeatureFileImpl

@@ -6,12 +6,13 @@ import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Pure;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 
 @Data
 @SuppressWarnings("all")
 public class CellLocation {
-  private static HashSet<CellLocation> NEIGHBOUR_OFFSETS = CollectionLiterals.<CellLocation>newHashSet(
+  private final static HashSet<CellLocation> NEIGHBOUR_OFFSETS = CollectionLiterals.<CellLocation>newHashSet(
     CellLocation.cell(1, 0), CellLocation.cell(1, 1), CellLocation.cell(0, 1), CellLocation.cell((-1), (-1)), CellLocation.cell((-1), 0), CellLocation.cell((-1), 1), CellLocation.cell(0, (-1)), CellLocation.cell(1, (-1)));
   
   public static CellLocation cell(final int x, final int y) {
@@ -20,15 +21,7 @@ public class CellLocation {
   
   private final int _x;
   
-  public int getX() {
-    return this._x;
-  }
-  
   private final int _y;
-  
-  public int getY() {
-    return this._y;
-  }
   
   public Set<CellLocation> neighbours() {
     final Function1<CellLocation, CellLocation> _function = new Function1<CellLocation, CellLocation>() {
@@ -57,6 +50,7 @@ public class CellLocation {
   }
   
   @Override
+  @Pure
   public int hashCode() {
     final int prime = 31;
     int result = 1;
@@ -66,6 +60,7 @@ public class CellLocation {
   }
   
   @Override
+  @Pure
   public boolean equals(final Object obj) {
     if (this == obj)
       return true;
@@ -82,8 +77,19 @@ public class CellLocation {
   }
   
   @Override
+  @Pure
   public String toString() {
     String result = new ToStringHelper().toString(this);
     return result;
+  }
+  
+  @Pure
+  public int getX() {
+    return this._x;
+  }
+  
+  @Pure
+  public int getY() {
+    return this._y;
   }
 }

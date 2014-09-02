@@ -6,8 +6,10 @@ import org.apache.tools.ant.Project;
 import org.apache.tools.ant.Task;
 import org.apache.tools.ant.types.Path;
 import org.apache.tools.ant.types.Reference;
+import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.Pure;
 import org.jnario.compiler.CompilerMain;
 import org.jnario.compiler.DocCompilerMain;
 
@@ -16,59 +18,20 @@ public class ReportTask extends Task {
   /**
    * Set target for the generated Jnario reports. Default is "doc-gen".
    */
+  @Property
   private String _outputPath = "doc-gen";
   
   /**
-   * Set target for the generated Jnario reports. Default is "doc-gen".
-   */
-  public String getOutputPath() {
-    return this._outputPath;
-  }
-  
-  /**
-   * Set target for the generated Jnario reports. Default is "doc-gen".
-   */
-  public void setOutputPath(final String outputPath) {
-    this._outputPath = outputPath;
-  }
-  
-  /**
    * Set folder containing JUnit XML test results. Default is "test-reports".
    */
+  @Property
   private String _resultFolder = "test-reports";
   
   /**
-   * Set folder containing JUnit XML test results. Default is "test-reports".
-   */
-  public String getResultFolder() {
-    return this._resultFolder;
-  }
-  
-  /**
-   * Set folder containing JUnit XML test results. Default is "test-reports".
-   */
-  public void setResultFolder(final String resultFolder) {
-    this._resultFolder = resultFolder;
-  }
-  
-  /**
    * The spec encoding. Default is UTF-8.
    */
+  @Property
   private String _fileEncoding = "UTF-8";
-  
-  /**
-   * The spec encoding. Default is UTF-8.
-   */
-  public String getFileEncoding() {
-    return this._fileEncoding;
-  }
-  
-  /**
-   * The spec encoding. Default is UTF-8.
-   */
-  public void setFileEncoding(final String fileEncoding) {
-    this._fileEncoding = fileEncoding;
-  }
   
   private Path sourcePath = null;
   
@@ -126,5 +89,32 @@ public class ReportTask extends Task {
       _xblockexpression = this.sourcePath;
     }
     return _xblockexpression;
+  }
+  
+  @Pure
+  public String getOutputPath() {
+    return this._outputPath;
+  }
+  
+  public void setOutputPath(final String outputPath) {
+    this._outputPath = outputPath;
+  }
+  
+  @Pure
+  public String getResultFolder() {
+    return this._resultFolder;
+  }
+  
+  public void setResultFolder(final String resultFolder) {
+    this._resultFolder = resultFolder;
+  }
+  
+  @Pure
+  public String getFileEncoding() {
+    return this._fileEncoding;
+  }
+  
+  public void setFileEncoding(final String fileEncoding) {
+    this._fileEncoding = fileEncoding;
   }
 }

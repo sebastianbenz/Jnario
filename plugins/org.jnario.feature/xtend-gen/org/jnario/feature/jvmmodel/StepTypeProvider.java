@@ -1,12 +1,12 @@
 package org.jnario.feature.jvmmodel;
 
-import com.google.common.collect.Sets;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.jnario.feature.feature.FeaturePackage;
 import org.jnario.feature.feature.Given;
 import org.jnario.feature.feature.GivenReference;
@@ -19,13 +19,13 @@ import org.jnario.feature.feature.WhenReference;
 
 @SuppressWarnings("all")
 public class StepTypeProvider {
-  public final static Set<EClass> ANDS = Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(FeaturePackage.eINSTANCE.getBut(), FeaturePackage.eINSTANCE.getButReference(), FeaturePackage.eINSTANCE.getAnd(), FeaturePackage.eINSTANCE.getAndReference()));
+  public final static Set<EClass> ANDS = Collections.<EClass>unmodifiableSet(CollectionLiterals.<EClass>newHashSet(FeaturePackage.eINSTANCE.getBut(), FeaturePackage.eINSTANCE.getButReference(), FeaturePackage.eINSTANCE.getAnd(), FeaturePackage.eINSTANCE.getAndReference()));
   
-  public final static Set<EClass> GIVEN = Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(FeaturePackage.eINSTANCE.getGiven(), FeaturePackage.eINSTANCE.getGivenReference()));
+  public final static Set<EClass> GIVEN = Collections.<EClass>unmodifiableSet(CollectionLiterals.<EClass>newHashSet(FeaturePackage.eINSTANCE.getGiven(), FeaturePackage.eINSTANCE.getGivenReference()));
   
-  public final static Set<EClass> WHEN = Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(FeaturePackage.eINSTANCE.getWhen(), FeaturePackage.eINSTANCE.getWhenReference()));
+  public final static Set<EClass> WHEN = Collections.<EClass>unmodifiableSet(CollectionLiterals.<EClass>newHashSet(FeaturePackage.eINSTANCE.getWhen(), FeaturePackage.eINSTANCE.getWhenReference()));
   
-  public final static Set<EClass> THEN = Collections.<EClass>unmodifiableSet(Sets.<EClass>newHashSet(FeaturePackage.eINSTANCE.getThen(), FeaturePackage.eINSTANCE.getThenReference()));
+  public final static Set<EClass> THEN = Collections.<EClass>unmodifiableSet(CollectionLiterals.<EClass>newHashSet(FeaturePackage.eINSTANCE.getThen(), FeaturePackage.eINSTANCE.getThenReference()));
   
   protected Set<EClass> _getExpectedTypes(final Given step) {
     return StepTypeProvider.GIVEN;
@@ -69,8 +69,7 @@ public class StepTypeProvider {
       EList<Step> _steps = container.getSteps();
       final int index = _steps.indexOf(step);
       int i = index;
-      boolean _while = (i >= 0);
-      while (_while) {
+      while ((i >= 0)) {
         {
           EList<Step> _steps_1 = container.getSteps();
           final Step candidate = _steps_1.get(i);
@@ -82,7 +81,6 @@ public class StepTypeProvider {
           }
           i = (i - 1);
         }
-        _while = (i >= 0);
       }
       _xblockexpression = step;
     }

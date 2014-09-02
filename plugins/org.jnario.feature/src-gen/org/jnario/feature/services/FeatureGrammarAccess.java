@@ -1906,60 +1906,104 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private FeatureFileElements pFeatureFile;
-	private FeatureElements pFeature;
-	private BackgroundElements pBackground;
-	private ScenarioElements pScenario;
-	private MemberElements pMember;
-	private GivenReferenceElements pGivenReference;
-	private GivenElements pGiven;
-	private WhenReferenceElements pWhenReference;
-	private WhenElements pWhen;
-	private ThenReferenceElements pThenReference;
-	private ThenElements pThen;
-	private AndReferenceElements pAndReference;
-	private AndElements pAnd;
-	private ButReferenceElements pButReference;
-	private ButElements pBut;
-	private BlockExpressionElements pBlockExpression;
-	private XPrimaryExpressionElements pXPrimaryExpression;
-	private XRelationalExpressionElements pXRelationalExpression;
-	private ShouldElements pShould;
-	private AssertionElements pAssertion;
-	private XConstructorCallElements pXConstructorCall;
-	private AnonymousMemberElements pAnonymousMember;
-	private TerminalRule tBACKGROUND_TEXT;
-	private TerminalRule tSCENARIO_TEXT;
-	private TerminalRule tFEATURE_TEXT;
-	private TerminalRule tGIVEN_TEXT;
-	private TerminalRule tWHEN_TEXT;
-	private TerminalRule tTHEN_TEXT;
-	private TerminalRule tAND_TEXT;
-	private TerminalRule tBUT_TEXT;
-	private TerminalRule tTEXT;
-	private TerminalRule tSTEP_WITH_ARGS;
-	private TerminalRule tMNL;
-	private TerminalRule tCOLON;
-	private TerminalRule tNL;
-	private TerminalRule tSPACES;
-	private TerminalRule tRICH_TEXT;
-	private TerminalRule tRICH_TEXT_START;
-	private TerminalRule tRICH_TEXT_END;
-	private TerminalRule tRICH_TEXT_INBETWEEN;
-	private TerminalRule tCOMMENT_RICH_TEXT_INBETWEEN;
-	private TerminalRule tCOMMENT_RICH_TEXT_END;
-	private TerminalRule tIN_RICH_STRING;
-	private StaticQualifierElements pStaticQualifier;
+	private final FeatureFileElements pFeatureFile;
+	private final FeatureElements pFeature;
+	private final BackgroundElements pBackground;
+	private final ScenarioElements pScenario;
+	private final MemberElements pMember;
+	private final GivenReferenceElements pGivenReference;
+	private final GivenElements pGiven;
+	private final WhenReferenceElements pWhenReference;
+	private final WhenElements pWhen;
+	private final ThenReferenceElements pThenReference;
+	private final ThenElements pThen;
+	private final AndReferenceElements pAndReference;
+	private final AndElements pAnd;
+	private final ButReferenceElements pButReference;
+	private final ButElements pBut;
+	private final BlockExpressionElements pBlockExpression;
+	private final XPrimaryExpressionElements pXPrimaryExpression;
+	private final XRelationalExpressionElements pXRelationalExpression;
+	private final ShouldElements pShould;
+	private final AssertionElements pAssertion;
+	private final XConstructorCallElements pXConstructorCall;
+	private final AnonymousMemberElements pAnonymousMember;
+	private final TerminalRule tBACKGROUND_TEXT;
+	private final TerminalRule tSCENARIO_TEXT;
+	private final TerminalRule tFEATURE_TEXT;
+	private final TerminalRule tGIVEN_TEXT;
+	private final TerminalRule tWHEN_TEXT;
+	private final TerminalRule tTHEN_TEXT;
+	private final TerminalRule tAND_TEXT;
+	private final TerminalRule tBUT_TEXT;
+	private final TerminalRule tTEXT;
+	private final TerminalRule tSTEP_WITH_ARGS;
+	private final TerminalRule tMNL;
+	private final TerminalRule tCOLON;
+	private final TerminalRule tNL;
+	private final TerminalRule tSPACES;
+	private final TerminalRule tRICH_TEXT;
+	private final TerminalRule tRICH_TEXT_START;
+	private final TerminalRule tRICH_TEXT_END;
+	private final TerminalRule tRICH_TEXT_INBETWEEN;
+	private final TerminalRule tCOMMENT_RICH_TEXT_INBETWEEN;
+	private final TerminalRule tCOMMENT_RICH_TEXT_END;
+	private final TerminalRule tIN_RICH_STRING;
+	private final StaticQualifierElements pStaticQualifier;
 	
 	private final Grammar grammar;
 
-	private XtendGrammarAccess gaXtend;
+	private final XtendGrammarAccess gaXtend;
 
 	@Inject
 	public FeatureGrammarAccess(GrammarProvider grammarProvider,
 		XtendGrammarAccess gaXtend) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaXtend = gaXtend;
+		this.pFeatureFile = new FeatureFileElements();
+		this.pFeature = new FeatureElements();
+		this.pBackground = new BackgroundElements();
+		this.pScenario = new ScenarioElements();
+		this.pMember = new MemberElements();
+		this.pGivenReference = new GivenReferenceElements();
+		this.pGiven = new GivenElements();
+		this.pWhenReference = new WhenReferenceElements();
+		this.pWhen = new WhenElements();
+		this.pThenReference = new ThenReferenceElements();
+		this.pThen = new ThenElements();
+		this.pAndReference = new AndReferenceElements();
+		this.pAnd = new AndElements();
+		this.pButReference = new ButReferenceElements();
+		this.pBut = new ButElements();
+		this.pBlockExpression = new BlockExpressionElements();
+		this.pXPrimaryExpression = new XPrimaryExpressionElements();
+		this.pXRelationalExpression = new XRelationalExpressionElements();
+		this.pShould = new ShouldElements();
+		this.pAssertion = new AssertionElements();
+		this.pXConstructorCall = new XConstructorCallElements();
+		this.pAnonymousMember = new AnonymousMemberElements();
+		this.tBACKGROUND_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BACKGROUND_TEXT");
+		this.tSCENARIO_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SCENARIO_TEXT");
+		this.tFEATURE_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "FEATURE_TEXT");
+		this.tGIVEN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "GIVEN_TEXT");
+		this.tWHEN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "WHEN_TEXT");
+		this.tTHEN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "THEN_TEXT");
+		this.tAND_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "AND_TEXT");
+		this.tBUT_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BUT_TEXT");
+		this.tTEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "TEXT");
+		this.tSTEP_WITH_ARGS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STEP_WITH_ARGS");
+		this.tMNL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "MNL");
+		this.tCOLON = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COLON");
+		this.tNL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NL");
+		this.tSPACES = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SPACES");
+		this.tRICH_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT");
+		this.tRICH_TEXT_START = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_START");
+		this.tRICH_TEXT_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_END");
+		this.tRICH_TEXT_INBETWEEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_INBETWEEN");
+		this.tCOMMENT_RICH_TEXT_INBETWEEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COMMENT_RICH_TEXT_INBETWEEN");
+		this.tCOMMENT_RICH_TEXT_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COMMENT_RICH_TEXT_END");
+		this.tIN_RICH_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IN_RICH_STRING");
+		this.pStaticQualifier = new StaticQualifierElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1992,7 +2036,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//FeatureFile returns xtend::XtendFile:
 	//	{FeatureFile} ("package" package=QualifiedName)? importSection=XImportSection? xtendTypes+=Feature?;
 	public FeatureFileElements getFeatureFileAccess() {
-		return (pFeatureFile != null) ? pFeatureFile : (pFeatureFile = new FeatureFileElements());
+		return pFeatureFile;
 	}
 	
 	public ParserRule getFeatureFileRule() {
@@ -2002,7 +2046,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//Feature returns xtend::XtendClass:
 	//	{Feature} annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? background=Background? scenarios+=Scenario*;
 	public FeatureElements getFeatureAccess() {
-		return (pFeature != null) ? pFeature : (pFeature = new FeatureElements());
+		return pFeature;
 	}
 	
 	public ParserRule getFeatureRule() {
@@ -2013,7 +2057,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//	{Background} name=BACKGROUND_TEXT members+=Member* (members+=(Given | GivenReference) members+=(And | AndReference |
 	//	But | ButReference)*)?;
 	public BackgroundElements getBackgroundAccess() {
-		return (pBackground != null) ? pBackground : (pBackground = new BackgroundElements());
+		return pBackground;
 	}
 	
 	public ParserRule getBackgroundRule() {
@@ -2025,7 +2069,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//	ButReference)*)? (members+=(When | WhenReference) members+=(And | AndReference | But | ButReference)*)?
 	//	(members+=(Then | ThenReference) members+=(And | AndReference | But | ButReference)*)?;
 	public ScenarioElements getScenarioAccess() {
-		return (pScenario != null) ? pScenario : (pScenario = new ScenarioElements());
+		return pScenario;
 	}
 	
 	public ParserRule getScenarioRule() {
@@ -2039,7 +2083,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//	modifiers+=CommonModifier* modifiers+="extension" modifiers+=CommonModifier* type=JvmTypeReference name=ValidID? |
 	//	type=JvmTypeReference name=ValidID) ("=" initialValue=XExpression)? ";"?);
 	public MemberElements getMemberAccess() {
-		return (pMember != null) ? pMember : (pMember = new MemberElements());
+		return pMember;
 	}
 	
 	public ParserRule getMemberRule() {
@@ -2049,7 +2093,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//GivenReference:
 	//	{GivenReference} reference=[Given|GIVEN_TEXT];
 	public GivenReferenceElements getGivenReferenceAccess() {
-		return (pGivenReference != null) ? pGivenReference : (pGivenReference = new GivenReferenceElements());
+		return pGivenReference;
 	}
 	
 	public ParserRule getGivenReferenceRule() {
@@ -2059,7 +2103,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//Given:
 	//	{Given} name=GIVEN_TEXT expression=BlockExpression;
 	public GivenElements getGivenAccess() {
-		return (pGiven != null) ? pGiven : (pGiven = new GivenElements());
+		return pGiven;
 	}
 	
 	public ParserRule getGivenRule() {
@@ -2069,7 +2113,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//WhenReference:
 	//	{WhenReference} reference=[When|WHEN_TEXT];
 	public WhenReferenceElements getWhenReferenceAccess() {
-		return (pWhenReference != null) ? pWhenReference : (pWhenReference = new WhenReferenceElements());
+		return pWhenReference;
 	}
 	
 	public ParserRule getWhenReferenceRule() {
@@ -2079,7 +2123,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//When:
 	//	{When} name=WHEN_TEXT expression=BlockExpression;
 	public WhenElements getWhenAccess() {
-		return (pWhen != null) ? pWhen : (pWhen = new WhenElements());
+		return pWhen;
 	}
 	
 	public ParserRule getWhenRule() {
@@ -2089,7 +2133,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//ThenReference:
 	//	{ThenReference} reference=[Then|THEN_TEXT];
 	public ThenReferenceElements getThenReferenceAccess() {
-		return (pThenReference != null) ? pThenReference : (pThenReference = new ThenReferenceElements());
+		return pThenReference;
 	}
 	
 	public ParserRule getThenReferenceRule() {
@@ -2099,7 +2143,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//Then:
 	//	{Then} name=THEN_TEXT expression=BlockExpression;
 	public ThenElements getThenAccess() {
-		return (pThen != null) ? pThen : (pThen = new ThenElements());
+		return pThen;
 	}
 	
 	public ParserRule getThenRule() {
@@ -2109,7 +2153,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//AndReference:
 	//	{AndReference} reference=[And|AND_TEXT];
 	public AndReferenceElements getAndReferenceAccess() {
-		return (pAndReference != null) ? pAndReference : (pAndReference = new AndReferenceElements());
+		return pAndReference;
 	}
 	
 	public ParserRule getAndReferenceRule() {
@@ -2119,7 +2163,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//And:
 	//	{And} name=AND_TEXT expression=BlockExpression;
 	public AndElements getAndAccess() {
-		return (pAnd != null) ? pAnd : (pAnd = new AndElements());
+		return pAnd;
 	}
 	
 	public ParserRule getAndRule() {
@@ -2129,7 +2173,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//ButReference:
 	//	{ButReference} reference=[But|BUT_TEXT];
 	public ButReferenceElements getButReferenceAccess() {
-		return (pButReference != null) ? pButReference : (pButReference = new ButReferenceElements());
+		return pButReference;
 	}
 	
 	public ParserRule getButReferenceRule() {
@@ -2139,7 +2183,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//But:
 	//	{But} name=BUT_TEXT expression=BlockExpression;
 	public ButElements getButAccess() {
-		return (pBut != null) ? pBut : (pBut = new ButElements());
+		return pBut;
 	}
 	
 	public ParserRule getButRule() {
@@ -2151,7 +2195,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	// * / BlockExpression returns xbase::XBlockExpression:
 	//	(expressions+=XExpressionOrVarDeclaration ";"?)+;
 	public BlockExpressionElements getBlockExpressionAccess() {
-		return (pBlockExpression != null) ? pBlockExpression : (pBlockExpression = new BlockExpressionElements());
+		return pBlockExpression;
 	}
 	
 	public ParserRule getBlockExpressionRule() {
@@ -2174,7 +2218,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//	XIfExpression | XForLoopExpression | XBasicForLoopExpression | XWhileExpression | XDoWhileExpression |
 	//	XThrowExpression | XReturnExpression | XTryCatchFinallyExpression | XParenthesizedExpression | Assertion;
 	public XPrimaryExpressionElements getXPrimaryExpressionAccess() {
-		return (pXPrimaryExpression != null) ? pXPrimaryExpression : (pXPrimaryExpression = new XPrimaryExpressionElements());
+		return pXPrimaryExpression;
 	}
 	
 	public ParserRule getXPrimaryExpressionRule() {
@@ -2188,7 +2232,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//	({xbase::XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
 	//	rightOperand=XOtherOperatorExpression)*;
 	public XRelationalExpressionElements getXRelationalExpressionAccess() {
-		return (pXRelationalExpression != null) ? pXRelationalExpression : (pXRelationalExpression = new XRelationalExpressionElements());
+		return pXRelationalExpression;
 	}
 	
 	public ParserRule getXRelationalExpressionRule() {
@@ -2198,7 +2242,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//Should:
 	//	"should" "not"? ID;
 	public ShouldElements getShouldAccess() {
-		return (pShould != null) ? pShould : (pShould = new ShouldElements());
+		return pShould;
 	}
 	
 	public ParserRule getShouldRule() {
@@ -2208,7 +2252,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//Assertion:
 	//	{Assertion} "assert" expression=XExpression;
 	public AssertionElements getAssertionAccess() {
-		return (pAssertion != null) ? pAssertion : (pAssertion = new AssertionElements());
+		return pAssertion;
 	}
 	
 	public ParserRule getAssertionRule() {
@@ -2218,7 +2262,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//XConstructorCall returns xbase::XExpression:
 	//	XbaseConstructorCall (=> ({xtend::AnonymousClass.constructorCall=current} "{") members+=AnonymousMember* "}")?;
 	public XConstructorCallElements getXConstructorCallAccess() {
-		return (pXConstructorCall != null) ? pXConstructorCall : (pXConstructorCall = new XConstructorCallElements());
+		return pXConstructorCall;
 	}
 	
 	public ParserRule getXConstructorCallRule() {
@@ -2239,7 +2283,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//	(parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws" exceptions+=JvmTypeReference (","
 	//	exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | expression=RichString | ";")?);
 	public AnonymousMemberElements getAnonymousMemberAccess() {
-		return (pAnonymousMember != null) ? pAnonymousMember : (pAnonymousMember = new AnonymousMemberElements());
+		return pAnonymousMember;
 	}
 	
 	public ParserRule getAnonymousMemberRule() {
@@ -2249,128 +2293,128 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal BACKGROUND_TEXT:
 	//	"Background:" MNL;
 	public TerminalRule getBACKGROUND_TEXTRule() {
-		return (tBACKGROUND_TEXT != null) ? tBACKGROUND_TEXT : (tBACKGROUND_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BACKGROUND_TEXT"));
+		return tBACKGROUND_TEXT;
 	} 
 
 	//terminal SCENARIO_TEXT:
 	//	"Scenario:" MNL;
 	public TerminalRule getSCENARIO_TEXTRule() {
-		return (tSCENARIO_TEXT != null) ? tSCENARIO_TEXT : (tSCENARIO_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SCENARIO_TEXT"));
+		return tSCENARIO_TEXT;
 	} 
 
 	//terminal FEATURE_TEXT:
 	//	"Feature" COLON->(BACKGROUND_TEXT | SCENARIO_TEXT);
 	public TerminalRule getFEATURE_TEXTRule() {
-		return (tFEATURE_TEXT != null) ? tFEATURE_TEXT : (tFEATURE_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "FEATURE_TEXT"));
+		return tFEATURE_TEXT;
 	} 
 
 	//terminal GIVEN_TEXT:
 	//	"Given " STEP_WITH_ARGS;
 	public TerminalRule getGIVEN_TEXTRule() {
-		return (tGIVEN_TEXT != null) ? tGIVEN_TEXT : (tGIVEN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "GIVEN_TEXT"));
+		return tGIVEN_TEXT;
 	} 
 
 	//terminal WHEN_TEXT:
 	//	"When " STEP_WITH_ARGS;
 	public TerminalRule getWHEN_TEXTRule() {
-		return (tWHEN_TEXT != null) ? tWHEN_TEXT : (tWHEN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "WHEN_TEXT"));
+		return tWHEN_TEXT;
 	} 
 
 	//terminal THEN_TEXT:
 	//	"Then " STEP_WITH_ARGS;
 	public TerminalRule getTHEN_TEXTRule() {
-		return (tTHEN_TEXT != null) ? tTHEN_TEXT : (tTHEN_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "THEN_TEXT"));
+		return tTHEN_TEXT;
 	} 
 
 	//terminal AND_TEXT:
 	//	"And " STEP_WITH_ARGS;
 	public TerminalRule getAND_TEXTRule() {
-		return (tAND_TEXT != null) ? tAND_TEXT : (tAND_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "AND_TEXT"));
+		return tAND_TEXT;
 	} 
 
 	//terminal BUT_TEXT:
 	//	"But " STEP_WITH_ARGS;
 	public TerminalRule getBUT_TEXTRule() {
-		return (tBUT_TEXT != null) ? tBUT_TEXT : (tBUT_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BUT_TEXT"));
+		return tBUT_TEXT;
 	} 
 
 	//// this is a dummy token that will be generated by a custom TokenSource
 	//terminal TEXT:
 	//	"____dummy____"+;
 	public TerminalRule getTEXTRule() {
-		return (tTEXT != null) ? tTEXT : (tTEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "TEXT"));
+		return tTEXT;
 	} 
 
 	//terminal fragment STEP_WITH_ARGS:
 	//	!("\r" | "\n")* "\r"? ("\n" SPACES RICH_TEXT? SPACES | EOF);
 	public TerminalRule getSTEP_WITH_ARGSRule() {
-		return (tSTEP_WITH_ARGS != null) ? tSTEP_WITH_ARGS : (tSTEP_WITH_ARGS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STEP_WITH_ARGS"));
+		return tSTEP_WITH_ARGS;
 	} 
 
 	//terminal fragment MNL:
 	//	!("\r" | "\n")* NL;
 	public TerminalRule getMNLRule() {
-		return (tMNL != null) ? tMNL : (tMNL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "MNL"));
+		return tMNL;
 	} 
 
 	//terminal fragment COLON:
 	//	SPACES ":";
 	public TerminalRule getCOLONRule() {
-		return (tCOLON != null) ? tCOLON : (tCOLON = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COLON"));
+		return tCOLON;
 	} 
 
 	//terminal fragment NL:
 	//	"\r"? "\n"?;
 	public TerminalRule getNLRule() {
-		return (tNL != null) ? tNL : (tNL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NL"));
+		return tNL;
 	} 
 
 	//terminal fragment SPACES:
 	//	(" " | "\t")*;
 	public TerminalRule getSPACESRule() {
-		return (tSPACES != null) ? tSPACES : (tSPACES = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SPACES"));
+		return tSPACES;
 	} 
 
 	//terminal RICH_TEXT:
 	//	"\'\'\'" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
 	public TerminalRule getRICH_TEXTRule() {
-		return (tRICH_TEXT != null) ? tRICH_TEXT : (tRICH_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT"));
+		return tRICH_TEXT;
 	} 
 
 	//terminal RICH_TEXT_START:
 	//	"\'\'\'" IN_RICH_STRING* ("\'" "\'"?)? "«";
 	public TerminalRule getRICH_TEXT_STARTRule() {
-		return (tRICH_TEXT_START != null) ? tRICH_TEXT_START : (tRICH_TEXT_START = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_START"));
+		return tRICH_TEXT_START;
 	} 
 
 	//terminal RICH_TEXT_END:
 	//	"»" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF);
 	public TerminalRule getRICH_TEXT_ENDRule() {
-		return (tRICH_TEXT_END != null) ? tRICH_TEXT_END : (tRICH_TEXT_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_END"));
+		return tRICH_TEXT_END;
 	} 
 
 	//terminal RICH_TEXT_INBETWEEN:
 	//	"»" IN_RICH_STRING* ("\'" "\'"?)? "«";
 	public TerminalRule getRICH_TEXT_INBETWEENRule() {
-		return (tRICH_TEXT_INBETWEEN != null) ? tRICH_TEXT_INBETWEEN : (tRICH_TEXT_INBETWEEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_INBETWEEN"));
+		return tRICH_TEXT_INBETWEEN;
 	} 
 
 	//terminal COMMENT_RICH_TEXT_INBETWEEN:
 	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'" "\'"?)? "«")?;
 	public TerminalRule getCOMMENT_RICH_TEXT_INBETWEENRule() {
-		return (tCOMMENT_RICH_TEXT_INBETWEEN != null) ? tCOMMENT_RICH_TEXT_INBETWEEN : (tCOMMENT_RICH_TEXT_INBETWEEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COMMENT_RICH_TEXT_INBETWEEN"));
+		return tCOMMENT_RICH_TEXT_INBETWEEN;
 	} 
 
 	//terminal COMMENT_RICH_TEXT_END:
 	//	"««" !("\n" | "\r")* ("\r"? "\n" IN_RICH_STRING* ("\'\'\'" | ("\'" "\'"?)? EOF) | EOF);
 	public TerminalRule getCOMMENT_RICH_TEXT_ENDRule() {
-		return (tCOMMENT_RICH_TEXT_END != null) ? tCOMMENT_RICH_TEXT_END : (tCOMMENT_RICH_TEXT_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COMMENT_RICH_TEXT_END"));
+		return tCOMMENT_RICH_TEXT_END;
 	} 
 
 	//terminal fragment IN_RICH_STRING:
 	//	"\'\'" !("«" | "\'") | "\'" !("«" | "\'") | !("«" | "\'");
 	public TerminalRule getIN_RICH_STRINGRule() {
-		return (tIN_RICH_STRING != null) ? tIN_RICH_STRING : (tIN_RICH_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IN_RICH_STRING"));
+		return tIN_RICH_STRING;
 	} 
 
 	/// **
@@ -2379,7 +2423,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	// * / StaticQualifier:
 	//	(ValidID "::")+;
 	public StaticQualifierElements getStaticQualifierAccess() {
-		return (pStaticQualifier != null) ? pStaticQualifier : (pStaticQualifier = new StaticQualifierElements());
+		return pStaticQualifier;
 	}
 	
 	public ParserRule getStaticQualifierRule() {
@@ -2399,11 +2443,11 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	//Type returns XtendTypeDeclaration:
 	//	{XtendTypeDeclaration} annotations+=XAnnotation* ({XtendClass.annotationInfo=current} modifiers+=CommonModifier*
 	//	"class" name=ValidID ("<" typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? ("extends"
-	//	extends=JvmParameterizedTypeReference)? ("implements" implements+=JvmParameterizedTypeReference (","
-	//	implements+=JvmParameterizedTypeReference)*)? "{" members+=Member* "}" | {XtendInterface.annotationInfo=current}
+	//	extends=JvmParameterizedTypeReference)? ("implements" implements+=JvmSuperTypeReference (","
+	//	implements+=JvmSuperTypeReference)*)? "{" members+=Member* "}" | {XtendInterface.annotationInfo=current}
 	//	modifiers+=CommonModifier* "interface" name=ValidID ("<" typeParameters+=JvmTypeParameter (","
-	//	typeParameters+=JvmTypeParameter)* ">")? ("extends" extends+=JvmParameterizedTypeReference (","
-	//	extends+=JvmParameterizedTypeReference)*)? "{" members+=Member* "}" | {XtendEnum.annotationInfo=current}
+	//	typeParameters+=JvmTypeParameter)* ">")? ("extends" extends+=JvmSuperTypeReference (","
+	//	extends+=JvmSuperTypeReference)*)? "{" members+=Member* "}" | {XtendEnum.annotationInfo=current}
 	//	modifiers+=CommonModifier* "enum" name=ValidID "{" (members+=XtendEnumLiteral ("," members+=XtendEnumLiteral)*)? ";"?
 	//	"}" | {XtendAnnotationType.annotationInfo=current} modifiers+=CommonModifier* "annotation" name=ValidID "{"
 	//	members+=AnnotationField* "}");
@@ -2413,6 +2457,27 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getTypeRule() {
 		return getTypeAccess().getRule();
+	}
+
+	//JvmSuperTypeReference returns types::JvmTypeReference:
+	//	JvmParameterizedTypeReference | XFunctionSuperTypeRef;
+	public XtendGrammarAccess.JvmSuperTypeReferenceElements getJvmSuperTypeReferenceAccess() {
+		return gaXtend.getJvmSuperTypeReferenceAccess();
+	}
+	
+	public ParserRule getJvmSuperTypeReferenceRule() {
+		return getJvmSuperTypeReferenceAccess().getRule();
+	}
+
+	//XFunctionSuperTypeRef returns xtype::XFunctionTypeRef:
+	//	(instanceContext?="(" (paramTypes+=JvmTypeReference ("," paramTypes+=JvmTypeReference)*)? ")")? "=>"
+	//	returnType=JvmTypeReference;
+	public XtendGrammarAccess.XFunctionSuperTypeRefElements getXFunctionSuperTypeRefAccess() {
+		return gaXtend.getXFunctionSuperTypeRefAccess();
+	}
+	
+	public ParserRule getXFunctionSuperTypeRefRule() {
+		return getXFunctionSuperTypeRefAccess().getRule();
 	}
 
 	//AnnotationField returns XtendMember:
@@ -2447,7 +2512,40 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 		return getTypeReferenceNoTypeArgsAccess().getRule();
 	}
 
-	//FunctionID:
+	/// *** The following two rules are a workaround for a limitation in serialization logic
+	// *
+	// * Apparently we choose the shortest possible path to create the sequence of unassigned
+	// * tokens between two assigned values. This doesn't work well with Antlr predicates which
+	// * may have lead to another decision path - not necessarily the shortest one in the sense
+	// * of the serializer. That's why we make the type arguments mandatory here so that we
+	// * do no longer have two equally short path's from method identifier to block expression
+	// ************************************************************************************** / TypeReferenceWithTypeArgs
+	//returns types::JvmTypeReference:
+	//	ParameterizedTypeReferenceWithTypeArgs => ({types::JvmGenericArrayTypeReference.componentType=current} ArrayBrackets)*
+	//	| TypeReferenceNoTypeArgs => ({types::JvmGenericArrayTypeReference.componentType=current} ArrayBrackets)+ |
+	//	XFunctionTypeRef;
+	public XtendGrammarAccess.TypeReferenceWithTypeArgsElements getTypeReferenceWithTypeArgsAccess() {
+		return gaXtend.getTypeReferenceWithTypeArgsAccess();
+	}
+	
+	public ParserRule getTypeReferenceWithTypeArgsRule() {
+		return getTypeReferenceWithTypeArgsAccess().getRule();
+	}
+
+	//ParameterizedTypeReferenceWithTypeArgs returns types::JvmParameterizedTypeReference:
+	//	type=[types::JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference (","
+	//	arguments+=JvmArgumentTypeReference)* ">" (=> ({types::JvmInnerTypeReference.outer=current} ".")
+	//	type=[types::JvmType|ValidID] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)*
+	//	">")?)*);
+	public XtendGrammarAccess.ParameterizedTypeReferenceWithTypeArgsElements getParameterizedTypeReferenceWithTypeArgsAccess() {
+		return gaXtend.getParameterizedTypeReferenceWithTypeArgsAccess();
+	}
+	
+	public ParserRule getParameterizedTypeReferenceWithTypeArgsRule() {
+		return getParameterizedTypeReferenceWithTypeArgsAccess().getRule();
+	}
+
+	/// *** The following two rules are a workaround for a limitation in serialiation logic * / FunctionID:
 	//	ValidID | Operators;
 	public XtendGrammarAccess.FunctionIDElements getFunctionIDAccess() {
 		return gaXtend.getFunctionIDAccess();
@@ -3217,7 +3315,7 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XCasePart:
-	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | ",");
+	//	{XCasePart} typeGuard=JvmTypeReference? ("case" case=XExpression)? (":" then=XExpression | fallThrough?=",");
 	public XbaseGrammarAccess.XCasePartElements getXCasePartAccess() {
 		return gaXtend.getXCasePartAccess();
 	}
@@ -3472,8 +3570,9 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmParameterizedTypeReference:
-	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)*
-	//	">")?;
+	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)* ">"
+	//	(=> ({JvmInnerTypeReference.outer=current} ".") type=[JvmType|ValidID] ("<" arguments+=JvmArgumentTypeReference (","
+	//	arguments+=JvmArgumentTypeReference)* ">")?)*)?;
 	public XtypeGrammarAccess.JvmParameterizedTypeReferenceElements getJvmParameterizedTypeReferenceAccess() {
 		return gaXtend.getJvmParameterizedTypeReferenceAccess();
 	}
@@ -3493,7 +3592,8 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmWildcardTypeReference:
-	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound | constraints+=JvmLowerBound)?;
+	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound constraints+=JvmUpperBoundAnded* |
+	//	constraints+=JvmLowerBound constraints+=JvmLowerBoundAnded*)?;
 	public XtypeGrammarAccess.JvmWildcardTypeReferenceElements getJvmWildcardTypeReferenceAccess() {
 		return gaXtend.getJvmWildcardTypeReferenceAccess();
 	}
@@ -3530,6 +3630,16 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getJvmLowerBoundRule() {
 		return getJvmLowerBoundAccess().getRule();
+	}
+
+	//JvmLowerBoundAnded returns JvmLowerBound:
+	//	"&" typeReference=JvmTypeReference;
+	public XtypeGrammarAccess.JvmLowerBoundAndedElements getJvmLowerBoundAndedAccess() {
+		return gaXtend.getJvmLowerBoundAndedAccess();
+	}
+	
+	public ParserRule getJvmLowerBoundAndedRule() {
+		return getJvmLowerBoundAndedAccess().getRule();
 	}
 
 	//JvmTypeParameter:
@@ -3585,8 +3695,8 @@ public class FeatureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\""))* "\""? | "\'" ("\\" .
+	//	/ * ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') * / | !("\\" | "\'"))* "\'"?;
 	public TerminalRule getSTRINGRule() {
 		return gaXtend.getSTRINGRule();
 	} 

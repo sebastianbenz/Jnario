@@ -10,8 +10,6 @@ package org.jnario.feature.tests.integration;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
-import org.jnario.lib.JnarioIterableExtensions;
-import org.jnario.lib.StepArguments;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -30,9 +28,10 @@ public class ReferencesForStepsFeatureSteps extends ReferencesForStepsFeature {
   @Order(0)
   @Named("When I have a scenario with a variable that is initialized")
   public void _whenIHaveAScenarioWithAVariableThatIsInitialized() {
-    final StepArguments args = new StepArguments("import java.util.concurrent.TimeUnit\n\n\t\tFeature: Test\n\t\t\n\t\tScenario: Scenario\n\t\tWhen test\n\t\tval test = TimeUnit::MINUTES\n\t\t\n\t\tScenario: Scenario 2\n\t\tWhen test\n");
-    String _first = JnarioIterableExtensions.<String>first(args);
-    this.jnarioFile = _first;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field args is undefined for the type Scenario: Steps \r\n"
+      + "\nThe method or field first is undefined for the type Scenario: Duplicate extension via step rerferences\r\n"
+      + "\nfirst cannot be resolved");
   }
   
   @Test

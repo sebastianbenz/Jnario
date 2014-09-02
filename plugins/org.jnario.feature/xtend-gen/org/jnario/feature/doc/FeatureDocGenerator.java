@@ -119,7 +119,7 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     _builder.append("</h3>");
     _builder.newLineIfNotEmpty();
     EList<Step> _steps = scenario.getSteps();
-    Object _generate = this.generate(_steps);
+    CharSequence _generate = this.generate(_steps);
     _builder.append(_generate, "");
     _builder.append("</div>");
     _builder.newLineIfNotEmpty();

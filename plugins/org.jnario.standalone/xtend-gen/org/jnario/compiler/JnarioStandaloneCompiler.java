@@ -81,7 +81,7 @@ public class JnarioStandaloneCompiler extends XtendBatchCompiler {
     FeatureStandaloneSetup _featureStandaloneSetup = new FeatureStandaloneSetup();
     SpecStandaloneSetup _specStandaloneSetup = new SpecStandaloneSetup();
     SuiteStandaloneSetup _suiteStandaloneSetup = new SuiteStandaloneSetup();
-    final List<? extends ISetup> setups = Collections.<ISetup>unmodifiableList(Lists.<ISetup>newArrayList(_featureStandaloneSetup, _specStandaloneSetup, _suiteStandaloneSetup));
+    final List<? extends ISetup> setups = Collections.<ISetup>unmodifiableList(CollectionLiterals.<ISetup>newArrayList(_featureStandaloneSetup, _specStandaloneSetup, _suiteStandaloneSetup));
     return new JnarioStandaloneCompiler(setups);
   }
   
@@ -117,10 +117,12 @@ public class JnarioStandaloneCompiler extends XtendBatchCompiler {
     _eAdapters.add(
       new FlatResourceSetBasedAllContainersState(resourceSet) {
         public Collection<URI> getContainedURIs(final String containerHandle) {
-          EList<Resource> _resources = resourceSet.getResources();
+          ResourceSet _resourceSet = this.getResourceSet();
+          EList<Resource> _resources = _resourceSet.getResources();
           int _size = _resources.size();
           final ArrayList<URI> uris = Lists.<URI>newArrayListWithCapacity(_size);
-          EList<Resource> _resources_1 = resourceSet.getResources();
+          ResourceSet _resourceSet_1 = this.getResourceSet();
+          EList<Resource> _resources_1 = _resourceSet_1.getResources();
           for (final Resource r : _resources_1) {
             URI _uRI = r.getURI();
             uris.add(_uRI);
