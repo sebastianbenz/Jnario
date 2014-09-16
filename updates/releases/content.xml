@@ -5,8 +5,8 @@
     <property name='p2.timestamp' value='1405374132657'/>
   </properties>
   <references size='4'>
-    <repository uri='http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/' url='http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/' type='1' options='1'/>
-    <repository uri='http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/' url='http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/' type='0' options='1'/>
+    <repository uri='http://download.eclipse.org/tools/orbit/downloads/drops/I20140701152614/repository/' url='http://download.eclipse.org/tools/orbit/downloads/drops/I20140701152614/repository/' type='1' options='1'/>
+    <repository uri='http://download.eclipse.org/tools/orbit/downloads/drops/I20140701152614/repository/' url='http://download.eclipse.org/tools/orbit/downloads/drops/I20140701152614/repository/' type='0' options='1'/>
     <repository uri='http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/' url='http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/' type='1' options='1'/>
     <repository uri='http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/' url='http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/' type='0' options='1'/>
   </references>
