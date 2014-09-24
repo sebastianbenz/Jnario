@@ -85,6 +85,7 @@ class DocCompilerMain {
 			jnarioCompiler.setClassPath(classPath);
 			jnarioCompiler.setFileEncoding(fileEncoding);
 			jnarioCompiler.setSourcePath(sourcePath);
+			resourceSet.get().eAdapters().clear();
 			jnarioCompiler.setResourceSetProvider(resourceSet);
 			jnarioCompiler.setExecutable2ResultMapping(createSpec2ResultMapping)
 			if(!jnarioCompiler.compile()){
