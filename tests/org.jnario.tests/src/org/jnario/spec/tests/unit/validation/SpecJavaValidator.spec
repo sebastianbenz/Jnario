@@ -25,6 +25,7 @@ import org.jnario.jnario.test.util.Resources
 import org.jnario.ExampleCell
 import org.eclipse.xtext.xbase.XExpression
 import org.junit.Ignore
+import org.jnario.spec.spec.SpecFile
 
 @CreateWith(typeof(SpecTestCreator))
 describe SpecJavaValidator{
@@ -167,6 +168,25 @@ describe SpecJavaValidator{
 		validationResult.assertOK
 	}
 	
+  fact "should can define two classes in a spec" {
+    parseSpec('
+      class A {}
+      class B {}
+      describe "A"{
+      }
+    ')
+    val validationResult = validate(typeof(SpecFile))
+    validationResult.assertOK
+  }
+  fact "should can find clashes with Xtend classes" {
+    parseSpec('
+      class ExampleSpec {}
+      describe "Example"{
+      }
+    ')
+    val validationResult = validate(typeof(SpecFile))
+    validationResult.assertErrorContains("type Example is already defined")
+  }
 	def validate(Class<? extends EObject> type){
 		Resources::addContainerStateAdapter(resourceSet);
 		val target = query(modelStore).first(type)

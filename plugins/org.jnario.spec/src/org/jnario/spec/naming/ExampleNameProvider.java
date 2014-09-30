@@ -93,6 +93,9 @@ public class ExampleNameProvider extends JnarioNameProvider{
 		if (eObject instanceof ExampleTable) {
 			return _toJavaClassName((ExampleTable) eObject);
 		}
+		if (eObject instanceof XtendClass) {
+			return ((XtendClass)eObject).getName();
+		}
 		ExampleGroup exampleGroup = getContainerOfType(eObject, ExampleGroup.class);
 		if(exampleGroup == null){
 			return null;

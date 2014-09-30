@@ -95,6 +95,25 @@ parseSpec('
 ')
 val validationResult = validate(typeof(XBinaryOperation))
 validationResult.assertOK</pre>
+</li><li><p id="should_can_define_two_classes_in_a_spec" class="example notrun"><strong>should can define two classes in a spec</strong></p>
+<pre class="prettyprint lang-spec linenums">
+parseSpec('
+  class A {}
+  class B {}
+  describe &quot;A&quot;{
+  }
+')
+val validationResult = validate(typeof(SpecFile))
+validationResult.assertOK</pre>
+</li><li><p id="should_can_find_clashes_with_Xtend_classes" class="example notrun"><strong>should can find clashes with Xtend classes</strong></p>
+<pre class="prettyprint lang-spec linenums">
+parseSpec('
+  class ExampleSpec {}
+  describe &quot;Example&quot;{
+  }
+')
+val validationResult = validate(typeof(SpecFile))
+validationResult.assertErrorContains(&quot;type Example is already defined&quot;)</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -128,6 +147,7 @@ import org.jnario.jnario.test.util.Resources
 import org.jnario.ExampleCell
 import org.eclipse.xtext.xbase.XExpression
 import org.junit.Ignore
+import org.jnario.spec.spec.SpecFile
 
 @CreateWith(typeof(SpecTestCreator))
 describe SpecJavaValidator{
@@ -270,6 +290,25 @@ describe SpecJavaValidator{
     validationResult.assertOK
   }
   
+  fact &quot;should can define two classes in a spec&quot; {
+    parseSpec('
+      class A {}
+      class B {}
+      describe &quot;A&quot;{
+      }
+    ')
+    val validationResult = validate(typeof(SpecFile))
+    validationResult.assertOK
+  }
+  fact &quot;should can find clashes with Xtend classes&quot; {
+    parseSpec('
+      class ExampleSpec {}
+      describe &quot;Example&quot;{
+      }
+    ')
+    val validationResult = validate(typeof(SpecFile))
+    validationResult.assertErrorContains(&quot;type Example is already defined&quot;)
+  }
   def validate(Class&lt;? extends EObject&gt; type){
     Resources::addContainerStateAdapter(resourceSet);
     val target = query(modelStore).first(type)

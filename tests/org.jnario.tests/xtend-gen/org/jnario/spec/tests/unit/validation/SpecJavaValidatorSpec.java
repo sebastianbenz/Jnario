@@ -26,6 +26,7 @@ import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
 import org.jnario.spec.spec.ExampleGroup;
+import org.jnario.spec.spec.SpecFile;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -133,6 +134,24 @@ public class SpecJavaValidatorSpec {
     this.modelStore.parseSpec("\r\n\t\t\timport static org.hamcrest.CoreMatchers.*\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact 1 => notNullValue\r\n\t\t\t} \r\n\t\t");
     final AssertableDiagnostics validationResult = this.validate(XBinaryOperation.class);
     validationResult.assertOK();
+  }
+  
+  @Test
+  @Named("should can define two classes in a spec")
+  @Order(11)
+  public void _shouldCanDefineTwoClassesInASpec() throws Exception {
+    this.modelStore.parseSpec("\r\n      class A {}\r\n      class B {}\r\n      describe \"A\"{\r\n      }\r\n    ");
+    final AssertableDiagnostics validationResult = this.validate(SpecFile.class);
+    validationResult.assertOK();
+  }
+  
+  @Test
+  @Named("should can find clashes with Xtend classes")
+  @Order(12)
+  public void _shouldCanFindClashesWithXtendClasses() throws Exception {
+    this.modelStore.parseSpec("\r\n      class ExampleSpec {}\r\n      describe \"Example\"{\r\n      }\r\n    ");
+    final AssertableDiagnostics validationResult = this.validate(SpecFile.class);
+    validationResult.assertErrorContains("type Example is already defined");
   }
   
   public AssertableDiagnostics validate(final Class<? extends EObject> type) {
