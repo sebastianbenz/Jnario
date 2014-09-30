@@ -139,6 +139,7 @@ import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegate;
 import org.eclipse.xtext.xbase.ui.quickfix.JavaTypeQuickfixes;
 import org.eclipse.xtext.xbase.ui.refactoring.ExpressionUtil;
 import org.eclipse.xtext.xbase.ui.validation.XbaseIssueSeveritiesProvider;
+import org.jnario.feature.linking.FeatureLazyLinker;
 import org.jnario.feature.ui.autoedit.FeatureAutoEditStrategyProvider;
 import org.jnario.feature.ui.autoedit.FeatureIndentLineAutoEditStrategy;
 import org.jnario.feature.ui.editor.FeatureDoubleClickStrategyProvider;
@@ -535,7 +536,7 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	}
 	
 	public Class<? extends ILinker> bindILinker() {
-		return Linker.class;
+		return FeatureLazyLinker.class;
 	}
 	
 	public Class<? extends OutlineWithEditorLinker> bindOutlineWithEditorLinker() {
