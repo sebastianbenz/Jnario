@@ -75,35 +75,37 @@ public class FeatureJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 		INode node = NodeModelUtils.findLeafNodeAtOffset(root, offset);
 		if (node == null)
 			return null;
-		INode previousSementic = null, nextSemantic = null;
-		NodeIterator backwards = new NodeIterator(node);
-		while (backwards.hasPrevious()) {
-			INode n = backwards.previous();
-			if (n instanceof ILeafNode && !((ILeafNode) n).isHidden()) {
-				previousSementic = n;
-				break;
+		
+		EObject element = NodeModelUtils.findActualSemanticObjectFor(node);
+		if (!(element instanceof Scenario)) {
+			INode previousSementic = null, nextSemantic = null;
+			NodeIterator backwards = new NodeIterator(node);
+			while (backwards.hasPrevious()) {
+				INode n = backwards.previous();
+				if (n instanceof ILeafNode && !((ILeafNode) n).isHidden()) {
+					previousSementic = n;
+					break;
+				}
 			}
-		}
-		NodeIterator forward = new NodeIterator(node);
-		while (forward.hasNext()) {
-			INode n = forward.next();
-			if (n instanceof ILeafNode && !((ILeafNode) n).isHidden()) {
-				nextSemantic = n;
-				break;
+			NodeIterator forward = new NodeIterator(node);
+			while (forward.hasNext()) {
+				INode n = forward.next();
+				if (n instanceof ILeafNode && !((ILeafNode) n).isHidden()) {
+					nextSemantic = n;
+					break;
+				}
 			}
-		}
-		EObject element;
-		if (previousSementic != null && nextSemantic == null){
-			element = NodeModelUtils.findActualSemanticObjectFor(previousSementic);
-		}else if (nextSemantic != null && previousSementic == null){
-			element = NodeModelUtils.findActualSemanticObjectFor(nextSemantic);
-		}else{
-		EObject prevObj = NodeModelUtils.findActualSemanticObjectFor(previousSementic);
-		EObject nextObj = NodeModelUtils.findActualSemanticObjectFor(nextSemantic);
-		if (prevObj == null || nextObj == null)
-			return null;
-		 element = findCommonContainer(prevObj, nextObj);
-			
+			if (previousSementic != null && nextSemantic == null) {
+				element = NodeModelUtils.findActualSemanticObjectFor(previousSementic);
+			} else if (nextSemantic != null && previousSementic == null) {
+				element = NodeModelUtils.findActualSemanticObjectFor(nextSemantic);
+			} else {
+				EObject prevObj = NodeModelUtils.findActualSemanticObjectFor(previousSementic);
+				EObject nextObj = NodeModelUtils.findActualSemanticObjectFor(nextSemantic);
+				if (prevObj == null || nextObj == null)
+					return null;
+				element = findCommonContainer(prevObj, nextObj);
+			}
 		}
 		JvmIdentifiableElement jvmElement = findAssociatedJvmElement(element);
 		if (jvmElement == null)
