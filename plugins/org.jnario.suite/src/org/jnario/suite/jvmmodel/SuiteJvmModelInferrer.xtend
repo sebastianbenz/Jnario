@@ -8,21 +8,19 @@
 package org.jnario.suite.jvmmodel
 
 import com.google.inject.Inject
+import java.util.List
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.common.types.JvmType
+import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
+import org.eclipse.xtext.xtype.XtypeFactory
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder
 import org.jnario.jvmmodel.JnarioJvmModelInferrer
 import org.jnario.runner.Named
 import org.jnario.suite.suite.Suite
 import org.jnario.suite.suite.SuiteFile
-import org.eclipse.xtext.common.types.JvmGenericTypeimport org.eclipse.xtext.linking.impl.ImportedNamesAdapter
-import org.eclipse.xtext.naming.IQualifiedNameConverter
-import org.eclipse.xtext.xtype.XtypeFactory
-import org.eclipse.xtext.common.types.JvmTypeReference
-import org.eclipse.xtext.xtype.XComputedTypeReference
-import java.util.List
 
 class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 
@@ -31,6 +29,8 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 	@Inject extension SpecResolver
 	@Inject extension TypeReferences
 	@Inject extension SuiteNodeBuilder
+	@Inject TypesFactory typesFactory
+	
 	
 	@Inject(optional = true)
 	private XtypeFactory xtypesFactory = XtypeFactory.eINSTANCE;
@@ -40,6 +40,13 @@ class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
 			return
 		}
 		val suiteFile = e as SuiteFile
+
+		val suites = suiteFile.xtendTypes.filter(typeof(Suite)).toList
+		suites.forEach[
+			val javaType = typesFactory.createJvmGenericType();
+			setNameAndAssociate(it.xtendFile, it, javaType);
+		]
+
 		val nodes = suiteFile.buildNodeModel
 		val doLater = <Runnable>newArrayList
 		nodes.forEach[

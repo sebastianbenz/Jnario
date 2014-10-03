@@ -9,6 +9,7 @@ package org.jnario.spec.ui.launching;
 
 import java.util.Set;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtext.EcoreUtil2;
@@ -29,6 +30,11 @@ public class SpecJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 	private IJvmModelAssociations associations;
 
 	@Override
+	protected boolean containsElementsSearchedFor(IFile file) {
+		return file.getName().endsWith("Spec.java");
+	}
+	
+	@Override
 	protected JvmIdentifiableElement findAssociatedJvmElement(EObject element) {
 		if (element == null)
 			return null;
@@ -46,4 +52,5 @@ public class SpecJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 		}
 		return super.findAssociatedJvmElement(element);
 	}
+	
 }
