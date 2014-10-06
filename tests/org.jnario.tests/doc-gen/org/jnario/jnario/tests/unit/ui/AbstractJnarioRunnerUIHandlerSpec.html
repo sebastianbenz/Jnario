@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AbstractJnarioRunnerUIHandler</title>
+<meta name="description" content="">
+<meta name="author" content="Jnario">
+
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../../../../css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="../../../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../../../css/prettify.css">
+<script type="text/javascript" src="../../../../../../js/prettify.js"></script>
+<script type="text/javascript" src="../../../../../../js/lang-jnario.js"></script>
+<script type="text/javascript" src="../../../../../../js/jquery.js"></script>
+<script type="text/javascript" src="../../../../../../js/bootstrap-tab.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+	<div class="container">
+		<div class="tabbable">
+			<div class="content">
+				<div class="page-header notrun">
+					<h1>AbstractJnarioRunnerUIHandler</h1>
+					  <ul class="nav nav-tabs pull-right">
+					    <li class="active"><a href="#spec" data-toggle="tab">Spec</a></li>
+						<li><a href="#source" data-toggle="tab">Source</a></li>
+					  </ul>
+				</div>
+				<div class="row">
+					<div class="span12">
+						  <div class="tab-content">
+							  	<div class="tab-pane active" id="spec">
+<h3 class="exampleGroup notrun"  id="Suite_Labelling">Suite Labelling</h3>
+<p>JUnit suite names are annotated with [IGNORED] if all child members are ignored and [PENDING] if all child members are ignored and at least one is pending.</p>
+<ul><li><p id="cases"><strong>Cases</strong></p>
+<table class="table table-striped table-bordered table-condensed">
+	<thead>
+		<tr>
+		<th>left</th>
+		<th>right</th>
+		<th>result</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>null</td>
+		<td>null</td>
+		<td>notMarked</td>
+	</tr>
+	<tr>
+		<td>tc</td>
+		<td>null</td>
+		<td>notMarked</td>
+	</tr>
+	<tr>
+		<td>ign</td>
+		<td>null</td>
+		<td>markedIgnored</td>
+	</tr>
+	<tr>
+		<td>pend</td>
+		<td>null</td>
+		<td>markedPending</td>
+	</tr>
+	<tr>
+		<td>tc</td>
+		<td>ign</td>
+		<td>notMarked</td>
+	</tr>
+	<tr>
+		<td>tc</td>
+		<td>pend</td>
+		<td>notMarked</td>
+	</tr>
+	<tr>
+		<td>ign</td>
+		<td>pend</td>
+		<td>markedPending</td>
+	</tr>
+	<tr>
+		<td>ign</td>
+		<td>ign</td>
+		<td>markedIgnored</td>
+	</tr>
+	<tr>
+		<td>suite(tc)</td>
+		<td>pend</td>
+		<td>notMarked</td>
+	</tr>
+	<tr>
+		<td>suite(pend)</td>
+		<td>tc</td>
+		<td>notMarked</td>
+	</tr>
+	<tr>
+		<td>suite(tc)</td>
+		<td>ign</td>
+		<td>notMarked</td>
+	</tr>
+	<tr>
+		<td>suite(ign)</td>
+		<td>tc</td>
+		<td>notMarked</td>
+	</tr>
+	<tr>
+		<td>suite(pend)</td>
+		<td>ign</td>
+		<td>markedPending</td>
+	</tr>
+	<tr>
+		<td>suite(ign)</td>
+		<td>pend</td>
+		<td>markedPending</td>
+	</tr>
+	<tr>
+		<td>suite(ign)</td>
+		<td>ign</td>
+		<td>markedIgnored</td>
+	</tr>
+	</tbody>
+</table>
+</li><li><p id="All_cases" class="example notrun"><strong>All cases</strong></p>
+<pre class="prettyprint lang-spec linenums">
+cases.forEach [
+  val elements = list(left, right).filterNull
+  result.matches(label(root(elements))) should be true
+]</pre>
+</li></ul>
+							</div>
+						    <div class="tab-pane" id="source">
+						    	<h3>AbstractJnarioRunnerUIHandler.spec</h3>
+						    	<p>
+<pre class="prettyprint lang-spec linenums">
+package org.jnario.jnario.tests.unit.ui
+
+import org.eclipse.jdt.internal.junit.model.TestCaseElement
+import org.eclipse.jdt.internal.junit.model.TestElement
+import org.eclipse.jdt.internal.junit.model.TestRoot
+import org.eclipse.jdt.internal.junit.model.TestRunSession
+import org.eclipse.jdt.internal.junit.model.TestSuiteElement
+import org.eclipse.jdt.junit.model.ITestElement
+import org.eclipse.ui.part.ViewPart
+import org.jnario.ui.handler.AbstractJnarioRunnerUIHandler
+import org.jnario.util.Strings
+
+import static org.hamcrest.Matchers.*
+
+class TestUIHandler extends AbstractJnarioRunnerUIHandler {
+
+  override getAction(ViewPart part, ITestElement element) {
+  }
+
+}
+
+describe &quot;AbstractJnarioRunnerUIHandler&quot; {
+
+  /**
+   * JUnit suite names are annotated with [IGNORED] if all child members are ignored
+   * and [PENDING] if all child members are ignored and at least one is pending.
+   */
+  describe &quot;Suite Labelling&quot; {
+    val root = new TestRoot(new TestRunSession(&quot;run&quot;, null))
+    val handler = new TestUIHandler()
+    val ViewPart part = null
+
+    def cases {
+      | left        | right | result        |
+      | null        | null  | notMarked     |
+      | tc          | null  | notMarked     |
+      | ign         | null  | markedIgnored |
+      | pend        | null  | markedPending |
+      | tc          | ign   | notMarked     |
+      | tc          | pend  | notMarked     |
+      | ign         | pend  | markedPending |
+      | ign         | ign   | markedIgnored |
+      | suite(tc)   | pend  | notMarked     |
+      | suite(pend) | tc    | notMarked     |
+      | suite(tc)   | ign   | notMarked     |
+      | suite(ign)  | tc    | notMarked     |
+      | suite(pend) | ign   | markedPending |
+      | suite(ign)  | pend  | markedPending |
+      | suite(ign)  | ign   | markedIgnored |
+    }
+
+    fact &quot;All cases&quot; {
+      cases.forEach [
+        val elements = list(left, right).filterNull
+        result.matches(label(root(elements))) should be true
+      ]
+    }
+
+    def root((TestSuiteElement)=&gt;TestElement... elementConstructors) {
+      suite(elementConstructors).apply(root)
+    }
+
+    def suite((TestSuiteElement)=&gt;TestElement... elementConstructors) {
+      [ TestSuiteElement parent |
+        val suite = new TestSuiteElement(parent, &quot;id&quot;, &quot;name&quot;, 10)
+        elementConstructors.forEach[it.apply(suite)]
+        suite
+      ]
+    }
+
+    def tc() {
+      [TestSuiteElement suite|new TestCaseElement(suite, &quot;id&quot;, &quot;tc&quot;)]
+    }
+
+    def ign() {
+      [ TestSuiteElement suite |
+        tc().apply(suite) =&gt; [
+          name = &quot;tc-ign&quot;
+          ignored = true
+        ]
+      ]
+    }
+
+    def pend() {
+      [ TestSuiteElement suite |
+        ign().apply(suite) =&gt; [
+          name = &quot;tc [PENDING]&quot;
+        ]
+      ]
+    }
+
+    def label(TestSuiteElement suite) {
+      handler.getSimpleLabel(part, suite)
+    }
+
+    def markedPending() {
+      allOf(containsString(Strings::PENDING_FLAG), ^not(containsString(Strings::IGNORED_FLAG)))
+    }
+
+    def markedIgnored() {
+      allOf(containsString(Strings::IGNORED_FLAG), ^not(containsString(Strings::PENDING_FLAG)))
+    }
+
+    def notMarked() {
+      ^not(anyOf(containsString(Strings::IGNORED_FLAG), containsString(Strings::PENDING_FLAG)))
+    }
+  }
+
+}
+</pre>
+						    </p></div>
+						  </div>
+					</div> 
+				</div> <!-- /row -->
+			</div> <!-- /content -->
+		</div> <!-- /tabbable -->
+		<footer>
+			<p><small>Generated by <a href="http://www.jnario.org">Jnario</a>.</small></p>
+		</footer>
+	</div> <!-- /container -->
+
+</body>
+</html>

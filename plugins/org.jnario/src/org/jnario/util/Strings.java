@@ -30,6 +30,8 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 	
 	public static final String PENDING_FLAG = " [PENDING]";
 
+	public static final String IGNORED_FLAG = " [IGNORED]";
+	
 	public static int countWhitespaceAtEnd(CharSequence s){
 		int count = 0;
 		for(int j = s.length()-1; j >= 0 && isWhitespace(s.charAt(j)); j--){
@@ -244,6 +246,14 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 		return sb.append(PENDING_FLAG);
 	}
 
+	public static boolean isMarkedAsPending(String str) {
+		return str.contains(PENDING_FLAG);
+	}
+
+	public static StringBuilder markAsIgnored(StringBuilder sb){
+		return sb.append(IGNORED_FLAG);
+	}
+
 	public static String toString(Resource resource) {
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		try {
@@ -298,4 +308,5 @@ public class Strings extends org.eclipse.xtext.util.Strings{
 			return result.toString();
 		}
 	}
+
 }
