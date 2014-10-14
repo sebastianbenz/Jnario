@@ -1,6 +1,8 @@
 package org.jnario.ui.handler;
 
 import org.eclipse.jdt.internal.junit.model.TestCaseElement;
+import org.eclipse.jdt.internal.junit.model.TestElement;
+import org.eclipse.jdt.internal.junit.model.TestSuiteElement;
 import org.eclipse.jdt.junit.model.ITestCaseElement;
 import org.eclipse.jdt.junit.model.ITestElement;
 import org.eclipse.jdt.junit.model.ITestSuiteElement;
@@ -17,7 +19,7 @@ public abstract class AbstractJnarioRunnerUIHandler implements IRunnerUIHandler 
 	
 	public boolean contextMenuAboutToShow(ViewPart part, ITestElement element,
 			IMenuManager menu) {
-		if (element instanceof TestCaseElement) {
+		if (element instanceof TestCaseElement || element instanceof TestSuiteElement) {
 			menu.add(getAction(part, element));
 			return true;
 		}
@@ -25,7 +27,7 @@ public abstract class AbstractJnarioRunnerUIHandler implements IRunnerUIHandler 
 	}
 
 	public boolean handleDoubleClick(ViewPart part, ITestElement element) {
-		if (element instanceof TestCaseElement) {
+		if (element instanceof TestCaseElement || element instanceof TestSuiteElement) {
 			Action action = getAction(part, element);
 			if (action.isEnabled()) {
 				action.run();
@@ -39,7 +41,7 @@ public abstract class AbstractJnarioRunnerUIHandler implements IRunnerUIHandler 
 		if (element instanceof ITestCaseElement)
 			return ((ITestCaseElement) element).getTestMethodName();
 		if (element instanceof ITestSuiteElement)
-			return ((ITestSuiteElement) element).getSuiteTypeName();
+			return AbstractJnarioOpenTestAction.extractTestName((TestElement)element);
 		return "unknown";
 	}
 

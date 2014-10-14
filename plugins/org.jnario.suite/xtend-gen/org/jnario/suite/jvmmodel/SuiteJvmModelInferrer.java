@@ -15,10 +15,13 @@ import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendFile;
+import org.eclipse.xtend.core.xtend.XtendTypeDeclaration;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -65,6 +68,9 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
   @Extension
   private SuiteNodeBuilder _suiteNodeBuilder;
   
+  @Inject
+  private TypesFactory typesFactory;
+  
   @Inject(optional = true)
   private XtypeFactory xtypesFactory = XtypeFactory.eINSTANCE;
   
@@ -73,23 +79,34 @@ public class SuiteJvmModelInferrer extends JnarioJvmModelInferrer {
       return;
     }
     final SuiteFile suiteFile = ((SuiteFile) e);
+    EList<XtendTypeDeclaration> _xtendTypes = suiteFile.getXtendTypes();
+    Iterable<Suite> _filter = Iterables.<Suite>filter(_xtendTypes, Suite.class);
+    final List<Suite> suites = IterableExtensions.<Suite>toList(_filter);
+    final Procedure1<Suite> _function = new Procedure1<Suite>() {
+      public void apply(final Suite it) {
+        final JvmGenericType javaType = SuiteJvmModelInferrer.this.typesFactory.createJvmGenericType();
+        XtendFile _xtendFile = SuiteJvmModelInferrer.this.xtendFile(it);
+        SuiteJvmModelInferrer.this.setNameAndAssociate(_xtendFile, it, javaType);
+      }
+    };
+    IterableExtensions.<Suite>forEach(suites, _function);
     final Iterable<SuiteNode> nodes = this._suiteNodeBuilder.buildNodeModel(suiteFile);
     final ArrayList<Runnable> doLater = CollectionLiterals.<Runnable>newArrayList();
-    final Procedure1<SuiteNode> _function = new Procedure1<SuiteNode>() {
+    final Procedure1<SuiteNode> _function_1 = new Procedure1<SuiteNode>() {
       public void apply(final SuiteNode it) {
         SuiteJvmModelInferrer.this.infer(it, acceptor, doLater, preIndexingPhase);
       }
     };
-    IterableExtensions.<SuiteNode>forEach(nodes, _function);
+    IterableExtensions.<SuiteNode>forEach(nodes, _function_1);
     if (preIndexingPhase) {
       return;
     }
-    final Procedure1<Runnable> _function_1 = new Procedure1<Runnable>() {
+    final Procedure1<Runnable> _function_2 = new Procedure1<Runnable>() {
       public void apply(final Runnable it) {
         it.run();
       }
     };
-    IterableExtensions.<Runnable>forEach(doLater, _function_1);
+    IterableExtensions.<Runnable>forEach(doLater, _function_2);
   }
   
   public JvmGenericType infer(final SuiteNode node, final IJvmDeclaredTypeAcceptor acceptor, final List<Runnable> doLater, final boolean preIndexingPhase) {

@@ -18,18 +18,13 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.jdt.core.IAnnotation;
-import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
-import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.xtend.core.xtend.XtendClass;
 import org.eclipse.xtend.core.xtend.XtendFile;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.generator.IDerivedResourceMarkers;
-import org.eclipse.xtext.resource.FileExtensionProvider;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.ui.launching.JavaElementDelegateJunitLaunch;
@@ -51,30 +46,10 @@ public class SuiteJavaElementDelegate extends JavaElementDelegateJunitLaunch {
 	@Inject
 	private IJvmModelAssociations associations;
 
-	@Inject private FileExtensionProvider fileExtensionProvider;
 	@Inject private IResourceSetProvider resourceSetProvider;
 	@Inject private SuiteClassNameProvider nameProvider;
 	@Inject	private IDerivedResourceMarkers derivedResourceMarkers;
 
-	
-	@Override
-	protected boolean containsElementsSearchedFor(IFile file) {
-		IJavaElement element = JavaCore.create(file);
-		if (element == null || !element.exists() || ! (element instanceof ICompilationUnit)) {
-			return false;
-		}
-		try {
-			ICompilationUnit cu = (ICompilationUnit) element;
-			for (IType type : cu.getAllTypes()) {
-				IAnnotation annotation= type.getAnnotation("RunWith"); //$NON-NLS-1$
-				if (annotation.exists())
-					return true;
-			}
-		} catch (JavaModelException e) {
-			Logger.getLogger(SuiteJavaElementDelegate.class).error(e);
-		}
-		return super.containsElementsSearchedFor(file);
-	}
 	
 	protected IJavaElement getJavaElementForResource(IResource resource) {
 		try {

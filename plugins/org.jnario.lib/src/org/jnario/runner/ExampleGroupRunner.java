@@ -103,7 +103,8 @@ public class ExampleGroupRunner extends ParentRunner<Runner> {
 
 	@Override
 	protected String getName() {
-		return nameProvider.nameOf(getTestClass().getJavaClass());
+		Class<?> javaClass = getTestClass().getJavaClass();
+		return String.format("%s(%s)", nameProvider.nameOf(javaClass), javaClass.getName());
 	}
 
 	@Override
