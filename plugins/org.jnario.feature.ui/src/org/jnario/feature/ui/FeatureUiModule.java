@@ -47,6 +47,7 @@ import org.eclipse.xtend.ide.hover.XtendHoverDocumentationProvider;
 import org.eclipse.xtend.ide.hyperlinking.XtendHyperlinkHelper;
 import org.eclipse.xtend.ide.outline.ShowSyntheticMembersContribution;
 import org.eclipse.xtend.ide.outline.XtendOutlineNodeComparator;
+import org.eclipse.xtend.ide.outline.XtendOutlineNodeFactory;
 import org.eclipse.xtend.ide.outline.XtendOutlinePage;
 import org.eclipse.xtend.ide.outline.XtendOutlineWithEditorLinker;
 import org.eclipse.xtend.ide.outline.XtendQuickOutlineFilterAndSorter;
@@ -107,6 +108,7 @@ import org.eclipse.xtext.ui.editor.occurrences.IOccurrenceComputer;
 import org.eclipse.xtext.ui.editor.outline.IOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
 import org.eclipse.xtext.ui.editor.outline.actions.OutlineWithEditorLinker;
+import org.eclipse.xtext.ui.editor.outline.impl.OutlineNodeFactory;
 import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter.IComparator;
 import org.eclipse.xtext.ui.editor.outline.quickoutline.QuickOutlineFilterAndSorter;
 import org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreInitializer;
@@ -546,4 +548,9 @@ public class FeatureUiModule extends org.jnario.feature.ui.AbstractFeatureUiModu
 	public Class<? extends IOutlineTreeProvider.ModeAware> bindIOutlineTreeProvider_ModeAware() {
 		return org.eclipse.xtend.ide.outline.XtendOutlineModes.class;
 	}
+
+	public Class<? extends OutlineNodeFactory> bindOutlineNodeFactory() {
+		return XtendOutlineNodeFactory.class;
+	}
+	
 }
