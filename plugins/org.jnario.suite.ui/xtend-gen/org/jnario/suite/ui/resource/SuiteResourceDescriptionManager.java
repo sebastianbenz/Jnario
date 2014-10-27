@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.jnario.suite.resource;
+package org.jnario.suite.ui.resource;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;

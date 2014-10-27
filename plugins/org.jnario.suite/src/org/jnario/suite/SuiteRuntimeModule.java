@@ -24,6 +24,7 @@ import org.eclipse.xtend.core.macro.declaration.NopResourceChangeRegistry;
 import org.eclipse.xtend.core.macro.declaration.ResourceChangeRegistry;
 import org.eclipse.xtend.core.parser.antlr.internal.FlexerFactory;
 import org.eclipse.xtend.core.resource.XtendLocationInFileProvider;
+import org.eclipse.xtend.core.resource.XtendResourceDescriptionManager;
 import org.eclipse.xtend.core.typesystem.LocalClassAwareTypeNames;
 import org.eclipse.xtend.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
 import org.eclipse.xtend.core.typesystem.XtendReentrantTypeResolver;
@@ -34,7 +35,6 @@ import org.eclipse.xtend.core.validation.XtendEarlyExitValidator;
 import org.eclipse.xtend.core.validation.XtendImplicitReturnFinder;
 import org.eclipse.xtend.core.xtend.XtendFactory;
 import org.eclipse.xtend.lib.macro.file.FileLocations;
-import org.eclipse.xtend.lib.macro.file.MutableFileSystemSupport;
 import org.eclipse.xtext.common.types.descriptions.JvmDeclaredTypeSignatureHashProvider.SignatureHashBuilder;
 import org.eclipse.xtext.common.types.xtext.TypesAwareDefaultGlobalScopeProvider;
 import org.eclipse.xtext.conversion.IValueConverterService;
@@ -103,7 +103,6 @@ import org.jnario.suite.jvmmodel.SuiteClassNameProvider;
 import org.jnario.suite.jvmmodel.SuiteExecutableProvider;
 import org.jnario.suite.jvmmodel.SuiteJvmModelInferrer;
 import org.jnario.suite.naming.SuiteQualifiedNameProvider;
-import org.jnario.suite.resource.SuiteResourceDescriptionManager;
 import org.jnario.suite.scoping.SuiteImportedNamespaceScopeProvider;
 import org.jnario.suite.scoping.SuiteScopeProvider;
 
@@ -258,7 +257,7 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	
 	@Override
 	public Class<? extends Manager> bindIResourceDescription$Manager() {
-		return SuiteResourceDescriptionManager.class;
+		return XtendResourceDescriptionManager.class;
 	}
 	
 	@Override

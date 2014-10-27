@@ -72,6 +72,7 @@ import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.trace.ITraceForStorageProvider;
 import org.eclipse.xtext.linking.ILinker;
+import org.eclipse.xtext.resource.IResourceDescription.Manager;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.service.SingletonBinding;
 import org.eclipse.xtext.ui.LanguageSpecific;
@@ -143,6 +144,7 @@ import org.jnario.suite.ui.hover.SuiteHoverProvider;
 import org.jnario.suite.ui.labeling.SuiteLabelProvider;
 import org.jnario.suite.ui.launching.SuiteJavaElementDelegate;
 import org.jnario.suite.ui.quickfix.SuiteQuickfixProvider;
+import org.jnario.suite.ui.resource.SuiteResourceDescriptionManager;
 import org.jnario.ui.builder.JnarioBuilderParticipant;
 import org.jnario.ui.builder.JnarioSourceRelativeFileSystemAccess;
 import org.jnario.ui.editor.XtendCopyQualifiedNameService;
@@ -503,4 +505,7 @@ public class SuiteUiModule extends org.jnario.suite.ui.AbstractSuiteUiModule {
 		return XtendOutlineNodeFactory.class;
 	}
 	
+	public Class<? extends Manager> bindIResourceDescription$Manager() {
+		return SuiteResourceDescriptionManager.class;
+	}
 }
