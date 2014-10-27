@@ -199,6 +199,7 @@ class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
    			val original = source.getContainerOfType(typeof(Scenario))
    			original.updateReferences(it.initialValue, inferredJvmType)
    		]
+   		scenario.feature.members += scenario
    	}
 
 	def updateReferences(Scenario original, XExpression expr, JvmGenericType inferredJvmType) {
