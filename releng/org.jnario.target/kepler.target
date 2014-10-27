@@ -48,10 +48,10 @@
 <repository location="http://meysholdt.github.io/eclipse_jdt_junit_runners/updatesite/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.xtend.sdk.feature.group" version="2.7.0.v201409021032"/>
-<unit id="org.eclipse.xtext.sdk.feature.group" version="2.7.0.v201409021032"/>
-<unit id="org.eclipse.xtext.redist.feature.group" version="2.7.0.v201409021032"/>
-<unit id="org.eclipse.xtend.gwt.feature.group" version="2.7.0.v201409021032"/>
+<unit id="org.eclipse.xtend.sdk.feature.group" version="2.7.2.v201409160908"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.7.2.v201409160908"/>
+<unit id="org.eclipse.xtext.redist.feature.group" version="2.7.2.v201409160908"/>
+<unit id="org.eclipse.xtend.gwt.feature.group" version="2.7.2.v201409160908"/>
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
 </location>
 </locations>
