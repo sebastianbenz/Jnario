@@ -39,7 +39,8 @@
 </li><li><p id="duplicate_names_of_example_methods_are_ignored" class="example pending"><strong>duplicate names of example methods are ignored [PENDING]</strong></p>
 </li><li><p id="specs_without_description_but_different_types_are_OK" class="example notrun"><strong>specs without description but different types are OK</strong></p>
 <pre class="prettyprint lang-spec linenums">
-parseSpec('
+parseSpec(
+  '
   package bootstrap
 
   describe &quot;something&quot;{
@@ -53,7 +54,8 @@ val validationResult = validate(typeof(ExampleGroup))
 validationResult.assertOK</pre>
 </li><li><p id="specs_with_different_method_contexts_are_OK" class="example notrun"><strong>specs with different method contexts are OK</strong></p>
 <pre class="prettyprint lang-spec linenums">
-parseSpec('
+parseSpec(
+  '
   import java.util.Stack
     describe Stack{
     context push(E){
@@ -69,7 +71,8 @@ validationResult.assertOK</pre>
 </li><li><p id="example_table_rows_must_have_the_same_size" class="example pending"><strong>example table rows must have the same size [PENDING]</strong></p>
 </li><li><p id="should_can_compare_objects_of_the_same_type" class="example notrun"><strong>should can compare objects of the same type</strong></p>
 <pre class="prettyprint lang-spec linenums">
-parseSpec('
+parseSpec(
+  '
   describe &quot;Example&quot;{
     fact 1 =&gt; 1
   } 
@@ -78,7 +81,8 @@ val validationResult = validate(typeof(XBinaryOperation))
 validationResult.assertOK</pre>
 </li><li><p id="should_can_compare_object_with_a_class" class="example notrun"><strong>should can compare object with a class</strong></p>
 <pre class="prettyprint lang-spec linenums">
-parseSpec('
+parseSpec(
+  '
   describe &quot;Example&quot;{
     fact 1 =&gt; typeof(int)
   } 
@@ -87,7 +91,8 @@ val validationResult = validate(typeof(XBinaryOperation))
 validationResult.assertOK</pre>
 </li><li><p id="should_can_compare_with_matcher" class="example notrun"><strong>should can compare with matcher</strong></p>
 <pre class="prettyprint lang-spec linenums">
-parseSpec('
+parseSpec(
+  '
   import static org.hamcrest.CoreMatchers.*
   describe &quot;Example&quot;{
     fact 1 =&gt; notNullValue
@@ -97,23 +102,15 @@ val validationResult = validate(typeof(XBinaryOperation))
 validationResult.assertOK</pre>
 </li><li><p id="should_can_define_two_classes_in_a_spec" class="example notrun"><strong>should can define two classes in a spec</strong></p>
 <pre class="prettyprint lang-spec linenums">
-parseSpec('
-  class A {}
-  class B {}
-  describe &quot;A&quot;{
-  }
-')
+parseSpec(
+  '
+      class A {}
+      class B {}
+      describe &quot;A&quot;{
+      }
+    ')
 val validationResult = validate(typeof(SpecFile))
 validationResult.assertOK</pre>
-</li><li><p id="should_can_find_clashes_with_Xtend_classes" class="example notrun"><strong>should can find clashes with Xtend classes</strong></p>
-<pre class="prettyprint lang-spec linenums">
-parseSpec('
-  class ExampleSpec {}
-  describe &quot;Example&quot;{
-  }
-')
-val validationResult = validate(typeof(SpecFile))
-validationResult.assertErrorContains(&quot;type Example is already defined&quot;)</pre>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -132,30 +129,28 @@ package org.jnario.spec.tests.unit.validation
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.junit4.validation.RegisteredValidatorTester
+import org.eclipse.xtext.xbase.XBinaryOperation
 import org.jnario.Assertion
-import org.jnario.ExampleRow
+import org.jnario.ExampleCell
 import org.jnario.ExampleTable
 import org.jnario.jnario.test.util.ModelStore
+import org.jnario.jnario.test.util.Resources
 import org.jnario.jnario.test.util.SpecTestCreator
 import org.jnario.runner.CreateWith
 import org.jnario.spec.spec.ExampleGroup
+import org.jnario.spec.spec.SpecFile
 import org.jnario.spec.validation.SpecJavaValidator
 
 import static org.jnario.jnario.test.util.Query.*
-import org.eclipse.xtext.xbase.XBinaryOperation
-import org.jnario.jnario.test.util.Resources
-import org.jnario.ExampleCell
-import org.eclipse.xtext.xbase.XExpression
-import org.junit.Ignore
-import org.jnario.spec.spec.SpecFile
 
 @CreateWith(typeof(SpecTestCreator))
-describe SpecJavaValidator{
+describe SpecJavaValidator {
 
   @Inject extension ModelStore modelStore
 
   pending fact &quot;assert statement must be boolean&quot;{
-    parseSpec('
+    parseSpec(
+      '
       package bootstrap
 
       describe &quot;Example&quot;{
@@ -164,13 +159,14 @@ describe SpecJavaValidator{
         }
       } 
     ')
-    
+
     val validationResult = validate(typeof(Assertion))
     validationResult.assertErrorContains(&quot;cannot convert from int to boolean&quot;)
   }
-  
+
   pending fact &quot;duplicate names of example methods are ignored&quot;{
-    parseSpec('
+    parseSpec(
+      '
       package bootstrap
 
       describe &quot;Example&quot;{
@@ -178,13 +174,14 @@ describe SpecJavaValidator{
             fact &quot;a???&quot; 
       } 
     ')
-    
+
     val validationResult = validate(typeof(ExampleGroup))
     validationResult.assertOK
   }
-  
+
   fact &quot;specs without description but different types are OK&quot;{
-    parseSpec('
+    parseSpec(
+      '
       package bootstrap
 
       describe &quot;something&quot;{
@@ -197,9 +194,10 @@ describe SpecJavaValidator{
     val validationResult = validate(typeof(ExampleGroup))
     validationResult.assertOK
   }
-  
+
   fact &quot;specs with different method contexts are OK&quot;{
-    parseSpec('
+    parseSpec(
+      '
       import java.util.Stack
         describe Stack{
         context push(E){
@@ -211,9 +209,10 @@ describe SpecJavaValidator{
     val validationResult = validate(typeof(ExampleGroup))
     validationResult.assertOK
   }
-  
+
   pending fact &quot;specs without description and same types are not OK&quot;{
-    parseSpec('
+    parseSpec(
+      '
       package bootstrap
 
       describe &quot;something&quot;{
@@ -226,9 +225,10 @@ describe SpecJavaValidator{
     val validationResult = validate(typeof(ExampleGroup))
     validationResult.assertErrorContains(&quot;The spec 'String' is already defined.&quot;)
   }
-  
+
   pending fact &quot;example table values must not be void&quot;{
-    parseSpec('
+    parseSpec(
+      '
       package bootstrap
 
       describe &quot;Example&quot;{
@@ -238,13 +238,14 @@ describe SpecJavaValidator{
         }
       } 
     ')
-    
+
     val validationResult = validate(typeof(ExampleCell))
     validationResult.assertErrorContains(&quot;void&quot;)
   }
-  
+
   pending fact &quot;example table rows must have the same size&quot;{
-    parseSpec('
+    parseSpec(
+      '
       package bootstrap
 
       describe &quot;Example&quot;{
@@ -254,13 +255,14 @@ describe SpecJavaValidator{
         }
       } 
     ')
-    
+
     val validationResult = validate(typeof(ExampleTable))
     validationResult.assertErrorContains(&quot;number&quot;)
   }
-  
+
   fact &quot;should can compare objects of the same type&quot;{
-    parseSpec('
+    parseSpec(
+      '
       describe &quot;Example&quot;{
         fact 1 =&gt; 1
       } 
@@ -268,9 +270,10 @@ describe SpecJavaValidator{
     val validationResult = validate(typeof(XBinaryOperation))
     validationResult.assertOK
   }
-  
+
   fact &quot;should can compare object with a class&quot;{
-    parseSpec('
+    parseSpec(
+      '
       describe &quot;Example&quot;{
         fact 1 =&gt; typeof(int)
       } 
@@ -278,9 +281,10 @@ describe SpecJavaValidator{
     val validationResult = validate(typeof(XBinaryOperation))
     validationResult.assertOK
   }
-  
+
   fact &quot;should can compare with matcher&quot;{
-    parseSpec('
+    parseSpec(
+      '
       import static org.hamcrest.CoreMatchers.*
       describe &quot;Example&quot;{
         fact 1 =&gt; notNullValue
@@ -289,9 +293,10 @@ describe SpecJavaValidator{
     val validationResult = validate(typeof(XBinaryOperation))
     validationResult.assertOK
   }
-  
+
   fact &quot;should can define two classes in a spec&quot; {
-    parseSpec('
+    parseSpec(
+      '
       class A {}
       class B {}
       describe &quot;A&quot;{
@@ -300,21 +305,15 @@ describe SpecJavaValidator{
     val validationResult = validate(typeof(SpecFile))
     validationResult.assertOK
   }
-  fact &quot;should can find clashes with Xtend classes&quot; {
-    parseSpec('
-      class ExampleSpec {}
-      describe &quot;Example&quot;{
-      }
-    ')
-    val validationResult = validate(typeof(SpecFile))
-    validationResult.assertErrorContains(&quot;type Example is already defined&quot;)
-  }
-  def validate(Class&lt;? extends EObject&gt; type){
+
+
+  def validate(Class&lt;? extends EObject&gt; type) {
+    
     Resources::addContainerStateAdapter(resourceSet);
     val target = query(modelStore).first(type)
     return RegisteredValidatorTester::validateObj(target)
   }
-  
+
 }
 </pre>
 						    </p></div>

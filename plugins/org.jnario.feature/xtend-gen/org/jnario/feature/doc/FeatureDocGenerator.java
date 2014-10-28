@@ -7,7 +7,6 @@
  */
 package org.jnario.feature.doc;
 
-import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -21,7 +20,6 @@ import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.jnario.doc.AbstractDocGenerator;
 import org.jnario.doc.HtmlFile;
-import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.Scenario;
 import org.jnario.feature.feature.Step;
@@ -76,28 +74,10 @@ public class FeatureDocGenerator extends AbstractDocGenerator {
     _builder.append(_markdown2Html, "");
     _builder.newLineIfNotEmpty();
     {
-      Background _background = feature.getBackground();
-      boolean _notEquals = (!Objects.equal(_background, null));
-      if (_notEquals) {
-        Background _background_1 = feature.getBackground();
-        CharSequence _generate = this.generate(_background_1);
-        _builder.append(_generate, "");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      EList<Scenario> _scenarios = feature.getScenarios();
-      for(final Scenario scenario : _scenarios) {
-        CharSequence _generate_1 = this.generate(scenario);
-        _builder.append(_generate_1, "");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
       EList<XtendMember> _members = feature.getMembers();
       for(final XtendMember member : _members) {
-        CharSequence _generate_2 = this.generate(member);
-        _builder.append(_generate_2, "");
+        CharSequence _generate = this.generate(member);
+        _builder.append(_generate, "");
         _builder.newLineIfNotEmpty();
       }
     }

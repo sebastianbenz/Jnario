@@ -2139,7 +2139,7 @@ public class FeatureSemanticSequencer extends XtendSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? background=Background? scenarios+=Scenario*)
+	 *     (annotations+=XAnnotation* name=FEATURE_TEXT description=TEXT? members+=Background? members+=Scenario*)
 	 */
 	protected void sequence_Feature(EObject context, Feature semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

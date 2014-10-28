@@ -7,7 +7,9 @@
  */
 package org.jnario.feature.tests.unit.naming;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.core.xtend.XtendMember;
 import org.jnario.feature.feature.Background;
 import org.jnario.feature.feature.Feature;
 import org.jnario.feature.feature.FeatureFactory;
@@ -42,7 +44,8 @@ public class FeatureClassNameProviderSpec {
     final Background result = FeatureClassNameProviderSpec.factory.createBackground();
     result.setName(("Background: " + backgroundName));
     final Feature feature = Features.feature(featureName);
-    feature.setBackground(result);
+    EList<XtendMember> _members = feature.getMembers();
+    _members.add(result);
     return result;
   }
 }

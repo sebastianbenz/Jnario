@@ -19,13 +19,14 @@ import org.jnario.jnario.tests.unit.jnario.StringsSpec;
 import org.jnario.jnario.tests.unit.jvmmodel.TestRuntimeProviderSpec;
 import org.jnario.jnario.tests.unit.report.HashBasedSpec2ResultMappingSpec;
 import org.jnario.jnario.tests.unit.report.SpecResultParserSpec;
+import org.jnario.jnario.tests.unit.ui.AbstractJnarioRunnerUIHandlerSpec;
 import org.jnario.runner.Contains;
 import org.jnario.runner.ExampleGroupRunner;
 import org.jnario.runner.Named;
 import org.junit.runner.RunWith;
 
 @Named("Common")
-@Contains({ _20FactsAboutXtendSpec.class, DocumentationProviderSpec.class, ExampleColumnSpec.class, ExampleTableSpec.class, ExecutableSpec.class, ExtensionLibrarySpec.class, FilterExtractorSpec.class, GeneratingReportsSpec.class, HashBasedSpec2ResultMappingSpec.class, HtmlAssetsSpec.class, HtmlAssetsCompilerSpec.class, InstallingJnarioSpec.class, ParsingSpecResultsFromJUnitXMLReportsFeature.class, RegexFilterSpec.class, ShouldSpec.class, SpecResultParserSpec.class, StringsSpec.class, TestRuntimeProviderSpec.class, WhiteSpaceNormalizerSpec.class })
+@Contains({ _20FactsAboutXtendSpec.class, AbstractJnarioRunnerUIHandlerSpec.class, DocumentationProviderSpec.class, ExampleColumnSpec.class, ExampleTableSpec.class, ExecutableSpec.class, ExtensionLibrarySpec.class, FilterExtractorSpec.class, GeneratingReportsSpec.class, HashBasedSpec2ResultMappingSpec.class, HtmlAssetsSpec.class, HtmlAssetsCompilerSpec.class, InstallingJnarioSpec.class, ParsingSpecResultsFromJUnitXMLReportsFeature.class, RegexFilterSpec.class, ShouldSpec.class, SpecResultParserSpec.class, StringsSpec.class, TestRuntimeProviderSpec.class, WhiteSpaceNormalizerSpec.class })
 @RunWith(ExampleGroupRunner.class)
 @SuppressWarnings("all")
 public class CommonSuite {

@@ -10,6 +10,8 @@ package org.jnario.feature.tests.integration;
 import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
+import org.jnario.lib.JnarioIterableExtensions;
+import org.jnario.lib.StepArguments;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -28,9 +30,9 @@ public class ReferencesForStepsFeatureAccessingExtensionFieldMethods extends Ref
   @Order(0)
   @Named("When I access extension field methods from referenced steps")
   public void _whenIAccessExtensionFieldMethodsFromReferencedSteps() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field args is undefined for the type Scenario: Accessing extension field methods\r\n"
-      + "\nfirst cannot be resolved");
+    final StepArguments args = new StepArguments("Feature: Sharing extension field\n\n\t\t  Scenario: Accessing extension field methods\n\t\t    extension String = \"hello\"\n\t\t   \n\t\t    Given an extension field access\n\t\t      concat(\" world\") should be \"hello world\"\n\t\t\n\t\t  Scenario: Accessing extension field methods in referenced steps\n\t\t  \t\n\t\t  \tGiven an extension field access\n");
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.jnarioFile = _first;
   }
   
   @Test

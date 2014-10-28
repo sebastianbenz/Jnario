@@ -14,12 +14,13 @@ import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.test.util.ResultMatchers;
 import org.jnario.lib.Assert;
+import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
+import org.jnario.lib.StepArguments;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
@@ -40,22 +41,22 @@ public class FieldInferenceFeatureInferringFieldsFromScenarioInDifferentFeatures
   @Order(0)
   @Named("When I have a feature")
   public void _whenIHaveAFeature() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field args is undefined for the type Scenario: Inferring Fields from Scenario in different Features\r\n"
-      + "\nfirst cannot be resolved");
+    final StepArguments args = new StepArguments("Feature: Feature 1\n\tScenario: My Scenario\n\t\tString myString\n\t\tGiven a string \"value\"\n\t\t\tmyString = args.first\n");
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.feature1 = _first;
   }
   
   @Test
   @Order(1)
-  @Ignore
   @Named("And another feature")
   public void _andAnotherFeature() {
-    
+    final StepArguments args = new StepArguments("Feature: Feature 2\n\tScenario: My Scenario 2\n\t\tGiven a string \"test\"\n\t\tThen my string is \"test\"\n\t\t\tmyString => args.first   \n");
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.feature2 = _first;
   }
   
   @Test
   @Order(2)
-  @Ignore
   @Named("Then both should execute successfully")
   public void _thenBothShouldExecuteSuccessfully() {
     Result _execute = this.runner.execute(this.feature1);

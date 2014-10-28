@@ -39,9 +39,6 @@
 <h3 class="exampleGroup notrun"  id="Features_must_have_descriptions">Features must have descriptions</h3>
 <ul><li><p id="Feature_select_typeof_Feature_assertErrorContains_description" class="example notrun"><strong>''' Feature: '''.select[typeof[Feature]].assertErrorContains["description"]</strong></p>
 </li></ul>
-<h3 class="exampleGroup notrun"  id="Scenarios_must_have_different_names">Scenarios must have different names</h3>
-<ul><li><p id="Feature_My_Feature_Scenario_Hallo_Scenario_Hallo_select_typeof_Feature_assertErrorContains_Duplicate_scenario" class="example notrun"><strong>''' Feature: My Feature Scenario: Hallo Scenario: Hallo '''.select[typeof[Feature]].assertErrorContains["Duplicate scenario"]</strong></p>
-</li></ul>
 <h3 class="exampleGroup notrun"  id="Scenarios_must_have_descriptions">Scenarios must have descriptions</h3>
 <ul><li><p id="Feature_A_Feature_Scenario_select_typeof_Scenario_assertErrorContains_description" class="example notrun"><strong>''' Feature: A Feature Scenario: '''.select[typeof[Scenario]].assertErrorContains["description"]</strong></p>
 </li></ul>
@@ -102,14 +99,6 @@ describe FeatureJavaValidator{
     '''.select(typeof(Feature)).assertErrorContains(&quot;description&quot;)
   }
   
-  context &quot;Scenarios must have different names&quot;{
-    fact '''
-      Feature: My Feature
-      Scenario: Hallo
-      Scenario: Hallo
-    '''.select(typeof(Feature)).assertErrorContains(&quot;Duplicate scenario&quot;)
-  }
-  
   context &quot;Scenarios must have descriptions&quot;{
     fact '''
       Feature: A Feature
@@ -117,8 +106,8 @@ describe FeatureJavaValidator{
         
     '''.select(typeof(Scenario)).assertErrorContains(&quot;description&quot;)
   }
-  
   context &quot;Steps must have descriptions&quot;{
+
     fact '''
       Feature: A feature
         Scenario: A scenario

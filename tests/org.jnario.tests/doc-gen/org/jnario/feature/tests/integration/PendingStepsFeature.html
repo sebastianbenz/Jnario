@@ -35,10 +35,10 @@
 					<div class="span12">
 						  <div class="tab-content">
 							  	<div class="tab-pane active" id="spec">
-<div><h3 class="scenario notrun"  id="Scenario_When_one_step_of_a_scenario_is_pending_then_all_following_should_be_pending">Scenario: When one step of a scenario is pending then all following should be pending
+<div><h3 class="scenario pending"  id="Scenario_When_one_step_of_a_scenario_is_pending_then_all_following_should_be_pending">Scenario: When one step of a scenario is pending then all following should be pending
 </h3>
 <ul>
-<li><span class="step notrun"><p>Given a scenario</p><pre>Feature: With pending steps
+<li><span class="step pending"><p>Given a scenario</p><pre>Feature: With pending steps
   Scenario: Scenario with pending steps
     Given is implemented
       var x = 3
@@ -55,7 +55,7 @@
 <div><h3 class="scenario pending"  id="Scenario_When_an_and_step_is_pending_the_following_steps_should_be_pending">Scenario: When an and step is pending the following steps should be pending
 </h3>
 <ul>
-<li><span class="step notrun"><p>Given a scenario</p><pre>Feature: With pending steps
+<li><span class="step pending"><p>Given a scenario</p><pre>Feature: With pending steps
   Scenario: Scenario with pending steps
     int x
     Given does something
@@ -68,14 +68,14 @@
 </li>
 <li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
-<li><span class="step pending"><p>And the expected number of ignored steps is <code>"3"</code> [PENDING]</p></span>
+<li><span class="step notrun"><p>And the expected number of ignored steps is <code>"3"</code></p></span>
 </li>
 </ul>
 </div>
 <div><h3 class="scenario pending"  id="Scenario_When_a_step_of_a_background_all_following_steps_and_all_scenario_steps_should_be_pending">Scenario: When a step of a background all following steps and all scenario steps should be pending
 </h3>
 <ul>
-<li><span class="step notrun"><p>Given a scenario</p><pre>Feature: With pending steps
+<li><span class="step pending"><p>Given a scenario</p><pre>Feature: With pending steps
   Background:
     int x
     Given a variable x
@@ -91,7 +91,7 @@
 </li>
 <li><span class="step notrun"><p>Then it should execute successfully</p></span>
 </li>
-<li><span class="step pending"><p>And the expected number of ignored steps is <code>"4"</code> [PENDING]</p></span>
+<li><span class="step notrun"><p>And the expected number of ignored steps is <code>"4"</code></p></span>
 </li>
 </ul>
 </div>

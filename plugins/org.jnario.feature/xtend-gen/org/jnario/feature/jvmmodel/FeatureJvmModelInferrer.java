@@ -359,9 +359,6 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
       }
     };
     IterableExtensions.<XtendField>forEach(_filter_3, _function_3);
-    Feature _feature = this.feature(scenario);
-    EList<XtendMember> _members_2 = _feature.getMembers();
-    this._extendedJvmTypesBuilder.<Scenario>operator_add(_members_2, scenario);
   }
   
   public void updateReferences(final Scenario original, final XExpression expr, final JvmGenericType inferredJvmType) {

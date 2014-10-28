@@ -65,7 +65,7 @@ describe FeatureClassNameProvider {
 		val result = factory.createBackground
 		result.name = "Background: " + backgroundName
 		val feature = feature(featureName)
-		feature.background = result
+		feature.members += result
 		return result
 	}
 	

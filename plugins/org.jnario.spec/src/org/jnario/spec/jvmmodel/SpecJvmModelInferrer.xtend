@@ -80,7 +80,6 @@ class SpecJvmModelInferrer extends JnarioJvmModelInferrer {
 		val xtendFile = object as XtendFile
 		xtendJvmModelInferrer.infer(object, acceptor, preIndexingPhase)
 		val doLater = <Runnable>newArrayList()
-		
 		for (declaration: xtendFile.getXtendTypes().filter(typeof(ExampleGroup))) {
 			acceptor.infer(declaration, null, doLater, preIndexingPhase)
 		}

@@ -8,10 +8,13 @@
 package org.jnario.feature.tests.integration;
 
 import org.jnario.feature.tests.integration.FeatureExtensionsFeature;
+import org.jnario.lib.JnarioIterableExtensions;
+import org.jnario.lib.Should;
+import org.jnario.lib.StepArguments;
+import org.jnario.lib.StringConversions;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -19,27 +22,34 @@ import org.junit.runner.RunWith;
 @Named("Scenario: Referencing steps with extensions")
 @SuppressWarnings("all")
 public class FeatureExtensionsFeatureReferencingStepsWithExtensions extends FeatureExtensionsFeature {
+  String numberString;
+  
+  int number;
+  
   @Test
   @Order(0)
-  @Ignore
-  @Named("Given the number \\\"12\\\" as string [PENDING]")
+  @Named("Given the number \\\"12\\\" as string")
   public void _givenTheNumber12AsString() {
-    
+    final StepArguments args = new StepArguments("12");
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.numberString = _first;
   }
   
   @Test
   @Order(1)
-  @Ignore
-  @Named("When it is converted to int [PENDING]")
+  @Named("When it is converted to int")
   public void _whenItIsConvertedToInt() {
-    
+    int _int = StringConversions.toInt(this.numberString);
+    this.number = _int;
   }
   
   @Test
   @Order(2)
-  @Ignore
-  @Named("Then it should be \\\"12\\\" [PENDING]")
+  @Named("Then it should be \\\"12\\\"")
   public void _thenItShouldBe12() {
-    
+    final StepArguments args = new StepArguments("12");
+    String _first = JnarioIterableExtensions.<String>first(args);
+    int _int = StringConversions.toInt(_first);
+    Should.<Integer>operator_doubleArrow(Integer.valueOf(this.number), Integer.valueOf(_int));
   }
 }

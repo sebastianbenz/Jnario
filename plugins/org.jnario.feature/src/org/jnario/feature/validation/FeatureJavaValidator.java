@@ -66,16 +66,16 @@ public class FeatureJavaValidator extends AbstractFeatureJavaValidator {
 		}
 	}
 	
-	@Check(CheckType.FAST)
-	public void checkDuplicateScenarioNames(Feature feature){
-		Set<String> names = newHashSet();
-		for (Scenario scenario : feature.getScenarios()) {
-			if(!names.add(classNameProvider.toJavaClassName(scenario))){
-				error("Duplicate scenario: '" + scenario.getName() + "'", XtendPackage.Literals.XTEND_TYPE_DECLARATION__NAME);
-			}
-		}
-	}
-	
+//	@Check(CheckType.FAST)
+//	public void checkDuplicateScenarioNames(Feature feature){
+//		Set<String> names = newHashSet();
+//		for (Scenario scenario : feature.getScenarios()) {
+//			if(!names.add(classNameProvider.toJavaClassName(scenario))){
+//				error("Duplicate scenario: '" + scenario.getName() + "'", XtendPackage.Literals.XTEND_TYPE_DECLARATION__NAME);
+//			}
+//		}
+//	}
+//	
 	public String removeKeywords(String string){
 		return nameProvider.removeKeywords(string).trim();
 	}

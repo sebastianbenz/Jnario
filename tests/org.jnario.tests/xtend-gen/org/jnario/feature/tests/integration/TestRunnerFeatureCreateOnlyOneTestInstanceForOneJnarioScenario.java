@@ -9,6 +9,8 @@ package org.jnario.feature.tests.integration;
 
 import org.jnario.feature.tests.integration.TestRunnerFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
+import org.jnario.lib.JnarioIterableExtensions;
+import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -26,9 +28,9 @@ public class TestRunnerFeatureCreateOnlyOneTestInstanceForOneJnarioScenario exte
   @Order(0)
   @Named("When I have a scenario that uses one variable in different steps")
   public void _whenIHaveAScenarioThatUsesOneVariableInDifferentSteps() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field args is undefined for the type Scenario: Create only one test instance for one jnario scenario\r\n"
-      + "\nfirst cannot be resolved");
+    final StepArguments args = new StepArguments("package bootstrap\nFeature: a feature\n\tScenario: a scenario with field\n\t\tpublic int x\n\t\tGiven a variable access\n\t\t\tx = 3\n\t\tWhen the variable is accessed\n\t\t\tx = x + 1 \n\t\tThen it is accessed\n\t\t\tx => 4\n");
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.jnarioFile = _first;
   }
   
   @Test

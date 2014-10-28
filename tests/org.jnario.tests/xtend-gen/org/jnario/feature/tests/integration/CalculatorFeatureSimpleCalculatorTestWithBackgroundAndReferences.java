@@ -9,6 +9,8 @@ package org.jnario.feature.tests.integration;
 
 import org.jnario.feature.tests.integration.CalculatorFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
+import org.jnario.lib.JnarioIterableExtensions;
+import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -25,9 +27,9 @@ public class CalculatorFeatureSimpleCalculatorTestWithBackgroundAndReferences ex
   @Order(0)
   @Named("When I have a feature with a background and references")
   public void _whenIHaveAFeatureWithABackgroundAndReferences() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field args is undefined for the type Scenario: Simple calculator test with background and references\r\n"
-      + "\nfirst cannot be resolved");
+    final StepArguments args = new StepArguments("package demo\nFeature: Calculator\n  Background:\n   int result \n   Given a calculator\n  Scenario: Adding two numbers 2 \n   When I enter two numbers \"20\" and \"70\"\n       result = args.first.toInt + args.second.toInt\n   Then it returns \"90\"\n     \tresult => args.first.toInt\n  Scenario: Adding two numbers wer\n    When I enter two numbers \"20\" and \"80\"\n    Then it returns \"100\"   \n");
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.jnarioFile = _first;
   }
   
   @Test

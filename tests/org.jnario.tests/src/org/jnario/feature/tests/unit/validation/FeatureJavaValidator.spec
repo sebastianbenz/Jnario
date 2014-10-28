@@ -37,14 +37,6 @@ describe FeatureJavaValidator{
 		'''.select(typeof(Feature)).assertErrorContains("description")
 	}
 	
-	context "Scenarios must have different names"{
-		fact '''
-			Feature: My Feature
-			Scenario: Hallo
-			Scenario: Hallo
-		'''.select(typeof(Feature)).assertErrorContains("Duplicate scenario")
-	}
-	
 	context "Scenarios must have descriptions"{
 		fact '''
 			Feature: A Feature
@@ -52,8 +44,8 @@ describe FeatureJavaValidator{
 				
 		'''.select(typeof(Scenario)).assertErrorContains("description")
 	}
-	
 	context "Steps must have descriptions"{
+
 		fact '''
 			Feature: A feature
 				Scenario: A scenario

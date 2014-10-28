@@ -13,7 +13,9 @@ import org.jnario.feature.tests.integration.ReferencesForStepsFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
 import org.jnario.jnario.test.util.FeatureTestCreator;
 import org.jnario.jnario.test.util.ResultMatchers;
+import org.jnario.lib.JnarioIterableExtensions;
 import org.jnario.lib.Should;
+import org.jnario.lib.StepArguments;
 import org.jnario.runner.CreateWith;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
@@ -38,16 +40,18 @@ public class ReferencesForStepsFeatureDuplicateExtensionViaStepRerferences exten
   @Order(0)
   @Named("When I have a feature")
   public void _whenIHaveAFeature() {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<unkown> cannot be resolved");
+    final StepArguments args = new StepArguments("import java.util.List\nFeature: Feature 1\n\t\tScenario: Scenario with field colors\n\t\t\textension List<String> colors = <String>list\n\t\t\tGiven a color red\n\t\t\t\tcolors += \"red\"\n\t\t\tAnd a color green\n");
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.feature1 = _first;
   }
   
   @Test
   @Order(1)
   @Named("And another feature")
   public void _andAnotherFeature() {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<unkown> cannot be resolved");
+    final StepArguments args = new StepArguments("import java.util.List\nFeature: Feature 2\n\t\tScenario: Scenario with other colors\n\t\t\t\textension List<String> colors = <String>list\n\t\t\tGiven a color red\n\t\t\tAnd a color green\n\t\t\t\tcolors += \"green\"\n");
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.feature2 = _first;
   }
   
   @Test

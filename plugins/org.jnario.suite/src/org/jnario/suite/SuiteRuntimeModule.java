@@ -20,6 +20,7 @@ import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.linking.Linker;
 import org.eclipse.xtend.core.linking.XtendEObjectAtOffsetHelper;
 import org.eclipse.xtend.core.linking.XtendLinkingDiagnosticMessageProvider;
+import org.eclipse.xtend.core.macro.AnnotationProcessor;
 import org.eclipse.xtend.core.macro.declaration.NopResourceChangeRegistry;
 import org.eclipse.xtend.core.macro.declaration.ResourceChangeRegistry;
 import org.eclipse.xtend.core.parser.antlr.internal.FlexerFactory;
@@ -92,6 +93,7 @@ import org.jnario.jvmmodel.ExtendedJvmModelGenerator;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
+import org.jnario.macro.JnarioAnnotationProcessor;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.HashBasedSpec2ResultMapping;
 import org.jnario.scoping.JnarioResourceDescriptionStrategy;
@@ -128,6 +130,7 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 		binder.bind(boolean.class).annotatedWith(
 				Names.named(CompositeEValidator.USE_EOBJECT_VALIDATOR)).toInstance(false);
 		binder.bind(XtendBatchCompiler.class).to(SuiteBatchCompiler.class);
+		binder.bind(AnnotationProcessor.class).to(JnarioAnnotationProcessor.class);
 	}
 	
 	@Override

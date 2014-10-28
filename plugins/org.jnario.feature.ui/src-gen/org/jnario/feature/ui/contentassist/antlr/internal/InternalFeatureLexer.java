@@ -50,9 +50,9 @@ public class InternalFeatureLexer extends Lexer {
     public static final int T__84=84;
     public static final int T__142=142;
     public static final int T__87=87;
-    public static final int T__86=86;
     public static final int T__140=140;
     public static final int RULE_IN_RICH_STRING=29;
+    public static final int T__86=86;
     public static final int T__145=145;
     public static final int T__89=89;
     public static final int T__146=146;

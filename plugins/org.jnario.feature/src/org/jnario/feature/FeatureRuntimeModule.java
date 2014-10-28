@@ -17,6 +17,7 @@ import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.core.imports.XtendImportsConfiguration;
 import org.eclipse.xtend.core.jvmmodel.IXtendJvmAssociations;
 import org.eclipse.xtend.core.linking.XtendEObjectAtOffsetHelper;
+import org.eclipse.xtend.core.macro.AnnotationProcessor;
 import org.eclipse.xtend.core.macro.declaration.NopResourceChangeRegistry;
 import org.eclipse.xtend.core.macro.declaration.ResourceChangeRegistry;
 import org.eclipse.xtend.core.parser.antlr.internal.FlexerFactory;
@@ -111,6 +112,7 @@ import org.jnario.jvmmodel.ExecutableProvider;
 import org.jnario.jvmmodel.ExtendedJvmTypesBuilder;
 import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
+import org.jnario.macro.JnarioAnnotationProcessor;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.HashBasedSpec2ResultMapping;
 import org.jnario.scoping.JnarioImplicitlyImportedFeatures;
@@ -151,6 +153,7 @@ public class FeatureRuntimeModule extends
 						Names.named(CompositeEValidator.USE_EOBJECT_VALIDATOR))
 				.toInstance(false);
 		binder.bind(XtendBatchCompiler.class).to(FeatureBatchCompiler.class);
+		binder.bind(AnnotationProcessor.class).to(JnarioAnnotationProcessor.class);
 	}
 
 	public Class<? extends JvmTypesBuilder> bindJvmTypesBuilder() {

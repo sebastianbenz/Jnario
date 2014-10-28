@@ -17,6 +17,8 @@ import java.io.FileInputStream;
 import java.util.Iterator;
 import java.util.List;
 import org.apache.log4j.BasicConfigurator;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtext.ISetup;
@@ -152,6 +154,9 @@ public class DocCompilerMain {
         jnarioCompiler.setFileEncoding(_fileEncoding);
         String _sourcePath = this.getSourcePath();
         jnarioCompiler.setSourcePath(_sourcePath);
+        ResourceSet _get = resourceSet.get();
+        EList<Adapter> _eAdapters = _get.eAdapters();
+        _eAdapters.clear();
         jnarioCompiler.setResourceSetProvider(resourceSet);
         HashBasedSpec2ResultMapping _createSpec2ResultMapping = this.createSpec2ResultMapping();
         jnarioCompiler.setExecutable2ResultMapping(_createSpec2ResultMapping);

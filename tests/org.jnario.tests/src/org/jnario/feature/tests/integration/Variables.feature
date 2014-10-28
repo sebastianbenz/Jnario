@@ -23,6 +23,7 @@ Feature: Access of variables
 							x = 5
 			'''
 			jnarioFile = args.first
+
 		Then it should execute successfully
 	
 	Scenario: Access a variable that was declared in a different step

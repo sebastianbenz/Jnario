@@ -46,7 +46,8 @@ public class SpecJavaValidatorSpec {
   @Named("assert statement must be boolean [PENDING]")
   @Order(1)
   public void _assertStatementMustBeBoolean() throws Exception {
-    this.modelStore.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact \"invalid assert\"{\r\n\t\t\t\t\tassert 1\r\n\t\t\t\t}\r\n\t\t\t} \r\n\t\t");
+    this.modelStore.parseSpec(
+      "\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact \"invalid assert\"{\r\n\t\t\t\t\tassert 1\r\n\t\t\t\t}\r\n\t\t\t} \r\n\t\t");
     final AssertableDiagnostics validationResult = this.validate(Assertion.class);
     validationResult.assertErrorContains("cannot convert from int to boolean");
   }
@@ -56,7 +57,8 @@ public class SpecJavaValidatorSpec {
   @Named("duplicate names of example methods are ignored [PENDING]")
   @Order(2)
   public void _duplicateNamesOfExampleMethodsAreIgnored() throws Exception {
-    this.modelStore.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact \"a***\" \r\n      \t\t\tfact \"a???\" \r\n\t\t\t} \r\n\t\t");
+    this.modelStore.parseSpec(
+      "\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact \"a***\" \r\n      \t\t\tfact \"a???\" \r\n\t\t\t} \r\n\t\t");
     final AssertableDiagnostics validationResult = this.validate(ExampleGroup.class);
     validationResult.assertOK();
   }
@@ -65,7 +67,8 @@ public class SpecJavaValidatorSpec {
   @Named("specs without description but different types are OK")
   @Order(3)
   public void _specsWithoutDescriptionButDifferentTypesAreOK() throws Exception {
-    this.modelStore.parseSpec("\r\n\t\t  package bootstrap\r\n\r\n\t\t  describe \"something\"{\r\n\t\t\t  describe String{\r\n\t\t\t  }\r\n\t\t\t  describe Integer{\r\n\t\t\t  }\t\r\n\t\t  }\r\n\t\t");
+    this.modelStore.parseSpec(
+      "\r\n\t\t  package bootstrap\r\n\r\n\t\t  describe \"something\"{\r\n\t\t\t  describe String{\r\n\t\t\t  }\r\n\t\t\t  describe Integer{\r\n\t\t\t  }\t\r\n\t\t  }\r\n\t\t");
     final AssertableDiagnostics validationResult = this.validate(ExampleGroup.class);
     validationResult.assertOK();
   }
@@ -74,7 +77,8 @@ public class SpecJavaValidatorSpec {
   @Named("specs with different method contexts are OK")
   @Order(4)
   public void _specsWithDifferentMethodContextsAreOK() throws Exception {
-    this.modelStore.parseSpec("\r\n\t\t\timport java.util.Stack\r\n\t\t  \tdescribe Stack{\r\n\t\t\t\tcontext push(E){\r\n\t\t\t\t}\r\n\t\t\t\tcontext push{\r\n\t\t\t\t}\r\n\t\t\t}  \r\n\t\t");
+    this.modelStore.parseSpec(
+      "\r\n\t\t\timport java.util.Stack\r\n\t\t  \tdescribe Stack{\r\n\t\t\t\tcontext push(E){\r\n\t\t\t\t}\r\n\t\t\t\tcontext push{\r\n\t\t\t\t}\r\n\t\t\t}  \r\n\t\t");
     final AssertableDiagnostics validationResult = this.validate(ExampleGroup.class);
     validationResult.assertOK();
   }
@@ -84,7 +88,8 @@ public class SpecJavaValidatorSpec {
   @Named("specs without description and same types are not OK [PENDING]")
   @Order(5)
   public void _specsWithoutDescriptionAndSameTypesAreNotOK() throws Exception {
-    this.modelStore.parseSpec("\r\n\t\t  package bootstrap\r\n\r\n\t\t  describe \"something\"{\r\n\t\t\t  describe String{\r\n\t\t\t  }\r\n\t\t\t  describe String{\r\n\t\t\t  }\t\r\n\t\t  }\r\n\t\t");
+    this.modelStore.parseSpec(
+      "\r\n\t\t  package bootstrap\r\n\r\n\t\t  describe \"something\"{\r\n\t\t\t  describe String{\r\n\t\t\t  }\r\n\t\t\t  describe String{\r\n\t\t\t  }\t\r\n\t\t  }\r\n\t\t");
     final AssertableDiagnostics validationResult = this.validate(ExampleGroup.class);
     validationResult.assertErrorContains("The spec \'String\' is already defined.");
   }
@@ -94,7 +99,8 @@ public class SpecJavaValidatorSpec {
   @Named("example table values must not be void [PENDING]")
   @Order(6)
   public void _exampleTableValuesMustNotBeVoid() throws Exception {
-    this.modelStore.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tdef examples{\r\n\t\t\t\t\t| a         |\r\n\t\t\t\t\t| throw new Exception() |\r\n\t\t\t\t}\r\n\t\t\t} \r\n\t\t");
+    this.modelStore.parseSpec(
+      "\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tdef examples{\r\n\t\t\t\t\t| a         |\r\n\t\t\t\t\t| throw new Exception() |\r\n\t\t\t\t}\r\n\t\t\t} \r\n\t\t");
     final AssertableDiagnostics validationResult = this.validate(ExampleCell.class);
     validationResult.assertErrorContains("void");
   }
@@ -104,7 +110,8 @@ public class SpecJavaValidatorSpec {
   @Named("example table rows must have the same size [PENDING]")
   @Order(7)
   public void _exampleTableRowsMustHaveTheSameSize() throws Exception {
-    this.modelStore.parseSpec("\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tdef examples{\r\n\t\t\t\t\t| a | b |\r\n\t\t\t\t\t| 0 |\r\n\t\t\t\t}\r\n\t\t\t} \r\n\t\t");
+    this.modelStore.parseSpec(
+      "\r\n\t\t\tpackage bootstrap\r\n\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tdef examples{\r\n\t\t\t\t\t| a | b |\r\n\t\t\t\t\t| 0 |\r\n\t\t\t\t}\r\n\t\t\t} \r\n\t\t");
     final AssertableDiagnostics validationResult = this.validate(ExampleTable.class);
     validationResult.assertErrorContains("number");
   }
@@ -113,7 +120,8 @@ public class SpecJavaValidatorSpec {
   @Named("should can compare objects of the same type")
   @Order(8)
   public void _shouldCanCompareObjectsOfTheSameType() throws Exception {
-    this.modelStore.parseSpec("\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact 1 => 1\r\n\t\t\t} \r\n\t\t");
+    this.modelStore.parseSpec(
+      "\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact 1 => 1\r\n\t\t\t} \r\n\t\t");
     final AssertableDiagnostics validationResult = this.validate(XBinaryOperation.class);
     validationResult.assertOK();
   }
@@ -122,7 +130,8 @@ public class SpecJavaValidatorSpec {
   @Named("should can compare object with a class")
   @Order(9)
   public void _shouldCanCompareObjectWithAClass() throws Exception {
-    this.modelStore.parseSpec("\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact 1 => typeof(int)\r\n\t\t\t} \r\n\t\t");
+    this.modelStore.parseSpec(
+      "\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact 1 => typeof(int)\r\n\t\t\t} \r\n\t\t");
     final AssertableDiagnostics validationResult = this.validate(XBinaryOperation.class);
     validationResult.assertOK();
   }
@@ -131,7 +140,8 @@ public class SpecJavaValidatorSpec {
   @Named("should can compare with matcher")
   @Order(10)
   public void _shouldCanCompareWithMatcher() throws Exception {
-    this.modelStore.parseSpec("\r\n\t\t\timport static org.hamcrest.CoreMatchers.*\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact 1 => notNullValue\r\n\t\t\t} \r\n\t\t");
+    this.modelStore.parseSpec(
+      "\r\n\t\t\timport static org.hamcrest.CoreMatchers.*\r\n\t\t\tdescribe \"Example\"{\r\n\t\t\t\tfact 1 => notNullValue\r\n\t\t\t} \r\n\t\t");
     final AssertableDiagnostics validationResult = this.validate(XBinaryOperation.class);
     validationResult.assertOK();
   }
@@ -140,18 +150,10 @@ public class SpecJavaValidatorSpec {
   @Named("should can define two classes in a spec")
   @Order(11)
   public void _shouldCanDefineTwoClassesInASpec() throws Exception {
-    this.modelStore.parseSpec("\r\n      class A {}\r\n      class B {}\r\n      describe \"A\"{\r\n      }\r\n    ");
+    this.modelStore.parseSpec(
+      "\r\n      class A {}\r\n      class B {}\r\n      describe \"A\"{\r\n      }\r\n    ");
     final AssertableDiagnostics validationResult = this.validate(SpecFile.class);
     validationResult.assertOK();
-  }
-  
-  @Test
-  @Named("should can find clashes with Xtend classes")
-  @Order(12)
-  public void _shouldCanFindClashesWithXtendClasses() throws Exception {
-    this.modelStore.parseSpec("\r\n      class ExampleSpec {}\r\n      describe \"Example\"{\r\n      }\r\n    ");
-    final AssertableDiagnostics validationResult = this.validate(SpecFile.class);
-    validationResult.assertErrorContains("type Example is already defined");
   }
   
   public AssertableDiagnostics validate(final Class<? extends EObject> type) {

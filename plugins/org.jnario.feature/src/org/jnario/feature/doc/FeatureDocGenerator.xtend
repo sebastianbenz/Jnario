@@ -44,12 +44,6 @@ class FeatureDocGenerator extends AbstractDocGenerator {
 
 	def generateContent(Feature feature)'''
 		«feature.description?.markdown2Html»
-		«IF feature.background != null»
-		«generate(feature.background)»
-		«ENDIF»
-		«FOR scenario : feature.scenarios»
-		«generate(scenario)»
-		«ENDFOR»
 		«FOR member : feature.members»
 		«generate(member)»
 		«ENDFOR»

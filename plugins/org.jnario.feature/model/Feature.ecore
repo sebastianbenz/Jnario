@@ -1,34 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="feature" nsURI="http://www.org/jnario/feature/Feature" nsPrefix="feature">
-  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="../../org.jnario/model/Jnario.ecore#//Specification">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
-        eType="#//Scenario" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="background" eType="#//Background"
-        containment="true"/>
+<ecore:EPackage
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    name="feature"
+    nsURI="http://www.org/jnario/feature/Feature"
+    nsPrefix="feature">
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="Feature"
+      eSuperTypes="../../org.jnario/model/Jnario.ecore#//Specification">
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="description"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="scenarios"
+        upperBound="-1"
+        eType="#//Scenario"
+        volatile="true"
+        transient="true"
+        derived="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="background"
+        unique="false"
+        eType="#//Background"
+        volatile="true"
+        transient="true"
+        derived="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Background" eSuperTypes="#//Scenario"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Scenario" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendClass ../../org.jnario/model/Jnario.ecore#//Executable">
-    <eOperations name="getSteps" upperBound="-1" eType="#//Step"/>
-    <eOperations name="getPendingSteps" upperBound="-1" eType="#//Step"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendFunction ../../org.jnario/model/Jnario.ecore#//Executable"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Given" eSuperTypes="#//StepImplementation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="When" eSuperTypes="#//StepImplementation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Then" eSuperTypes="#//StepImplementation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//StepImplementation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="FeatureFile" eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendFile"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GivenReference" eSuperTypes="#//StepReference"/>
-  <eClassifiers xsi:type="ecore:EClass" name="WhenReference" eSuperTypes="#//StepReference"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ThenReference" eSuperTypes="#//StepReference"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AndReference" eSuperTypes="#//StepReference"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StepReference" eSuperTypes="#//Step">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//StepImplementation"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="syntheticStepReference"
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="Background"
+      eSuperTypes="#//Scenario"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="Scenario"
+      eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendClass ../../org.jnario/model/Jnario.ecore#//Executable">
+    <eOperations
+        name="getSteps"
+        upperBound="-1"
+        eType="#//Step"/>
+    <eOperations
+        name="getPendingSteps"
+        upperBound="-1"
         eType="#//Step"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StepImplementation" eSuperTypes="#//Step"/>
-  <eClassifiers xsi:type="ecore:EClass" name="But" eSuperTypes="#//StepImplementation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ButReference" eSuperTypes="#//StepReference"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="Step"
+      eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendFunction ../../org.jnario/model/Jnario.ecore#//Executable"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="Given"
+      eSuperTypes="#//StepImplementation"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="When"
+      eSuperTypes="#//StepImplementation"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="Then"
+      eSuperTypes="#//StepImplementation"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="And"
+      eSuperTypes="#//StepImplementation"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="FeatureFile"
+      eSuperTypes="../../org.eclipse.xtend.core/model/Xtend.ecore#//XtendFile"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GivenReference"
+      eSuperTypes="#//StepReference"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="WhenReference"
+      eSuperTypes="#//StepReference"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="ThenReference"
+      eSuperTypes="#//StepReference"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="AndReference"
+      eSuperTypes="#//StepReference"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="StepReference"
+      eSuperTypes="#//Step">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="reference"
+        eType="#//StepImplementation"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="syntheticStepReference"
+        eType="#//Step"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="StepImplementation"
+      eSuperTypes="#//Step"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="But"
+      eSuperTypes="#//StepImplementation"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="ButReference"
+      eSuperTypes="#//StepReference"/>
 </ecore:EPackage>

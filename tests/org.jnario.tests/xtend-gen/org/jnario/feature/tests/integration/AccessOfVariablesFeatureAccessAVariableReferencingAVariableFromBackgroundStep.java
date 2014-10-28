@@ -9,6 +9,8 @@ package org.jnario.feature.tests.integration;
 
 import org.jnario.feature.tests.integration.AccessOfVariablesFeature;
 import org.jnario.jnario.test.util.FeatureExecutor;
+import org.jnario.lib.JnarioIterableExtensions;
+import org.jnario.lib.StepArguments;
 import org.jnario.runner.FeatureRunner;
 import org.jnario.runner.Named;
 import org.jnario.runner.Order;
@@ -25,9 +27,9 @@ public class AccessOfVariablesFeatureAccessAVariableReferencingAVariableFromBack
   @Order(0)
   @Named("When I reference a variable from the background")
   public void _whenIReferenceAVariableFromTheBackground() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field args is undefined for the type Scenario: Access a variable referencing a variable from background step\r\n"
-      + "\nfirst cannot be resolved");
+    final StepArguments args = new StepArguments("package bootstrap5\nFeature: Variable test\n\tBackground:\n\t\tint x\n\t\tGiven some variable\n\t\t\tx = 3\n\tScenario: Some scenario\n\t\t\tint y\n\t\t\tWhen assigning the variable\n\t\t\t\ty = x\n\t\t\tThen it should be accessible\n\t\t\t\ty => 3\n");
+    String _first = JnarioIterableExtensions.<String>first(args);
+    this.jnarioFile = _first;
   }
   
   @Test

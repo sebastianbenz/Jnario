@@ -38,84 +38,41 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypeExtensions;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.resource.BatchLinkableResource;
 import org.jnario.Specification;
+import org.jnario.spec.spec.ExampleGroup;
 
 import com.google.inject.Inject;
 
 public class SpecIgnoringXtendJvmModelInferrer extends XtendJvmModelInferrer {
-	
-	private final static Logger logger = Logger.getLogger(XtendJvmModelInferrer.class);
+
+	private final static Logger logger = Logger
+			.getLogger(XtendJvmModelInferrer.class);
 	@Inject
 	private TypesFactory typesFactory;
 
 	@Inject
 	private AnnotationProcessor annotationProcessor;
-	
+
 	@Inject
 	private ActiveAnnotationContextProvider contextProvider;
-	
+
 	@Inject
 	private CompilerPhases compilerPhases;
-	public void infer(EObject object, final IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
+
+	public void infer(EObject object, final IJvmDeclaredTypeAcceptor acceptor,
+			boolean preIndexingPhase) {
 		if (!(object instanceof XtendFile))
 			return;
 		XtendFile xtendFile = (XtendFile) object;
 		List<Runnable> doLater = newArrayList();
-		for (final XtendTypeDeclaration declaration: xtendFile.getXtendTypes()) {
-			if (Strings.isEmpty(declaration.getName()))
-				continue;
-			
-			if (declaration instanceof XtendAnnotationType) {
-				final JvmAnnotationType annotation = typesFactory.createJvmAnnotationType();
-				setNameAndAssociate(xtendFile, declaration, annotation);
-				acceptor.accept(annotation);
-				if (!preIndexingPhase) {
-					doLater.add(new Runnable() {
-						public void run() {
-							initialize((XtendAnnotationType)declaration, annotation);
-						}
-					});
-				}
-			} else if (declaration instanceof XtendClass && !(declaration instanceof Specification)) {
-				XtendClass xtendClass = (XtendClass) declaration;
-				final JvmGenericType javaType = typesFactory.createJvmGenericType();
-				setNameAndAssociate(xtendFile, declaration, javaType);
-				copyTypeParameters(xtendClass.getTypeParameters(), javaType);
-				acceptor.accept(javaType);
-				if (!preIndexingPhase) {
-					doLater.add(new Runnable() {
-						public void run() {
-							initialize((XtendClass) declaration, javaType);
-						}
-					});
-				}
-			} else if (declaration instanceof XtendInterface) {
-				XtendInterface xtendInterface = (XtendInterface) declaration;
-				final JvmGenericType javaType = typesFactory.createJvmGenericType();
-				setNameAndAssociate(xtendFile, declaration, javaType);
-				copyTypeParameters(xtendInterface.getTypeParameters(), javaType);
-				acceptor.accept(javaType);
-				if (!preIndexingPhase) {
-					doLater.add(new Runnable() {
-						public void run() {
-							initialize((XtendInterface) declaration, javaType);
-						}
-					});
-				}
-			} else if (declaration instanceof XtendEnum) {
-				final JvmEnumerationType javaType = typesFactory.createJvmEnumerationType();
-				setNameAndAssociate(xtendFile, declaration, javaType);
-				acceptor.accept(javaType);
-				if (!preIndexingPhase) {
-					doLater.add(new Runnable() {
-						public void run() {
-							initialize((XtendEnum) declaration, javaType);
-						}
-					});
-				}
+		for (final XtendTypeDeclaration declaration : xtendFile.getXtendTypes()) {
+			if (!(declaration instanceof ExampleGroup)) {
+				inferTypeSceleton(declaration, acceptor, preIndexingPhase,
+						xtendFile, doLater, null);
 			}
 		}
 		ActiveAnnotationContexts contexts = null;
-		BatchLinkableResource resource = (BatchLinkableResource)xtendFile.eResource();
+		BatchLinkableResource resource = (BatchLinkableResource) xtendFile
+				.eResource();
 		try {
 			compilerPhases.setIndexing(xtendFile, true);
 			try {
@@ -124,32 +81,44 @@ public class SpecIgnoringXtendJvmModelInferrer extends XtendJvmModelInferrer {
 				logger.error("Couldn't create annotation contexts", t);
 				return;
 			}
-			
-			for (ActiveAnnotationContext ctx : contexts.getContexts().values()) {
-				try {
-					annotationProcessor.indexingPhase(ctx, acceptor, CancelIndicator.NullImpl);
-				} catch (Throwable t) {
-					ctx.handleProcessingError(xtendFile.eResource(), t);
+			try {
+				contexts.before(ActiveAnnotationContexts.AnnotationCallback.INDEXING);
+				for (ActiveAnnotationContext ctx : contexts.getContexts()
+						.values()) {
+					try {
+						annotationProcessor.indexingPhase(ctx, acceptor,
+								CancelIndicator.NullImpl);
+					} catch (Throwable t) {
+						ctx.handleProcessingError(xtendFile.eResource(), t);
+					}
 				}
+			} finally {
+				contexts.after(ActiveAnnotationContexts.AnnotationCallback.INDEXING);
 			}
 		} finally {
 			compilerPhases.setIndexing(xtendFile, false);
 			resource.getCache().clear(resource);
 		}
-		
+
 		if (!preIndexingPhase) {
 			for (Runnable runnable : doLater) {
 				runnable.run();
 			}
-			for (ActiveAnnotationContext ctx : contexts.getContexts().values()) {
-				try {
-					annotationProcessor.inferencePhase(ctx, CancelIndicator.NullImpl);
-				} catch (Throwable t) {
-					ctx.handleProcessingError(xtendFile.eResource(), t);
+			try {
+				contexts.before(ActiveAnnotationContexts.AnnotationCallback.INFERENCE);
+				for (ActiveAnnotationContext ctx : contexts.getContexts()
+						.values()) {
+					try {
+						annotationProcessor.inferencePhase(ctx,
+								CancelIndicator.NullImpl);
+					} catch (Throwable t) {
+						ctx.handleProcessingError(xtendFile.eResource(), t);
+					}
 				}
+			} finally {
+				contexts.after(ActiveAnnotationContexts.AnnotationCallback.INFERENCE);
 			}
 		}
 	}
-	
 
 }

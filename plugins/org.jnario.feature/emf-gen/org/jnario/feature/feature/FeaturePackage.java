@@ -166,7 +166,7 @@ public interface FeaturePackage extends EPackage
 	int FEATURE__DESCRIPTION = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Scenarios</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -175,7 +175,7 @@ public interface FeaturePackage extends EPackage
 	int FEATURE__SCENARIOS = JnarioPackage.SPECIFICATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Background</b></em>' containment reference.
+	 * The feature id for the '<em><b>Background</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2103,10 +2103,10 @@ public interface FeaturePackage extends EPackage
 	EAttribute getFeature_Description();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.jnario.feature.feature.Feature#getScenarios <em>Scenarios</em>}'.
+	 * Returns the meta object for the reference list '{@link org.jnario.feature.feature.Feature#getScenarios <em>Scenarios</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
+	 * @return the meta object for the reference list '<em>Scenarios</em>'.
 	 * @see org.jnario.feature.feature.Feature#getScenarios()
 	 * @see #getFeature()
 	 * @generated
@@ -2114,10 +2114,10 @@ public interface FeaturePackage extends EPackage
 	EReference getFeature_Scenarios();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.jnario.feature.feature.Feature#getBackground <em>Background</em>}'.
+	 * Returns the meta object for the reference '{@link org.jnario.feature.feature.Feature#getBackground <em>Background</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Background</em>'.
+	 * @return the meta object for the reference '<em>Background</em>'.
 	 * @see org.jnario.feature.feature.Feature#getBackground()
 	 * @see #getFeature()
 	 * @generated
@@ -2348,7 +2348,7 @@ public interface FeaturePackage extends EPackage
 		EAttribute FEATURE__DESCRIPTION = eINSTANCE.getFeature_Description();
 
 		/**
-		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Scenarios</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2356,7 +2356,7 @@ public interface FeaturePackage extends EPackage
 		EReference FEATURE__SCENARIOS = eINSTANCE.getFeature_Scenarios();
 
 		/**
-		 * The meta object literal for the '<em><b>Background</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Background</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
