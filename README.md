@@ -1,19 +1,19 @@
 [![Build Status](https://jnario.ci.cloudbees.com/job/jnario-snapshot/badge/icon)](https://jnario.ci.cloudbees.com/job/jnario-snapshot/)
 
-##Overview
+## Overview
 
 Jnario is a framework for writing executable specifications for Java. It provides all the goodness of Xtend while being specifically tailored to writing acceptance and unit tests. It is easy to integrate as Jnario specifications are compiled to plain Java Junit tests. Head over to [Jnario.org](http://www.jnario.org) for more information.
 
 See the [release notes](release_notes.md) for the current version.
 
-#Dependencies & Installation
+# Dependencies & Installation
 
 * Jnario requires at least [Eclipse 3.6](http://eclipse.org/downloads/) with [Xtext 2.6](http://www.xtext.org) and [Xtend 2.6](http://www.eclipse.org/xtend/). You can install both from this update site `http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/`.
 * The latest snapshot verion of Jnario can be installed from the following update site `http://www.jnario.org/updates/snapshot/`.
 
-##Examples
+## Examples
 
-###Acceptance Specification
+### Acceptance Specification
 
 ```cucumber
 Feature: Addition
@@ -33,7 +33,7 @@ Feature: Addition
       calculator.result => args.first
 ```
 
-###Unit Specifications
+### Unit Specifications
 
 ```java
 package example
@@ -61,7 +61,7 @@ describe Stack{
 }
 ```
 
-##Setting up a development environment
+## Setting up a development environment
 
 * If you haven't got an Eclipse installation, download the [Xtend Distribution](http://www.eclipse.org/xtend/download.html). 
 * Install the latest Xtext 2.6.1 release from: `http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/` (this is not required if you have downloaded the Xtend distribution).
@@ -76,7 +76,7 @@ $ git clone git://github.com/bmwcarit/Jnario.git
 * Open the target definition **tools/org.jnario.target/juno.target** and click **Set as Target Plattform** in the upper right corner
 * If you want to change the grammar import **org.eclipse.xtend.core** and **org.eclipse.xtext.xbase** into your workspace via **import->Plug-in Development->Plug-ins and Fragments** with **Import As->Projects with source folder**. This is necessary for the workflow to find the custom source classes of Xtend and Xbase.
 
-##Build
+## Build
 
 Build with Maven 3 and Tycho. Run the following command in the repository root:
 
